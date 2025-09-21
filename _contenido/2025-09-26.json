@@ -1,0 +1,40 @@
+{
+  "id": "2025-09-26",
+  "titulo": "El Secreto de las Secuencias",
+  "misiones": [
+    {
+      "id": "mision-secuencia-1",
+      "tipo": "secuencia",
+      "titulo": "Detective de Números",
+      "ejercicios": [
+        {
+          "elementos": ["2", "5", "8", "11", "?"],
+          "respuesta": "14",
+          "pista": "Fíjate bien... ¿cuánto le sumas a un número para obtener el siguiente?"
+        },
+        {
+          "elementos": ["20", "18", "16", "14", "?"],
+          "respuesta": "12",
+          "pista": "Esta vez, los números se hacen más pequeños. ¿Cuánto le restas cada vez?"
+        }
+      ]
+    },
+    {
+      "id": "mision-secuencia-2",
+      "tipo": "secuencia",
+      "titulo": "Patrones de Figuras",
+      "ejercicios": [
+        {
+          "elementos": ["▲", "▲▲", "▲▲▲", "?"],
+          "respuesta": "▲▲▲▲",
+          "pista": "Cuenta cuántos triángulos hay en cada paso."
+        },
+        {
+          "elementos": ["●", "■", "●●", "■■", "?"],
+          "respuesta": "●●●",
+          "pista": "Parece que se alterna entre círculos y cuadrados, y cada vez se añade uno más."
+        }
+      ]
+    }
+  ]
+}
