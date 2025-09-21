@@ -185,3 +185,56 @@ body {
     margin: 0 auto 15px;
 }
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* --- Estilos para la Nueva Misión de Secuencias --- */
+.mision.secuencia { 
+    border-color: #9b59b6; /* Morado para lógica */
+}
+
+.secuencia-ejercicio {
+    background-color: #f4f0f6;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.secuencia-elementos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-family: var(--font-headings);
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.secuencia-elementos .elemento {
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.secuencia-elementos .placeholder {
+    color: #9b59b6;
+    font-weight: 700;
+}
+
+.secuencia-respuesta {
+    display: flex;
+    justify-content: center;
+}
+
+.secuencia-respuesta input {
+    width: 150px;
+    padding: 10px;
+    border: 2px solid #dcd0e8;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.8rem;
+    font-family: var(--font-body);
+    font-weight: 800;
+}
+
+.secuencia-respuesta input.correct { background-color: #e0f8e7; border-color: var(--c-success); }
+.secuencia-respuesta input.incorrect { background-color: #fbe5e7; border-color: var(--c-danger); }
