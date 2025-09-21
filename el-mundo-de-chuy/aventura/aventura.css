@@ -1,0 +1,187 @@
+:root {
+    --c-primary: #3498db;
+    --c-secondary: #f1c40f;
+    --c-success: #2ecc71;
+    --c-danger: #e74c3c;
+    --c-background: #ecf0f1;
+    --c-text: #34495e;
+    --c-paper: #ffffff;
+    --font-headings: 'Fredoka', sans-serif;
+    --font-body: 'Nunito', sans-serif;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--c-background);
+    color: var(--c-text);
+    margin: 0;
+    padding: 25px;
+}
+
+.main-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* --- Cabecera --- */
+.aventura-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: var(--c-paper);
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+.aventura-header h1 {
+    font-family: var(--font-headings);
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    color: var(--c-primary);
+    margin: 0 0 20px 0;
+}
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #bdc3c7;
+    color: var(--c-text);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    transition: all 0.2s;
+}
+.back-button:hover {
+    background-color: var(--c-text);
+    color: white;
+    transform: scale(1.05);
+}
+
+/* --- Contenedor de Misiones --- */
+#misiones-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.mision {
+    background-color: var(--c-paper);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    border-left: 10px solid;
+}
+.mision h2 {
+    font-family: var(--font-headings);
+    margin-top: 0;
+    font-size: 1.8rem;
+    border-bottom: 3px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* --- Estilos por Tipo de Misión --- */
+
+/* Misión de Operaciones */
+.mision.operaciones { border-color: #3498db; }
+.operaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.ejercicio {
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+.ejercicio input {
+    width: 100px;
+    padding: 10px;
+    border: 2px solid #dfe4ea;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.8rem;
+    font-family: var(--font-body);
+    font-weight: 800;
+    display: block;
+    margin: 10px auto 0;
+}
+.ejercicio input.correct { background-color: #e0f8e7; border-color: var(--c-success); }
+.ejercicio input.incorrect { background-color: #fbe5e7; border-color: var(--c-danger); }
+
+/* Misión de Opción Múltiple (Geografía, etc.) */
+.mision.opcion-multiple { border-color: #f1c40f; }
+.opcion-multiple-pregunta { font-size: 1.2rem; font-weight: 600; margin-bottom: 15px; }
+.opcion-multiple-imagen { width: 100%; max-width: 400px; border-radius: 10px; margin: 0 auto 20px; display: block; }
+.opciones-lista { list-style: none; padding: 0; }
+.opciones-lista li label {
+    display: block;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: all 0.2s ease;
+}
+.opciones-lista li label:hover { border-color: var(--c-secondary); }
+.opciones-lista input[type="radio"] { display: none; }
+.opciones-lista input[type="radio"]:checked + label {
+    background-color: var(--c-secondary);
+    border-color: #f39c12;
+    color: white;
+    font-weight: bold;
+}
+
+/* Misión de Dibujo */
+.mision.numberblocks-dibujo { border-color: #e74c3c; }
+.numberblocks-instruccion { font-size: 1.2rem; text-align: center; font-weight: 600; }
+.canvas-placeholder {
+    height: 200px;
+    background-color: #f0f4f8;
+    border: 2px dashed #ff9800;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: italic;
+    color: #7f8c8d;
+}
+
+/* --- Footer y Botón de Completar --- */
+.aventura-footer {
+    margin-top: 40px;
+    text-align: center;
+}
+.aventura-footer.hidden { display: none; }
+#completar-aventura-btn {
+    font-family: var(--font-headings);
+    font-size: 1.5rem;
+    padding: 15px 40px;
+    border-radius: 50px;
+    border: none;
+    background: linear-gradient(45deg, var(--c-success), #27ae60);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 5px 0 #1e8449;
+    transition: all 0.1s ease-in-out;
+}
+#completar-aventura-btn:hover { transform: translateY(-2px); box-shadow: 0 7px 0 #1e8449; }
+#completar-aventura-btn:active { transform: translateY(3px); box-shadow: 0 2px 0 #1e8449; }
+#mensaje-final {
+    margin-top: 20px;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+/* --- Loader --- */
+.loader { text-align: center; padding: 50px 0; }
+.spinner {
+    width: 50px; height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid var(--c-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 15px;
+}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
