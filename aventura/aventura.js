@@ -6,15 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const mensajeFinal = document.getElementById('mensaje-final');
 
     let aventuraData = null;
-    const PROGRESO_KEY = 'progresoChuy'; // Clave para localStorage
+    const PROGRESO_KEY = 'progresoChuy';
 
-    // --- 1. OBTENER EL DÍA DE LA URL ---
     function getDiaAventura() {
         const params = new URLSearchParams(window.location.search);
         return params.get('dia');
     }
 
-    // --- 2. CARGAR LOS DATOS DE LA AVENTURA ---
     async function cargarAventura(dia) {
         if (!dia) {
             misionesContainer.innerHTML = `<div class="loader" style="color: red;">Error: No se especificó un día de aventura.</div>`;
@@ -31,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- 3. RENDERIZAR LA AVENTURA EN LA PÁGINA ---
     function renderizarAventura() {
         misionesContainer.innerHTML = '';
         aventuraTitulo.textContent = aventuraData.titulo;
@@ -40,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const misionDiv = document.createElement('div');
             misionDiv.className = `mision ${misionData.tipo}`;
             misionDiv.id = misionData.id;
-            // Guardamos los datos de la misión en el elemento para usarlos después
             misionDiv.dataset.info = JSON.stringify(misionData);
 
             let contenidoMision = `<h2>${misionData.titulo}</h2>`;
@@ -54,6 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 case 'numberblocks-dibujo':
                     contenidoMision += renderizarMisionDibujo(misionData);
                     break;
+                // ===== NUEVO CASO PARA SECUENCIAS =====
+                case 'secuencia':
+                    contenidoMision += renderizarMisionSecuencia(misionData);
+                    break;
                 default:
                     contenidoMision += `<p>Tipo de misión no reconocido.</p>`;
             }
@@ -63,8 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
         aventuraFooter.classList.remove('hidden');
     }
 
-    // --- FUNCIONES AUXILIARES DE RENDERIZADO (Sin cambios) ---
-    function renderizarMisionOperaciones(data) {
+    // --- FUNCIONES DE RENDERIZADO ---
+    function renderizarMisionOperaciones(data) { /* ... sin cambios ... */
         let gridHTML = '<div class="operaciones-grid">';
         data.ejercicios.forEach((ej, index) => {
             gridHTML += `<div class="ejercicio" data-respuesta="${ej.respuesta}"><p>${ej.pregunta} =</p><input type="number" inputmode="numeric" id="op-${index}"></div>`;
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return gridHTML + '</div>';
     }
 
-    function renderizarMisionOpcionMultiple(data) {
+    function renderizarMisionOpcionMultiple(data) { /* ... sin cambios ... */
         let opcionesHTML = '<ul class="opciones-lista">';
         data.opciones.forEach((opcion, index) => {
             opcionesHTML += `<li><input type="radio" name="opcion-multiple-${data.id}" id="om-${data.id}-${index}" value="${opcion}"><label for="om-${data.id}-${index}">${opcion}</label></li>`;
@@ -81,60 +81,85 @@ document.addEventListener('DOMContentLoaded', () => {
         return `<p class="opcion-multiple-pregunta">${data.pregunta}</p>${data.imagen ? `<img src="${data.imagen}" alt="Imagen de la misión" class="opcion-multiple-imagen">` : ''}${opcionesHTML}`;
     }
     
-    function renderizarMisionDibujo(data) {
+    function renderizarMisionDibujo(data) { /* ... sin cambios ... */
         return `<p class="numberblocks-instruccion">${data.instruccion}</p><div class="canvas-placeholder">El lienzo de dibujo aparecerá aquí.</div>`;
     }
 
-    // --- 4. LÓGICA DE COMPLETAR AVENTURA (MEJORADA) ---
+    // ===== NUEVA FUNCIÓN PARA RENDERIZAR SECUENCIAS =====
+    function renderizarMisionSecuencia(data) {
+        let ejerciciosHTML = '';
+        data.ejercicios.forEach((ej, index) => {
+            const elementosHTML = ej.elementos.map(el => 
+                el === '?' ? `<span class="placeholder">?</span>` : `<span class="elemento">${el}</span>`
+            ).join('');
+
+            ejerciciosHTML += `
+                <div class="secuencia-ejercicio" data-respuesta="${ej.respuesta}">
+                    <div class="secuencia-elementos">${elementosHTML}</div>
+                    <div class="secuencia-respuesta">
+                        <input type="text" placeholder="Respuesta">
+                    </div>
+                </div>
+            `;
+        });
+        return ejerciciosHTML;
+    }
+
+    // --- LÓGICA DE COMPLETAR Y CALIFICAR ---
     function completarAventura() {
         let puntaje = 0;
         let totalPreguntas = 0;
 
-        // Calificar cada misión en la página
         document.querySelectorAll('.mision').forEach(misionDiv => {
             const misionData = JSON.parse(misionDiv.dataset.info);
-            totalPreguntas++;
+            
+            // Para misiones con múltiples ejercicios, cada ejercicio cuenta como una pregunta
+            if (misionData.ejercicios && misionData.ejercicios.length > 0) {
+                totalPreguntas += misionData.ejercicios.length;
+            } else {
+                totalPreguntas++;
+            }
 
-            let acierto = false;
             switch (misionData.tipo) {
                 case 'operaciones':
-                    acierto = calificarMisionOperaciones(misionDiv, misionData);
+                    puntaje += calificarMisionOperaciones(misionDiv, misionData);
                     break;
                 case 'opcion-multiple':
-                    acierto = calificarMisionOpcionMultiple(misionDiv, misionData);
+                    puntaje += calificarMisionOpcionMultiple(misionDiv, misionData) ? 1 : 0;
+                    break;
+                // ===== NUEVO CASO DE CALIFICACIÓN PARA SECUENCIAS =====
+                case 'secuencia':
+                    puntaje += calificarMisionSecuencia(misionDiv, misionData);
                     break;
                 case 'numberblocks-dibujo':
-                    // Por ahora, los dibujos se califican como correctos automáticamente
-                    acierto = true;
+                    puntaje++; // Autocalificado como correcto
                     break;
             }
-            if (acierto) puntaje++;
         });
 
-        mensajeFinal.textContent = `¡Aventura terminada! Lograste ${puntaje} de ${totalPreguntas} misiones. ¡Eres un genio!`;
-        completarBtn.style.display = 'none'; // Ocultar botón después de calificar
-
+        mensajeFinal.textContent = `¡Aventura terminada! Lograste ${puntaje} de ${totalPreguntas} aciertos. ¡Sigue así!`;
+        completarBtn.style.display = 'none';
         guardarProgreso();
     }
 
-    // --- FUNCIONES DE CALIFICACIÓN ---
+    // --- FUNCIONES DE CALIFICACIÓN (ACTUALIZADAS) ---
     function calificarMisionOperaciones(misionDiv, misionData) {
-        let todasCorrectas = true;
+        let aciertos = 0;
         misionDiv.querySelectorAll('.ejercicio').forEach((ej, index) => {
             const input = ej.querySelector('input');
             const respuestaCorrecta = misionData.ejercicios[index].respuesta;
             input.classList.remove('correct', 'incorrect');
-            if (input.value === respuestaCorrecta) {
+            if (input.value.trim() === respuestaCorrecta) {
                 input.classList.add('correct');
+                aciertos++;
             } else {
                 input.classList.add('incorrect');
-                todasCorrectas = false;
             }
         });
-        return todasCorrectas;
+        return aciertos;
     }
 
-    function calificarMisionOpcionMultiple(misionDiv, misionData) {
+    function calificarMisionOpcionMultiple(misionDiv, misionData) { /* ... sin cambios ... */
         const opcionSeleccionada = misionDiv.querySelector('input[type="radio"]:checked');
         if (opcionSeleccionada && opcionSeleccionada.value === misionData.respuesta) {
             opcionSeleccionada.parentElement.querySelector('label').style.backgroundColor = 'var(--c-success)';
@@ -145,26 +170,34 @@ document.addEventListener('DOMContentLoaded', () => {
         return false;
     }
 
-    // --- 5. GUARDAR PROGRESO EN LOCALSTORAGE ---
-    function guardarProgreso() {
+    // ===== NUEVA FUNCIÓN PARA CALIFICAR SECUENCIAS =====
+    function calificarMisionSecuencia(misionDiv, misionData) {
+        let aciertos = 0;
+        misionDiv.querySelectorAll('.secuencia-ejercicio').forEach((ej, index) => {
+            const input = ej.querySelector('input');
+            const respuestaCorrecta = misionData.ejercicios[index].respuesta;
+            input.classList.remove('correct', 'incorrect');
+            // Usamos trim() para quitar espacios y toLowerCase() para no diferenciar mayúsculas/minúsculas
+            if (input.value.trim().toLowerCase() === respuestaCorrecta.toLowerCase()) {
+                input.classList.add('correct');
+                aciertos++;
+            } else {
+                input.classList.add('incorrect');
+            }
+        });
+        return aciertos;
+    }
+
+    function guardarProgreso() { /* ... sin cambios ... */
         const diaAventura = getDiaAventura();
         if (!diaAventura) return;
-
         try {
-            // Obtener progreso existente o crear uno nuevo
             let progreso = JSON.parse(localStorage.getItem(PROGRESO_KEY)) || { misionesCompletadas: [] };
-            
-            // Añadir la misión actual si no está ya en la lista
             if (!progreso.misionesCompletadas.includes(diaAventura)) {
                 progreso.misionesCompletadas.push(diaAventura);
             }
-
-            // (Aquí podríamos añadir lógica para la racha de días)
-
-            // Guardar el objeto actualizado en localStorage
             localStorage.setItem(PROGRESO_KEY, JSON.stringify(progreso));
             console.log('Progreso guardado:', progreso);
-
         } catch (e) {
             console.error("No se pudo guardar el progreso en localStorage.", e);
         }
@@ -173,6 +206,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- INICIALIZACIÓN ---
     const dia = getDiaAventura();
     cargarAventura(dia);
-
     completarBtn.addEventListener('click', completarAventura);
 });
