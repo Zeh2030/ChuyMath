@@ -50,7 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 case 'numberblocks-dibujo':
                     contenidoMision += renderizarMisionDibujo(misionData);
                     break;
-                // ===== NUEVO CASO PARA SECUENCIAS =====
                 case 'secuencia':
                     contenidoMision += renderizarMisionSecuencia(misionData);
                     break;
@@ -63,29 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         aventuraFooter.classList.remove('hidden');
     }
 
-    // --- FUNCIONES DE RENDERIZADO ---
-    function renderizarMisionOperaciones(data) { /* ... sin cambios ... */
-        let gridHTML = '<div class="operaciones-grid">';
-        data.ejercicios.forEach((ej, index) => {
-            gridHTML += `<div class="ejercicio" data-respuesta="${ej.respuesta}"><p>${ej.pregunta} =</p><input type="number" inputmode="numeric" id="op-${index}"></div>`;
-        });
-        return gridHTML + '</div>';
-    }
-
-    function renderizarMisionOpcionMultiple(data) { /* ... sin cambios ... */
-        let opcionesHTML = '<ul class="opciones-lista">';
-        data.opciones.forEach((opcion, index) => {
-            opcionesHTML += `<li><input type="radio" name="opcion-multiple-${data.id}" id="om-${data.id}-${index}" value="${opcion}"><label for="om-${data.id}-${index}">${opcion}</label></li>`;
-        });
-        opcionesHTML += '</ul>';
-        return `<p class="opcion-multiple-pregunta">${data.pregunta}</p>${data.imagen ? `<img src="${data.imagen}" alt="Imagen de la misión" class="opcion-multiple-imagen">` : ''}${opcionesHTML}`;
-    }
-    
-    function renderizarMisionDibujo(data) { /* ... sin cambios ... */
-        return `<p class="numberblocks-instruccion">${data.instruccion}</p><div class="canvas-placeholder">El lienzo de dibujo aparecerá aquí.</div>`;
-    }
-
-    // ===== NUEVA FUNCIÓN PARA RENDERIZAR SECUENCIAS =====
+    // --- FUNCIONES DE RENDERIZADO (ACTUALIZADA PARA SECUENCIAS) ---
     function renderizarMisionSecuencia(data) {
         let ejerciciosHTML = '';
         data.ejercicios.forEach((ej, index) => {
@@ -93,33 +70,72 @@ document.addEventListener('DOMContentLoaded', () => {
                 el === '?' ? `<span class="placeholder">?</span>` : `<span class="elemento">${el}</span>`
             ).join('');
 
-            ejerciciosHTML += `
-                <div class="secuencia-ejercicio" data-respuesta="${ej.respuesta}">
-                    <div class="secuencia-elementos">${elementosHTML}</div>
+            let respuestaHTML = '';
+            // ===== LÓGICA MEJORADA AQUÍ =====
+            // Si el ejercicio tiene 'opciones', renderiza botones de radio.
+            if (ej.opciones && ej.opciones.length > 0) {
+                respuestaHTML = '<ul class="secuencia-opciones">';
+                ej.opciones.forEach((opcion, optIndex) => {
+                    const idUnico = `seq-${data.id}-${index}-${optIndex}`;
+                    respuestaHTML += `
+                        <li>
+                            <input type="radio" name="secuencia-${data.id}-${index}" id="${idUnico}" value="${opcion}">
+                            <label for="${idUnico}">${opcion}</label>
+                        </li>
+                    `;
+                });
+                respuestaHTML += '</ul>';
+            } else {
+                // Si no, renderiza el campo de texto como antes.
+                respuestaHTML = `
                     <div class="secuencia-respuesta">
                         <input type="text" placeholder="Respuesta">
                     </div>
+                `;
+            }
+
+            ejerciciosHTML += `
+                <div class="secuencia-ejercicio" data-respuesta="${ej.respuesta}">
+                    <div class="secuencia-elementos">${elementosHTML}</div>
+                    ${respuestaHTML}
                 </div>
             `;
         });
         return ejerciciosHTML;
     }
+    
+    // --- OTRAS FUNCIONES DE RENDERIZADO (SIN CAMBIOS) ---
+    function renderizarMisionOperaciones(data) { /* ... */ 
+        let gridHTML = '<div class="operaciones-grid">';
+        data.ejercicios.forEach((ej, index) => {
+            gridHTML += `<div class="ejercicio" data-respuesta="${ej.respuesta}"><p>${ej.pregunta} =</p><input type="number" inputmode="numeric" id="op-${index}"></div>`;
+        });
+        return gridHTML + '</div>';
+    }
+    function renderizarMisionOpcionMultiple(data) { /* ... */
+        let opcionesHTML = '<ul class="opciones-lista">';
+        data.opciones.forEach((opcion, index) => {
+            opcionesHTML += `<li><input type="radio" name="opcion-multiple-${data.id}" id="om-${data.id}-${index}" value="${opcion}"><label for="om-${data.id}-${index}">${opcion}</label></li>`;
+        });
+        opcionesHTML += '</ul>';
+        return `<p class="opcion-multiple-pregunta">${data.pregunta}</p>${data.imagen ? `<img src="${data.imagen}" alt="Imagen de la misión" class="opcion-multiple-imagen">` : ''}${opcionesHTML}`;
+    }
+    function renderizarMisionDibujo(data) { /* ... */
+        return `<p class="numberblocks-instruccion">${data.instruccion}</p><div class="canvas-placeholder">El lienzo de dibujo aparecerá aquí.</div>`;
+    }
 
-    // --- LÓGICA DE COMPLETAR Y CALIFICAR ---
+    // --- LÓGICA DE CALIFICACIÓN (ACTUALIZADA PARA SECUENCIAS) ---
     function completarAventura() {
         let puntaje = 0;
         let totalPreguntas = 0;
 
         document.querySelectorAll('.mision').forEach(misionDiv => {
             const misionData = JSON.parse(misionDiv.dataset.info);
-            
-            // Para misiones con múltiples ejercicios, cada ejercicio cuenta como una pregunta
             if (misionData.ejercicios && misionData.ejercicios.length > 0) {
                 totalPreguntas += misionData.ejercicios.length;
             } else {
                 totalPreguntas++;
             }
-
             switch (misionData.tipo) {
                 case 'operaciones':
                     puntaje += calificarMisionOperaciones(misionDiv, misionData);
@@ -127,23 +143,51 @@ document.addEventListener('DOMContentLoaded', () => {
                 case 'opcion-multiple':
                     puntaje += calificarMisionOpcionMultiple(misionDiv, misionData) ? 1 : 0;
                     break;
-                // ===== NUEVO CASO DE CALIFICACIÓN PARA SECUENCIAS =====
                 case 'secuencia':
                     puntaje += calificarMisionSecuencia(misionDiv, misionData);
                     break;
                 case 'numberblocks-dibujo':
-                    puntaje++; // Autocalificado como correcto
+                    puntaje++;
                     break;
             }
         });
-
         mensajeFinal.textContent = `¡Aventura terminada! Lograste ${puntaje} de ${totalPreguntas} aciertos. ¡Sigue así!`;
         completarBtn.style.display = 'none';
         guardarProgreso();
     }
 
-    // --- FUNCIONES DE CALIFICACIÓN (ACTUALIZADAS) ---
-    function calificarMisionOperaciones(misionDiv, misionData) {
+    // ===== NUEVA FUNCIÓN PARA CALIFICAR SECUENCIAS (MÁS INTELIGENTE) =====
+    function calificarMisionSecuencia(misionDiv, misionData) {
+        let aciertos = 0;
+        misionDiv.querySelectorAll('.secuencia-ejercicio').forEach((ejDiv, index) => {
+            const respuestaCorrecta = misionData.ejercicios[index].respuesta;
+            
+            // Revisa si hay opciones de radio
+            const radioInput = ejDiv.querySelector('input[type="radio"]');
+            if (radioInput) {
+                const opcionSeleccionada = ejDiv.querySelector('input[type="radio"]:checked');
+                if (opcionSeleccionada && opcionSeleccionada.value === respuestaCorrecta) {
+                    opcionSeleccionada.parentElement.querySelector('label').style.backgroundColor = 'var(--c-success)';
+                    aciertos++;
+                } else if (opcionSeleccionada) {
+                    opcionSeleccionada.parentElement.querySelector('label').style.backgroundColor = 'var(--c-danger)';
+                }
+            } else { // Si no, califica el campo de texto
+                const textInput = ejDiv.querySelector('input[type="text"]');
+                textInput.classList.remove('correct', 'incorrect');
+                if (textInput.value.trim().toLowerCase() === respuestaCorrecta.toLowerCase()) {
+                    textInput.classList.add('correct');
+                    aciertos++;
+                } else {
+                    textInput.classList.add('incorrect');
+                }
+            }
+        });
+        return aciertos;
+    }
+
+    // --- OTRAS FUNCIONES DE CALIFICACIÓN Y GUARDADO (SIN CAMBIOS) ---
+    function calificarMisionOperaciones(misionDiv, misionData) { /* ... */ 
         let aciertos = 0;
         misionDiv.querySelectorAll('.ejercicio').forEach((ej, index) => {
             const input = ej.querySelector('input');
@@ -158,8 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         return aciertos;
     }
-
-    function calificarMisionOpcionMultiple(misionDiv, misionData) { /* ... sin cambios ... */
+    function calificarMisionOpcionMultiple(misionDiv, misionData) { /* ... */
         const opcionSeleccionada = misionDiv.querySelector('input[type="radio"]:checked');
         if (opcionSeleccionada && opcionSeleccionada.value === misionData.respuesta) {
             opcionSeleccionada.parentElement.querySelector('label').style.backgroundColor = 'var(--c-success)';
@@ -169,26 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         return false;
     }
-
-    // ===== NUEVA FUNCIÓN PARA CALIFICAR SECUENCIAS =====
-    function calificarMisionSecuencia(misionDiv, misionData) {
-        let aciertos = 0;
-        misionDiv.querySelectorAll('.secuencia-ejercicio').forEach((ej, index) => {
-            const input = ej.querySelector('input');
-            const respuestaCorrecta = misionData.ejercicios[index].respuesta;
-            input.classList.remove('correct', 'incorrect');
-            // Usamos trim() para quitar espacios y toLowerCase() para no diferenciar mayúsculas/minúsculas
-            if (input.value.trim().toLowerCase() === respuestaCorrecta.toLowerCase()) {
-                input.classList.add('correct');
-                aciertos++;
-            } else {
-                input.classList.add('incorrect');
-            }
-        });
-        return aciertos;
-    }
-
-    function guardarProgreso() { /* ... sin cambios ... */
+    function guardarProgreso() { /* ... */
         const diaAventura = getDiaAventura();
         if (!diaAventura) return;
         try {
