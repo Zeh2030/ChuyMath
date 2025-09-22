@@ -37,6 +37,37 @@
           "pista": "No olvides contar el cuadrado grande que los contiene a todos.",
           "explicacion_correcta": "¡Excelente! Hay 5 cuadrados: 4 cuadrados pequeños (uno en cada esquina) y 1 cuadrado grande que los contiene a todos. ¡Ese es el truco más importante en el conteo de cuadrados!",
           "explicacion_incorrecta": "No es correcto. Recuerda: hay 4 cuadrados pequeños (uno en cada esquina de la cuadrícula) Y también hay 1 cuadrado grande que abarca toda la figura. ¡En total son 5 cuadrados! El cuadrado grande es el que muchas veces se nos olvida contar."
+        },
+        {
+          "pregunta": "¿Cuántos cuadrados ves en esta cuadrícula más grande?",
+          "figura_svg": "<svg width='180' height='180' viewBox='0 0 100 100'><rect x='0' y='0' width='33.33' height='33.33' stroke='black' stroke-width='2' fill='none'/><rect x='33.33' y='0' width='33.33' height='33.33' stroke='black' stroke-width='2' fill='none'/><rect x='66.66' y='0' width='33.33' height='33.33' stroke='black' stroke-width='2' fill='none'/><rect x='0' y='33.33' width='33.33' height='33.33' stroke='black' stroke-width='2' fill='none'/><rect x='33.33' y='33.33' width='33.33' height='33.33' stroke='black' stroke-width='2' fill='none'/><rect x='66.66' y='33.33' width='33.33' height='33.33' stroke='black' stroke-width='2' fill='none'/><rect x='0' y='66.66' width='33.33' height='33.33' stroke='black' stroke-width='2' fill='none'/><rect x='33.33' y='66.66' width='33.33' height='33.33' stroke='black' stroke-width='2' fill='none'/><rect x='66.66' y='66.66' width='33.33' height='33.33' stroke='black' stroke-width='2' fill='none'/></svg>",
+          "respuesta": "14",
+          "pista": "Cuenta los 9 cuadrados pequeños, los 4 cuadrados de 2x2, y el cuadrado grande.",
+          "explicacion_correcta": "¡Perfecto! Hay 14 cuadrados: 9 cuadrados pequeños (1x1), 4 cuadrados medianos (2x2) y 1 cuadrado grande (3x3). ¡Este es el patrón clásico de conteo de cuadrados!",
+          "explicacion_incorrecta": "No es correcto. En una cuadrícula 3x3 hay: 9 cuadrados pequeños (1x1), 4 cuadrados medianos (2x2) y 1 cuadrado grande (3x3). ¡En total son 14 cuadrados!"
+        }
+      ]
+    },
+    {
+      "id": "mision-conteo-3",
+      "tipo": "conteo-figuras",
+      "titulo": "El Laberinto de Rectángulos",
+      "ejercicios": [
+        {
+          "pregunta": "¿Cuántos rectángulos hay en esta figura?",
+          "figura_svg": "<svg width='180' height='120' viewBox='0 0 100 60'><rect x='0' y='0' width='50' height='30' stroke='black' stroke-width='2' fill='none'/><rect x='50' y='0' width='50' height='30' stroke='black' stroke-width='2' fill='none'/><rect x='0' y='30' width='50' height='30' stroke='black' stroke-width='2' fill='none'/><rect x='50' y='30' width='50' height='30' stroke='black' stroke-width='2' fill='none'/></svg>",
+          "respuesta": "9",
+          "pista": "Cuenta los rectángulos pequeños, medianos y el grande.",
+          "explicacion_correcta": "¡Excelente! Hay 9 rectángulos: 4 rectángulos pequeños (1x1), 4 rectángulos medianos (1x2 y 2x1) y 1 rectángulo grande (2x2). ¡Los rectángulos pueden ser de diferentes tamaños!",
+          "explicacion_incorrecta": "No es correcto. En una cuadrícula 2x2 hay: 4 rectángulos pequeños (1x1), 2 rectángulos horizontales (1x2), 2 rectángulos verticales (2x1) y 1 rectángulo grande (2x2). ¡En total son 9 rectángulos!"
+        },
+        {
+          "pregunta": "¿Cuántos triángulos hay en esta estrella?",
+          "figura_svg": "<svg width='180' height='180' viewBox='0 0 100 100'><path d='M50 10 L70 80 L10 40 L90 40 L30 80 Z' stroke='black' stroke-width='2' fill='none'/><path d='M50 10 L50 40' stroke='black' stroke-width='2' fill='none'/><path d='M50 40 L30 80' stroke='black' stroke-width='2' fill='none'/><path d='M50 40 L70 80' stroke='black' stroke-width='2' fill='none'/></svg>",
+          "respuesta": "6",
+          "pista": "Cuenta el triángulo grande y los triángulos pequeños que se forman.",
+          "explicacion_correcta": "¡Perfecto! Hay 6 triángulos: el triángulo grande de la estrella y 5 triángulos pequeños que se forman con las líneas internas. ¡Las estrellas son figuras muy interesantes para contar!",
+          "explicacion_incorrecta": "No es correcto. Hay el triángulo grande de la estrella y 5 triángulos pequeños que se forman cuando dibujamos las líneas internas. ¡En total son 6 triángulos!"
         }
       ]
     }
