@@ -14,19 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function cargarAventura(dia) {
-        if (!dia) {
-            misionesContainer.innerHTML = `<div class="loader" style="color: red;">Error: No se especificó un día de aventura.</div>`;
-            return;
-        }
-        try {
-            const response = await fetch(`../_contenido/${dia}.json`);
-            if (!response.ok) throw new Error(`No se encontró la aventura para el día ${dia}.`);
-            aventuraData = await response.json();
-            renderizarAventura();
-        } catch (error) {
-            console.error("Error al cargar la aventura:", error);
-            misionesContainer.innerHTML = `<div class="loader" style="color: red;">¡Oh no! No pudimos cargar esta aventura.</div>`;
-        }
     }
 
     function renderizarAventura() {
@@ -74,7 +61,12 @@ document.addEventListener('DOMContentLoaded', () => {
             // ===== LÓGICA MEJORADA AQUÍ =====
             // Si el ejercicio tiene 'opciones', renderiza botones de radio.
             if (ej.opciones && ej.opciones.length > 0) {
-                respuestaHTML = '<ul class="secuencia-opciones">';
+                respuestaHTML = `
+                    <div class="instrucciones-opciones">
+                        <p>🔍 <strong>Elige la respuesta correcta:</strong></p>
+                        <p>¿Qué figura viene después en el patrón?</p>
+                    </div>
+                    <ul class="secuencia-opciones">`;
                 ej.opciones.forEach((opcion, optIndex) => {
                     const idUnico = `seq-${data.id}-${index}-${optIndex}`;
                     respuestaHTML += `
