@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numberblocks: El Constructor de Rectángulos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;700&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- Paleta de Colores Oficial de Numberblocks (CORREGIDA Y DETALLADA) --- */
+        :root {
+            --nb-1: #e53935; /* Red */
+            --nb-2: #fb8c00; /* Orange */
+            --nb-3: #fdd835; /* Yellow */
+            --nb-4: #43a047; /* Green */
+            --nb-5: #1e88e5; /* Blue */
+            --nb-6: #8e24aa; /* Indigo */
+            /* Rainbow Seven Colors */
+            --nb-7-1: #e53935; --nb-7-2: #fb8c00; --nb-7-3: #fdd835;
+            --nb-7-4: #43a047; --nb-7-5: #1e88e5; --nb-7-6: #4527a0; /* Indigo */
+            --nb-7-7: #673ab7; /* Violet */
+            --nb-8: #ec407a; /* Octoblock Pink/Magenta */
+            /* Three shades of grey for Nine */
+            --nb-9-1: #f5f5f5; --nb-9-2: #e0e0e0; --nb-9-3: #cccccc;
+            --nb-10: #ffffff; /* White */
+            --nb-12-main: #ffffff; 
+            --nb-12-border: #e53935; /* Red border for 12 */
+            --nb-12-center: #fb8c00; /* Orange for 12's center */
+            --c-fondo: #87CEEB;
+            --c-tierra: #98D49A;
+            --c-texto: #34495e;
+            --c-borde: rgba(0,0,0,0.15);
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--c-tierra);
+            color: var(--c-texto);
+            margin: 0;
+            padding: 20px 0;
+        }
+        
+        .background-sky {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60vh;
+            background: linear-gradient(to bottom, var(--c-fondo), #a3d8f1);
+            z-index: -1;
+        }
+
+        .game-world {
+            position: relative;
+            width: 95%;
+            max-width: 900px;
+            margin: 20px auto;
+        }
+
+        .cloud {
+            position: absolute;
+            width: 120px;
+            height: 40px;
+            background: #fff;
+            border-radius: 40px;
+            opacity: 0.8;
+            animation: move-clouds 25s linear infinite;
+            z-index: -1;
+        }
+        .cloud:before, .cloud:after {
+            content: '';
+            position: absolute;
+            background: #fff;
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            top: -25px; left: 20px;
+        }
+        .cloud:after {
+            left: auto; right: 20px; top: -20px;
+        }
+        .cloud.c1 { top: 10%; left: -150px; transform: scale(0.8); animation-duration: 30s; }
+        .cloud.c2 { top: 25%; left: -200px; transform: scale(1); animation-duration: 20s; animation-delay: -5s;}
+        
+        @keyframes move-clouds {
+            from { transform: translateX(-150px); }
+            to { transform: translateX(1000px); }
+        }
+
+        .game-container {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            border: 1px solid rgba(255,255,255,0.5);
+            position: relative;
+            z-index: 2;
+            box-sizing: border-box;
+        }
+
+        .challenge-header h1 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.5rem;
+            margin: 0;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .story-bubble {
+            background-color: #eaf5ff;
+            border-radius: 15px;
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            text-align: center;
+            border: 2px dashed #aed6f1;
+        }
+        
+        .equation-display {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            padding: 10px;
+            color: #3498db;
+        }
+        .equation-display .placeholder {
+            color: #f39c12;
+            display: inline-block;
+            width: 50px;
+            border-bottom: 4px dotted #f39c12;
+        }
+
+        .construction-area {
+            background-color: rgba(248, 249, 250, 0.8);
+            border-radius: 20px;
+            min-height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #e9ecef;
+            padding: 20px;
+        }
+
+        .rectangle-grid {
+            display: grid;
+            gap: 4px;
+        }
+
+        .rectangle-grid .block {
+            width: 25px;
+            height: 25px;
+            opacity: 0;
+            transform: scale(0.5);
+            animation: pop-in 0.5s ease-out forwards;
+            margin: -1px;
+        }
+        @keyframes pop-in { to { opacity: 1; transform: scale(1); } }
+
+        .toolbox-section {
+            background-color: rgba(244, 244, 244, 0.8);
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .toolbox-title {
+            font-family: 'Fredoka', sans-serif;
+            text-align: center;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .toolbox {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 20px;
+            min-height: 150px;
+        }
+
+        .numberblock {
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+        }
+        .numberblock:hover {
+            transform: translateY(-5px) rotate(2deg);
+        }
+        .numberblock.selected {
+            transform: scale(1.15) rotate(-3deg);
+            box-shadow: 0 0 20px var(--nb-3);
+            border-radius: 4px;
+        }
+        .numberblock.double-selected {
+            transform: scale(1.15) rotate(3deg);
+            box-shadow: 0 0 20px var(--nb-1);
+        }
+
+        .block {
+            width: 25px;
+            height: 25px;
+            border: 2px solid var(--c-borde);
+            margin-top: -2px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
+        .block:first-child { border-radius: 0 0 4px 4px; }
+        .block:last-child { border-radius: 4px 4px 0 0; }
+        .block:only-child { border-radius: 4px; }
+
+        .face-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+        }
+        .numberblock.has-face .face-container {
+            display: flex; 
+        }
+        
+        .eye {
+            width: 6px;
+            height: 6px;
+            background-color: #000;
+            border-radius: 50%;
+            position: relative;
+        }
+        .eye::after { /* Eye glint */
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: #fff;
+            border-radius: 50%;
+            top: 1px;
+            left: 1px;
+        }
+        
+        /* Official Color Classes */
+        .c1 { background-color: var(--nb-1); } .c2 { background-color: var(--nb-2); }
+        .c3 { background-color: var(--nb-3); } .c4 { background-color: var(--nb-4); }
+        .c5 { background-color: var(--nb-5); } .c6 { background-color: var(--nb-6); }
+        .c8 { background-color: var(--nb-8); }
+        .c10 { background-color: var(--nb-10); border: 3px solid var(--nb-1); }
+        
+        /* Custom Structure for Number 11 */
+        .nb-11-shape {
+            width: 50px; /* 25*2 */
+            height: auto; /* Adjusted */
+            display: flex;
+            align-items: flex-end;
+        }
+        .nb-11-shape .stack {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+        .nb-11-shape .white-block { background-color: #fff; border: 2px solid var(--nb-1); }
+        .nb-11-shape .red-block { background-color: var(--nb-1); }
+
+        /* Custom Structure for Number 12 */
+        .nb-12-shape {
+            width: 75px; /* 3*25 */
+            height: 100px; /* 4*25 */
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .nb-12-shape .block { margin: -1px; }
+
+        /* Target Colors for constructed rectangles */
+        .c24 { background-color: var(--nb-8); }
+        .c36 { background-color: var(--nb-6); }
+        .c48 { background-color: var(--nb-4); }
+        .c50 { background-color: var(--nb-5); }
+        .c72 { background-color: var(--nb-2); }
+
+        /* Other styles remain the same */
+        .action-button { font-family: 'Fredoka', sans-serif; font-size: 1.5rem; padding: 15px 40px; border-radius: 50px; border: none; background: linear-gradient(45deg, #2ecc71, #27ae60); color: white; cursor: pointer; box-shadow: 0 5px 0 #1e8449; transition: all 0.1s ease-in-out; }
+        .action-button:active { transform: translateY(3px); box-shadow: 0 2px 0 #1e8449; }
+        .action-button.next { background: linear-gradient(45deg, #3498db, #2980b9); box-shadow: 0 5px 0 #1f618d; }
+        .action-button.next:active { box-shadow: 0 2px 0 #1f618d; }
+        
+        .back-button { 
+            font-family: 'Fredoka', sans-serif; 
+            font-size: 1.2rem; 
+            padding: 10px 25px; 
+            border-radius: 50px; 
+            border: none; 
+            background: linear-gradient(45deg, #95a5a6, #7f8c8d); 
+            color: white; 
+            cursor: pointer; 
+            box-shadow: 0 4px 0 #6c7b7d; 
+            transition: all 0.1s ease-in-out; 
+            text-decoration: none;
+            display: inline-block;
+        }
+        .back-button:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 6px 0 #6c7b7d; 
+        }
+        .back-button:active { 
+            transform: translateY(2px); 
+            box-shadow: 0 2px 0 #6c7b7d; 
+        }
+        #message-area { text-align: center; font-size: 1.3rem; font-weight: bold; min-height: 30px; padding-top: 10px; }
+        .hidden { display: none; }
+        .confetti { position: absolute; width: 8px; height: 15px; background-color: red; opacity: 0; animation: fall 3s linear forwards; }
+        @keyframes fall { 0% { transform: translateY(-10px) rotate(0deg); opacity: 1; } 100% { transform: translateY(300px) rotate(720deg); opacity: 0; } }
+
+    </style>
+</head>
+<body>
+    <div class="background-sky">
+        <div class="cloud c1"></div>
+        <div class="cloud c2"></div>
+    </div>
+    <div class="game-world">
+        <div class="game-container">
+            <div class="challenge-header">
+                <h1 id="challenge-title">¡A construir rectángulos!</h1>
+                <a href="../index.html" class="back-button">← Volver al Portal</a>
+            </div>
+            <div class="story-bubble">
+                <p id="story-text">¡Hola, soy Chuy! Elige un reto para empezar a construir con tus amigos, los Numberblocks.</p>
+            </div>
+            
+            <div class="equation-display" id="equation-display"></div>
+
+            <div class="construction-area" id="construction-area">
+                <!-- Rectangles will be built here by JS -->
+            </div>
+
+            <div id="message-area"></div>
+
+            <div class="toolbox-section">
+                <div class="toolbox-title">Caja de Herramientas</div>
+                <div class="toolbox" id="toolbox">
+                    <!-- Numberblocks 1-12 will be generated here -->
+                </div>
+            </div>
+
+            <div class="action-area">
+                <button class="action-button" id="check-button">Construir</button>
+                <button class="action-button next hidden" id="next-button">Siguiente Reto</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toolbox = document.getElementById('toolbox');
+            const checkButton = document.getElementById('check-button');
+            const nextButton = document.getElementById('next-button');
+            const constructionArea = document.getElementById('construction-area');
+            const storyText = document.getElementById('story-text');
+            const messageArea = document.getElementById('message-area');
+            const challengeTitle = document.getElementById('challenge-title');
+            const equationDisplay = document.getElementById('equation-display');
+
+            let selectedBlocks = [];
+            let currentChallengeIndex = -1;
+            
+            const challenges = [
+                { target: 24, type: 'multiply', story: "¡Soy el Veinticuatro! Elige dos amigos de la caja que multiplicados me den 24." },
+                { target: 36, type: 'multiply', story: "¡Soy el Treinta y Seis! ¡Soy un cuadrado perfecto! ¿Puedes construirme?" },
+                { target: 48, type: 'divide', given: 4, story: "¡Soy un rectángulo de 48! Si un lado mide 4, elige el bloque que falta para completarme." },
+                { target: 50, type: 'multiply', story: "¡Cincuenta! ¡Elige dos bloques para construir mi rectángulo!" },
+                { target: 72, type: 'divide', given: 6, story: "¡Un gran rectángulo de 72! Un lado es 6, ¿cuál es el otro? ¡Encuéntralo en la caja!" },
+            ];
+
+            function createNumberblock(num) {
+                const nbContainer = document.createElement('div');
+                nbContainer.classList.add('numberblock');
+                nbContainer.dataset.number = num;
+
+                const faceContainer = document.createElement('div');
+                faceContainer.classList.add('face-container');
+                const eye1 = document.createElement('div');
+                eye1.classList.add('eye');
+                faceContainer.appendChild(eye1);
+                
+                if (num > 1) { 
+                    const eye2 = document.createElement('div');
+                    eye2.classList.add('eye');
+                    faceContainer.appendChild(eye2);
+                }
+
+                const stack = document.createElement('div');
+                stack.style.display = 'flex';
+                stack.style.flexDirection = 'column-reverse';
+
+                if (num === 9) {
+                    nbContainer.classList.add('nb-9-shape');
+                    const nineColors = ['--nb-9-3', '--nb-9-2', '--nb-9-1'];
+                    for (let i = 0; i < 9; i++) {
+                        const block = document.createElement('div');
+                        block.classList.add('block');
+                        block.style.backgroundColor = `var(${nineColors[Math.floor(i/3)]})`;
+                        if (i === 8) {
+                            block.appendChild(faceContainer);
+                            nbContainer.classList.add('has-face');
+                        }
+                        nbContainer.appendChild(block);
+                    }
+                } else if (num === 11) {
+                    nbContainer.classList.add('nb-11-shape');
+                    const leftLeg = document.createElement('div');
+                    leftLeg.classList.add('stack');
+                    for(let i=0; i<5; i++) {
+                        const block = document.createElement('div');
+                        block.classList.add('block', 'white-block');
+                        if (i === 0) { // Bottom block of left leg
+                            const leftEyeContainer = document.createElement('div');
+                            leftEyeContainer.classList.add('face-container');
+                            const leftEye = document.createElement('div');
+                            leftEye.classList.add('eye');
+                            leftEyeContainer.appendChild(leftEye);
+                            block.appendChild(leftEyeContainer);
+                            nbContainer.classList.add('has-face');
+                        }
+                        leftLeg.appendChild(block);
+                    }
+                    
+                    const rightLeg = document.createElement('div');
+                    rightLeg.classList.add('stack');
+                    for(let i=0; i<6; i++) {
+                        const block = document.createElement('div');
+                        if(i === 5) {
+                            block.classList.add('block', 'red-block');
+                        } else {
+                            block.classList.add('block', 'white-block');
+                        }
+                        if (i === 0) { // Bottom block of right leg
+                             const rightEyeContainer = document.createElement('div');
+                            rightEyeContainer.classList.add('face-container');
+                            const rightEye = document.createElement('div');
+                            rightEye.classList.add('eye');
+                            rightEyeContainer.appendChild(rightEye);
+                            block.appendChild(rightEyeContainer);
+                        }
+                        rightLeg.appendChild(block);
+                    }
+                    nbContainer.append(leftLeg, rightLeg);
+                } else if (num === 12) {
+                    nbContainer.classList.add('nb-12-shape');
+                    for (let i = 0; i < 12; i++) {
+                        const block = document.createElement('div');
+                        block.classList.add('block');
+                        block.style.borderColor = 'var(--nb-12-border)';
+                        const centralIndices = [4, 7];
+                        if (centralIndices.includes(i)) {
+                            block.style.backgroundColor = 'var(--nb-12-center)';
+                        } else {
+                            block.style.backgroundColor = 'var(--nb-12-main)';
+                        }
+                        
+                        if (i === 7) { // Top yellow block gets the face
+                            block.appendChild(faceContainer);
+                            nbContainer.classList.add('has-face');
+                        }
+                        nbContainer.appendChild(block);
+                    }
+                } else { // For all other numbers
+                    const sevenColors = ['--nb-7-1', '--nb-7-2', '--nb-7-3', '--nb-7-4', '--nb-7-5', '--nb-7-6', '--nb-7-7'];
+                    for (let i = 0; i < num; i++) {
+                        const block = document.createElement('div');
+                        block.classList.add('block');
+                        if (num === 7) {
+                            block.style.backgroundColor = `var(${sevenColors[i]})`;
+                        } else {
+                            block.classList.add(`c${num}`);
+                        }
+                        if (i === num - 1) {
+                            block.appendChild(faceContainer);
+                            nbContainer.classList.add('has-face');
+                        }
+                        stack.appendChild(block);
+                    }
+                    nbContainer.appendChild(stack);
+                }
+                
+                nbContainer.addEventListener('click', () => selectBlock(nbContainer));
+                return nbContainer;
+            }
+
+            function populateToolbox() {
+                toolbox.innerHTML = '';
+                for (let i = 1; i <= 12; i++) {
+                    toolbox.appendChild(createNumberblock(i));
+                }
+            }
+
+            function selectBlock(blockElement) {
+                if (nextButton.classList.contains('hidden')) {
+                    const number = parseInt(blockElement.dataset.number);
+                    const challenge = challenges[currentChallengeIndex];
+                    const maxSelection = challenge.type === 'multiply' ? 2 : 1;
+
+                    if (selectedBlocks.includes(number)) {
+                        if (challenge.type === 'multiply' && selectedBlocks.length === 1 && selectedBlocks[0] === number) {
+                            selectedBlocks.push(number);
+                            blockElement.classList.add('double-selected');
+                        } else {
+                            selectedBlocks = selectedBlocks.filter(n => n !== number);
+                            blockElement.classList.remove('selected', 'double-selected');
+                        }
+                    } else if (selectedBlocks.length < maxSelection) {
+                        selectedBlocks.push(number);
+                        blockElement.classList.add('selected');
+                    }
+                }
+            }
+            
+            function buildRectangle(rows, cols) {
+                constructionArea.innerHTML = '';
+                const grid = document.createElement('div');
+                grid.classList.add('rectangle-grid');
+                grid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+                
+                const targetNumber = rows * cols;
+                const colorClass = `c${targetNumber}`;
+
+                for(let i=0; i < targetNumber; i++) {
+                    const block = document.createElement('div');
+                    block.classList.add('block', colorClass);
+                    block.style.animationDelay = `${i * 0.02}s`;
+                    grid.appendChild(block);
+                }
+                constructionArea.appendChild(grid);
+            }
+
+            function launchConfetti() {
+                for (let i = 0; i < 30; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.classList.add('confetti');
+                    confetti.style.left = `${Math.random() * 100}%`;
+                    confetti.style.animationDelay = `${Math.random() * 2}s`;
+                    confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                    constructionArea.appendChild(confetti);
+                }
+            }
+
+            function startChallenge(index) {
+                currentChallengeIndex = index;
+                const challenge = challenges[index];
+                
+                selectedBlocks = [];
+                constructionArea.innerHTML = '';
+                messageArea.textContent = '';
+                equationDisplay.innerHTML = '';
+                document.querySelectorAll('.numberblock.selected, .numberblock.double-selected').forEach(el => {
+                    el.classList.remove('selected', 'double-selected');
+                });
+                checkButton.classList.remove('hidden');
+                nextButton.classList.add('hidden');
+
+                challengeTitle.textContent = `Reto: El Numberblock ${challenge.target}`;
+                storyText.textContent = challenge.story;
+                
+                if (challenge.type === 'multiply') {
+                    equationDisplay.innerHTML = `<span class="placeholder">?</span> × <span class="placeholder">?</span> = ${challenge.target}`;
+                } else if (challenge.type === 'divide') {
+                    equationDisplay.innerHTML = `${challenge.given} × <span class="placeholder">?</span> = ${challenge.target}`;
+                }
+            }
+
+            checkButton.addEventListener('click', () => {
+                const challenge = challenges[currentChallengeIndex];
+                let isCorrect = false;
+
+                if (challenge.type === 'multiply' && selectedBlocks.length === 2) {
+                    if (selectedBlocks[0] * selectedBlocks[1] === challenge.target) {
+                        isCorrect = true;
+                        buildRectangle(selectedBlocks[0], selectedBlocks[1]);
+                    }
+                } else if (challenge.type === 'divide' && selectedBlocks.length === 1) {
+                    if (challenge.given * selectedBlocks[0] === challenge.target) {
+                        isCorrect = true;
+                        buildRectangle(challenge.given, selectedBlocks[0]);
+                    }
+                }
+
+                if (isCorrect) {
+                    messageArea.textContent = '¡Fantástico! ¡Rectángulo construido!';
+                    messageArea.style.color = '#2ecc71';
+                    checkButton.classList.add('hidden');
+                    nextButton.classList.remove('hidden');
+                    launchConfetti();
+                } else {
+                    messageArea.textContent = 'Oh, oh... Esos bloques no funcionan. ¡Intenta otra vez!';
+                    messageArea.style.color = '#e74c3c';
+                    document.querySelector('.game-container').animate([
+                        { transform: 'translateX(0px)' }, { transform: 'translateX(-10px)' },
+                        { transform: 'translateX(10px)' }, { transform: 'translateX(0px)' }
+                    ], { duration: 500, easing: 'ease-in-out' });
+                }
+            });
+
+            nextButton.addEventListener('click', () => {
+                const nextIndex = (currentChallengeIndex + 1) % challenges.length;
+                startChallenge(nextIndex);
+            });
+
+            populateToolbox();
+            nextButton.textContent = "¡Empezar!";
+            nextButton.classList.remove('hidden');
+            checkButton.classList.add('hidden');
+        });
+    </script>
+</body>
+</html>
