@@ -64,6 +64,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 case 'secuencia':
                     contenidoMision += renderizarMisionSecuencia(misionData);
                     break;
+                case 'conteo-figuras':
+                    contenidoMision += renderizarMisionConteo(misionData);
+                    break;
                 default:
                     contenidoMision += `<p>Tipo de misión no reconocido.</p>`;
             }
@@ -119,6 +122,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         return ejerciciosHTML;
     }
+
+    // ===== NUEVA FUNCIÓN PARA RENDERIZAR CONTEO DE FIGURAS =====
+    function renderizarMisionConteo(data) {
+        let ejerciciosHTML = `
+            <div class="instrucciones-conteo">
+                <p>🔍 <strong>Cuenta con cuidado:</strong></p>
+                <p>Observa cada figura y escribe el número total que encuentres.</p>
+            </div>
+        `;
+        
+        data.ejercicios.forEach((ej, index) => {
+            ejerciciosHTML += `
+                <div class="conteo-ejercicio" data-respuesta="${ej.respuesta}">
+                    <p class="conteo-pregunta">${ej.pregunta}</p>
+                    <div class="conteo-figura-container">
+                        ${ej.figura_svg}
+                    </div>
+                    <div class="conteo-respuesta">
+                        <input type="number" inputmode="numeric" placeholder="Total">
+                    </div>
+                </div>
+            `;
+        });
+        return ejerciciosHTML;
+    }
     
     // --- OTRAS FUNCIONES DE RENDERIZADO (SIN CAMBIOS) ---
     function renderizarMisionOperaciones(data) { /* ... */ 
@@ -162,6 +190,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 case 'secuencia':
                     puntaje += calificarMisionSecuencia(misionDiv, misionData);
                     break;
+                case 'conteo-figuras':
+                    puntaje += calificarMisionConteo(misionDiv, misionData);
+                    break;
                 case 'numberblocks-dibujo':
                     puntaje++;
                     break;
@@ -197,6 +228,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     textInput.classList.add('incorrect');
                 }
+            }
+        });
+        return aciertos;
+    }
+
+    // ===== NUEVA FUNCIÓN PARA CALIFICAR CONTEO DE FIGURAS =====
+    function calificarMisionConteo(misionDiv, misionData) {
+        let aciertos = 0;
+        misionDiv.querySelectorAll('.conteo-ejercicio').forEach((ejDiv, index) => {
+            const input = ejDiv.querySelector('input[type="number"]');
+            const respuestaCorrecta = misionData.ejercicios[index].respuesta;
+            
+            input.classList.remove('correct', 'incorrect');
+            if (input.value.trim() === respuestaCorrecta) {
+                input.classList.add('correct');
+                aciertos++;
+            } else {
+                input.classList.add('incorrect');
             }
         });
         return aciertos;
