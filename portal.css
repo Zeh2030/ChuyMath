@@ -8,6 +8,7 @@
     --c-logic: #1dd1a1;
     --c-games: #feca57;
     --c-constructor: #9b59b6;
+    --c-kakoma: #e74c3c;
     --c-fondo: #ecf0f1;
     --c-texto: #34495e;
     --c-blanco: #ffffff;
@@ -130,6 +131,9 @@ body {
 .world-logic .card-footer { background-color: var(--c-logic); }
 .world-games .card-footer { background-color: var(--c-games); }
 .world-constructor .card-footer { background-color: var(--c-constructor); }
+
+.world-kakoma { border-color: var(--c-kakoma); }
+.world-kakoma .card-footer { background-color: var(--c-kakoma); }
 
 .portal-footer {
     margin-top: 50px;
