@@ -304,3 +304,30 @@ body {
     border-color: #8e44ad;
     color: white;
 }
+
+/* --- Mensaje de Error --- */
+.error-mensaje {
+    text-align: center;
+    padding: 40px;
+    background-color: #fdf2f2;
+    border: 2px solid #fecaca;
+    border-radius: 15px;
+    margin: 20px 0;
+}
+
+.error-mensaje h2 {
+    color: var(--c-danger);
+    font-family: var(--font-headings);
+    margin-bottom: 15px;
+}
+
+.error-mensaje p {
+    color: var(--c-text);
+    margin: 10px 0;
+}
+
+.error-mensaje .back-button {
+    margin-top: 20px;
+    background-color: var(--c-danger);
+    color: white;
+}
