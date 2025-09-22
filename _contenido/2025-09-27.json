@@ -10,18 +10,18 @@
         {
           "pregunta": "¿Cuántos triángulos ves en total en esta figura?",
           "figura_svg": "<svg width='200' height='160' viewBox='0 0 100 87'><path d='M50 0 L100 87 H0 Z' stroke='black' stroke-width='2' fill='none'/><path d='M50 0 L50 87' stroke='black' stroke-width='2' fill='none'/></svg>",
-          "respuesta": "2",
-          "pista": "Fíjate bien: hay un triángulo grande y otro pequeño dentro.",
-          "explicacion_correcta": "¡Exacto! Hay 2 triángulos: el triángulo grande (de esquina a esquina) y el triángulo pequeño que se forma en la parte izquierda cuando dibujamos la línea vertical.",
-          "explicacion_incorrecta": "No es correcto. Fíjate bien: hay un triángulo grande que va de la esquina superior al vértice inferior, y cuando dibujamos la línea vertical en el medio, se forma un triángulo pequeño en la parte izquierda. ¡En total son 2 triángulos!"
+          "respuesta": "3",
+          "pista": "Fíjate bien: hay un triángulo grande y dos pequeños dentro.",
+          "explicacion_correcta": "¡Exacto! Hay 3 triángulos: el triángulo grande (de esquina a esquina) y los 2 triángulos pequeños que se forman cuando dibujamos la línea vertical (uno a la izquierda y otro a la derecha).",
+          "explicacion_incorrecta": "No es correcto. Fíjate bien: hay un triángulo grande que va de la esquina superior al vértice inferior, y cuando dibujamos la línea vertical en el medio, se forman 2 triángulos pequeños: uno a la izquierda y otro a la derecha. ¡En total son 3 triángulos!"
         },
         {
           "pregunta": "Y en esta figura más compleja, ¿cuántos triángulos puedes encontrar?",
           "figura_svg": "<svg width='200' height='160' viewBox='0 0 100 87'><path d='M50 0 L100 87 H0 Z' stroke='black' stroke-width='2' fill='none'/><path d='M0 87 L100 87' stroke='black' stroke-width='1' fill='none'/><path d='M50 43.5 H0' stroke='black' stroke-width='2' fill='none'/><path d='M50 43.5 L100 43.5' stroke='black' stroke-width='2' fill='none'/></svg>",
-          "respuesta": "3",
-          "pista": "Cuenta el triángulo grande y los dos triángulos pequeños que se forman.",
-          "explicacion_correcta": "¡Perfecto! Hay 3 triángulos: el triángulo grande de arriba, el triángulo pequeño de la izquierda (arriba de la línea horizontal), y el triángulo pequeño de la derecha (arriba de la línea horizontal).",
-          "explicacion_incorrecta": "No es correcto. Observa con cuidado: hay un triángulo grande que va desde el punto superior hasta la base, y luego se forman 2 triángulos pequeños en la parte superior cuando dibujamos las líneas horizontales. ¡En total son 3 triángulos!"
+          "respuesta": "2",
+          "pista": "Cuenta el triángulo grande y el triángulo pequeño que se forma.",
+          "explicacion_correcta": "¡Perfecto! Hay 2 triángulos: el triángulo grande que va desde el punto superior hasta la base, y el triángulo pequeño que se forma en la parte superior cuando dibujamos las líneas horizontales.",
+          "explicacion_incorrecta": "No es correcto. Observa con cuidado: hay un triángulo grande que va desde el punto superior hasta la base, y luego se forma 1 triángulo pequeño en la parte superior cuando dibujamos las líneas horizontales. ¡En total son 2 triángulos!"
         }
       ]
     },
