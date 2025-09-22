@@ -40,7 +40,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const esCompletada = misionesCompletadas.includes(mision.id);
             
             const card = document.createElement('a');
-            card.href = `../aventura/aventura.html?dia=${mision.id}`;
+            
+            // Verificar si es un juego especial
+            if (mision.esJuegoEspecial && mision.urlJuego) {
+                card.href = mision.urlJuego;
+            } else {
+                card.href = `../aventura/aventura.html?dia=${mision.id}`;
+            }
+            
             card.className = `mision-card ${esCompletada ? 'completada' : 'pendiente'}`;
 
             const footerText = esCompletada ? 'Repasar' : '¡Empezar!';
