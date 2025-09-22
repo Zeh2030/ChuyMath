@@ -21,13 +21,6 @@
     "temas": ["geografia", "numberblocks"]
   },
   {
-    "id": "2025-09-25",
-    "titulo": "Aventura Cuadrada",
-    "descripcion": "¡Construye súper rectángulos con los Numberblocks y descubre sus factores!",
-    "icono": "🧱",
-    "temas": ["mates", "numberblocks"]
-  },
-  {
     "id": "2025-09-26",
     "titulo": "El Secreto de las Secuencias",
     "descripcion": "¡Conviértete en un detective de patrones y encuentra el siguiente elemento en la serie!",
