@@ -36,11 +36,20 @@
     "esJuegoEspecial": true,
     "urlJuego": "../juegos/constructor-rectangulos/index.html"
   },
-  {
-    "id": "2025-09-27",
-    "titulo": "El Desafío Geométrico",
-    "descripcion": "¡Usa tus ojos de águila para encontrar todas las figuras escondidas!",
-    "icono": "💠",
-    "temas": ["geometria", "logica"]
-  }
+      {
+        "id": "2025-09-27",
+        "titulo": "El Desafío Geométrico",
+        "descripcion": "¡Usa tus ojos de águila para encontrar todas las figuras escondidas!",
+        "icono": "💠",
+        "temas": ["geometria", "logica"]
+      },
+      {
+        "id": "kakoma-geometrico",
+        "titulo": "Kakoma Geométrico: El Gran Desafío",
+        "descripcion": "¡El desafío definitivo! 3 niveles de dificultad creciente con triángulos, cuadrados y rectángulos.",
+        "icono": "🧩",
+        "temas": ["geometria", "logica", "desafio"],
+        "esJuegoEspecial": true,
+        "urlJuego": "../aventura/aventura.html?dia=kakoma-geometrico"
+      }
 ]
