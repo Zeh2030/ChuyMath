@@ -35,5 +35,12 @@
     "temas": ["mates", "numberblocks"],
     "esJuegoEspecial": true,
     "urlJuego": "../juegos/constructor-rectangulos/index.html"
+  },
+  {
+    "id": "2025-09-27",
+    "titulo": "El Desafío Geométrico",
+    "descripcion": "¡Usa tus ojos de águila para encontrar todas las figuras escondidas!",
+    "icono": "💠",
+    "temas": ["geometria", "logica"]
   }
 ]
