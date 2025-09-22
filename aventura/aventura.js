@@ -14,6 +14,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function cargarAventura(dia) {
+        try {
+            if (!dia) {
+                throw new Error('No se especificó el día de la aventura');
+            }
+            
+            const response = await fetch(`../_contenido/${dia}.json`);
+            if (!response.ok) {
+                throw new Error(`No se pudo cargar la aventura del día ${dia}`);
+            }
+            
+            aventuraData = await response.json();
+            renderizarAventura();
+            
+        } catch (error) {
+            console.error('Error al cargar la aventura:', error);
+            misionesContainer.innerHTML = `
+                <div class="error-mensaje">
+                    <h2>¡Ups! Algo salió mal</h2>
+                    <p>No se pudo cargar la aventura del día ${dia || 'especificado'}.</p>
+                    <p>Error: ${error.message}</p>
+                    <a href="../index.html" class="back-button">Volver al Portal</a>
+                </div>
+            `;
+        }
     }
 
     function renderizarAventura() {
