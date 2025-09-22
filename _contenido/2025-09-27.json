@@ -11,13 +11,17 @@
           "pregunta": "¿Cuántos triángulos ves en total en esta figura?",
           "figura_svg": "<svg width='200' height='160' viewBox='0 0 100 87'><path d='M50 0 L100 87 H0 Z' stroke='black' stroke-width='2' fill='none'/><path d='M50 0 L50 87' stroke='black' stroke-width='2' fill='none'/></svg>",
           "respuesta": "2",
-          "pista": "Fíjate bien: hay un triángulo grande y otro pequeño dentro."
+          "pista": "Fíjate bien: hay un triángulo grande y otro pequeño dentro.",
+          "explicacion_correcta": "¡Exacto! Hay 2 triángulos: el triángulo grande (de esquina a esquina) y el triángulo pequeño que se forma en la parte izquierda cuando dibujamos la línea vertical.",
+          "explicacion_incorrecta": "No es correcto. Fíjate bien: hay un triángulo grande que va de la esquina superior al vértice inferior, y cuando dibujamos la línea vertical en el medio, se forma un triángulo pequeño en la parte izquierda. ¡En total son 2 triángulos!"
         },
         {
           "pregunta": "Y en esta figura más compleja, ¿cuántos triángulos puedes encontrar?",
           "figura_svg": "<svg width='200' height='160' viewBox='0 0 100 87'><path d='M50 0 L100 87 H0 Z' stroke='black' stroke-width='2' fill='none'/><path d='M0 87 L100 87' stroke='black' stroke-width='1' fill='none'/><path d='M50 43.5 H0' stroke='black' stroke-width='2' fill='none'/><path d='M50 43.5 L100 43.5' stroke='black' stroke-width='2' fill='none'/></svg>",
           "respuesta": "3",
-          "pista": "Cuenta el triángulo grande y los dos triángulos pequeños que se forman."
+          "pista": "Cuenta el triángulo grande y los dos triángulos pequeños que se forman.",
+          "explicacion_correcta": "¡Perfecto! Hay 3 triángulos: el triángulo grande de arriba, el triángulo pequeño de la izquierda (arriba de la línea horizontal), y el triángulo pequeño de la derecha (arriba de la línea horizontal).",
+          "explicacion_incorrecta": "No es correcto. Observa con cuidado: hay un triángulo grande que va desde el punto superior hasta la base, y luego se forman 2 triángulos pequeños en la parte superior cuando dibujamos las líneas horizontales. ¡En total son 3 triángulos!"
         }
       ]
     },
@@ -30,7 +34,9 @@
           "pregunta": "¿Cuántos cuadrados hay en total en esta cuadrícula?",
           "figura_svg": "<svg width='180' height='180' viewBox='0 0 100 100'><rect x='0' y='0' width='50' height='50' stroke='black' stroke-width='2' fill='none'/><rect x='50' y='0' width='50' height='50' stroke='black' stroke-width='2' fill='none'/><rect x='0' y='50' width='50' height='50' stroke='black' stroke-width='2' fill='none'/><rect x='50' y='50' width='50' height='50' stroke='black' stroke-width='2' fill='none'/></svg>",
           "respuesta": "5",
-          "pista": "No olvides contar el cuadrado grande que los contiene a todos."
+          "pista": "No olvides contar el cuadrado grande que los contiene a todos.",
+          "explicacion_correcta": "¡Excelente! Hay 5 cuadrados: 4 cuadrados pequeños (uno en cada esquina) y 1 cuadrado grande que los contiene a todos. ¡Ese es el truco más importante en el conteo de cuadrados!",
+          "explicacion_incorrecta": "No es correcto. Recuerda: hay 4 cuadrados pequeños (uno en cada esquina de la cuadrícula) Y también hay 1 cuadrado grande que abarca toda la figura. ¡En total son 5 cuadrados! El cuadrado grande es el que muchas veces se nos olvida contar."
         }
       ]
     }
