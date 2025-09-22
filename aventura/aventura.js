@@ -239,16 +239,99 @@ document.addEventListener('DOMContentLoaded', () => {
         misionDiv.querySelectorAll('.conteo-ejercicio').forEach((ejDiv, index) => {
             const input = ejDiv.querySelector('input[type="number"]');
             const respuestaCorrecta = misionData.ejercicios[index].respuesta;
+            const ejercicio = misionData.ejercicios[index];
+            
+            // Limpiar explicaciones anteriores
+            const explicacionAnterior = ejDiv.querySelector('.explicacion-feedback');
+            if (explicacionAnterior) {
+                explicacionAnterior.remove();
+            }
             
             input.classList.remove('correct', 'incorrect');
+            
             if (input.value.trim() === respuestaCorrecta) {
                 input.classList.add('correct');
                 aciertos++;
+                
+                // Mostrar explicación correcta
+                if (ejercicio.explicacion_correcta) {
+                    mostrarExplicacion(ejDiv, ejercicio.explicacion_correcta, 'correcta', '🎉');
+                }
+                
+                // Mostrar botón de reintentar para permitir práctica adicional
+                mostrarBotonReintentar(ejDiv);
             } else {
                 input.classList.add('incorrect');
+                
+                // Mostrar explicación incorrecta
+                if (ejercicio.explicacion_incorrecta) {
+                    mostrarExplicacion(ejDiv, ejercicio.explicacion_incorrecta, 'incorrecta', '💡');
+                }
+                
+                // Mostrar botón de reintentar para intentar de nuevo
+                mostrarBotonReintentar(ejDiv);
             }
         });
         return aciertos;
+    }
+
+    // ===== FUNCIÓN PARA MOSTRAR EXPLICACIONES =====
+    function mostrarExplicacion(ejercicioDiv, texto, tipo, icono) {
+        const explicacionDiv = document.createElement('div');
+        explicacionDiv.className = `explicacion-feedback ${tipo}`;
+        explicacionDiv.innerHTML = `
+            <span class="icono-explicacion">${icono}</span>
+            ${texto}
+        `;
+        
+        // Insertar después del input
+        const inputContainer = ejercicioDiv.querySelector('.conteo-respuesta');
+        inputContainer.appendChild(explicacionDiv);
+    }
+
+    // ===== FUNCIÓN PARA REINTENTAR EJERCICIO =====
+    function reintentarEjercicio(ejercicioDiv) {
+        // Limpiar explicaciones anteriores
+        const explicacionAnterior = ejercicioDiv.querySelector('.explicacion-feedback');
+        if (explicacionAnterior) {
+            explicacionAnterior.remove();
+        }
+        
+        // Limpiar botón de reintentar anterior
+        const botonReintentarAnterior = ejercicioDiv.querySelector('.boton-reintentar');
+        if (botonReintentarAnterior) {
+            botonReintentarAnterior.remove();
+        }
+        
+        // Limpiar estilos del input
+        const input = ejercicioDiv.querySelector('input[type="number"]');
+        input.classList.remove('correct', 'incorrect');
+        input.value = '';
+        input.focus();
+    }
+
+    // ===== FUNCIÓN PARA MOSTRAR BOTÓN DE REINTENTAR =====
+    function mostrarBotonReintentar(ejercicioDiv) {
+        // Verificar si ya existe un botón de reintentar
+        if (ejercicioDiv.querySelector('.boton-reintentar')) {
+            return;
+        }
+        
+        const botonReintentar = document.createElement('button');
+        botonReintentar.className = 'boton-reintentar';
+        botonReintentar.innerHTML = `
+            <span class="icono-reintentar">🔄</span>
+            Intentar de nuevo
+        `;
+        
+        // Agregar evento de clic
+        botonReintentar.addEventListener('click', () => {
+            reintentarEjercicio(ejercicioDiv);
+        });
+        
+        // Insertar después de la explicación
+        const inputContainer = ejercicioDiv.querySelector('.conteo-respuesta');
+        inputContainer.appendChild(botonReintentar);
     }
 
     // --- OTRAS FUNCIONES DE CALIFICACIÓN Y GUARDADO (SIN CAMBIOS) ---
