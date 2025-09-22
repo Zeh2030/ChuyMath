@@ -1,0 +1,38 @@
+{
+  "id": "2025-09-27",
+  "titulo": "El Desafío Geométrico",
+  "misiones": [
+    {
+      "id": "mision-conteo-1",
+      "tipo": "conteo-figuras",
+      "titulo": "El Misterio de los Triángulos",
+      "ejercicios": [
+        {
+          "pregunta": "¿Cuántos triángulos ves en total en esta figura?",
+          "figura_svg": "<svg width='200' height='160' viewBox='0 0 100 87'><path d='M50 0 L100 87 H0 Z' stroke='black' stroke-width='2' fill='none'/><path d='M50 0 L50 87' stroke='black' stroke-width='2' fill='none'/></svg>",
+          "respuesta": "2",
+          "pista": "Fíjate bien: hay un triángulo grande y otro pequeño dentro."
+        },
+        {
+          "pregunta": "Y en esta figura más compleja, ¿cuántos triángulos puedes encontrar?",
+          "figura_svg": "<svg width='200' height='160' viewBox='0 0 100 87'><path d='M50 0 L100 87 H0 Z' stroke='black' stroke-width='2' fill='none'/><path d='M0 87 L100 87' stroke='black' stroke-width='1' fill='none'/><path d='M50 43.5 H0' stroke='black' stroke-width='2' fill='none'/><path d='M50 43.5 L100 43.5' stroke='black' stroke-width='2' fill='none'/></svg>",
+          "respuesta": "3",
+          "pista": "Cuenta el triángulo grande y los dos triángulos pequeños que se forman."
+        }
+      ]
+    },
+    {
+      "id": "mision-conteo-2",
+      "tipo": "conteo-figuras",
+      "titulo": "La Torre de Cuadrados",
+      "ejercicios": [
+        {
+          "pregunta": "¿Cuántos cuadrados hay en total en esta cuadrícula?",
+          "figura_svg": "<svg width='180' height='180' viewBox='0 0 100 100'><rect x='0' y='0' width='50' height='50' stroke='black' stroke-width='2' fill='none'/><rect x='50' y='0' width='50' height='50' stroke='black' stroke-width='2' fill='none'/><rect x='0' y='50' width='50' height='50' stroke='black' stroke-width='2' fill='none'/><rect x='50' y='50' width='50' height='50' stroke='black' stroke-width='2' fill='none'/></svg>",
+          "respuesta": "5",
+          "pista": "No olvides contar el cuadrado grande que los contiene a todos."
+        }
+      ]
+    }
+  ]
+}
