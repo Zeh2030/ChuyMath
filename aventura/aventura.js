@@ -297,10 +297,15 @@ document.addEventListener('DOMContentLoaded', () => {
             explicacionAnterior.remove();
         }
         
-        // Limpiar botón de reintentar anterior
+        // Limpiar botones anteriores
         const botonReintentarAnterior = ejercicioDiv.querySelector('.boton-reintentar');
         if (botonReintentarAnterior) {
             botonReintentarAnterior.remove();
+        }
+        
+        const botonVerificarAnterior = ejercicioDiv.querySelector('.boton-verificar');
+        if (botonVerificarAnterior) {
+            botonVerificarAnterior.remove();
         }
         
         // Limpiar estilos del input
@@ -308,6 +313,9 @@ document.addEventListener('DOMContentLoaded', () => {
         input.classList.remove('correct', 'incorrect');
         input.value = '';
         input.focus();
+        
+        // Mostrar botón de verificar
+        mostrarBotonVerificar(ejercicioDiv);
     }
 
     // ===== FUNCIÓN PARA MOSTRAR BOTÓN DE REINTENTAR =====
@@ -332,6 +340,74 @@ document.addEventListener('DOMContentLoaded', () => {
         // Insertar después de la explicación
         const inputContainer = ejercicioDiv.querySelector('.conteo-respuesta');
         inputContainer.appendChild(botonReintentar);
+    }
+
+    // ===== FUNCIÓN PARA MOSTRAR BOTÓN DE VERIFICAR =====
+    function mostrarBotonVerificar(ejercicioDiv) {
+        // Verificar si ya existe un botón de verificar
+        if (ejercicioDiv.querySelector('.boton-verificar')) {
+            return;
+        }
+        
+        const botonVerificar = document.createElement('button');
+        botonVerificar.className = 'boton-verificar';
+        botonVerificar.innerHTML = `
+            <span class="icono-verificar">✓</span>
+            Verificar respuesta
+        `;
+        
+        // Agregar evento de clic
+        botonVerificar.addEventListener('click', () => {
+            verificarEjercicioIndividual(ejercicioDiv);
+        });
+        
+        // Insertar después del input
+        const inputContainer = ejercicioDiv.querySelector('.conteo-respuesta');
+        inputContainer.appendChild(botonVerificar);
+    }
+
+    // ===== FUNCIÓN PARA VERIFICAR EJERCICIO INDIVIDUAL =====
+    function verificarEjercicioIndividual(ejercicioDiv) {
+        const input = ejercicioDiv.querySelector('input[type="number"]');
+        const respuestaCorrecta = ejercicioDiv.dataset.respuesta;
+        const ejercicio = JSON.parse(ejercicioDiv.closest('.mision').dataset.info);
+        
+        // Encontrar el índice del ejercicio
+        const index = Array.from(ejercicioDiv.parentElement.querySelectorAll('.conteo-ejercicio')).indexOf(ejercicioDiv);
+        const ejercicioData = ejercicio.ejercicios[index];
+        
+        // Limpiar explicaciones anteriores
+        const explicacionAnterior = ejercicioDiv.querySelector('.explicacion-feedback');
+        if (explicacionAnterior) {
+            explicacionAnterior.remove();
+        }
+        
+        // Limpiar botón de verificar
+        const botonVerificar = ejercicioDiv.querySelector('.boton-verificar');
+        if (botonVerificar) {
+            botonVerificar.remove();
+        }
+        
+        input.classList.remove('correct', 'incorrect');
+        
+        if (input.value.trim() === respuestaCorrecta) {
+            input.classList.add('correct');
+            
+            // Mostrar explicación correcta
+            if (ejercicioData.explicacion_correcta) {
+                mostrarExplicacion(ejercicioDiv, ejercicioData.explicacion_correcta, 'correcta', '🎉');
+            }
+        } else {
+            input.classList.add('incorrect');
+            
+            // Mostrar explicación incorrecta
+            if (ejercicioData.explicacion_incorrecta) {
+                mostrarExplicacion(ejercicioDiv, ejercicioData.explicacion_incorrecta, 'incorrecta', '💡');
+            }
+        }
+        
+        // Mostrar botón de reintentar
+        mostrarBotonReintentar(ejercicioDiv);
     }
 
     // --- OTRAS FUNCIONES DE CALIFICACIÓN Y GUARDADO (SIN CAMBIOS) ---
