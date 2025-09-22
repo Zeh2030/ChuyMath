@@ -26,11 +26,13 @@
       "ejercicios": [
         {
           "elementos": ["▲", "▲▲", "▲▲▲", "?"],
+          "opciones": ["▲▲", "▲▲▲▲", "▲▲▲▲▲"],
           "respuesta": "▲▲▲▲",
           "pista": "Cuenta cuántos triángulos hay en cada paso."
         },
         {
           "elementos": ["●", "■", "●●", "■■", "?"],
+          "opciones": ["●●", "■■■", "●●●"],
           "respuesta": "●●●",
           "pista": "Parece que se alterna entre círculos y cuadrados, y cada vez se añade uno más."
         }
