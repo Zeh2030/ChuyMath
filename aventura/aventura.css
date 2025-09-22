@@ -237,4 +237,45 @@ body {
 }
 
 .secuencia-respuesta input.correct { background-color: #e0f8e7; border-color: var(--c-success); }
+
 .secuencia-respuesta input.incorrect { background-color: #fbe5e7; border-color: var(--c-danger); }
+
+/* ... (todos los estilos anteriores) ... */
+
+/* --- Estilos para las Opciones en las Secuencias --- */
+.secuencia-opciones {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.secuencia-opciones label {
+    display: block;
+    padding: 15px 25px;
+    background-color: #fff;
+    border: 2px solid #dcd0e8;
+    border-radius: 12px;
+    cursor: pointer;
+    font-family: var(--font-headings);
+    font-size: 1.5rem;
+    transition: all 0.2s ease;
+}
+
+.secuencia-opciones label:hover {
+    border-color: #9b59b6;
+    transform: translateY(-2px);
+}
+
+.secuencia-opciones input[type="radio"] {
+    display: none;
+}
+
+.secuencia-opciones input[type="radio"]:checked + label {
+    background-color: #9b59b6;
+    border-color: #8e44ad;
+    color: white;
+}
