@@ -7,6 +7,7 @@
     --c-vault: #54a0ff;
     --c-logic: #1dd1a1;
     --c-games: #feca57;
+    --c-constructor: #9b59b6;
     --c-fondo: #ecf0f1;
     --c-texto: #34495e;
     --c-blanco: #ffffff;
@@ -93,6 +94,7 @@ body {
 .world-vault { border-color: var(--c-vault); }
 .world-logic { border-color: var(--c-logic); }
 .world-games { border-color: var(--c-games); }
+.world-constructor { border-color: var(--c-constructor); }
 
 .world-icon {
     font-size: 3.5rem;
@@ -127,6 +129,7 @@ body {
 .world-vault .card-footer { background-color: var(--c-vault); }
 .world-logic .card-footer { background-color: var(--c-logic); }
 .world-games .card-footer { background-color: var(--c-games); }
+.world-constructor .card-footer { background-color: var(--c-constructor); }
 
 .portal-footer {
     margin-top: 50px;
