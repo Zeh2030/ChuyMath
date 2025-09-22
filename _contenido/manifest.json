@@ -33,6 +33,14 @@
     "descripcion": "¡Conviértete en un detective de patrones y encuentra el siguiente elemento en la serie!",
     "icono": "🔍",
     "temas": ["logica", "mates"]
+  },
+  {
+    "id": "constructor-rectangulos",
+    "titulo": "Constructor de Rectángulos",
+    "descripcion": "¡Construye súper rectángulos con los Numberblocks y descubre sus factores secretos!",
+    "icono": "🏗️",
+    "temas": ["mates", "numberblocks"],
+    "esJuegoEspecial": true,
+    "urlJuego": "../juegos/constructor-rectangulos/index.html"
   }
 ]
-
