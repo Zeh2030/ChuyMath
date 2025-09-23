@@ -1,0 +1,770 @@
+/* 
+ * CSS Base para Expediciones
+ * Sistema modular reutilizable para expediciones temáticas
+ */
+
+:root {
+    --c-primary: #3498db;   /* Azul Mates */
+    --c-secondary: #e74c3c; /* Rojo Kakooma */
+    --c-tertiary: #f1c40f;  /* Amarillo Geo */
+    --c-quaternary: #9b59b6; /* Morado Planetas */
+    --c-quinary: #1abc9c;   /* Verde-Agua Animales */
+    --c-success: #2ecc71;
+    --c-danger: #e74c3c;
+    --c-fondo: #ecf0f1;
+    --c-texto: #34495e;
+    --font-headings: 'Fredoka', sans-serif;
+    --font-body: 'Nunito', sans-serif;
+}
+
+/* === ESTILOS GLOBALES === */
+body {
+    font-family: var(--font-body);
+    background: linear-gradient(170deg, #dfe9f3 0%, #ffffff 100%);
+    color: var(--c-texto);
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* === ENCABEZADOS === */
+h1, h2 {
+    font-family: var(--font-headings);
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+h1 { 
+    font-size: 2.8rem; 
+    margin-bottom: 30px;
+}
+
+h2 { 
+    border-bottom: 4px solid; 
+    padding-bottom: 10px; 
+    margin-bottom: 25px; 
+}
+
+/* Colores específicos por sección */
+.math-title { border-color: var(--c-primary); }
+.kakooma-title { border-color: var(--c-secondary); }
+.geo-title { border-color: var(--c-tertiary); }
+.planet-title { border-color: var(--c-quaternary); }
+.animal-title { border-color: var(--c-quinary); }
+.numberblocks-title { border-color: #ff9800; }
+
+/* === SECCIONES PRINCIPALES === */
+.section {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease;
+}
+
+.section:hover {
+    transform: translateY(-2px);
+}
+
+/* === BOTÓN DE REGRESO === */
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.back-button {
+    display: inline-block;
+    padding: 12px 20px;
+    background: linear-gradient(45deg, #95a5a6, #7f8c8d);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-family: var(--font-headings);
+    font-weight: 700;
+    transition: all 0.2s ease;
+    box-shadow: 0 3px 0 #5d6d7e;
+}
+
+.back-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 0 #5d6d7e;
+}
+
+.back-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 0 #5d6d7e;
+}
+
+/* === GRIDS Y LAYOUTS === */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.exercise, .puzzle-card {
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    padding: 15px;
+    border: 2px solid #e9ecef;
+    transition: all 0.2s ease;
+}
+
+.exercise:hover, .puzzle-card:hover {
+    border-color: #dee2e6;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* === INPUTS Y RESPUESTAS === */
+.answer-input {
+    width: 100px;
+    padding: 10px;
+    border: 2px solid #dfe4ea;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.8rem;
+    font-family: var(--font-body);
+    font-weight: 800;
+    display: block;
+    margin: 10px auto 0;
+    transition: all 0.2s ease;
+}
+
+.answer-input:focus {
+    border-color: var(--c-primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.answer-input.correct {
+    background-color: #e0f8e7;
+    border-color: var(--c-success);
+}
+
+.answer-input.incorrect {
+    background-color: #fbe5e7;
+    border-color: var(--c-danger);
+    animation: shake 0.5s;
+}
+
+.horizontal-op {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+/* === OPCIONES MÚLTIPLES === */
+.multiple-choice-options {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.multiple-choice-options li {
+    margin-bottom: 10px;
+}
+
+.multiple-choice-options label {
+    display: block;
+    padding: 15px;
+    background-color: #fff;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.multiple-choice-options label:hover {
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+}
+
+.multiple-choice-options input[type="radio"] {
+    display: none;
+}
+
+.multiple-choice-options input[type="radio"]:checked + label {
+    font-weight: bold;
+    transform: scale(1.02);
+}
+
+.multiple-choice-options label.correct {
+    background-color: var(--c-success);
+    border-color: #27ae60;
+    color: white;
+    animation: bounce 0.6s;
+}
+
+.multiple-choice-options label.incorrect {
+    background-color: var(--c-danger);
+    border-color: #c0392b;
+    color: white;
+    animation: shake 0.5s;
+}
+
+/* Colores específicos por tema cuando está seleccionado */
+.geo-options input[type="radio"]:checked + label {
+    background-color: var(--c-tertiary);
+    border-color: #f39c12;
+    color: #fff;
+}
+
+.planet-options input[type="radio"]:checked + label {
+    background-color: var(--c-quaternary);
+    border-color: #8e44ad;
+    color: #fff;
+}
+
+.animal-options input[type="radio"]:checked + label {
+    background-color: var(--c-quinary);
+    border-color: #16a085;
+    color: #fff;
+}
+
+/* === KAKOOMA ESPECÍFICO === */
+.kakooma-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    max-width: 300px;
+    margin: 0 auto 15px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #e9ecef;
+}
+
+.kakooma-number {
+    background-color: #ecf0f1;
+    border: 2px solid #bdc3c7;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.kakooma-number:hover {
+    background-color: #d5dbdb;
+    transform: scale(1.05);
+}
+
+.kakooma-number.selected {
+    background-color: var(--c-secondary);
+    color: white;
+    border-color: #c0392b;
+    transform: scale(1.1);
+}
+
+.kakooma-number.correct {
+    background-color: var(--c-success);
+    color: white;
+    border-color: #27ae60;
+}
+
+.kakooma-number.incorrect {
+    background-color: #95a5a6;
+    color: #7f8c8d;
+    border-color: #85929e;
+    cursor: not-allowed;
+}
+
+.kakooma-target {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--c-secondary);
+}
+
+/* === POSTALES GEOGRÁFICAS === */
+.postcard {
+    background-color: #fffde7;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+    transform: rotate(-0.5deg);
+    transition: transform 0.3s ease;
+}
+
+.postcard:hover {
+    transform: rotate(0deg) scale(1.02);
+}
+
+.postcard-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.postcard img {
+    width: 100%;
+    border-radius: 5px;
+    border: 5px solid white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    object-fit: cover;
+    aspect-ratio: 16/9;
+    transition: transform 0.3s ease;
+}
+
+.postcard img:hover {
+    transform: scale(1.05);
+}
+
+.postcard-content p {
+    font-style: italic;
+    margin: 0 0 15px 0;
+    font-size: 1.1rem;
+    color: #5d4e37;
+}
+
+/* === MENSAJES CÓSMICOS === */
+.cosmic-message {
+    text-align: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.planet-image {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 15px;
+    border-radius: 10px;
+    display: block;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border: 3px solid rgba(255,255,255,0.3);
+}
+
+.cosmic-message p {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    font-style: normal;
+    margin-bottom: 20px;
+}
+
+/* === MISTERIOS MARINOS === */
+.marine-mystery {
+    text-align: center;
+}
+
+.animal-image {
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto 15px;
+    display: block;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.animal-image:hover {
+    transform: rotate(5deg) scale(1.05);
+}
+
+.clues {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 15px 0;
+    background-color: #e8f8f5;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.clues li {
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+    position: relative;
+    padding-left: 25px;
+}
+
+.clues li::before {
+    content: "🔍";
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.marine-mystery p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* === ÁREA DE ACCIONES === */
+.action-area {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.grade-button {
+    font-family: var(--font-headings);
+    font-size: 1.2rem;
+    padding: 12px 30px;
+    border-radius: 50px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.grade-button:hover {
+    transform: translateY(-3px);
+}
+
+.grade-button:active {
+    transform: translateY(0);
+}
+
+.math-button {
+    background: linear-gradient(45deg, var(--c-primary), #2980b9);
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+}
+
+.kakooma-button {
+    background: linear-gradient(45deg, var(--c-secondary), #c0392b);
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+}
+
+.geo-button {
+    background: linear-gradient(45deg, var(--c-tertiary), #f39c12);
+    box-shadow: 0 4px 15px rgba(241, 196, 15, 0.4);
+}
+
+.planet-button {
+    background: linear-gradient(45deg, var(--c-quaternary), #8e44ad);
+    box-shadow: 0 4px 15px rgba(155, 89, 182, 0.4);
+}
+
+.animal-button {
+    background: linear-gradient(45deg, var(--c-quinary), #16a085);
+    box-shadow: 0 4px 15px rgba(26, 188, 156, 0.4);
+}
+
+.results-area {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    min-height: 25px;
+}
+
+/* === CAJAS DE PISTAS === */
+.clue-box {
+    background-color: #fffbe0;
+    border: 2px dashed #fbc02d;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 15px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.clue-box.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.clue-box strong {
+    color: #d35400;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+}
+
+.clue-box img {
+    max-width: 250px;
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+    border: 3px solid white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transition: transform 0.3s;
+}
+
+.clue-box img:hover {
+    transform: scale(1.05);
+}
+
+/* === NUMBERBLOCKS DRAWING === */
+.numberblocks-section .horizontal-op {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ff6f00;
+}
+
+.canvas-container {
+    border: 2px dashed #ff9800;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+#drawing-canvas {
+    background-color: #f0f4f8;
+    display: block;
+    width: 100%;
+    touch-action: none;
+    cursor: crosshair;
+}
+
+.drawing-tools {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.drawing-tool {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s;
+    font-family: var(--font-headings);
+    font-weight: 600;
+}
+
+.color-tool {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.color-tool:hover, .drawing-tool:hover {
+    transform: scale(1.1);
+}
+
+#color-red { background-color: #e53935; }
+#color-blue { background-color: #1e88e5; }
+#color-yellow { background-color: #fdd835; }
+#color-green { background-color: #43a047; }
+
+#clear-canvas {
+    background-color: var(--c-danger);
+    color: white;
+}
+
+#save-drawing {
+    background-color: var(--c-success);
+    color: white;
+}
+
+/* === NAVEGACIÓN FINAL === */
+.final-navigation {
+    margin-top: 40px;
+    padding: 30px;
+    background: linear-gradient(45deg, #e8f8f5, #d5f4e6);
+    border-radius: 20px;
+    border: 3px solid var(--c-success);
+    text-align: center;
+}
+
+.final-navigation.hidden {
+    display: none;
+}
+
+.final-navigation h3 {
+    font-family: var(--font-headings);
+    font-size: 1.8rem;
+    color: #16a085;
+    margin-bottom: 10px;
+}
+
+.final-navigation p {
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin-bottom: 25px;
+}
+
+.final-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.final-button {
+    display: inline-block;
+    padding: 15px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: var(--font-headings);
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 0;
+}
+
+.final-button:hover {
+    transform: translateY(-1px);
+}
+
+.final-button:active {
+    transform: translateY(1px);
+}
+
+.final-button.boveda {
+    background: linear-gradient(45deg, #54a0ff, #2e86de);
+    color: white;
+    box-shadow: 0 4px 0 #1f618d;
+}
+
+.final-button.boveda:hover {
+    box-shadow: 0 5px 0 #1f618d;
+}
+
+.final-button.boveda:active {
+    box-shadow: 0 3px 0 #1f618d;
+}
+
+.final-button.dashboard {
+    background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+    color: white;
+    box-shadow: 0 4px 0 #c44569;
+}
+
+.final-button.dashboard:hover {
+    box-shadow: 0 5px 0 #c44569;
+}
+
+.final-button.dashboard:active {
+    box-shadow: 0 3px 0 #c44569;
+}
+
+.final-button.restart {
+    background: linear-gradient(45deg, #ffa726, #ff9800);
+    color: white;
+    box-shadow: 0 4px 0 #f57c00;
+}
+
+.final-button.restart:hover {
+    box-shadow: 0 5px 0 #f57c00;
+}
+
+.final-button.restart:active {
+    box-shadow: 0 3px 0 #f57c00;
+}
+
+/* === ANIMACIONES === */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    .grid-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .postcard-images {
+        grid-template-columns: 1fr;
+    }
+    
+    .game-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .final-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .final-button {
+        width: 100%;
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .section {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .horizontal-op {
+        font-size: 1.4rem;
+    }
+    
+    .answer-input {
+        font-size: 1.4rem;
+        padding: 8px;
+    }
+    
+    .kakooma-grid {
+        max-width: 250px;
+        gap: 5px;
+        padding: 10px;
+    }
+    
+    .kakooma-number {
+        padding: 8px;
+        font-size: 1.2rem;
+    }
+}
