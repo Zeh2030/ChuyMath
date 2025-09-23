@@ -39,23 +39,23 @@
       "id": "mision-cripto-3",
       "tipo": "criptoaritmetica",
       "titulo": "El Misterio de las Flores",
-      "instruccion": "¿Cuánto vale cada flor 🌸?",
+      "instruccion": "¿Cuánto vale cada flor 🌸? (3 flores + 1 flor = 40)",
       "operacion": {
         "linea1": " 🌸 🌸 🌸",
         "linea2": "+    🌸",
         "resultado": " 4 0"
       },
       "solucion": [
-        { "figura": "🌸", "valor": "1" }
+        { "figura": "🌸", "valor": "10" }
       ],
-      "explicacion_correcta": "¡Genial! Si 🌸=1, entonces 111 + 1 = 112... Espera, revisemos: 111 + 1 = 112, no 40. ¡Necesitamos otro valor!",
-      "explicacion_incorrecta": "No es correcto. Si 🌸=1, entonces 111 + 1 = 112, no 40. ¡Piensa en otro número!"
+      "explicacion_correcta": "¡Perfecto! Si 🌸=10, entonces 3 flores = 30 + 1 flor = 10 = 40. ¡Excelente!",
+      "explicacion_incorrecta": "No es correcto. Si 🌸=10, entonces 3 flores = 30 + 1 flor = 10 = 40."
     },
     {
       "id": "mision-cripto-4",
       "tipo": "criptoaritmetica",
       "titulo": "Las Estrellas Mágicas",
-      "instruccion": "¿Qué valor tiene cada estrella ⭐?",
+      "instruccion": "¿Qué valor tiene cada estrella ⭐? (2 estrellas + 1 estrella = 15)",
       "operacion": {
         "linea1": " ⭐ ⭐",
         "linea2": "+  ⭐",
@@ -64,8 +64,8 @@
       "solucion": [
         { "figura": "⭐", "valor": "5" }
       ],
-      "explicacion_correcta": "¡Perfecto! Si ⭐=5, entonces 55 + 5 = 60... Hmm, eso da 60, no 15. ¡Piensa mejor!",
-      "explicacion_incorrecta": "No es correcto. Si ⭐=5, entonces 55 + 5 = 60, no 15. ¡Intenta con otro número!"
+      "explicacion_correcta": "¡Perfecto! Si ⭐=5, entonces 2 estrellas = 10 + 1 estrella = 5 = 15. ¡Excelente!",
+      "explicacion_incorrecta": "No es correcto. Si ⭐=5, entonces 2 estrellas = 10 + 1 estrella = 5 = 15."
     }
   ]
 }
