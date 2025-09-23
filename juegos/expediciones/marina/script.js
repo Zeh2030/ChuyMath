@@ -138,37 +138,9 @@ class ExpedicionMarina extends ExpedicionBase {
         super.populateContent();
         this.addProgressIndicators();
         
-        // Debug: Verificar que las opciones de planetas se carguen
-        setTimeout(() => {
-            const planetOptions = document.getElementById('planet-options');
-            if (planetOptions && planetOptions.children.length === 0) {
-                console.log('Error: Las opciones de planetas no se cargaron. Forzando carga...');
-                this.populatePlanetsSection();
-            }
-        }, 100);
+            // Debug: Las opciones de planetas se manejan automáticamente por la clase base
     }
 
-    populatePlanetsSection() {
-        const planetOptions = document.getElementById('planet-options');
-        if (!planetOptions || !this.config.planets.options) {
-            console.log('Error: No se encontró planet-options o no hay opciones en config');
-            return;
-        }
-
-        const shuffledOptions = this.shuffleArray([...this.config.planets.options]);
-        planetOptions.innerHTML = '';
-        
-        shuffledOptions.forEach(option => {
-            const li = document.createElement('li');
-            li.innerHTML = `
-                <input type="radio" name="planet-answer" id="${option.id}" value="${option.value}">
-                <label for="${option.id}">${option.label}</label>
-            `;
-            planetOptions.appendChild(li);
-        });
-        
-        console.log('Opciones de planetas cargadas:', shuffledOptions.length);
-    }
 
     populateGeographySection() {
         const geoOptions = document.getElementById('geo-options');
@@ -380,12 +352,11 @@ document.addEventListener('DOMContentLoaded', () => {
     window.expedicionMarina = new ExpedicionMarina();
     window.expedicionMarina.startTime = Date.now();
     
-    // FORZAR CARGA DE OPCIONES DE PLANETAS INMEDIATAMENTE
+    // FORZAR CARGA DE OPCIONES ESPECÍFICAS (planetas se manejan automáticamente)
     setTimeout(() => {
-        console.log('Forzando carga de opciones de planetas...');
-        window.expedicionMarina.populatePlanetsSection();
+        console.log('Forzando carga de opciones específicas...');
         
-        // También forzar otras opciones por si acaso
+        // Forzar opciones que SÍ necesitan override
         if (window.expedicionMarina.populateGeographySection) {
             window.expedicionMarina.populateGeographySection();
         }
