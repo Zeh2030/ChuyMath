@@ -29,11 +29,11 @@
         "resultado": " 2 4"
       },
       "solucion": [
-        { "figura": "🍇", "valor": "1" },
+        { "figura": "🍇", "valor": "20" },
         { "figura": "🍌", "valor": "2" }
       ],
-      "explicacion_correcta": "¡Excelente! 🍇=1 y 🍌=2, entonces 12 + 2 = 24. ¡Lógica perfecta!",
-      "explicacion_incorrecta": "No es correcto. 🍇=1 y 🍌=2, entonces 12 + 2 = 24."
+      "explicacion_correcta": "¡Excelente! 🍇=20 y 🍌=2, entonces 22 + 2 = 24. ¡Lógica perfecta!",
+      "explicacion_incorrecta": "No es correcto. 🍇=20 y 🍌=2, entonces 22 + 2 = 24."
     },
     {
       "id": "mision-cripto-3",
