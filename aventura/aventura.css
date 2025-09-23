@@ -508,3 +508,73 @@ body {
     margin-right: 8px;
     font-size: 1.1rem;
 }
+
+/* --- Navegación Final --- */
+.navegacion-final {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 2px dashed var(--c-primary);
+}
+
+.boton-final {
+    display: inline-block;
+    padding: 15px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: var(--font-headings);
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 0;
+}
+
+.boton-final:hover {
+    transform: translateY(-2px);
+}
+
+.boton-final:active {
+    transform: translateY(2px);
+}
+
+.boton-final.boveda {
+    background: linear-gradient(45deg, #54a0ff, #2e86de);
+    color: white;
+    box-shadow: 0 4px 0 #1f618d;
+}
+
+.boton-final.boveda:hover {
+    box-shadow: 0 6px 0 #1f618d;
+}
+
+.boton-final.boveda:active {
+    box-shadow: 0 2px 0 #1f618d;
+}
+
+.boton-final.dashboard {
+    background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+    color: white;
+    box-shadow: 0 4px 0 #c44569;
+}
+
+.boton-final.dashboard:hover {
+    box-shadow: 0 6px 0 #c44569;
+}
+
+.boton-final.dashboard:active {
+    box-shadow: 0 2px 0 #c44569;
+}
+
+@media (max-width: 600px) {
+    .navegacion-final {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .boton-final {
+        width: 80%;
+        text-align: center;
+    }
+}
