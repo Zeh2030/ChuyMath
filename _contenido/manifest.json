@@ -48,5 +48,19 @@
         "temas": ["mates", "historia", "planetas", "animales"],
         "esJuegoEspecial": true,
         "urlJuego": "../juegos/expediciones/ancestral/index.html"
+      },
+      {
+        "id": "2025-09-29",
+        "titulo": "El Club de las Mascotas",
+        "descripcion": "Usa tu lógica de detective para descubrir qué mascota tiene cada amigo.",
+        "icono": "🐾",
+        "temas": ["logica", "tablas"]
+      },
+      {
+        "id": "2025-09-30",
+        "titulo": "El Código Secreto de las Frutas",
+        "descripcion": "¡Descifra el valor de cada fruta para resolver las sumas misteriosas!",
+        "icono": "🍇",
+        "temas": ["logica", "criptoaritmetica"]
       }
 ]
