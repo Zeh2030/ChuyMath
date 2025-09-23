@@ -18,13 +18,6 @@
     "urlJuego": "../juegos/expediciones/marina/index.html"
   },
   {
-    "id": "2025-09-24",
-    "titulo": "El Misterio del Volcán",
-    "descripcion": "¡Explora un famoso volcán italiano y dibuja una erupción de Numberblocks!",
-    "icono": "🌋",
-    "temas": ["geografia", "numberblocks"]
-  },
-  {
     "id": "2025-09-26",
     "titulo": "El Secreto de las Secuencias",
     "descripcion": "¡Conviértete en un detective de patrones y encuentra el siguiente elemento en la serie!",
