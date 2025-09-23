@@ -19,15 +19,58 @@
         <header class="boveda-header">
             <h1>📚 Bóveda de Misiones</h1>
             <p>¡Aquí están todas tus aventuras! Repasa las completadas y desbloquea las pendientes.</p>
+            
+            <!-- Toggles de Vista -->
+            <div class="vista-toggles">
+                <button id="vista-calendario" class="toggle-btn active">📅 Por Calendario</button>
+                <button id="vista-categorias" class="toggle-btn">🏷️ Por Categorías</button>
+            </div>
+            
             <div class="navigation-buttons">
                 <a href="../index.html" class="back-button back-portal">← Volver al Portal</a>
                 <a href="../dashboard/dashboard.html" class="back-button back-dashboard">🏠 Centro de Mando</a>
             </div>
         </header>
 
-        <main id="misiones-grid" class="misiones-grid">
-            <!-- Las tarjetas de las misiones se cargarán aquí con JavaScript -->
-            <div class="loader">Cargando misiones...</div>
+        <!-- Vista por Calendario (por defecto) -->
+        <main id="vista-calendario-content" class="vista-content">
+            <div id="misiones-grid" class="misiones-grid">
+                <!-- Las tarjetas de las misiones se cargarán aquí con JavaScript -->
+                <div class="loader">Cargando misiones...</div>
+            </div>
+        </main>
+
+        <!-- Vista por Categorías (oculta inicialmente) -->
+        <main id="vista-categorias-content" class="vista-content hidden">
+            <div class="categorias-container">
+                <div class="categoria-seccion" data-categoria="geometria">
+                    <h2 class="categoria-titulo">🧮 Geometría</h2>
+                    <div class="categoria-grid" id="geometria-grid">
+                        <!-- Misiones de geometría se cargarán aquí -->
+                    </div>
+                </div>
+                
+                <div class="categoria-seccion" data-categoria="secuencias">
+                    <h2 class="categoria-titulo">🔍 Secuencias y Patrones</h2>
+                    <div class="categoria-grid" id="secuencias-grid">
+                        <!-- Misiones de secuencias se cargarán aquí -->
+                    </div>
+                </div>
+                
+                <div class="categoria-seccion" data-categoria="constructores">
+                    <h2 class="categoria-titulo">🏗️ Constructores</h2>
+                    <div class="categoria-grid" id="constructores-grid">
+                        <!-- Misiones de constructores se cargarán aquí -->
+                    </div>
+                </div>
+                
+                <div class="categoria-seccion" data-categoria="aventuras">
+                    <h2 class="categoria-titulo">🌟 Aventuras Mixtas</h2>
+                    <div class="categoria-grid" id="aventuras-grid">
+                        <!-- Aventuras mixtas se cargarán aquí -->
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
 
