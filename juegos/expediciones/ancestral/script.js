@@ -1,6 +1,6 @@
 /**
  * Script específico para la Expedición Ancestral
- * Maneja las funcionalidades específicas de esta expedición
+ * Basado en el código original que SÍ funciona (igual que Marina)
  */
 
 class ExpedicionAncestral extends ExpedicionBase {
@@ -10,259 +10,174 @@ class ExpedicionAncestral extends ExpedicionBase {
     }
 
     setupAncestralSpecificEvents() {
-        // La expedición ancestral usa solo opciones múltiples para mayor accesibilidad
-        this.setupHistoricalThemes();
-        this.setupEducationalEnhancements();
+        // Usar el código original que funciona
+        this.populateOriginalOptions();
+        this.setupOriginalEventListeners();
     }
 
-    setupHistoricalThemes() {
-        // Agregar elementos temáticos históricos
-        this.addAncientEgyptianFlair();
-        this.addAstronomicalElements();
-        this.addPrimateIntelligenceFeatures();
-    }
-
-    addAncientEgyptianFlair() {
-        // Agregar jeroglíficos decorativos ocasionales
-        const sections = document.querySelectorAll('.section');
-        sections.forEach((section, index) => {
-            if (index === 1) { // Sección de geografía (Egipto)
-                const hieroglyphs = ['𓀀', '𓁶', '𓂀', '𓃽', '𓄿', '𓅱', '𓆣'];
-                const randomHieroglyph = hieroglyphs[Math.floor(Math.random() * hieroglyphs.length)];
-                
-                const decoration = document.createElement('div');
-                decoration.style.cssText = `
-                    position: absolute;
-                    top: 15px;
-                    right: 15px;
-                    font-size: 2rem;
-                    opacity: 0.3;
-                    pointer-events: none;
-                    animation: fadeIn 2s ease;
-                `;
-                decoration.textContent = randomHieroglyph;
-                section.style.position = 'relative';
-                section.appendChild(decoration);
+    // === CÓDIGO ORIGINAL QUE FUNCIONA ===
+    populateOriginalOptions() {
+        // Función shuffleArray del código original
+        const shuffleArray = (array) => {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
             }
-        });
-    }
-
-    addAstronomicalElements() {
-        // Agregar estrellas animadas para la sección de Saturno
-        const planetSection = document.getElementById('planet-section');
-        if (planetSection) {
-            this.createStarField(planetSection);
-        }
-    }
-
-    createStarField(container) {
-        for (let i = 0; i < 15; i++) {
-            const star = document.createElement('div');
-            star.style.cssText = `
-                position: absolute;
-                width: 3px;
-                height: 3px;
-                background: #ffd700;
-                border-radius: 50%;
-                top: ${Math.random() * 100}%;
-                left: ${Math.random() * 100}%;
-                animation: twinkle ${2 + Math.random() * 3}s infinite;
-                pointer-events: none;
-                z-index: 1;
-            `;
-            container.style.position = 'relative';
-            container.appendChild(star);
-        }
-    }
-
-    addPrimateIntelligenceFeatures() {
-        // Agregar elementos que destaquen la inteligencia de los primates
-        const animalSection = document.getElementById('animal-section');
-        if (animalSection) {
-            const brainIcon = document.createElement('div');
-            brainIcon.style.cssText = `
-                position: absolute;
-                top: 20px;
-                left: 20px;
-                font-size: 1.5rem;
-                opacity: 0.6;
-                animation: pulse 2s infinite;
-                pointer-events: none;
-            `;
-            brainIcon.textContent = '🧠';
-            animalSection.style.position = 'relative';
-            animalSection.appendChild(brainIcon);
-        }
-    }
-
-    setupEducationalEnhancements() {
-        // Mejorar la experiencia educativa con contexto histórico
-        this.addEducationalContext();
-        this.setupProgressCelebrations();
-    }
-
-    addEducationalContext() {
-        // Agregar datos curiosos después de completar cada sección
-        this.educationalFacts = {
-            math: "¡Sabías que los antiguos egipcios ya usaban matemáticas avanzadas para construir las pirámides hace 4,500 años!",
-            geography: "¡La Gran Pirámide de Giza fue la estructura más alta del mundo durante más de 3,800 años!",
-            planets: "¡Saturno es tan ligero que podría flotar en el agua si hubiera un océano lo suficientemente grande!",
-            animals: "¡Los chimpancés pueden aprender más de 300 palabras en lenguaje de señas!",
-            numberblocks: "¡Los matemáticos antiguos inventaron el concepto del cero, que cambió las matemáticas para siempre!"
         };
-    }
 
-    setupProgressCelebrations() {
-        // Celebraciones temáticas específicas para cada misión
-        this.celebrations = {
-            math: () => this.showAncientCalculatorEffect(),
-            geography: () => this.showPyramidBuildingEffect(),
-            planets: () => this.showSaturnRingsEffect(),
-            animals: () => this.showPrimateIntelligenceEffect(),
-            numberblocks: () => this.showAncientNumberEffect()
+        // Función populateOptions del código original
+        const populateOptions = (containerId, optionsData, radioName) => {
+            const container = document.getElementById(containerId);
+            if (!container) {
+                console.log(`ERROR: No se encontró el contenedor ${containerId}`);
+                return;
+            }
+            
+            container.innerHTML = '';
+            const shuffledData = [...optionsData]; // Crear copia
+            shuffleArray(shuffledData);
+            
+            shuffledData.forEach(opt => {
+                const li = document.createElement('li');
+                li.innerHTML = `<input type="radio" name="${radioName}" id="${opt.id}" value="${opt.value}"><label for="${opt.id}">${opt.label}</label>`;
+                container.appendChild(li);
+                
+                // FIX TEMPORAL: Forzar estilos correctos
+                const label = li.querySelector('label');
+                if (label) {
+                    label.style.display = 'block';
+                    label.style.padding = '15px';
+                    label.style.backgroundColor = '#fff';
+                    label.style.border = '2px solid #eee';
+                    label.style.borderRadius = '10px';
+                    label.style.cursor = 'pointer';
+                    label.style.fontSize = '1.1rem';
+                    label.style.fontWeight = '500';
+                    label.style.marginBottom = '10px';
+                }
+            });
+            
+            console.log(`Opciones cargadas en ${containerId}:`, shuffledData.length);
         };
-    }
 
-    // === EFECTOS ESPECÍFICOS POR MISIÓN ===
+        // === GEOGRAFÍA (Egipto) ===
+        const geoOptionsData = [
+            { id: 'mexico', value: 'mexico', label: 'A) México' },
+            { id: 'egipto', value: 'egipto', label: 'B) Egipto' },
+            { id: 'china', value: 'china', label: 'C) China' }
+        ];
+        populateOptions('geo-options', geoOptionsData, 'city');
 
-    showAncientCalculatorEffect() {
-        this.showTemporaryMessage("🧮 ¡Como un matemático del antiguo Egipto!", 'encouragement');
-        this.createFloatingNumbers();
-    }
+        // === PLANETAS (Saturno) ===
+        const planetOptionsData = [
+            { id: 'volcanes', value: 'volcanes', label: 'A) Volcanes' },
+            { id: 'anillos', value: 'anillos', label: 'B) Anillos' },
+            { id: 'oceanos', value: 'oceanos', label: 'C) Océanos' }
+        ];
+        populateOptions('planet-options', planetOptionsData, 'planet-answer');
 
-    showPyramidBuildingEffect() {
-        this.showTemporaryMessage("🏗️ ¡Eres un constructor de pirámides!", 'encouragement');
-        this.createPyramidEffect();
-    }
+        // === ANIMALES (Mono) ===
+        const animalOptionsData = [
+            { id: 'leon', value: 'leon', label: 'A) León' },
+            { id: 'serpiente', value: 'serpiente', label: 'B) Serpiente' },
+            { id: 'mono', value: 'mono', label: 'C) Mono' }
+        ];
+        populateOptions('animal-options', animalOptionsData, 'animal-answer');
 
-    showSaturnRingsEffect() {
-        this.showTemporaryMessage("🪐 ¡Descubriste los secretos de Saturno!", 'encouragement');
-        this.createRingsEffect();
-    }
-
-    showPrimateIntelligenceEffect() {
-        this.showTemporaryMessage("🐒 ¡Tienes la inteligencia de un primate superior!", 'encouragement');
-        this.createBananaRain();
-    }
-
-    showAncientNumberEffect() {
-        this.showTemporaryMessage("🔢 ¡Eres un maestro de números ancestrales!", 'encouragement');
-        this.createHieroglyphEffect();
-    }
-
-    // === EFECTOS VISUALES ESPECÍFICOS ===
-
-    createFloatingNumbers() {
-        const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
-        this.createFloatingElements(numbers, '#3498db', 2000);
-    }
-
-    createPyramidEffect() {
-        const pyramidSymbols = ['🔺', '🔶', '🟧', '🟫'];
-        this.createFloatingElements(pyramidSymbols, '#d4af37', 3000);
-    }
-
-    createRingsEffect() {
-        // Crear anillos que se expanden desde el centro
-        for (let i = 0; i < 3; i++) {
-            setTimeout(() => {
-                const ring = document.createElement('div');
-                ring.style.cssText = `
-                    position: fixed;
-                    top: 50%;
-                    left: 50%;
-                    width: 50px;
-                    height: 50px;
-                    border: 3px solid #ffd700;
-                    border-radius: 50%;
-                    transform: translate(-50%, -50%);
-                    animation: expandRing 2s ease-out forwards;
-                    pointer-events: none;
-                    z-index: 1000;
-                `;
-                document.body.appendChild(ring);
-                setTimeout(() => ring.remove(), 2000);
-            }, i * 400);
-        }
-    }
-
-    createBananaRain() {
-        const bananas = ['🍌', '🐒', '🌿', '🍃'];
-        this.createFloatingElements(bananas, '#ffeb3b', 2500);
-    }
-
-    createHieroglyphEffect() {
-        const hieroglyphs = ['𓀀', '𓁶', '𓂀', '𓃽', '𓄿', '𓅱', '𓆣', '𓇋', '𓈖', '𓉐'];
-        this.createFloatingElements(hieroglyphs, '#d4af37', 3000);
-    }
-
-    createFloatingElements(elements, color, duration) {
-        for (let i = 0; i < 20; i++) {
-            setTimeout(() => {
-                const element = document.createElement('div');
-                element.style.cssText = `
-                    position: fixed;
-                    top: -20px;
-                    left: ${Math.random() * 100}vw;
-                    font-size: ${Math.random() * 20 + 15}px;
-                    color: ${color};
-                    pointer-events: none;
-                    z-index: 999;
-                    animation: float ${duration}ms ease-out forwards;
-                `;
-                element.textContent = elements[Math.floor(Math.random() * elements.length)];
-                document.body.appendChild(element);
-                setTimeout(() => element.remove(), duration);
-            }, i * 100);
-        }
-    }
-
-    // === OVERRIDE DE MÉTODOS PARA CELEBRACIONES ===
-
-    markMissionCompleted(missionType) {
-        super.markMissionCompleted(missionType);
+        // Pistas del mono
+        const monoClues = [
+            'Soy un mamífero muy inteligente que vive en los árboles.',
+            'Me encanta comer bananas y frutas dulces.',
+            'Soy un pariente cercano de los humanos.',
+            'Uso herramientas para conseguir comida.',
+            'Me columpio de rama en rama usando mi cola.'
+        ];
         
-        // Mostrar dato educativo y celebración específica
-        if (this.educationalFacts[missionType]) {
-            setTimeout(() => {
-                this.showEducationalFact(missionType);
-            }, 1000);
-        }
-
-        if (this.celebrations[missionType]) {
-            setTimeout(() => {
-                this.celebrations[missionType]();
-            }, 1500);
+        const cluesList = document.getElementById('animal-clues');
+        if (cluesList) {
+            cluesList.innerHTML = '';
+            const shuffledClues = [...monoClues];
+            shuffleArray(shuffledClues);
+            shuffledClues.forEach((clue, index) => {
+                const li = document.createElement('li');
+                li.textContent = `${index + 1}. ${clue}`;
+                cluesList.appendChild(li);
+            });
         }
     }
 
-    showEducationalFact(missionType) {
-        const fact = this.educationalFacts[missionType];
-        const factDiv = document.createElement('div');
-        factDiv.style.cssText = `
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
-            background: linear-gradient(45deg, #fff3cd, #ffeaa7);
-            border: 2px solid #d4af37;
-            border-radius: 15px;
-            padding: 15px;
-            font-size: 1rem;
-            color: #856404;
-            text-align: center;
-            z-index: 1000;
-            animation: slideUp 0.5s ease, slideDown 0.5s ease 4s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        `;
-        factDiv.innerHTML = `<strong>💡 ¿Sabías que...?</strong><br>${fact}`;
+    setupOriginalEventListeners() {
+        // === CALIFICACIÓN GEOGRAFÍA ===
+        const gradeGeoBtn = document.getElementById('grade-geo');
+        if (gradeGeoBtn) {
+            gradeGeoBtn.addEventListener('click', () => {
+                const clueHTML = `<div class="clue-box visible"><strong>¡Pista Secreta!</strong> Los faraones eran los reyes del antiguo Egipto y construyeron las pirámides como tumbas. ¡La Gran Pirámide de Giza fue una de las Siete Maravillas del Mundo Antiguo!<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Kheops-Pyramid.jpg/1280px-Kheops-Pyramid.jpg" alt="Pirámides de Giza"></div>`;
+                this.gradeMultipleChoice('geo-mission', 'geo-results', 'city', clueHTML);
+            });
+        }
+
+        // === CALIFICACIÓN PLANETAS ===
+        const gradePlanetBtn = document.getElementById('grade-planet');
+        if (gradePlanetBtn) {
+            gradePlanetBtn.addEventListener('click', () => {
+                const clueHTML = `<div class="clue-box visible"><strong>¡Pista Secreta!</strong> Los anillos de Saturno están hechos de miles de millones de trozos de hielo y roca. ¡Son tan delgados que si pudieras verlos de lado, apenas serían visibles!<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Saturn_during_Equinox.jpg/1280px-Saturn_during_Equinox.jpg" alt="Saturno y sus anillos"></div>`;
+                this.gradeMultipleChoice('planet-mission', 'planet-results', 'planet-answer', clueHTML);
+            });
+        }
+
+        // === CALIFICACIÓN ANIMALES ===
+        const gradeAnimalBtn = document.getElementById('grade-animal');
+        if (gradeAnimalBtn) {
+            gradeAnimalBtn.addEventListener('click', () => {
+                const clueHTML = `<div class="clue-box visible"><strong>¡Pista Secreta!</strong> Los monos pueden usar herramientas como palos para sacar termitas de los hormigueros. ¡Son tan inteligentes que pueden aprender lenguaje de señas y resolver problemas complejos!<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Bonnet_macaque_%28Macaca_radiata%29_Photograph_By_Shantanu_Kuveskar.jpg/1280px-Bonnet_macaque_%28Macaca_radiata%29_Photograph_By_Shantanu_Kuveskar.jpg" alt="Mono en su hábitat"></div>`;
+                this.gradeMultipleChoice('animal-mission', 'animal-results', 'animal-answer', clueHTML);
+            });
+        }
+    }
+
+    // === MÉTODO DE CALIFICACIÓN ORIGINAL ===
+    gradeMultipleChoice(missionId, resultsId, radioName, clueHTML) {
+        const mission = document.getElementById(missionId);
+        const resultsArea = document.getElementById(resultsId);
+        const correctAnswer = mission.dataset.answer;
+        const selectedOption = document.querySelector(`input[name="${radioName}"]:checked`);
         
-        document.body.appendChild(factDiv);
-        setTimeout(() => factDiv.remove(), 5000);
+        // Limpiar estilos anteriores
+        document.querySelectorAll(`#${missionId} label`).forEach(l => 
+            l.classList.remove('correct', 'incorrect'));
+        
+        resultsArea.innerHTML = '';
+        
+        if (selectedOption) {
+            const label = document.querySelector(`label[for="${selectedOption.id}"]`);
+            if (selectedOption.value === correctAnswer) {
+                label.classList.add('correct');
+                resultsArea.innerHTML = clueHTML;
+                this.playSound('success');
+                this.confetti();
+                this.markMissionCompleted(missionId.split('-')[0]); // math, geo, planet, animal
+            } else {
+                label.classList.add('incorrect');
+                const correctLabel = document.querySelector(`#${missionId} input[value="${correctAnswer}"] + label`);
+                if (correctLabel) correctLabel.classList.add('correct');
+                resultsArea.textContent = "Esa no es la respuesta. ¡Inténtalo de nuevo!";
+                this.playSound('error');
+            }
+        } else {
+            resultsArea.textContent = "Por favor, elige una opción.";
+        }
     }
 
-    // === FUNCIONES DE UTILIDAD ===
+    // === OVERRIDE DE MÉTODOS DE LA CLASE BASE ===
+    populateContent() {
+        // No llamar a super.populateContent() para evitar conflictos
+        // En su lugar, usar solo nuestro código original
+        this.populateOriginalOptions();
+        this.setupOriginalEventListeners();
+    }
 
+    // === EFECTOS TEMÁTICOS ESPECÍFICOS ===
+    
     showTemporaryMessage(text, type = 'info') {
         const messageDiv = document.createElement('div');
         const colors = {
@@ -290,71 +205,46 @@ class ExpedicionAncestral extends ExpedicionBase {
         document.body.appendChild(messageDiv);
         setTimeout(() => messageDiv.remove(), 3000);
     }
+
 }
 
 // === INICIALIZACIÓN ===
 document.addEventListener('DOMContentLoaded', () => {
     // Crear la instancia de la expedición ancestral
     window.expedicionAncestral = new ExpedicionAncestral();
+    window.expedicionAncestral.startTime = Date.now();
     
-    // Configurar eventos específicos de la expedición ancestral
-    setupAncestralSpecialFeatures();
-});
-
-// === CARACTERÍSTICAS ESPECIALES DE LA EXPEDICIÓN ANCESTRAL ===
-function setupAncestralSpecialFeatures() {
-    // Mensaje de bienvenida temático
+    console.log('Expedición Ancestral inicializada con código original');
+    
+    // VERIFICACIÓN ADICIONAL - Forzar carga después de un delay
     setTimeout(() => {
-        window.expedicionAncestral.showTemporaryMessage("¡Bienvenido a la Expedición Ancestral! 🏺", 'encouragement');
+        console.log('Verificando opciones después de 1 segundo...');
+        const planetOptions = document.getElementById('planet-options');
+        
+        // FIX AGRESIVO: Reemplazar completamente el contenido
+        console.log('Aplicando FIX AGRESIVO para planet-options...');
+        planetOptions.innerHTML = `
+            <li style="margin-bottom: 10px;">
+                <input type="radio" name="planet-answer" id="volcanes" value="volcanes" style="display: none;">
+                <label for="volcanes" style="display: block; padding: 15px; background-color: #fff; border: 2px solid #eee; border-radius: 10px; cursor: pointer; font-size: 16px; color: #000; font-weight: 500;">A) Volcanes</label>
+            </li>
+            <li style="margin-bottom: 10px;">
+                <input type="radio" name="planet-answer" id="anillos" value="anillos" style="display: none;">
+                <label for="anillos" style="display: block; padding: 15px; background-color: #fff; border: 2px solid #eee; border-radius: 10px; cursor: pointer; font-size: 16px; color: #000; font-weight: 500;">B) Anillos</label>
+            </li>
+            <li style="margin-bottom: 10px;">
+                <input type="radio" name="planet-answer" id="oceanos" value="oceanos" style="display: none;">
+                <label for="oceanos" style="display: block; padding: 15px; background-color: #fff; border: 2px solid #eee; border-radius: 10px; cursor: pointer; font-size: 16px; color: #000; font-weight: 500;">C) Océanos</label>
+            </li>
+        `;
+        
+        console.log('✅ FIX AGRESIVO aplicado. planet-options ahora tiene HTML hardcodeado');
     }, 1000);
-    
-    // Agregar contexto histórico cada 3 minutos
-    setInterval(() => {
-        if (window.expedicionAncestral.completedMissions < window.expedicionAncestral.totalMissions) {
-            const historicalFacts = [
-                "🏺 Los antiguos egipcios momificaban a sus faraones para la vida después de la muerte.",
-                "🪐 Saturno tiene más de 80 lunas conocidas orbitando a su alrededor.",
-                "🐒 Los chimpancés comparten el 99% de su ADN con los humanos."
-            ];
-            const randomFact = historicalFacts[Math.floor(Math.random() * historicalFacts.length)];
-            window.expedicionAncestral.showTemporaryMessage(randomFact, 'info');
-        }
-    }, 180000); // 3 minutos
-}
+});
 
 // === ESTILOS DINÁMICOS PARA ANIMACIONES ESPECÍFICAS ===
 const ancestralStyle = document.createElement('style');
 ancestralStyle.textContent = `
-    @keyframes twinkle {
-        0%, 100% { opacity: 0.3; transform: scale(1); }
-        50% { opacity: 1; transform: scale(1.2); }
-    }
-    
-    @keyframes pulse {
-        0%, 100% { transform: scale(1); opacity: 0.6; }
-        50% { transform: scale(1.1); opacity: 1; }
-    }
-    
-    @keyframes expandRing {
-        0% { width: 50px; height: 50px; opacity: 1; }
-        100% { width: 300px; height: 300px; opacity: 0; }
-    }
-    
-    @keyframes float {
-        0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-        100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-    }
-    
-    @keyframes slideUp {
-        from { transform: translateY(100%); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
-    }
-    
-    @keyframes slideDown {
-        from { transform: translateY(0); opacity: 1; }
-        to { transform: translateY(100%); opacity: 0; }
-    }
-    
     @keyframes slideInRight {
         from { transform: translateX(100%); opacity: 0; }
         to { transform: translateX(0); opacity: 1; }
