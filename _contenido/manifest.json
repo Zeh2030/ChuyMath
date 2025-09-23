@@ -1,17 +1,21 @@
 [
   {
-    "id": "2025-09-22",
-    "titulo": "La Aventura del Lunes",
-    "descripcion": "¡Practica sumas, restas y descubre un secreto sobre el planeta Marte!",
-    "icono": "🚀",
-    "temas": ["mates", "planetas"]
+    "id": "expedicion-galactica",
+    "titulo": "Expedición Galáctica",
+    "descripcion": "¡Explora San Francisco, conoce a Marte, descubre pulpos y juega Kakooma!",
+    "icono": "🌌",
+    "temas": ["mates", "planetas", "geografia", "animales"],
+    "esJuegoEspecial": true,
+    "urlJuego": "../juegos/expediciones/galactica/index.html"
   },
   {
-    "id": "2025-09-23",
-    "titulo": "El Reto de la Gran Manzana",
+    "id": "expedicion-marina",
+    "titulo": "Expedición Marina",
     "descripcion": "¡Viaja a Nueva York, conoce a Júpiter y resuelve el misterio del tiburón!",
-    "icono": "🌟",
-    "temas": ["geografia", "animales"]
+    "icono": "🌊",
+    "temas": ["mates", "geografia", "planetas", "animales"],
+    "esJuegoEspecial": true,
+    "urlJuego": "../juegos/expediciones/marina/index.html"
   },
   {
     "id": "2025-09-24",
@@ -44,12 +48,12 @@
         "temas": ["geometria", "logica"]
       },
       {
-        "id": "kakoma-geometrico",
-        "titulo": "Kakoma Geométrico: El Gran Desafío",
-        "descripcion": "¡El desafío definitivo! 3 niveles de dificultad creciente con triángulos, cuadrados y rectángulos.",
-        "icono": "🧩",
-        "temas": ["geometria", "logica", "desafio"],
+        "id": "expedicion-ancestral",
+        "titulo": "Expedición Ancestral",
+        "descripcion": "¡Explora Egipto, conoce a Saturno y descubre la inteligencia de los primates!",
+        "icono": "🏺",
+        "temas": ["mates", "historia", "planetas", "animales"],
         "esJuegoEspecial": true,
-        "urlJuego": "../aventura/aventura.html?dia=kakoma-geometrico"
+        "urlJuego": "../juegos/expediciones/ancestral/index.html"
       }
 ]
