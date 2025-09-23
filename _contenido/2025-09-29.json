@@ -1,0 +1,42 @@
+{
+  "id": "2025-09-29",
+  "titulo": "El Club de las Mascotas",
+  "misiones": [
+    {
+      "id": "mision-tabla-1",
+      "tipo": "tabla-doble-entrada",
+      "titulo": "El Misterio de las Mascotas",
+      "instruccion": "Lee las pistas y usa la tabla para descubrir qué mascota tiene cada niño. Haz clic en las casillas para marcar con ✅ o ❌.",
+      "pistas": [
+        "Ana no tiene perro",
+        "Carlos tiene un animal que ladra",
+        "Beto no tiene gato"
+      ],
+      "encabezados_fila": ["Ana", "Beto", "Carlos"],
+      "encabezados_columna": ["Perro", "Gato", "Pez"],
+      "pregunta_final": "¿Qué mascota tiene Beto?",
+      "opciones_finales": ["Perro", "Gato", "Pez"],
+      "respuesta_final": "Pez",
+      "explicacion_correcta": "¡Perfecto! Usando las pistas: Carlos tiene perro (ladra), Ana no tiene perro ni gato (solo queda pez), entonces Beto tiene pez. ¡Eres un gran detective!",
+      "explicacion_incorrecta": "No es correcto. Vamos paso a paso: Carlos tiene perro porque ladra, Ana no tiene perro ni gato (solo queda pez), entonces Beto tiene pez."
+    },
+    {
+      "id": "mision-tabla-2",
+      "tipo": "tabla-doble-entrada",
+      "titulo": "Los Colores Favoritos",
+      "instruccion": "Descubre el color favorito de cada niño usando las pistas.",
+      "pistas": [
+        "Luis no le gusta el rojo",
+        "María ama el azul",
+        "Pedro no tiene el color que empieza con 'v'"
+      ],
+      "encabezados_fila": ["Luis", "María", "Pedro"],
+      "encabezados_columna": ["Rojo", "Azul", "Verde"],
+      "pregunta_final": "¿Cuál es el color favorito de Luis?",
+      "opciones_finales": ["Rojo", "Azul", "Verde"],
+      "respuesta_final": "Verde",
+      "explicacion_correcta": "¡Excelente! María tiene azul, Luis no tiene rojo (solo queda verde), Pedro no tiene verde (solo queda rojo). ¡Lógica perfecta!",
+      "explicacion_incorrecta": "Vamos paso a paso: María tiene azul, Luis no tiene rojo, Pedro no tiene verde. Entonces Luis tiene verde."
+    }
+  ]
+}
