@@ -200,6 +200,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         mensajeFinal.textContent = `¡Aventura terminada! Lograste ${puntaje} de ${totalPreguntas} aciertos. ¡Sigue así!`;
         completarBtn.style.display = 'none';
+        
+        // Mostrar botones de navegación final
+        const navegacionFinal = document.getElementById('navegacion-final');
+        if (navegacionFinal) {
+            navegacionFinal.classList.remove('hidden');
+        }
+        
         guardarProgreso();
     }
 
