@@ -62,12 +62,12 @@
           "explicacion_incorrecta": "No es correcto. En una cuadrícula 2x2 hay: 4 rectángulos pequeños (1x1), 2 rectángulos horizontales (1x2), 2 rectángulos verticales (2x1) y 1 rectángulo grande (2x2). ¡En total son 9 rectángulos!"
         },
         {
-          "pregunta": "¿Cuántos triángulos hay en esta estrella?",
-          "figura_svg": "<svg width='180' height='180' viewBox='0 0 100 100'><path d='M50 10 L70 80 L10 40 L90 40 L30 80 Z' stroke='black' stroke-width='2' fill='none'/><path d='M50 10 L50 40' stroke='black' stroke-width='2' fill='none'/><path d='M50 40 L30 80' stroke='black' stroke-width='2' fill='none'/><path d='M50 40 L70 80' stroke='black' stroke-width='2' fill='none'/></svg>",
-          "respuesta": "6",
-          "pista": "Cuenta el triángulo grande y los triángulos pequeños que se forman.",
-          "explicacion_correcta": "¡Perfecto! Hay 6 triángulos: el triángulo grande de la estrella y 5 triángulos pequeños que se forman con las líneas internas. ¡Las estrellas son figuras muy interesantes para contar!",
-          "explicacion_incorrecta": "No es correcto. Hay el triángulo grande de la estrella y 5 triángulos pequeños que se forman cuando dibujamos las líneas internas. ¡En total son 6 triángulos!"
+          "pregunta": "¿Cuántos triángulos hay en esta casa?",
+          "figura_svg": "<svg width='180' height='180' viewBox='0 0 100 100'><rect x='20' y='60' width='60' height='40' stroke='black' stroke-width='2' fill='none'/><path d='M20 60 L50 30 L80 60 Z' stroke='black' stroke-width='2' fill='none'/></svg>",
+          "respuesta": "2",
+          "pista": "Cuenta el triángulo del techo y el triángulo que se forma con la casa.",
+          "explicacion_correcta": "¡Excelente! Hay 2 triángulos: el triángulo del techo de la casa y el triángulo que se forma cuando juntamos el techo con la parte rectangular de la casa. ¡Las casas tienen formas muy interesantes!",
+          "explicacion_incorrecta": "No es correcto. Hay 2 triángulos: el triángulo del techo de la casa y el triángulo que se forma cuando juntamos el techo con la parte rectangular de la casa. ¡En total son 2 triángulos!"
         }
       ]
     }
