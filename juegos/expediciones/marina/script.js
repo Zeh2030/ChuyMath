@@ -141,6 +141,27 @@ class ExpedicionMarina extends ExpedicionBase {
             // Debug: Las opciones de planetas se manejan automáticamente por la clase base
     }
 
+    populatePlanetsSection() {
+        const planetOptions = document.getElementById('planet-options');
+        if (!planetOptions || !this.config.planets.options) {
+            console.log('Error: No se encontró planet-options o no hay opciones en config');
+            return;
+        }
+
+        const shuffledOptions = this.shuffleArray([...this.config.planets.options]);
+        planetOptions.innerHTML = '';
+        
+        shuffledOptions.forEach(option => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <input type="radio" name="planet" id="${option.id}" value="${option.value}">
+                <label for="${option.id}">${option.label}</label>
+            `;
+            planetOptions.appendChild(li);
+        });
+        
+        console.log('Opciones de planetas cargadas:', shuffledOptions.length);
+    }
 
     populateGeographySection() {
         const geoOptions = document.getElementById('geo-options');
@@ -357,6 +378,9 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Forzando carga de opciones específicas...');
         
         // Forzar opciones que SÍ necesitan override
+        if (window.expedicionMarina.populatePlanetsSection) {
+            window.expedicionMarina.populatePlanetsSection();
+        }
         if (window.expedicionMarina.populateGeographySection) {
             window.expedicionMarina.populateGeographySection();
         }
