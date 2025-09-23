@@ -137,6 +137,37 @@ class ExpedicionMarina extends ExpedicionBase {
     populateContent() {
         super.populateContent();
         this.addProgressIndicators();
+        
+        // Debug: Verificar que las opciones de planetas se carguen
+        setTimeout(() => {
+            const planetOptions = document.getElementById('planet-options');
+            if (planetOptions && planetOptions.children.length === 0) {
+                console.log('Error: Las opciones de planetas no se cargaron. Forzando carga...');
+                this.populatePlanetsSection();
+            }
+        }, 100);
+    }
+
+    populatePlanetsSection() {
+        const planetOptions = document.getElementById('planet-options');
+        if (!planetOptions || !this.config.planets.options) {
+            console.log('Error: No se encontró planet-options o no hay opciones en config');
+            return;
+        }
+
+        const shuffledOptions = this.shuffleArray([...this.config.planets.options]);
+        planetOptions.innerHTML = '';
+        
+        shuffledOptions.forEach(option => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <input type="radio" name="planet-answer" id="${option.id}" value="${option.value}">
+                <label for="${option.id}">${option.label}</label>
+            `;
+            planetOptions.appendChild(li);
+        });
+        
+        console.log('Opciones de planetas cargadas:', shuffledOptions.length);
     }
 
     addProgressIndicators() {
