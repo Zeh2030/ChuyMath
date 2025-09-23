@@ -41,10 +41,65 @@ class ExpedicionMarina extends ExpedicionBase {
                 const li = document.createElement('li');
                 li.innerHTML = `<input type="radio" name="${radioName}" id="${opt.id}" value="${opt.value}"><label for="${opt.id}">${opt.label}</label>`;
                 container.appendChild(li);
+                
+                // FIX TEMPORAL: Forzar estilos correctos
+                const label = li.querySelector('label');
+                if (label) {
+                    label.style.display = 'block';
+                    label.style.padding = '15px';
+                    label.style.backgroundColor = '#fff';
+                    label.style.border = '2px solid #eee';
+                    label.style.borderRadius = '10px';
+                    label.style.cursor = 'pointer';
+                    label.style.fontSize = '1.1rem';
+                    label.style.fontWeight = '500';
+                    label.style.marginBottom = '10px';
+                }
             });
             
             console.log(`Opciones cargadas en ${containerId}:`, shuffledData.length);
             console.log(`HTML generado:`, container.innerHTML.substring(0, 200) + '...');
+            
+            // DEBUG VISUAL: Verificar que los elementos sean visibles
+            setTimeout(() => {
+                const labels = container.querySelectorAll('label');
+                console.log(`DEBUG ${containerId}: Encontrados ${labels.length} labels`);
+                labels.forEach((label, index) => {
+                    const rect = label.getBoundingClientRect();
+                    const computedStyle = window.getComputedStyle(label);
+                    console.log(`Label ${index}:`, {
+                        text: label.textContent,
+                        visible: rect.width > 0 && rect.height > 0,
+                        dimensions: `${rect.width}x${rect.height}`,
+                        display: computedStyle.display,
+                        opacity: computedStyle.opacity,
+                        visibility: computedStyle.visibility,
+                        overflow: computedStyle.overflow,
+                        color: computedStyle.color,
+                        backgroundColor: computedStyle.backgroundColor,
+                        textContent: label.textContent,
+                        innerHTML: label.innerHTML
+                    });
+                    
+                    // FORZAR VISIBILIDAD TOTAL
+                    label.style.visibility = 'visible';
+                    label.style.overflow = 'visible';
+                    label.style.color = '#000';
+                    label.style.fontSize = '16px';
+                    label.style.lineHeight = '1.5';
+                    label.style.minHeight = '50px';
+                    label.style.width = '100%';
+                });
+                
+                // DEBUG: Verificar el contenedor padre
+                console.log(`DEBUG ${containerId} container:`, {
+                    tagName: container.tagName,
+                    className: container.className,
+                    id: container.id,
+                    children: container.children.length,
+                    innerHTML: container.innerHTML.substring(0, 500)
+                });
+            }, 100);
         };
 
         // === GEOGRAFÍA (Nueva York) ===
@@ -174,26 +229,37 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         console.log('Verificando opciones después de 1 segundo...');
         const planetOptions = document.getElementById('planet-options');
-        if (planetOptions && planetOptions.children.length === 0) {
-            console.log('ERROR: planet-options está vacío después de 1 segundo. Forzando carga...');
-            
-            // Cargar opciones de planetas manualmente
-            const planetOptionsData = [
-                { id: 'pequeno', value: 'pequeno', label: 'A) Pequeño' },
-                { id: 'rocoso', value: 'rocoso', label: 'B) Rocoso' },
-                { id: 'gigante', value: 'gigante', label: 'C) Gigante' }
-            ];
-            
-            planetOptions.innerHTML = '';
-            planetOptionsData.forEach(opt => {
-                const li = document.createElement('li');
-                li.innerHTML = `<input type="radio" name="planet-answer" id="${opt.id}" value="${opt.value}"><label for="${opt.id}">${opt.label}</label>`;
-                planetOptions.appendChild(li);
+        
+        // FIX AGRESIVO: Reemplazar completamente el contenido
+        console.log('Aplicando FIX AGRESIVO para planet-options...');
+        planetOptions.innerHTML = `
+            <li style="margin-bottom: 10px;">
+                <input type="radio" name="planet-answer" id="pequeno" value="pequeno" style="display: none;">
+                <label for="pequeno" style="display: block; padding: 15px; background-color: #fff; border: 2px solid #eee; border-radius: 10px; cursor: pointer; font-size: 16px; color: #000; font-weight: 500;">A) Pequeño</label>
+            </li>
+            <li style="margin-bottom: 10px;">
+                <input type="radio" name="planet-answer" id="rocoso" value="rocoso" style="display: none;">
+                <label for="rocoso" style="display: block; padding: 15px; background-color: #fff; border: 2px solid #eee; border-radius: 10px; cursor: pointer; font-size: 16px; color: #000; font-weight: 500;">B) Rocoso</label>
+            </li>
+            <li style="margin-bottom: 10px;">
+                <input type="radio" name="planet-answer" id="gigante" value="gigante" style="display: none;">
+                <label for="gigante" style="display: block; padding: 15px; background-color: #fff; border: 2px solid #eee; border-radius: 10px; cursor: pointer; font-size: 16px; color: #000; font-weight: 500;">C) Gigante</label>
+            </li>
+        `;
+        
+        console.log('✅ FIX AGRESIVO aplicado. planet-options ahora tiene HTML hardcodeado');
+        
+        // Verificar que se vean
+        setTimeout(() => {
+            const labels = planetOptions.querySelectorAll('label');
+            labels.forEach((label, index) => {
+                const rect = label.getBoundingClientRect();
+                console.log(`Label ${index} después del fix:`, {
+                    text: label.textContent,
+                    dimensions: `${rect.width}x${rect.height}`,
+                    visible: rect.width > 0 && rect.height > 0
+                });
             });
-            
-            console.log('Opciones de planetas cargadas manualmente:', planetOptionsData.length);
-        } else {
-            console.log('✅ planet-options tiene', planetOptions.children.length, 'elementos');
-        }
+        }, 200);
     }, 1000);
 });
