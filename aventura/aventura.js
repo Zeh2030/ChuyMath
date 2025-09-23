@@ -67,11 +67,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 case 'conteo-figuras':
                     contenidoMision += renderizarMisionConteo(misionData);
                     break;
+                // ===== NUEVO CASO PARA TABLAS DE DOBLE ENTRADA =====
+                case 'tabla-doble-entrada':
+                    contenidoMision += renderizarMisionTabla(misionData);
+                    break;
+                // ===== NUEVO CASO PARA CRIPTOARITMÉTICA =====
+                case 'criptoaritmetica':
+                    contenidoMision += renderizarMisionCripto(misionData);
+                    break;
                 default:
                     contenidoMision += `<p>Tipo de misión no reconocido.</p>`;
             }
             misionDiv.innerHTML = contenidoMision;
             misionesContainer.appendChild(misionDiv);
+
+            // Añadir listeners de eventos para tablas
+            if (misionData.tipo === 'tabla-doble-entrada') {
+                addTableListeners(misionDiv);
+            }
         });
         aventuraFooter.classList.remove('hidden');
     }
@@ -147,6 +160,97 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         return ejerciciosHTML;
     }
+
+    // ===== NUEVA FUNCIÓN PARA RENDERIZAR TABLAS DE DOBLE ENTRADA =====
+    function renderizarMisionTabla(data) {
+        const pistasHTML = data.pistas.map(pista => `<li>${pista}</li>`).join('');
+        const headersColumnasHTML = data.encabezados_columna.map(header => `<th>${header}</th>`).join('');
+        
+        let filasTablaHTML = '';
+        data.encabezados_fila.forEach(headerFila => {
+            let celdasHTML = '';
+            data.encabezados_columna.forEach(() => {
+                celdasHTML += `<td class="celda-logica"></td>`;
+            });
+            filasTablaHTML += `<tr><th>${headerFila}</th>${celdasHTML}</tr>`;
+        });
+
+        const opcionesFinalesHTML = data.opciones_finales.map((opcion, index) => {
+            const idUnico = `tabla-final-${data.id}-${index}`;
+            return `<li><input type="radio" name="tabla-final-${data.id}" id="${idUnico}" value="${opcion}"><label for="${idUnico}">${opcion}</label></li>`;
+        }).join('');
+
+        return `
+            <p class="tabla-instruccion">${data.instruccion}</p>
+            <div class="tabla-logica-container">
+                <div class="tabla-pistas">
+                    <h3>Pistas 🕵️</h3>
+                    <ul>${pistasHTML}</ul>
+                </div>
+                <div class="tabla-interactiva-container">
+                    <table class="tabla-interactiva">
+                        <thead>
+                            <tr>
+                                <th class="header-vacio"></th>
+                                ${headersColumnasHTML}
+                            </tr>
+                        </thead>
+                        <tbody>${filasTablaHTML}</tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="pregunta-final-container">
+                <p class="pregunta-final-texto">${data.pregunta_final}</p>
+                <ul class="opciones-lista">${opcionesFinalesHTML}</ul>
+            </div>
+        `;
+    }
+
+    // ===== FUNCIÓN PARA AÑADIR INTERACTIVIDAD A LAS TABLAS =====
+    function addTableListeners(misionDiv) {
+        misionDiv.querySelectorAll('.celda-logica').forEach(celda => {
+            celda.addEventListener('click', () => {
+                const estados = ['', '✅', '❌'];
+                const clases = ['', 'si', 'no'];
+                
+                let estadoActual = celda.textContent;
+                let indiceActual = estados.indexOf(estadoActual);
+                let nuevoIndice = (indiceActual + 1) % estados.length;
+
+                celda.textContent = estados[nuevoIndice];
+                celda.classList.remove('si', 'no');
+                if (clases[nuevoIndice]) {
+                    celda.classList.add(clases[nuevoIndice]);
+                }
+            });
+        });
+    }
+
+    // ===== NUEVA FUNCIÓN PARA RENDERIZAR CRIPTOARITMÉTICA =====
+    function renderizarMisionCripto(data) {
+        const solucionHTML = data.solucion.map(item => `
+            <div class="cripto-input-grupo">
+                <span class="figura">${item.figura}</span> = 
+                <input type="number" inputmode="numeric" data-figura="${item.figura}" placeholder="?">
+            </div>
+        `).join('');
+
+        return `
+            <div class="cripto-ejercicio">
+                <p class="cripto-instruccion">${data.instruccion}</p>
+                <div class="cripto-container">
+                    <div class="cripto-operacion">
+                        <div>${data.operacion.linea1}</div>
+                        <div class="linea-suma">${data.operacion.linea2}</div>
+                        <div>${data.operacion.resultado}</div>
+                    </div>
+                    <div class="cripto-solucion-area">
+                        ${solucionHTML}
+                    </div>
+                </div>
+            </div>
+        `;
+    }
     
     // --- OTRAS FUNCIONES DE RENDERIZADO (SIN CAMBIOS) ---
     function renderizarMisionOperaciones(data) { /* ... */ 
@@ -192,6 +296,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     break;
                 case 'conteo-figuras':
                     puntaje += calificarMisionConteo(misionDiv, misionData);
+                    break;
+                // ===== NUEVO CASO DE CALIFICACIÓN PARA TABLAS =====
+                case 'tabla-doble-entrada':
+                    puntaje += calificarMisionTabla(misionDiv, misionData) ? 1 : 0;
+                    break;
+                // ===== NUEVO CASO DE CALIFICACIÓN PARA CRIPTOARITMÉTICA =====
+                case 'criptoaritmetica':
+                    puntaje += calificarMisionCripto(misionDiv, misionData);
                     break;
                 case 'numberblocks-dibujo':
                     puntaje++;
@@ -443,6 +555,185 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         return false;
     }
+
+    // ===== NUEVA FUNCIÓN PARA CALIFICAR TABLAS DE DOBLE ENTRADA =====
+    function calificarMisionTabla(misionDiv, misionData) {
+        const opcionSeleccionada = misionDiv.querySelector('input[type="radio"]:checked');
+        
+        if (!opcionSeleccionada) {
+            // Mostrar mensaje si no se seleccionó ninguna opción
+            const preguntaContainer = misionDiv.querySelector('.pregunta-final-container');
+            if (preguntaContainer) {
+                const mensaje = document.createElement('div');
+                mensaje.style.color = '#e74c3c';
+                mensaje.style.fontWeight = 'bold';
+                mensaje.style.marginTop = '10px';
+                mensaje.textContent = '¡Selecciona una respuesta!';
+                preguntaContainer.appendChild(mensaje);
+            }
+            return false;
+        }
+
+        const esCorrecta = opcionSeleccionada.value === misionData.respuesta_final;
+        const label = opcionSeleccionada.parentElement.querySelector('label');
+        
+        // Aplicar estilos de feedback
+        if (esCorrecta) {
+            label.style.backgroundColor = 'var(--c-success)';
+            label.style.color = 'white';
+            label.style.borderColor = 'var(--c-success)';
+            
+            // Mostrar explicación correcta si existe
+            if (misionData.explicacion_correcta) {
+                mostrarExplicacionTabla(misionDiv, misionData.explicacion_correcta, 'correcta', '🎉');
+            }
+        } else {
+            label.style.backgroundColor = 'var(--c-danger)';
+            label.style.color = 'white';
+            label.style.borderColor = 'var(--c-danger)';
+            
+            // Mostrar explicación incorrecta si existe
+            if (misionData.explicacion_incorrecta) {
+                mostrarExplicacionTabla(misionDiv, misionData.explicacion_incorrecta, 'incorrecta', '💡');
+            }
+        }
+
+        return esCorrecta;
+    }
+
+    // ===== FUNCIÓN PARA MOSTRAR EXPLICACIONES EN TABLAS =====
+    function mostrarExplicacionTabla(misionDiv, texto, tipo, icono) {
+        const explicacionDiv = document.createElement('div');
+        explicacionDiv.className = `explicacion-feedback ${tipo}`;
+        explicacionDiv.style.marginTop = '20px';
+        explicacionDiv.style.padding = '15px';
+        explicacionDiv.style.borderRadius = '10px';
+        explicacionDiv.style.fontSize = '1.1rem';
+        explicacionDiv.style.fontWeight = '600';
+        explicacionDiv.innerHTML = `
+            <span class="icono-explicacion">${icono}</span>
+            ${texto}
+        `;
+        
+        if (tipo === 'correcta') {
+            explicacionDiv.style.backgroundColor = '#e8f8f5';
+            explicacionDiv.style.color = '#27ae60';
+            explicacionDiv.style.border = '2px solid #2ecc71';
+        } else {
+            explicacionDiv.style.backgroundColor = '#fdf2f2';
+            explicacionDiv.style.color = '#e74c3c';
+            explicacionDiv.style.border = '2px solid #e74c3c';
+        }
+        
+        const preguntaContainer = misionDiv.querySelector('.pregunta-final-container');
+        if (preguntaContainer) {
+            preguntaContainer.appendChild(explicacionDiv);
+        }
+    }
+
+    // ===== NUEVA FUNCIÓN PARA CALIFICAR CRIPTOARITMÉTICA =====
+    function calificarMisionCripto(misionDiv, misionData) {
+        let aciertos = 0;
+        const inputs = misionDiv.querySelectorAll('.cripto-input-grupo input');
+        const ejercicioDiv = misionDiv.querySelector('.cripto-ejercicio');
+        
+        // Verificar si todos los inputs están llenos
+        let todosLlenos = true;
+        inputs.forEach(input => {
+            if (!input.value.trim()) {
+                todosLlenos = false;
+                input.style.borderColor = '#e74c3c';
+                input.style.backgroundColor = '#fdf2f2';
+            }
+        });
+        
+        if (!todosLlenos) {
+            // Mostrar mensaje si faltan respuestas
+            mostrarMensajeCripto(ejercicioDiv, '¡Completa todos los valores!', 'error');
+            return 0;
+        }
+        
+        // Verificar cada respuesta
+        misionData.solucion.forEach(solucion => {
+            const input = misionDiv.querySelector(`input[data-figura="${solucion.figura}"]`);
+            if (input && input.value.trim() === solucion.valor) {
+                input.classList.add('correct');
+                input.classList.remove('incorrect');
+                aciertos++;
+            } else {
+                input.classList.add('incorrect');
+                input.classList.remove('correct');
+            }
+        });
+        
+        // Mostrar explicación
+        if (aciertos === misionData.solucion.length) {
+            if (misionData.explicacion_correcta) {
+                mostrarExplicacionCripto(ejercicioDiv, misionData.explicacion_correcta, 'correcta', '🎉');
+            }
+        } else {
+            if (misionData.explicacion_incorrecta) {
+                mostrarExplicacionCripto(ejercicioDiv, misionData.explicacion_incorrecta, 'incorrecta', '💡');
+            }
+        }
+        
+        return aciertos;
+    }
+
+    // ===== FUNCIÓN PARA MOSTRAR EXPLICACIONES EN CRIPTOARITMÉTICA =====
+    function mostrarExplicacionCripto(ejercicioDiv, texto, tipo, icono) {
+        const explicacionDiv = document.createElement('div');
+        explicacionDiv.className = `explicacion-feedback ${tipo}`;
+        explicacionDiv.style.marginTop = '20px';
+        explicacionDiv.style.padding = '15px';
+        explicacionDiv.style.borderRadius = '10px';
+        explicacionDiv.style.fontSize = '1.1rem';
+        explicacionDiv.style.fontWeight = '600';
+        explicacionDiv.style.textAlign = 'center';
+        explicacionDiv.innerHTML = `
+            <span class="icono-explicacion">${icono}</span>
+            ${texto}
+        `;
+        
+        if (tipo === 'correcta') {
+            explicacionDiv.style.backgroundColor = '#e8f8f5';
+            explicacionDiv.style.color = '#27ae60';
+            explicacionDiv.style.border = '2px solid #2ecc71';
+        } else {
+            explicacionDiv.style.backgroundColor = '#fdf2f2';
+            explicacionDiv.style.color = '#e74c3c';
+            explicacionDiv.style.border = '2px solid #e74c3c';
+        }
+        
+        ejercicioDiv.appendChild(explicacionDiv);
+    }
+
+    // ===== FUNCIÓN PARA MOSTRAR MENSAJES EN CRIPTOARITMÉTICA =====
+    function mostrarMensajeCripto(ejercicioDiv, texto, tipo) {
+        const mensajeDiv = document.createElement('div');
+        mensajeDiv.style.marginTop = '15px';
+        mensajeDiv.style.padding = '10px';
+        mensajeDiv.style.borderRadius = '8px';
+        mensajeDiv.style.fontWeight = 'bold';
+        mensajeDiv.style.textAlign = 'center';
+        mensajeDiv.textContent = texto;
+        
+        if (tipo === 'error') {
+            mensajeDiv.style.backgroundColor = '#fdf2f2';
+            mensajeDiv.style.color = '#e74c3c';
+            mensajeDiv.style.border = '2px solid #e74c3c';
+        }
+        
+        ejercicioDiv.appendChild(mensajeDiv);
+        
+        // Remover el mensaje después de 3 segundos
+        setTimeout(() => {
+            if (mensajeDiv.parentNode) {
+                mensajeDiv.parentNode.removeChild(mensajeDiv);
+            }
+        }, 3000);
+    }
+
     function guardarProgreso() { /* ... */
         const diaAventura = getDiaAventura();
         if (!diaAventura) return;
