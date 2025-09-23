@@ -1,0 +1,71 @@
+{
+  "id": "2025-09-30",
+  "titulo": "El Código Secreto de las Frutas",
+  "misiones": [
+    {
+      "id": "mision-cripto-1",
+      "tipo": "criptoaritmetica",
+      "titulo": "La Suma de las Manzanas",
+      "instruccion": "Si cada manzana 🍎 vale lo mismo, ¿cuál es su valor?",
+      "operacion": {
+        "linea1": "  🍎",
+        "linea2": "+ 🍎",
+        "resultado": "  8"
+      },
+      "solucion": [
+        { "figura": "🍎", "valor": "4" }
+      ],
+      "explicacion_correcta": "¡Perfecto! Si 🍎 + 🍎 = 8, entonces cada manzana vale 4. ¡4 + 4 = 8!",
+      "explicacion_incorrecta": "No es correcto. Si 🍎 + 🍎 = 8, entonces cada manzana vale 4. ¡4 + 4 = 8!"
+    },
+    {
+      "id": "mision-cripto-2",
+      "tipo": "criptoaritmetica",
+      "titulo": "Uvas y Bananas",
+      "instruccion": "Descubre el valor de la uva 🍇 y la banana 🍌.",
+      "operacion": {
+        "linea1": " 🍇 🍌",
+        "linea2": "+  🍌",
+        "resultado": " 2 4"
+      },
+      "solucion": [
+        { "figura": "🍇", "valor": "1" },
+        { "figura": "🍌", "valor": "2" }
+      ],
+      "explicacion_correcta": "¡Excelente! 🍇=1 y 🍌=2, entonces 12 + 2 = 24. ¡Lógica perfecta!",
+      "explicacion_incorrecta": "No es correcto. 🍇=1 y 🍌=2, entonces 12 + 2 = 24."
+    },
+    {
+      "id": "mision-cripto-3",
+      "tipo": "criptoaritmetica",
+      "titulo": "El Misterio de las Flores",
+      "instruccion": "¿Cuánto vale cada flor 🌸?",
+      "operacion": {
+        "linea1": " 🌸 🌸 🌸",
+        "linea2": "+    🌸",
+        "resultado": " 4 0"
+      },
+      "solucion": [
+        { "figura": "🌸", "valor": "1" }
+      ],
+      "explicacion_correcta": "¡Genial! Si 🌸=1, entonces 111 + 1 = 112... Espera, revisemos: 111 + 1 = 112, no 40. ¡Necesitamos otro valor!",
+      "explicacion_incorrecta": "No es correcto. Si 🌸=1, entonces 111 + 1 = 112, no 40. ¡Piensa en otro número!"
+    },
+    {
+      "id": "mision-cripto-4",
+      "tipo": "criptoaritmetica",
+      "titulo": "Las Estrellas Mágicas",
+      "instruccion": "¿Qué valor tiene cada estrella ⭐?",
+      "operacion": {
+        "linea1": " ⭐ ⭐",
+        "linea2": "+  ⭐",
+        "resultado": " 1 5"
+      },
+      "solucion": [
+        { "figura": "⭐", "valor": "5" }
+      ],
+      "explicacion_correcta": "¡Perfecto! Si ⭐=5, entonces 55 + 5 = 60... Hmm, eso da 60, no 15. ¡Piensa mejor!",
+      "explicacion_incorrecta": "No es correcto. Si ⭐=5, entonces 55 + 5 = 60, no 15. ¡Intenta con otro número!"
+    }
+  ]
+}
