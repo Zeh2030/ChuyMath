@@ -80,6 +80,101 @@ body {
 .dashboard-header p {
     font-size: 1.2rem;
     color: #556270;
+    margin-bottom: 20px;
+}
+
+.back-button {
+    display: inline-block;
+    padding: 10px 25px;
+    background: linear-gradient(45deg, #95a5a6, #7f8c8d);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-family: var(--font-headings);
+    font-size: 1.1rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 0 #6c7b7d;
+}
+
+.back-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #6c7b7d;
+}
+
+.back-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #6c7b7d;
+}
+
+/* --- Widget de Categorías --- */
+.categorias-widget {
+    margin-top: 20px;
+}
+
+.categorias-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.categoria-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 10px;
+    background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+    border: 2px solid transparent;
+    border-radius: 15px;
+    text-decoration: none;
+    color: var(--c-text);
+    transition: all 0.2s ease;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.categoria-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.categoria-icono {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+}
+
+/* Colores por categoría */
+.categoria-card.geometria {
+    border-color: #1abc9c;
+}
+
+.categoria-card.geometria:hover {
+    background: linear-gradient(45deg, #e8f8f5, #d5f4e6);
+}
+
+.categoria-card.constructores {
+    border-color: #9b59b6;
+}
+
+.categoria-card.constructores:hover {
+    background: linear-gradient(45deg, #f4ecf7, #e8d5ed);
+}
+
+.categoria-card.secuencias {
+    border-color: #f39c12;
+}
+
+.categoria-card.secuencias:hover {
+    background: linear-gradient(45deg, #fef9e7, #fcf3cf);
+}
+
+.categoria-card.aventuras {
+    border-color: #e74c3c;
+}
+
+.categoria-card.aventuras:hover {
+    background: linear-gradient(45deg, #fdf2f2, #fadbd8);
 }
 
 /* --- Grid del Dashboard --- */
