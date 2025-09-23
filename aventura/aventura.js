@@ -446,13 +446,47 @@ document.addEventListener('DOMContentLoaded', () => {
     function guardarProgreso() { /* ... */
         const diaAventura = getDiaAventura();
         if (!diaAventura) return;
+
         try {
-            let progreso = JSON.parse(localStorage.getItem(PROGRESO_KEY)) || { misionesCompletadas: [] };
+            // Obtener progreso existente o crear uno nuevo con valores por defecto
+            const defaults = { misionesCompletadas: [], ultimaVisita: null, racha: 0 };
+            let progreso = JSON.parse(localStorage.getItem(PROGRESO_KEY)) || defaults;
+            progreso = { ...defaults, ...progreso };
+
+            // Añadir la misión actual si no está ya en la lista
             if (!progreso.misionesCompletadas.includes(diaAventura)) {
                 progreso.misionesCompletadas.push(diaAventura);
             }
+
+            // --- Lógica para calcular la racha ---
+            const hoy = new Date();
+            const hoyStr = hoy.toISOString().split('T')[0];
+
+            // Si es la primera vez que completa algo o es un día diferente al anterior
+            if (!progreso.ultimaVisita || progreso.ultimaVisita !== hoyStr) {
+                const ayer = new Date(hoy);
+                ayer.setDate(hoy.getDate() - 1);
+                const ayerStr = ayer.toISOString().split('T')[0];
+
+                if (progreso.ultimaVisita === ayerStr) {
+                    // Si la última visita fue ayer, incrementa la racha
+                    progreso.racha += 1;
+                } else if (!progreso.ultimaVisita) {
+                    // Primera vez, establecer racha en 1
+                    progreso.racha = 1;
+                } else {
+                    // Si pasó más de un día, reiniciar racha
+                    progreso.racha = 1;
+                }
+
+                progreso.ultimaVisita = hoyStr; // Actualizar la fecha de la última visita
+            }
+            // Si ya visitó hoy, la racha no cambia.
+
+            // Guardar el objeto actualizado en localStorage
             localStorage.setItem(PROGRESO_KEY, JSON.stringify(progreso));
             console.log('Progreso guardado:', progreso);
+
         } catch (e) {
             console.error("No se pudo guardar el progreso en localStorage.", e);
         }
