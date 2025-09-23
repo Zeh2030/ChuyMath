@@ -63,11 +63,11 @@
         },
         {
           "pregunta": "¿Cuántos triángulos hay en esta casa?",
-          "figura_svg": "<svg width='180' height='180' viewBox='0 0 100 100'><rect x='20' y='60' width='60' height='40' stroke='black' stroke-width='2' fill='none'/><path d='M20 60 L50 30 L80 60 Z' stroke='black' stroke-width='2' fill='none'/></svg>",
+          "figura_svg": "<svg width='180' height='180' viewBox='0 0 100 100'><rect x='20' y='60' width='60' height='40' stroke='black' stroke-width='2' fill='none'/><path d='M20 60 L50 30 L80 60 Z' stroke='black' stroke-width='2' fill='none'/><path d='M35 60 L35 80 L45 80 L45 60' stroke='black' stroke-width='2' fill='none'/><path d='M35 60 L40 55 L45 60' stroke='black' stroke-width='2' fill='none'/></svg>",
           "respuesta": "2",
-          "pista": "Cuenta el triángulo del techo y el triángulo que se forma con la casa.",
-          "explicacion_correcta": "¡Excelente! Hay 2 triángulos: el triángulo del techo de la casa y el triángulo que se forma cuando juntamos el techo con la parte rectangular de la casa. ¡Las casas tienen formas muy interesantes!",
-          "explicacion_incorrecta": "No es correcto. Hay 2 triángulos: el triángulo del techo de la casa y el triángulo que se forma cuando juntamos el techo con la parte rectangular de la casa. ¡En total son 2 triángulos!"
+          "pista": "Cuenta el triángulo del techo grande y el triángulo pequeño de la puerta.",
+          "explicacion_correcta": "¡Excelente! Hay 2 triángulos: el triángulo grande del techo de la casa y el triángulo pequeño que forma la parte superior de la puerta. ¡Las casas tienen formas muy interesantes!",
+          "explicacion_incorrecta": "No es correcto. Hay 2 triángulos: el triángulo grande del techo de la casa y el triángulo pequeño que forma la parte superior de la puerta. ¡En total son 2 triángulos!"
         }
       ]
     }
