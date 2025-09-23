@@ -300,9 +300,115 @@ body {
     transform: translateY(-2px); 
     box-shadow: 0 6px 0 #6c7b7d; 
 }
-.back-button:active { 
-    transform: translateY(2px); 
-    box-shadow: 0 2px 0 #6c7b7d; 
+.back-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #6c7b7d;
+}
+
+/* --- Navegación Final Constructor --- */
+.navegacion-final-constructor {
+    margin-top: 40px;
+    padding: 30px;
+    background: linear-gradient(45deg, #e8f8f5, #d5f4e6);
+    border-radius: 20px;
+    border: 3px solid #1abc9c;
+    text-align: center;
+}
+
+.mensaje-final-constructor h3 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.8rem;
+    color: #16a085;
+    margin-bottom: 10px;
+}
+
+.mensaje-final-constructor p {
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin-bottom: 25px;
+}
+
+.botones-final-constructor {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.boton-final-constructor {
+    display: inline-block;
+    padding: 15px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 0;
+}
+
+.boton-final-constructor:hover {
+    transform: translateY(-2px);
+}
+
+.boton-final-constructor:active {
+    transform: translateY(2px);
+}
+
+.boton-final-constructor.boveda {
+    background: linear-gradient(45deg, #54a0ff, #2e86de);
+    color: white;
+    box-shadow: 0 4px 0 #1f618d;
+}
+
+.boton-final-constructor.boveda:hover {
+    box-shadow: 0 6px 0 #1f618d;
+}
+
+.boton-final-constructor.boveda:active {
+    box-shadow: 0 2px 0 #1f618d;
+}
+
+.boton-final-constructor.dashboard {
+    background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+    color: white;
+    box-shadow: 0 4px 0 #c44569;
+}
+
+.boton-final-constructor.dashboard:hover {
+    box-shadow: 0 6px 0 #c44569;
+}
+
+.boton-final-constructor.dashboard:active {
+    box-shadow: 0 2px 0 #c44569;
+}
+
+.boton-final-constructor.reiniciar {
+    background: linear-gradient(45deg, #f39c12, #e67e22);
+    color: white;
+    box-shadow: 0 4px 0 #d35400;
+}
+
+.boton-final-constructor.reiniciar:hover {
+    box-shadow: 0 6px 0 #d35400;
+}
+
+.boton-final-constructor.reiniciar:active {
+    box-shadow: 0 2px 0 #d35400;
+}
+
+@media (max-width: 600px) {
+    .botones-final-constructor {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .boton-final-constructor {
+        width: 80%;
+        text-align: center;
+    }
 }
 #message-area { text-align: center; font-size: 1.3rem; font-weight: bold; min-height: 30px; padding-top: 10px; }
 .hidden { display: none; }
