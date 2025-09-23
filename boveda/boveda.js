@@ -13,6 +13,34 @@ document.addEventListener('DOMContentLoaded', () => {
     vistaCalendarioBtn.addEventListener('click', () => cambiarVista('calendario'));
     vistaCategoriasBtn.addEventListener('click', () => cambiarVista('categorias'));
 
+    // Manejar parámetros URL al cargar la página
+    function manejarParametrosURL() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const vista = urlParams.get('vista');
+        const categoria = urlParams.get('categoria');
+        
+        if (vista === 'categorias') {
+            cambiarVista('categorias');
+        }
+        
+        if (categoria) {
+            // Si se especifica una categoría, cambiar a vista de categorías
+            cambiarVista('categorias');
+            // Scroll a la categoría específica después de un breve delay
+            setTimeout(() => {
+                const seccionCategoria = document.querySelector(`[data-categoria="${categoria}"]`);
+                if (seccionCategoria) {
+                    seccionCategoria.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Resaltar la categoría
+                    seccionCategoria.style.background = 'rgba(52, 152, 219, 0.1)';
+                    seccionCategoria.style.borderRadius = '15px';
+                    seccionCategoria.style.padding = '20px';
+                    seccionCategoria.style.transition = 'all 0.3s ease';
+                }
+            }, 100);
+        }
+    }
+
     // --- OBTENER DATOS DE PROGRESO REALES ---
     function getProgreso() {
         try {
@@ -49,6 +77,9 @@ document.addEventListener('DOMContentLoaded', () => {
             
             renderizarMisiones(misionesData, misionesCompletadas);
             renderizarCategorias(misionesData, misionesCompletadas);
+            
+            // Manejar parámetros URL después de cargar las misiones
+            manejarParametrosURL();
 
         } catch (error) {
             console.error("Error al cargar las misiones:", error);
