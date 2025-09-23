@@ -170,6 +170,57 @@ class ExpedicionMarina extends ExpedicionBase {
         console.log('Opciones de planetas cargadas:', shuffledOptions.length);
     }
 
+    populateGeographySection() {
+        const geoOptions = document.getElementById('geo-options');
+        if (!geoOptions || !this.config.geography.options) {
+            console.log('Error: No se encontró geo-options o no hay opciones en config');
+            return;
+        }
+
+        const shuffledOptions = this.shuffleArray([...this.config.geography.options]);
+        geoOptions.innerHTML = '';
+        
+        shuffledOptions.forEach(option => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <input type="radio" name="city" id="${option.id}" value="${option.value}">
+                <label for="${option.id}">${option.label}</label>
+            `;
+            geoOptions.appendChild(li);
+        });
+        
+        console.log('Opciones de geografía cargadas:', shuffledOptions.length);
+    }
+
+    populateAnimalsSection() {
+        const animalClues = document.getElementById('animal-clues');
+        const animalOptions = document.getElementById('animal-options');
+        
+        if (animalClues && this.config.animals.clues) {
+            const shuffledClues = this.shuffleArray([...this.config.animals.clues]);
+            animalClues.innerHTML = '';
+            shuffledClues.forEach((clue, index) => {
+                const li = document.createElement('li');
+                li.textContent = `${index + 1}. ${clue}`;
+                animalClues.appendChild(li);
+            });
+        }
+
+        if (animalOptions && this.config.animals.options) {
+            const shuffledOptions = this.shuffleArray([...this.config.animals.options]);
+            animalOptions.innerHTML = '';
+            shuffledOptions.forEach(option => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <input type="radio" name="animal-answer" id="${option.id}" value="${option.value}">
+                    <label for="${option.id}">${option.label}</label>
+                `;
+                animalOptions.appendChild(li);
+            });
+            console.log('Opciones de animales cargadas:', shuffledOptions.length);
+        }
+    }
+
     addProgressIndicators() {
         // Agregar indicadores de progreso visual
         const sections = document.querySelectorAll('.section');
@@ -328,6 +379,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Crear la instancia de la expedición marina
     window.expedicionMarina = new ExpedicionMarina();
     window.expedicionMarina.startTime = Date.now();
+    
+    // FORZAR CARGA DE OPCIONES DE PLANETAS INMEDIATAMENTE
+    setTimeout(() => {
+        console.log('Forzando carga de opciones de planetas...');
+        window.expedicionMarina.populatePlanetsSection();
+        
+        // También forzar otras opciones por si acaso
+        if (window.expedicionMarina.populateGeographySection) {
+            window.expedicionMarina.populateGeographySection();
+        }
+        if (window.expedicionMarina.populateAnimalsSection) {
+            window.expedicionMarina.populateAnimalsSection();
+        }
+    }, 500);
     
     // Configurar eventos específicos de la expedición marina
     setupMarinaSpecialFeatures();
