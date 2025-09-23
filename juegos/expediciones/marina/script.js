@@ -28,7 +28,10 @@ class ExpedicionMarina extends ExpedicionBase {
         // Función populateOptions del código original
         const populateOptions = (containerId, optionsData, radioName) => {
             const container = document.getElementById(containerId);
-            if (!container) return;
+            if (!container) {
+                console.log(`ERROR: No se encontró el contenedor ${containerId}`);
+                return;
+            }
             
             container.innerHTML = '';
             const shuffledData = [...optionsData]; // Crear copia
@@ -41,6 +44,7 @@ class ExpedicionMarina extends ExpedicionBase {
             });
             
             console.log(`Opciones cargadas en ${containerId}:`, shuffledData.length);
+            console.log(`HTML generado:`, container.innerHTML.substring(0, 200) + '...');
         };
 
         // === GEOGRAFÍA (Nueva York) ===
@@ -165,4 +169,31 @@ document.addEventListener('DOMContentLoaded', () => {
     window.expedicionMarina.startTime = Date.now();
     
     console.log('Expedición Marina inicializada con código original');
+    
+    // VERIFICACIÓN ADICIONAL - Forzar carga después de un delay
+    setTimeout(() => {
+        console.log('Verificando opciones después de 1 segundo...');
+        const planetOptions = document.getElementById('planet-options');
+        if (planetOptions && planetOptions.children.length === 0) {
+            console.log('ERROR: planet-options está vacío después de 1 segundo. Forzando carga...');
+            
+            // Cargar opciones de planetas manualmente
+            const planetOptionsData = [
+                { id: 'pequeno', value: 'pequeno', label: 'A) Pequeño' },
+                { id: 'rocoso', value: 'rocoso', label: 'B) Rocoso' },
+                { id: 'gigante', value: 'gigante', label: 'C) Gigante' }
+            ];
+            
+            planetOptions.innerHTML = '';
+            planetOptionsData.forEach(opt => {
+                const li = document.createElement('li');
+                li.innerHTML = `<input type="radio" name="planet-answer" id="${opt.id}" value="${opt.value}"><label for="${opt.id}">${opt.label}</label>`;
+                planetOptions.appendChild(li);
+            });
+            
+            console.log('Opciones de planetas cargadas manualmente:', planetOptionsData.length);
+        } else {
+            console.log('✅ planet-options tiene', planetOptions.children.length, 'elementos');
+        }
+    }, 1000);
 });
