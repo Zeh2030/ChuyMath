@@ -1,6 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     const misionesGrid = document.getElementById('misiones-grid');
+    const vistaCalendarioBtn = document.getElementById('vista-calendario');
+    const vistaCategoriasBtn = document.getElementById('vista-categorias');
+    const vistaCalendarioContent = document.getElementById('vista-calendario-content');
+    const vistaCategoriasContent = document.getElementById('vista-categorias-content');
     const PROGRESO_KEY = 'progresoChuy'; // La misma clave que en aventura.js
+    
+    let misionesData = [];
+    let misionesCompletadas = [];
+
+    // Event listeners para los toggles
+    vistaCalendarioBtn.addEventListener('click', () => cambiarVista('calendario'));
+    vistaCategoriasBtn.addEventListener('click', () => cambiarVista('categorias'));
 
     // --- OBTENER DATOS DE PROGRESO REALES ---
     function getProgreso() {
@@ -13,14 +24,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function cambiarVista(vista) {
+        if (vista === 'calendario') {
+            vistaCalendarioBtn.classList.add('active');
+            vistaCategoriasBtn.classList.remove('active');
+            vistaCalendarioContent.classList.remove('hidden');
+            vistaCategoriasContent.classList.add('hidden');
+        } else {
+            vistaCategoriasBtn.classList.add('active');
+            vistaCalendarioBtn.classList.remove('active');
+            vistaCategoriasContent.classList.remove('hidden');
+            vistaCalendarioContent.classList.add('hidden');
+        }
+    }
+
     async function cargarMisiones() {
         try {
             const response = await fetch('../_contenido/manifest.json');
             if (!response.ok) throw new Error('No se pudo encontrar el manifiesto de misiones.');
-            const misiones = await response.json();
+            misionesData = await response.json();
             
             const progreso = getProgreso();
-            renderizarMisiones(misiones, progreso.misionesCompletadas);
+            misionesCompletadas = progreso.misionesCompletadas;
+            
+            renderizarMisiones(misionesData, misionesCompletadas);
+            renderizarCategorias(misionesData, misionesCompletadas);
 
         } catch (error) {
             console.error("Error al cargar las misiones:", error);
@@ -59,6 +87,88 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="card-footer">${footerText}</div>
             `;
             misionesGrid.appendChild(card);
+        });
+    }
+
+    function renderizarCategorias(misiones, misionesCompletadas) {
+        // Mapeo de temas a categorías
+        const categoriasMap = {
+            'geometria': ['geometria', 'logica'],
+            'secuencias': ['logica', 'mates'], // Secuencias que incluyen lógica
+            'constructores': ['numberblocks'], // Juegos de construcción
+            'aventuras': ['mates', 'planetas', 'geografia', 'animales'] // Aventuras mixtas
+        };
+
+        // Limpiar grids de categorías
+        document.getElementById('geometria-grid').innerHTML = '';
+        document.getElementById('secuencias-grid').innerHTML = '';
+        document.getElementById('constructores-grid').innerHTML = '';
+        document.getElementById('aventuras-grid').innerHTML = '';
+
+        // Clasificar misiones por categoría
+        const categorias = {
+            geometria: [],
+            secuencias: [],
+            constructores: [],
+            aventuras: []
+        };
+
+        misiones.forEach(mision => {
+            if (mision.temas) {
+                // Clasificar por temas específicos
+                if (mision.temas.includes('geometria')) {
+                    categorias.geometria.push(mision);
+                } else if (mision.temas.includes('numberblocks') && mision.esJuegoEspecial) {
+                    categorias.constructores.push(mision);
+                } else if (mision.id.includes('secuencia') || mision.titulo.toLowerCase().includes('secuencia')) {
+                    categorias.secuencias.push(mision);
+                } else {
+                    categorias.aventuras.push(mision);
+                }
+            } else {
+                // Fallback: clasificar por ID o título
+                if (mision.id.includes('geometrico') || mision.titulo.toLowerCase().includes('geométrico')) {
+                    categorias.geometria.push(mision);
+                } else {
+                    categorias.aventuras.push(mision);
+                }
+            }
+        });
+
+        // Renderizar cada categoría
+        Object.keys(categorias).forEach(categoria => {
+            const grid = document.getElementById(`${categoria}-grid`);
+            const misionesCategoria = categorias[categoria];
+
+            if (misionesCategoria.length === 0) {
+                grid.innerHTML = '<div class="categoria-vacia">Aún no hay misiones en esta categoría</div>';
+                return;
+            }
+
+            misionesCategoria.forEach(mision => {
+                const esCompletada = misionesCompletadas.includes(mision.id);
+                
+                const card = document.createElement('a');
+                
+                // Verificar si es un juego especial
+                if (mision.esJuegoEspecial && mision.urlJuego) {
+                    card.href = mision.urlJuego;
+                } else {
+                    card.href = `../aventura/aventura.html?dia=${mision.id}`;
+                }
+                
+                card.className = `mision-card ${esCompletada ? 'completada' : 'pendiente'}`;
+
+                const footerText = esCompletada ? 'Repasar' : '¡Empezar!';
+
+                card.innerHTML = `
+                    <div class="mision-icono">${mision.icono}</div>
+                    <h2>${mision.titulo}</h2>
+                    <p>${mision.descripcion}</p>
+                    <div class="card-footer">${footerText}</div>
+                `;
+                grid.appendChild(card);
+            });
         });
     }
 
