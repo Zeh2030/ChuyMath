@@ -248,9 +248,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     nextButton.addEventListener('click', () => {
-        const nextIndex = (currentChallengeIndex + 1) % challenges.length;
-        startChallenge(nextIndex);
+        const nextIndex = currentChallengeIndex + 1;
+        
+        // Si ya completó todos los retos, mostrar navegación final
+        if (nextIndex >= challenges.length) {
+            mostrarNavegacionFinal();
+        } else {
+            startChallenge(nextIndex);
+        }
     });
+
+    // Función para mostrar navegación final
+    function mostrarNavegacionFinal() {
+        document.getElementById('navegacion-final-constructor').classList.remove('hidden');
+        nextButton.classList.add('hidden');
+        checkButton.classList.add('hidden');
+        
+        // Agregar evento al botón reiniciar
+        document.getElementById('reiniciar-constructor').addEventListener('click', () => {
+            document.getElementById('navegacion-final-constructor').classList.add('hidden');
+            startChallenge(0);
+        });
+    }
 
     populateToolbox();
     nextButton.textContent = "¡Empezar!";
