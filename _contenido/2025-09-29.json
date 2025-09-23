@@ -10,15 +10,15 @@
       "pistas": [
         "Ana no tiene perro",
         "Carlos tiene un animal que ladra",
-        "Beto no tiene gato"
+        "Ana no tiene gato"
       ],
       "encabezados_fila": ["Ana", "Beto", "Carlos"],
       "encabezados_columna": ["Perro", "Gato", "Pez"],
       "pregunta_final": "¿Qué mascota tiene Beto?",
       "opciones_finales": ["Perro", "Gato", "Pez"],
-      "respuesta_final": "Pez",
-      "explicacion_correcta": "¡Perfecto! Usando las pistas: Carlos tiene perro (ladra), Ana no tiene perro ni gato (solo queda pez), entonces Beto tiene pez. ¡Eres un gran detective!",
-      "explicacion_incorrecta": "No es correcto. Vamos paso a paso: Carlos tiene perro porque ladra, Ana no tiene perro ni gato (solo queda pez), entonces Beto tiene pez."
+      "respuesta_final": "Gato",
+      "explicacion_correcta": "¡Perfecto! Usando las pistas: Carlos tiene perro (ladra), Ana no tiene perro ni gato (solo queda pez), entonces Beto tiene gato. ¡Eres un gran detective!",
+      "explicacion_incorrecta": "No es correcto. Vamos paso a paso: Carlos tiene perro porque ladra, Ana no tiene perro ni gato (solo queda pez), entonces Beto tiene gato."
     },
     {
       "id": "mision-tabla-2",
