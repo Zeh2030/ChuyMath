@@ -823,9 +823,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="opciones-cubos">
                             <h5>🎲 ¿Cuál cubo se puede armar?</h5>
                             <div class="opciones-grid">
-                                ${ejercicio.opciones_img.map((img, optIndex) => `
+                                ${ejercicio.opciones_svg.map((svg, optIndex) => `
                                     <div class="opcion-cubo" data-opcion="${optIndex}">
-                                        <img src="${img}" alt="Cubo opción ${optIndex + 1}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiPjxyZWN0IHg9IjEwIiB5PSIxMCIgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0iI2ZmZiIvPjx0ZXh0IHg9IjUwIiB5PSI1NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzAwMCI+Q3VibyA${optIndex + 1}</text></svg>'">
+                                        <div class="cubo-svg">${svg}</div>
                                         <div class="opcion-numero">${optIndex + 1}</div>
                                     </div>
                                 `).join('')}
