@@ -453,6 +453,17 @@ body {
     color: var(--c-text);
 }
 
+.pregunta-final {
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    border: 2px solid var(--c-primary);
+    border-radius: 10px;
+    padding: 15px;
+    margin: 20px 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--c-text);
+}
+
 /* --- Estilos para Criptoaritmética --- */
 .mision.criptoaritmetica { border-color: #8e44ad; }
 .cripto-ejercicio {
