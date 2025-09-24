@@ -34,19 +34,19 @@
           "titulo": "El Desafío de los Juguetes",
           "instruccion": "¡Es el desafío final de la semana! Usa todas tus habilidades de detective para resolver este puzzle. Recuerda las reglas: cada niño tiene un solo juguete.",
           "pistas": [
-            "A Daniel le encanta construir cosas.",
-            "El juguete de Sara vuela muy alto en el parque.",
-            "El juguete de Leo tiene luces y hace sonidos."
+            "A Carlos le encanta un animal que ladra.",
+            "La mascota de Ana no tiene pelo ni plumas.",
+            "Beto no tiene un pez."
           ],
-          "personajes": ["Leo", "Sara", "Daniel"],
-          "opciones": ["Cometa 🪁", "Robot 🤖", "Bloques 🧱"],
+          "personajes": ["Ana", "Beto", "Carlos"],
+          "opciones": ["Perro 🐶", "Gato 🐱", "Pez 🐠"],
           "respuesta_final": {
-            "Leo": "Robot 🤖",
-            "Sara": "Cometa 🪁",
-            "Daniel": "Bloques 🧱"
+            "Ana": "Pez 🐠",
+            "Beto": "Gato 🐱",
+            "Carlos": "Perro 🐶"
           },
-          "explicacion_correcta": "¡Exacto! La pista de 'luces y sonidos' nos dice directamente que Leo tiene el Robot. Sara tiene la Cometa (vuela) y Daniel tiene los Bloques (construir). ¡Resolviste el caso!",
-          "explicacion_incorrecta": "Revisemos las pistas: A Daniel le corresponden los bloques porque le gusta construir. A Sara le corresponde la cometa porque vuela. Por lo tanto, el único juguete que queda para Leo es el Robot."
+          "explicacion_correcta": "¡Caso resuelto! Si Carlos tiene el Perro (ladra) y Beto no tiene el Pez, a Beto solo le queda el Gato. Por lo tanto, ¡Ana tiene el Pez!",
+          "explicacion_incorrecta": "¡Casi! Pista 1 te dice quién tiene el Perro. Luego, usa las otras pistas para deducir quién se queda con el Gato y el Pez."
         }
       ]
     },
