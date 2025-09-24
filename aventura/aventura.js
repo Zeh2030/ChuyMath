@@ -151,46 +151,46 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderizarMisionTabla(data) {
-        let tablaHTML = '';
-        data.ejercicios.forEach((ej, index) => {
-            // Verificar si es el formato antiguo (con encabezados_fila y encabezados_columna)
-            if (ej.encabezados_fila && ej.encabezados_columna) {
-                // Formato antiguo con pregunta final
-                let opcionesFinalHTML = '<ul class="opciones-lista">';
-                ej.opciones_finales.forEach((opcion, optIndex) => {
-                    const idUnico = `tabla-${data.id}-${index}-${optIndex}`;
-                    opcionesFinalHTML += `<li><input type="radio" name="tabla-final-${data.id}-${index}" id="${idUnico}" value="${opcion}"><label for="${idUnico}">${opcion}</label></li>`;
-                });
-                opcionesFinalHTML += '</ul>';
-                
-                tablaHTML += `
-                    <div class="tabla-logica">
-                        <h3>${ej.titulo}</h3>
-                        <p>${ej.instruccion}</p>
-                        ${ej.pistas ? `<ul class="pistas-lista">${ej.pistas.map(pista => `<li>${pista}</li>`).join('')}</ul>` : ''}
-                        <table>
-                            <thead>
+        // Verificar si es el formato antiguo (con encabezados_fila y encabezados_columna)
+        if (data.encabezados_fila && data.encabezados_columna) {
+            // Formato antiguo con pregunta final - las propiedades están directamente en data
+            let opcionesFinalHTML = '<ul class="opciones-lista">';
+            data.opciones_finales.forEach((opcion, optIndex) => {
+                const idUnico = `tabla-${data.id}-${optIndex}`;
+                opcionesFinalHTML += `<li><input type="radio" name="tabla-final-${data.id}" id="${idUnico}" value="${opcion}"><label for="${idUnico}">${opcion}</label></li>`;
+            });
+            opcionesFinalHTML += '</ul>';
+            
+            return `
+                <div class="tabla-logica">
+                    <h3>${data.titulo}</h3>
+                    <p>${data.instruccion}</p>
+                    ${data.pistas ? `<ul class="pistas-lista">${data.pistas.map(pista => `<li>${pista}</li>`).join('')}</ul>` : ''}
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                ${data.encabezados_columna.map(opcion => `<th>${opcion}</th>`).join('')}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${data.encabezados_fila.map(personaje => `
                                 <tr>
-                                    <th></th>
-                                    ${ej.encabezados_columna.map(opcion => `<th>${opcion}</th>`).join('')}
+                                    <td><strong>${personaje}</strong></td>
+                                    ${data.encabezados_columna.map(opcion => `<td class="celda-logica" data-personaje="${personaje}" data-opcion="${opcion}"></td>`).join('')}
                                 </tr>
-                            </thead>
-                            <tbody>
-                                ${ej.encabezados_fila.map(personaje => `
-                                    <tr>
-                                        <td><strong>${personaje}</strong></td>
-                                        ${ej.encabezados_columna.map(opcion => `<td class="celda-logica" data-personaje="${personaje}" data-opcion="${opcion}"></td>`).join('')}
-                                    </tr>
-                                `).join('')}
-                            </tbody>
-                        </table>
-                        <p class="pregunta-final">${ej.pregunta_final}</p>
-                        ${opcionesFinalHTML}
-                        <div class="feedback-container"></div>
-                    </div>
-                `;
-            } else {
-                // Formato nuevo con ejercicios array
+                            `).join('')}
+                        </tbody>
+                    </table>
+                    <p class="pregunta-final">${data.pregunta_final}</p>
+                    ${opcionesFinalHTML}
+                    <div class="feedback-container"></div>
+                </div>
+            `;
+        } else {
+            // Formato nuevo con ejercicios array
+            let tablaHTML = '';
+            data.ejercicios.forEach((ej, index) => {
                 tablaHTML += `
                     <div class="tabla-logica">
                         <h3>${ej.titulo}</h3>
@@ -215,9 +215,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="feedback-container"></div>
                     </div>
                 `;
-            }
-        });
-        return tablaHTML;
+            });
+            return tablaHTML;
+        }
     }
 
     function renderizarMisionCripto(data) {
@@ -304,8 +304,14 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Ajuste para que la palabra del día no cuente como pregunta evaluable
             if (misionData.tipo !== 'palabra-del-dia') {
-                 const ejercicios = misionData.ejercicios || [misionData];
-                 totalPreguntas += ejercicios.length;
+                if (misionData.tipo === 'tabla-doble-entrada' && misionData.encabezados_fila && misionData.encabezados_columna) {
+                    // Formato antiguo: solo cuenta como 1 pregunta
+                    totalPreguntas += 1;
+                } else {
+                    // Formato nuevo: cuenta ejercicios
+                    const ejercicios = misionData.ejercicios || [misionData];
+                    totalPreguntas += ejercicios.length;
+                }
             }
             
             switch (misionData.tipo) {
@@ -403,26 +409,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function calificarMisionTabla(misionDiv, misionData) {
         let aciertos = 0;
-        misionDiv.querySelectorAll('.tabla-logica').forEach((tablaDiv, index) => {
-            const ejercicio = misionData.ejercicios[index];
-            
-            // Verificar si es formato antiguo con pregunta final
-            if (ejercicio.encabezados_fila && ejercicio.encabezados_columna) {
-                // Formato antiguo: solo calificar la pregunta final
-                const selectedOption = tablaDiv.querySelector(`input[name="tabla-final-${misionData.id}-${index}"]:checked`);
-                if (selectedOption) {
-                    const esCorrecto = selectedOption.value === ejercicio.respuesta_final;
-                    const label = selectedOption.nextElementSibling;
-                    label.classList.toggle('correcto', esCorrecto);
-                    label.classList.toggle('incorrecto', !esCorrecto);
-                    
-                    const explicacion = esCorrecto ? ejercicio.explicacion_correcta : ejercicio.explicacion_incorrecta;
-                    mostrarFeedback(tablaDiv.querySelector('.feedback-container'), explicacion, esCorrecto ? 'correcto' : 'incorrecto');
-                    
-                    if (esCorrecto) aciertos++;
-                }
-            } else {
-                // Formato nuevo: verificar cada celda
+        
+        // Verificar si es formato antiguo con pregunta final
+        if (misionData.encabezados_fila && misionData.encabezados_columna) {
+            // Formato antiguo: solo calificar la pregunta final
+            const tablaDiv = misionDiv.querySelector('.tabla-logica');
+            const selectedOption = tablaDiv.querySelector(`input[name="tabla-final-${misionData.id}"]:checked`);
+            if (selectedOption) {
+                const esCorrecto = selectedOption.value === misionData.respuesta_final;
+                const label = selectedOption.nextElementSibling;
+                label.classList.toggle('correcto', esCorrecto);
+                label.classList.toggle('incorrecto', !esCorrecto);
+                
+                const explicacion = esCorrecto ? misionData.explicacion_correcta : misionData.explicacion_incorrecta;
+                mostrarFeedback(tablaDiv.querySelector('.feedback-container'), explicacion, esCorrecto ? 'correcto' : 'incorrecto');
+                
+                if (esCorrecto) aciertos++;
+            }
+        } else {
+            // Formato nuevo: verificar cada celda
+            misionDiv.querySelectorAll('.tabla-logica').forEach((tablaDiv, index) => {
+                const ejercicio = misionData.ejercicios[index];
                 const solucion = ejercicio.respuesta_final;
                 let esCorrecto = true;
                 
@@ -434,8 +441,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 
                 if (esCorrecto) aciertos++;
-            }
-        });
+            });
+        }
         return aciertos;
     }
 
