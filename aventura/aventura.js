@@ -81,18 +81,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             misionDiv.innerHTML = contenidoMision;
             misionesContainer.appendChild(misionDiv);
+            
+            // Agregar listeners para tablas después de renderizar
+            if (misionData.tipo === 'tabla-doble-entrada') {
+                setTimeout(() => {
+                    addTableListeners(misionDiv);
+                }, 100);
+            }
         });
         
         // Add event listeners for interactive elements after they are in the DOM
         addGlobalEventListeners();
-        
-        // Añadir listeners de eventos para tablas
-        document.querySelectorAll('.mision').forEach(misionDiv => {
-            const misionData = JSON.parse(misionDiv.dataset.info);
-            if (misionData.tipo === 'tabla-doble-entrada') {
-                addTableListeners(misionDiv);
-            }
-        });
         
         aventuraFooter.classList.remove('hidden');
     }
