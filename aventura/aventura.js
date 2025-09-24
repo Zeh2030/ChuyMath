@@ -73,6 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 case 'balanza-logica':
                     contenidoMision += renderizarMisionBalanza(misionData);
                     break;
+                case 'palabra-del-dia':
+                    contenidoMision += renderizarPalabraDelDia(misionData);
+                    break;
                 default:
                     contenidoMision += `<p>Tipo de misión "${misionData.tipo}" no reconocido.</p>`;
             }
@@ -141,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         return ejerciciosHTML;
     }
-
+    
     function renderizarMisionTabla(data) {
         const pistasHTML = data.pistas.map(pista => `<li>${pista}</li>`).join('');
         const headersColumnasHTML = data.encabezados_columna.map(header => `<th>${header}</th>`).join('');
@@ -203,6 +206,20 @@ document.addEventListener('DOMContentLoaded', () => {
         return `<div class="balanza-ejercicio" data-respuesta="${data.respuesta}"><div class="balanza-pregunta-svg">${data.pregunta_svg}</div><ul class="opciones-lista balanza-opciones">${opcionesHTML}</ul><div class="feedback-container"></div></div>`;
     }
 
+    function renderizarPalabraDelDia(data) {
+        return `
+            <div class="palabra-container">
+                <div class="palabra-ingles">
+                    <span class="palabra-texto">${data.palabra_en}</span>
+                    <button class="boton-audio" onclick="document.getElementById('audio-${data.id}').play()">🔊</button>
+                    <audio id="audio-${data.id}" src="${data.audio_pronunciacion}"></audio>
+                </div>
+                <div class="palabra-icono">${data.icono}</div>
+                <div class="palabra-espanol">${data.palabra_es}</div>
+            </div>
+        `;
+    }
+
     // --- LÓGICA DE CALIFICACIÓN ---
 
     completarBtn.addEventListener('click', () => {
@@ -211,8 +228,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.querySelectorAll('.mision').forEach(misionDiv => {
             const misionData = JSON.parse(misionDiv.dataset.info);
-            const ejercicios = misionData.ejercicios || [misionData]; // Normaliza para contar
-            totalPreguntas += ejercicios.length;
+            
+            // Ajuste para que la palabra del día no cuente como pregunta evaluable
+            if (misionData.tipo !== 'palabra-del-dia') {
+                 const ejercicios = misionData.ejercicios || [misionData];
+                 totalPreguntas += ejercicios.length;
+            }
             
             switch (misionData.tipo) {
                 case 'operaciones': puntaje += calificarMisionOperaciones(misionDiv, misionData); break;
@@ -224,6 +245,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 case 'criptoaritmetica': puntaje += calificarMisionCripto(misionDiv, misionData); break;
                 case 'desarrollo-cubos': puntaje += calificarMisionCubo(misionDiv, misionData); break;
                 case 'balanza-logica': puntaje += calificarMisionBalanza(misionDiv, misionData); break;
+                case 'palabra-del-dia': 
+                    // No suma puntaje pero podría marcarse como vista
+                    break;
             }
         });
         
@@ -302,7 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (esCorrecto) {
              mostrarFeedback(contenedorPregunta.querySelector('.feedback-container'), misionData.explicacion_correcta, 'correcto');
             return 1;
-        } else {
+            } else {
              mostrarFeedback(contenedorPregunta.querySelector('.feedback-container'), misionData.explicacion_incorrecta, 'incorrecto');
             return 0;
         }
@@ -350,6 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mostrarFeedback(misionDiv.querySelector('.feedback-container'), explicacion, esCorrecto ? 'correcto' : 'incorrecto');
         return esCorrecto ? 1 : 0;
     }
+
     
     function mostrarFeedback(container, texto, tipo) {
         if (container) container.innerHTML = `<div class="feedback-box ${tipo}">${texto}</div>`;
@@ -403,7 +428,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // --- FUNCIÓN DE AUDIO ---
+    function playAudio(url) {
+        const audio = new Audio(url);
+        audio.play().catch(e => console.log('No se pudo reproducir el audio:', e));
+    }
+
     // --- INICIALIZACIÓN ---
     const dia = getDiaAventura();
     cargarAventura(dia);
 });
+
+// Función global para el audio
+function playAudio(url) {
+    const audio = new Audio(url);
+    audio.play().catch(e => console.log('No se pudo reproducir el audio:', e));
+}
