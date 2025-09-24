@@ -6,55 +6,74 @@
       "id": "mision-tabla-1",
       "tipo": "tabla-doble-entrada",
       "titulo": "El Misterio de las Mascotas",
-      "instruccion": "Lee las pistas y usa la tabla para descubrir qué mascota tiene cada niño. ¡Haz clic en las casillas para marcar con ✅ o ❌!",
+      "instruccion": "Usa las pistas para resolver el caso. Recuerda las reglas del detective: cada niño tiene solo una mascota, y cada mascota pertenece solo a un niño.",
       "pistas": [
-        "A Carlos le encanta sacar a pasear a su Perro.",
-        "La mascota de Ana vive en el agua y tiene escamas.",
-        "El animal de Beto dice 'miau' y le gusta dormir al sol."
+        "A Carlos le encanta un animal que ladra.",
+        "La mascota de Ana no tiene pelo ni plumas.",
+        "Beto no tiene un pez."
       ],
       "encabezados_fila": ["Ana", "Beto", "Carlos"],
       "encabezados_columna": ["Perro 🐶", "Gato 🐱", "Pez 🐠"],
-      "pregunta_final": "¿Qué mascota tiene Beto?",
+      "pregunta_final": "¿Qué mascota tiene Ana?",
       "opciones_finales": ["Perro", "Gato", "Pez"],
-      "respuesta_final": "Gato",
-      "explicacion_correcta": "¡Exacto! Cada pista te dijo directamente qué mascota tenía cada niño. ¡Resolviste el caso como un verdadero detective!",
-      "explicacion_incorrecta": "¡Casi! Revisa las pistas de nuevo. Una te dice quién tiene el animal que vive en el agua, otra quién tiene al que dice 'miau', y otra al que le gusta pasear."
+      "respuesta_final": "Pez",
+      "explicacion_correcta": "¡Caso resuelto! Si Carlos tiene el Perro (ladra) y Beto no tiene el Pez, a Beto solo le queda el Gato. Por lo tanto, ¡Ana tiene el Pez!",
+      "explicacion_incorrecta": "¡Casi! Pista 1 te dice quién tiene el Perro. Luego, usa las otras pistas para deducir quién se queda con el Gato y el Pez."
     },
     {
       "id": "mision-tabla-2",
       "tipo": "tabla-doble-entrada",
       "titulo": "Los Deportes Favoritos",
-      "instruccion": "Usa las pistas para descubrir el deporte favorito de cada amiga.",
+      "instruccion": "Descubre el deporte de cada amiga. Regla de oro: a cada una le gusta un solo deporte, y todos los deportes son elegidos.",
       "pistas": [
-        "A Sofía le encanta meter goles con los pies.",
         "Laura usa una raqueta para golpear la pelota sobre una red.",
-        "A Valentina le gusta nadar muy rápido en la piscina."
+        "A Sofía no le gusta nadar.",
+        "El deporte de Valentina no necesita una pelota."
       ],
       "encabezados_fila": ["Laura", "Sofía", "Valentina"],
-      "encabezados_columna": ["Fútbol ⚽", "Tenis 🎾", "Nación 🏊‍♀️"],
+      "encabezados_columna": ["Fútbol ⚽", "Tenis 🎾", "Natación 🏊‍♀️"],
       "pregunta_final": "¿Cuál es el deporte favorito de Sofía?",
-      "opciones_finales": ["Fútbol", "Tenis", "Nación"],
+      "opciones_finales": ["Fútbol", "Tenis", "Natación"],
       "respuesta_final": "Fútbol",
-      "explicacion_correcta": "¡Correcto! La pista de 'meter goles con los pies' te llevó directamente a que a Sofía le gusta el Fútbol. ¡Bien hecho!",
-      "explicacion_incorrecta": "No es correcto. Vuelve a leer la primera pista: ¿en qué deporte se meten goles con los pies? ¡Ese es el de Sofía!"
+      "explicacion_correcta": "¡Correcto! Laura juega Tenis. El deporte de Valentina sin pelota es Natación. Por lo tanto, a Sofía le queda el Fútbol. ¡Excelente deducción!",
+      "explicacion_incorrecta": "Piénsalo así: La pista 1 te da el deporte de Laura. La pista 3 te dice cuál es el de Valentina. ¿Cuál le queda a Sofía?"
     },
     {
-        "id": "mision-tabla-3",
-        "tipo": "tabla-doble-entrada",
-        "titulo": "El Postre de la Fiesta",
-        "instruccion": "Alguien se comió un postre... ¡Descubre quién fue y qué comió!",
-        "pistas": [
-          "El postre de Diego es amarillo y largo.",
-          "El postre de Lucía es frío y viene en un cono.",
-          "A Mateo le gusta un postre redondo con un agujero en el medio."
-        ],
-        "encabezados_fila": ["Diego", "Lucía", "Mateo"],
-        "encabezados_columna": ["Helado 🍦", "Dona 🍩", "Plátano 🍌"],
-        "pregunta_final": "¿Qué postre comió Mateo?",
-        "opciones_finales": ["Helado", "Dona", "Plátano"],
-        "respuesta_final": "Dona",
-        "explicacion_correcta": "¡Caso resuelto! La pista del 'postre redondo con un agujero' te dijo que Mateo comió la Dona. ¡Delicioso trabajo!",
-        "explicacion_incorrecta": "¡Cerca! La tercera pista habla de un postre redondo con un agujero. ¿Cuál de los tres se ve así? ¡Ese es el de Mateo!"
-      }
+      "id": "mision-tabla-3",
+      "tipo": "tabla-doble-entrada",
+      "titulo": "El Postre de la Fiesta",
+      "instruccion": "¡Descubre qué comió cada uno! Cada persona comió un postre diferente.",
+      "pistas": [
+        "El postre de Diego es una fruta.",
+        "A Lucía no le gusta la dona.",
+        "El postre de Mateo no es una fruta."
+      ],
+      "encabezados_fila": ["Diego", "Lucía", "Mateo"],
+      "encabezados_columna": ["Helado 🍦", "Dona 🍩", "Plátano 🍌"],
+      "pregunta_final": "¿Qué postre comió Mateo?",
+      "opciones_finales": ["Helado", "Dona", "Plátano"],
+      "respuesta_final": "Dona",
+      "explicacion_correcta": "¡Delicioso trabajo! Diego comió el Plátano (la fruta). A Lucía no le gusta la Dona, así que comió el Helado. ¡Eso deja a Mateo con la Dona!",
+      "explicacion_incorrecta": "¡Casi! La pista 1 te dice qué comió Diego. Con esa información, mira la pista 2 para saber qué comió Lucía. El que queda es para Mateo."
+    },
+    {
+      "id": "mision-tabla-4",
+      "tipo": "tabla-doble-entrada",
+      "titulo": "Los Colores Secretos",
+      "instruccion": "Adivina el color favorito de cada amigo. ¡Recuerda, cada uno tiene un color diferente!",
+      "pistas": [
+        "A Gaby le encanta el color del sol.",
+        "El color de Alex no es el del cielo.",
+        "A Nico no le gusta el color de las fresas."
+      ],
+      "encabezados_fila": ["Alex", "Gaby", "Nico"],
+      "encabezados_columna": ["Rojo 🔴", "Amarillo 🟡", "Azul 🔵"],
+      "pregunta_final": "¿Cuál es el color favorito de Alex?",
+      "opciones_finales": ["Rojo", "Amarillo", "Azul"],
+      "respuesta_final": "Rojo",
+      "explicacion_correcta": "¡Muy bien! Gaby tiene el amarillo (sol). Si a Alex no le gusta el azul, solo le queda el rojo. Por lo tanto, a Nico le toca el azul.",
+      "explicacion_incorrecta": "Pista 1 te dice el color de Gaby. Luego, usa la pista 2 para descubrir el color de Alex. El que sobre es para Nico."
+    }
   ]
 }
+
