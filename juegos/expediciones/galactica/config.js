@@ -59,9 +59,10 @@ const expedicionGalacticaConfig = {
         clueHTML: `
             <div class="clue-box visible">
                 <strong>¡Pista Secreta!</strong> 
-                Marte parece rojo porque tiene mucho hierro en su superficie, igual que cuando el hierro se oxida en la Tierra. 
-                ¡Por eso también lo llaman el "Planeta Rojo"!
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/OSIRIS_Mars_true_color.jpg/1280px-OSIRIS_Mars_true_color.jpg" alt="Marte visto desde el espacio">
+                Marte tiene el volcán más grande del sistema solar, el Monte Olimpo. ¡Es 3 veces más alto que el Monte Everest!
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Olympus_Mons_alt.jpg/1280px-Olympus_Mons_alt.jpg" 
+                     alt="Volcán Monte Olimpo en Marte"
+                     onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiPjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjOEI0NTEzIi8+PHRleHQgeD0iMjAwIiB5PSIxNTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0iI2ZmZiI+4p2VIE1vbnRlIE9saW1wbyBWb2xjw6FuPC90ZXh0Pjwvc3ZnPg==';">
             </div>
         `
     },
