@@ -76,5 +76,19 @@
         "descripcion": "¡Aprende inglés, resuelve códigos secretos y cuenta rectángulos como un verdadero detective!",
         "icono": "🕵️",
         "temas": ["ingles", "logica", "geometria"]
+      },
+      {
+        "id": "2025-10-03",
+        "titulo": "Aventura de Construcción 3D",
+        "descripcion": "¡Construye con cubos, cuenta figuras 3D y resuelve enigmas de equilibrio!",
+        "icono": "🧱",
+        "temas": ["geometria", "espacial", "logica"]
+      },
+      {
+        "id": "2025-10-04",
+        "titulo": "Aventura del Gran Desafío",
+        "descripcion": "¡El desafío final de la semana! Resuelve puzzles complejos y construye cubos como un experto!",
+        "icono": "🏆",
+        "temas": ["logica", "geometria", "desafio"]
       }
 ]
