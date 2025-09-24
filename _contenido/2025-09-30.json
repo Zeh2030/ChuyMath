@@ -7,65 +7,81 @@
       "tipo": "criptoaritmetica",
       "titulo": "La Suma de las Manzanas",
       "instruccion": "Si cada manzana 🍎 vale lo mismo, ¿cuál es su valor?",
-      "operacion": {
-        "linea1": "  🍎",
-        "linea2": "+ 🍎",
-        "resultado": "  8"
-      },
-      "solucion": [
-        { "figura": "🍎", "valor": "4" }
-      ],
-      "explicacion_correcta": "¡Perfecto! Si 🍎 + 🍎 = 8, entonces cada manzana vale 4. ¡4 + 4 = 8!",
-      "explicacion_incorrecta": "No es correcto. Si 🍎 + 🍎 = 8, entonces cada manzana vale 4. ¡4 + 4 = 8!"
+      "ejercicios": [
+        {
+          "operacion": {
+            "linea1": "  🍎",
+            "linea2": "+ 🍎",
+            "resultado": "  8"
+          },
+          "solucion": [
+            { "figura": "🍎", "valor": "4" }
+          ],
+          "explicacion_correcta": "¡Perfecto! Si 🍎 + 🍎 = 8, entonces cada manzana vale 4. ¡4 + 4 = 8!",
+          "explicacion_incorrecta": "No es correcto. Si 🍎 + 🍎 = 8, entonces cada manzana vale 4. ¡4 + 4 = 8!"
+        }
+      ]
     },
     {
       "id": "mision-cripto-2",
       "tipo": "criptoaritmetica",
       "titulo": "Uvas y Bananas",
       "instruccion": "Descubre el valor de la uva 🍇 y la banana 🍌.",
-      "operacion": {
-        "linea1": " 🍇 🍌",
-        "linea2": "+  🍌",
-        "resultado": " 2 4"
-      },
-      "solucion": [
-        { "figura": "🍇", "valor": "20" },
-        { "figura": "🍌", "valor": "2" }
-      ],
-      "explicacion_correcta": "¡Excelente! 🍇=20 y 🍌=2, entonces 22 + 2 = 24. ¡Lógica perfecta!",
-      "explicacion_incorrecta": "No es correcto. 🍇=20 y 🍌=2, entonces 22 + 2 = 24."
+      "ejercicios": [
+        {
+          "operacion": {
+            "linea1": " 🍇 🍌",
+            "linea2": "+  🍌",
+            "resultado": " 2 4"
+          },
+          "solucion": [
+            { "figura": "🍇", "valor": "20" },
+            { "figura": "🍌", "valor": "2" }
+          ],
+          "explicacion_correcta": "¡Excelente! 🍇=20 y 🍌=2, entonces 22 + 2 = 24. ¡Lógica perfecta!",
+          "explicacion_incorrecta": "No es correcto. 🍇=20 y 🍌=2, entonces 22 + 2 = 24."
+        }
+      ]
     },
     {
       "id": "mision-cripto-3",
       "tipo": "criptoaritmetica",
       "titulo": "El Misterio de las Flores",
       "instruccion": "¿Cuánto vale cada flor 🌸? (3 flores + 1 flor = 40)",
-      "operacion": {
-        "linea1": " 🌸 🌸 🌸",
-        "linea2": "+    🌸",
-        "resultado": " 4 0"
-      },
-      "solucion": [
-        { "figura": "🌸", "valor": "10" }
-      ],
-      "explicacion_correcta": "¡Perfecto! Si 🌸=10, entonces 3 flores = 30 + 1 flor = 10 = 40. ¡Excelente!",
-      "explicacion_incorrecta": "No es correcto. Si 🌸=10, entonces 3 flores = 30 + 1 flor = 10 = 40."
+      "ejercicios": [
+        {
+          "operacion": {
+            "linea1": " 🌸 🌸 🌸",
+            "linea2": "+    🌸",
+            "resultado": " 4 0"
+          },
+          "solucion": [
+            { "figura": "🌸", "valor": "10" }
+          ],
+          "explicacion_correcta": "¡Perfecto! Si 🌸=10, entonces 3 flores = 30 + 1 flor = 10 = 40. ¡Excelente!",
+          "explicacion_incorrecta": "No es correcto. Si 🌸=10, entonces 3 flores = 30 + 1 flor = 10 = 40."
+        }
+      ]
     },
     {
       "id": "mision-cripto-4",
       "tipo": "criptoaritmetica",
       "titulo": "Las Estrellas Mágicas",
       "instruccion": "¿Qué valor tiene cada estrella ⭐? (2 estrellas + 1 estrella = 15)",
-      "operacion": {
-        "linea1": " ⭐ ⭐",
-        "linea2": "+  ⭐",
-        "resultado": " 1 5"
-      },
-      "solucion": [
-        { "figura": "⭐", "valor": "5" }
-      ],
-      "explicacion_correcta": "¡Perfecto! Si ⭐=5, entonces 2 estrellas = 10 + 1 estrella = 5 = 15. ¡Excelente!",
-      "explicacion_incorrecta": "No es correcto. Si ⭐=5, entonces 2 estrellas = 10 + 1 estrella = 5 = 15."
+      "ejercicios": [
+        {
+          "operacion": {
+            "linea1": " ⭐ ⭐",
+            "linea2": "+  ⭐",
+            "resultado": " 1 5"
+          },
+          "solucion": [
+            { "figura": "⭐", "valor": "5" }
+          ],
+          "explicacion_correcta": "¡Perfecto! Si ⭐=5, entonces 2 estrellas = 10 + 1 estrella = 5 = 15. ¡Excelente!",
+          "explicacion_incorrecta": "No es correcto. Si ⭐=5, entonces 2 estrellas = 10 + 1 estrella = 5 = 15."
+        }
+      ]
     }
   ]
 }
