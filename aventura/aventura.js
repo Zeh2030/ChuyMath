@@ -72,19 +72,27 @@ document.addEventListener('DOMContentLoaded', () => {
                     contenidoMision += renderizarMisionTabla(misionData);
                     break;
                 // ===== NUEVO CASO PARA CRIPTOARITMÉTICA =====
-                case 'criptoaritmetica':
-                    contenidoMision += renderizarMisionCripto(misionData);
-                    break;
-                default:
-                    contenidoMision += `<p>Tipo de misión no reconocido.</p>`;
+        case 'criptoaritmetica':
+            contenidoMision += renderizarMisionCripto(misionData);
+            break;
+        case 'desarrollo-cubos':
+            contenidoMision += renderizarMisionDesarrolloCubos(misionData);
+            break;
+        default:
+            contenidoMision += `<p>Tipo de misión no reconocido.</p>`;
             }
             misionDiv.innerHTML = contenidoMision;
             misionesContainer.appendChild(misionDiv);
 
-            // Añadir listeners de eventos para tablas
-            if (misionData.tipo === 'tabla-doble-entrada') {
-                addTableListeners(misionDiv);
-            }
+        // Añadir listeners de eventos para tablas
+        if (misionData.tipo === 'tabla-doble-entrada') {
+            addTableListeners(misionDiv);
+        }
+        
+        // Añadir listeners de eventos para desarrollo de cubos
+        if (misionData.tipo === 'desarrollo-cubos') {
+            addDesarrolloCubosListeners(misionDiv);
+        }
         });
         aventuraFooter.classList.remove('hidden');
     }
@@ -302,12 +310,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     puntaje += calificarMisionTabla(misionDiv, misionData) ? 1 : 0;
                     break;
                 // ===== NUEVO CASO DE CALIFICACIÓN PARA CRIPTOARITMÉTICA =====
-                case 'criptoaritmetica':
-                    puntaje += calificarMisionCripto(misionDiv, misionData);
-                    break;
-                case 'numberblocks-dibujo':
-                    puntaje++;
-                    break;
+        case 'criptoaritmetica':
+            puntaje += calificarMisionCripto(misionDiv, misionData);
+            break;
+        case 'desarrollo-cubos':
+            puntaje += calificarMisionDesarrolloCubos(misionDiv, misionData);
+            break;
+        case 'numberblocks-dibujo':
+            puntaje++;
+            break;
             }
         });
         mensajeFinal.textContent = `¡Aventura terminada! Lograste ${puntaje} de ${totalPreguntas} aciertos. ¡Sigue así!`;
@@ -781,6 +792,123 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (e) {
             console.error("No se pudo guardar el progreso en localStorage.", e);
         }
+    }
+
+    // ===== FUNCIONES PARA DESARROLLO DE CUBOS =====
+    function renderizarMisionDesarrolloCubos(data) {
+        let ejerciciosHTML = '';
+        
+        data.ejercicios.forEach((ejercicio, index) => {
+            ejerciciosHTML += `
+                <div class="desarrollo-ejercicio" data-respuesta="${ejercicio.respuesta}">
+                    <div class="desarrollo-instruccion">
+                        <h4>📐 Ejercicio ${index + 1}</h4>
+                        <p>${data.instruccion}</p>
+                    </div>
+                    
+                    <div class="desarrollo-container">
+                        <div class="plano-container">
+                            <h5>🗺️ Plano del Cubo:</h5>
+                            <div class="plano-svg">
+                                ${ejercicio.plano_svg}
+                            </div>
+                        </div>
+                        
+                        <div class="opciones-cubos">
+                            <h5>🎲 ¿Cuál cubo se puede armar?</h5>
+                            <div class="opciones-grid">
+                                ${ejercicio.opciones_img.map((img, optIndex) => `
+                                    <div class="opcion-cubo" data-opcion="${optIndex}">
+                                        <img src="${img}" alt="Cubo opción ${optIndex + 1}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiPjxyZWN0IHg9IjEwIiB5PSIxMCIgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0iI2ZmZiIvPjx0ZXh0IHg9IjUwIiB5PSI1NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzAwMCI+Q3VibyA${optIndex + 1}</text></svg>'">
+                                        <div class="opcion-numero">${optIndex + 1}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="resultado-desarrollo hidden">
+                        <div class="explicacion-desarrollo"></div>
+                    </div>
+                </div>
+            `;
+        });
+        
+        return ejerciciosHTML;
+    }
+
+    function calificarMisionDesarrolloCubos(misionDiv, misionData) {
+        let aciertos = 0;
+        
+        misionDiv.querySelectorAll('.desarrollo-ejercicio').forEach((ejercicioDiv, index) => {
+            const respuestaCorrecta = parseInt(misionData.ejercicios[index].respuesta);
+            const opcionSeleccionada = ejercicioDiv.querySelector('.opcion-cubo.seleccionada');
+            
+            ejercicioDiv.querySelectorAll('.opcion-cubo').forEach(opcion => {
+                opcion.classList.remove('correcta', 'incorrecta');
+            });
+            
+            if (opcionSeleccionada) {
+                const opcionIndex = parseInt(opcionSeleccionada.dataset.opcion);
+                
+                if (opcionIndex === respuestaCorrecta) {
+                    opcionSeleccionada.classList.add('correcta');
+                    aciertos++;
+                    mostrarExplicacionDesarrollo(ejercicioDiv, misionData.ejercicios[index].explicacion_correcta, 'correcta', '✅');
+                } else {
+                    opcionSeleccionada.classList.add('incorrecta');
+                    mostrarExplicacionDesarrollo(ejercicioDiv, misionData.ejercicios[index].explicacion_incorrecta, 'incorrecta', '❌');
+                }
+            } else {
+                mostrarMensajeDesarrollo(ejercicioDiv, '¡Selecciona una opción para continuar!', 'warning');
+            }
+        });
+        
+        return aciertos;
+    }
+
+    function mostrarExplicacionDesarrollo(ejercicioDiv, texto, tipo, icono) {
+        const resultadoDiv = ejercicioDiv.querySelector('.resultado-desarrollo');
+        const explicacionDiv = resultadoDiv.querySelector('.explicacion-desarrollo');
+        
+        explicacionDiv.innerHTML = `
+            <div class="explicacion ${tipo}">
+                <span class="icono">${icono}</span>
+                <span class="texto">${texto}</span>
+            </div>
+        `;
+        
+        resultadoDiv.classList.remove('hidden');
+    }
+
+    function mostrarMensajeDesarrollo(ejercicioDiv, texto, tipo) {
+        const mensajeDiv = document.createElement('div');
+        mensajeDiv.className = `mensaje-desarrollo mensaje-${tipo}`;
+        mensajeDiv.textContent = texto;
+        
+        ejercicioDiv.appendChild(mensajeDiv);
+        
+        setTimeout(() => {
+            mensajeDiv.remove();
+        }, 3000);
+    }
+
+    function addDesarrolloCubosListeners(misionDiv) {
+        misionDiv.querySelectorAll('.opcion-cubo').forEach(opcion => {
+            opcion.addEventListener('click', function() {
+                // Remover selección previa en este ejercicio
+                const ejercicioDiv = this.closest('.desarrollo-ejercicio');
+                ejercicioDiv.querySelectorAll('.opcion-cubo').forEach(opt => {
+                    opt.classList.remove('seleccionada');
+                });
+                
+                // Seleccionar esta opción
+                this.classList.add('seleccionada');
+                
+                // Ocultar resultado previo si existe
+                ejercicioDiv.querySelector('.resultado-desarrollo').classList.add('hidden');
+            });
+        });
     }
 
     // --- INICIALIZACIÓN ---
