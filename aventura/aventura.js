@@ -78,6 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
         case 'desarrollo-cubos':
             contenidoMision += renderizarMisionDesarrolloCubos(misionData);
             break;
+        case 'balanza-logica':
+            contenidoMision += renderizarMisionBalanza(misionData);
+            break;
         default:
             contenidoMision += `<p>Tipo de misión no reconocido.</p>`;
             }
@@ -315,6 +318,9 @@ document.addEventListener('DOMContentLoaded', () => {
             break;
         case 'desarrollo-cubos':
             puntaje += calificarMisionDesarrolloCubos(misionDiv, misionData);
+            break;
+        case 'balanza-logica':
+            puntaje += calificarMisionBalanza(misionDiv, misionData);
             break;
         case 'numberblocks-dibujo':
             puntaje++;
@@ -867,6 +873,55 @@ document.addEventListener('DOMContentLoaded', () => {
         return aciertos;
     }
 
+    function calificarMisionBalanza(misionDiv, misionData) {
+        let aciertos = 0;
+        
+        const balanzaDiv = misionDiv.querySelector('.balanza-ejercicio');
+        const respuestaCorrecta = misionData.respuesta;
+        const opcionSeleccionada = balanzaDiv.querySelector('input[name="balanza-respuesta"]:checked');
+        
+        if (opcionSeleccionada) {
+            const respuestaUsuario = opcionSeleccionada.value;
+            
+            if (respuestaUsuario === respuestaCorrecta) {
+                aciertos = 1;
+                mostrarExplicacionBalanza(balanzaDiv, misionData.explicacion_correcta, 'correcta', '✅');
+            } else {
+                mostrarExplicacionBalanza(balanzaDiv, misionData.explicacion_incorrecta, 'incorrecta', '❌');
+            }
+        } else {
+            mostrarMensajeBalanza(balanzaDiv, '¡Selecciona una opción para continuar!', 'warning');
+        }
+        
+        return aciertos;
+    }
+
+    function mostrarExplicacionBalanza(balanzaDiv, texto, tipo, icono) {
+        const resultadoDiv = balanzaDiv.querySelector('.resultado-balanza');
+        const explicacionDiv = resultadoDiv.querySelector('.explicacion-balanza');
+        
+        explicacionDiv.innerHTML = `
+            <div class="explicacion ${tipo}">
+                <span class="icono">${icono}</span>
+                <span class="texto">${texto}</span>
+            </div>
+        `;
+        
+        resultadoDiv.classList.remove('hidden');
+    }
+
+    function mostrarMensajeBalanza(balanzaDiv, texto, tipo) {
+        const mensajeDiv = document.createElement('div');
+        mensajeDiv.className = `mensaje-balanza mensaje-${tipo}`;
+        mensajeDiv.textContent = texto;
+        
+        balanzaDiv.appendChild(mensajeDiv);
+        
+        setTimeout(() => {
+            mensajeDiv.remove();
+        }, 3000);
+    }
+
     function mostrarExplicacionDesarrollo(ejercicioDiv, texto, tipo, icono) {
         const resultadoDiv = ejercicioDiv.querySelector('.resultado-desarrollo');
         const explicacionDiv = resultadoDiv.querySelector('.explicacion-desarrollo');
@@ -891,6 +946,40 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             mensajeDiv.remove();
         }, 3000);
+    }
+
+    // ===== FUNCIONES PARA BALANZA LÓGICA =====
+    function renderizarMisionBalanza(data) {
+        return `
+            <div class="balanza-ejercicio" data-respuesta="${data.respuesta}">
+                <div class="balanza-instruccion">
+                    <h4>⚖️ ${data.titulo}</h4>
+                    <p>${data.instruccion}</p>
+                </div>
+                
+                <div class="balanza-container">
+                    <div class="balanza-svg">
+                        ${data.pregunta_svg}
+                    </div>
+                    
+                    <div class="balanza-opciones">
+                        <h5>🤔 ¿Cuántos círculos (●) se necesitan para equilibrar un triángulo (▲)?</h5>
+                        <div class="opciones-balanza">
+                            ${data.opciones.map((opcion, index) => `
+                                <label class="opcion-balanza">
+                                    <input type="radio" name="balanza-respuesta" value="${opcion}">
+                                    <span class="opcion-texto">${opcion}</span>
+                                </label>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resultado-balanza hidden">
+                    <div class="explicacion-balanza"></div>
+                </div>
+            </div>
+        `;
     }
 
     function addDesarrolloCubosListeners(misionDiv) {
