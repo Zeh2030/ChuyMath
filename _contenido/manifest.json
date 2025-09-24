@@ -65,8 +65,8 @@
       },
       {
         "id": "2025-10-01",
-        "titulo": "El Misterio del Cubo Desplegado",
-        "descripcion": "¡Desarrolla tu visión espacial armando cubos a partir de planos!",
+        "titulo": "Aventura de Lógica y Espacio",
+        "descripcion": "¡Desarrolla tu visión espacial armando cubos y resuelve enigmas de balanzas!",
         "icono": "🧊",
         "temas": ["geometria", "espacial", "logica"]
       }
