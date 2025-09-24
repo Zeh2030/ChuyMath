@@ -1093,3 +1093,129 @@ body {
         padding: 15px;
     }
 }
+
+/* --- Estilos para Balanza Lógica --- */
+.mision.balanza-logica {
+    border-color: #e74c3c; /* Rojo para lógica */
+}
+
+.balanza-ejercicio {
+    background-color: #fdf2f2;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.balanza-instruccion h4 {
+    color: #c0392b;
+    margin-bottom: 10px;
+}
+
+.balanza-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.balanza-svg {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.balanza-opciones h5 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.opciones-balanza {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.opcion-balanza {
+    display: flex;
+    align-items: center;
+    background: white;
+    border: 2px solid #bdc3c7;
+    border-radius: 25px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.opcion-balanza:hover {
+    border-color: #e74c3c;
+    background-color: #fdf2f2;
+}
+
+.opcion-balanza input[type="radio"] {
+    margin-right: 8px;
+}
+
+.opcion-balanza input[type="radio"]:checked + .opcion-texto {
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+.opcion-balanza:has(input:checked) {
+    border-color: #e74c3c;
+    background-color: #fdf2f2;
+}
+
+.resultado-balanza {
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #f8f9fa;
+}
+
+.explicacion-balanza .explicacion {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+}
+
+.explicacion-balanza .explicacion.correcta {
+    color: #27ae60;
+}
+
+.explicacion-balanza .explicacion.incorrecta {
+    color: #e74c3c;
+}
+
+.mensaje-balanza {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.mensaje-balanza.mensaje-warning {
+    background-color: #f39c12;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .balanza-container {
+        flex-direction: column;
+    }
+    
+    .opciones-balanza {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .opcion-balanza {
+        width: 100%;
+        max-width: 200px;
+        justify-content: center;
+    }
+}
