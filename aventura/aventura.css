@@ -294,6 +294,58 @@ body {
 }
 
 /* --- Responsive Design --- */
+/* --- NUEVOS ESTILOS: Misión Palabra del Día --- */
+.mision.palabra-del-dia { 
+    border-color: #ff9ff3; /* Rosa para idiomas */
+}
+.palabra-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+    border-radius: 15px;
+}
+.palabra-ingles {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: var(--c-paper);
+    padding: 10px 25px;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.palabra-texto {
+    font-family: var(--font-headings);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #c2185b;
+}
+.boton-audio {
+    background-color: #ad1457;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.boton-audio:hover {
+    transform: scale(1.1);
+}
+.palabra-icono {
+    font-size: 4rem;
+}
+.palabra-espanol {
+    font-family: var(--font-body);
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--c-text);
+}
+
 @media (max-width: 768px) {
     body {
         padding: 15px;
@@ -316,5 +368,17 @@ body {
     
     .opciones-lista li label {
         text-align: center;
+    }
+    
+    .palabra-texto {
+        font-size: 2rem;
+    }
+    
+    .palabra-icono {
+        font-size: 3rem;
+    }
+    
+    .palabra-espanol {
+        font-size: 1.5rem;
     }
 }
