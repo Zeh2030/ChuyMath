@@ -85,6 +85,15 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Add event listeners for interactive elements after they are in the DOM
         addGlobalEventListeners();
+        
+        // Añadir listeners de eventos para tablas
+        document.querySelectorAll('.mision').forEach(misionDiv => {
+            const misionData = JSON.parse(misionDiv.dataset.info);
+            if (misionData.tipo === 'tabla-doble-entrada') {
+                addTableListeners(misionDiv);
+            }
+        });
+        
         aventuraFooter.classList.remove('hidden');
     }
 
@@ -291,6 +300,93 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="palabra-espanol">${data.palabra_es}</div>
             </div>
         `;
+    }
+
+    // ===== FUNCIONES PARA TABLAS DE DOBLE ENTRADA =====
+    function renderizarMisionTabla(data) {
+        // Verificar si es el formato antiguo (con encabezados_fila y encabezados_columna)
+        if (data.encabezados_fila && data.encabezados_columna) {
+            // Formato antiguo con pregunta final - las propiedades están directamente en data
+            let opcionesFinalHTML = '<ul class="opciones-lista">';
+            data.opciones_finales.forEach((opcion, optIndex) => {
+                const idUnico = `tabla-${data.id}-${optIndex}`;
+                opcionesFinalHTML += `<li><input type="radio" name="tabla-final-${data.id}" id="${idUnico}" value="${opcion}"><label for="${idUnico}">${opcion}</label></li>`;
+            });
+            opcionesFinalHTML += '</ul>';
+            
+            return `
+                <div class="tabla-logica">
+                    <h3>${data.titulo}</h3>
+                    <p>${data.instruccion}</p>
+                    ${data.pistas ? `<ul class="pistas-lista">${data.pistas.map(pista => `<li>${pista}</li>`).join('')}</ul>` : ''}
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                ${data.encabezados_columna.map(opcion => `<th>${opcion}</th>`).join('')}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${data.encabezados_fila.map(personaje => `
+                                <tr>
+                                    <td><strong>${personaje}</strong></td>
+                                    ${data.encabezados_columna.map(opcion => `<td class="celda-logica" data-personaje="${personaje}" data-opcion="${opcion}"></td>`).join('')}
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                    <p class="pregunta-final">${data.pregunta_final}</p>
+                    ${opcionesFinalHTML}
+                    <div class="feedback-container"></div>
+                </div>
+            `;
+        } else {
+            // Formato nuevo con ejercicios array
+            let tablaHTML = '';
+            data.ejercicios.forEach((ej, index) => {
+                tablaHTML += `
+                    <div class="tabla-logica">
+                        <h3>${ej.titulo}</h3>
+                        <p>${ej.instruccion}</p>
+                        ${ej.pistas ? `<ul class="pistas-lista">${ej.pistas.map(pista => `<li>${pista}</li>`).join('')}</ul>` : ''}
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    ${ej.opciones.map(opcion => `<th>${opcion}</th>`).join('')}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${ej.personajes.map(personaje => `
+                                    <tr>
+                                        <td><strong>${personaje}</strong></td>
+                                        ${ej.opciones.map(opcion => `<td class="celda-logica" data-personaje="${personaje}" data-opcion="${opcion}"></td>`).join('')}
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                        <div class="feedback-container"></div>
+                    </div>
+                `;
+            });
+            return tablaHTML;
+        }
+    }
+
+    function addTableListeners(misionDiv) {
+        // Listener para celdas de tabla
+        misionDiv.addEventListener('click', (e) => {
+            const celda = e.target.closest('.celda-logica');
+            if (celda) {
+                const estados = ['', '✅', '❌'];
+                const clases = ['', 'si', 'no'];
+                let indiceActual = estados.indexOf(celda.textContent);
+                let nuevoIndice = (indiceActual + 1) % estados.length;
+                celda.textContent = estados[nuevoIndice];
+                celda.className = 'celda-logica'; // Reset
+                if (clases[nuevoIndice]) celda.classList.add(clases[nuevoIndice]);
+            }
+        });
     }
 
     // --- LÓGICA DE CALIFICACIÓN ---
