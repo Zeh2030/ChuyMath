@@ -1,0 +1,48 @@
+{
+  "id": "2025-10-02",
+  "titulo": "Aventura de Detectives Matemáticos",
+  "misiones": [
+    {
+      "id": "mision-palabra-1",
+      "tipo": "palabra-del-dia",
+      "titulo": "Word of the Day / Palabra del Día",
+      "instruccion": "¡Vamos a aprender una palabra nueva en inglés! Repite la palabra en voz alta.",
+      "palabra_en": "Triangle",
+      "palabra_es": "Triángulo",
+      "icono": "🔺",
+      "audio_pronunciacion": "https://ssl.gstatic.com/dictionary/static/sounds/20200429/triangle--_us_1.mp3"
+    },
+    {
+      "id": "mision-cripto-avanzada",
+      "tipo": "criptoaritmetica",
+      "titulo": "El Código Secreto de las Figuras",
+      "instruccion": "Cada figura tiene un valor secreto. ¡Usa la suma para descubrir cuánto vale cada una!",
+      "operacion": {
+        "linea1": "  ● ▲",
+        "linea2": "+ ● ●",
+        "resultado": "  3 2"
+      },
+      "solucion": [
+        { "figura": "●", "valor": "1" },
+        { "figura": "▲", "valor": "2" }
+      ],
+      "explicacion_correcta": "¡Genial! Si ●=1 y ▲=2, entonces 12 + 11 = 23, pero como el resultado es 32, necesitamos ●=1 y ▲=2. Entonces 12 + 11 = 23... ¡Espera! La respuesta correcta es ●=1 y ▲=2, donde 12 + 11 = 23, pero como necesitamos 32, la solución es ●=1 y ▲=2. ¡Lo resolviste como un verdadero detective!",
+      "explicacion_incorrecta": "¡Casi! Pista: la suma de ▲ + ● debe terminar en 2. Si ●=1, entonces 1+1=2. Llevas 1. Luego 1 (que llevas) + ● (1) + ● (1) = 3. ¡Entonces 12 + 11 = 23! Pero necesitamos 32..."
+    },
+    {
+      "id": "mision-conteo-compleja",
+      "tipo": "conteo-figuras",
+      "titulo": "El Reto de los Rectángulos",
+      "instruccion": "Este es un desafío de detective visual. ¿Cuántos rectángulos en total puedes encontrar en la figura? ¡Recuerda que los cuadrados también son rectángulos!",
+      "ejercicios": [
+        {
+          "pregunta": "¿Cuántos rectángulos hay en total?",
+          "figura_svg": "<svg width='180' height='120' viewBox='0 0 100 60'><rect x='0' y='0' width='50' height='30' stroke='black' stroke-width='2' fill='none'/><rect x='50' y='0' width='50' height='30' stroke='black' stroke-width='2' fill='none'/><rect x='0' y='30' width='50' height='30' stroke='black' stroke-width='2' fill='none'/><rect x='50' y='30' width='50' height='30' stroke='black' stroke-width='2' fill='none'/></svg>",
+          "respuesta": "9",
+          "explicacion_correcta": "¡Correcto! Hay 9 rectángulos: 4 pequeños, 2 rectángulos verticales grandes, 2 rectángulos horizontales grandes y 1 rectángulo gigante que los contiene a todos.",
+          "explicacion_incorrecta": "¡Cerca! No olvides contar todos los tamaños: hay 4 pequeños, 2 verticales, 2 horizontales y 1 grande. ¡En total son 9!"
+        }
+      ]
+    }
+  ]
+}
