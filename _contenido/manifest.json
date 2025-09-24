@@ -69,5 +69,12 @@
         "descripcion": "¡Desarrolla tu visión espacial armando cubos y resuelve enigmas de balanzas!",
         "icono": "🧊",
         "temas": ["geometria", "espacial", "logica"]
+      },
+      {
+        "id": "2025-10-02",
+        "titulo": "Aventura de Detectives Matemáticos",
+        "descripcion": "¡Aprende inglés, resuelve códigos secretos y cuenta rectángulos como un verdadero detective!",
+        "icono": "🕵️",
+        "temas": ["ingles", "logica", "geometria"]
       }
 ]
