@@ -88,27 +88,28 @@ document.addEventListener('DOMContentLoaded', () => {
         aventuraFooter.classList.remove('hidden');
     }
 
-    // --- RENDERIZADO DE MISIONES ---
+    // --- FUNCIONES DE RENDERIZADO ---
 
     function renderizarMisionOperaciones(data) {
         let gridHTML = '<div class="operaciones-grid">';
         data.ejercicios.forEach((ej, index) => {
-            gridHTML += `<div class="ejercicio" data-respuesta="${ej.respuesta}"><p>${ej.pregunta} =</p><input type="number" inputmode="numeric" placeholder="?"></div>`;
+            gridHTML += `<div class="ejercicio" data-respuesta="${ej.respuesta}"><p>${ej.pregunta} =</p><input type="number" inputmode="numeric" id="op-${index}"></div>`;
         });
         return gridHTML + '</div>';
     }
-    
+
     function renderizarMisionOpcionMultiple(data) {
         let opcionesHTML = '<ul class="opciones-lista">';
         data.opciones.forEach((opcion, index) => {
-            opcionesHTML += `<li><input type="radio" name="opcion-multiple-${data.id}" id="om-${data.id}-${index}" value="${opcion}"><label for="om-${data.id}-${index}">${opcion}</label></li>`;
+            const idUnico = `om-${data.id}-${index}`;
+            opcionesHTML += `<li><input type="radio" name="opcion-multiple-${data.id}" id="${idUnico}" value="${opcion}"><label for="${idUnico}">${opcion}</label></li>`;
         });
         opcionesHTML += '</ul>';
         return `<p class="opcion-multiple-pregunta">${data.pregunta}</p>${data.imagen ? `<img src="${data.imagen}" alt="Imagen de la misión" class="opcion-multiple-imagen">` : ''}${opcionesHTML}`;
     }
 
     function renderizarMisionDibujo(data) {
-        return `<div class="canvas-placeholder">El lienzo de dibujo aparecerá aquí (función en desarrollo).</div>`;
+        return `<p class="numberblocks-instruccion">${data.instruccion}</p><div class="canvas-placeholder">El lienzo de dibujo aparecerá aquí.</div>`;
     }
 
     function renderizarMisionSecuencia(data) {
@@ -137,73 +138,106 @@ document.addEventListener('DOMContentLoaded', () => {
             ejerciciosHTML += `
                 <div class="conteo-ejercicio" data-respuesta="${ej.respuesta}">
                     <p class="conteo-pregunta">${ej.pregunta}</p>
-                    <div class="conteo-figura-container">${ej.figura_svg}</div>
-                    <div class="conteo-respuesta"><input type="number" inputmode="numeric" placeholder="Total"></div>
-                    <div class="feedback-container"></div>
-                </div>`;
+                    <div class="conteo-figura-container">
+                        ${ej.figura_svg}
+                    </div>
+                    <div class="conteo-respuesta">
+                        <input type="number" inputmode="numeric" placeholder="Total">
+                    </div>
+                </div>
+            `;
         });
         return ejerciciosHTML;
     }
-    
+
     function renderizarMisionTabla(data) {
-        const pistasHTML = data.pistas.map(pista => `<li>${pista}</li>`).join('');
-        const headersColumnasHTML = data.encabezados_columna.map(header => `<th>${header}</th>`).join('');
-        let filasTablaHTML = '';
-        data.encabezados_fila.forEach(headerFila => {
-            let celdasHTML = data.encabezados_columna.map(() => `<td class="celda-logica"></td>`).join('');
-            filasTablaHTML += `<tr><th>${headerFila}</th>${celdasHTML}</tr>`;
-        });
-        const opcionesFinalesHTML = data.opciones_finales.map((opcion, index) => {
-            const idUnico = `tabla-final-${data.id}-${index}`;
-            return `<li><input type="radio" name="tabla-final-${data.id}" id="${idUnico}" value="${opcion}"><label for="${idUnico}">${opcion}</label></li>`;
-        }).join('');
-        return `
-            <div class="tabla-logica-container">
-                <div class="tabla-pistas"><h3>Pistas 🕵️</h3><ul>${pistasHTML}</ul></div>
-                <div class="tabla-interactiva-container">
-                    <table class="tabla-interactiva">
-                        <thead><tr><th class="header-vacio"></th>${headersColumnasHTML}</tr></thead>
-                        <tbody>${filasTablaHTML}</tbody>
+        let tablaHTML = '';
+        data.ejercicios.forEach((ej, index) => {
+            tablaHTML += `
+                <div class="tabla-logica">
+                    <h3>${ej.titulo}</h3>
+                    <p>${ej.instruccion}</p>
+                    ${ej.pistas ? `<ul class="pistas-lista">${ej.pistas.map(pista => `<li>${pista}</li>`).join('')}</ul>` : ''}
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                ${ej.opciones.map(opcion => `<th>${opcion}</th>`).join('')}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${ej.personajes.map(personaje => `
+                                <tr>
+                                    <td><strong>${personaje}</strong></td>
+                                    ${ej.opciones.map(opcion => `<td class="celda-logica" data-personaje="${personaje}" data-opcion="${opcion}"></td>`).join('')}
+                                </tr>
+                            `).join('')}
+                        </tbody>
                     </table>
+                    <div class="feedback-container"></div>
                 </div>
-            </div>
-            <div class="pregunta-final-container" data-respuesta="${data.respuesta_final}">
-                <p class="pregunta-final-texto">${data.pregunta_final}</p>
-                <ul class="opciones-lista">${opcionesFinalesHTML}</ul>
-                <div class="feedback-container"></div>
-            </div>`;
+            `;
+        });
+        return tablaHTML;
     }
-    
+
     function renderizarMisionCripto(data) {
-        const solucionHTML = data.solucion.map(item => `
-            <div class="cripto-input-grupo">
-                <span class="figura">${item.figura}</span> = 
-                <input type="number" inputmode="numeric" data-figura="${item.figura}" data-valor="${item.valor}" placeholder="?">
-            </div>`).join('');
-        return `
-            <div class="cripto-ejercicio">
-                <div class="cripto-container">
-                    <div class="cripto-operacion">
-                        <div>${data.operacion.linea1}</div><div class="linea-suma">${data.operacion.linea2}</div><div>${data.operacion.resultado}</div>
-                    </div>
-                    <div class="cripto-solucion-area">${solucionHTML}</div>
+        let ejerciciosHTML = '';
+        data.ejercicios.forEach((ej, index) => {
+            const operacionHTML = `
+                <div class="cripto-operacion">
+                    ${ej.operacion.linea1}<br>
+                    ${ej.operacion.linea2}<br>
+                    <hr>
+                    ${ej.operacion.resultado}
                 </div>
-                <div class="feedback-container"></div>
-            </div>`;
+            `;
+            
+            const respuestaHTML = ej.solucion.map(sol => 
+                `<input type="number" class="cripto-input" data-figura="${sol.figura}" placeholder="${sol.figura}" min="0" max="9">`
+            ).join('');
+            
+            ejerciciosHTML += `
+                <div class="cripto-ejercicio" data-respuesta="${JSON.stringify(ej.solucion)}">
+                    ${operacionHTML}
+                    <div class="cripto-respuesta">
+                        ${respuestaHTML}
+                    </div>
+                    <div class="feedback-container"></div>
+                </div>
+            `;
+        });
+        return ejerciciosHTML;
     }
 
     function renderizarMisionCubo(data) {
         let ejerciciosHTML = '';
         data.ejercicios.forEach((ej) => {
-            const opcionesHTML = ej.opciones_svg.map((opcion_svg, optIndex) => `<div class="cubo-opcion" data-opcion-index="${optIndex}">${opcion_svg}</div>`).join('');
-            ejerciciosHTML += `<div class="cubo-ejercicio" id="${ej.id}" data-respuesta="${ej.respuesta}"><div class="cubo-plano">${ej.plano_svg}</div><div class="cubo-opciones-container">${opcionesHTML}</div><div class="feedback-container"></div></div>`;
+            const opcionesHTML = ej.opciones_svg.map((opcion_svg, optIndex) => 
+                `<div class="cubo-opcion" data-opcion-index="${optIndex}">${opcion_svg}</div>`
+            ).join('');
+            ejerciciosHTML += `
+                <div class="cubo-ejercicio" id="${ej.id}" data-respuesta="${ej.respuesta}">
+                    <div class="cubo-plano">${ej.plano_svg}</div>
+                    <div class="cubo-opciones-container">${opcionesHTML}</div>
+                    <div class="feedback-container"></div>
+                </div>
+            `;
         });
         return ejerciciosHTML;
     }
 
     function renderizarMisionBalanza(data) {
-        const opcionesHTML = data.opciones.map((opcion, index) => `<li><input type="radio" name="balanza-${data.id}" id="balanza-${data.id}-${index}" value="${opcion}"><label for="balanza-${data.id}-${index}">${opcion}</label></li>`).join('');
-        return `<div class="balanza-ejercicio" data-respuesta="${data.respuesta}"><div class="balanza-pregunta-svg">${data.pregunta_svg}</div><ul class="opciones-lista balanza-opciones">${opcionesHTML}</ul><div class="feedback-container"></div></div>`;
+        const opcionesHTML = data.opciones.map((opcion, index) => 
+            `<li><input type="radio" name="balanza-${data.id}" id="balanza-${data.id}-${index}" value="${opcion}"><label for="balanza-${data.id}-${index}">${opcion}</label></li>`
+        ).join('');
+        return `
+            <div class="balanza-ejercicio" data-respuesta="${data.respuesta}">
+                <div class="balanza-pregunta-svg">${data.pregunta_svg}</div>
+                <ul class="opciones-lista balanza-opciones">${opcionesHTML}</ul>
+                <div class="feedback-container"></div>
+            </div>
+        `;
     }
 
     function renderizarPalabraDelDia(data) {
@@ -259,43 +293,55 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function calificarMisionOperaciones(misionDiv, misionData) {
         let aciertos = 0;
-        misionDiv.querySelectorAll('.ejercicio').forEach((ej, index) => {
-            const input = ej.querySelector('input');
-            const esCorrecto = input.value.trim() === misionData.ejercicios[index].respuesta;
-            input.classList.toggle('correct', esCorrecto);
-            input.classList.toggle('incorrect', !esCorrecto);
-            if (esCorrecto) aciertos++;
+        misionDiv.querySelectorAll('.ejercicio').forEach((ejDiv, index) => {
+            const input = ejDiv.querySelector('input');
+            const respuestaCorrecta = misionData.ejercicios[index].respuesta;
+            input.classList.remove('correct', 'incorrect');
+            if (input.value.trim() === respuestaCorrecta) {
+                input.classList.add('correct');
+                aciertos++;
+            } else {
+                input.classList.add('incorrect');
+            }
         });
         return aciertos;
     }
 
     function calificarMisionOpcionMultiple(misionDiv, misionData) {
-        const opcionSeleccionada = misionDiv.querySelector('input[type="radio"]:checked');
-        if (opcionSeleccionada && opcionSeleccionada.value === misionData.respuesta) {
-             opcionSeleccionada.nextElementSibling.classList.add('correcto');
-            return 1;
-        }
-        if(opcionSeleccionada) opcionSeleccionada.nextElementSibling.classList.add('incorrecto');
-        return 0;
+        const selectedOption = document.querySelector(`input[name="opcion-multiple-${misionData.id}"]:checked`);
+        if (!selectedOption) return 0;
+        
+        const esCorrecto = selectedOption.value === misionData.respuesta;
+        const label = selectedOption.nextElementSibling;
+        label.classList.toggle('correcto', esCorrecto);
+        label.classList.toggle('incorrecto', !esCorrecto);
+        
+        return esCorrecto ? 1 : 0;
     }
-    
+
     function calificarMisionSecuencia(misionDiv, misionData) {
         let aciertos = 0;
         misionDiv.querySelectorAll('.secuencia-ejercicio').forEach((ejDiv, index) => {
             const respuestaCorrecta = misionData.ejercicios[index].respuesta;
-            const radioSeleccionado = ejDiv.querySelector('input[type="radio"]:checked');
-            const inputTexto = ejDiv.querySelector('input[type="text"]');
+            let esCorrecto = false;
             
-            if (radioSeleccionado) {
-                if (radioSeleccionado.value === respuestaCorrecta) aciertos++;
-                radioSeleccionado.nextElementSibling.classList.toggle('correcto', radioSeleccionado.value === respuestaCorrecta);
-                radioSeleccionado.nextElementSibling.classList.toggle('incorrecto', radioSeleccionado.value !== respuestaCorrecta);
-            } else if (inputTexto) {
-                const esCorrecto = inputTexto.value.trim().toLowerCase() === respuestaCorrecta.toLowerCase();
-                if(esCorrecto) aciertos++;
-                inputTexto.classList.toggle('correct', esCorrecto);
-                inputTexto.classList.toggle('incorrect', !esCorrecto);
+            // Buscar input de texto o radio seleccionado
+            const textInput = ejDiv.querySelector('input[type="text"]');
+            const radioInput = ejDiv.querySelector('input[type="radio"]:checked');
+            
+            if (textInput && textInput.value.trim() === respuestaCorrecta) {
+                textInput.classList.add('correct');
+                esCorrecto = true;
+            } else if (radioInput && radioInput.value === respuestaCorrecta) {
+                const label = radioInput.nextElementSibling;
+                label.classList.add('correcto');
+                esCorrecto = true;
+            } else {
+                if (textInput) textInput.classList.add('incorrect');
+                if (radioInput) radioInput.nextElementSibling.classList.add('incorrecto');
             }
+            
+            if (esCorrecto) aciertos++;
         });
         return aciertos;
     }
@@ -303,73 +349,94 @@ document.addEventListener('DOMContentLoaded', () => {
     function calificarMisionConteo(misionDiv, misionData) {
         let aciertos = 0;
         misionDiv.querySelectorAll('.conteo-ejercicio').forEach((ejDiv, index) => {
-             const input = ejDiv.querySelector('input');
-             const ejercicioData = misionData.ejercicios[index];
-             const esCorrecto = input.value.trim() === ejercicioData.respuesta;
-             input.classList.toggle('correct', esCorrecto);
-             input.classList.toggle('incorrect', !esCorrecto);
-             if(esCorrecto) aciertos++;
-             mostrarFeedback(ejDiv.querySelector('.feedback-container'), esCorrecto ? ejercicioData.explicacion_correcta : ejercicioData.explicacion_incorrecta, esCorrecto ? 'correcto' : 'incorrecto');
+            const input = ejDiv.querySelector('input');
+            const respuestaCorrecta = misionData.ejercicios[index].respuesta;
+            input.classList.remove('correct', 'incorrect');
+            if (input.value.trim() === respuestaCorrecta) {
+                input.classList.add('correct');
+                aciertos++;
+            } else {
+                input.classList.add('incorrect');
+            }
         });
         return aciertos;
     }
 
     function calificarMisionTabla(misionDiv, misionData) {
-        const contenedorPregunta = misionDiv.querySelector('.pregunta-final-container');
-        const opcionSeleccionada = contenedorPregunta.querySelector('input[type="radio"]:checked');
-        if (!opcionSeleccionada) return 0;
-
-        const esCorrecto = opcionSeleccionada.value === contenedorPregunta.dataset.respuesta;
-        opcionSeleccionada.nextElementSibling.classList.toggle('correcto', esCorrecto);
-        opcionSeleccionada.nextElementSibling.classList.toggle('incorrecto', !esCorrecto);
-        
-        if (esCorrecto) {
-             mostrarFeedback(contenedorPregunta.querySelector('.feedback-container'), misionData.explicacion_correcta, 'correcto');
-            return 1;
-            } else {
-             mostrarFeedback(contenedorPregunta.querySelector('.feedback-container'), misionData.explicacion_incorrecta, 'incorrecto');
-            return 0;
-        }
+        let aciertos = 0;
+        misionDiv.querySelectorAll('.tabla-logica').forEach((tablaDiv, index) => {
+            const solucion = misionData.ejercicios[index].respuesta_final;
+            let esCorrecto = true;
+            
+            // Verificar cada celda
+            Object.entries(solucion).forEach(([personaje, opcion]) => {
+                const celda = tablaDiv.querySelector(`[data-personaje="${personaje}"][data-opcion="${opcion}"]`);
+                if (celda && !celda.classList.contains('si')) {
+                    esCorrecto = false;
+                }
+            });
+            
+            if (esCorrecto) aciertos++;
+        });
+        return aciertos;
     }
 
     function calificarMisionCripto(misionDiv, misionData) {
         let aciertos = 0;
-        misionDiv.querySelectorAll('.cripto-input-grupo input').forEach(input => {
-            const esCorrecto = input.value.trim() === input.dataset.valor;
-            input.classList.toggle('correct', esCorrecto);
-            input.classList.toggle('incorrect', !esCorrecto);
-            if(esCorrecto) aciertos++;
+        misionDiv.querySelectorAll('.cripto-ejercicio').forEach((ejDiv, index) => {
+            const solucionCorrecta = misionData.ejercicios[index].solucion;
+            let esCorrecto = true;
+            
+            solucionCorrecta.forEach(sol => {
+                const input = ejDiv.querySelector(`[data-figura="${sol.figura}"]`);
+                if (input && input.value !== sol.valor) {
+                    esCorrecto = false;
+                }
+            });
+            
+            if (esCorrecto) {
+                ejDiv.querySelectorAll('.cripto-input').forEach(input => input.classList.add('correct'));
+                aciertos++;
+            } else {
+                ejDiv.querySelectorAll('.cripto-input').forEach(input => input.classList.add('incorrect'));
+            }
         });
-        const todosCorrectos = aciertos === misionData.solucion.length;
-        mostrarFeedback(misionDiv.querySelector('.feedback-container'), todosCorrectos ? misionData.explicacion_correcta : misionData.explicacion_incorrecta, todosCorrectos ? 'correcto' : 'incorrecto');
-        return todosCorrectos ? misionData.solucion.length : 0; // O puntaje parcial: `return aciertos;`
+        return aciertos;
     }
 
     function calificarMisionCubo(misionDiv, misionData) {
         let aciertos = 0;
         misionDiv.querySelectorAll('.cubo-ejercicio').forEach((ejDiv, index) => {
-            const respuestaCorrecta = parseInt(ejDiv.dataset.respuesta);
-            const opcionSeleccionada = ejDiv.querySelector('.cubo-opcion.seleccionada');
-            if (opcionSeleccionada) {
-                const esCorrecto = parseInt(opcionSeleccionada.dataset.opcionIndex) === respuestaCorrecta;
-                if(esCorrecto) aciertos++;
-                opcionSeleccionada.classList.toggle('correcto', esCorrecto);
-                opcionSeleccionada.classList.toggle('incorrecto', !esCorrecto);
-                if(!esCorrecto) ejDiv.querySelector(`[data-opcion-index="${respuestaCorrecta}"]`).classList.add('correcto');
-                const explicacion = esCorrecto ? misionData.ejercicios[index].explicacion_correcta : misionData.ejercicios[index].explicacion_incorrecta;
+            const respuestaCorrecta = parseInt(misionData.ejercicios[index].respuesta);
+            const seleccionada = ejDiv.querySelector('.cubo-opcion.seleccionada');
+            
+            if (seleccionada) {
+                const seleccionIndex = parseInt(seleccionada.dataset.opcionIndex);
+                const esCorrecto = seleccionIndex === respuestaCorrecta;
+                
+                seleccionada.classList.toggle('correcto', esCorrecto);
+                seleccionada.classList.toggle('incorrecto', !esCorrecto);
+                
+                const explicacion = esCorrecto ? 
+                    misionData.ejercicios[index].explicacion_correcta : 
+                    misionData.ejercicios[index].explicacion_incorrecta;
                 mostrarFeedback(ejDiv.querySelector('.feedback-container'), explicacion, esCorrecto ? 'correcto' : 'incorrecto');
+                
+                if (esCorrecto) aciertos++;
             }
         });
         return aciertos;
     }
 
     function calificarMisionBalanza(misionDiv, misionData) {
-        const opcionSeleccionada = misionDiv.querySelector('input[type="radio"]:checked');
-        if (!opcionSeleccionada) return 0;
-        const esCorrecto = opcionSeleccionada.value === misionData.respuesta;
-        opcionSeleccionada.nextElementSibling.classList.toggle('correcto', esCorrecto);
-        opcionSeleccionada.nextElementSibling.classList.toggle('incorrecto', !esCorrecto);
-        if(!esCorrecto) misionDiv.querySelector(`input[value="${misionData.respuesta}"]`).nextElementSibling.classList.add('correcto');
+        const selectedOption = document.querySelector(`input[name="balanza-${misionData.id}"]:checked`);
+        if (!selectedOption) return 0;
+        
+        const esCorrecto = selectedOption.value === misionData.respuesta;
+        const label = selectedOption.nextElementSibling;
+        label.classList.toggle('correcto', esCorrecto);
+        label.classList.toggle('incorrecto', !esCorrecto);
+        
         const explicacion = esCorrecto ? misionData.explicacion_correcta : misionData.explicacion_incorrecta;
         mostrarFeedback(misionDiv.querySelector('.feedback-container'), explicacion, esCorrecto ? 'correcto' : 'incorrecto');
         return esCorrecto ? 1 : 0;
@@ -406,32 +473,21 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // --- GUARDAR PROGRESO ---
     function guardarProgreso() {
-        const diaAventura = getDiaAventura();
-        if (!diaAventura) return;
-        try {
-            const defaults = { misionesCompletadas: [], ultimaVisita: null, racha: 0 };
-            let progreso = JSON.parse(localStorage.getItem(PROGRESO_KEY)) || defaults;
-            progreso = { ...defaults, ...progreso };
-            if (!progreso.misionesCompletadas.includes(diaAventura)) {
-                progreso.misionesCompletadas.push(diaAventura);
-            }
-            const hoyStr = new Date().toISOString().split('T')[0];
-            if (progreso.ultimaVisita !== hoyStr) {
-                const ayer = new Date();
-                ayer.setDate(ayer.getDate() - 1);
-                progreso.racha = progreso.ultimaVisita === ayer.toISOString().split('T')[0] ? progreso.racha + 1 : 1;
-                progreso.ultimaVisita = hoyStr;
-            }
-            localStorage.setItem(PROGRESO_KEY, JSON.stringify(progreso));
-        } catch (e) {
-            console.error("No se pudo guardar el progreso en localStorage.", e);
+        const progresoActual = JSON.parse(localStorage.getItem(PROGRESO_KEY) || '{}');
+        const hoy = new Date().toISOString().split('T')[0];
+        
+        if (!progresoActual.aventurasCompletadas) {
+            progresoActual.aventurasCompletadas = [];
         }
-    }
-
-    // --- FUNCIÓN DE AUDIO ---
-    function playAudio(url) {
-        const audio = new Audio(url);
-        audio.play().catch(e => console.log('No se pudo reproducir el audio:', e));
+        
+        if (!progresoActual.aventurasCompletadas.includes(aventuraData.id)) {
+            progresoActual.aventurasCompletadas.push(aventuraData.id);
+        }
+        
+        progresoActual.ultimaAventura = aventuraData.id;
+        progresoActual.ultimaFecha = hoy;
+        
+        localStorage.setItem(PROGRESO_KEY, JSON.stringify(progresoActual));
     }
 
     // --- INICIALIZACIÓN ---
@@ -439,7 +495,7 @@ document.addEventListener('DOMContentLoaded', () => {
     cargarAventura(dia);
 });
 
-// Función global para el audio
+// Función global para el audio (moved outside DOMContentLoaded for global access)
 function playAudio(url) {
     const audio = new Audio(url);
     audio.play().catch(e => console.log('No se pudo reproducir el audio:', e));
