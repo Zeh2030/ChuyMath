@@ -3,6 +3,28 @@
   "titulo": "Aventura del Gran Desafío",
   "misiones": [
     {
+      "id": "mision-palabra-viernes",
+      "tipo": "palabra-del-dia",
+      "titulo": "Word of the Day / Palabra del Día",
+      "instruccion": "La palabra de hoy representa tu esfuerzo de toda la semana.",
+      "palabra_en": "Challenge",
+      "palabra_es": "Desafío / Reto",
+      "icono": "🏆",
+      "audio_pronunciacion": "https://ssl.gstatic.com/dictionary/static/sounds/20200429/challenge--_us_1.mp3"
+    },
+    {
+      "id": "mision-operaciones-viernes",
+      "tipo": "operaciones",
+      "titulo": "Cálculos del Campeón",
+      "instruccion": "¡Demuestra tu agilidad mental para el desafío final!",
+      "ejercicios": [
+        { "pregunta": "35 + 18", "respuesta": "53" },
+        { "pregunta": "150 - 25", "respuesta": "125" },
+        { "pregunta": "11 × 6", "respuesta": "66" },
+        { "pregunta": "48 ÷ 4", "respuesta": "12" }
+      ]
+    },
+    {
       "id": "mision-desafio-logica",
       "tipo": "tabla-doble-entrada",
       "titulo": "El Desafío de los Juguetes",
@@ -12,19 +34,19 @@
           "titulo": "El Desafío de los Juguetes",
           "instruccion": "¡Es el desafío final de la semana! Usa todas tus habilidades de detective para resolver este puzzle. Recuerda las reglas: cada niño tiene un solo juguete.",
           "pistas": [
-            "El juguete de Leo no necesita baterías.",
-            "El juguete de Sara puede volar.",
-            "A Daniel le gusta construir cosas."
+            "A Daniel le encanta construir cosas.",
+            "El juguete de Sara vuela muy alto en el parque.",
+            "El juguete de Leo tiene luces y hace sonidos."
           ],
           "personajes": ["Leo", "Sara", "Daniel"],
           "opciones": ["Cometa 🪁", "Robot 🤖", "Bloques 🧱"],
           "respuesta_final": {
-            "Leo": "Cometa 🪁",
-            "Sara": "Robot 🤖", 
+            "Leo": "Robot 🤖",
+            "Sara": "Cometa 🪁",
             "Daniel": "Bloques 🧱"
           },
-          "explicacion_correcta": "¡Increíble! Sara tiene el robot (aunque no volaba en las pistas, es lo que queda). Daniel tiene los bloques porque le gusta construir. Leo tiene la cometa porque no necesita baterías y puede volar.",
-          "explicacion_incorrecta": "Revisemos las pistas: Sara puede volar, así que tiene la cometa. Daniel le gusta construir, así que tiene los bloques. Por eliminación, Leo tiene el robot, pero espera... el robot necesita baterías y la pista dice que el juguete de Leo no necesita baterías. ¡Revisa otra vez!"
+          "explicacion_correcta": "¡Exacto! La pista de 'luces y sonidos' nos dice directamente que Leo tiene el Robot. Sara tiene la Cometa (vuela) y Daniel tiene los Bloques (construir). ¡Resolviste el caso!",
+          "explicacion_incorrecta": "Revisemos las pistas: A Daniel le corresponden los bloques porque le gusta construir. A Sara le corresponde la cometa porque vuela. Por lo tanto, el único juguete que queda para Leo es el Robot."
         }
       ]
     },
