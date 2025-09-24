@@ -62,5 +62,12 @@
         "descripcion": "¡Descifra el valor de cada fruta para resolver las sumas misteriosas!",
         "icono": "🍇",
         "temas": ["logica", "criptoaritmetica"]
+      },
+      {
+        "id": "2025-10-01",
+        "titulo": "El Misterio del Cubo Desplegado",
+        "descripcion": "¡Desarrolla tu visión espacial armando cubos a partir de planos!",
+        "icono": "🧊",
+        "temas": ["geometria", "espacial", "logica"]
       }
 ]
