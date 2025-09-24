@@ -862,20 +862,25 @@ body {
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 100%;
 }
 
 .tabla-interactiva {
     border-collapse: collapse;
     font-size: 1.1rem;
     margin: 0 auto;
+    width: 100%;
+    min-width: 400px;
 }
 
 .tabla-interactiva th, 
 .tabla-interactiva td {
     border: 2px solid #e0e0e0;
-    padding: 15px;
+    padding: 12px;
     text-align: center;
-    min-width: 80px;
+    min-width: 100px;
+    width: auto;
 }
 
 .tabla-interactiva th {
