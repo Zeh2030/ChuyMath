@@ -801,3 +801,176 @@ body {
         font-size: 1.5rem;
     }
 }
+
+/* --- Estilos para Tablas de Doble Entrada --- */
+.mision.tabla-doble-entrada { 
+    border-color: #e67e22; /* Naranja para lógica */
+}
+
+.tabla-instruccion {
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: #fdf3e6;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.tabla-logica-container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.tabla-pistas {
+    flex-basis: 280px;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 15px;
+    border-left: 5px solid #f39c12;
+}
+
+.tabla-pistas h3 {
+    font-family: var(--font-headings);
+    margin-top: 0;
+    color: #e67e22;
+    font-size: 1.3rem;
+}
+
+.tabla-pistas ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tabla-pistas li {
+    background-color: #ffffff;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border-left: 4px solid #f39c12;
+    font-size: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.tabla-interactiva-container {
+    overflow-x: auto;
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.tabla-interactiva {
+    border-collapse: collapse;
+    font-size: 1.1rem;
+    margin: 0 auto;
+}
+
+.tabla-interactiva th, 
+.tabla-interactiva td {
+    border: 2px solid #e0e0e0;
+    padding: 15px;
+    text-align: center;
+    min-width: 80px;
+}
+
+.tabla-interactiva th {
+    background-color: #f5f5f5;
+    font-family: var(--font-headings);
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.tabla-interactiva .header-vacio {
+    background-color: transparent;
+    border: none;
+}
+
+.tabla-interactiva .celda-logica {
+    cursor: pointer;
+    font-size: 1.8rem;
+    transition: all 0.2s ease;
+    user-select: none;
+    min-height: 50px;
+    background-color: #fafafa;
+}
+
+.celda-logica:hover {
+    background-color: #fdf3e6;
+    transform: scale(1.05);
+}
+
+.celda-logica.si { 
+    color: var(--c-success);
+    background-color: #e8f8f5;
+}
+
+.celda-logica.no { 
+    color: var(--c-danger);
+    background-color: #fdf2f2;
+}
+
+.pregunta-final-container {
+    margin-top: 30px;
+    text-align: center;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 25px;
+    border-radius: 15px;
+    border: 2px solid #dee2e6;
+}
+
+.pregunta-final-texto {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    font-family: var(--font-headings);
+}
+
+.pregunta-final-container .opciones-lista {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pregunta-final-container .opciones-lista li {
+    margin: 0;
+}
+
+.pregunta-final-container .opciones-lista input[type="radio"] {
+    display: none;
+}
+
+.pregunta-final-container .opciones-lista label {
+    display: block;
+    padding: 12px 20px;
+    background-color: #ffffff;
+    border: 2px solid #dee2e6;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    min-width: 80px;
+    text-align: center;
+}
+
+.pregunta-final-container .opciones-lista label:hover {
+    background-color: #f8f9fa;
+    border-color: #adb5bd;
+    transform: translateY(-2px);
+}
+
+.pregunta-final-container .opciones-lista input[type="radio"]:checked + label {
+    background-color: var(--c-primary);
+    color: white;
+    border-color: var(--c-primary);
+}
