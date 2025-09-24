@@ -1,0 +1,25 @@
+{
+  "id": "2025-10-01",
+  "titulo": "El Misterio del Cubo Desplegado",
+  "misiones": [
+    {
+      "id": "mision-cubo-1",
+      "tipo": "desarrollo-cubos",
+      "titulo": "El Taller de Cubos",
+      "instruccion": "Observa con atención el plano del cubo. ¿Cuál de los tres cubos de la derecha se puede armar con él? ¡Solo uno es el correcto!",
+      "ejercicios": [
+        {
+          "plano_svg": "<svg width='160' height='120' viewBox='0 0 160 120'><defs><style>.cara{stroke:black;stroke-width:2;fill:white;}</style></defs><rect class='cara' x='40' y='0' width='40' height='40'/><rect class='cara' x='0' y='40' width='40' height='40'/><rect class='cara' x='40' y='40' width='40' height='40'/><rect class='cara' x='80' y='40' width='40' height='40'/><rect class='cara' x='120' y='40' width='40' height='40'/><rect class='cara' x='40' y='80' width='40' height='40'/></svg>",
+          "opciones_img": [
+            "https://i.imgur.com/example-correct.png",
+            "https://i.imgur.com/example-wrong1.png",
+            "https://i.imgur.com/example-wrong2.png"
+          ],
+          "respuesta": 0,
+          "explicacion_correcta": "¡Correcto! Si doblas esa figura, las caras encajan perfectamente para formar ese cubo.",
+          "explicacion_incorrecta": "¡Casi! Intenta imaginar en tu mente cómo se doblan las caras. Una de las otras opciones es la correcta."
+        }
+      ]
+    }
+  ]
+}
