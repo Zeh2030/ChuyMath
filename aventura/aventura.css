@@ -12,6 +12,81 @@
     --font-body: 'Nunito', sans-serif;
 }
 
+body {
+    font-family: var(--font-body);
+    background-color: var(--c-background);
+    color: var(--c-text);
+    margin: 0;
+    padding: 25px;
+}
+
+.main-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* --- Cabecera y Misiones --- */
+.aventura-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: var(--c-paper);
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+.aventura-header h1 {
+    font-family: var(--font-headings);
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    color: var(--c-primary);
+    margin: 0 0 20px 0;
+}
+.back-button {
+    display: inline-block; 
+    padding: 10px 20px; 
+    background-color: #bdc3c7;
+    color: var(--c-text); 
+    text-decoration: none; 
+    border-radius: 50px;
+    font-weight: 700; 
+    transition: all 0.2s;
+}
+.back-button:hover { 
+    background-color: var(--c-text); 
+    color: white; 
+    transform: scale(1.05); 
+}
+
+#misiones-container { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 30px; 
+}
+
+.mision {
+    background-color: var(--c-paper); 
+    border-radius: 20px; 
+    padding: 25px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08); 
+    border-left: 10px solid;
+}
+.mision h2 {
+    font-family: var(--font-headings); 
+    margin-top: 0; 
+    font-size: 1.8rem;
+    border-bottom: 3px solid #eee; 
+    padding-bottom: 10px; 
+    margin-bottom: 20px;
+}
+.mision-instruccion {
+    font-size: 1.1rem; 
+    text-align: center; 
+    font-weight: 600;
+    background-color: #f8f9fa; 
+    padding: 15px; 
+    border-radius: 10px; 
+    margin-bottom: 25px;
+}
+
 /* --- Estilos para Operaciones Matemáticas --- */
 .mision.operaciones { border-color: var(--c-primary); }
 .operaciones-grid {
@@ -310,6 +385,18 @@
     margin-bottom: 20px;
     color: var(--c-text);
 }
+.pistas-lista {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 15px 0;
+    border-left: 4px solid var(--c-primary);
+}
+.pistas-lista li {
+    margin: 8px 0;
+    font-weight: 600;
+    color: var(--c-text);
+}
 .tabla-logica table {
     width: 100%;
     border-collapse: collapse;
@@ -394,7 +481,7 @@
     margin: 20px 0;
     flex-wrap: wrap;
 }
-.cripto-respuesta input {
+.cripto-input {
     width: 60px;
     padding: 10px;
     border: 3px solid #dee2e6;
@@ -404,27 +491,24 @@
     text-align: center;
     transition: all 0.3s ease;
 }
-.cripto-respuesta input:focus {
+.cripto-input:focus {
     outline: none;
     border-color: var(--c-primary);
     box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
 }
-.cripto-respuesta input.correct {
+.cripto-input.correct {
     background-color: #d5f4e6;
     border-color: var(--c-success);
     color: #155724;
 }
-.cripto-respuesta input.incorrect {
+.cripto-input.incorrect {
     background-color: #fdf2f2;
     border-color: var(--c-danger);
     color: #721c24;
 }
 
-
-/* --- NUEVOS ESTILOS: Misión Desarrollo de Cubos --- */
-.mision.desarrollo-cubos { 
-    border-color: var(--c-spatial); 
-}
+/* --- MEJORAS DE GEMINI: Desarrollo de Cubos --- */
+.mision.desarrollo-cubos { border-color: var(--c-spatial); }
 .cubo-ejercicio {
     display: flex; 
     flex-direction: column; 
@@ -433,12 +517,8 @@
     padding: 20px 0; 
     border-top: 1px dashed #ccc;
 }
-.cubo-ejercicio:first-child { 
-    border-top: none; 
-}
-.cubo-plano { 
-    margin-bottom: 10px; 
-}
+.cubo-ejercicio:first-child { border-top: none; }
+.cubo-plano { margin-bottom: 10px; }
 .cubo-opciones-container {
     display: flex; 
     gap: 20px; 
@@ -468,25 +548,21 @@
     background-color: #fdf2f2; 
 }
 
-/* --- NUEVOS ESTILOS: Misión Balanza Lógica --- */
-.mision.balanza-logica { 
-    border-color: var(--c-logic); 
-}
+/* --- MEJORAS DE GEMINI: Balanza Lógica --- */
+.mision.balanza-logica { border-color: var(--c-logic); }
 .balanza-ejercicio { 
     display: flex; 
     flex-direction: column; 
     align-items: center; 
 }
-.balanza-pregunta-svg { 
-    margin-bottom: 25px; 
-}
-.opciones-lista { 
-    list-style: none; 
-    padding: 0; 
+.balanza-pregunta-svg { margin-bottom: 25px; }
+.balanza-opciones {
     display: flex; 
     gap: 15px; 
+    flex-wrap: wrap;
+    justify-content: center;
 }
-.opciones-lista li label {
+.balanza-opciones li label {
     display: block; 
     padding: 15px 25px; 
     background-color: #f8f9fa;
@@ -497,26 +573,78 @@
     font-weight: 700; 
     transition: all 0.2s ease;
 }
-.opciones-lista li label:hover { 
+.balanza-opciones li label:hover { 
     border-color: var(--c-logic); 
 }
-.opciones-lista input[type="radio"] { 
+.balanza-opciones input[type="radio"] { 
     display: none; 
 }
-.opciones-lista input[type="radio"]:checked + label {
+.balanza-opciones input[type="radio"]:checked + label {
     background-color: var(--c-logic); 
     border-color: #8e44ad; 
     color: white;
 }
-.opciones-lista label.correcto { 
+.balanza-opciones label.correcto { 
     background-color: var(--c-success) !important; 
     color: white; 
     border-color: var(--c-success); 
 }
-.opciones-lista label.incorrecto { 
+.balanza-opciones label.incorrecto { 
     background-color: var(--c-danger) !important; 
     color: white; 
     border-color: var(--c-danger); 
+}
+
+/* --- MEJORAS DE GEMINI: Palabra del Día --- */
+.mision.palabra-del-dia { 
+    border-color: #ff9ff3; /* Rosa para idiomas */
+}
+.palabra-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+    border-radius: 15px;
+}
+.palabra-ingles {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: var(--c-paper);
+    padding: 10px 25px;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.palabra-texto {
+    font-family: var(--font-headings);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #c2185b;
+}
+.boton-audio {
+    background-color: #ad1457;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.boton-audio:hover {
+    transform: scale(1.1);
+}
+.palabra-icono {
+    font-size: 4rem;
+}
+.palabra-espanol {
+    font-family: var(--font-body);
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--c-text);
 }
 
 /* --- Contenedor y Caja de Feedback --- */
@@ -589,97 +717,7 @@
     display: none; 
 }
 
-/* --- Estilos para SVG de cubos --- */
-.cubo-svg {
-    width: 100%;
-    height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: white;
-    border-radius: 8px;
-    border: 2px solid #ecf0f1;
-    transition: all 0.3s ease;
-}
-
-.cubo-svg svg {
-    max-width: 100%;
-    max-height: 100%;
-}
-
-.cubo-opcion:hover .cubo-svg {
-    border-color: #3498db;
-    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
-}
-
-.cubo-opcion.seleccionada .cubo-svg {
-    border-color: #3498db;
-    background-color: #ebf3fd;
-}
-
-.cubo-opcion.correcto .cubo-svg {
-    border-color: #27ae60;
-    background-color: #d5f4e6;
-}
-
-.cubo-opcion.incorrecto .cubo-svg {
-    border-color: #e74c3c;
-    background-color: #fdf2f2;
-}
-
 /* --- Responsive Design --- */
-/* --- NUEVOS ESTILOS: Misión Palabra del Día --- */
-.mision.palabra-del-dia { 
-    border-color: #ff9ff3; /* Rosa para idiomas */
-}
-.palabra-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    padding: 20px;
-    background: linear-gradient(135deg, #fce4ec, #f8bbd0);
-    border-radius: 15px;
-}
-.palabra-ingles {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    background-color: var(--c-paper);
-    padding: 10px 25px;
-    border-radius: 50px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-.palabra-texto {
-    font-family: var(--font-headings);
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #c2185b;
-}
-.boton-audio {
-    background-color: #ad1457;
-    color: white;
-    border: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-.boton-audio:hover {
-    transform: scale(1.1);
-}
-.palabra-icono {
-    font-size: 4rem;
-}
-.palabra-espanol {
-    font-family: var(--font-body);
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: var(--c-text);
-}
-
 @media (max-width: 768px) {
     body {
         padding: 15px;
@@ -690,18 +728,14 @@
         align-items: center;
     }
     
-    .opciones-lista {
+    .balanza-opciones {
         flex-direction: column;
         align-items: center;
     }
     
-    .opciones-lista li {
+    .balanza-opciones li {
         width: 100%;
         max-width: 200px;
-    }
-    
-    .opciones-lista li label {
-        text-align: center;
     }
     
     .palabra-texto {
@@ -715,80 +749,4 @@
     .palabra-espanol {
         font-size: 1.5rem;
     }
-}
-
-/* --- Estilos Base --- */
-body {
-    font-family: var(--font-body);
-    background-color: var(--c-background);
-    color: var(--c-text);
-    margin: 0;
-    padding: 25px;
-}
-
-.main-container {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-/* --- Cabecera y Misiones --- */
-.aventura-header {
-    text-align: center;
-    margin-bottom: 40px;
-    padding: 20px;
-    background-color: var(--c-paper);
-    border-radius: 20px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-}
-.aventura-header h1 {
-    font-family: var(--font-headings);
-    font-size: clamp(2rem, 5vw, 2.8rem);
-    color: var(--c-primary);
-    margin: 0 0 20px 0;
-}
-.back-button {
-    display: inline-block; 
-    padding: 10px 20px; 
-    background-color: #bdc3c7;
-    color: var(--c-text); 
-    text-decoration: none; 
-    border-radius: 50px;
-    font-weight: 700; 
-    transition: all 0.2s;
-}
-.back-button:hover { 
-    background-color: var(--c-text); 
-    color: white; 
-    transform: scale(1.05); 
-}
-
-#misiones-container { 
-    display: flex; 
-    flex-direction: column; 
-    gap: 30px; 
-}
-
-.mision {
-    background-color: var(--c-paper); 
-    border-radius: 20px; 
-    padding: 25px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.08); 
-    border-left: 10px solid;
-}
-.mision h2 {
-    font-family: var(--font-headings); 
-    margin-top: 0; 
-    font-size: 1.8rem;
-    border-bottom: 3px solid #eee; 
-    padding-bottom: 10px; 
-    margin-bottom: 20px;
-}
-.mision-instruccion {
-    font-size: 1.1rem; 
-    text-align: center; 
-    font-weight: 600;
-    background-color: #f8f9fa; 
-    padding: 15px; 
-    border-radius: 10px; 
-    margin-bottom: 25px;
 }
