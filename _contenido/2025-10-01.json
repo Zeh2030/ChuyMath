@@ -1,25 +1,61 @@
 {
   "id": "2025-10-01",
-  "titulo": "El Misterio del Cubo Desplegado",
+  "titulo": "Aventura de Lógica y Espacio",
   "misiones": [
     {
       "id": "mision-cubo-1",
       "tipo": "desarrollo-cubos",
-      "titulo": "El Taller de Cubos",
+      "titulo": "El Taller de Cubos 3D",
       "instruccion": "Observa con atención el plano del cubo. ¿Cuál de los tres cubos de la derecha se puede armar con él? ¡Solo uno es el correcto!",
       "ejercicios": [
         {
-          "plano_svg": "<svg width='160' height='120' viewBox='0 0 160 120'><defs><style>.cara{stroke:black;stroke-width:2;fill:white;}</style></defs><rect class='cara' x='40' y='0' width='40' height='40'/><rect class='cara' x='0' y='40' width='40' height='40'/><rect class='cara' x='40' y='40' width='40' height='40'/><rect class='cara' x='80' y='40' width='40' height='40'/><rect class='cara' x='120' y='40' width='40' height='40'/><rect class='cara' x='40' y='80' width='40' height='40'/></svg>",
-          "opciones_img": [
-            "https://i.imgur.com/example-correct.png",
-            "https://i.imgur.com/example-wrong1.png",
-            "https://i.imgur.com/example-wrong2.png"
+          "id": "ejercicio-cubo-1",
+          "plano_svg": "<svg width='160' height='120' viewBox='-2 -2 164 124'><defs><style>.cara{stroke:#34495e;stroke-width:2;fill:white;} .simbolo{font-size: 24px; font-family: sans-serif; text-anchor: middle; dominant-baseline: central;}</style></defs><rect class='cara' x='40' y='0' width='40' height='40'/><text x='60' y='20' class='simbolo'>●</text><rect class='cara' x='0' y='40' width='40' height='40'/><rect class='cara' x='40' y='40' width='40' height='40'/><text x='60' y='60' class='simbolo'>■</text><rect class='cara' x='80' y='40' width='40' height='40'/><rect class='cara' x='120' y='40' width='40' height='40'/><rect class='cara' x='40' y='80' width='40' height='40'/><text x='60' y='100' class='simbolo'>▲</text></svg>",
+          "opciones_svg": [
+            "<svg width='80' height='80' viewBox='0 0 100 100'><path d='M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z' fill='#f0f0f0' stroke='#7f8c8d' stroke-width='2'/><path d='M50 10 L50 90' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M10 30 L50 50 L90 30' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M50 50 L10 70' fill='none' stroke='#7f8c8d' stroke-width='1'/><text x='50' y='32' style='font-size:18px;'>●</text><text x='30' y='60' style='font-size:18px;'></text><text x='70' y='60' style='font-size:18px;'>■</text></svg>",
+            "<svg width='80' height='80' viewBox='0 0 100 100'><path d='M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z' fill='#f0f0f0' stroke='#7f8c8d' stroke-width='2'/><path d='M50 10 L50 90' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M10 30 L50 50 L90 30' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M50 50 L10 70' fill='none' stroke='#7f8c8d' stroke-width='1'/><text x='50' y='32' style='font-size:18px;'>▲</text><text x='30' y='60' style='font-size:18px;'></text><text x='70' y='60' style='font-size:18px;'>■</text></svg>",
+            "<svg width='80' height='80' viewBox='0 0 100 100'><path d='M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z' fill='#f0f0f0' stroke='#7f8c8d' stroke-width='2'/><path d='M50 10 L50 90' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M10 30 L50 50 L90 30' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M50 50 L10 70' fill='none' stroke='#7f8c8d' stroke-width='1'/><text x='50' y='32' style='font-size:18px;'>■</text><text x='30' y='60' style='font-size:18px;'>▲</text><text x='70' y='60' style='font-size:18px;'>●</text></svg>"
           ],
           "respuesta": 0,
-          "explicacion_correcta": "¡Correcto! Si doblas esa figura, las caras encajan perfectamente para formar ese cubo.",
-          "explicacion_incorrecta": "¡Casi! Intenta imaginar en tu mente cómo se doblan las caras. Una de las otras opciones es la correcta."
+          "explicacion_correcta": "¡Correcto! El círculo (●) y el triángulo (▲) son opuestos, así que no pueden verse al mismo tiempo. El cuadrado (■) está al lado del círculo.",
+          "explicacion_incorrecta": "¡Casi! Fíjate que en el plano, el círculo (●) y el triángulo (▲) están separados, por lo que son caras opuestas y nunca pueden verse a la vez."
+        },
+        {
+          "id": "ejercicio-cubo-2",
+          "plano_svg": "<svg width='160' height='120' viewBox='-2 -2 164 124'><defs><style>.cara{stroke:#34495e;stroke-width:2;fill:white;} .simbolo{font-size: 24px; font-family: sans-serif; text-anchor: middle; dominant-baseline: central;}</style></defs><rect class='cara' x='0' y='0' width='40' height='40'/><rect class='cara' x='40' y='0' width='40' height='40'/><text x='60' y='20' class='simbolo'>★</text><rect class='cara' x='40' y='40' width='40' height='40'/><rect class='cara' x='80' y='40' width='40' height='40'/><text x='100' y='60' class='simbolo'>+</text><rect class='cara' x='80' y='80' width='40' height='40'/><rect class='cara' x='120' y='80' width='40' height='40'/></svg>",
+          "opciones_svg": [
+            "<svg width='80' height='80' viewBox='0 0 100 100'><path d='M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z' fill='#f0f0f0' stroke='#7f8c8d' stroke-width='2'/><path d='M50 10 L50 90' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M10 30 L50 50 L90 30' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M50 50 L10 70' fill='none' stroke='#7f8c8d' stroke-width='1'/><text x='50' y='32' style='font-size:18px;'>★</text><text x='70' y='60' style='font-size:18px;'>+</text></svg>",
+            "<svg width='80' height='80' viewBox='0 0 100 100'><path d='M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z' fill='#f0f0f0' stroke='#7f8c8d' stroke-width='2'/><path d='M50 10 L50 90' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M10 30 L50 50 L90 30' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M50 50 L10 70' fill='none' stroke='#7f8c8d' stroke-width='1'/><text x='30' y='60' style='font-size:18px;'>★</text><text x='70' y='60' style='font-size:18px;'>+</text></svg>",
+            "<svg width='80' height='80' viewBox='0 0 100 100'><path d='M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z' fill='#f0f0f0' stroke='#7f8c8d' stroke-width='2'/><path d='M50 10 L50 90' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M10 30 L50 50 L90 30' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M50 50 L10 70' fill='none' stroke='#7f8c8d' stroke-width='1'/><text x='50' y='32' style='font-size:18px;'>+</text><text x='30' y='60' style='font-size:18px;'>★</text></svg>"
+          ],
+          "respuesta": 0,
+          "explicacion_correcta": "¡Muy bien! La estrella (★) y el signo más (+) están juntos en el plano, así que pueden verse al mismo tiempo.",
+          "explicacion_incorrecta": "Observa el plano: la estrella (★) y el signo más (+) están en caras que se tocan. Busca el cubo donde se vean juntas."
+        },
+        {
+          "id": "ejercicio-cubo-3",
+          "plano_svg": "<svg width='160' height='40' viewBox='-2 -2 164 44'><defs><style>.cara{stroke:#34495e;stroke-width:2;fill:white;} .simbolo{font-size: 24px; font-family: sans-serif; text-anchor: middle; dominant-baseline: central;}</style></defs><rect class='cara' x='0' y='0' width='40' height='40'/><text x='20' y='20' class='simbolo'>A</text><rect class='cara' x='40' y='0' width='40' height='40'/><text x='60' y='20' class='simbolo'>B</text><rect class='cara' x='80' y='0' width='40' height='40'/><text x='100' y='20' class='simbolo'>C</text><rect class='cara' x='120' y='0' width='40' height='40'/><text x='140' y='20' class='simbolo'>D</text></svg>",
+          "opciones_svg": [
+            "<svg width='80' height='80' viewBox='0 0 100 100'><path d='M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z' fill='#f0f0f0' stroke='#7f8c8d' stroke-width='2'/><path d='M50 10 L50 90' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M10 30 L50 50 L90 30' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M50 50 L10 70' fill='none' stroke='#7f8c8d' stroke-width='1'/><text x='50' y='32' style='font-size:18px;'>A</text><text x='70' y='60' style='font-size:18px;'>C</text></svg>",
+            "<svg width='80' height='80' viewBox='0 0 100 100'><path d='M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z' fill='#f0f0f0' stroke='#7f8c8d' stroke-width='2'/><path d='M50 10 L50 90' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M10 30 L50 50 L90 30' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M50 50 L10 70' fill='none' stroke='#7f8c8d' stroke-width='1'/><text x='50' y='32' style='font-size:18px;'>A</text><text x='70' y='60' style='font-size:18px;'>B</text></svg>",
+            "<svg width='80' height='80' viewBox='0 0 100 100'><path d='M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z' fill='#f0f0f0' stroke='#7f8c8d' stroke-width='2'/><path d='M50 10 L50 90' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M10 30 L50 50 L90 30' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M50 50 L10 70' fill='none' stroke='#7f8c8d' stroke-width='1'/><text x='50' y='32' style='font-size:18px;'>B</text><text x='70' y='60' style='font-size:18px;'>D</text></svg>"
+          ],
+          "respuesta": 1,
+          "explicacion_correcta": "¡Exacto! Al doblar la tira, las caras A y B quedan juntas.",
+          "explicacion_incorrecta": "En una tira de 4, las caras A y C son opuestas, al igual que B y D. Nunca se pueden ver al mismo tiempo."
         }
       ]
+    },
+    {
+      "id": "mision-balanza-1",
+      "tipo": "balanza-logica",
+      "titulo": "La Balanza Mágica",
+      "instruccion": "Observa las balanzas equilibradas. Usa la lógica para descubrir el valor del triángulo. ¿Cuántos círculos (●) se necesitan para equilibrar un triángulo (▲)?",
+      "pregunta_svg": "<svg width='300' height='150' viewBox='0 0 300 150'><g transform='translate(0, 10)'><path d='M10 110 H 140' stroke='black' stroke-width='2'/><path d='M75 110 V 50' stroke='black' stroke-width='2'/><path d='M25 50 H 125' stroke='black' stroke-width='4'/><text x='40' y='40' font-size='20'>● ●</text><text x='95' y='40' font-size='20'>■</text><text x='65' y='130' font-weight='bold'>Balanza 1</text></g><g transform='translate(150, 10)'><path d='M10 110 H 140' stroke='black' stroke-width='2'/><path d='M75 110 V 50' stroke='black' stroke-width='2'/><path d='M25 50 H 125' stroke='black' stroke-width='4'/><text x='35' y='40' font-size='20'>● ■</text><text x='95' y='40' font-size='20'>▲</text><text x='55' y='130' font-weight='bold'>Balanza 2</text></g></svg>",
+      "opciones": ["1", "2", "3", "4"],
+      "respuesta": "3",
+      "explicacion_correcta": "¡Lógica de campeón! Si en la Balanza 1 un cuadrado (■) pesa lo mismo que dos círculos (●●), en la Balanza 2 podemos reemplazar el cuadrado por dos círculos. Entonces, un círculo más dos círculos es igual a un triángulo. ¡1+2=3!",
+      "explicacion_incorrecta": "¡Casi! Mira la Balanza 1: un cuadrado (■) es igual a dos círculos (●●). Ahora, en la Balanza 2, cambia el cuadrado por dos círculos y cuenta cuántos círculos hay en total de ese lado."
     }
   ]
 }
