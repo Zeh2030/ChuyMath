@@ -10,7 +10,9 @@ class ExpedicionAncestral extends ExpedicionBase {
     }
 
     setupAncestralSpecificEvents() {
-        // Usar el código original que funciona
+        // Primero cargar el contenido base (matemáticas y kakooma)
+        this.populateContent();
+        // Luego usar el código original que funciona para opciones múltiples
         this.populateOriginalOptions();
         this.setupOriginalEventListeners();
     }
