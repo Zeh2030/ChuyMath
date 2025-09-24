@@ -1,0 +1,52 @@
+{
+  "id": "2025-10-04",
+  "titulo": "Aventura del Gran Desafío",
+  "misiones": [
+    {
+      "id": "mision-desafio-logica",
+      "tipo": "tabla-doble-entrada",
+      "titulo": "El Desafío de los Juguetes",
+      "instruccion": "¡Es el desafío final de la semana! Usa todas tus habilidades de detective para resolver este puzzle. Recuerda las reglas: cada niño tiene un solo juguete.",
+      "ejercicios": [
+        {
+          "titulo": "El Desafío de los Juguetes",
+          "instruccion": "¡Es el desafío final de la semana! Usa todas tus habilidades de detective para resolver este puzzle. Recuerda las reglas: cada niño tiene un solo juguete.",
+          "pistas": [
+            "El juguete de Leo no necesita baterías.",
+            "El juguete de Sara puede volar.",
+            "A Daniel le gusta construir cosas."
+          ],
+          "personajes": ["Leo", "Sara", "Daniel"],
+          "opciones": ["Cometa 🪁", "Robot 🤖", "Bloques 🧱"],
+          "respuesta_final": {
+            "Leo": "Cometa 🪁",
+            "Sara": "Robot 🤖", 
+            "Daniel": "Bloques 🧱"
+          },
+          "explicacion_correcta": "¡Increíble! Sara tiene el robot (aunque no volaba en las pistas, es lo que queda). Daniel tiene los bloques porque le gusta construir. Leo tiene la cometa porque no necesita baterías y puede volar.",
+          "explicacion_incorrecta": "Revisemos las pistas: Sara puede volar, así que tiene la cometa. Daniel le gusta construir, así que tiene los bloques. Por eliminación, Leo tiene el robot, pero espera... el robot necesita baterías y la pista dice que el juguete de Leo no necesita baterías. ¡Revisa otra vez!"
+        }
+      ]
+    },
+    {
+      "id": "mision-desafio-cubos",
+      "tipo": "desarrollo-cubos",
+      "titulo": "El Cubo Final",
+      "instruccion": "Has practicado mucho. ¿Cuál de estos cubos se puede formar con el plano de la izquierda?",
+      "ejercicios": [
+        {
+          "id": "cubo-final-1",
+          "plano_svg": "<svg width='200' height='150' viewBox='0 0 160 120'><g stroke='black' stroke-width='1.5' fill='none'><rect x='40' y='0' width='40' height='40'/><rect x='0' y='40' width='40' height='40'/><rect x='40' y='40' width='40' height='40'/><rect x='80' y='40' width='40' height='40'/><rect x='120' y='40' width='40' height='40'/><rect x='40' y='80' width='40' height='40'/></g><text x='55' y='25' font-size='20'>★</text><text x='15' y='65' font-size='20'>●</text><text x='95' y='65' font-size='20'>▲</text></svg>",
+          "opciones_svg": [
+            "<svg width='80' height='90' viewBox='0 0 100 120'><g stroke='black' stroke-width='1.5' fill-opacity='0.8'><path fill='#f1c40f' d='M20 50 l30 -15 v50 l-30 15 z'/><path fill='#f1c40f' d='M50 35 l30 15 v50 l-30 -15 z'/><path fill='#f39c12' d='M20 50 l30 -15 l30 15 l-30 15 z'/></g><text x='47' y='55' font-size='20'>★</text><text x='30' y='80' font-size='20'>●</text></svg>",
+            "<svg width='80' height='90' viewBox='0 0 100 120'><g stroke='black' stroke-width='1.5' fill-opacity='0.8'><path fill='#f1c40f' d='M20 50 l30 -15 v50 l-30 15 z'/><path fill='#f1c40f' d='M50 35 l30 15 v50 l-30 -15 z'/><path fill='#f39c12' d='M20 50 l30 -15 l30 15 l-30 15 z'/></g><text x='47' y='55' font-size='20'>★</text><text x='60' y='80' font-size='20'>▲</text></svg>",
+            "<svg width='80' height='90' viewBox='0 0 100 120'><g stroke='black' stroke-width='1.5' fill-opacity='0.8'><path fill='#f1c40f' d='M20 50 l30 -15 v50 l-30 15 z'/><path fill='#f1c40f' d='M50 35 l30 15 v50 l-30 -15 z'/><path fill='#f39c12' d='M20 50 l30 -15 l30 15 l-30 15 z'/></g><text x='30' y='80' font-size='20'>●</text><text x='60' y='80' font-size='20'>▲</text></svg>"
+          ],
+          "respuesta": 0,
+          "explicacion_correcta": "¡Correcto! Al doblar el plano, la cara con el círculo (●) queda junto a la cara de la estrella (★).",
+          "explicacion_incorrecta": "No es el correcto. Fíjate en la posición de las caras en el plano. La estrella (★) no puede tocar al triángulo (▲) en el cubo final."
+        }
+      ]
+    }
+  ]
+}

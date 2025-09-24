@@ -1,0 +1,50 @@
+{
+  "id": "2025-10-03",
+  "titulo": "Aventura de Construcción 3D",
+  "misiones": [
+    {
+      "id": "mision-palabra-2",
+      "tipo": "palabra-del-dia",
+      "titulo": "Word of the Day / Palabra del Día",
+      "instruccion": "La palabra de hoy es muy importante para construir.",
+      "palabra_en": "Cube",
+      "palabra_es": "Cubo",
+      "icono": "🧊",
+      "audio_pronunciacion": "https://ssl.gstatic.com/dictionary/static/sounds/20200429/cube--_us_1.mp3"
+    },
+    {
+      "id": "mision-conteo-cubos-1",
+      "tipo": "conteo-figuras",
+      "titulo": "El Arquitecto de Cubos",
+      "instruccion": "Observa las construcciones. ¿Cuántos cubos pequeños se usaron para armar cada una?",
+      "ejercicios": [
+        {
+          "pregunta": "¿Cuántos cubos forman esta torre?",
+          "figura_svg": "<svg width='150' height='150' viewBox='0 0 100 120'><g stroke='black' stroke-width='1.5' fill-opacity='0.8'><path fill='#87CEEB' d='M20 50 l30 -15 v50 l-30 15 v-50 z'/><path fill='#87CEEB' d='M50 35 l30 15 v50 l-30 -15 v-50 z'/><path fill='#ADD8E6' d='M20 50 l30 -15 l30 15 l-30 15 l-30 -15 z'/><path fill='#87CEEB' d='M20 100 l30 -15 v-50 l-30 15 v50 z'/><path fill='#ADD8E6' d='M20 100 l30 -15 l30 15 l-30 15 l-30 -15 z'/></g></svg>",
+          "respuesta": "2",
+          "explicacion_correcta": "¡Exacto! Hay 2 cubos, uno encima del otro.",
+          "explicacion_incorrecta": "¡Casi! Si te fijas bien, es una pila de 2 cubos."
+        },
+        {
+          "pregunta": "¿Y cuántos cubos hay en esta figura?",
+          "figura_svg": "<svg width='150' height='150' viewBox='0 0 120 120'><g stroke='black' stroke-width='1.5' fill-opacity='0.8'><path fill='#87CEEB' d='M20 50 l30 -15 v50 l-30 15 z'/><path fill='#87CEEB' d='M50 35 l30 15 v50 l-30 -15 z'/><path fill='#ADD8E6' d='M20 50 l30 -15 l30 15 l-30 15 z'/><path fill='#87CEEB' d='M50 50 l30 -15 v50 l-30 15 z'/><path fill='#87CEEB' d='M80 35 l30 15 v50 l-30 -15 z'/><path fill='#ADD8E6' d='M50 50 l30 -15 l30 15 l-30 15 z'/></g></svg>",
+          "respuesta": "3",
+          "explicacion_correcta": "¡Perfecto! Hay 2 cubos en la base y 1 encima de uno de ellos, sumando 3 en total.",
+          "explicacion_incorrecta": "Observa con atención: hay una base de 2 cubos y luego 1 cubo adicional encima. Son 3 cubos."
+        }
+      ]
+    },
+    {
+      "id": "mision-balanza-2",
+      "tipo": "balanza-logica",
+      "titulo": "Equilibrio de Frutas",
+      "instruccion": "Usa la primera balanza para averiguar cómo equilibrar la segunda.",
+      "pregunta_svg": "<svg width='350' height='200' viewBox='0 0 350 150'><path d='M10 130 H160' stroke='black' stroke-width='2'/><path d='M85 130 V50' stroke='black' stroke-width='2'/><path d='M30 50 H140' stroke='black' stroke-width='2'/><path d='M30 50 l0 -10' stroke='black' stroke-width='2'/><path d='M140 50 l0 -10' stroke='black' stroke-width='2'/><text x='45' y='30' font-size='20'>🍌</text><text x='115' y='30' font-size='20'>🍎</text><text x='105' y='30' font-size='20'>🍎</text><path d='M190 130 H340' stroke='black' stroke-width='2'/><path d='M265 130 V50' stroke='black' stroke-width='2'/><path d='M210 50 H320' stroke='black' stroke-width='2'/><path d='M210 50 l0 -10' stroke='black' stroke-width='2'/><path d='M320 50 l0 -10' stroke='black' stroke-width='2'/><text x='215' y='30' font-size='20'>🍌</text><text x='225' y='30' font-size='20'>🍌</text><text x='295' y='30' font-size='20'>?</text></svg>",
+      "pregunta_texto": "Si una banana 🍌 pesa lo mismo que dos manzanas 🍎🍎... ¿Cuántas manzanas necesitas para equilibrar dos bananas 🍌🍌?",
+      "opciones": ["🍎", "🍎🍎", "🍎🍎🍎", "🍎🍎🍎🍎"],
+      "respuesta": "🍎🍎🍎🍎",
+      "explicacion_correcta": "¡Lógica impecable! Si 1 banana son 2 manzanas, entonces 2 bananas son 4 manzanas.",
+      "explicacion_incorrecta": "Piénsalo así: por cada banana en un lado, necesitas poner dos manzanas en el otro para que pese lo mismo."
+    }
+  ]
+}
