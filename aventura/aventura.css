@@ -862,20 +862,26 @@ body {
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 100%;
+    width: 100%;
 }
 
 .tabla-interactiva {
     border-collapse: collapse;
     font-size: 1.1rem;
     margin: 0 auto;
+    width: 100%;
+    table-layout: fixed;
 }
 
 .tabla-interactiva th, 
 .tabla-interactiva td {
     border: 2px solid #e0e0e0;
-    padding: 15px;
+    padding: 8px;
     text-align: center;
     min-width: 80px;
+    width: 80px;
+    height: 50px;
 }
 
 .tabla-interactiva th {
@@ -897,6 +903,10 @@ body {
     user-select: none;
     min-height: 50px;
     background-color: #fafafa;
+    width: 80px;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
 }
 
 .celda-logica:hover {
