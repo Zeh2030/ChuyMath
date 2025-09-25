@@ -865,6 +865,17 @@ body {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     width: 100%;
     max-width: 100%;
+    scrollbar-width: thin; /* Para Firefox: scrollbar delgada */
+    -ms-overflow-style: auto; /* Para IE/Edge */
+}
+
+/* Forzar scrollbar visible si overflows (para testing) */
+.tabla-interactiva-container::-webkit-scrollbar {
+    height: 8px; /* Para Chrome/Safari: hace scrollbar visible */
+}
+.tabla-interactiva-container::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
 }
 
 .tabla-interactiva {
@@ -873,6 +884,7 @@ body {
     margin: 0 auto;
     width: 100%;
     min-width: 400px;
+    table-layout: fixed; /* Fuerza anchos fijos, previene ajuste auto */
 }
 
 .tabla-interactiva th, 
@@ -882,6 +894,9 @@ body {
     text-align: center;
     min-width: 80px;
     width: auto;
+    white-space: nowrap; /* Evita wrapping de emojis/texto, fuerza overflow */
+    overflow: hidden; /* Oculta exceso en celda individual */
+    text-overflow: ellipsis; /* ... si texto largo */
 }
 
 .tabla-interactiva th {
