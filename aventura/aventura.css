@@ -858,6 +858,7 @@ body {
 
 .tabla-interactiva-container {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Para smooth scroll en iOS/mobile */
     background-color: #ffffff;
     border-radius: 15px;
     padding: 20px;
@@ -877,9 +878,9 @@ body {
 .tabla-interactiva th, 
 .tabla-interactiva td {
     border: 2px solid #e0e0e0;
-    padding: 12px;
+    padding: 8px;
     text-align: center;
-    min-width: 100px;
+    min-width: 80px;
     width: auto;
 }
 
@@ -902,6 +903,7 @@ body {
     user-select: none;
     min-height: 50px;
     background-color: #fafafa;
+    pointer-events: auto; /* Forzar clicks */
 }
 
 .celda-logica:hover {
@@ -978,4 +980,19 @@ body {
     background-color: var(--c-primary);
     color: white;
     border-color: var(--c-primary);
+}
+
+/* Media query para small screens */
+@media (max-width: 600px) {
+    .tabla-interactiva {
+        font-size: 0.9rem; /* Reduce texto/emojis para fit */
+    }
+    .tabla-interactiva td, .tabla-interactiva th {
+        min-width: 60px; /* Más pequeño en mobile */
+        padding: 6px;
+    }
+    .tabla-interactiva .celda-logica {
+        font-size: 1.5rem;
+        min-height: 40px;
+    }
 }
