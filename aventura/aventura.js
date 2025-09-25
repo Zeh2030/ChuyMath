@@ -159,73 +159,48 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderizarMisionTabla(data) {
-        // Verificar si es el formato antiguo (con encabezados_fila y encabezados_columna)
-        if (data.encabezados_fila && data.encabezados_columna) {
-            // Formato antiguo con pregunta final - las propiedades están directamente en data
-            let opcionesFinalHTML = '<ul class="opciones-lista">';
-            data.opciones_finales.forEach((opcion, optIndex) => {
-                const idUnico = `tabla-${data.id}-${optIndex}`;
-                opcionesFinalHTML += `<li><input type="radio" name="tabla-final-${data.id}" id="${idUnico}" value="${opcion}"><label for="${idUnico}">${opcion}</label></li>`;
+        // Función completamente nueva y simple
+        const pistasHTML = data.pistas.map(pista => `<li>${pista}</li>`).join('');
+        const headersColumnasHTML = data.encabezados_columna.map(header => `<th>${header}</th>`).join('');
+        
+        let filasTablaHTML = '';
+        data.encabezados_fila.forEach(headerFila => {
+            let celdasHTML = '';
+            data.encabezados_columna.forEach(() => {
+                celdasHTML += `<td class="celda-logica"></td>`;
             });
-            opcionesFinalHTML += '</ul>';
-            
-            return `
-                <div class="tabla-logica">
-                    <h3>${data.titulo}</h3>
-                    <p>${data.instruccion}</p>
-                    ${data.pistas ? `<ul class="pistas-lista">${data.pistas.map(pista => `<li>${pista}</li>`).join('')}</ul>` : ''}
-                    <table>
+            filasTablaHTML += `<tr><th>${headerFila}</th>${celdasHTML}</tr>`;
+        });
+
+        const opcionesFinalesHTML = data.opciones_finales.map((opcion, index) => {
+            const idUnico = `tabla-final-${data.id}-${index}`;
+            return `<li><input type="radio" name="tabla-final-${data.id}" id="${idUnico}" value="${opcion}"><label for="${idUnico}">${opcion}</label></li>`;
+        }).join('');
+
+        return `
+            <p class="tabla-instruccion">${data.instruccion}</p>
+            <div class="tabla-logica-container">
+                <div class="tabla-pistas">
+                    <h3>Pistas 🕵️</h3>
+                    <ul>${pistasHTML}</ul>
+                </div>
+                <div class="tabla-interactiva-container">
+                    <table class="tabla-interactiva">
                         <thead>
                             <tr>
-                                <th></th>
-                                ${data.encabezados_columna.map(opcion => `<th>${opcion}</th>`).join('')}
+                                <th class="header-vacio"></th>
+                                ${headersColumnasHTML}
                             </tr>
                         </thead>
-                        <tbody>
-                            ${data.encabezados_fila.map(personaje => `
-                                <tr>
-                                    <td><strong>${personaje}</strong></td>
-                                    ${data.encabezados_columna.map(opcion => `<td class="celda-logica" data-personaje="${personaje}" data-opcion="${opcion}"></td>`).join('')}
-                                </tr>
-                            `).join('')}
-                        </tbody>
+                        <tbody>${filasTablaHTML}</tbody>
                     </table>
-                    <p class="pregunta-final">${data.pregunta_final}</p>
-                    ${opcionesFinalHTML}
-                    <div class="feedback-container"></div>
                 </div>
-            `;
-        } else {
-            // Formato nuevo con ejercicios array
-            let tablaHTML = '';
-            data.ejercicios.forEach((ej, index) => {
-                tablaHTML += `
-                    <div class="tabla-logica">
-                        <h3>${ej.titulo}</h3>
-                        <p>${ej.instruccion}</p>
-                        ${ej.pistas ? `<ul class="pistas-lista">${ej.pistas.map(pista => `<li>${pista}</li>`).join('')}</ul>` : ''}
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    ${ej.opciones.map(opcion => `<th>${opcion}</th>`).join('')}
-                                </tr>
-                            </thead>
-                            <tbody>
-                                ${ej.personajes.map(personaje => `
-                                    <tr>
-                                        <td><strong>${personaje}</strong></td>
-                                        ${ej.opciones.map(opcion => `<td class="celda-logica" data-personaje="${personaje}" data-opcion="${opcion}"></td>`).join('')}
-                                    </tr>
-                                `).join('')}
-                            </tbody>
-                        </table>
-                        <div class="feedback-container"></div>
-                    </div>
-                `;
-            });
-            return tablaHTML;
-        }
+            </div>
+            <div class="pregunta-final-container">
+                <p class="pregunta-final-texto">${data.pregunta_final}</p>
+                <ul class="opciones-lista">${opcionesFinalesHTML}</ul>
+            </div>
+        `;
     }
 
     function renderizarMisionCripto(data) {
@@ -303,19 +278,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     function addTableListeners(misionDiv) {
+        // Función completamente nueva y simple
         misionDiv.querySelectorAll('.celda-logica').forEach(celda => {
-            celda.addEventListener('click', () => {
+            celda.addEventListener('click', function() {
                 const estados = ['', '✅', '❌'];
                 const clases = ['', 'si', 'no'];
                 
-                let estadoActual = celda.textContent;
+                let estadoActual = this.textContent;
                 let indiceActual = estados.indexOf(estadoActual);
                 let nuevoIndice = (indiceActual + 1) % estados.length;
 
-                celda.textContent = estados[nuevoIndice];
-                celda.classList.remove('si', 'no');
+                this.textContent = estados[nuevoIndice];
+                this.className = 'celda-logica';
                 if (clases[nuevoIndice]) {
-                    celda.classList.add(clases[nuevoIndice]);
+                    this.classList.add(clases[nuevoIndice]);
                 }
             });
         });
