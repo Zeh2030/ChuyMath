@@ -93,6 +93,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add event listeners for interactive elements after they are in the DOM
         addGlobalEventListeners();
         
+        // Debug: verificar si celdas se crean
+        console.log('Celdas creadas:', document.querySelectorAll('.celda-logica').length);
+        
         aventuraFooter.classList.remove('hidden');
     }
 
@@ -621,6 +624,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- EVENTOS DE INTERACCIÓN ---
     function addGlobalEventListeners() {
         misionesContainer.addEventListener('click', (e) => {
+            console.log('Click detectado en container'); // Debug inicial: verifica si cualquier click llega
             const opcionCubo = e.target.closest('.cubo-opcion');
             const celdaLogica = e.target.closest('.celda-logica');
             
@@ -638,6 +642,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 let nuevoIndice = (indiceActual + 1) % estados.length;
                 celdaLogica.textContent = estados[nuevoIndice];
                 celdaLogica.className = 'celda-logica'; // Reset
+                if (clases[nuevoIndice]) celdaLogica.classList.add(clases[nuevoIndice]);
+            }
+        });
+
+        // Agrega para mobile/touch (si issue en dispositivos)
+        misionesContainer.addEventListener('touchstart', (e) => {
+            const celdaLogica = e.target.closest('.celda-logica');
+            if (celdaLogica) {
+                // Simula click: trigger el toggle
+                const estados = ['', '✅', '❌'];
+                const clases = ['', 'si', 'no'];
+                let indiceActual = estados.indexOf(celdaLogica.textContent);
+                let nuevoIndice = (indiceActual + 1) % estados.length;
+                celdaLogica.textContent = estados[nuevoIndice];
+                celdaLogica.className = 'celda-logica';
                 if (clases[nuevoIndice]) celdaLogica.classList.add(clases[nuevoIndice]);
             }
         });
