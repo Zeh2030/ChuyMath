@@ -93,26 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add event listeners for interactive elements after they are in the DOM
         addGlobalEventListeners();
         
-        // Debug: verificar si celdas se crean
-        console.log('Celdas creadas:', document.querySelectorAll('.celda-logica').length);
-        console.log('Container de tabla:', document.querySelector('.tabla-interactiva-container'));
-        console.log('Tabla:', document.querySelector('.tabla-interactiva'));
-        
-        // Backup: listeners directos
-        document.querySelectorAll('.celda-logica').forEach((celda, index) => {
-            console.log(`Celda ${index}:`, celda);
-            celda.addEventListener('click', () => {
-                console.log('Direct click on celda');
-                const estados = ['', '✅', '❌'];
-                const clases = ['', 'si', 'no'];
-                let indiceActual = estados.indexOf(celda.textContent);
-                let nuevoIndice = (indiceActual + 1) % estados.length;
-                celda.textContent = estados[nuevoIndice];
-                celda.className = 'celda-logica';
-                if (clases[nuevoIndice]) celda.classList.add(clases[nuevoIndice]);
-            });
-        });
-        
         aventuraFooter.classList.remove('hidden');
     }
 
@@ -641,7 +621,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- EVENTOS DE INTERACCIÓN ---
     function addGlobalEventListeners() {
         misionesContainer.addEventListener('click', (e) => {
-            console.log('Click detectado en container, target:', e.target); // Debug: ve qué element hit
             const opcionCubo = e.target.closest('.cubo-opcion');
             const celdaLogica = e.target.closest('.celda-logica');
             
@@ -652,30 +631,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (celdaLogica) {
-                console.log('Celda clickeada:', celdaLogica);
-                e.preventDefault(); // Previene default bubble en tables
                 const estados = ['', '✅', '❌'];
                 const clases = ['', 'si', 'no'];
                 let indiceActual = estados.indexOf(celdaLogica.textContent);
                 let nuevoIndice = (indiceActual + 1) % estados.length;
                 celdaLogica.textContent = estados[nuevoIndice];
                 celdaLogica.className = 'celda-logica'; // Reset
-                if (clases[nuevoIndice]) celdaLogica.classList.add(clases[nuevoIndice]);
-            }
-        });
-
-        // Agrega para mobile/touch (si issue en dispositivos)
-        misionesContainer.addEventListener('touchstart', (e) => {
-            const celdaLogica = e.target.closest('.celda-logica');
-            if (celdaLogica) {
-                e.preventDefault();
-                // Simula click: trigger el toggle
-                const estados = ['', '✅', '❌'];
-                const clases = ['', 'si', 'no'];
-                let indiceActual = estados.indexOf(celdaLogica.textContent);
-                let nuevoIndice = (indiceActual + 1) % estados.length;
-                celdaLogica.textContent = estados[nuevoIndice];
-                celdaLogica.className = 'celda-logica';
                 if (clases[nuevoIndice]) celdaLogica.classList.add(clases[nuevoIndice]);
             }
         });
