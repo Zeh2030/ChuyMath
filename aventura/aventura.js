@@ -631,6 +631,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (celdaLogica) {
+                console.log('Celda clickeada:', celdaLogica); // Debug: verifica si detecta
                 const estados = ['', '✅', '❌'];
                 const clases = ['', 'si', 'no'];
                 let indiceActual = estados.indexOf(celdaLogica.textContent);
