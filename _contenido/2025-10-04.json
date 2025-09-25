@@ -29,26 +29,18 @@
       "tipo": "tabla-doble-entrada",
       "titulo": "El Desafío de los Juguetes",
       "instruccion": "¡Es el desafío final de la semana! Usa todas tus habilidades de detective para resolver este puzzle. Recuerda las reglas: cada niño tiene un solo juguete.",
-      "ejercicios": [
-        {
-          "titulo": "El Desafío de los Juguetes",
-          "instruccion": "¡Es el desafío final de la semana! Usa todas tus habilidades de detective para resolver este puzzle. Recuerda las reglas: cada niño tiene un solo juguete.",
-          "pistas": [
-            "A Carlos le encanta un animal que ladra.",
-            "La mascota de Ana no tiene pelo ni plumas.",
-            "Beto no tiene un pez."
-          ],
-          "personajes": ["Ana", "Beto", "Carlos"],
-          "opciones": ["Perro 🐶", "Gato 🐱", "Pez 🐠"],
-          "respuesta_final": {
-            "Ana": "Pez 🐠",
-            "Beto": "Gato 🐱",
-            "Carlos": "Perro 🐶"
-          },
-          "explicacion_correcta": "¡Caso resuelto! Si Carlos tiene el Perro (ladra) y Beto no tiene el Pez, a Beto solo le queda el Gato. Por lo tanto, ¡Ana tiene el Pez!",
-          "explicacion_incorrecta": "¡Casi! Pista 1 te dice quién tiene el Perro. Luego, usa las otras pistas para deducir quién se queda con el Gato y el Pez."
-        }
-      ]
+      "pistas": [
+        "El juguete de Leo no necesita baterías.",
+        "El juguete de Sara puede volar.",
+        "A Daniel le gusta construir cosas."
+      ],
+      "encabezados_fila": ["Leo", "Sara", "Daniel"],
+      "encabezados_columna": ["Cometa 🪁", "Robot 🤖", "Bloques 🧱"],
+      "pregunta_final": "¿Qué juguete tiene Leo?",
+      "opciones_finales": ["Cometa 🪁", "Robot 🤖", "Bloques 🧱"],
+      "respuesta_final": "Cometa 🪁",
+      "explicacion_correcta": "¡Increíble! Sara tiene el Robot (puede 'volar' con hélices). A Daniel le gustan los Bloques (construir). Por eliminación, Leo tiene la Cometa (no necesita baterías). ¡Excelente deducción!",
+      "explicacion_incorrecta": "Revisemos las pistas: Sara tiene el Robot (puede 'volar' con hélices). Daniel tiene los Bloques (le gusta construir). Por lo tanto, el único juguete que queda para Leo es la Cometa (no necesita baterías)."
     },
     {
       "id": "mision-desafio-cubos",
