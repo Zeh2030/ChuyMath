@@ -857,7 +857,7 @@ body {
 }
 
 .tabla-interactiva-container {
-    overflow-x: auto;
+    overflow-x: scroll !important; /* Forzar scroll siempre */
     -webkit-overflow-scrolling: touch; /* Para smooth scroll en iOS/mobile */
     background-color: #ffffff;
     border-radius: 15px;
@@ -867,6 +867,7 @@ body {
     max-width: 100%;
     scrollbar-width: thin; /* Para Firefox: scrollbar delgada */
     -ms-overflow-style: auto; /* Para IE/Edge */
+    border: 2px solid red !important; /* Debug: ver si container se ve */
 }
 
 /* Forzar scrollbar visible si overflows (para testing) */
@@ -882,9 +883,10 @@ body {
     border-collapse: collapse;
     font-size: 1.1rem;
     margin: 0 auto;
-    width: 100%;
-    min-width: 400px;
+    width: 800px !important; /* Forzar ancho fijo mayor que container */
+    min-width: 800px !important; /* Forzar overflow */
     table-layout: fixed; /* Fuerza anchos fijos, previene ajuste auto */
+    border: 2px solid blue !important; /* Debug: ver si tabla se ve */
 }
 
 .tabla-interactiva th, 
@@ -1010,4 +1012,9 @@ body {
         font-size: 1.5rem;
         min-height: 40px;
     }
+}
+
+/* Agrega para ancestros si clip */
+.mision, .main-container {
+    overflow: visible !important; /* Asegura no hidden */
 }
