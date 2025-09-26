@@ -34,12 +34,14 @@ body {
     border-radius: 20px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
+
 .aventura-header h1 {
     font-family: var(--font-headings);
     font-size: clamp(2rem, 5vw, 2.8rem);
     color: var(--c-primary);
     margin: 0 0 20px 0;
 }
+
 .back-button {
     display: inline-block; 
     padding: 10px 20px; 
@@ -50,6 +52,7 @@ body {
     font-weight: 700; 
     transition: all 0.2s;
 }
+
 .back-button:hover { 
     background-color: var(--c-text); 
     color: white; 
@@ -69,6 +72,7 @@ body {
     box-shadow: 0 8px 25px rgba(0,0,0,0.08); 
     border-left: 10px solid;
 }
+
 .mision h2 {
     font-family: var(--font-headings); 
     margin-top: 0; 
@@ -77,6 +81,7 @@ body {
     padding-bottom: 10px; 
     margin-bottom: 20px;
 }
+
 .mision-instruccion {
     font-size: 1.1rem; 
     text-align: center; 
@@ -87,645 +92,62 @@ body {
     margin-bottom: 25px;
 }
 
-/* --- Estilos para Operaciones Matemáticas --- */
-.mision.operaciones { border-color: var(--c-primary); }
-.operaciones-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin: 20px 0;
-}
-.ejercicio {
-    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-    padding: 20px;
-    border-radius: 15px;
+/* --- Loader --- */
+.loader {
     text-align: center;
-    border: 2px solid #dee2e6;
-    transition: all 0.3s ease;
-}
-.ejercicio:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-}
-.ejercicio p {
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin: 0 0 15px 0;
-    color: var(--c-text);
-}
-.ejercicio input {
-    width: 80px;
-    padding: 12px;
-    border: 3px solid #dee2e6;
-    border-radius: 10px;
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-align: center;
-    transition: all 0.3s ease;
-}
-.ejercicio input:focus {
-    outline: none;
-    border-color: var(--c-primary);
-    box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
-}
-.ejercicio input.correct {
-    background-color: #d5f4e6;
-    border-color: var(--c-success);
-    color: #155724;
-}
-.ejercicio input.incorrect {
-    background-color: #fdf2f2;
-    border-color: var(--c-danger);
-    color: #721c24;
-}
-
-/* --- Estilos para Opción Múltiple --- */
-.mision.opcion-multiple { border-color: var(--c-secondary); }
-.opcion-multiple-pregunta {
-    font-size: 1.3rem;
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 25px;
-    color: var(--c-text);
-}
-.opcion-multiple-imagen {
-    max-width: 100%;
-    height: auto;
-    border-radius: 15px;
-    margin: 20px 0;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-}
-.opciones-lista {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-.opciones-lista li {
-    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-    border-radius: 15px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
-.opciones-lista li:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-}
-.opciones-lista input[type="radio"] {
-    display: none;
-}
-.opciones-lista label {
-    display: block;
-    padding: 20px 25px;
-    cursor: pointer;
-    font-size: 1.2rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    border: 3px solid transparent;
-}
-.opciones-lista label:hover {
-    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
-    border-color: var(--c-primary);
-}
-.opciones-lista input[type="radio"]:checked + label {
-    background: linear-gradient(135deg, var(--c-primary), #2980b9);
-    color: white;
-    border-color: #2980b9;
-}
-.opciones-lista label.correcto {
-    background: linear-gradient(135deg, var(--c-success), #27ae60) !important;
-    color: white !important;
-    border-color: #27ae60 !important;
-}
-.opciones-lista label.incorrecto {
-    background: linear-gradient(135deg, var(--c-danger), #c0392b) !important;
-    color: white !important;
-    border-color: #c0392b !important;
-}
-
-/* --- Estilos para Numberblocks --- */
-.mision.numberblocks-dibujo { border-color: #e67e22; }
-.numberblocks-instruccion {
-    font-size: 1.2rem;
-    text-align: center;
-    margin-bottom: 20px;
-    color: var(--c-text);
-}
-.canvas-placeholder {
-    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-    border: 3px dashed #dee2e6;
-    border-radius: 15px;
     padding: 40px;
-    text-align: center;
-    color: #6c757d;
-    font-style: italic;
 }
 
-/* --- Estilos para Secuencias --- */
-.mision.secuencia { border-color: #8e44ad; }
-.secuencia-ejercicio {
-    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-    padding: 25px;
-    border-radius: 15px;
-    margin-bottom: 20px;
-    border: 2px solid #dee2e6;
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--c-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
 }
-.secuencia-elementos {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
-.elemento {
-    background: linear-gradient(135deg, var(--c-primary), #2980b9);
-    color: white;
-    padding: 15px 20px;
-    border-radius: 10px;
-    font-size: 1.3rem;
-    font-weight: 700;
-    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
-}
-.placeholder {
-    background: linear-gradient(135deg, #f39c12, #e67e22);
-    color: white;
-    padding: 15px 20px;
-    border-radius: 10px;
-    font-size: 1.3rem;
-    font-weight: 700;
-    box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
-    animation: pulse 2s infinite;
-}
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-}
-.secuencia-opciones {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-.secuencia-opciones li {
-    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-    border-radius: 10px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
-.secuencia-opciones li:hover {
-    transform: translateY(-2px);
+
+/* --- Footer y Navegación --- */
+.aventura-footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 30px;
+    background-color: var(--c-paper);
+    border-radius: 20px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
-.secuencia-opciones input[type="radio"] {
-    display: none;
-}
-.secuencia-opciones label {
-    display: block;
-    padding: 15px 20px;
-    cursor: pointer;
-    font-size: 1.1rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-}
-.secuencia-opciones label:hover {
-    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
-    border-color: var(--c-primary);
-}
-.secuencia-opciones input[type="radio"]:checked + label {
-    background: linear-gradient(135deg, var(--c-primary), #2980b9);
-    color: white;
-    border-color: #2980b9;
-}
-.secuencia-respuesta {
-    text-align: center;
-}
-.secuencia-respuesta input {
-    width: 200px;
-    padding: 12px;
-    border: 3px solid #dee2e6;
-    border-radius: 10px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    text-align: center;
-    transition: all 0.3s ease;
-}
-.secuencia-respuesta input:focus {
-    outline: none;
-    border-color: var(--c-primary);
-    box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
-}
 
-/* --- Estilos para Conteo de Figuras --- */
-.mision.conteo-figuras { border-color: var(--c-spatial); }
-.conteo-ejercicio {
-    background: linear-gradient(135deg, #e8f8f5, #d5f4e6);
-    border-radius: 15px;
-    padding: 25px;
-    margin-bottom: 20px;
-    text-align: center;
-    border: 2px solid #a3e4d7;
-}
-.conteo-pregunta {
-    font-weight: 600;
-    font-size: 1.3rem;
-    margin-bottom: 20px;
-    color: var(--c-text);
-}
-.conteo-figura-container {
-    margin-bottom: 20px;
-    min-height: 130px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: white;
-    border-radius: 10px;
-    border: 2px solid #a3e4d7;
-}
-.conteo-respuesta input {
-    width: 150px;
-    padding: 12px;
-    border: 3px solid #a3e4d7;
-    border-radius: 10px;
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: 700;
-    transition: all 0.3s ease;
-}
-.conteo-respuesta input:focus {
-    outline: none;
-    border-color: var(--c-spatial);
-    box-shadow: 0 0 10px rgba(26, 188, 156, 0.3);
-}
-.conteo-respuesta input.correct {
-    background-color: #d5f4e6;
-    border-color: var(--c-success);
-    color: #155724;
-}
-.conteo-respuesta input.incorrect {
-    background-color: #fdf2f2;
-    border-color: var(--c-danger);
-    color: #721c24;
-}
-
-/* --- Estilos para Tablas de Doble Entrada --- */
-.mision.tabla-doble-entrada { border-color: #e67e22; }
-.tabla-logica {
-    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-    border-radius: 15px;
-    padding: 25px;
-    margin: 20px 0;
-    border: 2px solid #dee2e6;
-}
-.tabla-logica h3 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: var(--c-text);
-}
-.pistas-lista {
-    background: white;
-    border-radius: 10px;
-    padding: 15px;
-    margin: 15px 0;
-    border-left: 4px solid var(--c-primary);
-}
-.pistas-lista li {
-    margin: 8px 0;
-    font-weight: 600;
-    color: var(--c-text);
-}
-.tabla-logica table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-.tabla-logica th,
-.tabla-logica td {
-    padding: 15px;
-    text-align: center;
-    border: 2px solid #dee2e6;
-    font-weight: 600;
-}
-.tabla-logica th {
-    background: linear-gradient(135deg, var(--c-primary), #2980b9);
-    color: white;
-    font-size: 1.1rem;
-}
-.tabla-logica td {
-    background: white;
-    transition: all 0.3s ease;
-}
-.tabla-logica td:hover {
-    background: #f8f9fa;
-}
-.celda-logica {
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 1.5rem;
-    min-width: 50px;
-    min-height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.celda-logica:hover {
-    background: #e3f2fd !important;
-}
-.celda-logica.si {
-    background: linear-gradient(135deg, var(--c-success), #27ae60) !important;
-    color: white;
-}
-.celda-logica.no {
-    background: linear-gradient(135deg, var(--c-danger), #c0392b) !important;
-    color: white;
-}
-.tabla-logica p {
-    text-align: center;
-    margin: 15px 0;
-    font-weight: 600;
-    color: var(--c-text);
-}
-
-.pregunta-final {
-    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
-    border: 2px solid var(--c-primary);
-    border-radius: 10px;
-    padding: 15px;
-    margin: 20px 0;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--c-text);
-}
-
-/* --- Estilos para Criptoaritmética --- */
-.mision.criptoaritmetica { border-color: #8e44ad; }
-.cripto-ejercicio {
-    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-    border-radius: 15px;
-    padding: 25px;
-    margin-bottom: 20px;
-    border: 2px solid #dee2e6;
-}
-.cripto-operacion {
-    background: white;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 20px 0;
-    border: 2px solid #dee2e6;
-    font-family: 'Courier New', monospace;
-    font-size: 1.3rem;
-    font-weight: 700;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-.cripto-respuesta {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin: 20px 0;
-    flex-wrap: wrap;
-}
-.cripto-input {
-    width: 60px;
-    padding: 10px;
-    border: 3px solid #dee2e6;
-    border-radius: 8px;
-    font-size: 1.3rem;
-    font-weight: 700;
-    text-align: center;
-    transition: all 0.3s ease;
-}
-.cripto-input:focus {
-    outline: none;
-    border-color: var(--c-primary);
-    box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
-}
-.cripto-input.correct {
-    background-color: #d5f4e6;
-    border-color: var(--c-success);
-    color: #155724;
-}
-.cripto-input.incorrect {
-    background-color: #fdf2f2;
-    border-color: var(--c-danger);
-    color: #721c24;
-}
-
-/* --- MEJORAS DE GEMINI: Desarrollo de Cubos --- */
-.mision.desarrollo-cubos { border-color: var(--c-spatial); }
-.cubo-ejercicio {
-    display: flex; 
-    flex-direction: column; 
-    align-items: center;
-    gap: 20px; 
-    padding: 20px 0; 
-    border-top: 1px dashed #ccc;
-}
-.cubo-ejercicio:first-child { border-top: none; }
-.cubo-plano { margin-bottom: 10px; }
-.cubo-opciones-container {
-    display: flex; 
-    gap: 20px; 
-    flex-wrap: wrap; 
-    justify-content: center;
-}
-.cubo-opcion {
-    cursor: pointer; 
-    padding: 10px; 
-    border-radius: 15px;
-    border: 4px solid transparent; 
-    transition: all 0.2s ease;
-}
-.cubo-opcion:hover { 
-    border-color: #e0e0e0; 
-    transform: scale(1.05); 
-}
-.cubo-opcion.seleccionada { 
-    border-color: var(--c-primary); 
-}
-.cubo-opcion.correcto { 
-    border-color: var(--c-success); 
-    background-color: #e8f8f5; 
-}
-.cubo-opcion.incorrecto { 
-    border-color: var(--c-danger); 
-    background-color: #fdf2f2; 
-}
-
-/* --- MEJORAS DE GEMINI: Balanza Lógica --- */
-.mision.balanza-logica { border-color: var(--c-logic); }
-.balanza-ejercicio { 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-}
-.balanza-pregunta-svg { margin-bottom: 25px; }
-.balanza-opciones {
-    display: flex; 
-    gap: 15px; 
-    flex-wrap: wrap;
-    justify-content: center;
-}
-.balanza-opciones li label {
-    display: block; 
-    padding: 15px 25px; 
-    background-color: #f8f9fa;
-    border: 2px solid #eee; 
-    border-radius: 10px; 
-    cursor: pointer;
-    font-size: 1.5rem; 
-    font-weight: 700; 
-    transition: all 0.2s ease;
-}
-.balanza-opciones li label:hover { 
-    border-color: var(--c-logic); 
-}
-.balanza-opciones input[type="radio"] { 
-    display: none; 
-}
-.balanza-opciones input[type="radio"]:checked + label {
-    background-color: var(--c-logic); 
-    border-color: #8e44ad; 
-    color: white;
-}
-.balanza-opciones label.correcto { 
-    background-color: var(--c-success) !important; 
-    color: white; 
-    border-color: var(--c-success); 
-}
-.balanza-opciones label.incorrecto { 
-    background-color: var(--c-danger) !important; 
-    color: white; 
-    border-color: var(--c-danger); 
-}
-
-/* --- MEJORAS DE GEMINI: Palabra del Día --- */
-.mision.palabra-del-dia { 
-    border-color: #ff9ff3; /* Rosa para idiomas */
-}
-.palabra-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    padding: 20px;
-    background: linear-gradient(135deg, #fce4ec, #f8bbd0);
-    border-radius: 15px;
-}
-.palabra-ingles {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    background-color: var(--c-paper);
-    padding: 10px 25px;
-    border-radius: 50px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-.palabra-texto {
-    font-family: var(--font-headings);
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #c2185b;
-}
-.boton-audio {
-    background-color: #ad1457;
+#completar-aventura-btn {
+    background: linear-gradient(135deg, var(--c-success), #27ae60);
     color: white;
     border: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    font-size: 1.5rem;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 50px;
     cursor: pointer;
-    transition: transform 0.2s;
-}
-.boton-audio:hover {
-    transform: scale(1.1);
-}
-.palabra-icono {
-    font-size: 4rem;
-}
-.palabra-espanol {
-    font-family: var(--font-body);
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: var(--c-text);
+    transition: all 0.3s ease;
+    font-family: var(--font-headings);
+    box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
 }
 
-/* --- Contenedor y Caja de Feedback --- */
-.feedback-container { 
-    margin-top: 20px; 
-    width: 100%; 
-}
-.feedback-box {
-    padding: 15px; 
-    border-radius: 10px; 
-    font-weight: 600;
-    text-align: center; 
-    animation: fadeIn 0.3s;
-}
-.feedback-box.correcto { 
-    background-color: #e8f8f5; 
-    border: 2px solid var(--c-success); 
-    color: #155724; 
-}
-.feedback-box.incorrecto { 
-    background-color: #fdf2f2; 
-    border: 2px solid var(--c-danger); 
-    color: #721c24; 
-}
-@keyframes fadeIn { 
-    from { 
-        opacity: 0; 
-        transform: translateY(-10px); 
-    } 
-    to { 
-        opacity: 1; 
-        transform: translateY(0); 
-    } 
+#completar-aventura-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
 }
 
-/* --- Footer y Botón de Completar --- */
-.aventura-footer { 
-    margin-top: 40px; 
-    text-align: center; 
-}
-.aventura-footer.hidden { 
-    display: none; 
-}
-#completar-aventura-btn {
-    font-family: var(--font-headings); 
-    font-size: 1.5rem; 
-    padding: 15px 40px;
-    border-radius: 50px; 
-    border: none; 
-    background: linear-gradient(45deg, var(--c-success), #27ae60);
-    color: white; 
-    cursor: pointer; 
-    box-shadow: 0 5px 0 #1e8449; 
-    transition: all 0.1s ease-in-out;
-}
-#completar-aventura-btn:hover { 
-    transform: translateY(-2px); 
-    box-shadow: 0 7px 0 #1e8449; 
-}
-#completar-aventura-btn:active { 
-    transform: translateY(3px); 
-    box-shadow: 0 2px 0 #1e8449; 
-}
-#mensaje-final { 
-    margin-top: 20px; 
-    font-size: 1.3rem; 
-    font-weight: bold; 
-}
-.navegacion-final.hidden { 
-    display: none; 
+#mensaje-final {
+    margin: 20px 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--c-primary);
+    font-family: var(--font-headings);
 }
 
 /* --- Navegación Final --- */
@@ -737,8 +159,8 @@ body {
     flex-wrap: wrap;
 }
 
-.navegacion-final a {
-    display: inline-flex;
+.boton-final {
+    display: flex;
     align-items: center;
     gap: 10px;
     padding: 15px 25px;
@@ -746,58 +168,78 @@ body {
     color: white;
     text-decoration: none;
     border-radius: 50px;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 1.1rem;
     transition: all 0.3s ease;
+    font-family: var(--font-headings);
     box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
 }
 
-.navegacion-final a:hover {
+.boton-final:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
-    background: linear-gradient(135deg, #2980b9, #1f618d);
 }
 
-.navegacion-final a:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 10px rgba(52, 152, 219, 0.3);
+.boton-final.boveda {
+    background: linear-gradient(135deg, var(--c-logic), #8e44ad);
+    box-shadow: 0 4px 15px rgba(155, 89, 182, 0.3);
 }
 
-.navegacion-final a svg {
+.boton-final.boveda:hover {
+    box-shadow: 0 6px 20px rgba(155, 89, 182, 0.4);
+}
+
+.boton-final svg {
     width: 20px;
     height: 20px;
 }
 
-/* --- Responsive Design --- */
+/* --- Utilidades --- */
+.hidden {
+    display: none !important;
+}
+
+.error-mensaje {
+    text-align: center;
+    padding: 40px;
+    background-color: #f8d7da;
+    border: 2px solid #f5c6cb;
+    border-radius: 15px;
+    color: #721c24;
+}
+
+.error-mensaje h2 {
+    color: #721c24;
+    font-family: var(--font-headings);
+    margin-bottom: 15px;
+}
+
+/* --- Responsive --- */
 @media (max-width: 768px) {
     body {
         padding: 15px;
     }
     
-    .cubo-opciones-container {
-        flex-direction: column;
-        align-items: center;
+    .mision {
+        padding: 20px;
     }
     
-    .balanza-opciones {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .balanza-opciones li {
-        width: 100%;
-        max-width: 200px;
-    }
-    
-    .palabra-texto {
-        font-size: 2rem;
-    }
-    
-    .palabra-icono {
-        font-size: 3rem;
-    }
-    
-    .palabra-espanol {
+    .mision h2 {
         font-size: 1.5rem;
+    }
+    
+    .aventura-footer {
+        padding: 20px;
+    }
+    
+    .navegacion-final {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .boton-final {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
     }
 }
