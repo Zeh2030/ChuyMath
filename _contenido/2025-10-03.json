@@ -28,9 +28,9 @@
         {
           "pregunta": "¿Y cuántos cubos hay en esta figura?",
           "figura_svg": "<svg width='150' height='150' viewBox='0 0 120 120'><g stroke='black' stroke-width='1.5' fill-opacity='0.8'><path fill='#87CEEB' d='M20 50 l30 -15 v50 l-30 15 z'/><path fill='#87CEEB' d='M50 35 l30 15 v50 l-30 -15 z'/><path fill='#ADD8E6' d='M20 50 l30 -15 l30 15 l-30 15 z'/><path fill='#87CEEB' d='M50 50 l30 -15 v50 l-30 15 z'/><path fill='#87CEEB' d='M80 35 l30 15 v50 l-30 -15 z'/><path fill='#ADD8E6' d='M50 50 l30 -15 l30 15 l-30 15 z'/></g></svg>",
-          "respuesta": "3",
-          "explicacion_correcta": "¡Perfecto! Hay 2 cubos en la base y 1 encima de uno de ellos, sumando 3 en total.",
-          "explicacion_incorrecta": "Observa con atención: hay una base de 2 cubos y luego 1 cubo adicional encima. Son 3 cubos."
+          "respuesta": "2",
+          "explicacion_correcta": "¡Correcto! Hay 2 cubos superpuestos, uno encima del otro.",
+          "explicacion_incorrecta": "Revisa bien la figura: hay 2 cubos apilados verticalmente."
         }
       ]
     },
