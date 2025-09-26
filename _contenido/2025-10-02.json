@@ -50,10 +50,12 @@
       "tipo": "opcion-multiple",
       "titulo": "El Reflejo en el Espejo",
       "pregunta": "Carmen dibujó la mitad de un gato. Si pusiera un espejo en la línea punteada, ¿cuál de las opciones de abajo muestra el dibujo final completo?",
-      "imagen": "https://i.imgur.com/8a1YxR3.png",
+      "imagen": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iI2Y1ZjVmNSIvPjxsaW5lIHgxPSIzMDAiIHkxPSI0MCIgeDI9IjMwMCIgeTI9IjM2MCIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1kYXNoYXJyYXk9IjUgNSIvPjx0ZXh0IHg9IjI0MCIgeT0iMzgwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiPk1lZGlhIGNhdCBjb24gbG9uZWEgZGUgc2ltZXRy657EhPC90ZXh0Pgo8L3N2Zz4=",
       "opciones": ["A", "B", "C", "D"],
       "respuesta": "C",
-      "pista": "La parte derecha del gato debe ser un reflejo exacto de la parte izquierda, como si se viera en un espejo."
+      "pista": "La parte derecha del gato debe ser un reflejo exacto de la parte izquierda, como si se viera en un espejo.",
+      "explicacion_correcta": "¡Correcto! El espejo refleja la mitad izquierda del gato creando una imagen simétrica perfecta.",
+      "explicacion_incorrecta": "Recuerda que los espejos crean un reflejo exacto. La parte derecha debe ser idéntica pero en espejo a la parte izquierda."
     }
   ]
 }
