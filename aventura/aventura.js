@@ -158,50 +158,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return ejerciciosHTML;
     }
 
-    function renderizarMisionTabla(data) {
-        // Función completamente nueva y simple
-        const pistasHTML = data.pistas.map(pista => `<li>${pista}</li>`).join('');
-        const headersColumnasHTML = data.encabezados_columna.map(header => `<th>${header}</th>`).join('');
-        
-        let filasTablaHTML = '';
-        data.encabezados_fila.forEach(headerFila => {
-            let celdasHTML = '';
-            data.encabezados_columna.forEach(() => {
-                celdasHTML += `<td class="celda-logica"></td>`;
-            });
-            filasTablaHTML += `<tr><th>${headerFila}</th>${celdasHTML}</tr>`;
-        });
-
-        const opcionesFinalesHTML = data.opciones_finales.map((opcion, index) => {
-            const idUnico = `tabla-final-${data.id}-${index}`;
-            return `<li><input type="radio" name="tabla-final-${data.id}" id="${idUnico}" value="${opcion}"><label for="${idUnico}">${opcion}</label></li>`;
-        }).join('');
-
-        return `
-            <p class="tabla-instruccion">${data.instruccion}</p>
-            <div class="tabla-logica-container">
-                <div class="tabla-pistas">
-                    <h3>Pistas 🕵️</h3>
-                    <ul>${pistasHTML}</ul>
-                </div>
-                <div class="tabla-interactiva-container">
-                    <table class="tabla-interactiva">
-                        <thead>
-                            <tr>
-                                <th class="header-vacio"></th>
-                                ${headersColumnasHTML}
-                            </tr>
-                        </thead>
-                        <tbody>${filasTablaHTML}</tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="pregunta-final-container">
-                <p class="pregunta-final-texto">${data.pregunta_final}</p>
-                <ul class="opciones-lista">${opcionesFinalesHTML}</ul>
-            </div>
-        `;
-    }
 
     function renderizarMisionCripto(data) {
         let ejerciciosHTML = '';
@@ -277,25 +233,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    function addTableListeners(misionDiv) {
-        // Función completamente nueva y simple
-        misionDiv.querySelectorAll('.celda-logica').forEach(celda => {
-            celda.addEventListener('click', function() {
-                const estados = ['', '✅', '❌'];
-                const clases = ['', 'si', 'no'];
-                
-                let estadoActual = this.textContent;
-                let indiceActual = estados.indexOf(estadoActual);
-                let nuevoIndice = (indiceActual + 1) % estados.length;
-
-                this.textContent = estados[nuevoIndice];
-                this.className = 'celda-logica';
-                if (clases[nuevoIndice]) {
-                    this.classList.add(clases[nuevoIndice]);
-                }
-            });
-        });
-    }
 
     // --- LÓGICA DE CALIFICACIÓN ---
 
