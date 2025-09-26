@@ -78,7 +78,9 @@
     box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
 }
 
-.opcion-imagen-container img {
+.opcion-imagen-container img,
+.opcion-imagen-container svg,
+.pregunta-imagen-container svg {
     width: 100%;
     height: auto;
     display: block;
