@@ -1,101 +1,96 @@
 /* --- Estilos para Opción Múltiple --- */
-.mision.opcion-multiple { 
-    border-color: #9b59b6; /* Púrpura para opción múltiple */
-}
+.mision.opcion-multiple { border-color: var(--c-logic); }
 
-.opcion-multiple-pregunta {
-    font-size: 1.3rem;
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 20px;
-    color: #2c3e50;
-    font-family: var(--font-headings);
+.pregunta-imagen-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
 }
-
-.opcion-multiple-imagen {
+.pregunta-imagen-container img {
     max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin: 20px auto;
-    display: block;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-height: 250px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
+/* Opciones de texto (lista de radio) */
 .opciones-lista {
     list-style: none;
     padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
-
-.opciones-lista li {
-    margin: 0;
+.opciones-lista li label {
+    display: block;
+    background-color: #f8f9fa;
+    padding: 15px 20px;
+    border-radius: 12px;
+    border: 2px solid #e9ecef;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 600;
 }
-
-.opciones-lista input[type="radio"] {
+.opciones-lista li input[type="radio"] {
     display: none;
 }
+.opciones-lista li label:hover {
+    border-color: var(--c-primary);
+    background-color: #e9ecef;
+}
+.opciones-lista li label.correcto {
+    background-color: #e8f8f5;
+    border-color: var(--c-success);
+    color: var(--c-success);
+}
+.opciones-lista li label.incorrecto {
+    background-color: #fdf2f2;
+    border-color: var(--c-danger);
+    color: var(--c-danger);
+}
 
-.opciones-lista label {
-    display: block;
-    padding: 15px 20px;
-    background-color: #ffffff;
-    border: 2px solid #dee2e6;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 1.1rem;
-    font-weight: 600;
-    text-align: center;
-    transition: all 0.3s ease;
-    min-height: 60px;
-    display: flex;
-    align-items: center;
+/* --- NUEVO: Grid para opciones de imagen --- */
+.opciones-imagenes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
     justify-content: center;
 }
 
-.opciones-lista label:hover {
-    background-color: #f8f9fa;
-    border-color: #adb5bd;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+.opcion-imagen-container {
+    border: 3px solid transparent;
+    border-radius: 15px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-.opciones-lista input[type="radio"]:checked + label {
-    background-color: var(--c-primary);
-    color: white;
+.opcion-imagen-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    border-color: #e0e0e0;
+}
+
+.opcion-imagen-container.seleccionada {
     border-color: var(--c-primary);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+    box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
 }
 
-.opciones-lista label.correcto {
-    background-color: var(--c-success) !important;
-    color: white !important;
-    border-color: var(--c-success) !important;
+.opcion-imagen-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
 }
 
-.opciones-lista label.incorrecto {
-    background-color: var(--c-danger) !important;
-    color: white !important;
-    border-color: var(--c-danger) !important;
+.opcion-imagen-container.correcto {
+    border-color: var(--c-success);
+    background-color: #e8f8f5;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .opciones-lista {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-    
-    .opciones-lista label {
-        padding: 12px 15px;
-        font-size: 1rem;
-        min-height: 50px;
-    }
-    
-    .opcion-multiple-pregunta {
-        font-size: 1.1rem;
-    }
+.opcion-imagen-container.incorrecto {
+    border-color: var(--c-danger);
+    background-color: #fdf2f2;
 }
