@@ -13,20 +13,34 @@ class ExpedicionAncestral extends ExpedicionBase {
     setupAncestralSpecificEvents() {
         // Eventos específicos para misiones de opción múltiple (Saturno y Mono)
         this.setupMultipleChoiceMissions();
+        
+        // Configurar eventos específicos para Kakooma
+        this.setupKakoomaEvents();
     }
 
     setupMultipleChoiceMissions() {
-        // Poblar opciones de geografía
-        this.populateOptions('geo-options', this.config.geography.options, 'geo-choice');
-        // Poblar opciones de planetas
-        this.populateOptions('planet-options', this.config.planets.options, 'planet-choice');
-        // Poblar opciones de animales
-        this.populateOptions('animal-options', this.config.animals.options, 'animal-choice');
+        // Configurar eventos para opciones múltiples (geografía, planetas, animales)
+        const geoOptions = document.querySelectorAll('#geo-section input[type="radio"]');
+        const planetOptions = document.querySelectorAll('#planet-section input[type="radio"]');
+        const animalOptions = document.querySelectorAll('#animal-section input[type="radio"]');
 
-        // Event listeners para calificar
-        document.getElementById('grade-geo').addEventListener('click', () => this.gradeGeography());
-        document.getElementById('grade-planet').addEventListener('click', () => this.gradePlanets());
-        document.getElementById('grade-animal').addEventListener('click', () => this.gradeAnimals());
+        geoOptions.forEach(option => {
+            option.addEventListener('change', () => {
+                this.gradeGeography();
+            });
+        });
+
+        planetOptions.forEach(option => {
+            option.addEventListener('change', () => {
+                this.gradePlanets();
+            });
+        });
+
+        animalOptions.forEach(option => {
+            option.addEventListener('change', () => {
+                this.gradeAnimals();
+            });
+        });
     }
 
     // === OVERRIDE DE MÉTODOS PARA MISIONES DE OPCIÓN MÚLTIPLE ===
@@ -103,11 +117,28 @@ class ExpedicionAncestral extends ExpedicionBase {
         }
     }
 
-    // === INICIALIZACIÓN ===
-    // No se sobrescribe populateContent, se usa el de la base
+    // === MÉTODO ESPECÍFICO PARA KAKOOMA ===
+    setupKakoomaEvents() {
+        // Asegurar que se llama el método del padre y agregar mejoras específicas
+        super.setupKakoomaEvents();
+        
+        // Mejoras visuales específicas para expedición ancestral
+        const kakoomaGrids = document.querySelectorAll('.kakooma-grid');
+        kakoomaGrids.forEach(grid => {
+            // Agregar indicador visual de progreso ancestral
+            const targetDiv = grid.querySelector('.kakooma-target');
+            if (targetDiv) {
+                targetDiv.style.background = 'linear-gradient(45deg, #d4af37, #b8860b)'; // Dorado ancestral
+                targetDiv.style.padding = '10px';
+                targetDiv.style.borderRadius = '10px';
+                targetDiv.style.color = '#fff';
+                targetDiv.style.fontWeight = 'bold';
+                targetDiv.style.textShadow = '1px 1px 2px rgba(0,0,0,0.3)';
+            }
+        });
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     window.expedicionAncestral = new ExpedicionAncestral();
-    // No se agregan easter eggs específicos aquí, se pueden agregar en la base si son comunes
 });
