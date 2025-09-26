@@ -1,0 +1,123 @@
+/* --- Estilos para Balanza Lógica --- */
+.mision.balanza-logica { 
+    border-color: #e67e22; /* Naranja para balanza */
+}
+
+.balanza-ejercicio {
+    text-align: center;
+    padding: 20px;
+}
+
+.balanza-pregunta-svg {
+    margin-bottom: 25px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 2px solid #dee2e6;
+}
+
+.balanza-pregunta-svg svg {
+    max-width: 100%;
+    height: auto;
+}
+
+.balanza-opciones {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.balanza-opciones li {
+    margin: 0;
+}
+
+.balanza-opciones input[type="radio"] {
+    display: none;
+}
+
+.balanza-opciones label {
+    display: block;
+    padding: 12px 20px;
+    background-color: #ffffff;
+    border: 2px solid #dee2e6;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
+    min-width: 80px;
+}
+
+.balanza-opciones label:hover {
+    background-color: #f8f9fa;
+    border-color: #adb5bd;
+    transform: translateY(-2px);
+}
+
+.balanza-opciones input[type="radio"]:checked + label {
+    background-color: var(--c-primary);
+    color: white;
+    border-color: var(--c-primary);
+}
+
+.balanza-opciones label.correcto {
+    background-color: var(--c-success) !important;
+    color: white !important;
+    border-color: var(--c-success) !important;
+}
+
+.balanza-opciones label.incorrecto {
+    background-color: var(--c-danger) !important;
+    color: white !important;
+    border-color: var(--c-danger) !important;
+}
+
+.feedback-container {
+    margin-top: 20px;
+}
+
+.feedback-box {
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+    display: inline-block;
+}
+
+.feedback-box.correcto {
+    background-color: #d4edda;
+    color: #155724;
+    border: 2px solid #28a745;
+}
+
+.feedback-box.incorrecto {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 2px solid #dc3545;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .balanza-ejercicio {
+        padding: 15px;
+    }
+    
+    .balanza-pregunta-svg {
+        padding: 15px;
+    }
+    
+    .balanza-opciones {
+        gap: 10px;
+    }
+    
+    .balanza-opciones label {
+        padding: 10px 15px;
+        font-size: 1rem;
+        min-width: 70px;
+    }
+}

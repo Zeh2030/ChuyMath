@@ -1,0 +1,24 @@
+/* --- Estilos para Numberblocks Dibujo --- */
+.mision.numberblocks-dibujo { 
+    border-color: #f39c12; /* Naranja para numberblocks */
+}
+
+.numberblocks-instruccion {
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    font-family: var(--font-headings);
+}
+
+.canvas-placeholder {
+    background-color: #f8f9fa;
+    border: 2px dashed #dee2e6;
+    border-radius: 10px;
+    padding: 40px;
+    text-align: center;
+    color: #6c757d;
+    font-style: italic;
+    font-size: 1.1rem;
+}

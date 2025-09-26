@@ -1,0 +1,15 @@
+/* --- Estilos para Geometría --- */
+.mision.geometria { 
+    border-color: #1abc9c; /* Verde esmeralda para geometría */
+}
+
+.geometria-placeholder {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    font-style: italic;
+    padding: 40px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    border: 2px dashed #dee2e6;
+}

@@ -1,0 +1,170 @@
+/* --- Estilos para Secuencias --- */
+.mision.secuencia { 
+    border-color: #f39c12; /* Naranja para secuencias */
+}
+
+.secuencia-ejercicio {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    border: 2px solid #e9ecef;
+}
+
+.secuencia-elementos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 2px solid #dee2e6;
+}
+
+.secuencia-elementos .elemento {
+    background-color: var(--c-primary);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    min-width: 40px;
+    text-align: center;
+}
+
+.secuencia-elementos .placeholder {
+    background-color: #6c757d;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    min-width: 40px;
+    text-align: center;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.secuencia-opciones {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.secuencia-opciones li {
+    margin: 0;
+}
+
+.secuencia-opciones input[type="radio"] {
+    display: none;
+}
+
+.secuencia-opciones label {
+    display: block;
+    padding: 10px 15px;
+    background-color: #ffffff;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
+    min-width: 60px;
+}
+
+.secuencia-opciones label:hover {
+    background-color: #f8f9fa;
+    border-color: #adb5bd;
+    transform: translateY(-1px);
+}
+
+.secuencia-opciones input[type="radio"]:checked + label {
+    background-color: var(--c-primary);
+    color: white;
+    border-color: var(--c-primary);
+}
+
+.secuencia-opciones label.correcto {
+    background-color: var(--c-success) !important;
+    color: white !important;
+    border-color: var(--c-success) !important;
+}
+
+.secuencia-opciones label.incorrecto {
+    background-color: var(--c-danger) !important;
+    color: white !important;
+    border-color: var(--c-danger) !important;
+}
+
+.secuencia-respuesta {
+    text-align: center;
+}
+
+.secuencia-respuesta input {
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    min-width: 150px;
+}
+
+.secuencia-respuesta input:focus {
+    outline: none;
+    border-color: var(--c-primary);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.secuencia-respuesta input.correct {
+    background-color: #d4edda;
+    border-color: #28a745;
+    color: #155724;
+}
+
+.secuencia-respuesta input.incorrect {
+    background-color: #f8d7da;
+    border-color: #dc3545;
+    color: #721c24;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .secuencia-ejercicio {
+        padding: 15px;
+    }
+    
+    .secuencia-elementos {
+        gap: 8px;
+        padding: 10px;
+    }
+    
+    .secuencia-elementos .elemento,
+    .secuencia-elementos .placeholder {
+        padding: 6px 10px;
+        font-size: 1rem;
+        min-width: 35px;
+    }
+    
+    .secuencia-opciones {
+        gap: 8px;
+    }
+    
+    .secuencia-opciones label {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+        min-width: 50px;
+    }
+}
