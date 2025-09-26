@@ -76,6 +76,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 case 'palabra-del-dia':
                     contenidoMision += renderizarPalabraDelDia(misionData);
                     break;
+                case 'geometria':
+                    contenidoMision += renderizarMisionGeometria(misionData);
+                    break;
                 default:
                     contenidoMision += `<p>Tipo de misión "${misionData.tipo}" no reconocido.</p>`;
             }
@@ -96,143 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         aventuraFooter.classList.remove('hidden');
     }
 
-    // --- FUNCIONES DE RENDERIZADO ---
-
-    function renderizarMisionOperaciones(data) {
-        let gridHTML = '<div class="operaciones-grid">';
-        data.ejercicios.forEach((ej, index) => {
-            gridHTML += `<div class="ejercicio" data-respuesta="${ej.respuesta}"><p>${ej.pregunta} =</p><input type="number" inputmode="numeric" id="op-${index}"></div>`;
-        });
-        return gridHTML + '</div>';
-    }
-
-    function renderizarMisionOpcionMultiple(data) {
-        let opcionesHTML = '<ul class="opciones-lista">';
-        data.opciones.forEach((opcion, index) => {
-            const idUnico = `om-${data.id}-${index}`;
-            opcionesHTML += `<li><input type="radio" name="opcion-multiple-${data.id}" id="${idUnico}" value="${opcion}"><label for="${idUnico}">${opcion}</label></li>`;
-        });
-        opcionesHTML += '</ul>';
-        return `<p class="opcion-multiple-pregunta">${data.pregunta}</p>${data.imagen ? `<img src="${data.imagen}" alt="Imagen de la misión" class="opcion-multiple-imagen">` : ''}${opcionesHTML}`;
-    }
-
-    function renderizarMisionDibujo(data) {
-        return `<p class="numberblocks-instruccion">${data.instruccion}</p><div class="canvas-placeholder">El lienzo de dibujo aparecerá aquí.</div>`;
-    }
-
-    function renderizarMisionSecuencia(data) {
-        let ejerciciosHTML = '';
-        data.ejercicios.forEach((ej, index) => {
-            const elementosHTML = ej.elementos.map(el => el === '?' ? `<span class="placeholder">?</span>` : `<span class="elemento">${el}</span>`).join('');
-            let respuestaHTML = '';
-            if (ej.opciones && ej.opciones.length > 0) {
-                respuestaHTML = '<ul class="secuencia-opciones">';
-                ej.opciones.forEach((opcion, optIndex) => {
-                    const idUnico = `seq-${data.id}-${index}-${optIndex}`;
-                    respuestaHTML += `<li><input type="radio" name="secuencia-${data.id}-${index}" id="${idUnico}" value="${opcion}"><label for="${idUnico}">${opcion}</label></li>`;
-                });
-                respuestaHTML += '</ul>';
-            } else {
-                respuestaHTML = `<div class="secuencia-respuesta"><input type="text" placeholder="Respuesta"></div>`;
-            }
-            ejerciciosHTML += `<div class="secuencia-ejercicio" data-respuesta="${ej.respuesta}"><div class="secuencia-elementos">${elementosHTML}</div>${respuestaHTML}</div>`;
-        });
-        return ejerciciosHTML;
-    }
-
-    function renderizarMisionConteo(data) {
-        let ejerciciosHTML = '';
-        data.ejercicios.forEach((ej, index) => {
-            ejerciciosHTML += `
-                <div class="conteo-ejercicio" data-respuesta="${ej.respuesta}">
-                    <p class="conteo-pregunta">${ej.pregunta}</p>
-                    <div class="conteo-figura-container">
-                        ${ej.figura_svg}
-                    </div>
-                    <div class="conteo-respuesta">
-                        <input type="number" inputmode="numeric" placeholder="Total">
-                    </div>
-                </div>
-            `;
-        });
-        return ejerciciosHTML;
-    }
-
-
-    function renderizarMisionCripto(data) {
-        let ejerciciosHTML = '';
-        data.ejercicios.forEach((ej, index) => {
-            const operacionHTML = `
-                <div class="cripto-operacion">
-                    ${ej.operacion.linea1}<br>
-                    ${ej.operacion.linea2}<br>
-                    <hr>
-                    ${ej.operacion.resultado}
-                </div>
-            `;
-            
-            const respuestaHTML = ej.solucion.map(sol => 
-                `<input type="number" class="cripto-input" data-figura="${sol.figura}" placeholder="${sol.figura}" min="0" max="9">`
-            ).join('');
-            
-            ejerciciosHTML += `
-                <div class="cripto-ejercicio" data-respuesta="${JSON.stringify(ej.solucion)}">
-                    ${operacionHTML}
-                    <div class="cripto-respuesta">
-                        ${respuestaHTML}
-                    </div>
-                    <div class="feedback-container"></div>
-                </div>
-            `;
-        });
-        return ejerciciosHTML;
-    }
-
-    function renderizarMisionCubo(data) {
-        let ejerciciosHTML = '';
-        data.ejercicios.forEach((ej) => {
-            const opcionesHTML = ej.opciones_svg.map((opcion_svg, optIndex) => 
-                `<div class="cubo-opcion" data-opcion-index="${optIndex}">${opcion_svg}</div>`
-            ).join('');
-            ejerciciosHTML += `
-                <div class="cubo-ejercicio" id="${ej.id}" data-respuesta="${ej.respuesta}">
-                    <div class="cubo-plano">${ej.plano_svg}</div>
-                    <div class="cubo-opciones-container">${opcionesHTML}</div>
-                    <div class="feedback-container"></div>
-                </div>
-            `;
-        });
-        return ejerciciosHTML;
-    }
-
-    function renderizarMisionBalanza(data) {
-        const opcionesHTML = data.opciones.map((opcion, index) => 
-            `<li><input type="radio" name="balanza-${data.id}" id="balanza-${data.id}-${index}" value="${opcion}"><label for="balanza-${data.id}-${index}">${opcion}</label></li>`
-        ).join('');
-        return `
-            <div class="balanza-ejercicio" data-respuesta="${data.respuesta}">
-                <div class="balanza-pregunta-svg">${data.pregunta_svg}</div>
-                <ul class="opciones-lista balanza-opciones">${opcionesHTML}</ul>
-                <div class="feedback-container"></div>
-            </div>
-        `;
-    }
-
-    function renderizarPalabraDelDia(data) {
-        return `
-            <div class="palabra-container">
-                <div class="palabra-ingles">
-                    <span class="palabra-texto">${data.palabra_en}</span>
-                    <button class="boton-audio" onclick="document.getElementById('audio-${data.id}').play()">🔊</button>
-                    <audio id="audio-${data.id}" src="${data.audio_pronunciacion}"></audio>
-                </div>
-                <div class="palabra-icono">${data.icono}</div>
-                <div class="palabra-espanol">${data.palabra_es}</div>
-            </div>
-        `;
-    }
-
-
+    // --- FUNCIONES DE RENDERIZADO (solo las que no tienen archivo específico) ---
 
     // --- LÓGICA DE CALIFICACIÓN ---
 
@@ -268,6 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 case 'palabra-del-dia': 
                     // No suma puntaje pero podría marcarse como vista
                     break;
+                case 'geometria': puntaje += calificarMisionGeometria(misionDiv, misionData); break;
             }
         });
         
@@ -277,236 +145,16 @@ document.addEventListener('DOMContentLoaded', () => {
         guardarProgreso();
     });
     
-    function calificarMisionOperaciones(misionDiv, misionData) {
-        let aciertos = 0;
-        misionDiv.querySelectorAll('.ejercicio').forEach((ejDiv, index) => {
-            const input = ejDiv.querySelector('input');
-            const respuestaCorrecta = misionData.ejercicios[index].respuesta;
-            input.classList.remove('correct', 'incorrect');
-            if (input.value.trim() === respuestaCorrecta) {
-                input.classList.add('correct');
-                aciertos++;
-            } else {
-                input.classList.add('incorrect');
-            }
-        });
-        return aciertos;
-    }
-
-    function calificarMisionOpcionMultiple(misionDiv, misionData) {
-        const selectedOption = document.querySelector(`input[name="opcion-multiple-${misionData.id}"]:checked`);
-        if (!selectedOption) return 0;
-        
-        const esCorrecto = selectedOption.value === misionData.respuesta;
-        const label = selectedOption.nextElementSibling;
-        label.classList.toggle('correcto', esCorrecto);
-        label.classList.toggle('incorrecto', !esCorrecto);
-        
-        return esCorrecto ? 1 : 0;
-    }
-
-    function calificarMisionSecuencia(misionDiv, misionData) {
-        let aciertos = 0;
-        misionDiv.querySelectorAll('.secuencia-ejercicio').forEach((ejDiv, index) => {
-            const respuestaCorrecta = misionData.ejercicios[index].respuesta;
-            let esCorrecto = false;
-            
-            // Buscar input de texto o radio seleccionado
-            const textInput = ejDiv.querySelector('input[type="text"]');
-            const radioInput = ejDiv.querySelector('input[type="radio"]:checked');
-            
-            if (textInput && textInput.value.trim() === respuestaCorrecta) {
-                textInput.classList.add('correct');
-                esCorrecto = true;
-            } else if (radioInput && radioInput.value === respuestaCorrecta) {
-                const label = radioInput.nextElementSibling;
-                label.classList.add('correcto');
-                esCorrecto = true;
-            } else {
-                if (textInput) textInput.classList.add('incorrect');
-                if (radioInput) radioInput.nextElementSibling.classList.add('incorrecto');
-            }
-            
-            if (esCorrecto) aciertos++;
-        });
-        return aciertos;
-    }
-
-    function calificarMisionConteo(misionDiv, misionData) {
-        let aciertos = 0;
-        misionDiv.querySelectorAll('.conteo-ejercicio').forEach((ejDiv, index) => {
-            const input = ejDiv.querySelector('input');
-            const respuestaCorrecta = misionData.ejercicios[index].respuesta;
-            input.classList.remove('correct', 'incorrect');
-            if (input.value.trim() === respuestaCorrecta) {
-                input.classList.add('correct');
-                aciertos++;
-            } else {
-                input.classList.add('incorrect');
-            }
-        });
-        return aciertos;
-    }
-
-    function calificarMisionTabla(misionDiv, misionData) {
-        const opcionSeleccionada = misionDiv.querySelector('input[type="radio"]:checked');
-        
-        if (!opcionSeleccionada) {
-            // Mostrar mensaje si no se seleccionó ninguna opción
-            const preguntaContainer = misionDiv.querySelector('.pregunta-final-container');
-            if (preguntaContainer) {
-                const mensaje = document.createElement('div');
-                mensaje.style.color = '#e74c3c';
-                mensaje.style.fontWeight = 'bold';
-                mensaje.style.marginTop = '10px';
-                mensaje.textContent = '¡Selecciona una respuesta!';
-                preguntaContainer.appendChild(mensaje);
-            }
-            return false;
-        }
-
-        const esCorrecta = opcionSeleccionada.value === misionData.respuesta_final;
-        const label = opcionSeleccionada.parentElement.querySelector('label');
-        
-        // Aplicar estilos de feedback
-        if (esCorrecta) {
-            label.style.backgroundColor = 'var(--c-success)';
-            label.style.color = 'white';
-            label.style.borderColor = 'var(--c-success)';
-            
-            // Mostrar explicación correcta si existe
-            if (misionData.explicacion_correcta) {
-                mostrarExplicacionTabla(misionDiv, misionData.explicacion_correcta, 'correcta', '🎉');
-            }
-        } else {
-            label.style.backgroundColor = 'var(--c-danger)';
-            label.style.color = 'white';
-            label.style.borderColor = 'var(--c-danger)';
-            
-            // Mostrar explicación incorrecta si existe
-            if (misionData.explicacion_incorrecta) {
-                mostrarExplicacionTabla(misionDiv, misionData.explicacion_incorrecta, 'incorrecta', '💡');
-            }
-        }
-
-        return esCorrecta;
-    }
-
-    function mostrarExplicacionTabla(misionDiv, texto, tipo, icono) {
-        const explicacionDiv = document.createElement('div');
-        explicacionDiv.className = `explicacion-feedback ${tipo}`;
-        explicacionDiv.style.marginTop = '20px';
-        explicacionDiv.style.padding = '15px';
-        explicacionDiv.style.borderRadius = '10px';
-        explicacionDiv.style.fontSize = '1.1rem';
-        explicacionDiv.style.fontWeight = '600';
-        explicacionDiv.innerHTML = `
-            <span class="icono-explicacion">${icono}</span>
-            ${texto}
-        `;
-        
-        if (tipo === 'correcta') {
-            explicacionDiv.style.backgroundColor = '#e8f8f5';
-            explicacionDiv.style.color = '#27ae60';
-            explicacionDiv.style.border = '2px solid #2ecc71';
-        } else {
-            explicacionDiv.style.backgroundColor = '#fdf2f2';
-            explicacionDiv.style.color = '#e74c3c';
-            explicacionDiv.style.border = '2px solid #e74c3c';
-        }
-        
-        const preguntaContainer = misionDiv.querySelector('.pregunta-final-container');
-        if (preguntaContainer) {
-            preguntaContainer.appendChild(explicacionDiv);
-        }
-    }
-
-    function calificarMisionCripto(misionDiv, misionData) {
-        let aciertos = 0;
-        misionDiv.querySelectorAll('.cripto-ejercicio').forEach((ejDiv, index) => {
-            const solucionCorrecta = misionData.ejercicios[index].solucion;
-            let esCorrecto = true;
-            
-            solucionCorrecta.forEach(sol => {
-                const input = ejDiv.querySelector(`[data-figura="${sol.figura}"]`);
-                if (input && input.value !== sol.valor) {
-                    esCorrecto = false;
-                }
-            });
-            
-            if (esCorrecto) {
-                ejDiv.querySelectorAll('.cripto-input').forEach(input => input.classList.add('correct'));
-                aciertos++;
-            } else {
-                ejDiv.querySelectorAll('.cripto-input').forEach(input => input.classList.add('incorrect'));
-            }
-        });
-        return aciertos;
-    }
-
-    function calificarMisionCubo(misionDiv, misionData) {
-        let aciertos = 0;
-        misionDiv.querySelectorAll('.cubo-ejercicio').forEach((ejDiv, index) => {
-            const respuestaCorrecta = parseInt(misionData.ejercicios[index].respuesta);
-            const seleccionada = ejDiv.querySelector('.cubo-opcion.seleccionada');
-            
-            if (seleccionada) {
-                const seleccionIndex = parseInt(seleccionada.dataset.opcionIndex);
-                const esCorrecto = seleccionIndex === respuestaCorrecta;
-                
-                seleccionada.classList.toggle('correcto', esCorrecto);
-                seleccionada.classList.toggle('incorrecto', !esCorrecto);
-                
-                const explicacion = esCorrecto ? 
-                    misionData.ejercicios[index].explicacion_correcta : 
-                    misionData.ejercicios[index].explicacion_incorrecta;
-                mostrarFeedback(ejDiv.querySelector('.feedback-container'), explicacion, esCorrecto ? 'correcto' : 'incorrecto');
-                
-                if (esCorrecto) aciertos++;
-            }
-        });
-        return aciertos;
-    }
-
-    function calificarMisionBalanza(misionDiv, misionData) {
-        const selectedOption = document.querySelector(`input[name="balanza-${misionData.id}"]:checked`);
-        if (!selectedOption) return 0;
-        
-        const esCorrecto = selectedOption.value === misionData.respuesta;
-        const label = selectedOption.nextElementSibling;
-        label.classList.toggle('correcto', esCorrecto);
-        label.classList.toggle('incorrecto', !esCorrecto);
-        
-        const explicacion = esCorrecto ? misionData.explicacion_correcta : misionData.explicacion_incorrecta;
-        mostrarFeedback(misionDiv.querySelector('.feedback-container'), explicacion, esCorrecto ? 'correcto' : 'incorrecto');
-        return esCorrecto ? 1 : 0;
-    }
-
-    
-    function mostrarFeedback(container, texto, tipo) {
-        if (container) container.innerHTML = `<div class="feedback-box ${tipo}">${texto}</div>`;
-    }
 
     // --- EVENTOS DE INTERACCIÓN ---
     function addGlobalEventListeners() {
         misionesContainer.addEventListener('click', (e) => {
             const opcionCubo = e.target.closest('.cubo-opcion');
-            const celdaLogica = e.target.closest('.celda-logica');
             
             if (opcionCubo) {
                 const ejercicio = opcionCubo.closest('.cubo-ejercicio');
                 ejercicio.querySelectorAll('.cubo-opcion').forEach(op => op.classList.remove('seleccionada'));
                 opcionCubo.classList.add('seleccionada');
-            }
-
-            if (celdaLogica) {
-                const estados = ['', '✅', '❌'];
-                const clases = ['', 'si', 'no'];
-                let indiceActual = estados.indexOf(celdaLogica.textContent);
-                let nuevoIndice = (indiceActual + 1) % estados.length;
-                celdaLogica.textContent = estados[nuevoIndice];
-                celdaLogica.className = 'celda-logica'; // Reset
-                if (clases[nuevoIndice]) celdaLogica.classList.add(clases[nuevoIndice]);
             }
         });
     }
