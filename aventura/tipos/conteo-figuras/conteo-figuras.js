@@ -13,6 +13,7 @@ function renderizarMisionConteo(data) {
                 <div class="conteo-respuesta">
                     <input type="number" inputmode="numeric" placeholder="Total">
                 </div>
+                <div class="feedback-container"></div>
             </div>
         `;
     });
@@ -26,12 +27,25 @@ function calificarMisionConteo(misionDiv, misionData) {
         const input = ejDiv.querySelector('input');
         const respuestaCorrecta = misionData.ejercicios[index].respuesta;
         input.classList.remove('correct', 'incorrect');
-        if (input.value.trim() === respuestaCorrecta) {
+        const esCorrecto = input.value.trim() === respuestaCorrecta;
+        
+        if (esCorrecto) {
             input.classList.add('correct');
             aciertos++;
         } else {
             input.classList.add('incorrect');
         }
+        
+        // Mostrar explicaciones
+        const explicacion = esCorrecto ? 
+            misionData.ejercicios[index].explicacion_correcta : 
+            misionData.ejercicios[index].explicacion_incorrecta;
+        mostrarFeedbackConteo(ejDiv.querySelector('.feedback-container'), explicacion, esCorrecto ? 'correcto' : 'incorrecto');
     });
     return aciertos;
+}
+
+// Función para mostrar feedback
+function mostrarFeedbackConteo(container, texto, tipo) {
+    if (container) container.innerHTML = `<div class="feedback-box ${tipo}">${texto}</div>`;
 }
