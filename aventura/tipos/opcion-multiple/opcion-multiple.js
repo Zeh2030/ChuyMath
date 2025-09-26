@@ -7,7 +7,7 @@ function renderizarMisionOpcionMultiple(data) {
     if (data.opciones_son_imagenes) {
         opcionesHTML = data.opciones.map((opcion_svg, index) => 
             `<div class='opcion-imagen-container' data-value='${index}'>
-                <img src="${opcion_svg}" alt="Opción ${index + 1}">
+                <img src='${opcion_svg}' alt='Opción ${index + 1}'>
             </div>`
         ).join('');
     } else {
