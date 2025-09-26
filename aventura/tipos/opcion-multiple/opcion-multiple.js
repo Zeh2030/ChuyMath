@@ -5,10 +5,11 @@ function renderizarMisionOpcionMultiple(data) {
     let opcionesHTML = '';
     // --- NUEVO: Detectar si las opciones son imágenes ---
     if (data.opciones_son_imagenes) {
+        // --- CORRECCIÓN: Inyectar SVG directamente en lugar de usar <img> ---
         opcionesHTML = data.opciones.map((opcion_svg, index) => 
             `<div class='opcion-imagen-container' data-value='${index}'>
-                <img src='${opcion_svg}' alt='Opción ${index + 1}'>
-            </div>`
+                ${opcion_svg}
+             </div>`
         ).join('');
     } else {
         opcionesHTML = data.opciones.map((opcion, index) => 
@@ -17,7 +18,8 @@ function renderizarMisionOpcionMultiple(data) {
     }
 
     const preguntaHTML = data.pregunta ? `<p class="pregunta-texto">${data.pregunta}</p>` : '';
-    const imagenHTML = data.imagen ? `<div class="pregunta-imagen-container"><img src="${data.imagen}" alt="Pregunta"></div>` : '';
+    // --- CORRECCIÓN: Inyectar SVG directamente también para la pregunta ---
+    const imagenHTML = data.imagen ? `<div class="pregunta-imagen-container">${data.imagen}</div>` : '';
     
     // --- NUEVO: Envolver en un contenedor diferente si son imágenes ---
     const contenedorClase = data.opciones_son_imagenes ? 'opciones-imagenes-grid' : 'opciones-lista';
