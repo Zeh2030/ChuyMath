@@ -23,25 +23,8 @@ class ExpedicionMarina extends ExpedicionBase {
     // estas funciones redundantes de este archivo para simplificar.
 
 
-    // === MÉTODO ESPECÍFICO PARA KAKOOMA (CORREGIDO) ===
-    setupKakoomaEvents() {
-        // 1. Ejecutar la lógica base de Kakooma desde ExpedicionBase
-        super.setupKakoomaEvents();
-        
-        // 2. Aplicar los estilos visuales únicos para la expedición marina
-        const kakoomaGrids = document.querySelectorAll('.kakooma-grid');
-        kakoomaGrids.forEach(grid => {
-            const targetDiv = grid.querySelector('.kakooma-target');
-            if (targetDiv) {
-                targetDiv.style.background = 'linear-gradient(45deg, #4ecdc4, #44b3b8)'; // Azul marino
-                targetDiv.style.padding = '10px';
-                targetDiv.style.borderRadius = '10px';
-                targetDiv.style.color = '#fff';
-                targetDiv.style.fontWeight = 'bold';
-                targetDiv.style.textShadow = '1px 1px 2px rgba(0,0,0,0.3)';
-        }
-    });
-}
+    // === MÉTODO ESPECÍFICO PARA KAKOOMA (ELIMINADO) ===
+
 }
 
 document.addEventListener('DOMContentLoaded', () => {
