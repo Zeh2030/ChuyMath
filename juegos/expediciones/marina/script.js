@@ -21,28 +21,9 @@ class ExpedicionMarina extends ExpedicionBase {
     }
 
     setupMultipleChoiceMissions() {
-        // Configurar eventos para opciones múltiples (geografía, planetas, animales)
-        const geoOptions = document.querySelectorAll('#geo-section input[type="radio"]');
-        const planetOptions = document.querySelectorAll('#planet-section input[type="radio"]');
-        const animalOptions = document.querySelectorAll('#animal-section input[type="radio"]');
-
-        geoOptions.forEach(option => {
-            option.addEventListener('change', () => {
-                this.gradeGeography();
-            });
-        });
-
-        planetOptions.forEach(option => {
-            option.addEventListener('change', () => {
-                this.gradePlanets();
-            });
-        });
-
-        animalOptions.forEach(option => {
-            option.addEventListener('change', () => {
-                this.gradeAnimals();
-            });
-        });
+        // Los eventos de calificación se manejan a través de los botones de calificar
+        // No necesitamos event listeners en los radio buttons
+        console.log('Configuración de misiones de opción múltiple completada');
     }
 
     // === OVERRIDE DE MÉTODOS PARA MISIONES DE OPCIÓN MÚLTIPLE ===
@@ -136,9 +117,9 @@ class ExpedicionMarina extends ExpedicionBase {
                 targetDiv.style.color = '#fff';
                 targetDiv.style.fontWeight = 'bold';
                 targetDiv.style.textShadow = '1px 1px 2px rgba(0,0,0,0.3)';
-            }
-        });
-    }
+        }
+    });
+}
 }
 
 document.addEventListener('DOMContentLoaded', () => {
