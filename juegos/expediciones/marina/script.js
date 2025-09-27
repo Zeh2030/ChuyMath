@@ -11,19 +11,10 @@ class ExpedicionMarina extends ExpedicionBase {
     }
 
     setupMarinaSpecificEvents() {
-        // Eventos específicos para misiones de opción múltiple (Júpiter y Tiburón)
-        this.setupMultipleChoiceMissions();
-        
-        // Configurar eventos específicos para Kakooma después de que se cargue el contenido
-        setTimeout(() => {
-            this.setupKakoomaEvents();
-        }, 100);
-    }
-
-    setupMultipleChoiceMissions() {
         // Los eventos de calificación se manejan a través de los botones de calificar
         // No necesitamos event listeners en los radio buttons
         console.log('Configuración de misiones de opción múltiple completada');
+        // La llamada a setupKakoomaEvents() se elimina de aquí
     }
 
     // === OVERRIDE DE MÉTODOS PARA MISIONES DE OPCIÓN MÚLTIPLE ===
@@ -117,9 +108,9 @@ class ExpedicionMarina extends ExpedicionBase {
                 targetDiv.style.color = '#fff';
                 targetDiv.style.fontWeight = 'bold';
                 targetDiv.style.textShadow = '1px 1px 2px rgba(0,0,0,0.3)';
-        }
-    });
-}
+            }
+        });
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
