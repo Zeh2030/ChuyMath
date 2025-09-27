@@ -37,11 +37,11 @@
             "resultado": "  2 8"
           },
           "solucion": [
-            { "figura": "⭐", "valor": "1" },
-            { "figura": "●", "valor": "7" }
+            { "figura": "⭐", "valor": "2" },
+            { "figura": "●", "valor": "6" }
           ],
-          "explicacion_correcta": "¡Lo lograste! Si la ⭐ vale 1 y el ● vale 7, entonces 17 + 11 = 28. ¡Tu lógica es impecable!",
-          "explicacion_incorrecta": "¡Casi lo tienes! Pista: Mira la columna de la derecha. ● + ⭐ debe dar 8. Ahora mira la columna de la izquierda. ⭐ + un número invisible (1) debe dar 2. Eso te dice el valor de la ⭐."
+          "explicacion_correcta": "¡Excelente! Si la ⭐ vale 2, la columna de la izquierda es correcta. Y si la ⭐ vale 2, entonces en la derecha, el ● debe valer 6 para que 6 + 2 sume 8. ¡Perfecto!",
+          "explicacion_incorrecta": "¡Casi! Una pista: mira la columna de la izquierda. ¿Qué valor debe tener la ⭐ para que el resultado sea 20 y algo? Una vez que sepas el valor de la ⭐, resolver el valor del ● es mucho más fácil."
         }
       ]
     },
