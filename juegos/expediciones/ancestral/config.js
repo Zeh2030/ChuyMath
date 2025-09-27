@@ -86,9 +86,11 @@ const expedicionAncestralConfig = {
         `
     },
 
+    // === MISIÓN KAKOOMA (ELIMINADA) ===
+
     // === MISIÓN NUMBERBLOCKS ===
     numberblocks: {
-        operation: 'Dibuja Numberblocks para 7 + 2 = 9',
+        operation: 'Dibuja Numberblocks para 10 - 3 = ?',
         enabled: true
     }
 };
