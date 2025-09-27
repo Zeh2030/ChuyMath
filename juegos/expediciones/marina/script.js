@@ -14,8 +14,10 @@ class ExpedicionMarina extends ExpedicionBase {
         // Eventos específicos para misiones de opción múltiple (Júpiter y Tiburón)
         this.setupMultipleChoiceMissions();
         
-        // Configurar eventos específicos para Kakooma
-        this.setupKakoomaEvents();
+        // Configurar eventos específicos para Kakooma después de que se cargue el contenido
+        setTimeout(() => {
+            this.setupKakoomaEvents();
+        }, 100);
     }
 
     setupMultipleChoiceMissions() {
@@ -46,7 +48,7 @@ class ExpedicionMarina extends ExpedicionBase {
     // === OVERRIDE DE MÉTODOS PARA MISIONES DE OPCIÓN MÚLTIPLE ===
 
     gradeGeography() {
-        const selectedOption = document.querySelector('input[name="geo-choice"]:checked');
+        const selectedOption = document.querySelector('input[name="city"]:checked');
         const resultsArea = document.getElementById('geo-results');
         const correctAnswer = this.config.geography.answer;
 
@@ -70,7 +72,7 @@ class ExpedicionMarina extends ExpedicionBase {
     }
 
     gradePlanets() {
-        const selectedOption = document.querySelector('input[name="planet-choice"]:checked');
+        const selectedOption = document.querySelector('input[name="planet-answer"]:checked');
         const resultsArea = document.getElementById('planet-results');
         const correctAnswer = this.config.planets.answer;
 
@@ -94,7 +96,7 @@ class ExpedicionMarina extends ExpedicionBase {
     }
 
     gradeAnimals() {
-        const selectedOption = document.querySelector('input[name="animal-choice"]:checked');
+        const selectedOption = document.querySelector('input[name="animal-answer"]:checked');
         const resultsArea = document.getElementById('animal-results');
         const correctAnswer = this.config.animals.answer;
 
