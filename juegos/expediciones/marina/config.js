@@ -76,6 +76,8 @@ const expedicionMarinaConfig = {
         `
     },
 
+    // === MISIÓN KAKOOMA (ELIMINADA) ===
+
     // === MISIÓN NUMBERBLOCKS ===
     numberblocks: {
         operation: 'Dibuja Numberblocks para 5 + 4 = ?',
