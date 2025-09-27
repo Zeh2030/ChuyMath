@@ -17,7 +17,7 @@ class ExpedicionAncestral extends ExpedicionBase {
     // === OVERRIDE DE MÉTODOS PARA MISIONES DE OPCIÓN MÚLTIPLE ===
 
     gradeGeography() {
-        const selectedOption = document.querySelector('input[name="geo-choice"]:checked');
+        const selectedOption = document.querySelector('input[name="city"]:checked');
         const resultsArea = document.getElementById('geo-results');
         const correctAnswer = this.config.geography.answer;
 
@@ -41,7 +41,7 @@ class ExpedicionAncestral extends ExpedicionBase {
     }
 
     gradePlanets() {
-        const selectedOption = document.querySelector('input[name="planet-choice"]:checked');
+        const selectedOption = document.querySelector('input[name="planet-answer"]:checked');
         const resultsArea = document.getElementById('planet-results');
         const correctAnswer = this.config.planets.answer;
 
@@ -65,7 +65,7 @@ class ExpedicionAncestral extends ExpedicionBase {
     }
 
     gradeAnimals() {
-        const selectedOption = document.querySelector('input[name="animal-choice"]:checked');
+        const selectedOption = document.querySelector('input[name="animal-answer"]:checked');
         const resultsArea = document.getElementById('animal-results');
         const correctAnswer = this.config.animals.answer;
 
@@ -88,25 +88,8 @@ class ExpedicionAncestral extends ExpedicionBase {
         }
     }
 
-    // === MÉTODO ESPECÍFICO PARA KAKOOMA ===
-    setupKakoomaEvents() {
-        // 1. Ejecutar la lógica base de Kakooma
-        super.setupKakoomaEvents();
-        
-        // 2. Aplicar estilos visuales únicos para la expedición ancestral
-        const kakoomaGrids = document.querySelectorAll('.kakooma-grid');
-        kakoomaGrids.forEach(grid => {
-            const targetDiv = grid.querySelector('.kakooma-target');
-            if (targetDiv) {
-                targetDiv.style.background = 'linear-gradient(45deg, #f39c12, #e67e22)'; // Naranja
-                targetDiv.style.padding = '10px';
-                targetDiv.style.borderRadius = '10px';
-                targetDiv.style.color = '#fff';
-                targetDiv.style.fontWeight = 'bold';
-                targetDiv.style.textShadow = '1px 1px 2px rgba(0,0,0,0.3)';
-            }
-        });
-    }
+    // === MÉTODO ESPECÍFICO PARA KAKOOMA (ELIMINADO) ===
+
 }
 
 document.addEventListener('DOMContentLoaded', () => {
