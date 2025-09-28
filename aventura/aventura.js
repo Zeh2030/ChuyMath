@@ -1,214 +1,267 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const aventuraTitulo = document.getElementById('aventura-titulo');
     const misionesContainer = document.getElementById('misiones-container');
-    const aventuraFooter = document.getElementById('aventura-footer');
+    const aventuraTitulo = document.getElementById('aventura-titulo');
     const completarBtn = document.getElementById('completar-aventura-btn');
-    const mensajeFinal = document.getElementById('mensaje-final');
-    const navegacionFinal = document.getElementById('navegacion-final');
+    const footer = document.getElementById('aventura-footer');
+    const loader = document.querySelector('.loader');
 
     let aventuraData = null;
-    const PROGRESO_KEY = 'progresoChuy';
+    let diaAventura = '';
 
     function getDiaAventura() {
-        const params = new URLSearchParams(window.location.search);
-        return params.get('dia');
-    }
-
-    // --- NUEVA LÓGICA DE CARGA DINÁMICA DE RECURSOS ---
-    async function cargarRecursosMisiones(misiones) {
-        const tiposRequeridos = new Set(misiones.map(m => m.tipo));
-        const promesas = [];
-
-        tiposRequeridos.forEach(tipo => {
-            const basePath = `tipos/${tipo}/${tipo}`;
-            
-            // Cargar CSS
-            const cssPromise = new Promise((resolve) => {
-                const link = document.createElement('link');
-                link.rel = 'stylesheet';
-                link.href = `${basePath}.css`;
-                link.onload = resolve;
-                link.onerror = () => {
-                    console.warn(`No se encontró CSS para el tipo: ${tipo}`);
-                    resolve();
-                };
-                document.head.appendChild(link);
-            });
-
-            // Cargar JS
-            const jsPromise = new Promise((resolve) => {
-                const script = document.createElement('script');
-                script.src = `${basePath}.js`;
-                script.onload = resolve;
-                script.onerror = () => {
-                    console.warn(`No se encontró JS para el tipo: ${tipo}`);
-                    resolve();
-                };
-                document.body.appendChild(script);
-            });
-
-            promesas.push(cssPromise, jsPromise);
-        });
-
-        await Promise.all(promesas);
+        const urlParams = new URLSearchParams(window.location.search);
+        const dia = urlParams.get('dia');
+        if (!dia) {
+            console.error('No se especificó el día en la URL.');
+            misionesContainer.innerHTML = '<p class="error-cargando">Error: No se ha especificado un día de aventura. Asegúrate de que la URL sea correcta.</p>';
+            loader.style.display = 'none';
+            return null;
+        }
+        return dia;
     }
 
     async function cargarAventura(dia) {
         try {
-            if (!dia) throw new Error('No se especificó el día de la aventura.');
-            
             const response = await fetch(`../_contenido/${dia}.json`);
-            if (!response.ok) throw new Error(`No se pudo cargar el archivo de la aventura del día ${dia}.`);
-            
+            if (!response.ok) {
+                throw new Error(`No se encontró el archivo de aventura para el día ${dia}.`);
+            }
             aventuraData = await response.json();
-
-            // Cargar solo los recursos necesarios ANTES de renderizar
-            await cargarRecursosMisiones(aventuraData.misiones);
-            
             renderizarAventura();
-            
+            revisarEstadoAventura(); 
         } catch (error) {
             console.error('Error al cargar la aventura:', error);
-            misionesContainer.innerHTML = `<div class="error-mensaje"><h2>¡Ups! Algo salió mal</h2><p>No se pudo cargar la aventura. Error: ${error.message}</p><a href="../dashboard/dashboard.html" class="back-button">Volver al Centro de Mando</a></div>`;
+            misionesContainer.innerHTML = `<p class="error-cargando">¡Oh no! No pudimos cargar la aventura de hoy. Revisa la fecha o intenta más tarde.</p><p class="error-detalle">${error.message}</p>`;
+        } finally {
+            loader.style.display = 'none';
+            footer.classList.remove('hidden');
         }
     }
 
     function renderizarAventura() {
-        misionesContainer.innerHTML = '';
+        if (!aventuraData) return;
+
         aventuraTitulo.textContent = aventuraData.titulo;
+        misionesContainer.innerHTML = ''; 
 
-        aventuraData.misiones.forEach(misionData => {
-            const misionDiv = document.createElement('div');
-            misionDiv.className = `mision ${misionData.tipo}`;
-            misionDiv.id = misionData.id;
-            misionDiv.dataset.info = JSON.stringify(misionData);
+        aventuraData.misiones.forEach((mision, index) => {
+            const misionCard = document.createElement('div');
+            misionCard.className = 'mision-card';
+            misionCard.id = `mision-${index}`;
+            misionCard.style.borderLeft = `5px solid ${mision.color || '#4A90E2'}`;
 
-            let contenidoMision = `<h2>${misionData.titulo}</h2>`;
-            if (misionData.instruccion) {
-                contenidoMision += `<p class="mision-instruccion">${misionData.instruccion}</p>`;
-            }
+            const misionHeader = document.createElement('div');
+            misionHeader.className = 'mision-header';
+            misionHeader.innerHTML = `<h2>${mision.titulo}</h2>`;
+            misionCard.appendChild(misionHeader);
+
+            const misionContent = document.createElement('div');
+            misionContent.className = 'mision-content';
             
-            const renderFunctionName = `renderizarMision${capitalizeTipo(misionData.tipo)}`;
-            if (typeof window[renderFunctionName] === 'function') {
-                contenidoMision += window[renderFunctionName](misionData);
-            } else {
-                contenidoMision += `<p>Error: La función ${renderFunctionName} no está definida.</p>`;
-            }
+            const instrucciones = document.createElement('div');
+            instrucciones.className = 'instrucciones';
+            instrucciones.innerHTML = `<p>${mision.instrucciones}</p>`;
+            misionContent.appendChild(instrucciones);
             
-            misionDiv.innerHTML = contenidoMision;
-            misionesContainer.appendChild(misionDiv);
+            const ejercicioContainer = document.createElement('div');
+            ejercicioContainer.className = 'ejercicio-container';
+            
+            // Re-implementación del switch case
+            switch (mision.tipo) {
+                case 'tabla-doble-entrada':
+                    ejercicioContainer.innerHTML = renderizarMisionTabla(mision.data);
+                    break;
+                case 'operaciones':
+                    ejercicioContainer.innerHTML = renderizarMisionOperaciones(mision.data);
+                    break;
+                case 'opcion-multiple':
+                    ejercicioContainer.innerHTML = renderizarMisionOpcionMultiple(mision.data);
+                    break;
+                case 'secuencia':
+                    ejercicioContainer.innerHTML = renderizarMisionSecuencia(mision.data);
+                    break;
+                case 'conteo-figuras':
+                     ejercicioContainer.innerHTML = renderizarMisionConteo(mision.data);
+                    break;
+                case 'criptoaritmetica':
+                    ejercicioContainer.innerHTML = renderizarMisionCripto(mision.data);
+                    break;
+                case 'desarrollo-cubos':
+                    ejercicioContainer.innerHTML = renderizarMisionCubo(mision.data);
+                    break;
+                case 'balanza-logica':
+                    ejercicioContainer.innerHTML = renderizarMisionBalanza(mision.data);
+                    break;
+                case 'palabra-del-dia':
+                    ejercicioContainer.innerHTML = renderizarPalabraDelDia(mision.data);
+                    break;
+                case 'geometria':
+                    ejercicioContainer.innerHTML = renderizarMisionGeometria(mision.data);
+                    break;
+                case 'numberblocks-dibujo':
+                    ejercicioContainer.innerHTML = renderizarMisionNumberblocks(mision.data);
+                    break;
+                default:
+                    ejercicioContainer.innerHTML = `<p>Error: Tipo de misión "${mision.tipo}" no reconocido.</p>`;
+            }
+
+            misionContent.appendChild(ejercicioContainer);
+            misionCard.appendChild(misionContent);
+            misionesContainer.appendChild(misionCard);
         });
         
         addGlobalEventListeners();
-        aventuraFooter.classList.remove('hidden');
     }
-    
-    function capitalizeTipo(tipo) {
-        return tipo.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('');
+
+    function addGlobalEventListeners() {
+        const tablas = document.querySelectorAll('.tabla-logica');
+        tablas.forEach(tabla => {
+            tabla.addEventListener('click', (event) => {
+                if (event.target.tagName === 'TD' && !event.target.classList.contains('header')) {
+                    const cell = event.target;
+                    const currentValue = cell.textContent;
+                    if (currentValue === '✅') {
+                        cell.textContent = '❌';
+                    } else if (currentValue === '❌') {
+                        cell.textContent = '';
+                    } else {
+                        cell.textContent = '✅';
+                    }
+                }
+            });
+        });
+
+        // Listener para opciones de imagen
+        const opcionesImagen = document.querySelectorAll('.opcion-imagen-container');
+        opcionesImagen.forEach(opcion => {
+            opcion.addEventListener('click', () => {
+                // Deseleccionar todas las opciones de la misma pregunta
+                const parentGrid = opcion.closest('.opciones-imagenes-grid');
+                parentGrid.querySelectorAll('.opcion-imagen-container').forEach(o => o.classList.remove('seleccionada'));
+                // Seleccionar la actual
+                opcion.classList.add('seleccionada');
+            });
+        });
     }
 
 
     completarBtn.addEventListener('click', () => {
-        let puntaje = 0;
-        let totalPreguntas = 0;
+        let puntajeTotal = 0;
+        let puntajeMaximo = aventuraData.misiones.length;
+        let todasCalificadas = true;
 
-        document.querySelectorAll('.mision').forEach(misionDiv => {
-            const misionData = JSON.parse(misionDiv.dataset.info);
-            
-            if (misionData.tipo !== 'palabra-del-dia' && misionData.tipo !== 'numberblocks-dibujo') {
-                 const ejercicios = misionData.ejercicios || [misionData]; // Handle single-exercise missions
-                 totalPreguntas += ejercicios.length;
-            } else if (misionData.tipo === 'numberblocks-dibujo') {
-                totalPreguntas++;
+        aventuraData.misiones.forEach((mision, index) => {
+            let resultado = 0;
+            // Re-implementación del switch case para calificar
+            switch (mision.tipo) {
+                 case 'tabla-doble-entrada':
+                    resultado = calificarMisionTabla(index, mision.data);
+                    break;
+                case 'operaciones':
+                    resultado = calificarMisionOperaciones(index, mision.data);
+                    break;
+                case 'opcion-multiple':
+                    resultado = calificarMisionOpcionMultiple(index, mision.data);
+                    break;
+                case 'secuencia':
+                    resultado = calificarMisionSecuencia(index, mision.data);
+                    break;
+                case 'conteo-figuras':
+                    resultado = calificarMisionConteo(index, mision.data);
+                    break;
+                case 'criptoaritmetica':
+                    resultado = calificarMisionCripto(index, mision.data);
+                    break;
+                case 'desarrollo-cubos':
+                    resultado = calificarMisionCubo(index, mision.data);
+                    break;
+                case 'balanza-logica':
+                    resultado = calificarMisionBalanza(index, mision.data);
+                    break;
+                case 'geometria':
+                    resultado = calificarMisionGeometria(index, mision.data);
+                    break;
+                // Misiones sin calificación automática no se cuentan o se marcan como completadas
+                case 'palabra-del-dia':
+                case 'numberblocks-dibujo':
+                    resultado = 1; // Se considera completada al presionar el botón
+                    marcarMisionCompleta(index);
+                    break;
+                default:
+                    console.warn(`El tipo de misión "${mision.tipo}" no tiene una función de calificación.`);
+                    resultado = -1; // Indicador para no calificar
+                    todasCalificadas = false;
             }
 
-            const calificarFunctionName = `calificarMision${capitalizeTipo(misionData.tipo)}`;
-            if (typeof window[calificarFunctionName] === 'function') {
-                puntaje += window[calificarFunctionName](misionDiv, misionData);
-            } else if (misionData.tipo === 'palabra-del-dia') {
-                 // No suma puntaje, es solo informativa
-            } else if (misionData.tipo === 'numberblocks-dibujo') {
-                puntaje++; // Autopass
+            if (resultado !== -1) {
+                puntajeTotal += resultado;
             }
         });
         
-        mensajeFinal.textContent = `¡Aventura terminada! Lograste ${puntaje} de ${totalPreguntas} aciertos. ¡Sigue así!`;
-        completarBtn.style.display = 'none';
-        if (navegacionFinal) navegacionFinal.classList.remove('hidden');
-        guardarProgreso();
+        if(todasCalificadas){
+            mostrarMensajeFinal(puntajeTotal, puntajeMaximo);
+            guardarProgreso(puntajeTotal, puntajeMaximo);
+        }
     });
 
-    function addGlobalEventListeners() {
-        misionesContainer.addEventListener('click', (e) => {
-            const opcionCubo = e.target.closest('.cubo-opcion');
-            const opcionImagen = e.target.closest('.opcion-imagen-container');
-            const celdaLogica = e.target.closest('.celda-logica');
-
-            if (opcionCubo) {
-                const ejercicio = opcionCubo.closest('.cubo-ejercicio');
-                ejercicio.querySelectorAll('.cubo-opcion').forEach(op => op.classList.remove('seleccionada'));
-                opcionCubo.classList.add('seleccionada');
-            }
-            if(opcionImagen){
-                const grid = opcionImagen.closest('.opciones-imagenes-grid');
-                grid.querySelectorAll('.opcion-imagen-container').forEach(op => op.classList.remove('seleccionada'));
-                opcionImagen.classList.add('seleccionada');
-            }
-            if(celdaLogica){
-                 const estados = ['', '✅', '❌'];
-                 const clases = ['', 'si', 'no'];
-                 let estadoActual = celdaLogica.textContent;
-                 let indiceActual = estados.indexOf(estadoActual);
-                 let nuevoIndice = (indiceActual + 1) % estados.length;
-
-                 celdaLogica.textContent = estados[nuevoIndice];
-                 celdaLogica.className = 'celda-logica'; // Reset classes
-                 if (clases[nuevoIndice]) {
-                     celdaLogica.classList.add(clases[nuevoIndice]);
-                 }
-            }
-        });
-    }
-
-    function guardarProgreso() {
-        const diaAventura = getDiaAventura();
+    function guardarProgreso(puntaje, maximo) {
         if (!diaAventura) return;
-
-        try {
-            const defaults = { misionesCompletadas: [], ultimaVisita: null, racha: 0 };
-            let progreso = JSON.parse(localStorage.getItem(PROGRESO_KEY)) || defaults;
-            progreso = { ...defaults, ...progreso };
-
-            if (!progreso.misionesCompletadas.includes(diaAventura)) {
-                progreso.misionesCompletadas.push(diaAventura);
+        const progreso = {
+            completado: true,
+            puntaje: puntaje,
+            maximo: maximo,
+            fecha: new Date().toISOString()
+        };
+        localStorage.setItem(`progreso_aventura_${diaAventura}`, JSON.stringify(progreso));
+    }
+    
+    function revisarEstadoAventura() {
+        if (!diaAventura) return;
+        const progresoGuardado = localStorage.getItem(`progreso_aventura_${diaAventura}`);
+        if (progresoGuardado) {
+            const progreso = JSON.parse(progresoGuardado);
+            if (progreso.completado) {
+                mostrarMensajeFinal(progreso.puntaje, progreso.maximo);
+                completarBtn.disabled = true;
+                completarBtn.textContent = "Aventura ya completada";
             }
-
-            const hoy = new Date();
-            const hoyStr = hoy.toISOString().split('T')[0];
-
-            if (progreso.ultimaVisita !== hoyStr) {
-                const ayer = new Date(hoy);
-                ayer.setDate(hoy.getDate() - 1);
-                const ayerStr = ayer.toISOString().split('T')[0];
-
-                if (progreso.ultimaVisita === ayerStr) {
-                    progreso.racha = (progreso.racha || 0) + 1;
-                } else {
-                    progreso.racha = 1;
-                }
-                progreso.ultimaVisita = hoyStr;
-            }
-            
-            localStorage.setItem(PROGRESO_KEY, JSON.stringify(progreso));
-            console.log('Progreso guardado:', progreso);
-
-        } catch (e) {
-            console.error("No se pudo guardar el progreso en localStorage.", e);
         }
     }
 
-    const dia = getDiaAventura();
-    cargarAventura(dia);
+
+    function mostrarMensajeFinal(puntaje, maximo) {
+        const mensajeFinal = document.getElementById('mensaje-final');
+        const navegacionFinal = document.getElementById('navegacion-final');
+        
+        let mensaje = `¡Aventura completada! Tu puntaje: ${puntaje} de ${maximo}.`;
+        if (puntaje === maximo) {
+            mensaje += " ¡Felicidades, lo hiciste perfecto! ✨";
+        } else if (puntaje >= maximo * 0.7) {
+            mensaje += " ¡Muy buen trabajo! 👍";
+        } else {
+            mensaje += " ¡Sigue esforzándote! 💪";
+        }
+        
+        mensajeFinal.textContent = mensaje;
+        mensajeFinal.style.display = 'block';
+        navegacionFinal.classList.remove('hidden');
+        completarBtn.style.display = 'none';
+    }
+
+    function marcarMisionCompleta(index) {
+        const misionCard = document.getElementById(`mision-${index}`);
+        if(misionCard){
+            misionCard.classList.remove('incorrecto');
+            misionCard.classList.add('correcto');
+            misionCard.style.borderColor = '#2ECC71'; 
+        }
+    }
+
+    // --- INICIO CÓDIGO INICIAL ---
+    diaAventura = getDiaAventura();
+    if (diaAventura) {
+        cargarAventura(diaAventura);
+    }
 });
 
 // Función global para el audio
