@@ -69,37 +69,37 @@ document.addEventListener('DOMContentLoaded', () => {
             // Re-implementación del switch case
             switch (mision.tipo) {
                 case 'tabla-doble-entrada':
-                    ejercicioContainer.innerHTML = renderizarMisionTabla(mision.data);
+                    ejercicioContainer.innerHTML = renderizarMisionTabla(mision);
                     break;
                 case 'operaciones':
-                    ejercicioContainer.innerHTML = renderizarMisionOperaciones(mision.data);
+                    ejercicioContainer.innerHTML = renderizarMisionOperaciones(mision);
                     break;
                 case 'opcion-multiple':
-                    ejercicioContainer.innerHTML = renderizarMisionOpcionMultiple(mision.data);
+                    ejercicioContainer.innerHTML = renderizarMisionOpcionMultiple(mision);
                     break;
                 case 'secuencia':
-                    ejercicioContainer.innerHTML = renderizarMisionSecuencia(mision.data);
+                    ejercicioContainer.innerHTML = renderizarMisionSecuencia(mision);
                     break;
                 case 'conteo-figuras':
-                     ejercicioContainer.innerHTML = renderizarMisionConteo(mision.data);
+                     ejercicioContainer.innerHTML = renderizarMisionConteo(mision);
                     break;
                 case 'criptoaritmetica':
-                    ejercicioContainer.innerHTML = renderizarMisionCripto(mision.data);
+                    ejercicioContainer.innerHTML = renderizarMisionCripto(mision);
                     break;
                 case 'desarrollo-cubos':
-                    ejercicioContainer.innerHTML = renderizarMisionCubo(mision.data);
+                    ejercicioContainer.innerHTML = renderizarMisionCubo(mision);
                     break;
                 case 'balanza-logica':
-                    ejercicioContainer.innerHTML = renderizarMisionBalanza(mision.data);
+                    ejercicioContainer.innerHTML = renderizarMisionBalanza(mision);
                     break;
                 case 'palabra-del-dia':
-                    ejercicioContainer.innerHTML = renderizarPalabraDelDia(mision.data);
+                    ejercicioContainer.innerHTML = renderizarPalabraDelDia(mision);
                     break;
                 case 'geometria':
-                    ejercicioContainer.innerHTML = renderizarMisionGeometria(mision.data);
+                    ejercicioContainer.innerHTML = renderizarMisionGeometria(mision);
                     break;
                 case 'numberblocks-dibujo':
-                    ejercicioContainer.innerHTML = renderizarMisionNumberblocks(mision.data);
+                    ejercicioContainer.innerHTML = renderizarMisionNumberblocks(mision);
                     break;
                 default:
                     ejercicioContainer.innerHTML = `<p>Error: Tipo de misión "${mision.tipo}" no reconocido.</p>`;
@@ -155,31 +155,31 @@ document.addEventListener('DOMContentLoaded', () => {
             // Re-implementación del switch case para calificar
             switch (mision.tipo) {
                  case 'tabla-doble-entrada':
-                    resultado = calificarMisionTabla(index, mision.data);
+                    resultado = calificarMisionTabla(index, mision);
                     break;
                 case 'operaciones':
-                    resultado = calificarMisionOperaciones(index, mision.data);
+                    resultado = calificarMisionOperaciones(index, mision);
                     break;
                 case 'opcion-multiple':
-                    resultado = calificarMisionOpcionMultiple(index, mision.data);
+                    resultado = calificarMisionOpcionMultiple(index, mision);
                     break;
                 case 'secuencia':
-                    resultado = calificarMisionSecuencia(index, mision.data);
+                    resultado = calificarMisionSecuencia(index, mision);
                     break;
                 case 'conteo-figuras':
-                    resultado = calificarMisionConteo(index, mision.data);
+                    resultado = calificarMisionConteo(index, mision);
                     break;
                 case 'criptoaritmetica':
-                    resultado = calificarMisionCripto(index, mision.data);
+                    resultado = calificarMisionCripto(index, mision);
                     break;
                 case 'desarrollo-cubos':
-                    resultado = calificarMisionCubo(index, mision.data);
+                    resultado = calificarMisionCubo(index, mision);
                     break;
                 case 'balanza-logica':
-                    resultado = calificarMisionBalanza(index, mision.data);
+                    resultado = calificarMisionBalanza(index, mision);
                     break;
                 case 'geometria':
-                    resultado = calificarMisionGeometria(index, mision.data);
+                    resultado = calificarMisionGeometria(index, mision);
                     break;
                 // Misiones sin calificación automática no se cuentan o se marcan como completadas
                 case 'palabra-del-dia':
