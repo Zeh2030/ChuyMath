@@ -12,13 +12,13 @@ function renderizarMisionOpcionMultiple(data) {
              </div>`
         ).join('');
     } else {
-        const safeId = data.id.replace(/[^a-zA-Z0-9]/g, ''); // Crea un ID seguro sin caracteres especiales
-        opcionesHTML = data.opciones.map((opcion, index) => {
-            const uniqueId = `op-mult-${safeId}-${index}`;
-            return `<li><input type="radio" name="op-mult-${safeId}" id="${uniqueId}" value="${opcion}"><label for="${uniqueId}">${opcion}</label></li>`
-        }).join('');
+        opcionesHTML = data.opciones.map((opcion, index) => 
+            `<li><input type="radio" name="op-mult-${data.id}" id="op-mult-${data.id}-${index}" value="${opcion}"><label for="op-mult-${data.id}-${index}">${opcion}</label></li>`
+        ).join('');
     }
 
+    const preguntaHTML = data.pregunta ? `<p class="pregunta-texto">${data.pregunta}</p>` : '';
+    // --- CORRECCIÓN: Inyectar SVG directamente también para la pregunta ---
     const imagenHTML = data.imagen ? `<div class="pregunta-imagen-container">${data.imagen}</div>` : '';
     
     // --- NUEVO: Envolver en un contenedor diferente si son imágenes ---
@@ -26,6 +26,7 @@ function renderizarMisionOpcionMultiple(data) {
 
     return `
         <div class="opcion-multiple-container">
+            ${preguntaHTML}
             ${imagenHTML}
             <div class="${contenedorClase}">${opcionesHTML}</div>
             <div class="feedback-container"></div>
@@ -53,8 +54,7 @@ function calificarMisionOpcionMultiple(misionDiv, misionData) {
         }
     } else {
         // Lógica existente para opciones de texto
-        const safeId = misionData.id.replace(/[^a-zA-Z0-9]/g, ''); // Usa el mismo ID seguro
-        const selectedOption = misionDiv.querySelector(`input[name="op-mult-${safeId}"]:checked`);
+        const selectedOption = misionDiv.querySelector(`input[name="op-mult-${misionData.id}"]:checked`);
         if (selectedOption) {
             const esCorrecto = selectedOption.value === misionData.respuesta;
             const label = selectedOption.nextElementSibling;
