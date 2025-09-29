@@ -136,3 +136,17 @@
     width: 16px;
     height: 16px;
 }
+
+.opciones-mapa label.correcto {
+    border-color: #2ecc71;
+    background-color: #e9f9ee;
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.opciones-mapa label.incorrecto {
+    border-color: #e74c3c;
+    background-color: #fbecec;
+    color: #c0392b;
+    font-weight: bold;
+}
