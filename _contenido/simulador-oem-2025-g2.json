@@ -1,33 +1,65 @@
 {
-    "id": "simulador-oem-2025-g2",
-    "titulo": "Simulacro: Olimpiada de Matemáticas 2025 (Grado 2)",
-    "tiempo_limite_minutos": 120,
-    "problemas": [
-      {
-        "id": "problema-1",
-        "tipo": "navegacion-mapa",
-        "pregunta": "Rose sale de su casa (punto rojo), y anda tres calles (cuadros) hacia el sur y luego dos hacia el oeste. ¿A qué lugar llega?",
-        "configuracion_mapa": {
-          "columnas": 10,
-          "filas": 8,
-          "punto_inicio": {"fila": 3, "columna": 6, "icono": "🏠"},
-          "puntos_interes": [
-            {"nombre": "Biblioteca", "fila": 6, "columna": 4, "icono": "📚"},
-            {"nombre": "Castillo", "fila": 6, "columna": 7, "icono": "🏰"},
-            {"nombre": "Abuelos", "fila": 4, "columna": 9, "icono": "👵👴"}
-          ],
-          "movimientos": ["sur", "sur", "sur", "oeste", "oeste"],
-          "respuesta_correcta": "Biblioteca"
-        }
-      },
-      {
-        "id": "problema-2",
-        "tipo": "opcion-multiple",
-        "pregunta": "Selene tiene 3 chocolates y le da 1 a su mamá. ¿Cuántos chocolates le quedan?",
-        "imagen": null,
-        "opciones": ["5", "3", "2", "4", "1"],
-        "respuesta": "2",
-        "opciones_son_imagenes": false
+  "id": "simulador-oem-2025-g2",
+  "titulo": "Simulacro Olimpiada de Mayo (2do Grado)",
+  "descripcion": "Un simulacro basado en el examen de la Olimpiada de Mayo para segundo grado.",
+  "problemas": [
+    {
+      "id": "problema-1",
+      "tipo": "navegacion-mapa",
+      "pregunta": "Rose sale de su casa (punto rojo), y anda tres calles (cuadros) hacia el sur y luego dos hacia el oeste. ¿A qué lugar llega?",
+      "configuracion_mapa": {
+        "columnas": 10,
+        "filas": 8,
+        "punto_inicio": {"fila": 3, "columna": 6, "icono": "🏠"},
+        "puntos_interes": [
+          {"nombre": "Biblioteca", "fila": 6, "columna": 4, "icono": "📚"},
+          {"nombre": "Castillo", "fila": 6, "columna": 7, "icono": "🏰"},
+          {"nombre": "Abuelos", "fila": 4, "columna": 9, "icono": "👵👴"}
+        ],
+        "movimientos": ["sur", "sur", "sur", "oeste", "oeste"],
+        "respuesta_correcta": "Biblioteca"
       }
-    ]
-  }
+    },
+    {
+      "id": "problema-2",
+      "tipo": "opcion-multiple",
+      "pregunta": "Selene tiene 3 chocolates y le da 1 a su mamá. ¿Cuántos chocolates le quedan?",
+      "opciones": ["5", "3", "2", "4", "1"],
+      "respuesta": "2"
+    },
+    {
+      "id": "problema-3",
+      "tipo": "opcion-multiple",
+      "pregunta": "Una Catarina se va a sentar en la flor que tiene 5 pétalos y 3 hojas. ¿Cuál es ésa?",
+      "opciones_son_imagenes": true,
+      "opciones": [
+        "<svg width='80' height='80' viewBox='0 0 100 100'><g transform='translate(50 50)'><circle cx='0' cy='0' r='10' fill='#FFEB3B'/><g fill='#F472B6'><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(0)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(72)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(144)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(216)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(288)'/></g></g><g fill='#4CAF50' transform='translate(50 90)'><path d='M0 0 C -10 -20, 10 -20, 0 -40' stroke='#2E7D32' stroke-width='1.5' fill='none'/><path d='M-1 -20 C -15 -25, -15 -35, 0 -30' fill='#4CAF50'/><path d='M1 -20 C 15 -25, 15 -35, 0 -30' fill='#4CAF50'/></g></svg>",
+        "<svg width='80' height='80' viewBox='0 0 100 100'><g transform='translate(50 50)'><circle cx='0' cy='0' r='10' fill='#FFEB3B'/><g fill='#F472B6'><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(0)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(72)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(144)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(216)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(288)'/></g></g><g fill='#4CAF50' transform='translate(50 90)'><path d='M0 0 C -10 -20, 10 -20, 0 -40' stroke='#2E7D32' stroke-width='1.5' fill='none'/><path d='M-1 -20 C -15 -25, -15 -35, 0 -30' fill='#4CAF50'/><path d='M1 -20 C 15 -25, 15 -35, 0 -30' fill='#4CAF50'/><path d='M0 -15 C -10 -15, 10 -15, 0 -25' fill='#4CAF50' transform='rotate(180)'/></g></svg>",
+        "<svg width='80' height='80' viewBox='0 0 100 100'><g transform='translate(50 50)'><circle cx='0' cy='0' r='10' fill='#FFEB3B'/><g fill='#F472B6'><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(0)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(90)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(180)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(270)'/></g></g><g fill='#4CAF50' transform='translate(50 90)'><path d='M0 0 C -10 -20, 10 -20, 0 -40' stroke='#2E7D32' stroke-width='1.5' fill='none'/><path d='M-1 -20 C -15 -25, -15 -35, 0 -30' fill='#4CAF50'/></g></svg>",
+        "<svg width='80' height='80' viewBox='0 0 100 100'><g transform='translate(50 50)'><circle cx='0' cy='0' r='10' fill='#FFEB3B'/><g fill='#F472B6'><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(0)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(60)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(120)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(180)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(240)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(300)'/></g></g><g fill='#4CAF50' transform='translate(50 90)'><path d='M0 0 C -10 -20, 10 -20, 0 -40' stroke='#2E7D32' stroke-width='1.5' fill='none'/><path d='M-1 -20 C -15 -25, -15 -35, 0 -30' fill='#4CAF50'/><path d='M1 -20 C 15 -25, 15 -35, 0 -30' fill='#4CAF50'/></g></svg>",
+        "<svg width='80' height='80' viewBox='0 0 100 100'><g transform='translate(50 50)'><circle cx='0' cy='0' r='10' fill='#FFEB3B'/><g fill='#F472B6'><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(0)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(90)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(180)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(270)'/></g></g><g fill='#4CAF50' transform='translate(50 90)'><path d='M0 0 C -10 -20, 10 -20, 0 -40' stroke='#2E7D32' stroke-width='1.5' fill='none'/><path d='M-1 -20 C -15 -25, -15 -35, 0 -30' fill='#4CAF50'/><path d='M1 -20 C 15 -25, 15 -35, 0 -30' fill='#4CAF50'/><path d='M0 -15 C -10 -15, 10 -15, 0 -25' fill='#4CAF50' transform='rotate(180)'/></g></svg>"
+      ],
+      "respuesta": "1"
+    },
+    {
+      "id": "problema-4",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Cuánto es 2 + 0 − 2 + 5?",
+      "opciones": ["9", "2", "3", "5", "0"],
+      "respuesta": "5"
+    },
+    {
+      "id": "problema-5",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Cuál de las figuras no está presente en los cuatro dibujos?",
+      "imagen": "<svg width='400' height='60' viewBox='0 0 410 60'><g transform='translate(5 5)'><rect x='0' y='0' width='90' height='50' fill='none' stroke='black'/><circle cx='25' cy='25' r='8' fill='red'/><circle cx='65' cy='25' r='8' fill='red'/><path d='M45 40 L 35 20 L 55 20 Z' fill='blue'/></g><g transform='translate(105 5)'><rect x='0' y='0' width='90' height='50' fill='none' stroke='black'/><circle cx='45' cy='25' r='8' fill='red'/><path d='M25 40 L 15 20 L 35 20 Z' fill='blue'/><path d='M65 40 L 55 20 L 75 20 Z' fill='blue'/></g><g transform='translate(205 5)'><rect x='0' y='0' width='90' height='50' fill='none' stroke='black'/><circle cx='25' cy='25' r='8' fill='red'/><path d='M65 40 L 55 20 L 75 20 Z' fill='blue'/><rect x='40' y='20' width='20' height='20' fill='green'/></g><g transform='translate(305 5)'><rect x='0' y='0' width='90' height='50' fill='none' stroke='black'/><circle cx='65' cy='25' r='8' fill='red'/><path d='M25 40 L 15 20 L 35 20 Z' fill='blue'/><rect x='40' y='20' width='20' height='20' fill='green'/></g></svg>",
+      "opciones_son_imagenes": true,
+      "opciones": [
+        "<svg width='40' height='40' viewBox='0 0 40 40'><circle cx='20' cy='20' r='10' fill='red'/></svg>",
+        "<svg width='40' height='40' viewBox='0 0 40 40'><rect x='10' y='10' width='20' height='20' fill='green'/></svg>",
+        "<svg width='40' height='40' viewBox='0 0 40 40'><path d='M20 30 L 10 10 L 30 10 Z' fill='blue'/></svg>"
+      ],
+      "respuesta": "1"
+    }
+  ]
+}
