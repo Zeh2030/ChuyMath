@@ -246,6 +246,10 @@ body {
     box-shadow: 0 6px 20px rgba(243, 156, 18, 0.4);
 }
 
+.boton-reintentar.hidden {
+    display: none;
+}
+
 /* --- Utilidades --- */
 .hidden {
     display: none !important;
