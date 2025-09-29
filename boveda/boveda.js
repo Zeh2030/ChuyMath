@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const misionesGrid = document.getElementById('misiones-grid');
-    const vistaCalendarioBtn = document.getElementById('vista-calendario');
-    const vistaCategoriasBtn = document.getElementById('vista-categorias');
+    const vistaCalendarioBtn = document.getElementById('calendario-view-btn');
+    const vistaCategoriasBtn = document.getElementById('categoria-view-btn');
     const vistaCalendarioContent = document.getElementById('vista-calendario-content');
     const vistaCategoriasContent = document.getElementById('vista-categorias-content');
     const PROGRESO_KEY = 'progresoChuy'; // La misma clave que en aventura.js
