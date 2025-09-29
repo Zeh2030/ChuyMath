@@ -19,8 +19,6 @@ function renderizarMisionOpcionMultiple(data) {
         }).join('');
     }
 
-    const preguntaHTML = data.pregunta ? `<p class="pregunta-texto">${data.pregunta}</p>` : '';
-    // --- CORRECCIÓN: Inyectar SVG directamente también para la pregunta ---
     const imagenHTML = data.imagen ? `<div class="pregunta-imagen-container">${data.imagen}</div>` : '';
     
     // --- NUEVO: Envolver en un contenedor diferente si son imágenes ---
@@ -28,7 +26,6 @@ function renderizarMisionOpcionMultiple(data) {
 
     return `
         <div class="opcion-multiple-container">
-            ${preguntaHTML}
             ${imagenHTML}
             <div class="${contenedorClase}">${opcionesHTML}</div>
             <div class="feedback-container"></div>
