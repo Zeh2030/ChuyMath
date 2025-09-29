@@ -12,9 +12,11 @@ function renderizarMisionOpcionMultiple(data) {
              </div>`
         ).join('');
     } else {
-        opcionesHTML = data.opciones.map((opcion, index) => 
-            `<li><input type="radio" name="op-mult-${data.id}" id="op-mult-${data.id}-${index}" value="${opcion}"><label for="op-mult-${data.id}-${index}">${opcion}</label></li>`
-        ).join('');
+        opcionesHTML = data.opciones.map((opcion, index) => {
+            // Usar un identificador único basado en el índice del problema global, no en el data.id
+            const uniqueId = `mision-${data.misionIndex}-opcion-${index}`;
+            return `<li><input type="radio" name="op-mult-${data.misionIndex}" id="${uniqueId}" value="${opcion}"><label for="${uniqueId}">${opcion}</label></li>`
+        }).join('');
     }
 
     const preguntaHTML = data.pregunta ? `<p class="pregunta-texto">${data.pregunta}</p>` : '';
@@ -54,7 +56,7 @@ function calificarMisionOpcionMultiple(misionDiv, misionData) {
         }
     } else {
         // Lógica existente para opciones de texto
-        const selectedOption = misionDiv.querySelector(`input[name="op-mult-${misionData.id}"]:checked`);
+        const selectedOption = misionDiv.querySelector(`input[name="op-mult-${misionData.misionIndex}"]:checked`);
         if (selectedOption) {
             const esCorrecto = selectedOption.value === misionData.respuesta;
             const label = selectedOption.nextElementSibling;
