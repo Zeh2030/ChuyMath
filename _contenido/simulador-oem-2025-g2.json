@@ -33,13 +33,13 @@
       "pregunta": "Una Catarina se va a sentar en la flor que tiene 5 pétalos y 3 hojas. ¿Cuál es ésa?",
       "opciones_son_imagenes": true,
       "opciones": [
-        "<svg width='80' height='80' viewBox='0 0 100 100'><g transform='translate(50 50)'><circle cx='0' cy='0' r='10' fill='#FFEB3B'/><g fill='#F472B6'><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(0)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(72)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(144)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(216)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(288)'/></g></g><g fill='#4CAF50' transform='translate(50 90)'><path d='M0 0 C -10 -20, 10 -20, 0 -40' stroke='#2E7D32' stroke-width='1.5' fill='none'/><path d='M-1 -20 C -15 -25, -15 -35, 0 -30' fill='#4CAF50'/><path d='M1 -20 C 15 -25, 15 -35, 0 -30' fill='#4CAF50'/><path d='M5 -25 C 12 -18, 12 -12, 5 -18' fill='#4CAF50'/></g></svg>",
-        "<svg width='80' height='80' viewBox='0 0 100 100'><g transform='translate(50 50)'><circle cx='0' cy='0' r='10' fill='#FFEB3B'/><g fill='#F472B6'><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(0)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(72)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(144)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(216)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(288)'/></g></g><g fill='#4CAF50' transform='translate(50 90)'><path d='M0 0 C -10 -20, 10 -20, 0 -40' stroke='#2E7D32' stroke-width='1.5' fill='none'/><path d='M-1 -20 C -15 -25, -15 -35, 0 -30' fill='#4CAF50'/><path d='M1 -20 C 15 -25, 15 -35, 0 -30' fill='#4CAF50'/><path d='M0 -15 C -10 -15, 10 -15, 0 -25' fill='#4CAF50' transform='rotate(120)'/><path d='M0 -15 C -10 -15, 10 -15, 0 -25' fill='#4CAF50' transform='rotate(240)'/></g></svg>",
-        "<svg width='80' height='80' viewBox='0 0 100 100'><g transform='translate(50 50)'><circle cx='0' cy='0' r='10' fill='#FFEB3B'/><g fill='#F472B6'><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(0)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(90)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(180)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(270)'/></g></g><g fill='#4CAF50' transform='translate(50 90)'><path d='M0 0 C -10 -20, 10 -20, 0 -40' stroke='#2E7D32' stroke-width='1.5' fill='none'/><path d='M-1 -20 C -15 -25, -15 -35, 0 -30' fill='#4CAF50'/></g></svg>",
-        "<svg width='80' height='80' viewBox='0 0 100 100'><g transform='translate(50 50)'><circle cx='0' cy='0' r='10' fill='#FFEB3B'/><g fill='#F472B6'><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(0)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(60)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(120)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(180)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(240)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(300)'/></g></g><g fill='#4CAF50' transform='translate(50 90)'><path d='M0 0 C -10 -20, 10 -20, 0 -40' stroke='#2E7D32' stroke-width='1.5' fill='none'/><path d='M-1 -20 C -15 -25, -15 -35, 0 -30' fill='#4CAF50'/><path d='M1 -20 C 15 -25, 15 -35, 0 -30' fill='#4CAF50'/></g></svg>",
-        "<svg width='80' height='80' viewBox='0 0 100 100'><g transform='translate(50 50)'><circle cx='0' cy='0' r='10' fill='#FFEB3B'/><g fill='#F472B6'><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(0)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(90)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(180)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(270)'/></g></g><g fill='#4CAF50' transform='translate(50 90)'><path d='M0 0 C -10 -20, 10 -20, 0 -40' stroke='#2E7D32' stroke-width='1.5' fill='none'/><path d='M-1 -20 C -15 -25, -15 -35, 0 -30' fill='#4CAF50'/><path d='M1 -20 C 15 -25, 15 -35, 0 -30' fill='#4CAF50'/><path d='M0 -15 C -10 -15, 10 -15, 0 -25' fill='#4CAF50' transform='rotate(180)'/></g></svg>"
+        "<svg viewBox='0 0 100 100'><g transform='translate(50 45)'><circle cx='0' cy='0' r='10' fill='#FFEB3B'/><g fill='#F472B6'><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(0)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(72)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(144)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(216)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(288)'/></g></g><g fill='#4CAF50' transform='translate(50 90)'><path d='M0 0 C -10 -20, 10 -20, 0 -40' stroke='#2E7D32' stroke-width='2' fill='none'/><path d='M-5 -20 C -20 -25, -15 -35, 0 -30' fill='#4CAF50'/><path d='M5 -20 C 20 -25, 15 -35, 0 -30' fill='#4CAF50'/><path d='M0 -15 C -10 -20, 10 -20, 0 -25' fill='#4CAF50' transform='rotate(180)'/></g></svg>",
+        "<svg viewBox='0 0 100 100'><g transform='translate(50 45)'><circle cx='0' cy='0' r='10' fill='#FFEB3B'/><g fill='#F472B6'><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(0)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(72)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(144)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(216)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(288)'/></g></g><g fill='#4CAF50' transform='translate(50 90)'><path d='M0 0 C -10 -20, 10 -20, 0 -40' stroke='#2E7D32' stroke-width='2' fill='none'/><path d='M-5 -20 C -20 -25, -15 -35, 0 -30' fill='#4CAF50'/><path d='M5 -20 C 20 -25, 15 -35, 0 -30' fill='#4CAF50'/></g></svg>",
+        "<svg viewBox='0 0 100 100'><g transform='translate(50 45)'><circle cx='0' cy='0' r='10' fill='#FFEB3B'/><g fill='#F472B6'><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(0)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(90)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(180)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(270)'/></g></g><g fill='#4CAF50' transform='translate(50 90)'><path d='M0 0 C -10 -20, 10 -20, 0 -40' stroke='#2E7D32' stroke-width='2' fill='none'/><path d='M0 -15 C -10 -20, 10 -20, 0 -25' fill='#4CAF50' transform='rotate(180)'/></g></svg>"
       ],
-      "respuesta": "0"
+      "respuesta": "0",
+      "explicacion_correcta": "¡Correcto! Esta flor es la única que tiene exactamente 5 pétalos y 3 hojas. ¡Buen trabajo contando!",
+      "explicacion_incorrecta": "¡Casi! Recuerda contar con cuidado los pétalos (las partes rosas) y las hojas (las partes verdes) de cada flor."
     },
     {
       "id": "problema-4",
@@ -51,15 +51,17 @@
     {
       "id": "problema-5",
       "tipo": "opcion-multiple",
-      "pregunta": "¿Cuál de las figuras no está presente en los cuatro dibujos?",
-      "imagen": "<svg width='500' height='120' viewBox='0 0 500 120'><g transform='translate(10 10)'><rect x='0' y='0' width='100' height='80' fill='none' stroke='black' stroke-width='2'/><circle cx='20' cy='25' r='8' fill='red'/><circle cx='50' cy='25' r='8' fill='red'/><path d='M80 65 L 70 45 L 90 45 Z' fill='blue'/></g><g transform='translate(130 10)'><rect x='0' y='0' width='100' height='80' fill='none' stroke='black' stroke-width='2'/><circle cx='50' cy='25' r='8' fill='red'/><path d='M20 65 L 10 45 L 30 45 Z' fill='blue'/><path d='M80 65 L 70 45 L 90 45 Z' fill='blue'/></g><g transform='translate(250 10)'><rect x='0' y='0' width='100' height='80' fill='none' stroke='black' stroke-width='2'/><circle cx='20' cy='25' r='8' fill='red'/><path d='M80 65 L 70 45 L 90 45 Z' fill='blue'/><rect x='45' y='40' width='20' height='20' fill='green'/></g><g transform='translate(370 10)'><rect x='0' y='0' width='100' height='80' fill='none' stroke='black' stroke-width='2'/><circle cx='80' cy='25' r='8' fill='red'/><path d='M20 65 L 10 45 L 30 45 Z' fill='blue'/><rect x='45' y='40' width='20' height='20' fill='green'/></g></svg>",
+      "pregunta": "¿Cuál de las figuras de abajo NO aparece en TODOS los cuatro dibujos de arriba?",
+      "imagen": "<svg width='450' height='100' viewBox='0 0 450 100'><g transform='translate(10, 10)'><rect x='0' y='0' width='100' height='80' fill='#f9f9f9' stroke='black' stroke-width='1'/><circle cx='25' cy='25' r='10' fill='#e74c3c'/><circle cx='75' cy='25' r='10' fill='#e74c3c'/><path d='M50 70 L 35 45 L 65 45 Z' fill='#3498db'/></g><g transform='translate(120, 10)'><rect x='0' y='0' width='100' height='80' fill='#f9f9f9' stroke='black' stroke-width='1'/><circle cx='50' cy='25' r='10' fill='#e74c3c'/><path d='M25 70 L 10 45 L 40 45 Z' fill='#3498db'/><path d='M75 70 L 60 45 L 90 45 Z' fill='#3498db'/></g><g transform='translate(230, 10)'><rect x='0' y='0' width='100' height='80' fill='#f9f9f9' stroke='black' stroke-width='1'/><circle cx='25' cy='25' r='10' fill='#e74c3c'/><path d='M75 70 L 60 45 L 90 45 Z' fill='#3498db'/><rect x='40' y='40' width='20' height='20' fill='#2ecc71'/></g><g transform='translate(340, 10)'><rect x='0' y='0' width='100' height='80' fill='#f9f9f9' stroke='black' stroke-width='1'/><circle cx='75' cy='25' r='10' fill='#e74c3c'/><path d='M25 70 L 10 45 L 40 45 Z' fill='#3498db'/><rect x='40' y='40' width='20' height='20' fill='#2ecc71'/></g></svg>",
       "opciones_son_imagenes": true,
       "opciones": [
-        "<svg width='40' height='40' viewBox='0 0 40 40'><circle cx='20' cy='20' r='10' fill='red'/></svg>",
-        "<svg width='40' height='40' viewBox='0 0 40 40'><rect x='10' y='10' width='20' height='20' fill='green'/></svg>",
-        "<svg width='40' height='40' viewBox='0 0 40 40'><path d='M20 30 L 10 10 L 30 10 Z' fill='blue'/></svg>"
+        "<svg width='50' height='50' viewBox='0 0 50 50'><circle cx='25' cy='25' r='12' fill='#e74c3c'/></svg>",
+        "<svg width='50' height='50' viewBox='0 0 50 50'><rect x='13' y='13' width='24' height='24' fill='#2ecc71'/></svg>",
+        "<svg width='50' height='50' viewBox='0 0 50 50'><path d='M25 40 L 10 15 L 40 15 Z' fill='#3498db'/></svg>"
       ],
-      "respuesta": "1"
+      "respuesta": "1",
+      "explicacion_correcta": "¡Exacto! El círculo rojo y el triángulo azul aparecen en los 4 dibujos, pero el cuadrado verde solo aparece en dos de ellos.",
+      "explicacion_incorrecta": "Revisa con atención. Tienes que buscar la figura que NO se repite en CADA UNO de los cuatro cuadros. Hay una que solo está en algunos."
     },
     {
       "id": "problema-6",
@@ -72,16 +74,18 @@
       "id": "problema-7",
       "tipo": "opcion-multiple",
       "pregunta": "Alicia dibuja una figura conectando las catarinas en orden creciente según el número de puntos en sus cuerpos. ¿Qué figura obtiene?",
-      "imagen": "<svg width='200' height='150' viewBox='0 0 200 150'><g transform='translate(50 30)'><ellipse cx='0' cy='0' rx='12' ry='8' fill='red'/><circle cx='0' cy='-6' r='5' fill='black'/><circle cx='-3' cy='-6' r='1.5' fill='white'/><circle cx='3' cy='-6' r='1.5' fill='white'/><circle cx='-5' cy='3' r='2' fill='black'/><circle cx='5' cy='3' r='2' fill='black'/><text x='0' y='-25' text-anchor='middle' font-size='12' fill='black'>2</text></g><g transform='translate(150 30)'><ellipse cx='0' cy='0' rx='12' ry='8' fill='red'/><circle cx='0' cy='-6' r='5' fill='black'/><circle cx='-3' cy='-6' r='1.5' fill='white'/><circle cx='3' cy='-6' r='1.5' fill='white'/><circle cx='-5' cy='3' r='2' fill='black'/><circle cx='5' cy='3' r='2' fill='black'/><circle cx='0' cy='3' r='2' fill='black'/><text x='0' y='-25' text-anchor='middle' font-size='12' fill='black'>3</text></g><g transform='translate(50 110)'><ellipse cx='0' cy='0' rx='12' ry='8' fill='red'/><circle cx='0' cy='-6' r='5' fill='black'/><circle cx='-3' cy='-6' r='1.5' fill='white'/><circle cx='3' cy='-6' r='1.5' fill='white'/><circle cx='-6' cy='3' r='2' fill='black'/><circle cx='6' cy='3' r='2' fill='black'/><circle cx='-6' cy='-2' r='2' fill='black'/><circle cx='6' cy='-2' r='2' fill='black'/><text x='0' y='-25' text-anchor='middle' font-size='12' fill='black'>4</text></g><g transform='translate(150 110)'><ellipse cx='0' cy='0' rx='12' ry='8' fill='red'/><circle cx='0' cy='-6' r='5' fill='black'/><circle cx='-3' cy='-6' r='1.5' fill='white'/><circle cx='3' cy='-6' r='1.5' fill='white'/><circle cx='-6' cy='3' r='2' fill='black'/><circle cx='6' cy='3' r='2' fill='black'/><circle cx='-6' cy='-2' r='2' fill='black'/><circle cx='6' cy='-2' r='2' fill='black'/><circle cx='0' cy='0' r='2' fill='black'/><text x='0' y='-25' text-anchor='middle' font-size='12' fill='black'>5</text></g></svg>",
+      "imagen": "<svg width='150' height='150' viewBox='0 0 150 150'><g id='catarina1' transform='translate(125 110)'><ellipse cx='0' cy='0' rx='12' ry='8' fill='red' stroke='black' stroke-width='1'/><circle cx='0' cy='-6' r='5' fill='black'/><circle cx='-3' cy='-6' r='1' fill='white'/><circle cx='3' cy='-6' r='1' fill='white'/><circle cx='0' cy='0' r='1.5' fill='black'/></g><g id='catarina2' transform='translate(25 70)'><ellipse cx='0' cy='0' rx='12' ry='8' fill='red' stroke='black' stroke-width='1'/><circle cx='0' cy='-6' r='5' fill='black'/><circle cx='-3' cy='-6' r='1' fill='white'/><circle cx='3' cy='-6' r='1' fill='white'/><circle cx='-4' cy='2' r='1.5' fill='black'/><circle cx='4' cy='2' r='1.5' fill='black'/></g><g id='catarina3' transform='translate(75 20)'><ellipse cx='0' cy='0' rx='12' ry='8' fill='red' stroke='black' stroke-width='1'/><circle cx='0' cy='-6' r='5' fill='black'/><circle cx='-3' cy='-6' r='1' fill='white'/><circle cx='3' cy='-6' r='1' fill='white'/><circle cx='-4' cy='2' r='1.5' fill='black'/><circle cx='4' cy='2' r='1.5' fill='black'/><circle cx='0' cy='0' r='1.5' fill='black'/></g><g id='catarina4' transform='translate(125 70)'><ellipse cx='0' cy='0' rx='12' ry='8' fill='red' stroke='black' stroke-width='1'/><circle cx='0' cy='-6' r='5' fill='black'/><circle cx='-3' cy='-6' r='1' fill='white'/><circle cx='3' cy='-6' r='1' fill='white'/><circle cx='-5' cy='2' r='1.5' fill='black'/><circle cx='5' cy='2' r='1.5' fill='black'/><circle cx='-5' cy='-2' r='1.5' fill='black'/><circle cx='5' cy='-2' r='1.5' fill='black'/></g><g id='catarina5' transform='translate(25 110)'><ellipse cx='0' cy='0' rx='12' ry='8' fill='red' stroke='black' stroke-width='1'/><circle cx='0' cy='-6' r='5' fill='black'/><circle cx='-3' cy='-6' r='1' fill='white'/><circle cx='3' cy='-6' r='1' fill='white'/><circle cx='-5' cy='2' r='1.5' fill='black'/><circle cx='5' cy='2' r='1.5' fill='black'/><circle cx='-5' cy='-2' r='1.5' fill='black'/><circle cx='5' cy='-2' r='1.5' fill='black'/><circle cx='0' cy='0' r='1.5' fill='black'/></g></svg>",
       "opciones_son_imagenes": true,
       "opciones": [
-        "<svg width='100' height='80' viewBox='0 0 100 80'><path d='M20 40 L 50 20 L 80 40 L 50 60 Z' stroke='black' fill='none' stroke-width='2'/></svg>",
-        "<svg width='100' height='80' viewBox='0 0 100 80'><path d='M20 60 L 20 30 L 50 30 L 50 60 L 20 60' stroke='black' fill='none' stroke-width='2'/></svg>",
-        "<svg width='100' height='80' viewBox='0 0 100 80'><path d='M20 20 L 80 20 L 80 60 L 20 60' stroke='black' fill='none' stroke-width='2'/></svg>",
-        "<svg width='100' height='80' viewBox='0 0 100 80'><path d='M20 60 L 50 20 L 80 60' stroke='black' fill='none' stroke-width='2'/></svg>",
-        "<svg width='100' height='80' viewBox='0 0 100 80'><path d='M20 20 L 30 60 L 50 20 L 70 60 L 80 20' stroke='black' fill='none' stroke-width='2'/></svg>"
+        "<svg width='100' height='100' viewBox='0 0 100 100'><path d='M50 10 L63 40 L95 40 L71 60 L80 90 L50 75 L20 90 L29 60 L5 40 L37 40 Z' stroke='black' fill='none' stroke-width='2'/></svg>",
+        "<svg width='100' height='100' viewBox='0 0 100 100'><path d='M20 80 L20 40 L50 10 L80 40 L80 80' stroke='black' fill='none' stroke-width='2'/></svg>",
+        "<svg width='100' height='100' viewBox='0 0 100 100'><path d='M20 20 L80 20 L50 80 L20 20' stroke='black' fill='none' stroke-width='2'/></svg>",
+        "<svg width='100' height='100' viewBox='0 0 100 100'><path d='M20 50 L80 50 L50 20 L50 80' stroke='black' fill='none' stroke-width='2'/></svg>",
+        "<svg width='100' height='100' viewBox='0 0 100 100'><path d='M20 80 L40 20 L60 80 L80 20' stroke='black' fill='none' stroke-width='2'/></svg>"
       ],
-      "respuesta": "1"
+      "respuesta": "0",
+      "explicacion_correcta": "¡Excelente! Si unes los puntos en orden (1, 2, 3, 4, 5), se forma una estrella de cinco picos.",
+      "explicacion_incorrecta": "¡Casi! Sigue el camino con tu dedo empezando por la catarina de 1 punto, luego a la de 2, después a la de 3, y así hasta el final. ¿Qué figura se forma?"
     },
     {
       "id": "problema-8",
@@ -89,6 +93,130 @@
       "pregunta": "Sofía tiene 15 canicas y su amiga le da 13 más. ¿Cuántas canicas tiene ahora?",
       "opciones": ["19", "29", "28", "25", "23"],
       "respuesta": "28"
+    },
+    {
+      "id": "problema-9",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Cuál es la figura que se obtiene cuando se intercambian los colores en la figura de la derecha?",
+      "imagen": "<svg width='150' height='150' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='black'/><circle cx='50' cy='25' r='8' fill='yellow'/><circle cx='30' cy='45' r='8' fill='yellow'/><circle cx='70' cy='45' r='8' fill='yellow'/><circle cx='40' cy='75' r='8' fill='yellow'/><circle cx='60' cy='75' r='8' fill='yellow'/></svg>",
+      "opciones_son_imagenes": true,
+      "opciones": [
+        "<svg width='100' height='100' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='yellow'/><circle cx='50' cy='25' r='8' fill='black'/><circle cx='25' cy='50' r='8' fill='black'/><circle cx='75' cy='50' r='8' fill='black'/><circle cx='50' cy='75' r='8' fill='black'/></svg>",
+        "<svg width='100' height='100' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='yellow'/><circle cx='50' cy='25' r='8' fill='black'/><circle cx='35' cy='50' r='8' fill='black'/><circle cx='65' cy='50' r='8' fill='black'/><circle cx='50' cy='75' r='8' fill='black'/></svg>",
+        "<svg width='100' height='100' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='yellow'/><circle cx='50' cy='25' r='8' fill='black'/><circle cx='30' cy='45' r='8' fill='black'/><circle cx='70' cy='45' r='8' fill='black'/><circle cx='40' cy='75' r='8' fill='black'/><circle cx='60' cy='75' r='8' fill='black'/></svg>",
+        "<svg width='100' height='100' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='yellow'/><circle cx='50' cy='25' r='8' fill='black'/><circle cx='50' cy='50' r='8' fill='black'/><circle cx='25' cy='75' r='8' fill='black'/><circle cx='75' cy='75' r='8' fill='black'/></svg>",
+        "<svg width='100' height='100' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='yellow'/><circle cx='25' cy='25' r='8' fill='black'/><circle cx='75' cy='25' r='8' fill='black'/><circle cx='50' cy='50' r='8' fill='black'/><circle cx='25' cy='75' r='8' fill='black'/><circle cx='75' cy='75' r='8' fill='black'/></svg>"
+      ],
+      "respuesta": "2",
+      "explicacion_correcta": "¡Perfecto! Al intercambiar los colores, el círculo grande se vuelve amarillo y los puntos pequeños se vuelven negros, manteniendo su posición.",
+      "explicacion_incorrecta": "¡Casi! La idea es que todo lo que era negro ahora sea amarillo, y todo lo amarillo ahora sea negro. La posición de los puntos no debe cambiar."
+    },
+    {
+      "id": "problema-10",
+      "tipo": "opcion-multiple",
+      "pregunta": "Un camión 🚚 transporta 15 cajas. En la siguiente parada suben 15 más. ¿Cuántas cajas hay ahora?",
+      "opciones": ["30", "40", "15", "20", "35"],
+      "respuesta": "30",
+      "explicacion_correcta": "¡Correcto! Si tenías 15 cajas y subieron otras 15, la suma es 15 + 15 = 30.",
+      "explicacion_incorrecta": "Recuerda que si 'suben más' cajas, debes sumar. ¿Cuánto es 15 más 15?"
+    },
+    {
+      "id": "problema-11",
+      "tipo": "opcion-multiple",
+      "pregunta": "Tienes las tarjetas <span class='tarjeta-numero'>2</span><span class='tarjeta-numero'>0</span><span class='tarjeta-numero'>1</span><span class='tarjeta-numero'>7</span>. ¿Cuál de los siguientes números NO puedes formar intercambiando de lugar solo DOS de las tarjetas?",
+      "opciones": ["2710", "0127", "1027", "0217", "2071"],
+      "respuesta": "0127",
+      "explicacion_correcta": "¡Increíble, detective! '0127' es la respuesta correcta porque necesitarías mover más de dos tarjetas para formarlo partiendo de '2017'. ¡Un gran ojo para los detalles!",
+      "explicacion_incorrecta": "¡Este es un reto difícil! Revisa cada opción. Por ejemplo, para '2710', solo intercambias el '0' y el '7' de '2017'. Busca cuál de las opciones te obliga a mover más de dos tarjetas."
+    },
+    {
+      "id": "problema-12",
+      "tipo": "opcion-multiple",
+      "pregunta": "En una granja hay 13 gallinas 🐔 y nacen 9 más. ¿Cuántas gallinas hay en total?",
+      "opciones": ["22", "19", "21", "24", "23"],
+      "respuesta": "22",
+      "explicacion_correcta": "¡Muy bien! Si había 13 gallinas y nacieron 9 pollitos que se convirtieron en gallinas, la suma es 13 + 9 = 22.",
+      "explicacion_incorrecta": "Piénsalo así: si a las 13 gallinas les sumas las 9 que nacieron, ¿cuál es el resultado? ¡Puedes contar con tus dedos si te ayuda!"
+    },
+    {
+      "id": "problema-13",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Cuántas figuras de 3 lados (triángulos) hay en el dibujo siguiente?",
+      "imagen": "<svg width='200' height='160' viewBox='0 0 100 87'><path d='M50 43.5 L100 87 H0 Z' stroke='black' stroke-width='2' fill='#a0e9ff'/><path d='M50 0 L100 43.5 H0 Z' stroke='black' stroke-width='2' fill='#74d4f7'/><path d='M50 0 L50 43.5' stroke='black' stroke-width='1.5'/></svg>",
+      "opciones": ["2", "3", "4", "5", "6"],
+      "respuesta": "4",
+      "explicacion_correcta": "¡Excelente vista de águila! Hay 4 triángulos: el grande de abajo, los dos pequeños de arriba y el mediano que forman esos dos pequeños juntos.",
+      "explicacion_incorrecta": "¡Casi! No olvides que a veces, varias figuras pequeñas forman una más grande. Cuenta los triángulos pequeños y luego busca si juntos forman otro."
+    },
+    {
+      "id": "problema-14",
+      "tipo": "opcion-multiple",
+      "pregunta": "En la biblioteca hay 10 libros 📚. Si se prestan 3, ¿cuántos quedan en la biblioteca?",
+      "opciones": ["13", "6", "9", "8", "7"],
+      "respuesta": "7",
+      "explicacion_correcta": "¡Correcto! Si 'se prestan' libros, significa que hay que restar. 10 - 3 = 7.",
+      "explicacion_incorrecta": "Piénsalo así: si tienes 10 libros y quitas 3, ¿cuántos te quedan? La operación que necesitas es una resta."
+    },
+    {
+      "id": "problema-15",
+      "tipo": "opcion-multiple",
+      "pregunta": "En una tienda había 12 juguetes 🧸. Vendieron 7. ¿Cuántos quedan?",
+      "opciones": ["10", "5", "7", "3"],
+      "respuesta": "5",
+      "explicacion_correcta": "¡Muy bien! Vender significa quitar, así que restamos. 12 - 7 = 5.",
+      "explicacion_incorrecta": "Recuerda que si se 'vendieron' juguetes, ya no están en la tienda. Tienes que restar 7 a los 12 que había."
+    },
+    {
+      "id": "problema-16",
+      "tipo": "opcion-multiple",
+      "pregunta": "Ana tiene 23 lápices ✏️ y su hermano le regala 15 más. ¿Cuántos lápices tiene ahora Ana?",
+      "opciones": ["30", "39", "28", "38"],
+      "respuesta": "38",
+      "explicacion_correcta": "¡Cálculo perfecto! Si Ana recibe más lápices, hay que sumar. 23 + 15 = 38.",
+      "explicacion_incorrecta": "La palabra 'regala' es una pista para sumar. Intenta sumar 23 y 15 con cuidado."
+    },
+    {
+      "id": "problema-17",
+      "tipo": "opcion-multiple",
+      "pregunta": "En las figuras hay canguros negros, grises y blancos. ¿En cuál hay más canguros negros que blancos?",
+      "opciones_son_imagenes": true,
+      "opciones": [
+        "<svg width='120' height='120' viewBox='0 0 100 100'><path d='M10 10 H 90 V 90 H 10 Z' fill='none' stroke='black' stroke-width='1'/><path d='M10 40 H 90 M10 70 H 90 M40 10 V 90 M70 10 V 90' fill='none' stroke='grey' stroke-width='0.5'/><text x='25' y='30' font-size='20' text-anchor='middle'>🦘</text><text x='55' y='30' font-size='20' text-anchor='middle' fill='white' stroke='black' stroke-width='0.5'>🦘</text><text x='85' y='30' font-size='20' text-anchor='middle' fill='grey'>🦘</text><text x='25' y='60' font-size='20' text-anchor='middle' fill='white' stroke='black' stroke-width='0.5'>🦘</text><text x='55' y='60' font-size='20' text-anchor='middle'>🦘</text><text x='85' y='60' font-size='20' text-anchor='middle' fill='white' stroke='black' stroke-width='0.5'>🦘</text><text x='25' y='90' font-size='20' text-anchor='middle' fill='grey'>🦘</text><text x='55' y='90' font-size='20' text-anchor='middle' fill='white' stroke='black' stroke-width='0.5'>🦘</text><text x='85' y='90' font-size='20' text-anchor='middle'>🦘</text></svg>",
+        "<svg width='120' height='120' viewBox='0 0 100 100'><path d='M10 10 H 90 V 90 H 10 Z' fill='none' stroke='black' stroke-width='1'/><path d='M10 40 H 90 M10 70 H 90 M40 10 V 90 M70 10 V 90' fill='none' stroke='grey' stroke-width='0.5'/><text x='25' y='30' font-size='20' text-anchor='middle'>🦘</text><text x='55' y='30' font-size='20' text-anchor='middle' fill='white' stroke='black' stroke-width='0.5'>🦘</text><text x='85' y='30' font-size='20' text-anchor='middle'>🦘</text><text x='25' y='60' font-size='20' text-anchor='middle' fill='white' stroke='black' stroke-width='0.5'>🦘</text><text x='55' y='60' font-size='20' text-anchor='middle' fill='grey'>🦘</text><text x='85' y='60' font-size='20' text-anchor='middle' fill='white' stroke='black' stroke-width='0.5'>🦘</text><text x='25' y='90' font-size='20' text-anchor='middle'>🦘</text><text x='55' y='90' font-size='20' text-anchor='middle' fill='grey'>🦘</text><text x='85' y='90' font-size='20' text-anchor='middle' fill='grey'>🦘</text></svg>",
+        "<svg width='120' height='120' viewBox='0 0 100 100'><path d='M10 10 H 90 V 90 H 10 Z' fill='none' stroke='black' stroke-width='1'/><path d='M10 40 H 90 M10 70 H 90 M40 10 V 90 M70 10 V 90' fill='none' stroke='grey' stroke-width='0.5'/><text x='25' y='30' font-size='20' text-anchor='middle'>🦘</text><text x='55' y='30' font-size='20' text-anchor='middle'>🦘</text><text x='85' y='30' font-size='20' text-anchor='middle' fill='white' stroke='black' stroke-width='0.5'>🦘</text><text x='25' y='60' font-size='20' text-anchor='middle' fill='grey'>🦘</text><text x='55' y='60' font-size='20' text-anchor='middle' fill='white' stroke='black' stroke-width='0.5'>🦘</text><text x='85' y='60' font-size='20' text-anchor='middle'>🦘</text><text x='25' y='90' font-size='20' text-anchor='middle' fill='grey'>🦘</text><text x='55' y='90' font-size='20' text-anchor='middle' fill='white' stroke='black' stroke-width='0.5'>🦘</text><text x='85' y='90' font-size='20' text-anchor='middle'>🦘</text></svg>",
+        "<svg width='120' height='120' viewBox='0 0 100 100'><path d='M10 10 H 90 V 90 H 10 Z' fill='none' stroke='black' stroke-width='1'/><path d='M10 40 H 90 M10 70 H 90 M40 10 V 90 M70 10 V 90' fill='none' stroke='grey' stroke-width='0.5'/><text x='25' y='30' font-size='20' text-anchor='middle' fill='white' stroke='black' stroke-width='0.5'>🦘</text><text x='55' y='30' font-size='20' text-anchor='middle'>🦘</text><text x='85' y='30' font-size='20' text-anchor='middle' fill='grey'>🦘</text><text x='25' y='60' font-size='20' text-anchor='middle' fill='white' stroke='black' stroke-width='0.5'>🦘</text><text x='55' y='60' font-size='20' text-anchor='middle'>🦘</text><text x='85' y='60' font-size='20' text-anchor='middle' fill='white' stroke='black' stroke-width='0.5'>🦘</text><text x='25' y='90' font-size='20' text-anchor='middle' fill='grey'>🦘</text><text x='55' y='90' font-size='20' text-anchor='middle' fill='white' stroke='black' stroke-width='0.5'>🦘</text><text x='85' y='90' font-size='20' text-anchor='middle' fill='grey'>🦘</text></svg>",
+        "<svg width='120' height='120' viewBox='0 0 100 100'><path d='M10 10 H 90 V 90 H 10 Z' fill='none' stroke='black' stroke-width='1'/><path d='M10 40 H 90 M10 70 H 90 M40 10 V 90 M70 10 V 90' fill='none' stroke='grey' stroke-width='0.5'/><text x='25' y='30' font-size='20' text-anchor='middle' fill='white' stroke='black' stroke-width='0.5'>🦘</text><text x='55' y='30' font-size='20' text-anchor='middle' fill='white' stroke='black' stroke-width='0.5'>🦘</text><text x='85' y='30' font-size='20' text-anchor='middle'>🦘</text><text x='25' y='60' font-size='20' text-anchor='middle' fill='grey'>🦘</text><text x='55' y='60' font-size='20' text-anchor='middle' fill='white' stroke='black' stroke-width='0.5'>🦘</text><text x='85' y='60' font-size='20' text-anchor='middle' fill='white' stroke='black' stroke-width='0.5'>🦘</text><text x='25' y='90' font-size='20' text-anchor='middle'>🦘</text><text x='55' y='90' font-size='20' text-anchor='middle' fill='grey'>🦘</text><text x='85' y='90' font-size='20' text-anchor='middle' fill='white' stroke='black' stroke-width='0.5'>🦘</text></svg>"
+      ],
+      "respuesta": "2",
+      "explicacion_correcta": "¡Muy bien observado! En la tercera figura hay 4 canguros negros y solo 3 blancos. ¡4 es más que 3!",
+      "explicacion_incorrecta": "¡Casi! Tienes que contar los canguros negros y los blancos en cada una de las 5 opciones y encontrar aquella donde el número de negros sea mayor."
+    },
+    {
+      "id": "problema-18",
+      "tipo": "opcion-multiple",
+      "pregunta": "Marta tiene 15 monedas 🪙 y encuentra 14 más en su mochila. ¿Cuántas monedas tiene en total?",
+      "opciones": ["10", "39", "20", "29", "30"],
+      "respuesta": "29",
+      "explicacion_correcta": "¡Así es! Si tenía 15 y 'encuentra más', es una suma. 15 + 14 = 29.",
+      "explicacion_incorrecta": "Cuando encuentras más de algo que ya tenías, debes sumar las dos cantidades. Intenta sumar 15 y 14."
+    },
+    {
+      "id": "problema-19",
+      "tipo": "opcion-multiple",
+      "pregunta": "La suma de los dígitos del año 2016 es 9 (porque 2+0+1+6=9). ¿Cuál es el SIGUIENTE año en que la suma de sus dígitos volverá a ser 9?",
+      "opciones": ["2007", "2025", "2034", "2108", "2134"],
+      "respuesta": "2025",
+      "explicacion_correcta": "¡Excelente trabajo de detective! El año 2025 es el correcto, porque 2+0+2+5=9. Otros años como 2007 y 2034 también suman 9, pero 2025 es el *siguiente* después de 2016.",
+      "explicacion_incorrecta": "¡Cuidado! La pregunta pide el *siguiente* año. Tienes que ir probando los años que siguen a 2016 (2017, 2018, ...) y sumar sus dígitos hasta que encuentres el primero que sume 9."
+    },
+    {
+      "id": "problema-20",
+      "tipo": "opcion-multiple",
+      "pregunta": "Hay 5 niños en una fila. Cada uno tiene 2 globos 🎈. ¿Cuántos globos hay en total?",
+      "opciones": ["10", "5", "7", "8", "9"],
+      "respuesta": "10",
+      "explicacion_correcta": "¡Perfecto! Si cada uno de los 5 niños tiene 2 globos, puedes sumar 2+2+2+2+2, o multiplicar 5 x 2, lo que da 10.",
+      "explicacion_incorrecta": "Imagina a los 5 niños. Si le das 2 globos al primero, 2 al segundo, y así con todos, ¿cuántos globos necesitas? Es como sumar el 2 cinco veces."
     }
   ]
 }
