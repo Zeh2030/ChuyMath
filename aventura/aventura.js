@@ -132,6 +132,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 opcion.classList.add('seleccionada');
             });
         });
+
+        // Listener para opciones de cubo
+        const opcionesCubo = document.querySelectorAll('.cubo-opcion');
+        opcionesCubo.forEach(opcion => {
+            opcion.addEventListener('click', () => {
+                // Deseleccionar todas las opciones del mismo ejercicio
+                const parentContainer = opcion.closest('.cubo-opciones-container');
+                parentContainer.querySelectorAll('.cubo-opcion').forEach(o => o.classList.remove('seleccionada'));
+                // Seleccionar la actual
+                opcion.classList.add('seleccionada');
+            });
+        });
     }
 
 
@@ -150,6 +162,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 puntajeMaximo += mision.ejercicios.length;
             } else if (mision.tipo === 'tabla-doble-entrada' && mision.data && mision.data.ejercicios) {
                 puntajeMaximo += mision.data.ejercicios.length;
+            } else if (mision.tipo === 'desarrollo-cubos' && mision.ejercicios) {
+                puntajeMaximo += mision.ejercicios.length;
             } else {
                 // Para otros tipos de misión (opción múltiple, geometría, etc.) cuenta como 1
                 puntajeMaximo += 1;
