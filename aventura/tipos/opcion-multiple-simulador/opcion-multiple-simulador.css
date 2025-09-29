@@ -41,3 +41,34 @@
     border-color: #e74c3c;
     color: #c0392b;
 }
+
+/* Estilos para opciones con imágenes */
+.opcion-imagen {
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.opcion-imagen-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.opcion-imagen-container svg {
+    max-width: 120px;
+    max-height: 120px;
+    width: auto;
+    height: auto;
+}
+
+/* Estilos para la imagen de la pregunta */
+.pregunta-imagen-container {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.pregunta-imagen-container svg {
+    max-width: 100%;
+    height: auto;
+}
