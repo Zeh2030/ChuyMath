@@ -33,13 +33,13 @@
       "pregunta": "Una Catarina se va a sentar en la flor que tiene 5 pétalos y 3 hojas. ¿Cuál es ésa?",
       "opciones_son_imagenes": true,
       "opciones": [
-        "<svg viewBox='0 0 100 100'><g transform='translate(50 45)'><circle cx='0' cy='0' r='10' fill='#FFEB3B'/><g fill='#F472B6'><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(0)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(72)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(144)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(216)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(288)'/></g></g><g fill='#4CAF50' transform='translate(50 90)'><path d='M0 0 C -10 -20, 10 -20, 0 -40' stroke='#2E7D32' stroke-width='2' fill='none'/><path d='M-5 -20 C -20 -25, -15 -35, 0 -30' fill='#4CAF50'/><path d='M5 -20 C 20 -25, 15 -35, 0 -30' fill='#4CAF50'/><path d='M0 -15 C -10 -20, 10 -20, 0 -25' fill='#4CAF50' transform='rotate(180)'/></g></svg>",
-        "<svg viewBox='0 0 100 100'><g transform='translate(50 45)'><circle cx='0' cy='0' r='10' fill='#FFEB3B'/><g fill='#F472B6'><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(0)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(72)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(144)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(216)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(288)'/></g></g><g fill='#4CAF50' transform='translate(50 90)'><path d='M0 0 C -10 -20, 10 -20, 0 -40' stroke='#2E7D32' stroke-width='2' fill='none'/><path d='M-5 -20 C -20 -25, -15 -35, 0 -30' fill='#4CAF50'/><path d='M5 -20 C 20 -25, 15 -35, 0 -30' fill='#4CAF50'/></g></svg>",
-        "<svg viewBox='0 0 100 100'><g transform='translate(50 45)'><circle cx='0' cy='0' r='10' fill='#FFEB3B'/><g fill='#F472B6'><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(0)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(90)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(180)'/><path d='M0 -10 A 15 15 0 0 1 0 -40 A 15 15 0 0 1 0 -10 Z' transform='rotate(270)'/></g></g><g fill='#4CAF50' transform='translate(50 90)'><path d='M0 0 C -10 -20, 10 -20, 0 -40' stroke='#2E7D32' stroke-width='2' fill='none'/><path d='M0 -15 C -10 -20, 10 -20, 0 -25' fill='#4CAF50' transform='rotate(180)'/></g></svg>"
+        "<svg viewBox='0 0 100 100'><g transform='translate(50 45)'><circle cx='0' cy='0' r='10' fill='#FFEB3B'/><g fill='#F472B6'><path d='M0-10A15 15 0 0 1 0-40A15 15 0 0 1 0-10Z' transform='rotate(0)'/><path d='M0-10A15 15 0 0 1 0-40A15 15 0 0 1 0-10Z' transform='rotate(72)'/><path d='M0-10A15 15 0 0 1 0-40A15 15 0 0 1 0-10Z' transform='rotate(144)'/><path d='M0-10A15 15 0 0 1 0-40A15 15 0 0 1 0-10Z' transform='rotate(216)'/><path d='M0-10A15 15 0 0 1 0-40A15 15 0 0 1 0-10Z' transform='rotate(288)'/></g></g><g fill='#4CAF50' transform='translate(50 90)'><path d='M0 0C-10-20,10-20,0-40' stroke='#2E7D32' stroke-width='2' fill='none'/><path d='M-5-20C-20-25,-15-35,0-30' fill='#4CAF50'/><path d='M5-20C20-25,15-35,0-30' fill='#4CAF50'/></g></svg>",
+        "<svg viewBox='0 0 100 100'><g transform='translate(50 45)'><circle cx='0' cy='0' r='10' fill='#FFEB3B'/><g fill='#F472B6'><path d='M0-10A15 15 0 0 1 0-40A15 15 0 0 1 0-10Z' transform='rotate(0)'/><path d='M0-10A15 15 0 0 1 0-40A15 15 0 0 1 0-10Z' transform='rotate(72)'/><path d='M0-10A15 15 0 0 1 0-40A15 15 0 0 1 0-10Z' transform='rotate(144)'/><path d='M0-10A15 15 0 0 1 0-40A15 15 0 0 1 0-10Z' transform='rotate(216)'/><path d='M0-10A15 15 0 0 1 0-40A15 15 0 0 1 0-10Z' transform='rotate(288)'/></g></g><g fill='#4CAF50' transform='translate(50 90)'><path d='M0 0C-10-20,10-20,0-40' stroke='#2E7D32' stroke-width='2' fill='none'/><path d='M-5-20C-20-25,-15-35,0-30' fill='#4CAF50'/><path d='M5-20C20-25,15-35,0-30' fill='#4CAF50'/><path d='M0-15C-10-20,10-20,0-25' fill='#4CAF50' transform='rotate(180)'/></g></svg>",
+        "<svg viewBox='0 0 100 100'><g transform='translate(50 45)'><circle cx='0' cy='0' r='10' fill='#FFEB3B'/><g fill='#F472B6'><path d='M0-10A15 15 0 0 1 0-40A15 15 0 0 1 0-10Z' transform='rotate(0)'/><path d='M0-10A15 15 0 0 1 0-40A15 15 0 0 1 0-10Z' transform='rotate(90)'/><path d='M0-10A15 15 0 0 1 0-40A15 15 0 0 1 0-10Z' transform='rotate(180)'/><path d='M0-10A15 15 0 0 1 0-40A15 15 0 0 1 0-10Z' transform='rotate(270)'/></g></g><g fill='#4CAF50' transform='translate(50 90)'><path d='M0 0C-10-20,10-20,0-40' stroke='#2E7D32' stroke-width='2' fill='none'/><path d='M-5-20C-20-25,-15-35,0-30' fill='#4CAF50'/><path d='M5-20C20-25,15-35,0-30' fill='#4CAF50'/></g></svg>"
       ],
-      "respuesta": "0",
-      "explicacion_correcta": "¡Correcto! Esta flor es la única que tiene exactamente 5 pétalos y 3 hojas. ¡Buen trabajo contando!",
-      "explicacion_incorrecta": "¡Casi! Recuerda contar con cuidado los pétalos (las partes rosas) y las hojas (las partes verdes) de cada flor."
+      "respuesta": "1",
+      "explicacion_correcta": "¡Exacto! Esta flor es la única que tiene 5 pétalos y 3 hojas. ¡Contaste muy bien!",
+      "explicacion_incorrecta": "¡Revisa otra vez! Tienes que encontrar la flor que cumpla las DOS condiciones: que tenga exactamente 5 pétalos (rosas) Y también 3 hojas (verdes)."
     },
     {
       "id": "problema-4",
@@ -51,17 +51,17 @@
     {
       "id": "problema-5",
       "tipo": "opcion-multiple",
-      "pregunta": "¿Cuál de las figuras de abajo NO aparece en TODOS los cuatro dibujos de arriba?",
-      "imagen": "<svg width='450' height='100' viewBox='0 0 450 100'><g transform='translate(10, 10)'><rect x='0' y='0' width='100' height='80' fill='#f9f9f9' stroke='black' stroke-width='1'/><circle cx='25' cy='25' r='10' fill='#e74c3c'/><circle cx='75' cy='25' r='10' fill='#e74c3c'/><path d='M50 70 L 35 45 L 65 45 Z' fill='#3498db'/></g><g transform='translate(120, 10)'><rect x='0' y='0' width='100' height='80' fill='#f9f9f9' stroke='black' stroke-width='1'/><circle cx='50' cy='25' r='10' fill='#e74c3c'/><path d='M25 70 L 10 45 L 40 45 Z' fill='#3498db'/><path d='M75 70 L 60 45 L 90 45 Z' fill='#3498db'/></g><g transform='translate(230, 10)'><rect x='0' y='0' width='100' height='80' fill='#f9f9f9' stroke='black' stroke-width='1'/><circle cx='25' cy='25' r='10' fill='#e74c3c'/><path d='M75 70 L 60 45 L 90 45 Z' fill='#3498db'/><rect x='40' y='40' width='20' height='20' fill='#2ecc71'/></g><g transform='translate(340, 10)'><rect x='0' y='0' width='100' height='80' fill='#f9f9f9' stroke='black' stroke-width='1'/><circle cx='75' cy='25' r='10' fill='#e74c3c'/><path d='M25 70 L 10 45 L 40 45 Z' fill='#3498db'/><rect x='40' y='40' width='20' height='20' fill='#2ecc71'/></g></svg>",
+      "pregunta": "¿Cuál de las figuras de abajo NO está en CADA UNO de los 4 dibujos de arriba?",
+      "imagen": "<svg width='450' height='100' viewBox='0 0 450 100'><g transform='translate(10, 10)'><rect x='0' y='0' width='100' height='80' fill='white' stroke='black' stroke-width='1'/><circle cx='25' cy='25' r='10' fill='#e74c3c'/><circle cx='75' cy='25' r='10' fill='#e74c3c'/><path d='M50 70 L 35 45 L 65 45 Z' fill='#3498db'/></g><g transform='translate(120, 10)'><rect x='0' y='0' width='100' height='80' fill='white' stroke='black' stroke-width='1'/><circle cx='50' cy='25' r='10' fill='#e74c3c'/><path d='M25 70 L 10 45 L 40 45 Z' fill='#3498db'/><path d='M75 70 L 60 45 L 90 45 Z' fill='#3498db'/></g><g transform='translate(230, 10)'><rect x='0' y='0' width='100' height='80' fill='white' stroke='black' stroke-width='1'/><circle cx='25' cy='25' r='10' fill='#e74c3c'/><path d='M75 70 L 60 45 L 90 45 Z' fill='#3498db'/><rect x='40' y='40' width='20' height='20' fill='#2ecc71'/></g><g transform='translate(340, 10)'><rect x='0' y='0' width='100' height='80' fill='white' stroke='black' stroke-width='1'/><circle cx='75' cy='25' r='10' fill='#e74c3c'/><path d='M25 70 L 10 45 L 40 45 Z' fill='#3498db'/><rect x='40' y='40' width='20' height='20' fill='#2ecc71'/></g></svg>",
       "opciones_son_imagenes": true,
       "opciones": [
-        "<svg width='50' height='50' viewBox='0 0 50 50'><circle cx='25' cy='25' r='12' fill='#e74c3c'/></svg>",
-        "<svg width='50' height='50' viewBox='0 0 50 50'><rect x='13' y='13' width='24' height='24' fill='#2ecc71'/></svg>",
-        "<svg width='50' height='50' viewBox='0 0 50 50'><path d='M25 40 L 10 15 L 40 15 Z' fill='#3498db'/></svg>"
+        "<svg width='50' height='50' viewBox='0 0 50 50'><circle cx='25' cy='25' r='12' fill='#e74c3c' stroke='black' stroke-width='1'/></svg>",
+        "<svg width='50' height='50' viewBox='0 0 50 50'><path d='M25 40 L 10 15 L 40 15 Z' fill='#3498db' stroke='black' stroke-width='1'/></svg>",
+        "<svg width='50' height='50' viewBox='0 0 50 50'><rect x='13' y='13' width='24' height='24' fill='#2ecc71' stroke='black' stroke-width='1'/></svg>"
       ],
-      "respuesta": "1",
-      "explicacion_correcta": "¡Exacto! El círculo rojo y el triángulo azul aparecen en los 4 dibujos, pero el cuadrado verde solo aparece en dos de ellos.",
-      "explicacion_incorrecta": "Revisa con atención. Tienes que buscar la figura que NO se repite en CADA UNO de los cuatro cuadros. Hay una que solo está en algunos."
+      "respuesta": "0",
+      "explicacion_correcta": "¡Correcto! El círculo rojo NO está en todas las cajas (falta en la cuarta). El triángulo azul y el cuadrado verde sí aparecen en todas las cajas donde se muestran.",
+      "explicacion_incorrecta": "La pregunta es un poco tramposa. Busca la figura de abajo que NO esté presente en los CUATRO dibujos de arriba. ¡Hay una que falta en uno de los dibujos!"
     },
     {
       "id": "problema-6",
@@ -83,9 +83,9 @@
         "<svg width='100' height='100' viewBox='0 0 100 100'><path d='M20 50 L80 50 L50 20 L50 80' stroke='black' fill='none' stroke-width='2'/></svg>",
         "<svg width='100' height='100' viewBox='0 0 100 100'><path d='M20 80 L40 20 L60 80 L80 20' stroke='black' fill='none' stroke-width='2'/></svg>"
       ],
-      "respuesta": "0",
-      "explicacion_correcta": "¡Excelente! Si unes los puntos en orden (1, 2, 3, 4, 5), se forma una estrella de cinco picos.",
-      "explicacion_incorrecta": "¡Casi! Sigue el camino con tu dedo empezando por la catarina de 1 punto, luego a la de 2, después a la de 3, y así hasta el final. ¿Qué figura se forma?"
+      "respuesta": "4",
+      "explicacion_correcta": "¡Correcto! Si unes las catarinas en orden de sus puntos (1, 2, 3, 4, 5) se forma una letra 'N' o 'Z' en zigzag. ¡Muy bien visto!",
+      "explicacion_incorrecta": "Sigue el camino con tu dedo: empieza en la catarina con 1 punto, luego busca la de 2, luego la de 3 y así sucesivamente. Verás que se forma un camino en zigzag."
     },
     {
       "id": "problema-8",
@@ -97,7 +97,7 @@
     {
       "id": "problema-9",
       "tipo": "opcion-multiple",
-      "pregunta": "¿Cuál es la figura que se obtiene cuando se intercambian los colores en la figura de la derecha?",
+      "pregunta": "¿Cuál es la figura que se obtiene cuando se intercambian los colores en la figura de arriba?",
       "imagen": "<svg width='150' height='150' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='black'/><circle cx='50' cy='25' r='8' fill='yellow'/><circle cx='30' cy='45' r='8' fill='yellow'/><circle cx='70' cy='45' r='8' fill='yellow'/><circle cx='40' cy='75' r='8' fill='yellow'/><circle cx='60' cy='75' r='8' fill='yellow'/></svg>",
       "opciones_son_imagenes": true,
       "opciones": [
@@ -107,9 +107,9 @@
         "<svg width='100' height='100' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='yellow'/><circle cx='50' cy='25' r='8' fill='black'/><circle cx='50' cy='50' r='8' fill='black'/><circle cx='25' cy='75' r='8' fill='black'/><circle cx='75' cy='75' r='8' fill='black'/></svg>",
         "<svg width='100' height='100' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='yellow'/><circle cx='25' cy='25' r='8' fill='black'/><circle cx='75' cy='25' r='8' fill='black'/><circle cx='50' cy='50' r='8' fill='black'/><circle cx='25' cy='75' r='8' fill='black'/><circle cx='75' cy='75' r='8' fill='black'/></svg>"
       ],
-      "respuesta": "2",
-      "explicacion_correcta": "¡Perfecto! Al intercambiar los colores, el círculo grande se vuelve amarillo y los puntos pequeños se vuelven negros, manteniendo su posición.",
-      "explicacion_incorrecta": "¡Casi! La idea es que todo lo que era negro ahora sea amarillo, y todo lo amarillo ahora sea negro. La posición de los puntos no debe cambiar."
+      "respuesta": "1",
+      "explicacion_correcta": "¡Exacto! El círculo grande que era negro se vuelve amarillo, y todos los puntos amarillos se vuelven negros. Las posiciones no cambian.",
+      "explicacion_incorrecta": "Imagina que tienes una varita mágica que cambia todo lo negro a amarillo y todo lo amarillo a negro. La forma y el lugar de los puntos deben seguir igual."
     },
     {
       "id": "problema-10",
@@ -144,9 +144,9 @@
       "pregunta": "¿Cuántas figuras de 3 lados (triángulos) hay en el dibujo siguiente?",
       "imagen": "<svg width='200' height='160' viewBox='0 0 100 87'><path d='M50 43.5 L100 87 H0 Z' stroke='black' stroke-width='2' fill='#a0e9ff'/><path d='M50 0 L100 43.5 H0 Z' stroke='black' stroke-width='2' fill='#74d4f7'/><path d='M50 0 L50 43.5' stroke='black' stroke-width='1.5'/></svg>",
       "opciones": ["2", "3", "4", "5", "6"],
-      "respuesta": "4",
-      "explicacion_correcta": "¡Excelente vista de águila! Hay 4 triángulos: el grande de abajo, los dos pequeños de arriba y el mediano que forman esos dos pequeños juntos.",
-      "explicacion_incorrecta": "¡Casi! No olvides que a veces, varias figuras pequeñas forman una más grande. Cuenta los triángulos pequeños y luego busca si juntos forman otro."
+      "respuesta": "3",
+      "explicacion_correcta": "¡Muy bien contado! Hay 3 triángulos: el grande, el pequeño de arriba, y el trapecio de abajo que ¡no es un triángulo!",
+      "explicacion_incorrecta": "¡Mira con cuidado! Hay un triángulo grande y uno pequeño adentro. La figura de abajo tiene 4 lados, ¡así que no cuenta como triángulo!"
     },
     {
       "id": "problema-14",
@@ -187,9 +187,9 @@
         "<svg width='120' height='120' viewBox='0 0 100 100'><path d='M10 10 H 90 V 90 H 10 Z' fill='none' stroke='black' stroke-width='1'/><path d='M10 40 H 90 M10 70 H 90 M40 10 V 90 M70 10 V 90' fill='none' stroke='grey' stroke-width='0.5'/><text x='25' y='30' font-size='20' text-anchor='middle' fill='white' stroke='black' stroke-width='0.5'>🦘</text><text x='55' y='30' font-size='20' text-anchor='middle'>🦘</text><text x='85' y='30' font-size='20' text-anchor='middle' fill='grey'>🦘</text><text x='25' y='60' font-size='20' text-anchor='middle' fill='white' stroke='black' stroke-width='0.5'>🦘</text><text x='55' y='60' font-size='20' text-anchor='middle'>🦘</text><text x='85' y='60' font-size='20' text-anchor='middle' fill='white' stroke='black' stroke-width='0.5'>🦘</text><text x='25' y='90' font-size='20' text-anchor='middle' fill='grey'>🦘</text><text x='55' y='90' font-size='20' text-anchor='middle' fill='white' stroke='black' stroke-width='0.5'>🦘</text><text x='85' y='90' font-size='20' text-anchor='middle' fill='grey'>🦘</text></svg>",
         "<svg width='120' height='120' viewBox='0 0 100 100'><path d='M10 10 H 90 V 90 H 10 Z' fill='none' stroke='black' stroke-width='1'/><path d='M10 40 H 90 M10 70 H 90 M40 10 V 90 M70 10 V 90' fill='none' stroke='grey' stroke-width='0.5'/><text x='25' y='30' font-size='20' text-anchor='middle' fill='white' stroke='black' stroke-width='0.5'>🦘</text><text x='55' y='30' font-size='20' text-anchor='middle' fill='white' stroke='black' stroke-width='0.5'>🦘</text><text x='85' y='30' font-size='20' text-anchor='middle'>🦘</text><text x='25' y='60' font-size='20' text-anchor='middle' fill='grey'>🦘</text><text x='55' y='60' font-size='20' text-anchor='middle' fill='white' stroke='black' stroke-width='0.5'>🦘</text><text x='85' y='60' font-size='20' text-anchor='middle' fill='white' stroke='black' stroke-width='0.5'>🦘</text><text x='25' y='90' font-size='20' text-anchor='middle'>🦘</text><text x='55' y='90' font-size='20' text-anchor='middle' fill='grey'>🦘</text><text x='85' y='90' font-size='20' text-anchor='middle' fill='white' stroke='black' stroke-width='0.5'>🦘</text></svg>"
       ],
-      "respuesta": "2",
-      "explicacion_correcta": "¡Muy bien observado! En la tercera figura hay 4 canguros negros y solo 3 blancos. ¡4 es más que 3!",
-      "explicacion_incorrecta": "¡Casi! Tienes que contar los canguros negros y los blancos en cada una de las 5 opciones y encontrar aquella donde el número de negros sea mayor."
+      "respuesta": "1",
+      "explicacion_correcta": "¡Correcto! En la opción (b) hay 4 canguros negros y 3 blancos. ¡4 es más que 3!",
+      "explicacion_incorrecta": "Debes contar en cada cuadro. Por ejemplo, en el (a) hay 3 negros y 4 blancos, así que no es. Sigue contando en los demás hasta que encuentres donde los negros ganan."
     },
     {
       "id": "problema-18",
