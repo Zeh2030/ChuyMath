@@ -30,6 +30,14 @@ function renderizarMisionNavegacionMapa(data) {
                 </div>
             </div>
             <div id="resultado-mapa" class="resultado-mapa"></div>
+            <div class="opciones-mapa">
+                <h4>¿A qué lugar llegó Rose?</h4>
+                <div class="opciones-lista">
+                    <label><input type="radio" name="respuesta-mapa" value="Biblioteca"> Biblioteca</label>
+                    <label><input type="radio" name="respuesta-mapa" value="Castillo"> Castillo</label>
+                    <label><input type="radio" name="respuesta-mapa" value="Abuelos"> Abuelos</label>
+                </div>
+            </div>
         </div>
     `;
     
@@ -47,7 +55,7 @@ function colocarIconosEnMapa(config) {
     const inicioIndex = (config.punto_inicio.fila * config.columnas) + config.punto_inicio.columna;
     const celdaInicio = document.getElementById(`celda-${inicioIndex}`);
     if (celdaInicio) {
-        celdaInicio.innerHTML = `<span class="mapa-icono">${config.punto_inicio.icono}</span>`;
+        celdaInicio.innerHTML = `<span class="mapa-icono">${config.punto_inicio.icono}</span><div class="punto-rojo"></div>`;
         celdaInicio.classList.add('inicio');
     }
 
@@ -65,19 +73,39 @@ function colocarIconosEnMapa(config) {
 function addMapaEventListeners(data) {
     const config = data.configuracion_mapa;
 
+    // Agregar listeners a los botones de dirección
     document.querySelectorAll('.control-btn[data-direccion]').forEach(btn => {
-        btn.addEventListener('click', () => moverPersonaje(btn.dataset.direccion, config));
+        btn.addEventListener('click', () => {
+            moverPersonaje(btn.dataset.direccion, config);
+        });
     });
 
-    document.getElementById('reset-mapa-btn').addEventListener('click', () => {
-        // Esto requiere volver a renderizar la misión. Por ahora, recargamos.
-        // Una mejor implementación futura podría reiniciar el estado sin recargar.
-        renderizarMisionNavegacionMapa(data); 
-        // Para que funcione bien, necesitaríamos re-renderizar solo el mapa.
-        // Por simplicidad momentánea, el usuario puede reintentar.
-        const misionCard = document.querySelector('.problema-card'); // Asumiendo que es la única misión de mapa visible
-        misionCard.querySelector('.ejercicio-container').innerHTML = renderizarMisionNavegacionMapa(data);
-    });
+    // Agregar listener al botón de reiniciar
+    const resetBtn = document.getElementById('reset-mapa-btn');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            // Reiniciar posición y historial
+            posicionActual = { ...config.punto_inicio };
+            historialMovimientos = [posicionActual];
+            
+            // Limpiar el mapa
+            document.querySelectorAll('.mapa-celda').forEach(celda => {
+                celda.classList.remove('camino', 'actual');
+                celda.innerHTML = '';
+            });
+            
+            // Volver a colocar iconos
+            colocarIconosEnMapa(config);
+            actualizarVistaMapa(config);
+            
+            // Limpiar resultado
+            const resultadoDiv = document.getElementById('resultado-mapa');
+            if (resultadoDiv) {
+                resultadoDiv.innerHTML = '';
+                resultadoDiv.dataset.lugarLlegada = '';
+            }
+        });
+    }
 }
 
 function moverPersonaje(direccion, config) {
@@ -145,17 +173,15 @@ function verificarLlegada(config) {
 
 function calificarMisionNavegacionMapa(index, data) {
     const config = data.configuracion_mapa;
-    const resultadoDiv = document.getElementById('resultado-mapa');
-    const lugarLlegada = resultadoDiv.dataset.lugarLlegada;
-
-    // Simplificado: por ahora solo verificamos el destino final.
-    // Una calificación más compleja podría verificar toda la ruta.
-    const movimientosSimulados = simularMovimientos(config.punto_inicio, config.movimientos, config);
-    const destinoFinal = config.puntos_interes.find(
-        p => p.fila === movimientosSimulados.fila && p.columna === movimientosSimulados.columna
-    );
-
-    if (destinoFinal && lugarLlegada === destinoFinal.nombre && lugarLlegada === config.respuesta_correcta) {
+    
+    // Verificar si se seleccionó una respuesta
+    const respuestaSeleccionada = document.querySelector('input[name="respuesta-mapa"]:checked');
+    if (!respuestaSeleccionada) {
+        return 0; // No se seleccionó respuesta
+    }
+    
+    // Verificar si la respuesta es correcta
+    if (respuestaSeleccionada.value === config.respuesta_correcta) {
         return 1;
     }
     
