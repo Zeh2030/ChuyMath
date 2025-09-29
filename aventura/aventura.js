@@ -236,15 +236,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (progresoGuardado) {
             const progreso = JSON.parse(progresoGuardado);
             if (progreso.completado) {
-                mostrarMensajeFinal(progreso.puntaje, progreso.maximo);
-                completarBtn.disabled = true;
-                completarBtn.textContent = "Aventura ya completada";
+                mostrarMensajeFinal(progreso.puntaje, progreso.maximo, true);
             }
         }
     }
 
 
-    function mostrarMensajeFinal(puntaje, maximo) {
+    function mostrarMensajeFinal(puntaje, maximo, yaCompletada = false) {
         const mensajeFinal = document.getElementById('mensaje-final');
         const navegacionFinal = document.getElementById('navegacion-final');
         
@@ -257,10 +255,28 @@ document.addEventListener('DOMContentLoaded', () => {
             mensaje += " ¡Sigue esforzándote! 💪";
         }
         
-        mensajeFinal.textContent = mensaje;
+        // Añadir botón de reintentar
+        const botonReintentar = `<button id="reintentar-aventura-btn" class="boton-reintentar">🔄 Volver a Intentar</button>`;
+        
+        mensajeFinal.innerHTML = `<p>${mensaje}</p>${botonReintentar}`;
         mensajeFinal.style.display = 'block';
         navegacionFinal.classList.remove('hidden');
         completarBtn.style.display = 'none';
+        
+        // Event listener para el botón de reintentar
+        setTimeout(() => {
+            const reintentarBtn = document.getElementById('reintentar-aventura-btn');
+            if (reintentarBtn) {
+                reintentarBtn.addEventListener('click', () => {
+                    // Limpiar progreso guardado
+                    if (diaAventura) {
+                        localStorage.removeItem(`progreso_aventura_${diaAventura}`);
+                    }
+                    // Recargar la página
+                    window.location.reload();
+                });
+            }
+        }, 100);
     }
 
     function marcarMisionCompleta(index) {
