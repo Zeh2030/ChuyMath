@@ -1,76 +1,118 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aventura del Día</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;700&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="aventura.css">
-    <!-- Archivos CSS específicos por tipo de juego -->
-    <link rel="stylesheet" href="tipos/tablas-doble-entrada/tablas.css">
-    <link rel="stylesheet" href="tipos/operaciones/operaciones.css">
-    <link rel="stylesheet" href="tipos/opcion-multiple/opcion-multiple.css">
-    <link rel="stylesheet" href="tipos/secuencia/secuencia.css">
-    <link rel="stylesheet" href="tipos/conteo-figuras/conteo-figuras.css">
-    <link rel="stylesheet" href="tipos/criptoaritmetica/cripto.css">
-    <link rel="stylesheet" href="tipos/desarrollo-cubos/cubos.css">
-    <link rel="stylesheet" href="tipos/palabra-del-dia/palabra.css">
-    <link rel="stylesheet" href="tipos/geometria/geometria.css">
-    <link rel="stylesheet" href="tipos/balanza/balanza.css">
-    <link rel="stylesheet" href="tipos/numberblocks/numberblocks.css">
-    <link rel="stylesheet" href="tipos/navegacion-mapa/mapa.css">
-</head>
-<body>
-    <div class="main-container">
-        <header id="aventura-header" class="aventura-header">
-            <h1 id="aventura-titulo">Cargando Aventura...</h1>
-            <a href="../dashboard/dashboard.html" class="back-button">← Volver al Centro de Mando</a>
-        </header>
+document.addEventListener('DOMContentLoaded', () => {
+    const simuladorTitulo = document.getElementById('simulador-titulo');
+    const problemasContainer = document.getElementById('problemas-container');
+    const calificarBtn = document.getElementById('calificar-examen-btn');
 
-        <main id="misiones-container">
-            <!-- El contenido de las misiones se cargará aquí -->
-             <div class="loader">
-                <div class="spinner"></div>
-                <p>¡Preparando la misión de hoy!</p>
-            </div>
-        </main>
+    let examenData = null;
 
-        <footer id="aventura-footer" class="aventura-footer hidden">
-            <button id="completar-aventura-btn">¡He Terminado la Aventura!</button>
-            <div id="mensaje-final"></div>
-            <div id="navegacion-final" class="navegacion-final hidden">
-                <a href="../boveda/boveda.html" class="boton-final boveda">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-                    </svg>
-                    Ir a la Bóveda
-                </a>
-                <a href="../dashboard/dashboard.html" class="boton-final dashboard">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-                    </svg>
-                    Centro de Mando
-                </a>
-            </div>
-        </footer>
-    </div>
+    function getExamenId() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('examen');
+    }
 
-    <!-- Archivos JavaScript específicos por tipo de juego -->
-    <script src="tipos/tablas-doble-entrada/tablas.js"></script>
-    <script src="tipos/operaciones/operaciones.js"></script>
-    <script src="tipos/opcion-multiple/opcion-multiple.js"></script>
-    <script src="tipos/secuencia/secuencia.js"></script>
-    <script src="tipos/conteo-figuras/conteo-figuras.js"></script>
-    <script src="tipos/criptoaritmetica/cripto.js"></script>
-    <script src="tipos/desarrollo-cubos/cubos.js"></script>
-    <script src="tipos/palabra-del-dia/palabra.js"></script>
-    <script src="tipos/geometria/geometria.js"></script>
-    <script src="tipos/balanza/balanza.js"></script>
-    <script src="tipos/numberblocks/numberblocks.js"></script>
-    <script src="tipos/navegacion-mapa/mapa.js"></script>
-    <!-- Archivo principal (debe ir al final) -->
-    <script src="aventura.js"></script>
-</body>
-</html>
+    async function cargarExamen(id) {
+        try {
+            if (!id) throw new Error('No se especificó un ID de examen.');
+            
+            const response = await fetch(`../../_contenido/${id}.json`);
+            if (!response.ok) throw new Error(`No se pudo cargar el archivo del examen: ${id}.json`);
+            
+            examenData = await response.json();
+            renderizarExamen();
+
+        } catch (error) {
+            console.error('Error al cargar el examen:', error);
+            problemasContainer.innerHTML = `<p class="error">No se pudo cargar el simulacro. Por favor, intenta de nuevo.</p>`;
+            simuladorTitulo.textContent = 'Error';
+        }
+    }
+
+    function renderizarExamen() {
+        if (!examenData) return;
+
+        simuladorTitulo.textContent = examenData.titulo;
+        problemasContainer.innerHTML = '';
+
+        examenData.problemas.forEach((problema, index) => {
+            const problemaDiv = document.createElement('div');
+            // Usar 'mision-card' para consistencia de estilos con 'aventura'
+            problemaDiv.className = 'mision-card'; 
+            problemaDiv.id = `mision-${index}`;
+
+            // Crear la misma estructura que en aventura.js
+            const contenido = `
+                <div class="mision-header">
+                    <h3>Problema ${index + 1}</h3>
+                </div>
+                <div class="mision-content">
+                    <div class="instrucciones">
+                        <p>${problema.pregunta}</p>
+                    </div>
+                    <div class="ejercicio-container">
+                        <!-- El contenido renderizado irá aquí -->
+                    </div>
+                </div>
+            `;
+            
+            problemaDiv.innerHTML = contenido;
+            
+            // Renderizar el contenido específico del tipo de misión en el contenedor correcto
+            const ejercicioContainer = problemaDiv.querySelector('.ejercicio-container');
+            const renderFunctionName = `renderizarMision${capitalizeTipo(problema.tipo)}`;
+            
+            if (typeof window[renderFunctionName] === 'function') {
+                ejercicioContainer.innerHTML = window[renderFunctionName](problema);
+            } else {
+                 ejercicioContainer.innerHTML = `<p class="error">Error: No se encontró la función de renderizado para el tipo "${problema.tipo}".</p>`;
+            }
+
+            problemasContainer.appendChild(problemaDiv);
+        });
+    }
+
+    function capitalizeTipo(tipo) {
+        // Convierte "navegacion-mapa" a "NavegacionMapa"
+        return tipo.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('');
+    }
+
+    function renderizarOpciones(problema, index) {
+        // Esta función ahora es un legacy que será reemplazado por los renderizadores específicos.
+        // La mantendremos por si algún JSON antiguo la necesita, pero la lógica principal
+        // usará los renderizadores dinámicos.
+        // La función renderizarMisionOpcionMultiple se encargará de esto.
+        return '';
+    }
+
+    function calificarExamen() {
+        if (!examenData) return;
+
+        let puntaje = 0;
+        examenData.problemas.forEach((problema, index) => {
+            const calificarFunctionName = `calificarMision${capitalizeTipo(problema.tipo)}`;
+            let resultado = 0;
+
+            if (typeof window[calificarFunctionName] === 'function') {
+                // La función de calificación necesita el índice y los datos del problema
+                resultado = window[calificarFunctionName](index, problema);
+            } else {
+                console.warn(`Función de calificación no encontrada: ${calificarFunctionName}`);
+            }
+
+            puntaje += resultado;
+        });
+        
+        // Añadir una pequeña pausa para que el usuario vea la última calificación
+        setTimeout(() => {
+            simuladorTitulo.textContent = `Resultado Final: ${puntaje} de ${examenData.problemas.length}`;
+            calificarBtn.textContent = 'Intentar de Nuevo';
+            calificarBtn.onclick = () => window.location.reload();
+            window.scrollTo(0, 0);
+        }, 500);
+    }
+    
+    calificarBtn.addEventListener('click', calificarExamen);
+
+    // --- Iniciar Carga ---
+    const examenId = getExamenId();
+    cargarExamen(examenId);
+});
