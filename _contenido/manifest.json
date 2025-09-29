@@ -85,6 +85,15 @@
         "temas": ["geometria", "espacial", "logica"]
       },
       {
+        "id": "simulador-oem-2025-g2",
+        "titulo": "Simulacro: Olimpiada 2025",
+        "icono": "🏆",
+        "descripcion": "Simulacro completo del examen de la Olimpiada Estatal de Matemáticas (Grado 2).",
+        "temas": ["simulacro", "olimpiada"],
+        "esJuegoEspecial": true,
+        "urlJuego": "../juegos/simulador/simulador.html?examen=simulador-oem-2025-g2"
+      },
+      {
         "id": "2025-10-04",
         "titulo": "Aventura del Gran Desafío",
         "descripcion": "¡El desafío final de la semana! Resuelve puzzles complejos y construye cubos como un experto!",
