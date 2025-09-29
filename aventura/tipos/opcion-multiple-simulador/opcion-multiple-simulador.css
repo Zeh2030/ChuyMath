@@ -1,0 +1,43 @@
+/* --- Estilos para Opción Múltiple (Simulador) --- */
+
+.opciones-lista-simulador {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.opcion-label {
+    display: flex;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 15px 20px;
+    border-radius: 12px;
+    border: 2px solid #e9ecef;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 600;
+}
+
+.opcion-label:hover {
+    border-color: #3498db;
+    background-color: #e9f5ff;
+}
+
+.opcion-label input[type="radio"] {
+    margin-right: 15px;
+    width: 18px;
+    height: 18px;
+    accent-color: #3498db;
+}
+
+.opcion-label.correcto {
+    background-color: #e8f8f5;
+    border-color: #2ecc71;
+    color: #27ae60;
+}
+
+.opcion-label.incorrecto {
+    background-color: #fdf2f2;
+    border-color: #e74c3c;
+    color: #c0392b;
+}
