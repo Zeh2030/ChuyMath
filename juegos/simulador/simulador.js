@@ -60,10 +60,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const ejercicioContainer = problemaDiv.querySelector('.ejercicio-container');
             const renderFunctionName = `renderizarMision${capitalizeTipo(problema.tipo)}`;
             
+            console.log(`Buscando función: ${renderFunctionName} para tipo: ${problema.tipo}`);
+            
             if (typeof window[renderFunctionName] === 'function') {
                 ejercicioContainer.innerHTML = window[renderFunctionName](problema);
             } else {
-                 ejercicioContainer.innerHTML = `<p class="error">Error: No se encontró la función de renderizado para el tipo "${problema.tipo}".</p>`;
+                 ejercicioContainer.innerHTML = `<p class="error">Error: No se encontró la función de renderizado para el tipo "${problema.tipo}". Función buscada: ${renderFunctionName}</p>`;
             }
 
             problemasContainer.appendChild(problemaDiv);
@@ -71,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function capitalizeTipo(tipo) {
-        // Convierte "navegacion-mapa" a "NavegacionMapa"
+        // Convierte "navegacion-mapa" a "NavegacionMapa", "opcion-multiple" a "OpcionMultiple"
         return tipo.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('');
     }
 
@@ -92,8 +94,15 @@ document.addEventListener('DOMContentLoaded', () => {
             let resultado = 0;
 
             if (typeof window[calificarFunctionName] === 'function') {
-                // La función de calificación necesita el índice y los datos del problema
-                resultado = window[calificarFunctionName](index, problema);
+                // Obtener el div del problema para pasar a la función de calificación
+                const problemaDiv = document.getElementById(`mision-${index}`);
+                
+                if (problemaDiv) {
+                    // La función de calificación necesita el div del problema y los datos
+                    resultado = window[calificarFunctionName](problemaDiv, problema);
+                } else {
+                    console.warn(`No se encontró el div del problema ${index}`);
+                }
             } else {
                 console.warn(`Función de calificación no encontrada: ${calificarFunctionName}`);
             }
