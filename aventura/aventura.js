@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const completarBtn = document.getElementById('completar-aventura-btn');
     const footer = document.getElementById('aventura-footer');
     const loader = document.querySelector('.loader');
+    const reintentarBtnTop = document.getElementById('reintentar-aventura-btn-top');
 
     let aventuraData = null;
     let diaAventura = '';
