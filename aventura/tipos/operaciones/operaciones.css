@@ -41,6 +41,11 @@
     border-radius: 8px;
     font-weight: 600;
     transition: all 0.3s ease;
+    background-color: white;
+    display: block;
+    margin: 0 auto;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .operaciones-grid .ejercicio input:focus {
@@ -82,3 +87,4 @@
         font-size: 1.1rem;
     }
 }
+
