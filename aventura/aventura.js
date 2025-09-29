@@ -72,6 +72,8 @@ document.addEventListener('DOMContentLoaded', () => {
             switch (mision.tipo) {
                 case 'tabla-doble-entrada':
                     ejercicioContainer.innerHTML = renderizarMisionTabla(mision);
+                    // Añadir listeners específicos para las tablas después de renderizar
+                    setTimeout(() => addTableListeners(misionCard), 0);
                     break;
                 case 'operaciones':
                     ejercicioContainer.innerHTML = renderizarMisionOperaciones(mision);
@@ -119,23 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function addGlobalEventListeners() {
-        const tablas = document.querySelectorAll('.tabla-logica');
-        tablas.forEach(tabla => {
-            tabla.addEventListener('click', (event) => {
-                if (event.target.tagName === 'TD' && !event.target.classList.contains('header')) {
-                    const cell = event.target;
-                    const currentValue = cell.textContent;
-                    if (currentValue === '✅') {
-                        cell.textContent = '❌';
-                    } else if (currentValue === '❌') {
-                        cell.textContent = '';
-                    } else {
-                        cell.textContent = '✅';
-                    }
-                }
-            });
-        });
-
         // Listener para opciones de imagen
         const opcionesImagen = document.querySelectorAll('.opcion-imagen-container');
         opcionesImagen.forEach(opcion => {
