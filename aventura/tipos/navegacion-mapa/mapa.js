@@ -175,20 +175,26 @@ function calificarMisionNavegacionMapa(misionDiv, data) {
     const config = data.configuracion_mapa;
     let esCorrecto = false;
     
-    // Verificar si se seleccionó una respuesta
     const respuestaSeleccionada = misionDiv.querySelector('input[name="respuesta-mapa"]:checked');
+    
     if (respuestaSeleccionada) {
-        // Verificar si la respuesta es correcta
         if (respuestaSeleccionada.value === config.respuesta_correcta) {
             esCorrecto = true;
         }
         
-        // Añadir feedback visual a la opción seleccionada
         const label = respuestaSeleccionada.parentElement;
         label.classList.add(esCorrecto ? 'correcto' : 'incorrecto');
+        
+        // Si la respuesta fue incorrecta, resaltar la correcta
+        if (!esCorrecto) {
+            const respuestaCorrectaInput = misionDiv.querySelector(`input[value="${config.respuesta_correcta}"]`);
+            if (respuestaCorrectaInput) {
+                const labelCorrecto = respuestaCorrectaInput.parentElement;
+                labelCorrecto.classList.add('respuesta-correcta-highlight');
+            }
+        }
     }
     
-    // Devolver 1 si es correcto, 0 si no
     return esCorrecto ? 1 : 0;
 }
 
