@@ -246,6 +246,14 @@ body {
     box-shadow: 0 6px 20px rgba(243, 156, 18, 0.4);
 }
 
+/* Ajuste para el botón de reintentar en el header para que coincida con los otros */
+.navigation-buttons .boton-reintentar {
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 20px; /* Coincidir con los otros botones */
+    line-height: 1.5; /* Alineación vertical del texto */
+}
+
 .boton-reintentar.hidden {
     display: none;
 }
