@@ -253,6 +253,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const progreso = JSON.parse(progresoGuardado);
             if (progreso.completado) {
                 mostrarMensajeFinal(progreso.puntaje, progreso.maximo, true);
+                // Muestra el botón de reintentar de arriba si la aventura está completada
+                reintentarBtnTop.classList.remove('hidden');
             }
         }
     }
@@ -309,6 +311,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (diaAventura) {
         cargarAventura(diaAventura);
     }
+    
+    // Listener para el botón de reintentar de arriba
+    reintentarBtnTop.addEventListener('click', () => {
+        if (diaAventura) {
+            localStorage.removeItem(`progreso_aventura_${diaAventura}`);
+        }
+        window.location.reload();
+    });
 });
 
 // Función global para el audio
