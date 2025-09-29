@@ -157,37 +157,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
         aventuraData.misiones.forEach((mision, index) => {
             let resultado = 0;
+            const misionDiv = document.getElementById(`mision-${index}`);
+            
+            if (!misionDiv) {
+                console.warn(`No se encontró el div de la misión ${index}`);
+                return;
+            }
+            
             // Re-implementación del switch case para calificar
             switch (mision.tipo) {
                  case 'tabla-doble-entrada':
-                    resultado = calificarMisionTabla(index, mision);
+                    resultado = calificarMisionTabla(misionDiv, mision);
                     break;
                 case 'operaciones':
-                    resultado = calificarMisionOperaciones(index, mision);
+                    resultado = calificarMisionOperaciones(misionDiv, mision);
                     break;
                 case 'opcion-multiple':
-                    resultado = calificarMisionOpcionMultiple(index, mision);
+                    resultado = calificarMisionOpcionMultiple(misionDiv, mision);
                     break;
                 case 'secuencia':
-                    resultado = calificarMisionSecuencia(index, mision);
+                    resultado = calificarMisionSecuencia(misionDiv, mision);
                     break;
                 case 'conteo-figuras':
-                    resultado = calificarMisionConteo(index, mision);
+                    resultado = calificarMisionConteo(misionDiv, mision);
                     break;
                 case 'criptoaritmetica':
-                    resultado = calificarMisionCripto(index, mision);
+                    resultado = calificarMisionCripto(misionDiv, mision);
                     break;
                 case 'desarrollo-cubos':
-                    resultado = calificarMisionCubo(index, mision);
+                    resultado = calificarMisionCubo(misionDiv, mision);
                     break;
                 case 'balanza-logica':
-                    resultado = calificarMisionBalanza(index, mision);
+                    resultado = calificarMisionBalanza(misionDiv, mision);
                     break;
                 case 'geometria':
-                    resultado = calificarMisionGeometria(index, mision);
+                    resultado = calificarMisionGeometria(misionDiv, mision);
                     break;
                 case 'navegacion-mapa':
-                    resultado = calificarMisionNavegacionMapa(index, mision);
+                    resultado = calificarMisionNavegacionMapa(misionDiv, mision);
                     break;
                 // Misiones sin calificación automática no se cuentan o se marcan como completadas
                 case 'palabra-del-dia':
