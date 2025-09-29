@@ -152,8 +152,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     completarBtn.addEventListener('click', () => {
         let puntajeTotal = 0;
-        let puntajeMaximo = aventuraData.misiones.length;
+        let puntajeMaximo = 0;
         let todasCalificadas = true;
+
+        // Calcular el puntaje máximo real sumando los ejercicios de cada misión
+        aventuraData.misiones.forEach((mision) => {
+            if (mision.tipo === 'secuencia' && mision.ejercicios) {
+                puntajeMaximo += mision.ejercicios.length;
+            } else if (mision.tipo === 'operaciones' && mision.ejercicios) {
+                puntajeMaximo += mision.ejercicios.length;
+            } else if (mision.tipo === 'conteo-figuras' && mision.ejercicios) {
+                puntajeMaximo += mision.ejercicios.length;
+            } else if (mision.tipo === 'tabla-doble-entrada' && mision.data && mision.data.ejercicios) {
+                puntajeMaximo += mision.data.ejercicios.length;
+            } else {
+                // Para otros tipos de misión (opción múltiple, geometría, etc.) cuenta como 1
+                puntajeMaximo += 1;
+            }
+        });
 
         aventuraData.misiones.forEach((mision, index) => {
             let resultado = 0;
