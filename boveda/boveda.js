@@ -122,16 +122,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderizarCategorias(misiones, misionesCompletadas) {
-        // Mapeo de temas a categorías
-        const categoriasMap = {
-            'geometria': ['geometria', 'logica'],
-            'secuencias': ['logica', 'mates'], // Secuencias que incluyen lógica
-            'constructores': ['numberblocks'], // Juegos de construcción
-            'aventuras': ['mates', 'planetas', 'geografia', 'animales'] // Aventuras mixtas
-        };
-
         // Limpiar grids de categorías
         document.getElementById('geometria-grid').innerHTML = '';
+        document.getElementById('simulacros-grid').innerHTML = '';
         document.getElementById('secuencias-grid').innerHTML = '';
         document.getElementById('constructores-grid').innerHTML = '';
         document.getElementById('aventuras-grid').innerHTML = '';
@@ -139,27 +132,31 @@ document.addEventListener('DOMContentLoaded', () => {
         // Clasificar misiones por categoría
         const categorias = {
             geometria: [],
+            simulacros: [],
             secuencias: [],
             constructores: [],
             aventuras: []
         };
 
         misiones.forEach(mision => {
-            if (mision.temas) {
-                // Clasificar por temas específicos
-                if (mision.temas.includes('geometria')) {
-                    categorias.geometria.push(mision);
-                } else if (mision.temas.includes('numberblocks') && mision.esJuegoEspecial) {
+            if (mision.esJuegoEspecial) {
+                if (mision.temas && mision.temas.includes('simulacro')) {
+                    categorias.simulacros.push(mision);
+                } else if (mision.temas && mision.temas.includes('numberblocks')) {
                     categorias.constructores.push(mision);
-                } else if (mision.id.includes('secuencia') || mision.titulo.toLowerCase().includes('secuencia')) {
-                    categorias.secuencias.push(mision);
                 } else {
-                    categorias.aventuras.push(mision);
+                    categorias.aventuras.push(mision); // Otros juegos especiales van a aventuras
                 }
             } else {
-                // Fallback: clasificar por ID o título
-                if (mision.id.includes('geometrico') || mision.titulo.toLowerCase().includes('geométrico')) {
-                    categorias.geometria.push(mision);
+                // Lógica existente para aventuras diarias
+                if (mision.temas) {
+                    if (mision.temas.includes('geometria')) {
+                        categorias.geometria.push(mision);
+                    } else if (mision.id.includes('secuencia') || mision.titulo.toLowerCase().includes('secuencia')) {
+                        categorias.secuencias.push(mision);
+                    } else {
+                        categorias.aventuras.push(mision);
+                    }
                 } else {
                     categorias.aventuras.push(mision);
                 }
