@@ -250,8 +250,11 @@ body {
 .navigation-buttons .boton-reintentar {
     padding: 10px 20px;
     font-size: 1em;
-    border-radius: 20px; /* Coincidir con los otros botones */
-    line-height: 1.5; /* Alineación vertical del texto */
+    border-radius: 20px;
+    line-height: 1.5;
+    margin-top: 0; /* Eliminar el margen que lo empuja hacia abajo */
+    align-self: center; /* Asegurar la alineación vertical */
+    font-weight: 600; /* Coincidir con el grosor de la fuente */
 }
 
 .boton-reintentar.hidden {
