@@ -34,9 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
         problemasContainer.innerHTML = '';
 
         examenData.problemas.forEach((problema, index) => {
-            // Añadir el índice global al objeto del problema para que los módulos hijos puedan usarlo
-            problema.misionIndex = index; 
-
             const problemaDiv = document.createElement('div');
             // Usar 'mision-card' para consistencia de estilos con 'aventura'
             problemaDiv.className = 'mision-card'; 
@@ -115,10 +112,16 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Añadir una pequeña pausa para que el usuario vea la última calificación
         setTimeout(() => {
-            simuladorTitulo.textContent = `Resultado Final: ${puntaje} de ${examenData.problemas.length}`;
+            const resultadoFinalHTML = `<div class="resultado-final-box"><h2>Resultado Final: ${puntaje} de ${examenData.problemas.length}</h2></div>`;
+            problemasContainer.insertAdjacentHTML('beforeend', resultadoFinalHTML);
+            
             calificarBtn.textContent = 'Intentar de Nuevo';
             calificarBtn.onclick = () => window.location.reload();
-            window.scrollTo(0, 0);
+            
+            // Hacer scroll hacia el resultado final
+            const resultadoBox = problemasContainer.querySelector('.resultado-final-box');
+            resultadoBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
         }, 500);
     }
     
