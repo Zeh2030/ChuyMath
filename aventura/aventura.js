@@ -60,7 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const instrucciones = document.createElement('div');
             instrucciones.className = 'instrucciones';
-            instrucciones.innerHTML = `<p>${mision.instruccion}</p>`;
+            if (mision.instruccion) {
+                instrucciones.innerHTML = `<p>${mision.instruccion}</p>`;
+            }
             misionContent.appendChild(instrucciones);
             
             const ejercicioContainer = document.createElement('div');
