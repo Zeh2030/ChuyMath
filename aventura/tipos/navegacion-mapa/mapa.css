@@ -25,6 +25,7 @@
 
 .mapa-celda.inicio {
     background-color: #a5d6a7; /* Verde claro para el inicio */
+    position: relative; /* Para posicionar el punto rojo */
 }
 
 .mapa-celda.camino {
@@ -79,4 +80,59 @@
     font-weight: bold;
     color: #2c3e50;
     min-height: 25px;
+}
+
+/* Punto rojo en el inicio */
+.punto-rojo {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: #e74c3c;
+    border-radius: 50%;
+    top: 2px;
+    right: 2px;
+    z-index: 10;
+}
+
+/* Opciones de respuesta */
+.opciones-mapa {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.opciones-mapa h4 {
+    margin: 0 0 15px 0;
+    color: #495057;
+    font-size: 1.1em;
+}
+
+.opciones-mapa .opciones-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.opciones-mapa label {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.opciones-mapa label:hover {
+    background-color: #e9ecef;
+    border-color: #007bff;
+}
+
+.opciones-mapa input[type="radio"] {
+    margin-right: 10px;
+    width: 16px;
+    height: 16px;
 }
