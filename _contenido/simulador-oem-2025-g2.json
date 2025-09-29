@@ -1,0 +1,25 @@
+{
+    "id": "simulador-oem-2025-g2",
+    "titulo": "Simulacro: Olimpiada de Matemáticas 2025 (Grado 2)",
+    "tiempo_limite_minutos": 120,
+    "problemas": [
+      {
+        "id": "problema-1",
+        "tipo": "opcion-multiple",
+        "pregunta": "Rose sale de su casa (punto rojo), y anda tres calles (cuadros) hacia el sur y luego dos hacia el oeste. ¿A qué lugar llega?",
+        "imagen": "_assets/simulacros/mapa-problema1.svg",
+        "opciones": ["Biblioteca", "Castillo", "Abuelos", "Lago", "Teatro"],
+        "respuesta": "Castillo",
+        "opciones_son_imagenes": false
+      },
+      {
+        "id": "problema-2",
+        "tipo": "opcion-multiple",
+        "pregunta": "Selene tiene 3 chocolates y le da 1 a su mamá. ¿Cuántos chocolates le quedan?",
+        "imagen": null,
+        "opciones": ["5", "3", "2", "4", "1"],
+        "respuesta": "2",
+        "opciones_son_imagenes": false
+      }
+    ]
+  }
