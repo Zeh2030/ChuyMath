@@ -171,21 +171,25 @@ function verificarLlegada(config) {
     }
 }
 
-function calificarMisionNavegacionMapa(index, data) {
+function calificarMisionNavegacionMapa(misionDiv, data) {
     const config = data.configuracion_mapa;
+    let esCorrecto = false;
     
     // Verificar si se seleccionó una respuesta
-    const respuestaSeleccionada = document.querySelector('input[name="respuesta-mapa"]:checked');
-    if (!respuestaSeleccionada) {
-        return 0; // No se seleccionó respuesta
+    const respuestaSeleccionada = misionDiv.querySelector('input[name="respuesta-mapa"]:checked');
+    if (respuestaSeleccionada) {
+        // Verificar si la respuesta es correcta
+        if (respuestaSeleccionada.value === config.respuesta_correcta) {
+            esCorrecto = true;
+        }
+        
+        // Añadir feedback visual a la opción seleccionada
+        const label = respuestaSeleccionada.parentElement;
+        label.classList.add(esCorrecto ? 'correcto' : 'incorrecto');
     }
     
-    // Verificar si la respuesta es correcta
-    if (respuestaSeleccionada.value === config.respuesta_correcta) {
-        return 1;
-    }
-    
-    return 0;
+    // Devolver 1 si es correcto, 0 si no
+    return esCorrecto ? 1 : 0;
 }
 
 function simularMovimientos(inicio, movimientos, config) {
