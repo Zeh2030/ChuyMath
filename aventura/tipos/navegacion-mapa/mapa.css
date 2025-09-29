@@ -150,3 +150,20 @@
     color: #c0392b;
     font-weight: bold;
 }
+
+.opciones-mapa label.respuesta-correcta-highlight {
+    animation: pulse-green 1.5s infinite;
+    border-color: #2ecc71;
+}
+
+@keyframes pulse-green {
+    0% {
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+    }
+}
