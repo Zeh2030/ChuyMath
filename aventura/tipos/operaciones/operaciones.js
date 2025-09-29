@@ -2,16 +2,9 @@
 
 // Función para renderizar operaciones matemáticas
 function renderizarMisionOperaciones(data) {
-    console.log('Datos recibidos en operaciones:', data);
-    
-    if (!data || !data.ejercicios) {
-        return '<p class="error">Error: No se encontraron ejercicios de operaciones.</p>';
-    }
-    
     let gridHTML = '<div class="operaciones-grid">';
     data.ejercicios.forEach((ej, index) => {
-        console.log(`Ejercicio ${index}:`, ej);
-        gridHTML += `<div class="ejercicio" data-respuesta="${ej.respuesta}"><p>${ej.pregunta} =</p><input type="number" inputmode="numeric" id="op-${index}" placeholder="?"></div>`;
+        gridHTML += `<div class="ejercicio" data-respuesta="${ej.respuesta}"><p>${ej.pregunta} =</p><input type="number" inputmode="numeric" id="op-${index}"></div>`;
     });
     return gridHTML + '</div>';
 }
