@@ -34,6 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
         problemasContainer.innerHTML = '';
 
         examenData.problemas.forEach((problema, index) => {
+            // Añadir el índice global al objeto del problema para que los módulos hijos puedan usarlo
+            problema.misionIndex = index; 
+
             const problemaDiv = document.createElement('div');
             // Usar 'mision-card' para consistencia de estilos con 'aventura'
             problemaDiv.className = 'mision-card'; 
