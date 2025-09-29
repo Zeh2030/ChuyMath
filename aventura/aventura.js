@@ -101,6 +101,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 case 'numberblocks-dibujo':
                     ejercicioContainer.innerHTML = renderizarMisionNumberblocks(mision);
                     break;
+                case 'navegacion-mapa':
+                    ejercicioContainer.innerHTML = renderizarMisionNavegacionMapa(mision);
+                    break;
                 default:
                     ejercicioContainer.innerHTML = `<p>Error: Tipo de misión "${mision.tipo}" no reconocido.</p>`;
             }
@@ -180,6 +183,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     break;
                 case 'geometria':
                     resultado = calificarMisionGeometria(index, mision);
+                    break;
+                case 'navegacion-mapa':
+                    resultado = calificarMisionNavegacionMapa(index, mision);
                     break;
                 // Misiones sin calificación automática no se cuentan o se marcan como completadas
                 case 'palabra-del-dia':
