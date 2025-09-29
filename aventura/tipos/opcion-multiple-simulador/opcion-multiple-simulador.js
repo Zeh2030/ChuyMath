@@ -4,16 +4,27 @@
 function renderizarMisionOpcionMultipleSimulador(data) {
     let opcionesHTML = '';
     
-    // Las opciones son siempre de texto en este contexto
     const safeId = data.id.replace(/[^a-zA-Z0-9]/g, ''); // Crea un ID seguro
-    opcionesHTML = data.opciones.map((opcion, index) => {
-        const uniqueId = `op-mult-sim-${safeId}-${index}`;
-        // Estructura simplificada: label contiene el input
-        return `<label for="${uniqueId}" class="opcion-label">
-                    <input type="radio" name="op-mult-sim-${safeId}" id="${uniqueId}" value="${opcion}">
-                    <span>${opcion}</span>
-                </label>`;
-    }).join('');
+    
+    // Verificar si las opciones son imágenes
+    if (data.opciones_son_imagenes) {
+        opcionesHTML = data.opciones.map((opcion, index) => {
+            const uniqueId = `op-mult-sim-${safeId}-${index}`;
+            return `<label for="${uniqueId}" class="opcion-label opcion-imagen">
+                        <input type="radio" name="op-mult-sim-${safeId}" id="${uniqueId}" value="${index}">
+                        <div class="opcion-imagen-container">${opcion}</div>
+                    </label>`;
+        }).join('');
+    } else {
+        // Las opciones son de texto
+        opcionesHTML = data.opciones.map((opcion, index) => {
+            const uniqueId = `op-mult-sim-${safeId}-${index}`;
+            return `<label for="${uniqueId}" class="opcion-label">
+                        <input type="radio" name="op-mult-sim-${safeId}" id="${uniqueId}" value="${index}">
+                        <span>${opcion}</span>
+                    </label>`;
+        }).join('');
+    }
 
     const imagenHTML = data.imagen ? `<div class="pregunta-imagen-container">${data.imagen}</div>` : '';
     
@@ -34,6 +45,7 @@ function calificarMisionOpcionMultipleSimulador(misionDiv, misionData) {
     const selectedOption = misionDiv.querySelector(`input[name="op-mult-sim-${safeId}"]:checked`);
     
     if (selectedOption) {
+        // Comparar el índice seleccionado con la respuesta (que es un string del índice)
         const esCorrecto = selectedOption.value === misionData.respuesta;
         const label = selectedOption.closest('.opcion-label');
         if (label) {
