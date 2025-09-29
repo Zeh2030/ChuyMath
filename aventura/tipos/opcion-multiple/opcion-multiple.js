@@ -12,10 +12,10 @@ function renderizarMisionOpcionMultiple(data) {
              </div>`
         ).join('');
     } else {
+        const safeId = data.id.replace(/[^a-zA-Z0-9]/g, ''); // Crea un ID seguro sin caracteres especiales
         opcionesHTML = data.opciones.map((opcion, index) => {
-            // Usar un identificador único basado en el índice del problema global, no en el data.id
-            const uniqueId = `mision-${data.misionIndex}-opcion-${index}`;
-            return `<li><input type="radio" name="op-mult-${data.misionIndex}" id="${uniqueId}" value="${opcion}"><label for="${uniqueId}">${opcion}</label></li>`
+            const uniqueId = `op-mult-${safeId}-${index}`;
+            return `<li><input type="radio" name="op-mult-${safeId}" id="${uniqueId}" value="${opcion}"><label for="${uniqueId}">${opcion}</label></li>`
         }).join('');
     }
 
@@ -56,7 +56,8 @@ function calificarMisionOpcionMultiple(misionDiv, misionData) {
         }
     } else {
         // Lógica existente para opciones de texto
-        const selectedOption = misionDiv.querySelector(`input[name="op-mult-${misionData.misionIndex}"]:checked`);
+        const safeId = misionData.id.replace(/[^a-zA-Z0-9]/g, ''); // Usa el mismo ID seguro
+        const selectedOption = misionDiv.querySelector(`input[name="op-mult-${safeId}"]:checked`);
         if (selectedOption) {
             const esCorrecto = selectedOption.value === misionData.respuesta;
             const label = selectedOption.nextElementSibling;
