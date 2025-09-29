@@ -58,7 +58,12 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Renderizar el contenido específico del tipo de misión en el contenedor correcto
             const ejercicioContainer = problemaDiv.querySelector('.ejercicio-container');
-            const renderFunctionName = `renderizarMision${capitalizeTipo(problema.tipo)}`;
+            
+            let renderFunctionName = `renderizarMision${capitalizeTipo(problema.tipo)}`;
+            // Excepción para el simulador, usamos el módulo específico
+            if (problema.tipo === 'opcion-multiple') {
+                renderFunctionName = 'renderizarMisionOpcionMultipleSimulador';
+            }
             
             console.log(`Buscando función: ${renderFunctionName} para tipo: ${problema.tipo}`);
             
@@ -90,7 +95,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let puntaje = 0;
         examenData.problemas.forEach((problema, index) => {
-            const calificarFunctionName = `calificarMision${capitalizeTipo(problema.tipo)}`;
+            let calificarFunctionName = `calificarMision${capitalizeTipo(problema.tipo)}`;
+            // Excepción para el simulador
+            if (problema.tipo === 'opcion-multiple') {
+                calificarFunctionName = 'calificarMisionOpcionMultipleSimulador';
+            }
             let resultado = 0;
 
             if (typeof window[calificarFunctionName] === 'function') {
