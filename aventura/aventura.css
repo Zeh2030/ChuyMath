@@ -42,21 +42,51 @@ body {
     margin: 0 0 20px 0;
 }
 
+.navigation-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
 .back-button {
-    display: inline-block; 
-    padding: 10px 20px; 
-    background-color: #bdc3c7;
-    color: var(--c-text); 
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
     text-decoration: none; 
-    border-radius: 50px;
-    font-weight: 700; 
-    transition: all 0.2s;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
 }
 
 .back-button:hover { 
-    background-color: var(--c-text); 
-    color: white; 
-    transform: scale(1.05); 
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+    background: linear-gradient(135deg, #2980b9, #1f618d);
+}
+
+.dashboard-btn {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+}
+
+.dashboard-btn:hover {
+    background: linear-gradient(135deg, #c0392b, #a93226);
+    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+}
+
+.boveda-btn {
+    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+    box-shadow: 0 4px 15px rgba(155, 89, 182, 0.3);
+}
+
+.boveda-btn:hover {
+    background: linear-gradient(135deg, #8e44ad, #7d3c98);
+    box-shadow: 0 6px 20px rgba(155, 89, 182, 0.4);
 }
 
 #misiones-container { 
