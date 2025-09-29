@@ -12,12 +12,12 @@
           "filas": 8,
           "punto_inicio": {"fila": 3, "columna": 6, "icono": "🏠"},
           "puntos_interes": [
-            {"nombre": "Biblioteca", "fila": 5, "columna": 4, "icono": "📚"},
+            {"nombre": "Biblioteca", "fila": 6, "columna": 4, "icono": "📚"},
             {"nombre": "Castillo", "fila": 6, "columna": 7, "icono": "🏰"},
             {"nombre": "Abuelos", "fila": 4, "columna": 9, "icono": "👵👴"}
           ],
           "movimientos": ["sur", "sur", "sur", "oeste", "oeste"],
-          "respuesta_correcta": "Castillo"
+          "respuesta_correcta": "Biblioteca"
         }
       },
       {
