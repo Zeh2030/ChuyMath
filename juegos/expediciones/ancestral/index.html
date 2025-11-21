@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expedición Ancestral - El Mundo de Chuy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;700&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../expedicion-base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header con navegación -->
+        <header class="game-header">
+            <h1>🏺 Expedición Ancestral</h1>
+            <p style="text-align: center; font-style: italic; color: #7f8c8d; margin: -10px 0 20px 0;">
+                Egipto, Saturno y Secretos de los Primates
+            </p>
+            <a href="../../../dashboard/dashboard.html" class="back-button">← Volver al Centro de Mando</a>
+        </header>
+        
+        <!-- Misión de Operaciones -->
+        <section class="section" id="math-section">
+            <h2 class="math-title">🔢 Entrenamiento del Explorador</h2>
+            <p style="text-align: center; margin-bottom: 20px; color: #7f8c8d;">
+                ¡Prepárate para la expedición resolviendo estos cálculos arqueológicos!
+            </p>
+            <div class="grid-container" id="math-grid">
+                <!-- Los ejercicios se cargarán dinámicamente -->
+            </div>
+            <div class="action-area">
+                <button class="grade-button math-button" id="grade-math">Calificar Misión</button>
+                <div class="results-area" id="math-results"></div>
+            </div>
+        </section>
+
+        <!-- Misión Kakooma ELIMINADA -->
+
+        <!-- Misión Geográfica -->
+        <section class="section" id="geo-section">
+            <h2 class="geo-title">🏜️ Misión en el Desierto</h2>
+            <div class="postcard" id="geo-mission" data-answer="egipto">
+                <div class="postcard-images">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Kheops-Pyramid.jpg/1280px-Kheops-Pyramid.jpg" 
+                         alt="Pirámides de Giza en Egipto" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/d4af37/fff?text=Pirámides+de+Egipto';">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Flag_of_Egypt.svg/1280px-Flag_of_Egypt.svg.png" 
+                         alt="Bandera de Egipto" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/dc143c/fff?text=Bandera+de+Egipto';">
+                </div>
+                <div class="postcard-content">
+                    <p>"¡Saludos desde un país famoso por sus pirámides milenarias y el majestuoso río Nilo! Aquí los faraones gobernaron hace miles de años. ¿Sabes dónde estoy?"</p>
+                    <ul class="multiple-choice-options geo-options" id="geo-options">
+                        <!-- Las opciones se cargarán dinámicamente -->
+                    </ul>
+                </div>
+            </div>
+            <div class="action-area">
+                <button class="grade-button geo-button" id="grade-geo">Calificar Misión</button>
+                <div class="results-area" id="geo-results"></div>
+            </div>
+        </section>
+
+        <!-- Misión Cósmica -->
+        <section class="section" id="planet-section">
+            <h2 class="planet-title">🪐 Mensaje Anillado</h2>
+            <div class="cosmic-message" id="planet-mission" data-answer="anillos">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Saturn_during_Equinox.jpg/1280px-Saturn_during_Equinox.jpg" 
+                     alt="Planeta Saturno" 
+                     class="planet-image" 
+                     onerror="this.onerror=null;this.src='https://placehold.co/600x400/ffd700/000?text=Saturno+el+Señor+de+los+Anillos';">
+                <p>¡Hola! Soy Saturno, el sexto planeta del sistema solar. Soy famoso en todo el cosmos por mis impresionantes...</p>
+                <ul class="multiple-choice-options planet-options" id="planet-options">
+                    <!-- Las opciones se cargarán dinámicamente -->
+                </ul>
+            </div>
+            <div class="action-area">
+                <button class="grade-button planet-button" id="grade-planet">Calificar Misión</button>
+                <div class="results-area" id="planet-results"></div>
+            </div>
+        </section>
+
+        <!-- Misión de la Selva -->
+        <section class="section" id="animal-section">
+            <h2 class="animal-title">🐒 Detective de la Selva</h2>
+            <div class="marine-mystery" id="animal-mission" data-answer="mono">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Bonnet_macaque_%28Macaca_radiata%29_Photograph_By_Shantanu_Kuveskar.jpg/1280px-Bonnet_macaque_%28Macaca_radiata%29_Photograph_By_Shantanu_Kuveskar.jpg" 
+                     alt="Mono inteligente" 
+                     class="animal-image" 
+                     onerror="this.onerror=null;this.src='https://placehold.co/400x300/8B4513/fff?text=Mono+Inteligente';">
+                <div class="clue-content">
+                    <ul class="clues" id="animal-clues">
+                        <!-- Las pistas se cargarán dinámicamente -->
+                    </ul>
+                    <p><strong>¿Qué animal soy?</strong></p>
+                    <ul class="multiple-choice-options animal-options" id="animal-options">
+                        <!-- Las opciones se cargarán dinámicamente -->
+                    </ul>
+                </div>
+            </div>
+            <div class="action-area">
+                <button class="grade-button animal-button" id="grade-animal">Calificar Misión</button>
+                <div class="results-area" id="animal-results"></div>
+            </div>
+        </section>
+
+        <!-- Misión Numberblocks: Dibujo -->
+        <section class="section numberblocks-section" id="numberblocks-section">
+            <h2 class="numberblocks-title">🧱 Misión Numberblocks: Dibuja tu Operación</h2>
+            <div class="horizontal-op">Dibuja Numberblocks para 7 + 2 = 9</div>
+            <div class="canvas-container">
+                <canvas id="drawing-canvas"></canvas>
+            </div>
+            <div class="drawing-tools">
+                <button class="drawing-tool color-tool" id="color-red" title="Rojo"></button>
+                <button class="drawing-tool color-tool" id="color-blue" title="Azul"></button>
+                <button class="drawing-tool color-tool" id="color-yellow" title="Amarillo"></button>
+                <button class="drawing-tool color-tool" id="color-green" title="Verde"></button>
+                <button class="drawing-tool" id="clear-canvas">Limpiar</button>
+                <button class="drawing-tool" id="save-drawing">Guardar Dibujo</button>
+            </div>
+            <div class="action-area">
+                <button class="grade-button" id="grade-numberblocks" style="background: linear-gradient(45deg, #ff9800, #f57c00);">Calificar Dibujo</button>
+                <div class="results-area" id="numberblocks-results"></div>
+            </div>
+        </section>
+
+        <!-- Navegación final -->
+        <div id="final-navigation" class="final-navigation hidden">
+            <h3>🎉 ¡Expedición Completada!</h3>
+            <p>¡Has terminado la Expedición Ancestral! ¿Qué quieres hacer ahora?</p>
+            <div class="final-buttons">
+                <a href="../../../boveda/boveda.html" class="final-button boveda">📚 Ir a la Bóveda</a>
+                <a href="../../../dashboard/dashboard.html" class="final-button dashboard">🏠 Centro de Mando</a>
+                <button id="restart-adventure" class="final-button restart">🔄 Jugar de Nuevo</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../expedicion-base.js"></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

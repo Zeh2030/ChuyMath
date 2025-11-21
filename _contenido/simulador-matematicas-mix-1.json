@@ -1,0 +1,209 @@
+{
+  "id": "simulador-matematicas-mix-1",
+  "titulo": "Simulacro de Matemáticas y Lógica #1",
+  "descripcion": "Un examen completo de práctica con 20 preguntas variadas para poner a prueba tus habilidades.",
+  "problemas": [
+    {
+      "id": "prob-mix-1",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Qué número sigue en esta serie: 2, 4, 6, 8, ...?",
+      "opciones": ["9", "10", "12", "11"],
+      "respuesta": "10",
+      "explicacion_correcta": "¡Muy bien! La regla es sumar 2 al número anterior (saltar de 2 en 2).",
+      "explicacion_incorrecta": "Fíjate bien, los números van creciendo de 2 en 2. Después del 8, si le sumas 2, ¿cuánto te da?"
+    },
+    {
+      "id": "prob-mix-2",
+      "tipo": "opcion-multiple",
+      "pregunta": "Si tengo 3 manzanas 🍎 y compro 4 más, ¿cuántas tengo en total?",
+      "opciones": ["6", "7", "8", "5"],
+      "respuesta": "7",
+      "explicacion_correcta": "¡Correcto! 3 + 4 = 7 manzanas deliciosas.",
+      "explicacion_incorrecta": "Usa tus dedos para contar. Tienes 3 y agregas 4 más."
+    },
+    {
+      "id": "prob-mix-3",
+      "tipo": "navegacion-mapa",
+      "pregunta": "Ayuda al robot 🤖 a llegar a su estación de carga (⚡). Sigue las instrucciones.",
+      "configuracion_mapa": {
+        "columnas": 6,
+        "filas": 6,
+        "punto_inicio": {"fila": 5, "columna": 0, "icono": "🤖"},
+        "puntos_interes": [
+          {"nombre": "Parque", "fila": 2, "columna": 2, "icono": "🌳"},
+          {"nombre": "Estación", "fila": 0, "columna": 5, "icono": "⚡"},
+          {"nombre": "Escuela", "fila": 4, "columna": 4, "icono": "🏫"}
+        ],
+        "movimientos": ["norte", "norte", "norte", "norte", "norte", "este", "este", "este", "este", "este"],
+        "respuesta_correcta": "Estación"
+      }
+    },
+    {
+      "id": "prob-mix-4",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Cuál de estas figuras es un TRIÁNGULO?",
+      "opciones_son_imagenes": true,
+      "opciones": [
+        "<svg width='50' height='50' viewBox='0 0 50 50'><rect x='5' y='5' width='40' height='40' fill='#e74c3c'/></svg>",
+        "<svg width='50' height='50' viewBox='0 0 50 50'><circle cx='25' cy='25' r='20' fill='#3498db'/></svg>",
+        "<svg width='50' height='50' viewBox='0 0 50 50'><polygon points='25,5 45,45 5,45' fill='#2ecc71'/></svg>",
+        "<svg width='50' height='50' viewBox='0 0 50 50'><rect x='5' y='15' width='40' height='20' fill='#f1c40f'/></svg>"
+      ],
+      "respuesta": "2",
+      "explicacion_correcta": "¡Exacto! El triángulo es la figura verde de 3 lados.",
+      "explicacion_incorrecta": "Recuerda que un triángulo tiene 3 lados y 3 puntas."
+    },
+    {
+      "id": "prob-mix-5",
+      "tipo": "opcion-multiple",
+      "pregunta": "Calcula: 15 - 5",
+      "opciones": ["5", "10", "15", "20"],
+      "respuesta": "10",
+      "explicacion_correcta": "¡Bien hecho! Si a 15 le quitas 5, te quedan 10.",
+      "explicacion_incorrecta": "Imagina que tienes 15 monedas y gastas 5. ¿Cuántas te quedan?"
+    },
+    {
+      "id": "prob-mix-6",
+      "tipo": "opcion-multiple",
+      "pregunta": "Ayer fue Lunes. ¿Qué día será mañana?",
+      "opciones": ["Martes", "Miércoles", "Jueves", "Viernes"],
+      "respuesta": "Miércoles",
+      "explicacion_correcta": "¡Excelente lógica! Si ayer fue Lunes, hoy es Martes. Por lo tanto, mañana será Miércoles.",
+      "explicacion_incorrecta": "Piensa paso a paso: Ayer = Lunes. Entonces Hoy = Martes. ¿Qué sigue después del Martes?"
+    },
+    {
+      "id": "prob-mix-7",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Cuál es el resultado de sumar los lados de un cuadrado y los lados de un triángulo?",
+      "opciones": ["6", "7", "8", "5"],
+      "respuesta": "7",
+      "explicacion_correcta": "¡Muy bien! Cuadrado (4 lados) + Triángulo (3 lados) = 7.",
+      "explicacion_incorrecta": "Recuerda: Un cuadrado tiene 4 lados. Un triángulo tiene 3. ¿Cuánto es 4 + 3?"
+    },
+    {
+      "id": "prob-mix-8",
+      "tipo": "opcion-multiple",
+      "pregunta": "María tiene el doble de edad que Juan. Si Juan tiene 4 años, ¿cuántos años tiene María?",
+      "opciones": ["6", "8", "10", "4"],
+      "respuesta": "8",
+      "explicacion_correcta": "¡Perfecto! El doble de 4 es lo mismo que 4 + 4, que es 8.",
+      "explicacion_incorrecta": "'Doble' significa multiplicar por 2 o sumar el número consigo mismo. 4 + 4."
+    },
+    {
+      "id": "prob-mix-9",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Qué figura sigue? 🔴 🔵 🔴 🔵 🔴 ...",
+      "opciones": ["🔴", "🔵", "🟢", "🟡"],
+      "respuesta": "🔵",
+      "explicacion_correcta": "¡Así es! El patrón es rojo, azul, rojo, azul... después del rojo sigue el azul.",
+      "explicacion_incorrecta": "Observa el patrón: cambia de color cada vez. Si el último fue rojo, ¿cuál toca ahora?"
+    },
+    {
+      "id": "prob-mix-10",
+      "tipo": "opcion-multiple",
+      "pregunta": "Tengo 20 pesos. Me compro un helado de 12 pesos. ¿Cuánto dinero me sobra?",
+      "opciones": ["10", "6", "8", "12"],
+      "respuesta": "8",
+      "explicacion_correcta": "¡Exacto! 20 - 12 = 8 pesos.",
+      "explicacion_incorrecta": "Es una resta. A 20 quítale 10 (te quedan 10) y luego quítale 2 más."
+    },
+    {
+      "id": "prob-mix-11",
+      "tipo": "navegacion-mapa",
+      "pregunta": "El pirata 🏴‍☠️ busca su tesoro. Sigue el mapa para encontrarlo.",
+      "configuracion_mapa": {
+        "columnas": 5,
+        "filas": 5,
+        "punto_inicio": {"fila": 0, "columna": 0, "icono": "🏴‍☠️"},
+        "puntos_interes": [
+          {"nombre": "Isla Calavera", "fila": 4, "columna": 0, "icono": "💀"},
+          {"nombre": "Barco Hundido", "fila": 0, "columna": 4, "icono": "⛵"},
+          {"nombre": "Cofre del Tesoro", "fila": 2, "columna": 2, "icono": "💎"}
+        ],
+        "movimientos": ["sur", "sur", "este", "este"],
+        "respuesta_correcta": "Cofre del Tesoro"
+      }
+    },
+    {
+      "id": "prob-mix-12",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Cuántas decenas hay en el número 53?",
+      "opciones": ["3", "5", "50", "8"],
+      "respuesta": "5",
+      "explicacion_correcta": "¡Correcto! En el 53, el 5 está en el lugar de las decenas.",
+      "explicacion_incorrecta": "Las decenas son el primer número de la izquierda en un número de dos cifras."
+    },
+    {
+      "id": "prob-mix-13",
+      "tipo": "opcion-multiple",
+      "pregunta": "Si cortas una manzana por la mitad, ¿cuántas partes tienes?",
+      "opciones": ["1", "2", "3", "4"],
+      "respuesta": "2",
+      "explicacion_correcta": "¡Lógico! Cortar por la mitad divide una cosa en 2 partes iguales.",
+      "explicacion_incorrecta": "Imagina la manzana. Si le pasas el cuchillo una vez por el medio, ¿cuántos pedazos te quedan?"
+    },
+    {
+      "id": "prob-mix-14",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Cuál es el número mayor?",
+      "opciones": ["89", "98", "79", "88"],
+      "respuesta": "98",
+      "explicacion_correcta": "¡Muy bien! 98 es el más grande porque tiene 9 decenas.",
+      "explicacion_incorrecta": "Fíjate primero en las decenas (el primer número). ¿Cuál es mayor: 8, 9 o 7?"
+    },
+    {
+      "id": "prob-mix-15",
+      "tipo": "opcion-multiple",
+      "pregunta": "10 + 10 + 5 =",
+      "opciones": ["20", "30", "25", "15"],
+      "respuesta": "25",
+      "explicacion_correcta": "¡Correcto! 10 + 10 son 20, y más 5 son 25.",
+      "explicacion_incorrecta": "Suma primero los dieces: 10 + 10. Luego súmale el 5 al resultado."
+    },
+    {
+      "id": "prob-mix-16",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Qué animal NO pertenece al grupo?",
+      "opciones": ["Perro 🐶", "Gato 🐱", "Pez 🐟", "Mesa 🪑"],
+      "respuesta": "Mesa 🪑",
+      "explicacion_correcta": "¡Exacto! La mesa es un objeto (mueble), todos los demás son animales vivos.",
+      "explicacion_incorrecta": "Busca cuál de las opciones NO es un ser vivo."
+    },
+    {
+      "id": "prob-mix-17",
+      "tipo": "opcion-multiple",
+      "pregunta": "Si hoy es el día 5 del mes, ¿qué día será dentro de una semana (7 días)?",
+      "opciones": ["10", "11", "12", "13"],
+      "respuesta": "12",
+      "explicacion_correcta": "¡Bien calculado! 5 + 7 = 12.",
+      "explicacion_incorrecta": "Una semana tiene 7 días. Suma 7 al día de hoy (5)."
+    },
+    {
+      "id": "prob-mix-18",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Cuántas patas suman 2 perros y 1 gallina?",
+      "opciones": ["6", "8", "10", "12"],
+      "respuesta": "10",
+      "explicacion_correcta": "¡Excelente! 2 perros (4+4=8 patas) + 1 gallina (2 patas) = 10 patas.",
+      "explicacion_incorrecta": "Cada perro tiene 4 patas (4 x 2 = 8). La gallina tiene 2. Súmalas."
+    },
+    {
+      "id": "prob-mix-19",
+      "tipo": "opcion-multiple",
+      "pregunta": "Completa la frase: 'El hielo es ______ y el fuego es ______'",
+      "opciones": ["caliente / frío", "frío / caliente", "duro / suave", "blanco / rojo"],
+      "respuesta": "frío / caliente",
+      "explicacion_correcta": "¡Correcto! El hielo es frío y el fuego quema (es caliente).",
+      "explicacion_incorrecta": "Piensa en cómo se siente tocar el hielo y cómo se siente acercarse al fuego."
+    },
+    {
+      "id": "prob-mix-20",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Cuánto es la mitad de 10?",
+      "opciones": ["2", "4", "5", "6"],
+      "respuesta": "5",
+      "explicacion_correcta": "¡Perfecto! Si divides 10 en dos partes iguales, cada una es 5. (5 + 5 = 10).",
+      "explicacion_incorrecta": "Imagina que tienes 10 dulces y los repartes equitativamente entre 2 amigos. ¿Cuántos le tocan a cada uno?"
+    }
+  ]
+}

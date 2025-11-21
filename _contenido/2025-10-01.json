@@ -1,0 +1,61 @@
+{
+  "id": "2025-10-01",
+  "titulo": "Aventura de Lógica y Espacio",
+  "misiones": [
+    {
+      "id": "mision-cubo-1",
+      "tipo": "desarrollo-cubos",
+      "titulo": "El Taller de Cubos 3D",
+      "instruccion": "Observa con atención el plano del cubo. ¿Cuál de los tres cubos de la derecha se puede armar con él? ¡Solo uno es el correcto!",
+      "ejercicios": [
+        {
+          "id": "ejercicio-cubo-1",
+          "plano_svg": "<svg width='160' height='120' viewBox='-2 -2 164 124'><defs><style>.cara{stroke:#34495e;stroke-width:2;fill:white;} .simbolo{font-size: 24px; font-family: sans-serif; text-anchor: middle; dominant-baseline: central;}</style></defs><rect class='cara' x='40' y='0' width='40' height='40'/><text x='60' y='20' class='simbolo'>●</text><rect class='cara' x='0' y='40' width='40' height='40'/><rect class='cara' x='40' y='40' width='40' height='40'/><text x='60' y='60' class='simbolo'>■</text><rect class='cara' x='80' y='40' width='40' height='40'/><rect class='cara' x='120' y='40' width='40' height='40'/><rect class='cara' x='40' y='80' width='40' height='40'/><text x='60' y='100' class='simbolo'>▲</text></svg>",
+          "opciones_svg": [
+            "<svg width='80' height='80' viewBox='0 0 100 100'><path d='M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z' fill='#f0f0f0' stroke='#7f8c8d' stroke-width='2'/><path d='M50 10 L50 90' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M10 30 L50 50 L90 30' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M50 50 L10 70' fill='none' stroke='#7f8c8d' stroke-width='1'/><text x='50' y='32' style='font-size:18px;'>●</text><text x='30' y='60' style='font-size:18px;'></text><text x='70' y='60' style='font-size:18px;'>■</text></svg>",
+            "<svg width='80' height='80' viewBox='0 0 100 100'><path d='M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z' fill='#f0f0f0' stroke='#7f8c8d' stroke-width='2'/><path d='M50 10 L50 90' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M10 30 L50 50 L90 30' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M50 50 L10 70' fill='none' stroke='#7f8c8d' stroke-width='1'/><text x='50' y='32' style='font-size:18px;'>▲</text><text x='30' y='60' style='font-size:18px;'></text><text x='70' y='60' style='font-size:18px;'>■</text></svg>",
+            "<svg width='80' height='80' viewBox='0 0 100 100'><path d='M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z' fill='#f0f0f0' stroke='#7f8c8d' stroke-width='2'/><path d='M50 10 L50 90' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M10 30 L50 50 L90 30' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M50 50 L10 70' fill='none' stroke='#7f8c8d' stroke-width='1'/><text x='50' y='32' style='font-size:18px;'>■</text><text x='30' y='60' style='font-size:18px;'>▲</text><text x='70' y='60' style='font-size:18px;'>●</text></svg>"
+          ],
+          "respuesta": 0,
+          "explicacion_correcta": "¡Correcto! Si imaginas que doblas el plano con el cuadrado (■) al frente, el círculo (●) queda arriba. ¡Perfecta visión espacial!",
+          "explicacion_incorrecta": "¡Estuviste cerca! Un truco es imaginar que doblas el papel. Si pones el cuadrado (■) al frente, ¿qué figura quedaría arriba? ¡El círculo (●)! La opción que elegiste muestra una figura diferente en esa posición."
+        },
+        {
+          "id": "ejercicio-cubo-2",
+          "plano_svg": "<svg width='160' height='120' viewBox='-2 -2 164 124'><defs><style>.cara{stroke:#34495e;stroke-width:2;fill:white;} .simbolo{font-size: 24px; font-family: sans-serif; text-anchor: middle; dominant-baseline: central;}</style></defs><rect class='cara' x='0' y='0' width='40' height='40'/><rect class='cara' x='40' y='0' width='40' height='40'/><text x='60' y='20' class='simbolo'>★</text><rect class='cara' x='40' y='40' width='40' height='40'/><rect class='cara' x='80' y='40' width='40' height='40'/><text x='100' y='60' class='simbolo'>+</text><rect class='cara' x='80' y='80' width='40' height='40'/><rect class='cara' x='120' y='80' width='40' height='40'/></svg>",
+          "opciones_svg": [
+            "<svg width='80' height='80' viewBox='0 0 100 100'><path d='M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z' fill='#f0f0f0' stroke='#7f8c8d' stroke-width='2'/><path d='M50 10 L50 90' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M10 30 L50 50 L90 30' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M50 50 L10 70' fill='none' stroke='#7f8c8d' stroke-width='1'/><text x='50' y='32' style='font-size:18px;'>★</text><text x='70' y='60' style='font-size:18px;'>+</text></svg>",
+            "<svg width='80' height='80' viewBox='0 0 100 100'><path d='M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z' fill='#f0f0f0' stroke='#7f8c8d' stroke-width='2'/><path d='M50 10 L50 90' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M10 30 L50 50 L90 30' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M50 50 L10 70' fill='none' stroke='#7f8c8d' stroke-width='1'/><text x='30' y='60' style='font-size:18px;'>★</text><text x='70' y='60' style='font-size:18px;'>+</text></svg>",
+            "<svg width='80' height='80' viewBox='0 0 100 100'><path d='M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z' fill='#f0f0f0' stroke='#7f8c8d' stroke-width='2'/><path d='M50 10 L50 90' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M10 30 L50 50 L90 30' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M50 50 L10 70' fill='none' stroke='#7f8c8d' stroke-width='1'/><text x='50' y='32' style='font-size:18px;'>+</text><text x='30' y='60' style='font-size:18px;'>★</text></svg>"
+          ],
+          "respuesta": 0,
+          "explicacion_correcta": "¡Muy bien! Si imaginas que la cara con la estrella (★) es el 'techo' del cubo, la cara con el signo más (+) queda en la 'pared' de la derecha. ¡Coincide perfectamente!",
+          "explicacion_incorrecta": "¡Casi lo tienes! Un buen truco: imagina que la cara con la estrella (★) es el 'techo' del cubo. Si haces eso, ¿en qué 'pared' quedaría el signo más (+)? ¡Quedaría en la pared de la derecha! Busca el cubo que se vea así."
+        },
+        {
+          "id": "ejercicio-cubo-3",
+          "plano_svg": "<svg width='160' height='40' viewBox='-2 -2 164 44'><defs><style>.cara{stroke:#34495e;stroke-width:2;fill:white;} .simbolo{font-size: 24px; font-family: sans-serif; text-anchor: middle; dominant-baseline: central;}</style></defs><rect class='cara' x='0' y='0' width='40' height='40'/><text x='20' y='20' class='simbolo'>A</text><rect class='cara' x='40' y='0' width='40' height='40'/><text x='60' y='20' class='simbolo'>B</text><rect class='cara' x='80' y='0' width='40' height='40'/><text x='100' y='20' class='simbolo'>C</text><rect class='cara' x='120' y='0' width='40' height='40'/><text x='140' y='20' class='simbolo'>D</text></svg>",
+          "opciones_svg": [
+            "<svg width='80' height='80' viewBox='0 0 100 100'><path d='M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z' fill='#f0f0f0' stroke='#7f8c8d' stroke-width='2'/><path d='M50 10 L50 90' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M10 30 L50 50 L90 30' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M50 50 L10 70' fill='none' stroke='#7f8c8d' stroke-width='1'/><text x='50' y='32' style='font-size:18px;'>A</text><text x='70' y='60' style='font-size:18px;'>C</text></svg>",
+            "<svg width='80' height='80' viewBox='0 0 100 100'><path d='M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z' fill='#f0f0f0' stroke='#7f8c8d' stroke-width='2'/><path d='M50 10 L50 90' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M10 30 L50 50 L90 30' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M50 50 L10 70' fill='none' stroke='#7f8c8d' stroke-width='1'/><text x='50' y='32' style='font-size:18px;'>A</text><text x='70' y='60' style='font-size:18px;'>B</text></svg>",
+            "<svg width='80' height='80' viewBox='0 0 100 100'><path d='M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z' fill='#f0f0f0' stroke='#7f8c8d' stroke-width='2'/><path d='M50 10 L50 90' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M10 30 L50 50 L90 30' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M50 50 L10 70' fill='none' stroke='#7f8c8d' stroke-width='1'/><text x='50' y='32' style='font-size:18px;'>B</text><text x='70' y='60' style='font-size:18px;'>D</text></svg>"
+          ],
+          "respuesta": 1,
+          "explicacion_correcta": "¡Exacto! Al doblar la tira, las caras A y B quedan juntas.",
+          "explicacion_incorrecta": "En una tira de 4, las caras A y C son opuestas, al igual que B y D. Nunca se pueden ver al mismo tiempo."
+        }
+      ]
+    },
+    {
+      "id": "mision-balanza-1",
+      "tipo": "balanza-logica",
+      "titulo": "La Balanza Mágica",
+      "instruccion": "Observa las balanzas equilibradas. Usa la lógica para descubrir el valor del triángulo. ¿Cuántos círculos (●) se necesitan para equilibrar un triángulo (▲)?",
+      "pregunta_svg": "<svg width='300' height='150' viewBox='0 0 300 150'><g transform='translate(0, 10)'><path d='M10 110 H 140' stroke='black' stroke-width='2'/><path d='M75 110 V 50' stroke='black' stroke-width='2'/><path d='M25 50 H 125' stroke='black' stroke-width='4'/><text x='40' y='40' font-size='20'>● ●</text><text x='95' y='40' font-size='20'>■</text><text x='65' y='130' font-weight='bold'>Balanza 1</text></g><g transform='translate(150, 10)'><path d='M10 110 H 140' stroke='black' stroke-width='2'/><path d='M75 110 V 50' stroke='black' stroke-width='2'/><path d='M25 50 H 125' stroke='black' stroke-width='4'/><text x='35' y='40' font-size='20'>● ■</text><text x='95' y='40' font-size='20'>▲</text><text x='55' y='130' font-weight='bold'>Balanza 2</text></g></svg>",
+      "opciones": ["1", "2", "3", "4"],
+      "respuesta": "3",
+      "explicacion_correcta": "¡Lógica de campeón! Si en la Balanza 1 un cuadrado (■) pesa lo mismo que dos círculos (●●), en la Balanza 2 podemos reemplazar el cuadrado por dos círculos. Entonces, un círculo más dos círculos es igual a un triángulo. ¡1+2=3!",
+      "explicacion_incorrecta": "¡Casi! Mira la Balanza 1: un cuadrado (■) es igual a dos círculos (●●). Ahora, en la Balanza 2, cambia el cuadrado por dos círculos y cuenta cuántos círculos hay en total de ese lado."
+    }
+  ]
+}

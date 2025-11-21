@@ -1,0 +1,98 @@
+/* --- Estilos para Opción Múltiple --- */
+.mision.opcion-multiple { border-color: var(--c-logic); }
+
+.pregunta-imagen-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+.pregunta-imagen-container img {
+    max-width: 100%;
+    max-height: 250px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Opciones de texto (lista de radio) */
+.opciones-lista {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.opciones-lista li label {
+    display: block;
+    background-color: #f8f9fa;
+    padding: 15px 20px;
+    border-radius: 12px;
+    border: 2px solid #e9ecef;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 600;
+}
+.opciones-lista li input[type="radio"] {
+    display: none;
+}
+.opciones-lista li label:hover {
+    border-color: var(--c-primary);
+    background-color: #e9ecef;
+}
+.opciones-lista li label.correcto {
+    background-color: #e8f8f5;
+    border-color: var(--c-success);
+    color: var(--c-success);
+}
+.opciones-lista li label.incorrecto {
+    background-color: #fdf2f2;
+    border-color: var(--c-danger);
+    color: var(--c-danger);
+}
+
+/* --- NUEVO: Grid para opciones de imagen --- */
+.opciones-imagenes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    justify-content: center;
+}
+
+.opcion-imagen-container {
+    border: 3px solid transparent;
+    border-radius: 15px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.opcion-imagen-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    border-color: #e0e0e0;
+}
+
+.opcion-imagen-container.seleccionada {
+    border-color: var(--c-primary);
+    box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
+}
+
+.opcion-imagen-container img,
+.opcion-imagen-container svg,
+.pregunta-imagen-container svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+.opcion-imagen-container.correcto {
+    border-color: var(--c-success);
+    background-color: #e8f8f5;
+}
+
+.opcion-imagen-container.incorrecto {
+    border-color: var(--c-danger);
+    background-color: #fdf2f2;
+}

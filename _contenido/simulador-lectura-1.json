@@ -1,0 +1,197 @@
+{
+  "id": "simulador-lectura-1",
+  "titulo": "Aventura de Lectura #1",
+  "descripcion": "Lee con atención y descubre los secretos de las historias. ¡Conviértete en un experto lector!",
+  "problemas": [
+    {
+      "id": "lec-1",
+      "tipo": "opcion-multiple",
+      "pregunta": "Lee la frase: 'El gato negro duerme sobre la silla roja.'\n\n¿De qué color es la silla?",
+      "opciones": ["Negra", "Roja", "Azul", "Verde"],
+      "respuesta": "Roja",
+      "explicacion_correcta": "¡Muy bien! El texto dice claramente 'silla roja'.",
+      "explicacion_incorrecta": "Vuelve a leer: '...sobre la silla ROJA'."
+    },
+    {
+      "id": "lec-2",
+      "tipo": "opcion-multiple",
+      "pregunta": "Lee la historia:\n'Ana fue al parque. Vio un perro grande y juguetón. Ana le lanzó una pelota.'\n\n¿Qué vio Ana en el parque?",
+      "opciones": ["Un gato", "Un perro", "Un pájaro", "Un conejo"],
+      "respuesta": "Un perro",
+      "explicacion_correcta": "¡Correcto! Ana vio un perro grande y juguetón.",
+      "explicacion_incorrecta": "El texto dice: 'Vio un perro...'. Léelo otra vez."
+    },
+    {
+      "id": "lec-3",
+      "tipo": "opcion-multiple",
+      "pregunta": "Completa la oración: 'Me pongo el abrigo porque hace ______.'",
+      "opciones": ["calor", "frío", "sol", "sed"],
+      "respuesta": "frío",
+      "explicacion_correcta": "¡Lógico! Usamos abrigo cuando hace frío para calentarnos.",
+      "explicacion_incorrecta": "¿Cuándo necesitas usar un abrigo? ¿En la playa con sol o en la nieve?"
+    },
+    {
+      "id": "lec-4",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Cuál es el antónimo (lo contrario) de 'RÁPIDO'?",
+      "opciones": ["Veloz", "Lento", "Fuerte", "Alto"],
+      "respuesta": "Lento",
+      "explicacion_correcta": "¡Exacto! Lo contrario de ir rápido es ir lento, como una tortuga.",
+      "explicacion_incorrecta": "Piensa en una carrera. Uno corre rápido y el otro va muy..."
+    },
+    {
+      "id": "lec-5",
+      "tipo": "opcion-multiple",
+      "pregunta": "Lee y ordena:\n1. Me lavo los dientes.\n2. Me voy a dormir.\n3. Me pongo la pijama.\n\n¿Qué haces PRIMERO?",
+      "opciones": ["Me lavo los dientes", "Me voy a dormir", "Me pongo la pijama", "Ceno"],
+      "respuesta": "Me pongo la pijama",
+      "explicacion_correcta": "¡Bien pensado! Generalmente, primero te pones la pijama, luego te lavas los dientes y al final te duermes.",
+      "explicacion_incorrecta": "Antes de dormirte o lavarte los dientes, ¿qué ropa te pones?"
+    },
+    {
+      "id": "lec-6",
+      "tipo": "opcion-multiple",
+      "pregunta": "Lee la frase: 'El sol brilla en el cielo azul.'\n\n¿Quién brilla?",
+      "opciones": ["El cielo", "El azul", "El sol", "La nube"],
+      "respuesta": "El sol",
+      "explicacion_correcta": "¡Correcto! El sujeto que realiza la acción de brillar es el sol.",
+      "explicacion_incorrecta": "Pregúntale al texto: ¿Qué cosa es la que brilla?"
+    },
+    {
+      "id": "lec-7",
+      "tipo": "opcion-multiple",
+      "pregunta": "Sinónimo de 'FELIZ':",
+      "opciones": ["Triste", "Enojado", "Alegre", "Cansado"],
+      "respuesta": "Alegre",
+      "explicacion_correcta": "¡Sí! Feliz y alegre significan lo mismo.",
+      "explicacion_incorrecta": "Busca una palabra que signifique estar contento."
+    },
+    {
+      "id": "lec-8",
+      "tipo": "opcion-multiple",
+      "pregunta": "Lee la historia:\n'El pollito Pío rompió su cascarón. Miró a su mamá gallina y dijo: ¡Pío, pío!'\n\n¿Qué hizo el pollito al final?",
+      "opciones": ["Rompió el cascarón", "Durmió", "Dijo ¡Pío, pío!", "Comió maíz"],
+      "respuesta": "Dijo ¡Pío, pío!",
+      "explicacion_correcta": "¡Muy bien! Lo último que hizo fue decir '¡Pío, pío!'.",
+      "explicacion_incorrecta": "El texto cuenta varias cosas. ¿Cuál pasó al final de la historia?"
+    },
+    {
+      "id": "lec-9",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Cuál palabra está mal escrita?",
+      "opciones": ["Casa", "Perro", "Gato", "Arvol"],
+      "respuesta": "Arvol",
+      "explicacion_correcta": "¡Tienes buen ojo! Se escribe 'Árbol' con 'b' y acento.",
+      "explicacion_incorrecta": "Revisa bien. Una de estas palabras tiene una letra equivocada."
+    },
+    {
+      "id": "lec-10",
+      "tipo": "opcion-multiple",
+      "pregunta": "Lee la adivinanza:\n'Tengo hojas pero no soy un árbol. Tengo lomo pero no soy un animal. ¿Qué soy?'",
+      "opciones": ["Una flor", "Un libro", "Una silla", "Una mesa"],
+      "respuesta": "Un libro",
+      "explicacion_correcta": "¡Excelente! Los libros tienen hojas de papel y una parte llamada lomo.",
+      "explicacion_incorrecta": "Piensa en un objeto que tenga hojas de papel."
+    },
+    {
+      "id": "lec-11",
+      "tipo": "opcion-multiple",
+      "pregunta": "Elige la palabra que completa la rima:\n'El ratón glotón, se comió un ______.'",
+      "opciones": ["queso", "botón", "pan", "zapato"],
+      "respuesta": "botón",
+      "explicacion_correcta": "¡Rima perfecta! Glotón rima con botón.",
+      "explicacion_incorrecta": "Busca una palabra que termine igual que 'glotón' (en -ón)."
+    },
+    {
+      "id": "lec-12",
+      "tipo": "opcion-multiple",
+      "pregunta": "Lee: 'María lloraba porque se le cayó su helado.'\n\n¿Cómo se sentía María?",
+      "opciones": ["Feliz", "Triste", "Asustada", "Enojada"],
+      "respuesta": "Triste",
+      "explicacion_correcta": "¡Bien inferido! Si alguien llora porque perdió algo rico, se siente triste.",
+      "explicacion_incorrecta": "¿Tú cómo te sentirías si se te cae tu helado? Probablemente triste."
+    },
+    {
+      "id": "lec-13",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Qué oración está correcta?",
+      "opciones": ["La perro corre.", "El perro corre.", "Los perro corre.", "El perros corren."],
+      "respuesta": "El perro corre.",
+      "explicacion_correcta": "¡Gramática perfecta! 'El' concuerda con 'perro' (masculino, singular).",
+      "explicacion_incorrecta": "Fíjate en que el artículo (el/la) coincida con el sustantivo (perro)."
+    },
+    {
+      "id": "lec-14",
+      "tipo": "opcion-multiple",
+      "pregunta": "Lee: 'Juanita usa lentes para leer mejor.'\n\n¿Para qué usa lentes Juanita?",
+      "opciones": ["Para correr", "Para dormir", "Para leer", "Para comer"],
+      "respuesta": "Para leer",
+      "explicacion_correcta": "¡Así es! El texto dice 'para leer mejor'.",
+      "explicacion_incorrecta": "Busca la razón en el texto. Dice 'para...'."
+    },
+    {
+      "id": "lec-15",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Cuál es el plural de 'lápiz'?",
+      "opciones": ["Lápizes", "Lápices", "Lápis", "Lápises"],
+      "respuesta": "Lápices",
+      "explicacion_correcta": "¡Regla de ortografía! Las palabras que terminan en 'z' cambian a 'c' en plural (lápices).",
+      "explicacion_incorrecta": "Recuerda: Z cambia a C."
+    },
+    {
+      "id": "lec-16",
+      "tipo": "opcion-multiple",
+      "pregunta": "Ordena la frase: 'come / El / hueso / perro / un'",
+      "opciones": ["El hueso come un perro", "Un hueso come el perro", "El perro come un hueso", "Perro el come hueso un"],
+      "respuesta": "El perro come un hueso",
+      "explicacion_correcta": "¡Tiene sentido! El perro es quien realiza la acción de comer.",
+      "explicacion_incorrecta": "Busca quién hace la acción (el perro) y qué hace (come)."
+    },
+    {
+      "id": "lec-17",
+      "tipo": "opcion-multiple",
+      "pregunta": "Lee: 'Cuando sale la luna, los búhos despiertan.'\n\n¿Cuándo despiertan los búhos?",
+      "opciones": ["De día", "En la noche", "Al mediodía", "En la tarde"],
+      "respuesta": "En la noche",
+      "explicacion_correcta": "¡Muy bien! La luna sale en la noche, así que es cuando despiertan.",
+      "explicacion_incorrecta": "¿A qué hora sale la luna? Esa es la clave."
+    },
+    {
+      "id": "lec-18",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Qué palabra significa lo mismo que 'chico'?",
+      "opciones": ["Grande", "Enorme", "Pequeño", "Alto"],
+      "respuesta": "Pequeño",
+      "explicacion_correcta": "¡Correcto! Chico y pequeño son sinónimos.",
+      "explicacion_incorrecta": "Busca algo que sea lo contrario de grande."
+    },
+    {
+      "id": "lec-19",
+      "tipo": "opcion-multiple",
+      "pregunta": "Lee: 'A Pedro le gusta jugar fútbol, pero hoy está lloviendo.'\n\n¿Por qué Pedro no puede jugar fútbol hoy?",
+      "opciones": ["No tiene pelota", "Está enfermo", "Está lloviendo", "No quiere"],
+      "respuesta": "Está lloviendo",
+      "explicacion_correcta": "¡Exacto! La lluvia es la razón que da el texto.",
+      "explicacion_incorrecta": "El texto menciona un problema con el clima."
+    },
+    {
+      "id": "lec-20",
+      "tipo": "navegacion-mapa",
+      "pregunta": "¡Aventura final! Ayuda al explorador a llegar a la Pirámide.",
+      "configuracion_mapa": {
+        "columnas": 5,
+        "filas": 5,
+        "punto_inicio": {"fila": 2, "columna": 2, "icono": "🤠"},
+        "puntos_interes": [
+          {"nombre": "Oasis", "fila": 0, "columna": 2, "icono": "🌴"},
+          {"nombre": "Pirámide", "fila": 4, "columna": 4, "icono": "🔺"},
+          {"nombre": "Camello", "fila": 2, "columna": 0, "icono": "🐫"}
+        ],
+        "movimientos": ["este", "este", "sur", "sur"],
+        "respuesta_correcta": "Pirámide"
+      }
+    }
+  ]
+}
+
+

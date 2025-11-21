@@ -1,0 +1,160 @@
+.tabla-doble-entrada-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.instrucciones-panel {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 5px solid #3498db;
+}
+
+.instrucciones-panel h3 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+
+.lista-pistas {
+  list-style-type: none;
+  padding: 0;
+}
+
+.lista-pistas li {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background-color: #e8f4f8;
+  border-radius: 4px;
+  font-size: 1.1rem;
+}
+
+.tabla-area {
+  overflow-x: auto;
+}
+
+.tabla-logica {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+.tabla-logica th, .tabla-logica td {
+  border: 2px solid #bdc3c7;
+  padding: 1rem;
+  text-align: center;
+}
+
+.encabezado-columna {
+  background-color: #34495e;
+  color: white;
+  min-width: 100px;
+}
+
+.encabezado-fila {
+  background-color: #34495e;
+  color: white;
+  text-align: right;
+  min-width: 120px;
+}
+
+.celda-vacia {
+  background-color: transparent;
+  border: none;
+}
+
+.celda-interactiva {
+  cursor: pointer;
+  font-size: 2rem;
+  transition: background-color 0.2s;
+  height: 80px;
+}
+
+.celda-interactiva:hover {
+  background-color: #ecf0f1;
+}
+
+.celda-interactiva.marcada-ok {
+  background-color: #d5f5e3;
+}
+
+.celda-interactiva.marcada-no {
+  background-color: #fadbd8;
+}
+
+.header-img {
+  display: block;
+  margin: 0 auto 0.5rem;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.acciones-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.btn-verificar {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.1s;
+  font-weight: bold;
+}
+
+.btn-verificar:active {
+  transform: scale(0.98);
+}
+
+.feedback-mensaje {
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  width: 100%;
+  animation: slideIn 0.3s ease-out;
+}
+
+.feedback-mensaje.correcto {
+  background-color: #d4edda;
+  border: 2px solid #c3e6cb;
+  color: #155724;
+}
+
+.feedback-mensaje.incorrecto {
+  background-color: #f8d7da;
+  border: 2px solid #f5c6cb;
+  color: #721c24;
+}
+
+.btn-reintentar {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+

@@ -1,0 +1,82 @@
+{
+  "id": "2025-11-15",
+  "titulo": "El Desafío Geométrico",
+  "descripcion": "Descubre las figuras ocultas y conviértete en un maestro de la geometría.",
+  "misiones": [
+    {
+      "id": "geo-1",
+      "titulo": "El Misterio de los Triángulos",
+      "tipo": "conteo-figuras",
+      "instruccion": "Observa la imagen con atención.",
+      "pregunta": "¿Cuántos triángulos ves en total?",
+      "respuesta": "5",
+      "imagen_url": "", 
+      "explicacion": "¡Correcto! Hay 3 en la base, 1 arriba y el grande azul que los contiene a todos."
+    },
+    {
+      "id": "geo-2",
+      "titulo": "La Torre de Cuadrados",
+      "tipo": "conteo-figuras",
+      "instruccion": "Cuenta con cuidado.",
+      "pregunta": "¿Cuántos cuadrados hay en esta torre?",
+      "respuesta": "4",
+      "imagen_url": "<svg viewBox='0 0 400 300'><rect x='150' y='200' width='100' height='100' fill='#e74c3c' stroke='black'/><rect x='150' y='100' width='100' height='100' fill='#3498db' stroke='black'/><rect x='175' y='25' width='50' height='50' fill='#f1c40f' stroke='black'/><rect x='185' y='35' width='30' height='30' fill='white' stroke='black'/></svg>",
+      "explicacion": "¡Bien contado! Amarillo, Blanco, Azul y Rojo."
+    },
+    {
+      "id": "geo-3",
+      "titulo": "El Laberinto de Rectángulos",
+      "tipo": "opcion-multiple",
+      "instruccion": "¿Cuál figura es un rectángulo?",
+      "pregunta": "Selecciona el rectángulo:",
+      "opciones_son_imagenes": true,
+      "opciones": [
+        "<svg viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='#e74c3c'/></svg>",
+        "<svg viewBox='0 0 100 100'><rect x='10' y='30' width='80' height='40' fill='#3498db'/></svg>",
+        "<svg viewBox='0 0 100 100'><polygon points='50,10 90,90 10,90' fill='#2ecc71'/></svg>"
+      ],
+      "respuesta": "1",
+      "explicacion_correcta": "¡Exacto! El rectángulo tiene 4 lados rectos, dos largos y dos cortos."
+    },
+    {
+      "id": "geo-4",
+      "titulo": "El Gusano Glotón",
+      "tipo": "conteo-figuras",
+      "instruccion": "Este gusano está hecho de puras bolitas.",
+      "pregunta": "¿Cuántos círculos forman el gusano?",
+      "respuesta": "6",
+      "imagen_url": "<svg viewBox='0 0 400 200'><circle cx='60' cy='100' r='30' fill='#e74c3c' stroke='black'/><circle cx='110' cy='110' r='30' fill='#e67e22' stroke='black'/><circle cx='160' cy='100' r='30' fill='#f1c40f' stroke='black'/><circle cx='210' cy='110' r='30' fill='#2ecc71' stroke='black'/><circle cx='260' cy='100' r='30' fill='#3498db' stroke='black'/><circle cx='310' cy='110' r='30' fill='#9b59b6' stroke='black'/><path d='M 50 90 Q 40 70 30 80 M 70 90 Q 80 70 90 80' stroke='black' fill='none' stroke-width='2'/><circle cx='50' cy='95' r='3' fill='black'/><circle cx='70' cy='95' r='3' fill='black'/><path d='M 50 110 Q 60 120 70 110' stroke='black' fill='none' stroke-width='2'/></svg>",
+      "explicacion": "¡Muy bien! 1 cabeza + 5 partes del cuerpo = 6 círculos."
+    },
+    {
+      "id": "geo-5",
+      "titulo": "Los Tres Lados",
+      "tipo": "opcion-multiple",
+      "instruccion": "Un triángulo siempre tiene 3 lados.",
+      "pregunta": "¿Cuál de estas figuras es un triángulo?",
+      "opciones_son_imagenes": true,
+      "opciones": [
+        "<svg viewBox='0 0 100 100'><rect x='20' y='20' width='60' height='60' fill='#9b59b6'/></svg>",
+        "<svg viewBox='0 0 100 100'><polygon points='50,10 90,90 10,90' fill='#e67e22'/></svg>",
+        "<svg viewBox='0 0 100 100'><polygon points='30,10 70,10 90,50 70,90 30,90 10,50' fill='#34495e'/></svg>"
+      ],
+      "respuesta": "1",
+      "explicacion_correcta": "¡Correcto! Si cuentas sus lados, verás que son 3."
+    },
+    {
+      "id": "geo-6",
+      "titulo": "Patrones de Formas",
+      "tipo": "opcion-multiple",
+      "instruccion": "Observa la serie: Cuadrado, Círculo, Cuadrado, Círculo...",
+      "pregunta": "¿Qué figura sigue?",
+      "imagen": "<svg viewBox='0 0 400 100'><rect x='20' y='20' width='60' height='60' fill='#3498db'/><circle cx='130' cy='50' r='30' fill='#e74c3c'/><rect x='200' y='20' width='60' height='60' fill='#3498db'/><circle cx='310' cy='50' r='30' fill='#e74c3c'/><text x='360' y='60' font-size='40'>?</text></svg>",
+      "opciones_son_imagenes": true,
+      "opciones": [
+        "<svg viewBox='0 0 100 100'><rect x='20' y='20' width='60' height='60' fill='#3498db'/></svg>",
+        "<svg viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='#e74c3c'/></svg>"
+      ],
+      "respuesta": "0",
+      "explicacion_correcta": "¡Lógica excelente! Después del círculo, toca otra vez el cuadrado."
+    }
+  ]
+}

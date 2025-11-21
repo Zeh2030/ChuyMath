@@ -1,0 +1,212 @@
+{
+  "id": "simulador-desafio-integral-1",
+  "titulo": "Desafío Integral de Superhéroes",
+  "descripcion": "Un examen especial para activar todos tus superpoderes mentales: lógica, matemáticas y lectura.",
+  "problemas": [
+    {
+      "id": "int-1",
+      "tipo": "opcion-multiple",
+      "pregunta": "Observa la serie: 🌞 🌙 ⭐ 🌞 🌙 ⭐ ... ¿Qué sigue?",
+      "opciones": ["🌞", "🌙", "⭐", "☁️"],
+      "respuesta": "🌞",
+      "explicacion_correcta": "¡Excelente observación! El patrón es de 3 elementos (Sol, Luna, Estrella) que se repiten. Después de la Estrella, vuelve a empezar el Sol.",
+      "explicacion_incorrecta": "Fíjate en los grupos de tres. Sol, Luna, Estrella. Luego se repite. ¿Cuál es el primero del grupo?"
+    },
+    {
+      "id": "int-2",
+      "tipo": "opcion-multiple",
+      "pregunta": "Lee y resuelve: 'Si hoy es Martes y el cumpleaños de Ana es dentro de 2 días, ¿qué día es su cumpleaños?'",
+      "opciones": ["Miércoles", "Jueves", "Viernes", "Sábado"],
+      "respuesta": "Jueves",
+      "explicacion_correcta": "¡Muy bien! Si hoy es Martes, mañana es Miércoles (1 día) y pasado mañana es Jueves (2 días).",
+      "explicacion_incorrecta": "Cuenta dos días hacia adelante partiendo del Martes. Miércoles..."
+    },
+    {
+      "id": "int-3",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Cuál de estas palabras NO pertenece al grupo de 'Frutas'?",
+      "opciones": ["Manzana 🍎", "Zanahoria 🥕", "Plátano 🍌", "Uva 🍇"],
+      "respuesta": "Zanahoria 🥕",
+      "explicacion_correcta": "¡Correcto! La zanahoria es una verdura (o vegetal), las demás son frutas.",
+      "explicacion_incorrecta": "Piensa en qué tipo de alimento es cada uno. Hay una que crece debajo de la tierra."
+    },
+    {
+      "id": "int-4",
+      "tipo": "opcion-multiple",
+      "pregunta": "Matemáticas divertidas: Tienes 4 cajas. En cada caja hay 2 coches. ¿Cuántos coches hay en total?",
+      "opciones": ["6", "8", "4", "10"],
+      "respuesta": "8",
+      "explicacion_correcta": "¡Perfecto! Puedes sumar 2 + 2 + 2 + 2, o multiplicar 4 cajas x 2 coches = 8.",
+      "explicacion_incorrecta": "Dibuja las 4 cajas en tu mente y pon 2 coches en cada una. Cuéntalos todos."
+    },
+    {
+      "id": "int-5",
+      "tipo": "navegacion-mapa",
+      "pregunta": "Misión de Rescate: El bombero 🚒 debe llegar al fuego 🔥 para apagarlo. ¡Rápido!",
+      "configuracion_mapa": {
+        "columnas": 6,
+        "filas": 6,
+        "punto_inicio": {"fila": 5, "columna": 0, "icono": "🚒"},
+        "puntos_interes": [
+          {"nombre": "Escuela", "fila": 2, "columna": 2, "icono": "🏫"},
+          {"nombre": "Fuego", "fila": 0, "columna": 5, "icono": "🔥"},
+          {"nombre": "Gato", "fila": 4, "columna": 4, "icono": "🐈"},
+          {"nombre": "Hidrante", "fila": 5, "columna": 2, "icono": "💧"}
+        ],
+        "movimientos": ["este", "este", "norte", "norte", "norte", "norte", "norte", "este", "este", "este"],
+        "respuesta_correcta": "Fuego"
+      }
+    },
+    {
+      "id": "int-6",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Qué reloj muestra las 4:00?",
+      "opciones_son_imagenes": true,
+      "opciones": [
+        "<svg width='60' height='60' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='#fff' stroke='#333' stroke-width='2'/><line x1='50' y1='50' x2='50' y2='10' stroke='#333' stroke-width='3'/><line x1='50' y1='50' x2='90' y2='50' stroke='#333' stroke-width='2'/></svg>",
+        "<svg width='60' height='60' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='#fff' stroke='#333' stroke-width='2'/><line x1='50' y1='50' x2='50' y2='10' stroke='#333' stroke-width='3'/><line x1='50' y1='50' x2='50' y2='90' stroke='#333' stroke-width='2'/></svg>",
+        "<svg width='60' height='60' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='#fff' stroke='#333' stroke-width='2'/><line x1='50' y1='50' x2='50' y2='10' stroke='#333' stroke-width='3'/><line x1='50' y1='50' x2='85' y2='70' stroke='#333' stroke-width='2'/></svg>",
+        "<svg width='60' height='60' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='#fff' stroke='#333' stroke-width='2'/><line x1='50' y1='50' x2='85' y2='70' stroke='#333' stroke-width='3'/><line x1='50' y1='50' x2='50' y2='10' stroke='#333' stroke-width='2'/></svg>"
+      ],
+      "respuesta": "3",
+      "explicacion_correcta": "¡Correcto! La aguja pequeña (hora) apunta al 4 y la grande (minutos) al 12.",
+      "explicacion_incorrecta": "Recuerda: La aguja corta dice la hora. Busca la que apunte hacia abajo a la derecha (donde está el 4)."
+    },
+    {
+      "id": "int-7",
+      "tipo": "opcion-multiple",
+      "pregunta": "Sinónimo: ¿Qué palabra significa lo mismo que 'ENORME'?",
+      "opciones": ["Pequeño", "Gigante", "Delgado", "Rápido"],
+      "respuesta": "Gigante",
+      "explicacion_correcta": "¡Así es! Enorme y Gigante son palabras para describir algo muy grande.",
+      "explicacion_incorrecta": "Busca una palabra que describa algo de gran tamaño."
+    },
+    {
+      "id": "int-8",
+      "tipo": "opcion-multiple",
+      "pregunta": "Calcula mentalmente: 100 - 1",
+      "opciones": ["90", "99", "101", "10"],
+      "respuesta": "99",
+      "explicacion_correcta": "¡Muy bien! El número que está justo antes del 100 es el 99.",
+      "explicacion_incorrecta": "Imagina que cuentas hasta 100. ¿Qué número dices justo antes?"
+    },
+    {
+      "id": "int-9",
+      "tipo": "opcion-multiple",
+      "pregunta": "Ordena la historia del árbol:\n1. El árbol tiene frutos.\n2. Planto una semilla.\n3. El árbol crece.",
+      "opciones": ["1, 2, 3", "2, 3, 1", "3, 2, 1", "2, 1, 3"],
+      "respuesta": "2, 3, 1",
+      "explicacion_correcta": "¡Lógica natural! Primero plantas la semilla (2), luego crece (3) y al final da frutos (1).",
+      "explicacion_incorrecta": "¿Qué necesitas hacer primero para tener un árbol? ¿Y qué pasa al final?"
+    },
+    {
+      "id": "int-10",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Cuántos vértices (esquinas) tiene un cuadrado?",
+      "opciones": ["3", "4", "5", "0"],
+      "respuesta": "4",
+      "explicacion_correcta": "¡Correcto! Un cuadrado tiene 4 lados y 4 esquinas (vértices).",
+      "explicacion_incorrecta": "Cuenta las puntas de una caja cuadrada."
+    },
+    {
+      "id": "int-11",
+      "tipo": "opcion-multiple",
+      "pregunta": "Lee: 'El conejo saltó la valla para comer zanahorias'.\n\n¿Por qué saltó la valla el conejo?",
+      "opciones": ["Para dormir", "Para jugar", "Para comer", "Para huir"],
+      "respuesta": "Para comer",
+      "explicacion_correcta": "¡Bien leído! El texto dice 'para comer zanahorias'.",
+      "explicacion_incorrecta": "Busca la razón en la oración. Dice 'para...'."
+    },
+    {
+      "id": "int-12",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Qué número falta? 30, 25, 20, __, 10",
+      "opciones": ["15", "18", "19", "5"],
+      "respuesta": "15",
+      "explicacion_correcta": "¡Excelente! La serie va restando 5 cada vez (cuenta regresiva de 5 en 5).",
+      "explicacion_incorrecta": "A 20 quítale 5. ¿Cuánto te queda?"
+    },
+    {
+      "id": "int-13",
+      "tipo": "opcion-multiple",
+      "pregunta": "Si mezclo Rojo y Azul, ¿qué color obtengo?",
+      "opciones": ["Verde", "Naranja", "Morado", "Rosa"],
+      "respuesta": "Morado",
+      "explicacion_correcta": "¡Correcto! Rojo + Azul hacen Morado (o Violeta).",
+      "explicacion_incorrecta": "Imagina mezclar esos dos colores. No es verde (eso es azul+amarillo)."
+    },
+    {
+      "id": "int-14",
+      "tipo": "opcion-multiple",
+      "pregunta": "Dinero: Quiero comprar un helado de $15. Tengo una moneda de $10. ¿Cuánto me falta?",
+      "opciones": ["$5", "$10", "$2", "$25"],
+      "respuesta": "$5",
+      "explicacion_correcta": "¡Muy bien! 15 menos los 10 que ya tienes son 5. Te faltan 5 pesos.",
+      "explicacion_incorrecta": "¿Cuánto le falta a 10 para llegar a 15?"
+    },
+    {
+      "id": "int-15",
+      "tipo": "navegacion-mapa",
+      "pregunta": "El explorador busca la cueva secreta. Sigue las pistas: Norte, Este, Norte, Oeste.",
+      "configuracion_mapa": {
+        "columnas": 4,
+        "filas": 4,
+        "punto_inicio": {"fila": 2, "columna": 1, "icono": "🕵️"},
+        "puntos_interes": [
+          {"nombre": "Río", "fila": 2, "columna": 2, "icono": "🌊"},
+          {"nombre": "Cueva", "fila": 0, "columna": 1, "icono": "🕳️"},
+          {"nombre": "Montaña", "fila": 0, "columna": 2, "icono": "⛰️"}
+        ],
+        "movimientos": ["norte", "este", "norte", "oeste"],
+        "respuesta_correcta": "Cueva"
+      }
+    },
+    {
+      "id": "int-16",
+      "tipo": "opcion-multiple",
+      "pregunta": "Analogía: El zapato es al pie como el sombrero es a la ______.",
+      "opciones": ["Mano", "Cabeza", "Rodilla", "Espalda"],
+      "respuesta": "Cabeza",
+      "explicacion_correcta": "¡Lógica pura! Los zapatos se usan en los pies y los sombreros en la cabeza.",
+      "explicacion_incorrecta": "¿Dónde te pones un sombrero?"
+    },
+    {
+      "id": "int-17",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Cuál oración está en PASADO (algo que ya ocurrió)?",
+      "opciones": ["Yo comeré pastel.", "Yo como pastel.", "Yo comí pastel.", "Yo voy a comer."],
+      "respuesta": "Yo comí pastel.",
+      "explicacion_correcta": "¡Correcto! 'Comí' indica que la acción ya terminó.",
+      "explicacion_incorrecta": "Busca la acción que ya se terminó. 'Comeré' es futuro. 'Como' es ahora."
+    },
+    {
+      "id": "int-18",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Cuántas mitades tiene una naranja entera?",
+      "opciones": ["1", "2", "3", "4"],
+      "respuesta": "2",
+      "explicacion_correcta": "¡Bien! Cualquier cosa entera se divide en 2 mitades.",
+      "explicacion_incorrecta": "Si partes algo a la mitad, ¿cuántos pedazos te quedan?"
+    },
+    {
+      "id": "int-19",
+      "tipo": "opcion-multiple",
+      "pregunta": "Observa: 🍎 🍌 🍎 🍌 🍎 ... ¿Qué fruta falta?",
+      "opciones": ["🍌", "🍎", "🍇", "🍊"],
+      "respuesta": "🍌",
+      "explicacion_correcta": "¡Patrón identificado! Se alterna una manzana y un plátano.",
+      "explicacion_incorrecta": "Después de cada manzana viene un..."
+    },
+    {
+      "id": "int-20",
+      "tipo": "opcion-multiple",
+      "pregunta": "Problema final: Hay 10 pájaros en un árbol. 3 vuelan y se van. ¿Cuántos quedan?",
+      "opciones": ["13", "7", "8", "6"],
+      "respuesta": "7",
+      "explicacion_correcta": "¡Excelente trabajo! 10 - 3 = 7 pájaros. ¡Has completado el desafío!",
+      "explicacion_incorrecta": "Es una resta. Tenías 10 y se fueron 3."
+    }
+  ]
+}
+
+

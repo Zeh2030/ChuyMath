@@ -1,0 +1,205 @@
+{
+  "id": "simulador-instrucciones-lectura-1",
+  "titulo": "Simulacro: Instrucciones y Detalles",
+  "descripcion": "Lee con mucho cuidado cada instrucción. ¡El secreto está en los detalles!",
+  "problemas": [
+    {
+      "id": "inst-1",
+      "tipo": "opcion-multiple",
+      "pregunta": "Lee con atención: 'Dibuja un círculo rojo y dentro, un triángulo azul.'\n\n¿De qué color es el círculo?",
+      "opciones": ["Azul", "Rojo", "Verde", "Amarillo"],
+      "respuesta": "Rojo",
+      "explicacion_correcta": "¡Muy bien! La instrucción escrita dice claramente: 'círculo ROJO'.",
+      "explicacion_incorrecta": "Vuelve a leer la instrucción despacio. El círculo es de un color y el triángulo de otro."
+    },
+    {
+      "id": "inst-2",
+      "tipo": "opcion-multiple",
+      "pregunta": "Imagina: 'En tu mano derecha, tienes 3 dulces. En tu mano izquierda, tienes 2 dulces más que en la derecha.'\n\n¿Cuántos dulces tienes en la mano izquierda?",
+      "opciones": ["3", "2", "5", "4"],
+      "respuesta": "5",
+      "explicacion_correcta": "¡Excelente! Si en la derecha hay 3 y en la izquierda 2 MÁS, entonces 3 + 2 = 5.",
+      "explicacion_incorrecta": "No son solo 2 dulces. El texto dice '2 dulces MÁS que en la derecha'."
+    },
+    {
+      "id": "inst-3",
+      "tipo": "opcion-multiple",
+      "pregunta": "Observa la serie de números y encuentra el patrón: 10, 9, 8, 7, ...\n\n¿Qué número sigue?",
+      "opciones": ["9", "6", "5", "8"],
+      "respuesta": "6",
+      "explicacion_correcta": "¡Correcto! Es una cuenta regresiva.",
+      "explicacion_incorrecta": "La serie va hacia atrás. ¿Qué número va antes del 7?"
+    },
+    {
+      "id": "inst-4",
+      "tipo": "opcion-multiple",
+      "pregunta": "Sigue el orden de pasos:\n1. Quítale la cabeza al muñeco.\n2. Ponle unos zapatos rojos.\n3. Ponle un sombrero azul.\n\n¿Qué hiciste en el paso número 2?",
+      "opciones": ["Le quité la cabeza", "Le puse zapatos rojos", "Le puse un sombrero azul", "Le di de comer"],
+      "respuesta": "Le puse zapatos rojos",
+      "explicacion_correcta": "¡Muy bien! El paso 2 indica ponerle los zapatos rojos.",
+      "explicacion_incorrecta": "Mira la lista numerada. ¿Qué dice el número 2?"
+    },
+    {
+      "id": "inst-5",
+      "tipo": "opcion-multiple",
+      "pregunta": "Comprensión lectora:\n'Hay un perro grande y un gato pequeño. El perro está durmiendo. El gato está jugando con una pelota.'\n\n¿Quién está jugando con la pelota?",
+      "opciones": ["El perro", "El gato", "Nadie", "El perro y el gato"],
+      "respuesta": "El gato",
+      "explicacion_correcta": "¡Excelente! El texto dice explícitamente que 'El gato está jugando'.",
+      "explicacion_incorrecta": "Relee la última oración. ¿Quién juega?"
+    },
+    {
+      "id": "inst-6",
+      "tipo": "navegacion-mapa",
+      "pregunta": "Instrucción: Ayuda al niño 🧒 a llegar a la tienda 🏪 siguiendo este camino: 2 pasos al Norte, 4 al Este, 2 al Norte.",
+      "configuracion_mapa": {
+        "columnas": 5,
+        "filas": 5,
+        "punto_inicio": {"fila": 4, "columna": 0, "icono": "🧒"},
+        "puntos_interes": [
+          {"nombre": "Casa", "fila": 4, "columna": 0, "icono": "🏠"},
+          {"nombre": "Parque", "fila": 2, "columna": 2, "icono": "🌳"},
+          {"nombre": "Tienda", "fila": 0, "columna": 4, "icono": "🏪"}
+        ],
+        "movimientos": ["norte", "norte", "este", "este", "este", "este", "norte", "norte"],
+        "respuesta_correcta": "Tienda"
+      }
+    },
+    {
+      "id": "inst-7",
+      "tipo": "opcion-multiple",
+      "pregunta": "Lee el detalle: 'La flor amarilla tiene 5 pétalos y 2 hojas verdes.'\n\n¿Cuántas hojas tiene la flor?",
+      "opciones": ["5", "2", "7", "1"],
+      "respuesta": "2",
+      "explicacion_correcta": "¡Bien! La pregunta es sobre las HOJAS, y el texto dice que tiene 2.",
+      "explicacion_incorrecta": "Cuidado, no te preguntan por los pétalos. ¿Cuántas hojas menciona el texto?"
+    },
+    {
+      "id": "inst-8",
+      "tipo": "opcion-multiple",
+      "pregunta": "Secuencia de acciones: 'Primero toca tu nariz, luego toca tus orejas, y al final salta 3 veces.'\n\n¿Cuál es la ÚLTIMA acción?",
+      "opciones": ["Tocar mi nariz", "Tocar mis orejas", "Saltar 3 veces", "Sentarse"],
+      "respuesta": "Saltar 3 veces",
+      "explicacion_correcta": "¡Excelente! 'Al final' significa la última acción.",
+      "explicacion_incorrecta": "Busca la frase que dice 'y al final...'."
+    },
+    {
+      "id": "inst-9",
+      "tipo": "opcion-multiple",
+      "pregunta": "Problema: 'Hay 4 pájaros en un cable. Si 1 pájaro vuela, ¿cuántos quedan?'",
+      "opciones": ["3", "4", "5", "1"],
+      "respuesta": "3",
+      "explicacion_correcta": "¡Muy bien! Es una resta simple: 4 - 1 = 3.",
+      "explicacion_incorrecta": "Si uno se va, ¿quedan más o quedan menos?"
+    },
+    {
+      "id": "inst-10",
+      "tipo": "opcion-multiple",
+      "pregunta": "Lógica: 'Si el Lunes comí pizza y el Martes comí tacos, ¿qué comí el Martes?'",
+      "opciones": ["Pizza", "Tacos", "Ensalada", "Hamburguesa"],
+      "respuesta": "Tacos",
+      "explicacion_correcta": "¡Correcto! Solo tienes que buscar qué pasó el Martes.",
+      "explicacion_incorrecta": "Busca la palabra 'Martes' en la oración y mira qué comida la acompaña."
+    },
+    {
+      "id": "inst-11",
+      "tipo": "opcion-multiple",
+      "pregunta": "Lectura: 'El oso pardo vive en el bosque y come miel.'\n\n¿Dónde vive el oso pardo?",
+      "opciones": ["En una cueva", "En el bosque", "En el río", "En la ciudad"],
+      "respuesta": "En el bosque",
+      "explicacion_correcta": "¡Bien leído! El texto lo dice literalmente: 'vive en el bosque'.",
+      "explicacion_incorrecta": "No adivines, busca la respuesta dentro del texto."
+    },
+    {
+      "id": "inst-12",
+      "tipo": "opcion-multiple",
+      "pregunta": "Si tienes 12 lápices y te regalan 3 más, ¿cuántos lápices tienes ahora?",
+      "opciones": ["9", "15", "12", "13"],
+      "respuesta": "15",
+      "explicacion_correcta": "¡Suma correcta! 12 + 3 = 15.",
+      "explicacion_incorrecta": "'Regalar más' significa sumar o agregar."
+    },
+    {
+      "id": "inst-13",
+      "tipo": "opcion-multiple",
+      "pregunta": "Instrucción de seguridad: 'Si la luz del semáforo está roja, debes detenerte.'\n\n¿Qué debes hacer con la luz roja?",
+      "opciones": ["Avanzar", "Correr", "Detenerse", "Esperar"],
+      "respuesta": "Detenerse",
+      "explicacion_correcta": "¡Exacto! Rojo significa alto total.",
+      "explicacion_incorrecta": "Lee la instrucción de nuevo. ¿Qué acción corresponde a la luz roja?"
+    },
+    {
+      "id": "inst-14",
+      "tipo": "opcion-multiple",
+      "pregunta": "Fracciones simples: 'Tienes 5 galletas y le das la mitad a tu amigo.'\n\n¿Cuántas galletas te quedan?",
+      "opciones": ["2", "3", "2.5", "4"],
+      "respuesta": "2.5",
+      "explicacion_correcta": "¡Muy bien! La mitad de 5 es 2 y media.",
+      "explicacion_incorrecta": "Piensa: la mitad de 4 es 2. La mitad de 6 es 3. La mitad de 5 está en medio."
+    },
+    {
+      "id": "inst-15",
+      "tipo": "navegacion-mapa",
+      "pregunta": "Mapa del Tesoro: Sigue la ruta escrita para encontrar el lugar: Este, Sur, Oeste, Norte.",
+      "configuracion_mapa": {
+        "columnas": 4,
+        "filas": 4,
+        "punto_inicio": {"fila": 1, "columna": 1, "icono": "🗺️"},
+        "puntos_interes": [
+          {"nombre": "Tesoro", "fila": 3, "columna": 3, "icono": "💰"},
+          {"nombre": "Ruinas", "fila": 1, "columna": 3, "icono": " crumbling-building"},
+          {"nombre": "Cabaña", "fila": 0, "columna": 0, "icono": "🏡"}
+        ],
+        "movimientos": ["este", "sur", "oeste", "norte"],
+        "respuesta_correcta": "Ruinas"
+      }
+    },
+    {
+      "id": "inst-16",
+      "tipo": "opcion-multiple",
+      "pregunta": "Descripción: 'El perro de mi vecino es grande, peludo y le gusta jugar.'\n\n¿Cómo es el perro según el texto?",
+      "opciones": ["Pequeño y enojón", "Grande y peludo", "Flaco y callado", "Grande y dormilón"],
+      "respuesta": "Grande y peludo",
+      "explicacion_correcta": "¡Correcto! Esas son las dos características mencionadas.",
+      "explicacion_incorrecta": "Busca los adjetivos (palabras que describen) en la oración."
+    },
+    {
+      "id": "inst-17",
+      "tipo": "opcion-multiple",
+      "pregunta": "Resta: Imagina una caja con 6 juguetes. Sacas 2 para jugar. ¿Cuántos quedan dentro?",
+      "opciones": ["8", "4", "3", "5"],
+      "respuesta": "4",
+      "explicacion_correcta": "¡Bien! 6 - 2 = 4.",
+      "explicacion_incorrecta": "Si sacas juguetes, la caja tiene menos. Es una resta."
+    },
+    {
+      "id": "inst-18",
+      "tipo": "opcion-multiple",
+      "pregunta": "Instrucción de dibujo:\n1. Dibuja un círculo.\n2. Haz una X dentro del círculo.\n\n¿Cómo se ve el dibujo final?",
+      "opciones": ["Un cuadrado con una X", "Un círculo con una X", "Un triángulo con una X", "Solo un círculo"],
+      "respuesta": "Un círculo con una X",
+      "explicacion_correcta": "¡Excelente! Seguiste los dos pasos correctamente.",
+      "explicacion_incorrecta": "El paso 1 dice 'círculo' y el paso 2 dice 'dentro'."
+    },
+    {
+      "id": "inst-19",
+      "tipo": "opcion-multiple",
+      "pregunta": "Conocimiento general: ¿Cuál es el sonido que hace el pato?",
+      "opciones": ["Miau", "Guau", "Pío", "Cuac"],
+      "respuesta": "Cuac",
+      "explicacion_correcta": "¡Claro! Cuac es el sonido del pato.",
+      "explicacion_incorrecta": "Los gatos hacen miau, los perros guau..."
+    },
+    {
+      "id": "inst-20",
+      "tipo": "opcion-multiple",
+      "pregunta": "Problema final: Hay 3 amigos. Cada amigo tiene 2 globos. ¿Cuántos globos hay en total?",
+      "opciones": ["5", "6", "8", "3"],
+      "respuesta": "6",
+      "explicacion_correcta": "¡Perfecto! 3 veces 2 es igual a 6.",
+      "explicacion_incorrecta": "Puedes sumar: 2 globos + 2 globos + 2 globos."
+    }
+  ]
+}
+
+

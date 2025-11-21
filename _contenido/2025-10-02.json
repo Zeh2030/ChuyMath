@@ -1,0 +1,67 @@
+{
+  "id": "2025-10-02",
+  "titulo": "Aventura de Detectives Matemáticos",
+  "misiones": [
+    {
+      "id": "mision-palabra-1",
+      "tipo": "palabra-del-dia",
+      "titulo": "Word of the Day / Palabra del Día",
+      "instruccion": "¡Vamos a aprender una palabra nueva en inglés! Repite la palabra en voz alta.",
+      "palabra_en": "Triangle",
+      "palabra_es": "Triángulo",
+      "icono": "🔺",
+      "audio_pronunciacion": "https://ssl.gstatic.com/dictionary/static/sounds/20200429/triangle--_us_1.mp3"
+    },
+    {
+      "id": "mision-operaciones-miercoles",
+      "tipo": "operaciones",
+      "titulo": "Calentamiento del Detective",
+      "instruccion": "Todo buen detective necesita tener la mente ágil. ¡Resuelve estas operaciones!",
+      "ejercicios": [
+        { "pregunta": "125 + 75", "respuesta": "200" },
+        { "pregunta": "350 - 49", "respuesta": "301" },
+        { "pregunta": "12 × 5", "respuesta": "60" },
+        { "pregunta": "81 ÷ 9", "respuesta": "9" }
+      ]
+    },
+    {
+      "id": "mision-cripto-corregida",
+      "tipo": "criptoaritmetica",
+      "titulo": "El Código Secreto de las Figuras",
+      "instruccion": "Cada figura tiene un valor secreto. ¡Usa la suma para descubrir cuánto vale cada una!",
+      "ejercicios": [
+        {
+          "operacion": {
+            "linea1": "  ⭐ ●",
+            "linea2": "+   ⭐",
+            "resultado": "  2 8"
+          },
+          "solucion": [
+            { "figura": "⭐", "valor": "2" },
+            { "figura": "●", "valor": "6" }
+          ],
+          "explicacion_correcta": "¡Excelente! Si la ⭐ vale 2, la columna de la izquierda es correcta. Y si la ⭐ vale 2, entonces en la derecha, el ● debe valer 6 para que 6 + 2 sume 8. ¡Perfecto!",
+          "explicacion_incorrecta": "¡Casi! Una pista: mira la columna de la izquierda. ¿Qué valor debe tener la ⭐ para que el resultado sea 20 y algo? Una vez que sepas el valor de la ⭐, resolver el valor del ● es mucho más fácil."
+        }
+      ]
+    },
+    {
+      "id": "mision-simetria-1",
+      "tipo": "opcion-multiple",
+      "titulo": "El Reflejo en el Espejo",
+      "pregunta": "Carmen dibujó la mitad de un gato. Si pusiera un espejo en la línea punteada, ¿cuál de las opciones de abajo muestra el dibujo final completo?",
+      "imagen": "<svg width='400' height='300' viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg'><rect width='100%' height='100%' fill='#f8f9fa'/><line x1='200' y1='0' x2='200' y2='300' stroke='#aaaaaa' stroke-width='4' stroke-dasharray='10,10'/><g stroke='black' stroke-width='5' fill='none' stroke-linecap='round'><path d='M100 130 L 130 80 L 160 130'/><path d='M100 130 C 80 180, 120 250, 200 220'/><circle cx='140' cy='140' r='5' fill='black' stroke='none'/><path d='M120 180 h -40'/><path d='M120 195 h -40'/></g></svg>",
+      "opciones_son_imagenes": true,
+      "opciones": [
+        "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg'><g stroke='black' stroke-width='5' fill='none' stroke-linecap='round' transform='translate(80,0)'><path d='M100 130 L 130 80 L 160 130'/><path d='M100 130 C 80 180, 120 250, 200 220'/><circle cx='140' cy='140' r='5' fill='black' stroke='none'/><path d='M120 180 h -40'/><path d='M120 195 h -40'/><path transform='translate(100 0) scale(-1, 1) translate(-100 0)' d='M100 130 L 130 80 L 160 130'/></g></svg>",
+        "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg'><g stroke='black' stroke-width='5' fill='none' stroke-linecap='round' transform='translate(10,0)'><path d='M100 130 L 130 80 L 160 130'/><path d='M100 130 C 80 180, 120 250, 200 220'/><circle cx='140' cy='140' r='5' fill='black' stroke='none'/><path d='M120 180 h -40'/><path d='M120 195 h -40'/><g transform='translate(120 0)'><path d='M100 130 L 130 80 L 160 130'/><path d='M100 130 C 80 180, 120 250, 200 220'/><circle cx='140' cy='140' r='5' fill='black' stroke='none'/><path d='M120 180 h -40'/><path d='M120 195 h -40'/></g></g></svg>",
+        "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg'><g stroke='black' stroke-width='5' fill='none' stroke-linecap='round' transform='translate(80,0)'><path d='M100 130 L 130 80 L 160 130'/><path d='M100 130 C 80 180, 120 250, 200 220'/><circle cx='140' cy='140' r='5' fill='black' stroke='none'/><path d='M120 180 h -40'/><path d='M120 195 h -40'/><g transform='translate(200 0) scale(-1, 1) translate(-200 0)'><path d='M100 130 L 130 80 L 160 130'/><path d='M100 130 C 80 180, 120 250, 200 220'/><circle cx='140' cy='140' r='5' fill='black' stroke='none'/><path d='M120 180 h -40'/><path d='M120 195 h -40'/></g></g></svg>",
+        "<svg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg'><g stroke='black' stroke-width='5' fill='none' stroke-linecap='round' transform='translate(80,0)'><path d='M100 130 L 130 80 L 160 130'/><path d='M100 130 C 80 180, 120 250, 200 220'/><circle cx='140' cy='140' r='5' fill='black' stroke='none'/><path d='M120 180 h -40'/><path d='M120 195 h -40'/><g transform='scale(1, -1) translate(0, -250)'><path d='M100 130 L 130 80 L 160 130'/><path d='M100 130 C 80 180, 120 250, 200 220'/><circle cx='140' cy='140' r='5' fill='black' stroke='none'/><path d='M120 180 h -40'/><path d='M120 195 h -40'/></g></g></svg>"
+      ],
+      "respuesta": "2",
+      "pista": "La parte derecha del gato debe ser un reflejo exacto de la parte izquierda, como si se viera en un espejo.",
+      "explicacion_correcta": "¡Correcto! El espejo refleja la mitad izquierda del gato creando una imagen simétrica perfecta.",
+      "explicacion_incorrecta": "Recuerda que los espejos crean un reflejo exacto. La parte derecha debe ser idéntica pero en espejo a la parte izquierda."
+    }
+  ]
+}

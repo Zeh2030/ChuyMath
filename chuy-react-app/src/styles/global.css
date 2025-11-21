@@ -1,0 +1,49 @@
+/* ============================================= */
+/* === ESTILOS GLOBALES - EL MUNDO DE CHUY === */
+/* ============================================= */
+
+:root {
+    /* Colores Principales */
+    --c-primary: #3498db;
+    --c-secondary: #f1c40f;
+    --c-success: #2ecc71;
+    --c-danger: #e74c3c;
+    --c-logic: #9b59b6;
+    --c-spatial: #1abc9c;
+    
+    /* Colores de Fondo y Texto */
+    --c-background: #ecf0f1;
+    --c-text: #34495e;
+    --c-paper: #ffffff;
+    --c-sky: #87CEEB;
+    --c-sky-light: #a3d8f1;
+    
+    /* Tipografías */
+    --font-headings: 'Fredoka', sans-serif;
+    --font-body: 'Nunito', sans-serif;
+    
+    /* Sombras */
+    --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.06);
+    --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Reset y Estilos Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--c-background);
+    color: var(--c-text);
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Importar Fuentes de Google */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;700&family=Nunito:wght@400;700;800&display=swap');
+

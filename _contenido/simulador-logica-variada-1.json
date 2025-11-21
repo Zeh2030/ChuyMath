@@ -1,0 +1,205 @@
+{
+  "id": "simulador-logica-variada-1",
+  "titulo": "Reto de Lógica y Mente #1",
+  "descripcion": "Un desafío para pequeños genios. Pon a prueba tu lógica, atención y matemáticas con estos 20 problemas.",
+  "problemas": [
+    {
+      "id": "prob-log-1",
+      "tipo": "opcion-multiple",
+      "pregunta": "Completa la analogía: El pájaro vuela, el pez ______.",
+      "opciones": ["camina", "nada", "corre", "salta"],
+      "respuesta": "nada",
+      "explicacion_correcta": "¡Exacto! Los pájaros se mueven volando y los peces nadando.",
+      "explicacion_incorrecta": "Piensa en cómo se mueve un pez en el agua."
+    },
+    {
+      "id": "prob-log-2",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Qué hora marca el reloj si la aguja pequeña está en el 3 y la grande en el 12?",
+      "opciones": ["3:00", "12:03", "3:30", "12:00"],
+      "respuesta": "3:00",
+      "explicacion_correcta": "¡Correcto! Cuando la grande está en el 12, es la hora en punto que marca la pequeña.",
+      "explicacion_incorrecta": "La aguja pequeña dice la hora. Si apunta al 3, son las 3..."
+    },
+    {
+      "id": "prob-log-3",
+      "tipo": "navegacion-mapa",
+      "pregunta": "El astronauta 👨‍🚀 quiere llegar a su cohete 🚀. Guíalo esquivando los meteoritos.",
+      "configuracion_mapa": {
+        "columnas": 5,
+        "filas": 5,
+        "punto_inicio": {"fila": 4, "columna": 0, "icono": "👨‍🚀"},
+        "puntos_interes": [
+          {"nombre": "Meteorito", "fila": 3, "columna": 0, "icono": "☄️"},
+          {"nombre": "Planeta Rojo", "fila": 0, "columna": 4, "icono": "🪐"},
+          {"nombre": "Cohete", "fila": 0, "columna": 0, "icono": "🚀"}
+        ],
+        "movimientos": ["este", "este", "norte", "norte", "norte", "norte", "oeste", "oeste"],
+        "respuesta_correcta": "Cohete"
+      }
+    },
+    {
+      "id": "prob-log-4",
+      "tipo": "opcion-multiple",
+      "pregunta": "Si hoy es Sábado, ¿qué día fue ayer?",
+      "opciones": ["Domingo", "Jueves", "Viernes", "Lunes"],
+      "respuesta": "Viernes",
+      "explicacion_correcta": "¡Muy bien! El día anterior al Sábado es el Viernes.",
+      "explicacion_incorrecta": "Retrocede un día en tu mente. Antes de Sábado va..."
+    },
+    {
+      "id": "prob-log-5",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Cuál de estos objetos es más PESADO?",
+      "opciones": ["Una pluma 🪶", "Un elefante 🐘", "Una manzana 🍎", "Un libro 📕"],
+      "respuesta": "Un elefante 🐘",
+      "explicacion_correcta": "¡Claro! Un elefante pesa muchísimo más que cualquiera de las otras opciones.",
+      "explicacion_incorrecta": "Imagina intentar cargar cada uno. ¿Cuál no podrías levantar ni un poquito?"
+    },
+    {
+      "id": "prob-log-6",
+      "tipo": "opcion-multiple",
+      "pregunta": "Sigue la serie: 5, 10, 15, 20, ...",
+      "opciones": ["21", "25", "30", "22"],
+      "respuesta": "25",
+      "explicacion_correcta": "¡Excelente! Estás contando de 5 en 5.",
+      "explicacion_incorrecta": "Suma 5 al último número (20). 20 + 5 = ?"
+    },
+    {
+      "id": "prob-log-7",
+      "tipo": "opcion-multiple",
+      "pregunta": "Tengo 2 manos. En cada mano tengo 5 dedos. ¿Cuántos dedos tengo en total?",
+      "opciones": ["5", "20", "10", "15"],
+      "respuesta": "10",
+      "explicacion_correcta": "¡Correcto! 5 dedos + 5 dedos = 10 dedos.",
+      "explicacion_incorrecta": "Cuenta los dedos de tus manos. 5 en una y 5 en la otra."
+    },
+    {
+      "id": "prob-log-8",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Qué figura completa el patrón? 🔼 🔽 🔼 🔽 ...",
+      "opciones": ["🔼", "🔽", "⏺️", "⏹️"],
+      "respuesta": "🔼",
+      "explicacion_correcta": "¡Bien visto! El patrón es: triángulo arriba, triángulo abajo. Sigue triángulo arriba.",
+      "explicacion_incorrecta": "Fíjate en el último (abajo). El patrón dice que después de abajo va..."
+    },
+    {
+      "id": "prob-log-9",
+      "tipo": "opcion-multiple",
+      "pregunta": "Juan está a la IZQUIERDA de Ana. Entonces, Ana está a la ______ de Juan.",
+      "opciones": ["izquierda", "derecha", "arriba", "abajo"],
+      "respuesta": "derecha",
+      "explicacion_correcta": "¡Lógica perfecta! Si Juan está a la izquierda, Ana está al lado contrario, la derecha.",
+      "explicacion_incorrecta": "Son lados opuestos. Lo contrario de izquierda es..."
+    },
+    {
+      "id": "prob-log-10",
+      "tipo": "opcion-multiple",
+      "pregunta": "Un coche tiene 4 ruedas. ¿Cuántas ruedas tienen 2 coches?",
+      "opciones": ["4", "6", "8", "10"],
+      "respuesta": "8",
+      "explicacion_correcta": "¡Muy bien! 4 ruedas del primero + 4 ruedas del segundo = 8 ruedas.",
+      "explicacion_incorrecta": "Suma 4 + 4."
+    },
+    {
+      "id": "prob-log-11",
+      "tipo": "navegacion-mapa",
+      "pregunta": "El perrito 🐶 quiere su hueso 🦴. Ayúdalo a cruzar el parque.",
+      "configuracion_mapa": {
+        "columnas": 4,
+        "filas": 4,
+        "punto_inicio": {"fila": 0, "columna": 0, "icono": "🐶"},
+        "puntos_interes": [
+          {"nombre": "Pelota", "fila": 0, "columna": 3, "icono": "🎾"},
+          {"nombre": "Gato", "fila": 2, "columna": 1, "icono": "🐱"},
+          {"nombre": "Hueso", "fila": 3, "columna": 3, "icono": "🦴"}
+        ],
+        "movimientos": ["este", "este", "sur", "sur", "este", "sur"],
+        "respuesta_correcta": "Hueso"
+      }
+    },
+    {
+      "id": "prob-log-12",
+      "tipo": "opcion-multiple",
+      "pregunta": "Lee y responde: 'El globo rojo vuela alto'. ¿De qué color es el globo?",
+      "opciones": ["Azul", "Alto", "Rojo", "Verde"],
+      "respuesta": "Rojo",
+      "explicacion_correcta": "¡Atención excelente! La frase dice claramente 'globo rojo'.",
+      "explicacion_incorrecta": "Vuelve a leer la frase despacio. Busca la palabra que dice el color."
+    },
+    {
+      "id": "prob-log-13",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Cuál es la mitad de 18?",
+      "opciones": ["8", "9", "10", "7"],
+      "respuesta": "9",
+      "explicacion_correcta": "¡Correcto! 9 + 9 = 18.",
+      "explicacion_incorrecta": "Reparte 18 en dos grupos iguales. ¿Cuántos quedan en cada grupo?"
+    },
+    {
+      "id": "prob-log-14",
+      "tipo": "opcion-multiple",
+      "pregunta": "Si mezclas pintura azul y amarilla, ¿qué color obtienes?",
+      "opciones": ["Rojo", "Verde", "Morado", "Naranja"],
+      "respuesta": "Verde",
+      "explicacion_correcta": "¡Artista! Azul + Amarillo crean el color Verde.",
+      "explicacion_incorrecta": "Piensa en el color del pasto. Se hace con azul y amarillo."
+    },
+    {
+      "id": "prob-log-15",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Qué número es mayor que 50 pero menor que 60?",
+      "opciones": ["45", "65", "55", "50"],
+      "respuesta": "55",
+      "explicacion_correcta": "¡Bien! 55 está en medio de 50 y 60.",
+      "explicacion_incorrecta": "Busca un número que empiece con 5 (cincuenta y...)."
+    },
+    {
+      "id": "prob-log-16",
+      "tipo": "opcion-multiple",
+      "pregunta": "En una carrera, si adelantas al que va en SEGUNDO lugar, ¿en qué lugar quedas?",
+      "opciones": ["Primero", "Segundo", "Tercero", "Último"],
+      "respuesta": "Segundo",
+      "explicacion_correcta": "¡Lógica tramposa! Si pasas al segundo, tú tomas su lugar, así que ahora tú eres el segundo.",
+      "explicacion_incorrecta": "Piénsalo: quitas al segundo y te pones tú en su sitio. ¿Qué lugar es ese?"
+    },
+    {
+      "id": "prob-log-17",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Cuántos meses tiene un año?",
+      "opciones": ["10", "12", "7", "30"],
+      "respuesta": "12",
+      "explicacion_correcta": "¡Correcto! De Enero a Diciembre son 12 meses.",
+      "explicacion_incorrecta": "Enero, Febrero, Marzo... cuéntalos todos hasta llegar a Navidad (Diciembre)."
+    },
+    {
+      "id": "prob-log-18",
+      "tipo": "opcion-multiple",
+      "pregunta": "El zapato es al pie, lo que el guante es a la ______.",
+      "opciones": ["cabeza", "mano", "pierna", "rodilla"],
+      "respuesta": "mano",
+      "explicacion_correcta": "¡Muy bien! Los zapatos cubren los pies y los guantes cubren las manos.",
+      "explicacion_incorrecta": "¿Dónde te pones los guantes?"
+    },
+    {
+      "id": "prob-log-19",
+      "tipo": "opcion-multiple",
+      "pregunta": "Tengo 3 hermanos y cada hermano tiene 1 hermana. ¿Cuántos somos en total?",
+      "opciones": ["4", "6", "5", "3"],
+      "respuesta": "4",
+      "explicacion_correcta": "¡Esta es difícil! Son los 3 hermanos varones + 1 hermana (que es hermana de todos ellos). Total 4.",
+      "explicacion_incorrecta": "¡No sumes hermanas! La hermana es la misma para todos los hermanos."
+    },
+    {
+      "id": "prob-log-20",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Qué forma tiene una pelota de fútbol?",
+      "opciones": ["Cuadrada", "Triangular", "Esférica (Redonda)", "Rectangular"],
+      "respuesta": "Esférica (Redonda)",
+      "explicacion_correcta": "¡Gol! Las pelotas son esferas, cuerpos redondos.",
+      "explicacion_incorrecta": "Piensa en si rueda. Las cosas cuadradas no ruedan bien."
+    }
+  ]
+}
+
+

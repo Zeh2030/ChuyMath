@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro de Mando de Chuy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;700&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="background-sky">
+        <div class="cloud c1"></div>
+        <div class="cloud c2"></div>
+        <div class="cloud c3"></div>
+    </div>
+
+    <div class="main-container">
+        <header class="dashboard-header">
+            <h1>Centro de Mando de Chuy</h1>
+            <p>¡Bienvenido de nuevo, súper explorador!</p>
+            <a href="../boveda/boveda.html" class="back-button">← Ir a la Bóveda</a>
+        </header>
+
+        <div class="dashboard-grid">
+            <!-- Columna Principal: La Aventura del Día -->
+            <main class="main-column">
+                <section class="widget aventura-widget">
+                    <h2 class="widget-title">🌟 ¡La Aventura de Hoy te espera!</h2>
+                    <ul id="retos-del-dia" class="lista-retos">
+                        <!-- Los retos se cargarán aquí desde JS -->
+                    </ul>
+                    <a href="aventura.html" class="boton-principal">¡Empezar Aventura!</a>
+                </section>
+                
+
+            </main>
+
+            <!-- Columna Secundaria: Progreso y Portales -->
+            <aside class="sidebar-column">
+                <!-- Widget de Progreso -->
+                <section class="widget trofeos-widget">
+                    <h2 class="widget-title">🏆 Mi Rincón de Trofeos</h2>
+                    
+                    <div class="contador-racha">
+                        <div class="icono-racha">✨</div>
+                        <div class="texto-racha">
+                            <div id="numero-racha" class="numero-racha">0</div>
+                            <span>días de aventura seguidos</span>
+                        </div>
+                    </div>
+
+                    <div class="progreso-tesoro">
+                        <p>Progreso para el próximo tesoro:</p>
+                        <div class="barra-progreso">
+                            <div id="barra-progreso-fill" class="barra-progreso-fill" style="width: 0%;"></div>
+                        </div>
+                        <div id="progreso-texto" class="progreso-texto">0/10 misiones</div>
+                    </div>
+                </section>
+
+                <!-- Widget de Bóveda -->
+                <section class="widget portales-widget">
+                    <h2 class="widget-title">📚 Bóveda de Misiones</h2>
+                    <div class="grupo-botones">
+                        <a href="../boveda/boveda.html" class="boton-secundario">
+                            <span class="icono-portal">📅</span>
+                            <span>Aventuras Diarias</span>
+                        </a>
+                        <a href="../boveda/boveda.html?vista=categorias" class="boton-secundario">
+                            <span class="icono-portal">🏷️</span>
+                            <span>Ver por Categorías</span>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Widget de Categorías -->
+                <section class="widget categorias-widget">
+                    <h2 class="widget-title">🎯 Accesos Rápidos</h2>
+                    
+                    <div class="categorias-grid">
+                        <a href="../boveda/boveda.html?vista=categorias&categoria=geometria" class="categoria-card geometria">
+                            <div class="categoria-icono">🧮</div>
+                            <span>Geometría</span>
+                        </a>
+                        
+                        <a href="../juegos/constructor-rectangulos/index.html" class="categoria-card constructores">
+                            <div class="categoria-icono">🏗️</div>
+                            <span>Constructores</span>
+                        </a>
+                        
+                        <a href="../boveda/boveda.html?vista=categorias&categoria=secuencias" class="categoria-card secuencias">
+                            <div class="categoria-icono">🔍</div>
+                            <span>Secuencias</span>
+                        </a>
+                        
+                        <a href="../boveda/boveda.html?vista=categorias&categoria=aventuras" class="categoria-card aventuras">
+                            <div class="categoria-icono">🌟</div>
+                            <span>Aventuras</span>
+                        </a>
+                        <a href="../boveda/boveda.html?vista=categorias&categoria=simulacros" class="categoria-card simulacros">
+                            <div class="categoria-icono">🏆</div>
+                            <span>Simulacros</span>
+                        </a>
+                    </div>
+                </section>
+            </aside>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

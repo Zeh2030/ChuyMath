@@ -1,0 +1,141 @@
+/* ============================================= */
+/* === ESTILOS PARA EL PORTAL PRINCIPAL === */
+/* ============================================= */
+
+:root {
+    --c-dashboard: #ff6b6b;
+    --c-vault: #54a0ff;
+    --c-logic: #1dd1a1;
+    --c-games: #feca57;
+    --c-constructor: #9b59b6;
+    --c-kakoma: #e74c3c;
+    --c-fondo: #ecf0f1;
+    --c-texto: #34495e;
+    --c-blanco: #ffffff;
+    --c-sombra-ligera: rgba(0, 0, 0, 0.08 );
+    --font-headings: 'Fredoka', sans-serif;
+    --font-body: 'Nunito', sans-serif;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--c-fondo);
+    color: var(--c-texto);
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* --- Fondo Animado (Reutilizado) --- */
+.background-sky {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, #87CEEB, #d1e9f3);
+    z-index: -1; overflow: hidden;
+}
+.cloud {
+    position: absolute; width: 150px; height: 50px; background: var(--c-blanco);
+    border-radius: 50px; opacity: 0.8; animation: move-clouds 35s linear infinite;
+}
+.cloud:before, .cloud:after {
+    content: ''; position: absolute; background: var(--c-blanco);
+    width: 70px; height: 70px; border-radius: 50%; top: -35px; left: 25px;
+}
+.cloud:after { left: auto; right: 25px; top: -30px; }
+.cloud.c1 { top: 15%; transform: scale(0.8); animation-duration: 40s; }
+.cloud.c2 { top: 30%; transform: scale(1); animation-duration: 30s; animation-delay: -10s; }
+@keyframes move-clouds { from { transform: translateX(-200px); } to { transform: translateX(100vw); } }
+
+/* --- Contenido del Portal --- */
+.portal-container {
+    text-align: center;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.portal-header h1 {
+    font-family: var(--font-headings);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+.portal-header p {
+    font-size: 1.2rem;
+    color: #556270;
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+}
+
+.worlds-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.world-card {
+    background-color: var(--c-blanco);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px var(--c-sombra-ligera);
+    padding: 30px;
+    text-decoration: none;
+    color: var(--c-texto);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-bottom: 8px solid;
+}
+.world-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Colores específicos para cada tarjeta */
+.world-dashboard { border-color: var(--c-dashboard); }
+.world-vault { border-color: var(--c-vault); }
+.world-logic { border-color: var(--c-logic); }
+.world-games { border-color: var(--c-games); }
+.world-constructor { border-color: var(--c-constructor); }
+
+.world-icon {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+.world-card:hover .world-icon {
+    transform: scale(1.2) rotate(10deg);
+}
+
+.world-card h2 {
+    font-family: var(--font-headings);
+    font-size: 1.8rem;
+    margin: 0 0 10px 0;
+}
+.world-card p {
+    font-size: 1rem;
+    flex-grow: 1; /* Asegura que todas las tarjetas tengan la misma altura */
+}
+.card-footer {
+    margin-top: 20px;
+    font-weight: bold;
+    color: var(--c-blanco);
+    padding: 10px 25px;
+    border-radius: 50px;
+    transition: background-color 0.2s;
+    font-family: var(--font-headings);
+}
+
+/* Colores de los botones */
+.world-dashboard .card-footer { background-color: var(--c-dashboard); }
+.world-vault .card-footer { background-color: var(--c-vault); }
+.world-logic .card-footer { background-color: var(--c-logic); }
+.world-games .card-footer { background-color: var(--c-games); }
+.world-constructor .card-footer { background-color: var(--c-constructor); }
+
+.world-kakoma { border-color: var(--c-kakoma); }
+.world-kakoma .card-footer { background-color: var(--c-kakoma); }
+
+.portal-footer {
+    margin-top: 50px;
+    color: #7f8c8d;
+}

@@ -1,0 +1,402 @@
+/* Grid del Dashboard */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+/* Estilo General de Widgets */
+.widget {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: var(--shadow-medium);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.widget-title {
+  font-family: var(--font-headings);
+  font-size: 1.6rem;
+  color: var(--c-text);
+  margin-top: 0;
+  margin-bottom: 20px;
+  border-bottom: 3px solid var(--c-primary);
+  padding-bottom: 10px;
+}
+
+/* Widget: Aventura de Hoy */
+.aventura-content {
+  margin-bottom: 25px;
+  min-height: 100px;
+}
+
+.lista-retos {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 25px 0;
+}
+
+.lista-retos li {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 0;
+  border-bottom: 1px dashed #bdc3c7;
+}
+
+.lista-retos li:last-child {
+  border-bottom: none;
+}
+
+.icono-reto {
+  font-size: 2rem;
+}
+
+.detalles-reto {
+  flex-grow: 1;
+}
+
+.titulo-reto {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.descripcion-reto {
+  font-size: 0.95rem;
+  color: #7f8c8d;
+}
+
+.boton-principal {
+  display: block;
+  width: 100%;
+  padding: 18px;
+  background: linear-gradient(45deg, #ff6b6b, #feca57);
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-family: var(--font-headings);
+  font-size: 1.5rem;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #d35400;
+  transition: all 0.1s ease-in-out;
+}
+
+.boton-principal:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 0 #d35400;
+}
+
+.boton-principal:active:not(:disabled) {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #d35400;
+}
+
+.boton-principal:disabled {
+  background: linear-gradient(45deg, #95a5a6, #bdc3c7);
+  cursor: not-allowed;
+  box-shadow: 0 5px 0 #7f8c8d;
+  opacity: 0.6;
+}
+
+/* Widgets de la Sidebar */
+.sidebar-column {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Trofeos */
+.contador-racha {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #fffbe6;
+  border: 1px solid var(--c-secondary);
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 25px;
+}
+
+.icono-racha {
+  font-size: 2.5rem;
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+.texto-racha {
+  display: flex;
+  flex-direction: column;
+}
+
+.numero-racha {
+  font-family: var(--font-headings);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #f39c12;
+  line-height: 1;
+}
+
+.texto-racha span {
+  font-weight: 600;
+}
+
+.progreso-tesoro p {
+  margin: 0 0 8px 0;
+  font-weight: 600;
+}
+
+.barra-progreso {
+  width: 100%;
+  height: 20px;
+  background-color: #dfe4ea;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid #ced4da;
+}
+
+.barra-progreso-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--c-success), #27ae60);
+  border-radius: 20px;
+  transition: width 0.5s ease-out;
+}
+
+.progreso-texto {
+  text-align: right;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-top: 5px;
+  color: #576574;
+}
+
+/* Portales Mágicos */
+.grupo-botones {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.boton-secundario {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  background-color: #f0f4f8;
+  color: var(--c-text);
+  border: 2px solid #dfe4ea;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+
+.boton-secundario:hover:not(:disabled) {
+  background-color: var(--c-primary);
+  color: white;
+  border-color: var(--c-primary);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: var(--shadow-light);
+}
+
+.boton-secundario:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.icono-portal {
+  font-size: 1.5rem;
+}
+
+/* Widget de Categorías */
+.categorias-widget {
+  margin-top: 20px;
+}
+
+.categorias-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.categoria-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 10px;
+  background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+  border: 2px solid transparent;
+  border-radius: 15px;
+  text-decoration: none;
+  color: var(--c-text);
+  transition: all 0.2s ease;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+
+.categoria-card:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.categoria-card:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.categoria-icono {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+}
+
+/* Colores por categoría */
+.categoria-card.geometria {
+  border-color: #1abc9c;
+}
+
+.categoria-card.geometria:hover:not(:disabled) {
+  background: linear-gradient(45deg, #e8f8f5, #d5f4e6);
+}
+
+.categoria-card.constructores {
+  border-color: #9b59b6;
+}
+
+.categoria-card.constructores:hover:not(:disabled) {
+  background: linear-gradient(45deg, #f4ecf7, #e8d5ed);
+}
+
+.categoria-card.secuencias {
+  border-color: #f39c12;
+}
+
+.categoria-card.secuencias:hover:not(:disabled) {
+  background: linear-gradient(45deg, #fef9e7, #fcf3cf);
+}
+
+.categoria-card.aventuras {
+  border-color: #e74c3c;
+}
+
+.categoria-card.aventuras:hover:not(:disabled) {
+  background: linear-gradient(45deg, #fdf2f2, #fadbd8);
+}
+
+.categoria-card.simulacros {
+  border-color: #3498db;
+}
+
+.categoria-card.simulacros:hover:not(:disabled) {
+  background: linear-gradient(45deg, #ebf5fb, #d6eaf8);
+}
+
+/* Responsividad */
+@media (max-width: 900px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .widget {
+    padding: 20px;
+  }
+  
+  .dashboard-header h1 {
+    font-size: 1.8rem;
+  }
+}
+
+/* Widget: Mis Calificaciones */
+.calificaciones-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.calificacion-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.calificacion-item:last-child {
+  border-bottom: none;
+}
+
+.calificacion-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.calificacion-titulo {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #2c3e50;
+}
+
+.calificacion-fecha {
+  font-size: 0.8rem;
+  color: #95a5a6;
+}
+
+.calificacion-nota {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+.nota-excelente {
+  color: #27ae60;
+}
+
+.nota-buena {
+  color: #f39c12;
+}
+
+.nota-regular {
+  color: #e74c3c;
+}
+
+.medalla-oro {
+  font-size: 1.5rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+.sin-calificaciones {
+  text-align: center;
+  padding: 20px;
+  color: #7f8c8d;
+  background: #f8f9fa;
+  border-radius: 10px;
+}

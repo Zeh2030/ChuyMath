@@ -1,0 +1,201 @@
+.conteo-figuras-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.conteo-instrucciones {
+  text-align: center;
+}
+
+.tip-ayuda {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  background: #f0f8ff;
+  padding: 5px 10px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+/* Contenedor de imagen */
+.imagen-area-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #ecf0f1;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 10px;
+}
+
+.imagen-contenedor {
+  position: relative; /* Clave para posicionar marcadores */
+  display: inline-block;
+  cursor: crosshair; /* Cursor de mira para apuntar */
+  max-width: 100%;
+}
+
+.imagen-conteo {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  pointer-events: none; /* Evita drag de la imagen */
+  user-select: none;
+}
+
+.svg-contenedor {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  min-height: 300px; /* Altura mínima para asegurar visibilidad */
+}
+
+.svg-contenedor svg {
+  width: 100%;
+  max-width: 500px; /* Ancho máximo razonable */
+  height: auto;
+  min-height: 300px; /* Forzar altura si el SVG no la trae */
+}
+
+/* Marcadores */
+.marcador-conteo {
+  position: absolute;
+  transform: translate(-50%, -50%); /* Centrar en el punto del clic */
+  width: 24px;
+  height: 24px;
+  background-color: #e74c3c;
+  color: white;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  animation: popIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  pointer-events: none; /* Para que el clic pase a través si se solapan */
+}
+
+@keyframes popIn {
+  from { transform: translate(-50%, -50%) scale(0); }
+  to { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* Controles */
+.controles-marcadores {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-mini {
+  background: #ecf0f1;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #2c3e50;
+  transition: background 0.2s;
+}
+
+.btn-mini:hover:not(:disabled) {
+  background: #bdc3c7;
+}
+
+.btn-mini:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* Área de Respuesta */
+.respuesta-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.input-grupo {
+  display: flex;
+  gap: 10px;
+}
+
+.input-conteo {
+  width: 80px;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 5px;
+  border: 2px solid #bdc3c7;
+  border-radius: 8px;
+}
+
+.input-conteo:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+.btn-verificar {
+  background: #2ecc71;
+  color: white;
+  border: none;
+  padding: 0 20px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.1s;
+}
+
+.btn-verificar:hover:not(:disabled) {
+  background: #27ae60;
+}
+
+.btn-verificar:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.btn-verificar:disabled {
+  background: #95a5a6;
+  cursor: not-allowed;
+}
+
+/* Mensajes */
+.mensaje-feedback {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+  animation: slideUp 0.3s ease-out;
+}
+
+.mensaje-feedback.exito {
+  background: #d4edda;
+  color: #155724;
+}
+
+.mensaje-feedback.error {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+

@@ -1,0 +1,211 @@
+{
+  "id": "simulador-matematicas-2",
+  "titulo": "Desafío Matemático Nivel 2",
+  "descripcion": "¡Sube de nivel! Resuelve problemas de sumas grandes, dinero y relojes.",
+  "problemas": [
+    {
+      "id": "mate2-1",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Cuánto es 25 + 10?",
+      "opciones": ["30", "35", "45", "25"],
+      "respuesta": "35",
+      "explicacion_correcta": "¡Correcto! 25 más una decena (10) son 35.",
+      "explicacion_incorrecta": "Suma las decenas: 20 + 10 = 30. Luego agrega las 5 unidades."
+    },
+    {
+      "id": "mate2-2",
+      "tipo": "opcion-multiple",
+      "pregunta": "Tengo 50 pesos. Me gasto 20 en un juguete. ¿Cuánto me queda?",
+      "opciones": ["20", "40", "30", "70"],
+      "respuesta": "30",
+      "explicacion_correcta": "¡Muy bien! 50 - 20 = 30 pesos.",
+      "explicacion_incorrecta": "Es una resta. A 5 decenas quítale 2 decenas."
+    },
+    {
+      "id": "mate2-3",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Qué reloj marca las 9:30?",
+      "opciones_son_imagenes": true,
+      "opciones": [
+        "<svg width='60' height='60' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='white' stroke='black' stroke-width='2'/><line x1='50' y1='50' x2='50' y2='10' stroke='black' stroke-width='3'/><line x1='50' y1='50' x2='90' y2='50' stroke='black' stroke-width='2'/></svg>",
+        "<svg width='60' height='60' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='white' stroke='black' stroke-width='2'/><line x1='50' y1='50' x2='20' y2='50' stroke='black' stroke-width='3'/><line x1='50' y1='50' x2='50' y2='90' stroke='black' stroke-width='2'/></svg>",
+        "<svg width='60' height='60' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='white' stroke='black' stroke-width='2'/><line x1='50' y1='50' x2='50' y2='10' stroke='black' stroke-width='3'/><line x1='50' y1='50' x2='50' y2='90' stroke='black' stroke-width='2'/></svg>",
+        "<svg width='60' height='60' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='white' stroke='black' stroke-width='2'/><line x1='50' y1='50' x2='10' y2='50' stroke='black' stroke-width='3'/><line x1='50' y1='50' x2='50' y2='10' stroke='black' stroke-width='2'/></svg>"
+      ],
+      "respuesta": "1",
+      "explicacion_correcta": "¡Excelente! La aguja pequeña (hora) está cerca del 9 y la grande (minutos) en el 6 (que son 30 minutos).",
+      "explicacion_incorrecta": "Busca el reloj donde la aguja larga apunte abajo (al 6)."
+    },
+    {
+      "id": "mate2-4",
+      "tipo": "opcion-multiple",
+      "pregunta": "Sigue la serie hacia atrás: 20, 18, 16, 14, ...",
+      "opciones": ["12", "13", "15", "10"],
+      "respuesta": "12",
+      "explicacion_correcta": "¡Correcto! Estamos restando 2 cada vez (contando hacia atrás de 2 en 2).",
+      "explicacion_incorrecta": "Réstale 2 al número 14."
+    },
+    {
+      "id": "mate2-5",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Cuántos lados tiene un HEXÁGONO?",
+      "opciones": ["4", "5", "6", "8"],
+      "respuesta": "6",
+      "explicacion_correcta": "¡Exacto! Un hexágono es una figura de 6 lados.",
+      "explicacion_incorrecta": "Cuenta los lados de un panal de abejas, son hexágonos."
+    },
+    {
+      "id": "mate2-6",
+      "tipo": "opcion-multiple",
+      "pregunta": "Pedro tiene 12 años. Su hermano Luis tiene 5 años menos. ¿Cuántos años tiene Luis?",
+      "opciones": ["17", "7", "8", "5"],
+      "respuesta": "7",
+      "explicacion_correcta": "¡Bien calculado! 12 - 5 = 7 años.",
+      "explicacion_incorrecta": "Si tiene 'menos' años, debes restar. 12 menos 5."
+    },
+    {
+      "id": "mate2-7",
+      "tipo": "navegacion-mapa",
+      "pregunta": "El taxi 🚕 debe llevar al pasajero al aeropuerto ✈️. Encuentra la ruta más rápida.",
+      "configuracion_mapa": {
+        "columnas": 5,
+        "filas": 5,
+        "punto_inicio": {"fila": 4, "columna": 2, "icono": "🚕"},
+        "puntos_interes": [
+          {"nombre": "Hotel", "fila": 2, "columna": 0, "icono": "🏨"},
+          {"nombre": "Aeropuerto", "fila": 0, "columna": 2, "icono": "✈️"},
+          {"nombre": "Parque", "fila": 4, "columna": 4, "icono": "🌳"}
+        ],
+        "movimientos": ["norte", "norte", "norte", "norte"],
+        "respuesta_correcta": "Aeropuerto"
+      }
+    },
+    {
+      "id": "mate2-8",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Cuál es el número anterior a 100?",
+      "opciones": ["90", "99", "101", "98"],
+      "respuesta": "99",
+      "explicacion_correcta": "¡Correcto! Justo antes del 100 va el 99.",
+      "explicacion_incorrecta": "Cuenta: 98, ..., 100. ¿Qué número falta?"
+    },
+    {
+      "id": "mate2-9",
+      "tipo": "opcion-multiple",
+      "pregunta": "Si una pizza tiene 8 rebanadas y nos comemos 3, ¿cuántas quedan?",
+      "opciones": ["4", "5", "6", "3"],
+      "respuesta": "5",
+      "explicacion_correcta": "¡Ñam! 8 - 3 = 5 rebanadas.",
+      "explicacion_incorrecta": "Resta 3 a 8."
+    },
+    {
+      "id": "mate2-10",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Cuántos meses tienen 30 días? (Pista: Recuerda el truco de los nudillos)",
+      "opciones": ["Todos", "1", "4", "11"],
+      "respuesta": "4",
+      "explicacion_correcta": "¡Muy bien! Son 4: Abril, Junio, Septiembre y Noviembre.",
+      "explicacion_incorrecta": "Recuerda el poema: 'Treinta días trae Noviembre, con Abril, Junio y Septiembre...'."
+    },
+    {
+      "id": "mate2-11",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Cuánto es 5 x 2?",
+      "opciones": ["7", "10", "52", "25"],
+      "respuesta": "10",
+      "explicacion_correcta": "¡Perfecto! Dos veces cinco es 10 (5 + 5).",
+      "explicacion_incorrecta": "Suma el número 5 dos veces."
+    },
+    {
+      "id": "mate2-12",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Qué figura tiene 4 lados iguales?",
+      "opciones": ["Rectángulo", "Cuadrado", "Triángulo", "Círculo"],
+      "respuesta": "Cuadrado",
+      "explicacion_correcta": "¡Así es! El cuadrado es especial porque sus 4 lados miden lo mismo.",
+      "explicacion_incorrecta": "El rectángulo también tiene 4 lados, pero dos son largos y dos cortos."
+    },
+    {
+      "id": "mate2-13",
+      "tipo": "opcion-multiple",
+      "pregunta": "Tengo 3 monedas de 10 pesos. ¿Cuánto dinero tengo?",
+      "opciones": ["13", "30", "300", "20"],
+      "respuesta": "30",
+      "explicacion_correcta": "¡Correcto! 10 + 10 + 10 = 30 pesos.",
+      "explicacion_incorrecta": "Cuenta de 10 en 10 tres veces: 10, 20, ..."
+    },
+    {
+      "id": "mate2-14",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Qué número falta? 10, 20, 30, __, 50",
+      "opciones": ["35", "40", "45", "60"],
+      "respuesta": "40",
+      "explicacion_correcta": "¡Muy bien! La serie va de 10 en 10.",
+      "explicacion_incorrecta": "¿Qué sigue después del 30 si cuentas de diez en diez?"
+    },
+    {
+      "id": "mate2-15",
+      "tipo": "opcion-multiple",
+      "pregunta": "Si parto una naranja en 4 partes iguales, cada parte se llama...",
+      "opciones": ["Mitad", "Cuarto", "Tercio", "Entero"],
+      "respuesta": "Cuarto",
+      "explicacion_correcta": "¡Exacto! Una de cuatro partes es un cuarto.",
+      "explicacion_incorrecta": "Mitad es 2 partes. Tercio son 3. Cuarto son..."
+    },
+    {
+      "id": "mate2-16",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Cuál suma da 10?",
+      "opciones": ["5 + 4", "6 + 3", "7 + 3", "8 + 1"],
+      "respuesta": "7 + 3",
+      "explicacion_correcta": "¡Correcto! 7 más 3 es igual a 10.",
+      "explicacion_incorrecta": "Suma cada opción. 5+4=9. 6+3=9. ¿Cuánto es 7+3?"
+    },
+    {
+      "id": "mate2-17",
+      "tipo": "opcion-multiple",
+      "pregunta": "El doble de 6 es...",
+      "opciones": ["66", "12", "3", "8"],
+      "respuesta": "12",
+      "explicacion_correcta": "¡Bien! 6 + 6 = 12.",
+      "explicacion_incorrecta": "Suma 6 consigo mismo."
+    },
+    {
+      "id": "mate2-18",
+      "tipo": "navegacion-mapa",
+      "pregunta": "Lleva la carta ✉️ al buzón 📮. Cuidado con el perro 🐕.",
+      "configuracion_mapa": {
+        "columnas": 4,
+        "filas": 4,
+        "punto_inicio": {"fila": 0, "columna": 0, "icono": "✉️"},
+        "puntos_interes": [
+          {"nombre": "Casa", "fila": 0, "columna": 3, "icono": "🏠"},
+          {"nombre": "Perro", "fila": 1, "columna": 1, "icono": "🐕"},
+          {"nombre": "Buzón", "fila": 3, "columna": 3, "icono": "📮"}
+        ],
+        "movimientos": ["este", "este", "este", "sur", "sur", "sur"],
+        "respuesta_correcta": "Buzón"
+      }
+    },
+    {
+      "id": "mate2-19",
+      "tipo": "opcion-multiple",
+      "pregunta": "1 hora tiene ______ minutos.",
+      "opciones": ["100", "60", "30", "12"],
+      "respuesta": "60",
+      "explicacion_correcta": "¡Exacto! Una hora completa tiene 60 minutos.",
+      "explicacion_incorrecta": "Recuerda que media hora son 30 minutos. La hora completa es el doble."
+    },
+    {
+      "id": "mate2-20",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Qué número es impar?",
+      "opciones": ["2", "4", "6", "7"],
+      "respuesta": "7",
+      "explicacion_correcta": "¡Correcto! El 7 no tiene mitad exacta, es impar.",
+      "explicacion_incorrecta": "Los números pares terminan en 0, 2, 4, 6, 8. Busca el que no termina así."
+    }
+  ]
+}
+
+

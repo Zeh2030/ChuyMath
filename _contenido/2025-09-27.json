@@ -1,0 +1,75 @@
+{
+  "id": "2025-09-27",
+  "titulo": "El Desafío Geométrico",
+  "misiones": [
+    {
+      "id": "mision-conteo-1",
+      "tipo": "conteo-figuras",
+      "titulo": "El Misterio de los Triángulos",
+      "ejercicios": [
+        {
+          "pregunta": "¿Cuántos triángulos ves en total en esta figura?",
+          "figura_svg": "<svg width='200' height='160' viewBox='0 0 100 87'><path d='M50 0 L100 87 H0 Z' stroke='black' stroke-width='2' fill='none'/><path d='M50 0 L50 87' stroke='black' stroke-width='2' fill='none'/></svg>",
+          "respuesta": "3",
+          "pista": "Fíjate bien: hay un triángulo grande y dos pequeños dentro.",
+          "explicacion_correcta": "¡Exacto! Hay 3 triángulos: el triángulo grande (de esquina a esquina) y los 2 triángulos pequeños que se forman cuando dibujamos la línea vertical (uno a la izquierda y otro a la derecha).",
+          "explicacion_incorrecta": "No es correcto. Fíjate bien: hay un triángulo grande que va de la esquina superior al vértice inferior, y cuando dibujamos la línea vertical en el medio, se forman 2 triángulos pequeños: uno a la izquierda y otro a la derecha. ¡En total son 3 triángulos!"
+        },
+        {
+          "pregunta": "Y en esta figura más compleja, ¿cuántos triángulos puedes encontrar?",
+          "figura_svg": "<svg width='200' height='160' viewBox='0 0 100 87'><path d='M50 0 L100 87 H0 Z' stroke='black' stroke-width='2' fill='none'/><path d='M0 87 L100 87' stroke='black' stroke-width='1' fill='none'/><path d='M50 43.5 H0' stroke='black' stroke-width='2' fill='none'/><path d='M50 43.5 L100 43.5' stroke='black' stroke-width='2' fill='none'/></svg>",
+          "respuesta": "2",
+          "pista": "Cuenta el triángulo grande y el triángulo pequeño que se forma.",
+          "explicacion_correcta": "¡Perfecto! Hay 2 triángulos: el triángulo grande que va desde el punto superior hasta la base, y el triángulo pequeño que se forma en la parte superior cuando dibujamos las líneas horizontales.",
+          "explicacion_incorrecta": "No es correcto. Observa con cuidado: hay un triángulo grande que va desde el punto superior hasta la base, y luego se forma 1 triángulo pequeño en la parte superior cuando dibujamos las líneas horizontales. ¡En total son 2 triángulos!"
+        }
+      ]
+    },
+    {
+      "id": "mision-conteo-2",
+      "tipo": "conteo-figuras",
+      "titulo": "La Torre de Cuadrados",
+      "ejercicios": [
+        {
+          "pregunta": "¿Cuántos cuadrados hay en total en esta cuadrícula?",
+          "figura_svg": "<svg width='180' height='180' viewBox='0 0 100 100'><rect x='0' y='0' width='50' height='50' stroke='black' stroke-width='2' fill='none'/><rect x='50' y='0' width='50' height='50' stroke='black' stroke-width='2' fill='none'/><rect x='0' y='50' width='50' height='50' stroke='black' stroke-width='2' fill='none'/><rect x='50' y='50' width='50' height='50' stroke='black' stroke-width='2' fill='none'/></svg>",
+          "respuesta": "5",
+          "pista": "No olvides contar el cuadrado grande que los contiene a todos.",
+          "explicacion_correcta": "¡Excelente! Hay 5 cuadrados: 4 cuadrados pequeños (uno en cada esquina) y 1 cuadrado grande que los contiene a todos. ¡Ese es el truco más importante en el conteo de cuadrados!",
+          "explicacion_incorrecta": "No es correcto. Recuerda: hay 4 cuadrados pequeños (uno en cada esquina de la cuadrícula) Y también hay 1 cuadrado grande que abarca toda la figura. ¡En total son 5 cuadrados! El cuadrado grande es el que muchas veces se nos olvida contar."
+        },
+        {
+          "pregunta": "¿Cuántos cuadrados ves en esta cuadrícula más grande?",
+          "figura_svg": "<svg width='180' height='180' viewBox='0 0 100 100'><rect x='0' y='0' width='33.33' height='33.33' stroke='black' stroke-width='2' fill='none'/><rect x='33.33' y='0' width='33.33' height='33.33' stroke='black' stroke-width='2' fill='none'/><rect x='66.66' y='0' width='33.33' height='33.33' stroke='black' stroke-width='2' fill='none'/><rect x='0' y='33.33' width='33.33' height='33.33' stroke='black' stroke-width='2' fill='none'/><rect x='33.33' y='33.33' width='33.33' height='33.33' stroke='black' stroke-width='2' fill='none'/><rect x='66.66' y='33.33' width='33.33' height='33.33' stroke='black' stroke-width='2' fill='none'/><rect x='0' y='66.66' width='33.33' height='33.33' stroke='black' stroke-width='2' fill='none'/><rect x='33.33' y='66.66' width='33.33' height='33.33' stroke='black' stroke-width='2' fill='none'/><rect x='66.66' y='66.66' width='33.33' height='33.33' stroke='black' stroke-width='2' fill='none'/></svg>",
+          "respuesta": "14",
+          "pista": "Cuenta los 9 cuadrados pequeños, los 4 cuadrados de 2x2, y el cuadrado grande.",
+          "explicacion_correcta": "¡Perfecto! Hay 14 cuadrados: 9 cuadrados pequeños (1x1), 4 cuadrados medianos (2x2) y 1 cuadrado grande (3x3). ¡Este es el patrón clásico de conteo de cuadrados!",
+          "explicacion_incorrecta": "No es correcto. En una cuadrícula 3x3 hay: 9 cuadrados pequeños (1x1), 4 cuadrados medianos (2x2) y 1 cuadrado grande (3x3). ¡En total son 14 cuadrados!"
+        }
+      ]
+    },
+    {
+      "id": "mision-conteo-3",
+      "tipo": "conteo-figuras",
+      "titulo": "El Laberinto de Rectángulos",
+      "ejercicios": [
+        {
+          "pregunta": "¿Cuántos rectángulos hay en esta figura?",
+          "figura_svg": "<svg width='180' height='120' viewBox='0 0 100 60'><rect x='0' y='0' width='50' height='30' stroke='black' stroke-width='2' fill='none'/><rect x='50' y='0' width='50' height='30' stroke='black' stroke-width='2' fill='none'/><rect x='0' y='30' width='50' height='30' stroke='black' stroke-width='2' fill='none'/><rect x='50' y='30' width='50' height='30' stroke='black' stroke-width='2' fill='none'/></svg>",
+          "respuesta": "9",
+          "pista": "Cuenta los rectángulos pequeños, medianos y el grande.",
+          "explicacion_correcta": "¡Excelente! Hay 9 rectángulos: 4 rectángulos pequeños (1x1), 4 rectángulos medianos (1x2 y 2x1) y 1 rectángulo grande (2x2). ¡Los rectángulos pueden ser de diferentes tamaños!",
+          "explicacion_incorrecta": "No es correcto. En una cuadrícula 2x2 hay: 4 rectángulos pequeños (1x1), 2 rectángulos horizontales (1x2), 2 rectángulos verticales (2x1) y 1 rectángulo grande (2x2). ¡En total son 9 rectángulos!"
+        },
+        {
+          "pregunta": "¿Cuántos triángulos hay en esta casa?",
+          "figura_svg": "<svg width='180' height='180' viewBox='0 0 100 100'><rect x='20' y='60' width='60' height='40' stroke='black' stroke-width='2' fill='none'/><path d='M20 60 L50 30 L80 60 Z' stroke='black' stroke-width='2' fill='none'/><path d='M35 60 L35 80 L45 80 L45 60' stroke='black' stroke-width='2' fill='none'/><path d='M35 60 L40 55 L45 60' stroke='black' stroke-width='2' fill='none'/></svg>",
+          "respuesta": "2",
+          "pista": "Cuenta el triángulo del techo grande y el triángulo pequeño de la puerta.",
+          "explicacion_correcta": "¡Excelente! Hay 2 triángulos: el triángulo grande del techo de la casa y el triángulo pequeño que forma la parte superior de la puerta. ¡Las casas tienen formas muy interesantes!",
+          "explicacion_incorrecta": "No es correcto. Hay 2 triángulos: el triángulo grande del techo de la casa y el triángulo pequeño que forma la parte superior de la puerta. ¡En total son 2 triángulos!"
+        }
+      ]
+    }
+  ]
+}

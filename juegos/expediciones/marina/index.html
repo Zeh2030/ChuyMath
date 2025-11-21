@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expedición Marina - El Mundo de Chuy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;700&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../expedicion-base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header con navegación -->
+        <header class="game-header">
+            <h1>🌊 Expedición Marina</h1>
+            <p style="text-align: center; font-style: italic; color: #7f8c8d; margin: -10px 0 20px 0;">
+                Nueva York, Júpiter y Secretos del Tiburón
+            </p>
+            <a href="../../../dashboard/dashboard.html" class="back-button">← Volver al Centro de Mando</a>
+        </header>
+        
+        <!-- Misión de Operaciones -->
+        <section class="section" id="math-section">
+            <h2 class="math-title">🔢 Misión de Operaciones</h2>
+            <div class="grid-container" id="math-grid">
+                <!-- Los ejercicios se cargarán dinámicamente -->
+            </div>
+            <div class="action-area">
+                <button class="grade-button math-button" id="grade-math">Calificar Misión</button>
+                <div class="results-area" id="math-results"></div>
+            </div>
+        </section>
+
+        <!-- Misión Kakooma ELIMINADA -->
+
+        <!-- Misión Geográfica -->
+        <section class="section" id="geo-section">
+            <h2 class="geo-title">🗽 Misión Geográfica</h2>
+            <div class="postcard" id="geo-mission" data-answer="ny">
+                <div class="postcard-images">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHqzvH-_xPZX57JgzjMeQFGrL95vuwBidNAQ&s" 
+                         alt="Estatua de la Libertad en Nueva York" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/333/fff?text=Imagen+no+disponible';">
+                    <img src="https://c8.alamy.com/comp/2A15MX1/new-york-red-highlighted-in-map-of-the-united-states-of-america-2A15MX1.jpg" 
+                         alt="Mapa de Nueva York" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/333/fff?text=Imagen+no+disponible';">
+                </div>
+                <div class="postcard-content">
+                    <p>"¡Hola! Te envío un saludo desde la 'Gran Manzana'. Esta ciudad es famosa por sus rascacielos y una estatua gigante que da la bienvenida a todos. ¿Sabes dónde estoy?"</p>
+                    <ul class="multiple-choice-options geo-options" id="geo-options">
+                        <!-- Las opciones se cargarán dinámicamente -->
+                    </ul>
+                </div>
+            </div>
+            <div class="action-area">
+                <button class="grade-button geo-button" id="grade-geo">Calificar Misión</button>
+                <div class="results-area" id="geo-results"></div>
+            </div>
+        </section>
+
+        <!-- Misión Cósmica -->
+        <section class="section" id="planet-section">
+            <h2 class="planet-title">🪐 Misión Cósmica</h2>
+            <div class="cosmic-message" id="planet-mission" data-answer="gigante">
+                <img src="https://cdn.britannica.com/66/155966-050-F18467EA/Jupiter.jpg" 
+                     alt="Planeta Júpiter" 
+                     class="planet-image" 
+                     onerror="this.onerror=null;this.src='https://placehold.co/600x400/333/fff?text=Imagen+no+disponible';">
+                <p>¡Soy Júpiter! Soy tan grande que todos los demás planetas del sistema solar podrían caber dentro de mí. Por eso me llaman el planeta...</p>
+                <ul class="multiple-choice-options planet-options" id="planet-options">
+                    <!-- Las opciones se cargarán dinámicamente -->
+                </ul>
+            </div>
+            <div class="action-area">
+                <button class="grade-button planet-button" id="grade-planet">Calificar Misión</button>
+                <div class="results-area" id="planet-results"></div>
+            </div>
+        </section>
+
+        <!-- Misión Marina -->
+        <section class="section" id="animal-section">
+            <h2 class="animal-title">🦈 Misión Marina</h2>
+            <div class="marine-mystery" id="animal-mission" data-answer="tiburon">
+                <img src="https://i.etsystatic.com/7680978/r/il/5d6516/2061579841/il_fullxfull.2061579841_sgmn.jpg" 
+                     alt="Dibujo de un tiburón" 
+                     class="animal-image" 
+                     onerror="this.onerror=null;this.src='https://placehold.co/600x400/333/fff?text=Imagen+no+disponible';">
+                <div class="clue-content">
+                    <ul class="clues" id="animal-clues">
+                        <!-- Las pistas se cargarán dinámicamente -->
+                    </ul>
+                    <p><strong>¿Qué animal soy?</strong></p>
+                    <ul class="multiple-choice-options animal-options" id="animal-options">
+                        <!-- Las opciones se cargarán dinámicamente -->
+                    </ul>
+                </div>
+            </div>
+            <div class="action-area">
+                <button class="grade-button animal-button" id="grade-animal">Calificar Misión</button>
+                <div class="results-area" id="animal-results"></div>
+            </div>
+        </section>
+
+        <!-- Misión Numberblocks: Dibujo -->
+        <section class="section numberblocks-section" id="numberblocks-section">
+            <h2 class="numberblocks-title">🧱 Misión Numberblocks: Dibuja tu Operación</h2>
+            <div class="horizontal-op">Dibuja Numberblocks para 5 + 4 = ?</div>
+            <div class="canvas-container">
+                <canvas id="drawing-canvas"></canvas>
+            </div>
+            <div class="drawing-tools">
+                <button class="drawing-tool color-tool" id="color-red" title="Rojo"></button>
+                <button class="drawing-tool color-tool" id="color-blue" title="Azul"></button>
+                <button class="drawing-tool color-tool" id="color-yellow" title="Amarillo"></button>
+                <button class="drawing-tool color-tool" id="color-green" title="Verde"></button>
+                <button class="drawing-tool" id="clear-canvas">Limpiar</button>
+                <button class="drawing-tool" id="save-drawing">Guardar Dibujo</button>
+            </div>
+            <div class="action-area">
+                <button class="grade-button" id="grade-numberblocks" style="background: linear-gradient(45deg, #ff9800, #f57c00);">Calificar Dibujo</button>
+                <div class="results-area" id="numberblocks-results"></div>
+            </div>
+        </section>
+
+        <!-- Navegación final -->
+        <div id="final-navigation" class="final-navigation hidden">
+            <h3>🎉 ¡Expedición Completada!</h3>
+            <p>¡Has terminado la Expedición Marina! ¿Qué quieres hacer ahora?</p>
+            <div class="final-buttons">
+                <a href="../../../boveda/boveda.html" class="final-button boveda">📚 Ir a la Bóveda</a>
+                <a href="../../../dashboard/dashboard.html" class="final-button dashboard">🏠 Centro de Mando</a>
+                <button id="restart-adventure" class="final-button restart">🔄 Jugar de Nuevo</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../expedicion-base.js"></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

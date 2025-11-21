@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bóveda de Misiones</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;700&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="boveda.css">
+</head>
+<body>
+    <div class="background-sky">
+        <div class="cloud c1"></div>
+        <div class="cloud c2"></div>
+    </div>
+
+    <div class="main-container">
+        <header class="boveda-header">
+            <h1><span class="icon">📚</span> Bóveda de Misiones</h1>
+            <p>¡Aquí están todas tus aventuras! Repasa las completadas y desbloquea las pendientes.</p>
+            
+            <!-- Toggles de Vista -->
+            <div class="vista-toggles">
+                <button id="calendario-view-btn" class="toggle-btn active">
+                    <span class="icon">📅</span> Aventuras Diarias
+                </button>
+                <button id="categoria-view-btn" class="toggle-btn">
+                    <span class="icon">⭐</span> Por Categorías
+                </button>
+            </div>
+            
+            <div class="navigation-buttons">
+                <a href="../dashboard/dashboard.html" class="back-button back-dashboard">🏠 Centro de Mando</a>
+            </div>
+        </header>
+
+        <!-- Vista por Calendario (por defecto) -->
+        <main id="vista-calendario-content" class="vista-content">
+            <div id="misiones-grid" class="misiones-grid">
+                <!-- Las tarjetas de las misiones se cargarán aquí con JavaScript -->
+                <div class="loader">Cargando misiones...</div>
+            </div>
+        </main>
+
+        <!-- Vista por Categorías (oculta inicialmente) -->
+        <main id="vista-categorias-content" class="vista-content hidden">
+            <div class="categorias-container">
+                <div class="categoria-seccion" data-categoria="geometria">
+                    <h2 class="categoria-titulo">🧮 Geometría</h2>
+                    <div class="categoria-grid" id="geometria-grid">
+                        <!-- Misiones de geometría se cargarán aquí -->
+                    </div>
+                </div>
+
+                <div class="categoria-seccion" data-categoria="simulacros">
+                    <h2 class="categoria-titulo">🏆 Simulacros de Olimpiada</h2>
+                    <div class="categoria-grid" id="simulacros-grid"></div>
+                </div>
+                
+                <div class="categoria-seccion" data-categoria="secuencias">
+                    <h2 class="categoria-titulo">🔍 Secuencias y Patrones</h2>
+                    <div class="categoria-grid" id="secuencias-grid">
+                        <!-- Misiones de secuencias se cargarán aquí -->
+                    </div>
+                </div>
+                
+                <div class="categoria-seccion" data-categoria="constructores">
+                    <h2 class="categoria-titulo">🏗️ Constructores</h2>
+                    <div class="categoria-grid" id="constructores-grid">
+                        <!-- Misiones de constructores se cargarán aquí -->
+                    </div>
+                </div>
+                
+                <div class="categoria-seccion" data-categoria="aventuras">
+                    <h2 class="categoria-titulo">🌟 Aventuras Mixtas</h2>
+                    <div class="categoria-grid" id="aventuras-grid">
+                        <!-- Aventuras mixtas se cargarán aquí -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="boveda.js"></script>
+</body>
+</html>

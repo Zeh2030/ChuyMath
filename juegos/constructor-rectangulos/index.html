@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numberblocks: El Constructor de Rectángulos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;700&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-sky">
+        <div class="cloud c1"></div>
+        <div class="cloud c2"></div>
+    </div>
+    <div class="game-world">
+        <div class="game-container">
+            <div class="challenge-header">
+                <h1 id="challenge-title">¡A construir rectángulos!</h1>
+                <a href="../../index.html" class="back-button">← Volver al Portal</a>
+            </div>
+            <div class="story-bubble">
+                <p id="story-text">¡Hola, soy Chuy! Elige un reto para empezar a construir con tus amigos, los Numberblocks.</p>
+            </div>
+            
+            <div class="equation-display" id="equation-display"></div>
+
+            <div class="construction-area" id="construction-area">
+                <!-- Rectangles will be built here by JS -->
+            </div>
+
+            <div id="message-area"></div>
+
+            <div class="toolbox-section">
+                <div class="toolbox-title">Caja de Herramientas</div>
+                <div class="toolbox" id="toolbox">
+                    <!-- Numberblocks 1-12 will be generated here -->
+                </div>
+            </div>
+
+            <div class="action-area">
+                <button class="action-button" id="check-button">Construir</button>
+                <button class="action-button next hidden" id="next-button">Siguiente Reto</button>
+            </div>
+
+            <!-- Navegación final -->
+            <div id="navegacion-final-constructor" class="navegacion-final-constructor hidden">
+                <div class="mensaje-final-constructor">
+                    <h3>🎉 ¡Felicidades, Constructor!</h3>
+                    <p>Has completado todos los retos. ¿Qué quieres hacer ahora?</p>
+                </div>
+                <div class="botones-final-constructor">
+                    <a href="../../boveda/boveda.html" class="boton-final-constructor boveda">📚 Ir a la Bóveda</a>
+                    <a href="../../dashboard/dashboard.html" class="boton-final-constructor dashboard">🏠 Centro de Mando</a>
+                    <button id="reiniciar-constructor" class="boton-final-constructor reiniciar">🔄 Jugar de Nuevo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

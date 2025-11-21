@@ -1,0 +1,312 @@
+:root {
+    --c-primary: #3498db;
+    --c-secondary: #f1c40f;
+    --c-success: #2ecc71;
+    --c-danger: #e74c3c;
+    --c-logic: #9b59b6; /* Morado Lógica */
+    --c-spatial: #1abc9c; /* Verde Espacial */
+    --c-background: #ecf0f1;
+    --c-text: #34495e;
+    --c-paper: #ffffff;
+    --font-headings: 'Fredoka', sans-serif;
+    --font-body: 'Nunito', sans-serif;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--c-background);
+    color: var(--c-text);
+    margin: 0;
+    padding: 25px;
+}
+
+.main-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* --- Cabecera y Misiones --- */
+.aventura-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: var(--c-paper);
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.aventura-header h1 {
+    font-family: var(--font-headings);
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    color: var(--c-primary);
+    margin: 0 0 20px 0;
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    text-decoration: none; 
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.back-button:hover { 
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+    background: linear-gradient(135deg, #2980b9, #1f618d);
+}
+
+.dashboard-btn {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+}
+
+.dashboard-btn:hover {
+    background: linear-gradient(135deg, #c0392b, #a93226);
+    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+}
+
+.boveda-btn {
+    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+    box-shadow: 0 4px 15px rgba(155, 89, 182, 0.3);
+}
+
+.boveda-btn:hover {
+    background: linear-gradient(135deg, #8e44ad, #7d3c98);
+    box-shadow: 0 6px 20px rgba(155, 89, 182, 0.4);
+}
+
+#misiones-container { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 30px; 
+}
+
+.mision {
+    background-color: var(--c-paper); 
+    border-radius: 20px; 
+    padding: 25px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08); 
+    border-left: 10px solid;
+}
+
+.mision h2 {
+    font-family: var(--font-headings); 
+    margin-top: 0; 
+    font-size: 1.8rem;
+    border-bottom: 3px solid #eee; 
+    padding-bottom: 10px; 
+    margin-bottom: 20px;
+}
+
+.mision-instruccion {
+    font-size: 1.1rem; 
+    text-align: center; 
+    font-weight: 600;
+    background-color: #f8f9fa; 
+    padding: 15px; 
+    border-radius: 10px; 
+    margin-bottom: 25px;
+}
+
+/* --- Loader --- */
+.loader {
+    text-align: center;
+    padding: 40px;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--c-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --- Footer y Navegación --- */
+.aventura-footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 30px;
+    background-color: var(--c-paper);
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+#completar-aventura-btn {
+    background: linear-gradient(135deg, var(--c-success), #27ae60);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: var(--font-headings);
+    box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+}
+
+#completar-aventura-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
+}
+
+#mensaje-final {
+    margin: 20px 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--c-primary);
+    font-family: var(--font-headings);
+}
+
+/* --- Navegación Final --- */
+.navegacion-final {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.boton-final {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 25px;
+    background: linear-gradient(135deg, var(--c-primary), #2980b9);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    font-family: var(--font-headings);
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.boton-final:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+}
+
+.boton-final.boveda {
+    background: linear-gradient(135deg, var(--c-logic), #8e44ad);
+    box-shadow: 0 4px 15px rgba(155, 89, 182, 0.3);
+}
+
+.boton-final.boveda:hover {
+    box-shadow: 0 6px 20px rgba(155, 89, 182, 0.4);
+}
+
+.boton-final svg {
+    width: 20px;
+    height: 20px;
+}
+
+.boton-reintentar {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-family: var(--font-headings);
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
+}
+
+.boton-reintentar:hover {
+    background: linear-gradient(135deg, #e67e22, #d35400);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(243, 156, 18, 0.4);
+}
+
+/* Ajuste para el botón de reintentar en el header para que coincida con los otros */
+.navigation-buttons .boton-reintentar {
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 20px;
+    line-height: 1.5;
+    margin-top: 0; /* Eliminar el margen que lo empuja hacia abajo */
+    align-self: center; /* Asegurar la alineación vertical */
+    font-weight: 600; /* Coincidir con el grosor de la fuente */
+}
+
+.boton-reintentar.hidden {
+    display: none;
+}
+
+/* --- Utilidades --- */
+.hidden {
+    display: none !important;
+}
+
+.error-mensaje {
+    text-align: center;
+    padding: 40px;
+    background-color: #f8d7da;
+    border: 2px solid #f5c6cb;
+    border-radius: 15px;
+    color: #721c24;
+}
+
+.error-mensaje h2 {
+    color: #721c24;
+    font-family: var(--font-headings);
+    margin-bottom: 15px;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+    
+    .mision {
+        padding: 20px;
+    }
+    
+    .mision h2 {
+        font-size: 1.5rem;
+    }
+    
+    .aventura-footer {
+        padding: 20px;
+    }
+    
+    .navegacion-final {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .boton-final {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+}
