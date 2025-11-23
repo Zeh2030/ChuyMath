@@ -40,21 +40,25 @@ const OpcionMultiple = ({
   const opcionesSonImagenes = mision.opciones_son_imagenes || false;
   const imagen = mision.imagen || null;
 
-  // DEBUG: Mostrar información de la misión
-  console.log(`[OpcionMultiple] ${mision.titulo}:`, {
-    respuestaCorrecta,
-    tipo: typeof respuestaCorrecta,
-    respuestaSeleccionada,
-    esModoSimulacro: modoSimulacro
-  });
+  // DEBUG: Mostrar información de la misión (solo en desarrollo)
+  if (process.env.NODE_ENV === 'development') {
+    console.log(`[OpcionMultiple] ${mision.titulo}:`, {
+      respuestaCorrecta,
+      tipo: typeof respuestaCorrecta,
+      respuestaSeleccionada,
+      esModoSimulacro: modoSimulacro
+    });
+  }
 
   // Manejar selección de opción
   const handleSeleccion = (opcion, indice) => {
     if (mostrarResultado || mostrarResultadoExterno) return; // No permitir cambiar después de responder
     
-    // Si la respuesta es un índice (número o string numérico), guardar el índice como string
-    // Si no, guardar el valor de la opción
-    const esIndice = typeof respuestaCorrecta === 'number' || (typeof respuestaCorrecta === 'string' && /^\d+$/.test(respuestaCorrecta));
+    // Determinar si debemos guardar el índice o el valor
+    // En modo simulacro, preferimos índices si la respuesta parece un índice
+    const esIndice = typeof respuestaCorrecta === 'number' || 
+                     (typeof respuestaCorrecta === 'string' && /^\d+$/.test(respuestaCorrecta));
+    
     const valorSeleccionado = esIndice ? indice.toString() : opcion;
     
     setRespuestaSeleccionada(valorSeleccionado);

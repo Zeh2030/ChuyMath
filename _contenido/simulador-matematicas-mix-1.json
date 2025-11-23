@@ -8,7 +8,7 @@
       "tipo": "opcion-multiple",
       "pregunta": "¿Qué número sigue en esta serie: 2, 4, 6, 8, ...?",
       "opciones": ["9", "10", "12", "11"],
-      "respuesta": "10",
+      "respuesta": "1",
       "explicacion_correcta": "¡Muy bien! La regla es sumar 2 al número anterior (saltar de 2 en 2).",
       "explicacion_incorrecta": "Fíjate bien, los números van creciendo de 2 en 2. Después del 8, si le sumas 2, ¿cuánto te da?"
     },
@@ -17,7 +17,7 @@
       "tipo": "opcion-multiple",
       "pregunta": "Si tengo 3 manzanas 🍎 y compro 4 más, ¿cuántas tengo en total?",
       "opciones": ["6", "7", "8", "5"],
-      "respuesta": "7",
+      "respuesta": "1",
       "explicacion_correcta": "¡Correcto! 3 + 4 = 7 manzanas deliciosas.",
       "explicacion_incorrecta": "Usa tus dedos para contar. Tienes 3 y agregas 4 más."
     },
@@ -58,7 +58,7 @@
       "tipo": "opcion-multiple",
       "pregunta": "Calcula: 15 - 5",
       "opciones": ["5", "10", "15", "20"],
-      "respuesta": "10",
+      "respuesta": "1",
       "explicacion_correcta": "¡Bien hecho! Si a 15 le quitas 5, te quedan 10.",
       "explicacion_incorrecta": "Imagina que tienes 15 monedas y gastas 5. ¿Cuántas te quedan?"
     },
@@ -67,7 +67,7 @@
       "tipo": "opcion-multiple",
       "pregunta": "Ayer fue Lunes. ¿Qué día será mañana?",
       "opciones": ["Martes", "Miércoles", "Jueves", "Viernes"],
-      "respuesta": "Miércoles",
+      "respuesta": "1",
       "explicacion_correcta": "¡Excelente lógica! Si ayer fue Lunes, hoy es Martes. Por lo tanto, mañana será Miércoles.",
       "explicacion_incorrecta": "Piensa paso a paso: Ayer = Lunes. Entonces Hoy = Martes. ¿Qué sigue después del Martes?"
     },
@@ -76,7 +76,7 @@
       "tipo": "opcion-multiple",
       "pregunta": "¿Cuál es el resultado de sumar los lados de un cuadrado y los lados de un triángulo?",
       "opciones": ["6", "7", "8", "5"],
-      "respuesta": "7",
+      "respuesta": "1",
       "explicacion_correcta": "¡Muy bien! Cuadrado (4 lados) + Triángulo (3 lados) = 7.",
       "explicacion_incorrecta": "Recuerda: Un cuadrado tiene 4 lados. Un triángulo tiene 3. ¿Cuánto es 4 + 3?"
     },
@@ -85,7 +85,7 @@
       "tipo": "opcion-multiple",
       "pregunta": "María tiene el doble de edad que Juan. Si Juan tiene 4 años, ¿cuántos años tiene María?",
       "opciones": ["6", "8", "10", "4"],
-      "respuesta": "8",
+      "respuesta": "1",
       "explicacion_correcta": "¡Perfecto! El doble de 4 es lo mismo que 4 + 4, que es 8.",
       "explicacion_incorrecta": "'Doble' significa multiplicar por 2 o sumar el número consigo mismo. 4 + 4."
     },
@@ -94,7 +94,7 @@
       "tipo": "opcion-multiple",
       "pregunta": "¿Qué figura sigue? 🔴 🔵 🔴 🔵 🔴 ...",
       "opciones": ["🔴", "🔵", "🟢", "🟡"],
-      "respuesta": "🔵",
+      "respuesta": "1",
       "explicacion_correcta": "¡Así es! El patrón es rojo, azul, rojo, azul... después del rojo sigue el azul.",
       "explicacion_incorrecta": "Observa el patrón: cambia de color cada vez. Si el último fue rojo, ¿cuál toca ahora?"
     },
@@ -103,7 +103,7 @@
       "tipo": "opcion-multiple",
       "pregunta": "Tengo 20 pesos. Me compro un helado de 12 pesos. ¿Cuánto dinero me sobra?",
       "opciones": ["10", "6", "8", "12"],
-      "respuesta": "8",
+      "respuesta": "2",
       "explicacion_correcta": "¡Exacto! 20 - 12 = 8 pesos.",
       "explicacion_incorrecta": "Es una resta. A 20 quítale 10 (te quedan 10) y luego quítale 2 más."
     },
@@ -129,7 +129,7 @@
       "tipo": "opcion-multiple",
       "pregunta": "¿Cuántas decenas hay en el número 53?",
       "opciones": ["3", "5", "50", "8"],
-      "respuesta": "5",
+      "respuesta": "1",
       "explicacion_correcta": "¡Correcto! En el 53, el 5 está en el lugar de las decenas.",
       "explicacion_incorrecta": "Las decenas son el primer número de la izquierda en un número de dos cifras."
     },
@@ -138,7 +138,7 @@
       "tipo": "opcion-multiple",
       "pregunta": "Si cortas una manzana por la mitad, ¿cuántas partes tienes?",
       "opciones": ["1", "2", "3", "4"],
-      "respuesta": "2",
+      "respuesta": "1",
       "explicacion_correcta": "¡Lógico! Cortar por la mitad divide una cosa en 2 partes iguales.",
       "explicacion_incorrecta": "Imagina la manzana. Si le pasas el cuchillo una vez por el medio, ¿cuántos pedazos te quedan?"
     },
@@ -147,7 +147,7 @@
       "tipo": "opcion-multiple",
       "pregunta": "¿Cuál es el número mayor?",
       "opciones": ["89", "98", "79", "88"],
-      "respuesta": "98",
+      "respuesta": "1",
       "explicacion_correcta": "¡Muy bien! 98 es el más grande porque tiene 9 decenas.",
       "explicacion_incorrecta": "Fíjate primero en las decenas (el primer número). ¿Cuál es mayor: 8, 9 o 7?"
     },
@@ -156,7 +156,7 @@
       "tipo": "opcion-multiple",
       "pregunta": "10 + 10 + 5 =",
       "opciones": ["20", "30", "25", "15"],
-      "respuesta": "25",
+      "respuesta": "2",
       "explicacion_correcta": "¡Correcto! 10 + 10 son 20, y más 5 son 25.",
       "explicacion_incorrecta": "Suma primero los dieces: 10 + 10. Luego súmale el 5 al resultado."
     },
@@ -165,7 +165,7 @@
       "tipo": "opcion-multiple",
       "pregunta": "¿Qué animal NO pertenece al grupo?",
       "opciones": ["Perro 🐶", "Gato 🐱", "Pez 🐟", "Mesa 🪑"],
-      "respuesta": "Mesa 🪑",
+      "respuesta": "3",
       "explicacion_correcta": "¡Exacto! La mesa es un objeto (mueble), todos los demás son animales vivos.",
       "explicacion_incorrecta": "Busca cuál de las opciones NO es un ser vivo."
     },
@@ -174,7 +174,7 @@
       "tipo": "opcion-multiple",
       "pregunta": "Si hoy es el día 5 del mes, ¿qué día será dentro de una semana (7 días)?",
       "opciones": ["10", "11", "12", "13"],
-      "respuesta": "12",
+      "respuesta": "2",
       "explicacion_correcta": "¡Bien calculado! 5 + 7 = 12.",
       "explicacion_incorrecta": "Una semana tiene 7 días. Suma 7 al día de hoy (5)."
     },
@@ -183,7 +183,7 @@
       "tipo": "opcion-multiple",
       "pregunta": "¿Cuántas patas suman 2 perros y 1 gallina?",
       "opciones": ["6", "8", "10", "12"],
-      "respuesta": "10",
+      "respuesta": "2",
       "explicacion_correcta": "¡Excelente! 2 perros (4+4=8 patas) + 1 gallina (2 patas) = 10 patas.",
       "explicacion_incorrecta": "Cada perro tiene 4 patas (4 x 2 = 8). La gallina tiene 2. Súmalas."
     },
@@ -192,7 +192,7 @@
       "tipo": "opcion-multiple",
       "pregunta": "Completa la frase: 'El hielo es ______ y el fuego es ______'",
       "opciones": ["caliente / frío", "frío / caliente", "duro / suave", "blanco / rojo"],
-      "respuesta": "frío / caliente",
+      "respuesta": "1",
       "explicacion_correcta": "¡Correcto! El hielo es frío y el fuego quema (es caliente).",
       "explicacion_incorrecta": "Piensa en cómo se siente tocar el hielo y cómo se siente acercarse al fuego."
     },
@@ -201,7 +201,7 @@
       "tipo": "opcion-multiple",
       "pregunta": "¿Cuánto es la mitad de 10?",
       "opciones": ["2", "4", "5", "6"],
-      "respuesta": "5",
+      "respuesta": "2",
       "explicacion_correcta": "¡Perfecto! Si divides 10 en dos partes iguales, cada una es 5. (5 + 5 = 10).",
       "explicacion_incorrecta": "Imagina que tienes 10 dulces y los repartes equitativamente entre 2 amigos. ¿Cuántos le tocan a cada uno?"
     }
