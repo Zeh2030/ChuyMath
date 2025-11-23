@@ -18,26 +18,26 @@
     {
       "id": "cripto-2",
       "tipo": "criptoaritmetica",
-      "pregunta": "Nivel 2: Descubre el valor de cada letra.",
-      "palabras": ["YO", "TU", "EL"],
+      "pregunta": "Nivel 2: ME + ME = BEE. Sabemos que E=0. ¿Qué números son M y B?",
+      "palabras": ["ME", "ME", "BEE"],
       "operacion": "+",
       "solucion": {
-        "Y": "1", "O": "2", "T": "3", "U": "5", "E": "4", "L": "7"
+        "M": "5", "E": "0", "B": "1"
       },
-      "explicacion_correcta": "¡Excelente! Encontraste una combinación válida: 12 + 35 = 47. Todas las letras son números diferentes.",
-      "explicacion_incorrecta": "Recuerda que letras diferentes deben tener números diferentes. Intenta que la suma de las unidades (O + U) dé L."
+      "explicacion_correcta": "¡Perfecto! Si E=0, entonces 50 + 50 = 100. Así M=5 y B=1.",
+      "explicacion_incorrecta": "Pista: Si E=0, entonces en las unidades 0+0=0. Para que BEE dé 100, M+M debe dar 10. ¡Busca un número que sumado consigo mismo dé 10!"
     },
     {
       "id": "cripto-3",
       "tipo": "criptoaritmetica",
-      "pregunta": "Nivel Experto: TO + GO = OUT",
-      "palabras": ["TO", "GO", "OUT"],
+      "pregunta": "Nivel Experto: AA + A = BC. Si A=5, ¿cuáles son B y C?",
+      "palabras": ["AA", "A", "BC"],
       "operacion": "+",
       "solucion": {
-        "T": "2", "O": "1", "G": "8", "U": "0"
+        "A": "5", "B": "6", "C": "0"
       },
-      "explicacion_correcta": "¡Eres un genio! 21 + 81 = 102. Descifraste el código.",
-      "explicacion_incorrecta": "Pista: La suma de dos números de dos cifras (TO + GO) da uno de tres cifras (OUT). Eso significa que la primera letra del resultado (O) tiene que ser 1."
+      "explicacion_correcta": "¡Excelente! 55 + 5 = 60. B vale 6 y C vale 0.",
+      "explicacion_incorrecta": "Pista: Suma 55 + 5. El resultado es el número BC. B es la decena y C la unidad."
     }
   ]
 }
