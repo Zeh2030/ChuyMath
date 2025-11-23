@@ -6,6 +6,7 @@ import TablaDobleEntrada from './tipos/TablaDobleEntrada';
 import ConteoFiguras from './tipos/ConteoFiguras';
 import Operaciones from './tipos/Operaciones';
 import Criptoaritmetica from './tipos/Criptoaritmetica';
+import BalanzaLogica from './tipos/BalanzaLogica';
 import './MisionRenderer.css';
 
 /**
@@ -113,8 +114,17 @@ const MisionRenderer = ({
         );
       
       case 'balanza-logica':
-        // TODO: Implementar en Fase 4
-        return <div>Componente BalanzaLogica - Por implementar</div>;
+        return (
+          <BalanzaLogica 
+            key={mision.id}
+            mision={mision} 
+            onCompletar={onCompletar} 
+            modoSimulacro={modoSimulacro}
+            respuestaGuardada={respuestaGuardada}
+            onRespuesta={onRespuesta}
+            mostrarResultado={mostrarResultado}
+          />
+        );
       
       case 'desarrollo-cubos':
         // TODO: Implementar en Fase 4

@@ -61,21 +61,42 @@ Los índices empiezan a contar desde 0:
 - `"operaciones"`: Problema matemático donde el usuario debe escribir el resultado numérico.
 - `"criptoaritmetica"`: Reto para asignar dígitos a letras.
 
-#### Ejemplo `criptoaritmetica`:
-```json
-{
-  "id": "cripto-1",
-  "tipo": "criptoaritmetica",
-  "pregunta": "Resuelve A + A = B",
-  "palabras": ["A", "A", "B"],
-  "operacion": "+",
-  "solucion": { "A": "4", "B": "8" },
-  "explicacion_correcta": "¡Bien!",
-  "explicacion_incorrecta": "Intenta de nuevo."
-}
-```
+       #### Ejemplo `criptoaritmetica`:
+       ```json
+       {
+         "id": "cripto-1",
+         "tipo": "criptoaritmetica",
+         "pregunta": "Resuelve A + A = B",
+         "palabras": ["A", "A", "B"],
+         "operacion": "+",
+         "solucion": { "A": "4", "B": "8" },
+         "explicacion_correcta": "¡Bien!",
+         "explicacion_incorrecta": "Intenta de nuevo."
+       }
+       ```
 
-### 4. Imágenes y SVG
+       #### Ejemplo `balanza-logica`:
+       ```json
+       {
+         "id": "balanza-1",
+         "tipo": "balanza-logica",
+         "pregunta": "¿Cuánto pesa la manzana?",
+         "configuracion_balanza": {
+           "lado_izquierdo": [
+             { "icono": "🍎", "cantidad": 1 }
+           ],
+           "lado_derecho": [
+             { "icono": "⚖️", "cantidad": 1, "valor_visible": "5 kg" }
+           ],
+           "incognita": "la manzana 🍎"
+         },
+         "respuesta": "5",
+         "explicacion_correcta": "¡Correcto!",
+         "explicacion_incorrecta": "Pista: Mira el peso del otro lado."
+       }
+       ```
+
+       ### 4. Imágenes y SVG
 ```json
 {
   "id": "p-suma-1",

@@ -65,49 +65,48 @@ const Simulacro = () => {
     }));
   };
 
+  // Función unificada para verificar si una respuesta es correcta
+  const esRespuestaCorrecta = (problema, respuestaUsuario) => {
+    if (problema.tipo === 'navegacion-mapa') {
+      return respuestaUsuario === problema.configuracion_mapa.respuesta_correcta;
+    } 
+    
+    if (problema.tipo === 'opcion-multiple') {
+      // La respuesta puede ser un índice o un valor
+      if (typeof problema.respuesta === 'string' && /^\d+$/.test(problema.respuesta)) {
+        return respuestaUsuario === problema.respuesta;
+      } else {
+        return respuestaUsuario === problema.respuesta;
+      }
+    }
+    
+    if (problema.tipo === 'operaciones' || problema.tipo === 'balanza-logica') {
+      const respuestaUsuarioStr = String(respuestaUsuario || '').trim();
+      const respuestaCorrectaStr = String(problema.respuesta).trim();
+      return respuestaUsuarioStr === respuestaCorrectaStr;
+    }
+    
+    if (problema.tipo === 'criptoaritmetica') {
+      const usuario = respuestaUsuario || {};
+      const solucion = problema.solucion || {};
+      const letrasSolucion = Object.keys(solucion);
+      
+      if (Object.keys(usuario).length === 0) return false;
+      
+      return letrasSolucion.every(letra => 
+        String(usuario[letra]) === String(solucion[letra])
+      );
+    }
+
+    return false;
+  };
+
   // Calificar el examen
   const calificarExamen = async () => {
     let aciertos = 0;
     
     simulacro.problemas.forEach(problema => {
-      const respuestaUsuario = respuestas[problema.id];
-      
-      // Determinar si la respuesta es correcta
-      let esCorrecta = false;
-      
-      if (problema.tipo === 'navegacion-mapa') {
-        esCorrecta = respuestaUsuario === problema.configuracion_mapa.respuesta_correcta;
-              } else if (problema.tipo === 'opcion-multiple') {
-                // La respuesta puede ser un índice o un valor
-                if (typeof problema.respuesta === 'string' && /^\d+$/.test(problema.respuesta)) {
-                  // Es un índice
-                  esCorrecta = respuestaUsuario === problema.respuesta;
-                } else {
-                  // Es un valor
-                  esCorrecta = respuestaUsuario === problema.respuesta;
-                }
-              } else if (problema.tipo === 'operaciones') {
-                // Normalizar a string y trim para comparación robusta
-                const respuestaUsuarioStr = String(respuestaUsuario || '').trim();
-                const respuestaCorrectaStr = String(problema.respuesta).trim();
-                esCorrecta = respuestaUsuarioStr === respuestaCorrectaStr;
-              } else if (problema.tipo === 'criptoaritmetica') {
-                // Comparar objeto de asignaciones { 'A': '1', ... }
-                const usuario = respuestaUsuario || {};
-                const solucion = problema.solucion || {};
-                const letrasSolucion = Object.keys(solucion);
-                
-                // Verificar que tenga respuesta y coincida cada letra
-                if (Object.keys(usuario).length === 0) {
-                  esCorrecta = false;
-                } else {
-                  esCorrecta = letrasSolucion.every(letra => 
-                    String(usuario[letra]) === String(solucion[letra])
-                  );
-                }
-              }
-      
-      if (esCorrecta) {
+      if (esRespuestaCorrecta(problema, respuestas[problema.id])) {
         aciertos++;
       }
     });
@@ -136,7 +135,6 @@ const Simulacro = () => {
         console.log('Resultado guardado con éxito');
       } catch (error) {
         console.error('Error al guardar el resultado:', error);
-        // No bloqueamos la experiencia del usuario si falla el guardado, solo logueamos
       }
     }
 
@@ -224,22 +222,7 @@ const Simulacro = () => {
         <div className="problemas-lista">
           {simulacro.problemas.map((problema, index) => {
             const respuestaUsuario = respuestas[problema.id];
-            let esCorrecta = false;
-            
-            if (calificado) {
-              if (problema.tipo === 'navegacion-mapa') {
-                esCorrecta = respuestaUsuario === problema.configuracion_mapa.respuesta_correcta;
-              } else if (problema.tipo === 'opcion-multiple') {
-                // Lógica unificada de comparación
-                if (typeof problema.respuesta === 'string' && /^\d+$/.test(problema.respuesta)) {
-                  // Es índice
-                  esCorrecta = respuestaUsuario === problema.respuesta;
-                } else {
-                  // Es valor
-                  esCorrecta = respuestaUsuario === problema.respuesta;
-                }
-              }
-            }
+            const esCorrecta = calificado ? esRespuestaCorrecta(problema, respuestaUsuario) : false;
 
             return (
               <div 
@@ -300,4 +283,3 @@ const Simulacro = () => {
 };
 
 export default Simulacro;
-

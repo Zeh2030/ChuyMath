@@ -1,0 +1,94 @@
+{
+  "id": "simulador-balanza-1",
+  "titulo": "El Misterio de la Balanza",
+  "descripcion": "Descubre cuánto pesan los objetos para mantener el equilibrio.",
+  "problemas": [
+    {
+      "id": "balanza-1",
+      "tipo": "balanza-logica",
+      "pregunta": "Nivel 1: Igualdad simple. ¿Cuánto pesa la manzana?",
+      "configuracion_balanza": {
+        "lado_izquierdo": [
+          { "icono": "🍎", "cantidad": 1 }
+        ],
+        "lado_derecho": [
+          { "icono": "⚖️", "cantidad": 1, "valor_visible": "5 kg" }
+        ],
+        "incognita": "la manzana 🍎"
+      },
+      "respuesta": "5",
+      "explicacion_correcta": "¡Exacto! La balanza está equilibrada, así que pesan lo mismo.",
+      "explicacion_incorrecta": "Fíjate en el otro lado de la balanza. Dice exactamente cuánto pesa."
+    },
+    {
+      "id": "balanza-2",
+      "tipo": "balanza-logica",
+      "pregunta": "Nivel 2: Suma de pesos. ¿Cuánto pesa el regalo?",
+      "configuracion_balanza": {
+        "lado_izquierdo": [
+          { "icono": "🎁", "cantidad": 1 }
+        ],
+        "lado_derecho": [
+          { "icono": "🟨", "cantidad": 1, "valor_visible": "3" },
+          { "icono": "🟦", "cantidad": 1, "valor_visible": "2" }
+        ],
+        "incognita": "el regalo 🎁"
+      },
+      "respuesta": "5",
+      "explicacion_correcta": "¡Muy bien! 3 + 2 = 5. El regalo pesa 5.",
+      "explicacion_incorrecta": "Suma los pesos que están en el platillo derecho."
+    },
+    {
+      "id": "balanza-3",
+      "tipo": "balanza-logica",
+      "pregunta": "Nivel 3: Dobles. Si 2 limones pesan 10, ¿cuánto pesa UNO solo?",
+      "configuracion_balanza": {
+        "lado_izquierdo": [
+          { "icono": "🍋", "cantidad": 2 }
+        ],
+        "lado_derecho": [
+          { "icono": "⚖️", "cantidad": 1, "valor_visible": "10" }
+        ],
+        "incognita": "un limón 🍋"
+      },
+      "respuesta": "5",
+      "explicacion_correcta": "¡Correcto! La mitad de 10 es 5. 5 + 5 = 10.",
+      "explicacion_incorrecta": "Tienes 2 limones iguales que suman 10. ¿Qué número sumado dos veces da 10?"
+    },
+    {
+      "id": "balanza-4",
+      "tipo": "balanza-logica",
+      "pregunta": "Nivel 4: Un pequeño reto. ¿Cuánto pesa el panda?",
+      "configuracion_balanza": {
+        "lado_izquierdo": [
+          { "icono": "🐼", "cantidad": 1 },
+          { "icono": "🔹", "cantidad": 1, "valor_visible": "2" }
+        ],
+        "lado_derecho": [
+          { "icono": "⚖️", "cantidad": 1, "valor_visible": "10" }
+        ],
+        "incognita": "el panda 🐼"
+      },
+      "respuesta": "8",
+      "explicacion_correcta": "¡Genial! Si al 10 le quitas los 2 que acompañan al panda, te quedan 8.",
+      "explicacion_incorrecta": "Piensa: ¿Qué número más 2 es igual a 10?"
+    },
+    {
+      "id": "balanza-5",
+      "tipo": "balanza-logica",
+      "pregunta": "Nivel 5: Sustitución. Cada triángulo vale 2. ¿Cuánto pesa el diamante?",
+      "configuracion_balanza": {
+        "lado_izquierdo": [
+          { "icono": "💎", "cantidad": 1 }
+        ],
+        "lado_derecho": [
+          { "icono": "🔺", "cantidad": 3, "valor_visible": "2 c/u" }
+        ],
+        "incognita": "el diamante 💎"
+      },
+      "respuesta": "6",
+      "explicacion_correcta": "¡Excelente lógica! 3 triángulos de 2 cada uno son: 2 + 2 + 2 = 6.",
+      "explicacion_incorrecta": "Suma el valor de los tres triángulos: 2 + 2 + 2."
+    }
+  ]
+}
