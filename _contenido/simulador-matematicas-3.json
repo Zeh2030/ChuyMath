@@ -1,0 +1,168 @@
+{
+  "id": "simulador-matematicas-3",
+  "titulo": "Matemáticas Divertidas Nivel 3",
+  "descripcion": "¡Escribe las respuestas tú mismo! Sumas, restas y problemas para campeones.",
+  "problemas": [
+    {
+      "id": "m3-1",
+      "tipo": "operaciones",
+      "pregunta": "Empecemos fácil: ¿Cuánto es 5 + 3?",
+      "respuesta": "8",
+      "explicacion_correcta": "¡Muy bien! 5 dedos más 3 dedos son 8.",
+      "explicacion_incorrecta": "Cuenta con tus dedos: 5, 6, 7..."
+    },
+    {
+      "id": "m3-2",
+      "tipo": "operaciones",
+      "pregunta": "Tienes 10 galletas 🍪 y te comes 2. ¿Cuántas quedan?",
+      "respuesta": "8",
+      "explicacion_correcta": "¡Exacto! 10 - 2 = 8.",
+      "explicacion_incorrecta": "Es una resta. A 10 quítale 2."
+    },
+    {
+      "id": "m3-3",
+      "tipo": "operaciones",
+      "pregunta": "¿Qué número sigue? 10, 20, 30, ...",
+      "respuesta": "40",
+      "explicacion_correcta": "¡Correcto! Estás contando de 10 en 10.",
+      "explicacion_incorrecta": "Después del 30 viene el cuarenta..."
+    },
+    {
+      "id": "m3-4",
+      "tipo": "operaciones",
+      "pregunta": "Suma rápida: 10 + 10 + 5",
+      "respuesta": "25",
+      "explicacion_correcta": "¡Excelente cálculo! 20 + 5 = 25.",
+      "explicacion_incorrecta": "Primero suma los dieces (10+10=20). Luego suma 5."
+    },
+    {
+      "id": "m3-5",
+      "tipo": "operaciones",
+      "pregunta": "En un coche van 2 personas 🚗. En otro coche van 3 personas 🚙. ¿Cuántas personas van en total?",
+      "respuesta": "5",
+      "explicacion_correcta": "¡Bien! 2 + 3 = 5 personas viajando.",
+      "explicacion_incorrecta": "Suma las personas del primer coche y las del segundo."
+    },
+    {
+      "id": "m3-6",
+      "tipo": "operaciones",
+      "pregunta": "¿Cuánto es el DOBLE de 4?",
+      "respuesta": "8",
+      "explicacion_correcta": "¡Perfecto! El doble es sumar el número dos veces: 4 + 4 = 8.",
+      "explicacion_incorrecta": "Suma 4 más 4."
+    },
+    {
+      "id": "m3-7",
+      "tipo": "operaciones",
+      "pregunta": "Resta: 20 - 5",
+      "respuesta": "15",
+      "explicacion_correcta": "¡Muy bien! Si bajas 5 escalones desde el 20, llegas al 15.",
+      "explicacion_incorrecta": "Cuenta hacia atrás 5 pasos desde el 20."
+    },
+    {
+      "id": "m3-8",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Qué signo falta? 10 __ 2 = 12",
+      "opciones": ["+", "-", "x", "="],
+      "respuesta": "0",
+      "explicacion_correcta": "¡Claro! Es una suma: 10 MÁS 2 es igual a 12.",
+      "explicacion_incorrecta": "El número crece (de 10 pasa a 12), así que debes sumar."
+    },
+    {
+      "id": "m3-9",
+      "tipo": "operaciones",
+      "pregunta": "Hay 3 nidos 🪹. En cada nido hay 2 huevos 🥚. ¿Cuántos huevos hay en total?",
+      "respuesta": "6",
+      "explicacion_correcta": "¡Excelente multiplicación! 2 + 2 + 2 = 6.",
+      "explicacion_incorrecta": "Suma 2 huevos del primer nido, más 2 del segundo, más 2 del tercero."
+    },
+    {
+      "id": "m3-10",
+      "tipo": "operaciones",
+      "pregunta": "Calcula: 50 + 50",
+      "respuesta": "100",
+      "explicacion_correcta": "¡Wow! Llegaste al 100. Media centena más media centena es una centena.",
+      "explicacion_incorrecta": "5 más 5 es 10. Entonces 50 más 50 es..."
+    },
+    {
+      "id": "m3-11",
+      "tipo": "operaciones",
+      "pregunta": "¿Cuántas patas tienen 2 gatos? 🐈🐈",
+      "respuesta": "8",
+      "explicacion_correcta": "¡Miau! 4 patas de uno + 4 patas del otro = 8.",
+      "explicacion_incorrecta": "Cada gato tiene 4 patas. Suma 4 + 4."
+    },
+    {
+      "id": "m3-12",
+      "tipo": "operaciones",
+      "pregunta": "Ayer tenía 5 pesos. Hoy mi papá me dio 10 pesos. ¿Cuántos tengo ahora?",
+      "respuesta": "15",
+      "explicacion_correcta": "¡Rico! 5 + 10 = 15 pesos.",
+      "explicacion_incorrecta": "Junta el dinero de ayer con el de hoy."
+    },
+    {
+      "id": "m3-13",
+      "tipo": "operaciones",
+      "pregunta": "¿Cuál es la MITAD de 10?",
+      "respuesta": "5",
+      "explicacion_correcta": "¡Correcto! Si partes 10 en dos grupos iguales, quedan 5 en cada uno.",
+      "explicacion_incorrecta": "¿Cuántos dedos tienes en una sola mano? Esa es la mitad de 10."
+    },
+    {
+      "id": "m3-14",
+      "tipo": "operaciones",
+      "pregunta": "Si 8 + 2 = 10, ¿cuánto es 10 - 2?",
+      "respuesta": "8",
+      "explicacion_correcta": "¡Lógica pura! La resta es lo contrario de la suma.",
+      "explicacion_incorrecta": "Fíjate en los números de la primera suma. Son una familia."
+    },
+    {
+      "id": "m3-15",
+      "tipo": "operaciones",
+      "pregunta": "Tengo 12 colores ✏️. Se me pierden 2. ¿Cuántos me quedan?",
+      "respuesta": "10",
+      "explicacion_correcta": "¡Bien! 12 - 2 = 10.",
+      "explicacion_incorrecta": "A la docena (12) quítale 2 unidades."
+    },
+    {
+      "id": "m3-16",
+      "tipo": "operaciones",
+      "pregunta": "Multiplicación simple: 3 x 3",
+      "respuesta": "9",
+      "explicacion_correcta": "¡Perfecto! 3 veces 3 es 9 (3+3+3).",
+      "explicacion_incorrecta": "Suma el número 3 tres veces."
+    },
+    {
+      "id": "m3-17",
+      "tipo": "operaciones",
+      "pregunta": "¿Cuántos lados tiene un cuadrado?",
+      "respuesta": "4",
+      "explicacion_correcta": "¡Correcto! Cuadrado viene de 'cuatro'.",
+      "explicacion_incorrecta": "Cuenta los lados de una caja cuadrada."
+    },
+    {
+      "id": "m3-18",
+      "tipo": "operaciones",
+      "pregunta": "El número anterior a 20 es...",
+      "respuesta": "19",
+      "explicacion_correcta": "¡Muy bien! 19 va justo antes del 20.",
+      "explicacion_incorrecta": "Cuenta: 18, __, 20."
+    },
+    {
+      "id": "m3-19",
+      "tipo": "operaciones",
+      "pregunta": "Reto: 100 - 1",
+      "respuesta": "99",
+      "explicacion_correcta": "¡Casi 100! El número anterior es 99.",
+      "explicacion_incorrecta": "Imagina que al 100 le quitas una sola unidad."
+    },
+    {
+      "id": "m3-20",
+      "tipo": "operaciones",
+      "pregunta": "Desafío final: 2 + 2 + 2 + 2 + 2",
+      "respuesta": "10",
+      "explicacion_correcta": "¡Excelente! Sumaste el 2 cinco veces. ¡Eso es 5 x 2 = 10!",
+      "explicacion_incorrecta": "Ve contando de 2 en 2 cinco veces: 2, 4, 6..."
+    }
+  ]
+}

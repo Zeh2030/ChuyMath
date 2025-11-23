@@ -4,6 +4,7 @@ import Secuencia from './tipos/Secuencia';
 import NavegacionMapa from './tipos/NavegacionMapa';
 import TablaDobleEntrada from './tipos/TablaDobleEntrada';
 import ConteoFiguras from './tipos/ConteoFiguras';
+import Operaciones from './tipos/Operaciones';
 import './MisionRenderer.css';
 
 /**
@@ -51,20 +52,51 @@ const MisionRenderer = ({
             key={mision.id}
             mision={mision} 
             onCompletar={onCompletar} 
-            // Nota: Aún no adapté TablaDobleEntrada para modoSimulacro completo (inputs de props), 
-            // pero funcionará para aventuras normales.
+            modoSimulacro={modoSimulacro}
+            respuestaGuardada={respuestaGuardada}
+            onRespuesta={onRespuesta}
+            mostrarResultado={mostrarResultado}
           />
         );
       
       case 'secuencia':
-        return <Secuencia key={mision.id} mision={mision} onCompletar={onCompletar} />;
+        return (
+          <Secuencia 
+            key={mision.id} 
+            mision={mision} 
+            onCompletar={onCompletar} 
+            modoSimulacro={modoSimulacro}
+            respuestaGuardada={respuestaGuardada}
+            onRespuesta={onRespuesta}
+            mostrarResultado={mostrarResultado}
+          />
+        );
       
       case 'conteo-figuras':
-        return <ConteoFiguras key={mision.id} mision={mision} onCompletar={onCompletar} />;
+        return (
+          <ConteoFiguras 
+            key={mision.id} 
+            mision={mision} 
+            onCompletar={onCompletar} 
+            modoSimulacro={modoSimulacro}
+            respuestaGuardada={respuestaGuardada}
+            onRespuesta={onRespuesta}
+            mostrarResultado={mostrarResultado}
+          />
+        );
       
       case 'operaciones':
-        // TODO: Implementar en Fase 4
-        return <div>Componente Operaciones - Por implementar</div>;
+        return (
+          <Operaciones 
+            key={mision.id} 
+            mision={mision} 
+            onCompletar={onCompletar} 
+            modoSimulacro={modoSimulacro}
+            respuestaGuardada={respuestaGuardada}
+            onRespuesta={onRespuesta}
+            mostrarResultado={mostrarResultado}
+          />
+        );
       
       case 'criptoaritmetica':
         // TODO: Implementar en Fase 4

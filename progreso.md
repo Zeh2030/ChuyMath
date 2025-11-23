@@ -125,10 +125,10 @@
 
 *   [ ] **Crear Componentes para los Tipos de Juego Restantes:**
     *   [x] `components/aventura/tipos/NavegacionMapa.jsx` ✅
-    *   [ ] `components/aventura/tipos/TablaDobleEntrada.jsx`
-    *   [x] `components/aventura/tipos/Secuencia.jsx` (ya existe)
-    *   [ ] `components/aventura/tipos/ConteoFiguras.jsx`
-    *   [ ] `components/aventura/tipos/Operaciones.jsx`
+    *   [x] `components/aventura/tipos/TablaDobleEntrada.jsx` ✅
+    *   [x] `components/aventura/tipos/Secuencia.jsx` (ya existe en el proyecto original, solo necesita adaptación)
+    *   [x] `components/aventura/tipos/ConteoFiguras.jsx` ✅
+    *   [x] `components/aventura/tipos/Operaciones.jsx` ✅
     *   [ ] `components/aventura/tipos/Criptoaritmetica.jsx`
     *   [ ] `components/aventura/tipos/BalanzaLogica.jsx`
     *   [ ] `components/aventura/tipos/DesarrolloCubos.jsx`

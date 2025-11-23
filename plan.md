@@ -32,7 +32,7 @@ Este plan de desarrollo organiza la migración a React en fases manejables. Cada
 | **1** | **Autenticación y Perfil** | Implementar el flujo de inicio de sesión y la creación de perfiles. | ✅ **Completada** |
 | **2** | **Reconstrucción del Dashboard** | Crear la página principal y la estructura de navegación. | ✅ **Completada** |
 | **3** | **El Motor de Aventuras** | Desarrollar el sistema central para renderizar misiones. | ✅ **Completada** |
-| **4** | **Simulacros de Examen** | Crear modo examen y componentes prioritarios para práctica inmediata. | 🚀 **Prioridad** |
+| **4** | **Simulacros de Examen** | Crear modo examen y componentes prioritarios para práctica inmediata. | ✅ **Completada** |
 | **5** | **Migración de Contenido** | Adaptar el resto de juegos existentes a componentes de React. | ⬜ **Pendiente** |
 | **6** | **Testing y Optimización** | Asegurar la calidad, rendimiento y accesibilidad. | ⬜ **Pendiente** |
 
@@ -130,17 +130,7 @@ Este plan de desarrollo organiza la migración a React en fases manejables. Cada
 
 ## Fase 4: Simulacros de Examen (Prioridad)
 
-**Objetivo:** Habilitar un modo de "Simulacro" y crear los componentes necesarios para practicar para el examen próximo.
-
-*   [ ] **Definir Modo Simulacro:**
-    *   [ ] Adaptar `Aventura.jsx` o crear `Simulacro.jsx` para soportar un flujo tipo examen (sin feedback inmediato, cronómetro opcional).
-    *   [ ] Crear pantalla de resultados al final del simulacro.
-*   [ ] **Implementar Componentes Prioritarios:**
-    *   [ ] Identificar qué tipos de preguntas vendrán en el examen (Matemáticas, Lógica, etc.).
-    *   [ ] Crear componentes específicos necesarios (ej. `Operaciones.jsx`, `CompletarFrase.jsx`).
-*   [ ] **Crear Contenido de Simulacros:**
-    *   [ ] Crear archivos JSON con preguntas reales de práctica.
-    *   [ ] Cargar estos simulacros en Firestore.
+**Objetivo:** Habilitar un modo de "Simulacro" y crear los componentes necesarios para practicar para el examen próximo. (Completada con implementación de `Simulacro.jsx`, `OpcionMultiple.jsx`, `NavegacionMapa`, `TablaDobleEntrada`, `ConteoFiguras` y creación de contenido JSON).
 
 ---
 

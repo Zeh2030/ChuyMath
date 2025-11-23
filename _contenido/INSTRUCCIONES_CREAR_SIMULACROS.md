@@ -58,6 +58,19 @@ Los índices empiezan a contar desde 0:
 ### 3. Tipos de Problemas Soportados
 - `"opcion-multiple"`: Pregunta estándar con botones de opciones.
 - `"navegacion-mapa"`: Misión interactiva de mover un personaje en una cuadrícula.
+- `"operaciones"`: Problema matemático donde el usuario debe escribir el resultado numérico.
+
+#### Ejemplo `operaciones`:
+```json
+{
+  "id": "p-suma-1",
+  "tipo": "operaciones",
+  "pregunta": "¿Cuánto es 10 + 5?",
+  "respuesta": "15",
+  "explicacion_correcta": "¡Correcto! 10 más 5 son 15.",
+  "explicacion_incorrecta": "Intenta sumar con los dedos."
+}
+```
 
 ### 4. Imágenes y SVG
 Puedes usar código SVG directamente en las opciones o preguntas si estableces `"opciones_son_imagenes": true`.
