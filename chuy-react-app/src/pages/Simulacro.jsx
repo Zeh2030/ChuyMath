@@ -80,7 +80,7 @@ const Simulacro = () => {
       }
     }
     
-    if (problema.tipo === 'operaciones' || problema.tipo === 'balanza-logica') {
+    if (problema.tipo === 'operaciones' || problema.tipo === 'balanza-logica' || problema.tipo === 'desarrollo-cubos') {
       const respuestaUsuarioStr = String(respuestaUsuario || '').trim();
       const respuestaCorrectaStr = String(problema.respuesta).trim();
       return respuestaUsuarioStr === respuestaCorrectaStr;

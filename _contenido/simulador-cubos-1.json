@@ -1,0 +1,97 @@
+{
+  "id": "simulador-cubos-1",
+  "titulo": "Maestro de los Cubos",
+  "descripcion": "Usa tu imaginación para doblar los cubos en tu mente.",
+  "problemas": [
+    {
+      "id": "cubo-1",
+      "tipo": "desarrollo-cubos",
+      "pregunta": "Nivel 1: Si doblas este cubo, ¿quién queda FRENTE al Perro 🐶?",
+      "datos_cubo": {
+        "caras": [
+          { "id": "gato", "fila": 0, "columna": 1, "color": "#FFD700", "contenido": "🐱" },
+          { "id": "perro", "fila": 1, "columna": 1, "color": "#FF6B6B", "contenido": "🐶" },
+          { "id": "raton", "fila": 2, "columna": 1, "color": "#4ECDC4", "contenido": "🐭" },
+          { "id": "conejo", "fila": 3, "columna": 1, "color": "#45B7D1", "contenido": "🐰" },
+          { "id": "izq", "fila": 1, "columna": 0, "color": "#96CEB4", "contenido": "⬅️" },
+          { "id": "der", "fila": 1, "columna": 2, "color": "#FFEEAD", "contenido": "➡️" }
+        ]
+      },
+      "respuesta": "conejo",
+      "explicacion_correcta": "¡Exacto! El Perro y el Conejo están separados por una cara (el Ratón), así que son opuestos.",
+      "explicacion_incorrecta": "Pista: En la fila vertical, sáltate una cara. El Perro salta al Ratón y cae en el Conejo."
+    },
+    {
+      "id": "cubo-2",
+      "tipo": "desarrollo-cubos",
+      "pregunta": "Nivel 2: Opuestos laterales. ¿Quién está opuesto a la Flecha Izquierda ⬅️?",
+      "datos_cubo": {
+        "caras": [
+          { "id": "arriba", "fila": 0, "columna": 1, "color": "#D4A5A5", "contenido": "⬆️" },
+          { "id": "centro", "fila": 1, "columna": 1, "color": "#9B59B6", "contenido": "⏺️" },
+          { "id": "abajo", "fila": 2, "columna": 1, "color": "#D4A5A5", "contenido": "⬇️" },
+          { "id": "fondo", "fila": 3, "columna": 1, "color": "#ECF0F1", "contenido": "🔙" },
+          { "id": "izq", "fila": 1, "columna": 0, "color": "#E74C3C", "contenido": "⬅️" },
+          { "id": "der", "fila": 1, "columna": 2, "color": "#3498DB", "contenido": "➡️" }
+        ]
+      },
+      "respuesta": "der",
+      "explicacion_correcta": "¡Muy bien! Las alas izquierda y derecha se cierran y quedan frente a frente.",
+      "explicacion_incorrecta": "Imagina que cierras las paredes laterales. La izquierda se encuentra con la derecha."
+    },
+    {
+      "id": "cubo-3",
+      "tipo": "desarrollo-cubos",
+      "pregunta": "Nivel 3: Frutas. Si la Manzana 🍎 es el TECHO, ¿cuál es el PISO?",
+      "datos_cubo": {
+        "caras": [
+          { "id": "manzana", "fila": 0, "columna": 1, "color": "#FF6B6B", "contenido": "🍎" },
+          { "id": "uva", "fila": 1, "columna": 1, "color": "#9B59B6", "contenido": "🍇" },
+          { "id": "platano", "fila": 2, "columna": 1, "color": "#F1C40F", "contenido": "🍌" },
+          { "id": "sandia", "fila": 3, "columna": 1, "color": "#2ECC71", "contenido": "🍉" },
+          { "id": "naranja", "fila": 1, "columna": 0, "color": "#E67E22", "contenido": "🍊" },
+          { "id": "fresa", "fila": 1, "columna": 2, "color": "#E74C3C", "contenido": "🍓" }
+        ]
+      },
+      "respuesta": "platano",
+      "explicacion_correcta": "¡Correcto! Techo y piso son opuestos. La Manzana (arriba) salta la Uva (centro) y su opuesto es el Plátano.",
+      "explicacion_incorrecta": "El techo está opuesto al piso. Sáltate la cara del centro (Uva)."
+    },
+    {
+      "id": "cubo-4",
+      "tipo": "desarrollo-cubos",
+      "pregunta": "Nivel 4: Formas. ¿Qué figura está opuesta al Corazón ❤️?",
+      "datos_cubo": {
+        "caras": [
+          { "id": "estrella", "fila": 0, "columna": 1, "color": "#F1C40F", "contenido": "⭐️" },
+          { "id": "corazon", "fila": 1, "columna": 1, "color": "#E74C3C", "contenido": "❤️" },
+          { "id": "rayo", "fila": 2, "columna": 1, "color": "#F39C12", "contenido": "⚡️" },
+          { "id": "nube", "fila": 3, "columna": 1, "color": "#3498DB", "contenido": "☁️" },
+          { "id": "sol", "fila": 1, "columna": 0, "color": "#F1C40F", "contenido": "☀️" },
+          { "id": "luna", "fila": 1, "columna": 2, "color": "#9B59B6", "contenido": "🌙" }
+        ]
+      },
+      "respuesta": "nube",
+      "explicacion_correcta": "¡Excelente visión espacial! El Corazón salta el Rayo y queda frente a la Nube.",
+      "explicacion_incorrecta": "Busca la cara que está a dos pasos de distancia en línea recta."
+    },
+    {
+      "id": "cubo-5",
+      "tipo": "desarrollo-cubos",
+      "pregunta": "Nivel 5: El Dado. ¿Qué número está opuesto al 6?",
+      "datos_cubo": {
+        "caras": [
+          { "id": "dos", "fila": 0, "columna": 1, "color": "#ECF0F1", "contenido": "2️⃣" },
+          { "id": "tres", "fila": 1, "columna": 1, "color": "#ECF0F1", "contenido": "3️⃣" },
+          { "id": "cinco", "fila": 2, "columna": 1, "color": "#ECF0F1", "contenido": "5️⃣" },
+          { "id": "cuatro", "fila": 3, "columna": 1, "color": "#ECF0F1", "contenido": "4️⃣" },
+          { "id": "seis", "fila": 1, "columna": 0, "color": "#ECF0F1", "contenido": "6️⃣" },
+          { "id": "uno", "fila": 1, "columna": 2, "color": "#ECF0F1", "contenido": "1️⃣" }
+        ]
+      },
+      "respuesta": "uno",
+      "explicacion_correcta": "¡Perfecto! En un dado, el 6 siempre es opuesto al 1. Aquí están en las alas laterales.",
+      "explicacion_incorrecta": "Mira las alas laterales. El 6 está a la izquierda. ¿Quién está a la derecha?"
+    }
+  ]
+}

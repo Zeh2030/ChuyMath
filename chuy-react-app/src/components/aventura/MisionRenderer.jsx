@@ -7,6 +7,7 @@ import ConteoFiguras from './tipos/ConteoFiguras';
 import Operaciones from './tipos/Operaciones';
 import Criptoaritmetica from './tipos/Criptoaritmetica';
 import BalanzaLogica from './tipos/BalanzaLogica';
+import DesarrolloCubos from './tipos/DesarrolloCubos';
 import './MisionRenderer.css';
 
 /**
@@ -127,8 +128,17 @@ const MisionRenderer = ({
         );
       
       case 'desarrollo-cubos':
-        // TODO: Implementar en Fase 4
-        return <div>Componente DesarrolloCubos - Por implementar</div>;
+        return (
+          <DesarrolloCubos 
+            key={mision.id}
+            mision={mision} 
+            onCompletar={onCompletar} 
+            modoSimulacro={modoSimulacro}
+            respuestaGuardada={respuestaGuardada}
+            onRespuesta={onRespuesta}
+            mostrarResultado={mostrarResultado}
+          />
+        );
       
       case 'navegacion-mapa':
         return (

@@ -1,0 +1,74 @@
+.cubos-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.cubos-pregunta {
+  text-align: center;
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-texto);
+}
+
+.svg-wrapper {
+  width: 100%;
+  max-width: 400px; /* Controlar ancho máximo para que no se vea gigante */
+  margin-bottom: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: center;
+}
+
+.cubo-svg {
+  max-height: 400px; /* Evitar que se haga muy alto */
+}
+
+.cara-rect {
+  transition: all 0.2s ease;
+}
+
+/* Efecto hover solo si no está en modo resultado */
+.cara-grupo:hover .cara-rect {
+  filter: brightness(1.1) url(#shadow);
+}
+
+.cara-grupo:active .cara-rect {
+  transform: scale(0.98);
+  transform-origin: center;
+}
+
+.instruccion-seleccion {
+  min-height: 60px;
+  text-align: center;
+  font-weight: bold;
+  color: #7f8c8d;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.mensaje-resultado {
+  font-size: 1.1rem;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.texto-verde { color: #27ae60; border: 2px solid #2ecc71; background-color: #e8f8f5; }
+.texto-rojo { color: #c0392b; border: 2px solid #e74c3c; background-color: #fdedec; }
+
+/* Reutilizar botones globales */
+.acciones-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+}
+

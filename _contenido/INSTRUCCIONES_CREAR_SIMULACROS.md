@@ -96,6 +96,28 @@ Los índices empiezan a contar desde 0:
        }
        ```
 
+       #### Ejemplo `desarrollo-cubos`:
+       ```json
+       {
+         "id": "cubo-1",
+         "tipo": "desarrollo-cubos",
+         "pregunta": "Si doblas el cubo, ¿quién queda FRENTE al Perro?",
+         "datos_cubo": {
+           "caras": [
+             { "id": "gato", "fila": 0, "columna": 1, "color": "#FFD700", "contenido": "🐱" },
+             { "id": "perro", "fila": 1, "columna": 1, "color": "#FF6B6B", "contenido": "🐶" },
+             { "id": "raton", "fila": 2, "columna": 1, "color": "#4ECDC4", "contenido": "🐭" },
+             { "id": "conejo", "fila": 3, "columna": 1, "color": "#45B7D1", "contenido": "🐰" },
+             { "id": "izq", "fila": 1, "columna": 0, "color": "#96CEB4", "contenido": "⬅️" },
+             { "id": "der", "fila": 1, "columna": 2, "color": "#FFEEAD", "contenido": "➡️" }
+           ]
+         },
+         "respuesta": "conejo",
+         "explicacion_correcta": "¡Bien!",
+         "explicacion_incorrecta": "Pista..."
+       }
+       ```
+
        ### 4. Imágenes y SVG
 ```json
 {
