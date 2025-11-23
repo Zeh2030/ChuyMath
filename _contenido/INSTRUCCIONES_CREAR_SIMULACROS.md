@@ -59,8 +59,23 @@ Los índices empiezan a contar desde 0:
 - `"opcion-multiple"`: Pregunta estándar con botones de opciones.
 - `"navegacion-mapa"`: Misión interactiva de mover un personaje en una cuadrícula.
 - `"operaciones"`: Problema matemático donde el usuario debe escribir el resultado numérico.
+- `"criptoaritmetica"`: Reto para asignar dígitos a letras.
 
-#### Ejemplo `operaciones`:
+#### Ejemplo `criptoaritmetica`:
+```json
+{
+  "id": "cripto-1",
+  "tipo": "criptoaritmetica",
+  "pregunta": "Resuelve A + A = B",
+  "palabras": ["A", "A", "B"],
+  "operacion": "+",
+  "solucion": { "A": "4", "B": "8" },
+  "explicacion_correcta": "¡Bien!",
+  "explicacion_incorrecta": "Intenta de nuevo."
+}
+```
+
+### 4. Imágenes y SVG
 ```json
 {
   "id": "p-suma-1",

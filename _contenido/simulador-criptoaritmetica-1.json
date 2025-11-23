@@ -1,0 +1,43 @@
+{
+  "id": "simulador-criptoaritmetica-1",
+  "titulo": "Desafío de Códigos Secretos",
+  "descripcion": "Descubre qué número esconde cada letra. ¡Usa tu lógica de detective!",
+  "problemas": [
+    {
+      "id": "cripto-1",
+      "tipo": "criptoaritmetica",
+      "pregunta": "Nivel 1: Una suma gemela. ¿Qué vale la A?",
+      "palabras": ["A", "A", "8"],
+      "operacion": "+",
+      "solucion": {
+        "A": "4"
+      },
+      "explicacion_correcta": "¡Muy bien! 4 + 4 = 8. La A vale 4.",
+      "explicacion_incorrecta": "Busca dos números iguales que sumen 8."
+    },
+    {
+      "id": "cripto-2",
+      "tipo": "criptoaritmetica",
+      "pregunta": "Nivel 2: Descubre el valor de cada letra.",
+      "palabras": ["YO", "TU", "EL"],
+      "operacion": "+",
+      "solucion": {
+        "Y": "1", "O": "2", "T": "3", "U": "5", "E": "4", "L": "7"
+      },
+      "explicacion_correcta": "¡Excelente! Encontraste una combinación válida: 12 + 35 = 47. Todas las letras son números diferentes.",
+      "explicacion_incorrecta": "Recuerda que letras diferentes deben tener números diferentes. Intenta que la suma de las unidades (O + U) dé L."
+    },
+    {
+      "id": "cripto-3",
+      "tipo": "criptoaritmetica",
+      "pregunta": "Nivel Experto: TO + GO = OUT",
+      "palabras": ["TO", "GO", "OUT"],
+      "operacion": "+",
+      "solucion": {
+        "T": "2", "O": "1", "G": "8", "U": "0"
+      },
+      "explicacion_correcta": "¡Eres un genio! 21 + 81 = 102. Descifraste el código.",
+      "explicacion_incorrecta": "Pista: La suma de dos números de dos cifras (TO + GO) da uno de tres cifras (OUT). Eso significa que la primera letra del resultado (O) tiene que ser 1."
+    }
+  ]
+}

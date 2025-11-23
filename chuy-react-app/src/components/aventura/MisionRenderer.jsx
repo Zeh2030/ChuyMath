@@ -5,6 +5,7 @@ import NavegacionMapa from './tipos/NavegacionMapa';
 import TablaDobleEntrada from './tipos/TablaDobleEntrada';
 import ConteoFiguras from './tipos/ConteoFiguras';
 import Operaciones from './tipos/Operaciones';
+import Criptoaritmetica from './tipos/Criptoaritmetica';
 import './MisionRenderer.css';
 
 /**
@@ -97,10 +98,19 @@ const MisionRenderer = ({
             mostrarResultado={mostrarResultado}
           />
         );
-      
+
       case 'criptoaritmetica':
-        // TODO: Implementar en Fase 4
-        return <div>Componente Criptoaritmetica - Por implementar</div>;
+        return (
+          <Criptoaritmetica 
+            key={mision.id}
+            mision={mision}
+            onCompletar={onCompletar}
+            modoSimulacro={modoSimulacro}
+            respuestaGuardada={respuestaGuardada}
+            onRespuesta={onRespuesta}
+            mostrarResultado={mostrarResultado}
+          />
+        );
       
       case 'balanza-logica':
         // TODO: Implementar en Fase 4

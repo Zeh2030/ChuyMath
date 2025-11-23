@@ -1,0 +1,193 @@
+.cripto-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cripto-titulo {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: var(--color-texto);
+}
+
+/* Tablero Visual de la Operación */
+.cripto-tablero {
+  background-color: #f0f4f8;
+  border-radius: 15px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: center;
+}
+
+.operacion-visual {
+  font-family: 'Courier New', monospace; /* Fuente monoespaciada para alinear */
+  font-size: 2.5rem;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  letter-spacing: 0.5rem;
+  position: relative;
+}
+
+.palabra {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.caracter {
+  position: relative;
+  width: 1.2ch; /* Ancho fijo por caracter */
+  text-align: center;
+}
+
+.valor-super {
+  position: absolute;
+  top: -1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1rem;
+  color: var(--color-primario);
+  font-family: sans-serif;
+}
+
+.operador {
+  position: absolute;
+  left: -1.5rem;
+  bottom: 0.5rem;
+}
+
+.linea-resultado {
+  width: 100%;
+  height: 4px;
+  background-color: #333;
+  margin: 0.2rem 0;
+  border-radius: 2px;
+}
+
+/* Panel de Inputs */
+.panel-asignacion {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  width: 100%;
+}
+
+.instruccion-panel {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  color: #666;
+}
+
+.grid-letras {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.input-grupo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: 1px solid #eee;
+}
+
+.letra-label {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+  color: var(--color-secundario);
+}
+
+.input-digito {
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  text-align: center;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.input-digito:focus {
+  border-color: var(--color-primario);
+  box-shadow: 0 0 0 3px rgba(var(--color-primario-rgb), 0.2);
+}
+
+.input-digito.lleno {
+  background-color: #e8f6fd;
+  border-color: #acdcfc;
+  font-weight: bold;
+}
+
+.mensaje-error-validacion {
+  margin-top: 1rem;
+  padding: 0.8rem;
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.9rem;
+  animation: shake 0.4s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Reutilización de estilos de botones y feedback */
+/* (Ya están definidos globalmente o en otros componentes, 
+   si Operaciones.css los encapsuló, deberíamos moverlos a global.css en una refactorización futura.
+   Por ahora, asumo que están disponibles o copiaré los básicos aquí para seguridad) */
+
+.acciones-container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.boton-enviar, .boton-reintentar {
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.boton-enviar { background: var(--color-primario); color: white; }
+.boton-reintentar { background: #f39c12; color: white; }
+
+.boton-enviar:active, .boton-reintentar:active { transform: scale(0.95); }
+
+/* Media Queries para móviles */
+@media (max-width: 480px) {
+  .operacion-visual {
+    font-size: 1.8rem;
+    letter-spacing: 0.3rem;
+  }
+  
+  .input-digito {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+}
+

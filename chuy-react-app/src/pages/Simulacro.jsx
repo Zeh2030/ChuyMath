@@ -91,6 +91,20 @@ const Simulacro = () => {
                 const respuestaUsuarioStr = String(respuestaUsuario || '').trim();
                 const respuestaCorrectaStr = String(problema.respuesta).trim();
                 esCorrecta = respuestaUsuarioStr === respuestaCorrectaStr;
+              } else if (problema.tipo === 'criptoaritmetica') {
+                // Comparar objeto de asignaciones { 'A': '1', ... }
+                const usuario = respuestaUsuario || {};
+                const solucion = problema.solucion || {};
+                const letrasSolucion = Object.keys(solucion);
+                
+                // Verificar que tenga respuesta y coincida cada letra
+                if (Object.keys(usuario).length === 0) {
+                  esCorrecta = false;
+                } else {
+                  esCorrecta = letrasSolucion.every(letra => 
+                    String(usuario[letra]) === String(solucion[letra])
+                  );
+                }
               }
       
       if (esCorrecta) {
