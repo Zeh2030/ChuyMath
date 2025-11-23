@@ -184,14 +184,16 @@ const Criptoaritmetica = ({
             <div key={letra} className="input-grupo">
               <label className="letra-label">{letra} =</label>
               <input
-                type="number" // Usar text para mejor control, o number con cuidados
+                type="text"
                 inputMode="numeric"
+                pattern="[0-9]*"
                 maxLength={1}
                 className={`input-digito ${asignaciones[letra] ? 'lleno' : ''}`}
                 value={asignaciones[letra] || ''}
                 onChange={(e) => handleInputChange(letra, e.target.value)}
                 disabled={debeMostrarResultado}
                 placeholder="?"
+                autoComplete="off"
               />
             </div>
           ))}

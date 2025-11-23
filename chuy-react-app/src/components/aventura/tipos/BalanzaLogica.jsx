@@ -20,7 +20,7 @@ const BalanzaLogica = ({
   // Sincronizar en modo simulacro
   useEffect(() => {
     if (modoSimulacro && respuestaGuardada !== undefined) {
-      setRespuestaUsuario(respuestaGuardada);
+      setRespuestaUsuario(respuestaGuardada || '');
     }
   }, [respuestaGuardada, modoSimulacro]);
 
@@ -116,11 +116,14 @@ const BalanzaLogica = ({
       <div className="area-respuesta">
         <label>¿Cuánto pesa {objetoIncognita}?</label>
         <input
-          type="number"
+          type="text"
+          inputMode="numeric"
+          pattern="[0-9]*"
           className={`input-balanza ${debeMostrarResultado ? (esCorrectaCalculada ? 'correcto' : 'incorrecto') : ''}`}
           value={respuestaUsuario}
           onChange={handleInputChange}
           placeholder="?"
+          autoComplete="off"
           disabled={debeMostrarResultado}
         />
       </div>

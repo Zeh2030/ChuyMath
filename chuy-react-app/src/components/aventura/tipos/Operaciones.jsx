@@ -27,7 +27,7 @@ const Operaciones = ({
   // Actualizar respuesta local si cambia desde fuera (modo simulacro)
   useEffect(() => {
     if (modoSimulacro && respuestaGuardada !== undefined) {
-      setRespuestaUsuario(respuestaGuardada);
+      setRespuestaUsuario(respuestaGuardada || '');
     }
   }, [respuestaGuardada, modoSimulacro]);
 
@@ -95,21 +95,24 @@ const Operaciones = ({
     <div className="operaciones-container">
       <h3 className="operacion-pregunta">{pregunta}</h3>
       
-      <div className="operacion-input-area">
-        <input
-          type="number"
-          className={`operacion-input ${debeMostrarResultado ? (esCorrectaCalculada ? 'input-correcto' : 'input-incorrecto') : ''}`}
-          value={respuestaUsuario}
-          onChange={handleInputChange}
-          placeholder="?"
-          disabled={debeMostrarResultado} 
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' && !modoSimulacro && !debeMostrarResultado) {
-              handleEnviar();
-            }
-          }}
-        />
-      </div>
+             <div className="operacion-input-area">
+               <input
+                 type="text"
+                 inputMode="numeric"
+                 pattern="[0-9]*"
+                 className={`operacion-input ${debeMostrarResultado ? (esCorrectaCalculada ? 'input-correcto' : 'input-incorrecto') : ''}`}
+                 value={respuestaUsuario}
+                 onChange={handleInputChange}
+                 placeholder="?"
+                 disabled={debeMostrarResultado} 
+                 autoComplete="off"
+                 onKeyDown={(e) => {
+                   if (e.key === 'Enter' && !modoSimulacro && !debeMostrarResultado) {
+                     handleEnviar();
+                   }
+                 }}
+               />
+             </div>
 
       {!modoSimulacro && (
         <div className="acciones-container">
