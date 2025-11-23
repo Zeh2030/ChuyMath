@@ -80,9 +80,9 @@ const Simulacro = () => {
       }
     }
     
-    if (problema.tipo === 'operaciones' || problema.tipo === 'balanza-logica' || problema.tipo === 'desarrollo-cubos') {
-      const respuestaUsuarioStr = String(respuestaUsuario || '').trim();
-      const respuestaCorrectaStr = String(problema.respuesta).trim();
+    if (problema.tipo === 'operaciones' || problema.tipo === 'balanza-logica' || problema.tipo === 'desarrollo-cubos' || problema.tipo === 'palabra-del-dia') {
+      const respuestaUsuarioStr = String(respuestaUsuario || '').trim().toUpperCase();
+      const respuestaCorrectaStr = String(problema.respuesta || problema.palabra).trim().toUpperCase();
       return respuestaUsuarioStr === respuestaCorrectaStr;
     }
     

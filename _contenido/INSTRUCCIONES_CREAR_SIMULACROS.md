@@ -118,6 +118,19 @@ Los índices empiezan a contar desde 0:
        }
        ```
 
+       #### Ejemplo `palabra-del-dia`:
+       ```json
+       {
+         "id": "palabra-1",
+         "tipo": "palabra-del-dia",
+         "pregunta": "Ordena las letras para escribir el nombre del animal:",
+         "palabra": "ELEFANTE",
+         "pista": "Es gris y tiene trompa.",
+         "explicacion_correcta": "¡Correcto! E-L-E-F-A-N-T-E.",
+         "explicacion_incorrecta": "La palabra empieza con E."
+       }
+       ```
+
        ### 4. Imágenes y SVG
 ```json
 {

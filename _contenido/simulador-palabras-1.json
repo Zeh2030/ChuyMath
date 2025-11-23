@@ -1,0 +1,52 @@
+{
+  "id": "simulador-palabras-1",
+  "titulo": "Fábrica de Palabras",
+  "descripcion": "Ordena las letras para descubrir las palabras ocultas.",
+  "problemas": [
+    {
+      "id": "pal-1",
+      "tipo": "palabra-del-dia",
+      "pregunta": "¿Qué animal dice miau? 🐱",
+      "palabra": "GATO",
+      "pista": "Empieza con G.",
+      "explicacion_correcta": "¡Miau! G-A-T-O.",
+      "explicacion_incorrecta": "G... A..."
+    },
+    {
+      "id": "pal-2",
+      "tipo": "palabra-del-dia",
+      "pregunta": "Sirve para comer y poner cosas encima.",
+      "palabra": "MESA",
+      "pista": "Mueble de cuatro patas.",
+      "explicacion_correcta": "¡Exacto! M-E-S-A.",
+      "explicacion_incorrecta": "Empieza con M."
+    },
+    {
+      "id": "pal-3",
+      "tipo": "palabra-del-dia",
+      "pregunta": "Tiene hojas y letras, sirve para leer 📖.",
+      "palabra": "LIBRO",
+      "pista": "Empieza con L.",
+      "explicacion_correcta": "¡Muy bien! L-I-B-R-O.",
+      "explicacion_incorrecta": "L... I..."
+    },
+    {
+      "id": "pal-4",
+      "tipo": "palabra-del-dia",
+      "pregunta": "Postre frío y dulce que se come en cono 🍦.",
+      "palabra": "HELADO",
+      "pista": "La primera letra es muda (H).",
+      "explicacion_correcta": "¡Qué rico! H-E-L-A-D-O.",
+      "explicacion_incorrecta": "Empieza con H."
+    },
+    {
+      "id": "pal-5",
+      "tipo": "palabra-del-dia",
+      "pregunta": "Lugar donde vas a aprender y jugar con amigos 🏫.",
+      "palabra": "ESCUELA",
+      "pista": "Empieza con E.",
+      "explicacion_correcta": "¡Excelente! E-S-C-U-E-L-A.",
+      "explicacion_incorrecta": "E... S... C..."
+    }
+  ]
+}

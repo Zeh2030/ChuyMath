@@ -132,4 +132,4 @@
     *   [x] `components/aventura/tipos/Criptoaritmetica.jsx` ✅
     *   [x] `components/aventura/tipos/BalanzaLogica.jsx` ✅
     *   [x] `components/aventura/tipos/DesarrolloCubos.jsx` ✅
-    *   [ ] `components/aventura/tipos/PalabraDelDia.jsx`
+    *   [x] `components/aventura/tipos/PalabraDelDia.jsx` ✅

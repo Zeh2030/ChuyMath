@@ -8,6 +8,7 @@ import Operaciones from './tipos/Operaciones';
 import Criptoaritmetica from './tipos/Criptoaritmetica';
 import BalanzaLogica from './tipos/BalanzaLogica';
 import DesarrolloCubos from './tipos/DesarrolloCubos';
+import PalabraDelDia from './tipos/PalabraDelDia';
 import './MisionRenderer.css';
 
 /**
@@ -100,7 +101,7 @@ const MisionRenderer = ({
             mostrarResultado={mostrarResultado}
           />
         );
-
+      
       case 'criptoaritmetica':
         return (
           <Criptoaritmetica 
@@ -154,8 +155,17 @@ const MisionRenderer = ({
         );
       
       case 'palabra-del-dia':
-        // TODO: Implementar en Fase 4
-        return <div>Componente PalabraDelDia - Por implementar</div>;
+        return (
+          <PalabraDelDia 
+            key={mision.id}
+            mision={mision} 
+            onCompletar={onCompletar} 
+            modoSimulacro={modoSimulacro}
+            respuestaGuardada={respuestaGuardada}
+            onRespuesta={onRespuesta}
+            mostrarResultado={mostrarResultado}
+          />
+        );
       
       default:
         return (
