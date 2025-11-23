@@ -77,16 +77,21 @@ const Simulacro = () => {
       
       if (problema.tipo === 'navegacion-mapa') {
         esCorrecta = respuestaUsuario === problema.configuracion_mapa.respuesta_correcta;
-      } else if (problema.tipo === 'opcion-multiple') {
-        // La respuesta puede ser un índice o un valor
-        if (typeof problema.respuesta === 'string' && /^\d+$/.test(problema.respuesta)) {
-          // Es un índice
-          esCorrecta = respuestaUsuario === problema.respuesta;
-        } else {
-          // Es un valor
-          esCorrecta = respuestaUsuario === problema.respuesta;
-        }
-      }
+              } else if (problema.tipo === 'opcion-multiple') {
+                // La respuesta puede ser un índice o un valor
+                if (typeof problema.respuesta === 'string' && /^\d+$/.test(problema.respuesta)) {
+                  // Es un índice
+                  esCorrecta = respuestaUsuario === problema.respuesta;
+                } else {
+                  // Es un valor
+                  esCorrecta = respuestaUsuario === problema.respuesta;
+                }
+              } else if (problema.tipo === 'operaciones') {
+                // Normalizar a string y trim para comparación robusta
+                const respuestaUsuarioStr = String(respuestaUsuario || '').trim();
+                const respuestaCorrectaStr = String(problema.respuesta).trim();
+                esCorrecta = respuestaUsuarioStr === respuestaCorrectaStr;
+              }
       
       if (esCorrecta) {
         aciertos++;
