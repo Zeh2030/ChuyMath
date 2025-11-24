@@ -17,8 +17,9 @@ const AdminMigracion = () => {
   const tiposDisponibles = [
     { valor: 'aventura', nombre: '🌟 Aventura', emoji: '🌟' },
     { valor: 'simulacro', nombre: '🏆 Simulacro', emoji: '🏆' },
-    { valor: 'secuencia', nombre: '🔍 Secuencias', emoji: '🔍' },
-    { valor: 'operaciones', nombre: '🔢 Operaciones', emoji: '🔢' },
+    { valor: 'conteo-figuras', nombre: '🔍 Conteo de Figuras', emoji: '🔍' },
+    { valor: 'secuencia', nombre: '🔢 Secuencias', emoji: '🔢' },
+    { valor: 'operaciones', nombre: '➕ Operaciones', emoji: '➕' },
     { valor: 'criptoaritmetica', nombre: '🍇 Criptoaritmetica', emoji: '🍇' },
     { valor: 'balanza-logica', nombre: '⚖️ Balanza Lógica', emoji: '⚖️' },
     { valor: 'desarrollo-cubos', nombre: '🧊 Desarrollo de Cubos', emoji: '🧊' },
@@ -44,17 +45,37 @@ const AdminMigracion = () => {
   // Función para migrar un simulacro o tipo específico
   const migrarSimulacro = async (simulacroData, tipoJuego) => {
     try {
-      const simulacroRef = doc(db, 'simulacros', simulacroData.id);
+      // Determinar la colección según el tipo de juego
+      let coleccion = 'simulacros'; // Por defecto
       
-      // Si es un tipo específico (secuencias, operaciones, etc.), añadir el campo "tipo"
+      if (tipoJuego === 'conteo-figuras') {
+        coleccion = 'conteo-figuras';
+      } else if (tipoJuego === 'secuencia') {
+        coleccion = 'secuencias';
+      } else if (tipoJuego === 'operaciones') {
+        coleccion = 'operaciones';
+      } else if (tipoJuego === 'criptoaritmetica') {
+        coleccion = 'criptoaritmetica';
+      } else if (tipoJuego === 'balanza-logica') {
+        coleccion = 'balanza-logica';
+      } else if (tipoJuego === 'desarrollo-cubos') {
+        coleccion = 'desarrollo-cubos';
+      } else if (tipoJuego === 'palabra-del-dia') {
+        coleccion = 'palabra-del-dia';
+      }
+      
+      const simulacroRef = doc(db, coleccion, simulacroData.id);
+      
+      // Preparar datos a migrar
       const datosAMigrar = {
         titulo: simulacroData.titulo,
         descripcion: simulacroData.descripcion || '',
         problemas: simulacroData.problemas || simulacroData.ejercicios || [],
+        misiones: simulacroData.misiones || [],
         ...simulacroData
       };
 
-      // Si es un tipo específico, añadir el campo tipo
+      // Si es un tipo específico (no simulacro genérico), añadir el campo "tipo"
       if (tipoJuego !== 'simulacro') {
         datosAMigrar.tipo = tipoJuego;
       }
@@ -62,7 +83,7 @@ const AdminMigracion = () => {
       await setDoc(simulacroRef, datosAMigrar);
       return { exito: true, id: simulacroData.id, titulo: simulacroData.titulo };
     } catch (error) {
-      console.error(`Error al migrar simulacro ${simulacroData.id}:`, error);
+      console.error(`Error al migrar a colección:`, error);
       return { exito: false, id: simulacroData.id, error: error.message };
     }
   };

@@ -19,31 +19,60 @@ const Simulacro = () => {
   const [calificado, setCalificado] = useState(false);
   const [puntaje, setPuntaje] = useState(0);
 
-  // Cargar el simulacro desde Firestore
+  // Cargar el simulacro desde Firestore (intenta múltiples colecciones)
   useEffect(() => {
     const cargarSimulacro = async () => {
       try {
         setLoading(true);
         setError(null);
 
-        const simulacroRef = doc(db, 'simulacros', id);
-        const simulacroSnap = await getDoc(simulacroRef);
+        // Array de colecciones para intentar cargar (en orden de preferencia)
+        const colecciones = [
+          'simulacros',
+          'aventuras',
+          'conteo-figuras',
+          'secuencias',
+          'operaciones',
+          'criptoaritmetica',
+          'balanza-logica',
+          'desarrollo-cubos',
+          'palabra-del-dia'
+        ];
 
-        if (simulacroSnap.exists()) {
-          const data = { id: simulacroSnap.id, ...simulacroSnap.data() };
+        let simulacroSnap = null;
+        let coleccionEncontrada = null;
+
+        // Intenta cargar de cada colección hasta encontrar el documento
+        for (const coleccion of colecciones) {
+          const ref = doc(db, coleccion, id);
+          const snap = await getDoc(ref);
+          if (snap.exists()) {
+            simulacroSnap = snap;
+            coleccionEncontrada = coleccion;
+            break;
+          }
+        }
+
+        if (simulacroSnap?.exists()) {
+          const data = { 
+            id: simulacroSnap.id, 
+            coleccion: coleccionEncontrada,
+            ...simulacroSnap.data() 
+          };
           setSimulacro(data);
           
-          // Inicializar respuestas vacías
+          // Inicializar respuestas vacías (usar problemas o misiones)
           const respuestasIniciales = {};
-          data.problemas.forEach(problema => {
-            respuestasIniciales[problema.id] = null;
+          const items = data.problemas || data.misiones || [];
+          items.forEach(item => {
+            respuestasIniciales[item.id] = null;
           });
           setRespuestas(respuestasIniciales);
         } else {
-          setError(`No se encontró el simulacro con ID ${id}`);
+          setError(`No se encontró el contenido con ID ${id}`);
         }
       } catch (err) {
-        console.error('Error al cargar el simulacro:', err);
+        console.error('Error al cargar simulacro:', err);
         setError(err.message);
       } finally {
         setLoading(false);
@@ -80,7 +109,7 @@ const Simulacro = () => {
       }
     }
     
-    if (problema.tipo === 'operaciones' || problema.tipo === 'balanza-logica' || problema.tipo === 'desarrollo-cubos' || problema.tipo === 'palabra-del-dia') {
+    if (problema.tipo === 'operaciones' || problema.tipo === 'balanza-logica' || problema.tipo === 'desarrollo-cubos' || problema.tipo === 'palabra-del-dia' || problema.tipo === 'conteo-figuras') {
       const respuestaUsuarioStr = String(respuestaUsuario || '').trim().toUpperCase();
       const respuestaCorrectaStr = String(problema.respuesta || problema.palabra).trim().toUpperCase();
       return respuestaUsuarioStr === respuestaCorrectaStr;
@@ -132,9 +161,10 @@ const Simulacro = () => {
   // Calificar el examen
   const calificarExamen = async () => {
     let aciertos = 0;
+    const items = simulacro.problemas || simulacro.misiones || [];
     
-    simulacro.problemas.forEach(problema => {
-      if (esRespuestaCorrecta(problema, respuestas[problema.id])) {
+    items.forEach(item => {
+      if (esRespuestaCorrecta(item, respuestas[item.id])) {
         aciertos++;
       }
     });
@@ -145,7 +175,7 @@ const Simulacro = () => {
     // Guardar resultado en Firestore
     if (currentUser) {
       try {
-        const porcentaje = Math.round((aciertos / simulacro.problemas.length) * 100);
+        const porcentaje = Math.round((aciertos / items.length) * 100);
         const userRef = doc(db, 'profiles', currentUser.uid);
         
         // Obtener el perfil actual para calcular la racha
@@ -160,7 +190,7 @@ const Simulacro = () => {
           simulacroId: id,
           titulo: simulacro.titulo,
           aciertos: aciertos,
-          total: simulacro.problemas.length,
+          total: items.length,
           porcentaje: porcentaje,
           fecha: Timestamp.now()
         };

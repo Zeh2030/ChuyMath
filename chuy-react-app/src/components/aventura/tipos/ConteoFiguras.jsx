@@ -17,16 +17,17 @@ const ConteoFiguras = ({ mision, onCompletar }) => {
   const [esCorrecto, setEsCorrecto] = useState(false);
   const imagenRef = useRef(null);
 
-  // Extraer datos
-  const imagenUrl = mision.imagen || mision.imagen_url; // Soporte para ambos nombres
-  const respuestaCorrecta = parseInt(mision.respuesta || mision.cantidad_correcta);
-  const pregunta = mision.pregunta || "¿Cuántas figuras ves?";
+  // Extraer datos - manejar tanto misiones con ejercicios como ejercicios directos
+  const ejercicio = mision.ejercicios?.[0] || mision; // Si es una misión con ejercicios, tomar el primero
+  const imagenUrl = ejercicio.figura_svg || ejercicio.imagen || ejercicio.imagen_url; // Soporte para todos los nombres
+  const respuestaCorrecta = parseInt(ejercicio.respuesta || ejercicio.cantidad_correcta);
+  const pregunta = ejercicio.pregunta || "¿Cuántas figuras ves?";
 
   // DEBUG: Ver qué respuesta espera el sistema
   console.log('Misión Conteo:', {
-    titulo: mision.titulo,
+    titulo: ejercicio.titulo || mision.titulo,
     respuestaEsperada: respuestaCorrecta,
-    respuestaRaw: mision.respuesta || mision.cantidad_correcta
+    respuestaRaw: ejercicio.respuesta || ejercicio.cantidad_correcta
   });
 
   // SVG por defecto para Triángulos (si no viene imagen)

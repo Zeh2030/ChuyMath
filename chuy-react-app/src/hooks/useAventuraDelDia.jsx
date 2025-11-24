@@ -3,73 +3,102 @@ import { doc, getDoc, collection, getDocs } from 'firebase/firestore';
 import { db } from '../services/firebase';
 
 /**
- * Hook personalizado para obtener la aventura del día actual desde Firestore
+ * Hook personalizado para obtener la próxima aventura según progresión cronológica
+ * Lógica: Muestra la aventura más antigua SIN completar (progresión garantizada)
+ * Si hay múltiples con misma fecha → selecciona aleatoriamente
+ * @param {string} userId - El UID del usuario para verificar aventuras completadas
  * @returns {object} - El objeto de la aventura, estado de carga y error
  */
-export const useAventuraDelDia = () => {
+export const useAventuraDelDia = (userId) => {
   const [aventura, setAventura] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const cargarAventuraDelDia = async () => {
+    const cargarProximaAventura = async () => {
       try {
         setLoading(true);
         setError(null);
 
-        // Obtener la fecha actual en formato YYYY-MM-DD
-        const hoy = new Date().toISOString().split('T')[0];
+        // 1. Obtener todas las aventuras disponibles
+        const aventurasRef = collection(db, 'aventuras');
+        const querySnapshot = await getDocs(aventurasRef);
         
-        // Intentar leer la aventura del día actual
-        const aventuraRef = doc(db, 'aventuras', hoy);
-        const aventuraSnap = await getDoc(aventuraRef);
+        if (querySnapshot.empty) {
+          setAventura(null);
+          console.log('No hay aventuras disponibles en Firestore.');
+          setLoading(false);
+          return;
+        }
 
-        if (aventuraSnap.exists()) {
-          // Si existe la aventura de hoy, usarla
-          setAventura({ id: aventuraSnap.id, ...aventuraSnap.data() });
-        } else {
-          // Si no existe, buscar la aventura más reciente disponible
-          console.log('No hay aventura disponible para hoy. Fecha:', hoy);
-          console.log('Buscando la aventura más reciente disponible...');
-          
+        // 2. Convertir a array
+        const todasLasAventuras = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+
+        // 3. Si hay userId, obtener aventuras completadas del perfil
+        let aventurasCompletadasIds = [];
+        if (userId) {
           try {
-            // Obtener todas las aventuras y ordenarlas por ID (fecha) en JavaScript
-            const aventurasRef = collection(db, 'aventuras');
-            const querySnapshot = await getDocs(aventurasRef);
-            
-            if (!querySnapshot.empty) {
-              // Convertir a array y ordenar por ID (fecha) de forma descendente
-              const aventuras = querySnapshot.docs.map(doc => ({
-                id: doc.id,
-                ...doc.data()
-              }));
-              
-              // Ordenar por ID (que es la fecha en formato YYYY-MM-DD)
-              aventuras.sort((a, b) => b.id.localeCompare(a.id));
-              
-              // Tomar la más reciente
-              const aventuraMasReciente = aventuras[0];
-              setAventura(aventuraMasReciente);
-              console.log('Aventura más reciente encontrada:', aventuraMasReciente.id);
-            } else {
-              setAventura(null);
-              console.log('No hay aventuras disponibles en Firestore.');
+            const profileRef = doc(db, 'profiles', userId);
+            const profileSnap = await getDoc(profileRef);
+            if (profileSnap.exists()) {
+              const misionesCompletadas = profileSnap.data().misionesCompletadas || [];
+              aventurasCompletadasIds = misionesCompletadas.map(m => m.aventuraId);
             }
-          } catch (searchError) {
-            console.error('Error al buscar aventura más reciente:', searchError);
-            setAventura(null);
+          } catch (profileError) {
+            console.warn('Error al obtener perfil, continuando sin filtrar:', profileError);
           }
         }
+
+        // 4. Filtrar aventuras NO completadas
+        const aventurasSinCompletar = todasLasAventuras.filter(
+          av => !aventurasCompletadasIds.includes(av.id)
+        );
+
+        if (aventurasSinCompletar.length === 0) {
+          // Todas completadas
+          setAventura(null);
+          console.log('¡Todas las aventuras están completadas!');
+          setLoading(false);
+          return;
+        }
+
+        // 5. Ordenar por fecha (ID) de forma ASCENDENTE (más antigua primero)
+        aventurasSinCompletar.sort((a, b) => a.id.localeCompare(b.id));
+
+        // 6. Encontrar la fecha más antigua
+        const fechaMasAntigua = aventurasSinCompletar[0].id;
+
+        // 7. Filtrar aventuras con esa fecha
+        const aventurasMismaFecha = aventurasSinCompletar.filter(
+          av => av.id === fechaMasAntigua
+        );
+
+        // 8. Si hay múltiples con misma fecha, elegir aleatoriamente
+        let aventuraSeleccionada;
+        if (aventurasMismaFecha.length === 1) {
+          aventuraSeleccionada = aventurasMismaFecha[0];
+        } else {
+          // Selección aleatoria entre las de la misma fecha
+          const indiceAleatorio = Math.floor(Math.random() * aventurasMismaFecha.length);
+          aventuraSeleccionada = aventurasMismaFecha[indiceAleatorio];
+          console.log(`Múltiples aventuras con fecha ${fechaMasAntigua}, seleccionada aleatoriamente:`, aventuraSeleccionada.id);
+        }
+
+        setAventura(aventuraSeleccionada);
+        console.log('Próxima aventura (más antigua sin completar):', aventuraSeleccionada.id);
       } catch (err) {
-        console.error('Error al cargar la aventura del día:', err);
+        console.error('Error al cargar la próxima aventura:', err);
         setError(err.message);
       } finally {
         setLoading(false);
       }
     };
 
-    cargarAventuraDelDia();
-  }, []); // Solo se ejecuta una vez al montar el componente
+    cargarProximaAventura();
+  }, [userId]); // Se ejecuta cuando cambia el userId
 
   return { aventura, loading, error };
 };

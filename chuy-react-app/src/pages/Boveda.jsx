@@ -13,17 +13,19 @@ const Boveda = () => {
   const { profile } = useProfile(currentUser?.uid);
   const [aventuras, setAventuras] = useState([]);
   const [simulacros, setSimulacros] = useState([]);
+  const [conteoFiguras, setConteoFiguras] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [filtro, setFiltro] = useState('todos'); // 'todos', 'aventuras', 'simulacros'
+  const [filtro, setFiltro] = useState('todos'); // 'todos', 'aventuras', 'simulacros', o tipo específico
   const [tabActivo, setTabActivo] = useState('accesos'); // 'accesos' o 'boveda'
 
   // Definir tipos de juegos disponibles
   const tiposJuegos = [
     { id: 'aventuras', emoji: '🎯', nombre: 'Aventuras Diarias', tipo: 'aventura', descripcion: 'Aventuras diarias' },
     { id: 'simulacros', emoji: '🏆', nombre: 'Simulacros', tipo: 'simulacro', descripcion: 'Exámenes completos' },
-    { id: 'secuencias', emoji: '🔍', nombre: 'Secuencias', tipo: 'secuencia', descripcion: 'Patrones y secuencias' },
-    { id: 'operaciones', emoji: '🔢', nombre: 'Operaciones', tipo: 'operaciones', descripcion: 'Matemáticas' },
+    { id: 'conteo-figuras', emoji: '🔍', nombre: 'Conteo de Figuras', tipo: 'conteo-figuras', descripcion: 'Cuenta figuras geométricas' },
+    { id: 'secuencias', emoji: '🔢', nombre: 'Secuencias', tipo: 'secuencia', descripcion: 'Patrones y secuencias' },
+    { id: 'operaciones', emoji: '➕', nombre: 'Operaciones', tipo: 'operaciones', descripcion: 'Matemáticas' },
     { id: 'criptoaritmetica', emoji: '🍇', nombre: 'Criptoaritmetica', tipo: 'criptoaritmetica', descripcion: 'Acertijos matemáticos' },
     { id: 'balanza', emoji: '⚖️', nombre: 'Balanza Lógica', tipo: 'balanza-logica', descripcion: 'Lógica y equilibrio' },
     { id: 'cubos', emoji: '🧊', nombre: 'Desarrollo de Cubos', tipo: 'desarrollo-cubos', descripcion: 'Espacios 3D' },
@@ -37,24 +39,38 @@ const Boveda = () => {
         
         // Cargar Aventuras
         const aventurasRef = collection(db, 'aventuras');
-        // Intentar ordenar por fecha (ID) descendente si es posible, sino traer todo
         const aventurasSnapshot = await getDocs(aventurasRef);
         const listaAventuras = aventurasSnapshot.docs.map(doc => ({
           id: doc.id,
           tipo: 'aventura',
           ...doc.data()
-        })).sort((a, b) => b.id.localeCompare(a.id)); // Ordenar por fecha descendente
+        })).sort((a, b) => b.id.localeCompare(a.id));
+
+        // Cargar Conteo de Figuras
+        const conteoRef = collection(db, 'conteo-figuras');
+        const conteoSnapshot = await getDocs(conteoRef);
+        const listaConteo = conteoSnapshot.docs.map(doc => ({
+          id: doc.id,
+          tipo: 'conteo-figuras',
+          tipoDocumento: 'conteo-figuras',
+          ...doc.data()
+        })).sort((a, b) => b.id.localeCompare(a.id));
 
         // Cargar Simulacros
         const simulacrosRef = collection(db, 'simulacros');
         const simulacrosSnapshot = await getDocs(simulacrosRef);
-        const listaSimulacros = simulacrosSnapshot.docs.map(doc => ({
-          id: doc.id,
-          tipo: 'simulacro',
-          ...doc.data()
-        }));
+        const listaSimulacros = simulacrosSnapshot.docs.map(doc => {
+          const data = doc.data();
+          return {
+            id: doc.id,
+            tipo: data.tipo || 'simulacro',
+            tipoDocumento: 'simulacro',
+            ...data
+          };
+        });
 
         setAventuras(listaAventuras);
+        setConteoFiguras(listaConteo);
         setSimulacros(listaSimulacros);
       } catch (err) {
         console.error("Error cargando la bóveda:", err);
@@ -104,11 +120,30 @@ const Boveda = () => {
   // Filtrar contenido
   const contenidoMostrar = () => {
     let items = [];
+    
+    // Si el filtro es un tipo específico (conteo-figuras, secuencia, operaciones, etc.)
+    const tipoEspecifico = tiposJuegos.find(t => t.id === filtro);
+    if (tipoEspecifico) {
+      if (tipoEspecifico.tipo === 'aventura') {
+        items = [...aventuras];
+      } else if (tipoEspecifico.tipo === 'conteo-figuras') {
+        items = [...conteoFiguras];
+      } else {
+        // Filtrar simulacros por tipo específico
+        items = simulacros.filter(s => s.tipo === tipoEspecifico.tipo);
+      }
+      return items;
+    }
+    
+    // Filtros generales (todos, aventuras, simulacros)
     if (filtro === 'todos' || filtro === 'aventuras') {
       items = [...items, ...aventuras];
     }
+    if (filtro === 'todos' || filtro === 'conteo-figuras') {
+      items = [...items, ...conteoFiguras];
+    }
     if (filtro === 'todos' || filtro === 'simulacros') {
-      items = [...items, ...simulacros];
+      items = [...items, ...simulacros.filter(s => !s.tipo || s.tipo === 'simulacro')];
     }
     return items;
   };
@@ -127,6 +162,7 @@ const Boveda = () => {
     if (!tipoData) return 0;
     
     if (tipoData.tipo === 'aventura') return aventuras.length;
+    if (tipoData.tipo === 'conteo-figuras') return conteoFiguras.length;
     if (tipoData.tipo === 'simulacro') return simulacros.filter(s => !s.tipo || s.tipo === 'simulacro').length;
     return simulacros.filter(s => s.tipo === tipoData.tipo).length;
   };
@@ -193,7 +229,8 @@ const Boveda = () => {
                         onClick={() => {
                           if (count > 0) {
                             setTabActivo('boveda');
-                            setFiltro(tipo.id === 'aventuras' ? 'aventuras' : 'simulacros');
+                            // Establecer filtro al tipo específico (secuencia, operaciones, etc.)
+                            setFiltro(tipo.id);
                           }
                         }}
                       >
@@ -220,14 +257,7 @@ const Boveda = () => {
                     onClick={() => setFiltro('todos')}
                   >
                     Todo 
-                    <span className="filtro-badge">{aventuras.length + simulacros.length}</span>
-                  </button>
-                  <button 
-                    className={`filtro-btn ${filtro === 'simulacros' ? 'activo' : ''}`}
-                    onClick={() => setFiltro('simulacros')}
-                  >
-                    🏆 Simulacros
-                    <span className="filtro-badge">{simulacros.length}</span>
+                    <span className="filtro-badge">{aventuras.length + conteoFiguras.length + simulacros.length}</span>
                   </button>
                   <button 
                     className={`filtro-btn ${filtro === 'aventuras' ? 'activo' : ''}`}
@@ -236,6 +266,28 @@ const Boveda = () => {
                     🌟 Aventuras
                     <span className="filtro-badge">{aventuras.length}</span>
                   </button>
+                  <button 
+                    className={`filtro-btn ${filtro === 'simulacros' ? 'activo' : ''}`}
+                    onClick={() => setFiltro('simulacros')}
+                  >
+                    🏆 Simulacros
+                    <span className="filtro-badge">{simulacros.filter(s => !s.tipo || s.tipo === 'simulacro').length}</span>
+                  </button>
+                  {/* Filtros por tipo específico */}
+                  {tiposJuegos.filter(t => t.tipo !== 'aventura' && t.tipo !== 'simulacro').map(tipo => {
+                    const count = contarPorTipo(tipo.id);
+                    if (count === 0) return null;
+                    return (
+                      <button
+                        key={tipo.id}
+                        className={`filtro-btn ${filtro === tipo.id ? 'activo' : ''}`}
+                        onClick={() => setFiltro(tipo.id)}
+                      >
+                        {tipo.emoji} {tipo.nombre}
+                        <span className="filtro-badge">{count}</span>
+                      </button>
+                    );
+                  })}
                 </div>
 
                 {/* Contenido */}
@@ -250,21 +302,31 @@ const Boveda = () => {
                       )}
                     </div>
                   ) : (
-                    contenidoMostrar().map((item) => {
-                      const progreso = getProgreso(item.id, item.tipo);
+                    contenidoMostrar().map((item, index) => {
+                      const progreso = getProgreso(item.id, item.tipoDocumento || item.tipo);
+                      
+                      // Determinar si es aventura o simulacro para la ruta
+                      // Si tiene tipoDocumento === 'simulacro', es simulacro. Si tipo === 'aventura', es aventura
+                      const esAventura = item.tipo === 'aventura';
+                      const ruta = esAventura ? `/aventura/${item.id}` : `/simulacro/${item.id}`;
+                      
+                      // Obtener nombre del tipo para mostrar
+                      const tipoData = tiposJuegos.find(t => t.tipo === item.tipo);
+                      const nombreTipo = tipoData ? tipoData.nombre : (esAventura ? 'Aventura' : 'Simulacro');
+                      const emojiTipo = tipoData ? tipoData.emoji : (esAventura ? '🗺️' : '🎓');
                       
                       return (
                         <Link 
-                          to={item.tipo === 'simulacro' ? `/simulacro/${item.id}` : `/aventura/${item.id}`} 
-                          key={item.id} 
+                          to={ruta} 
+                          key={`${item.id}-${index}`} 
                           className={`tarjeta-contenido tipo-${item.tipo}`}
                         >
                           <div className="tarjeta-icono">
-                            {item.tipo === 'simulacro' ? '🎓' : '🗺️'}
+                            {emojiTipo}
                           </div>
                           <div className="tarjeta-info">
                             <span className="tarjeta-tipo">
-                              {item.tipo === 'simulacro' ? 'Simulacro' : 'Aventura'}
+                              {nombreTipo}
                             </span>
                             <h3 className="tarjeta-titulo">{item.titulo}</h3>
                             {item.descripcion && <p className="tarjeta-desc">{item.descripcion}</p>}

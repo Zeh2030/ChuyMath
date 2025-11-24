@@ -11,10 +11,11 @@ import './Dashboard.enhanced.css';
 const Dashboard = () => {
   const { currentUser, logout } = useAuth();
   const { profile, loading: profileLoading } = useProfile(currentUser?.uid);
-  const { aventura, loading: aventuraLoading } = useAventuraDelDia();
+  const { aventura, loading: aventuraLoading } = useAventuraDelDia(currentUser?.uid);
   const navigate = useNavigate();
   const [tabActivo, setTabActivo] = useState('inicio');
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
+  const [mostrarModalTrofeos, setMostrarModalTrofeos] = useState(false);
 
   // Detectar si es móvil
   useEffect(() => {
@@ -70,6 +71,36 @@ const Dashboard = () => {
     ? [...profile.simulacros].sort((a, b) => b.fecha?.seconds - a.fecha?.seconds).slice(0, 3)
     : [];
 
+  // Obtener solo trofeos (100%)
+  const trofeos = profile?.simulacros 
+    ? [...profile.simulacros]
+        .filter(sim => sim.porcentaje === 100)
+        .sort((a, b) => b.fecha?.seconds - a.fecha?.seconds)
+    : [];
+
+  // Trofeo destacado (el más reciente)
+  const trofeoDestacado = trofeos.length > 0 ? trofeos[0] : null;
+
+  // Formatear fecha relativa
+  const formatearFechaRelativa = (fechaSeconds) => {
+    if (!fechaSeconds) return '';
+    const fecha = new Date(fechaSeconds * 1000);
+    const hoy = new Date();
+    const diferenciaDias = Math.floor((hoy - fecha) / (1000 * 60 * 60 * 24));
+    
+    if (diferenciaDias === 0) return 'Hoy';
+    if (diferenciaDias === 1) return 'Ayer';
+    if (diferenciaDias < 7) return `Hace ${diferenciaDias} días`;
+    return fecha.toLocaleDateString('es-ES', { day: 'numeric', month: 'long' });
+  };
+
+  // Obtener medalla según posición
+  const obtenerMedalla = (index) => {
+    if (index === 0) return '🥇';
+    if (index === 1) return '🥈';
+    return '🥉';
+  };
+
   // Mensaje de progreso motivacional
   const getMensajeProgreso = () => {
     if (porcentajeProgreso === 100) return " 🎉 ¡Completadas todas!";
@@ -77,6 +108,19 @@ const Dashboard = () => {
     if (porcentajeProgreso >= 50) return " 💪 ¡A mitad de camino!";
     return "";
   };
+
+  // Tipos de juegos para accesos rápidos
+  const tiposDeJuego = [
+    { emoji: '🎯', nombre: 'Aventuras', disponible: true },
+    { emoji: '🏆', nombre: 'Simulacros', disponible: true },
+    { emoji: '🔍', nombre: 'Conteo', disponible: true },
+    { emoji: '🔢', nombre: 'Secuencias', disponible: true },
+    { emoji: '➕', nombre: 'Operaciones', disponible: false },
+    { emoji: '🍇', nombre: 'Cripto', disponible: false },
+    { emoji: '⚖️', nombre: 'Balanza', disponible: false },
+    { emoji: '🧊', nombre: 'Cubos', disponible: false },
+    { emoji: '📝', nombre: 'Palabras', disponible: false }
+  ];
 
   if (profileLoading) {
     return (
@@ -153,7 +197,7 @@ const Dashboard = () => {
       )}
 
       <div className={`dashboard-grid ${isMobile ? 'dashboard-mobile' : ''}`}>
-        {/* Columna Principal: La Aventura del Día */}
+        {/* Columna Principal: Próxima Aventura (Progresión Cronológica) */}
         <main className={`main-column dashboard-section ${!isMobile || tabActivo === 'inicio' ? 'active' : ''}`}>
           <section className="widget aventura-widget" style={{ borderTopColor: getColorDelDia() }}>
             {/* Header personalizado */}
@@ -181,11 +225,11 @@ const Dashboard = () => {
                   </div>
                 )}
                 <h2>¡Hola, {profile.nombre}! 👋</h2>
-                <p className="subtitulo-aventura">Tu aventura de hoy:</p>
+                <p className="subtitulo-aventura">Tu próximo desafío:</p>
               </div>
             )}
             <h2 className="widget-title">
-              {aventura ? `🌟 ${aventura.titulo}` : '🌟 ¡La Aventura de Hoy te espera!'}
+              {aventura ? `🌟 ${aventura.titulo}` : '🌟 ¡Tu próximo desafío te espera!'}
             </h2>
             
             {aventuraLoading ? (
@@ -259,36 +303,36 @@ const Dashboard = () => {
             </div>
           </section>
 
-          {/* Widget de Calificaciones - Visible en logros */}
-          <section className={`widget calificaciones-widget ${isMobile && tabActivo !== 'logros' ? 'hidden' : ''}`}>
+          {/* Widget de Trofeos - Visible en logros */}
+          <section className={`widget trofeos-widget-nuevo ${isMobile && tabActivo !== 'logros' ? 'hidden' : ''}`}>
             <h2 className="widget-title">🏆 Mis Logros</h2>
             
-            {ultimosSimulacros.length > 0 ? (
-              <ul className="calificaciones-lista">
-                {ultimosSimulacros.map((sim, index) => (
-                  <li key={index} className="calificacion-item">
-                    <div className="calificacion-info">
-                      <span className="calificacion-titulo">{sim.titulo}</span>
-                      <span className="calificacion-fecha">
-                        {new Date(sim.fecha?.seconds * 1000).toLocaleDateString()}
-                      </span>
-                    </div>
-                    <div className={`calificacion-nota ${
-                      sim.porcentaje >= 90 ? 'nota-excelente' : 
-                      sim.porcentaje >= 70 ? 'nota-buena' : 'nota-regular'
-                    }`}>
-                      {sim.porcentaje}%
-                      {sim.porcentaje === 100 && <span className="medalla-oro">🥇</span>}
-                    </div>
-                  </li>
-                ))}
-              </ul>
+            {trofeoDestacado ? (
+              <>
+                <div className="trofeo-destacado">
+                  <div className="trofeo-medalla-grande">🥇</div>
+                  <div className="trofeo-badge-100">100% COMPLETADO</div>
+                  <h3 className="trofeo-titulo">{trofeoDestacado.titulo}</h3>
+                  <p className="trofeo-fecha">{formatearFechaRelativa(trofeoDestacado.fecha?.seconds)}</p>
+                  <div className="trofeo-estrellas">⭐⭐⭐⭐⭐</div>
+                </div>
+                {trofeos.length > 1 && (
+                  <button 
+                    className="boton-ver-todos-trofeos"
+                    onClick={() => setMostrarModalTrofeos(true)}
+                  >
+                    Ver todos los Trofeos ({trofeos.length}) →
+                  </button>
+                )}
+              </>
             ) : (
-              <div className="sin-calificaciones">
-                <p>¡Aún no has hecho simulacros!</p>
+              <div className="sin-trofeos">
+                <div className="sin-trofeos-icono">🏆</div>
+                <p>¡Aún no tienes trofeos!</p>
+                <p className="sin-trofeos-subtitulo">Completa un simulacro al 100% para ganar tu primer trofeo</p>
                 <button 
                   className="boton-secundario" 
-                  style={{ marginTop: '10px', width: '100%', justifyContent: 'center' }}
+                  style={{ marginTop: '15px', width: '100%', justifyContent: 'center' }}
                   onClick={() => navigate('/boveda')}
                 >
                   Ir a practicar 🚀
@@ -297,79 +341,51 @@ const Dashboard = () => {
             )}
           </section>
 
+          {/* Modal de Trofeos */}
+          {mostrarModalTrofeos && (
+            <div className="modal-overlay" onClick={() => setMostrarModalTrofeos(false)}>
+              <div className="modal-trofeos" onClick={(e) => e.stopPropagation()}>
+                <div className="modal-header">
+                  <h2>🏆 Mis Trofeos ({trofeos.length})</h2>
+                  <button 
+                    className="modal-cerrar"
+                    onClick={() => setMostrarModalTrofeos(false)}
+                  >
+                    ✕
+                  </button>
+                </div>
+                <div className="modal-trofeos-grid">
+                  {trofeos.map((trofeo, index) => (
+                    <div key={index} className="trofeo-card-modal">
+                      <div className="trofeo-medalla-modal">{obtenerMedalla(index)}</div>
+                      <div className="trofeo-badge-modal">100%</div>
+                      <h4 className="trofeo-titulo-modal">{trofeo.titulo}</h4>
+                      <p className="trofeo-fecha-modal">{formatearFechaRelativa(trofeo.fecha?.seconds)}</p>
+                      <div className="trofeo-estrellas-modal">⭐⭐⭐⭐⭐</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Widget de Exploración - Accesos Rápidos a Tipos de Juegos */}
           <section className={`widget exploracion-widget ${isMobile && tabActivo !== 'explorar' ? 'hidden' : ''}`}>
             <h2 className="widget-title">⚡ Accesos Rápidos</h2>
             <div className="accesos-rapidos-mini-grid">
-              <button 
-                className="acceso-rapido-mini"
-                onClick={() => navigate('/boveda')}
-                title="Ver todas las aventuras"
-              >
-                <span className="acceso-emoji">🎯</span>
-                <span className="acceso-nombre">Aventuras</span>
-              </button>
-              <button 
-                className="acceso-rapido-mini"
-                onClick={() => navigate('/boveda')}
-                title="Ver simulacros y exámenes"
-              >
-                <span className="acceso-emoji">🏆</span>
-                <span className="acceso-nombre">Simulacros</span>
-              </button>
-              <button 
-                className="acceso-rapido-mini"
-                onClick={() => navigate('/boveda')}
-                title="Desafíos de patrones"
-              >
-                <span className="acceso-emoji">🔍</span>
-                <span className="acceso-nombre">Secuencias</span>
-              </button>
-              <button 
-                className="acceso-rapido-mini disabled"
-                disabled
-                title="Próximamente disponible"
-              >
-                <span className="acceso-emoji">🔢</span>
-                <span className="acceso-nombre">Operaciones</span>
-                <span className="acceso-candado">🔒</span>
-              </button>
-              <button 
-                className="acceso-rapido-mini disabled"
-                disabled
-                title="Próximamente disponible"
-              >
-                <span className="acceso-emoji">🍇</span>
-                <span className="acceso-nombre">Cripto</span>
-                <span className="acceso-candado">🔒</span>
-              </button>
-              <button 
-                className="acceso-rapido-mini disabled"
-                disabled
-                title="Próximamente disponible"
-              >
-                <span className="acceso-emoji">⚖️</span>
-                <span className="acceso-nombre">Balanza</span>
-                <span className="acceso-candado">🔒</span>
-              </button>
-              <button 
-                className="acceso-rapido-mini disabled"
-                disabled
-                title="Próximamente disponible"
-              >
-                <span className="acceso-emoji">🧊</span>
-                <span className="acceso-nombre">Cubos</span>
-                <span className="acceso-candado">🔒</span>
-              </button>
-              <button 
-                className="acceso-rapido-mini disabled"
-                disabled
-                title="Próximamente disponible"
-              >
-                <span className="acceso-emoji">📝</span>
-                <span className="acceso-nombre">Palabras</span>
-                <span className="acceso-candado">🔒</span>
-              </button>
+              {tiposDeJuego.map((tipo, index) => (
+                <button 
+                  key={index}
+                  className={`acceso-rapido-mini ${!tipo.disponible ? 'disabled' : ''}`}
+                  onClick={() => tipo.disponible && navigate('/boveda')}
+                  disabled={!tipo.disponible}
+                  title={tipo.disponible ? `Ver ${tipo.nombre.toLowerCase()}` : 'Próximamente disponible'}
+                >
+                  <span className="acceso-emoji">{tipo.emoji}</span>
+                  <span className="acceso-nombre">{tipo.nombre}</span>
+                  {!tipo.disponible && <span className="acceso-candado">🔒</span>}
+                </button>
+              ))}
             </div>
           </section>
 

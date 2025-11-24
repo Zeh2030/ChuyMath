@@ -401,6 +401,245 @@
   border-radius: 10px;
 }
 
+/* Nuevo Widget de Trofeos */
+.trofeo-destacado {
+  text-align: center;
+  padding: 30px 20px;
+  background: linear-gradient(135deg, #f39c12, #e67e22);
+  border-radius: 16px;
+  color: white;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 20px rgba(243, 156, 18, 0.3);
+}
+
+.trofeo-medalla-grande {
+  font-size: 4rem;
+  margin-bottom: 10px;
+  animation: bounce 2s infinite;
+}
+
+.trofeo-badge-100 {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.trofeo-titulo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 10px 0;
+  font-family: 'Fredoka', sans-serif;
+}
+
+.trofeo-fecha {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  margin: 8px 0;
+}
+
+.trofeo-estrellas {
+  font-size: 1.5rem;
+  margin-top: 12px;
+  letter-spacing: 4px;
+}
+
+.boton-ver-todos-trofeos {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.boton-ver-todos-trofeos:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(102, 126, 234, 0.4);
+}
+
+.sin-trofeos {
+  text-align: center;
+  padding: 40px 20px;
+  color: #7f8c8d;
+}
+
+.sin-trofeos-icono {
+  font-size: 4rem;
+  margin-bottom: 15px;
+  opacity: 0.5;
+}
+
+.sin-trofeos-subtitulo {
+  font-size: 0.9rem;
+  color: #95a5a6;
+  margin-top: 8px;
+}
+
+/* Modal de Trofeos */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-trofeos {
+  background: white;
+  border-radius: 20px;
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #2c3e50;
+  font-family: 'Fredoka', sans-serif;
+}
+
+.modal-cerrar {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.modal-cerrar:hover {
+  background: #c0392b;
+  transform: scale(1.1);
+}
+
+.modal-trofeos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 25px;
+}
+
+.trofeo-card-modal {
+  background: linear-gradient(135deg, #fff9e6, #ffeaa7);
+  border: 2px solid #fdcb6e;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.trofeo-card-modal:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(253, 203, 110, 0.4);
+}
+
+.trofeo-medalla-modal {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.trofeo-badge-modal {
+  display: inline-block;
+  background: #27ae60;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+
+.trofeo-titulo-modal {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 10px 0 5px 0;
+  font-family: 'Fredoka', sans-serif;
+}
+
+.trofeo-fecha-modal {
+  font-size: 0.85rem;
+  color: #7f8c8d;
+  margin: 5px 0;
+}
+
+.trofeo-estrellas-modal {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  letter-spacing: 2px;
+}
+
+/* Responsive Modal */
+@media (max-width: 600px) {
+  .modal-trofeos-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .trofeo-card-modal {
+    padding: 16px;
+  }
+
+  .trofeo-medalla-modal {
+    font-size: 2.5rem;
+  }
+
+  .trofeo-titulo-modal {
+    font-size: 1rem;
+  }
+
+  .modal-header h2 {
+    font-size: 1.5rem;
+  }
+}
+
 /* Accesos Rápidos Mini Grid */
 .accesos-rapidos-mini-grid {
   display: grid;
