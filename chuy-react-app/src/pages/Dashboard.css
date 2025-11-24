@@ -404,8 +404,8 @@
 /* Accesos Rápidos Mini Grid */
 .accesos-rapidos-mini-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
 }
 
 .acceso-rapido-mini {
@@ -413,83 +413,112 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 16px 12px;
+  gap: 10px;
+  padding: 20px 16px;
   background: linear-gradient(135deg, #f5f7ff, #faf8ff);
   border: 2px solid #e0e0e0;
-  border-radius: 12px;
+  border-radius: 14px;
   cursor: pointer;
   transition: all 0.3s ease;
-  min-height: 90px;
+  min-height: 110px;
   font-family: 'Fredoka', sans-serif;
   font-weight: 600;
+  position: relative;
 }
 
-.acceso-rapido-mini:hover {
+.acceso-rapido-mini:hover:not(:disabled) {
   border-color: #667eea;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.25);
   background: linear-gradient(135deg, #667eea, #764ba2);
 }
 
-.acceso-rapido-mini:hover .acceso-emoji {
-  transform: scale(1.2);
+.acceso-rapido-mini:hover:not(:disabled) .acceso-emoji {
+  transform: scale(1.25);
 }
 
-.acceso-rapido-mini:hover .acceso-nombre {
+.acceso-rapido-mini:hover:not(:disabled) .acceso-nombre {
   color: white;
 }
 
+.acceso-rapido-mini:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  background: linear-gradient(135deg, #f0f0f0, #f5f5f5);
+  border-color: #d0d0d0;
+}
+
 .acceso-emoji {
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   transition: transform 0.3s ease;
 }
 
 .acceso-nombre {
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   color: #2c3e50;
   text-align: center;
-  line-height: 1.1;
+  line-height: 1.2;
   transition: color 0.3s ease;
+}
+
+.acceso-candado {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  font-size: 1.2rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
 }
 
 /* Responsive */
 @media (max-width: 900px) {
   .accesos-rapidos-mini-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
   }
 
   .acceso-rapido-mini {
-    padding: 14px 10px;
-    min-height: 80px;
+    padding: 18px 14px;
+    min-height: 100px;
   }
 
   .acceso-emoji {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 
   .acceso-nombre {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .acceso-candado {
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 600px) {
   .accesos-rapidos-mini-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
   }
 
   .acceso-rapido-mini {
-    padding: 12px 8px;
-    min-height: 70px;
+    padding: 16px 12px;
+    min-height: 90px;
   }
 
   .acceso-emoji {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
   }
 
   .acceso-nombre {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
+  }
+
+  .acceso-candado {
+    font-size: 0.9rem;
   }
 }

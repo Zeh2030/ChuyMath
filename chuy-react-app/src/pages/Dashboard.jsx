@@ -326,44 +326,49 @@ const Dashboard = () => {
                 <span className="acceso-nombre">Secuencias</span>
               </button>
               <button 
-                className="acceso-rapido-mini"
-                onClick={() => navigate('/boveda')}
-                title="Problemas matemáticos"
+                className="acceso-rapido-mini disabled"
+                disabled
+                title="Próximamente disponible"
               >
                 <span className="acceso-emoji">🔢</span>
                 <span className="acceso-nombre">Operaciones</span>
+                <span className="acceso-candado">🔒</span>
               </button>
               <button 
-                className="acceso-rapido-mini"
-                onClick={() => navigate('/boveda')}
-                title="Acertijos matemáticos"
+                className="acceso-rapido-mini disabled"
+                disabled
+                title="Próximamente disponible"
               >
                 <span className="acceso-emoji">🍇</span>
                 <span className="acceso-nombre">Cripto</span>
+                <span className="acceso-candado">🔒</span>
               </button>
               <button 
-                className="acceso-rapido-mini"
-                onClick={() => navigate('/boveda')}
-                title="Lógica y equilibrio"
+                className="acceso-rapido-mini disabled"
+                disabled
+                title="Próximamente disponible"
               >
                 <span className="acceso-emoji">⚖️</span>
                 <span className="acceso-nombre">Balanza</span>
+                <span className="acceso-candado">🔒</span>
               </button>
               <button 
-                className="acceso-rapido-mini"
-                onClick={() => navigate('/boveda')}
-                title="Espacios 3D"
+                className="acceso-rapido-mini disabled"
+                disabled
+                title="Próximamente disponible"
               >
                 <span className="acceso-emoji">🧊</span>
                 <span className="acceso-nombre">Cubos</span>
+                <span className="acceso-candado">🔒</span>
               </button>
               <button 
-                className="acceso-rapido-mini"
-                onClick={() => navigate('/boveda')}
-                title="Juego de palabras"
+                className="acceso-rapido-mini disabled"
+                disabled
+                title="Próximamente disponible"
               >
                 <span className="acceso-emoji">📝</span>
                 <span className="acceso-nombre">Palabras</span>
+                <span className="acceso-candado">🔒</span>
               </button>
             </div>
           </section>
