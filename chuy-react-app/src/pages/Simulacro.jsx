@@ -19,44 +19,19 @@ const Simulacro = () => {
   const [calificado, setCalificado] = useState(false);
   const [puntaje, setPuntaje] = useState(0);
 
-  // Cargar el simulacro desde Firestore (intenta múltiples colecciones)
+  // Cargar el simulacro desde Firestore - SIMPLIFICADO: solo 'simulacros'
   useEffect(() => {
     const cargarSimulacro = async () => {
       try {
         setLoading(true);
         setError(null);
 
-        // Array de colecciones para intentar cargar (en orden de preferencia)
-        const colecciones = [
-          'simulacros',
-          'aventuras',
-          'conteo-figuras',
-          'secuencias',
-          'operaciones',
-          'criptoaritmetica',
-          'balanza-logica',
-          'desarrollo-cubos',
-          'palabra-del-dia'
-        ];
+        const simulacroRef = doc(db, 'simulacros', id);
+        const simulacroSnap = await getDoc(simulacroRef);
 
-        let simulacroSnap = null;
-        let coleccionEncontrada = null;
-
-        // Intenta cargar de cada colección hasta encontrar el documento
-        for (const coleccion of colecciones) {
-          const ref = doc(db, coleccion, id);
-          const snap = await getDoc(ref);
-          if (snap.exists()) {
-            simulacroSnap = snap;
-            coleccionEncontrada = coleccion;
-            break;
-          }
-        }
-
-        if (simulacroSnap?.exists()) {
+        if (simulacroSnap.exists()) {
           const data = { 
             id: simulacroSnap.id, 
-            coleccion: coleccionEncontrada,
             ...simulacroSnap.data() 
           };
           setSimulacro(data);
@@ -69,7 +44,7 @@ const Simulacro = () => {
           });
           setRespuestas(respuestasIniciales);
         } else {
-          setError(`No se encontró el contenido con ID ${id}`);
+          setError(`No se encontró el simulacro con ID ${id}`);
         }
       } catch (err) {
         console.error('Error al cargar simulacro:', err);
@@ -213,7 +188,8 @@ const Simulacro = () => {
   // Reiniciar el simulacro
   const reiniciarSimulacro = () => {
     const respuestasIniciales = {};
-    simulacro.problemas.forEach(problema => {
+    const itemsParaReiniciar = simulacro.problemas || simulacro.misiones || [];
+    itemsParaReiniciar.forEach(problema => {
       respuestasIniciales[problema.id] = null;
     });
     setRespuestas(respuestasIniciales);
@@ -252,7 +228,8 @@ const Simulacro = () => {
     );
   }
 
-  const totalProblemas = simulacro.problemas.length;
+  const items = simulacro.problemas || simulacro.misiones || [];
+  const totalProblemas = items.length;
   const porcentaje = calificado ? Math.round((puntaje / totalProblemas) * 100) : 0;
 
   return (
@@ -288,7 +265,7 @@ const Simulacro = () => {
 
         {/* Lista de Problemas */}
         <div className="problemas-lista">
-          {simulacro.problemas.map((problema, index) => {
+          {items.map((problema, index) => {
             const respuestaUsuario = respuestas[problema.id];
             const esCorrecta = calificado ? esRespuestaCorrecta(problema, respuestaUsuario) : false;
 

@@ -42,48 +42,25 @@ const AdminMigracion = () => {
     }
   };
 
-  // Función para migrar un simulacro o tipo específico
+  // Función para migrar un simulacro - TODO VA A COLECCIÓN 'simulacros'
   const migrarSimulacro = async (simulacroData, tipoJuego) => {
     try {
-      // Determinar la colección según el tipo de juego
-      let coleccion = 'simulacros'; // Por defecto
-      
-      if (tipoJuego === 'conteo-figuras') {
-        coleccion = 'conteo-figuras';
-      } else if (tipoJuego === 'secuencia') {
-        coleccion = 'secuencias';
-      } else if (tipoJuego === 'operaciones') {
-        coleccion = 'operaciones';
-      } else if (tipoJuego === 'criptoaritmetica') {
-        coleccion = 'criptoaritmetica';
-      } else if (tipoJuego === 'balanza-logica') {
-        coleccion = 'balanza-logica';
-      } else if (tipoJuego === 'desarrollo-cubos') {
-        coleccion = 'desarrollo-cubos';
-      } else if (tipoJuego === 'palabra-del-dia') {
-        coleccion = 'palabra-del-dia';
-      }
-      
-      const simulacroRef = doc(db, coleccion, simulacroData.id);
+      // SIMPLIFICADO: Todo va a 'simulacros', diferenciado por campo 'tipo'
+      const simulacroRef = doc(db, 'simulacros', simulacroData.id);
       
       // Preparar datos a migrar
       const datosAMigrar = {
         titulo: simulacroData.titulo,
         descripcion: simulacroData.descripcion || '',
-        problemas: simulacroData.problemas || simulacroData.ejercicios || [],
-        misiones: simulacroData.misiones || [],
+        tipo: tipoJuego, // Campo tipo para filtrar
+        problemas: simulacroData.problemas || simulacroData.misiones || simulacroData.ejercicios || [],
         ...simulacroData
       };
-
-      // Si es un tipo específico (no simulacro genérico), añadir el campo "tipo"
-      if (tipoJuego !== 'simulacro') {
-        datosAMigrar.tipo = tipoJuego;
-      }
 
       await setDoc(simulacroRef, datosAMigrar);
       return { exito: true, id: simulacroData.id, titulo: simulacroData.titulo };
     } catch (error) {
-      console.error(`Error al migrar a colección:`, error);
+      console.error(`Error al migrar a simulacros:`, error);
       return { exito: false, id: simulacroData.id, error: error.message };
     }
   };

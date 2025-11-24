@@ -13,7 +13,6 @@ const Boveda = () => {
   const { profile } = useProfile(currentUser?.uid);
   const [aventuras, setAventuras] = useState([]);
   const [simulacros, setSimulacros] = useState([]);
-  const [conteoFiguras, setConteoFiguras] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [filtro, setFiltro] = useState('todos'); // 'todos', 'aventuras', 'simulacros', o tipo específico
@@ -32,6 +31,7 @@ const Boveda = () => {
     { id: 'palabras', emoji: '📝', nombre: 'Palabra del Día', tipo: 'palabra-del-dia', descripcion: 'Vocabulario' }
   ];
 
+  // SIMPLIFICADO: Solo cargar de 'aventuras' y 'simulacros'
   useEffect(() => {
     const cargarContenido = async () => {
       try {
@@ -46,17 +46,7 @@ const Boveda = () => {
           ...doc.data()
         })).sort((a, b) => b.id.localeCompare(a.id));
 
-        // Cargar Conteo de Figuras
-        const conteoRef = collection(db, 'conteo-figuras');
-        const conteoSnapshot = await getDocs(conteoRef);
-        const listaConteo = conteoSnapshot.docs.map(doc => ({
-          id: doc.id,
-          tipo: 'conteo-figuras',
-          tipoDocumento: 'conteo-figuras',
-          ...doc.data()
-        })).sort((a, b) => b.id.localeCompare(a.id));
-
-        // Cargar Simulacros
+        // Cargar Simulacros (TODO el contenido está aquí, diferenciado por campo 'tipo')
         const simulacrosRef = collection(db, 'simulacros');
         const simulacrosSnapshot = await getDocs(simulacrosRef);
         const listaSimulacros = simulacrosSnapshot.docs.map(doc => {
@@ -64,13 +54,11 @@ const Boveda = () => {
           return {
             id: doc.id,
             tipo: data.tipo || 'simulacro',
-            tipoDocumento: 'simulacro',
             ...data
           };
         });
 
         setAventuras(listaAventuras);
-        setConteoFiguras(listaConteo);
         setSimulacros(listaSimulacros);
       } catch (err) {
         console.error("Error cargando la bóveda:", err);
@@ -117,43 +105,26 @@ const Boveda = () => {
     return null;
   };
 
-  // Filtrar contenido
+  // SIMPLIFICADO: Filtrar contenido
   const contenidoMostrar = () => {
     let items = [];
     
-    // Si el filtro es un tipo específico (conteo-figuras, secuencia, operaciones, etc.)
+    // Si el filtro es un tipo específico
     const tipoEspecifico = tiposJuegos.find(t => t.id === filtro);
     if (tipoEspecifico) {
       if (tipoEspecifico.tipo === 'aventura') {
-        items = [...aventuras];
-      } else if (tipoEspecifico.tipo === 'conteo-figuras') {
-        items = [...conteoFiguras];
+        return [...aventuras];
       } else {
         // Filtrar simulacros por tipo específico
-        items = simulacros.filter(s => s.tipo === tipoEspecifico.tipo);
+        return simulacros.filter(s => s.tipo === tipoEspecifico.tipo);
       }
-      return items;
     }
     
-    // Filtros generales (todos, aventuras, simulacros)
-    if (filtro === 'todos' || filtro === 'aventuras') {
-      items = [...items, ...aventuras];
-    }
-    if (filtro === 'todos' || filtro === 'conteo-figuras') {
-      items = [...items, ...conteoFiguras];
-    }
-    if (filtro === 'todos' || filtro === 'simulacros') {
-      items = [...items, ...simulacros.filter(s => !s.tipo || s.tipo === 'simulacro')];
+    // Filtros generales (todos)
+    if (filtro === 'todos') {
+      items = [...aventuras, ...simulacros];
     }
     return items;
-  };
-
-  // Obtener simulacros por tipo
-  const simulacrosPorTipo = (tipo) => {
-    if (tipo === 'simulacro') {
-      return simulacros.filter(s => !s.tipo || s.tipo === 'simulacro');
-    }
-    return simulacros.filter(s => s.tipo === tipo);
   };
 
   // Contar contenido disponible
@@ -162,8 +133,7 @@ const Boveda = () => {
     if (!tipoData) return 0;
     
     if (tipoData.tipo === 'aventura') return aventuras.length;
-    if (tipoData.tipo === 'conteo-figuras') return conteoFiguras.length;
-    if (tipoData.tipo === 'simulacro') return simulacros.filter(s => !s.tipo || s.tipo === 'simulacro').length;
+    // Todos los demás tipos vienen de simulacros, filtrados por campo 'tipo'
     return simulacros.filter(s => s.tipo === tipoData.tipo).length;
   };
 
@@ -250,14 +220,14 @@ const Boveda = () => {
               <section className="mi-boveda-section">
                 <h2 className="section-title">📚 Mi Bóveda</h2>
                 
-                {/* Filtros */}
+                {/* Filtros - SIMPLIFICADO */}
                 <div className="filtros-container">
                   <button 
                     className={`filtro-btn ${filtro === 'todos' ? 'activo' : ''}`}
                     onClick={() => setFiltro('todos')}
                   >
                     Todo 
-                    <span className="filtro-badge">{aventuras.length + conteoFiguras.length + simulacros.length}</span>
+                    <span className="filtro-badge">{aventuras.length + simulacros.length}</span>
                   </button>
                   <button 
                     className={`filtro-btn ${filtro === 'aventuras' ? 'activo' : ''}`}
@@ -266,15 +236,8 @@ const Boveda = () => {
                     🌟 Aventuras
                     <span className="filtro-badge">{aventuras.length}</span>
                   </button>
-                  <button 
-                    className={`filtro-btn ${filtro === 'simulacros' ? 'activo' : ''}`}
-                    onClick={() => setFiltro('simulacros')}
-                  >
-                    🏆 Simulacros
-                    <span className="filtro-badge">{simulacros.filter(s => !s.tipo || s.tipo === 'simulacro').length}</span>
-                  </button>
-                  {/* Filtros por tipo específico */}
-                  {tiposJuegos.filter(t => t.tipo !== 'aventura' && t.tipo !== 'simulacro').map(tipo => {
+                  {/* Filtros dinámicos por cada tipo de simulacro que tenga contenido */}
+                  {tiposJuegos.filter(t => t.tipo !== 'aventura').map(tipo => {
                     const count = contarPorTipo(tipo.id);
                     if (count === 0) return null;
                     return (

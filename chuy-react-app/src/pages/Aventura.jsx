@@ -18,47 +18,23 @@ const Aventura = () => {
   const [misionActual, setMisionActual] = useState(0); // Índice de la misión actual
   const [aventuraCompletada, setAventuraCompletada] = useState(false);
 
-  // Cargar la aventura desde Firestore (intenta múltiples colecciones)
+  // Cargar la aventura desde Firestore - SIMPLIFICADO: solo 'aventuras'
   React.useEffect(() => {
     const cargarAventura = async () => {
       try {
         setLoading(true);
         setError(null);
 
-        // Array de colecciones para intentar cargar (en orden de preferencia)
-        const colecciones = [
-          'aventuras',
-          'conteo-figuras',
-          'secuencias',
-          'operaciones',
-          'criptoaritmetica',
-          'balanza-logica',
-          'desarrollo-cubos',
-          'palabra-del-dia'
-        ];
+        const aventuraRef = doc(db, 'aventuras', fecha);
+        const aventuraSnap = await getDoc(aventuraRef);
 
-        let aventuraSnap = null;
-        let coleccionEncontrada = null;
-
-        // Intenta cargar de cada colección hasta encontrar el documento
-        for (const coleccion of colecciones) {
-          const ref = doc(db, coleccion, fecha);
-          const snap = await getDoc(ref);
-          if (snap.exists()) {
-            aventuraSnap = snap;
-            coleccionEncontrada = coleccion;
-            break;
-          }
-        }
-
-        if (aventuraSnap?.exists()) {
+        if (aventuraSnap.exists()) {
           setAventura({ 
             id: aventuraSnap.id, 
-            coleccion: coleccionEncontrada,
             ...aventuraSnap.data() 
           });
         } else {
-          setError(`No se encontró el contenido con ID ${fecha}`);
+          setError(`No se encontró la aventura con ID ${fecha}`);
         }
       } catch (err) {
         console.error('Error al cargar aventura:', err);
