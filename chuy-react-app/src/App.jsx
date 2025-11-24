@@ -4,9 +4,11 @@ import { useAuth } from './hooks/useAuth.jsx';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import AdminMigracion from './pages/AdminMigracion';
+import AdminUsuarios from './pages/AdminUsuarios';
 import Aventura from './pages/Aventura';
 import Simulacro from './pages/Simulacro';
 import Boveda from './pages/Boveda';
+import Perfil from './pages/Perfil';
 
 const ProtectedRoute = ({ children }) => {
   const { currentUser, loading } = useAuth();
@@ -44,6 +46,14 @@ function App() {
           }
         />
         <Route
+          path="/admin/usuarios"
+          element={
+            <ProtectedRoute>
+              <AdminUsuarios />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/aventura/:fecha"
           element={
             <ProtectedRoute>
@@ -64,6 +74,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Boveda />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/perfil"
+          element={
+            <ProtectedRoute>
+              <Perfil />
             </ProtectedRoute>
           }
         />

@@ -170,7 +170,7 @@ Firestore se usará para almacenar todos los datos persistentes. La estructura d
 ## ✨ Principios de Diseño y Calidad
 
 *   **Component-First:** Pensar en piezas de UI reutilizables antes de construir páginas.
-*   **Mobile-First:** Diseñar los estilos pensando primero en pantallas pequeñas y luego escalar a pantallas más grandes.
+*   **Mobile-First & Child-First:** Diseñar los estilos pensando primero en pantallas pequeñas y en la usabilidad para niños (botones grandes, feedback visual claro). Se implementa una capa de CSS mejorado (`*.enhanced.css`) sobre los estilos base.
 *   **Código Limpio y Autodocumentado:** Usar nombres de variables y funciones descriptivos para que el código sea fácil de entender.
-*   **Accesibilidad (a11y):** Asegurar que los componentes sean semánticos y accesibles (ej. buen contraste, etiquetas ARIA donde sea necesario). Se usará **Lighthouse** para auditorías periódicas.
+*   **Accesibilidad (a11y):** Asegurar que los componentes sean semánticos y accesibles (ej. buen contraste, etiquetas ARIA donde sea necesario, soporte `prefers-reduced-motion`). Se usará **Lighthouse** para auditorías periódicas.
 *   **Una Sola Fuente de Verdad (Single Source of Truth):** Evitar duplicar el estado. Los datos deben fluir de una única fuente (el estado del componente, el Context, o Firestore).

@@ -133,3 +133,25 @@
     *   [x] `components/aventura/tipos/BalanzaLogica.jsx` ✅
     *   [x] `components/aventura/tipos/DesarrolloCubos.jsx` ✅
     *   [x] `components/aventura/tipos/PalabraDelDia.jsx` ✅
+
+### Fase 5B: Mejoras de UI/UX (Adelantado de Fase 6)
+*   [x] **Optimización de Dashboard:**
+    *   [x] Hero Section full-width.
+    *   [x] Tap targets accesibles (min 48px).
+    *   [x] Badges para items deshabilitados.
+    *   [x] Grid de logros prominente.
+    *   [x] Micro-interacciones y animaciones.
+*   [x] **Optimización de Bóveda:**
+    *   [x] Filtros con badges de conteo.
+    *   [x] Indicadores de progreso (completado/score).
+    *   [x] Fechas legibles y amigables.
+    *   [x] Estado vacío con recomendaciones.
+
+## ⏳ Fases en Progreso
+
+### Fase 5C: Migración Masiva de Contenido
+*   [ ] Subir todos los archivos JSON de `_contenido` a Firestore.
+
+### Fase 6: Testing y Optimización
+*   [ ] **Reglas de Seguridad Firestore:** Configurar reglas para producción.
+*   [ ] **Página de Perfil:** Permitir editar nombre y avatar.

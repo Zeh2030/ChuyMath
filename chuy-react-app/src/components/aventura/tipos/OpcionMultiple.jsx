@@ -203,24 +203,24 @@ const OpcionMultiple = ({
 
       {/* Botón de Enviar / Reintentar - Solo en modo normal */}
       {!modoSimulacro && (
-        <div className="acciones-container">
-          {!mostrarResultado ? (
-            <button
-              className="boton-enviar"
-              onClick={handleEnviar}
-              disabled={!respuestaSeleccionada}
-            >
-              Enviar Respuesta
-            </button>
-          ) : (
-            <button
-              className="boton-reintentar"
-              onClick={handleReintentar}
-            >
-              Intentar de Nuevo
-            </button>
-          )}
-        </div>
+      <div className="acciones-container">
+        {!mostrarResultado ? (
+          <button
+            className="boton-enviar"
+            onClick={handleEnviar}
+            disabled={!respuestaSeleccionada}
+          >
+            Enviar Respuesta
+          </button>
+        ) : (
+          <button
+            className="boton-reintentar"
+            onClick={handleReintentar}
+          >
+            Intentar de Nuevo
+          </button>
+        )}
+      </div>
       )}
 
       {/* Feedback */}

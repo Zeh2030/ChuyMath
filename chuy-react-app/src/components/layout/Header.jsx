@@ -9,6 +9,7 @@ const Header = ({ title, subtitle }) => {
   const location = useLocation();
   const esDashboard = location.pathname === '/dashboard';
   const esBoveda = location.pathname === '/boveda';
+  const esPerfil = location.pathname === '/perfil';
 
   return (
     <header className="dashboard-header">
@@ -34,9 +35,22 @@ const Header = ({ title, subtitle }) => {
             </Link>
           )}
 
-          <Link to="/admin/migracion" className="nav-btn admin-btn" style={{ backgroundColor: '#95a5a6', fontSize: '0.9rem' }}>
-            ⚙️ Admin
-          </Link>
+          {!esPerfil && (
+            <Link to="/perfil" className="nav-btn perfil-btn" style={{ backgroundColor: '#9b59b6', fontSize: '0.9rem' }}>
+              👤 Mi Perfil
+            </Link>
+          )}
+
+          {currentUser?.email === 'jesuscarrillog@gmail.com' && (
+            <>
+              <Link to="/admin/usuarios" className="nav-btn admin-btn" style={{ backgroundColor: '#3498db', fontSize: '0.9rem' }}>
+                👥 Usuarios
+              </Link>
+              <Link to="/admin/migracion" className="nav-btn admin-btn" style={{ backgroundColor: '#95a5a6', fontSize: '0.9rem' }}>
+                ⚙️ Migración
+              </Link>
+            </>
+          )}
 
           <LogoutButton />
         </div>

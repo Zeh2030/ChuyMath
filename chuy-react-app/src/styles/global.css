@@ -2,6 +2,9 @@
 /* === ESTILOS GLOBALES - EL MUNDO DE CHUY === */
 /* ============================================= */
 
+/* Importar Fuentes de Google - DEBE estar al principio */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;700&family=Nunito:wght@400;700;800&display=swap');
+
 :root {
     /* Colores Principales */
     --c-primary: #3498db;
@@ -43,7 +46,4 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-
-/* Importar Fuentes de Google */
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;700&family=Nunito:wght@400;700;800&display=swap');
 

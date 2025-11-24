@@ -101,6 +101,34 @@ const Simulacro = () => {
     return false;
   };
 
+  // Función auxiliar para calcular la racha
+  const calcularRacha = (ultimaVisita, rachaActual) => {
+    if (!ultimaVisita) {
+      // Primera visita
+      return 1;
+    }
+
+    const hoy = new Date();
+    hoy.setHours(0, 0, 0, 0);
+
+    // Convertir Timestamp de Firestore a Date
+    const ultimaVisitaDate = ultimaVisita.toDate ? ultimaVisita.toDate() : new Date(ultimaVisita);
+    ultimaVisitaDate.setHours(0, 0, 0, 0);
+
+    const diferenciaDias = Math.floor((hoy - ultimaVisitaDate) / (1000 * 60 * 60 * 24));
+
+    if (diferenciaDias === 1) {
+      // Visitó ayer, incrementar racha
+      return rachaActual + 1;
+    } else if (diferenciaDias === 0) {
+      // Visitó hoy, mantener racha
+      return rachaActual;
+    } else {
+      // No visitó ayer, reiniciar racha
+      return 1;
+    }
+  };
+
   // Calificar el examen
   const calificarExamen = async () => {
     let aciertos = 0;
@@ -120,6 +148,14 @@ const Simulacro = () => {
         const porcentaje = Math.round((aciertos / simulacro.problemas.length) * 100);
         const userRef = doc(db, 'profiles', currentUser.uid);
         
+        // Obtener el perfil actual para calcular la racha
+        const profileSnap = await getDoc(userRef);
+        const profileData = profileSnap.data();
+        const rachaActual = profileData?.racha || 0;
+        const ultimaVisita = profileData?.ultimaVisita;
+
+        const nuevaRacha = calcularRacha(ultimaVisita, rachaActual);
+        
         const nuevoResultado = {
           simulacroId: id,
           titulo: simulacro.titulo,
@@ -130,9 +166,11 @@ const Simulacro = () => {
         };
 
         await updateDoc(userRef, {
-          simulacros: arrayUnion(nuevoResultado)
+          simulacros: arrayUnion(nuevoResultado),
+          racha: nuevaRacha,
+          ultimaVisita: Timestamp.now()
         });
-        console.log('Resultado guardado con éxito');
+        console.log(`Resultado guardado con éxito. Nueva racha: ${nuevaRacha}`);
       } catch (error) {
         console.error('Error al guardar el resultado:', error);
       }

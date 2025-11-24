@@ -33,8 +33,8 @@ Este plan de desarrollo organiza la migración a React en fases manejables. Cada
 | **2** | **Reconstrucción del Dashboard** | Crear la página principal y la estructura de navegación. | ✅ **Completada** |
 | **3** | **El Motor de Aventuras** | Desarrollar el sistema central para renderizar misiones. | ✅ **Completada** |
 | **4** | **Simulacros de Examen** | Crear modo examen y componentes prioritarios para práctica inmediata. | ✅ **Completada** |
-| **5** | **Migración de Contenido** | Adaptar el resto de juegos existentes a componentes de React. | ⬜ **Pendiente** |
-| **6** | **Testing y Optimización** | Asegurar la calidad, rendimiento y accesibilidad. | ⬜ **Pendiente** |
+| **5** | **Migración de Contenido** | Adaptar el resto de juegos existentes a componentes de React. | ✅ **Completada** |
+| **6** | **Testing, Optimización y UI/UX** | Asegurar la calidad, rendimiento y mejorar la experiencia de usuario. | 🔄 **En Progreso** |
 
 ---
 
@@ -134,43 +134,31 @@ Este plan de desarrollo organiza la migración a React en fases manejables. Cada
 
 ---
 
-## Fase 5: Migración de Contenido Restante
+## Fase 5: Migración de Contenido Restante (Completada)
 
 **Objetivo:** Recrear todos los tipos de juegos restantes como componentes de React.
 
-*   [ ] **Crear un Componente por cada Tipo de Juego (No Prioritario):**
-    *   [ ] `components/aventura/tipos/Balanza.jsx`
-    *   [ ] `components/aventura/tipos/ConteoFiguras.jsx`
-    *   [ ] `components/aventura/tipos/Criptoaritmetica.jsx`
-    *   [ ] ... y así sucesivamente para todos los tipos.
-*   [ ] **Adaptar Lógica y Estilos:**
-    *   [ ] Extraer la lógica de renderizado y calificación de los archivos JS originales a cada componente de React.
-    *   [ ] Adaptar los estilos CSS de cada juego para que sean encapsulados (usando CSS Modules o un enfoque similar).
-*   [ ] **Poblar Firestore con Contenido:**
-    *   [ ] Crear un script (o hacerlo manualmente al inicio) para subir los archivos `.json` de `_contenido/` a la colección `aventuras` de Firestore.
+*   [x] **Crear un Componente por cada Tipo de Juego:**
+    *   [x] `NavegacionMapa`, `TablaDobleEntrada`, `ConteoFiguras`, `Operaciones`, `Criptoaritmetica`, `BalanzaLogica`, `DesarrolloCubos`, `PalabraDelDia`.
+*   [x] **Adaptar Lógica y Estilos:**
+    *   [x] Estilos encapsulados y lógica migrada.
 
 ---
 
-## Fase 6: Testing y Optimización
+## Fase 6: Testing, Optimización y UI/UX
 
-**Objetivo:** Pulir la aplicación, asegurar su correcto funcionamiento y buen rendimiento.
+**Objetivo:** Pulir la aplicación, mejorar la interfaz para niños y asegurar la estabilidad.
 
-*   [ ] **Testing Funcional:**
-    *   [ ] Probar exhaustivamente cada tipo de juego.
-    *   [ ] Verificar que el progreso del usuario se guarda y lee correctamente.
-    *   [ ] Probar el flujo de autenticación completo.
-*   [ ] **Auditoría de Calidad:**
-    *   [ ] Correr **Lighthouse** en las páginas principales.
-    *   [ ] Corregir los problemas de **Accesibilidad (a11y)**, Contraste y SEO que se reporten.
-*   [ ] **Optimización de Rendimiento:**
-    *   [ ] Analizar los tiempos de carga de Firestore y optimizar las consultas si es necesario.
-    *   [ ] Implementar "lazy loading" para los componentes de las páginas si la carga inicial es lenta.
-*   [ ] **Refactorización Final:**
-    *   [ ] Revisar el código en busca de duplicación y oportunidades de crear más hooks o componentes reutilizables.
-    *   [ ] Asegurarse de que el código esté limpio y bien comentado.
+*   [x] **Mejoras de UI/UX (Dashboard y Bóveda):**
+    *   [x] Implementar diseño "Child-First" (botones grandes, feedback visual).
+    *   [x] Mejorar navegación en móvil (Tabs).
+    *   [x] Visualización de logros y progreso.
+*   [ ] **Gestión de Perfil:**
+    *   [ ] Crear página para editar nombre de héroe y avatar.
 *   [ ] **Seguridad de Firebase:**
-    *   [ ] Cambiar las reglas de Firestore de "modo de prueba" a reglas de producción más estrictas.
-    *   [ ] Implementar validación de datos en las reglas de seguridad.
-    *   [ ] Configurar App Check para proteger contra abusos (opcional pero recomendado).
-*   [ ] **Herramientas de Desarrollo:**
-    *   [ ] Instalar React DevTools en el navegador para facilitar el debugging y desarrollo.
+    *   [ ] Configurar reglas de Firestore (firestore.rules).
+*   [ ] **Migración de Datos:**
+    *   [ ] Subir todos los simulacros JSON a la base de datos de producción.
+*   [ ] **Auditoría Final:**
+    *   [ ] Lighthouse score > 90.
+    *   [ ] Testing manual en dispositivos móviles.
