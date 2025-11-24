@@ -11,7 +11,19 @@ const AdminMigracion = () => {
   const [migrando, setMigrando] = useState(false);
   const [resultado, setResultado] = useState(null);
   const [jsonInput, setJsonInput] = useState('');
-  const [tipoContenido, setTipoContenido] = useState('aventura'); // 'aventura' o 'simulacro'
+  const [tipoContenido, setTipoContenido] = useState('aventura'); // 'aventura', 'simulacro', o tipo específico
+
+  // Opciones de tipos de contenido
+  const tiposDisponibles = [
+    { valor: 'aventura', nombre: '🌟 Aventura', emoji: '🌟' },
+    { valor: 'simulacro', nombre: '🏆 Simulacro', emoji: '🏆' },
+    { valor: 'secuencia', nombre: '🔍 Secuencias', emoji: '🔍' },
+    { valor: 'operaciones', nombre: '🔢 Operaciones', emoji: '🔢' },
+    { valor: 'criptoaritmetica', nombre: '🍇 Criptoaritmetica', emoji: '🍇' },
+    { valor: 'balanza-logica', nombre: '⚖️ Balanza Lógica', emoji: '⚖️' },
+    { valor: 'desarrollo-cubos', nombre: '🧊 Desarrollo de Cubos', emoji: '🧊' },
+    { valor: 'palabra-del-dia', nombre: '📝 Palabra del Día', emoji: '📝' }
+  ];
 
   // Función para migrar una aventura individual
   const migrarAventura = async (aventuraData) => {
@@ -29,16 +41,25 @@ const AdminMigracion = () => {
     }
   };
 
-  // Función para migrar un simulacro
-  const migrarSimulacro = async (simulacroData) => {
+  // Función para migrar un simulacro o tipo específico
+  const migrarSimulacro = async (simulacroData, tipoJuego) => {
     try {
       const simulacroRef = doc(db, 'simulacros', simulacroData.id);
-      await setDoc(simulacroRef, {
+      
+      // Si es un tipo específico (secuencias, operaciones, etc.), añadir el campo "tipo"
+      const datosAMigrar = {
         titulo: simulacroData.titulo,
         descripcion: simulacroData.descripcion || '',
-        problemas: simulacroData.problemas || [],
+        problemas: simulacroData.problemas || simulacroData.ejercicios || [],
         ...simulacroData
-      });
+      };
+
+      // Si es un tipo específico, añadir el campo tipo
+      if (tipoJuego !== 'simulacro') {
+        datosAMigrar.tipo = tipoJuego;
+      }
+
+      await setDoc(simulacroRef, datosAMigrar);
       return { exito: true, id: simulacroData.id, titulo: simulacroData.titulo };
     } catch (error) {
       console.error(`Error al migrar simulacro ${simulacroData.id}:`, error);
@@ -49,7 +70,8 @@ const AdminMigracion = () => {
   // Función para procesar y migrar el JSON
   const procesarYMigrar = async () => {
     if (!jsonInput.trim()) {
-      alert(`Por favor, pega el contenido JSON de ${tipoContenido === 'aventura' ? 'una aventura' : 'un simulacro'}`);
+      const tipoNombre = tiposDisponibles.find(t => t.valor === tipoContenido)?.nombre || tipoContenido;
+      alert(`Por favor, pega el contenido JSON de ${tipoNombre}`);
       return;
     }
 
@@ -66,14 +88,18 @@ const AdminMigracion = () => {
       }
 
       // Migrar según el tipo
-      const resultado = tipoContenido === 'aventura' 
-        ? await migrarAventura(data)
-        : await migrarSimulacro(data);
+      let resultado;
+      if (tipoContenido === 'aventura') {
+        resultado = await migrarAventura(data);
+      } else {
+        resultado = await migrarSimulacro(data, tipoContenido);
+      }
 
       if (resultado.exito) {
+        const tipoNombre = tiposDisponibles.find(t => t.valor === tipoContenido)?.nombre || tipoContenido;
         setResultado({
           tipo: 'exito',
-          mensaje: `✅ ${tipoContenido === 'aventura' ? 'Aventura' : 'Simulacro'} "${resultado.titulo}" (${resultado.id}) migrado exitosamente`,
+          mensaje: `✅ ${tipoNombre} "${resultado.titulo}" (${resultado.id}) migrado exitosamente`,
         });
         setJsonInput(''); // Limpiar el input
       } else {
@@ -127,26 +153,26 @@ const AdminMigracion = () => {
         <section className="widget admin-widget">
           <h2 className="widget-title">Migrar Contenido a Firestore</h2>
           
-          {/* Selector de tipo de contenido */}
-          <div className="tipo-selector">
-            <label className="radio-label">
-              <input
-                type="radio"
-                value="aventura"
-                checked={tipoContenido === 'aventura'}
-                onChange={(e) => setTipoContenido(e.target.value)}
-              />
-              <span>Aventura</span>
-            </label>
-            <label className="radio-label">
-              <input
-                type="radio"
-                value="simulacro"
-                checked={tipoContenido === 'simulacro'}
-                onChange={(e) => setTipoContenido(e.target.value)}
-              />
-              <span>Simulacro</span>
-            </label>
+          {/* Selector de tipo de contenido - Mejorado para Admin */}
+          <div className="tipo-selector-grid">
+            <p style={{ marginBottom: '15px', fontWeight: 'bold', color: '#333' }}>Selecciona el tipo de contenido:</p>
+            <div className="tipos-grid">
+              {tiposDisponibles.map(tipo => (
+                <label key={tipo.valor} className="tipo-card">
+                  <input
+                    type="radio"
+                    value={tipo.valor}
+                    checked={tipoContenido === tipo.valor}
+                    onChange={(e) => setTipoContenido(e.target.value)}
+                    style={{ display: 'none' }}
+                  />
+                  <div className={`tipo-card-content ${tipoContenido === tipo.valor ? 'selected' : ''}`}>
+                    <span className="tipo-emoji">{tipo.emoji}</span>
+                    <span className="tipo-nombre">{tipo.nombre.split(' ').slice(1).join(' ')}</span>
+                  </div>
+                </label>
+              ))}
+            </div>
           </div>
           
           <div className="instrucciones">
@@ -192,7 +218,7 @@ const AdminMigracion = () => {
             onClick={procesarYMigrar}
             disabled={migrando || !jsonInput.trim()}
           >
-            {migrando ? 'Migrando...' : `Migrar ${tipoContenido === 'aventura' ? 'Aventura' : 'Simulacro'}`}
+            {migrando ? 'Migrando...' : `Migrar ${tiposDisponibles.find(t => t.valor === tipoContenido)?.nombre.split(' ').slice(1).join(' ')}`}
           </button>
 
           {resultado && (

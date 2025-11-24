@@ -297,79 +297,18 @@ const Dashboard = () => {
             )}
           </section>
 
-          {/* Widget de Bóveda - Visible en explorar */}
-          <section className={`widget portales-widget ${isMobile && tabActivo !== 'explorar' ? 'hidden' : ''}`}>
-            <h2 className="widget-title">📚 Bóveda de Misiones</h2>
-            <div className="grupo-botones">
-              <button 
-                className="boton-secundario" 
-                onClick={() => navigate('/boveda')}
-              >
-                <span className="icono-portal">📅</span>
-                <span>Aventuras Diarias</span>
-              </button>
-              <button 
-                className="boton-secundario" 
-                onClick={() => navigate('/boveda')}
-              >
-                <span className="icono-portal">📝</span>
-                <span>Ver Simulacros</span>
-              </button>
-            </div>
+          {/* Widget de Exploración - Nuevo Acceso Rápido a Bóveda */}
+          <section className={`widget exploracion-widget ${isMobile && tabActivo !== 'explorar' ? 'hidden' : ''}`}>
+            <h2 className="widget-title">🔍 Explorar</h2>
+            <button 
+              className="boton-principal" 
+              onClick={() => navigate('/boveda')}
+              style={{ width: '100%', padding: '20px', fontSize: '1.1rem' }}
+            >
+              📚 Centro de Exploración
+            </button>
           </section>
 
-          {/* Widget de Categorías - Visible en explorar */}
-          <section className={`widget categorias-widget ${isMobile && tabActivo !== 'explorar' ? 'hidden' : ''}`}>
-            <h2 className="widget-title">🎯 Accesos Rápidos</h2>
-            
-            <div className="categorias-grid">
-              <button 
-                className="categoria-card geometria disabled" 
-                disabled
-                data-state="🔒 Nivel 5"
-                title="Se desbloquea en Nivel 5"
-              >
-                <div className="categoria-icono">🧮</div>
-                <span>Geometría</span>
-              </button>
-              
-              <button 
-                className="categoria-card constructores disabled" 
-                disabled
-                data-state="🔒 Nivel 5"
-                title="Se desbloquea en Nivel 5"
-              >
-                <div className="categoria-icono">🏗️</div>
-                <span>Constructores</span>
-              </button>
-              
-              <button 
-                className="categoria-card secuencias disabled" 
-                disabled
-                data-state="🔒 Nivel 5"
-                title="Se desbloquea en Nivel 5"
-              >
-                <div className="categoria-icono">🔍</div>
-                <span>Secuencias</span>
-              </button>
-              
-              <button 
-                className="categoria-card aventuras" 
-                onClick={() => navigate('/boveda')}
-              >
-                <div className="categoria-icono">🌟</div>
-                <span>Aventuras</span>
-              </button>
-              
-              <button 
-                className="categoria-card simulacros" 
-                onClick={() => navigate('/boveda')}
-              >
-                <div className="categoria-icono">🏆</div>
-                <span>Simulacros</span>
-              </button>
-            </div>
-          </section>
         </aside>
       </div>
     </PageWrapper>
