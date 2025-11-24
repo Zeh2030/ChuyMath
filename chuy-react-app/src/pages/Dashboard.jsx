@@ -297,16 +297,75 @@ const Dashboard = () => {
             )}
           </section>
 
-          {/* Widget de Exploración - Nuevo Acceso Rápido a Bóveda */}
+          {/* Widget de Exploración - Accesos Rápidos a Tipos de Juegos */}
           <section className={`widget exploracion-widget ${isMobile && tabActivo !== 'explorar' ? 'hidden' : ''}`}>
-            <h2 className="widget-title">🔍 Explorar</h2>
-            <button 
-              className="boton-principal" 
-              onClick={() => navigate('/boveda')}
-              style={{ width: '100%', padding: '20px', fontSize: '1.1rem' }}
-            >
-              📚 Centro de Exploración
-            </button>
+            <h2 className="widget-title">⚡ Accesos Rápidos</h2>
+            <div className="accesos-rapidos-mini-grid">
+              <button 
+                className="acceso-rapido-mini"
+                onClick={() => navigate('/boveda')}
+                title="Ver todas las aventuras"
+              >
+                <span className="acceso-emoji">🎯</span>
+                <span className="acceso-nombre">Aventuras</span>
+              </button>
+              <button 
+                className="acceso-rapido-mini"
+                onClick={() => navigate('/boveda')}
+                title="Ver simulacros y exámenes"
+              >
+                <span className="acceso-emoji">🏆</span>
+                <span className="acceso-nombre">Simulacros</span>
+              </button>
+              <button 
+                className="acceso-rapido-mini"
+                onClick={() => navigate('/boveda')}
+                title="Desafíos de patrones"
+              >
+                <span className="acceso-emoji">🔍</span>
+                <span className="acceso-nombre">Secuencias</span>
+              </button>
+              <button 
+                className="acceso-rapido-mini"
+                onClick={() => navigate('/boveda')}
+                title="Problemas matemáticos"
+              >
+                <span className="acceso-emoji">🔢</span>
+                <span className="acceso-nombre">Operaciones</span>
+              </button>
+              <button 
+                className="acceso-rapido-mini"
+                onClick={() => navigate('/boveda')}
+                title="Acertijos matemáticos"
+              >
+                <span className="acceso-emoji">🍇</span>
+                <span className="acceso-nombre">Cripto</span>
+              </button>
+              <button 
+                className="acceso-rapido-mini"
+                onClick={() => navigate('/boveda')}
+                title="Lógica y equilibrio"
+              >
+                <span className="acceso-emoji">⚖️</span>
+                <span className="acceso-nombre">Balanza</span>
+              </button>
+              <button 
+                className="acceso-rapido-mini"
+                onClick={() => navigate('/boveda')}
+                title="Espacios 3D"
+              >
+                <span className="acceso-emoji">🧊</span>
+                <span className="acceso-nombre">Cubos</span>
+              </button>
+              <button 
+                className="acceso-rapido-mini"
+                onClick={() => navigate('/boveda')}
+                title="Juego de palabras"
+              >
+                <span className="acceso-emoji">📝</span>
+                <span className="acceso-nombre">Palabras</span>
+              </button>
+            </div>
           </section>
 
         </aside>

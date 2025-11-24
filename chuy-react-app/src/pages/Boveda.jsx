@@ -190,6 +190,12 @@ const Boveda = () => {
                         className={`tipo-juego-card ${count === 0 ? 'sin-contenido' : ''}`}
                         disabled={count === 0}
                         title={count === 0 ? 'No hay contenido disponible' : tipo.descripcion}
+                        onClick={() => {
+                          if (count > 0) {
+                            setTabActivo('boveda');
+                            setFiltro(tipo.id === 'aventuras' ? 'aventuras' : 'simulacros');
+                          }
+                        }}
                       >
                         <div className="tipo-emoji">{tipo.emoji}</div>
                         <div className="tipo-nombre">{tipo.nombre}</div>
