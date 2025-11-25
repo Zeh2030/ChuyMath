@@ -60,29 +60,30 @@
 
 /* Tabla Grid */
 .tabla-grid {
-  display: inline-grid;
-  gap: 2px;
+  display: table;
   background: #34495e;
   padding: 8px;
   border-radius: 10px;
   margin: 20px auto;
-  width: fit-content;
-  margin-left: 50%;
-  transform: translateX(-50%);
+  border-collapse: collapse;
+  border-spacing: 2px;
 }
 
 .tabla-header-container {
-  display: contents;
+  display: table-row;
 }
 
 .tabla-corner {
+  display: table-cell;
   background: #34495e;
   border: none;
   min-width: 100px;
   min-height: 50px;
+  padding: 8px;
 }
 
 .tabla-header-col {
+  display: table-cell;
   background: #3498db;
   color: white;
   font-weight: bold;
@@ -90,19 +91,18 @@
   text-align: center;
   min-width: 100px;
   min-height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  vertical-align: middle;
   border-radius: 5px;
   font-size: 0.95rem;
   border: 2px solid #2980b9;
 }
 
 .tabla-row {
-  display: contents;
+  display: table-row;
 }
 
 .tabla-header-row {
+  display: table-cell;
   background: #2ecc71;
   color: white;
   font-weight: bold;
@@ -110,32 +110,30 @@
   text-align: center;
   min-width: 100px;
   min-height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  vertical-align: middle;
   border-radius: 5px;
   font-size: 0.95rem;
   border: 2px solid #27ae60;
 }
 
 .tabla-celda {
+  display: table-cell;
   background: white;
   border: 2px solid #bdc3c7;
   cursor: pointer;
   transition: all 0.2s ease;
   min-width: 100px;
   min-height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
+  vertical-align: middle;
   border-radius: 5px;
   position: relative;
+  padding: 10px;
 }
 
 .tabla-celda:hover:not(.deshabilitada) {
   background: #ecf0f1;
   border-color: #95a5a6;
-  transform: scale(1.05);
 }
 
 .tabla-celda.marcada {
@@ -145,7 +143,7 @@
 }
 
 .tabla-celda.marcada .marca {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: white;
 }
 
@@ -157,6 +155,7 @@
 .marca {
   font-size: 1.5rem;
   color: white;
+  line-height: 1;
 }
 
 /* Pregunta Final */
