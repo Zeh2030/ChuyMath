@@ -111,15 +111,15 @@ const Dashboard = () => {
 
   // Tipos de juegos para accesos rápidos
   const tiposDeJuego = [
-    { emoji: '🎯', nombre: 'Aventuras', disponible: true },
-    { emoji: '🏆', nombre: 'Simulacros', disponible: true },
-    { emoji: '🔍', nombre: 'Conteo', disponible: true },
-    { emoji: '🔢', nombre: 'Secuencias', disponible: true },
-    { emoji: '➕', nombre: 'Operaciones', disponible: false },
-    { emoji: '🍇', nombre: 'Cripto', disponible: false },
-    { emoji: '⚖️', nombre: 'Balanza', disponible: false },
-    { emoji: '🧊', nombre: 'Cubos', disponible: false },
-    { emoji: '📝', nombre: 'Palabras', disponible: false }
+    { id: 'aventuras', emoji: '🎯', nombre: 'Aventuras', filtro: 'aventuras', disponible: true },
+    { id: 'simulacros', emoji: '🏆', nombre: 'Simulacros', filtro: 'simulacros', disponible: true },
+    { id: 'conteo', emoji: '💠', nombre: 'Conteo', filtro: 'conteo-figuras', disponible: true },
+    { id: 'secuencias', emoji: '🔢', nombre: 'Secuencias', filtro: 'secuencias', disponible: true },
+    { id: 'detectives', emoji: '🔎', nombre: 'Detectives', filtro: 'tabla-doble-entrada', disponible: true },
+    { id: 'operaciones', emoji: '➕', nombre: 'Operaciones', filtro: 'operaciones', disponible: false },
+    { id: 'cripto', emoji: '🍇', nombre: 'Cripto', filtro: 'criptoaritmetica', disponible: false },
+    { id: 'balanza', emoji: '⚖️', nombre: 'Balanza', filtro: 'balanza-logica', disponible: false },
+    { id: 'palabras', emoji: '📝', nombre: 'Palabras', filtro: 'palabra-del-dia', disponible: false }
   ];
 
   if (profileLoading) {
@@ -373,11 +373,11 @@ const Dashboard = () => {
           <section className={`widget exploracion-widget ${isMobile && tabActivo !== 'explorar' ? 'hidden' : ''}`}>
             <h2 className="widget-title">⚡ Accesos Rápidos</h2>
             <div className="accesos-rapidos-mini-grid">
-              {tiposDeJuego.map((tipo, index) => (
+              {tiposDeJuego.map((tipo) => (
                 <button 
-                  key={index}
+                  key={tipo.id}
                   className={`acceso-rapido-mini ${!tipo.disponible ? 'disabled' : ''}`}
-                  onClick={() => tipo.disponible && navigate('/boveda')}
+                  onClick={() => tipo.disponible && navigate(`/boveda?filtro=${tipo.filtro}`)}
                   disabled={!tipo.disponible}
                   title={tipo.disponible ? `Ver ${tipo.nombre.toLowerCase()}` : 'Próximamente disponible'}
                 >
