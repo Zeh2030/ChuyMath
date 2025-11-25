@@ -84,7 +84,11 @@ const Simulacro = () => {
       }
     }
     
-    if (problema.tipo === 'operaciones' || problema.tipo === 'balanza-logica' || problema.tipo === 'desarrollo-cubos' || problema.tipo === 'palabra-del-dia' || problema.tipo === 'conteo-figuras') {
+    if (problema.tipo === 'tabla-doble-entrada') {
+      return respuestaUsuario === problema.respuesta_final;
+    }
+    
+    if (problema.tipo === 'operaciones' || problema.tipo === 'balanza-logica' || problema.tipo === 'desarrollo-cubos' || problema.tipo === 'palabra-del-dia' || problema.tipo === 'conteo-figuras' || problema.tipo === 'secuencia') {
       const respuestaUsuarioStr = String(respuestaUsuario || '').trim().toUpperCase();
       const respuestaCorrectaStr = String(problema.respuesta || problema.palabra).trim().toUpperCase();
       return respuestaUsuarioStr === respuestaCorrectaStr;

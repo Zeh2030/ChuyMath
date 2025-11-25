@@ -17,7 +17,8 @@ const AdminMigracion = () => {
   const tiposDisponibles = [
     { valor: 'aventura', nombre: '🌟 Aventura', emoji: '🌟' },
     { valor: 'simulacro', nombre: '🏆 Simulacro', emoji: '🏆' },
-    { valor: 'conteo-figuras', nombre: '🔍 Conteo de Figuras', emoji: '🔍' },
+    { valor: 'tabla-doble-entrada', nombre: '🔎 Tabla Doble Entrada', emoji: '🔎' },
+    { valor: 'conteo-figuras', nombre: '💠 Conteo de Figuras', emoji: '💠' },
     { valor: 'secuencia', nombre: '🔢 Secuencias', emoji: '🔢' },
     { valor: 'operaciones', nombre: '➕ Operaciones', emoji: '➕' },
     { valor: 'criptoaritmetica', nombre: '🍇 Criptoaritmetica', emoji: '🍇' },

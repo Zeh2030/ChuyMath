@@ -1,166 +1,180 @@
 import React, { useState, useEffect } from 'react';
 import './TablaDobleEntrada.css';
 
-/**
- * Componente para misiones de tabla de doble entrada (lógica).
- * Permite al usuario marcar celdas en una matriz para resolver un puzzle lógico.
- * 
- * @param {Object} mision - El objeto de la misión con configuración de la tabla y pistas
- * @param {Function} onCompletar - Callback que se ejecuta cuando se responde correctamente
- */
-const TablaDobleEntrada = ({ mision, onCompletar }) => {
-  // Estado de la matriz de respuestas: un objeto donde las claves son "fila-columna" y los valores el estado
-  // Estados posibles: null (vacío), true (marcado/check), false (tachado/cruz)
-  const [matrizRespuestas, setMatrizRespuestas] = useState({});
+const TablaDobleEntrada = ({ 
+  mision, 
+  onCompletar, 
+  modoSimulacro = false, 
+  respuestaGuardada = '', 
+  onRespuesta = null, 
+  mostrarResultado: mostrarResultadoExterno = false 
+}) => {
+  const [respuestaUsuario, setRespuestaUsuario] = useState('');
+  const [tabla, setTabla] = useState({});
   const [mostrarResultado, setMostrarResultado] = useState(false);
   const [esCorrecta, setEsCorrecta] = useState(false);
 
-  const filas = mision.filas || [];
-  const columnas = mision.columnas || [];
-  const pistas = mision.pistas || [];
-  const solucion = mision.solucion || {}; 
+  useEffect(() => {
+    if (mision) {
+      // Inicializar tabla vacía
+      const tablaInicial = {};
+      if (mision.encabezados_fila) {
+        mision.encabezados_fila.forEach(fila => {
+          tablaInicial[fila] = {};
+          if (mision.encabezados_columna) {
+            mision.encabezados_columna.forEach(col => {
+              tablaInicial[fila][col] = false;
+            });
+          }
+        });
+      }
+      setTabla(tablaInicial);
 
-  // Manejar clic en una celda
-  const handleCeldaClick = (filaIndex, colIndex) => {
-    if (mostrarResultado) return;
+      // Si es modo simulacro con respuesta guardada
+      if (modoSimulacro && respuestaGuardada) {
+        setRespuestaUsuario(respuestaGuardada);
+      }
+    }
+  }, [mision, modoSimulacro, respuestaGuardada]);
 
-    const key = `${filaIndex}-${colIndex}`;
-    setMatrizRespuestas(prev => {
-      const valorActual = prev[key];
-      let nuevoValor;
-      
-      // Ciclo de estados: null -> true (✅) -> false (❌) -> null
-      if (valorActual === true) nuevoValor = false;
-      else if (valorActual === false) nuevoValor = null;
-      else nuevoValor = true;
+  const handleToggleCelda = (fila, columna) => {
+    if (mostrarResultado || mostrarResultadoExterno) return;
 
-      return {
-        ...prev,
-        [key]: nuevoValor
-      };
-    });
+    setTabla(prev => ({
+      ...prev,
+      [fila]: {
+        ...prev[fila],
+        [columna]: !prev[fila][columna]
+      }
+    }));
   };
 
-  // Verificar solución
-  const handleVerificar = () => {
-    let correcto = true;
+  const handleSelectOpcion = (opcion) => {
+    if (mostrarResultado || mostrarResultadoExterno) return;
+
+    setRespuestaUsuario(opcion);
     
-    // Verificar que todas las celdas verdaderas en la solución estén marcadas como true
-    // y que no haya celdas marcadas como true que no estén en la solución
-    for (let f = 0; f < filas.length; f++) {
-      for (let c = 0; c < columnas.length; c++) {
-        const key = `${f}-${c}`;
-        const debeSerVerdadero = solucion[key] === true;
-        const esVerdadero = matrizRespuestas[key] === true;
-
-        // Solo nos importa si marcó correctamente las casillas VERDADERAS (los checks)
-        // Las cruces (false) son ayudas visuales para el usuario, pero no estrictamente requeridas para validar
-        // A MENOS que la lógica estricta lo pida. Por simplicidad, validamos los aciertos.
-        if (debeSerVerdadero !== esVerdadero) {
-          correcto = false;
-          break;
-        }
-      }
-      if (!correcto) break;
+    if (modoSimulacro && onRespuesta) {
+      onRespuesta(opcion);
     }
+  };
 
+  const comprobarRespuesta = () => {
+    const correcto = respuestaUsuario === mision.respuesta_final;
     setEsCorrecta(correcto);
     setMostrarResultado(true);
-
-    if (correcto) {
-      setTimeout(() => {
-        onCompletar();
-      }, 2000);
+    
+    if (correcto && onCompletar) {
+      setTimeout(() => onCompletar(), 1500);
     }
   };
 
-  const handleReintentar = () => {
-    setMostrarResultado(false);
-    setEsCorrecta(false);
-    // Opcional: limpiar tabla o dejarla como estaba
-  };
+  const debeMostrarResultado = mostrarResultado || (modoSimulacro && mostrarResultadoExterno);
+  const esCorrectoCalculado = respuestaUsuario === mision.respuesta_final;
 
   return (
     <div className="tabla-doble-entrada-container">
-      <div className="instrucciones-panel">
-        <h3>Pistas del Detective 🕵️‍♂️</h3>
-        <ul className="lista-pistas">
-          {pistas.map((pista, index) => (
-            <li key={index}>{pista}</li>
+      <h3 className="tabla-titulo">{mision.titulo}</h3>
+      
+      {mision.instruccion && (
+        <div className="tabla-instruccion">
+          <p>{mision.instruccion}</p>
+        </div>
+      )}
+
+      {/* Pistas */}
+      {mision.pistas && mision.pistas.length > 0 && (
+        <div className="tabla-pistas">
+          <h4>🔍 Pistas del Detective</h4>
+          {mision.pistas.map((pista, idx) => (
+            <div key={idx} className="pista-item">
+              <p>{pista}</p>
+            </div>
           ))}
-        </ul>
-      </div>
+        </div>
+      )}
 
-      <div className="tabla-area">
-        <table className="tabla-logica">
-          <thead>
-            <tr>
-              <th className="celda-vacia"></th>
-              {columnas.map((col, index) => (
-                <th key={index} className="encabezado-columna">
-                  {col.imagen ? <img src={col.imagen} alt={col.texto} className="header-img"/> : null}
-                  <span>{col.texto || col}</span>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {filas.map((fila, filaIndex) => (
-              <tr key={filaIndex}>
-                <th className="encabezado-fila">
-                   {fila.imagen ? <img src={fila.imagen} alt={fila.texto} className="header-img"/> : null}
-                   <span>{fila.texto || fila}</span>
-                </th>
-                {columnas.map((_, colIndex) => {
-                  const key = `${filaIndex}-${colIndex}`;
-                  const estado = matrizRespuestas[key];
-                  return (
-                    <td 
-                      key={colIndex} 
-                      className={`celda-interactiva ${estado === true ? 'marcada-ok' : ''} ${estado === false ? 'marcada-no' : ''}`}
-                      onClick={() => handleCeldaClick(filaIndex, colIndex)}
-                    >
-                      {estado === true && '✅'}
-                      {estado === false && '❌'}
-                    </td>
-                  );
-                })}
-              </tr>
+      {/* Tabla Interactiva */}
+      {mision.encabezados_fila && mision.encabezados_columna && (
+        <div className="tabla-grid">
+          <div className="tabla-header-container">
+            <div className="tabla-corner"></div>
+            {mision.encabezados_columna.map((col, idx) => (
+              <div key={idx} className="tabla-header-col">
+                {col}
+              </div>
             ))}
-          </tbody>
-        </table>
-      </div>
-
-      <div className="acciones-area">
-        {!mostrarResultado && (
-          <button className="btn-verificar" onClick={handleVerificar}>
-            🔍 Verificar Misterio
-          </button>
-        )}
-
-        {mostrarResultado && (
-          <div className={`feedback-mensaje ${esCorrecta ? 'correcto' : 'incorrecto'}`}>
-            {esCorrecta ? (
-              <>
-                <h4>¡Caso Resuelto! 🎉</h4>
-                <p>Has conectado todas las pistas correctamente.</p>
-              </>
-            ) : (
-              <>
-                <h4>Algo no cuadra... 🤔</h4>
-                <p>Revisa las pistas de nuevo. ¡Tú puedes!</p>
-                <button className="btn-reintentar" onClick={handleReintentar}>
-                  Intentar de nuevo
-                </button>
-              </>
-            )}
           </div>
-        )}
-      </div>
+
+          {mision.encabezados_fila.map((fila, filaIdx) => (
+            <div key={filaIdx} className="tabla-row">
+              <div className="tabla-header-row">
+                {fila}
+              </div>
+              {mision.encabezados_columna.map((col, colIdx) => (
+                <div
+                  key={`${filaIdx}-${colIdx}`}
+                  className={`tabla-celda ${
+                    tabla[fila] && tabla[fila][col] ? 'marcada' : ''
+                  } ${debeMostrarResultado ? 'deshabilitada' : ''}`}
+                  onClick={() => handleToggleCelda(fila, col)}
+                >
+                  {tabla[fila] && tabla[fila][col] && <span className="marca">✓</span>}
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Pregunta Final */}
+      {mision.pregunta_final && (
+        <div className="tabla-pregunta-final">
+          <h4>{mision.pregunta_final}</h4>
+          
+          {/* Opciones */}
+          {mision.opciones_finales && (
+            <div className="tabla-opciones">
+              {mision.opciones_finales.map((opcion, idx) => (
+                <button
+                  key={idx}
+                  className={`tabla-opcion ${
+                    respuestaUsuario === opcion ? 'seleccionada' : ''
+                  } ${debeMostrarResultado ? 'deshabilitada' : ''}`}
+                  onClick={() => handleSelectOpcion(opcion)}
+                  disabled={debeMostrarResultado}
+                >
+                  {opcion}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Resultado */}
+      {debeMostrarResultado && (
+        <div className={`tabla-feedback ${esCorrectoCalculado ? 'correcto' : 'incorrecto'}`}>
+          <p className={`tabla-feedback-texto ${esCorrectoCalculado ? 'verde' : 'rojo'}`}>
+            {esCorrectoCalculado
+              ? mision.explicacion_correcta || '¡Correcto!'
+              : mision.explicacion_incorrecta || 'Intenta de nuevo'}
+          </p>
+        </div>
+      )}
+
+      {/* Botón Verificar (solo en modo no-simulacro) */}
+      {!modoSimulacro && !mostrarResultado && (
+        <button 
+          className="boton-verificar"
+          onClick={comprobarRespuesta}
+          disabled={!respuestaUsuario}
+        >
+          Verificar Misterio
+        </button>
+      )}
     </div>
   );
 };
 
 export default TablaDobleEntrada;
-
-
