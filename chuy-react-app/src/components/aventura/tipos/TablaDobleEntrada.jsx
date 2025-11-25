@@ -23,7 +23,7 @@ const TablaDobleEntrada = ({
           tablaInicial[fila] = {};
           if (mision.encabezados_columna) {
             mision.encabezados_columna.forEach(col => {
-              tablaInicial[fila][col] = false;
+              tablaInicial[fila][col] = null; // null: vacío, 'check': palomita, 'cross': tacha
             });
           }
         });
@@ -40,13 +40,24 @@ const TablaDobleEntrada = ({
   const handleToggleCelda = (fila, columna) => {
     if (mostrarResultado || mostrarResultadoExterno) return;
 
-    setTabla(prev => ({
-      ...prev,
-      [fila]: {
-        ...prev[fila],
-        [columna]: !prev[fila][columna]
+    setTabla(prev => {
+      const currentState = prev[fila][columna];
+      let nextState;
+      if (currentState === null) {
+        nextState = 'check';
+      } else if (currentState === 'check') {
+        nextState = 'cross';
+      } else {
+        nextState = null;
       }
-    }));
+      return {
+        ...prev,
+        [fila]: {
+          ...prev[fila],
+          [columna]: nextState
+        }
+      };
+    });
   };
 
   const handleSelectOpcion = (opcion) => {
@@ -115,11 +126,14 @@ const TablaDobleEntrada = ({
                 <div
                   key={`${filaIdx}-${colIdx}`}
                   className={`tabla-celda ${
-                    tabla[fila] && tabla[fila][col] ? 'marcada' : ''
+                    tabla[fila] && tabla[fila][col] === 'check' ? 'marcada-check' : ''
+                  } ${
+                    tabla[fila] && tabla[fila][col] === 'cross' ? 'marcada-cross' : ''
                   } ${debeMostrarResultado ? 'deshabilitada' : ''}`}
                   onClick={() => handleToggleCelda(fila, col)}
                 >
-                  {tabla[fila] && tabla[fila][col] && <span className="marca">✓</span>}
+                  {tabla[fila] && tabla[fila][col] === 'check' && <span className="marca">✓</span>}
+                  {tabla[fila] && tabla[fila][col] === 'cross' && <span className="marca">✗</span>}
                 </div>
               ))}
             </div>
