@@ -48,12 +48,44 @@ const AdminMigracion = () => {
       // SIMPLIFICADO: Todo va a 'simulacros', diferenciado por campo 'tipo'
       const simulacroRef = doc(db, 'simulacros', simulacroData.id);
       
+      // Aplanar la estructura: si hay misiones con ejercicios dentro, convertir a problemas planos
+      let problemas = simulacroData.problemas || [];
+      
+      if (simulacroData.misiones && simulacroData.misiones.length > 0) {
+        // Convertir misiones con ejercicios a problemas planos
+        problemas = simulacroData.misiones.flatMap((mision) => {
+          if (mision.ejercicios && mision.ejercicios.length > 0) {
+            // Cada ejercicio se convierte en un problema independiente
+            return mision.ejercicios.map((ejercicio, idx) => ({
+              id: `${mision.id}-ejercicio-${idx}`,
+              tipo: mision.tipo,
+              titulo: mision.titulo,
+              ...ejercicio
+            }));
+          } else {
+            // Si la misión no tiene ejercicios, tomarla como problema
+            return [{
+              id: mision.id,
+              tipo: mision.tipo,
+              ...mision
+            }];
+          }
+        });
+      } else if (simulacroData.ejercicios) {
+        // Si solo hay ejercicios sin misiones
+        problemas = simulacroData.ejercicios.map((ej, idx) => ({
+          id: `problema-${idx}`,
+          tipo: tipoJuego,
+          ...ej
+        }));
+      }
+      
       // Preparar datos a migrar
       const datosAMigrar = {
         titulo: simulacroData.titulo,
         descripcion: simulacroData.descripcion || '',
         tipo: tipoJuego, // Campo tipo para filtrar
-        problemas: simulacroData.problemas || simulacroData.misiones || simulacroData.ejercicios || [],
+        problemas: problemas,
         ...simulacroData
       };
 
