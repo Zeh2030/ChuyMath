@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numberblocks: El Misterio de los Bloques Perdidos 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;700&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nb-1: #e53935; --nb-2: #fb8c00; --nb-3: #fdd835;
+            --nb-4: #43a047; --nb-5: #1e88e5; --nb-6: #8e24aa;
+            --nb-7-1: #e53935; --nb-7-2: #fb8c00; --nb-7-3: #fdd835; --nb-7-4: #43a047; --nb-7-5: #1e88e5; --nb-7-6: #4527a0; --nb-7-7: #673ab7;
+            --nb-8: #ec407a;
+            --nb-9-1: #f5f5f5; --nb-9-2: #e0e0e0; --nb-9-3: #cccccc;
+            --nb-10: #ffffff;
+            --nb-12-main: #ffffff; --nb-12-border: #e53935; --nb-12-center: #fdd835;
+            --c-fondo: #f0f2f5; --c-texto: #34495e; --c-borde: rgba(0,0,0,0.15);
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: #eef2f3;
+            color: var(--c-texto);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .game-container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        /* --- Notebook Feature Styles --- */
+        #notebook-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #795548;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: white;
+            transition: transform 0.2s;
+        }
+        #notebook-button:hover { transform: scale(1.1); }
+        #clue-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--nb-1);
+            color: white;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            font-size: 14px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        .modal-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .notebook-modal {
+            background-color: #f5f5dc;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 10px solid #8d6e63;
+            transform: scale(0.9);
+            transition: transform 0.3s;
+        }
+        .modal-overlay.visible .notebook-modal {
+            transform: scale(1);
+        }
+        .notebook-modal h2 { font-family: 'Fredoka', sans-serif; margin-top: 0; }
+        .notebook-modal ul { list-style: none; padding: 0; }
+        .notebook-modal li { background: #fffbe0; padding: 10px; border-radius: 5px; margin-bottom: 10px; border-left: 5px solid #fbc02d; }
+        #close-notebook { margin-top: 20px; padding: 10px 20px; border-radius: 20px; border: none; background: var(--nb-1); color: white; cursor: pointer; }
+
+
+        .challenge-header h1 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.5rem;
+            margin: 0;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .story-bubble {
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            text-align: center;
+            border: 2px solid #e9ecef;
+        }
+        
+        .mystery-scene {
+            background-color: #eaf5ff;
+            border: 3px dashed #aed6f1;
+            border-radius: 20px;
+            min-height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            padding: 20px;
+            position: relative;
+        }
+        .mystery-scene .numberblock { transform: scale(1.2); }
+        .mystery-scene .ghost { opacity: 0.3; filter: grayscale(80%); }
+
+        .equation-display {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            padding: 10px;
+            color: #3498db;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .equation-display .placeholder { color: #f39c12; border: 4px dotted #f39c12; border-radius: 10px; width: 70px; height: 70px; display: flex; justify-content: center; align-items: center; font-size: 3.5rem; }
+        .equation-display .result-blocks { display: flex; align-items: flex-end; gap: 5px; }
+        .equation-display .result-blocks .numberblock { transform: scale(0.6); }
+
+        .toolbox-section, .action-area, #message-area { text-align: center; }
+        .toolbox-title { font-family: 'Fredoka', sans-serif; font-size: 1.3rem; margin-bottom: 15px; }
+        .toolbox { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-end; gap: 20px; min-height: 150px; }
+        
+        .action-button { font-family: 'Fredoka', sans-serif; font-size: 1.5rem; padding: 15px 40px; border-radius: 50px; border: none; background: linear-gradient(45deg, #2ecc71, #27ae60); color: white; cursor: pointer; box-shadow: 0 5px 0 #1e8449; transition: all 0.1s ease-in-out; }
+        .action-button:active { transform: translateY(3px); box-shadow: 0 2px 0 #1e8449; }
+        .action-button.next { background: linear-gradient(45deg, #3498db, #2980b9); box-shadow: 0 5px 0 #1f618d; }
+        .action-button.next:active { box-shadow: 0 2px 0 #1f618d; }
+        #message-area { font-size: 1.3rem; font-weight: bold; min-height: 30px; padding-top: 10px; transition: all 0.3s; }
+        #message-area .clue-title { font-size: 1rem; color: #7f8c8d; display: block; margin-bottom: 5px;}
+        
+        .hidden { display: none; }
+
+        /* --- Numberblock Styles (reusing perfected designs) --- */
+        .numberblock { cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; position: relative; }
+        .numberblock:hover { transform: translateY(-5px) rotate(2deg); }
+        .numberblock.selected { transform: scale(1.15) rotate(-3deg); box-shadow: 0 0 20px var(--nb-3); border-radius: 4px; }
+        .block { width: 25px; height: 25px; border: 2px solid var(--c-borde); margin-top: -2px; position: relative; display: flex; justify-content: center; align-items: center; box-sizing: border-box; }
+        .block:first-child { border-radius: 0 0 4px 4px; }
+        .block:last-child { border-radius: 4px 4px 0 0; }
+        .block:only-child { border-radius: 4px; }
+        .face-container { width: 100%; height: 100%; position: relative; display: none; justify-content: center; align-items: center; gap: 4px; }
+        .numberblock.has-face .face-container { display: flex; }
+        .eye { width: 6px; height: 6px; background-color: #000; border-radius: 50%; position: relative; }
+        .eye::after { content: ''; position: absolute; width: 2px; height: 2px; background-color: #fff; border-radius: 50%; top: 1px; left: 1px; }
+        .c1 { background-color: var(--nb-1); } .c2 { background-color: var(--nb-2); }
+        .c3 { background-color: var(--nb-3); } .c4 { background-color: var(--nb-4); }
+        .c5 { background-color: var(--nb-5); } .c6 { background-color: var(--nb-6); }
+        .c8 { background-color: var(--nb-8); }
+        .c10 { background-color: var(--nb-10); border: 3px solid var(--nb-1); }
+        .nb-11-shape { width: 50px; height: 152px; display: flex; align-items: flex-end; }
+        .nb-11-shape .stack { display: flex; flex-direction: column-reverse; }
+        .nb-11-shape .white-block { background-color: #fff; border: 2px solid var(--nb-2); }
+        .nb-11-shape .red-block { background-color: var(--nb-1); }
+        .nb-12-shape { width: 75px; height: 100px; display: grid; grid-template-columns: repeat(3, 1fr); }
+        .nb-12-shape .block { margin: -1px; }
+    </style>
+</head>
+<body>
+
+    <div class="game-container">
+        <button id="notebook-button">📓<span id="clue-count">0</span></button>
+        <div class="challenge-header">
+            <h1 id="challenge-title">El Misterio de los Bloques Perdidos</h1>
+        </div>
+        <div class="story-bubble">
+            <p id="story-text">¡Hola, detective Jesús! Un Numberblock necesita tu ayuda. ¡Resuelve el misterio!</p>
+        </div>
+        
+        <div class="mystery-scene" id="mystery-scene"></div>
+        <div class="equation-display" id="equation-display"></div>
+        <div id="message-area"></div>
+
+        <div class="toolbox-section">
+            <div class="toolbox-title">Tus Pistas</div>
+            <div class="toolbox" id="toolbox"></div>
+        </div>
+
+        <div class="action-area">
+            <button class="action-button" id="solve-button">¡Resolver!</button>
+            <button class="action-button next hidden" id="next-button">Siguiente Misterio</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="notebook-modal-overlay">
+        <div class="notebook-modal">
+            <h2>Cuaderno del Detective</h2>
+            <ul id="clue-list">
+                <!-- Clues will be added here -->
+            </ul>
+            <button id="close-notebook">Cerrar</button>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const toolbox = document.getElementById('toolbox');
+        const solveButton = document.getElementById('solve-button');
+        const nextButton = document.getElementById('next-button');
+        const scene = document.getElementById('mystery-scene');
+        const equationDisplay = document.getElementById('equation-display');
+        const storyText = document.getElementById('story-text');
+        const messageArea = document.getElementById('message-area');
+        const challengeTitle = document.getElementById('challenge-title');
+        // Notebook elements
+        const notebookButton = document.getElementById('notebook-button');
+        const clueCount = document.getElementById('clue-count');
+        const modalOverlay = document.getElementById('notebook-modal-overlay');
+        const closeNotebookButton = document.getElementById('close-notebook');
+        const clueList = document.getElementById('clue-list');
+
+        let selectedBlocks = [];
+        let currentChallengeIndex = -1;
+        let collectedClues = [];
+        
+        const challenges = [
+            { type: '+', given: 8, answer: 8, story: "Ocho quiere ser un cuadrado perfecto. ¿Qué bloque necesita para ser 16?", clue: "El planeta Neptuno tiene 8 lunas grandes." },
+            { type: '×', factors: [7, 4], answer: 28, story: "Siete por cuatro. Elige bloques que sumen el resultado.", clue: "Febrero tiene 28 días la mayor parte del tiempo." },
+            { type: '-', start: 20, subtrahend: 12, answer: 8, story: "Veinte menos doce. ¿Cuál es el resultado?", clue: "Los pulpos tienen 8 brazos y 3 corazones." },
+            { type: '÷', dividend: 30, divisor: 3, answer: 10, story: "Treinta dividido en 3 equipos. ¿Cuántos en cada equipo?", clue: "Tenemos 10 dedos en las manos." },
+            { type: '+', given: 9, answer: 9, story: "Nueve necesita a su gemelo para ser Dieciocho. ¿Qué bloque falta?", clue: "Un partido de golf tiene 18 hoyos." },
+            { type: '×', factors: [5, 3], answer: 15, story: "Cinco por tres. Elige bloques que sumen el resultado.", clue: "Una quinceañera es una fiesta para celebrar los 15 años." },
+            { type: '-', start: 14, subtrahend: 7, answer: 7, story: "Catorce menos siete. ¿Cuál es el resultado?", clue: "Hay 7 continentes en nuestro planeta Tierra." },
+            { type: '÷', dividend: 24, divisor: 8, answer: 3, story: "Si repartes 24 entre 8, ¿cuánto toca a cada uno?", clue: "El rojo, amarillo y azul son los 3 colores primarios." },
+            { type: '+', given: 12, answer: 12, story: "Doce y su gemelo se unen. ¿Qué número forman?", clue: "Un día completo tiene 24 horas." },
+            { type: '×', factors: [10, 4], answer: 40, story: "Diez por cuatro. Elige bloques que sumen este gran número.", clue: "Un arcoíris aparece a un ángulo de 40 grados." },
+            { type: '-', start: 16, subtrahend: 10, answer: 6, story: "Dieciséis menos diez. ¿Quién queda?", clue: "El famoso puente Golden Gate en San Francisco tiene 6 carriles." },
+            { type: '÷', dividend: 33, divisor: 3, answer: 11, story: "Treinta y tres dividido entre tres. ¿Cuál es el resultado?", clue: "Un equipo de fútbol tiene 11 jugadores." },
+            { type: '+', given: 15, answer: 5, story: "Quince necesita ayuda para llegar a 20. ¿Qué bloque falta?", clue: "Las estrellas de mar suelen tener 5 brazos." },
+            { type: '×', factors: [8, 5], answer: 40, story: "¡Ocho por cinco! Elige bloques que lo sumen.", clue: "El número 40 es importante en muchas historias y leyendas." },
+            { type: '-', start: 21, subtrahend: 10, answer: 11, story: "Veintiuno menos diez. ¡Elige bloques que sumen la respuesta!", clue: "La misión Apolo 11 fue la primera en llegar a la Luna." },
+            { type: '÷', dividend: 50, divisor: 10, answer: 5, story: "Cincuenta repartido entre diez. ¿Cuánto es?", clue: "Los humanos tenemos 5 sentidos principales." },
+            { type: '+', given: 18, answer: 6, story: "Dieciocho y Seis se hacen amigos. ¿Qué gran número forman?", clue: "El cuerpo humano adulto tiene 206 huesos, ¡pero un bebé nace con casi 300!" },
+            { type: '×', factors: [11, 3], answer: 33, story: "Once veces tres. ¡Un número repetido! Elige bloques que lo sumen.", clue: "La columna vertebral humana tiene 33 huesos llamados vértebras." },
+            { type: '-', start: 28, subtrahend: 14, answer: 14, story: "Veintiocho menos catorce. ¿Qué número queda?", clue: "El ciclo de la Luna dura aproximadamente 28 días." },
+            { type: '÷', dividend: 60, divisor: 10, answer: 6, story: "Sesenta dividido en 10 partes. ¿Cuánto tiene cada parte?", clue: "Los insectos, como las hormigas y las abejas, tienen 6 patas." },
+            { type: '+', given: 20, answer: 10, story: "Veinte más diez. ¿Cuánto es?", clue: "La ballena azul, el animal más grande del mundo, puede medir 30 metros." },
+            { type: '×', factors: [9, 4], answer: 36, story: "Nueve por cuatro. ¡Elige bloques que lo sumen!", clue: "Un círculo completo tiene 360 grados, que es 36 veces 10." },
+            { type: '-', start: 50, subtrahend: 25, answer: 25, story: "Cincuenta menos veinticinco. ¿Cuánto es la mitad?", clue: "La Navidad se celebra el 25 de diciembre." },
+            { type: '÷', dividend: 81, divisor: 9, answer: 9, story: "El cuadrado 81 dividido entre 9. ¿Cuál es el resultado?", clue: "El planeta Júpiter tiene más de 80 lunas, ¡pero 9 son las más conocidas!" },
+            { type: '+', given: 25, answer: 15, story: "Veinticinco más quince. ¿Cuánto suman?", clue: "El planeta Saturno tarda casi 30 años en dar una vuelta al Sol." },
+            { type: '×', factors: [12, 3], answer: 36, story: "Doce por tres. ¡Piensa en un reloj! Elige bloques que sumen el total.", clue: "Una yarda, una medida antigua, tiene 36 pulgadas." },
+            { type: '-', start: 45, subtrahend: 20, answer: 25, story: "Cuarenta y cinco menos veinte. ¿Cuánto es?", clue: "El tiburón ballena, el pez más grande, puede vivir más de 100 años." },
+            { type: '÷', dividend: 70, divisor: 10, answer: 7, story: "Setenta entre diez. ¿Qué número es?", clue: "La Gran Muralla China es una de las 7 Maravillas del Mundo Moderno." },
+            { type: '+', given: 30, answer: 20, story: "Treinta más veinte. ¿A qué número llegan?", clue: "El Océano Pacífico es tan grande que cubre casi el 30% de la superficie de la Tierra." },
+            { type: '×', factors: [12, 6], answer: 72, story: "El último reto. ¡Doce por seis! Elige bloques que sumen este gran número.", clue: "El corazón de un colibrí, el ave más pequeña, late más de 1,200 veces por minuto." }
+        ];
+
+        // --- Reusing the perfected Numberblock creation function ---
+        function createNumberblock(num, isInteractive = true) {
+            const nbContainer = document.createElement('div');
+            nbContainer.classList.add('numberblock');
+            nbContainer.dataset.number = num;
+
+            const faceContainer = document.createElement('div');
+            faceContainer.classList.add('face-container');
+            const eye1 = document.createElement('div'); eye1.classList.add('eye');
+            faceContainer.appendChild(eye1);
+            if (num > 1) { const eye2 = document.createElement('div'); eye2.classList.add('eye'); faceContainer.appendChild(eye2); }
+
+            const stack = document.createElement('div');
+            stack.style.display = 'flex';
+            stack.style.flexDirection = 'column-reverse';
+
+            if (num === 9) {
+                const nineColors = ['--nb-9-1', '--nb-9-2', '--nb-9-3'];
+                for (let i = 0; i < 9; i++) {
+                    const block = document.createElement('div');
+                    block.classList.add('block');
+                    block.style.backgroundColor = `var(${nineColors[Math.floor(i/3)]})`;
+                    if (i === 8) { block.appendChild(faceContainer); nbContainer.classList.add('has-face'); }
+                    stack.appendChild(block);
+                }
+                nbContainer.appendChild(stack);
+            } else if (num === 11) {
+                nbContainer.classList.add('nb-11-shape');
+                const leftLeg = document.createElement('div'); leftLeg.classList.add('stack');
+                for(let i=0; i<5; i++) {
+                    const block = document.createElement('div'); block.classList.add('block', 'white-block');
+                    if (i === 0) {
+                        const leftEyeContainer = document.createElement('div'); leftEyeContainer.classList.add('face-container');
+                        const leftEye = document.createElement('div'); leftEye.classList.add('eye');
+                        leftEyeContainer.appendChild(leftEye);
+                        block.appendChild(leftEyeContainer);
+                        nbContainer.classList.add('has-face');
+                    }
+                    leftLeg.appendChild(block);
+                }
+                const rightLeg = document.createElement('div'); rightLeg.classList.add('stack');
+                for(let i=0; i<6; i++) {
+                    const block = document.createElement('div');
+                    if(i === 5) { block.classList.add('block', 'red-block'); } 
+                    else { block.classList.add('block', 'white-block'); }
+                    if (i === 0) {
+                        const rightEyeContainer = document.createElement('div'); rightEyeContainer.classList.add('face-container');
+                        const rightEye = document.createElement('div'); rightEye.classList.add('eye');
+                        rightEyeContainer.appendChild(rightEye);
+                        block.appendChild(rightEyeContainer);
+                    }
+                    rightLeg.appendChild(block);
+                }
+                nbContainer.append(leftLeg, rightLeg);
+            } else if (num === 12) {
+                nbContainer.classList.add('nb-12-shape');
+                for (let i = 0; i < 12; i++) {
+                    const block = document.createElement('div'); block.classList.add('block');
+                    if ([4, 7].includes(i)) { block.style.backgroundColor = 'var(--nb-12-center)'; } 
+                    else { block.style.backgroundColor = 'var(--nb-12-main)'; block.style.borderColor = 'var(--nb-12-border)'; }
+                    if (i === 7) { block.appendChild(faceContainer); nbContainer.classList.add('has-face'); }
+                    nbContainer.appendChild(block);
+                }
+            } else {
+                const sevenColors = ['--nb-7-1', '--nb-7-2', '--nb-7-3', '--nb-7-4', '--nb-7-5', '--nb-7-6', '--nb-7-7'];
+                for (let i = 0; i < num; i++) {
+                    const block = document.createElement('div'); block.classList.add('block');
+                    if (num === 7) { block.style.backgroundColor = `var(${sevenColors[i]})`; } 
+                    else { block.classList.add(`c${num}`); }
+                    if (i === num - 1) { block.appendChild(faceContainer); nbContainer.classList.add('has-face'); }
+                    stack.appendChild(block);
+                }
+                nbContainer.appendChild(stack);
+            }
+            if(isInteractive) nbContainer.addEventListener('click', () => selectBlock(nbContainer));
+            return nbContainer;
+        }
+
+        function populateToolbox() {
+            toolbox.innerHTML = '';
+            for (let i = 1; i <= 12; i++) {
+                toolbox.appendChild(createNumberblock(i));
+            }
+        }
+
+        function selectBlock(blockElement) {
+            if (nextButton.classList.contains('hidden')) {
+                const number = parseInt(blockElement.dataset.number);
+                const challenge = challenges[currentChallengeIndex];
+                
+                if (challenge.answer > 12) { // Multi-select logic
+                    if (blockElement.classList.contains('selected')) {
+                        blockElement.classList.remove('selected');
+                        selectedBlocks = selectedBlocks.filter(n => n !== number);
+                    } else {
+                        blockElement.classList.add('selected');
+                        selectedBlocks.push(number);
+                    }
+                } else { // Single-select logic
+                    document.querySelectorAll('.numberblock.selected').forEach(el => el.classList.remove('selected'));
+                    blockElement.classList.add('selected');
+                    selectedBlocks = [number];
+                }
+            }
+        }
+
+        function startChallenge(index) {
+            currentChallengeIndex = index;
+            const challenge = challenges[index];
+            
+            selectedBlocks = [];
+            scene.innerHTML = '';
+            equationDisplay.innerHTML = '';
+            messageArea.textContent = '';
+            document.querySelectorAll('.numberblock.selected').forEach(el => el.classList.remove('selected'));
+            solveButton.classList.remove('hidden');
+            nextButton.classList.add('hidden');
+
+            challengeTitle.textContent = `Misterio #${index + 1}`;
+            storyText.textContent = challenge.story;
+            
+            const placeholder = '<div class="placeholder">?</div>';
+
+            switch(challenge.type) {
+                case '+':
+                    scene.appendChild(createNumberblock(challenge.given, false));
+                    equationDisplay.innerHTML = `${challenge.given} + ${placeholder} = ${challenge.given + challenge.answer}`;
+                    break;
+                case '-':
+                    scene.appendChild(createNumberblock(challenge.start, false));
+                    const ghost = createNumberblock(challenge.subtrahend, false);
+                    ghost.classList.add('ghost');
+                    scene.appendChild(ghost);
+                    equationDisplay.innerHTML = `${challenge.start} - ${challenge.subtrahend} = ${placeholder}`;
+                    break;
+                case '×':
+                    scene.appendChild(createNumberblock(challenge.factors[0], false));
+                    const x = document.createElement('span'); x.textContent = '×'; x.style.fontSize='3rem';
+                    scene.appendChild(x);
+                    scene.appendChild(createNumberblock(challenge.factors[1], false));
+                    equationDisplay.innerHTML = `${challenge.factors[0]} × ${challenge.factors[1]} = ${placeholder}`;
+                    break;
+                case '÷':
+                    scene.appendChild(createNumberblock(challenge.dividend, false));
+                    const div = document.createElement('span'); div.textContent = '÷'; div.style.fontSize='3rem';
+                    scene.appendChild(div);
+                    scene.appendChild(createNumberblock(challenge.divisor, false));
+                    equationDisplay.innerHTML = `${challenge.dividend} ÷ ${challenge.divisor} = ${placeholder}`;
+                    break;
+            }
+        }
+
+        function solveChallenge() {
+            if (selectedBlocks.length === 0) {
+                messageArea.textContent = '¡Primero debes elegir una pista!';
+                messageArea.style.color = '#f39c12';
+                return;
+            }
+
+            const challenge = challenges[currentChallengeIndex];
+            let isCorrect = false;
+            let total = selectedBlocks.reduce((sum, current) => sum + current, 0);
+
+            if (challenge.answer > 12) {
+                if (total === challenge.answer) isCorrect = true;
+            } else {
+                if (selectedBlocks.length === 1 && selectedBlocks[0] === challenge.answer) isCorrect = true;
+            }
+
+            if (isCorrect) {
+                const clue = `Pista #${currentChallengeIndex + 1}: ${challenge.clue}`;
+                messageArea.innerHTML = `¡Misterio Resuelto!`;
+                messageArea.style.color = '#2ecc71';
+                solveButton.classList.add('hidden');
+                
+                // Show clue after a delay
+                setTimeout(() => {
+                    messageArea.innerHTML = `<span class="clue-title">PISTA SECRETA DESCUBIERTA</span>${challenge.clue}`;
+                    messageArea.style.color = '#34495e';
+                    nextButton.classList.remove('hidden');
+                }, 1500);
+                
+                if (!collectedClues.includes(clue)) {
+                    collectedClues.push(clue);
+                    updateNotebook();
+                }
+                
+                const placeholder = equationDisplay.querySelector('.placeholder');
+                placeholder.innerHTML = '';
+                
+                if (selectedBlocks.length > 1) {
+                    const resultContainer = document.createElement('div');
+                    resultContainer.classList.add('result-blocks');
+                    selectedBlocks.sort((a, b) => b - a).forEach(num => {
+                        resultContainer.appendChild(createNumberblock(num, false));
+                    });
+                    placeholder.appendChild(resultContainer);
+                } else {
+                    const answerBlock = createNumberblock(challenge.answer, false);
+                    answerBlock.style.transform = 'scale(1.5)';
+                    placeholder.appendChild(answerBlock);
+                }
+
+            } else {
+                messageArea.textContent = 'Esa no es la pieza correcta... ¡Sigue intentando!';
+                messageArea.style.color = '#e74c3c';
+                document.querySelector('.game-container').animate([
+                    { transform: 'translateX(0px)' }, { transform: 'translateX(-10px)' },
+                    { transform: 'translateX(10px)' }, { transform: 'translateX(0px)' }
+                ], { duration: 500, easing: 'ease-in-out' });
+            }
+        }
+
+        function updateNotebook() {
+            clueCount.textContent = collectedClues.length;
+            clueList.innerHTML = '';
+            if (collectedClues.length === 0) {
+                clueList.innerHTML = '<li>Aún no has encontrado ninguna pista. ¡Sigue resolviendo misterios!</li>';
+            } else {
+                collectedClues.forEach(clue => {
+                    const li = document.createElement('li');
+                    li.textContent = clue;
+                    clueList.appendChild(li);
+                });
+            }
+        }
+        
+        solveButton.addEventListener('click', solveChallenge);
+        nextButton.addEventListener('click', () => {
+            const nextIndex = (currentChallengeIndex + 1) % challenges.length;
+            startChallenge(nextIndex);
+        });
+        notebookButton.addEventListener('click', () => modalOverlay.classList.add('visible'));
+        closeNotebookButton.addEventListener('click', () => modalOverlay.classList.remove('visible'));
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                modalOverlay.classList.remove('visible');
+            }
+        });
+
+        populateToolbox();
+        startChallenge(0);
+        updateNotebook();
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,471 @@
+{
+  "japanese": {
+    "title": "Frases Útiles en Japonés",
+    "categories": [
+      {
+        "name": "Saludos Básicos",
+        "phrases": [
+          {
+            "spanish": "Hola / Buenos días",
+            "japanese": "おはようございます",
+            "romaji": "Ohayō gozaimasu",
+            "pronunciation": "o-ha-yó go-zai-mas"
+          },
+          {
+            "spanish": "Buenas tardes",
+            "japanese": "こんにちは",
+            "romaji": "Konnichiwa",
+            "pronunciation": "kon-ni-chi-ua"
+          },
+          {
+            "spanish": "Buenas noches",
+            "japanese": "こんばんは",
+            "romaji": "Konbanwa",
+            "pronunciation": "kon-ban-ua"
+          },
+          {
+            "spanish": "Gracias",
+            "japanese": "ありがとうございます",
+            "romaji": "Arigatō gozaimasu",
+            "pronunciation": "a-ri-ga-tó go-zai-mas"
+          },
+          {
+            "spanish": "De nada",
+            "japanese": "どういたしまして",
+            "romaji": "Dō itashimashite",
+            "pronunciation": "dó i-ta-shi-ma-shi-te"
+          },
+          {
+            "spanish": "Por favor",
+            "japanese": "お願いします",
+            "romaji": "Onegaishimasu",
+            "pronunciation": "o-ne-gai-shi-mas"
+          },
+          {
+            "spanish": "Disculpe / Perdón",
+            "japanese": "すみません",
+            "romaji": "Sumimasen",
+            "pronunciation": "su-mi-ma-sen"
+          },
+          {
+            "spanish": "Adiós",
+            "japanese": "さようなら",
+            "romaji": "Sayōnara",
+            "pronunciation": "sa-yó-na-ra"
+          }
+        ]
+      },
+      {
+        "name": "Viajando con Bebé",
+        "phrases": [
+          {
+            "spanish": "¿Dónde está el baño?",
+            "japanese": "トイレはどこですか",
+            "romaji": "Toire wa doko desu ka?",
+            "pronunciation": "toi-re ua dó-ko des ka"
+          },
+          {
+            "spanish": "¿Hay un cambiador de bebé?",
+            "japanese": "おむつ交換台はありますか",
+            "romaji": "Omutsu kōkan-dai wa arimasu ka?",
+            "pronunciation": "o-mu-tsu kó-kan-dai ua a-ri-mas ka"
+          },
+          {
+            "spanish": "¿Tienen silla alta para bebé?",
+            "japanese": "ベビーチェアはありますか",
+            "romaji": "Bebī chea wa arimasu ka?",
+            "pronunciation": "be-bí che-a ua a-ri-mas ka"
+          },
+          {
+            "spanish": "¿Dónde puedo calentar la leche del bebé?",
+            "japanese": "ミルクを温められますか",
+            "romaji": "Miruku o atatameraremasu ka?",
+            "pronunciation": "mi-ru-ku o a-ta-ta-me-ra-re-mas ka"
+          },
+          {
+            "spanish": "¿Hay una sala de lactancia?",
+            "japanese": "授乳室はありますか",
+            "romaji": "Junyū-shitsu wa arimasu ka?",
+            "pronunciation": "yu-niú-shi-tsu ua a-ri-mas ka"
+          },
+          {
+            "spanish": "Mi bebé necesita ayuda",
+            "japanese": "赤ちゃんが具合が悪いです",
+            "romaji": "Akachan ga guai ga warui desu",
+            "pronunciation": "a-ka-chan ga guai ga ua-rui des"
+          }
+        ]
+      },
+      {
+        "name": "En el Restaurante",
+        "phrases": [
+          {
+            "spanish": "Mesa para [número] personas, por favor",
+            "japanese": "[número]名お願いします",
+            "romaji": "[número]-mei onegaishimasu",
+            "pronunciation": "[número]-mei o-ne-gai-shi-mas"
+          },
+          {
+            "spanish": "El menú, por favor",
+            "japanese": "メニューをお願いします",
+            "romaji": "Menyū o onegaishimasu",
+            "pronunciation": "me-niú o o-ne-gai-shi-mas"
+          },
+          {
+            "spanish": "¿Tienen menú en inglés?",
+            "japanese": "英語のメニューはありますか",
+            "romaji": "Eigo no menyū wa arimasu ka?",
+            "pronunciation": "ei-go no me-niú ua a-ri-mas ka"
+          },
+          {
+            "spanish": "Esto, por favor (señalando)",
+            "japanese": "これをお願いします",
+            "romaji": "Kore o onegaishimasu",
+            "pronunciation": "ko-re o o-ne-gai-shi-mas"
+          },
+          {
+            "spanish": "La cuenta, por favor",
+            "japanese": "お会計お願いします",
+            "romaji": "Okaikei onegaishimasu",
+            "pronunciation": "o-kai-kei o-ne-gai-shi-mas"
+          },
+          {
+            "spanish": "¿Aceptan tarjeta de crédito?",
+            "japanese": "クレジットカードは使えますか",
+            "romaji": "Kurejitto kādo wa tsukaemasu ka?",
+            "pronunciation": "ku-re-yi-to ká-do ua tsu-ka-e-mas ka"
+          },
+          {
+            "spanish": "Agua, por favor",
+            "japanese": "お水をください",
+            "romaji": "Omizu o kudasai",
+            "pronunciation": "o-mi-zu o ku-da-sai"
+          },
+          {
+            "spanish": "Está delicioso",
+            "japanese": "美味しいです",
+            "romaji": "Oishii desu",
+            "pronunciation": "oi-shí des"
+          }
+        ]
+      },
+      {
+        "name": "Transporte",
+        "phrases": [
+          {
+            "spanish": "¿Dónde está la estación de tren?",
+            "japanese": "駅はどこですか",
+            "romaji": "Eki wa doko desu ka?",
+            "pronunciation": "e-ki ua dó-ko des ka"
+          },
+          {
+            "spanish": "Un boleto a [lugar], por favor",
+            "japanese": "[lugar]まで一枚お願いします",
+            "romaji": "[lugar] made ichimai onegaishimasu",
+            "pronunciation": "[lugar] ma-de i-chi-mai o-ne-gai-shi-mas"
+          },
+          {
+            "spanish": "¿Qué andén para [lugar]?",
+            "japanese": "[lugar]行きは何番線ですか",
+            "romaji": "[lugar]-iki wa nan-ban-sen desu ka?",
+            "pronunciation": "[lugar]-i-ki ua nan-ban-sen des ka"
+          },
+          {
+            "spanish": "¿Este tren va a [lugar]?",
+            "japanese": "この電車は[lugar]に行きますか",
+            "romaji": "Kono densha wa [lugar] ni ikimasu ka?",
+            "pronunciation": "ko-no den-sha ua [lugar] ni i-ki-mas ka"
+          },
+          {
+            "spanish": "¿Puedo llevar un cochecito de bebé?",
+            "japanese": "ベビーカーを持ち込めますか",
+            "romaji": "Bebīkā o mochikomemasu ka?",
+            "pronunciation": "be-bí-ká o mo-chi-ko-me-mas ka"
+          },
+          {
+            "spanish": "¿Hay ascensor?",
+            "japanese": "エレベーターはありますか",
+            "romaji": "Erebētā wa arimasu ka?",
+            "pronunciation": "e-re-bé-tá ua a-ri-mas ka"
+          }
+        ]
+      },
+      {
+        "name": "Compras y Emergencias",
+        "phrases": [
+          {
+            "spanish": "¿Cuánto cuesta?",
+            "japanese": "いくらですか",
+            "romaji": "Ikura desu ka?",
+            "pronunciation": "i-ku-ra des ka"
+          },
+          {
+            "spanish": "¿Dónde está la farmacia?",
+            "japanese": "薬局はどこですか",
+            "romaji": "Yakkyoku wa doko desu ka?",
+            "pronunciation": "yak-kyo-ku ua dó-ko des ka"
+          },
+          {
+            "spanish": "Necesito un médico",
+            "japanese": "医者が必要です",
+            "romaji": "Isha ga hitsuyō desu",
+            "pronunciation": "i-sha ga hi-tsu-yó des"
+          },
+          {
+            "spanish": "¿Habla inglés?",
+            "japanese": "英語を話せますか",
+            "romaji": "Eigo o hanasemasu ka?",
+            "pronunciation": "ei-go o ha-na-se-mas ka"
+          },
+          {
+            "spanish": "No entiendo",
+            "japanese": "わかりません",
+            "romaji": "Wakarimasen",
+            "pronunciation": "ua-ka-ri-ma-sen"
+          },
+          {
+            "spanish": "Ayuda, por favor",
+            "japanese": "助けてください",
+            "romaji": "Tasukete kudasai",
+            "pronunciation": "ta-su-ke-te ku-da-sai"
+          }
+        ]
+      }
+    ]
+  },
+  "korean": {
+    "title": "Frases Útiles en Coreano",
+    "categories": [
+      {
+        "name": "Saludos Básicos",
+        "phrases": [
+          {
+            "spanish": "Hola",
+            "korean": "안녕하세요",
+            "romaja": "Annyeonghaseyo",
+            "pronunciation": "an-nyong-ha-se-yo"
+          },
+          {
+            "spanish": "Gracias",
+            "korean": "감사합니다",
+            "romaja": "Gamsahamnida",
+            "pronunciation": "gam-sa-ham-ni-da"
+          },
+          {
+            "spanish": "De nada",
+            "korean": "천만에요",
+            "romaja": "Cheonmaneyo",
+            "pronunciation": "chon-ma-ne-yo"
+          },
+          {
+            "spanish": "Por favor",
+            "korean": "주세요",
+            "romaja": "Juseyo",
+            "pronunciation": "yu-se-yo"
+          },
+          {
+            "spanish": "Disculpe / Perdón",
+            "korean": "죄송합니다",
+            "romaja": "Joesonghamnida",
+            "pronunciation": "yoe-song-ham-ni-da"
+          },
+          {
+            "spanish": "Adiós",
+            "korean": "안녕히 가세요",
+            "romaja": "Annyeonghi gaseyo",
+            "pronunciation": "an-nyong-hi ga-se-yo"
+          },
+          {
+            "spanish": "Sí",
+            "korean": "네",
+            "romaja": "Ne",
+            "pronunciation": "ne"
+          },
+          {
+            "spanish": "No",
+            "korean": "아니요",
+            "romaja": "Aniyo",
+            "pronunciation": "a-ni-yo"
+          }
+        ]
+      },
+      {
+        "name": "Viajando con Bebé",
+        "phrases": [
+          {
+            "spanish": "¿Dónde está el baño?",
+            "korean": "화장실이 어디에요?",
+            "romaja": "Hwajangsiri eodieyo?",
+            "pronunciation": "hwa-yang-si-ri o-di-e-yo"
+          },
+          {
+            "spanish": "¿Hay un cambiador de bebé?",
+            "korean": "기저귀 교환대가 있어요?",
+            "romaja": "Gijeogui gyohwandaega isseoyo?",
+            "pronunciation": "gui-yo-gui gyo-hwan-dé-ga i-so-yo"
+          },
+          {
+            "spanish": "¿Tienen silla alta para bebé?",
+            "korean": "유아용 의자가 있어요?",
+            "romaja": "Yuayong uijaga isseoyo?",
+            "pronunciation": "yu-a-yong ui-ya-ga i-so-yo"
+          },
+          {
+            "spanish": "¿Dónde puedo calentar la leche del bebé?",
+            "korean": "분유를 데울 수 있어요?",
+            "romaja": "Bunyureul deul su isseoyo?",
+            "pronunciation": "bun-yu-rul de-ul su i-so-yo"
+          },
+          {
+            "spanish": "¿Hay una sala de lactancia?",
+            "korean": "수유실이 있어요?",
+            "romaja": "Suyusiri isseoyo?",
+            "pronunciation": "su-yu-si-ri i-so-yo"
+          },
+          {
+            "spanish": "Mi bebé necesita ayuda",
+            "korean": "아기가 아파요",
+            "romaja": "Agiga apayo",
+            "pronunciation": "a-gui-ga a-pa-yo"
+          }
+        ]
+      },
+      {
+        "name": "En el Restaurante",
+        "phrases": [
+          {
+            "spanish": "Mesa para [número] personas, por favor",
+            "korean": "[número]명이요",
+            "romaja": "[número]-myeongieyo",
+            "pronunciation": "[número]-myong-i-e-yo"
+          },
+          {
+            "spanish": "El menú, por favor",
+            "korean": "메뉴 주세요",
+            "romaja": "Menyu juseyo",
+            "pronunciation": "me-nyu yu-se-yo"
+          },
+          {
+            "spanish": "¿Tienen menú en inglés?",
+            "korean": "영어 메뉴 있어요?",
+            "romaja": "Yeongeo menyu isseoyo?",
+            "pronunciation": "yong-o me-nyu i-so-yo"
+          },
+          {
+            "spanish": "Esto, por favor (señalando)",
+            "korean": "이거 주세요",
+            "romaja": "Igeo juseyo",
+            "pronunciation": "i-go yu-se-yo"
+          },
+          {
+            "spanish": "La cuenta, por favor",
+            "korean": "계산해 주세요",
+            "romaja": "Gyesanhae juseyo",
+            "pronunciation": "gye-san-hé yu-se-yo"
+          },
+          {
+            "spanish": "¿Aceptan tarjeta de crédito?",
+            "korean": "카드 돼요?",
+            "romaja": "Kadeu dwaeyo?",
+            "pronunciation": "ka-deu dué-yo"
+          },
+          {
+            "spanish": "Agua, por favor",
+            "korean": "물 주세요",
+            "romaja": "Mul juseyo",
+            "pronunciation": "mul yu-se-yo"
+          },
+          {
+            "spanish": "Está delicioso",
+            "korean": "맛있어요",
+            "romaja": "Masisseoyo",
+            "pronunciation": "ma-si-so-yo"
+          }
+        ]
+      },
+      {
+        "name": "Transporte",
+        "phrases": [
+          {
+            "spanish": "¿Dónde está la estación de metro?",
+            "korean": "지하철역이 어디에요?",
+            "romaja": "Jihacheol-yeogi eodieyo?",
+            "pronunciation": "yi-ha-chol-yo-gui o-di-e-yo"
+          },
+          {
+            "spanish": "Un boleto a [lugar], por favor",
+            "korean": "[lugar]까지 주세요",
+            "romaja": "[lugar]-kkaji juseyo",
+            "pronunciation": "[lugar]-ka-yi yu-se-yo"
+          },
+          {
+            "spanish": "¿Este autobús va a [lugar]?",
+            "korean": "이 버스 [lugar] 가요?",
+            "romaja": "I beoseu [lugar] gayo?",
+            "pronunciation": "i bo-su [lugar] ga-yo"
+          },
+          {
+            "spanish": "¿Puedo llevar un cochecito de bebé?",
+            "korean": "유모차 가져갈 수 있어요?",
+            "romaja": "Yumocha gajyeogal su isseoyo?",
+            "pronunciation": "yu-mo-cha ga-yo-gal su i-so-yo"
+          },
+          {
+            "spanish": "¿Hay ascensor?",
+            "korean": "엘리베이터 있어요?",
+            "romaja": "Ellibeiteo isseoyo?",
+            "pronunciation": "el-li-bei-to i-so-yo"
+          },
+          {
+            "spanish": "Pare aquí, por favor",
+            "korean": "여기서 세워주세요",
+            "romaja": "Yeogiseo sewojuseyo",
+            "pronunciation": "yo-gui-so se-wo-yu-se-yo"
+          }
+        ]
+      },
+      {
+        "name": "Compras y Emergencias",
+        "phrases": [
+          {
+            "spanish": "¿Cuánto cuesta?",
+            "korean": "얼마예요?",
+            "romaja": "Eolmayeyo?",
+            "pronunciation": "ol-ma-ye-yo"
+          },
+          {
+            "spanish": "¿Dónde está la farmacia?",
+            "korean": "약국이 어디에요?",
+            "romaja": "Yakgugi eodieyo?",
+            "pronunciation": "yak-gu-gui o-di-e-yo"
+          },
+          {
+            "spanish": "Necesito un médico",
+            "korean": "의사가 필요해요",
+            "romaja": "Uisaga piryohaeyo",
+            "pronunciation": "ui-sa-ga pil-yo-hé-yo"
+          },
+          {
+            "spanish": "¿Habla inglés?",
+            "korean": "영어 할 수 있어요?",
+            "romaja": "Yeongeo hal su isseoyo?",
+            "pronunciation": "yong-o hal su i-so-yo"
+          },
+          {
+            "spanish": "No entiendo",
+            "korean": "이해 못 해요",
+            "romaja": "Ihae mot haeyo",
+            "pronunciation": "i-hé mot hé-yo"
+          },
+          {
+            "spanish": "Ayuda, por favor",
+            "korean": "도와주세요",
+            "romaja": "Dowajuseyo",
+            "pronunciation": "do-wa-yu-se-yo"
+          }
+        ]
+      }
+    ]
+  }
+}
+

@@ -1,0 +1,746 @@
+{
+  "trip": {
+    "title": "Itinerario Japón + Seúl",
+    "dates": "22 octubre - 7 noviembre 2025",
+    "travelers": "Familia Carrillo"
+  },
+  "days": [
+    {
+      "id": 1,
+      "date": "2025-10-22",
+      "title": "Llegada a Narita → Check-in y Descanso",
+      "location": "Tokyo",
+      "activities": [
+        {
+          "time": "17:50",
+          "title": "Llegada a Narita Airport Terminal 1",
+          "description": "Vuelo SQ 011 - Boeing 777-300ER desde LAX Terminal B (salida 14:20)",
+          "type": "transport",
+          "mapUrl": "https://www.google.com/maps/place/Narita+International+Airport/@35.7647067,140.3860282,17z"
+        },
+        {
+          "time": "18:00-19:30",
+          "title": "Transporte a Kiyosumi-Shirakawa",
+          "description": "Tomar el Keisei Skyliner desde la Terminal 1 (planta sótano B1) hasta Keisei-Ueno. Luego transbordar a la línea Oedo hasta Kiyosumi-shirakawa.",
+          "type": "transport",
+          "duration": "~1h 30 min",
+          "cost": "~¥3,070",
+          "details": [
+            "Keisei Skyliner: Narita Airport Terminal 1 → Keisei-Ueno (45 min, ~¥2,570)",
+            "Caminar 9 min (350m) a la estación Ueno-okachimachi",
+            "Oedo Line: Ueno-okachimachi → Kiyosumi-shirakawa (9 min)"
+          ],
+          "mapUrl": "https://www.google.com/maps/dir/Narita+International+Airport,+Narita,+Chiba/Kiyosumi-shirakawa+Station,+Tokyo",
+          "resources": [
+            {
+              "name": "Keisei Skyliner Official",
+              "url": "https://www.keisei.co.jp/keisei/tetudou/skyliner/us/skyliner/index.php"
+            }
+          ]
+        },
+        {
+          "time": "19:30",
+          "title": "Check-in en alojamiento",
+          "description": "Alojamiento cerca de Kiyosumi-Shirakawa (Ójima, Koto City). Descanso sin actividades programadas.",
+          "type": "accommodation",
+          "mapUrl": "https://www.google.com/maps/place/Kiyosumi,+Koto+City,+Tokyo"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "date": "2025-10-23",
+      "title": "Shibuya / Harajuku (Día Ligero)",
+      "location": "Tokyo",
+      "activities": [
+        {
+          "time": "9:00",
+          "title": "Santuario Meiji Jingu",
+          "description": "Un oasis de paz en medio de la ciudad, dedicado al Emperador Meiji y la Emperatriz Shoken. El paseo por el bosque hasta el santuario principal es parte de la experiencia.",
+          "type": "attraction",
+          "mapUrl": "https://www.google.com/maps/place/Meiji+Jingu/@35.6763976,139.6993259,17z",
+          "website": "https://www.meijijingu.or.jp/en/",
+          "tips": "Es un paseo tranquilo por un bosque. Ideal para empezar el día con calma antes del bullicio de Harajuku.",
+          "recommendations": "Observa la entrada principal (torii gigante de madera de ciprés), el barril de sake y vino ofrendados, y si tienes suerte, podrías presenciar una boda tradicional sintoísta. Hay una fuente de purificación donde puedes realizar el ritual de lavado de manos.",
+          "babyTips": "Caminos amplios y planos, perfectos para cochecito. Hay áreas de descanso con bancos. Tiempo recomendado: 45-60 min."
+        },
+        {
+          "time": "11:00",
+          "title": "Harajuku - Takeshita Street",
+          "description": "Famosa calle peatonal llena de tiendas de moda extravagante, cafés y crepes. Es el corazón de la cultura kawaii.",
+          "type": "attraction",
+          "mapUrl": "https://www.google.com/maps/place/Takeshita+Street/@35.6702042,139.7025358,17z",
+          "recommendations": "Prueba los famosos crepes de Harajuku (Marion Crepes es icónico), algodón de azúcar gigante, y bebidas coloridas de Instagram. Para compras: tiendas de moda kawaii, accesorios únicos y souvenirs divertidos.",
+          "babyTips": "Muy concurrido, especialmente fines de semana. Mejor ir temprano. La calle es peatonal pero estrecha.",
+          "price": "Entrada gratuita"
+        },
+        {
+          "time": "Tarde",
+          "title": "Cruce de Shibuya",
+          "description": "El paso de peatones más transitado del mundo. Una experiencia visual impresionante.",
+          "type": "attraction",
+          "mapUrl": "https://www.google.com/maps/place/Shibuya+Crossing/@35.6595003,139.7003553,17z",
+          "tips": "Para una vista panorámica, sube al segundo piso del Starbucks que da al cruce."
+        },
+        {
+          "time": "Opcional",
+          "title": "Yoyogi Koen (Parque Yoyogi)",
+          "description": "Justo al lado del Santuario Meiji, es un parque enorme perfecto para que el bebé pueda moverse libremente.",
+          "type": "attraction",
+          "mapUrl": "https://www.google.com/maps/place/Yoyogi+Park/@35.6712712,139.6944803,17z",
+          "recommendations": "Áreas de césped amplias para picnic, fuentes, y los fines de semana suele haber artistas callejeros y músicos. Perfecto para que el bebé gatee o camine libremente.",
+          "babyTips": "Baños públicos con cambiadores. Muchas áreas de sombra bajo los árboles. Ideal para descanso."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "date": "2025-10-24",
+      "title": "Toyosu / Odaiba / Roppongi (Día Completo)",
+      "location": "Tokyo",
+      "activities": [
+        {
+          "time": "9:30",
+          "title": "teamLab Planets TOKYO",
+          "description": "Museo de arte digital inmersivo. Hay salas con agua, así que el pantalón corto y la mochila para el bebé son muy buena idea.",
+          "type": "attraction",
+          "mapUrl": "https://www.google.com/maps/place/teamLab+Planets+TOKYO/@35.6490750,139.7895250,17z",
+          "website": "https://www.teamlab.art/e/planets/",
+          "address": "6-1-16 Toyosu, Koto Ward, Tokyo",
+          "tips": "Reserva hecha por Euge. Llevar pantalón corto, bebé en mochila portabebés. Hay zonas con agua y superficies irregulares.",
+          "transport": "18 min desde el alojamiento",
+          "recommendations": "Experiencias imperdibles: 'The Infinite Crystal Universe' (sala de espejos con luces LED), 'Drawing on the Water Surface' (peces digitales que nadan), 'Floating in the Falling Universe of Flowers' (flores que caen). Permite 1.5-2 horas.",
+          "babyTips": "Bebé debe ir en mochila portabebés (no cochecito). Hay taquillas para guardar zapatos y pertenencias. Algunas salas tienen agua hasta las rodillas.",
+          "price": "3,800 JPY"
+        },
+        {
+          "time": "12:00",
+          "title": "Almuerzo en Toyosu Market",
+          "description": "El nuevo gran mercado de pescado de Tokio. Hay muchos restaurantes de sushi y marisco fresco en los edificios del mercado.",
+          "type": "food",
+          "mapUrl": "https://www.google.com/maps/place/Toyosu+Market/@35.6476028,139.7851086,17z",
+          "transport": "12 min caminando desde teamLab Planets",
+          "recommendations": "Qué comer: sushi fresco en los restaurantes del mercado (Sushi Dai o Daiwa Sushi son famosos pero con fila), chirashi don (bowl de arroz con sashimi variado), uni (erizo de mar) fresco. Para bebidas: té verde o sake local.",
+          "babyTips": "Restaurantes pequeños, algunos sin sillas altas. Mejor pedir platos para compartir. Mercado abre temprano."
+        },
+        {
+          "time": "Tarde",
+          "title": "Transporte a Roppongi",
+          "description": "Tomar la línea Yurikamome desde Toyosu hacia Roppongi.",
+          "type": "transport",
+          "duration": "51 min en transporte / 17 min en taxi"
+        },
+        {
+          "time": "16:00",
+          "title": "Mori Art Museum (Roppongi Hills)",
+          "description": "Museo de arte contemporáneo en el piso 53 de la Torre Mori. Ofrece vistas espectaculares de la ciudad, especialmente al atardecer.",
+          "type": "attraction",
+          "mapUrl": "https://www.google.com/maps/place/Mori+Art+Museum/@35.6604461,139.7289523,17z",
+          "website": "https://www.mori.art.museum/en/",
+          "tips": "La entrada al museo se encuentra en el Museum Cone en el tercer piso."
+        },
+        {
+          "time": "Cena",
+          "title": "Cena en Roppongi",
+          "description": "Opciones: Udon Shin (udón artesanal), Ichiran Roppongi (ramen en cubículos), Mori Tower (cafés) o jazz bar.",
+          "type": "food",
+          "options": [
+            {
+              "name": "Udon Shin",
+              "type": "Udón artesanal",
+              "mapUrl": "https://www.google.com/maps/search/Udon+Shin+Roppongi"
+            },
+            {
+              "name": "Ichiran Roppongi",
+              "type": "Ramen en cubículos",
+              "mapUrl": "https://www.google.com/maps/place/Ichiran+Roppongi/@35.6627,139.7297,17z"
+            }
+          ],
+          "recommendations": "Además del museo, sube al Tokyo City View (mismo edificio) para vistas de 360°. En días despejados se ve el Monte Fuji. Mejor al atardecer para ver la transición día-noche de Tokio.",
+          "babyTips": "Ascensores disponibles. Museo tranquilo y con aire acondicionado. Tiempo: 1-1.5 horas."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "date": "2025-10-25",
+      "title": "Asakusa / SkyTree (Día Cultural)",
+      "location": "Tokyo",
+      "activities": [
+        {
+          "time": "9:00",
+          "title": "Templo Sensō-ji y Nakamise-dori",
+          "description": "El templo más antiguo de Tokio. Se accede a través de la puerta Kaminarimon y la calle comercial Nakamise-dori, llena de puestos de comida y souvenirs.",
+          "type": "attraction",
+          "mapUrl": "https://www.google.com/maps/place/Senso-ji+Temple/@35.7147651,139.7966553,17z",
+          "website": "https://www.senso-ji.jp/english/",
+          "recommendations": "Compra omikuji (papelitos de fortuna) por ¥100, prueba ningyo-yaki (galletas con forma de muñeca rellenas de anko) en Nakamise-dori, y observa el incienso purificador en el patio principal. Foto clásica: puerta Kaminarimon con su enorme linterna roja.",
+          "babyTips": "Muy concurrido. Ir temprano (antes de 9am) para evitar multitudes. Caminos pavimentados aptos para cochecito."
+        },
+        {
+          "time": "11:30",
+          "title": "Tokyo Skytree",
+          "description": "Torre de radiodifusión con dos miradores que ofrecen vistas panorámicas de Tokio. En su base se encuentra el centro comercial Solamachi Mall, ideal para almorzar.",
+          "type": "attraction",
+          "mapUrl": "https://www.google.com/maps/place/Tokyo+Skytree/@35.7100627,139.8107004,17z",
+          "website": "https://www.tokyo-skytree.jp/en/",
+          "transport": "Caminando 30 min al lado del río / 10 min en transporte",
+          "recommendations": "Sube al Tembo Deck (350m) y si el clima es bueno, al Tembo Galleria (450m). En Solamachi Mall: tiendas de Pokémon, Studio Ghibli, y restaurantes en pisos 30-31 con vistas. Para comer: ramen, tempura, o comida occidental.",
+          "babyTips": "Ascensores rápidos. Solamachi tiene nursing rooms y cambiadores en todos los pisos. Tiempo: 2-3 horas total.",
+          "price": "2,100-3,100 JPY"
+        },
+        {
+          "time": "15:00",
+          "title": "Acuario de Sumida o Paseo por el Río Sumida",
+          "description": "El acuario está en la base del Skytree. Como alternativa, un paseo relajante por la orilla del río Sumida ofrece excelentes vistas.",
+          "type": "attraction",
+          "mapUrl": "https://www.google.com/maps/place/Sumida+Aquarium/@35.7101861,139.8086853,17z"
+        },
+        {
+          "time": "Cena",
+          "title": "Asakusa Imahan",
+          "description": "Famoso restaurante de sukiyaki. REQUIERE RESERVA CON AL MENOS UN MES DE ANTELACIÓN.",
+          "type": "food",
+          "mapUrl": "https://www.google.com/maps/place/Asakusa+Imahan/@35.7138,139.7942,17z",
+          "website": "https://www.asakusaimahan.co.jp/en/",
+          "address": "3-1-12 Nishi-Asakusa, Taito-ku, Tokyo",
+          "tips": "Reserva obligatoria con 1 mes de anticipación",
+          "recommendations": "Especialidad: sukiyaki con wagyu A5. El set incluye carne premium, verduras frescas, tofu y huevo crudo para mojar. También ofrecen shabu-shabu. Pide sake local o cerveza japonesa. Servicio tradicional en tatami o mesas occidentales.",
+          "babyTips": "Reserva OBLIGATORIA con 1 mes de anticipación. Menciona que viajan con bebé para mesa occidental (más fácil que tatami)."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "date": "2025-10-26",
+      "title": "Hokusai Museum y Actividad Flexible",
+      "location": "Tokyo",
+      "activities": [
+        {
+          "time": "9:00",
+          "title": "The Sumida Hokusai Museum",
+          "description": "Dedicado a la vida y obra del famoso artista de ukiyo-e, Katsushika Hokusai, conocido por 'La gran ola de Kanagawa'.",
+          "type": "attraction",
+          "mapUrl": "https://www.google.com/maps/place/The+Sumida+Hokusai+Museum/@35.6969444,139.8011111,17z",
+          "website": "https://hokusai-museum.jp/?lang=en",
+          "recommendations": "No te pierdas 'La Gran Ola de Kanagawa' (reproducción de alta calidad), exhibiciones interactivas sobre técnicas ukiyo-e, y la arquitectura del edificio diseñada por Kazuyo Sejima. Tienda de regalos con prints únicos.",
+          "babyTips": "Museo pequeño y manejable (1 hora suficiente). Cochecito permitido. Aire acondicionado."
+        },
+        {
+          "time": "Tarde/Noche",
+          "title": "Opciones Flexibles",
+          "description": "Varias opciones para la tarde",
+          "type": "flexible",
+          "options": [
+            {
+              "name": "Kirby Café Tokyo",
+              "description": "Café temático. REQUIERE RESERVA ONLINE CON BASTANTE ANTELACIÓN.",
+              "mapUrl": "https://www.google.com/maps/search/Kirby+Cafe+Tokyo",
+              "website": "https://kirbycafe.jp/"
+            },
+            {
+              "name": "Pokémon Café",
+              "description": "Café temático. REQUIERE RESERVA ONLINE CON BASTANTE ANTELACIÓN.",
+              "mapUrl": "https://www.google.com/maps/place/Pokemon+Cafe+Tokyo/@35.7295,139.7199,17z",
+              "website": "https://www.pokemoncenter-online.com/cafe/"
+            },
+            {
+              "name": "Shinjuku Gyoen",
+              "description": "Un hermoso y gran jardín con diferentes estilos. Ideal para un paseo tranquilo.",
+              "mapUrl": "https://www.google.com/maps/place/Shinjuku+Gyoen+National+Garden/@35.6851801,139.7100516,17z"
+            }
+          ],
+          "recommendations": "Platos temáticos adorables: Kirby burger, pasta en forma de Kirby, postres con decoración del personaje. Bebidas con arte latte. Reserva online ESENCIAL (se agotan semanas antes).",
+          "babyTips": "Ambiente familiar. Sillas altas disponibles. Sesión de 90 minutos."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "date": "2025-10-27",
+      "title": "Día Libre en Tokyo",
+      "location": "Tokyo",
+      "activities": [
+        {
+          "time": "Flexible",
+          "title": "Sugerencias para el día",
+          "description": "Día de descanso o actividades flexibles",
+          "type": "flexible",
+          "options": [
+            {
+              "name": "Parque Ueno",
+              "description": "Alberga museos importantes como el Museo Nacional de Tokio y un zoológico. Tour de 3hrs disponible en GetYourGuide.",
+              "mapUrl": "https://www.google.com/maps/place/Ueno+Park/@35.7148,139.7738,17z"
+            },
+            {
+              "name": "Jazz Bar en Odaiba",
+              "description": "Para una noche relajada con vistas a la bahía.",
+              "mapUrl": "https://www.google.com/maps/search/Jazz+Bar+Odaiba"
+            },
+            {
+              "name": "Museo de Arte Contemporáneo de Tokyo (MOT)",
+              "description": "Muy cerca del alojamiento en Fukagawa.",
+              "mapUrl": "https://www.google.com/maps/place/Museum+of+Contemporary+Art+Tokyo/@35.6808,139.8086,17z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "date": "2025-10-28",
+      "title": "Hakone (Onsen y Naturaleza)",
+      "location": "Hakone",
+      "activities": [
+        {
+          "time": "Mañana",
+          "title": "Transporte a Hakone",
+          "description": "Shinkansen desde Tokyo/Shinagawa hasta Odawara, luego bus a Hakone.",
+          "type": "transport",
+          "details": [
+            "Shinkansen: Tokyo/Shinagawa → Odawara",
+            "Bus/Tren local: Odawara → Hakone"
+          ],
+          "mapUrl": "https://www.google.com/maps/dir/Tokyo+Station/Hakone,+Ashigarashimo+District,+Kanagawa",
+          "tips": "Recomiendan comprar el Hakone Free Pass que cubre todos los transportes hasta el teleférico",
+          "resources": [
+            {
+              "name": "Hakone Free Pass",
+              "url": "https://www.hakonenavi.jp/english/freepass/"
+            }
+          ]
+        },
+        {
+          "time": "Tarde",
+          "title": "Actividades en Hakone",
+          "description": "Lago Ashi (paseo en barco pirata), teleférico de Hakone (Ropeway) con vistas del valle volcánico de Ōwakudani, onsen en el hotel.",
+          "type": "attraction",
+          "options": [
+            {
+              "name": "Lago Ashi",
+              "description": "Paseo en barco pirata con vistas del Monte Fuji (si el clima lo permite)",
+              "mapUrl": "https://www.google.com/maps/place/Lake+Ashi/@35.2039,139.0258,14z"
+            },
+            {
+              "name": "Hakone Ropeway",
+              "description": "Teleférico con vistas del valle volcánico de Ōwakudani",
+              "mapUrl": "https://www.google.com/maps/place/Hakone+Ropeway/@35.2433,139.0297,15z"
+            }
+          ],
+          "recommendations": "Lago Ashi: toma el barco pirata (30 min, vistas del Monte Fuji si hay suerte). Ōwakudani: prueba los huevos negros cocidos en aguas sulfurosas (se dice que cada uno añade 7 años de vida). Hakone Free Pass cubre todo.",
+          "babyTips": "Teleférico puede estar lleno. Ōwakudani tiene olor fuerte a azufre. Onsen del hotel: algunos permiten bebés, confirmar antes."
+        },
+        {
+          "time": "Noche",
+          "title": "Hotel Green Plaza Hakone",
+          "description": "Alojamiento con onsen.",
+          "type": "accommodation",
+          "mapUrl": "https://www.google.com/maps/search/Hotel+Green+Plaza+Hakone"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "date": "2025-10-29",
+      "title": "Hakone → Kioto (Viaje Tranquilo)",
+      "location": "Hakone → Kyoto",
+      "activities": [
+        {
+          "time": "Mañana",
+          "title": "Disfrutar onsen o pasear en Hakone",
+          "description": "Última mañana en Hakone para relajarse.",
+          "type": "flexible"
+        },
+        {
+          "time": "Tarde",
+          "title": "Shinkansen a Kioto",
+          "description": "Regresar a Odawara y tomar el Shinkansen hacia Kioto.",
+          "type": "transport",
+          "duration": "~2h 15 min",
+          "mapUrl": "https://www.google.com/maps/dir/Odawara+Station/Kyoto+Station"
+        },
+        {
+          "time": "Noche",
+          "title": "Check-in en Kioto",
+          "description": "Llegada y descanso en Kioto.",
+          "type": "accommodation"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "date": "2025-10-30",
+      "title": "Kioto (Fushimi Inari / Kinkaku-ji)",
+      "location": "Kyoto",
+      "activities": [
+        {
+          "time": "8:30",
+          "title": "Santuario Fushimi Inari-taisha",
+          "description": "Famoso por sus miles de puertas torii rojas que forman senderos a través de la montaña. Ir temprano es clave para evitar multitudes.",
+          "type": "attraction",
+          "mapUrl": "https://www.google.com/maps/place/Fushimi+Inari+Taisha/@34.9671034,135.7727,17z",
+          "website": "https://inari.jp/en/",
+          "address": "68 Fukakusa Yabunouchi-cho, Fushimi-ku, Kyoto",
+          "transport": "JR Nara Line hasta estación Inari (5 min desde Kyoto Station)",
+          "tips": "Confirmado: ir temprano es la mejor estrategia para evitar multitudes y poder tomar fotos espectaculares de los toris.",
+          "recommendations": "Sube al menos hasta el primer mirador (15-20 min) para vistas de Kioto. Los torii más fotogénicos están en los primeros 30 min de subida. Vendedores venden inari-zushi (sushi envuelto en tofu frito, especialidad del santuario).",
+          "babyTips": "Ir TEMPRANO (antes de 8am) es crucial. Subida empinada, bebé en mochila portabebés. Llevar agua. No subir todo (2-3 horas completo)."
+        },
+        {
+          "time": "11:30",
+          "title": "Almuerzo en zona de Fushimi",
+          "description": "Almuerzo cerca del santuario.",
+          "type": "food",
+          "recommendations": "El pabellón se ve mejor desde el estanque Kyōko-chi. Camina todo el circuito del jardín (30-40 min). Compra omamori (amuletos) únicos de este templo. Mejor luz: mañana o tarde.",
+          "babyTips": "Camino de grava, cochecito difícil. Mejor mochila portabebés. Muy concurrido mediodía."
+        },
+        {
+          "time": "14:00",
+          "title": "Templo Kinkaku-ji (Pabellón Dorado)",
+          "description": "Un impresionante templo zen cuyas dos plantas superiores están recubiertas de pan de oro.",
+          "type": "attraction",
+          "mapUrl": "https://www.google.com/maps/place/Kinkaku-ji/@35.0394,135.7292,17z",
+          "website": "https://www.shokoku-ji.jp/en/kinkakuji/",
+          "address": "1 Kinkakuji-cho, Kita-ku, Kyoto",
+          "recommendations": "Callejón atmosférico junto al río. Restaurantes tradicionales de kaiseki, yakitori, y casas de té. Algunos tienen terrazas sobre el río (yuka). Reserva recomendada para cenas. Ambiente especial de noche con linternas.",
+          "babyTips": "Calles estrechas. Algunos restaurantes tradicionales no aceptan niños pequeños. Confirmar antes.",
+          "price": "500 JPY"
+        },
+        {
+          "time": "Tarde/Noche",
+          "title": "Paseo por Pontocho",
+          "description": "Un estrecho callejón junto al río Kamo, lleno de restaurantes y casas de té. Especialmente atmosférico por la noche.",
+          "type": "attraction",
+          "mapUrl": "https://www.google.com/maps/place/Pontocho/@35.0045,135.7708,17z"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "date": "2025-10-31",
+      "title": "Kioto (Kiyomizu-dera / Arashiyama)",
+      "location": "Kyoto",
+      "activities": [
+        {
+          "time": "8:30-10:00",
+          "title": "Templo Kiyomizu-dera",
+          "description": "Famoso por su balcón de madera que ofrece vistas de Kioto. El camino hacia el templo está lleno de tiendas y puestos.",
+          "type": "attraction",
+          "mapUrl": "https://www.google.com/maps/place/Kiyomizu-dera/@34.9949,135.785,17z",
+          "website": "https://www.kiyomizudera.or.jp/en/",
+          "transport": "Autobús desde el hotel",
+          "recommendations": "Balcón de madera sin clavos (patrimonio UNESCO). Bebe del Otowa Waterfall (3 chorros: longevidad, éxito, amor - elige solo uno). Calle Ninenzaka y Sannenzaka: tiendas de cerámica, té, y kimonos.",
+          "babyTips": "Subida empinada desde la entrada. Mochila portabebés mejor que cochecito. Muy turístico, ir temprano."
+        },
+        {
+          "time": "10:30-12:00",
+          "title": "Museo Nacional de Kioto",
+          "description": "Uno de los museos más importantes de Japón.",
+          "type": "attraction",
+          "mapUrl": "https://www.google.com/maps/place/Kyoto+National+Museum/@34.9878,135.7725,17z",
+          "transport": "Autobús"
+        },
+        {
+          "time": "12:30-13:30",
+          "title": "Almuerzo en zona Gion",
+          "description": "Almuerzo en el barrio tradicional de las geishas.",
+          "type": "food",
+          "transport": "Caminando"
+        },
+        {
+          "time": "14:30",
+          "title": "Arashiyama - Bosque de Bambú",
+          "description": "El famoso bosque de bambú de Arashiyama.",
+          "type": "attraction",
+          "mapUrl": "https://www.google.com/maps/place/Arashiyama+Bamboo+Grove/@35.0169,135.6722,17z",
+          "transport": "Tren JR desde estación de Kioto hasta Saga-Arashiyama, caminar 15 min",
+          "recommendations": "Camina por el sendero principal (5-10 min) temprano para fotos sin gente. Visita el templo Tenryu-ji cercano (jardín zen hermoso). Prueba matcha soft-serve en las tiendas locales.",
+          "babyTips": "Camino plano y ancho, apto para cochecito. Muy concurrido después de 10am."
+        },
+        {
+          "time": "16:30-17:30",
+          "title": "Regreso a Gion",
+          "description": "Tiempo libre en Gion.",
+          "type": "flexible",
+          "recommendations": "Show cultural de 50 min que incluye: danza maiko, ceremonia del té, ikebana, música tradicional, kyogen (teatro cómico), y bunraku (marionetas). Entrada: ¥3,150. Dos shows: 18:00 y 19:00.",
+          "babyTips": "Show tranquilo pero bebés pueden inquietarse. Considerar si el bebé puede estar 50 min sentado."
+        },
+        {
+          "time": "18:00-19:30",
+          "title": "Show de Geishas (Gion Corner)",
+          "description": "Espectáculo cultural que muestra varias artes tradicionales japonesas, incluyendo una danza realizada por maiko (aprendices de geisha).",
+          "type": "attraction",
+          "mapUrl": "https://www.google.com/maps/place/Gion+Corner/@35.0033,135.7783,17z",
+          "transport": "Caminando",
+          "recommendations": "Especialidad: yudofu (tofu hervido en caldo kombu) servido en sets kaiseki. Tofu hecho a mano diariamente. Ambiente zen en jardín tradicional. Pide también tempura de vegetales y arroz. Sake local disponible.",
+          "babyTips": "Asientos en tatami principalmente. Ambiente tranquilo. Comida suave, buena para compartir con niños."
+        },
+        {
+          "time": "20:00-21:30",
+          "title": "Cena en Gion",
+          "description": "Okutan (tofu) o restaurante local en Gion.",
+          "type": "food",
+          "options": [
+            {
+              "name": "Okutan",
+              "type": "Tofu tradicional",
+              "mapUrl": "https://www.google.com/maps/search/Okutan+Kiyomizu+Kyoto"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "date": "2025-11-01",
+      "title": "Kioto → Osaka (Medio Día de Viaje)",
+      "location": "Kyoto → Osaka",
+      "activities": [
+        {
+          "time": "Mañana",
+          "title": "Mercado Nishiki",
+          "description": "Un mercado estrecho y largo conocido como 'la cocina de Kioto', con más de cien tiendas y restaurantes. Ideal para desayunar y comprar productos locales.",
+          "type": "attraction",
+          "mapUrl": "https://www.google.com/maps/place/Nishiki+Market/@35.0050,135.7661,17z",
+          "recommendations": "Prueba: tsukemono (vegetales encurtidos), tamagoyaki (tortilla japonesa dulce), takoyaki, dango (bolitas de mochi), y té matcha fresco. Compra palillos artesanales, cuchillos japoneses, y condimentos únicos.",
+          "babyTips": "Mercado cubierto pero estrecho y muy concurrido. Cochecito difícil. Mejor mochila portabebés."
+        },
+        {
+          "time": "Tarde",
+          "title": "Tren JR a Osaka",
+          "description": "Viaje de Kioto a Osaka.",
+          "type": "transport",
+          "duration": "~30 min",
+          "mapUrl": "https://www.google.com/maps/dir/Kyoto+Station/Osaka+Station",
+          "recommendations": "Iconos: cartel Glico Running Man, cangrejo gigante de Kani Doraku. Comida callejera: takoyaki (pulpo frito), okonomiyaki, kushikatsu (brochetas fritas), y ramen. Paseo en barco por el canal disponible.",
+          "babyTips": "Muy concurrido de noche. Emocionante pero ruidoso. Muchos restaurantes tienen sillas altas."
+        },
+        {
+          "time": "Noche",
+          "title": "Check-in y paseo por Dotonbori",
+          "description": "El corazón nocturno de Osaka, famoso por sus luces de neón, carteles gigantes (como el Glico Running Man) y su increíble oferta de street food.",
+          "type": "attraction",
+          "mapUrl": "https://www.google.com/maps/place/Dotonbori/@34.6686,135.5006,17z",
+          "price": "Entrada gratuita"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "date": "2025-11-02",
+      "title": "Osaka (Castillo / Sumo / Dotonbori)",
+      "location": "Osaka",
+      "activities": [
+        {
+          "time": "9:30-11:30",
+          "title": "Castillo de Osaka",
+          "description": "Una reconstrucción del imponente castillo que jugó un papel central en la unificación de Japón.",
+          "type": "attraction",
+          "mapUrl": "https://www.google.com/maps/place/Osaka+Castle/@34.6873,135.5262,17z",
+          "website": "https://www.osakacastle.net/english",
+          "address": "1-1 Osakajo, Chuo-ku, Osaka",
+          "transport": "Metro",
+          "recommendations": "Sube a la torre principal (8 pisos, ascensor disponible) para vistas panorámicas. Museo interior sobre historia samurái. Jardín Nishinomaru hermoso en primavera (sakura) y otoño. Entrada: ¥600.",
+          "babyTips": "Parque exterior amplio y plano. Torre tiene ascensor. Tiempo: 1.5-2 horas."
+        },
+        {
+          "time": "12:00-13:30",
+          "title": "Espectáculo de Sumo",
+          "description": "Osaka Sumo Show.",
+          "type": "attraction",
+          "tips": "Los grandes torneos (basho) tienen un calendario fijo. El de noviembre es en Fukuoka. Verificar si hay exhibiciones en Osaka en esta fecha."
+        },
+        {
+          "time": "14:00-15:00",
+          "title": "Almuerzo en Kuromon Market",
+          "description": "Mercado similar al Nishiki de Kioto, pero con un fuerte enfoque en mariscos frescos que se pueden comer en el momento.",
+          "type": "food",
+          "mapUrl": "https://www.google.com/maps/place/Kuromon+Ichiba+Market/@34.6661,135.5061,17z",
+          "transport": "Metro",
+          "recommendations": "Desayuno/almuerzo de mercado: sashimi ultra fresco, wagyu beef skewers, ostras frescas, fugu (pez globo), y frutas premium (fresas, melones). Muchos puestos tienen asientos para comer ahí.",
+          "babyTips": "Mercado cubierto, menos concurrido que Nishiki. Cochecito manejable en pasillos principales.",
+          "price": "Entrada gratuita"
+        },
+        {
+          "time": "15:30-17:30",
+          "title": "Paseo por Shinsaibashi",
+          "description": "Una galería comercial cubierta junto a Dotonbori, ideal para compras.",
+          "type": "attraction",
+          "mapUrl": "https://www.google.com/maps/place/Shinsaibashi-suji+Shopping+Street/@34.6736,135.5011,17z",
+          "transport": "Caminar"
+        },
+        {
+          "time": "18:30-20:00",
+          "title": "Cena de Okonomiyaki en Mizuno",
+          "description": "Famoso restaurante de okonomiyaki (la 'pizza/tortilla japonesa') con una estrella Michelin Bib Gourmand.",
+          "type": "food",
+          "mapUrl": "https://www.google.com/maps/search/Mizuno+Okonomiyaki+Osaka",
+          "transport": "Caminar",
+          "recommendations": "Okonomiyaki mixto (cerdo, calamar, camarones) es el más popular. Se cocina en plancha frente a ti. Salsa especial de la casa. También prueba yakisoba. Cerveza Asahi o sake para acompañar. Bib Gourmand Michelin.",
+          "babyTips": "Restaurante pequeño, puede haber fila. Plancha caliente en mesa, cuidado con bebé. Sillas altas limitadas."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "date": "2025-11-03",
+      "title": "Osaka → Hiroshima → Fukuoka",
+      "location": "Osaka → Hiroshima → Fukuoka",
+      "activities": [
+        {
+          "time": "Mañana",
+          "title": "Shinkansen a Hiroshima",
+          "description": "Viaje en tren bala desde Shin-Osaka a Hiroshima.",
+          "type": "transport",
+          "duration": "~1h 30 min",
+          "mapUrl": "https://www.google.com/maps/dir/Shin-Osaka+Station/Hiroshima+Station"
+        },
+        {
+          "time": "12:00",
+          "title": "Parque Conmemorativo de la Paz y Museo",
+          "description": "Un lugar conmovedor dedicado a la memoria de las víctimas de la bomba atómica. Incluye la Cúpula de la Bomba Atómica (Genbaku Dome). Alternativa: Simose Art Museum.",
+          "type": "attraction",
+          "mapUrl": "https://www.google.com/maps/place/Hiroshima+Peace+Memorial+Park/@34.3955,132.4536,17z",
+          "website": "https://hpmmuseum.jp/?lang=eng",
+          "recommendations": "Visita obligada: Cúpula Genbaku (A-Bomb Dome), Cenotafio Memorial, Llama de la Paz, y Museo Memorial (emotivo pero educativo). Permite 2-3 horas. Entrada museo: ¥200.",
+          "babyTips": "Museo puede ser intenso emocionalmente. Parque exterior tranquilo para caminar. Cochecito permitido."
+        },
+        {
+          "time": "16:00",
+          "title": "Shinkansen a Fukuoka",
+          "description": "Viaje en tren bala desde Hiroshima a Hakata (estación principal de Fukuoka).",
+          "type": "transport",
+          "duration": "~1h 10 min",
+          "mapUrl": "https://www.google.com/maps/dir/Hiroshima+Station/Hakata+Station"
+        },
+        {
+          "time": "Noche",
+          "title": "Check-in en Fukuoka",
+          "description": "Alojamiento cerca de Hakata Station.",
+          "type": "accommodation",
+          "mapUrl": "https://www.google.com/maps/place/Hakata+Station/@33.5904,130.4206,17z"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "date": "2025-11-04",
+      "title": "Fukuoka → Vuelo a Seúl",
+      "location": "Fukuoka → Seoul",
+      "activities": [
+        {
+          "time": "Mañana",
+          "title": "Vuelo Fukuoka → Seúl",
+          "description": "Vuelo desde el Aeropuerto de Fukuoka (FUK) a Seúl Incheon (ICN).",
+          "type": "transport",
+          "mapUrl": "https://www.google.com/maps/dir/Fukuoka+Airport/Incheon+International+Airport"
+        },
+        {
+          "time": "Tarde",
+          "title": "Check-in en Myeong-dong",
+          "description": "Myeong-dong es un bullicioso distrito comercial y de entretenimiento, famoso por sus tiendas de cosméticos y puestos de comida callejera.",
+          "type": "accommodation",
+          "mapUrl": "https://www.google.com/maps/place/Myeong-dong,+Seoul,+South+Korea/@37.5636,126.9854,16z",
+          "recommendations": "Paraíso de cosméticos coreanos: Innisfree, Etude House, The Face Shop (muestras gratis). Street food: tteokbokki (pasteles de arroz picantes), hotteok (pancake dulce), tornado potato. Compras: ropa, accesorios, souvenirs K-pop.",
+          "babyTips": "Muy concurrido tardes/noches. Calle peatonal pero llena. Muchas tiendas tienen probadores y AC."
+        },
+        {
+          "time": "Tarde/Noche",
+          "title": "Paseo por Myeong-dong",
+          "description": "Explorar el distrito comercial y probar street food.",
+          "type": "attraction"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "date": "2025-11-05",
+      "title": "Seúl (Palacio / Insadong / Myeongdong)",
+      "location": "Seoul",
+      "activities": [
+        {
+          "time": "10:00",
+          "title": "Palacio Gyeongbokgung",
+          "description": "El palacio real más grande de Seúl. No perderse la ceremonia del cambio de guardia en la puerta principal (Gwanghwamun) a las 10:00.",
+          "type": "attraction",
+          "mapUrl": "https://www.google.com/maps/place/Gyeongbokgung+Palace/@37.5796,126.9770,17z",
+          "website": "https://www.royalpalace.go.kr/",
+          "address": "161 Sajik-ro, Jongno-gu, Seoul",
+          "transport": "Subway Line 3, Exit 5 de Gyeongbokgung Station (3 min caminando)",
+          "recommendations": "Ceremonia cambio de guardia: 10:00 y 14:00 en puerta Gwanghwamun (10 min, muy fotogénico). Visita Gyeonghoeru Pavilion (sobre estanque) y Hyangwonjeong (pabellón hexagonal). Alquiler de hanbok disponible cerca (entrada gratis con hanbok).",
+          "babyTips": "Palacio enorme, permite 2 horas. Caminos pavimentados, cochecito OK. Áreas de sombra limitadas en verano."
+        },
+        {
+          "time": "13:00",
+          "title": "Insadong",
+          "description": "Barrio tradicional con tiendas de artesanía, galerías de arte y casas de té. Almuerzo y paseo.",
+          "type": "attraction",
+          "mapUrl": "https://www.google.com/maps/place/Insadong,+Seoul/@37.5719,126.9857,16z",
+          "recommendations": "Compra artesanías tradicionales: cerámica, papel hanji, pinceles de caligrafía, tés coreanos. Visita Ssamziegil (centro comercial en espiral con tiendas únicas). Prueba té tradicional en casas de té (O'sulloc Tea House).",
+          "babyTips": "Calle principal peatonal. Tiendas y cafés tranquilos. Buen lugar para descansar.",
+          "price": "Entrada gratuita"
+        },
+        {
+          "time": "16:00",
+          "title": "Shopping y Street Food en Myeongdong",
+          "description": "Compras y comida callejera en el distrito comercial.",
+          "type": "attraction",
+          "price": "Entrada gratuita"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "date": "2025-11-06",
+      "title": "Seúl (COEX / Bukchon Hanok Village)",
+      "location": "Seoul",
+      "activities": [
+        {
+          "time": "11:00",
+          "title": "COEX Mall y Starfield Library",
+          "description": "Un enorme centro comercial subterráneo que alberga la famosa biblioteca Starfield, con sus impresionantes estanterías de 13 metros.",
+          "type": "attraction",
+          "mapUrl": "https://www.google.com/maps/place/Starfield+Library/@37.5125,127.0594,17z",
+          "transport": "Subway Line 9 hasta Bongeunsa Station",
+          "recommendations": "Biblioteca de 13m de altura con 50,000 libros. Gratis y abierto al público. COEX Mall: acuario (COEX Aquarium), tiendas de K-beauty, K-pop stores (SM Town), y food court coreano. Permite 2-3 horas.",
+          "babyTips": "Mall con AC, limpio y moderno. Muchos baños con cambiadores. Nursing rooms disponibles. Cochecito-friendly.",
+          "price": "Entrada gratuita"
+        },
+        {
+          "time": "14:00",
+          "title": "Bukchon Hanok Village",
+          "description": "Un barrio residencial con casas tradicionales coreanas (hanok). Es una zona habitada, por lo que se pide silencio. Ofrece bonitas vistas de la ciudad.",
+          "type": "attraction",
+          "mapUrl": "https://www.google.com/maps/place/Bukchon+Hanok+Village/@37.5825,126.9850,16z",
+          "website": "https://hanok.seoul.go.kr/front/eng/town/town01.do",
+          "tips": "Es una zona residencial habitada. Por favor mantener silencio y respetar a los residentes.",
+          "recommendations": "8 rutas de paseo numeradas (Bukchon 8 Views). Mejores vistas: #1, #2, #6. Visita talleres de artesanía tradicional. IMPORTANTE: zona residencial, mantener silencio y respetar privacidad.",
+          "babyTips": "Calles empinadas y adoquinadas. Mochila portabebés mejor que cochecito. Ir temprano (menos turistas).",
+          "price": "Entrada gratuita"
+        },
+        {
+          "time": "Noche",
+          "title": "Cena en Jongno o Insadong",
+          "description": "Cena en uno de estos barrios tradicionales.",
+          "type": "food",
+          "price": "Entrada gratuita"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "date": "2025-11-07",
+      "title": "Vuelo de Regreso",
+      "location": "Seoul → Los Angeles",
+      "activities": [
+        {
+          "time": "Todo el día",
+          "title": "Vuelo Seúl (ICN) → Los Ángeles (LAX)",
+          "description": "Vuelo de regreso a casa.",
+          "type": "transport",
+          "mapUrl": "https://www.google.com/maps/dir/Incheon+International+Airport/Los+Angeles+International+Airport"
+        }
+      ]
+    }
+  ]
+}

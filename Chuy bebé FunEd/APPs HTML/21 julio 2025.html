@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aventura del Lunes (Versión Final Mejorada)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;700&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+    <style>
+        :root {
+            --c-primary: #3498db;   /* Azul Mates */
+            --c-secondary: #e74c3c;  /* Rojo Kakooma */
+            --c-tertiary: #f1c40f;  /* Amarillo Geo */
+            --c-quaternary: #9b59b6; /* Morado Planetas */
+            --c-quinary: #1abc9c;   /* Verde-Agua Animales */
+            --c-success: #2ecc71;
+            --c-danger: #e74c3c;
+            --c-fondo: #ecf0f1;
+            --c-texto: #34495e;
+        }
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(170deg, #dfe9f3 0%, #ffffff 100%);
+            color: var(--c-texto);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h1, h2 {
+            font-family: 'Fredoka', sans-serif;
+            text-align: center;
+            color: #2c3e50;
+        }
+        h1 { font-size: 2.8rem; }
+        h2 { border-bottom: 4px solid; padding-bottom: 10px; margin-bottom: 25px; }
+        .math-title { border-color: var(--c-primary); }
+        .kakooma-title { border-color: var(--c-secondary); }
+        .geo-title { border-color: var(--c-tertiary); }
+        .planet-title { border-color: var(--c-quaternary); }
+        .animal-title { border-color: var(--c-quinary); }
+        .numberblocks-title { border-color: #ff9800; }
+
+        .section {
+            background-color: #fff;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .exercise, .puzzle-card {
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+        }
+        .answer-input {
+            width: 100px; padding: 10px; border: 2px solid #dfe4ea;
+            border-radius: 10px; text-align: center; font-size: 1.8rem;
+            font-family: 'Nunito', sans-serif; font-weight: 800;
+            display: block; margin: 10px auto 0;
+        }
+        .answer-input.correct { background-color: #e0f8e7; border-color: var(--c-success); }
+        .answer-input.incorrect { background-color: #fbe5e7; border-color: var(--c-danger); animation: shake 0.5s; }
+        .horizontal-op {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        /* --- Geografía: Postal --- */
+        .postcard { background-color: #fffde7; border: 1px solid #ddd; padding: 15px; border-radius: 10px; box-shadow: 5px 5px 15px rgba(0,0,0,0.1); }
+        .postcard-images { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;}
+        .postcard img { width: 100%; border-radius: 5px; border: 5px solid white; box-shadow: 0 0 10px rgba(0,0,0,0.1); object-fit: cover; aspect-ratio: 16/9; }
+        .postcard-content p { font-style: italic; margin: 0 0 15px 0; }
+        .geo-options { list-style: none; padding: 0; }
+        .geo-options li { margin-bottom: 10px; }
+        .geo-options label { display: block; padding: 15px; background-color: #fff; border: 2px solid #eee; border-radius: 10px; cursor: pointer; transition: all 0.2s ease; }
+        .geo-options input[type="radio"] { display: none; }
+        .geo-options input[type="radio"]:checked + label { background-color: var(--c-tertiary); border-color: #f39c12; color: #fff; font-weight: bold; }
+        .geo-options label.correct { background-color: var(--c-success); border-color: #27ae60; color: white; }
+        .geo-options label.incorrect { background-color: var(--c-danger); border-color: #c0392b; color: white; animation: shake 0.5s; }
+
+        /* --- Planetas: Mensaje Cósmico --- */
+        .cosmic-message { text-align: center; }
+        .planet-image { width: 100%; max-width: 400px; margin: 0 auto 15px; border-radius: 10px; display: block; aspect-ratio: 16/9; object-fit: cover; }
+        .cosmic-message p { font-size: 1.3rem; line-height: 1.8; }
+        .cosmic-message .blank { display: inline-block; width: 100px; border-bottom: 3px dashed var(--c-quaternary); }
+
+        /* --- Animales: Detective Marino --- */
+        .marine-mystery { text-align: center; }
+        .silhouette { font-size: 100px; line-height: 1; margin-bottom: 15px; color: var(--c-quinary); }
+        .clues { list-style: none; padding: 0; margin: 0 0 15px 0; }
+        .clues li { margin-bottom: 8px; font-size: 1.1rem; }
+
+        /* --- Kakooma --- */
+        .puzzle-card h3 { margin: 0 0 15px 0; text-align: center; }
+        .kakooma-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .kakooma-cell { background-color: #fff; border: 2px dashed #ced4da; border-radius: 10px; height: 60px; font-size: 2rem; font-family: 'Fredoka', sans-serif; cursor: pointer; transition: all 0.2s; display:flex; align-items:center; justify-content:center;}
+        .kakooma-cell.selected { background-color: #feca57; color: #fff; border-style: solid; }
+        .kakooma-cell.correct { background-color: var(--c-success); color: white; }
+        .kakooma-cell.incorrect { background-color: var(--c-danger); color: white; animation: shake 0.5s; }
+        
+        /* --- Action Area --- */
+        .action-area { text-align: center; margin-top: 25px; }
+        .grade-button { font-family: 'Fredoka', sans-serif; font-size: 1.2rem; padding: 12px 30px; border-radius: 50px; border: none; color: white; cursor: pointer; transition: all 0.3s ease; }
+        .math-button { background: var(--c-primary); box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4); }
+        .kakooma-button { background: var(--c-secondary); box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4); }
+        .geo-button { background: var(--c-tertiary); box-shadow: 0 4px 15px rgba(241, 196, 15, 0.4); }
+        .planet-button { background: var(--c-quaternary); box-shadow: 0 4px 15px rgba(155, 89, 182, 0.4); }
+        .animal-button { background: var(--c-quinary); box-shadow: 0 4px 15px rgba(26, 188, 156, 0.4); }
+        .grade-button:hover { transform: translateY(-3px); }
+        .results-area { margin-top: 15px; font-size: 1.2rem; font-weight: bold; min-height: 25px; }
+        .clue-box {
+            background-color: #fffbe0;
+            border: 2px dashed #fbc02d;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+        .clue-box.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .clue-box strong { color: #d35400; display: block; margin-bottom: 5px; }
+        .clue-box img {
+            max-width: 250px;
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 10px;
+            border: 3px solid white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            transition: transform 0.3s;
+        }
+        .clue-box img:hover { transform: scale(1.05); }
+
+        /* --- New Numberblocks Drawing Section --- */
+        .numberblocks-section {
+            background-color: #fff;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+        .numberblocks-section .horizontal-op {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .canvas-container {
+            border: 2px dashed #ff9800;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        #drawing-canvas {
+            background-color: #f0f4f8;
+            display: block;
+            width: 100%;
+            touch-action: none;
+        }
+        .drawing-tools {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        .drawing-tool {
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        .color-tool { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #fff; }
+        .color-tool:hover { transform: scale(1.1); }
+        #color-red { background-color: #e53935; }
+        #color-blue { background-color: #1e88e5; }
+        #color-yellow { background-color: #fdd835; }
+        #color-green { background-color: #43a047; }
+        #clear-canvas { background-color: var(--c-danger); color: white; }
+        #save-drawing { background-color: var(--c-success); color: white; }
+        .drawing-tool:hover { transform: scale(1.05); }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Aventura del Lunes 🚀</h1>
+        
+        <div class="section">
+            <h2 class="math-title">🔢 Misión de Operaciones</h2>
+            <div class="grid-container" id="math-grid">
+                <div class="exercise" data-answer="43"><div class="horizontal-op">25 + 18 =</div><input type="number" class="answer-input" inputmode="numeric"></div>
+                <div class="exercise" data-answer="27"><div class="horizontal-op">52 - 25 =</div><input type="number" class="answer-input" inputmode="numeric"></div>
+                <div class="exercise" data-answer="42"><div class="horizontal-op">7 × 6 =</div><input type="number" class="answer-input" inputmode="numeric"></div>
+                <div class="exercise" data-answer="6"><div class="horizontal-op">48 ÷ 8 =</div><input type="number" class="answer-input" inputmode="numeric"></div>
+                <div class="exercise" data-answer="60"><div class="horizontal-op">37 + 23 =</div><input type="number" class="answer-input" inputmode="numeric"></div>
+            </div>
+            <div class="action-area">
+                <button class="grade-button math-button" id="grade-math">Calificar Misión</button>
+                <div class="results-area" id="math-results"></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="kakooma-title">🧠 Misión Kakooma</h2>
+            <div class="grid-container" id="kakooma-grid">
+                <div class="puzzle-card" data-answer="11"><h3>Puzzle 1</h3><div class="kakooma-grid"></div></div>
+                <div class="puzzle-card" data-answer="14"><h3>Puzzle 2</h3><div class="kakooma-grid"></div></div>
+                <div class="puzzle-card" data-answer="9"><h3>Puzzle 3</h3><div class="kakooma-grid"></div></div>
+                <div class="puzzle-card" data-answer="17"><h3>Puzzle 4</h3><div class="kakooma-grid"></div></div>
+                <div class="puzzle-card" data-answer="15"><h3>Puzzle 5</h3><div class="kakooma-grid"></div></div>
+            </div>
+             <div class="action-area">
+                <button class="grade-button kakooma-button" id="grade-kakooma">Calificar Misión</button>
+                <div class="results-area" id="kakooma-results"></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="geo-title">🌍 Misión Geográfica</h2>
+            <div class="postcard" id="geo-mission" data-answer="sf">
+                <div class="postcard-images">
+                    <img src="https://www.visittheusa.mx/sites/default/files/styles/hero_l/public/images/hero_media_image/2017-05/23b0b0b9caaa07ee409b693da9bf9003.jpeg?h=999fdb2a&itok=iMTM-cQw" alt="Puente Golden Gate en San Francisco">
+                    <img src="https://misstourist.com/wp-content/uploads/2020/02/SanFraniscoMap-660x448@2x.jpg" alt="Mapa de San Francisco">
+                </div>
+                <div class="postcard-content">
+                    <p>"¡Saludos desde una ciudad famosa por sus tranvías y su gran puente rojo! ¿Sabes dónde estoy?"</p>
+                    <ul class="geo-options" id="geo-options">
+                         <!-- Options will be randomized in JS -->
+                    </ul>
+                </div>
+            </div>
+            <div class="action-area">
+                <button class="grade-button geo-button" id="grade-geo">Calificar Misión</button>
+                <div class="results-area" id="geo-results"></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="planet-title">🪐 Misión Cósmica</h2>
+            <div class="cosmic-message" id="planet-mission" data-answer="rojo">
+                <img src="https://static.wikia.nocookie.net/astronomia/images/3/3d/Marte.jpg/revision/latest?cb=20181127012016" alt="Planeta Marte" class="planet-image">
+                <p>Hola, soy Marte. Soy conocido como el Planeta <span class="blank"></span> porque mi suelo está lleno de hierro oxidado.</p>
+                <input type="text" class="answer-input">
+            </div>
+            <div class="action-area">
+                <button class="grade-button planet-button" id="grade-planet">Calificar Misión</button>
+                <div class="results-area" id="planet-results"></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="animal-title">🐙 Misión Marina</h2>
+            <div class="marine-mystery" id="animal-mission" data-answer="pulpo">
+                <div class="silhouette">🐙</div>
+                <div class="clue-content">
+                    <ul class="clues" id="animal-clues">
+                         <!-- Clues will be randomized in JS -->
+                    </ul>
+                    <p><strong>¿Qué animal soy?</strong></p>
+                    <input type="text" class="answer-input">
+                </div>
+            </div>
+            <div class="action-area">
+                <button class="grade-button animal-button" id="grade-animal">Calificar Misión</button>
+                <div class="results-area" id="animal-results"></div>
+            </div>
+        </div>
+
+        <div class="section numberblocks-section">
+            <h2 class="numberblocks-title">🧱 Misión Numberblocks: Dibuja tu Operación</h2>
+            <div class="horizontal-op">Dibuja Numberblocks para 4 + 3 = 7</div>
+            <div class="canvas-container">
+                <canvas id="drawing-canvas"></canvas>
+            </div>
+            <div class="drawing-tools">
+                <button class="drawing-tool color-tool" id="color-red" title="Rojo"></button>
+                <button class="drawing-tool color-tool" id="color-blue" title="Azul"></button>
+                <button class="drawing-tool color-tool" id="color-yellow" title="Amarillo"></button>
+                <button class="drawing-tool color-tool" id="color-green" title="Verde"></button>
+                <button class="drawing-tool" id="clear-canvas">Limpiar</button>
+                <button class="drawing-tool" id="save-drawing">Guardar Dibujo</button>
+            </div>
+            <div class="action-area">
+                <button class="grade-button" id="grade-numberblocks" style="background: #ff9800;">Calificar Dibujo</button>
+                <div class="results-area" id="numberblocks-results"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Sound and Effects Functions ---
+        function playSound(type) {
+            try {
+                const synth = new Tone.Synth().toDestination();
+                if (type === 'success') {
+                    synth.triggerAttackRelease("C5", "8n", Tone.now());
+                } else if (type === 'error') {
+                    synth.triggerAttackRelease("C3", "8n", Tone.now());
+                }
+            } catch (e) {
+                console.log("Audio context not available.");
+            }
+        }
+
+        function confetti() {
+            const confettiContainer = document.body;
+            for (let i = 0; i < 50; i++) {
+                const confettiEl = document.createElement('div');
+                confettiEl.style.position = 'fixed';
+                confettiEl.style.left = `${Math.random() * 100}vw`;
+                confettiEl.style.top = `${Math.random() * -100}vh`;
+                confettiEl.style.width = `${Math.random() * 10 + 5}px`;
+                confettiEl.style.height = `${Math.random() * 10 + 5}px`;
+                confettiEl.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                confettiEl.style.opacity = '0.8';
+                confettiEl.style.transition = 'transform 1s ease-out, opacity 1s ease-out';
+                confettiEl.style.zIndex = '1000';
+                confettiContainer.appendChild(confettiEl);
+
+                setTimeout(() => {
+                    confettiEl.style.transform = `translateY(${window.innerHeight + 100}px) rotate(${Math.random() * 360}deg)`;
+                    confettiEl.style.opacity = '0';
+                }, 10);
+                
+                setTimeout(() => confettiEl.remove(), 1010);
+            }
+        }
+
+        // --- Kakooma Data and Generation ---
+        const kakoomaPuzzles = [
+            { answer: 11, numbers: [2, 9, 11, 15, 4, 1, 18, 20, 6] },
+            { answer: 14, numbers: [6, 8, 14, 2, 5, 1, 19, 22, 10] },
+            { answer: 9, numbers: [1, 8, 9, 13, 15, 4, 2, 7, 12] },
+            { answer: 17, numbers: [10, 7, 17, 3, 5, 2, 1, 19, 21] },
+            { answer: 15, numbers: [6, 9, 15, 4, 2, 1, 18, 20, 24] }
+        ];
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        function populateKakoomaGrids() {
+            const puzzleCards = document.querySelectorAll('#kakooma-grid .puzzle-card');
+            puzzleCards.forEach((card, index) => {
+                const puzzleData = kakoomaPuzzles[index];
+                const grid = card.querySelector('.kakooma-grid');
+                shuffleArray(puzzleData.numbers);
+                let gridHTML = '';
+                puzzleData.numbers.forEach(n => {
+                    gridHTML += `<div class="kakooma-cell">${n}</div>`;
+                });
+                grid.innerHTML = gridHTML;
+            });
+        }
+        
+        populateKakoomaGrids();
+
+        // --- Grade Math ---
+        document.getElementById('grade-math').addEventListener('click', () => {
+            let correctCount = 0;
+            const exercises = document.querySelectorAll('#math-grid .exercise');
+            exercises.forEach(ex => {
+                const input = ex.querySelector('.answer-input');
+                input.classList.remove('correct', 'incorrect');
+                if (input.value && input.value == ex.dataset.answer) {
+                    input.classList.add('correct');
+                    correctCount++;
+                } else if (input.value) {
+                    input.classList.add('incorrect');
+                }
+            });
+            document.getElementById('math-results').textContent = `Resultado: ${correctCount} de ${exercises.length} correctas.`;
+            if (correctCount === exercises.length) { playSound('success'); confetti(); }
+        });
+
+        // --- Grade Kakooma ---
+        const kakoomaGrid = document.getElementById('kakooma-grid');
+        kakoomaGrid.addEventListener('click', e => {
+            if (e.target.classList.contains('kakooma-cell')) {
+                const parentGrid = e.target.closest('.kakooma-grid');
+                parentGrid.querySelectorAll('.kakooma-cell').forEach(cell => cell.classList.remove('selected'));
+                e.target.classList.add('selected');
+            }
+        });
+        document.getElementById('grade-kakooma').addEventListener('click', () => {
+            let correctCount = 0;
+            const puzzles = kakoomaGrid.querySelectorAll('.puzzle-card');
+            puzzles.forEach(p => {
+                const selected = p.querySelector('.kakooma-cell.selected');
+                p.querySelectorAll('.kakooma-cell').forEach(c => c.classList.remove('correct', 'incorrect'));
+                if (selected) {
+                    if (selected.textContent == p.dataset.answer) {
+                        selected.classList.add('correct');
+                        correctCount++;
+                    } else {
+                        selected.classList.add('incorrect');
+                    }
+                }
+            });
+            document.getElementById('kakooma-results').textContent = `Resultado: ${correctCount} de ${puzzles.length} puzzles resueltos.`;
+             if (correctCount === puzzles.length) { playSound('success'); confetti(); }
+        });
+
+        // --- Grade Geography with Randomization ---
+        const geoOptionsData = [
+            { id: 'ny', value: 'ny', label: 'A) Nueva York' },
+            { id: 'sf', value: 'sf', label: 'B) San Francisco' },
+            { id: 'china', value: 'china', label: 'C) China' }
+        ];
+        function populateGeoOptions() {
+            const geoOptions = document.getElementById('geo-options');
+            geoOptions.innerHTML = '';
+            shuffleArray(geoOptionsData);
+            geoOptionsData.forEach(opt => {
+                const li = document.createElement('li');
+                li.innerHTML = `<input type="radio" name="city" id="${opt.id}" value="${opt.value}"><label for="${opt.id}">${opt.label}</label>`;
+                geoOptions.appendChild(li);
+            });
+        }
+        populateGeoOptions();
+        document.getElementById('grade-geo').addEventListener('click', () => {
+            const geoMission = document.getElementById('geo-mission');
+            const resultsArea = document.getElementById('geo-results');
+            const correctAnswer = geoMission.dataset.answer;
+            const selectedOption = document.querySelector('input[name="city"]:checked');
+            document.querySelectorAll('.geo-options label').forEach(l => l.classList.remove('correct', 'incorrect'));
+            
+            resultsArea.innerHTML = '';
+            if (selectedOption) {
+                const label = document.querySelector(`label[for="${selectedOption.id}"]`);
+                if (selectedOption.value === correctAnswer) {
+                    label.classList.add('correct');
+                    resultsArea.innerHTML = `<div class="clue-box visible"><strong>¡Pista Secreta!</strong> En San Francisco se encuentra la famosa ex-prisión de Alcatraz, en una isla en medio de la bahía.<img src="https://static01.nyt.com/images/2025/05/05/espanol/05nat-alcatraz-1-ztcj-ES-copy1/05nat-alcatraz-1-ztcj-googleFourByThree.jpg" alt="Isla de Alcatraz"></div>`;
+                    playSound('success');
+                } else {
+                    label.classList.add('incorrect');
+                    document.querySelector(`label[for="${correctAnswer}"]`).classList.add('correct');
+                    resultsArea.textContent = "Casi, la respuesta correcta es San Francisco.";
+                    playSound('error');
+                }
+            } else {
+                resultsArea.textContent = "Por favor, elige una opción.";
+            }
+        });
+
+        // --- Grade Planets ---
+        document.getElementById('grade-planet').addEventListener('click', () => {
+            const planetMission = document.getElementById('planet-mission');
+            const input = planetMission.querySelector('.answer-input');
+            const resultsArea = document.getElementById('planet-results');
+            const correctAnswer = planetMission.dataset.answer;
+            input.classList.remove('correct', 'incorrect');
+            resultsArea.innerHTML = '';
+
+            if (input.value.trim().toLowerCase() === correctAnswer) {
+                input.classList.add('correct');
+                resultsArea.innerHTML = `<div class="clue-box visible"><strong>¡Pista Secreta!</strong> Marte tiene el volcán más grande del sistema solar, el Monte Olimpo. ¡Es 3 veces más alto que el Monte Everest!<img src="https://i.ytimg.com/vi/IcZ1nwJ5HLs/maxresdefault.jpg" alt="Volcán Monte Olimpo en Marte"></div>`;
+                playSound('success');
+            } else {
+                input.classList.add('incorrect');
+                resultsArea.textContent = "Inténtalo de nuevo.";
+                playSound('error');
+            }
+        });
+
+        // --- Grade Marine Animals with Clue Randomization ---
+        const pulpoClues = ['Tengo ocho brazos.', 'Puedo cambiar de color para esconderme.', 'Tengo tres corazones.'];
+        function populatePulpoClues() {
+            const cluesList = document.getElementById('animal-clues');
+            cluesList.innerHTML = '';
+            shuffleArray(pulpoClues);
+            pulpoClues.forEach((clue, index) => {
+                const li = document.createElement('li');
+                li.textContent = `${index + 1}. ${clue}`;
+                cluesList.appendChild(li);
+            });
+        }
+        populatePulpoClues();
+        document.getElementById('grade-animal').addEventListener('click', () => {
+            const animalMission = document.getElementById('animal-mission');
+            const input = animalMission.querySelector('.answer-input');
+            const resultsArea = document.getElementById('animal-results');
+            const correctAnswer = animalMission.dataset.answer;
+            input.classList.remove('correct', 'incorrect');
+            resultsArea.innerHTML = '';
+
+            if (input.value.trim().toLowerCase() === correctAnswer) {
+                input.classList.add('correct');
+                resultsArea.innerHTML = `<div class="clue-box visible"><strong>¡Pista Secreta!</strong> Los pulpos son súper inteligentes; pueden resolver laberintos y ¡hasta abrir frascos con sus tentáculos! También lanzan tinta para escapar.<img src="https://i.pinimg.com/originals/19/b1/f3/19b1f39353cd5312ba7c1f388a9fa1b2.jpg" alt="Pulpo abriendo un frasco"></div>`;
+                playSound('success');
+            } else {
+                input.classList.add('incorrect');
+                resultsArea.textContent = "No es ese animal, ¡sigue intentando!";
+                playSound('error');
+            }
+        });
+        
+        // --- Numberblocks Drawing Section (Corrected) ---
+        const canvas = document.getElementById('drawing-canvas');
+        const ctx = canvas.getContext('2d');
+        let drawing = false;
+        let lastX = 0;
+        let lastY = 0;
+        
+        const canvasContainer = document.querySelector('.canvas-container');
+        function resizeCanvas() {
+            canvas.width = canvasContainer.offsetWidth;
+            canvas.height = 300;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        function getEventPosition(e) {
+            const rect = canvas.getBoundingClientRect();
+            if (e.touches && e.touches.length > 0) {
+                return { x: e.touches[0].clientX - rect.left, y: e.touches[0].clientY - rect.top };
+            } else {
+                return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+            }
+        }
+
+        function startDrawing(e) {
+            drawing = true;
+            const pos = getEventPosition(e);
+            [lastX, lastY] = [pos.x, pos.y];
+        }
+
+        function draw(e) {
+            if (!drawing) return;
+            e.preventDefault(); // Prevent scrolling while drawing
+            const pos = getEventPosition(e);
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(pos.x, pos.y);
+            ctx.stroke();
+            [lastX, lastY] = [pos.x, pos.y];
+        }
+
+        function stopDrawing() {
+            drawing = false;
+        }
+
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseout', stopDrawing);
+        canvas.addEventListener('touchstart', startDrawing);
+        canvas.addEventListener('touchmove', draw);
+        canvas.addEventListener('touchend', stopDrawing);
+
+        ctx.strokeStyle = '#e53935';
+        ctx.lineWidth = 8;
+        ctx.lineCap = 'round';
+
+        document.getElementById('color-red').addEventListener('click', () => ctx.strokeStyle = '#e53935');
+        document.getElementById('color-blue').addEventListener('click', () => ctx.strokeStyle = '#1e88e5');
+        document.getElementById('color-yellow').addEventListener('click', () => ctx.strokeStyle = '#fdd835');
+        document.getElementById('color-green').addEventListener('click', () => ctx.strokeStyle = '#43a047');
+        
+        document.getElementById('clear-canvas').addEventListener('click', () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        });
+
+        document.getElementById('save-drawing').addEventListener('click', () => {
+            const dataURL = canvas.toDataURL('image/png');
+            const link = document.createElement('a');
+            link.download = 'dibujo-numberblocks.png';
+            link.href = dataURL;
+            link.click();
+        });
+
+        document.getElementById('grade-numberblocks').addEventListener('click', () => {
+            document.getElementById('numberblocks-results').textContent = '¡Excelente dibujo! Has representado perfectamente 7.';
+            playSound('success');
+            confetti();
+        });
+    });
+    </script>
+</body>
+</html>

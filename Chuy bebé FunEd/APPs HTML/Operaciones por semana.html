@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misión de Matemáticas para Jesús</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;700&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- Estilos Generales y Variables de Color --- */
+        :root {
+            --c-lunes: #ff6b6b;
+            --c-martes: #feca57;
+            --c-miercoles: #48dbfb;
+            --c-jueves: #1dd1a1;
+            --c-viernes: #ff9ff3;
+            --c-texto: #34495e;
+            --c-fondo: #f0f2f5;
+            --c-correcto: #2ecc71;
+            --c-incorrecto: #e74c3c;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--c-fondo);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%23e9ecef' fill-opacity='0.4' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.99 7.5V30L0 22.5zM28 15v7.5L15 30V22.5z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            color: var(--c-texto);
+            margin: 0;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .main-header {
+            width: 100%;
+            max-width: 1200px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            color: #1a2a6c;
+            text-shadow: 3px 3px 0px rgba(255, 255, 255, 0.8), 5px 5px 10px rgba(0,0,0,0.1);
+            margin: 0 0 15px 0;
+        }
+
+        #reset-button {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1rem;
+            padding: 10px 25px;
+            border-radius: 50px;
+            border: 2px solid #b2bec3;
+            background: #fff;
+            color: #636e72;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        #reset-button:hover {
+            transform: translateY(-2px);
+            background: #636e72;
+            color: #fff;
+            border-color: #636e72;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .mission-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1300px;
+        }
+
+        .day-card {
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 12px solid;
+            display: flex;
+            flex-direction: column;
+        }
+        .day-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .day-1 { border-color: var(--c-lunes); }
+        .day-2 { border-color: var(--c-martes); }
+        .day-3 { border-color: var(--c-miercoles); }
+        .day-4 { border-color: var(--c-jueves); }
+        .day-5 { border-color: var(--c-viernes); }
+
+        .day-card h2 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 0 25px 0;
+            color: var(--c-texto);
+            text-align: center;
+        }
+
+        .exercises {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            flex-grow: 1;
+        }
+
+        .exercise {
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #e9ecef;
+            gap: 10px;
+        }
+        
+        .vertical-op {
+            font-family: 'Fredoka', monospace;
+            font-size: 2rem;
+            line-height: 1.2;
+            text-align: right;
+            width: 80px;
+        }
+        .vertical-op .op-line {
+            display: grid;
+            grid-template-columns: 25px 1fr;
+            align-items: center;
+        }
+        .vertical-op .line {
+            grid-column: 1 / -1;
+            width: 100%;
+            height: 3px;
+            background-color: var(--c-texto);
+            margin-top: 5px;
+        }
+
+        .horizontal-op {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .answer-input {
+            width: 100px;
+            padding: 10px;
+            border: 2px solid #dfe4ea;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.8rem;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            transition: all 0.3s;
+            -moz-appearance: textfield;
+        }
+        .answer-input::-webkit-outer-spin-button,
+        .answer-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .answer-input:focus {
+            outline: none;
+            border-color: var(--c-miercoles);
+            box-shadow: 0 0 0 4px rgba(72, 219, 251, 0.3);
+        }
+        .answer-input.correct { background-color: #e0f8e7; border-color: var(--c-correcto); }
+        .answer-input.incorrect { background-color: #fbe5e7; border-color: var(--c-incorrecto); }
+
+        .kakooma-grid { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .kakooma-cell { background-color: #fff; border: 2px dashed #ced4da; border-radius: 10px; height: 75px; font-size: 2.2rem; font-family: 'Fredoka', sans-serif; cursor: pointer; transition: all 0.2s; display:flex; align-items:center; justify-content:center;}
+        .kakooma-cell.selected { background-color: var(--c-martes); color: #fff; transform: scale(1.05); border-style: solid; }
+        .kakooma-cell.correct { background-color: var(--c-correcto); color: white; border-color: var(--c-correcto); }
+        .kakooma-cell.incorrect { background-color: var(--c-incorrecto); color: white; border-color: var(--c-incorrecto); }
+        .kakooma-title { grid-column: 1 / -1; text-align: center; font-family: 'Fredoka', sans-serif; font-size: 1.6rem; color: #e84393; }
+        .kakooma-instruction { grid-column: 1 / -1; text-align: center; font-size: 1rem; color: #576574; margin-bottom: 10px; }
+        
+        .day-grading { margin-top: 25px; text-align: center; }
+        .grade-day-button { font-family: 'Fredoka', sans-serif; font-size: 1.2rem; padding: 12px 30px; border-radius: 50px; border: none; color: white; cursor: pointer; transition: all 0.3s ease; }
+        .day-1 .grade-day-button { background: var(--c-lunes); box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4); }
+        .day-2 .grade-day-button { background: var(--c-martes); box-shadow: 0 4px 15px rgba(254, 202, 87, 0.4); }
+        .day-3 .grade-day-button { background: var(--c-miercoles); box-shadow: 0 4px 15px rgba(72, 219, 251, 0.4); }
+        .day-4 .grade-day-button { background: var(--c-jueves); box-shadow: 0 4px 15px rgba(29, 209, 161, 0.4); }
+        .day-5 .grade-day-button { background: var(--c-viernes); box-shadow: 0 4px 15px rgba(255, 159, 243, 0.4); }
+        .grade-day-button:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+        .day-results { margin-top: 15px; font-size: 1.2rem; font-weight: bold; min-height: 25px; }
+
+        @media print {
+            @page { size: A4; margin: 20mm; }
+            body { background: #fff !important; color: #000 !important; font-size: 12pt; }
+            .main-header, .grade-day-button, .day-results, #reset-button { display: none !important; }
+            .mission-container { display: block; gap: 0; }
+            .day-card { box-shadow: none !important; border: 2px solid #ccc !important; page-break-inside: avoid; margin-bottom: 20px; }
+            .answer-input, .kakooma-cell { background-color: #fff !important; border: 1px solid #999 !important; color: #000 !important; }
+            h1, h2 { text-shadow: none !important; color: #000 !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <h1>🚀 Misión de Matemáticas de Jesús 🚀</h1>
+        <button id="reset-button">🧹 Limpiar Misión</button>
+    </header>
+
+    <div class="mission-container">
+        <!-- SEMANA 1 -->
+        <div class="day-card day-1">
+            <h2>Semana 1 - Día 1</h2>
+            <div class="exercises">
+                <div class="exercise" data-answer="20"><div class="vertical-op"><div>12</div><div class="op-line"><span>+</span><span>8</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="18"><div class="vertical-op"><div>25</div><div class="op-line"><span>-</span><span>7</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="24"><span class="horizontal-op">4 × 6 =</span><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="6"><span class="horizontal-op">36 ÷ 6 =</span><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="24"><div class="vertical-op"><div>15</div><div class="op-line"><span>+</span><span>9</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="18"><div class="vertical-op"><div>30</div><div class="op-line"><span>-</span><span>12</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+            </div>
+            <div class="day-grading"><button class="grade-day-button">Calificar Día</button><div class="day-results"></div></div>
+        </div>
+        <div class="day-card day-2">
+            <h2>Semana 1 - Día 2</h2>
+            <div class="exercises">
+                <div class="exercise" data-answer="35"><div class="vertical-op"><div>20</div><div class="op-line"><span>+</span><span>15</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="24"><div class="vertical-op"><div>32</div><div class="op-line"><span>-</span><span>8</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="30"><span class="horizontal-op">6 × 5 =</span><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="6"><span class="horizontal-op">42 ÷ 7 =</span><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="30"><div class="vertical-op"><div>14</div><div class="op-line"><span>+</span><span>16</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="19"><div class="vertical-op"><div>28</div><div class="op-line"><span>-</span><span>9</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+            </div>
+            <div class="day-grading"><button class="grade-day-button">Calificar Día</button><div class="day-results"></div></div>
+        </div>
+        <div class="day-card day-3">
+            <h2>Semana 1 - Día 3</h2>
+            <div class="exercises">
+                <div class="exercise" data-answer="42"><div class="vertical-op"><div>25</div><div class="op-line"><span>+</span><span>17</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="28"><div class="vertical-op"><div>40</div><div class="op-line"><span>-</span><span>12</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="40"><span class="horizontal-op">8 × 5 =</span><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="6"><span class="horizontal-op">54 ÷ 9 =</span><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="40"><div class="vertical-op"><div>19</div><div class="op-line"><span>+</span><span>21</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="22"><div class="vertical-op"><div>36</div><div class="op-line"><span>-</span><span>14</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+            </div>
+            <div class="day-grading"><button class="grade-day-button">Calificar Día</button><div class="day-results"></div></div>
+        </div>
+        <div class="day-card day-4">
+            <h2>Semana 1 - Día 4</h2>
+            <div class="exercises">
+                <div class="kakooma-title">🧠 Kakooma 🧠</div>
+                <p class="kakooma-instruction">Encuentra el número que es la suma de otros dos.</p>
+                <div class="kakooma-grid" data-answer="7">
+                    <div class="kakooma-cell">2</div><div class="kakooma-cell">5</div><div class="kakooma-cell">7</div>
+                    <div class="kakooma-cell">3</div><div class="kakooma-cell">8</div><div class="kakooma-cell">4</div>
+                    <div class="kakooma-cell">1</div><div class="kakooma-cell">6</div><div class="kakooma-cell">9</div>
+                </div>
+                 <div class="kakooma-grid" data-answer="5" style="margin-top: 15px;">
+                    <div class="kakooma-cell">4</div><div class="kakooma-cell">1</div><div class="kakooma-cell">5</div>
+                    <div class="kakooma-cell">6</div><div class="kakooma-cell">9</div><div class="kakooma-cell">3</div>
+                    <div class="kakooma-cell">2</div><div class="kakooma-cell">7</div><div class="kakooma-cell">8</div>
+                </div>
+                <div class="exercise" data-answer="45"><div class="vertical-op"><div>30</div><div class="op-line"><span>+</span><span>15</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="30"><div class="vertical-op"><div>50</div><div class="op-line"><span>-</span><span>20</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+            </div>
+            <div class="day-grading"><button class="grade-day-button">Calificar Día</button><div class="day-results"></div></div>
+        </div>
+        <div class="day-card day-5">
+            <h2>Semana 1 - Día 5</h2>
+            <div class="exercises">
+                <div class="exercise" data-answer="50"><div class="vertical-op"><div>28</div><div class="op-line"><span>+</span><span>22</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="30"><div class="vertical-op"><div>45</div><div class="op-line"><span>-</span><span>15</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="35"><span class="horizontal-op">7 × 5 =</span><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="8"><span class="horizontal-op">56 ÷ 7 =</span><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="45"><div class="vertical-op"><div>20</div><div class="op-line"><span>+</span><span>25</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="20"><div class="vertical-op"><div>38</div><div class="op-line"><span>-</span><span>18</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+            </div>
+            <div class="day-grading"><button class="grade-day-button">Calificar Día</button><div class="day-results"></div></div>
+        </div>
+        
+        <!-- SEMANA 2 -->
+        <div class="day-card day-1">
+            <h2>Semana 2 - Día 1</h2>
+            <div class="exercises">
+                <div class="exercise" data-answer="50"><div class="vertical-op"><div>35</div><div class="op-line"><span>+</span><span>15</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="35"><div class="vertical-op"><div>55</div><div class="op-line"><span>-</span><span>20</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="48"><span class="horizontal-op">8 × 6 =</span><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="7"><span class="horizontal-op">63 ÷ 9 =</span><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="50"><div class="vertical-op"><div>25</div><div class="op-line"><span>+</span><span>25</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="30"><div class="vertical-op"><div>40</div><div class="op-line"><span>-</span><span>10</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+            </div>
+            <div class="day-grading"><button class="grade-day-button">Calificar Día</button><div class="day-results"></div></div>
+        </div>
+         <div class="day-card day-2">
+            <h2>Semana 2 - Día 2</h2>
+            <div class="exercises">
+                <div class="exercise" data-answer="37"><div class="vertical-op"><div>24</div><div class="op-line"><span>+</span><span>13</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="37"><div class="vertical-op"><div>48</div><div class="op-line"><span>-</span><span>11</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="49"><span class="horizontal-op">7 × 7 =</span><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="7"><span class="horizontal-op">49 ÷ 7 =</span><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="50"><div class="vertical-op"><div>33</div><div class="op-line"><span>+</span><span>17</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="20"><div class="vertical-op"><div>35</div><div class="op-line"><span>-</span><span>15</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+            </div>
+            <div class="day-grading"><button class="grade-day-button">Calificar Día</button><div class="day-results"></div></div>
+        </div>
+         <div class="day-card day-3">
+            <h2>Semana 2 - Día 3</h2>
+            <div class="exercises">
+                <div class="exercise" data-answer="42"><div class="vertical-op"><div>16</div><div class="op-line"><span>+</span><span>26</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="32"><div class="vertical-op"><div>50</div><div class="op-line"><span>-</span><span>18</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="36"><span class="horizontal-op">9 × 4 =</span><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="8"><span class="horizontal-op">32 ÷ 4 =</span><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="48"><div class="vertical-op"><div>29</div><div class="op-line"><span>+</span><span>19</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="30"><div class="vertical-op"><div>41</div><div class="op-line"><span>-</span><span>11</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+            </div>
+            <div class="day-grading"><button class="grade-day-button">Calificar Día</button><div class="day-results"></div></div>
+        </div>
+         <div class="day-card day-4">
+            <h2>Semana 2 - Día 4</h2>
+            <div class="exercises">
+                <div class="kakooma-title">🧠 Kakooma 🧠</div>
+                <p class="kakooma-instruction">Encuentra el número que es la suma de otros dos.</p>
+                <div class="kakooma-grid" data-answer="9">
+                    <div class="kakooma-cell">3</div><div class="kakooma-cell">6</div><div class="kakooma-cell">9</div>
+                    <div class="kakooma-cell">1</div><div class="kakooma-cell">4</div><div class="kakooma-cell">5</div>
+                    <div class="kakooma-cell">2</div><div class="kakooma-cell">7</div><div class="kakooma-cell">8</div>
+                </div>
+                 <div class="kakooma-grid" data-answer="9" style="margin-top: 15px;">
+                    <div class="kakooma-cell">1</div><div class="kakooma-cell">8</div><div class="kakooma-cell">9</div>
+                    <div class="kakooma-cell">2</div><div class="kakooma-cell">5</div><div class="kakooma-cell">7</div>
+                    <div class="kakooma-cell">3</div><div class="kakooma-cell">4</div><div class="kakooma-cell">6</div>
+                </div>
+                <div class="exercise" data-answer="55"><div class="vertical-op"><div>35</div><div class="op-line"><span>+</span><span>20</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="35"><div class="vertical-op"><div>60</div><div class="op-line"><span>-</span><span>25</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+            </div>
+            <div class="day-grading"><button class="grade-day-button">Calificar Día</button><div class="day-results"></div></div>
+        </div>
+         <div class="day-card day-5">
+            <h2>Semana 2 - Día 5</h2>
+            <div class="exercises">
+                <div class="exercise" data-answer="60"><div class="vertical-op"><div>42</div><div class="op-line"><span>+</span><span>18</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="40"><div class="vertical-op"><div>70</div><div class="op-line"><span>-</span><span>30</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="50"><span class="horizontal-op">10 × 5 =</span><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="9"><span class="horizontal-op">45 ÷ 5 =</span><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="50"><div class="vertical-op"><div>31</div><div class="op-line"><span>+</span><span>19</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+                <div class="exercise" data-answer="30"><div class="vertical-op"><div>58</div><div class="op-line"><span>-</span><span>28</span></div><div class="line"></div></div><input type="number" inputmode="numeric" class="answer-input"></div>
+            </div>
+            <div class="day-grading"><button class="grade-day-button">Calificar Día</button><div class="day-results"></div></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const kakoomaGrids = document.querySelectorAll('.kakooma-grid');
+            kakoomaGrids.forEach(grid => {
+                const cells = grid.querySelectorAll('.kakooma-cell');
+                cells.forEach(cell => {
+                    cell.addEventListener('click', () => {
+                        cells.forEach(otherCell => otherCell.classList.remove('selected'));
+                        cell.classList.add('selected');
+                    });
+                });
+            });
+
+            const gradeButtons = document.querySelectorAll('.grade-day-button');
+            gradeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const card = button.closest('.day-card');
+                    const resultsContainer = card.querySelector('.day-results');
+                    let totalCorrect = 0;
+                    let totalQuestions = 0;
+
+                    const exercises = card.querySelectorAll('.exercise[data-answer]');
+                    exercises.forEach(exercise => {
+                        const input = exercise.querySelector('.answer-input');
+                        if (!input) return;
+                        const correctAnswer = exercise.dataset.answer;
+                        
+                        input.classList.remove('correct', 'incorrect');
+                        if (input.value !== '') {
+                            if (input.value === correctAnswer) {
+                                input.classList.add('correct');
+                                totalCorrect++;
+                            } else {
+                                input.classList.add('incorrect');
+                            }
+                        }
+                        totalQuestions++;
+                    });
+
+                    const cardKakoomaGrids = card.querySelectorAll('.kakooma-grid');
+                    cardKakoomaGrids.forEach(grid => {
+                        const selectedCell = grid.querySelector('.kakooma-cell.selected');
+                        const correctAnswer = grid.dataset.answer;
+                        
+                        grid.querySelectorAll('.kakooma-cell').forEach(c => c.classList.remove('correct', 'incorrect'));
+                        
+                        if (selectedCell) {
+                             if (selectedCell.textContent === correctAnswer) {
+                                selectedCell.classList.add('correct');
+                                totalCorrect++;
+                            } else {
+                                selectedCell.classList.add('incorrect');
+                            }
+                        }
+                        totalQuestions++;
+                    });
+
+                    let message = '';
+                    if (totalQuestions > 0) {
+                        const percentage = (totalCorrect / totalQuestions) * 100;
+                        if (percentage === 100) {
+                            message = `🎉 ¡Perfecto! ${totalCorrect}/${totalQuestions} 🎉`;
+                        } else if (percentage >= 70) {
+                            message = `👍 ¡Muy bien! ${totalCorrect}/${totalQuestions} 👍`;
+                        } else {
+                            message = `🙂 ¡Sigue así! ${totalCorrect}/${totalQuestions} 🙂`;
+                        }
+                    } else {
+                        message = "No hay ejercicios aquí.";
+                    }
+                    resultsContainer.textContent = message;
+                });
+            });
+
+            const resetButton = document.getElementById('reset-button');
+            resetButton.addEventListener('click', () => {
+                document.querySelectorAll('.answer-input').forEach(input => input.value = '');
+                const allValidatedElements = document.querySelectorAll('.correct, .incorrect, .selected');
+                allValidatedElements.forEach(el => el.classList.remove('correct', 'incorrect', 'selected'));
+                document.querySelectorAll('.day-results').forEach(res => res.textContent = '');
+            });
+        });
+    </script>
+
+</body>
+</html>

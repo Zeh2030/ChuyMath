@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numberblocks: El Misterio de los Bloques Perdidos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;700&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nb-1: #e53935; --nb-2: #fb8c00; --nb-3: #fdd835;
+            --nb-4: #43a047; --nb-5: #1e88e5; --nb-6: #8e24aa;
+            --nb-7-1: #e53935; --nb-7-2: #fb8c00; --nb-7-3: #fdd835; --nb-7-4: #43a047; --nb-7-5: #1e88e5; --nb-7-6: #4527a0; --nb-7-7: #673ab7;
+            --nb-8: #ec407a;
+            --nb-9-1: #f5f5f5; --nb-9-2: #e0e0e0; --nb-9-3: #cccccc;
+            --nb-10: #ffffff;
+            --nb-12-main: #ffffff; --nb-12-border: #e53935; --nb-12-center: #fdd835;
+            --c-fondo: #f0f2f5; --c-texto: #34495e; --c-borde: rgba(0,0,0,0.15);
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: #eef2f3;
+            color: var(--c-texto);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .game-container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            box-sizing: border-box;
+        }
+
+        .challenge-header h1 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.5rem;
+            margin: 0;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .story-bubble {
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            text-align: center;
+            border: 2px solid #e9ecef;
+        }
+        
+        .mystery-scene {
+            background-color: #eaf5ff;
+            border: 3px dashed #aed6f1;
+            border-radius: 20px;
+            min-height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            padding: 20px;
+            position: relative;
+        }
+        .mystery-scene .numberblock {
+            transform: scale(1.2);
+        }
+        .mystery-scene .ghost {
+            opacity: 0.3;
+            filter: grayscale(80%);
+        }
+
+        .equation-display {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            padding: 10px;
+            color: #3498db;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .equation-display .placeholder {
+            color: #f39c12;
+            border: 4px dotted #f39c12;
+            border-radius: 10px;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3.5rem;
+        }
+        .equation-display .result-blocks {
+            display: flex;
+            align-items: flex-end;
+            gap: 5px;
+        }
+        .equation-display .result-blocks .numberblock {
+            transform: scale(0.6);
+        }
+
+        .toolbox-section, .action-area, #message-area { text-align: center; }
+        .toolbox-title { font-family: 'Fredoka', sans-serif; font-size: 1.3rem; margin-bottom: 15px; }
+        .toolbox { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-end; gap: 20px; min-height: 150px; }
+        
+        .action-button { font-family: 'Fredoka', sans-serif; font-size: 1.5rem; padding: 15px 40px; border-radius: 50px; border: none; background: linear-gradient(45deg, #2ecc71, #27ae60); color: white; cursor: pointer; box-shadow: 0 5px 0 #1e8449; transition: all 0.1s ease-in-out; }
+        .action-button:active { transform: translateY(3px); box-shadow: 0 2px 0 #1e8449; }
+        .action-button.next { background: linear-gradient(45deg, #3498db, #2980b9); box-shadow: 0 5px 0 #1f618d; }
+        .action-button.next:active { box-shadow: 0 2px 0 #1f618d; }
+        #message-area { font-size: 1.3rem; font-weight: bold; min-height: 30px; padding-top: 10px; }
+        
+        .hidden { display: none; }
+
+        /* --- Numberblock Styles (reusing perfected designs) --- */
+        .numberblock { cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; position: relative; }
+        .numberblock:hover { transform: translateY(-5px) rotate(2deg); }
+        .numberblock.selected { transform: scale(1.15) rotate(-3deg); box-shadow: 0 0 20px var(--nb-3); border-radius: 4px; }
+        .block { width: 25px; height: 25px; border: 2px solid var(--c-borde); margin-top: -2px; position: relative; display: flex; justify-content: center; align-items: center; box-sizing: border-box; }
+        .block:first-child { border-radius: 0 0 4px 4px; }
+        .block:last-child { border-radius: 4px 4px 0 0; }
+        .block:only-child { border-radius: 4px; }
+        .face-container { width: 100%; height: 100%; position: relative; display: none; justify-content: center; align-items: center; gap: 4px; }
+        .numberblock.has-face .face-container { display: flex; }
+        .eye { width: 6px; height: 6px; background-color: #000; border-radius: 50%; position: relative; }
+        .eye::after { content: ''; position: absolute; width: 2px; height: 2px; background-color: #fff; border-radius: 50%; top: 1px; left: 1px; }
+        .c1 { background-color: var(--nb-1); } .c2 { background-color: var(--nb-2); }
+        .c3 { background-color: var(--nb-3); } .c4 { background-color: var(--nb-4); }
+        .c5 { background-color: var(--nb-5); } .c6 { background-color: var(--nb-6); }
+        .c8 { background-color: var(--nb-8); }
+        .c10 { background-color: var(--nb-10); border: 3px solid var(--nb-1); }
+        .nb-11-shape { width: 50px; height: 152px; display: flex; align-items: flex-end; }
+        .nb-11-shape .stack { display: flex; flex-direction: column-reverse; }
+        .nb-11-shape .white-block { background-color: #fff; border: 2px solid var(--nb-2); }
+        .nb-11-shape .red-block { background-color: var(--nb-1); }
+        .nb-12-shape { width: 75px; height: 100px; display: grid; grid-template-columns: repeat(3, 1fr); }
+        .nb-12-shape .block { margin: -1px; }
+    </style>
+</head>
+<body>
+
+    <div class="game-container">
+        <div class="challenge-header">
+            <h1 id="challenge-title">El Misterio de los Bloques Perdidos</h1>
+        </div>
+        <div class="story-bubble">
+            <p id="story-text">¡Hola, detective Jesús! Un Numberblock necesita tu ayuda. ¡Resuelve el misterio!</p>
+        </div>
+        
+        <div class="mystery-scene" id="mystery-scene"></div>
+        <div class="equation-display" id="equation-display"></div>
+        <div id="message-area"></div>
+
+        <div class="toolbox-section">
+            <div class="toolbox-title">Tus Pistas</div>
+            <div class="toolbox" id="toolbox"></div>
+        </div>
+
+        <div class="action-area">
+            <button class="action-button" id="solve-button">¡Resolver!</button>
+            <button class="action-button next hidden" id="next-button">Siguiente Misterio</button>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const toolbox = document.getElementById('toolbox');
+        const solveButton = document.getElementById('solve-button');
+        const nextButton = document.getElementById('next-button');
+        const scene = document.getElementById('mystery-scene');
+        const equationDisplay = document.getElementById('equation-display');
+        const storyText = document.getElementById('story-text');
+        const messageArea = document.getElementById('message-area');
+        const challengeTitle = document.getElementById('challenge-title');
+
+        let selectedBlocks = [];
+        let currentChallengeIndex = -1;
+        
+        const challenges = [
+            { type: '+', given: 8, answer: 4, story: "Ocho necesita un amigo para convertirse en Doce. ¿Qué bloque falta?" },
+            { type: '-', start: 10, subtrahend: 3, answer: 7, story: "¡Diez estaba completo, pero Tres se fue a jugar! ¿Cuántos bloques quedan?" },
+            { type: '×', factors: [4, 5], answer: 20, story: "Cuatro y Cinco quieren formar un súper rectángulo. ¡El resultado es mayor que 12! Elige bloques que sumen el total." },
+            { type: '÷', dividend: 12, divisor: 4, answer: 3, story: "Doce se dividió en 4 grupos iguales. ¿Qué tamaño tiene cada grupo?" },
+            { type: '+', given: 5, answer: 5, story: "Cinco quiere ser el doble de grande para ser Diez. ¿Qué bloque necesita?" },
+            { type: '×', factors: [3, 6], answer: 18, story: "Tres y Seis se juntaron. ¡El resultado es mayor que 12! Elige bloques que sumen el total." },
+            { type: '-', start: 12, subtrahend: 5, answer: 7, story: "Doce se despidió de Cinco. ¿Cuál es el resultado?" },
+            { type: '÷', dividend: 20, divisor: 2, answer: 10, story: "Veinte se partió en dos grupos iguales. ¿Qué número es cada grupo?" },
+            { type: '+', given: 7, answer: 6, story: "Siete busca un amigo para ser Trece. ¿Quién es?" },
+            { type: '×', factors: [8, 4], answer: 32, story: "¡Un reto grande! Ocho por cuatro. Elige bloques que sumen el resultado." },
+            { type: '-', start: 15, subtrahend: 9, answer: 6, story: "Quince menos nueve. ¿Cuál es la respuesta?" },
+            { type: '÷', dividend: 24, divisor: 3, answer: 8, story: "Si repartes 24 entre 3, ¿cuánto toca a cada uno?" },
+            { type: '+', given: 9, answer: 9, story: "Nueve necesita a su gemelo para ser Dieciocho. ¿Qué bloque falta?" },
+            { type: '×', factors: [5, 5], answer: 25, story: "¡Un cuadrado perfecto! Cinco por cinco. Elige bloques que sumen el resultado." },
+            { type: '-', start: 20, subtrahend: 11, answer: 9, story: "Veinte menos once. ¿Qué bloque queda?" },
+            { type: '÷', dividend: 30, divisor: 5, answer: 6, story: "Treinta se dividió en 5 filas. ¿Cuántos bloques hay en cada fila?" },
+            { type: '+', given: 6, answer: 8, story: "Seis quiere ser Catorce. ¿Qué número le falta?" },
+            { type: '×', factors: [7, 3], answer: 21, story: "Siete y Tres se multiplican. ¡El resultado es mayor que 12! Elige bloques que lo formen." },
+            { type: '-', start: 18, subtrahend: 7, answer: 11, story: "Dieciocho menos siete. ¿Quién es el resultado?" },
+            { type: '÷', dividend: 36, divisor: 4, answer: 9, story: "Si divides 36 en 4 grupos, ¿qué tan grande es cada grupo?" },
+            { type: '+', given: 12, answer: 8, story: "Doce quiere llegar a Veinte. ¿Cuánto le falta?" },
+            { type: '×', factors: [6, 6], answer: 36, story: "¡Otro cuadrado! Seis por seis. Elige bloques que sumen el resultado." },
+            { type: '-', start: 25, subtrahend: 12, answer: 13, story: "Veinticinco menos doce. ¡La respuesta es mayor que 12! Elige bloques que la sumen." },
+            { type: '÷', dividend: 40, divisor: 8, answer: 5, story: "Cuarenta entre ocho. ¿Cuál es la respuesta?" },
+            { type: '+', given: 11, answer: 9, story: "Once y Nueve son amigos. ¿Qué número forman juntos?" },
+            { type: '×', factors: [9, 5], answer: 45, story: "Nueve por cinco. ¡Un número grande! Elige bloques que lo sumen." },
+            { type: '-', start: 30, subtrahend: 15, answer: 15, story: "Treinta menos quince. ¡Elige bloques que sumen la respuesta!" },
+            { type: '÷', dividend: 42, divisor: 6, answer: 7, story: "Cuarenta y dos dividido entre seis. ¿Qué número es?" },
+            { type: '+', given: 10, answer: 12, story: "Diez y Doce se unen. ¿Qué número forman?" },
+            { type: '×', factors: [12, 4], answer: 48, story: "El último reto. ¡Doce por cuatro! Elige bloques que sumen este gran número." }
+        ];
+
+        // --- Reusing the perfected Numberblock creation function ---
+        function createNumberblock(num, isInteractive = true) {
+            const nbContainer = document.createElement('div');
+            nbContainer.classList.add('numberblock');
+            nbContainer.dataset.number = num;
+
+            const faceContainer = document.createElement('div');
+            faceContainer.classList.add('face-container');
+            const eye1 = document.createElement('div'); eye1.classList.add('eye');
+            faceContainer.appendChild(eye1);
+            if (num > 1) { const eye2 = document.createElement('div'); eye2.classList.add('eye'); faceContainer.appendChild(eye2); }
+
+            const stack = document.createElement('div');
+            stack.style.display = 'flex';
+            stack.style.flexDirection = 'column-reverse';
+
+            if (num === 9) {
+                const nineColors = ['--nb-9-1', '--nb-9-2', '--nb-9-3'];
+                for (let i = 0; i < 9; i++) {
+                    const block = document.createElement('div');
+                    block.classList.add('block');
+                    block.style.backgroundColor = `var(${nineColors[Math.floor(i/3)]})`;
+                    if (i === 8) { block.appendChild(faceContainer); nbContainer.classList.add('has-face'); }
+                    stack.appendChild(block);
+                }
+                nbContainer.appendChild(stack);
+            } else if (num === 11) {
+                nbContainer.classList.add('nb-11-shape');
+                const leftLeg = document.createElement('div'); leftLeg.classList.add('stack');
+                for(let i=0; i<5; i++) {
+                    const block = document.createElement('div'); block.classList.add('block', 'white-block');
+                    if (i === 0) {
+                        const leftEyeContainer = document.createElement('div'); leftEyeContainer.classList.add('face-container');
+                        const leftEye = document.createElement('div'); leftEye.classList.add('eye');
+                        leftEyeContainer.appendChild(leftEye);
+                        block.appendChild(leftEyeContainer);
+                        nbContainer.classList.add('has-face');
+                    }
+                    leftLeg.appendChild(block);
+                }
+                const rightLeg = document.createElement('div'); rightLeg.classList.add('stack');
+                for(let i=0; i<6; i++) {
+                    const block = document.createElement('div');
+                    if(i === 5) { block.classList.add('block', 'red-block'); } 
+                    else { block.classList.add('block', 'white-block'); }
+                    if (i === 0) {
+                        const rightEyeContainer = document.createElement('div'); rightEyeContainer.classList.add('face-container');
+                        const rightEye = document.createElement('div'); rightEye.classList.add('eye');
+                        rightEyeContainer.appendChild(rightEye);
+                        block.appendChild(rightEyeContainer);
+                    }
+                    rightLeg.appendChild(block);
+                }
+                nbContainer.append(leftLeg, rightLeg);
+            } else if (num === 12) {
+                nbContainer.classList.add('nb-12-shape');
+                for (let i = 0; i < 12; i++) {
+                    const block = document.createElement('div'); block.classList.add('block');
+                    if ([4, 7].includes(i)) { block.style.backgroundColor = 'var(--nb-12-center)'; } 
+                    else { block.style.backgroundColor = 'var(--nb-12-main)'; block.style.borderColor = 'var(--nb-12-border)'; }
+                    if (i === 7) { block.appendChild(faceContainer); nbContainer.classList.add('has-face'); }
+                    nbContainer.appendChild(block);
+                }
+            } else {
+                const sevenColors = ['--nb-7-1', '--nb-7-2', '--nb-7-3', '--nb-7-4', '--nb-7-5', '--nb-7-6', '--nb-7-7'];
+                for (let i = 0; i < num; i++) {
+                    const block = document.createElement('div'); block.classList.add('block');
+                    if (num === 7) { block.style.backgroundColor = `var(${sevenColors[i]})`; } 
+                    else { block.classList.add(`c${num}`); }
+                    if (i === num - 1) { block.appendChild(faceContainer); nbContainer.classList.add('has-face'); }
+                    stack.appendChild(block);
+                }
+                nbContainer.appendChild(stack);
+            }
+            if(isInteractive) nbContainer.addEventListener('click', () => selectBlock(nbContainer));
+            return nbContainer;
+        }
+
+        function populateToolbox() {
+            toolbox.innerHTML = '';
+            for (let i = 1; i <= 12; i++) {
+                toolbox.appendChild(createNumberblock(i));
+            }
+        }
+
+        function selectBlock(blockElement) {
+            if (nextButton.classList.contains('hidden')) {
+                const number = parseInt(blockElement.dataset.number);
+                const challenge = challenges[currentChallengeIndex];
+                
+                if (challenge.answer > 12) { // Multi-select logic
+                    if (blockElement.classList.contains('selected')) {
+                        blockElement.classList.remove('selected');
+                        selectedBlocks = selectedBlocks.filter(n => n !== number);
+                    } else {
+                        blockElement.classList.add('selected');
+                        selectedBlocks.push(number);
+                    }
+                } else { // Single-select logic
+                    document.querySelectorAll('.numberblock.selected').forEach(el => el.classList.remove('selected'));
+                    blockElement.classList.add('selected');
+                    selectedBlocks = [number];
+                }
+            }
+        }
+
+        function startChallenge(index) {
+            currentChallengeIndex = index;
+            const challenge = challenges[index];
+            
+            selectedBlocks = [];
+            scene.innerHTML = '';
+            equationDisplay.innerHTML = '';
+            messageArea.textContent = '';
+            document.querySelectorAll('.numberblock.selected').forEach(el => el.classList.remove('selected'));
+            solveButton.classList.remove('hidden');
+            nextButton.classList.add('hidden');
+
+            challengeTitle.textContent = `Misterio #${index + 1}`;
+            storyText.textContent = challenge.story;
+            
+            const placeholder = '<div class="placeholder">?</div>';
+
+            switch(challenge.type) {
+                case '+':
+                    scene.appendChild(createNumberblock(challenge.given, false));
+                    equationDisplay.innerHTML = `${challenge.given} + ${placeholder} = ${challenge.given + challenge.answer}`;
+                    break;
+                case '-':
+                    scene.appendChild(createNumberblock(challenge.start, false));
+                    const ghost = createNumberblock(challenge.subtrahend, false);
+                    ghost.classList.add('ghost');
+                    scene.appendChild(ghost);
+                    equationDisplay.innerHTML = `${challenge.start} - ${challenge.subtrahend} = ${placeholder}`;
+                    break;
+                case '×':
+                    scene.appendChild(createNumberblock(challenge.factors[0], false));
+                    const x = document.createElement('span'); x.textContent = '×'; x.style.fontSize='3rem';
+                    scene.appendChild(x);
+                    scene.appendChild(createNumberblock(challenge.factors[1], false));
+                    equationDisplay.innerHTML = `${challenge.factors[0]} × ${challenge.factors[1]} = ${placeholder}`;
+                    break;
+                case '÷':
+                    scene.appendChild(createNumberblock(challenge.dividend, false));
+                    const div = document.createElement('span'); div.textContent = '÷'; div.style.fontSize='3rem';
+                    scene.appendChild(div);
+                    scene.appendChild(createNumberblock(challenge.divisor, false));
+                    equationDisplay.innerHTML = `${challenge.dividend} ÷ ${challenge.divisor} = ${placeholder}`;
+                    break;
+            }
+        }
+
+        solveButton.addEventListener('click', () => {
+            if (selectedBlocks.length === 0) {
+                messageArea.textContent = '¡Primero debes elegir una pista!';
+                messageArea.style.color = '#f39c12';
+                return;
+            }
+
+            const challenge = challenges[currentChallengeIndex];
+            let isCorrect = false;
+            let total = 0;
+
+            if (challenge.answer > 12) {
+                total = selectedBlocks.reduce((sum, current) => sum + current, 0);
+                if (total === challenge.answer) {
+                    isCorrect = true;
+                }
+            } else {
+                if (selectedBlocks.length === 1 && selectedBlocks[0] === challenge.answer) {
+                    isCorrect = true;
+                }
+            }
+
+            if (isCorrect) {
+                messageArea.textContent = '¡Misterio Resuelto! ¡Genial!';
+                messageArea.style.color = '#2ecc71';
+                solveButton.classList.add('hidden');
+                nextButton.classList.remove('hidden');
+                
+                const placeholder = equationDisplay.querySelector('.placeholder');
+                placeholder.innerHTML = '';
+                
+                if (selectedBlocks.length > 1) {
+                    const resultContainer = document.createElement('div');
+                    resultContainer.classList.add('result-blocks');
+                    selectedBlocks.forEach(num => {
+                        resultContainer.appendChild(createNumberblock(num, false));
+                    });
+                    placeholder.appendChild(resultContainer);
+                } else {
+                    const answerBlock = createNumberblock(challenge.answer, false);
+                    answerBlock.style.transform = 'scale(1.5)';
+                    placeholder.appendChild(answerBlock);
+                }
+
+            } else {
+                messageArea.textContent = 'Esa no es la pieza correcta... ¡Sigue intentando!';
+                messageArea.style.color = '#e74c3c';
+                document.querySelector('.game-container').animate([
+                    { transform: 'translateX(0px)' }, { transform: 'translateX(-10px)' },
+                    { transform: 'translateX(10px)' }, { transform: 'translateX(0px)' }
+                ], { duration: 500, easing: 'ease-in-out' });
+            }
+        });
+
+        nextButton.addEventListener('click', () => {
+            const nextIndex = (currentChallengeIndex + 1) % challenges.length;
+            startChallenge(nextIndex);
+        });
+
+        populateToolbox();
+        startChallenge(0);
+    });
+    </script>
+</body>
+</html>
