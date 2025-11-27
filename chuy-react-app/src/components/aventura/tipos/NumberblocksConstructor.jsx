@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import './NumberblocksConstructor.css';
 
 const NumberblocksConstructor = ({ mision, onCompletar }) => {
   const [currentChallengeIndex, setCurrentChallengeIndex] = useState(0);
   const [selectedBlocks, setSelectedBlocks] = useState([]);
-  const [gridConfig, setGridConfig] = useState(null); // { rows, cols }
+  const [gridConfig, setGridConfig] = useState(null);
   const [message, setMessage] = useState({ text: '', type: '' });
   const [showConfetti, setShowConfetti] = useState(false);
   const [gameCompleted, setGameCompleted] = useState(false);
@@ -12,7 +12,6 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
   const retos = mision.retos || [];
   const currentChallenge = retos[currentChallengeIndex];
 
-  // Reiniciar estado al cambiar de reto
   useEffect(() => {
     setSelectedBlocks([]);
     setGridConfig(null);
@@ -21,30 +20,24 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
   }, [currentChallengeIndex]);
 
   const handleSelectBlock = (number) => {
-    if (!currentChallenge || gridConfig) return; // Si ya construyó, no dejar seleccionar
-
+    if (!currentChallenge || gridConfig) return;
     const maxSelection = currentChallenge.tipo === 'multiply' ? 2 : 1;
     
     setSelectedBlocks(prev => {
-      // Si ya tenemos el máximo de selecciones
       if (prev.length >= maxSelection) {
-        // Reemplazar el último (experiencia más fluida)
         return [...prev.slice(0, maxSelection - 1), number];
       } else {
-        // Agregar el número (permite duplicados como 6×6)
         return [...prev, number];
       }
     });
   };
 
-  // Función para limpiar selección
   const limpiarSeleccion = () => {
     setSelectedBlocks([]);
   };
 
   const checkAnswer = () => {
     if (!currentChallenge) return;
-
     let isCorrect = false;
     let rows = 0;
     let cols = 0;
@@ -71,7 +64,6 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
       triggerConfetti();
     } else {
       setMessage({ text: 'Oh, oh... Esos bloques no funcionan. ¡Intenta otra vez!', type: 'error' });
-      // Pequeña animación de error (shake) podría ir aquí
     }
   };
 
@@ -89,172 +81,135 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
     setTimeout(() => setShowConfetti(false), 3000);
   };
 
-  // Obtener color de un Numberblock (colores oficiales)
   const getNumberblockColor = (num) => {
     const colors = {
-      1: '#e53935', // Red
-      2: '#fb8c00', // Orange
-      3: '#fdd835', // Yellow
-      4: '#43a047', // Green
-      5: '#1e88e5', // Blue
-      6: '#8e24aa', // Indigo
-      7: '#673ab7', // Violet
-      8: '#ec407a', // Magenta/Pink
-      9: '#e0e0e0', // Grey
-      10: '#ffffff', // White
-      11: '#e53935', // Red (para el bloque rojo del 11)
-      12: '#fb8c00' // Orange (centro de 12)
+      1: '#e53935', 2: '#fb8c00', 3: '#fdd835', 4: '#43a047',
+      5: '#1e88e5', 6: '#8e24aa', 7: '#673ab7', 8: '#ec407a',
+      9: '#e0e0e0', 10: '#ffffff', 11: '#e53935', 12: '#fb8c00'
     };
     return colors[num] || '#95a5a6';
   };
 
-  // Renderizado de un bloque individual (Numberblock)
+  // Componente Face - exactamente como el original
+  const Face = ({ singleEye = false }) => (
+    <div className="face-container">
+      <div className="eye"></div>
+      {!singleEye && <div className="eye"></div>}
+    </div>
+  );
+
+  // Renderizado de Numberblock - traducción EXACTA del código original
   const renderNumberblock = (num) => {
     const isSelected = selectedBlocks.includes(num);
-    let shapeClass = '';
-    let blockElements = [];
-    let hasFace = false;
     
-    // Configuración de colores y estructura
     if (num === 9) {
-      shapeClass = 'nb-9-shape';
-      const nineColors = ['--nb-9-1', '--nb-9-2', '--nb-9-3']; // De arriba a abajo
-      for (let i = 0; i < 9; i++) {
-        blockElements.push(
-          <div 
-            key={i} 
-            className="nb-block" 
-            style={{ backgroundColor: `var(${nineColors[Math.floor(i/3)]})` }}
-          >
-            {i === 4 && <Face />} {/* Cara en el centro */}
-          </div>
-        );
-      }
-    } else if (num === 11) {
-      shapeClass = 'nb-11-shape';
-      hasFace = true;
-      
-      // Pierna izquierda: 5 bloques blancos (apilados de abajo a arriba)
-      const leftLeg = [];
-      for (let i = 0; i < 5; i++) {
-        leftLeg.push(
-          <div 
-            key={`left-${i}`} 
-            className="nb-block white-block"
-            style={{ 
-              backgroundColor: '#ffffff', 
-              border: '2px solid var(--nb-1)',
-              boxSizing: 'border-box'
-            }}
-          >
-            {i === 0 && <Face />}
-          </div>
-        );
-      }
-      
-      // Pierna derecha: 5 blancos + 1 rojo (apilados de abajo a arriba)
-      const rightLeg = [];
-      for (let i = 0; i < 6; i++) {
-        const isRed = i === 5;
-        rightLeg.push(
-          <div 
-            key={`right-${i}`} 
-            className={`nb-block ${isRed ? 'red-block' : 'white-block'}`}
-            style={{ 
-              backgroundColor: isRed ? 'var(--nb-1)' : '#ffffff',
-              border: !isRed ? '2px solid var(--nb-1)' : 'none',
-              boxSizing: 'border-box'
-            }}
-          >
-            {i === 0 && <Face />}
-          </div>
-        );
-      }
-      
-      blockElements.push(
-        <div key="left" className="stack" style={{ display: 'flex', flexDirection: 'column-reverse', gap: '0' }}>
-          {leftLeg}
-        </div>
-      );
-      blockElements.push(
-        <div key="right" className="stack" style={{ display: 'flex', flexDirection: 'column-reverse', gap: '0' }}>
-          {rightLeg}
-        </div>
-      );
-    } else if (num === 12) {
-      shapeClass = 'nb-12-shape';
-      hasFace = true;
-      for (let i = 0; i < 12; i++) {
-        const isCenter = [4, 7].includes(i);
-        blockElements.push(
-          <div 
-            key={i} 
-            className="nb-block"
-            style={{ 
-              backgroundColor: isCenter ? 'var(--nb-12-center)' : 'var(--nb-12-main)',
-              border: '2px solid var(--nb-12-border)',
-              boxSizing: 'border-box'
-            }}
-          >
-            {i === 7 && <Face />}
-          </div>
-        );
-      }
-    } else {
-      // Estándar (apilados) - 1 a 8
-      if (num <= 8) hasFace = true;
-      const sevenColors = ['--nb-7-1', '--nb-7-2', '--nb-7-3', '--nb-7-4', '--nb-7-5', '--nb-7-6', '--nb-7-7'];
-      
-      // Crear bloques EN ORDEN INVERSO para que se apilen correctamente (abajo a arriba)
-      for (let i = num - 1; i >= 0; i--) {
-        let style = {
-          boxSizing: 'border-box',
-          border: '2px solid var(--c-borde)'
-        };
-        
-        if (num === 7) {
-          style.backgroundColor = `var(${sevenColors[i]})`;
-        } else {
-          style.backgroundColor = `var(--nb-${num})`;
-        }
-        
-        blockElements.push(
-          <div key={i} className={`nb-block c${num}`} style={style}>
-            {i === 0 && hasFace && <Face />}
-          </div>
-        );
-      }
-    }
-
-    // Para números estándar (no 9, 11, 12), NO necesita flexDirection reverse porque ya está en orden
-    let content = blockElements;
-    if ([9, 11, 12].includes(num)) {
-      content = blockElements; // Ya tienen su estructura especial
-    } else {
-      content = (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
-          {blockElements}
+      // 9 es un grid 3x3 con grises
+      const nineColors = ['--nb-9-3', '--nb-9-2', '--nb-9-1'];
+      return (
+        <div 
+          key={num}
+          className={`numberblock has-face nb-9-shape ${isSelected ? 'selected' : ''}`}
+          onClick={() => handleSelectBlock(num)}
+        >
+          {[...Array(9)].map((_, i) => (
+            <div 
+              key={i} 
+              className="block"
+              style={{ backgroundColor: `var(${nineColors[Math.floor(i/3)]})` }}
+            >
+              {i === 8 && <Face />}
+            </div>
+          ))}
         </div>
       );
     }
-
+    
+    if (num === 11) {
+      // 11 tiene dos piernas: izquierda 5 bloques, derecha 6 bloques
+      return (
+        <div 
+          key={num}
+          className={`numberblock has-face nb-11-shape ${isSelected ? 'selected' : ''}`}
+          onClick={() => handleSelectBlock(num)}
+        >
+          {/* Pierna izquierda: 5 bloques blancos */}
+          <div className="stack">
+            {[...Array(5)].map((_, i) => (
+              <div key={`left-${i}`} className="block white-block">
+                {i === 0 && <Face singleEye={true} />}
+              </div>
+            ))}
+          </div>
+          {/* Pierna derecha: 5 blancos + 1 rojo */}
+          <div className="stack">
+            {[...Array(6)].map((_, i) => (
+              <div 
+                key={`right-${i}`} 
+                className={`block ${i === 5 ? 'red-block' : 'white-block'}`}
+              >
+                {i === 0 && <Face singleEye={true} />}
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    }
+    
+    if (num === 12) {
+      // 12 es un grid 3x4
+      const centralIndices = [4, 7];
+      return (
+        <div 
+          key={num}
+          className={`numberblock has-face nb-12-shape ${isSelected ? 'selected' : ''}`}
+          onClick={() => handleSelectBlock(num)}
+        >
+          {[...Array(12)].map((_, i) => (
+            <div 
+              key={i} 
+              className="block"
+              style={{ 
+                backgroundColor: centralIndices.includes(i) ? 'var(--nb-12-center)' : 'var(--nb-12-main)',
+                borderColor: 'var(--nb-12-border)'
+              }}
+            >
+              {i === 7 && <Face />}
+            </div>
+          ))}
+        </div>
+      );
+    }
+    
+    // Números 1-8, 10: apilados verticalmente
+    const sevenColors = ['--nb-7-1', '--nb-7-2', '--nb-7-3', '--nb-7-4', '--nb-7-5', '--nb-7-6', '--nb-7-7'];
+    
     return (
       <div 
         key={num}
-        className={`numberblock ${hasFace ? 'has-face' : ''} ${isSelected ? 'selected' : ''} ${shapeClass}`}
+        className={`numberblock has-face ${isSelected ? 'selected' : ''}`}
         onClick={() => handleSelectBlock(num)}
       >
-        {content}
+        <div className="stack">
+          {[...Array(num)].map((_, i) => {
+            let className = 'block';
+            let style = {};
+            
+            if (num === 7) {
+              style.backgroundColor = `var(${sevenColors[i]})`;
+            } else {
+              className += ` c${num}`;
+            }
+            
+            return (
+              <div key={i} className={className} style={style}>
+                {i === num - 1 && <Face singleEye={num === 1} />}
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   };
-
-  const Face = () => (
-    <div className="nb-face-container">
-      <div className="nb-eye"></div>
-      <div className="nb-eye"></div>
-    </div>
-  );
 
   if (gameCompleted) {
     return (
@@ -317,14 +272,10 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
       <div className="nb-construction-area">
         {gridConfig ? (
           <div 
-            className="nb-rectangle-grid"
-            style={{ 
-              gridTemplateColumns: `repeat(${gridConfig.cols}, 1fr)`,
-              width: `${gridConfig.cols * 25}px`
-            }}
+            className="rectangle-grid"
+            style={{ gridTemplateColumns: `repeat(${gridConfig.cols}, 1fr)` }}
           >
             {[...Array(gridConfig.rows * gridConfig.cols)].map((_, i) => {
-              // Alternar colores basados en los bloques seleccionados
               const colorIndex = i % selectedBlocks.length;
               const blockNumber = selectedBlocks[colorIndex];
               const blockColor = getNumberblockColor(blockNumber);
@@ -332,12 +283,10 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
               return (
                 <div 
                   key={i} 
-                  className="nb-block nb-rectangle-block"
+                  className="block rectangle-block"
                   style={{ 
                     backgroundColor: blockColor,
-                    animation: `pop-in 0.3s ease-out ${i * 0.01}s forwards`, 
-                    opacity: 0,
-                    border: '1px solid rgba(0,0,0,0.15)'
+                    animationDelay: `${i * 0.02}s`
                   }}
                 />
               );
@@ -354,7 +303,7 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
 
       <div className="nb-toolbox-section">
         <div className="nb-toolbox-title">Caja de Herramientas</div>
-        <div className="nb-toolbox">
+        <div className="toolbox">
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(num => renderNumberblock(num))}
         </div>
       </div>
@@ -393,4 +342,3 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
 };
 
 export default NumberblocksConstructor;
-

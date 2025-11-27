@@ -1,8 +1,28 @@
-/* NumberblocksConstructor.css */
+/* NumberblocksConstructor.css - Traducción EXACTA del original */
+
+/* Variables de colores OFICIALES de Numberblocks */
+.nb-game-container {
+  --nb-1: #e53935;
+  --nb-2: #fb8c00;
+  --nb-3: #fdd835;
+  --nb-4: #43a047;
+  --nb-5: #1e88e5;
+  --nb-6: #8e24aa;
+  --nb-7-1: #e53935; --nb-7-2: #fb8c00; --nb-7-3: #fdd835;
+  --nb-7-4: #43a047; --nb-7-5: #1e88e5; --nb-7-6: #4527a0;
+  --nb-7-7: #673ab7;
+  --nb-8: #ec407a;
+  --nb-9-1: #f5f5f5; --nb-9-2: #e0e0e0; --nb-9-3: #cccccc;
+  --nb-10: #ffffff;
+  --nb-12-main: #ffffff;
+  --nb-12-border: #e53935;
+  --nb-12-center: #fb8c00;
+  --c-borde: rgba(0,0,0,0.15);
+}
 
 .nb-game-container {
   font-family: 'Nunito', sans-serif;
-  background-color: #98D49A; /* Tono tierra base */
+  background-color: #98D49A;
   color: #34495e;
   padding: 20px;
   border-radius: 20px;
@@ -10,29 +30,6 @@
   overflow: hidden;
 }
 
-/* Variables de colores OFICIALES de Numberblocks */
-.nb-game-container {
-  --nb-1: #e53935; /* Red */
-  --nb-2: #fb8c00; /* Orange */
-  --nb-3: #fdd835; /* Yellow */
-  --nb-4: #43a047; /* Green */
-  --nb-5: #1e88e5; /* Blue */
-  --nb-6: #8e24aa; /* Indigo */
-  --nb-7-1: #e53935; --nb-7-2: #fb8c00; --nb-7-3: #fdd835;
-  --nb-7-4: #43a047; --nb-7-5: #1e88e5; --nb-7-6: #4527a0; /* Indigo */
-  --nb-7-7: #673ab7; /* Violet */
-  --nb-8: #ec407a; /* Magenta/Pink */
-  --nb-9-1: #f5f5f5; --nb-9-2: #e0e0e0; --nb-9-3: #cccccc;
-  --nb-10: #ffffff;
-  --nb-11-1: #ffffff; /* White block */
-  --nb-11-2: #e53935; /* Red block */
-  --nb-12-main: #ffffff; 
-  --nb-12-border: #e53935;
-  --nb-12-center: #fb8c00;
-  --c-borde: rgba(0,0,0,0.15);
-}
-
-/* Header y Narrativa */
 .nb-header {
   text-align: center;
   margin-bottom: 20px;
@@ -55,7 +52,6 @@
   margin-bottom: 20px;
 }
 
-/* Área de Ecuación */
 .nb-equation-display {
   font-family: 'Fredoka', sans-serif;
   font-size: 2rem;
@@ -74,9 +70,8 @@
   margin: 0 5px;
 }
 
-/* Área de Construcción */
 .nb-construction-area {
-  background-color: rgba(248, 249, 250, 0.9);
+  background-color: rgba(248, 249, 250, 0.8);
   border-radius: 20px;
   min-height: 200px;
   display: flex;
@@ -87,48 +82,55 @@
   border: 1px solid #e9ecef;
   padding: 20px;
   margin-bottom: 20px;
-  box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
 }
 
-.nb-rectangle-grid {
+.rectangle-grid {
   display: grid;
   gap: 4px;
-  transition: all 0.5s ease;
 }
 
-/* Caja de Herramientas */
+.rectangle-grid .block {
+  width: 25px;
+  height: 25px;
+  opacity: 0;
+  transform: scale(0.5);
+  animation: pop-in 0.5s ease-out forwards;
+  margin: -1px;
+  border-radius: 3px;
+}
+
+@keyframes pop-in { 
+  to { opacity: 1; transform: scale(1); } 
+}
+
 .nb-toolbox-section {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(244, 244, 244, 0.8);
   border-radius: 15px;
-  padding: 15px;
+  padding: 20px;
   margin-bottom: 20px;
 }
 
 .nb-toolbox-title {
   font-family: 'Fredoka', sans-serif;
   text-align: center;
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-  color: #555;
+  font-size: 1.3rem;
+  margin-bottom: 15px;
 }
 
-.nb-toolbox {
+.toolbox {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-end;
-  gap: 15px;
-  min-height: 100px;
+  gap: 20px;
+  min-height: 150px;
 }
 
-/* Bloques Numberblocks */
+/* Numberblock container */
 .numberblock {
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   position: relative;
-  display: flex;
-  flex-direction: column-reverse; /* Stack upwards */
-  align-items: center;
 }
 
 .numberblock:hover {
@@ -137,35 +139,40 @@
 
 .numberblock.selected {
   transform: scale(1.15) rotate(-3deg);
-  box-shadow: 0 0 15px var(--nb-3);
-  z-index: 10;
+  box-shadow: 0 0 20px var(--nb-3);
+  border-radius: 4px;
 }
 
 .numberblock.double-selected {
   transform: scale(1.15) rotate(3deg);
-  box-shadow: 0 0 15px var(--nb-1);
-  z-index: 10;
+  box-shadow: 0 0 20px var(--nb-1);
 }
 
-.nb-block {
+/* Stack para números apilados */
+.stack {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+/* Bloque individual - EXACTO como original */
+.block {
   width: 25px;
   height: 25px;
   border: 2px solid var(--c-borde);
-  margin: 0;
+  margin-top: -2px;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  flex-shrink: 0;
 }
 
-.nb-block:first-child { border-radius: 4px 4px 0 0; }
-.nb-block:last-child { border-radius: 0 0 4px 4px; }
-.nb-block:only-child { border-radius: 4px; }
+.block:first-child { border-radius: 0 0 4px 4px; }
+.block:last-child { border-radius: 4px 4px 0 0; }
+.block:only-child { border-radius: 4px; }
 
-/* Caras */
-.nb-face-container {
+/* Face container - EXACTO como original */
+.face-container {
   width: 100%;
   height: 100%;
   position: relative;
@@ -175,11 +182,12 @@
   gap: 4px;
 }
 
-.numberblock.has-face .nb-face-container {
+.numberblock.has-face .face-container {
   display: flex;
 }
 
-.nb-eye {
+/* Ojos - EXACTO como original */
+.eye {
   width: 6px;
   height: 6px;
   background-color: #000;
@@ -187,7 +195,7 @@
   position: relative;
 }
 
-.nb-eye::after {
+.eye::after {
   content: '';
   position: absolute;
   width: 2px;
@@ -198,27 +206,28 @@
   left: 1px;
 }
 
-/* Clases de Colores */
+/* Clases de colores oficiales */
 .c1 { background-color: var(--nb-1); }
 .c2 { background-color: var(--nb-2); }
 .c3 { background-color: var(--nb-3); }
 .c4 { background-color: var(--nb-4); }
 .c5 { background-color: var(--nb-5); }
 .c6 { background-color: var(--nb-6); }
-.c7 { background-color: var(--nb-7-7); } /* Default fallback */
 .c8 { background-color: var(--nb-8); }
-.c9 { background-color: var(--nb-9-2); }
-.c10 { background-color: var(--nb-10); border-color: var(--nb-1); }
-.c11 { background-color: #fff; border-color: var(--nb-1); }
-.c12 { background-color: var(--nb-12-main); border-color: var(--nb-12-border); }
+.c10 { background-color: var(--nb-10); border: 3px solid var(--nb-1); }
 
-/* Formas Especiales */
+/* Estructura especial para 9 (grid 3x3) */
 .nb-9-shape {
-  display: grid !important;
+  display: grid;
   grid-template-columns: repeat(3, 1fr);
   width: 75px;
 }
 
+.nb-9-shape .block {
+  margin: -1px;
+}
+
+/* Estructura especial para 11 (dos piernas) */
 .nb-11-shape {
   width: 50px;
   height: auto;
@@ -231,20 +240,33 @@
   flex-direction: column-reverse;
 }
 
-.nb-11-shape .white-block {
-  background-color: #fff;
-  border: 2px solid var(--nb-1);
+.nb-11-shape .white-block { 
+  background-color: #fff; 
+  border: 2px solid var(--nb-1); 
 }
 
-.nb-11-shape .red-block {
-  background-color: var(--nb-1);
+.nb-11-shape .red-block { 
+  background-color: var(--nb-1); 
 }
 
+/* Estructura especial para 12 (grid 3x4) */
 .nb-12-shape {
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr); /* Rectángulo 3x4 */
   width: 75px;
+  height: 100px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
+
+.nb-12-shape .block { 
+  margin: -1px; 
+}
+
+/* Colores para rectángulos construidos */
+.c24 { background-color: var(--nb-8); }
+.c36 { background-color: var(--nb-6); }
+.c48 { background-color: var(--nb-4); }
+.c50 { background-color: var(--nb-5); }
+.c72 { background-color: var(--nb-2); }
 
 /* Botones de Acción */
 .nb-action-area {
@@ -291,34 +313,7 @@
   margin: 10px 0;
 }
 
-/* Animación de bloques del rectángulo */
-@keyframes pop-in {
-  0% { 
-    transform: scale(0) rotate(-180deg);
-    opacity: 0;
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% { 
-    transform: scale(1) rotate(0deg);
-    opacity: 1;
-  }
-}
-
-/* Bloque del rectángulo */
-.nb-rectangle-block {
-  border-radius: 4px;
-  box-sizing: border-box;
-  transition: all 0.2s ease;
-}
-
-.nb-rectangle-block:hover {
-  transform: scale(1.05);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-}
-
-/* Confeti básico */
+/* Confeti */
 .confetti {
   position: absolute;
   width: 8px;
@@ -329,21 +324,13 @@
 }
 
 @keyframes fall {
-  0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+  0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
   100% { transform: translateY(300px) rotate(720deg); opacity: 0; }
 }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .nb-toolbox {
+  .toolbox {
     gap: 10px;
   }
-  .nb-block {
-    width: 20px;
-    height: 20px;
-  }
-  .nb-9-shape, .nb-12-shape {
-    width: 60px;
-  }
 }
-
