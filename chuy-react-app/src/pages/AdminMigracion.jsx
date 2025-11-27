@@ -11,7 +11,8 @@ const AdminMigracion = () => {
   const [migrando, setMigrando] = useState(false);
   const [resultado, setResultado] = useState(null);
   const [jsonInput, setJsonInput] = useState('');
-  const [tipoContenido, setTipoContenido] = useState('aventura'); // 'aventura', 'simulacro', o tipo específico
+  const [tipoContenido, setTipoContenido] = useState('aventura'); // Para etiquetado y UI
+  const [coleccionDestino, setColeccionDestino] = useState('aventuras'); // 'aventuras' o 'simulacros'
 
   // Opciones de tipos de contenido
   const tiposDisponibles = [
@@ -118,11 +119,13 @@ const AdminMigracion = () => {
         throw new Error('El JSON debe tener un campo "id"');
       }
 
-      // Migrar según el tipo
+      // Migrar según la colección destino
       let resultado;
-      if (tipoContenido === 'aventura') {
+      if (coleccionDestino === 'aventuras') {
+        console.log(`Migrando a colección 'aventuras' (estructura anidada)...`);
         resultado = await migrarAventura(data);
       } else {
+        console.log(`Migrando a colección 'simulacros' (estructura plana)...`);
         resultado = await migrarSimulacro(data, tipoContenido);
       }
 
@@ -130,7 +133,7 @@ const AdminMigracion = () => {
         const tipoNombre = tiposDisponibles.find(t => t.valor === tipoContenido)?.nombre || tipoContenido;
         setResultado({
           tipo: 'exito',
-          mensaje: `✅ ${tipoNombre} "${resultado.titulo}" (${resultado.id}) migrado exitosamente`,
+          mensaje: `✅ Contenido migrado exitosamente a la colección '${coleccionDestino}'. ID: ${resultado.id}`,
         });
         setJsonInput(''); // Limpiar el input
       } else {
@@ -209,12 +212,45 @@ const AdminMigracion = () => {
           <div className="instrucciones">
             <p><strong>Instrucciones:</strong></p>
             <ol>
-              <li>Selecciona el tipo de contenido (Aventura o Simulacro)</li>
-              <li>Abre el archivo JSON correspondiente de la carpeta <code>_contenido/</code></li>
-              <li>Copia todo su contenido</li>
-              <li>Pégalo en el área de texto de abajo</li>
-              <li>Haz clic en "Migrar"</li>
+              <li>Selecciona el <strong>Tipo de Contenido</strong> (para referencia visual).</li>
+              <li>Selecciona la <strong>Colección Destino</strong> (¡Importante! Define cómo se guardan los datos).</li>
+              <li>Carga el archivo JSON o pega su contenido.</li>
+              <li>Haz clic en "Migrar".</li>
             </ol>
+          </div>
+
+          {/* Selector de Colección Destino */}
+          <div className="coleccion-selector" style={{ margin: '20px 0', padding: '15px', background: '#e8f6f3', borderRadius: '10px', border: '2px solid #1abc9c' }}>
+            <p style={{ fontWeight: 'bold', marginBottom: '10px', color: '#16a085' }}>📂 ¿A dónde quieres subir esto?</p>
+            <div style={{ display: 'flex', gap: '20px' }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '1.1rem' }}>
+                <input 
+                  type="radio" 
+                  name="coleccion" 
+                  value="aventuras" 
+                  checked={coleccionDestino === 'aventuras'} 
+                  onChange={() => setColeccionDestino('aventuras')}
+                  style={{ width: '20px', height: '20px' }}
+                />
+                <strong>🌟 Aventuras</strong> (Juegos del día, Expediciones, Numberblocks)
+              </label>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '1.1rem' }}>
+                <input 
+                  type="radio" 
+                  name="coleccion" 
+                  value="simulacros" 
+                  checked={coleccionDestino === 'simulacros'} 
+                  onChange={() => setColeccionDestino('simulacros')}
+                  style={{ width: '20px', height: '20px' }}
+                />
+                <strong>🏆 Simulacros</strong> (Exámenes, Bancos de preguntas)
+              </label>
+            </div>
+            <p style={{ marginTop: '10px', fontSize: '0.9rem', color: '#7f8c8d' }}>
+              {coleccionDestino === 'aventuras' 
+                ? 'ℹ️ Mantiene la estructura original (misiones > ejercicios). Ideal para juegos interactivos.' 
+                : 'ℹ️ Aplana la estructura para crear una lista de problemas. Ideal para exámenes.'}
+            </p>
           </div>
 
           <div className="input-section">
