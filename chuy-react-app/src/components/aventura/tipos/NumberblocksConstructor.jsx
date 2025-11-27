@@ -112,47 +112,84 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
   const renderNumberblock = (num) => {
     const isSelected = selectedBlocks.includes(num);
     let shapeClass = '';
-    let blocks = [];
-    const hasFace = num <= 8; // Solo 1-8 tienen cara
+    let blockElements = [];
+    let hasFace = false;
     
     // Configuración de colores y estructura
     if (num === 9) {
       shapeClass = 'nb-9-shape';
+      hasFace = true;
       const nineColors = ['--nb-9-3', '--nb-9-2', '--nb-9-1'];
       for (let i = 0; i < 9; i++) {
-        blocks.push(
+        blockElements.push(
           <div 
             key={i} 
             className="nb-block" 
             style={{ backgroundColor: `var(${nineColors[Math.floor(i/3)]})` }}
-          />
+          >
+            {i === 8 && <Face />}
+          </div>
         );
       }
     } else if (num === 11) {
       shapeClass = 'nb-11-shape';
-      blocks.push(
-        <div key="stack-1" className="stack">
-          <div key="white" className="nb-block white-block" style={{ width: '25px', height: '25px' }}>
-            <Face />
+      hasFace = true;
+      
+      // Pierna izquierda: 5 bloques blancos
+      const leftLeg = [];
+      for (let i = 0; i < 5; i++) {
+        leftLeg.push(
+          <div 
+            key={`left-${i}`} 
+            className="nb-block white-block"
+            style={{ backgroundColor: 'var(--nb-11-1)', border: '2px solid var(--nb-1)' }}
+          >
+            {i === 0 && <Face />}
           </div>
+        );
+      }
+      
+      // Pierna derecha: 5 blancos + 1 rojo
+      const rightLeg = [];
+      for (let i = 0; i < 6; i++) {
+        const isRed = i === 5;
+        rightLeg.push(
+          <div 
+            key={`right-${i}`} 
+            className={`nb-block ${isRed ? 'red-block' : 'white-block'}`}
+            style={{ 
+              backgroundColor: isRed ? 'var(--nb-1)' : 'var(--nb-11-1)',
+              border: !isRed ? '2px solid var(--nb-1)' : 'none'
+            }}
+          >
+            {i === 0 && <Face />}
+          </div>
+        );
+      }
+      
+      blockElements.push(
+        <div key="left" className="stack" style={{ display: 'flex', flexDirection: 'column-reverse' }}>
+          {leftLeg}
         </div>
       );
-      blocks.push(
-        <div key="stack-2" className="stack">
-          <div key="red" className="nb-block red-block" style={{ width: '25px', height: '25px' }} />
+      blockElements.push(
+        <div key="right" className="stack" style={{ display: 'flex', flexDirection: 'column-reverse' }}>
+          {rightLeg}
         </div>
       );
     } else if (num === 12) {
       shapeClass = 'nb-12-shape';
+      hasFace = true;
       for (let i = 0; i < 12; i++) {
         const isCenter = [4, 7].includes(i);
-        blocks.push(
+        blockElements.push(
           <div 
             key={i} 
-            className={`nb-block ${isCenter ? 'c12-center' : 'c12'}`}
+            className="nb-block"
             style={{ 
               backgroundColor: isCenter ? 'var(--nb-12-center)' : 'var(--nb-12-main)',
-              borderColor: 'var(--nb-12-border)'
+              borderColor: 'var(--nb-12-border)',
+              border: '2px solid var(--nb-12-border)'
             }}
           >
             {i === 7 && <Face />}
@@ -161,17 +198,28 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
       }
     } else {
       // Estándar (apilados) - 1 a 8
+      if (num <= 8) hasFace = true;
       const sevenColors = ['--nb-7-1', '--nb-7-2', '--nb-7-3', '--nb-7-4', '--nb-7-5', '--nb-7-6', '--nb-7-7'];
       for (let i = 0; i < num; i++) {
         let style = {};
         if (num === 7) style.backgroundColor = `var(${sevenColors[i]})`;
         
-        blocks.push(
+        blockElements.push(
           <div key={i} className={`nb-block c${num}`} style={style}>
             {i === num - 1 && hasFace && <Face />}
           </div>
         );
       }
+    }
+
+    // Para números estándar (no 9, 11, 12), envolver en stack
+    let content = blockElements;
+    if (![9, 11, 12].includes(num)) {
+      content = (
+        <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
+          {blockElements}
+        </div>
+      );
     }
 
     return (
@@ -180,7 +228,7 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
         className={`numberblock ${hasFace ? 'has-face' : ''} ${isSelected ? 'selected' : ''} ${shapeClass}`}
         onClick={() => handleSelectBlock(num)}
       >
-        {blocks}
+        {content}
       </div>
     );
   };
