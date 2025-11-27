@@ -42,11 +42,15 @@ const Boveda = () => {
         // Cargar Aventuras
         const aventurasRef = collection(db, 'aventuras');
         const aventurasSnapshot = await getDocs(aventurasRef);
-        const listaAventuras = aventurasSnapshot.docs.map(doc => ({
-          id: doc.id,
-          tipo: 'aventura',
-          ...doc.data()
-        })).sort((a, b) => b.id.localeCompare(a.id));
+        const listaAventuras = aventurasSnapshot.docs.map(doc => {
+          const data = doc.data();
+          return {
+            id: doc.id,
+            ...data,
+            // Usar el tipo del documento si existe, sino 'aventura' como fallback
+            tipo: data.tipo || 'aventura'
+          };
+        }).sort((a, b) => b.id.localeCompare(a.id));
 
         // Cargar Simulacros (TODO el contenido está aquí, diferenciado por campo 'tipo')
         const simulacrosRef = collection(db, 'simulacros');
@@ -114,11 +118,14 @@ const Boveda = () => {
     // Si el filtro es un tipo específico
     const tipoEspecifico = tiposJuegos.find(t => t.id === filtro);
     if (tipoEspecifico) {
+      // Aventuras genéricas (sin tipo específico)
       if (tipoEspecifico.tipo === 'aventura') {
-        return [...aventuras];
+        return aventuras.filter(a => a.tipo === 'aventura');
       } else {
-        // Filtrar simulacros por tipo específico
-        return simulacros.filter(s => s.tipo === tipoEspecifico.tipo);
+        // Buscar en ambas colecciones por tipo específico
+        const enAventuras = aventuras.filter(a => a.tipo === tipoEspecifico.tipo);
+        const enSimulacros = simulacros.filter(s => s.tipo === tipoEspecifico.tipo);
+        return [...enAventuras, ...enSimulacros];
       }
     }
     
@@ -134,9 +141,15 @@ const Boveda = () => {
     const tipoData = tiposJuegos.find(t => t.id === tipoId);
     if (!tipoData) return 0;
     
-    if (tipoData.tipo === 'aventura') return aventuras.length;
-    // Todos los demás tipos vienen de simulacros, filtrados por campo 'tipo'
-    return simulacros.filter(s => s.tipo === tipoData.tipo).length;
+    // Aventuras genéricas (sin tipo específico)
+    if (tipoData.tipo === 'aventura') {
+      return aventuras.filter(a => a.tipo === 'aventura').length;
+    }
+    
+    // Buscar en ambas colecciones por tipo específico
+    const enAventuras = aventuras.filter(a => a.tipo === tipoData.tipo).length;
+    const enSimulacros = simulacros.filter(s => s.tipo === tipoData.tipo).length;
+    return enAventuras + enSimulacros;
   };
 
   return (

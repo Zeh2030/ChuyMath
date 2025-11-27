@@ -26,21 +26,20 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
     const maxSelection = currentChallenge.tipo === 'multiply' ? 2 : 1;
     
     setSelectedBlocks(prev => {
-      // Si ya está seleccionado
-      if (prev.includes(number)) {
-        // Si es multiplicación y es el único seleccionado y es el mismo número (ej. 6x6), permitir doble selección visual si se quisiera,
-        // pero para simplificar la lógica de React: si ya está, lo quitamos, a menos que necesitemos dos iguales.
-        // Lógica simplificada: toggle
-        return prev.filter(n => n !== number);
+      // Si ya tenemos el máximo de selecciones
+      if (prev.length >= maxSelection) {
+        // Reemplazar el último (experiencia más fluida)
+        return [...prev.slice(0, maxSelection - 1), number];
       } else {
-        if (prev.length < maxSelection) {
-          return [...prev, number];
-        } else {
-          // Reemplazar el último si ya está lleno (experiencia más fluida)
-          return [...prev.slice(0, maxSelection - 1), number];
-        }
+        // Agregar el número (permite duplicados como 6×6)
+        return [...prev, number];
       }
     });
+  };
+
+  // Función para limpiar selección
+  const limpiarSeleccion = () => {
+    setSelectedBlocks([]);
   };
 
   const checkAnswer = () => {
@@ -255,16 +254,27 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
 
       <div className="nb-action-area">
         {!gridConfig ? (
-          <button 
-            className="nb-action-button" 
-            onClick={checkAnswer}
-            disabled={
-              (currentChallenge.tipo === 'multiply' && selectedBlocks.length !== 2) ||
-              (currentChallenge.tipo === 'divide' && selectedBlocks.length !== 1)
-            }
-          >
-            Construir
-          </button>
+          <>
+            {selectedBlocks.length > 0 && (
+              <button 
+                className="nb-action-button nb-clear-button" 
+                onClick={limpiarSeleccion}
+                style={{ background: 'linear-gradient(45deg, #95a5a6, #7f8c8d)', boxShadow: '0 4px 0 #5d6d7e' }}
+              >
+                🔄 Limpiar
+              </button>
+            )}
+            <button 
+              className="nb-action-button" 
+              onClick={checkAnswer}
+              disabled={
+                (currentChallenge.tipo === 'multiply' && selectedBlocks.length !== 2) ||
+                (currentChallenge.tipo === 'divide' && selectedBlocks.length !== 1)
+              }
+            >
+              Construir
+            </button>
+          </>
         ) : (
           <button className="nb-action-button next" onClick={nextChallenge}>
             Siguiente Reto

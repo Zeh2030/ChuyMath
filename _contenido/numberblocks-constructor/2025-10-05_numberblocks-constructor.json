@@ -1,6 +1,7 @@
 {
   "id": "2025-10-05",
   "titulo": "Numberblocks: El Constructor de Rectángulos",
+  "tipo": "numberblocks-constructor",
   "misiones": [
     {
       "id": "mision-nb-constructor-1",
