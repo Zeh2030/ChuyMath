@@ -262,6 +262,33 @@
   margin: 10px 0;
 }
 
+/* Animación de bloques del rectángulo */
+@keyframes pop-in {
+  0% { 
+    transform: scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% { 
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Bloque del rectángulo */
+.nb-rectangle-block {
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.nb-rectangle-block:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
 /* Confeti básico */
 .confetti {
   position: absolute;

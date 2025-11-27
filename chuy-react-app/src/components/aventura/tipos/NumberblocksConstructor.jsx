@@ -89,6 +89,24 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
     setTimeout(() => setShowConfetti(false), 3000);
   };
 
+  // Obtener color de un Numberblock
+  const getNumberblockColor = (num) => {
+    const colors = {
+      1: '#e53935', // Rojo
+      2: '#fb8c00', // Naranja
+      3: '#fdd835', // Amarillo
+      4: '#43a047', // Verde
+      5: '#1e88e5', // Azul
+      6: '#8e24aa', // Púrpura
+      7: '#673ab7', // Púrpura oscuro
+      8: '#ec407a', // Rosa
+      9: '#e0e0e0', // Gris claro
+      10: '#ffffff', // Blanco (con borde)
+      12: '#fb8c00' // Naranja (centro de 12)
+    };
+    return colors[num] || '#95a5a6';
+  };
+
   // Renderizado de un bloque individual (Numberblock)
   const renderNumberblock = (num) => {
     const isSelected = selectedBlocks.includes(num);
@@ -228,13 +246,25 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
               width: `${gridConfig.cols * 25}px`
             }}
           >
-            {[...Array(gridConfig.rows * gridConfig.cols)].map((_, i) => (
-              <div 
-                key={i} 
-                className={`nb-block c${gridConfig.rows * gridConfig.cols}`}
-                style={{ animation: `pop-in 0.3s ease-out ${i * 0.01}s forwards`, opacity: 0 }}
-              />
-            ))}
+            {[...Array(gridConfig.rows * gridConfig.cols)].map((_, i) => {
+              // Alternar colores basados en los bloques seleccionados
+              const colorIndex = i % selectedBlocks.length;
+              const blockNumber = selectedBlocks[colorIndex];
+              const blockColor = getNumberblockColor(blockNumber);
+              
+              return (
+                <div 
+                  key={i} 
+                  className="nb-block nb-rectangle-block"
+                  style={{ 
+                    backgroundColor: blockColor,
+                    animation: `pop-in 0.3s ease-out ${i * 0.01}s forwards`, 
+                    opacity: 0,
+                    border: '1px solid rgba(0,0,0,0.15)'
+                  }}
+                />
+              );
+            })}
           </div>
         ) : (
           <div style={{ color: '#999', fontStyle: 'italic' }}>Tu construcción aparecerá aquí...</div>
