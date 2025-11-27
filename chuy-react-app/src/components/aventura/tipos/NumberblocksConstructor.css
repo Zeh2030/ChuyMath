@@ -10,19 +10,22 @@
   overflow: hidden;
 }
 
-/* Variables de colores locales */
+/* Variables de colores OFICIALES de Numberblocks */
 .nb-game-container {
-  --nb-1: #e53935;
-  --nb-2: #fb8c00;
-  --nb-3: #fdd835;
-  --nb-4: #43a047;
-  --nb-5: #1e88e5;
-  --nb-6: #8e24aa;
+  --nb-1: #e53935; /* Red */
+  --nb-2: #fb8c00; /* Orange */
+  --nb-3: #fdd835; /* Yellow */
+  --nb-4: #43a047; /* Green */
+  --nb-5: #1e88e5; /* Blue */
+  --nb-6: #8e24aa; /* Indigo */
   --nb-7-1: #e53935; --nb-7-2: #fb8c00; --nb-7-3: #fdd835;
-  --nb-7-4: #43a047; --nb-7-5: #1e88e5; --nb-7-6: #4527a0; --nb-7-7: #673ab7;
-  --nb-8: #ec407a;
+  --nb-7-4: #43a047; --nb-7-5: #1e88e5; --nb-7-6: #4527a0; /* Indigo */
+  --nb-7-7: #673ab7; /* Violet */
+  --nb-8: #ec407a; /* Magenta/Pink */
   --nb-9-1: #f5f5f5; --nb-9-2: #e0e0e0; --nb-9-3: #cccccc;
   --nb-10: #ffffff;
+  --nb-11-1: #ffffff; /* White block */
+  --nb-11-2: #e53935; /* Red block */
   --nb-12-main: #ffffff; 
   --nb-12-border: #e53935;
   --nb-12-center: #fb8c00;
@@ -165,10 +168,14 @@
   width: 100%;
   height: 100%;
   position: relative;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   gap: 4px;
+}
+
+.numberblock.has-face .nb-face-container {
+  display: flex;
 }
 
 .nb-eye {
@@ -209,6 +216,27 @@
   display: grid !important;
   grid-template-columns: repeat(3, 1fr);
   width: 75px;
+}
+
+.nb-11-shape {
+  width: 50px;
+  height: auto;
+  display: flex;
+  align-items: flex-end;
+}
+
+.nb-11-shape .stack {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.nb-11-shape .white-block {
+  background-color: #fff;
+  border: 2px solid var(--nb-1);
+}
+
+.nb-11-shape .red-block {
+  background-color: var(--nb-1);
 }
 
 .nb-12-shape {

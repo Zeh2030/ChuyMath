@@ -89,20 +89,21 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
     setTimeout(() => setShowConfetti(false), 3000);
   };
 
-  // Obtener color de un Numberblock
+  // Obtener color de un Numberblock (colores oficiales)
   const getNumberblockColor = (num) => {
     const colors = {
-      1: '#e53935', // Rojo
-      2: '#fb8c00', // Naranja
-      3: '#fdd835', // Amarillo
-      4: '#43a047', // Verde
-      5: '#1e88e5', // Azul
-      6: '#8e24aa', // Púrpura
-      7: '#673ab7', // Púrpura oscuro
-      8: '#ec407a', // Rosa
-      9: '#e0e0e0', // Gris claro
-      10: '#ffffff', // Blanco (con borde)
-      12: '#fb8c00' // Naranja (centro de 12)
+      1: '#e53935', // Red
+      2: '#fb8c00', // Orange
+      3: '#fdd835', // Yellow
+      4: '#43a047', // Green
+      5: '#1e88e5', // Blue
+      6: '#8e24aa', // Indigo
+      7: '#673ab7', // Violet
+      8: '#ec407a', // Magenta/Pink
+      9: '#e0e0e0', // Grey
+      10: '#ffffff', // White
+      11: '#e53935', // Red (para el bloque rojo del 11)
+      12: '#fb8c00' // Orange (centro de 12)
     };
     return colors[num] || '#95a5a6';
   };
@@ -110,9 +111,9 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
   // Renderizado de un bloque individual (Numberblock)
   const renderNumberblock = (num) => {
     const isSelected = selectedBlocks.includes(num);
-    // Lógica visual para formas especiales
     let shapeClass = '';
     let blocks = [];
+    const hasFace = num <= 8; // Solo 1-8 tienen cara
     
     // Configuración de colores y estructura
     if (num === 9) {
@@ -124,11 +125,23 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
             key={i} 
             className="nb-block" 
             style={{ backgroundColor: `var(${nineColors[Math.floor(i/3)]})` }}
-          >
-            {i === 8 && <Face />}
-          </div>
+          />
         );
       }
+    } else if (num === 11) {
+      shapeClass = 'nb-11-shape';
+      blocks.push(
+        <div key="stack-1" className="stack">
+          <div key="white" className="nb-block white-block" style={{ width: '25px', height: '25px' }}>
+            <Face />
+          </div>
+        </div>
+      );
+      blocks.push(
+        <div key="stack-2" className="stack">
+          <div key="red" className="nb-block red-block" style={{ width: '25px', height: '25px' }} />
+        </div>
+      );
     } else if (num === 12) {
       shapeClass = 'nb-12-shape';
       for (let i = 0; i < 12; i++) {
@@ -147,7 +160,7 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
         );
       }
     } else {
-      // Estándar (apilados)
+      // Estándar (apilados) - 1 a 8
       const sevenColors = ['--nb-7-1', '--nb-7-2', '--nb-7-3', '--nb-7-4', '--nb-7-5', '--nb-7-6', '--nb-7-7'];
       for (let i = 0; i < num; i++) {
         let style = {};
@@ -155,7 +168,7 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
         
         blocks.push(
           <div key={i} className={`nb-block c${num}`} style={style}>
-            {i === num - 1 && <Face />}
+            {i === num - 1 && hasFace && <Face />}
           </div>
         );
       }
@@ -164,7 +177,7 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
     return (
       <div 
         key={num}
-        className={`numberblock ${isSelected ? 'selected' : ''} ${shapeClass}`}
+        className={`numberblock ${hasFace ? 'has-face' : ''} ${isSelected ? 'selected' : ''} ${shapeClass}`}
         onClick={() => handleSelectBlock(num)}
       >
         {blocks}
@@ -278,7 +291,7 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
       <div className="nb-toolbox-section">
         <div className="nb-toolbox-title">Caja de Herramientas</div>
         <div className="nb-toolbox">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12].map(num => renderNumberblock(num))}
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(num => renderNumberblock(num))}
         </div>
       </div>
 
