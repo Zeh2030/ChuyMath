@@ -48,7 +48,8 @@ const Boveda = () => {
             id: doc.id,
             ...data,
             // Usar el tipo del documento si existe, sino 'aventura' como fallback
-            tipo: data.tipo || 'aventura'
+            tipo: data.tipo || 'aventura',
+            coleccion: 'aventuras' // Para saber la ruta correcta
           };
         }).sort((a, b) => b.id.localeCompare(a.id));
 
@@ -60,7 +61,8 @@ const Boveda = () => {
           return {
             id: doc.id,
             tipo: data.tipo || 'simulacro',
-            ...data
+            ...data,
+            coleccion: 'simulacros' // Para saber la ruta correcta
           };
         });
 
@@ -281,11 +283,10 @@ const Boveda = () => {
                     </div>
                   ) : (
                     contenidoMostrar().map((item, index) => {
-                      const progreso = getProgreso(item.id, item.tipoDocumento || item.tipo);
+                      const progreso = getProgreso(item.id, item.tipo);
                       
-                      // Determinar si es aventura o simulacro para la ruta
-                      // Si tiene tipoDocumento === 'simulacro', es simulacro. Si tipo === 'aventura', es aventura
-                      const esAventura = item.tipo === 'aventura';
+                      // Determinar la ruta basándose en la colección de origen
+                      const esAventura = item.coleccion === 'aventuras';
                       const ruta = esAventura ? `/aventura/${item.id}` : `/simulacro/${item.id}`;
                       
                       // Obtener nombre del tipo para mostrar
