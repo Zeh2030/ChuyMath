@@ -103,23 +103,25 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
     const isSelected = selectedBlocks.includes(num);
     
     if (num === 9) {
-      // 9 es un grid 3x3 con grises
+      // 9 es una TORRE de 9 bloques (no grid), con tres grises diferentes
       const nineColors = ['--nb-9-3', '--nb-9-2', '--nb-9-1'];
       return (
         <div 
           key={num}
-          className={`numberblock has-face nb-9-shape ${isSelected ? 'selected' : ''}`}
+          className={`numberblock has-face ${isSelected ? 'selected' : ''}`}
           onClick={() => handleSelectBlock(num)}
         >
-          {[...Array(9)].map((_, i) => (
-            <div 
-              key={i} 
-              className="block"
-              style={{ backgroundColor: `var(${nineColors[Math.floor(i/3)]})` }}
-            >
-              {i === 8 && <Face />}
-            </div>
-          ))}
+          <div className="stack">
+            {[...Array(9)].map((_, i) => (
+              <div 
+                key={i} 
+                className="block c9"
+                style={{ backgroundColor: `var(${nineColors[Math.floor(i/3)]})` }}
+              >
+                {i === 8 && <Face />}
+              </div>
+            ))}
+          </div>
         </div>
       );
     }

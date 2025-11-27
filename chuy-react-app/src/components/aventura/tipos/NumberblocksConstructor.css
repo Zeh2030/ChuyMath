@@ -216,17 +216,6 @@
 .c8 { background-color: var(--nb-8); }
 .c10 { background-color: var(--nb-10); border: 3px solid var(--nb-1); }
 
-/* Estructura especial para 9 (grid 3x3) */
-.nb-9-shape {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  width: 75px;
-}
-
-.nb-9-shape .block {
-  margin: -1px;
-}
-
 /* Estructura especial para 11 (dos piernas) */
 .nb-11-shape {
   width: 50px;
