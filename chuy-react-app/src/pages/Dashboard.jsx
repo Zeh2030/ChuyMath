@@ -113,13 +113,14 @@ const Dashboard = () => {
   const tiposDeJuego = [
     { id: 'aventuras', emoji: '🎯', nombre: 'Aventuras', filtro: 'aventuras', disponible: true },
     { id: 'simulacros', emoji: '🏆', nombre: 'Simulacros', filtro: 'simulacros', disponible: true },
+    { id: 'numberblocks', emoji: '🧱', nombre: 'Numberblocks', filtro: 'numberblocks-constructor', disponible: true },
     { id: 'conteo', emoji: '💠', nombre: 'Conteo', filtro: 'conteo-figuras', disponible: true },
     { id: 'secuencias', emoji: '🔢', nombre: 'Secuencias', filtro: 'secuencias', disponible: true },
     { id: 'detectives', emoji: '🔎', nombre: 'Detectives', filtro: 'tabla-doble-entrada', disponible: true },
-    { id: 'operaciones', emoji: '➕', nombre: 'Operaciones', filtro: 'operaciones', disponible: false },
-    { id: 'cripto', emoji: '🍇', nombre: 'Cripto', filtro: 'criptoaritmetica', disponible: false },
-    { id: 'balanza', emoji: '⚖️', nombre: 'Balanza', filtro: 'balanza-logica', disponible: false },
-    { id: 'palabras', emoji: '📝', nombre: 'Palabras', filtro: 'palabra-del-dia', disponible: false }
+    { id: 'operaciones', emoji: '➕', nombre: 'Operaciones', filtro: 'operaciones', disponible: true },
+    { id: 'cripto', emoji: '🍇', nombre: 'Cripto', filtro: 'criptoaritmetica', disponible: true },
+    { id: 'balanza', emoji: '⚖️', nombre: 'Balanza', filtro: 'balanza-logica', disponible: true },
+    { id: 'cubos', emoji: '🧊', nombre: 'Cubos', filtro: 'desarrollo-cubos', disponible: true }
   ];
 
   if (profileLoading) {

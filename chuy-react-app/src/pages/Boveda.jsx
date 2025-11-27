@@ -22,6 +22,7 @@ const Boveda = () => {
   const tiposJuegos = [
     { id: 'aventuras', emoji: '🎯', nombre: 'Aventuras Diarias', tipo: 'aventura', descripcion: 'Aventuras diarias' },
     { id: 'simulacros', emoji: '🏆', nombre: 'Simulacros', tipo: 'simulacro', descripcion: 'Exámenes completos' },
+    { id: 'numberblocks-constructor', emoji: '🧱', nombre: 'Numberblocks', tipo: 'numberblocks-constructor', descripcion: 'Construye rectángulos con bloques' },
     { id: 'conteo-figuras', emoji: '💠', nombre: 'Conteo de Figuras', tipo: 'conteo-figuras', descripcion: 'Cuenta figuras geométricas' },
     { id: 'secuencias', emoji: '🔢', nombre: 'Secuencias', tipo: 'secuencia', descripcion: 'Patrones y secuencias' },
     { id: 'tabla-doble-entrada', emoji: '🔎', nombre: 'Juega al Detective', tipo: 'tabla-doble-entrada', descripcion: 'Resuelve misterios con lógica' },

@@ -11,39 +11,9 @@ const AdminMigracion = () => {
   const [migrando, setMigrando] = useState(false);
   const [resultado, setResultado] = useState(null);
   const [jsonInput, setJsonInput] = useState('');
-  const [tipoContenido, setTipoContenido] = useState(''); // Para etiquetado y UI (vacío inicialmente)
   const [coleccionDestino, setColeccionDestino] = useState('aventuras'); // 'aventuras' o 'simulacros'
 
-  // Opciones de tipos de contenido por colección
-  const tiposPorColeccion = {
-    aventuras: [
-      { valor: 'operaciones', nombre: '➕ Operaciones', emoji: '➕' },
-      { valor: 'tabla-doble-entrada', nombre: '🔎 Tabla Doble Entrada', emoji: '🔎' },
-      { valor: 'conteo-figuras', nombre: '💠 Conteo de Figuras', emoji: '💠' },
-      { valor: 'secuencia', nombre: '🔢 Secuencias', emoji: '🔢' },
-      { valor: 'criptoaritmetica', nombre: '🍇 Criptoaritmetica', emoji: '🍇' },
-      { valor: 'balanza-logica', nombre: '⚖️ Balanza Lógica', emoji: '⚖️' },
-      { valor: 'desarrollo-cubos', nombre: '🧊 Desarrollo de Cubos', emoji: '🧊' },
-      { valor: 'palabra-del-dia', nombre: '📝 Palabra del Día', emoji: '📝' }
-    ],
-    simulacros: [
-      { valor: 'operaciones', nombre: '➕ Operaciones', emoji: '➕' },
-      { valor: 'opcion-multiple', nombre: '🎯 Opción Múltiple', emoji: '🎯' },
-      { valor: 'tabla-doble-entrada', nombre: '🔎 Tabla Doble Entrada', emoji: '🔎' },
-      { valor: 'balanza-logica', nombre: '⚖️ Balanza Lógica', emoji: '⚖️' },
-      { valor: 'conteo-figuras', nombre: '💠 Conteo de Figuras', emoji: '💠' }
-    ]
-  };
-
-  const tiposDisponibles = tiposPorColeccion[coleccionDestino] || [];
-
-  // Al cambiar la colección destino, reiniciar el tipo de contenido
-  const manejarCambioColeccion = (coleccion) => {
-    setColeccionDestino(coleccion);
-    setTipoContenido(''); // Reiniciar
-  };
-
-  // Función para migrar una aventura individual
+  // Función para migrar una aventura individual (mantiene estructura original)
   const migrarAventura = async (aventuraData) => {
     try {
       const aventuraRef = doc(db, 'aventuras', aventuraData.id);
@@ -59,10 +29,9 @@ const AdminMigracion = () => {
     }
   };
 
-  // Función para migrar un simulacro - TODO VA A COLECCIÓN 'simulacros'
-  const migrarSimulacro = async (simulacroData, tipoJuego) => {
+  // Función para migrar un simulacro (aplana estructura para lista de problemas)
+  const migrarSimulacro = async (simulacroData) => {
     try {
-      // SIMPLIFICADO: Todo va a 'simulacros', diferenciado por campo 'tipo'
       const simulacroRef = doc(db, 'simulacros', simulacroData.id);
       
       // Aplanar la estructura: si hay misiones con ejercicios dentro, convertir a problemas planos
@@ -92,18 +61,17 @@ const AdminMigracion = () => {
         // Si solo hay ejercicios sin misiones
         problemas = simulacroData.ejercicios.map((ej, idx) => ({
           id: `problema-${idx}`,
-          tipo: tipoJuego,
+          tipo: 'ejercicio',
           ...ej
         }));
       }
       
-      // Preparar datos a migrar
+      // Preparar datos a migrar (sin spread que sobreescriba problemas)
       const datosAMigrar = {
+        id: simulacroData.id,
         titulo: simulacroData.titulo,
         descripcion: simulacroData.descripcion || '',
-        tipo: tipoJuego, // Campo tipo para filtrar
-        problemas: problemas,
-        ...simulacroData
+        problemas: problemas
       };
 
       await setDoc(simulacroRef, datosAMigrar);
@@ -117,8 +85,7 @@ const AdminMigracion = () => {
   // Función para procesar y migrar el JSON
   const procesarYMigrar = async () => {
     if (!jsonInput.trim()) {
-      const tipoNombre = tiposDisponibles.find(t => t.valor === tipoContenido)?.nombre || tipoContenido;
-      alert(`Por favor, pega el contenido JSON de ${tipoNombre}`);
+      alert('Por favor, pega el contenido JSON o carga un archivo.');
       return;
     }
 
@@ -141,11 +108,10 @@ const AdminMigracion = () => {
         resultado = await migrarAventura(data);
       } else {
         console.log(`Migrando a colección 'simulacros' (estructura plana)...`);
-        resultado = await migrarSimulacro(data, tipoContenido);
+        resultado = await migrarSimulacro(data);
       }
 
       if (resultado.exito) {
-        const tipoNombre = tiposDisponibles.find(t => t.valor === tipoContenido)?.nombre || tipoContenido;
         setResultado({
           tipo: 'exito',
           mensaje: `✅ Contenido migrado exitosamente a la colección '${coleccionDestino}'. ID: ${resultado.id}`,
@@ -182,7 +148,7 @@ const AdminMigracion = () => {
     reader.readAsText(file);
   };
 
-  // Solo permitir acceso a usuarios autenticados (por ahora, todos)
+  // Solo permitir acceso a usuarios autenticados
   if (!currentUser) {
     return (
       <PageWrapper>
@@ -205,8 +171,7 @@ const AdminMigracion = () => {
           <div className="instrucciones">
             <p><strong>Instrucciones:</strong></p>
             <ol>
-              <li>Selecciona la <strong>Colección Destino</strong> (¡Importante! Define cómo se guardan los datos).</li>
-              <li>Selecciona el <strong>Tipo de Contenido</strong> (los disponibles cambian según la colección).</li>
+              <li>Selecciona la <strong>Colección Destino</strong> (define cómo se guardan los datos).</li>
               <li>Carga el archivo JSON o pega su contenido.</li>
               <li>Haz clic en "Migrar".</li>
             </ol>
@@ -216,72 +181,47 @@ const AdminMigracion = () => {
           <div className="coleccion-selector" style={{ margin: '20px 0', padding: '20px', background: '#e8f6f3', borderRadius: '10px', border: '2px solid #1abc9c' }}>
             <p style={{ fontWeight: 'bold', marginBottom: '15px', color: '#16a085', fontSize: '1.1rem' }}>📂 Paso 1: ¿A dónde quieres subir esto?</p>
             <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
-              <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '1rem' }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '1rem', padding: '10px 15px', background: coleccionDestino === 'aventuras' ? '#d5f5e3' : '#fff', borderRadius: '8px', border: coleccionDestino === 'aventuras' ? '2px solid #27ae60' : '1px solid #ddd' }}>
                 <input 
                   type="radio" 
                   name="coleccion" 
                   value="aventuras" 
                   checked={coleccionDestino === 'aventuras'} 
-                  onChange={() => manejarCambioColeccion('aventuras')}
+                  onChange={() => setColeccionDestino('aventuras')}
                   style={{ width: '20px', height: '20px' }}
                 />
-                <strong>🌟 Aventuras</strong> (Juegos del día, Expediciones, Numberblocks)
+                <strong>🌟 Aventuras</strong>
               </label>
-              <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '1rem' }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '1rem', padding: '10px 15px', background: coleccionDestino === 'simulacros' ? '#fdebd0' : '#fff', borderRadius: '8px', border: coleccionDestino === 'simulacros' ? '2px solid #f39c12' : '1px solid #ddd' }}>
                 <input 
                   type="radio" 
                   name="coleccion" 
                   value="simulacros" 
                   checked={coleccionDestino === 'simulacros'} 
-                  onChange={() => manejarCambioColeccion('simulacros')}
+                  onChange={() => setColeccionDestino('simulacros')}
                   style={{ width: '20px', height: '20px' }}
                 />
-                <strong>🏆 Simulacros</strong> (Exámenes, Bancos de preguntas)
+                <strong>🏆 Simulacros</strong>
               </label>
             </div>
-            <p style={{ marginTop: '10px', fontSize: '0.9rem', color: '#7f8c8d' }}>
+            <p style={{ marginTop: '15px', fontSize: '0.9rem', color: '#7f8c8d', background: '#f8f9fa', padding: '10px', borderRadius: '5px' }}>
               {coleccionDestino === 'aventuras' 
-                ? 'ℹ️ Mantiene la estructura original (misiones > ejercicios). Ideal para juegos interactivos.' 
-                : 'ℹ️ Aplana la estructura para crear una lista de problemas. Ideal para exámenes.'}
+                ? '🌟 Aventuras: Mantiene la estructura original (misiones > ejercicios). Ideal para juegos del día, Numberblocks, Expediciones.' 
+                : '🏆 Simulacros: Aplana la estructura para crear una lista de problemas. Ideal para exámenes y bancos de preguntas.'}
             </p>
           </div>
 
-          {/* Paso 2: Selector de tipo de contenido (dinámico según colección) */}
-          {tiposDisponibles.length > 0 && (
-            <div className="tipo-selector-grid">
-              <p style={{ marginBottom: '15px', fontWeight: 'bold', color: '#333', fontSize: '1.1rem' }}>
-                📋 Paso 2: Selecciona el tipo de contenido ({coleccionDestino === 'aventuras' ? 'Aventura' : 'Simulacro'}):
-              </p>
-              <div className="tipos-grid">
-                {tiposDisponibles.map(tipo => (
-                  <label key={tipo.valor} className="tipo-card">
-                    <input
-                      type="radio"
-                      value={tipo.valor}
-                      checked={tipoContenido === tipo.valor}
-                      onChange={(e) => setTipoContenido(e.target.value)}
-                      style={{ display: 'none' }}
-                    />
-                    <div className={`tipo-card-content ${tipoContenido === tipo.valor ? 'selected' : ''}`}>
-                      <span className="tipo-emoji">{tipo.emoji}</span>
-                      <span className="tipo-nombre">{tipo.nombre.split(' ').slice(1).join(' ')}</span>
-                    </div>
-                  </label>
-                ))}
-              </div>
-            </div>
-          )}
-
+          {/* Paso 2: Contenido JSON */}
           <div className="input-section">
-            <label htmlFor="json-input" className="input-label">
-              📄 Paso 3: Contenido JSON:
+            <label htmlFor="json-input" className="input-label" style={{ fontWeight: 'bold', fontSize: '1.1rem', color: '#333' }}>
+              📄 Paso 2: Contenido JSON
             </label>
             <textarea
               id="json-input"
               className="json-textarea"
               value={jsonInput}
               onChange={(e) => setJsonInput(e.target.value)}
-              placeholder={`Pega aquí el contenido del archivo JSON de ${coleccionDestino === 'aventuras' ? 'una aventura' : 'un simulacro'}`}
+              placeholder={`Pega aquí el contenido del archivo JSON...`}
               rows={15}
             />
           </div>
@@ -302,13 +242,11 @@ const AdminMigracion = () => {
           <button
             className="boton-migrar"
             onClick={procesarYMigrar}
-            disabled={migrando || !jsonInput.trim() || !tipoContenido}
+            disabled={migrando || !jsonInput.trim()}
           >
             {migrando 
               ? 'Migrando...' 
-              : tipoContenido 
-                ? `Migrar a ${coleccionDestino}` 
-                : 'Selecciona un tipo de contenido'}
+              : `Migrar a ${coleccionDestino === 'aventuras' ? '🌟 Aventuras' : '🏆 Simulacros'}`}
           </button>
 
           {resultado && (
@@ -329,4 +267,3 @@ const AdminMigracion = () => {
 };
 
 export default AdminMigracion;
-
