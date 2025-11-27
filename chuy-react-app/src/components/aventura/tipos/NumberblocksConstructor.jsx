@@ -118,8 +118,7 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
     // Configuración de colores y estructura
     if (num === 9) {
       shapeClass = 'nb-9-shape';
-      hasFace = true;
-      const nineColors = ['--nb-9-3', '--nb-9-2', '--nb-9-1'];
+      const nineColors = ['--nb-9-1', '--nb-9-2', '--nb-9-3']; // De arriba a abajo
       for (let i = 0; i < 9; i++) {
         blockElements.push(
           <div 
@@ -127,7 +126,7 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
             className="nb-block" 
             style={{ backgroundColor: `var(${nineColors[Math.floor(i/3)]})` }}
           >
-            {i === 8 && <Face />}
+            {i === 4 && <Face />} {/* Cara en el centro */}
           </div>
         );
       }
@@ -135,21 +134,25 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
       shapeClass = 'nb-11-shape';
       hasFace = true;
       
-      // Pierna izquierda: 5 bloques blancos
+      // Pierna izquierda: 5 bloques blancos (apilados de abajo a arriba)
       const leftLeg = [];
       for (let i = 0; i < 5; i++) {
         leftLeg.push(
           <div 
             key={`left-${i}`} 
             className="nb-block white-block"
-            style={{ backgroundColor: 'var(--nb-11-1)', border: '2px solid var(--nb-1)' }}
+            style={{ 
+              backgroundColor: '#ffffff', 
+              border: '2px solid var(--nb-1)',
+              boxSizing: 'border-box'
+            }}
           >
             {i === 0 && <Face />}
           </div>
         );
       }
       
-      // Pierna derecha: 5 blancos + 1 rojo
+      // Pierna derecha: 5 blancos + 1 rojo (apilados de abajo a arriba)
       const rightLeg = [];
       for (let i = 0; i < 6; i++) {
         const isRed = i === 5;
@@ -158,8 +161,9 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
             key={`right-${i}`} 
             className={`nb-block ${isRed ? 'red-block' : 'white-block'}`}
             style={{ 
-              backgroundColor: isRed ? 'var(--nb-1)' : 'var(--nb-11-1)',
-              border: !isRed ? '2px solid var(--nb-1)' : 'none'
+              backgroundColor: isRed ? 'var(--nb-1)' : '#ffffff',
+              border: !isRed ? '2px solid var(--nb-1)' : 'none',
+              boxSizing: 'border-box'
             }}
           >
             {i === 0 && <Face />}
@@ -168,12 +172,12 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
       }
       
       blockElements.push(
-        <div key="left" className="stack" style={{ display: 'flex', flexDirection: 'column-reverse' }}>
+        <div key="left" className="stack" style={{ display: 'flex', flexDirection: 'column-reverse', gap: '0' }}>
           {leftLeg}
         </div>
       );
       blockElements.push(
-        <div key="right" className="stack" style={{ display: 'flex', flexDirection: 'column-reverse' }}>
+        <div key="right" className="stack" style={{ display: 'flex', flexDirection: 'column-reverse', gap: '0' }}>
           {rightLeg}
         </div>
       );
@@ -188,8 +192,8 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
             className="nb-block"
             style={{ 
               backgroundColor: isCenter ? 'var(--nb-12-center)' : 'var(--nb-12-main)',
-              borderColor: 'var(--nb-12-border)',
-              border: '2px solid var(--nb-12-border)'
+              border: '2px solid var(--nb-12-border)',
+              boxSizing: 'border-box'
             }}
           >
             {i === 7 && <Face />}
@@ -200,23 +204,35 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
       // Estándar (apilados) - 1 a 8
       if (num <= 8) hasFace = true;
       const sevenColors = ['--nb-7-1', '--nb-7-2', '--nb-7-3', '--nb-7-4', '--nb-7-5', '--nb-7-6', '--nb-7-7'];
-      for (let i = 0; i < num; i++) {
-        let style = {};
-        if (num === 7) style.backgroundColor = `var(${sevenColors[i]})`;
+      
+      // Crear bloques EN ORDEN INVERSO para que se apilen correctamente (abajo a arriba)
+      for (let i = num - 1; i >= 0; i--) {
+        let style = {
+          boxSizing: 'border-box',
+          border: '2px solid var(--c-borde)'
+        };
+        
+        if (num === 7) {
+          style.backgroundColor = `var(${sevenColors[i]})`;
+        } else {
+          style.backgroundColor = `var(--nb-${num})`;
+        }
         
         blockElements.push(
           <div key={i} className={`nb-block c${num}`} style={style}>
-            {i === num - 1 && hasFace && <Face />}
+            {i === 0 && hasFace && <Face />}
           </div>
         );
       }
     }
 
-    // Para números estándar (no 9, 11, 12), envolver en stack
+    // Para números estándar (no 9, 11, 12), NO necesita flexDirection reverse porque ya está en orden
     let content = blockElements;
-    if (![9, 11, 12].includes(num)) {
+    if ([9, 11, 12].includes(num)) {
+      content = blockElements; // Ya tienen su estructura especial
+    } else {
       content = (
-        <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
           {blockElements}
         </div>
       );

@@ -151,16 +151,17 @@
   width: 25px;
   height: 25px;
   border: 2px solid var(--c-borde);
-  margin-top: -2px;
+  margin: 0;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  flex-shrink: 0;
 }
 
-.nb-block:first-child { border-radius: 0 0 4px 4px; }
-.nb-block:last-child { border-radius: 4px 4px 0 0; }
+.nb-block:first-child { border-radius: 4px 4px 0 0; }
+.nb-block:last-child { border-radius: 0 0 4px 4px; }
 .nb-block:only-child { border-radius: 4px; }
 
 /* Caras */
