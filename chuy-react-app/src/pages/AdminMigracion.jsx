@@ -11,22 +11,37 @@ const AdminMigracion = () => {
   const [migrando, setMigrando] = useState(false);
   const [resultado, setResultado] = useState(null);
   const [jsonInput, setJsonInput] = useState('');
-  const [tipoContenido, setTipoContenido] = useState('aventura'); // Para etiquetado y UI
+  const [tipoContenido, setTipoContenido] = useState(''); // Para etiquetado y UI (vacío inicialmente)
   const [coleccionDestino, setColeccionDestino] = useState('aventuras'); // 'aventuras' o 'simulacros'
 
-  // Opciones de tipos de contenido
-  const tiposDisponibles = [
-    { valor: 'aventura', nombre: '🌟 Aventura', emoji: '🌟' },
-    { valor: 'simulacro', nombre: '🏆 Simulacro', emoji: '🏆' },
-    { valor: 'tabla-doble-entrada', nombre: '🔎 Tabla Doble Entrada', emoji: '🔎' },
-    { valor: 'conteo-figuras', nombre: '💠 Conteo de Figuras', emoji: '💠' },
-    { valor: 'secuencia', nombre: '🔢 Secuencias', emoji: '🔢' },
-    { valor: 'operaciones', nombre: '➕ Operaciones', emoji: '➕' },
-    { valor: 'criptoaritmetica', nombre: '🍇 Criptoaritmetica', emoji: '🍇' },
-    { valor: 'balanza-logica', nombre: '⚖️ Balanza Lógica', emoji: '⚖️' },
-    { valor: 'desarrollo-cubos', nombre: '🧊 Desarrollo de Cubos', emoji: '🧊' },
-    { valor: 'palabra-del-dia', nombre: '📝 Palabra del Día', emoji: '📝' }
-  ];
+  // Opciones de tipos de contenido por colección
+  const tiposPorColeccion = {
+    aventuras: [
+      { valor: 'operaciones', nombre: '➕ Operaciones', emoji: '➕' },
+      { valor: 'tabla-doble-entrada', nombre: '🔎 Tabla Doble Entrada', emoji: '🔎' },
+      { valor: 'conteo-figuras', nombre: '💠 Conteo de Figuras', emoji: '💠' },
+      { valor: 'secuencia', nombre: '🔢 Secuencias', emoji: '🔢' },
+      { valor: 'criptoaritmetica', nombre: '🍇 Criptoaritmetica', emoji: '🍇' },
+      { valor: 'balanza-logica', nombre: '⚖️ Balanza Lógica', emoji: '⚖️' },
+      { valor: 'desarrollo-cubos', nombre: '🧊 Desarrollo de Cubos', emoji: '🧊' },
+      { valor: 'palabra-del-dia', nombre: '📝 Palabra del Día', emoji: '📝' }
+    ],
+    simulacros: [
+      { valor: 'operaciones', nombre: '➕ Operaciones', emoji: '➕' },
+      { valor: 'opcion-multiple', nombre: '🎯 Opción Múltiple', emoji: '🎯' },
+      { valor: 'tabla-doble-entrada', nombre: '🔎 Tabla Doble Entrada', emoji: '🔎' },
+      { valor: 'balanza-logica', nombre: '⚖️ Balanza Lógica', emoji: '⚖️' },
+      { valor: 'conteo-figuras', nombre: '💠 Conteo de Figuras', emoji: '💠' }
+    ]
+  };
+
+  const tiposDisponibles = tiposPorColeccion[coleccionDestino] || [];
+
+  // Al cambiar la colección destino, reiniciar el tipo de contenido
+  const manejarCambioColeccion = (coleccion) => {
+    setColeccionDestino(coleccion);
+    setTipoContenido(''); // Reiniciar
+  };
 
   // Función para migrar una aventura individual
   const migrarAventura = async (aventuraData) => {
@@ -187,60 +202,38 @@ const AdminMigracion = () => {
         <section className="widget admin-widget">
           <h2 className="widget-title">Migrar Contenido a Firestore</h2>
           
-          {/* Selector de tipo de contenido - Mejorado para Admin */}
-          <div className="tipo-selector-grid">
-            <p style={{ marginBottom: '15px', fontWeight: 'bold', color: '#333' }}>Selecciona el tipo de contenido:</p>
-            <div className="tipos-grid">
-              {tiposDisponibles.map(tipo => (
-                <label key={tipo.valor} className="tipo-card">
-                  <input
-                    type="radio"
-                    value={tipo.valor}
-                    checked={tipoContenido === tipo.valor}
-                    onChange={(e) => setTipoContenido(e.target.value)}
-                    style={{ display: 'none' }}
-                  />
-                  <div className={`tipo-card-content ${tipoContenido === tipo.valor ? 'selected' : ''}`}>
-                    <span className="tipo-emoji">{tipo.emoji}</span>
-                    <span className="tipo-nombre">{tipo.nombre.split(' ').slice(1).join(' ')}</span>
-                  </div>
-                </label>
-              ))}
-            </div>
-          </div>
-          
           <div className="instrucciones">
             <p><strong>Instrucciones:</strong></p>
             <ol>
-              <li>Selecciona el <strong>Tipo de Contenido</strong> (para referencia visual).</li>
               <li>Selecciona la <strong>Colección Destino</strong> (¡Importante! Define cómo se guardan los datos).</li>
+              <li>Selecciona el <strong>Tipo de Contenido</strong> (los disponibles cambian según la colección).</li>
               <li>Carga el archivo JSON o pega su contenido.</li>
               <li>Haz clic en "Migrar".</li>
             </ol>
           </div>
 
-          {/* Selector de Colección Destino */}
-          <div className="coleccion-selector" style={{ margin: '20px 0', padding: '15px', background: '#e8f6f3', borderRadius: '10px', border: '2px solid #1abc9c' }}>
-            <p style={{ fontWeight: 'bold', marginBottom: '10px', color: '#16a085' }}>📂 ¿A dónde quieres subir esto?</p>
-            <div style={{ display: 'flex', gap: '20px' }}>
-              <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '1.1rem' }}>
+          {/* Paso 1: Selector de Colección Destino */}
+          <div className="coleccion-selector" style={{ margin: '20px 0', padding: '20px', background: '#e8f6f3', borderRadius: '10px', border: '2px solid #1abc9c' }}>
+            <p style={{ fontWeight: 'bold', marginBottom: '15px', color: '#16a085', fontSize: '1.1rem' }}>📂 Paso 1: ¿A dónde quieres subir esto?</p>
+            <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '1rem' }}>
                 <input 
                   type="radio" 
                   name="coleccion" 
                   value="aventuras" 
                   checked={coleccionDestino === 'aventuras'} 
-                  onChange={() => setColeccionDestino('aventuras')}
+                  onChange={() => manejarCambioColeccion('aventuras')}
                   style={{ width: '20px', height: '20px' }}
                 />
                 <strong>🌟 Aventuras</strong> (Juegos del día, Expediciones, Numberblocks)
               </label>
-              <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '1.1rem' }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '1rem' }}>
                 <input 
                   type="radio" 
                   name="coleccion" 
                   value="simulacros" 
                   checked={coleccionDestino === 'simulacros'} 
-                  onChange={() => setColeccionDestino('simulacros')}
+                  onChange={() => manejarCambioColeccion('simulacros')}
                   style={{ width: '20px', height: '20px' }}
                 />
                 <strong>🏆 Simulacros</strong> (Exámenes, Bancos de preguntas)
@@ -253,16 +246,42 @@ const AdminMigracion = () => {
             </p>
           </div>
 
+          {/* Paso 2: Selector de tipo de contenido (dinámico según colección) */}
+          {tiposDisponibles.length > 0 && (
+            <div className="tipo-selector-grid">
+              <p style={{ marginBottom: '15px', fontWeight: 'bold', color: '#333', fontSize: '1.1rem' }}>
+                📋 Paso 2: Selecciona el tipo de contenido ({coleccionDestino === 'aventuras' ? 'Aventura' : 'Simulacro'}):
+              </p>
+              <div className="tipos-grid">
+                {tiposDisponibles.map(tipo => (
+                  <label key={tipo.valor} className="tipo-card">
+                    <input
+                      type="radio"
+                      value={tipo.valor}
+                      checked={tipoContenido === tipo.valor}
+                      onChange={(e) => setTipoContenido(e.target.value)}
+                      style={{ display: 'none' }}
+                    />
+                    <div className={`tipo-card-content ${tipoContenido === tipo.valor ? 'selected' : ''}`}>
+                      <span className="tipo-emoji">{tipo.emoji}</span>
+                      <span className="tipo-nombre">{tipo.nombre.split(' ').slice(1).join(' ')}</span>
+                    </div>
+                  </label>
+                ))}
+              </div>
+            </div>
+          )}
+
           <div className="input-section">
             <label htmlFor="json-input" className="input-label">
-              Contenido JSON:
+              📄 Paso 3: Contenido JSON:
             </label>
             <textarea
               id="json-input"
               className="json-textarea"
               value={jsonInput}
               onChange={(e) => setJsonInput(e.target.value)}
-              placeholder={`Pega aquí el contenido del archivo JSON de ${tipoContenido === 'aventura' ? 'una aventura' : 'un simulacro'}`}
+              placeholder={`Pega aquí el contenido del archivo JSON de ${coleccionDestino === 'aventuras' ? 'una aventura' : 'un simulacro'}`}
               rows={15}
             />
           </div>
@@ -283,9 +302,13 @@ const AdminMigracion = () => {
           <button
             className="boton-migrar"
             onClick={procesarYMigrar}
-            disabled={migrando || !jsonInput.trim()}
+            disabled={migrando || !jsonInput.trim() || !tipoContenido}
           >
-            {migrando ? 'Migrando...' : `Migrar ${tiposDisponibles.find(t => t.valor === tipoContenido)?.nombre.split(' ').slice(1).join(' ')}`}
+            {migrando 
+              ? 'Migrando...' 
+              : tipoContenido 
+                ? `Migrar a ${coleccionDestino}` 
+                : 'Selecciona un tipo de contenido'}
           </button>
 
           {resultado && (
@@ -296,7 +319,7 @@ const AdminMigracion = () => {
 
           <div className="nota-importante">
             <p><strong>⚠️ Nota Importante:</strong></p>
-            <p>Este proceso creará o actualizará documentos en la colección <code>{tipoContenido === 'aventura' ? 'aventuras' : 'simulacros'}</code> de Firestore.</p>
+            <p>Este proceso creará o actualizará documentos en la colección <code>{coleccionDestino}</code> de Firestore.</p>
             <p>El ID del documento será el campo <code>id</code> del JSON.</p>
           </div>
         </section>
