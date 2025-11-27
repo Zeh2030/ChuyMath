@@ -9,6 +9,7 @@ import Criptoaritmetica from './tipos/Criptoaritmetica';
 import BalanzaLogica from './tipos/BalanzaLogica';
 import DesarrolloCubos from './tipos/DesarrolloCubos';
 import PalabraDelDia from './tipos/PalabraDelDia';
+import NumberblocksConstructor from './tipos/NumberblocksConstructor';
 import './MisionRenderer.css';
 
 /**
@@ -164,6 +165,15 @@ const MisionRenderer = ({
             respuestaGuardada={respuestaGuardada}
             onRespuesta={onRespuesta}
             mostrarResultado={mostrarResultado}
+          />
+        );
+
+      case 'numberblocks-constructor':
+        return (
+          <NumberblocksConstructor 
+            key={mision.id}
+            mision={mision} 
+            onCompletar={onCompletar}
           />
         );
       

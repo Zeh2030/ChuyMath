@@ -1,0 +1,42 @@
+{
+  "id": "2025-10-05",
+  "titulo": "Numberblocks: El Constructor de Rectángulos",
+  "misiones": [
+    {
+      "id": "mision-nb-constructor-1",
+      "tipo": "numberblocks-constructor",
+      "titulo": "El Taller de Numberblocks",
+      "instruccion": "¡Ayuda a los Numberblocks a formar rectángulos perfectos!",
+      "retos": [
+        { 
+          "target": 24, 
+          "tipo": "multiply", 
+          "historia": "¡Soy el Veinticuatro! Elige dos amigos de la caja que multiplicados me den 24." 
+        },
+        { 
+          "target": 36, 
+          "tipo": "multiply", 
+          "historia": "¡Soy el Treinta y Seis! ¡Soy un cuadrado perfecto! ¿Puedes construirme?" 
+        },
+        { 
+          "target": 48, 
+          "tipo": "divide", 
+          "dado": 4, 
+          "historia": "¡Soy un rectángulo de 48! Si un lado mide 4, elige el bloque que falta para completarme." 
+        },
+        { 
+          "target": 50, 
+          "tipo": "multiply", 
+          "historia": "¡Cincuenta! ¡Elige dos bloques para construir mi rectángulo!" 
+        },
+        { 
+          "target": 72, 
+          "tipo": "divide", 
+          "dado": 6, 
+          "historia": "¡Un gran rectángulo de 72! Un lado es 6, ¿cuál es el otro? ¡Encuéntralo en la caja!" 
+        }
+      ]
+    }
+  ]
+}
+

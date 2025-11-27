@@ -236,20 +236,23 @@ const Simulacro = () => {
   const totalProblemas = items.length;
   const porcentaje = calificado ? Math.round((puntaje / totalProblemas) * 100) : 0;
 
+  const isExpedicion = simulacro.tipo === 'expedicion' || simulacro.tema === 'ancestral';
+  const temaClass = isExpedicion ? `tema-${simulacro.tema || 'expedicion'}` : '';
+
   return (
     <PageWrapper>
       <Header />
       
-      <div className="simulacro-container">
+      <div className={`simulacro-container ${temaClass}`}>
         {/* Encabezado del Simulacro */}
         <div className="simulacro-header">
-          <h1 className="simulacro-titulo">📝 {simulacro.titulo}</h1>
+          <h1 className="simulacro-titulo">{isExpedicion ? '🗺️' : '📝'} {simulacro.titulo}</h1>
           {simulacro.descripcion && (
             <p className="simulacro-descripcion">{simulacro.descripcion}</p>
           )}
           
-          {/* Mostrar resultado si está calificado */}
-          {calificado && (
+          {/* Mostrar resultado si está calificado (NO en expedición) */}
+          {calificado && !isExpedicion && (
             <div className={`resultado-final ${porcentaje >= 70 ? 'aprobado' : 'reprobado'}`}>
               <div className="resultado-icono">
                 {porcentaje >= 70 ? '🎉' : '💪'}
@@ -271,16 +274,17 @@ const Simulacro = () => {
         <div className="problemas-lista">
           {items.map((problema, index) => {
             const respuestaUsuario = respuestas[problema.id];
-            const esCorrecta = calificado ? esRespuestaCorrecta(problema, respuestaUsuario) : false;
+            // En expedición, no hay "calificado" global, el feedback es local
+            const esCorrecta = (!isExpedicion && calificado) ? esRespuestaCorrecta(problema, respuestaUsuario) : false;
 
             return (
               <div 
                 key={problema.id} 
-                className={`problema-card ${calificado ? (esCorrecta ? 'correcto' : 'incorrecto') : ''}`}
+                className={`problema-card ${(!isExpedicion && calificado) ? (esCorrecta ? 'correcto' : 'incorrecto') : ''}`}
               >
                 <div className="problema-header">
-                  <h3>Problema {index + 1}</h3>
-                  {calificado && (
+                  <h3>{isExpedicion ? `Misión ${index + 1}` : `Problema ${index + 1}`}</h3>
+                  {(!isExpedicion && calificado) && (
                     <span className="problema-resultado-icono">
                       {esCorrecta ? '✅' : '❌'}
                     </span>
@@ -290,10 +294,10 @@ const Simulacro = () => {
                 <div className="problema-content">
                   <MisionRenderer 
                     mision={problema}
-                    modoSimulacro={true}
+                    modoSimulacro={!isExpedicion} // Si es expedición, modoSimulacro es false (feedback inmediato)
                     respuestaGuardada={respuestaUsuario}
                     onRespuesta={(respuesta) => handleRespuesta(problema.id, respuesta)}
-                    mostrarResultado={calificado}
+                    mostrarResultado={(!isExpedicion && calificado)}
                   />
                 </div>
               </div>
@@ -310,14 +314,16 @@ const Simulacro = () => {
             🏠 Volver al Dashboard
           </button>
 
-          {!calificado ? (
+          {!isExpedicion && !calificado && (
             <button
               onClick={calificarExamen}
               className="boton-calificar"
             >
               📊 Calificar Examen
             </button>
-          ) : (
+          )}
+          
+          {(!isExpedicion && calificado) && (
             <button
               onClick={reiniciarSimulacro}
               className="boton-reintentar"

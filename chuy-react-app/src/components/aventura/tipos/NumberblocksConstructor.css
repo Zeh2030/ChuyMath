@@ -1,0 +1,293 @@
+/* NumberblocksConstructor.css */
+
+.nb-game-container {
+  font-family: 'Nunito', sans-serif;
+  background-color: #98D49A; /* Tono tierra base */
+  color: #34495e;
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Variables de colores locales */
+.nb-game-container {
+  --nb-1: #e53935;
+  --nb-2: #fb8c00;
+  --nb-3: #fdd835;
+  --nb-4: #43a047;
+  --nb-5: #1e88e5;
+  --nb-6: #8e24aa;
+  --nb-7-1: #e53935; --nb-7-2: #fb8c00; --nb-7-3: #fdd835;
+  --nb-7-4: #43a047; --nb-7-5: #1e88e5; --nb-7-6: #4527a0; --nb-7-7: #673ab7;
+  --nb-8: #ec407a;
+  --nb-9-1: #f5f5f5; --nb-9-2: #e0e0e0; --nb-9-3: #cccccc;
+  --nb-10: #ffffff;
+  --nb-12-main: #ffffff; 
+  --nb-12-border: #e53935;
+  --nb-12-center: #fb8c00;
+  --c-borde: rgba(0,0,0,0.15);
+}
+
+/* Header y Narrativa */
+.nb-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.nb-title {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 2rem;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.nb-story-bubble {
+  background-color: #eaf5ff;
+  border-radius: 15px;
+  padding: 15px 20px;
+  font-size: 1.1rem;
+  text-align: center;
+  border: 2px dashed #aed6f1;
+  margin-bottom: 20px;
+}
+
+/* Área de Ecuación */
+.nb-equation-display {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 10px;
+  color: #3498db;
+  margin-bottom: 15px;
+}
+
+.nb-placeholder {
+  color: #f39c12;
+  display: inline-block;
+  min-width: 40px;
+  border-bottom: 4px dotted #f39c12;
+  margin: 0 5px;
+}
+
+/* Área de Construcción */
+.nb-construction-area {
+  background-color: rgba(248, 249, 250, 0.9);
+  border-radius: 20px;
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #e9ecef;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.nb-rectangle-grid {
+  display: grid;
+  gap: 4px;
+  transition: all 0.5s ease;
+}
+
+/* Caja de Herramientas */
+.nb-toolbox-section {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.nb-toolbox-title {
+  font-family: 'Fredoka', sans-serif;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.nb-toolbox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 15px;
+  min-height: 100px;
+}
+
+/* Bloques Numberblocks */
+.numberblock {
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse; /* Stack upwards */
+  align-items: center;
+}
+
+.numberblock:hover {
+  transform: translateY(-5px) rotate(2deg);
+}
+
+.numberblock.selected {
+  transform: scale(1.15) rotate(-3deg);
+  box-shadow: 0 0 15px var(--nb-3);
+  z-index: 10;
+}
+
+.numberblock.double-selected {
+  transform: scale(1.15) rotate(3deg);
+  box-shadow: 0 0 15px var(--nb-1);
+  z-index: 10;
+}
+
+.nb-block {
+  width: 25px;
+  height: 25px;
+  border: 2px solid var(--c-borde);
+  margin-top: -2px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.nb-block:first-child { border-radius: 0 0 4px 4px; }
+.nb-block:last-child { border-radius: 4px 4px 0 0; }
+.nb-block:only-child { border-radius: 4px; }
+
+/* Caras */
+.nb-face-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.nb-eye {
+  width: 6px;
+  height: 6px;
+  background-color: #000;
+  border-radius: 50%;
+  position: relative;
+}
+
+.nb-eye::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background-color: #fff;
+  border-radius: 50%;
+  top: 1px;
+  left: 1px;
+}
+
+/* Clases de Colores */
+.c1 { background-color: var(--nb-1); }
+.c2 { background-color: var(--nb-2); }
+.c3 { background-color: var(--nb-3); }
+.c4 { background-color: var(--nb-4); }
+.c5 { background-color: var(--nb-5); }
+.c6 { background-color: var(--nb-6); }
+.c7 { background-color: var(--nb-7-7); } /* Default fallback */
+.c8 { background-color: var(--nb-8); }
+.c9 { background-color: var(--nb-9-2); }
+.c10 { background-color: var(--nb-10); border-color: var(--nb-1); }
+.c11 { background-color: #fff; border-color: var(--nb-1); }
+.c12 { background-color: var(--nb-12-main); border-color: var(--nb-12-border); }
+
+/* Formas Especiales */
+.nb-9-shape {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr);
+  width: 75px;
+}
+
+.nb-12-shape {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr); /* Rectángulo 3x4 */
+  width: 75px;
+}
+
+/* Botones de Acción */
+.nb-action-area {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.nb-action-button {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.2rem;
+  padding: 12px 30px;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(45deg, #2ecc71, #27ae60);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #1e8449;
+  transition: all 0.1s ease-in-out;
+}
+
+.nb-action-button:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #1e8449;
+}
+
+.nb-action-button.next {
+  background: linear-gradient(45deg, #3498db, #2980b9);
+  box-shadow: 0 4px 0 #1f618d;
+}
+
+.nb-action-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  filter: grayscale(1);
+}
+
+.nb-message-area {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  min-height: 30px;
+  margin: 10px 0;
+}
+
+/* Confeti básico */
+.confetti {
+  position: absolute;
+  width: 8px;
+  height: 15px;
+  background-color: red;
+  opacity: 0;
+  animation: fall 3s linear forwards;
+}
+
+@keyframes fall {
+  0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(300px) rotate(720deg); opacity: 0; }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .nb-toolbox {
+    gap: 10px;
+  }
+  .nb-block {
+    width: 20px;
+    height: 20px;
+  }
+  .nb-9-shape, .nb-12-shape {
+    width: 60px;
+  }
+}
+

@@ -1,0 +1,68 @@
+{
+  "id": "2025-10-06",
+  "titulo": "🏺 Expedición Ancestral",
+  "tipo": "expedicion",
+  "tema": "ancestral",
+  "descripcion": "Egipto, Saturno y Secretos de los Primates. ¡Prepárate para la expedición resolviendo estos cálculos arqueológicos!",
+  "misiones": [
+    {
+      "id": "mision-ancestral-1",
+      "tipo": "operaciones",
+      "titulo": "🔢 Entrenamiento del Explorador",
+      "instruccion": "Resuelve las operaciones para abrir la puerta del templo.",
+      "ejercicios": [
+        { "pregunta": "52 + 38", "respuesta": "90" },
+        { "pregunta": "75 - 26", "respuesta": "49" },
+        { "pregunta": "8 × 8", "respuesta": "64" },
+        { "pregunta": "45 ÷ 9", "respuesta": "5" },
+        { "pregunta": "67 + 33", "respuesta": "100" }
+      ]
+    },
+    {
+      "id": "mision-ancestral-2",
+      "tipo": "opcion-multiple",
+      "titulo": "🏜️ Misión en el Desierto",
+      "instruccion": "Saludos desde un país famoso por sus pirámides milenarias. ¿Sabes dónde estoy?",
+      "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Kheops-Pyramid.jpg/1280px-Kheops-Pyramid.jpg",
+      "opciones": [
+        { "texto": "A) México", "valor": "mexico" },
+        { "texto": "B) Egipto", "valor": "egipto" },
+        { "texto": "C) China", "valor": "china" }
+      ],
+      "respuesta": "egipto",
+      "explicacion_correcta": "¡Correcto! Los faraones eran los reyes del antiguo Egipto y construyeron las pirámides como tumbas.",
+      "explicacion_incorrecta": "Pista: Aquí fluye el río Nilo y se construyó la Gran Pirámide de Giza."
+    },
+    {
+      "id": "mision-ancestral-3",
+      "tipo": "opcion-multiple",
+      "titulo": "🪐 Mensaje Anillado",
+      "instruccion": "Soy el sexto planeta del sistema solar, famoso por mis impresionantes...",
+      "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Saturn_during_Equinox.jpg/1280px-Saturn_during_Equinox.jpg",
+      "opciones": [
+        { "texto": "A) Volcanes", "valor": "volcanes" },
+        { "texto": "B) Anillos", "valor": "anillos" },
+        { "texto": "C) Océanos", "valor": "oceanos" }
+      ],
+      "respuesta": "anillos",
+      "explicacion_correcta": "¡Exacto! Los anillos de Saturno están hechos de miles de millones de trozos de hielo y roca.",
+      "explicacion_incorrecta": "No exactamente. Soy famoso por los aros gigantes que me rodean."
+    },
+    {
+      "id": "mision-ancestral-4",
+      "tipo": "opcion-multiple",
+      "titulo": "🐒 Detective de la Selva",
+      "instruccion": "Soy un mamífero inteligente, vivo en árboles, como bananas y uso herramientas. ¿Quién soy?",
+      "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Bonnet_macaque_%28Macaca_radiata%29_Photograph_By_Shantanu_Kuveskar.jpg/1280px-Bonnet_macaque_%28Macaca_radiata%29_Photograph_By_Shantanu_Kuveskar.jpg",
+      "opciones": [
+        { "texto": "A) León", "valor": "leon" },
+        { "texto": "B) Serpiente", "valor": "serpiente" },
+        { "texto": "C) Mono", "valor": "mono" }
+      ],
+      "respuesta": "mono",
+      "explicacion_correcta": "¡Muy bien! Los monos son parientes cercanos de los humanos y muy inteligentes.",
+      "explicacion_incorrecta": "Pista: Me columpio de rama en rama usando mi cola."
+    }
+  ]
+}
+
