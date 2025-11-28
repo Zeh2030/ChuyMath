@@ -52,7 +52,12 @@
       "titulo": "La Balanza Mágica",
       "instruccion": "Observa las balanzas equilibradas. Usa la lógica para descubrir el valor del triángulo. ¿Cuántos círculos (●) se necesitan para equilibrar un triángulo (▲)?",
       "pregunta_svg": "<svg width='300' height='150' viewBox='0 0 300 150'><g transform='translate(0, 10)'><path d='M10 110 H 140' stroke='black' stroke-width='2'/><path d='M75 110 V 50' stroke='black' stroke-width='2'/><path d='M25 50 H 125' stroke='black' stroke-width='4'/><text x='40' y='40' font-size='20'>● ●</text><text x='95' y='40' font-size='20'>■</text><text x='65' y='130' font-weight='bold'>Balanza 1</text></g><g transform='translate(150, 10)'><path d='M10 110 H 140' stroke='black' stroke-width='2'/><path d='M75 110 V 50' stroke='black' stroke-width='2'/><path d='M25 50 H 125' stroke='black' stroke-width='4'/><text x='35' y='40' font-size='20'>● ■</text><text x='95' y='40' font-size='20'>▲</text><text x='55' y='130' font-weight='bold'>Balanza 2</text></g></svg>",
-      "opciones": ["1", "2", "3", "4"],
+      "opciones": [
+        { "texto": "1 círculo", "valor": "1" },
+        { "texto": "2 círculos", "valor": "2" },
+        { "texto": "3 círculos", "valor": "3" },
+        { "texto": "4 círculos", "valor": "4" }
+      ],
       "respuesta": "3",
       "explicacion_correcta": "¡Lógica de campeón! Si en la Balanza 1 un cuadrado (■) pesa lo mismo que dos círculos (●●), en la Balanza 2 podemos reemplazar el cuadrado por dos círculos. Entonces, un círculo más dos círculos es igual a un triángulo. ¡1+2=3!",
       "explicacion_incorrecta": "¡Casi! Mira la Balanza 1: un cuadrado (■) es igual a dos círculos (●●). Ahora, en la Balanza 2, cambia el cuadrado por dos círculos y cuenta cuántos círculos hay en total de ese lado."

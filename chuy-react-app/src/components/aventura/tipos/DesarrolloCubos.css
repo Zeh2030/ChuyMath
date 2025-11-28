@@ -72,3 +72,97 @@
   width: 100%;
 }
 
+/* Estilos para formato antiguo (con SVGs de opciones) */
+.cubos-antiguo-format {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.plano-container {
+  width: 100%;
+  text-align: center;
+}
+
+.plano-container h4 {
+  margin-bottom: 1rem;
+  color: var(--color-texto);
+  font-size: 1.1rem;
+}
+
+.plano-container svg {
+  max-width: 100%;
+  height: auto;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+}
+
+.opciones-container {
+  width: 100%;
+  text-align: center;
+}
+
+.opciones-container h4 {
+  margin-bottom: 1rem;
+  color: var(--color-texto);
+  font-size: 1.1rem;
+}
+
+.opciones-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+}
+
+.opcion-svg {
+  width: 120px;
+  height: 120px;
+  padding: 10px;
+  border-radius: 12px;
+  border: 3px solid #ddd;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.opcion-svg:hover {
+  border-color: #3498db;
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+  transform: translateY(-2px);
+}
+
+.opcion-svg.selected {
+  border-color: #3498db;
+  background-color: #ecf0f1;
+  border-width: 4px;
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.opcion-svg.correct {
+  border-color: #2ecc71;
+  background-color: #e8f8f5;
+  border-width: 4px;
+  box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+}
+
+.opcion-svg.wrong {
+  border-color: #e74c3c;
+  background-color: #fdedec;
+  border-width: 4px;
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+}
+
+.opcion-svg svg {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+}
+

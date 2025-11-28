@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictamen Técnico - Centro Médico Carrillo</title>
+    <style>
+        :root {
+            --primary-color: #003366; /* Azul Médico Institucional */
+            --secondary-color: #555555;
+            --accent-color: #e7f3fe;
+            --border-color: #cccccc;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-serif: 'Georgia', serif;
+        }
+
+        body {
+            background-color: #f0f0f0;
+            font-family: var(--font-main);
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        .document-container {
+            background-color: white;
+            width: 216mm; /* Tamaño Carta */
+            min-height: 279mm;
+            margin: 0 auto;
+            padding: 25mm;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        /* Encabezado */
+        header {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .doc-info {
+            text-align: right;
+            font-size: 12px;
+            color: var(--secondary-color);
+        }
+
+        h1 {
+            font-size: 20px;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 16px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 15px;
+            margin-top: 30px;
+            border-radius: 4px;
+        }
+
+        h3 {
+            font-size: 14px;
+            color: var(--primary-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+            margin-top: 20px;
+        }
+
+        /* Listas y Texto */
+        ul {
+            list-style-type: none; /* Quitamos viñetas default */
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        li::before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        p {
+            font-family: var(--font-serif);
+            line-height: 1.5;
+            font-size: 13px;
+            text-align: justify;
+            margin-bottom: 10px;
+        }
+
+        /* Estilos para la sección detallada */
+        .detail-item {
+            margin-bottom: 25px;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 15px;
+            background-color: #fafafa;
+            padding: 15px;
+        }
+
+        .rationale {
+            font-style: italic;
+            color: #444;
+            margin-top: 5px;
+            display: block;
+        }
+
+        .nom-citation {
+            display: block;
+            margin-top: 10px;
+            font-size: 11px;
+            color: #d9534f; /* Rojo suave para resaltar la norma */
+            font-weight: bold;
+            background-color: #fff0f0;
+            padding: 5px;
+            border: 1px solid #ffcccc;
+        }
+
+        .summary-list li {
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .footer {
+            margin-top: 50px;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            text-align: center;
+            font-size: 10px;
+            color: #777;
+        }
+
+        /* Estilos para impresión */
+        @media print {
+            body {
+                background-color: white;
+                margin: 0;
+                padding: 0;
+            }
+            .document-container {
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+                page-break-after: always;
+            }
+            h2 {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="document-container">
+        <header>
+            <div class="logo-text">Centro Médico Carrillo</div>
+            <div class="doc-info">
+                <strong>Fecha:</strong> 27 de Noviembre, 2024<br>
+                <strong>Asunto:</strong> Adecuación Normativa de Unidad Quirúrgica<br>
+                <strong>Ref:</strong> Cumplimiento NOM-016-SSA3-2012
+            </div>
+        </header>
+
+        <h1>Dictamen Técnico de Reconfiguración Arquitectónica</h1>
+
+        <h2>I. Resumen Ejecutivo de Modificaciones (Checklist)</h2>
+        <ul class="summary-list">
+            <li>Intercambio de ubicación total: <strong>CEYE se mueve al fondo / Vestidores se mueven al inicio.</strong></li>
+            <li>Implementación de <strong>Trampa de Botas (Banca)</strong> en salida de nuevos vestidores.</li>
+            <li>Habilitación de un <strong>núcleo sanitario compartido</strong> (WC+Regadera+Lavabo) en vestidores.</li>
+            <li>Instalación de barrera física en el <strong>Transfer de Pacientes</strong>.</li>
+            <li>Reubicación del <strong>Cuarto Séptico</strong> al interior (Zona Gris) con extractor y vertedero clínico.</li>
+            <li>Adición de <strong>Lavabo Quirúrgico</strong> extra en pasillo de Obstetricia.</li>
+            <li>Eliminación física del "Cuarto de Anestesiólogo" (Integración a Recuperación).</li>
+            <li>Definición de dimensiones mínimas funcionales para <strong>Sala de Labor (~8m²)</strong> y <strong>Expulsión (~17m²)</strong>.</li>
+            <li>Adición de medio baño exclusivo para Sala de Labor.</li>
+            <li>Especificación estricta de <strong>Aire Acondicionado</strong> (Ductos y Filtros, NO mini-splits).</li>
+            <li>Especificación de <strong>Puertas</strong> (Doble acción, 1.20m ancho libre en zonas de camillas).</li>
+        </ul>
+
+        <h2>II. Desarrollo Técnico y Justificación Normativa</h2>
+        
+        <p>A continuación se detallan las correcciones obligatorias para garantizar la Licencia Sanitaria, citando la normativa vigente aplicable.</p>
+
+        <div class="detail-item">
+            <h3>1. Intercambio de Áreas: Vestidores por CEYE</h3>
+            <p><strong>Acción:</strong> Mover los Vestidores a la entrada del bloque (donde estaba CEYE) y la CEYE al fondo (donde estaban Vestidores).</p>
+            <span class="rationale"><strong>Justificación Técnica:</strong> El plano original permitía un cruce de flujos donde el médico limpio salía al mismo pasillo sucio de entrada. Al mover los vestidores al inicio, estos funcionan como el "Filtro Sanitario" único y obligatorio. Nadie puede entrar al pasillo interno sin pasar por este filtro.</span>
+            <span class="nom-citation">FUENTE: NOM-016-SSA3-2012 | Numeral 6.6.1.1: "El ingreso a la unidad quirúrgica debe tener un área de filtro... con vestidores y sanitarios".</span>
+        </div>
+
+        <div class="detail-item">
+            <h3>2. Trampa de Botas (Transfer de Personal)</h3>
+            <p><strong>Acción:</strong> Instalar una banca anclada al suelo en la salida de los vestidores hacia el pasillo gris.</p>
+            <span class="rationale"><strong>Justificación Técnica:</strong> Es la barrera física indispensable para marcar el cambio de "Zapato de Calle" a "Bota Quirúrgica". Sin esta banca, se considera contaminación cruzada del piso.</span>
+            <span class="nom-citation">FUENTE: NOM-016-SSA3-2012 | Numeral 6.6.1.1: "...debe tener un área de filtro... el cual debe contar con barrera física (trampa de botas)".</span>
+        </div>
+
+        <div class="detail-item">
+            <h3>3. Cuarto Séptico (Reubicación y Adecuación)</h3>
+            <p><strong>Acción:</strong> Habilitar el cuarto en la esq. inferior izquierda. Clausurar la puerta exterior y ventana. Instalar Vertedero Clínico (fluxómetro) y Extractor de Aire.</p>
+            <span class="rationale"><strong>Justificación Técnica:</strong> El séptico original solo era de aseo. Se requiere un espacio accesible desde la Zona Gris para el manejo de fluidos biológicos sin salir del área restringida. Al ser un espacio confinado sin ventanas, la extracción mecánica es obligatoria.</span>
+            <span class="nom-citation">FUENTE: NOM-016-SSA3-2012 | Numeral 6.6.1.8 y 6.4.5: Debe ser exclusivo, con ventilación adecuada y tarja para lavado de utensilios.</span>
+        </div>
+
+        <div class="detail-item">
+            <h3>4. Baño Compartido en Vestidores (1 Módulo)</h3>
+            <p><strong>Acción:</strong> Construir un solo baño completo (WC, Lavabo y Regadera) que sirva a ambos sexos o vestidores, en lugar de dos baños separados pequeños.</p>
+            <span class="rationale"><strong>Justificación Técnica:</strong> Para optimizar espacio en favor de la CEYE. La norma exige la existencia de regadera y sanitario para el personal, pero no prohíbe que sea un núcleo compartido si la logística lo permite.</span>
+            <span class="nom-citation">FUENTE: NOM-016-SSA3-2012 | Numeral 6.6.1.1: "...sanitarios con regadera para el personal del área de la salud."</span>
+        </div>
+
+        <div class="detail-item">
+            <h3>5. Eliminación del Cuarto de Anestesiólogo</h3>
+            <p><strong>Acción:</strong> Eliminar el muro del cuarto de médico y asignar un escritorio en la Central de Enfermeras de Recuperación para elaboración de notas.</p>
+            <span class="rationale"><strong>Justificación Técnica:</strong> No es requisito normativo tener una habitación cerrada para el anestesiólogo. La norma solo pide un lugar para trabajo administrativo, el cual es funcionalmente mejor en la central de enfermeras para no perder vigilancia del paciente.</span>
+            <span class="nom-citation">FUENTE: NOM-006-SSA3-2011 (Práctica de Anestesiología) | Numeral 5.10.3: Requiere área para elaboración de notas, integrable a recuperación.</span>
+        </div>
+        
+        <div style="page-break-before: always;"></div>
+
+        <div class="detail-item">
+            <h3>6. Lavabo Quirúrgico Adicional</h3>
+            <p><strong>Acción:</strong> Instalar un lavabo de accionamiento no manual en el pasillo de Obstetricia.</p>
+            <span class="rationale"><strong>Justificación Técnica:</strong> El personal que atiende partos en la Sala de Expulsión debe realizar el lavado quirúrgico inmediatamente antes de entrar. Los lavabos generales quedan lejos y romperían la técnica aséptica al trasladarse.</span>
+            <span class="nom-citation">FUENTE: NOM-016-SSA3-2012 | Numeral 6.6.1.5: "Los lavabos para cirujanos deben ubicarse en el pasillo de circulación blanca, contiguos a la sala de operaciones."</span>
+        </div>
+
+        <div class="detail-item">
+            <h3>7. Sistema de Aire Acondicionado (Ductos)</h3>
+            <p><strong>Acción:</strong> Inyección de aire por techo (centro) y extracción por muros (abajo). Prohibido usar Mini-Splits.</p>
+            <span class="rationale"><strong>Justificación Técnica:</strong> Los equipos tipo Mini-Split recirculan el aire viciado, concentrando bacterias y gases anestésicos. Se requiere inyección de aire filtrado (HEPA) y extracción baja para barrer partículas lejos de la herida quirúrgica.</span>
+            <span class="nom-citation">FUENTE: NOM-016-SSA3-2012 | Numeral 6.6.1: "La ventilación debe ser artificial... con inyección y extracción de aire... no deberá recircularse."</span>
+        </div>
+
+        <div class="detail-item">
+            <h3>8. Transfer de Pacientes (Barrera Física)</h3>
+            <p><strong>Acción:</strong> Colocar un murete o mueble fijo que divida el cuarto de transfer.</p>
+            <span class="rationale"><strong>Justificación Técnica:</strong> El simple cuarto no basta. Debe existir un impedimento mecánico para que las ruedas de la camilla de ambulancia (sucia) nunca toquen el suelo del pasillo de quirófano (limpio).</span>
+            <span class="nom-citation">FUENTE: NOM-016-SSA3-2012 | Numeral 6.6.1.2: "Transfer de pacientes... contar con un dispositivo físico o mecánico que impida el cruce de camillas."</span>
+        </div>
+
+        <div class="detail-item">
+            <h3>9. Puertas de Acceso (Especificaciones)</h3>
+            <p><strong>Acción:</strong> Puertas de doble abatimiento (vaivén) con mirilla y ancho libre mínimo de 1.20m en Quirófanos, Expulsión y Recuperación.</p>
+            <span class="rationale"><strong>Justificación Técnica:</strong> Se requiere permitir el paso holgado de camillas con tripiés y personal a los lados. El abatimiento doble permite abrir empujando la camilla sin usar las manos para mantener esterilidad.</span>
+            <span class="nom-citation">FUENTE: NOM-016-SSA3-2012 | Numeral 6.6.1.4 y 6.6.2: Especificaciones de puertas en áreas quirúrgicas.</span>
+        </div>
+
+         <div class="detail-item">
+            <h3>10. Bodega de Equipos (Arco en C)</h3>
+            <p><strong>Acción:</strong> Uso exclusivo para equipos rodables. Puerta de 1.20m y tomas eléctricas.</p>
+            <span class="rationale"><strong>Justificación Técnica:</strong> Se prohíbe el almacenamiento de bultos estériles en esta área (deben ir a CEYE). Se requiere amplitud de puerta para evitar daños a equipos costosos y electricidad para carga de baterías.</span>
+            <span class="nom-citation">FUENTE: NOM-016-SSA3-2012 | Numeral 6.6.1.9: Área para guarda de equipos rodables.</span>
+        </div>
+
+        <div class="footer">
+            <p>Documento generado para fines de planeación arquitectónica interna. Se recomienda la validación final de los planos ejecutivos por un Perito en Infraestructura Sanitaria antes del inicio de obra.</p>
+        </div>
+    </div>
+
+</body>
+</html>
