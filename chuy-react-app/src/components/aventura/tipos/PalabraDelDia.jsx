@@ -128,9 +128,33 @@ const PalabraDelDia = ({
     ? (palabraFinalUsuario === palabraObjetivo)
     : esCorrecto;
 
+  // Reproducir audio
+  const reproducirAudio = () => {
+    if (mision.audio_pronunciacion) {
+      const audio = new Audio(mision.audio_pronunciacion);
+      audio.play().catch(e => console.error("Error reproduciendo audio:", e));
+    } else {
+      // Fallback: Síntesis de voz del navegador (inglés)
+      const utterance = new SpeechSynthesisUtterance(palabraObjetivo);
+      utterance.lang = 'en-US';
+      window.speechSynthesis.speak(utterance);
+    }
+  };
+
   return (
     <div className="palabra-container">
-      <h3 className="palabra-instruccion">{mision.pregunta || "Ordena las letras para formar la palabra:"}</h3>
+      {/* Cabecera Educativa */}
+      <div className="palabra-header">
+        <div className="palabra-icono-grande">{mision.icono || '📝'}</div>
+        <div className="palabra-info">
+          <h2 className="palabra-espanol">{mision.palabra_es || "Palabra del día"}</h2>
+          <button className="boton-audio" onClick={reproducirAudio} title="Escuchar pronunciación">
+            🔊 Escuchar en Inglés
+          </button>
+        </div>
+      </div>
+
+      <h3 className="palabra-instruccion">{mision.pregunta || "Ordena las letras para escribirla en Inglés:"}</h3>
       
       {mision.pista && <p className="palabra-pista">💡 Pista: {mision.pista}</p>}
       

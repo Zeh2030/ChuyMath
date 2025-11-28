@@ -122,7 +122,7 @@ const Boveda = () => {
     if (tipoEspecifico) {
       // Aventuras genéricas (sin tipo específico)
       if (tipoEspecifico.tipo === 'aventura') {
-        return aventuras.filter(a => a.tipo === 'aventura');
+        return aventuras.filter(a => a.tipo === 'aventura' || a.tipo === 'expedicion');
       } else {
         // Buscar en ambas colecciones por tipo específico
         const enAventuras = aventuras.filter(a => a.tipo === tipoEspecifico.tipo);
@@ -145,7 +145,7 @@ const Boveda = () => {
     
     // Aventuras genéricas (sin tipo específico)
     if (tipoData.tipo === 'aventura') {
-      return aventuras.filter(a => a.tipo === 'aventura').length;
+      return aventuras.filter(a => a.tipo === 'aventura' || a.tipo === 'expedicion').length;
     }
     
     // Buscar en ambas colecciones por tipo específico

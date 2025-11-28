@@ -39,8 +39,8 @@ const DesarrolloCubos = ({
     : mision.pregunta;
   
   const respuestaCorrecta = usarFormatoAntiguo 
-    ? ejercicio?.respuesta?.toString()
-    : mision.respuesta;
+    ? (ejercicio?.respuesta !== undefined ? ejercicio.respuesta.toString() : '')
+    : (mision.respuesta !== undefined ? mision.respuesta.toString() : '');
   
   const explicacionCorrecta = usarFormatoAntiguo
     ? ejercicio?.explicacion_correcta
@@ -70,7 +70,8 @@ const DesarrolloCubos = ({
 
   const comprobarRespuesta = () => {
     if (!seleccion) return;
-    const correcto = seleccion === respuestaCorrecta;
+    // Comparación robusta como strings
+    const correcto = seleccion.toString() === respuestaCorrecta.toString();
     setEsCorrecto(correcto);
     setMostrarFeedback(true);
     if (correcto && onCompletar) {

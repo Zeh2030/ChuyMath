@@ -20,6 +20,11 @@ const Operaciones = ({
   onRespuesta = null, 
   mostrarResultado: mostrarResultadoExterno = false 
 }) => {
+  // Manejo de múltiples ejercicios
+  const ejercicios = mision.ejercicios || [mision];
+  const [indiceEjercicio, setIndiceEjercicio] = useState(0);
+  const ejercicioActual = ejercicios[indiceEjercicio];
+
   const [respuestaUsuario, setRespuestaUsuario] = useState(respuestaGuardada || '');
   const [mostrarFeedback, setMostrarFeedback] = useState(false);
   const [esCorrecta, setEsCorrecta] = useState(false);
@@ -31,11 +36,11 @@ const Operaciones = ({
     }
   }, [respuestaGuardada, modoSimulacro]);
 
-  // Extraer datos de la misión
-  const pregunta = mision.pregunta || 'Resuelve la operación:';
-  const respuestaEsperada = mision.respuesta;
-  const explicacionCorrecta = mision.explicacion_correcta || '¡Correcto!';
-  const explicacionIncorrecta = mision.explicacion_incorrecta || 'Intenta de nuevo.';
+  // Extraer datos del ejercicio actual
+  const pregunta = ejercicioActual.pregunta || 'Resuelve la operación:';
+  const respuestaEsperada = ejercicioActual.respuesta;
+  const explicacionCorrecta = ejercicioActual.explicacion_correcta || mision.explicacion_correcta || '¡Correcto!';
+  const explicacionIncorrecta = ejercicioActual.explicacion_incorrecta || mision.explicacion_incorrecta || 'Intenta de nuevo.';
 
   // Determinar si mostrar resultado (interno o externo)
   const debeMostrarResultado = mostrarFeedback || (modoSimulacro && mostrarResultadoExterno);
@@ -72,9 +77,18 @@ const Operaciones = ({
     setEsCorrecta(correcta);
     setMostrarFeedback(true);
 
-    if (correcta && onCompletar) {
+    if (correcta) {
       setTimeout(() => {
-        onCompletar();
+        // Si hay más ejercicios, avanzar
+        if (indiceEjercicio < ejercicios.length - 1) {
+          setIndiceEjercicio(prev => prev + 1);
+          setRespuestaUsuario('');
+          setMostrarFeedback(false);
+          setEsCorrecta(false);
+        } else {
+          // Si era el último, completar misión
+          if (onCompletar) onCompletar();
+        }
       }, 1500);
     }
   };

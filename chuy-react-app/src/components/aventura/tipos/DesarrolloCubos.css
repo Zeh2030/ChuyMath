@@ -70,6 +70,31 @@
   justify-content: center;
   gap: 1rem;
   width: 100%;
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+  min-height: 60px; /* Reservar espacio para evitar saltos */
+  z-index: 10;
+  position: relative;
+}
+
+.boton-enviar {
+  z-index: 10; /* Asegurar que esté sobre otros elementos */
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.boton-enviar:disabled {
+  background: #bdc3c7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 /* Estilos para formato antiguo (con SVGs de opciones) */

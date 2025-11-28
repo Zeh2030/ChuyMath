@@ -42,6 +42,7 @@ const OpcionMultiple = ({
 
   // DEBUG: Mostrar información de la misión (solo en desarrollo)
   if (process.env.NODE_ENV === 'development') {
+    console.log(`[OpcionMultiple] Misión ${mision.id}: Imagen recibida:`, imagen);
     console.log(`[OpcionMultiple] ${mision.titulo}:`, {
       respuestaCorrecta,
       tipo: typeof respuestaCorrecta,
@@ -59,7 +60,15 @@ const OpcionMultiple = ({
     const esIndice = typeof respuestaCorrecta === 'number' || 
                      (typeof respuestaCorrecta === 'string' && /^\d+$/.test(respuestaCorrecta));
     
-    const valorSeleccionado = esIndice ? indice.toString() : opcion;
+    let valorSeleccionado;
+    if (esIndice) {
+      valorSeleccionado = indice.toString();
+    } else {
+      // Si la opción es un objeto con propiedad 'valor', usamos ese valor. Si no, usamos la opción tal cual.
+      valorSeleccionado = (typeof opcion === 'object' && opcion !== null && opcion.valor !== undefined) 
+        ? opcion.valor 
+        : opcion;
+    }
     
     setRespuestaSeleccionada(valorSeleccionado);
     
@@ -112,7 +121,11 @@ const OpcionMultiple = ({
       return respuestaSeleccionada === index || respuestaSeleccionada === index.toString();
     } else {
       // Si no, comparar valores
-      return respuestaSeleccionada === opciones[index];
+      const opcion = opciones[index];
+      const valorOpcion = (typeof opcion === 'object' && opcion !== null && opcion.valor !== undefined) 
+        ? opcion.valor 
+        : opcion;
+      return respuestaSeleccionada === valorOpcion;
     }
   };
 
@@ -125,7 +138,11 @@ const OpcionMultiple = ({
       // Si la respuesta es un string numérico, convertir a número y comparar
       return parseInt(respuestaCorrecta) === index;
     } else {
-      return opciones[index] === respuestaCorrecta;
+      const opcion = opciones[index];
+      const valorOpcion = (typeof opcion === 'object' && opcion !== null && opcion.valor !== undefined) 
+        ? opcion.valor 
+        : opcion;
+      return valorOpcion === respuestaCorrecta;
     }
   };
 
@@ -194,7 +211,7 @@ const OpcionMultiple = ({
                   dangerouslySetInnerHTML={{ __html: opcion }}
                 />
               ) : (
-                opcion
+                (typeof opcion === 'object' && opcion !== null && opcion.texto) ? opcion.texto : opcion
               )}
             </button>
           );

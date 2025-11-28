@@ -24,7 +24,7 @@
       "titulo": "🏜️ Misión en el Desierto",
       "instruccion": "Saludos desde un país famoso por sus pirámides milenarias.",
       "pregunta": "¿Sabes dónde estoy?",
-      "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Kheops-Pyramid.jpg/1280px-Kheops-Pyramid.jpg",
+      "imagen": "<img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Kheops-Pyramid.jpg/1280px-Kheops-Pyramid.jpg\" alt=\"Pirámides de Giza en Egipto\" style=\"max-width:100%; height:auto; border-radius:15px; box-shadow:0 8px 16px rgba(0,0,0,0.2);\">",
       "opciones": [
         { "texto": "A) México", "valor": "mexico" },
         { "texto": "B) Egipto", "valor": "egipto" },
@@ -40,7 +40,7 @@
       "titulo": "🪐 Mensaje Anillado",
       "instruccion": "Soy el sexto planeta del sistema solar, famoso por mis impresionantes...",
       "pregunta": "¿Por qué soy famoso?",
-      "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Saturn_during_Equinox.jpg/1280px-Saturn_during_Equinox.jpg",
+      "imagen": "<img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Saturn_during_Equinox.jpg/1280px-Saturn_during_Equinox.jpg\" alt=\"Planeta Saturno\" style=\"max-width:100%; height:auto; border-radius:15px; box-shadow:0 8px 16px rgba(0,0,0,0.2);\">",
       "opciones": [
         { "texto": "A) Volcanes", "valor": "volcanes" },
         { "texto": "B) Anillos", "valor": "anillos" },
@@ -56,7 +56,7 @@
       "titulo": "🐒 Detective de la Selva",
       "instruccion": "Soy un mamífero inteligente, vivo en árboles, como bananas y uso herramientas.",
       "pregunta": "¿Quién soy?",
-      "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Bonnet_macaque_%28Macaca_radiata%29_Photograph_By_Shantanu_Kuveskar.jpg/1280px-Bonnet_macaque_%28Macaca_radiata%29_Photograph_By_Shantanu_Kuveskar.jpg",
+      "imagen": "<img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Bonnet_macaque_%28Macaca_radiata%29_Photograph_By_Shantanu_Kuveskar.jpg/1280px-Bonnet_macaque_%28Macaca_radiata%29_Photograph_By_Shantanu_Kuveskar.jpg\" alt=\"Mono inteligente\" style=\"max-width:100%; height:auto; border-radius:15px; box-shadow:0 8px 16px rgba(0,0,0,0.2);\">",
       "opciones": [
         { "texto": "A) León", "valor": "leon" },
         { "texto": "B) Serpiente", "valor": "serpiente" },

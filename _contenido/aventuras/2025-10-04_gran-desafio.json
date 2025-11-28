@@ -7,6 +7,7 @@
       "tipo": "palabra-del-dia",
       "titulo": "Word of the Day / Palabra del Día",
       "instruccion": "La palabra de hoy representa tu esfuerzo de toda la semana.",
+      "palabra": "CHALLENGE",
       "palabra_en": "Challenge",
       "palabra_es": "Desafío / Reto",
       "icono": "🏆",
@@ -56,7 +57,7 @@
               "<svg width='80' height='80' viewBox='0 0 100 100'><path d='M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z' fill='#f0f0f0' stroke='#7f8c8d' stroke-width='2'/><path d='M50 10 L50 90' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M10 30 L50 50 L90 30' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M50 50 L10 70' fill='none' stroke='#7f8c8d' stroke-width='1'/><text x='50' y='32' style='font-size:18px;'>★</text><text x='70' y='60' style='font-size:18px;'>▲</text></svg>",
               "<svg width='80' height='80' viewBox='0 0 100 100'><path d='M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z' fill='#f0f0f0' stroke='#7f8c8d' stroke-width='2'/><path d='M50 10 L50 90' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M10 30 L50 50 L90 30' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M50 50 L10 70' fill='none' stroke='#7f8c8d' stroke-width='1'/><text x='30' y='60' style='font-size:18px;'>●</text><text x='70' y='60' style='font-size:18px;'>▲</text></svg>"
           ],
-          "respuesta": 0,
+          "respuesta": "0",
           "explicacion_correcta": "¡Exacto! Si imaginas que la cara con la estrella (★) es el 'techo' del cubo, la cara con el círculo (●) queda en la 'pared' de la izquierda. ¡Tu visión espacial es excelente!",
           "explicacion_incorrecta": "¡Casi! Un truco: imagina que la cara con la estrella (★) es el 'techo' del cubo. Si haces eso, ¿en qué 'pared' quedaría el círculo (●)? ¡En la de la izquierda! La que elegiste muestra una figura diferente allí."
         }

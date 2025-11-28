@@ -131,19 +131,14 @@
   padding: 10px;
 }
 
-.tabla-celda:hover:not(.deshabilitada) {
+.tabla-celda:hover:not(.deshabilitada):not(.marcada-check):not(.marcada-cross) {
   background: #ecf0f1;
   border-color: #95a5a6;
 }
 
-.tabla-celda.marcada {
-  background: #2ecc71;
-  border-color: #27ae60;
-  color: white;
-}
-
-.tabla-celda.marcada .marca {
-  font-size: 1.8rem;
+.tabla-celda.marcada-check {
+  background-color: #2ecc71 !important;
+  border-color: #27ae60 !important;
   color: white;
 }
 
@@ -153,8 +148,8 @@
 }
 
 .tabla-celda.marcada-cross {
-  background: #e74c3c;
-  border-color: #c0392b;
+  background-color: #e74c3c !important;
+  border-color: #c0392b !important;
   color: white;
 }
 

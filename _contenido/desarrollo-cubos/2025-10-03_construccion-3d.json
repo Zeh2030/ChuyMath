@@ -8,6 +8,7 @@
       "titulo": "Word of the Day / Palabra del Día",
       "instruccion": "La palabra de hoy es muy importante para construir.",
       "palabra_en": "Cube",
+      "palabra": "CUBE",
       "palabra_es": "Cubo",
       "icono": "🧊",
       "audio_pronunciacion": "https://ssl.gstatic.com/dictionary/static/sounds/20200429/cube--_us_1.mp3"
@@ -36,11 +37,11 @@
     },
     {
       "id": "mision-balanza-2",
-      "tipo": "balanza-logica",
+      "tipo": "opcion-multiple",
       "titulo": "Equilibrio de Frutas",
       "instruccion": "Usa la primera balanza para averiguar cómo equilibrar la segunda.",
-      "pregunta_svg": "<svg width='350' height='200' viewBox='0 0 350 150'><path d='M10 130 H160' stroke='black' stroke-width='2'/><path d='M85 130 V50' stroke='black' stroke-width='2'/><path d='M30 50 H140' stroke='black' stroke-width='2'/><path d='M30 50 l0 -10' stroke='black' stroke-width='2'/><path d='M140 50 l0 -10' stroke='black' stroke-width='2'/><text x='45' y='30' font-size='20'>🍌</text><text x='115' y='30' font-size='20'>🍎</text><text x='105' y='30' font-size='20'>🍎</text><path d='M190 130 H340' stroke='black' stroke-width='2'/><path d='M265 130 V50' stroke='black' stroke-width='2'/><path d='M210 50 H320' stroke='black' stroke-width='2'/><path d='M210 50 l0 -10' stroke='black' stroke-width='2'/><path d='M320 50 l0 -10' stroke='black' stroke-width='2'/><text x='215' y='30' font-size='20'>🍌</text><text x='225' y='30' font-size='20'>🍌</text><text x='295' y='30' font-size='20'>?</text></svg>",
-      "pregunta_texto": "Si una banana 🍌 pesa lo mismo que dos manzanas 🍎🍎... ¿Cuántas manzanas necesitas para equilibrar dos bananas 🍌🍌?",
+      "imagen": "<svg width='350' height='200' viewBox='0 0 350 150'><path d='M10 130 H160' stroke='black' stroke-width='2'/><path d='M85 130 V50' stroke='black' stroke-width='2'/><path d='M30 50 H140' stroke='black' stroke-width='2'/><path d='M30 50 l0 -10' stroke='black' stroke-width='2'/><path d='M140 50 l0 -10' stroke='black' stroke-width='2'/><text x='45' y='30' font-size='20'>🍌</text><text x='115' y='30' font-size='20'>🍎</text><text x='105' y='30' font-size='20'>🍎</text><path d='M190 130 H340' stroke='black' stroke-width='2'/><path d='M265 130 V50' stroke='black' stroke-width='2'/><path d='M210 50 H320' stroke='black' stroke-width='2'/><path d='M210 50 l0 -10' stroke='black' stroke-width='2'/><path d='M320 50 l0 -10' stroke='black' stroke-width='2'/><text x='215' y='30' font-size='20'>🍌</text><text x='225' y='30' font-size='20'>🍌</text><text x='295' y='30' font-size='20'>?</text></svg>",
+      "pregunta": "Si una banana 🍌 pesa lo mismo que dos manzanas 🍎🍎... ¿Cuántas manzanas necesitas para equilibrar dos bananas 🍌🍌?",
       "opciones": ["🍎", "🍎🍎", "🍎🍎🍎", "🍎🍎🍎🍎"],
       "respuesta": "🍎🍎🍎🍎",
       "explicacion_correcta": "¡Lógica impecable! Si 1 banana son 2 manzanas, entonces 2 bananas son 4 manzanas.",

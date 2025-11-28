@@ -71,7 +71,11 @@ const TablaDobleEntrada = ({
   };
 
   const comprobarRespuesta = () => {
-    const correcto = respuestaUsuario === mision.respuesta_final;
+    // Normalizar strings para comparación (trim)
+    const respuestaUsuarioNorm = respuestaUsuario ? respuestaUsuario.trim() : '';
+    const respuestaCorrectaNorm = mision.respuesta_final ? mision.respuesta_final.trim() : '';
+    
+    const correcto = respuestaUsuarioNorm === respuestaCorrectaNorm;
     setEsCorrecta(correcto);
     setMostrarResultado(true);
     
