@@ -10,6 +10,7 @@ import BalanzaLogica from './tipos/BalanzaLogica';
 import DesarrolloCubos from './tipos/DesarrolloCubos';
 import PalabraDelDia from './tipos/PalabraDelDia';
 import NumberblocksConstructor from './tipos/NumberblocksConstructor';
+import LienzoDibujo from './tipos/LienzoDibujo';
 import './MisionRenderer.css';
 
 /**
@@ -174,6 +175,15 @@ const MisionRenderer = ({
             key={mision.id}
             mision={mision} 
             onCompletar={onCompletar}
+          />
+        );
+
+      case 'lienzo-dibujo':
+        return (
+          <LienzoDibujo 
+            key={mision.id}
+            mision={mision} 
+            onCompletar={onCompletar} 
           />
         );
       

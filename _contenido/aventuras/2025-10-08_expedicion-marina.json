@@ -1,0 +1,78 @@
+{
+  "id": "2025-10-08",
+  "tipo": "expedicion",
+  "tema": "marina",
+  "titulo": "🌊 Expedición Marina",
+  "descripcion": "Nueva York, Júpiter y Secretos del Tiburón. ¡Una aventura por mar, tierra y espacio!",
+  "misiones": [
+    {
+      "id": "mision-marina-1",
+      "tipo": "operaciones",
+      "titulo": "🔢 Misión de Operaciones",
+      "instruccion": "Resuelve las siguientes operaciones matemáticas.",
+      "ejercicios": [
+        { "pregunta": "34 + 17", "respuesta": "51" },
+        { "pregunta": "61 - 23", "respuesta": "38" },
+        { "pregunta": "9 × 4", "respuesta": "36" },
+        { "pregunta": "56 ÷ 8", "respuesta": "7" },
+        { "pregunta": "75 + 25", "respuesta": "100" }
+      ]
+    },
+    {
+      "id": "mision-marina-2",
+      "tipo": "opcion-multiple",
+      "titulo": "🗽 Misión Geográfica",
+      "instruccion": "¡Hola! Te envío un saludo desde la 'Gran Manzana'.",
+      "pregunta": "Esta ciudad es famosa por sus rascacielos y una estatua gigante que da la bienvenida a todos. ¿Sabes dónde estoy?",
+      "imagen": "<img src=\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHqzvH-_xPZX57JgzjMeQFGrL95vuwBidNAQ&s\" alt=\"Estatua de la Libertad\" style=\"max-width:100%; border-radius:15px; box-shadow:0 8px 16px rgba(0,0,0,0.2);\">",
+      "opciones": [
+        { "texto": "A) París", "valor": "paris" },
+        { "texto": "B) Nueva York", "valor": "ny" },
+        { "texto": "C) Tokio", "valor": "tokio" }
+      ],
+      "respuesta": "ny",
+      "explicacion_correcta": "¡Correcto! <br><br><div class='clue-box visible' style='background:#f9f9f9; padding:15px; border-radius:10px; border-left:5px solid #2ecc71;'><strong>¡Pista Secreta!</strong><br>La Estatua de la Libertad fue un regalo de Francia. ¡Su antorcha representa la libertad e ilumina el camino para todos los que llegan a la ciudad!<br><img src=\"https://images.pexels.com/photos/290386/pexels-photo-290386.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1\" alt=\"Estatua de la Libertad\" style=\"width:100%; margin-top:10px; border-radius:10px;\"></div>",
+      "explicacion_incorrecta": "Pista: Se le conoce como la 'Gran Manzana' y está en Estados Unidos."
+    },
+    {
+      "id": "mision-marina-3",
+      "tipo": "opcion-multiple",
+      "titulo": "🪐 Misión Cósmica",
+      "instruccion": "¡Soy Júpiter! Soy tan grande que todos los demás planetas del sistema solar podrían caber dentro de mí.",
+      "pregunta": "Por eso me llaman el planeta...",
+      "imagen": "<img src=\"https://cdn.britannica.com/66/155966-050-F18467EA/Jupiter.jpg\" alt=\"Planeta Júpiter\" style=\"max-width:100%; border-radius:15px; box-shadow:0 8px 16px rgba(0,0,0,0.2);\">",
+      "opciones": [
+        { "texto": "A) Pequeño", "valor": "pequeno" },
+        { "texto": "B) Rocoso", "valor": "rocoso" },
+        { "texto": "C) Gigante", "valor": "gigante" }
+      ],
+      "respuesta": "gigante",
+      "explicacion_correcta": "¡Exacto! <br><br><div class='clue-box visible' style='background:#f9f9f9; padding:15px; border-radius:10px; border-left:5px solid #2ecc71;'><strong>¡Pista Secreta!</strong><br>Júpiter tiene una tormenta gigante llamada la 'Gran Mancha Roja'. ¡Es más grande que todo el planeta Tierra!<br><img src=\"https://i.ytimg.com/vi/O1WLJTlESW4/maxresdefault.jpg\" alt=\"La Gran Mancha Roja de Júpiter\" style=\"width:100%; margin-top:10px; border-radius:10px;\"></div>",
+      "explicacion_incorrecta": "Soy el más grande de todos, un gigante gaseoso."
+    },
+    {
+      "id": "mision-marina-4",
+      "tipo": "opcion-multiple",
+      "titulo": "🦈 Misión Marina",
+      "instruccion": "Lee las pistas con atención:",
+      "pregunta": "1. Soy un famoso cazador del océano.<br>2. Tengo filas y filas de dientes afilados.<br>3. No tengo huesos, mi esqueleto es de cartílago.<br><br><strong>¿Qué animal soy?</strong>",
+      "imagen": "<img src=\"https://i.etsystatic.com/7680978/r/il/5d6516/2061579841/il_fullxfull.2061579841_sgmn.jpg\" alt=\"Dibujo de un tiburón\" style=\"max-width:100%; border-radius:15px; box-shadow:0 8px 16px rgba(0,0,0,0.2);\">",
+      "opciones": [
+        { "texto": "A) Delfín", "valor": "delfin" },
+        { "texto": "B) Tiburón", "valor": "tiburon" },
+        { "texto": "C) Ballena", "valor": "ballena" }
+      ],
+      "respuesta": "tiburon",
+      "explicacion_correcta": "¡Correcto! <br><br><div class='clue-box visible' style='background:#f9f9f9; padding:15px; border-radius:10px; border-left:5px solid #2ecc71;'><strong>¡Pista Secreta!</strong><br>Los tiburones pueden tener miles de dientes en su vida. Si se les cae uno, ¡otro nuevo crece para reemplazarlo! Por eso siempre tienen una sonrisa afilada.<br><img src=\"https://www.correosclic.gob.mx/images/thumbs/0011023_diente-de-tiburon-fosilestuche_550.jpeg\" alt=\"Mandíbula y dientes de tiburón\" style=\"width:100%; margin-top:10px; border-radius:10px;\"></div>",
+      "explicacion_incorrecta": "Pista: Tengo branquias y dientes muy afilados."
+    },
+    {
+      "id": "mision-marina-5",
+      "tipo": "lienzo-dibujo",
+      "titulo": "🧱 Misión Numberblocks",
+      "instruccion": "Dibuja Numberblocks para resolver la operación.",
+      "operacion_texto": "5 + 4 = ?",
+      "colores": ["#e74c3c", "#3498db", "#f1c40f", "#2ecc71", "#9b59b6", "#2c3e50"]
+    }
+  ]
+}

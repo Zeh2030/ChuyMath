@@ -47,7 +47,7 @@
         { "texto": "C) Tokio", "valor": "tokio" }
       ],
       "respuesta": "sf",
-      "explicacion_correcta": "¡Correcto! El Puente Golden Gate está en San Francisco. <br><br><strong>¡Dato Curioso!</strong> Aquí también está la famosa isla de <strong>Alcatraz</strong>, una antigua prisión en medio del mar.<br><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Alcatraz_%2816912368940%29.jpg/640px-Alcatraz_%2816912368940%29.jpg' style='width:100%; margin-top:10px; border-radius:10px;'>",
+      "explicacion_correcta": "¡Correcto! El Puente Golden Gate está en San Francisco. <br><br><strong>¡Dato Curioso!</strong> Aquí también está la famosa isla de <strong>Alcatraz</strong>, una antigua prisión en medio del mar.<br><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Alcatraz_Island_photo_Don_Ramey_Logan.jpg/2560px-Alcatraz_Island_photo_Don_Ramey_Logan.jpg' style='width:100%; margin-top:10px; border-radius:10px;'>",
       "explicacion_incorrecta": "Pista: El puente es famoso por su color 'International Orange' para verse en la niebla."
     },
     {
@@ -79,7 +79,7 @@
         { "texto": "Tiburón", "valor": "tiburon" }
       ],
       "respuesta": "pulpo",
-      "explicacion_correcta": "¡Increíble! Los pulpos son fascinantes. <br><br><strong>¡Dato Curioso!</strong> Tienen tres corazones y sangre azul. ¡Dos corazones bombean sangre a las branquias y uno al resto del cuerpo!<br><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Octopus_vulgaris_2.jpg/640px-Octopus_vulgaris_2.jpg' alt='Pulpo Real' style='width:100%; margin-top:10px; border-radius:10px;'>",
+      "explicacion_correcta": "¡Increíble! Los pulpos son fascinantes. <br><br><strong>¡Dato Curioso!</strong> Tienen tres corazones y sangre azul. ¡Dos corazones bombean sangre a las branquias y uno al resto del cuerpo!<br><img src='https://www.bab.com.ar/wp-content/uploads/2019/04/Pulpo.jpg' alt='Pulpo Real' style='width:100%; margin-top:10px; border-radius:10px;'>",
       "explicacion_incorrecta": "Pista: Tengo ventosas en mis 8 brazos."
     }
   ]
