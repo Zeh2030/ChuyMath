@@ -112,6 +112,7 @@ const Dashboard = () => {
   // Tipos de juegos para accesos rápidos
   const tiposDeJuego = [
     { id: 'aventuras', emoji: '🎯', nombre: 'Aventuras', filtro: 'aventuras', disponible: true },
+    { id: 'expediciones', emoji: '🚀', nombre: 'Expediciones', filtro: 'expediciones', disponible: true },
     { id: 'simulacros', emoji: '🏆', nombre: 'Simulacros', filtro: 'simulacros', disponible: true },
     { id: 'numberblocks', emoji: '🧱', nombre: 'Numberblocks', filtro: 'numberblocks-constructor', disponible: true },
     { id: 'conteo', emoji: '💠', nombre: 'Conteo', filtro: 'conteo-figuras', disponible: true },

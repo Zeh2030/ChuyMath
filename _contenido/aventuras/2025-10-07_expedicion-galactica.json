@@ -1,0 +1,82 @@
+{
+  "id": "2025-10-07",
+  "tipo": "expedicion",
+  "tema": "galactica",
+  "titulo": "🌌 Expedición Galáctica",
+  "descripcion": "San Francisco, Marte y Misterios Marinos. ¡Prepárate para un viaje estelar!",
+  "misiones": [
+    {
+      "id": "mision-galactica-1",
+      "tipo": "operaciones",
+      "titulo": "🔢 Motores de la Nave",
+      "instruccion": "Calcula la energía necesaria para el despegue.",
+      "ejercicios": [
+        { "pregunta": "15 + 8", "respuesta": "23" },
+        { "pregunta": "32 - 17", "respuesta": "15" },
+        { "pregunta": "6 × 3", "respuesta": "18" },
+        { "pregunta": "20 ÷ 5", "respuesta": "4" },
+        { "pregunta": "45 + 25", "respuesta": "70" }
+      ]
+    },
+    {
+      "id": "mision-galactica-2",
+      "tipo": "opcion-multiple",
+      "titulo": "🧠 Desafío Kakooma",
+      "instruccion": "Encuentra los dos números que sumados dan el objetivo.",
+      "pregunta": "Objetivo: 8. ¿Qué par de números suma 8?",
+      "opciones": [
+        { "texto": "2 + 5", "valor": "wrong1" },
+        { "texto": "2 + 6", "valor": "correct" },
+        { "texto": "3 + 4", "valor": "wrong2" },
+        { "texto": "1 + 8", "valor": "wrong3" }
+      ],
+      "respuesta": "correct",
+      "explicacion_correcta": "¡Bien pensado! 2 más 6 es igual a 8.",
+      "explicacion_incorrecta": "Suma con cuidado: 2+5=7, 3+4=7... busca los que den 8."
+    },
+    {
+      "id": "mision-galactica-3",
+      "tipo": "opcion-multiple",
+      "titulo": "🌍 Aterrizaje en la Tierra",
+      "instruccion": "¡Saludos desde una ciudad famosa por sus tranvías y su gran puente rojo!",
+      "pregunta": "¿Sabes dónde estoy?",
+      "imagen": "<img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/GoldenGateBridge-001.jpg/1280px-GoldenGateBridge-001.jpg\" alt=\"Golden Gate Bridge\" style=\"max-width:100%; border-radius:15px; box-shadow:0 8px 16px rgba(0,0,0,0.2);\">",
+      "opciones": [
+        { "texto": "A) París", "valor": "paris" },
+        { "texto": "B) San Francisco", "valor": "sf" },
+        { "texto": "C) Tokio", "valor": "tokio" }
+      ],
+      "respuesta": "sf",
+      "explicacion_correcta": "¡Correcto! El Puente Golden Gate está en San Francisco, California.",
+      "explicacion_incorrecta": "Pista: El puente es famoso por su color 'International Orange' para verse en la niebla."
+    },
+    {
+      "id": "mision-galactica-4",
+      "tipo": "palabra-del-dia",
+      "titulo": "🪐 El Planeta Rojo",
+      "instruccion": "Soy conocido como el Planeta ____ porque mi suelo está lleno de hierro oxidado.",
+      "palabra": "ROJO",
+      "palabra_es": "Rojo",
+      "palabra_en": "Red",
+      "icono": "🔴",
+      "pista": "Es el color del fuego y de las fresas."
+    },
+    {
+      "id": "mision-galactica-5",
+      "tipo": "opcion-multiple",
+      "titulo": "🐙 Misterio Marino",
+      "instruccion": "Tengo ocho brazos, tres corazones y sangre azul.",
+      "pregunta": "¿Qué animal soy?",
+      "imagen": "<img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Octopus3.jpg/1280px-Octopus3.jpg\" alt=\"Pulpo\" style=\"max-width:100%; border-radius:15px; box-shadow:0 8px 16px rgba(0,0,0,0.2);\">",
+      "opciones": [
+        { "texto": "Ballena", "valor": "ballena" },
+        { "texto": "Pulpo", "valor": "pulpo" },
+        { "texto": "Tiburón", "valor": "tiburon" }
+      ],
+      "respuesta": "pulpo",
+      "explicacion_correcta": "¡Increíble! Los pulpos son muy inteligentes y pueden camuflarse.",
+      "explicacion_incorrecta": "Pista: Tengo ventosas en mis 8 brazos."
+    }
+  ]
+}
+

@@ -21,6 +21,7 @@ const Boveda = () => {
   // Definir tipos de juegos disponibles
   const tiposJuegos = [
     { id: 'aventuras', emoji: '🎯', nombre: 'Aventuras Diarias', tipo: 'aventura', descripcion: 'Aventuras diarias' },
+    { id: 'expediciones', emoji: '🚀', nombre: 'Expediciones', tipo: 'expedicion', descripcion: 'Viajes temáticos' },
     { id: 'simulacros', emoji: '🏆', nombre: 'Simulacros', tipo: 'simulacro', descripcion: 'Exámenes completos' },
     { id: 'numberblocks-constructor', emoji: '🧱', nombre: 'Numberblocks', tipo: 'numberblocks-constructor', descripcion: 'Construye rectángulos con bloques' },
     { id: 'conteo-figuras', emoji: '💠', nombre: 'Conteo de Figuras', tipo: 'conteo-figuras', descripcion: 'Cuenta figuras geométricas' },
@@ -122,9 +123,9 @@ const Boveda = () => {
     if (tipoEspecifico) {
       // Aventuras genéricas (sin tipo específico)
       if (tipoEspecifico.tipo === 'aventura') {
-        return aventuras.filter(a => a.tipo === 'aventura' || a.tipo === 'expedicion');
+        return aventuras.filter(a => a.tipo === 'aventura');
       } else {
-        // Buscar en ambas colecciones por tipo específico
+        // Buscar en ambas colecciones por tipo específico (incluyendo 'expedicion')
         const enAventuras = aventuras.filter(a => a.tipo === tipoEspecifico.tipo);
         const enSimulacros = simulacros.filter(s => s.tipo === tipoEspecifico.tipo);
         return [...enAventuras, ...enSimulacros];
@@ -145,7 +146,7 @@ const Boveda = () => {
     
     // Aventuras genéricas (sin tipo específico)
     if (tipoData.tipo === 'aventura') {
-      return aventuras.filter(a => a.tipo === 'aventura' || a.tipo === 'expedicion').length;
+      return aventuras.filter(a => a.tipo === 'aventura').length;
     }
     
     // Buscar en ambas colecciones por tipo específico
