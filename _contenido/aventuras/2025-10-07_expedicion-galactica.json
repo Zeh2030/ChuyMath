@@ -20,19 +20,11 @@
     },
     {
       "id": "mision-galactica-2",
-      "tipo": "opcion-multiple",
+      "tipo": "kakooma",
       "titulo": "🧠 Desafío Kakooma",
-      "instruccion": "Encuentra los dos números que sumados dan el objetivo.",
-      "pregunta": "Objetivo: 8. ¿Qué par de números suma 8?",
-      "opciones": [
-        { "texto": "2 + 5", "valor": "wrong1" },
-        { "texto": "2 + 6", "valor": "correct" },
-        { "texto": "3 + 4", "valor": "wrong2" },
-        { "texto": "1 + 8", "valor": "wrong3" }
-      ],
-      "respuesta": "correct",
-      "explicacion_correcta": "¡Bien pensado! 2 más 6 es igual a 8.",
-      "explicacion_incorrecta": "Suma con cuidado: 2+5=7, 3+4=7... busca los que den 8."
+      "instruccion": "Toca dos burbujas que sumadas den el número del centro.",
+      "objetivo": 8,
+      "numeros": [2, 5, 6, 3, 4, 1]
     },
     {
       "id": "mision-galactica-3",

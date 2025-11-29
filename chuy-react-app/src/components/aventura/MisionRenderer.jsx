@@ -11,6 +11,7 @@ import DesarrolloCubos from './tipos/DesarrolloCubos';
 import PalabraDelDia from './tipos/PalabraDelDia';
 import NumberblocksConstructor from './tipos/NumberblocksConstructor';
 import LienzoDibujo from './tipos/LienzoDibujo';
+import Kakooma from './tipos/Kakooma';
 import './MisionRenderer.css';
 
 /**
@@ -181,6 +182,15 @@ const MisionRenderer = ({
       case 'lienzo-dibujo':
         return (
           <LienzoDibujo 
+            key={mision.id}
+            mision={mision} 
+            onCompletar={onCompletar} 
+          />
+        );
+
+      case 'kakooma':
+        return (
+          <Kakooma 
             key={mision.id}
             mision={mision} 
             onCompletar={onCompletar} 

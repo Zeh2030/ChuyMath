@@ -115,6 +115,7 @@ const Dashboard = () => {
     { id: 'expediciones', emoji: '🚀', nombre: 'Expediciones', filtro: 'expediciones', disponible: true },
     { id: 'simulacros', emoji: '🏆', nombre: 'Simulacros', filtro: 'simulacros', disponible: true },
     { id: 'numberblocks', emoji: '🧱', nombre: 'Numberblocks', filtro: 'numberblocks-constructor', disponible: true },
+    { id: 'kakooma', emoji: '🧠', nombre: 'Kakooma', filtro: 'kakooma', disponible: true },
     { id: 'conteo', emoji: '💠', nombre: 'Conteo', filtro: 'conteo-figuras', disponible: true },
     { id: 'secuencias', emoji: '🔢', nombre: 'Secuencias', filtro: 'secuencias', disponible: true },
     { id: 'detectives', emoji: '🔎', nombre: 'Detectives', filtro: 'tabla-doble-entrada', disponible: true },

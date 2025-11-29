@@ -1,0 +1,48 @@
+{
+  "id": "2025-10-09",
+  "tipo": "kakooma",
+  "titulo": "🧠 Desafío Mental Kakooma",
+  "descripcion": "¡Conecta las burbujas! 5 niveles de cálculo mental visual.",
+  "misiones": [
+    {
+      "id": "kak-1",
+      "tipo": "kakooma",
+      "titulo": "Nivel 1: Iniciando",
+      "instruccion": "Toca dos números que sumen 5.",
+      "objetivo": 5,
+      "numeros": [1, 4, 2, 3, 6, 0]
+    },
+    {
+      "id": "kak-2",
+      "tipo": "kakooma",
+      "titulo": "Nivel 2: Objetivo 7",
+      "instruccion": "¿Qué pareja suma 7?",
+      "objetivo": 7,
+      "numeros": [3, 4, 2, 5, 1, 6]
+    },
+    {
+      "id": "kak-3",
+      "tipo": "kakooma",
+      "titulo": "Nivel 3: Amigos del 10",
+      "instruccion": "¡Clásico! Busca los que suman 10.",
+      "objetivo": 10,
+      "numeros": [5, 5, 3, 7, 2, 8, 9, 1]
+    },
+    {
+      "id": "kak-4",
+      "tipo": "kakooma",
+      "titulo": "Nivel 4: Docena (12)",
+      "instruccion": "Encuentra la suma de 12.",
+      "objetivo": 12,
+      "numeros": [6, 6, 10, 2, 8, 4, 7, 5]
+    },
+    {
+      "id": "kak-5",
+      "tipo": "kakooma",
+      "titulo": "Nivel 5: Quince",
+      "instruccion": "¡Reto final! Suma 15.",
+      "objetivo": 15,
+      "numeros": [7, 8, 10, 5, 9, 6, 11, 4]
+    }
+  ]
+}
