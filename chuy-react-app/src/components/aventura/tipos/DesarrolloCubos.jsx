@@ -12,16 +12,26 @@ const DesarrolloCubos = ({
   const [seleccion, setSeleccion] = useState(respuestaGuardada || '');
   const [esCorrecto, setEsCorrecto] = useState(false);
   const [mostrarFeedback, setMostrarFeedback] = useState(false);
+  const [indiceEjercicioActual, setIndiceEjercicioActual] = useState(0);
 
   useEffect(() => {
     if (modoSimulacro && respuestaGuardada) {
       setSeleccion(respuestaGuardada);
     }
   }, [respuestaGuardada, modoSimulacro]);
+  
+  // Reiniciar índice al cambiar de misión
+  useEffect(() => {
+    setIndiceEjercicioActual(0);
+    setSeleccion('');
+    setMostrarFeedback(false);
+    setEsCorrecto(false);
+  }, [mision.id]);
 
   // Soportar dos formatos: nuevo (datos_cubo) y antiguo (plano_svg/opciones_svg)
   const usarFormatoAntiguo = !mision.datos_cubo && mision.ejercicios;
-  const ejercicio = usarFormatoAntiguo && mision.ejercicios?.length > 0 ? mision.ejercicios[0] : null;
+  const ejercicios = usarFormatoAntiguo ? (mision.ejercicios || []) : [];
+  const ejercicio = usarFormatoAntiguo && ejercicios.length > 0 ? ejercicios[indiceEjercicioActual] : null;
   
   // En formato antiguo, usar el índice como respuesta
   const caras = usarFormatoAntiguo 
@@ -74,8 +84,20 @@ const DesarrolloCubos = ({
     const correcto = seleccion.toString() === respuestaCorrecta.toString();
     setEsCorrecto(correcto);
     setMostrarFeedback(true);
-    if (correcto && onCompletar) {
-      setTimeout(() => onCompletar(), 1500);
+    
+    if (correcto) {
+      if (usarFormatoAntiguo && indiceEjercicioActual < ejercicios.length - 1) {
+        // Avanzar al siguiente ejercicio
+        setTimeout(() => {
+          setIndiceEjercicioActual(prev => prev + 1);
+          setSeleccion('');
+          setMostrarFeedback(false);
+          setEsCorrecto(false);
+        }, 1500);
+      } else if (onCompletar) {
+        // Completar misión (si es el último o único ejercicio)
+        setTimeout(() => onCompletar(), 1500);
+      }
     }
   };
 

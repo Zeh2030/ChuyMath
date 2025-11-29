@@ -8,6 +8,7 @@
       "titulo": "Word of the Day / Palabra del Día",
       "instruccion": "¡Vamos a aprender una palabra nueva en inglés! Repite la palabra en voz alta.",
       "palabra_en": "Triangle",
+      "palabra": "TRIANGLE",
       "palabra_es": "Triángulo",
       "icono": "🔺",
       "audio_pronunciacion": "https://ssl.gstatic.com/dictionary/static/sounds/20200429/triangle--_us_1.mp3"

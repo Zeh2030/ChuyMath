@@ -21,17 +21,17 @@
       "ejercicios": [
         {
           "pregunta": "¿Cuántos cubos forman esta torre?",
-          "figura_svg": "<svg width='150' height='150' viewBox='0 0 100 120'><g stroke='black' stroke-width='1.5' fill-opacity='0.8'><path fill='#87CEEB' d='M20 50 l30 -15 v50 l-30 15 v-50 z'/><path fill='#87CEEB' d='M50 35 l30 15 v50 l-30 -15 v-50 z'/><path fill='#ADD8E6' d='M20 50 l30 -15 l30 15 l-30 15 l-30 -15 z'/><path fill='#87CEEB' d='M20 100 l30 -15 v-50 l-30 15 v50 z'/><path fill='#ADD8E6' d='M20 100 l30 -15 l30 15 l-30 15 l-30 -15 z'/></g></svg>",
+          "figura_svg": "<svg width='200' height='200' viewBox='0 0 200 200'><defs><style>.top{fill:#4FC3F7;stroke:#0277BD;stroke-width:2}.left{fill:#29B6F6;stroke:#0277BD;stroke-width:2}.right{fill:#0288D1;stroke:#0277BD;stroke-width:2}</style></defs><!-- Cubo Base --><g transform='translate(50, 80)'><path class='left' d='M0 25 L0 75 L43 100 L43 50 Z'/><path class='right' d='M43 50 L43 100 L86 75 L86 25 Z'/><path class='top' d='M0 25 L43 0 L86 25 L43 50 Z'/></g><!-- Cubo Superior --><g transform='translate(50, 30)'><path class='left' d='M0 25 L0 75 L43 100 L43 50 Z'/><path class='right' d='M43 50 L43 100 L86 75 L86 25 Z'/><path class='top' d='M0 25 L43 0 L86 25 L43 50 Z'/></g></svg>",
           "respuesta": "2",
-          "explicacion_correcta": "¡Exacto! Hay 2 cubos, uno encima del otro.",
-          "explicacion_incorrecta": "¡Casi! Si te fijas bien, es una pila de 2 cubos."
+          "explicacion_correcta": "¡Exacto! Hay 2 cubos sólidos, uno encima del otro.",
+          "explicacion_incorrecta": "¡Casi! Cuenta los bloques azules sólidos. Hay uno abajo y otro arriba."
         },
         {
           "pregunta": "¿Y cuántos cubos hay en esta figura?",
-          "figura_svg": "<svg width='150' height='150' viewBox='0 0 120 120'><g stroke='black' stroke-width='1.5' fill-opacity='0.8'><path fill='#87CEEB' d='M20 50 l30 -15 v50 l-30 15 z'/><path fill='#87CEEB' d='M50 35 l30 15 v50 l-30 -15 z'/><path fill='#ADD8E6' d='M20 50 l30 -15 l30 15 l-30 15 z'/><path fill='#87CEEB' d='M50 50 l30 -15 v50 l-30 15 z'/><path fill='#87CEEB' d='M80 35 l30 15 v50 l-30 -15 z'/><path fill='#ADD8E6' d='M50 50 l30 -15 l30 15 l-30 15 z'/></g></svg>",
+          "figura_svg": "<svg width='200' height='200' viewBox='0 0 200 200'><defs><style>.top{fill:#FFD54F;stroke:#FF6F00;stroke-width:2}.left{fill:#FFB74D;stroke:#FF6F00;stroke-width:2}.right{fill:#FF9800;stroke:#FF6F00;stroke-width:2}</style></defs><!-- Cubo Base --><g transform='translate(50, 80)'><path class='left' d='M0 25 L0 75 L43 100 L43 50 Z'/><path class='right' d='M43 50 L43 100 L86 75 L86 25 Z'/><path class='top' d='M0 25 L43 0 L86 25 L43 50 Z'/></g><!-- Cubo Superior --><g transform='translate(50, 30)'><path class='left' d='M0 25 L0 75 L43 100 L43 50 Z'/><path class='right' d='M43 50 L43 100 L86 75 L86 25 Z'/><path class='top' d='M0 25 L43 0 L86 25 L43 50 Z'/></g></svg>",
           "respuesta": "2",
-          "explicacion_correcta": "¡Correcto! Hay 2 cubos superpuestos, uno encima del otro.",
-          "explicacion_incorrecta": "Revisa bien la figura: hay 2 cubos apilados verticalmente."
+          "explicacion_correcta": "¡Correcto! Son 2 bloques amarillos apilados.",
+          "explicacion_incorrecta": "Fíjate bien: es una torre simple de 2 bloques."
         }
       ]
     },
