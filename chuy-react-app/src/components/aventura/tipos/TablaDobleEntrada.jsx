@@ -79,9 +79,18 @@ const TablaDobleEntrada = ({
     setEsCorrecta(correcto);
     setMostrarResultado(true);
     
-    if (correcto && onCompletar) {
-      setTimeout(() => onCompletar(), 1500);
-    }
+    // Si es correcto, esperamos a que el usuario presione Continuar
+  };
+
+  const handleContinuar = () => {
+    if (onCompletar) onCompletar();
+  };
+
+  const handleReintentar = () => {
+    setMostrarResultado(false);
+    setEsCorrecta(false);
+    // No limpiamos la respuestaUsuario para que pueda corregir solo lo necesario
+    // Pero si quieres forzar a re-seleccionar: setRespuestaUsuario('');
   };
 
   const debeMostrarResultado = mostrarResultado || (modoSimulacro && mostrarResultadoExterno);
@@ -181,15 +190,29 @@ const TablaDobleEntrada = ({
         </div>
       )}
 
-      {/* Botón Verificar (solo en modo no-simulacro) */}
-      {!modoSimulacro && !mostrarResultado && (
-        <button 
-          className="boton-verificar"
-          onClick={comprobarRespuesta}
-          disabled={!respuestaUsuario}
-        >
-          Verificar Misterio
-        </button>
+      {/* Botones de Acción (solo en modo no-simulacro) */}
+      {!modoSimulacro && (
+        <div className="tabla-acciones">
+          {!mostrarResultado ? (
+            <button 
+              className="boton-verificar"
+              onClick={comprobarRespuesta}
+              disabled={!respuestaUsuario}
+            >
+              Verificar Misterio
+            </button>
+          ) : (
+            esCorrecta ? (
+              <button className="boton-continuar" onClick={handleContinuar}>
+                Continuar ➜
+              </button>
+            ) : (
+              <button className="boton-reintentar" onClick={handleReintentar}>
+                Intentar de Nuevo
+              </button>
+            )
+          )}
+        </div>
       )}
     </div>
   );

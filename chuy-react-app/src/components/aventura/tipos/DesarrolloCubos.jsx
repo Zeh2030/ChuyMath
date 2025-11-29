@@ -85,19 +85,19 @@ const DesarrolloCubos = ({
     setEsCorrecto(correcto);
     setMostrarFeedback(true);
     
-    if (correcto) {
-      if (usarFormatoAntiguo && indiceEjercicioActual < ejercicios.length - 1) {
-        // Avanzar al siguiente ejercicio
-        setTimeout(() => {
-          setIndiceEjercicioActual(prev => prev + 1);
-          setSeleccion('');
-          setMostrarFeedback(false);
-          setEsCorrecto(false);
-        }, 1500);
-      } else if (onCompletar) {
-        // Completar misión (si es el último o único ejercicio)
-        setTimeout(() => onCompletar(), 1500);
-      }
+    // Si es correcto, esperamos a que el usuario presione Continuar
+  };
+
+  const handleContinuar = () => {
+    if (usarFormatoAntiguo && indiceEjercicioActual < ejercicios.length - 1) {
+      // Avanzar al siguiente ejercicio
+      setIndiceEjercicioActual(prev => prev + 1);
+      setSeleccion('');
+      setMostrarFeedback(false);
+      setEsCorrecto(false);
+    } else if (onCompletar) {
+      // Completar misión (si es el último o único ejercicio)
+      onCompletar();
     }
   };
 
@@ -260,7 +260,11 @@ const DesarrolloCubos = ({
               Confirmar
             </button>
           ) : (
-            !esCorrecto && (
+            esCorrecto ? (
+              <button className="boton-continuar" onClick={handleContinuar}>
+                Continuar ➜
+              </button>
+            ) : (
               <button className="boton-reintentar" onClick={handleReintentar}>
                 Intentar de Nuevo
               </button>

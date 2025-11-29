@@ -98,12 +98,7 @@ const OpcionMultiple = ({
     setEsCorrecta(correcta);
     setMostrarResultado(true);
 
-    // Si es correcta, llamar al callback después de un breve delay
-    if (correcta && onCompletar) {
-      setTimeout(() => {
-        onCompletar();
-      }, 2000); // Esperar 2 segundos para que el usuario vea el feedback
-    }
+    // Si es correcta, no avanzamos automáticamente. Esperamos a que el usuario haga clic en Continuar.
   };
 
   // Reiniciar para intentar de nuevo
@@ -111,6 +106,13 @@ const OpcionMultiple = ({
     setRespuestaSeleccionada(null);
     setMostrarResultado(false);
     setEsCorrecta(false);
+  };
+
+  // Continuar a la siguiente misión/ejercicio
+  const handleContinuar = () => {
+    if (onCompletar) {
+      onCompletar();
+    }
   };
 
   // Determinar si una opción está seleccionada
@@ -218,7 +220,7 @@ const OpcionMultiple = ({
         })}
       </div>
 
-      {/* Botón de Enviar / Reintentar - Solo en modo normal */}
+      {/* Botón de Enviar / Reintentar / Continuar - Solo en modo normal */}
       {!modoSimulacro && (
       <div className="acciones-container">
         {!mostrarResultado ? (
@@ -230,12 +232,21 @@ const OpcionMultiple = ({
             Enviar Respuesta
           </button>
         ) : (
-          <button
-            className="boton-reintentar"
-            onClick={handleReintentar}
-          >
-            Intentar de Nuevo
-          </button>
+          esCorrecta ? (
+            <button
+              className="boton-continuar"
+              onClick={handleContinuar}
+            >
+              Continuar ➜
+            </button>
+          ) : (
+            <button
+              className="boton-reintentar"
+              onClick={handleReintentar}
+            >
+              Intentar de Nuevo
+            </button>
+          )
         )}
       </div>
       )}
@@ -250,9 +261,10 @@ const OpcionMultiple = ({
             <p className="feedback-titulo">
               {esCorrectaCalculada ? '¡Excelente!' : 'No es correcto'}
             </p>
-            <p className="feedback-explicacion">
-              {esCorrectaCalculada ? explicacionCorrecta : explicacionIncorrecta}
-            </p>
+            <div 
+              className="feedback-explicacion"
+              dangerouslySetInnerHTML={{ __html: esCorrectaCalculada ? explicacionCorrecta : explicacionIncorrecta }}
+            />
           </div>
         </div>
       )}

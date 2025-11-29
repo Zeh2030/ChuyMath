@@ -47,19 +47,24 @@
         { "texto": "C) Tokio", "valor": "tokio" }
       ],
       "respuesta": "sf",
-      "explicacion_correcta": "¡Correcto! El Puente Golden Gate está en San Francisco, California.",
+      "explicacion_correcta": "¡Correcto! El Puente Golden Gate está en San Francisco. <br><br><strong>¡Dato Curioso!</strong> Aquí también está la famosa isla de <strong>Alcatraz</strong>, una antigua prisión en medio del mar.<br><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Alcatraz_%2816912368940%29.jpg/640px-Alcatraz_%2816912368940%29.jpg' style='width:100%; margin-top:10px; border-radius:10px;'>",
       "explicacion_incorrecta": "Pista: El puente es famoso por su color 'International Orange' para verse en la niebla."
     },
     {
       "id": "mision-galactica-4",
-      "tipo": "palabra-del-dia",
+      "tipo": "opcion-multiple",
       "titulo": "🪐 El Planeta Rojo",
-      "instruccion": "Soy conocido como el Planeta ____ porque mi suelo está lleno de hierro oxidado.",
-      "palabra": "ROJO",
-      "palabra_es": "Rojo",
-      "palabra_en": "Red",
-      "icono": "🔴",
-      "pista": "Es el color del fuego y de las fresas."
+      "instruccion": "Completa la frase con la palabra correcta.",
+      "pregunta": "Hola, soy Marte. Soy conocido como el Planeta ____ porque mi suelo está lleno de hierro oxidado.",
+      "imagen": "<img src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/OSIRIS_Mars_true_color.jpg/640px-OSIRIS_Mars_true_color.jpg' alt='Marte' style='width:100%; border-radius:15px; box-shadow:0 8px 16px rgba(0,0,0,0.2);'>",
+      "opciones": [
+        { "texto": "Azul", "valor": "azul" },
+        { "texto": "Rojo", "valor": "rojo" },
+        { "texto": "Verde", "valor": "verde" }
+      ],
+      "respuesta": "rojo",
+      "explicacion_correcta": "¡Exacto! Soy el Planeta Rojo. <br><br><strong>¡Pista Secreta!</strong> Tengo el volcán más grande del sistema solar: el <strong>Monte Olimpo</strong>. ¡Es 3 veces más alto que el Everest!<br><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Olympus_Mons_alt.jpg/640px-Olympus_Mons_alt.jpg' alt='Monte Olimpo' style='width:100%; margin-top:10px; border-radius:10px;'>",
+      "explicacion_incorrecta": "Pista: El hierro oxidado tiene un color parecido al de la sangre o el fuego."
     },
     {
       "id": "mision-galactica-5",
@@ -67,16 +72,15 @@
       "titulo": "🐙 Misterio Marino",
       "instruccion": "Tengo ocho brazos, tres corazones y sangre azul.",
       "pregunta": "¿Qué animal soy?",
-      "imagen": "<img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Octopus3.jpg/1280px-Octopus3.jpg\" alt=\"Pulpo\" style=\"max-width:100%; border-radius:15px; box-shadow:0 8px 16px rgba(0,0,0,0.2);\">",
+      "imagen": "<svg width='200' height='200' viewBox='0 0 100 100' style='margin:0 auto; display:block;'><path d='M30,40 Q20,60 10,50 T10,80' fill='none' stroke='#9b59b6' stroke-width='8' stroke-linecap='round'/><path d='M70,40 Q80,60 90,50 T90,80' fill='none' stroke='#9b59b6' stroke-width='8' stroke-linecap='round'/><path d='M40,50 Q30,80 20,90' fill='none' stroke='#9b59b6' stroke-width='8' stroke-linecap='round'/><path d='M60,50 Q70,80 80,90' fill='none' stroke='#9b59b6' stroke-width='8' stroke-linecap='round'/><circle cx='50' cy='35' r='25' fill='#9b59b6'/><circle cx='40' cy='30' r='5' fill='white'/><circle cx='40' cy='30' r='2' fill='black'/><circle cx='60' cy='30' r='5' fill='white'/><circle cx='60' cy='30' r='2' fill='black'/><path d='M45,45 Q50,50 55,45' stroke='white' stroke-width='2' fill='none'/></svg>",
       "opciones": [
         { "texto": "Ballena", "valor": "ballena" },
         { "texto": "Pulpo", "valor": "pulpo" },
         { "texto": "Tiburón", "valor": "tiburon" }
       ],
       "respuesta": "pulpo",
-      "explicacion_correcta": "¡Increíble! Los pulpos son muy inteligentes y pueden camuflarse.",
+      "explicacion_correcta": "¡Increíble! Los pulpos son fascinantes. <br><br><strong>¡Dato Curioso!</strong> Tienen tres corazones y sangre azul. ¡Dos corazones bombean sangre a las branquias y uno al resto del cuerpo!<br><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Octopus_vulgaris_2.jpg/640px-Octopus_vulgaris_2.jpg' alt='Pulpo Real' style='width:100%; margin-top:10px; border-radius:10px;'>",
       "explicacion_incorrecta": "Pista: Tengo ventosas en mis 8 brazos."
     }
   ]
 }
-

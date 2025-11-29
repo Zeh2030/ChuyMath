@@ -260,12 +260,20 @@
   color: #c0392b;
 }
 
-/* Botón Verificar */
-.boton-verificar {
+/* Botones de Acción Globales para la Tabla */
+.tabla-acciones {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 30px;
+}
+
+.boton-verificar,
+.boton-reintentar,
+.boton-continuar {
   display: block;
-  margin: 30px auto 0;
+  margin: 0; /* Controlado por el flex container */
   padding: 15px 40px;
-  background: linear-gradient(135deg, #3498db, #2980b9);
   color: white;
   border: none;
   border-radius: 10px;
@@ -273,19 +281,37 @@
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
   min-height: 48px;
   min-width: 200px;
 }
 
-.boton-verificar:hover:not(:disabled) {
+.boton-verificar {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+}
+
+.boton-reintentar {
+  background: linear-gradient(135deg, #e67e22, #d35400);
+  box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
+}
+
+.boton-continuar {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  box-shadow: 0 4px 10px rgba(46, 204, 113, 0.3);
+}
+
+.boton-verificar:hover:not(:disabled),
+.boton-reintentar:hover,
+.boton-continuar:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(52, 152, 219, 0.5);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 .boton-verificar:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 @keyframes slideIn {

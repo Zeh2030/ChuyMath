@@ -78,18 +78,21 @@ const Operaciones = ({
     setMostrarFeedback(true);
 
     if (correcta) {
-      setTimeout(() => {
-        // Si hay más ejercicios, avanzar
-        if (indiceEjercicio < ejercicios.length - 1) {
-          setIndiceEjercicio(prev => prev + 1);
-          setRespuestaUsuario('');
-          setMostrarFeedback(false);
-          setEsCorrecta(false);
-        } else {
-          // Si era el último, completar misión
-          if (onCompletar) onCompletar();
-        }
-      }, 1500);
+      // Esperar a que el usuario presione Continuar
+    }
+  };
+
+  // Continuar al siguiente ejercicio o terminar
+  const handleContinuar = () => {
+    // Si hay más ejercicios, avanzar
+    if (indiceEjercicio < ejercicios.length - 1) {
+      setIndiceEjercicio(prev => prev + 1);
+      setRespuestaUsuario('');
+      setMostrarFeedback(false);
+      setEsCorrecta(false);
+    } else {
+      // Si era el último, completar misión
+      if (onCompletar) onCompletar();
     }
   };
 
@@ -139,7 +142,14 @@ const Operaciones = ({
               Enviar Respuesta
             </button>
           ) : (
-            !esCorrecta && (
+            esCorrecta ? (
+              <button 
+                className="boton-continuar" 
+                onClick={handleContinuar}
+              >
+                Continuar ➜
+              </button>
+            ) : (
               <button className="boton-reintentar" onClick={handleReintentar}>
                 Intentar de Nuevo
               </button>
