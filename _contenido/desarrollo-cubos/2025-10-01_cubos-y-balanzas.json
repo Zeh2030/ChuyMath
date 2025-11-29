@@ -1,5 +1,6 @@
 {
   "id": "2025-10-01",
+  "tipo": "desarrollo-cubos",
   "titulo": "Aventura de Lógica y Espacio",
   "misiones": [
     {
@@ -58,7 +59,7 @@
         { "texto": "3 círculos", "valor": "3" },
         { "texto": "4 círculos", "valor": "4" }
       ],
-      "respuesta": "3",
+      "respuesta": 2,
       "explicacion_correcta": "¡Lógica de campeón! Si en la Balanza 1 un cuadrado (■) pesa lo mismo que dos círculos (●●), en la Balanza 2 podemos reemplazar el cuadrado por dos círculos. Entonces, un círculo más dos círculos es igual a un triángulo. ¡1+2=3!",
       "explicacion_incorrecta": "¡Casi! Mira la Balanza 1: un cuadrado (■) es igual a dos círculos (●●). Ahora, en la Balanza 2, cambia el cuadrado por dos círculos y cuenta cuántos círculos hay en total de ese lado."
     }

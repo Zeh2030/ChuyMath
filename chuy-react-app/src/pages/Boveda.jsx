@@ -251,7 +251,7 @@ const Boveda = () => {
                     onClick={() => setFiltro('aventuras')}
                   >
                     🌟 Aventuras
-                    <span className="filtro-badge">{aventuras.length}</span>
+                    <span className="filtro-badge">{contarPorTipo('aventuras')}</span>
                   </button>
                   {/* Filtros dinámicos por cada tipo de simulacro que tenga contenido */}
                   {tiposJuegos.filter(t => t.tipo !== 'aventura').map(tipo => {
