@@ -1,0 +1,208 @@
+{
+  "id": "2025-11-29_olimpiada-clone-2",
+  "tipo": "simulacro",
+  "titulo": "Simulacro de Olimpiada: Clone 2",
+  "descripcion": "Segunda variación del examen de Olimpiada, con nuevos datos y desafíos visuales.",
+  "misiones": [
+    {
+      "id": "p1",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 1",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "¿Cuántos días hay en 5 semanas?",
+      "opciones": ["30", "35", "40", "45"],
+      "respuesta": 1,
+      "explicacion_correcta": "5 semanas x 7 días/semana = 35 días."
+    },
+    {
+      "id": "p2",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 2",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "Si un lápiz cuesta $2 y compras 8, ¿cuánto gastas?",
+      "opciones": ["$14", "$16", "$18", "$20"],
+      "respuesta": 1,
+      "explicacion_correcta": "8 lápices x $2/lápiz = $16."
+    },
+    {
+      "id": "p3",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 3",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "¿Cuál es el número que sigue en la secuencia: 5, 10, 15, 20, ...?",
+      "opciones": ["22", "23", "24", "25"],
+      "respuesta": 3,
+      "explicacion_correcta": "La secuencia aumenta de 5 en 5. 20 + 5 = 25."
+    },
+    {
+      "id": "p4",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 4",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "Si tienes 20 canicas y pierdes 7, ¿cuántas te quedan?",
+      "opciones": ["11", "12", "13", "14"],
+      "respuesta": 2,
+      "explicacion_correcta": "20 - 7 = 13 canicas."
+    },
+    {
+      "id": "p5",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 5",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "Un reloj marca las 7:00. ¿Qué hora marcará en 4 horas más?",
+      "opciones": ["10:00", "11:00", "12:00", "1:00"],
+      "respuesta": 2,
+      "explicacion_correcta": "7:00 + 4 horas = 11:00."
+    },
+    {
+      "id": "p6",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 6",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "¿Cuántas ruedas tiene un triciclo?",
+      "opciones": ["2", "3", "4", "5"],
+      "respuesta": 1,
+      "explicacion_correcta": "Un triciclo tiene 3 ruedas."
+    },
+    {
+      "id": "p7",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 7",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "Si una centena de hojas son 100, ¿cuántas hojas son media centena?",
+      "opciones": ["25", "40", "50", "75"],
+      "respuesta": 2,
+      "explicacion_correcta": "Media centena es la mitad de 100, que es 50."
+    },
+    {
+      "id": "p8",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 8",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "¿Cuál es la capital de España?",
+      "opciones": ["Lisboa", "Londres", "Madrid", "Berlín"],
+      "respuesta": 2,
+      "explicacion_correcta": "La capital de España es Madrid."
+    },
+    {
+      "id": "p9",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 9",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "Si una caja tiene 12 lápices y añades 5 más, ¿cuántos lápices tienes en total?",
+      "opciones": ["15", "16", "17", "18"],
+      "respuesta": 2,
+      "explicacion_correcta": "12 + 5 = 17 lápices."
+    },
+    {
+      "id": "p10",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 10",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "Tienes 40 pesos y compras un helado de 15 pesos. ¿Cuánto te sobra?",
+      "opciones": ["20", "25", "30", "35"],
+      "respuesta": 1,
+      "explicacion_correcta": "40 - 15 = 25 pesos."
+    },
+    {
+      "id": "p11",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 11",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "¿Cuántos ojos hay en 3 personas?",
+      "opciones": ["4", "5", "6", "7"],
+      "respuesta": 2,
+      "explicacion_correcta": "Cada persona tiene 2 ojos, entonces 3 personas x 2 ojos/persona = 6 ojos."
+    },
+    {
+      "id": "p12",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 12",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "Si un grupo de amigos tiene 14 galletas y se comen la mitad, ¿cuántas galletas les quedan?",
+      "opciones": ["5", "6", "7", "8"],
+      "respuesta": 2,
+      "explicacion_correcta": "La mitad de 14 galletas es 7."
+    },
+    {
+      "id": "p13",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 13",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "¿Cuál es el resultado de 8 x 5?",
+      "opciones": ["35", "40", "45", "50"],
+      "respuesta": 1,
+      "explicacion_correcta": "8 x 5 = 40."
+    },
+    {
+      "id": "p14",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 14",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "Si hoy es domingo, ¿qué día fue anteayer?",
+      "opciones": ["Viernes", "Sábado", "Lunes", "Martes"],
+      "respuesta": 0,
+      "explicacion_correcta": "Si hoy es domingo, ayer fue sábado y anteayer fue viernes."
+    },
+    {
+      "id": "p15",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 15",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "Un cohete despega a una altura de 20 km y sube 10 km más. ¿A qué altura está ahora?",
+      "opciones": ["25", "28", "30", "35"],
+      "respuesta": 2,
+      "explicacion_correcta": "20 + 10 = 30 km."
+    },
+    {
+      "id": "p16",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 16",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "Tienes 5 cestas con 3 frutas cada una. ¿Cuántas frutas tienes en total?",
+      "opciones": ["12", "15", "18", "20"],
+      "respuesta": 1,
+      "explicacion_correcta": "5 cestas x 3 frutas/cesta = 15 frutas."
+    },
+    {
+      "id": "p17",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 17",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "¿Cuántos lados tiene un triángulo?",
+      "opciones": ["2", "3", "4", "5"],
+      "respuesta": 1,
+      "explicacion_correcta": "Un triángulo tiene 3 lados."
+    },
+    {
+      "id": "p18",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 18",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "Si un año tiene 4 estaciones, ¿cuántas estaciones tienen 3 años?",
+      "opciones": ["8", "10", "12", "16"],
+      "respuesta": 2,
+      "explicacion_correcta": "3 años x 4 estaciones/año = 12 estaciones."
+    },
+    {
+      "id": "p19",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 19: La Pizza",
+      "instruccion": "Observa la pizza. ¿Cuántas rebanadas se han comido?",
+      "imagen": "<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><circle cx='100' cy='100' r='80' fill='#f7dc6f'/><circle cx='100' cy='100' r='70' fill='#e74c3c'/><path d='M100,100 L170.71,170.71 A80,80 0 0 0 170.71,29.29 Z' fill='#f7dc6f'/><path d='M100,100 L100,20 A80,80 0 0 0 29.29,29.29 Z' fill='#f7dc6f'/><path d='M100,100 L29.29,29.29 A80,80 0 0 0 29.29,170.71 Z' fill='#f7dc6f'/><path d='M100,100 L29.29,170.71 A80,80 0 0 0 170.71,170.71 Z' fill='#f7dc6f'/><!-- Rebanada faltante (indicada por espacio) --><path d='M100,100 L170.71,29.29 A80,80 0 0 0 100,20 Z' fill='none' stroke='#f7dc6f' stroke-width='5'/></svg>",
+      "opciones": ["1", "2", "3", "4"],
+      "respuesta": 0,
+      "explicacion_correcta": "¡Correcto! Se comió 1 rebanada de pizza."
+    },
+    {
+      "id": "p20",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 20: Tablero de Gato (Tic-Tac-Toe)",
+      "instruccion": "Observa el tablero de gato. ¿Cuántas casillas vacías hay en la fila del centro?",
+      "imagen": "<svg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'><rect x='0' y='0' width='300' height='300' fill='white'/><line x1='100' y1='0' x2='100' y2='300' stroke='black' stroke-width='5'/><line x1='200' y1='0' x2='200' y2='300' stroke='black' stroke-width='5'/><line x1='0' y1='100' x2='300' y2='100' stroke='black' stroke-width='5'/><line x1='0' y1='200' x2='300' y2='200' stroke='black' stroke-width='5'/><!-- Piezas --><circle cx='50' cy='50' r='30' fill='blue'/><line x1='230' y1='230' x2='270' y2='270' stroke='red' stroke-width='10'/><line x1='230' y1='270' x2='270' y1='230' stroke='red' stroke-width='10'/><circle cx='50' cy='250' r='30' fill='blue'/><line x1='130' y1='230' x2='170' y2='270' stroke='red' stroke-width='10'/><line x1='130' y1='270' x2='170' y1='230' stroke='red' stroke-width='10'/></svg>",
+      "opciones": ["0", "1", "2", "3", "4"],
+      "respuesta": 3,
+      "explicacion_correcta": "¡Correcto! Hay 3 casillas vacías en la fila del centro."
+    }
+  ]
+}

@@ -76,12 +76,30 @@ const Simulacro = () => {
     } 
     
     if (problema.tipo === 'opcion-multiple') {
-      // La respuesta puede ser un índice o un valor
-      if (typeof problema.respuesta === 'string' && /^\d+$/.test(problema.respuesta)) {
-        return respuestaUsuario === problema.respuesta;
-      } else {
-        return respuestaUsuario === problema.respuesta;
+      const respuestaUsuarioStr = String(respuestaUsuario);
+      const respuestaCorrectaStr = String(problema.respuesta);
+
+      // 1. Comparación directa (índice vs índice o valor vs valor)
+      if (respuestaUsuarioStr === respuestaCorrectaStr) return true;
+
+      // 2. Comparación cruzada (si usuario mandó valor y respuesta es índice)
+      // Si problema.respuesta es un índice numérico y tenemos opciones
+      if (!isNaN(problema.respuesta) && problema.opciones) {
+        const indice = parseInt(problema.respuesta, 10);
+        const opcionCorrecta = problema.opciones[indice];
+        
+        // Obtener el valor de la opción, ya sea un string o un objeto con propiedad 'valor'
+        let valorCorrectoEnOpcion;
+        if (typeof opcionCorrecta === 'object' && opcionCorrecta !== null && 'valor' in opcionCorrecta) {
+          valorCorrectoEnOpcion = opcionCorrecta.valor;
+        } else {
+          valorCorrectoEnOpcion = opcionCorrecta;
+        }
+
+        if (String(valorCorrectoEnOpcion) === respuestaUsuarioStr) return true;
       }
+      
+      return false;
     }
     
     if (problema.tipo === 'tabla-doble-entrada') {

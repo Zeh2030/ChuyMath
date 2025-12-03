@@ -51,8 +51,7 @@ Aquí tienes las plantillas para cada tipo de juego. Copia y pega la que necesit
 Sirve para preguntas de texto, problemas de lógica con imagen estática, o balanzas simples.
 
 **Nota sobre `respuesta`:**
-*   Si tus opciones son textos simples, usa el **ÍNDICE** (0, 1, 2...) como número o string.
-*   Si tus opciones tienen valores específicos, usa ese valor.
+*   Para **TODAS** las misiones de tipo `opcion-multiple`, la `respuesta` debe ser siempre el **ÍNDICE NUMÉRICO** (0, 1, 2...) de la opción correcta. Esto asegura la máxima coherencia y compatibilidad.
 
 ```json
 {

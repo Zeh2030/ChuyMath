@@ -1,0 +1,215 @@
+{
+  "id": "2025-11-29_olimpiada-clone-1",
+  "tipo": "simulacro",
+  "titulo": "Simulacro de Olimpiada: Clone 1",
+  "descripcion": "Primera variación del examen de Olimpiada, con nuevos datos pero la misma lógica.",
+  "misiones": [
+    {
+      "id": "p1",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 1",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "¿Cuántos días hay en 4 semanas?",
+      "opciones": ["24", "28", "30", "32"],
+      "respuesta": 1,
+      "explicacion_correcta": "4 semanas x 7 días/semana = 28 días."
+    },
+    {
+      "id": "p2",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 2",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "Si una paleta cuesta $3 y compras 6, ¿cuánto gastas?",
+      "opciones": ["$12", "$15", "$18", "$21"],
+      "respuesta": 2,
+      "explicacion_correcta": "6 paletas x $3/paleta = $18."
+    },
+    {
+      "id": "p3",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 3",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "¿Cuál es el número que sigue en la secuencia: 3, 6, 9, 12, ...?",
+      "opciones": ["13", "14", "15", "16"],
+      "respuesta": 2,
+      "explicacion_correcta": "La secuencia aumenta de 3 en 3. 12 + 3 = 15."
+    },
+    {
+      "id": "p4",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 4",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "Si tienes 15 galletas y te comes 5, ¿cuántas te quedan?",
+      "opciones": ["8", "9", "10", "11"],
+      "respuesta": 2,
+      "explicacion_correcta": "15 - 5 = 10 galletas."
+    },
+    {
+      "id": "p5",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 5",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "Un reloj marca las 4:00. ¿Qué hora marcará en 3 horas más?",
+      "opciones": ["6:00", "7:00", "8:00", "9:00"],
+      "respuesta": 1,
+      "explicacion_correcta": "4:00 + 3 horas = 7:00."
+    },
+    {
+      "id": "p6",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 6",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "¿Cuántos ojos tiene un gato?",
+      "opciones": ["1", "2", "3", "4"],
+      "respuesta": 1,
+      "explicacion_correcta": "Los gatos tienen 2 ojos."
+    },
+    {
+      "id": "p7",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 7",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "Si una decena de lápices son 10, ¿cuántos lápices son media decena?",
+      "opciones": ["3", "4", "5", "6"],
+      "respuesta": 2,
+      "explicacion_correcta": "Media decena es la mitad de 10, que es 5."
+    },
+    {
+      "id": "p8",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 8",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "¿Cuál es la capital de Italia?",
+      "opciones": ["Madrid", "Roma", "París", "Atenas"],
+      "respuesta": 1,
+      "explicacion_correcta": "La capital de Italia es Roma."
+    },
+    {
+      "id": "p9",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 9",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "Si un autobús tiene 10 pasajeros y se bajan 3, ¿cuántos pasajeros quedan?",
+      "opciones": ["6", "7", "8", "9"],
+      "respuesta": 1,
+      "explicacion_correcta": "10 - 3 = 7 pasajeros."
+    },
+    {
+      "id": "p10",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 10",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "Tienes 30 pesos y compras un jugo de 12 pesos. ¿Cuánto te sobra?",
+      "opciones": ["16", "17", "18", "19"],
+      "respuesta": 2,
+      "explicacion_correcta": "30 - 12 = 18 pesos."
+    },
+    {
+      "id": "p11",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 11",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "¿Cuántos dedos hay en 3 pies? (Contando dedos de los pies)",
+      "opciones": ["12", "15", "18", "20"],
+      "respuesta": 1,
+      "explicacion_correcta": "Cada pie tiene 5 dedos, entonces 3 pies x 5 dedos/pie = 15 dedos."
+    },
+    {
+      "id": "p12",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 12",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "Si un pastel tiene 10 porciones y te comes la mitad, ¿cuántas porciones te quedan?",
+      "opciones": ["4", "5", "6", "7"],
+      "respuesta": 1,
+      "explicacion_correcta": "La mitad de 10 porciones es 5."
+    },
+    {
+      "id": "p13",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 13",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "¿Cuál es el resultado de 7 x 4?",
+      "opciones": ["21", "24", "28", "32"],
+      "respuesta": 2,
+      "explicacion_correcta": "7 x 4 = 28."
+    },
+    {
+      "id": "p14",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 14",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "Si hoy es viernes, ¿qué día será mañana?",
+      "opciones": ["Jueves", "Sábado", "Domingo", "Lunes"],
+      "respuesta": 1,
+      "explicacion_correcta": "Después del viernes es el sábado."
+    },
+    {
+      "id": "p15",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 15",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "Una ardilla sube a un árbol a 8 metros y baja 3 metros. ¿A qué altura está ahora?",
+      "opciones": ["4", "5", "6", "7"],
+      "respuesta": 1,
+      "explicacion_correcta": "8 - 3 = 5 metros."
+    },
+    {
+      "id": "p16",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 16",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "Tienes 3 cajas con 6 juguetes cada una. ¿Cuántos juguetes tienes en total?",
+      "opciones": ["15", "18", "20", "22"],
+      "respuesta": 1,
+      "explicacion_correcta": "3 cajas x 6 juguetes/caja = 18 juguetes."
+    },
+    {
+      "id": "p17",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 17",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "¿Cuántos vértices tiene un cubo?",
+      "opciones": ["6", "8", "10", "12"],
+      "respuesta": 1,
+      "explicacion_correcta": "Un cubo tiene 8 vértices."
+    },
+    {
+      "id": "p18",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 18",
+      "instruccion": "Selecciona la respuesta correcta.",
+      "pregunta": "Si un año tiene 12 meses, ¿cuántos meses tienen medio año?",
+      "opciones": ["4", "6", "8", "10"],
+      "respuesta": 1,
+      "explicacion_correcta": "Medio año son 6 meses."
+    },
+    {
+      "id": "p19",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 19: El Muñeco de Nieve",
+      "instruccion": "Observa el muñeco de nieve. ¿Cuál de las opciones representa la parte que le falta?",
+      "imagen": "<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><circle cx='100' cy='70' r='40' fill='white' stroke='#3498db' stroke-width='2'/><circle cx='100' cy='150' r='50' fill='white' stroke='#3498db' stroke-width='2'/><circle cx='90' cy='60' r='5' fill='black'/><circle cx='110' cy='60' r='5' fill='black'/><polygon points='100,65 110,75 100,80 90,75' fill='orange'/><rect x='80' y='100' width='40' height='10' fill='red'/><rect x='80' y='115' width='40' height='10' fill='green'/><path d='M60,150 Q40,130 40,110' stroke='brown' stroke-width='5' fill='none'/></svg>",
+      "opciones_son_imagenes": true,
+      "opciones": [
+        "<svg viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'><rect x='10' y='10' width='30' height='30' fill='#f1c40f'/></svg>",
+        "<svg viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'><circle cx='25' cy='25' r='15' fill='red'/></svg>",
+        "<svg viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'><circle cx='25' cy='25' r='20' fill='white' stroke='black' stroke-width='2'/></svg>",
+        "<svg viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'><polygon points='5,45 25,5 45,45' fill='green'/></svg>",
+        "<svg viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'><path d='M10,25 Q25,5 40,25' stroke='blue' stroke-width='5' fill='none'/></svg>"
+      ],
+      "respuesta": 1,
+      "explicacion_correcta": "¡Bien! Le faltaba un botón rojo al muñeco de nieve."
+    },
+    {
+      "id": "p20",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema 20: Ventana Rota",
+      "instruccion": "Observa la ventana rota. ¿Cuántos pedazos se cayeron?",
+      "imagen": "<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><rect x='20' y='20' width='160' height='160' fill='#ddd' stroke='#333' stroke-width='5'/><line x1='100' y1='20' x2='100' y2='180' stroke='#333' stroke-width='3'/><line x1='20' y1='100' x2='180' y2='100' stroke='#333' stroke-width='3'/><!-- Esquinas rotas --><polygon points='20,20 50,20 20,50' fill='none' stroke='red' stroke-width='2'/><polygon points='180,20 150,20 180,50' fill='none' stroke='red' stroke-width='2'/><polygon points='20,180 50,180 20,150' fill='none' stroke='red' stroke-width='2'/><polygon points='180,180 150,180 180,150' fill='none' stroke='red' stroke-width='2'/></svg>",
+      "opciones": ["2", "3", "4", "5", "6"],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Correcto! Se cayeron 4 pedazos de las esquinas de la ventana."
+    }
+  ]
+}
