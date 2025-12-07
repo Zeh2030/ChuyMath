@@ -109,9 +109,13 @@ const Boveda = () => {
       // Retornar el mejor puntaje
       return resultados.reduce((prev, current) => (prev.porcentaje > current.porcentaje) ? prev : current);
     }
-    
-    // Para aventuras (si tuviéramos lógica de completado, iría aquí)
-    // Por ahora solo simulacros tienen score
+
+    // Aventuras / expediciones: progreso simple iniciado/completado
+    if (profile.aventurasProgreso) {
+      const progresoAventura = profile.aventurasProgreso[id];
+      if (progresoAventura) return progresoAventura;
+    }
+
     return null;
   };
 
@@ -314,12 +318,23 @@ const Boveda = () => {
                             <span className="tarjeta-fecha">{formatearFecha(item.id)}</span>
                             
                             {/* Progreso Visual */}
-                            {progreso && (
+                            {progreso && item.tipo === 'simulacro' && progreso.porcentaje !== undefined && (
                               <div className="tarjeta-progreso">
                                 <span className={`badge-status ${progreso.porcentaje >= 70 ? 'bien' : ''}`}>
                                   {progreso.porcentaje >= 70 ? '✅ Completado' : '🔄 En progreso'}
                                 </span>
                                 <span className="score-badge">{progreso.porcentaje}%</span>
+                              </div>
+                            )}
+
+                            {progreso && item.tipo !== 'simulacro' && (
+                              <div className="tarjeta-progreso">
+                                <span className={`badge-status ${progreso.status === 'completado' ? 'bien' : ''}`}>
+                                  {progreso.status === 'completado' ? '✅ Completado' : '🔄 Iniciado'}
+                                </span>
+                                {progreso.vecesCompletado ? (
+                                  <span className="score-badge">{progreso.vecesCompletado}x</span>
+                                ) : null}
                               </div>
                             )}
                           </div>

@@ -49,6 +49,14 @@ const Aventura = () => {
     }
   }, [fecha]);
 
+  // Marcar la aventura como iniciada cuando se carga
+  React.useEffect(() => {
+    if (aventura) {
+      marcarAventuraIniciada();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [aventura?.id]);
+
   // Función auxiliar para calcular la racha
   const calcularRacha = (ultimaVisita, rachaActual) => {
     if (!ultimaVisita) {
@@ -72,8 +80,31 @@ const Aventura = () => {
     }
   };
 
+  // Marcar aventura iniciada (sin fecha)
+  const marcarAventuraIniciada = async () => {
+    if (!currentUser || !aventura) return;
+
+    try {
+      const userRef = doc(db, 'profiles', currentUser.uid);
+      const profileSnap = await getDoc(userRef);
+      const progreso = profileSnap.data()?.aventurasProgreso || {};
+      const actual = progreso[aventura.id];
+
+      if (actual?.status === 'iniciado' || actual?.status === 'completado') return;
+
+      await updateDoc(userRef, {
+        [`aventurasProgreso.${aventura.id}`]: {
+          status: 'iniciado',
+          vecesCompletado: actual?.vecesCompletado || 0
+        }
+      });
+    } catch (error) {
+      console.error('Error al marcar aventura iniciada:', error);
+    }
+  };
+
   // Función para guardar que completó la aventura
-  const guardarAventuraCompletada = async () => {
+  const marcarAventuraCompletada = async () => {
     if (!currentUser || !aventura) return;
 
     try {
@@ -93,10 +124,18 @@ const Aventura = () => {
         fecha: Timestamp.now()
       };
 
+      const progreso = profileData?.aventurasProgreso || {};
+      const actual = progreso[aventura.id];
+      const vecesCompletado = (actual?.vecesCompletado || 0) + 1;
+
       await updateDoc(userRef, {
         misionesCompletadas: arrayUnion(aventuraCompletadaData),
         racha: nuevaRacha,
-        ultimaVisita: Timestamp.now()
+        ultimaVisita: Timestamp.now(),
+        [`aventurasProgreso.${aventura.id}`]: {
+          status: 'completado',
+          vecesCompletado
+        }
       });
       console.log(`Aventura completada. Nueva racha: ${nuevaRacha}`);
     } catch (error) {
@@ -111,7 +150,7 @@ const Aventura = () => {
     } else if (aventura && misionActual === aventura.misiones.length - 1) {
       // Última misión completada
       setAventuraCompletada(true);
-      await guardarAventuraCompletada();
+      await marcarAventuraCompletada();
     }
   };
 

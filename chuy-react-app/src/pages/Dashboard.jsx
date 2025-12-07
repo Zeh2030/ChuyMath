@@ -59,9 +59,11 @@ const Dashboard = () => {
     return iconos[tipo] || '⭐';
   };
 
-  // Calcular el progreso basado en misiones completadas
-  const misionesCompletadas = profile?.misionesCompletadas?.length || 0;
-  const totalMisiones = 10; // Por ahora un número fijo, luego lo calcularemos dinámicamente
+  // Calcular el progreso basado en aventuras completadas
+  const aventurasProgreso = profile?.aventurasProgreso || {};
+  const aventurasCompletadas = Object.values(aventurasProgreso).filter(p => p.status === 'completado').length;
+  const misionesCompletadas = aventurasCompletadas;
+  const totalMisiones = Math.max(misionesCompletadas, 10); // placeholder seguro
   const porcentajeProgreso = totalMisiones > 0 
     ? Math.min((misionesCompletadas / totalMisiones) * 100, 100) 
     : 0;
