@@ -1,0 +1,44 @@
+{
+  "id": "2025-12-07_nb-escalera-cuadrados",
+  "titulo": "Numberblocks: Escalera de Cuadrados",
+  "descripcion": "De cuadrados perfectos a rectángulos cercanos, sube peldaño a peldaño.",
+  "tipo": "numberblocks-constructor",
+  "misiones": [
+    {
+      "id": "mision-nb-escalera-1",
+      "tipo": "numberblocks-constructor",
+      "titulo": "Peldaños Perfectos",
+      "instruccion": "Identifica factores iguales o casi iguales para cada área.",
+      "retos": [
+        {
+          "target": 16,
+          "tipo": "multiply",
+          "historia": "Soy el 16 y soy un cuadrado perfecto. ¿Qué bloque se repite?"
+        },
+        {
+          "target": 36,
+          "tipo": "divide",
+          "dado": 6,
+          "historia": "Un lado mide 6. Completa el rectángulo 36."
+        },
+        {
+          "target": 49,
+          "tipo": "multiply",
+          "historia": "Soy el 49. Necesito el mismo bloque dos veces."
+        },
+        {
+          "target": 81,
+          "tipo": "divide",
+          "dado": 9,
+          "historia": "Ya tengo un lado de 9. ¿Cuál es el otro?"
+        },
+        {
+          "target": 100,
+          "tipo": "multiply",
+          "historia": "Soy el 100 y también soy cuadrado. Encuentra mis lados."
+        }
+      ]
+    }
+  ]
+}
+

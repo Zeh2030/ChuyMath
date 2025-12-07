@@ -1,0 +1,44 @@
+{
+  "id": "2025-12-07_nb-rectangulos-veloces",
+  "titulo": "Numberblocks: Rectángulos Veloces",
+  "descripcion": "Reta tu velocidad con factores que debes encontrar rápido.",
+  "tipo": "numberblocks-constructor",
+  "misiones": [
+    {
+      "id": "mision-nb-veloces-1",
+      "tipo": "numberblocks-constructor",
+      "titulo": "Fábrica Exprés",
+      "instruccion": "Encuentra los factores correctos para cada área.",
+      "retos": [
+        {
+          "target": 30,
+          "tipo": "multiply",
+          "historia": "Soy el 30. Pista: uno de mis factores es 5."
+        },
+        {
+          "target": 40,
+          "tipo": "divide",
+          "dado": 8,
+          "historia": "Tengo un lado de 8. ¿Qué bloque falta para completar 40?"
+        },
+        {
+          "target": 63,
+          "tipo": "multiply",
+          "historia": "Soy el 63. Busca dos factores distintos para construirme."
+        },
+        {
+          "target": 72,
+          "tipo": "divide",
+          "dado": 12,
+          "historia": "Un lado mide 12. ¿Cuál es el otro lado?"
+        },
+        {
+          "target": 99,
+          "tipo": "multiply",
+          "historia": "Soy el 99. Usa el bloque 11 para encontrar a mi compañero."
+        }
+      ]
+    }
+  ]
+}
+

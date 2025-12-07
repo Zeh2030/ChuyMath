@@ -1,0 +1,45 @@
+{
+  "id": "2025-12-07_nb-factores-mixtos",
+  "titulo": "Numberblocks: Factores Mixtos",
+  "descripcion": "Combina factores pares, impares y divisiones guiadas.",
+  "tipo": "numberblocks-constructor",
+  "misiones": [
+    {
+      "id": "mision-nb-mixtos-2",
+      "tipo": "numberblocks-constructor",
+      "titulo": "Laboratorio de Factores",
+      "instruccion": "Usa las pistas (dado o factor clave) para cada área.",
+      "retos": [
+        {
+          "target": 44,
+          "tipo": "divide",
+          "dado": 4,
+          "historia": "Un lado mide 4. ¿Qué bloque te lleva a 44?"
+        },
+        {
+          "target": 55,
+          "tipo": "multiply",
+          "historia": "Soy el 55. Pista: usa el bloque 11."
+        },
+        {
+          "target": 96,
+          "tipo": "divide",
+          "dado": 12,
+          "historia": "Ya tienes un lado de 12. ¿Cuál falta para formar 96?"
+        },
+        {
+          "target": 108,
+          "tipo": "multiply",
+          "historia": "Soy el 108. Pista: 12 es uno de mis factores."
+        },
+        {
+          "target": 132,
+          "tipo": "divide",
+          "dado": 11,
+          "historia": "Un lado es 11. ¿Qué bloque completa el rectángulo 132?"
+        }
+      ]
+    }
+  ]
+}
+
