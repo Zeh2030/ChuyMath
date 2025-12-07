@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Operaciones.css';
+import LienzoDibujo from './LienzoDibujo';
+import useViewport from '../../../hooks/useViewport';
 
 /**
  * Componente para misiones de operaciones matemáticas (suma, resta, multiplicación, división).
@@ -24,6 +26,7 @@ const Operaciones = ({
   const ejercicios = mision.ejercicios || [mision];
   const [indiceEjercicio, setIndiceEjercicio] = useState(0);
   const ejercicioActual = ejercicios[indiceEjercicio];
+  const { isTabletOrDesktop } = useViewport();
 
   const [respuestaUsuario, setRespuestaUsuario] = useState(respuestaGuardada || '');
   const [mostrarFeedback, setMostrarFeedback] = useState(false);
@@ -41,6 +44,10 @@ const Operaciones = ({
   const respuestaEsperada = ejercicioActual.respuesta;
   const explicacionCorrecta = ejercicioActual.explicacion_correcta || mision.explicacion_correcta || '¡Correcto!';
   const explicacionIncorrecta = ejercicioActual.explicacion_incorrecta || mision.explicacion_incorrecta || 'Intenta de nuevo.';
+  const canvasMision = {
+    instruccion: 'Usa este bloc para anotar o hacer tu “casita”.',
+    operacion_texto: pregunta
+  };
 
   // Determinar si mostrar resultado (interno o externo)
   const debeMostrarResultado = mostrarFeedback || (modoSimulacro && mostrarResultadoExterno);
@@ -130,6 +137,15 @@ const Operaciones = ({
                  }}
                />
              </div>
+
+      {isTabletOrDesktop && (
+        <div className="operaciones-lienzo-notas">
+          <LienzoDibujo
+            key={`lienzo-${indiceEjercicio}`}
+            mision={canvasMision}
+          />
+        </div>
+      )}
 
       {!modoSimulacro && (
         <div className="acciones-container">
