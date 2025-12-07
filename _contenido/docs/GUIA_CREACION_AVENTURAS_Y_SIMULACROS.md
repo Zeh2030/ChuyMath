@@ -40,6 +40,8 @@ El campo `tipo` en la raíz controla dónde aparece el juego en la Bóveda:
 *   `"operaciones"` -> Categoría Operaciones
 *   `"aventura"` -> Categoría General (Mix de juegos)
 *   `"simulacro"` -> Categoría Exámenes
+*   `"numberblocks-constructor"` -> Categoría Numberblocks
+*   `"kakooma"` -> Categoría Kakooma
 
 ---
 
@@ -190,6 +192,82 @@ Completar la serie.
   ]
 }
 ```
+
+### G. Numberblocks Constructor (Multiplicación Visual)
+Juego para entender la multiplicación como rectángulos ("arrays").
+
+```json
+{
+  "id": "mision-nb-rectangulos",
+  "tipo": "numberblocks-constructor",
+  "titulo": "Rectángulos Numberblocks",
+  "retos": [
+    {
+      "tipo": "multiply",            // El niño elige 2 bloques
+      "target": 12,                  // El resultado debe ser 12 (ej: 3 x 4)
+      "historia": "¡Super Rectángulo quiere formar el número 12! ¿Qué dos bloques necesitamos?"
+    },
+    {
+      "tipo": "divide",              // Se da un número, el niño elige el otro
+      "target": 20,
+      "dado": 5,                     // "Tengo un 5, ¿por qué multiplico para llegar a 20?"
+      "historia": "Tengo un bloque de 5. ¿Con qué otro bloque hago 20?"
+    }
+  ]
+}
+```
+
+### H. Lienzo de Dibujo (Libre)
+Misión creativa donde el niño dibuja libremente o siguiendo una instrucción.
+
+```json
+{
+  "id": "mision-dibujo-1",
+  "tipo": "lienzo-dibujo",
+  "titulo": "Arte Matemático",
+  "instruccion": "Dibuja 3 manzanas rojas",
+  "colores": ["#e74c3c", "#2ecc71", "#f1c40f"], // Opcional: paleta personalizada
+  "operacion_texto": "3 Manzanas"               // Texto grande de fondo (opcional)
+}
+```
+
+### I. Kakooma (Cálculo Mental Visual)
+Juego de encontrar dos números que sumen el número del centro (o objetivo).
+
+```json
+{
+  "id": "kakooma-nivel-1",
+  "tipo": "kakooma",
+  "titulo": "Nivel 1: Sumas Básicas",
+  "instruccion": "Toca dos burbujas que sumen el número objetivo.",
+  "objetivo": 10,                 // El número que deben sumar
+  "numeros": [2, 8, 5, 3, 1, 9]   // Los números burbuja (debe haber al menos un par correcto)
+}
+```
+
+### J. Operaciones (Respuesta Numérica)
+Juego de suma/resta/multiplicación/división donde el niño escribe el resultado.
+
+```json
+{
+  "id": "mision-ope-1",
+  "tipo": "operaciones",
+  "titulo": "Desafío de Operaciones",
+  "instruccion": "Resuelve cada operación y escribe el resultado.",
+  "ejercicios": [
+    { "pregunta": "12 + 9 =",  "respuesta": "21", "explicacion_correcta": "12 + 9 = 21" },
+    { "pregunta": "35 - 17 =", "respuesta": "18", "explicacion_correcta": "35 - 17 = 18" },
+    { "pregunta": "6 × 7 =",   "respuesta": "42", "explicacion_correcta": "6 × 7 = 42" },
+    { "pregunta": "56 ÷ 8 =",  "respuesta": "7",  "explicacion_correcta": "56 ÷ 8 = 7" }
+  ]
+}
+```
+
+Notas:
+- Usa `ejercicios` cuando quieras una lista de operaciones en una sola misión.
+- `respuesta` es texto/numérico exacto; el componente compara como string.
+- Puedes poner explicaciones generales en el nivel de misión (`explicacion_correcta` / `explicacion_incorrecta`) o específicas por ejercicio.
+- `instruccion` es opcional, pero recomendable para dar contexto.
 
 ---
 

@@ -1,0 +1,29 @@
+{
+  "id": "2025-12-07_operaciones-aventura",
+  "tipo": "operaciones",
+  "titulo": "Aventura de Operaciones: Desafío Total",
+  "descripcion": "Practica suma, resta, multiplicación y división con 10 ejercicios interactivos.",
+  "misiones": [
+    {
+      "id": "mision-operaciones-1",
+      "tipo": "operaciones",
+      "titulo": "Reto de Operaciones",
+      "instruccion": "Resuelve cada operación y escribe el resultado. Luego pulsa Enviar y Continuar.",
+      "explicacion_correcta": "¡Excelente! Tu resultado es correcto.",
+      "explicacion_incorrecta": "Revisa la operación y vuelve a intentarlo.",
+      "ejercicios": [
+        { "pregunta": "18 + 27 =", "respuesta": "45" },
+        { "pregunta": "64 - 29 =", "respuesta": "35" },
+        { "pregunta": "7 × 8 =", "respuesta": "56" },
+        { "pregunta": "96 ÷ 12 =", "respuesta": "8" },
+        { "pregunta": "45 + 38 =", "respuesta": "83" },
+        { "pregunta": "120 - 47 =", "respuesta": "73" },
+        { "pregunta": "9 × 9 =", "respuesta": "81" },
+        { "pregunta": "81 ÷ 9 =", "respuesta": "9" },
+        { "pregunta": "56 + 19 =", "respuesta": "75" },
+        { "pregunta": "84 - 36 =", "respuesta": "48" }
+      ]
+    }
+  ]
+}
+
