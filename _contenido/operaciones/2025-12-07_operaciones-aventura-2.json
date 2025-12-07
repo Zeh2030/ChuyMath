@@ -1,0 +1,29 @@
+{
+  "id": "2025-12-07_operaciones-aventura-2",
+  "tipo": "operaciones",
+  "titulo": "Aventura de Operaciones: Nivel Intermedio",
+  "descripcion": "10 retos combinados de suma, resta, multiplicación y división.",
+  "misiones": [
+    {
+      "id": "mision-operaciones-2",
+      "tipo": "operaciones",
+      "titulo": "Reto Intermedio",
+      "instruccion": "Resuelve cada operación y escribe el resultado. Pulsa Enviar y luego Continuar.",
+      "explicacion_correcta": "¡Bien hecho!",
+      "explicacion_incorrecta": "Revisa el cálculo y vuelve a intentarlo.",
+      "ejercicios": [
+        { "pregunta": "27 + 34 =", "respuesta": "61" },
+        { "pregunta": "85 - 47 =", "respuesta": "38" },
+        { "pregunta": "14 × 3 =", "respuesta": "42" },
+        { "pregunta": "72 ÷ 9 =", "respuesta": "8" },
+        { "pregunta": "58 + 29 =", "respuesta": "87" },
+        { "pregunta": "93 - 48 =", "respuesta": "45" },
+        { "pregunta": "8 × 11 =", "respuesta": "88" },
+        { "pregunta": "96 ÷ 12 =", "respuesta": "8" },
+        { "pregunta": "67 + 25 =", "respuesta": "92" },
+        { "pregunta": "105 - 39 =", "respuesta": "66" }
+      ]
+    }
+  ]
+}
+

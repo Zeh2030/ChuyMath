@@ -1,0 +1,29 @@
+{
+  "id": "2025-12-07_operaciones-aventura-3",
+  "tipo": "operaciones",
+  "titulo": "Aventura de Operaciones: Practica Constante",
+  "descripcion": "Refuerza operaciones mixtas con 10 ejercicios variados.",
+  "misiones": [
+    {
+      "id": "mision-operaciones-3",
+      "tipo": "operaciones",
+      "titulo": "Reto Constante",
+      "instruccion": "Escribe el resultado de cada operación y avanza con Continuar.",
+      "explicacion_correcta": "¡Excelente cálculo!",
+      "explicacion_incorrecta": "Vuelve a intentarlo, revisa tu procedimiento.",
+      "ejercicios": [
+        { "pregunta": "48 + 26 =", "respuesta": "74" },
+        { "pregunta": "102 - 58 =", "respuesta": "44" },
+        { "pregunta": "13 × 6 =", "respuesta": "78" },
+        { "pregunta": "81 ÷ 9 =", "respuesta": "9" },
+        { "pregunta": "59 + 33 =", "respuesta": "92" },
+        { "pregunta": "140 - 67 =", "respuesta": "73" },
+        { "pregunta": "7 × 12 =", "respuesta": "84" },
+        { "pregunta": "90 ÷ 15 =", "respuesta": "6" },
+        { "pregunta": "68 + 27 =", "respuesta": "95" },
+        { "pregunta": "125 - 48 =", "respuesta": "77" }
+      ]
+    }
+  ]
+}
+

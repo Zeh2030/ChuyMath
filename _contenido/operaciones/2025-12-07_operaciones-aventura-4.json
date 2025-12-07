@@ -1,0 +1,29 @@
+{
+  "id": "2025-12-07_operaciones-aventura-4",
+  "tipo": "operaciones",
+  "titulo": "Aventura de Operaciones: Desafío Progresivo",
+  "descripcion": "Secuencia de 10 ejercicios para consolidar operaciones mixtas.",
+  "misiones": [
+    {
+      "id": "mision-operaciones-4",
+      "tipo": "operaciones",
+      "titulo": "Reto Progresivo",
+      "instruccion": "Resuelve cada operación, escribe el resultado y avanza.",
+      "explicacion_correcta": "¡Sigue así!",
+      "explicacion_incorrecta": "Revisa con calma y vuelve a intentarlo.",
+      "ejercicios": [
+        { "pregunta": "36 + 47 =", "respuesta": "83" },
+        { "pregunta": "128 - 69 =", "respuesta": "59" },
+        { "pregunta": "15 × 5 =", "respuesta": "75" },
+        { "pregunta": "84 ÷ 7 =", "respuesta": "12" },
+        { "pregunta": "73 + 28 =", "respuesta": "101" },
+        { "pregunta": "150 - 86 =", "respuesta": "64" },
+        { "pregunta": "9 × 14 =", "respuesta": "126" },
+        { "pregunta": "108 ÷ 12 =", "respuesta": "9" },
+        { "pregunta": "92 + 33 =", "respuesta": "125" },
+        { "pregunta": "180 - 57 =", "respuesta": "123" }
+      ]
+    }
+  ]
+}
+
