@@ -1,0 +1,45 @@
+{
+  "id": "2025-12-07_nb-factores-pro",
+  "titulo": "Numberblocks: Factor Masters",
+  "descripcion": "Desafíos para dominar factores grandes y rectángulos especiales.",
+  "tipo": "numberblocks-constructor",
+  "nivel": "retador",
+  "misiones": [
+    {
+      "id": "mision-nb-factores-pro-1",
+      "tipo": "numberblocks-constructor",
+      "titulo": "Taller de Factores",
+      "instruccion": "Usa la caja de bloques 1-12 para construir los rectángulos pedidos.",
+      "retos": [
+        {
+          "target": 64,
+          "tipo": "multiply",
+          "historia": "Soy el 64 y me encantan los lados iguales. ¡Encuentra mi pareja perfecta!"
+        },
+        {
+          "target": 90,
+          "tipo": "multiply",
+          "historia": "Soy el 90. Uno de mis factores es 9, ¿puedes hallar el otro?"
+        },
+        {
+          "target": 84,
+          "tipo": "divide",
+          "dado": 7,
+          "historia": "Tengo un lado de 7 bloques. ¿Qué bloque falta para completar 84?"
+        },
+        {
+          "target": 120,
+          "tipo": "divide",
+          "dado": 10,
+          "historia": "Un lado ya mide 10. ¿Cuál eliges para llegar a 120?"
+        },
+        {
+          "target": 132,
+          "tipo": "multiply",
+          "historia": "Soy el 132. Pista: usa el bloque 11 para encontrar mi compañero."
+        }
+      ]
+    }
+  ]
+}
+

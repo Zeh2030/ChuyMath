@@ -1,6 +1,7 @@
 {
   "id": "2025-12-07_operaciones-aventura",
   "tipo": "operaciones",
+  "nivel": "avanzado",
   "titulo": "Aventura de Operaciones: Desafío Total",
   "descripcion": "Practica suma, resta, multiplicación y división con 10 ejercicios interactivos.",
   "misiones": [

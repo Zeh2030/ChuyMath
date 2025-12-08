@@ -1,0 +1,45 @@
+{
+  "id": "2025-12-07_nb-rectangulos-avanzado",
+  "titulo": "Numberblocks: Rectángulos Avanzados",
+  "descripcion": "Practica factores mayores y cuadrados perfectos con desafíos visuales.",
+  "tipo": "numberblocks-constructor",
+  "nivel": "retador",
+  "misiones": [
+    {
+      "id": "mision-nb-avanzado-1",
+      "tipo": "numberblocks-constructor",
+      "titulo": "Fábrica de Rectángulos",
+      "instruccion": "Construye cada rectángulo eligiendo los bloques correctos.",
+      "retos": [
+        {
+          "target": 81,
+          "tipo": "multiply",
+          "historia": "Soy el 81 y soy cuadrado perfecto. ¿Qué bloque se repite para construirme?"
+        },
+        {
+          "target": 54,
+          "tipo": "multiply",
+          "historia": "Soy el 54. Necesito dos factores que no sean iguales, ¡encuéntralos!"
+        },
+        {
+          "target": 96,
+          "tipo": "divide",
+          "dado": 8,
+          "historia": "Tengo un lado de 8 bloques. ¿Qué bloque falta para llegar a 96?"
+        },
+        {
+          "target": 108,
+          "tipo": "multiply",
+          "historia": "Soy el 108. Pista: uno de mis factores es 9, ¿cuál es el otro?"
+        },
+        {
+          "target": 72,
+          "tipo": "divide",
+          "dado": 9,
+          "historia": "Un lado ya mide 9. ¿Con qué bloque completas el área 72?"
+        }
+      ]
+    }
+  ]
+}
+

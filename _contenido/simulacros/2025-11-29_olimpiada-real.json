@@ -1,6 +1,7 @@
 {
   "id": "2025-11-29_olimpiada-real",
   "tipo": "simulacro",
+  "grado": 2,
   "titulo": "Gran Examen de Olimpiada: Edición Real",
   "descripcion": "El examen oficial de la Olimpiada de Matemáticas. ¡Demuestra todo lo que sabes!",
   "misiones": [

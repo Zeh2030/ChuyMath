@@ -1,0 +1,44 @@
+{
+  "id": "2025-12-07_nb-desafios-mixtos",
+  "titulo": "Numberblocks: Desafíos Mixtos",
+  "descripcion": "Reto combinado de cuadrados, rectángulos alargados y divisiones.",
+  "tipo": "numberblocks-constructor",
+  "nivel": "avanzado",
+  "misiones": [
+    {
+      "id": "mision-nb-mixtos-1",
+      "tipo": "numberblocks-constructor",
+      "titulo": "Zona de Construcción",
+      "instruccion": "Piensa en la relación entre los factores para cada área.",
+      "retos": [
+        {
+          "target": 49,
+          "tipo": "multiply",
+          "historia": "Soy el 49 y soy un cuadrado. ¿Qué bloque se repite para formarme?"
+        },
+        {
+          "target": 66,
+          "tipo": "multiply",
+          "historia": "Soy el 66. Pista: uno de mis factores es par y el otro es 11."
+        },
+        {
+          "target": 88,
+          "tipo": "divide",
+          "dado": 8,
+          "historia": "Un lado mide 8. ¿Qué bloque falta para completar el rectángulo 88?"
+        },
+        {
+          "target": 99,
+          "tipo": "multiply",
+          "historia": "Soy el 99. Usa el bloque 11 para encontrar al otro factor."
+        },
+        {
+          "target": 144,
+          "tipo": "multiply",
+          "historia": "Soy el 144 y soy el más grande de hoy. ¿Qué pareja de bloques me construye?"
+        }
+      ]
+    }
+  ]
+}
+

@@ -3,6 +3,7 @@
   "titulo": "Numberblocks: Escalera de Cuadrados",
   "descripcion": "De cuadrados perfectos a rectángulos cercanos, sube peldaño a peldaño.",
   "tipo": "numberblocks-constructor",
+  "nivel": "avanzado",
   "misiones": [
     {
       "id": "mision-nb-escalera-1",

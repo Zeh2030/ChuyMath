@@ -3,6 +3,7 @@
   "titulo": "Numberblocks: Factores Mixtos",
   "descripcion": "Combina factores pares, impares y divisiones guiadas.",
   "tipo": "numberblocks-constructor",
+  "nivel": "retador",
   "misiones": [
     {
       "id": "mision-nb-mixtos-2",

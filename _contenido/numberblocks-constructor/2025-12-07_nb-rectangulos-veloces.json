@@ -3,6 +3,7 @@
   "titulo": "Numberblocks: Rectángulos Veloces",
   "descripcion": "Reta tu velocidad con factores que debes encontrar rápido.",
   "tipo": "numberblocks-constructor",
+  "nivel": "avanzado",
   "misiones": [
     {
       "id": "mision-nb-veloces-1",

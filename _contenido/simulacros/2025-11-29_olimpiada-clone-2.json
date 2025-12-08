@@ -1,6 +1,7 @@
 {
   "id": "2025-11-29_olimpiada-clone-2",
   "tipo": "simulacro",
+  "grado": 2,
   "titulo": "Simulacro de Olimpiada: Clone 2",
   "descripcion": "Segunda variación del examen de Olimpiada, con nuevos datos y desafíos visuales.",
   "misiones": [
