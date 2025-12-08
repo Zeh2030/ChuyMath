@@ -17,6 +17,8 @@ const Boveda = () => {
   const [error, setError] = useState(null);
   const [filtro, setFiltro] = useState('todos'); // 'todos', 'aventuras', 'simulacros', o tipo específico
   const [tabActivo, setTabActivo] = useState('accesos'); // 'accesos' o 'boveda'
+  const [filtroGrado, setFiltroGrado] = useState('todos'); // solo simulacros
+  const [filtroNivel, setFiltroNivel] = useState('todos'); // solo aventuras/expediciones
 
   // Definir tipos de juegos disponibles
   const tiposJuegos = [
@@ -119,6 +121,24 @@ const Boveda = () => {
     return null;
   };
 
+  const gradosDisponibles = React.useMemo(() => {
+    const grados = new Set();
+    simulacros.forEach(s => {
+      if (s.grado !== undefined && s.grado !== null) {
+        grados.add(s.grado);
+      }
+    });
+    return Array.from(grados).sort((a, b) => a - b);
+  }, [simulacros]);
+
+  const nivelesDisponibles = React.useMemo(() => {
+    const niveles = new Set();
+    aventuras.forEach(a => {
+      if (a.nivel) niveles.add(a.nivel);
+    });
+    return Array.from(niveles);
+  }, [aventuras]);
+
   // SIMPLIFICADO: Filtrar contenido
   const contenidoMostrar = () => {
     let items = [];
@@ -128,18 +148,27 @@ const Boveda = () => {
     if (tipoEspecifico) {
       // Aventuras genéricas (sin tipo específico)
       if (tipoEspecifico.tipo === 'aventura') {
-        return aventuras.filter(a => a.tipo === 'aventura');
+        return aventuras
+          .filter(a => a.tipo === 'aventura')
+          .filter(a => filtroNivel === 'todos' ? true : a.nivel === filtroNivel);
       } else {
         // Buscar en ambas colecciones por tipo específico (incluyendo 'expedicion')
-        const enAventuras = aventuras.filter(a => a.tipo === tipoEspecifico.tipo);
-        const enSimulacros = simulacros.filter(s => s.tipo === tipoEspecifico.tipo);
+        const enAventuras = aventuras
+          .filter(a => a.tipo === tipoEspecifico.tipo)
+          .filter(a => filtroNivel === 'todos' ? true : a.nivel === filtroNivel);
+        const enSimulacros = simulacros
+          .filter(s => s.tipo === tipoEspecifico.tipo)
+          .filter(s => filtroGrado === 'todos' ? true : String(s.grado) === String(filtroGrado));
         return [...enAventuras, ...enSimulacros];
       }
     }
     
     // Filtros generales (todos)
     if (filtro === 'todos') {
-      items = [...aventuras, ...simulacros];
+      items = [
+        ...aventuras.filter(a => filtroNivel === 'todos' ? true : a.nivel === filtroNivel),
+        ...simulacros.filter(s => filtroGrado === 'todos' ? true : String(s.grado) === String(filtroGrado))
+      ];
     }
     return items;
   };
@@ -276,6 +305,51 @@ const Boveda = () => {
                   })}
                 </div>
 
+                {/* Filtros adicionales por grado (simulacros) y nivel (aventuras/expediciones) */}
+                <div className="filtros-adicionales">
+                  <div className="filtro-extra">
+                    <span>🎓 Grado (simulacros):</span>
+                    <div className="chips">
+                      <button 
+                        className={`chip ${filtroGrado === 'todos' ? 'activo' : ''}`}
+                        onClick={() => setFiltroGrado('todos')}
+                      >
+                        Todos
+                      </button>
+                      {gradosDisponibles.map(g => (
+                        <button
+                          key={g}
+                          className={`chip ${String(filtroGrado) === String(g) ? 'activo' : ''}`}
+                          onClick={() => setFiltroGrado(g)}
+                        >
+                          {g}°
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="filtro-extra">
+                    <span>⭐ Nivel (aventuras/expediciones):</span>
+                    <div className="chips">
+                      <button 
+                        className={`chip ${filtroNivel === 'todos' ? 'activo' : ''}`}
+                        onClick={() => setFiltroNivel('todos')}
+                      >
+                        Todos
+                      </button>
+                      {nivelesDisponibles.map(n => (
+                        <button
+                          key={n}
+                          className={`chip ${filtroNivel === n ? 'activo' : ''}`}
+                          onClick={() => setFiltroNivel(n)}
+                        >
+                          {n}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
                 {/* Contenido */}
                 <div className="contenido-grid">
                   {contenidoMostrar().length === 0 ? (
@@ -316,6 +390,16 @@ const Boveda = () => {
                             <h3 className="tarjeta-titulo">{item.titulo}</h3>
                             {item.descripcion && <p className="tarjeta-desc">{item.descripcion}</p>}
                             <span className="tarjeta-fecha">{formatearFecha(item.id)}</span>
+
+                            {/* Badges de clasificación */}
+                            <div className="tarjeta-badges-clasificacion">
+                              {item.tipo === 'simulacro' && item.grado !== undefined && (
+                                <span className="badge-info">🎓 {item.grado}°</span>
+                              )}
+                              {item.tipo !== 'simulacro' && item.nivel && (
+                                <span className="badge-info">⭐ {item.nivel}</span>
+                              )}
+                            </div>
                             
                             {/* Progreso Visual */}
                             {progreso && item.tipo === 'simulacro' && progreso.porcentaje !== undefined && (
