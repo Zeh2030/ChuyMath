@@ -1,0 +1,60 @@
+{
+  "id": "2025-12-08_simulacro-matematicas-1",
+  "tipo": "simulacro",
+  "grado": 2,
+  "titulo": "Simulacro Matemáticas: Repaso General",
+  "descripcion": "Ejercicios de sumas, restas y geometría básica.",
+  "misiones": [
+    {
+      "id": "p1",
+      "tipo": "opcion-multiple",
+      "titulo": "Suma Veloz",
+      "pregunta": "¿Cuánto es 25 + 13?",
+      "opciones": ["35", "38", "40", "28"],
+      "respuesta": 1,
+      "explicacion_correcta": "¡Correcto! 25 más 10 es 35, más 3 es 38.",
+      "explicacion_incorrecta": "Suma primero las unidades (5+3) y luego las decenas (2+1)."
+    },
+    {
+      "id": "p2",
+      "tipo": "opcion-multiple",
+      "titulo": "Resta Simple",
+      "pregunta": "Si tienes 20 galletas y te comes 6, ¿cuántas quedan?",
+      "opciones": ["14", "16", "13", "15"],
+      "respuesta": 0,
+      "explicacion_correcta": "¡Bien! 20 - 6 = 14.",
+      "explicacion_incorrecta": "Imagina quitar 6 dedos de 20. Retrocede: 19, 18, 17, 16, 15, 14."
+    },
+    {
+      "id": "p3",
+      "tipo": "opcion-multiple",
+      "titulo": "Geometría",
+      "pregunta": "¿Cuántos lados tiene un hexágono?",
+      "opciones": ["4", "5", "6", "8"],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Exacto! Hexa significa seis.",
+      "explicacion_incorrecta": "Cuenta los lados de un panal de abejas, ¡tienen 6!"
+    },
+    {
+      "id": "p4",
+      "tipo": "opcion-multiple",
+      "titulo": "Problema Verbal",
+      "pregunta": "En una caja hay 12 coches rojos y 12 coches azules. ¿Cuántos coches hay en total?",
+      "opciones": ["20", "22", "24", "26"],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Muy bien! 12 + 12 es 24.",
+      "explicacion_incorrecta": "Es una suma de dobles: 10+10=20 y 2+2=4."
+    },
+    {
+      "id": "p5",
+      "tipo": "opcion-multiple",
+      "titulo": "Serie Numérica",
+      "pregunta": "¿Qué número sigue? 5, 10, 15, 20...",
+      "opciones": ["22", "25", "30", "24"],
+      "respuesta": 1,
+      "explicacion_correcta": "¡Correcto! La serie va de 5 en 5.",
+      "explicacion_incorrecta": "Fíjate que cada vez aumentamos 5."
+    }
+  ]
+}
+

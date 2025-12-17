@@ -1,0 +1,60 @@
+{
+  "id": "2025-12-08_simulacro-logica-1",
+  "tipo": "simulacro",
+  "grado": 2,
+  "titulo": "Simulacro Lógica: Patrones y Deducción",
+  "descripcion": "Pon a prueba tu mente con series y acertijos visuales.",
+  "misiones": [
+    {
+      "id": "l1",
+      "tipo": "opcion-multiple",
+      "titulo": "Patrones Visuales",
+      "pregunta": "Si ves: Sol, Luna, Sol, Luna... ¿Qué sigue?",
+      "opciones": ["Nube", "Sol", "Luna", "Estrella"],
+      "respuesta": 1,
+      "explicacion_correcta": "¡Exacto! El patrón se repite: Sol, luego Luna.",
+      "explicacion_incorrecta": "Observa el orden: AB, AB, A..."
+    },
+    {
+      "id": "l2",
+      "tipo": "opcion-multiple",
+      "titulo": "Lógica de Tamaños",
+      "pregunta": "El gato es más grande que el ratón. El perro es más grande que el gato. ¿Quién es el más pequeño?",
+      "opciones": ["Gato", "Perro", "Ratón", "Todos son iguales"],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Correcto! El ratón es más pequeño que el gato, y el gato más pequeño que el perro.",
+      "explicacion_incorrecta": "Ordénalos de menor a mayor."
+    },
+    {
+      "id": "l3",
+      "tipo": "opcion-multiple",
+      "titulo": "Serie Descendente",
+      "pregunta": "¿Qué número falta? 30, 29, 28, ___",
+      "opciones": ["26", "27", "31", "25"],
+      "respuesta": 1,
+      "explicacion_correcta": "¡Bien! Vamos contando hacia atrás de uno en uno.",
+      "explicacion_incorrecta": "Es el número anterior a 28."
+    },
+    {
+      "id": "l4",
+      "tipo": "opcion-multiple",
+      "titulo": "Intruso",
+      "pregunta": "¿Cuál NO pertenece al grupo?",
+      "opciones": ["Manzana", "Plátano", "Zanahoria", "Uva"],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Correcto! La zanahoria es una verdura, los demás son frutas.",
+      "explicacion_incorrecta": "Piensa en qué tipo de alimento son. Tres son frutas."
+    },
+    {
+      "id": "l5",
+      "tipo": "opcion-multiple",
+      "titulo": "Conteo Lógico",
+      "pregunta": "Si tienes 2 zapatos izquierdos y 2 zapatos derechos, ¿cuántos pares de zapatos puedes formar?",
+      "opciones": ["1 par", "2 pares", "3 pares", "4 pares"],
+      "respuesta": 1,
+      "explicacion_correcta": "¡Así es! Un izquierdo + un derecho hacen un par. 2+2=2 pares.",
+      "explicacion_incorrecta": "Junta uno izquierdo con uno derecho. ¿Cuántas veces puedes hacerlo?"
+    }
+  ]
+}
+
