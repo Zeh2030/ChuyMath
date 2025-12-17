@@ -6,6 +6,7 @@ import { useAuth } from '../hooks/useAuth';
 import PageWrapper from '../components/layout/PageWrapper';
 import Header from '../components/layout/Header';
 import MisionRenderer from '../components/aventura/MisionRenderer';
+import LienzoDibujo from '../components/aventura/tipos/LienzoDibujo';
 import './Simulacro.css';
 
 const Simulacro = () => {
@@ -18,6 +19,7 @@ const Simulacro = () => {
   const [respuestas, setRespuestas] = useState({}); // { problemaId: respuesta }
   const [calificado, setCalificado] = useState(false);
   const [puntaje, setPuntaje] = useState(0);
+  const [canvasAbiertos, setCanvasAbiertos] = useState({}); // { problemaId: boolean }
 
   // Cargar el simulacro desde Firestore - SIMPLIFICADO: solo 'simulacros'
   useEffect(() => {
@@ -66,6 +68,14 @@ const Simulacro = () => {
     setRespuestas(prev => ({
       ...prev,
       [problemaId]: respuesta
+    }));
+  };
+
+  // Toggle para abrir/cerrar el lienzo de borrador
+  const toggleCanvas = (problemaId) => {
+    setCanvasAbiertos(prev => ({
+      ...prev,
+      [problemaId]: !prev[problemaId]
     }));
   };
 
@@ -302,14 +312,47 @@ const Simulacro = () => {
               >
                 <div className="problema-header">
                   <h3>{isExpedicion ? `Misión ${index + 1}` : `Problema ${index + 1}`}</h3>
-                  {(!isExpedicion && calificado) && (
-                    <span className="problema-resultado-icono">
-                      {esCorrecta ? '✅' : '❌'}
-                    </span>
-                  )}
+                  <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                    {!isExpedicion && (
+                      <button 
+                        className="boton-borrador"
+                        onClick={() => toggleCanvas(problema.id)}
+                        style={{
+                          background: canvasAbiertos[problema.id] ? '#e74c3c' : '#f1c40f',
+                          color: 'white',
+                          border: 'none',
+                          borderRadius: '15px',
+                          padding: '5px 12px',
+                          fontSize: '0.9rem',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '5px'
+                        }}
+                      >
+                        {canvasAbiertos[problema.id] ? '✖ Cerrar Pizarra' : '✏️ Abrir Pizarra'}
+                      </button>
+                    )}
+                    {(!isExpedicion && calificado) && (
+                      <span className="problema-resultado-icono">
+                        {esCorrecta ? '✅' : '❌'}
+                      </span>
+                    )}
+                  </div>
                 </div>
                 
                 <div className="problema-content">
+                  {canvasAbiertos[problema.id] && (
+                    <div style={{ marginBottom: '20px', border: '2px dashed #bdc3c7', borderRadius: '10px', padding: '10px' }}>
+                      <LienzoDibujo 
+                        mision={{
+                          instruccion: "Usa este espacio para tus cuentas o dibujos",
+                          operacion_texto: ""
+                        }}
+                        onCompletar={() => toggleCanvas(problema.id)}
+                      />
+                    </div>
+                  )}
                   <MisionRenderer 
                     mision={problema}
                     modoSimulacro={!isExpedicion} // Si es expedición, modoSimulacro es false (feedback inmediato)
