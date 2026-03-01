@@ -1,0 +1,79 @@
+{
+  "id": "2026-03-02",
+  "titulo": "Área Constructor: Edificios y Granjas",
+  "tipo": "area-constructor",
+  "nivel": "aventurero",
+  "misiones": [
+    {
+      "id": "mision-area-2",
+      "tipo": "area-constructor",
+      "titulo": "Construye edificios y granjas",
+      "instruccion": "Mide los lados, calcula el área y construye la figura.",
+      "retos": [
+        {
+          "target": 15,
+          "filas": 3,
+          "columnas": 5,
+          "tipo": "area",
+          "esSquare": false,
+          "historia": "Cinco quiere construir un establo para sus caballos. ¡El establo tiene 3 filas y 5 columnas!",
+          "unidad": "cuadritos"
+        },
+        {
+          "target": 25,
+          "filas": 5,
+          "columnas": 5,
+          "tipo": "area",
+          "esSquare": true,
+          "historia": "Cinco construye una plaza cuadrada gigante. ¡Todos los lados miden 5!",
+          "unidad": "cuadritos"
+        },
+        {
+          "target": 24,
+          "filas": 4,
+          "columnas": 6,
+          "tipo": "area",
+          "esSquare": false,
+          "historia": "Seis y Cuatro diseñan un huerto de manzanas. ¿Cuántas manzanas caben?",
+          "unidad": "manzanas"
+        },
+        {
+          "target": 36,
+          "filas": 6,
+          "columnas": 6,
+          "tipo": "area",
+          "esSquare": true,
+          "historia": "Seis construye un castillo cuadrado perfecto. ¡Es enorme! Mide un lado y calcula.",
+          "unidad": "cuadritos"
+        },
+        {
+          "target": 30,
+          "filas": 5,
+          "columnas": 6,
+          "tipo": "area",
+          "esSquare": false,
+          "historia": "Cinco y Seis construyen un gimnasio para los Numberblocks. ¡Calcula cuánto mide!",
+          "unidad": "cuadritos"
+        },
+        {
+          "target": 42,
+          "filas": 6,
+          "columnas": 7,
+          "tipo": "area",
+          "esSquare": false,
+          "historia": "Siete y Seis construyen la granja más grande del pueblo. ¡Cuenta bien!",
+          "unidad": "cuadritos"
+        },
+        {
+          "target": 49,
+          "filas": 7,
+          "columnas": 7,
+          "tipo": "area",
+          "esSquare": true,
+          "historia": "Siete quiere un jardín cuadrado mágico con los colores del arcoíris. ¡7 por 7!",
+          "unidad": "cuadritos"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "id": "2026-03-03",
+  "titulo": "Área Constructor: Ciudades y Estadios",
+  "tipo": "area-constructor",
+  "nivel": "maestro",
+  "misiones": [
+    {
+      "id": "mision-area-3",
+      "tipo": "area-constructor",
+      "titulo": "Grandes construcciones",
+      "instruccion": "Mide los lados, calcula el área y reconstruye la figura.",
+      "retos": [
+        {
+          "target": 48,
+          "filas": 8,
+          "columnas": 6,
+          "tipo": "area",
+          "esSquare": false,
+          "historia": "Ocho y Seis construyen un estacionamiento enorme. ¡Cuenta bien los cuadritos!",
+          "unidad": "cuadritos"
+        },
+        {
+          "target": 64,
+          "filas": 8,
+          "columnas": 8,
+          "tipo": "area",
+          "esSquare": true,
+          "historia": "Ocho construye un tablero de ajedrez. ¡Es un cuadrado perfecto de 8 por 8!",
+          "unidad": "casillas"
+        },
+        {
+          "target": 56,
+          "filas": 7,
+          "columnas": 8,
+          "tipo": "area",
+          "esSquare": false,
+          "historia": "Siete y Ocho diseñan una cancha de basquetbol. ¿Cuántas losetas necesitan?",
+          "unidad": "losetas"
+        },
+        {
+          "target": 72,
+          "filas": 8,
+          "columnas": 9,
+          "tipo": "area",
+          "esSquare": false,
+          "historia": "Nueve y Ocho construyen el estadio más grande. ¡Hay muchas butacas!",
+          "unidad": "butacas"
+        },
+        {
+          "target": 81,
+          "filas": 9,
+          "columnas": 9,
+          "tipo": "area",
+          "esSquare": true,
+          "historia": "Nueve quiere un cuadrado gigante perfecto. ¡9 por 9! ¿Cuántos cuadritos son?",
+          "unidad": "cuadritos"
+        },
+        {
+          "target": 90,
+          "filas": 9,
+          "columnas": 10,
+          "tipo": "area",
+          "esSquare": false,
+          "historia": "Diez y Nueve construyen un aeropuerto. ¡Es la construcción más grande del mundo Numberblock!",
+          "unidad": "cuadritos"
+        },
+        {
+          "target": 100,
+          "filas": 10,
+          "columnas": 10,
+          "tipo": "area",
+          "esSquare": true,
+          "historia": "¡Diez construye la plaza de los 100! Un cuadrado perfecto legendario. ¡10 por 10!",
+          "unidad": "cuadritos"
+        },
+        {
+          "target": 108,
+          "filas": 12,
+          "columnas": 9,
+          "tipo": "area",
+          "esSquare": false,
+          "historia": "Doce y Nueve se unen para construir el mega centro comercial. ¡El reto final!",
+          "unidad": "cuadritos"
+        }
+      ]
+    }
+  ]
+}

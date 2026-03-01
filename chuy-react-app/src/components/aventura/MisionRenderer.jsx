@@ -12,6 +12,7 @@ import PalabraDelDia from './tipos/PalabraDelDia';
 import NumberblocksConstructor from './tipos/NumberblocksConstructor';
 import LienzoDibujo from './tipos/LienzoDibujo';
 import Kakooma from './tipos/Kakooma';
+import AreaConstructor from './tipos/AreaConstructor';
 import './MisionRenderer.css';
 
 /**
@@ -190,13 +191,22 @@ const MisionRenderer = ({
 
       case 'kakooma':
         return (
-          <Kakooma 
+          <Kakooma
             key={mision.id}
-            mision={mision} 
-            onCompletar={onCompletar} 
+            mision={mision}
+            onCompletar={onCompletar}
           />
         );
-      
+
+      case 'area-constructor':
+        return (
+          <AreaConstructor
+            key={mision.id}
+            mision={mision}
+            onCompletar={onCompletar}
+          />
+        );
+
       default:
         return (
           <div style={{ padding: '20px', textAlign: 'center', color: '#e74c3c' }}>

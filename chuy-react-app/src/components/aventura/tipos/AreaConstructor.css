@@ -1,0 +1,399 @@
+/* AreaConstructor.css — Estilos para el juego de área */
+/* Hereda estilos de Numberblocks via import en JSX */
+
+/* ===== Contenedor principal ===== */
+.area-game-container {
+  font-family: 'Nunito', sans-serif;
+  background-color: #7EC8E3;
+  color: #34495e;
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===== Indicador de fase ===== */
+.area-phase-indicator {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.area-phase-step {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.9rem;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.area-phase-step.active {
+  background-color: #fff;
+  color: #2c3e50;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.area-phase-step.completed {
+  background-color: #2ecc71;
+  color: #fff;
+}
+
+/* ===== Título y burbuja ===== */
+.area-title {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin: 0 0 15px;
+  text-align: center;
+}
+
+.area-story-bubble {
+  background-color: #eaf5ff;
+  border-radius: 15px;
+  padding: 15px 20px;
+  font-size: 1.1rem;
+  text-align: center;
+  border: 2px dashed #aed6f1;
+  margin-bottom: 20px;
+}
+
+.area-instruction {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.15rem;
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+/* ===== Grid pre-dibujado con dimensiones ===== */
+.area-grid-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.area-grid-with-dims {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Flechas de dimensiones */
+.area-dim-horizontal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.3rem;
+  color: #e74c3c;
+  font-weight: 700;
+}
+
+.area-dim-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.3rem;
+  color: #3498db;
+  font-weight: 700;
+  min-width: 40px;
+}
+
+.area-dim-value {
+  display: inline-block;
+  min-width: 30px;
+  text-align: center;
+  border-bottom: 3px dotted currentColor;
+}
+
+.area-dim-value.revealed {
+  border-bottom-color: transparent;
+}
+
+.area-grid-row {
+  display: flex;
+  align-items: center;
+}
+
+/* Grid pre-dibujado */
+.area-predrawn-grid {
+  display: grid;
+  gap: 3px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.area-grid-block {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+}
+
+.area-grid-block.area-highlight {
+  animation: areaPulse 0.6s ease-in-out;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+  border-color: #f39c12;
+}
+
+@keyframes areaPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+/* Etiqueta de área sobre el grid */
+.area-label-overlay {
+  margin-top: 10px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #27ae60;
+  text-align: center;
+  animation: areaLabelPop 0.5s ease-out;
+}
+
+@keyframes areaLabelPop {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ===== Ecuación ===== */
+.area-equation-display {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 10px;
+  color: #3498db;
+  margin-bottom: 15px;
+}
+
+.area-equation-blank {
+  color: #f39c12;
+  display: inline-block;
+  min-width: 50px;
+  border-bottom: 4px dotted #f39c12;
+  margin: 0 5px;
+}
+
+/* ===== Teclado numérico ===== */
+.area-number-pad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.area-number-display {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #2c3e50;
+  min-height: 60px;
+  min-width: 100px;
+  text-align: center;
+  border-bottom: 4px solid #3498db;
+  line-height: 1.2;
+}
+
+.area-pad-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  max-width: 260px;
+}
+
+.area-pad-btn {
+  width: 64px;
+  height: 64px;
+  font-size: 1.8rem;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  border-radius: 14px;
+  border: none;
+  background: #fff;
+  color: #2c3e50;
+  cursor: pointer;
+  box-shadow: 0 3px 0 #d5d5d5;
+  transition: all 0.1s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.area-pad-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #d5d5d5;
+}
+
+.area-pad-btn.area-pad-delete {
+  background: #f0f0f0;
+  font-size: 1.4rem;
+}
+
+.area-pad-btn.area-pad-zero {
+  grid-column: 2;
+}
+
+/* ===== Zona de construcción (Fase 3) ===== */
+.area-construction-area {
+  background-color: rgba(248, 249, 250, 0.8);
+  border-radius: 20px;
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #e9ecef;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* ===== Pista visual (filas resaltadas) ===== */
+.area-hint-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.area-hint-count {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #e67e22;
+  min-width: 70px;
+  text-align: right;
+  animation: hintFadeIn 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes hintFadeIn {
+  to { opacity: 1; }
+}
+
+/* ===== Mensaje ===== */
+.area-message {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  min-height: 30px;
+  margin: 10px 0;
+}
+
+.area-message.success { color: #2ecc71; }
+.area-message.error { color: #e74c3c; }
+.area-message.hint { color: #f39c12; }
+
+/* ===== Botones de acción ===== */
+.area-action-area {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.area-action-button {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.2rem;
+  padding: 12px 30px;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(45deg, #2ecc71, #27ae60);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #1e8449;
+  transition: all 0.1s ease-in-out;
+}
+
+.area-action-button:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #1e8449;
+}
+
+.area-action-button.next {
+  background: linear-gradient(45deg, #3498db, #2980b9);
+  box-shadow: 0 4px 0 #1f618d;
+}
+
+.area-action-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  filter: grayscale(1);
+}
+
+/* ===== Transición de fase ===== */
+.area-phase-content {
+  animation: areaSlideIn 0.4s ease-out;
+}
+
+@keyframes areaSlideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Badge de cuadrado ===== */
+.area-square-badge {
+  display: inline-block;
+  background: #f39c12;
+  color: white;
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-left: 8px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  .area-pad-btn {
+    width: 56px;
+    height: 56px;
+    font-size: 1.5rem;
+  }
+
+  .area-pad-grid {
+    max-width: 220px;
+    gap: 8px;
+  }
+
+  .area-grid-block {
+    width: 24px;
+    height: 24px;
+  }
+
+  .area-title {
+    font-size: 1.4rem;
+  }
+
+  .area-equation-display {
+    font-size: 1.6rem;
+  }
+
+  .area-number-display {
+    font-size: 2.2rem;
+  }
+
+  .area-phase-step {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+  }
+}

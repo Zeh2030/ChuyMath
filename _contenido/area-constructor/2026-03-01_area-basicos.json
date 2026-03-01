@@ -1,0 +1,61 @@
+{
+  "id": "2026-03-01",
+  "titulo": "Área Constructor: Jardines y Patios",
+  "tipo": "area-constructor",
+  "nivel": "explorador",
+  "misiones": [
+    {
+      "id": "mision-area-1",
+      "tipo": "area-constructor",
+      "titulo": "Mide y calcula el área",
+      "instruccion": "Observa la figura, mide sus lados y calcula cuántos cuadritos tiene.",
+      "retos": [
+        {
+          "target": 6,
+          "filas": 2,
+          "columnas": 3,
+          "tipo": "area",
+          "esSquare": false,
+          "historia": "Tres y Dos quieren hacer un jardín rectangular. ¡Ayúdalos a medir cuántos cuadritos tiene!",
+          "unidad": "cuadritos"
+        },
+        {
+          "target": 9,
+          "filas": 3,
+          "columnas": 3,
+          "tipo": "area",
+          "esSquare": true,
+          "historia": "Tres quiere un jardín cuadrado perfecto. ¡Todos los lados miden lo mismo!",
+          "unidad": "cuadritos"
+        },
+        {
+          "target": 12,
+          "filas": 3,
+          "columnas": 4,
+          "tipo": "area",
+          "esSquare": false,
+          "historia": "El patio de recreo es un rectángulo grande. ¿Cuántos cuadritos caben?",
+          "unidad": "cuadritos"
+        },
+        {
+          "target": 16,
+          "filas": 4,
+          "columnas": 4,
+          "tipo": "area",
+          "esSquare": true,
+          "historia": "Cuatro construye una piscina cuadrada. ¡Mide un lado y calcula el área!",
+          "unidad": "cuadritos"
+        },
+        {
+          "target": 20,
+          "filas": 4,
+          "columnas": 5,
+          "tipo": "area",
+          "esSquare": false,
+          "historia": "Cinco y Cuatro construyen una cancha de fútbol. ¡Calcula cuántos cuadritos tiene!",
+          "unidad": "cuadritos"
+        }
+      ]
+    }
+  ]
+}

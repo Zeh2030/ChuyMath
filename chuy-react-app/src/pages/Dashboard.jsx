@@ -119,6 +119,7 @@ const Dashboard = () => {
     { id: 'numberblocks', emoji: '🧱', nombre: 'Numberblocks', filtro: 'numberblocks-constructor', disponible: true },
     { id: 'kakooma', emoji: '🧠', nombre: 'Kakooma', filtro: 'kakooma', disponible: true },
     { id: 'conteo', emoji: '💠', nombre: 'Conteo', filtro: 'conteo-figuras', disponible: true },
+    { id: 'area', emoji: '📐', nombre: 'Área', filtro: 'area-constructor', disponible: true },
     { id: 'secuencias', emoji: '🔢', nombre: 'Secuencias', filtro: 'secuencias', disponible: true },
     { id: 'detectives', emoji: '🔎', nombre: 'Detectives', filtro: 'tabla-doble-entrada', disponible: true },
     { id: 'operaciones', emoji: '➕', nombre: 'Operaciones', filtro: 'operaciones', disponible: true },
