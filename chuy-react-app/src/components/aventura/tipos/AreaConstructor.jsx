@@ -120,20 +120,34 @@ const AreaConstructor = ({ mision, onCompletar }) => {
     }
 
     if (num === 13) {
+      // 13: "L invertida" — 10 blancos (2×5) + 3 amarillos en esquina superior derecha
+      const blocks13 = [
+        { row: 1, col: 2, type: 'yellow' },
+        { row: 1, col: 3, type: 'yellow' },
+        { row: 2, col: 3, type: 'yellow' },
+        { row: 2, col: 1, type: 'white' },
+        { row: 2, col: 2, type: 'white' },
+        { row: 3, col: 1, type: 'white' },
+        { row: 3, col: 2, type: 'white' },
+        { row: 4, col: 1, type: 'white' },
+        { row: 4, col: 2, type: 'white' },
+        { row: 5, col: 1, type: 'white' },
+        { row: 5, col: 2, type: 'white' },
+        { row: 6, col: 1, type: 'white', face: true },
+        { row: 6, col: 2, type: 'white' },
+      ];
       return (
         <div key={num} className={`numberblock has-face nb-13-shape ${isSelected ? 'selected' : ''}`} onClick={() => onSelect(num)}>
-          <div className="nb-13-ten">
-            {[...Array(10)].map((_, i) => (
-              <div key={`w-${i}`} className="block" style={{ backgroundColor: '#fff', border: '2px solid var(--nb-1)' }}>
-                {i === 4 && <Face />}
-              </div>
-            ))}
-          </div>
-          <div className="stack nb-13-three">
-            {[...Array(3)].map((_, i) => (
-              <div key={`y-${i}`} className="block" style={{ backgroundColor: 'var(--nb-13)' }} />
-            ))}
-          </div>
+          {blocks13.map((b, i) => (
+            <div key={i} className="block" style={{
+              gridRow: b.row,
+              gridColumn: b.col,
+              backgroundColor: b.type === 'yellow' ? 'var(--nb-13)' : '#fff',
+              border: b.type === 'yellow' ? '2px solid rgba(0,0,0,0.15)' : '2px solid var(--nb-1)',
+            }}>
+              {b.face && <Face />}
+            </div>
+          ))}
         </div>
       );
     }

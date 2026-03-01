@@ -253,26 +253,15 @@
   margin: -1px;
 }
 
-/* Estructura especial para 13 (L-shape: 10 blancos + 3 amarillos) */
+/* Estructura especial para 13 ("L invertida" en esquina superior derecha) */
 .nb-13-shape {
-  display: flex;
-  align-items: flex-end;
-}
-
-.nb-13-shape .nb-13-ten {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 25px);
+  grid-template-rows: repeat(6, 25px);
 }
 
-.nb-13-shape .nb-13-ten .block {
+.nb-13-shape .block {
   margin: -1px;
-  background-color: #fff;
-  border: 2px solid var(--nb-1);
-}
-
-.nb-13-shape .nb-13-three .block {
-  margin-top: -2px;
-  background-color: var(--nb-13);
 }
 
 /* Estructura especial para 14 (grid 2x7: 10 blancos + 4 verdes arriba) */
