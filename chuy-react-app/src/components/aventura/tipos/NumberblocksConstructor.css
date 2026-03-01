@@ -17,6 +17,9 @@
   --nb-12-main: #ffffff;
   --nb-12-border: #e53935;
   --nb-12-center: #fb8c00;
+  --nb-13: #fdd835;
+  --nb-14: #76ff03;
+  --nb-15: #00bcd4;
   --c-borde: rgba(0,0,0,0.15);
 }
 
@@ -246,8 +249,52 @@
   grid-template-columns: repeat(3, 1fr);
 }
 
-.nb-12-shape .block { 
-  margin: -1px; 
+.nb-12-shape .block {
+  margin: -1px;
+}
+
+/* Estructura especial para 13 (L-shape: 10 blancos + 3 amarillos) */
+.nb-13-shape {
+  display: flex;
+  align-items: flex-end;
+}
+
+.nb-13-shape .nb-13-ten {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.nb-13-shape .nb-13-ten .block {
+  margin: -1px;
+  background-color: #fff;
+  border: 2px solid var(--nb-1);
+}
+
+.nb-13-shape .nb-13-three .block {
+  margin-top: -2px;
+  background-color: var(--nb-13);
+}
+
+/* Estructura especial para 14 (grid 2x7: 10 blancos + 4 verdes arriba) */
+.nb-14-shape {
+  width: 50px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.nb-14-shape .block {
+  margin: -1px;
+}
+
+/* Estructura especial para 15 (escalera Step Squad) */
+.nb-15-shape {
+  display: flex;
+  align-items: flex-end;
+}
+
+.nb-15-shape .stack {
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 /* Colores para rectángulos construidos */

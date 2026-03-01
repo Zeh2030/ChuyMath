@@ -85,7 +85,8 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
     const colors = {
       1: '#e53935', 2: '#fb8c00', 3: '#fdd835', 4: '#43a047',
       5: '#1e88e5', 6: '#8e24aa', 7: '#673ab7', 8: '#ec407a',
-      9: '#e0e0e0', 10: '#ffffff', 11: '#e53935', 12: '#fb8c00'
+      9: '#e0e0e0', 10: '#ffffff', 11: '#e53935', 12: '#fb8c00',
+      13: '#fdd835', 14: '#76ff03', 15: '#00bcd4'
     };
     return colors[num] || '#95a5a6';
   };
@@ -182,6 +183,69 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
       );
     }
     
+    if (num === 13) {
+      // 13: 10 blancos (2×5 grid) + 3 amarillos (torre a la derecha)
+      return (
+        <div key={num} className={`numberblock has-face nb-13-shape ${isSelected ? 'selected' : ''}`} onClick={() => handleSelectBlock(num)}>
+          <div className="nb-13-ten">
+            {[...Array(10)].map((_, i) => (
+              <div key={`w-${i}`} className="block" style={{ backgroundColor: '#fff', border: '2px solid var(--nb-1)' }}>
+                {i === 4 && <Face />}
+              </div>
+            ))}
+          </div>
+          <div className="stack nb-13-three">
+            {[...Array(3)].map((_, i) => (
+              <div key={`y-${i}`} className="block" style={{ backgroundColor: 'var(--nb-13)' }} />
+            ))}
+          </div>
+        </div>
+      );
+    }
+
+    if (num === 14) {
+      // 14: grid 2×7 — 10 blancos abajo + 4 verde lima arriba
+      return (
+        <div key={num} className={`numberblock has-face nb-14-shape ${isSelected ? 'selected' : ''}`} onClick={() => handleSelectBlock(num)}>
+          {[...Array(14)].map((_, i) => {
+            const isGreen = i >= 10;
+            return (
+              <div key={i} className="block" style={{
+                backgroundColor: isGreen ? 'var(--nb-14)' : '#fff',
+                border: isGreen ? '2px solid rgba(0,0,0,0.15)' : '2px solid var(--nb-1)'
+              }}>
+                {i === 4 && <Face />}
+              </div>
+            );
+          })}
+        </div>
+      );
+    }
+
+    if (num === 15) {
+      // 15: escalera Step Squad — 5 columnas de altura 1,2,3,4,5
+      const stairHeights = [1, 2, 3, 4, 5];
+      return (
+        <div key={num} className={`numberblock has-face nb-15-shape ${isSelected ? 'selected' : ''}`} onClick={() => handleSelectBlock(num)}>
+          {stairHeights.map((height, colIdx) => (
+            <div key={colIdx} className="stack">
+              {[...Array(height)].map((_, rowIdx) => {
+                const isCyan = colIdx === 4;
+                return (
+                  <div key={rowIdx} className="block" style={{
+                    backgroundColor: isCyan ? 'var(--nb-15)' : '#fff',
+                    border: isCyan ? '2px solid rgba(0,0,0,0.15)' : '2px solid var(--nb-1)'
+                  }}>
+                    {colIdx === 4 && rowIdx === height - 1 && <Face />}
+                  </div>
+                );
+              })}
+            </div>
+          ))}
+        </div>
+      );
+    }
+
     // Números 1-8, 10: apilados verticalmente
     const sevenColors = ['--nb-7-1', '--nb-7-2', '--nb-7-3', '--nb-7-4', '--nb-7-5', '--nb-7-6', '--nb-7-7'];
     
@@ -306,7 +370,7 @@ const NumberblocksConstructor = ({ mision, onCompletar }) => {
       <div className="nb-toolbox-section">
         <div className="nb-toolbox-title">Caja de Herramientas</div>
         <div className="toolbox">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(num => renderNumberblock(num))}
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(num => renderNumberblock(num))}
         </div>
       </div>
 
