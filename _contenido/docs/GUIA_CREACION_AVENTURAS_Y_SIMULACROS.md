@@ -21,15 +21,23 @@ Todo archivo debe tener estos campos raíz para funcionar y categorizarse correc
 
 ```json
 {
-  "id": "YYYY-MM-DD_nombre-descriptivo",  // EJ: "2025-10-01_conteo-figuras"
-  "tipo": "categoria-del-juego",          // ¡VITAL! Define en qué pestaña aparece.
+  "id": "YYYY-MM-DD_tipo-nivel-descripcion",  // EJ: "2026-03-05_area-maestro-ciudades"
+  "tipo": "categoria-del-juego",              // ¡VITAL! Define en qué pestaña aparece.
+  "nivel": "basico|intermedio|avanzado|maestro", // Para estratificación futura por dificultad
   "titulo": "Título Visible en la App",
   "descripcion": "Descripción corta para la tarjeta.",
-  "misiones": [                           // Array con las actividades
+  "misiones": [                               // Array con las actividades
     // ... aquí van las misiones/preguntas ...
   ]
 }
 ```
+
+> **⚠️ Sobre el campo `id`:** Este valor se convierte en el **Document ID en Firestore**. Es lo que ves al navegar en la consola de Firebase. Usa siempre un ID descriptivo — un ID tipo `"2026-03-04"` no te dice nada al buscar en Firebase; `"2026-03-04_area-maestro-gigantes"` sí.
+>
+> **Nombre del archivo** = mismo que el `id` + extensión `.json`
+> EJ: id `"2026-03-05_area-maestro-ciudades"` → archivo `2026-03-05_area-maestro-ciudades.json`
+>
+> **Nota:** Los archivos creados antes de esta convención usan IDs más simples (solo fecha o sin nivel). Se dejan así para no romper los documentos ya subidos a Firestore.
 
 ### 🏷️ Categorías (Campo `tipo`)
 El campo `tipo` en la raíz controla dónde aparece el juego en la Bóveda:
@@ -322,8 +330,14 @@ El toolbox de medición y construcción muestra bloques **del 1 al 15**, por lo 
 }
 ```
 
-**Regla de nomenclatura de archivos:** `YYYY-MM-DD_area-[nivel].json`
-Ejemplos existentes: `2026-03-01_area-basicos.json`, `2026-03-02_area-intermedio.json`, `2026-03-03_area-avanzado.json`
+**Nomenclatura para archivos nuevos:** `YYYY-MM-DD_area-[nivel]-[descripcion].json`
+
+| Ejemplo de archivo | Ejemplo de `id` |
+|---|---|
+| `2026-03-05_area-basico-animales.json` | `"2026-03-05_area-basico-animales"` |
+| `2026-03-06_area-maestro-estadios.json` | `"2026-03-06_area-maestro-estadios"` |
+
+*Los archivos anteriores (`2026-03-01_area-basicos.json`, etc.) usan la convención antigua — no se renombran.*
 
 **Niveles de dificultad sugeridos:**
 | Nivel | Rango de dimensiones | Área máxima |
