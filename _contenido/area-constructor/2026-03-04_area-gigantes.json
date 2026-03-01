@@ -8,7 +8,7 @@
       "id": "mision-area-4",
       "tipo": "area-constructor",
       "titulo": "Los nuevos gigantes llegan",
-      "instruccion": "¡Trece, Catorce y Quince llegaron al barrio! Mide sus construcciones gigantes y calcula el área.",
+      "instruccion": "¡Trece, Catorce y Quince llegaron al barrio! Mide sus construcciones y calcula el área.",
       "retos": [
         {
           "target": 52,
@@ -16,7 +16,7 @@
           "columnas": 4,
           "tipo": "area",
           "esSquare": false,
-          "historia": "¡Trece llega al barrio y quiere demostrar que el 13 trae BUENA suerte! Construye un jardín de flores de 4 bloques de ancho. ¿Cuántas flores caben?",
+          "historia": "¡Trece llega al barrio y quiere demostrar que el 13 trae BUENA suerte! Construyó un jardín de flores enorme. ¿Cuántas flores caben en todo el jardín?",
           "unidad": "flores"
         },
         {
@@ -25,7 +25,7 @@
           "columnas": 5,
           "tipo": "area",
           "esSquare": false,
-          "historia": "Catorce se pone su casco verde y diseña un helipuerto de 5 bloques de ancho. ¡Los helicópteros ya están llegando! ¿Cuántos cuadritos necesita pintar?",
+          "historia": "Catorce se pone su casco verde y diseña un helipuerto para los Numberblocks voladores. ¡Los helicópteros ya están llegando! ¿Cuántos cuadritos necesita pintar?",
           "unidad": "cuadritos"
         },
         {
@@ -34,7 +34,7 @@
           "columnas": 4,
           "tipo": "area",
           "esSquare": false,
-          "historia": "¡Quince, el famoso escalero del Step Squad, construye unas gradas para el público! Son 4 bloques de ancho y suben muy alto. ¿Cuántas personas pueden sentarse?",
+          "historia": "¡Quince, el famoso escalero del Step Squad, construye unas gradas para el público! ¡Mide bien antes de contar cuántas personas pueden sentarse!",
           "unidad": "personas"
         },
         {
@@ -43,7 +43,7 @@
           "columnas": 6,
           "tipo": "area",
           "esSquare": false,
-          "historia": "Trece convence a Seis de que juntos pintarán el mural más impresionante del vecindario. ¡6 bloques de ancho y 13 de alto! ¿Cuántos cuadritos hay que pintar?",
+          "historia": "Trece convence a Seis de que juntos pintarán el mural más impresionante del vecindario. ¡Es gigante! ¿Cuántos cuadritos hay que pintar?",
           "unidad": "cuadritos"
         },
         {
@@ -52,7 +52,7 @@
           "columnas": 7,
           "tipo": "area",
           "esSquare": false,
-          "historia": "Catorce y Siete diseñan una pista de atletismo con 7 carriles. ¡Es enorme! ¿Cuántas losetas necesitan para cubrir todo el piso?",
+          "historia": "Catorce y Siete diseñan una pista de atletismo con muchos carriles. ¡Es enorme! ¿Cuántas losetas necesitan para cubrir todo el piso?",
           "unidad": "losetas"
         },
         {
@@ -61,7 +61,7 @@
           "columnas": 6,
           "tipo": "area",
           "esSquare": false,
-          "historia": "¡Quince reta a Nueve y Diez! Construye su propio campo de fútbol de 6 bloques de ancho y 15 de largo. ¿Cuántas casillas tiene el campo?",
+          "historia": "¡Quince reta a Nueve y Diez! Construye su propio campo de fútbol. ¿Cuántas casillas tiene el campo de Quince?",
           "unidad": "casillas"
         },
         {
@@ -70,7 +70,7 @@
           "columnas": 8,
           "tipo": "area",
           "esSquare": false,
-          "historia": "¡El gran día de Trece! Construye el edificio más alto del barrio: 8 apartamentos de ancho y ¡13 pisos de alto! ¿Cuántos apartamentos hay en total?",
+          "historia": "¡El gran día de Trece! Construye el edificio más alto del barrio, con muchos apartamentos en cada piso. ¿Cuántos apartamentos hay en total?",
           "unidad": "apartamentos"
         },
         {
@@ -79,7 +79,7 @@
           "columnas": 7,
           "tipo": "area",
           "esSquare": false,
-          "historia": "¡RETO ÉPICO FINAL! Trece, Catorce y Quince se unen para construir el Gran Estadio Numberblock. 7 sectores de ancho y 15 filas de butacas. ¡Calculen el área del estadio más legendario de todos!",
+          "historia": "¡RETO ÉPICO FINAL! Trece, Catorce y Quince se unen para construir el Gran Estadio Numberblock. ¡Mide bien los lados y calcula cuántas butacas tiene el estadio más legendario de todos!",
           "unidad": "butacas"
         }
       ]
