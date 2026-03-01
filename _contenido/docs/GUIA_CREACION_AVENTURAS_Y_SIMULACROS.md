@@ -40,7 +40,8 @@ El campo `tipo` en la raíz controla dónde aparece el juego en la Bóveda:
 *   `"operaciones"` -> Categoría Operaciones
 *   `"aventura"` -> Categoría General (Mix de juegos)
 *   `"simulacro"` -> Categoría Exámenes
-*   `"numberblocks-constructor"` -> Categoría Numberblocks
+*   `"numberblocks-constructor"` -> Categoría Numberblocks (multiplicación como rectángulos)
+*   `"area-constructor"` -> Categoría Área (medir lados, calcular y construir área)
 *   `"kakooma"` -> Categoría Kakooma
 
 ---
@@ -194,7 +195,7 @@ Completar la serie.
 ```
 
 ### G. Numberblocks Constructor (Multiplicación Visual)
-Juego para entender la multiplicación como rectángulos ("arrays").
+Juego para entender la multiplicación como rectángulos ("arrays"). El toolbox muestra los bloques **del 1 al 15**.
 
 ```json
 {
@@ -216,6 +217,19 @@ Juego para entender la multiplicación como rectángulos ("arrays").
   ]
 }
 ```
+
+**Bloques disponibles (1–15) y sus colores oficiales:**
+
+| # | Color | # | Color |
+|---|-------|---|-------|
+| 1 | Rojo | 9 | Gris (3 tonos) |
+| 2 | Naranja | 10 | Blanco (borde rojo) |
+| 3 | Amarillo | 11 | Blanco + rojo (2 piernas) |
+| 4 | Verde | 12 | Blanco + naranja (grid 3×4) |
+| 5 | Azul | 13 | Blanco + amarillo (L invertida) |
+| 6 | Morado | 14 | Blanco + verde lima (sombrero) |
+| 7 | Arcoíris (7 colores) | 15 | Blanco + cian (escalera) |
+| 8 | Rosa | | |
 
 ### H. Lienzo de Dibujo (Libre)
 Misión creativa donde el niño dibuja libremente o siguiendo una instrucción.
@@ -271,6 +285,56 @@ Notas:
 
 ---
 
+### K. Área Constructor (Medir, Calcular y Construir)
+Juego de 3 fases pedagógicas para aprender área de rectángulos y cuadrados:
+1. **Medir** — el niño selecciona del toolbox los Numberblocks que coincidan con el ancho y el alto del grid.
+2. **Calcular** — escribe el resultado de la multiplicación (área).
+3. **Construir** — selecciona los dos Numberblocks que al multiplicarse forman el área.
+
+El toolbox de medición y construcción muestra bloques **del 1 al 15**, por lo que `filas` y `columnas` deben ser valores entre 1 y 15.
+
+```json
+{
+  "id": "mision-area-1",
+  "tipo": "area-constructor",
+  "titulo": "Nombre de la misión",
+  "instruccion": "Mide los lados, calcula el área y reconstruye la figura.",
+  "retos": [
+    {
+      "target": 24,          // Debe ser exactamente filas × columnas
+      "filas": 6,            // Alto del grid (1–15). El niño lo mide contando.
+      "columnas": 4,         // Ancho del grid (1–15). El niño lo mide contando.
+      "tipo": "area",
+      "esSquare": false,     // true solo si filas === columnas (cuadrado perfecto)
+      "historia": "Seis construye una piscina rectangular. ¿Cuántas losetas necesita para el piso?",
+      "unidad": "losetas"    // Palabra que aparece en el mensaje de éxito
+    },
+    {
+      "target": 25,
+      "filas": 5,
+      "columnas": 5,
+      "tipo": "area",
+      "esSquare": true,
+      "historia": "¡Cinco quiere un cuadrado perfecto para su jardín secreto! ¿Cuántos cuadritos tiene?",
+      "unidad": "cuadritos"
+    }
+  ]
+}
+```
+
+**Regla de nomenclatura de archivos:** `YYYY-MM-DD_area-[nivel].json`
+Ejemplos existentes: `2026-03-01_area-basicos.json`, `2026-03-02_area-intermedio.json`, `2026-03-03_area-avanzado.json`
+
+**Niveles de dificultad sugeridos:**
+| Nivel | Rango de dimensiones | Área máxima |
+|-------|---------------------|-------------|
+| Básico | 2–5 | ~20 |
+| Intermedio | 4–8 | ~56 |
+| Avanzado | 6–12 | ~108 |
+| Maestro | 10–15 | ~120 |
+
+---
+
 ## 4. Imágenes y SVG
 Recomendamos usar código SVG directamente (`<svg>...</svg>`) en los campos `imagen` o `figura_svg` para asegurar que se vean nítidos en cualquier tamaño. Evita usar URLs externas (`http...`) si es posible, ya que pueden romperse.
 
@@ -281,3 +345,38 @@ Recomendamos usar código SVG directamente (`<svg>...</svg>`) en los campos `ima
     *   `Aventuras` (para juegos diarios).
     *   `Simulacros` (para exámenes largos).
 4.  Sube el archivo.
+5.  Si el documento ya existe (mismo `id`), se **sobreescribe** automáticamente — útil para corregir contenido ya subido.
+
+---
+
+## 6. Reglas Pedagógicas para Escribir Historias
+
+Estas reglas aplican especialmente a los juegos donde el niño debe **descubrir** un valor (Área Constructor, Numberblocks Constructor). El objetivo es que el aprendizaje ocurra durante el juego, no antes.
+
+### ❌ NO hagas esto — revelar la respuesta en la historia
+
+```
+"historia": "Seis y Ocho construyen un estacionamiento de 6 filas y 8 columnas. ¿Cuántas losetas?"
+```
+Si el niño lee "6 filas y 8 columnas", ya sabe que debe seleccionar los bloques 6 y 8 sin contar el grid.
+
+### ✅ SÍ haz esto — describe la situación, no las dimensiones
+
+```
+"historia": "Seis y Ocho construyen un estacionamiento enorme. ¿Cuántas losetas necesitan para el piso?"
+```
+El niño observa el grid y **cuenta** los lados él mismo. Ahí está el aprendizaje.
+
+### Guía rápida para historias en Área Constructor
+
+| Elemento | ¿Incluir? | Ejemplo |
+|----------|-----------|---------|
+| Personajes Numberblocks | ✅ Sí | "Siete y Cuatro construyen..." |
+| Contexto / escenario | ✅ Sí | "...un campo de fútbol" |
+| Pregunta sobre el total | ✅ Sí | "¿Cuántas losetas necesitan?" |
+| Unidades creativas | ✅ Sí | flores, butacas, casillas, losetas |
+| Número exacto de filas | ❌ No | ~~"de 7 filas de alto"~~ |
+| Número exacto de columnas | ❌ No | ~~"de 4 bloques de ancho"~~ |
+| Ambas dimensiones explícitas | ❌ No | ~~"7 por 4"~~ |
+
+**Excepción aceptable:** Mencionar el nombre del personaje (ej. "Trece") implica indirectamente el número 13, pero se considera contexto narrativo aceptable — el niño todavía debe contar el otro lado y realizar la multiplicación.
