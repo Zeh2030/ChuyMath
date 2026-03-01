@@ -1,0 +1,88 @@
+{
+  "id": "2026-03-04",
+  "titulo": "Área Constructor: Trece, Catorce y Quince",
+  "tipo": "area-constructor",
+  "nivel": "maestro",
+  "misiones": [
+    {
+      "id": "mision-area-4",
+      "tipo": "area-constructor",
+      "titulo": "Los nuevos gigantes llegan",
+      "instruccion": "¡Trece, Catorce y Quince llegaron al barrio! Mide sus construcciones gigantes y calcula el área.",
+      "retos": [
+        {
+          "target": 52,
+          "filas": 13,
+          "columnas": 4,
+          "tipo": "area",
+          "esSquare": false,
+          "historia": "¡Trece llega al barrio y quiere demostrar que el 13 trae BUENA suerte! Construye un jardín de flores de 4 bloques de ancho. ¿Cuántas flores caben?",
+          "unidad": "flores"
+        },
+        {
+          "target": 70,
+          "filas": 14,
+          "columnas": 5,
+          "tipo": "area",
+          "esSquare": false,
+          "historia": "Catorce se pone su casco verde y diseña un helipuerto de 5 bloques de ancho. ¡Los helicópteros ya están llegando! ¿Cuántos cuadritos necesita pintar?",
+          "unidad": "cuadritos"
+        },
+        {
+          "target": 60,
+          "filas": 15,
+          "columnas": 4,
+          "tipo": "area",
+          "esSquare": false,
+          "historia": "¡Quince, el famoso escalero del Step Squad, construye unas gradas para el público! Son 4 bloques de ancho y suben muy alto. ¿Cuántas personas pueden sentarse?",
+          "unidad": "personas"
+        },
+        {
+          "target": 78,
+          "filas": 13,
+          "columnas": 6,
+          "tipo": "area",
+          "esSquare": false,
+          "historia": "Trece convence a Seis de que juntos pintarán el mural más impresionante del vecindario. ¡6 bloques de ancho y 13 de alto! ¿Cuántos cuadritos hay que pintar?",
+          "unidad": "cuadritos"
+        },
+        {
+          "target": 98,
+          "filas": 14,
+          "columnas": 7,
+          "tipo": "area",
+          "esSquare": false,
+          "historia": "Catorce y Siete diseñan una pista de atletismo con 7 carriles. ¡Es enorme! ¿Cuántas losetas necesitan para cubrir todo el piso?",
+          "unidad": "losetas"
+        },
+        {
+          "target": 90,
+          "filas": 15,
+          "columnas": 6,
+          "tipo": "area",
+          "esSquare": false,
+          "historia": "¡Quince reta a Nueve y Diez! Construye su propio campo de fútbol de 6 bloques de ancho y 15 de largo. ¿Cuántas casillas tiene el campo?",
+          "unidad": "casillas"
+        },
+        {
+          "target": 104,
+          "filas": 13,
+          "columnas": 8,
+          "tipo": "area",
+          "esSquare": false,
+          "historia": "¡El gran día de Trece! Construye el edificio más alto del barrio: 8 apartamentos de ancho y ¡13 pisos de alto! ¿Cuántos apartamentos hay en total?",
+          "unidad": "apartamentos"
+        },
+        {
+          "target": 105,
+          "filas": 15,
+          "columnas": 7,
+          "tipo": "area",
+          "esSquare": false,
+          "historia": "¡RETO ÉPICO FINAL! Trece, Catorce y Quince se unen para construir el Gran Estadio Numberblock. 7 sectores de ancho y 15 filas de butacas. ¡Calculen el área del estadio más legendario de todos!",
+          "unidad": "butacas"
+        }
+      ]
+    }
+  ]
+}
