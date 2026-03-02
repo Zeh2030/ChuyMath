@@ -147,22 +147,44 @@ const FraccionExplorer = ({ mision, onCompletar }) => {
     </div>
   );
 
-  // ===== Numberblock mini rendering for toolbox =====
+  // ===== Numberblock rendering (misma implementacion que AreaConstructor) =====
 
-  const renderMiniNumberblock = (num, onClick, selectedList = []) => {
+  const renderNumberblock = (num, onClick, selectedList = []) => {
     const isSelected = selectedList.includes(num);
+    const nineColors = ['--nb-9-3', '--nb-9-2', '--nb-9-1'];
+    const sevenColors = ['--nb-7-1', '--nb-7-2', '--nb-7-3', '--nb-7-4', '--nb-7-5', '--nb-7-6', '--nb-7-7'];
+
+    if (num === 9) {
+      return (
+        <div key={num} className={`numberblock has-face ${isSelected ? 'selected' : ''}`} onClick={() => onClick(num)}>
+          <div className="stack">
+            {[...Array(9)].map((_, i) => (
+              <div key={i} className="block c9" style={{ backgroundColor: `var(${nineColors[Math.floor(i / 3)]})` }}>
+                {i === 8 && <Face />}
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    }
+
     return (
-      <div
-        key={num}
-        className={`numberblock has-face ${isSelected ? 'selected' : ''}`}
-        onClick={() => onClick(num)}
-      >
+      <div key={num} className={`numberblock has-face ${isSelected ? 'selected' : ''}`} onClick={() => onClick(num)}>
         <div className="stack">
-          {[...Array(num)].map((_, i) => (
-            <div key={i} className={`block c${num}`}>
-              {i === num - 1 && <Face singleEye={num === 1} />}
-            </div>
-          ))}
+          {[...Array(num)].map((_, i) => {
+            let className = 'block';
+            let style = {};
+            if (num === 7) {
+              style.backgroundColor = `var(${sevenColors[i]})`;
+            } else {
+              className += ` c${num}`;
+            }
+            return (
+              <div key={i} className={className} style={style}>
+                {i === num - 1 && <Face singleEye={num === 1} />}
+              </div>
+            );
+          })}
         </div>
       </div>
     );
@@ -356,9 +378,9 @@ const FraccionExplorer = ({ mision, onCompletar }) => {
 
               <div className="fraccion-toolbox-section">
                 <div className="fraccion-toolbox-title">Elige el Numberblock correcto</div>
-                <div className="fraccion-toolbox">
+                <div className="toolbox">
                   {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num =>
-                    renderMiniNumberblock(num, handleSelectNumerador, [])
+                    renderNumberblock(num, handleSelectNumerador, [])
                   )}
                 </div>
               </div>
@@ -383,9 +405,9 @@ const FraccionExplorer = ({ mision, onCompletar }) => {
 
               <div className="fraccion-toolbox-section">
                 <div className="fraccion-toolbox-title">Elige el Numberblock correcto</div>
-                <div className="fraccion-toolbox">
+                <div className="toolbox">
                   {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num =>
-                    renderMiniNumberblock(num, handleSelectDenominador, [])
+                    renderNumberblock(num, handleSelectDenominador, [])
                   )}
                 </div>
               </div>
