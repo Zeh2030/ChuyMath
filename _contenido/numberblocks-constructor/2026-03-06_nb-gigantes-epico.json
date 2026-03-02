@@ -1,0 +1,49 @@
+{
+  "id": "2026-03-06_nb-gigantes-epico",
+  "titulo": "Numberblocks: Desafíos Épicos de los Gigantes",
+  "descripcion": "Trece, Catorce y Quince en sus retos más difíciles. ¿Puedes con todos?",
+  "tipo": "numberblocks-constructor",
+  "nivel": "maestro",
+  "misiones": [
+    {
+      "id": "mision-nb-gigantes-2",
+      "tipo": "numberblocks-constructor",
+      "titulo": "La Gran Fábrica de los Gigantes",
+      "instruccion": "Los tres gigantes trabajan juntos hoy. ¡Resuelve sus construcciones más complejas!",
+      "retos": [
+        {
+          "target": 78,
+          "tipo": "multiply",
+          "historia": "Trece invita a otro amigo a construir. Juntos formarán un rectángulo especial. ¿Quién es el compañero de Trece?"
+        },
+        {
+          "target": 105,
+          "tipo": "multiply",
+          "historia": "¡Quince desafía a la fábrica entera! Necesita un compañero del toolbox para su gran rectángulo. ¡Encuéntralo!"
+        },
+        {
+          "target": 156,
+          "tipo": "divide",
+          "dado": 13,
+          "historia": "Trece ya ocupa su lado en la construcción más larga del día. ¿Qué bloque de la caja completa el rectángulo gigante?"
+        },
+        {
+          "target": 126,
+          "tipo": "multiply",
+          "historia": "Catorce tiene hambre de construir. Busca entre los bloques al compañero que lo lleva exactamente a su objetivo."
+        },
+        {
+          "target": 180,
+          "tipo": "divide",
+          "dado": 15,
+          "historia": "¡Quince toma el lado más largo jamás visto en la fábrica! Un lado ya está. ¿Cuál bloque completa el área perfecta?"
+        },
+        {
+          "target": 195,
+          "tipo": "multiply",
+          "historia": "¡RETO ÉPICO FINAL! Dos gigantes se unen para construir el rectángulo legendario. ¿Puedes descubrir cuáles son los dos colosos que lo forman?"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "id": "2026-03-05_nb-gigantes-debut",
+  "titulo": "Numberblocks: Los Gigantes Llegan",
+  "descripcion": "Trece, Catorce y Quince debutan como factores. ¡Encuentra sus pares!",
+  "tipo": "numberblocks-constructor",
+  "nivel": "maestro",
+  "misiones": [
+    {
+      "id": "mision-nb-gigantes-1",
+      "tipo": "numberblocks-constructor",
+      "titulo": "El Debut de los Gigantes",
+      "instruccion": "Trece, Catorce y Quince son nuevos en la fábrica. ¡Ayúdalos a encontrar sus pares!",
+      "retos": [
+        {
+          "target": 65,
+          "tipo": "multiply",
+          "historia": "¡Trece llega a la fábrica emocionado! Necesita un compañero para formar su primer rectángulo. ¡Encuentra su pareja perfecta!"
+        },
+        {
+          "target": 98,
+          "tipo": "multiply",
+          "historia": "¡Catorce quiere construir algo grandioso! Elige dos bloques de la caja para que su rectángulo tenga el área exacta."
+        },
+        {
+          "target": 135,
+          "tipo": "divide",
+          "dado": 15,
+          "historia": "¡Quince ya tomó su lugar en el rectángulo! Un lado ya está puesto. ¿Qué bloque falta para completar la construcción?"
+        },
+        {
+          "target": 91,
+          "tipo": "multiply",
+          "historia": "Trece regresa con más energía. Esta vez su rectángulo es diferente. ¡Halla los dos factores que lo forman!"
+        },
+        {
+          "target": 112,
+          "tipo": "divide",
+          "dado": 14,
+          "historia": "Catorce ya colocó su lado en la fábrica. ¿Cuál bloque de la caja completa el rectángulo y llega al área correcta?"
+        },
+        {
+          "target": 165,
+          "tipo": "multiply",
+          "historia": "¡Reto final del día! Quince se une a otro gigante para construir el rectángulo más impresionante de la sesión. ¡Encuéntralos!"
+        }
+      ]
+    }
+  ]
+}
