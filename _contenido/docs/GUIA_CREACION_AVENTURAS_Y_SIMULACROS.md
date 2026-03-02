@@ -50,6 +50,8 @@ El campo `tipo` en la raíz controla dónde aparece el juego en la Bóveda:
 *   `"simulacro"` -> Categoría Exámenes
 *   `"numberblocks-constructor"` -> Categoría Numberblocks (multiplicación como rectángulos)
 *   `"area-constructor"` -> Categoría Área (medir lados, calcular y construir área)
+*   `"fraccion-explorer"` -> Categoría Fracciones (pizza y chocolate visual)
+*   `"angulo-explorer"` -> Categoría Ángulos (clasificar y triángulos)
 *   `"kakooma"` -> Categoría Kakooma
 
 ---
@@ -394,3 +396,121 @@ El niño observa el grid y **cuenta** los lados él mismo. Ahí está el aprendi
 | Ambas dimensiones explícitas | ❌ No | ~~"7 por 4"~~ |
 
 **Excepción aceptable:** Mencionar el nombre del personaje (ej. "Trece") implica indirectamente el número 13, pero se considera contexto narrativo aceptable — el niño todavía debe contar el otro lado y realizar la multiplicación.
+
+---
+
+### L. Fraccion Explorer (Fracciones visuales)
+
+Enseña fracciones con modelos visuales de pizza (circulo) y chocolate (barra). Dos tipos de retos:
+
+- **identificar**: el niño ve una figura con partes coloreadas y dice qué fracción es (numerador + denominador)
+- **construir**: el niño lee una fracción y colorea las partes correctas en la figura
+
+**Carpeta de contenido:** `_contenido/fraccion-explorer/`
+**Tipo en JSON raíz:** `"fraccion-explorer"`
+
+```json
+{
+  "id": "YYYY-MM-DD_fraccion-nivel-descripcion",
+  "titulo": "Titulo visible",
+  "tipo": "fraccion-explorer",
+  "nivel": "basico|intermedio|avanzado",
+  "misiones": [
+    {
+      "id": "mision-fraccion-N",
+      "tipo": "fraccion-explorer",
+      "titulo": "Titulo de la mision",
+      "instruccion": "Instruccion general",
+      "retos": [
+        {
+          "tipo": "identificar",
+          "forma": "circulo|barra",
+          "partes": 4,
+          "coloreadas": 3,
+          "historia": "Historia con personajes Numberblocks",
+          "explicacion": "Tres cuartos: 3 de 4 partes"
+        },
+        {
+          "tipo": "construir",
+          "forma": "circulo|barra",
+          "partes": 3,
+          "coloreadas": 2,
+          "historia": "Historia pidiendo colorear 2/3",
+          "explicacion": "Dos tercios de la pizza"
+        }
+      ]
+    }
+  ]
+}
+```
+
+**Reglas pedagogicas para fracciones:**
+- Empezar SIEMPRE con medios (1/2), luego tercios, luego cuartos
+- Usar contextos de comida: pizza, chocolate, pastel
+- Cada reto tiene una `explicacion` que conecta visual con numero
+- `forma`: `"circulo"` para pizza, `"barra"` para chocolate
+- `partes`: en cuantas partes iguales se divide (denominador)
+- `coloreadas`: cuantas partes estan coloreadas (numerador)
+
+| Nivel | Denominadores | Formas |
+|-------|--------------|--------|
+| basico | 2, 3, 4 | circulo + barra |
+| intermedio | 5, 6, 8 | circulo + barra |
+| avanzado | 7, 9, 10, 12 | circulo + barra |
+
+---
+
+### M. Angulo Explorer (Clasificacion de angulos y triangulos)
+
+Enseña tipos de angulos y la regla de que los angulos de un triangulo suman 180°. Dos tipos de retos:
+
+- **identificar**: el niño ve un angulo con su medida en grados y lo clasifica como agudo, recto u obtuso
+- **triangulo**: el niño ve un triangulo con 2 angulos conocidos y calcula el tercero (180° - a - b)
+
+**Carpeta de contenido:** `_contenido/angulo-explorer/`
+**Tipo en JSON raíz:** `"angulo-explorer"`
+
+```json
+{
+  "id": "YYYY-MM-DD_angulo-nivel-descripcion",
+  "titulo": "Titulo visible",
+  "tipo": "angulo-explorer",
+  "nivel": "basico|intermedio|avanzado",
+  "misiones": [
+    {
+      "id": "mision-angulo-N",
+      "tipo": "angulo-explorer",
+      "titulo": "Titulo de la mision",
+      "instruccion": "Instruccion general",
+      "retos": [
+        {
+          "tipo": "identificar",
+          "angulo": 45,
+          "respuesta": "agudo",
+          "historia": "Historia con contexto visual",
+          "pista": "Pista opcional para si falla"
+        },
+        {
+          "tipo": "triangulo",
+          "angulos": [60, 60, null],
+          "historia": "Historia mencionando la regla de 180"
+        }
+      ]
+    }
+  ]
+}
+```
+
+**Reglas pedagogicas para angulos:**
+- Empezar con angulo recto (90°) — el niño lo reconoce en esquinas de hojas, libros, mesas
+- Luego agudo (< 90°) y obtuso (> 90°) — SIEMPRE comparar con 90°
+- Los triangulos vienen DESPUES de que entienda los tipos de angulos
+- La regla de 180° se muestra visualmente con barra, no solo como formula
+- `respuesta` para identificar: `"agudo"`, `"recto"` u `"obtuso"`
+- `angulos` para triangulo: array de 3 valores, el faltante es `null`
+
+| Nivel | Contenido |
+|-------|-----------|
+| basico | Solo clasificar angulos (agudo/recto/obtuso) |
+| intermedio | Clasificar + triangulos con angulos faciles (sumas a 180) |
+| avanzado | Triangulos complejos, mezcla de tipos |

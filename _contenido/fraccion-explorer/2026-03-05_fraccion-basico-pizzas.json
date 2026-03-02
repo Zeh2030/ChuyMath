@@ -1,0 +1,80 @@
+{
+  "id": "2026-03-05_fraccion-basico-pizzas",
+  "titulo": "Fracciones: Pizza y Chocolate",
+  "tipo": "fraccion-explorer",
+  "nivel": "basico",
+  "misiones": [
+    {
+      "id": "mision-fraccion-1",
+      "tipo": "fraccion-explorer",
+      "titulo": "Las fracciones de la pizzeria",
+      "instruccion": "Observa la figura y descubre que fraccion esta coloreada.",
+      "retos": [
+        {
+          "tipo": "identificar",
+          "forma": "circulo",
+          "partes": 2,
+          "coloreadas": 1,
+          "historia": "Dos corto una pizza en pedazos iguales y se comio uno. Que fraccion se comio?",
+          "explicacion": "Un medio: 1 de 2 partes"
+        },
+        {
+          "tipo": "identificar",
+          "forma": "barra",
+          "partes": 3,
+          "coloreadas": 1,
+          "historia": "Tres partio un chocolate en pedazos iguales. Uno se comio un pedazo. Que fraccion se comio?",
+          "explicacion": "Un tercio: 1 de 3 partes"
+        },
+        {
+          "tipo": "identificar",
+          "forma": "circulo",
+          "partes": 4,
+          "coloreadas": 2,
+          "historia": "Cuatro hizo una pizza y la corto en partes iguales. Dos se comio las rebanadas naranjas. Que fraccion se comio Dos?",
+          "explicacion": "Dos cuartos: 2 de 4 partes"
+        },
+        {
+          "tipo": "construir",
+          "forma": "circulo",
+          "partes": 2,
+          "coloreadas": 1,
+          "historia": "Dos hizo una pizza y la corto en 2 pedazos. Uno quiere comerse la mitad. Colorea el pedazo que le toca!",
+          "explicacion": "Un medio: la mitad de la pizza"
+        },
+        {
+          "tipo": "identificar",
+          "forma": "barra",
+          "partes": 4,
+          "coloreadas": 3,
+          "historia": "Cuatro partio un chocolate en pedazos iguales. Tres se comio los pedazos morados. Que fraccion se comio Tres?",
+          "explicacion": "Tres cuartos: 3 de 4 partes"
+        },
+        {
+          "tipo": "construir",
+          "forma": "circulo",
+          "partes": 3,
+          "coloreadas": 2,
+          "historia": "Tres hizo una pizza y la corto en 3 pedazos. Dos quiere comerse 2/3. Colorea los pedazos que le tocan!",
+          "explicacion": "Dos tercios de la pizza"
+        },
+        {
+          "tipo": "construir",
+          "forma": "barra",
+          "partes": 4,
+          "coloreadas": 1,
+          "historia": "Cuatro tiene un chocolate de 4 pedazos. Uno solo quiere un pedacito. Colorea 1/4 del chocolate!",
+          "explicacion": "Un cuarto: solo 1 de 4 pedazos"
+        },
+        {
+          "tipo": "identificar",
+          "forma": "circulo",
+          "partes": 4,
+          "coloreadas": 4,
+          "historia": "Cuatro se comio TODA la pizza! Que fraccion se comio?",
+          "explicacion": "Cuatro cuartos es igual a un entero: se la comio todita!"
+        }
+      ]
+    }
+  ]
+}

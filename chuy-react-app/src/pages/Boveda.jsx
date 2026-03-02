@@ -27,6 +27,8 @@ const Boveda = () => {
     { id: 'simulacros', emoji: '🏆', nombre: 'Simulacros', tipo: 'simulacro', descripcion: 'Exámenes completos' },
     { id: 'numberblocks-constructor', emoji: '🧱', nombre: 'Numberblocks', tipo: 'numberblocks-constructor', descripcion: 'Construye rectángulos con bloques' },
     { id: 'area-constructor', emoji: '📐', nombre: 'Área Constructor', tipo: 'area-constructor', descripcion: 'Mide y calcula áreas' },
+    { id: 'fraccion-explorer', emoji: '🍕', nombre: 'Fracciones', tipo: 'fraccion-explorer', descripcion: 'Aprende fracciones con pizza y chocolate' },
+    { id: 'angulo-explorer', emoji: '📏', nombre: 'Ángulos', tipo: 'angulo-explorer', descripcion: 'Clasifica ángulos y resuelve triángulos' },
     { id: 'kakooma', emoji: '🧠', nombre: 'Kakooma', tipo: 'kakooma', descripcion: 'Cálculo mental visual' },
     { id: 'conteo-figuras', emoji: '💠', nombre: 'Conteo de Figuras', tipo: 'conteo-figuras', descripcion: 'Cuenta figuras geométricas' },
     { id: 'secuencias', emoji: '🔢', nombre: 'Secuencias', tipo: 'secuencia', descripcion: 'Patrones y secuencias' },

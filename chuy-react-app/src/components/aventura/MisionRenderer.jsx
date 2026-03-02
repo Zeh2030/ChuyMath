@@ -13,6 +13,8 @@ import NumberblocksConstructor from './tipos/NumberblocksConstructor';
 import LienzoDibujo from './tipos/LienzoDibujo';
 import Kakooma from './tipos/Kakooma';
 import AreaConstructor from './tipos/AreaConstructor';
+import FraccionExplorer from './tipos/FraccionExplorer';
+import AnguloExplorer from './tipos/AnguloExplorer';
 import './MisionRenderer.css';
 
 /**
@@ -201,6 +203,24 @@ const MisionRenderer = ({
       case 'area-constructor':
         return (
           <AreaConstructor
+            key={mision.id}
+            mision={mision}
+            onCompletar={onCompletar}
+          />
+        );
+
+      case 'fraccion-explorer':
+        return (
+          <FraccionExplorer
+            key={mision.id}
+            mision={mision}
+            onCompletar={onCompletar}
+          />
+        );
+
+      case 'angulo-explorer':
+        return (
+          <AnguloExplorer
             key={mision.id}
             mision={mision}
             onCompletar={onCompletar}

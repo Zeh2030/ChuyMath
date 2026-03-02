@@ -1,0 +1,80 @@
+{
+  "id": "2026-03-06_fraccion-intermedio-quintos",
+  "titulo": "Fracciones: Quintos, Sextos y mas",
+  "tipo": "fraccion-explorer",
+  "nivel": "intermedio",
+  "misiones": [
+    {
+      "id": "mision-fraccion-2",
+      "tipo": "fraccion-explorer",
+      "titulo": "Fracciones mas grandes",
+      "instruccion": "Ahora con mas pedazos! Identifica o construye la fraccion.",
+      "retos": [
+        {
+          "tipo": "identificar",
+          "forma": "circulo",
+          "partes": 5,
+          "coloreadas": 2,
+          "historia": "Cinco hizo un pastel y lo corto en partes iguales. Dos se comio las rebanadas naranjas. Que fraccion se comio?",
+          "explicacion": "Dos quintos: 2 de 5 partes"
+        },
+        {
+          "tipo": "identificar",
+          "forma": "barra",
+          "partes": 6,
+          "coloreadas": 4,
+          "historia": "Seis partio un chocolate gigante en pedazos iguales. Cuatro se comio los pedazos verdes. Que fraccion se comio?",
+          "explicacion": "Cuatro sextos: 4 de 6 partes"
+        },
+        {
+          "tipo": "construir",
+          "forma": "circulo",
+          "partes": 5,
+          "coloreadas": 3,
+          "historia": "Cinco preparo una pizza y la corto en 5 pedazos. Tres quiere comerse 3/5. Colorea los pedazos!",
+          "explicacion": "Tres quintos de la pizza"
+        },
+        {
+          "tipo": "identificar",
+          "forma": "circulo",
+          "partes": 6,
+          "coloreadas": 3,
+          "historia": "Seis hizo una pizza de 6 rebanadas. Tres se comio exactamente la mitad. Que fraccion se comio?",
+          "explicacion": "Tres sextos: 3 de 6, que es igual a la mitad!"
+        },
+        {
+          "tipo": "construir",
+          "forma": "barra",
+          "partes": 5,
+          "coloreadas": 4,
+          "historia": "Cinco tiene un chocolate. Cuatro quiere casi todo... 4/5! Colorea lo que le toca.",
+          "explicacion": "Cuatro quintos: casi todo el chocolate!"
+        },
+        {
+          "tipo": "identificar",
+          "forma": "barra",
+          "partes": 8,
+          "coloreadas": 3,
+          "historia": "Ocho partio un chocolate muy largo en partes iguales. Tres se comio 3 pedazos. Que fraccion se comio?",
+          "explicacion": "Tres octavos: 3 de 8 partes"
+        },
+        {
+          "tipo": "construir",
+          "forma": "circulo",
+          "partes": 6,
+          "coloreadas": 5,
+          "historia": "Seis preparo una pizza. Cinco se comio casi toda! Colorea 5/6 de la pizza.",
+          "explicacion": "Cinco sextos: casi toda la pizza, solo queda 1 rebanada!"
+        },
+        {
+          "tipo": "identificar",
+          "forma": "circulo",
+          "partes": 8,
+          "coloreadas": 5,
+          "historia": "Ocho hizo una pizza gigante de 8 rebanadas. Cinco se comio las rebanadas azules. Que fraccion se comio?",
+          "explicacion": "Cinco octavos: 5 de 8 rebanadas"
+        }
+      ]
+    }
+  ]
+}

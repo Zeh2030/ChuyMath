@@ -1,0 +1,58 @@
+{
+  "id": "2026-03-06_angulo-intermedio-triangulos",
+  "titulo": "Angulos: El misterio del triangulo",
+  "tipo": "angulo-explorer",
+  "nivel": "intermedio",
+  "misiones": [
+    {
+      "id": "mision-angulo-2",
+      "tipo": "angulo-explorer",
+      "titulo": "Angulo faltante del triangulo",
+      "instruccion": "Los 3 angulos de un triangulo siempre suman 180 grados. Encuentra el que falta!",
+      "retos": [
+        {
+          "tipo": "triangulo",
+          "angulos": [60, 60, null],
+          "historia": "Un triangulo tiene dos angulos iguales de 60 grados. Recuerda: los tres angulos siempre suman 180. Cuanto mide el que falta?"
+        },
+        {
+          "tipo": "triangulo",
+          "angulos": [90, 45, null],
+          "historia": "Un triangulo tiene un angulo recto de 90 grados y otro de 45 grados. Cuanto mide el tercero?"
+        },
+        {
+          "tipo": "triangulo",
+          "angulos": [90, 50, null],
+          "historia": "Cuatro construyo un triangulo con un angulo recto y otro de 50 grados. Cuanto mide el angulo que falta?"
+        },
+        {
+          "tipo": "triangulo",
+          "angulos": [70, 70, null],
+          "historia": "Siete hizo un triangulo donde dos angulos miden 70 grados cada uno. Cuanto mide el tercero?"
+        },
+        {
+          "tipo": "triangulo",
+          "angulos": [90, 30, null],
+          "historia": "Tres tiene un triangulo con un angulo recto y un angulo de 30 grados. Ayudalo a encontrar el que falta!"
+        },
+        {
+          "tipo": "triangulo",
+          "angulos": [80, 60, null],
+          "historia": "Ocho y Seis construyeron un triangulo juntos. Sus angulos miden 80 y 60 grados. Cuanto mide el tercero?"
+        },
+        {
+          "tipo": "identificar",
+          "angulo": 75,
+          "respuesta": "agudo",
+          "historia": "Despues de tanto triangulo, clasificamos uno mas! Este angulo mide 75 grados. Que tipo es?",
+          "pista": "Es menor que 90 grados"
+        },
+        {
+          "tipo": "triangulo",
+          "angulos": [50, 50, null],
+          "historia": "Reto final! Un triangulo tiene dos angulos de 50 grados. Cuanto mide el ultimo angulo?"
+        }
+      ]
+    }
+  ]
+}

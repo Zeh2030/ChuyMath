@@ -1,0 +1,327 @@
+/* FraccionExplorer.css — Estilos para el juego de fracciones */
+
+/* ===== Contenedor principal ===== */
+.fraccion-game-container {
+  font-family: 'Nunito', sans-serif;
+  background-color: #F5E6CC;
+  color: #34495e;
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===== Indicador de fase ===== */
+.fraccion-phase-indicator {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.fraccion-phase-step {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.9rem;
+  background-color: rgba(255, 255, 255, 0.4);
+  color: rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.fraccion-phase-step.active {
+  background-color: #fff;
+  color: #2c3e50;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.fraccion-phase-step.completed {
+  background-color: #2ecc71;
+  color: #fff;
+}
+
+/* ===== Titulo y burbuja de historia ===== */
+.fraccion-title {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin: 0 0 15px;
+  text-align: center;
+}
+
+.fraccion-story-bubble {
+  background-color: #fff8ee;
+  border-radius: 15px;
+  padding: 15px 20px;
+  font-size: 1.1rem;
+  text-align: center;
+  border: 2px dashed #e6c88a;
+  margin-bottom: 20px;
+}
+
+.fraccion-instruction {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.15rem;
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+/* ===== Visualizacion de pizza (circulo) ===== */
+.fraccion-visual-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.fraccion-pizza-svg {
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+  cursor: default;
+}
+
+.fraccion-pizza-svg.clickeable {
+  cursor: pointer;
+}
+
+.fraccion-sector {
+  transition: all 0.3s ease;
+  stroke: #5d4037;
+  stroke-width: 2;
+}
+
+.fraccion-sector.coloreada {
+  filter: brightness(1.05);
+}
+
+.fraccion-sector.vacia {
+  fill: #f5f5f5;
+}
+
+.fraccion-sector.clickeable:hover {
+  filter: brightness(1.15);
+  stroke-width: 3;
+}
+
+/* ===== Visualizacion de barra (chocolate) ===== */
+.fraccion-barra-container {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin: 20px 0;
+  padding: 12px 16px;
+  background: #4e342e;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.fraccion-barra-pieza {
+  width: 60px;
+  height: 80px;
+  border-radius: 6px;
+  border: 2px solid #3e2723;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.fraccion-barra-pieza.coloreada {
+  filter: brightness(1.05);
+}
+
+.fraccion-barra-pieza.vacia {
+  background-color: #d7ccc8;
+}
+
+.fraccion-barra-pieza.clickeable {
+  cursor: pointer;
+}
+
+.fraccion-barra-pieza.clickeable:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+}
+
+/* ===== Display de fraccion resultado ===== */
+.fraccion-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+  animation: fraccionPop 0.5s ease-out;
+}
+
+.fraccion-display-number {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  line-height: 1;
+}
+
+.fraccion-display-line {
+  width: 80px;
+  height: 5px;
+  background-color: #e74c3c;
+  border-radius: 3px;
+  margin: 4px 0;
+}
+
+.fraccion-display-placeholder {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #bdc3c7;
+  line-height: 1;
+}
+
+@keyframes fraccionPop {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ===== Explicacion ===== */
+.fraccion-explicacion {
+  background-color: #e8f8f5;
+  border-radius: 12px;
+  padding: 12px 20px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a5276;
+  margin: 15px 0;
+  border-left: 4px solid #2ecc71;
+}
+
+/* ===== Toolbox para seleccionar numberblocks ===== */
+.fraccion-toolbox-section {
+  margin-top: 15px;
+}
+
+.fraccion-toolbox-title {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  color: #7f8c8d;
+  margin-bottom: 10px;
+}
+
+.fraccion-toolbox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 15px;
+}
+
+/* ===== Mensaje ===== */
+.fraccion-message {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  min-height: 30px;
+  margin: 10px 0;
+}
+
+.fraccion-message.success { color: #2ecc71; }
+.fraccion-message.error { color: #e74c3c; }
+.fraccion-message.hint { color: #f39c12; }
+
+/* ===== Botones de accion ===== */
+.fraccion-action-area {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.fraccion-action-button {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.2rem;
+  padding: 12px 30px;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(45deg, #2ecc71, #27ae60);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #1e8449;
+  transition: all 0.1s ease-in-out;
+}
+
+.fraccion-action-button:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #1e8449;
+}
+
+.fraccion-action-button.next {
+  background: linear-gradient(45deg, #3498db, #2980b9);
+  box-shadow: 0 4px 0 #1f618d;
+}
+
+.fraccion-action-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  filter: grayscale(1);
+}
+
+/* ===== Transicion de fase ===== */
+.fraccion-phase-content {
+  animation: fraccionSlideIn 0.4s ease-out;
+}
+
+@keyframes fraccionSlideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Progreso de retos ===== */
+.fraccion-progress {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 15px;
+}
+
+.fraccion-progress-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  transition: all 0.3s;
+}
+
+.fraccion-progress-dot.completed {
+  background-color: #2ecc71;
+}
+
+.fraccion-progress-dot.current {
+  background-color: #fff;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+  transform: scale(1.3);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  .fraccion-title {
+    font-size: 1.4rem;
+  }
+
+  .fraccion-display-number,
+  .fraccion-display-placeholder {
+    font-size: 2.8rem;
+  }
+
+  .fraccion-barra-pieza {
+    width: 48px;
+    height: 65px;
+  }
+
+  .fraccion-phase-step {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+  }
+}

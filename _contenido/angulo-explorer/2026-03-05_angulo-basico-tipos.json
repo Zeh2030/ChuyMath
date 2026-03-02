@@ -1,0 +1,72 @@
+{
+  "id": "2026-03-05_angulo-basico-tipos",
+  "titulo": "Angulos: Los giros de los Numberblocks",
+  "tipo": "angulo-explorer",
+  "nivel": "basico",
+  "misiones": [
+    {
+      "id": "mision-angulo-1",
+      "tipo": "angulo-explorer",
+      "titulo": "Tipos de angulos",
+      "instruccion": "Observa el angulo y clasificalo.",
+      "retos": [
+        {
+          "tipo": "identificar",
+          "angulo": 90,
+          "respuesta": "recto",
+          "historia": "Cuatro abrio un libro y lo puso en la mesa. Que tipo de angulo forma la esquina del libro?",
+          "pista": "Piensa en la esquina de una hoja de papel"
+        },
+        {
+          "tipo": "identificar",
+          "angulo": 45,
+          "respuesta": "agudo",
+          "historia": "Tres abrio un abanico poquito. Es mas cerrado que la esquina de un cuaderno. Que tipo de angulo es?",
+          "pista": "Es menor que 90 grados"
+        },
+        {
+          "tipo": "identificar",
+          "angulo": 120,
+          "respuesta": "obtuso",
+          "historia": "Seis abrio mucho las tijeras. Se ve un angulo bien abierto. Que tipo de angulo forman las tijeras?",
+          "pista": "Es mayor que 90 grados"
+        },
+        {
+          "tipo": "identificar",
+          "angulo": 60,
+          "respuesta": "agudo",
+          "historia": "Dos hizo una casita con el techo puntiagudo. El angulo de la punta del techo es agudo, recto u obtuso?",
+          "pista": "Es mas cerradito que una esquina de hoja"
+        },
+        {
+          "tipo": "identificar",
+          "angulo": 90,
+          "respuesta": "recto",
+          "historia": "Ocho puso una caja en el suelo. Que tipo de angulo forma la esquina de la caja con el piso?",
+          "pista": "Las cajas tienen esquinas perfectas"
+        },
+        {
+          "tipo": "identificar",
+          "angulo": 150,
+          "respuesta": "obtuso",
+          "historia": "Cinco abrio un paraguas y el angulo entre el mango y la tela es enorme! Que tipo de angulo es?",
+          "pista": "Mucho mas abierto que 90 grados"
+        },
+        {
+          "tipo": "identificar",
+          "angulo": 30,
+          "respuesta": "agudo",
+          "historia": "Uno hizo una rampa para su carrito. La rampa esta casi pegada al piso. Que tipo de angulo hace?",
+          "pista": "Mucho mas cerrado que una esquina de hoja"
+        },
+        {
+          "tipo": "identificar",
+          "angulo": 110,
+          "respuesta": "obtuso",
+          "historia": "Siete recargo una escalera contra la pared. El angulo entre la escalera y el suelo es mayor que 90 grados. Que tipo es?",
+          "pista": "Un poquito mas abierto que la esquina de una hoja"
+        }
+      ]
+    }
+  ]
+}

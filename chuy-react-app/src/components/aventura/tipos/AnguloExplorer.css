@@ -1,0 +1,455 @@
+/* AnguloExplorer.css — Estilos para el juego de angulos */
+
+/* ===== Contenedor principal ===== */
+.angulo-game-container {
+  font-family: 'Nunito', sans-serif;
+  background-color: #E8EAF6;
+  color: #34495e;
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===== Indicador de fase ===== */
+.angulo-phase-indicator {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.angulo-phase-step {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.9rem;
+  background-color: rgba(255, 255, 255, 0.4);
+  color: rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.angulo-phase-step.active {
+  background-color: #fff;
+  color: #2c3e50;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.angulo-phase-step.completed {
+  background-color: #2ecc71;
+  color: #fff;
+}
+
+/* ===== Titulo y burbuja de historia ===== */
+.angulo-title {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin: 0 0 15px;
+  text-align: center;
+}
+
+.angulo-story-bubble {
+  background-color: #f3e5f5;
+  border-radius: 15px;
+  padding: 15px 20px;
+  font-size: 1.1rem;
+  text-align: center;
+  border: 2px dashed #ce93d8;
+  margin-bottom: 20px;
+}
+
+.angulo-instruction {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.15rem;
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+/* ===== Visualizacion del angulo SVG ===== */
+.angulo-visual-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.angulo-svg {
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+}
+
+.angulo-ray {
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.angulo-arc {
+  fill-opacity: 0.2;
+  stroke-width: 2;
+}
+
+.angulo-arc.agudo {
+  fill: #42a5f5;
+  stroke: #1565c0;
+}
+
+.angulo-arc.recto {
+  fill: #ef5350;
+  stroke: #c62828;
+}
+
+.angulo-arc.obtuso {
+  fill: #ffa726;
+  stroke: #e65100;
+}
+
+.angulo-label {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  fill: #2c3e50;
+}
+
+.angulo-label-unknown {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  fill: #e74c3c;
+  animation: anglePulse 1s ease-in-out infinite;
+}
+
+@keyframes anglePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ===== Botones de clasificacion ===== */
+.angulo-clasificacion-grid {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.angulo-tipo-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 25px;
+  border-radius: 16px;
+  border: 3px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  min-width: 120px;
+}
+
+.angulo-tipo-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.angulo-tipo-card.selected {
+  border-color: #2ecc71;
+  box-shadow: 0 0 15px rgba(46, 204, 113, 0.4);
+}
+
+.angulo-tipo-card.correct {
+  border-color: #2ecc71;
+  background-color: #e8f8f5;
+}
+
+.angulo-tipo-card.incorrect {
+  border-color: #e74c3c;
+  background-color: #fdedec;
+  animation: angleShake 0.5s ease;
+}
+
+@keyframes angleShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.angulo-tipo-icon {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.angulo-tipo-nombre {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.angulo-tipo-desc {
+  font-size: 0.85rem;
+  color: #7f8c8d;
+  margin-top: 4px;
+}
+
+/* ===== Triangulo SVG ===== */
+.angulo-triangulo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.angulo-triangulo-svg {
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+}
+
+/* ===== Barra de 180 grados ===== */
+.angulo-barra-180 {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  max-width: 400px;
+  height: 40px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #ecf0f1;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+  margin: 10px auto;
+}
+
+.angulo-barra-segmento {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: white;
+  transition: all 0.5s ease;
+}
+
+.angulo-barra-segmento.conocido {
+  background-color: #3498db;
+}
+
+.angulo-barra-segmento.desconocido {
+  background-color: #e74c3c;
+}
+
+.angulo-barra-segmento.resuelto {
+  background-color: #2ecc71;
+}
+
+.angulo-barra-total {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #7f8c8d;
+  text-align: center;
+  margin-top: 5px;
+}
+
+/* ===== Teclado numerico para angulo ===== */
+.angulo-number-pad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.angulo-number-display {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #2c3e50;
+  min-height: 60px;
+  min-width: 100px;
+  text-align: center;
+  border-bottom: 4px solid #9b59b6;
+  line-height: 1.2;
+}
+
+.angulo-pad-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  max-width: 260px;
+}
+
+.angulo-pad-btn {
+  width: 64px;
+  height: 64px;
+  font-size: 1.8rem;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  border-radius: 14px;
+  border: none;
+  background: #fff;
+  color: #2c3e50;
+  cursor: pointer;
+  box-shadow: 0 3px 0 #d5d5d5;
+  transition: all 0.1s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.angulo-pad-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #d5d5d5;
+}
+
+/* ===== Mensaje ===== */
+.angulo-message {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  min-height: 30px;
+  margin: 10px 0;
+}
+
+.angulo-message.success { color: #2ecc71; }
+.angulo-message.error { color: #e74c3c; }
+.angulo-message.hint { color: #f39c12; }
+
+/* ===== Explicacion ===== */
+.angulo-explicacion {
+  background-color: #ede7f6;
+  border-radius: 12px;
+  padding: 12px 20px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #4a148c;
+  margin: 15px 0;
+  border-left: 4px solid #9b59b6;
+}
+
+/* ===== Referencia visual (esquina de hoja) ===== */
+.angulo-referencia {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0;
+  padding: 10px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  color: #7f8c8d;
+}
+
+/* ===== Botones de accion ===== */
+.angulo-action-area {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.angulo-action-button {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.2rem;
+  padding: 12px 30px;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(45deg, #9b59b6, #8e44ad);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #6c3483;
+  transition: all 0.1s ease-in-out;
+}
+
+.angulo-action-button:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #6c3483;
+}
+
+.angulo-action-button.next {
+  background: linear-gradient(45deg, #3498db, #2980b9);
+  box-shadow: 0 4px 0 #1f618d;
+}
+
+.angulo-action-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  filter: grayscale(1);
+}
+
+/* ===== Transicion de fase ===== */
+.angulo-phase-content {
+  animation: anguloSlideIn 0.4s ease-out;
+}
+
+@keyframes anguloSlideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Progreso de retos ===== */
+.angulo-progress {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 15px;
+}
+
+.angulo-progress-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  transition: all 0.3s;
+}
+
+.angulo-progress-dot.completed {
+  background-color: #2ecc71;
+}
+
+.angulo-progress-dot.current {
+  background-color: #fff;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+  transform: scale(1.3);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  .angulo-title {
+    font-size: 1.4rem;
+  }
+
+  .angulo-tipo-card {
+    padding: 15px 18px;
+    min-width: 100px;
+  }
+
+  .angulo-tipo-icon {
+    font-size: 2rem;
+  }
+
+  .angulo-pad-btn {
+    width: 56px;
+    height: 56px;
+    font-size: 1.5rem;
+  }
+
+  .angulo-pad-grid {
+    max-width: 220px;
+    gap: 8px;
+  }
+
+  .angulo-number-display {
+    font-size: 2.2rem;
+  }
+
+  .angulo-phase-step {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+  }
+}
