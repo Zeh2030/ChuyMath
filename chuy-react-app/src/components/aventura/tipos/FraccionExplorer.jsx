@@ -268,7 +268,7 @@ const FraccionExplorer = ({ mision, onCompletar }) => {
 
   if (gameCompleted) {
     return (
-      <div className="fraccion-game-container" style={{ textAlign: 'center', padding: '40px' }}>
+      <div className="fraccion-game-container nb-game-container" style={{ textAlign: 'center', padding: '40px' }}>
         <h2 className="fraccion-title">!Felicidades, Maestro de las Fracciones!</h2>
         <p style={{ fontSize: '1.2rem', margin: '20px 0' }}>Has completado todos los retos de fracciones.</p>
         <button className="fraccion-action-button" onClick={() => { setCurrentChallengeIndex(0); setGameCompleted(false); }}>
@@ -302,7 +302,7 @@ const FraccionExplorer = ({ mision, onCompletar }) => {
   const currentPhaseIdx = phaseOrder.indexOf(phase);
 
   return (
-    <div className="fraccion-game-container">
+    <div className="fraccion-game-container nb-game-container">
       {/* Confetti */}
       {showConfetti && (
         <div className="confetti-container">
