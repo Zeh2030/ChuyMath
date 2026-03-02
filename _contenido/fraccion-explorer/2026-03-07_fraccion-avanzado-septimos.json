@@ -1,0 +1,81 @@
+{
+  "id": "2026-03-07_fraccion-avanzado-septimos",
+  "titulo": "Fracciones: Séptimos, Novenos y Más",
+  "descripcion": "Fracciones más complejas con denominadores mayores. ¡Reta tu visión!",
+  "tipo": "fraccion-explorer",
+  "nivel": "avanzado",
+  "misiones": [
+    {
+      "id": "mision-fraccion-3",
+      "tipo": "fraccion-explorer",
+      "titulo": "Fracciones Muy Grandes",
+      "instruccion": "Ahora los denominadores son más grandes. Observa bien y colorea exacto.",
+      "retos": [
+        {
+          "tipo": "identificar",
+          "forma": "circulo",
+          "partes": 7,
+          "coloreadas": 3,
+          "historia": "Siete cortó una pizza en 7 rebanadas iguales. Tres se comió las rebanadas rojas. Qué fracción se comió?",
+          "explicacion": "Tres séptimos: 3 de 7 partes"
+        },
+        {
+          "tipo": "identificar",
+          "forma": "barra",
+          "partes": 9,
+          "coloreadas": 5,
+          "historia": "Nueve partió un chocolate gigante en 9 pedazos. Cinco se comió los pedazos grises. Qué fraccion se comio?",
+          "explicacion": "Cinco novenos: 5 de 9 partes"
+        },
+        {
+          "tipo": "construir",
+          "forma": "circulo",
+          "partes": 7,
+          "coloreadas": 4,
+          "historia": "Siete preparo una pizza de 7 rebanadas. Cuatro quiere exactamente 4/7. Colorea los que le tocan!",
+          "explicacion": "Cuatro séptimos de la pizza"
+        },
+        {
+          "tipo": "identificar",
+          "forma": "circulo",
+          "partes": 8,
+          "coloreadas": 6,
+          "historia": "Ocho hizo una pizza de 8 rebanadas. Seis se comio casi toda! Qué fraccion se comio Seis?",
+          "explicacion": "Seis octavos: 6 de 8 partes, casi todo!"
+        },
+        {
+          "tipo": "construir",
+          "forma": "barra",
+          "partes": 7,
+          "coloreadas": 5,
+          "historia": "Siete tiene un chocolate de 7 pedazos. Cinco quiere comerse 5/7 del chocolate. Colorea los que le tocan!",
+          "explicacion": "Cinco séptimos: la mayor parte del chocolate"
+        },
+        {
+          "tipo": "identificar",
+          "forma": "barra",
+          "partes": 10,
+          "coloreadas": 7,
+          "historia": "Diez partio un chocolate en 10 pedazos. Siete se comio 7 pedazos. Qué fraccion se comio Siete?",
+          "explicacion": "Siete décimos: 7 de 10 partes"
+        },
+        {
+          "tipo": "construir",
+          "forma": "circulo",
+          "partes": 9,
+          "coloreadas": 7,
+          "historia": "Nueve hizo una pizza de 9 rebanadas. Siete la quiere casi toda! Colorea 7/9 de la pizza.",
+          "explicacion": "Siete novenos: casi toda la pizza!"
+        },
+        {
+          "tipo": "identificar",
+          "forma": "circulo",
+          "partes": 10,
+          "coloreadas": 8,
+          "historia": "Diez cortó una pizza en 10 rebanadas iguales. Ocho se comio las rebanadas naranjas. Qué fraccion se comio?",
+          "explicacion": "Ocho décimos: 8 de 10 rebanadas"
+        }
+      ]
+    }
+  ]
+}

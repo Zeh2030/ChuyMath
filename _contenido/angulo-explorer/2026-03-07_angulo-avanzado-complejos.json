@@ -1,0 +1,67 @@
+{
+  "id": "2026-03-07_angulo-avanzado-complejos",
+  "titulo": "Ángulos: Desafíos Avanzados",
+  "descripcion": "Ángulos complejos, triángulos especiales y retos de cálculo mental. ¡Solo para maestros!",
+  "tipo": "angulo-explorer",
+  "nivel": "avanzado",
+  "misiones": [
+    {
+      "id": "mision-angulo-3",
+      "tipo": "angulo-explorer",
+      "titulo": "Maestría en Ángulos",
+      "instruccion": "Clasifica ángulos difíciles y resuelve triángulos complejos. ¡Desafío máximo!",
+      "retos": [
+        {
+          "tipo": "identificar",
+          "angulo": 35,
+          "respuesta": "agudo",
+          "historia": "Uno abre un abanico muy poquito. El angulo es muy cerrado. Agudo, recto u obtuso?",
+          "pista": "Mucho menor que 90 grados"
+        },
+        {
+          "tipo": "identificar",
+          "angulo": 135,
+          "respuesta": "obtuso",
+          "historia": "Tres abre un paraguas enorme formando un angulo muy abierto. Que tipo de angulo es?",
+          "pista": "Mucho mayor que 90 grados"
+        },
+        {
+          "tipo": "triangulo",
+          "angulos": [45, 45, null],
+          "historia": "Un triangulo isosceles tiene dos angulos de 45 grados. Recuerda: suman 180. Cuanto mide el tercero?"
+        },
+        {
+          "tipo": "identificar",
+          "angulo": 89,
+          "respuesta": "agudo",
+          "historia": "Dos abre un libro casi como una esquina de hoja. Casi, pero no exactamente. Agudo, recto u obtuso?",
+          "pista": "Un grado menos que recto"
+        },
+        {
+          "tipo": "triangulo",
+          "angulos": [30, 30, null],
+          "historia": "Un triangulo tiene dos angulos pequenitos de 30 grados cada uno. Cuanto mide el angulo grande?"
+        },
+        {
+          "tipo": "identificar",
+          "angulo": 120,
+          "respuesta": "obtuso",
+          "historia": "Cinco abre las piernas formando un angulo bien abierto. Mayor que la esquina de un cuaderno. Que tipo es?",
+          "pista": "30 grados mas que un angulo recto"
+        },
+        {
+          "tipo": "triangulo",
+          "angulos": [70, 50, null],
+          "historia": "Un triangulo tiene angulos de 70 y 50 grados. Suma rapido en tu cabeza. Cuanto falta para 180?"
+        },
+        {
+          "tipo": "identificar",
+          "angulo": 91,
+          "respuesta": "obtuso",
+          "historia": "Ocho forma un angulo apenas abierto, solo 1 grado mas que la esquina perfecta. Que tipo es?",
+          "pista": "Un grado mas que recto"
+        }
+      ]
+    }
+  ]
+}
