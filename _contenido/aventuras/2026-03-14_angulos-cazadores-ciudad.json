@@ -1,0 +1,68 @@
+{
+  "id": "2026-03-14_angulos-cazadores-ciudad",
+  "tipo": "aventura",
+  "nivel": "basico",
+  "titulo": "Cazadores de Ángulos en la Ciudad",
+  "descripcion": "¡Encuentra ángulos escondidos en objetos de la vida real! Puertas, relojes y más.",
+  "misiones": [
+    {
+      "id": "mision-palabra-angle",
+      "tipo": "palabra-del-dia",
+      "titulo": "Word of the Day / Palabra del Día",
+      "instruccion": "¡Vamos a aprender una palabra nueva en inglés! Repite la palabra en voz alta.",
+      "palabra": "ANGLE",
+      "palabra_en": "Angle",
+      "palabra_es": "Ángulo",
+      "icono": "📐",
+      "audio_pronunciacion": "https://ssl.gstatic.com/dictionary/static/sounds/20200429/angle--_us_1.mp3"
+    },
+    {
+      "id": "mision-ope-grados",
+      "tipo": "operaciones",
+      "titulo": "Calentamiento con Grados",
+      "instruccion": "Los ángulos se miden en grados (°). ¡Practica sumando y restando grados!",
+      "ejercicios": [
+        { "pregunta": "90 + 90 =", "respuesta": "180", "explicacion_correcta": "Dos ángulos rectos forman una línea recta: 180°" },
+        { "pregunta": "180 - 90 =", "respuesta": "90", "explicacion_correcta": "Si quitas un ángulo recto de 180°, queda otro ángulo recto" },
+        { "pregunta": "45 + 45 =", "respuesta": "90", "explicacion_correcta": "Dos ángulos de 45° forman un ángulo recto perfecto" },
+        { "pregunta": "360 - 180 =", "respuesta": "180", "explicacion_correcta": "Un giro completo son 360°. La mitad es 180°" }
+      ]
+    },
+    {
+      "id": "mision-puerta",
+      "tipo": "opcion-multiple",
+      "titulo": "La Puerta Misteriosa",
+      "instruccion": "Observa con atención.",
+      "pregunta": "Una puerta está apenas entreabierta, formando un ángulo pequeñito con la pared. ¿Qué tipo de ángulo forma?",
+      "imagen": "<svg width='300' height='250' viewBox='0 0 300 250' xmlns='http://www.w3.org/2000/svg'><rect width='100%' height='100%' fill='#f0f4f8'/><line x1='150' y1='30' x2='150' y2='220' stroke='#555' stroke-width='6'/><line x1='150' y1='220' x2='190' y2='40' stroke='#8B4513' stroke-width='5'/><path d='M150 180 A40 40 0 0 0 157 140' fill='none' stroke='#e74c3c' stroke-width='3'/><text x='168' y='168' fill='#e74c3c' font-size='16' font-weight='bold'>25°</text><text x='50' y='240' fill='#888' font-size='12'>pared</text><text x='185' y='100' fill='#8B4513' font-size='12'>puerta</text></svg>",
+      "opciones": ["Ángulo agudo (menor que 90°)", "Ángulo recto (exactamente 90°)", "Ángulo obtuso (mayor que 90°)"],
+      "respuesta": 0,
+      "explicacion_correcta": "¡Correcto! Una puerta apenas abierta forma un ángulo agudo, mucho menor que la esquina de un cuaderno (90°).",
+      "explicacion_incorrecta": "Fíjate: el ángulo es muy pequeño, apenas 25°. Es mucho menor que 90°, así que es agudo."
+    },
+    {
+      "id": "mision-reloj-3",
+      "tipo": "opcion-multiple",
+      "titulo": "El Reloj de las 3:00",
+      "instruccion": "Imagina un reloj analógico.",
+      "pregunta": "Cuando el reloj marca las 3:00, la manecilla de la hora apunta al 3 y la del minuto apunta al 12. ¿Qué tipo de ángulo forman entre ellas?",
+      "imagen": "<svg width='250' height='250' viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'><circle cx='125' cy='125' r='110' fill='#fff' stroke='#333' stroke-width='4'/><circle cx='125' cy='125' r='5' fill='#333'/><text x='119' y='40' font-size='18' font-weight='bold' fill='#333'>12</text><text x='215' y='132' font-size='18' font-weight='bold' fill='#333'>3</text><text x='119' y='228' font-size='18' font-weight='bold' fill='#333'>6</text><text x='20' y='132' font-size='18' font-weight='bold' fill='#333'>9</text><line x1='125' y1='125' x2='125' y2='45' stroke='#333' stroke-width='3' stroke-linecap='round'/><line x1='125' y1='125' x2='200' y2='125' stroke='#e74c3c' stroke-width='5' stroke-linecap='round'/><path d='M150 125 A25 25 0 0 0 125 100' fill='none' stroke='#3498db' stroke-width='2.5'/><text x='140' y='108' fill='#3498db' font-size='14' font-weight='bold'>90°</text></svg>",
+      "opciones": ["Ángulo agudo", "Ángulo recto (90°)", "Ángulo obtuso"],
+      "respuesta": 1,
+      "explicacion_correcta": "¡Exacto! A las 3:00 las manecillas forman un ángulo recto perfecto de 90°. Es como la esquina de una hoja de papel.",
+      "explicacion_incorrecta": "Observa: del 12 al 3 hay exactamente un cuarto de vuelta. Un cuarto de 360° = 90°. ¡Es un ángulo recto!"
+    },
+    {
+      "id": "mision-cuadrado",
+      "tipo": "opcion-multiple",
+      "titulo": "Los Secretos del Cuadrado",
+      "instruccion": "Piensa en las esquinas de un cuadrado.",
+      "pregunta": "¿Cuántos ángulos rectos (de 90°) tiene un cuadrado?",
+      "imagen": "<svg width='220' height='220' viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'><rect width='100%' height='100%' fill='#f0f4f8'/><rect x='40' y='40' width='140' height='140' fill='#d5f5e3' stroke='#27ae60' stroke-width='3'/><rect x='40' y='40' width='15' height='15' fill='none' stroke='#e74c3c' stroke-width='2'/><rect x='165' y='40' width='15' height='15' fill='none' stroke='#e74c3c' stroke-width='2'/><rect x='40' y='165' width='15' height='15' fill='none' stroke='#e74c3c' stroke-width='2'/><rect x='165' y='165' width='15' height='15' fill='none' stroke='#e74c3c' stroke-width='2'/><text x='30' y='35' fill='#e74c3c' font-size='14' font-weight='bold'>90°</text><text x='155' y='35' fill='#e74c3c' font-size='14' font-weight='bold'>90°</text><text x='30' y='205' fill='#e74c3c' font-size='14' font-weight='bold'>90°</text><text x='155' y='205' fill='#e74c3c' font-size='14' font-weight='bold'>90°</text></svg>",
+      "opciones": ["2 ángulos rectos", "3 ángulos rectos", "4 ángulos rectos"],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Perfecto! Un cuadrado tiene 4 esquinas y TODAS son ángulos rectos de 90°. Por eso sus lados son tan ordenaditos.",
+      "explicacion_incorrecta": "Cuenta las esquinas del cuadrado. Cada esquinita roja marca un ángulo recto. ¿Cuántas hay?"
+    }
+  ]
+}

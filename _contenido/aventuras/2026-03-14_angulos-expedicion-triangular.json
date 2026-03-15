@@ -1,0 +1,68 @@
+{
+  "id": "2026-03-14_angulos-expedicion-triangular",
+  "tipo": "aventura",
+  "nivel": "intermedio",
+  "titulo": "Expedición Triangular",
+  "descripcion": "Los triángulos guardan un secreto: sus ángulos SIEMPRE suman 180°. ¡Descúbrelo!",
+  "misiones": [
+    {
+      "id": "mision-palabra-triangle",
+      "tipo": "palabra-del-dia",
+      "titulo": "Word of the Day / Palabra del Día",
+      "instruccion": "¡Vamos a aprender una palabra nueva en inglés! Repite la palabra en voz alta.",
+      "palabra": "TRIANGLE",
+      "palabra_en": "Triangle",
+      "palabra_es": "Triángulo",
+      "icono": "🔺",
+      "audio_pronunciacion": "https://ssl.gstatic.com/dictionary/static/sounds/20200429/triangle--_us_1.mp3"
+    },
+    {
+      "id": "mision-ope-180",
+      "tipo": "operaciones",
+      "titulo": "Complementos a 180°",
+      "instruccion": "Los 3 ángulos de un triángulo SIEMPRE suman 180°. Practica restando para encontrar el ángulo que falta.",
+      "ejercicios": [
+        { "pregunta": "180 - 90 =", "respuesta": "90", "explicacion_correcta": "180 - 90 = 90. Si un ángulo es 90°, los otros dos suman 90°" },
+        { "pregunta": "180 - 60 - 60 =", "respuesta": "60", "explicacion_correcta": "¡Un triángulo con tres ángulos de 60° es equilátero!" },
+        { "pregunta": "180 - 90 - 45 =", "respuesta": "45", "explicacion_correcta": "90 + 45 + 45 = 180. Este es un triángulo rectángulo isósceles" },
+        { "pregunta": "180 - 80 - 50 =", "respuesta": "50", "explicacion_correcta": "80 + 50 + 50 = 180. ¡Perfecto!" }
+      ]
+    },
+    {
+      "id": "mision-equilatero",
+      "tipo": "opcion-multiple",
+      "titulo": "El Triángulo Perfecto",
+      "instruccion": "Un triángulo equilátero tiene sus 3 lados iguales y sus 3 ángulos iguales.",
+      "pregunta": "Si los 3 ángulos son iguales y juntos suman 180°, ¿cuánto mide CADA ángulo?",
+      "imagen": "<svg width='280' height='260' viewBox='0 0 280 260' xmlns='http://www.w3.org/2000/svg'><rect width='100%' height='100%' fill='#f0f4f8'/><polygon points='140,30 40,220 240,220' fill='#d5f5e3' stroke='#27ae60' stroke-width='3'/><text x='125' y='75' fill='#e74c3c' font-size='16' font-weight='bold'>?°</text><text x='55' y='215' fill='#e74c3c' font-size='16' font-weight='bold'>?°</text><text x='205' y='215' fill='#e74c3c' font-size='16' font-weight='bold'>?°</text><text x='75' y='250' fill='#888' font-size='13'>Los 3 lados miden igual</text></svg>",
+      "opciones": ["45°", "60°", "90°"],
+      "respuesta": 1,
+      "explicacion_correcta": "¡Excelente! 180 ÷ 3 = 60°. Cada ángulo de un triángulo equilátero mide exactamente 60°.",
+      "explicacion_incorrecta": "Pista: Si los 3 ángulos son iguales y suman 180°, divide 180 entre 3."
+    },
+    {
+      "id": "mision-rectangulo-tri",
+      "tipo": "opcion-multiple",
+      "titulo": "El Triángulo con Esquina",
+      "instruccion": "Algunos triángulos tienen un ángulo recto, como la esquina de un cuaderno.",
+      "pregunta": "Un triángulo que tiene un ángulo de exactamente 90° se llama triángulo...",
+      "imagen": "<svg width='280' height='250' viewBox='0 0 280 250' xmlns='http://www.w3.org/2000/svg'><rect width='100%' height='100%' fill='#f0f4f8'/><polygon points='50,200 50,50 230,200' fill='#d6eaf8' stroke='#2980b9' stroke-width='3'/><rect x='50' y='185' width='15' height='15' fill='none' stroke='#e74c3c' stroke-width='2'/><text x='30' y='195' fill='#e74c3c' font-size='14' font-weight='bold'>90°</text></svg>",
+      "opciones": ["Triángulo equilátero", "Triángulo rectángulo", "Triángulo obtuso"],
+      "respuesta": 1,
+      "explicacion_correcta": "¡Correcto! Se llama triángulo RECTÁNGULO porque tiene un ángulo recto (90°). Es el tipo de triángulo más famoso en matemáticas.",
+      "explicacion_incorrecta": "Fíjate en la esquinita roja: marca un ángulo de 90° (recto). Un triángulo con un ángulo recto se llama triángulo rect..."
+    },
+    {
+      "id": "mision-angulo-faltante",
+      "tipo": "opcion-multiple",
+      "titulo": "El Ángulo Perdido",
+      "instruccion": "¡Usa la regla de 180° para encontrar el ángulo que falta!",
+      "pregunta": "Un triángulo tiene ángulos de 70° y 50°. ¿Cuánto mide el tercer ángulo?",
+      "imagen": "<svg width='300' height='260' viewBox='0 0 300 260' xmlns='http://www.w3.org/2000/svg'><rect width='100%' height='100%' fill='#f0f4f8'/><polygon points='150,40 40,220 260,220' fill='#fdebd0' stroke='#e67e22' stroke-width='3'/><text x='130' y='80' fill='#e74c3c' font-size='18' font-weight='bold'>?°</text><text x='55' y='215' fill='#27ae60' font-size='16' font-weight='bold'>70°</text><text x='215' y='215' fill='#2980b9' font-size='16' font-weight='bold'>50°</text><text x='60' y='250' fill='#888' font-size='13'>Recuerda: los 3 suman 180°</text></svg>",
+      "opciones": ["50°", "60°", "70°"],
+      "respuesta": 1,
+      "explicacion_correcta": "¡Perfecto! 180 - 70 - 50 = 60°. ¡Ya dominas la regla de los 180°!",
+      "explicacion_incorrecta": "Suma los dos ángulos que conoces: 70 + 50 = 120. Ahora resta de 180: 180 - 120 = ?"
+    }
+  ]
+}
