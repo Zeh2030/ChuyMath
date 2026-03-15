@@ -1,0 +1,67 @@
+{
+  "id": "2026-03-14_angulo-avanzado-vida-real",
+  "titulo": "Angulos: Cazadores en la Ciudad",
+  "descripcion": "Encuentra angulos escondidos en puertas, escaleras, tijeras y mas objetos de la vida real!",
+  "tipo": "angulo-explorer",
+  "nivel": "avanzado",
+  "misiones": [
+    {
+      "id": "mision-angulo-ciudad",
+      "tipo": "angulo-explorer",
+      "titulo": "Angulos en Objetos Reales",
+      "instruccion": "Los angulos estan en todas partes! Clasifica los angulos que encuentres en la ciudad.",
+      "retos": [
+        {
+          "tipo": "identificar",
+          "angulo": 25,
+          "respuesta": "agudo",
+          "historia": "Una puerta esta apenas entreabierta, formando un angulo de 25 grados con la pared. Que tipo de angulo es?",
+          "pista": "Es muy cerrado, mucho menor que 90"
+        },
+        {
+          "tipo": "identificar",
+          "angulo": 90,
+          "respuesta": "recto",
+          "historia": "La esquina de un libro forma un angulo perfecto de 90 grados. Que tipo de angulo es la esquina?",
+          "pista": "Es exactamente como la L de una escuadra"
+        },
+        {
+          "tipo": "triangulo",
+          "angulos": [90, 35, null],
+          "historia": "El techo de una casa forma un triangulo. Tiene un angulo recto de 90 y otro de 35 grados. Cuanto mide el tercer angulo?"
+        },
+        {
+          "tipo": "identificar",
+          "angulo": 140,
+          "respuesta": "obtuso",
+          "historia": "Unas tijeras abiertas forman un angulo de 140 grados entre sus hojas. Que tipo de angulo es?",
+          "pista": "Es bastante abierto, mayor que 90"
+        },
+        {
+          "tipo": "identificar",
+          "angulo": 45,
+          "respuesta": "agudo",
+          "historia": "Una escalera recargada contra la pared forma un angulo de 45 grados con el piso. Que tipo de angulo es?",
+          "pista": "Es la mitad de un angulo recto"
+        },
+        {
+          "tipo": "triangulo",
+          "angulos": [45, 45, null],
+          "historia": "Una senal de transito tiene forma de triangulo. Dos de sus angulos miden 45 grados. Cuanto mide el tercero?"
+        },
+        {
+          "tipo": "identificar",
+          "angulo": 110,
+          "respuesta": "obtuso",
+          "historia": "Un abanico abierto forma un angulo de 110 grados. Que tipo de angulo forma el abanico?",
+          "pista": "Es mayor que 90 pero no por mucho"
+        },
+        {
+          "tipo": "triangulo",
+          "angulos": [60, 80, null],
+          "historia": "El marco de una ventana triangular tiene angulos de 60 y 80 grados. Cuanto mide el tercer angulo de la ventana?"
+        }
+      ]
+    }
+  ]
+}

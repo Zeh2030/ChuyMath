@@ -1,0 +1,63 @@
+{
+  "id": "2026-03-14_angulo-maestro-triangulos-especiales",
+  "titulo": "Angulos: Triangulos Especiales",
+  "descripcion": "Triangulos equilateros, isosceles y rectangulos. Retos de calculo mental rapido!",
+  "tipo": "angulo-explorer",
+  "nivel": "maestro",
+  "misiones": [
+    {
+      "id": "mision-angulo-especiales",
+      "tipo": "angulo-explorer",
+      "titulo": "Maestro de Triangulos",
+      "instruccion": "Triangulos especiales y angulos dificiles. Solo para los mas valientes!",
+      "retos": [
+        {
+          "tipo": "triangulo",
+          "angulos": [60, 60, null],
+          "historia": "Un triangulo equilatero tiene todos sus lados iguales. Si dos angulos miden 60 grados, cuanto mide el tercero?"
+        },
+        {
+          "tipo": "identificar",
+          "angulo": 88,
+          "respuesta": "agudo",
+          "historia": "Un angulo mide 88 grados. Casi casi llega a 90 pero no. Que tipo de angulo es?",
+          "pista": "Faltan solo 2 grados para ser recto"
+        },
+        {
+          "tipo": "triangulo",
+          "angulos": [90, 25, null],
+          "historia": "Un triangulo rectangulo tiene su angulo recto de 90 y un angulo muy chiquito de 25. Cuanto mide el tercer angulo?"
+        },
+        {
+          "tipo": "identificar",
+          "angulo": 91,
+          "respuesta": "obtuso",
+          "historia": "Un angulo mide 91 grados. Apenas paso de 90. Que tipo de angulo es?",
+          "pista": "Aunque sea por 1 grado, ya paso de 90"
+        },
+        {
+          "tipo": "triangulo",
+          "angulos": [40, 40, null],
+          "historia": "Un triangulo isosceles tiene dos angulos iguales de 40 grados. Cuanto mide el angulo grande?"
+        },
+        {
+          "tipo": "identificar",
+          "angulo": 175,
+          "respuesta": "obtuso",
+          "historia": "Una puerta casi completamente abierta forma un angulo de 175 grados. Que tipo de angulo es?",
+          "pista": "Casi llega a 180 que es una linea recta"
+        },
+        {
+          "tipo": "triangulo",
+          "angulos": [90, 15, null],
+          "historia": "Un triangulo tiene un angulo recto de 90 y un angulo muy muy pequeno de 15 grados. Cuanto mide el tercero?"
+        },
+        {
+          "tipo": "triangulo",
+          "angulos": [55, 65, null],
+          "historia": "Reto final! Un triangulo tiene angulos de 55 y 65 grados. Calcula rapido en tu cabeza: cuanto mide el tercer angulo?"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "id": "2026-03-14_angulo-avanzado-reloj",
+  "titulo": "Angulos: El Misterio del Reloj",
+  "descripcion": "Las manecillas del reloj esconden angulos secretos. Cada numero del reloj = 30 grados!",
+  "tipo": "angulo-explorer",
+  "nivel": "avanzado",
+  "misiones": [
+    {
+      "id": "mision-angulo-reloj",
+      "tipo": "angulo-explorer",
+      "titulo": "Angulos en el Reloj",
+      "instruccion": "Un reloj tiene 12 numeros. 360 entre 12 = 30 grados por numero. Usa eso para clasificar los angulos!",
+      "retos": [
+        {
+          "tipo": "identificar",
+          "angulo": 30,
+          "respuesta": "agudo",
+          "historia": "El reloj marca la 1:00. Del 12 al 1 hay un salto de 30 grados. Que tipo de angulo forman las manecillas?",
+          "pista": "30 grados es mucho menor que 90"
+        },
+        {
+          "tipo": "identificar",
+          "angulo": 90,
+          "respuesta": "recto",
+          "historia": "Son las 3:00. Del 12 al 3 hay 3 saltos de 30 grados. Tres por 30 = 90. Que tipo de angulo es?",
+          "pista": "Exactamente como la esquina de un cuaderno"
+        },
+        {
+          "tipo": "triangulo",
+          "angulos": [90, 60, null],
+          "historia": "Un reloj triangular tiene un angulo recto de 90 y otro de 60 grados. Cuanto mide el tercer angulo?"
+        },
+        {
+          "tipo": "identificar",
+          "angulo": 150,
+          "respuesta": "obtuso",
+          "historia": "Son las 5:00. Del 12 al 5 hay 5 saltos. Cinco por 30 = 150 grados. Que tipo de angulo forman las manecillas?",
+          "pista": "Mucho mayor que 90 grados"
+        },
+        {
+          "tipo": "identificar",
+          "angulo": 60,
+          "respuesta": "agudo",
+          "historia": "Son las 2:00. Del 12 al 2 hay 2 saltos de 30 grados. Dos por 30 = 60. Que tipo de angulo es?",
+          "pista": "Es menor que 90"
+        },
+        {
+          "tipo": "triangulo",
+          "angulos": [30, 30, null],
+          "historia": "Un triangulo tiene dos angulos pequenitos de 30 grados, como el angulo de la 1:00 en el reloj. Cuanto mide el angulo grande?"
+        },
+        {
+          "tipo": "identificar",
+          "angulo": 120,
+          "respuesta": "obtuso",
+          "historia": "Son las 4:00. Del 12 al 4 hay 4 saltos. Cuatro por 30 = 120 grados. Que tipo de angulo es?",
+          "pista": "Mayor que 90 pero menor que 180"
+        },
+        {
+          "tipo": "triangulo",
+          "angulos": [60, 90, null],
+          "historia": "Un triangulo formado por manecillas tiene angulos de 60 y 90 grados. Cuanto mide el tercer angulo para completar 180?"
+        }
+      ]
+    }
+  ]
+}
