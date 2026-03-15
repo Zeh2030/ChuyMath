@@ -15,7 +15,7 @@
           "forma": "circulo",
           "partes": 5,
           "coloreadas": 2,
-          "historia": "Cinco hizo un pastel y lo corto en partes iguales. Dos se comio las rebanadas naranjas. Que fraccion se comio?",
+          "historia": "Cinco hizo un pastel y lo corto en partes iguales. Dos se comio las rebanadas coloreadas. Que fraccion se comio?",
           "explicacion": "Dos quintos: 2 de 5 partes"
         },
         {
@@ -23,7 +23,7 @@
           "forma": "barra",
           "partes": 6,
           "coloreadas": 4,
-          "historia": "Seis partio un chocolate gigante en pedazos iguales. Cuatro se comio los pedazos verdes. Que fraccion se comio?",
+          "historia": "Seis partio un chocolate gigante en pedazos iguales. Cuatro se comio los pedazos coloreados. Que fraccion se comio?",
           "explicacion": "Cuatro sextos: 4 de 6 partes"
         },
         {
@@ -71,7 +71,7 @@
           "forma": "circulo",
           "partes": 8,
           "coloreadas": 5,
-          "historia": "Ocho hizo una pizza gigante de 8 rebanadas. Cinco se comio las rebanadas azules. Que fraccion se comio?",
+          "historia": "Ocho hizo una pizza gigante de 8 rebanadas. Cinco se comio las rebanadas coloreadas. Que fraccion se comio?",
           "explicacion": "Cinco octavos: 5 de 8 rebanadas"
         }
       ]

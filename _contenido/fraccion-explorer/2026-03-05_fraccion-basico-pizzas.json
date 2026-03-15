@@ -31,7 +31,7 @@
           "forma": "circulo",
           "partes": 4,
           "coloreadas": 2,
-          "historia": "Cuatro hizo una pizza y la corto en partes iguales. Dos se comio las rebanadas naranjas. Que fraccion se comio Dos?",
+          "historia": "Cuatro hizo una pizza y la corto en partes iguales. Dos se comio las rebanadas coloreadas. Que fraccion se comio Dos?",
           "explicacion": "Dos cuartos: 2 de 4 partes"
         },
         {
@@ -47,7 +47,7 @@
           "forma": "barra",
           "partes": 4,
           "coloreadas": 3,
-          "historia": "Cuatro partio un chocolate en pedazos iguales. Tres se comio los pedazos morados. Que fraccion se comio Tres?",
+          "historia": "Cuatro partio un chocolate en pedazos iguales. Tres se comio los pedazos coloreados. Que fraccion se comio Tres?",
           "explicacion": "Tres cuartos: 3 de 4 partes"
         },
         {

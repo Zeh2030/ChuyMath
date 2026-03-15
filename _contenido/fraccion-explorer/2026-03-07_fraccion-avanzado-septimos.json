@@ -16,7 +16,7 @@
           "forma": "circulo",
           "partes": 7,
           "coloreadas": 3,
-          "historia": "Siete cortó una pizza en 7 rebanadas iguales. Tres se comió las rebanadas rojas. Qué fracción se comió?",
+          "historia": "Siete cortó una pizza en 7 rebanadas iguales. Tres se comió las rebanadas coloreadas. Qué fracción se comió?",
           "explicacion": "Tres séptimos: 3 de 7 partes"
         },
         {
@@ -24,7 +24,7 @@
           "forma": "barra",
           "partes": 9,
           "coloreadas": 5,
-          "historia": "Nueve partió un chocolate gigante en 9 pedazos. Cinco se comió los pedazos grises. Qué fraccion se comio?",
+          "historia": "Nueve partió un chocolate gigante en 9 pedazos. Cinco se comió los pedazos coloreados. Qué fraccion se comio?",
           "explicacion": "Cinco novenos: 5 de 9 partes"
         },
         {
@@ -72,7 +72,7 @@
           "forma": "circulo",
           "partes": 10,
           "coloreadas": 8,
-          "historia": "Diez cortó una pizza en 10 rebanadas iguales. Ocho se comio las rebanadas naranjas. Qué fraccion se comio?",
+          "historia": "Diez cortó una pizza en 10 rebanadas iguales. Ocho se comió las rebanadas coloreadas. Qué fraccion se comio?",
           "explicacion": "Ocho décimos: 8 de 10 rebanadas"
         }
       ]
