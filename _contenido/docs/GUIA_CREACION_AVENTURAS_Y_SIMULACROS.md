@@ -451,6 +451,7 @@ Enseña fracciones con modelos visuales de pizza (circulo) y chocolate (barra). 
 - `forma`: `"circulo"` para pizza, `"barra"` para chocolate
 - `partes`: en cuantas partes iguales se divide (denominador)
 - `coloreadas`: cuantas partes estan coloreadas (numerador)
+- **⚠️ NUNCA mencionar colores específicos en las historias** (rojo, naranja, azul, morado, verde, gris). El componente usa colores fijos (amarillo para círculo, azul para barra) que no coinciden con los colores mencionados en el texto. Usar "coloreadas/coloreados" o simplemente describir la acción sin color (ej: "Tres se comió 3 rebanadas").
 
 | Nivel | Denominadores | Formas |
 |-------|--------------|--------|
