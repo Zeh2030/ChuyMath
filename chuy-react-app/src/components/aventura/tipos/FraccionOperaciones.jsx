@@ -44,7 +44,7 @@ const FraccionOperaciones = ({ mision, onCompletar }) => {
       1: '#e53935', 2: '#fb8c00', 3: '#fdd835', 4: '#43a047',
       5: '#1e88e5', 6: '#8e24aa', 7: '#673ab7', 8: '#ec407a',
       9: '#e0e0e0', 10: '#ffffff', 11: '#e53935', 12: '#fb8c00',
-      13: '#fdd835', 14: '#76ff03', 15: '#00bcd4'
+      13: '#fdd835', 14: '#4caf50', 15: '#00bcd4'
     };
     return colors[num] || '#95a5a6';
   };
