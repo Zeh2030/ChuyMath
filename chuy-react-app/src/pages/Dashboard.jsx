@@ -122,6 +122,7 @@ const Dashboard = () => {
     { id: 'area', emoji: '📐', nombre: 'Área', filtro: 'area-constructor', disponible: true },
     { id: 'fracciones', emoji: '🍕', nombre: 'Fracciones', filtro: 'fraccion-explorer', disponible: true },
     { id: 'angulos', emoji: '📏', nombre: 'Ángulos', filtro: 'angulo-explorer', disponible: true },
+    { id: 'frac-operaciones', emoji: '🧮', nombre: 'Op. Fracciones', filtro: 'fraccion-operaciones', disponible: true },
     { id: 'secuencias', emoji: '🔢', nombre: 'Secuencias', filtro: 'secuencias', disponible: true },
     { id: 'detectives', emoji: '🔎', nombre: 'Detectives', filtro: 'tabla-doble-entrada', disponible: true },
     { id: 'operaciones', emoji: '➕', nombre: 'Operaciones', filtro: 'operaciones', disponible: true },

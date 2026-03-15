@@ -1,0 +1,79 @@
+{
+  "id": "2026-03-14_fraccion-op-intermedio-denominador",
+  "titulo": "Operaciones: Denominadores Diferentes",
+  "descripcion": "Suma y resta de fracciones con diferente denominador. Encuentra el denominador comun!",
+  "tipo": "fraccion-operaciones",
+  "nivel": "intermedio",
+  "misiones": [
+    {
+      "id": "mision-frac-op-intermedio",
+      "tipo": "fraccion-operaciones",
+      "titulo": "Denominador comun",
+      "instruccion": "Cuando los denominadores son diferentes, primero hay que encontrar un denominador comun!",
+      "retos": [
+        {
+          "tipo": "sumar",
+          "fraccion1": [1, 2],
+          "fraccion2": [1, 4],
+          "resultado": [3, 4],
+          "historia": "Dos se comio 1/2 de una pizza y Cuatro se comio 1/4. Cuanto comieron juntos?",
+          "explicacion": "1/2 + 1/4. Convertimos: 2/4 + 1/4 = 3/4"
+        },
+        {
+          "tipo": "sumar",
+          "fraccion1": [1, 3],
+          "fraccion2": [1, 6],
+          "resultado": [3, 6],
+          "historia": "Tres se comio 1/3 de un pastel y Seis se comio 1/6. Cuanto comieron en total?",
+          "explicacion": "1/3 + 1/6. Convertimos: 2/6 + 1/6 = 3/6 = 1/2"
+        },
+        {
+          "tipo": "restar",
+          "fraccion1": [3, 4],
+          "fraccion2": [1, 2],
+          "resultado": [1, 4],
+          "historia": "Cuatro tenia 3/4 de un chocolate. Dos se llevo 1/2. Cuanto queda?",
+          "explicacion": "3/4 - 1/2. Convertimos: 3/4 - 2/4 = 1/4"
+        },
+        {
+          "tipo": "verbal",
+          "historia": "En la fiesta de Cinco hay 2 pasteles iguales para repartir entre 5 personas. Que fraccion de pastel le toca a cada uno?",
+          "resultado": [2, 5],
+          "explicacion": "2 pasteles entre 5 personas = 2/5 para cada uno",
+          "pista": "El numerador es lo que se reparte y el denominador es entre cuantos"
+        },
+        {
+          "tipo": "sumar",
+          "fraccion1": [1, 2],
+          "fraccion2": [1, 3],
+          "resultado": [5, 6],
+          "historia": "Dos se comio 1/2 de una pizza y Tres se comio 1/3. Cuanto comieron juntos?",
+          "explicacion": "1/2 + 1/3. Convertimos: 3/6 + 2/6 = 5/6"
+        },
+        {
+          "tipo": "verbal",
+          "historia": "Tres tiene 3 chocolates iguales y quiere repartirlos entre 4 amigos. Que fraccion de chocolate le toca a cada amigo?",
+          "resultado": [3, 4],
+          "explicacion": "3 chocolates entre 4 amigos = 3/4 para cada uno",
+          "pista": "Piensa: cuantos chocolates hay arriba y cuantos amigos abajo"
+        },
+        {
+          "tipo": "restar",
+          "fraccion1": [2, 3],
+          "fraccion2": [1, 6],
+          "resultado": [3, 6],
+          "historia": "Tres tenia 2/3 de un pastel. Le dio 1/6 a un amigo. Cuanto le queda?",
+          "explicacion": "2/3 - 1/6. Convertimos: 4/6 - 1/6 = 3/6 = 1/2"
+        },
+        {
+          "tipo": "sumar",
+          "fraccion1": [2, 4],
+          "fraccion2": [1, 2],
+          "resultado": [4, 4],
+          "historia": "Cuatro tenia 2/4 de pizza y Dos trajo otra 1/2. Cuanto tienen juntos?",
+          "explicacion": "2/4 + 1/2. Convertimos: 2/4 + 2/4 = 4/4 = 1 pizza entera!"
+        }
+      ]
+    }
+  ]
+}

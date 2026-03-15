@@ -515,3 +515,72 @@ Enseña tipos de angulos y la regla de que los angulos de un triangulo suman 180
 | basico | Solo clasificar angulos (agudo/recto/obtuso) |
 | intermedio | Clasificar + triangulos con angulos faciles (sumas a 180) |
 | avanzado | Triangulos complejos, mezcla de tipos |
+
+---
+
+### N. Fraccion Operaciones (Aritmetica de fracciones)
+
+Componente para sumar, restar, multiplicar y dividir fracciones, con flujos guiados por pasos. Tambien soporta problemas verbales.
+
+**Carpeta de contenido:** `_contenido/fraccion-operaciones/`
+**Tipo en JSON raiz:** `"fraccion-operaciones"`
+
+```json
+{
+  "id": "YYYY-MM-DD_fraccion-op-nivel-descripcion",
+  "titulo": "Titulo visible",
+  "tipo": "fraccion-operaciones",
+  "nivel": "basico|intermedio|avanzado|maestro",
+  "misiones": [
+    {
+      "id": "mision-frac-op-N",
+      "tipo": "fraccion-operaciones",
+      "titulo": "Titulo de la mision",
+      "instruccion": "Instruccion general",
+      "retos": [
+        {
+          "tipo": "sumar",
+          "fraccion1": [1, 4],
+          "fraccion2": [2, 4],
+          "resultado": [3, 4],
+          "historia": "Historia con contexto",
+          "explicacion": "Explicacion del resultado"
+        },
+        {
+          "tipo": "verbal",
+          "historia": "Problema de texto",
+          "resultado": [2, 5],
+          "explicacion": "Explicacion",
+          "pista": "Pista opcional"
+        }
+      ]
+    }
+  ]
+}
+```
+
+**Tipos de reto disponibles:**
+
+| Tipo | Flujo | Descripcion |
+|------|-------|-------------|
+| `sumar` | Ver → (Denominador comun → Convertir →) Operar → Resultado | Suma de 2 fracciones |
+| `restar` | Ver → (Denominador comun → Convertir →) Operar → Resultado | Resta de 2 fracciones |
+| `multiplicar` | Ver → Numeradores → Denominadores → Resultado | num x num, den x den |
+| `dividir` | Ver → Invertir → Multiplicar → Resultado | Invierte 2da y multiplica |
+| `verbal` | Leer → Fraccion → Resultado | El nino escribe numerador y denominador |
+
+**Notas:**
+- `fraccion1` y `fraccion2`: arrays `[numerador, denominador]`
+- `resultado`: array `[numerador, denominador]` con la respuesta correcta
+- Para sumar/restar con mismo denominador, el flujo omite las fases de denominador comun
+- Para verbal, no se usan `fraccion1`/`fraccion2`, solo `resultado`
+- `pista` es opcional, se muestra despues de 2 intentos fallidos
+
+**Niveles de dificultad:**
+
+| Nivel | Operaciones | Denominadores |
+|-------|------------|---------------|
+| basico | Suma/resta con MISMO denominador | 2-6 |
+| intermedio | Suma/resta con denominador DIFERENTE + verbal | 2-8 |
+| avanzado | Multiplicacion + verbal | 2-10 |
+| maestro | Division + verbal complejo | 2-12 |

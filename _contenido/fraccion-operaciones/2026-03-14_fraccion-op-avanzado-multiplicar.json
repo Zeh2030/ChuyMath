@@ -1,0 +1,80 @@
+{
+  "id": "2026-03-14_fraccion-op-avanzado-multiplicar",
+  "titulo": "Operaciones: Multiplicacion de Fracciones",
+  "descripcion": "Multiplica fracciones: numerador por numerador, denominador por denominador!",
+  "tipo": "fraccion-operaciones",
+  "nivel": "avanzado",
+  "misiones": [
+    {
+      "id": "mision-frac-op-avanzado",
+      "tipo": "fraccion-operaciones",
+      "titulo": "Multiplicando fracciones",
+      "instruccion": "Para multiplicar fracciones: multiplica numerador con numerador y denominador con denominador!",
+      "retos": [
+        {
+          "tipo": "multiplicar",
+          "fraccion1": [1, 2],
+          "fraccion2": [1, 2],
+          "resultado": [1, 4],
+          "historia": "Cuanto es la mitad de la mitad? Multiplica 1/2 por 1/2!",
+          "explicacion": "1/2 x 1/2 = 1/4. La mitad de la mitad es un cuarto!"
+        },
+        {
+          "tipo": "multiplicar",
+          "fraccion1": [2, 3],
+          "fraccion2": [1, 2],
+          "resultado": [2, 6],
+          "historia": "Tres tenia 2/3 de pizza. Dos se comio la mitad de eso. Cuanto se comio Dos?",
+          "explicacion": "2/3 x 1/2 = 2/6. Dos sextos del total"
+        },
+        {
+          "tipo": "multiplicar",
+          "fraccion1": [3, 4],
+          "fraccion2": [2, 3],
+          "resultado": [6, 12],
+          "historia": "Cuatro tenia 3/4 de un chocolate. Tres se comio 2/3 de lo que tenia Cuatro. Cuanto se comio Tres?",
+          "explicacion": "3/4 x 2/3 = 6/12. Seis doceavos del chocolate"
+        },
+        {
+          "tipo": "verbal",
+          "historia": "En una carrera hay 4 equipos. Cada equipo tiene 5 corredores. Si 3 equipos ya terminaron, que fraccion del total de corredores ya termino?",
+          "resultado": [3, 4],
+          "explicacion": "3 de 4 equipos terminaron = 3/4 de los corredores",
+          "pista": "No importa cuantos corredores hay en cada equipo, importa cuantos equipos terminaron"
+        },
+        {
+          "tipo": "multiplicar",
+          "fraccion1": [1, 3],
+          "fraccion2": [1, 4],
+          "resultado": [1, 12],
+          "historia": "Cuanto es un tercio de un cuarto? Es una parte muy chiquita!",
+          "explicacion": "1/3 x 1/4 = 1/12. Un doceavo, muy pequeno!"
+        },
+        {
+          "tipo": "multiplicar",
+          "fraccion1": [2, 5],
+          "fraccion2": [3, 4],
+          "resultado": [6, 20],
+          "historia": "Cinco tenia 2/5 de un pastel. Cuatro se comio 3/4 de lo que tenia Cinco. Cuanto se comio Cuatro?",
+          "explicacion": "2/5 x 3/4 = 6/20"
+        },
+        {
+          "tipo": "multiplicar",
+          "fraccion1": [1, 2],
+          "fraccion2": [1, 3],
+          "resultado": [1, 6],
+          "historia": "Cuanto es la mitad de un tercio?",
+          "explicacion": "1/2 x 1/3 = 1/6. Un sexto!"
+        },
+        {
+          "tipo": "multiplicar",
+          "fraccion1": [3, 5],
+          "fraccion2": [2, 3],
+          "resultado": [6, 15],
+          "historia": "Cinco pinto 3/5 de una pared. Tres pinto 2/3 de lo que pinto Cinco. Cuanto pinto Tres del total?",
+          "explicacion": "3/5 x 2/3 = 6/15"
+        }
+      ]
+    }
+  ]
+}
