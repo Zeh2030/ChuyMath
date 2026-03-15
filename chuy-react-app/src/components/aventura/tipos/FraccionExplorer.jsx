@@ -391,7 +391,8 @@ const FraccionExplorer = ({ mision, onCompletar }) => {
   if (!currentChallenge) return <div>Cargando reto...</div>;
 
   const { tipo, forma, partes, coloreadas, historia, explicacion } = currentChallenge;
-  const color = getNumberblockColor(coloreadas);
+  // Colores fijos para pizza (amarillo dorado) y barra (azul) — siempre visibles
+  const color = forma === 'circulo' ? '#FBC02D' : '#42A5F5';
   const isIdentificar = tipo === 'identificar';
 
   // Phase labels for indicator

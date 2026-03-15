@@ -226,6 +226,116 @@ const FraccionOperaciones = ({ mision, onCompletar }) => {
       );
     }
 
+    if (num === 11) {
+      return (
+        <div key={num} className={`numberblock has-face nb-11-shape ${isSelected ? 'selected' : ''}`} onClick={() => onClick(num)}>
+          <div className="stack">
+            {[...Array(5)].map((_, i) => (
+              <div key={`left-${i}`} className="block white-block">
+                {i === 0 && <Face singleEye={true} />}
+              </div>
+            ))}
+          </div>
+          <div className="stack">
+            {[...Array(6)].map((_, i) => (
+              <div key={`right-${i}`} className={`block ${i === 5 ? 'red-block' : 'white-block'}`}>
+                {i === 0 && <Face singleEye={true} />}
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    }
+
+    if (num === 12) {
+      const centralIndices = [4, 7];
+      return (
+        <div key={num} className={`numberblock has-face nb-12-shape ${isSelected ? 'selected' : ''}`} onClick={() => onClick(num)}>
+          {[...Array(12)].map((_, i) => (
+            <div key={i} className="block" style={{
+              backgroundColor: centralIndices.includes(i) ? 'var(--nb-12-center)' : 'var(--nb-12-main)',
+              borderColor: 'var(--nb-12-border)'
+            }}>
+              {i === 7 && <Face />}
+            </div>
+          ))}
+        </div>
+      );
+    }
+
+    if (num === 13) {
+      const blocks13 = [
+        { row: 1, col: 2, type: 'yellow' },
+        { row: 1, col: 3, type: 'yellow' },
+        { row: 2, col: 3, type: 'yellow' },
+        { row: 2, col: 1, type: 'white' },
+        { row: 2, col: 2, type: 'white' },
+        { row: 3, col: 1, type: 'white' },
+        { row: 3, col: 2, type: 'white' },
+        { row: 4, col: 1, type: 'white' },
+        { row: 4, col: 2, type: 'white' },
+        { row: 5, col: 1, type: 'white' },
+        { row: 5, col: 2, type: 'white' },
+        { row: 6, col: 1, type: 'white', face: true },
+        { row: 6, col: 2, type: 'white' },
+      ];
+      return (
+        <div key={num} className={`numberblock has-face nb-13-shape ${isSelected ? 'selected' : ''}`} onClick={() => onClick(num)}>
+          {blocks13.map((b, i) => (
+            <div key={i} className="block" style={{
+              gridRow: b.row,
+              gridColumn: b.col,
+              backgroundColor: b.type === 'yellow' ? 'var(--nb-13)' : '#fff',
+              border: b.type === 'yellow' ? '2px solid rgba(0,0,0,0.15)' : '2px solid var(--nb-1)',
+            }}>
+              {b.face && <Face />}
+            </div>
+          ))}
+        </div>
+      );
+    }
+
+    if (num === 14) {
+      return (
+        <div key={num} className={`numberblock has-face nb-14-shape ${isSelected ? 'selected' : ''}`} onClick={() => onClick(num)}>
+          {[...Array(14)].map((_, i) => {
+            const isGreen = i < 4;
+            return (
+              <div key={i} className="block" style={{
+                backgroundColor: isGreen ? 'var(--nb-14)' : '#fff',
+                border: isGreen ? '2px solid rgba(0,0,0,0.15)' : '2px solid var(--nb-1)'
+              }}>
+                {i === 7 && <Face />}
+              </div>
+            );
+          })}
+        </div>
+      );
+    }
+
+    if (num === 15) {
+      const stairHeights = [1, 2, 3, 4, 5];
+      return (
+        <div key={num} className={`numberblock has-face nb-15-shape ${isSelected ? 'selected' : ''}`} onClick={() => onClick(num)}>
+          {stairHeights.map((height, colIdx) => (
+            <div key={colIdx} className="stack">
+              {[...Array(height)].map((_, rowIdx) => {
+                const isCyan = colIdx === 4;
+                return (
+                  <div key={rowIdx} className="block" style={{
+                    backgroundColor: isCyan ? 'var(--nb-15)' : '#fff',
+                    border: isCyan ? '2px solid rgba(0,0,0,0.15)' : '2px solid var(--nb-1)'
+                  }}>
+                    {colIdx === 4 && rowIdx === height - 1 && <Face />}
+                  </div>
+                );
+              })}
+            </div>
+          ))}
+        </div>
+      );
+    }
+
     return (
       <div key={num} className={`numberblock has-face ${isSelected ? 'selected' : ''}`} onClick={() => onClick(num)}>
         <div className="stack">
