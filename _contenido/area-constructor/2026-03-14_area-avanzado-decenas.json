@@ -1,0 +1,62 @@
+{
+  "id": "2026-03-14_area-avanzado-decenas",
+  "titulo": "Área Constructor: La Decena Poderosa",
+  "descripcion": "Diez llega con construcciones de 10 filas o columnas. Multiplicar por 10 es facil!",
+  "tipo": "area-constructor",
+  "nivel": "avanzado",
+  "misiones": [
+    {
+      "id": "mision-area-decenas",
+      "tipo": "area-constructor",
+      "titulo": "Diez construye la ciudad",
+      "instruccion": "Diez es especial: multiplicar por 10 solo le agrega un cero! Mide y calcula.",
+      "retos": [
+        {
+          "target": 30,
+          "filas": 10,
+          "columnas": 3,
+          "tipo": "area",
+          "esSquare": false,
+          "historia": "Diez y Tres construyen una cancha de voleibol. Mide los lados y calcula cuantas losetas necesitan!",
+          "unidad": "losetas"
+        },
+        {
+          "target": 50,
+          "filas": 10,
+          "columnas": 5,
+          "tipo": "area",
+          "esSquare": false,
+          "historia": "Diez y Cinco disenan un estacionamiento para bicicletas. Es largo y ancho! Cuantos espacios tiene?",
+          "unidad": "espacios"
+        },
+        {
+          "target": 100,
+          "filas": 10,
+          "columnas": 10,
+          "tipo": "area",
+          "esSquare": true,
+          "historia": "Diez quiere el cuadrado perfecto mas grande! Un cuadrado de 10 por 10. Cuantos cuadritos tiene?",
+          "unidad": "cuadritos"
+        },
+        {
+          "target": 70,
+          "filas": 10,
+          "columnas": 7,
+          "tipo": "area",
+          "esSquare": false,
+          "historia": "Diez y Siete construyen un salon de fiestas enorme. Cuantas baldosas caben en el piso?",
+          "unidad": "baldosas"
+        },
+        {
+          "target": 80,
+          "filas": 10,
+          "columnas": 8,
+          "tipo": "area",
+          "esSquare": false,
+          "historia": "Diez y Ocho disenan una alberca olimpica. Es la mas grande del barrio! Cuantos mosaicos necesitan?",
+          "unidad": "mosaicos"
+        }
+      ]
+    }
+  ]
+}

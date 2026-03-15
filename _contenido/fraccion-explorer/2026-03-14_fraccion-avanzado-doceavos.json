@@ -1,0 +1,81 @@
+{
+  "id": "2026-03-14_fraccion-avanzado-doceavos",
+  "titulo": "Fracciones: Doceavos y Mezcla",
+  "descripcion": "Doceavos como las horas del reloj y mezcla de denominadores grandes.",
+  "tipo": "fraccion-explorer",
+  "nivel": "avanzado",
+  "misiones": [
+    {
+      "id": "mision-fraccion-4",
+      "tipo": "fraccion-explorer",
+      "titulo": "Doceavos y mas",
+      "instruccion": "12 partes como las horas del reloj! Observa bien y cuenta con cuidado.",
+      "retos": [
+        {
+          "tipo": "identificar",
+          "forma": "circulo",
+          "partes": 12,
+          "coloreadas": 3,
+          "historia": "Doce hizo una pizza gigante y la corto en 12 rebanadas, como las horas del reloj. Tres se comio algunas. Que fraccion se comio?",
+          "explicacion": "Tres doceavos: 3 de 12 partes"
+        },
+        {
+          "tipo": "identificar",
+          "forma": "barra",
+          "partes": 12,
+          "coloreadas": 6,
+          "historia": "Doce partio un chocolate en 12 pedazos. Seis se comio exactamente la mitad. Que fraccion se comio?",
+          "explicacion": "Seis doceavos: 6 de 12 partes, que es igual a la mitad!"
+        },
+        {
+          "tipo": "construir",
+          "forma": "circulo",
+          "partes": 12,
+          "coloreadas": 4,
+          "historia": "Doce preparo una pizza de 12 rebanadas. Cuatro quiere comerse 4/12. Colorea las que le tocan!",
+          "explicacion": "Cuatro doceavos de la pizza"
+        },
+        {
+          "tipo": "identificar",
+          "forma": "circulo",
+          "partes": 12,
+          "coloreadas": 9,
+          "historia": "Doce hizo otra pizza de 12 rebanadas. Nueve se comio casi toda! Que fraccion se comio?",
+          "explicacion": "Nueve doceavos: 9 de 12 partes, casi toda!"
+        },
+        {
+          "tipo": "construir",
+          "forma": "barra",
+          "partes": 12,
+          "coloreadas": 8,
+          "historia": "Doce tiene un chocolate largo de 12 pedazos. Ocho quiere comerse 8/12. Colorea los que le tocan!",
+          "explicacion": "Ocho doceavos: la mayor parte del chocolate"
+        },
+        {
+          "tipo": "identificar",
+          "forma": "barra",
+          "partes": 12,
+          "coloreadas": 1,
+          "historia": "Doce partio un chocolate gigante en 12 pedazos. Uno solo quiere un pedacito. Que fraccion se comio?",
+          "explicacion": "Un doceavo: solo 1 de 12 partes, muy poquito!"
+        },
+        {
+          "tipo": "construir",
+          "forma": "circulo",
+          "partes": 12,
+          "coloreadas": 10,
+          "historia": "Doce hizo una pizza de 12 rebanadas. Diez la quiere casi toda! Colorea 10/12 de la pizza.",
+          "explicacion": "Diez doceavos: solo quedan 2 rebanadas!"
+        },
+        {
+          "tipo": "identificar",
+          "forma": "circulo",
+          "partes": 12,
+          "coloreadas": 12,
+          "historia": "Doce se comio TODA su pizza de 12 rebanadas! Que fraccion se comio?",
+          "explicacion": "Doce doceavos es igual a un entero: se la comio todita!"
+        }
+      ]
+    }
+  ]
+}

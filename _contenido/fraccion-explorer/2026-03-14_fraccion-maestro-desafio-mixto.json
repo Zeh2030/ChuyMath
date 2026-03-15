@@ -1,0 +1,81 @@
+{
+  "id": "2026-03-14_fraccion-maestro-desafio-mixto",
+  "titulo": "Fracciones: Desafio Mixto Final",
+  "descripcion": "Mezcla de todos los denominadores, pizza y chocolate. El reto definitivo!",
+  "tipo": "fraccion-explorer",
+  "nivel": "maestro",
+  "misiones": [
+    {
+      "id": "mision-fraccion-6",
+      "tipo": "fraccion-explorer",
+      "titulo": "Gran desafio de fracciones",
+      "instruccion": "Todos los denominadores mezclados. Cuenta rapido y con precision!",
+      "retos": [
+        {
+          "tipo": "construir",
+          "forma": "barra",
+          "partes": 9,
+          "coloreadas": 4,
+          "historia": "Nueve tiene un chocolate de 9 pedazos. Cuatro quiere comerse 4/9. Colorea los que le tocan!",
+          "explicacion": "Cuatro novenos del chocolate"
+        },
+        {
+          "tipo": "identificar",
+          "forma": "circulo",
+          "partes": 5,
+          "coloreadas": 4,
+          "historia": "Cinco hizo una pizza de 5 rebanadas. Cuatro se comio casi toda. Que fraccion se comio?",
+          "explicacion": "Cuatro quintos: 4 de 5 partes"
+        },
+        {
+          "tipo": "construir",
+          "forma": "circulo",
+          "partes": 8,
+          "coloreadas": 5,
+          "historia": "Ocho preparo una pizza de 8 rebanadas. Cinco quiere 5/8. Colorea las rebanadas!",
+          "explicacion": "Cinco octavos de la pizza"
+        },
+        {
+          "tipo": "identificar",
+          "forma": "barra",
+          "partes": 7,
+          "coloreadas": 2,
+          "historia": "Siete partio un chocolate en 7 pedazos. Dos se comio solo 2 pedacitos. Que fraccion se comio?",
+          "explicacion": "Dos septimos: solo 2 de 7 partes"
+        },
+        {
+          "tipo": "construir",
+          "forma": "barra",
+          "partes": 6,
+          "coloreadas": 3,
+          "historia": "Seis tiene un chocolate de 6 pedazos. Tres quiere la mitad exacta: 3/6. Colorea los que le tocan!",
+          "explicacion": "Tres sextos: exactamente la mitad del chocolate!"
+        },
+        {
+          "tipo": "identificar",
+          "forma": "circulo",
+          "partes": 9,
+          "coloreadas": 8,
+          "historia": "Nueve hizo una pizza de 9 rebanadas. Ocho se comio casi toda! Que fraccion se comio?",
+          "explicacion": "Ocho novenos: 8 de 9 partes, solo queda 1!"
+        },
+        {
+          "tipo": "construir",
+          "forma": "circulo",
+          "partes": 10,
+          "coloreadas": 3,
+          "historia": "Diez hizo una pizza de 10 rebanadas. Tres quiere comerse 3/10. Colorea las que le tocan!",
+          "explicacion": "Tres decimos de la pizza"
+        },
+        {
+          "tipo": "identificar",
+          "forma": "barra",
+          "partes": 12,
+          "coloreadas": 5,
+          "historia": "Doce partio un chocolate en 12 pedazos. Cinco se comio algunos. Que fraccion se comio?",
+          "explicacion": "Cinco doceavos: 5 de 12 partes"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "id": "2026-03-14_area-avanzado-once-doce",
+  "titulo": "Área Constructor: Once y Doce Llegan al Barrio",
+  "descripcion": "Once y Doce traen construcciones mas grandes. Multiplicar numeros de 2 cifras!",
+  "tipo": "area-constructor",
+  "nivel": "avanzado",
+  "misiones": [
+    {
+      "id": "mision-area-once-doce",
+      "tipo": "area-constructor",
+      "titulo": "Las construcciones de Once y Doce",
+      "instruccion": "Once y Doce son numeros grandes. Mide con cuidado y calcula el area!",
+      "retos": [
+        {
+          "target": 33,
+          "filas": 11,
+          "columnas": 3,
+          "tipo": "area",
+          "esSquare": false,
+          "historia": "Once construye un puente largo para cruzar el rio. Cuantas tablas necesita para el piso?",
+          "unidad": "tablas"
+        },
+        {
+          "target": 48,
+          "filas": 12,
+          "columnas": 4,
+          "tipo": "area",
+          "esSquare": false,
+          "historia": "Doce diseña un jardin de rosas rectangular. Cuantas rosas puede plantar?",
+          "unidad": "rosas"
+        },
+        {
+          "target": 55,
+          "filas": 11,
+          "columnas": 5,
+          "tipo": "area",
+          "esSquare": false,
+          "historia": "Once y Cinco construyen un cine al aire libre. Cuantas sillas caben en todo el terreno?",
+          "unidad": "sillas"
+        },
+        {
+          "target": 121,
+          "filas": 11,
+          "columnas": 11,
+          "tipo": "area",
+          "esSquare": true,
+          "historia": "Once quiere un cuadrado perfecto gigante para su parque. 11 por 11! Cuantos cuadritos tiene?",
+          "unidad": "cuadritos"
+        },
+        {
+          "target": 84,
+          "filas": 12,
+          "columnas": 7,
+          "tipo": "area",
+          "esSquare": false,
+          "historia": "Doce y Siete construyen un mercado con muchos puestos. Cuantos puestos caben en total?",
+          "unidad": "puestos"
+        }
+      ]
+    }
+  ]
+}

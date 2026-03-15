@@ -1,0 +1,62 @@
+{
+  "id": "2026-03-14_area-maestro-cuadrados-perfectos",
+  "titulo": "Área Constructor: Cuadrados Perfectos",
+  "descripcion": "Solo cuadrados perfectos! Cuando los dos lados miden igual, el area es un numero especial.",
+  "tipo": "area-constructor",
+  "nivel": "maestro",
+  "misiones": [
+    {
+      "id": "mision-area-cuadrados",
+      "tipo": "area-constructor",
+      "titulo": "La torre de cuadrados perfectos",
+      "instruccion": "Un cuadrado perfecto tiene todos los lados iguales. Mide un lado y multiplicalo por si mismo!",
+      "retos": [
+        {
+          "target": 49,
+          "filas": 7,
+          "columnas": 7,
+          "tipo": "area",
+          "esSquare": true,
+          "historia": "Siete quiere demostrar que su cuadrado es especial. 7 veces 7! Cuantos cuadritos tiene?",
+          "unidad": "cuadritos"
+        },
+        {
+          "target": 100,
+          "filas": 10,
+          "columnas": 10,
+          "tipo": "area",
+          "esSquare": true,
+          "historia": "Diez construye la plaza del centenario. Un cuadrado que tiene exactamente 100 cuadritos!",
+          "unidad": "cuadritos"
+        },
+        {
+          "target": 144,
+          "filas": 12,
+          "columnas": 12,
+          "tipo": "area",
+          "esSquare": true,
+          "historia": "Doce quiere el cuadrado perfecto mas grande que pueda. 12 por 12! Cuantos cuadritos tiene?",
+          "unidad": "cuadritos"
+        },
+        {
+          "target": 169,
+          "filas": 13,
+          "columnas": 13,
+          "tipo": "area",
+          "esSquare": true,
+          "historia": "Trece dice que el 13 trae buena suerte. Construye un cuadrado de 13 por 13 para probarlo!",
+          "unidad": "cuadritos"
+        },
+        {
+          "target": 225,
+          "filas": 15,
+          "columnas": 15,
+          "tipo": "area",
+          "esSquare": true,
+          "historia": "Quince, el mas grande de todos, construye el cuadrado definitivo. 15 por 15! El mas grande posible!",
+          "unidad": "cuadritos"
+        }
+      ]
+    }
+  ]
+}

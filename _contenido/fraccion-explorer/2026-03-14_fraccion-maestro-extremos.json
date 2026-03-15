@@ -1,0 +1,81 @@
+{
+  "id": "2026-03-14_fraccion-maestro-extremos",
+  "titulo": "Fracciones: Casi Todo y Casi Nada",
+  "descripcion": "Fracciones extremas: casi la totalidad o casi nada. Pon atencion a cada parte!",
+  "tipo": "fraccion-explorer",
+  "nivel": "maestro",
+  "misiones": [
+    {
+      "id": "mision-fraccion-5",
+      "tipo": "fraccion-explorer",
+      "titulo": "Extremos y sorpresas",
+      "instruccion": "Algunas fracciones son casi todo, otras casi nada. Cuenta con mucho cuidado!",
+      "retos": [
+        {
+          "tipo": "identificar",
+          "forma": "circulo",
+          "partes": 9,
+          "coloreadas": 1,
+          "historia": "Nueve hizo una pizza de 9 rebanadas. Uno solo se comio una rebanadita. Que fraccion se comio?",
+          "explicacion": "Un noveno: solo 1 de 9 partes, casi nada!"
+        },
+        {
+          "tipo": "identificar",
+          "forma": "barra",
+          "partes": 10,
+          "coloreadas": 9,
+          "historia": "Diez partio un chocolate en 10 pedazos. Nueve se comio casi todo! Que fraccion se comio?",
+          "explicacion": "Nueve decimos: 9 de 10, solo queda 1 pedazo!"
+        },
+        {
+          "tipo": "construir",
+          "forma": "circulo",
+          "partes": 8,
+          "coloreadas": 1,
+          "historia": "Ocho hizo una pizza de 8 rebanadas. Uno solo quiere 1/8. Colorea la rebanada que le toca!",
+          "explicacion": "Un octavo: la parte mas pequena posible"
+        },
+        {
+          "tipo": "identificar",
+          "forma": "circulo",
+          "partes": 7,
+          "coloreadas": 6,
+          "historia": "Siete hizo una pizza de 7 rebanadas. Seis se comio casi toda, solo dejo una! Que fraccion se comio?",
+          "explicacion": "Seis septimos: 6 de 7 partes, casi toda la pizza!"
+        },
+        {
+          "tipo": "construir",
+          "forma": "barra",
+          "partes": 10,
+          "coloreadas": 1,
+          "historia": "Diez tiene un chocolate largo de 10 pedazos. Uno quiere solo 1/10. Colorea el pedazo que le toca!",
+          "explicacion": "Un decimo: la parte mas chiquita del chocolate"
+        },
+        {
+          "tipo": "identificar",
+          "forma": "barra",
+          "partes": 12,
+          "coloreadas": 11,
+          "historia": "Doce partio un chocolate en 12 pedazos. Once se comio casi todo! Que fraccion se comio?",
+          "explicacion": "Once doceavos: 11 de 12 partes, solo queda 1!"
+        },
+        {
+          "tipo": "construir",
+          "forma": "circulo",
+          "partes": 10,
+          "coloreadas": 9,
+          "historia": "Diez hizo una pizza de 10 rebanadas. Nueve la quiere casi toda! Colorea 9/10 de la pizza.",
+          "explicacion": "Nueve decimos: solo queda 1 rebanada!"
+        },
+        {
+          "tipo": "identificar",
+          "forma": "barra",
+          "partes": 7,
+          "coloreadas": 7,
+          "historia": "Siete tenia un chocolate de 7 pedazos y se lo comio TODO! Que fraccion se comio?",
+          "explicacion": "Siete septimos es igual a un entero: todo el chocolate!"
+        }
+      ]
+    }
+  ]
+}
