@@ -1,0 +1,67 @@
+{
+  "id": "2026-03-20_listen-and-type-present-simple-basico",
+  "titulo": "Listen & Type: Present Simple",
+  "descripcion": "Listen to the sentence and type it! Train your ear and spelling.",
+  "tipo": "listen-and-type",
+  "materia": "ingles",
+  "tema": "present-simple",
+  "nivel": "basico",
+  "misiones": [
+    {
+      "id": "mision-lat-present-simple",
+      "tipo": "listen-and-type",
+      "titulo": "Listen and Write!",
+      "instruccion": "Press Play to hear the sentence. Then type exactly what you hear!",
+      "retos": [
+        {
+          "texto_en": "She eats watermelon",
+          "traduccion": "Ella come sandia",
+          "pista": "She ___ watermelon (3 words)",
+          "explicacion": "She eats - tercera persona con -s"
+        },
+        {
+          "texto_en": "I play soccer",
+          "traduccion": "Yo juego futbol",
+          "pista": "I ___ soccer (3 words)",
+          "explicacion": "I play - primera persona sin -s"
+        },
+        {
+          "texto_en": "He jumps very happy",
+          "traduccion": "El salta muy feliz",
+          "pista": "He ___ very happy (4 words)",
+          "explicacion": "He jumps - tercera persona con -s"
+        },
+        {
+          "texto_en": "They drink orange juice",
+          "traduccion": "Ellos toman jugo de naranja",
+          "pista": "They ___ orange juice (4 words)",
+          "explicacion": "They drink - plural sin -s"
+        },
+        {
+          "texto_en": "She studies in the afternoon",
+          "traduccion": "Ella estudia en la tarde",
+          "pista": "She ___ in the afternoon (5 words)",
+          "explicacion": "She studies - study cambia a studies con she"
+        },
+        {
+          "texto_en": "We dance at school",
+          "traduccion": "Nosotros bailamos en la escuela",
+          "pista": "We ___ at school (4 words)",
+          "explicacion": "We dance - plural sin -s"
+        },
+        {
+          "texto_en": "He goes to the park",
+          "traduccion": "El va al parque",
+          "pista": "He ___ to the park (5 words)",
+          "explicacion": "He goes - go es irregular: goes con he/she/it"
+        },
+        {
+          "texto_en": "Does she speak English",
+          "traduccion": "Ella habla ingles?",
+          "pista": "Does she ___ English (4 words)",
+          "explicacion": "Does she speak - pregunta con does + verbo base"
+        }
+      ]
+    }
+  ]
+}

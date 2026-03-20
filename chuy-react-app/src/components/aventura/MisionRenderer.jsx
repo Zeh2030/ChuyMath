@@ -22,6 +22,9 @@ import TrueOrFalse from './tipos/TrueOrFalse';
 import FillTheGap from './tipos/FillTheGap';
 import TapThePairs from './tipos/TapThePairs';
 import SentenceTransform from './tipos/SentenceTransform';
+import ImagePicker from './tipos/ImagePicker';
+import WordScramble from './tipos/WordScramble';
+import ListenAndType from './tipos/ListenAndType';
 import './MisionRenderer.css';
 
 /**
@@ -292,6 +295,33 @@ const MisionRenderer = ({
       case 'sentence-transform':
         return (
           <SentenceTransform
+            key={mision.id}
+            mision={mision}
+            onCompletar={onCompletar}
+          />
+        );
+
+      case 'image-picker':
+        return (
+          <ImagePicker
+            key={mision.id}
+            mision={mision}
+            onCompletar={onCompletar}
+          />
+        );
+
+      case 'word-scramble':
+        return (
+          <WordScramble
+            key={mision.id}
+            mision={mision}
+            onCompletar={onCompletar}
+          />
+        );
+
+      case 'listen-and-type':
+        return (
+          <ListenAndType
             key={mision.id}
             mision={mision}
             onCompletar={onCompletar}

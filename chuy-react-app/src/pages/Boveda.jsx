@@ -49,6 +49,9 @@ const Boveda = () => {
     { id: 'fill-the-gap', emoji: '🔲', nombre: 'Fill the Gap', tipo: 'fill-the-gap', descripcion: 'Complete the missing word', materia: 'ingles' },
     { id: 'tap-the-pairs', emoji: '🔗', nombre: 'Tap the Pairs', tipo: 'tap-the-pairs', descripcion: 'Match English and Spanish', materia: 'ingles' },
     { id: 'sentence-transform', emoji: '🔄', nombre: 'Transform', tipo: 'sentence-transform', descripcion: 'Change sentence form', materia: 'ingles' },
+    { id: 'image-picker', emoji: '🖼️', nombre: 'Image Picker', tipo: 'image-picker', descripcion: 'Pick the correct image', materia: 'ingles' },
+    { id: 'word-scramble', emoji: '🔠', nombre: 'Scramble', tipo: 'word-scramble', descripcion: 'Unscramble the letters', materia: 'ingles' },
+    { id: 'listen-and-type', emoji: '👂', nombre: 'Listen & Type', tipo: 'listen-and-type', descripcion: 'Listen and write', materia: 'ingles' },
   ];
 
   const tiposJuegosFiltrados = tiposJuegos.filter(t => t.materia === materia);

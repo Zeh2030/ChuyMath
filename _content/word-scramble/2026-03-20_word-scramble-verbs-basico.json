@@ -1,0 +1,75 @@
+{
+  "id": "2026-03-20_word-scramble-verbs-basico",
+  "titulo": "Word Scramble: Present Simple Verbs",
+  "descripcion": "Unscramble the letters to form the correct verb!",
+  "tipo": "word-scramble",
+  "materia": "ingles",
+  "tema": "present-simple",
+  "nivel": "basico",
+  "misiones": [
+    {
+      "id": "mision-ws-verbs",
+      "tipo": "word-scramble",
+      "titulo": "Unscramble the Verb!",
+      "instruccion": "The letters are mixed up! Put them in order to make the word. Use the sound button to hear it!",
+      "retos": [
+        {
+          "respuesta": "plays",
+          "letras_desordenadas": "lsayp",
+          "pista_es": "El juega (he ___)",
+          "pista_emoji": "⚽",
+          "explicacion": "PLAYS - He plays soccer. Con he/she/it agregamos -s"
+        },
+        {
+          "respuesta": "eats",
+          "letras_desordenadas": "stae",
+          "pista_es": "Ella come (she ___)",
+          "pista_emoji": "🍕",
+          "explicacion": "EATS - She eats watermelon. Con she agregamos -s"
+        },
+        {
+          "respuesta": "drink",
+          "letras_desordenadas": "knird",
+          "pista_es": "Yo tomo (I ___)",
+          "pista_emoji": "🥛",
+          "explicacion": "DRINK - I drink milk. Con I el verbo va sin -s"
+        },
+        {
+          "respuesta": "studies",
+          "letras_desordenadas": "dsstieu",
+          "pista_es": "Ella estudia (she ___)",
+          "pista_emoji": "📚",
+          "explicacion": "STUDIES - She studies English. Study cambia a studies con she"
+        },
+        {
+          "respuesta": "dance",
+          "letras_desordenadas": "cedan",
+          "pista_es": "Nosotros bailamos (we ___)",
+          "pista_emoji": "💃",
+          "explicacion": "DANCE - We dance together. Con we el verbo va sin cambios"
+        },
+        {
+          "respuesta": "jumps",
+          "letras_desordenadas": "pmjsu",
+          "pista_es": "El salta (he ___)",
+          "pista_emoji": "🤸",
+          "explicacion": "JUMPS - He jumps happy. Con he agregamos -s"
+        },
+        {
+          "respuesta": "goes",
+          "letras_desordenadas": "seog",
+          "pista_es": "El va (he ___)",
+          "pista_emoji": "🚶",
+          "explicacion": "GOES - He goes to school. Go es especial: goes con he/she/it"
+        },
+        {
+          "respuesta": "watches",
+          "letras_desordenadas": "thcaesw",
+          "pista_es": "Ella ve (she ___) TV",
+          "pista_emoji": "📺",
+          "explicacion": "WATCHES - She watches TV. Watch + es con she (verbos en -ch agregan -es)"
+        }
+      ]
+    }
+  ]
+}

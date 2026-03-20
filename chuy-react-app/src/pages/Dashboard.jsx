@@ -139,6 +139,9 @@ const Dashboard = () => {
     { id: 'fill-the-gap', emoji: '🔲', nombre: 'Fill the Gap', filtro: 'fill-the-gap', disponible: true, materia: 'ingles' },
     { id: 'tap-the-pairs', emoji: '🔗', nombre: 'Tap the Pairs', filtro: 'tap-the-pairs', disponible: true, materia: 'ingles' },
     { id: 'sentence-transform', emoji: '🔄', nombre: 'Transform', filtro: 'sentence-transform', disponible: true, materia: 'ingles' },
+    { id: 'image-picker', emoji: '🖼️', nombre: 'Image Picker', filtro: 'image-picker', disponible: true, materia: 'ingles' },
+    { id: 'word-scramble', emoji: '🔠', nombre: 'Scramble', filtro: 'word-scramble', disponible: true, materia: 'ingles' },
+    { id: 'listen-and-type', emoji: '👂', nombre: 'Listen & Type', filtro: 'listen-and-type', disponible: true, materia: 'ingles' },
   ];
 
   const tiposDeJuegoFiltrados = tiposDeJuego.filter(t => t.materia === materia);

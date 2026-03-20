@@ -1,0 +1,115 @@
+{
+  "id": "2026-03-20_image-picker-verbs-basico",
+  "titulo": "Image Picker: Action Verbs",
+  "descripcion": "Pick the image that matches the English verb!",
+  "tipo": "image-picker",
+  "materia": "ingles",
+  "tema": "present-simple",
+  "nivel": "basico",
+  "misiones": [
+    {
+      "id": "mision-ip-verbs",
+      "tipo": "image-picker",
+      "titulo": "Which image matches?",
+      "instruccion": "Look at the word, listen to it, and tap the correct image!",
+      "retos": [
+        {
+          "palabra_en": "play",
+          "palabra_es": "jugar",
+          "opciones": [
+            { "emoji": "⚽", "label": "play" },
+            { "emoji": "📖", "label": "read" },
+            { "emoji": "🍽️", "label": "eat" },
+            { "emoji": "😴", "label": "sleep" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Play = jugar. I play soccer every day."
+        },
+        {
+          "palabra_en": "eat",
+          "palabra_es": "comer",
+          "opciones": [
+            { "emoji": "🏃", "label": "run" },
+            { "emoji": "🍕", "label": "eat" },
+            { "emoji": "✏️", "label": "write" },
+            { "emoji": "🎵", "label": "sing" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Eat = comer. She eats watermelon in the park."
+        },
+        {
+          "palabra_en": "drink",
+          "palabra_es": "tomar/beber",
+          "opciones": [
+            { "emoji": "🥛", "label": "drink" },
+            { "emoji": "🎨", "label": "paint" },
+            { "emoji": "💃", "label": "dance" },
+            { "emoji": "🛏️", "label": "sleep" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Drink = beber. I drink milk every day."
+        },
+        {
+          "palabra_en": "study",
+          "palabra_es": "estudiar",
+          "opciones": [
+            { "emoji": "🏊", "label": "swim" },
+            { "emoji": "🎮", "label": "play games" },
+            { "emoji": "📚", "label": "study" },
+            { "emoji": "🎤", "label": "sing" }
+          ],
+          "respuesta": 2,
+          "explicacion": "Study = estudiar. She studies in the afternoon."
+        },
+        {
+          "palabra_en": "dance",
+          "palabra_es": "bailar",
+          "opciones": [
+            { "emoji": "📝", "label": "write" },
+            { "emoji": "💃", "label": "dance" },
+            { "emoji": "🚗", "label": "drive" },
+            { "emoji": "🍳", "label": "cook" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Dance = bailar. We dance together at school."
+        },
+        {
+          "palabra_en": "jump",
+          "palabra_es": "saltar",
+          "opciones": [
+            { "emoji": "🧹", "label": "clean" },
+            { "emoji": "🤸", "label": "jump" },
+            { "emoji": "🎸", "label": "play guitar" },
+            { "emoji": "📺", "label": "watch TV" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Jump = saltar. He jumps in the street very happy."
+        },
+        {
+          "palabra_en": "read",
+          "palabra_es": "leer",
+          "opciones": [
+            { "emoji": "🏀", "label": "play basketball" },
+            { "emoji": "😴", "label": "sleep" },
+            { "emoji": "🍔", "label": "eat" },
+            { "emoji": "📖", "label": "read" }
+          ],
+          "respuesta": 3,
+          "explicacion": "Read = leer. He reads the newspaper sometimes."
+        },
+        {
+          "palabra_en": "watch",
+          "palabra_es": "ver/mirar",
+          "opciones": [
+            { "emoji": "📺", "label": "watch" },
+            { "emoji": "🏃", "label": "run" },
+            { "emoji": "✈️", "label": "fly" },
+            { "emoji": "🎵", "label": "listen" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Watch = ver/mirar. They rarely watch TV."
+        }
+      ]
+    }
+  ]
+}
