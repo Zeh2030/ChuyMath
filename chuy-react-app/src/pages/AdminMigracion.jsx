@@ -11,7 +11,7 @@ const AdminMigracion = () => {
   const [migrando, setMigrando] = useState(false);
   const [resultado, setResultado] = useState(null);
   const [jsonInput, setJsonInput] = useState('');
-  const [coleccionDestino, setColeccionDestino] = useState('aventuras'); // 'aventuras' o 'simulacros'
+  const [coleccionDestino, setColeccionDestino] = useState('aventuras'); // 'aventuras', 'simulacros', o 'ingles'
 
   // Función para migrar una aventura individual (mantiene estructura original)
   const migrarAventura = async (aventuraData) => {
@@ -26,6 +26,23 @@ const AdminMigracion = () => {
     } catch (error) {
       console.error(`Error al migrar aventura ${aventuraData.id}:`, error);
       return { exito: false, id: aventuraData.id, error: error.message };
+    }
+  };
+
+  // Función para migrar contenido de inglés (misma estructura que aventura, colección separada)
+  const migrarIngles = async (inglesData) => {
+    try {
+      const inglesRef = doc(db, 'ingles', inglesData.id);
+      await setDoc(inglesRef, {
+        titulo: inglesData.titulo,
+        misiones: inglesData.misiones || [],
+        ...inglesData,
+        materia: 'ingles' // Asegurar que siempre tenga materia
+      });
+      return { exito: true, id: inglesData.id, titulo: inglesData.titulo };
+    } catch (error) {
+      console.error(`Error al migrar inglés ${inglesData.id}:`, error);
+      return { exito: false, id: inglesData.id, error: error.message };
     }
   };
 
@@ -106,6 +123,9 @@ const AdminMigracion = () => {
       if (coleccionDestino === 'aventuras') {
         console.log(`Migrando a colección 'aventuras' (estructura anidada)...`);
         resultado = await migrarAventura(data);
+      } else if (coleccionDestino === 'ingles') {
+        console.log(`Migrando a colección 'ingles' (estructura anidada)...`);
+        resultado = await migrarIngles(data);
       } else {
         console.log(`Migrando a colección 'simulacros' (estructura plana)...`);
         resultado = await migrarSimulacro(data);
@@ -193,20 +213,33 @@ const AdminMigracion = () => {
                 <strong>🌟 Aventuras</strong>
               </label>
               <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '1rem', padding: '10px 15px', background: coleccionDestino === 'simulacros' ? '#fdebd0' : '#fff', borderRadius: '8px', border: coleccionDestino === 'simulacros' ? '2px solid #f39c12' : '1px solid #ddd' }}>
-                <input 
-                  type="radio" 
-                  name="coleccion" 
-                  value="simulacros" 
-                  checked={coleccionDestino === 'simulacros'} 
+                <input
+                  type="radio"
+                  name="coleccion"
+                  value="simulacros"
+                  checked={coleccionDestino === 'simulacros'}
                   onChange={() => setColeccionDestino('simulacros')}
                   style={{ width: '20px', height: '20px' }}
                 />
                 <strong>🏆 Simulacros</strong>
               </label>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '1rem', padding: '10px 15px', background: coleccionDestino === 'ingles' ? '#e0f2f1' : '#fff', borderRadius: '8px', border: coleccionDestino === 'ingles' ? '2px solid #00897b' : '1px solid #ddd' }}>
+                <input
+                  type="radio"
+                  name="coleccion"
+                  value="ingles"
+                  checked={coleccionDestino === 'ingles'}
+                  onChange={() => setColeccionDestino('ingles')}
+                  style={{ width: '20px', height: '20px' }}
+                />
+                <strong>🇬🇧 Inglés</strong>
+              </label>
             </div>
             <p style={{ marginTop: '15px', fontSize: '0.9rem', color: '#7f8c8d', background: '#f8f9fa', padding: '10px', borderRadius: '5px' }}>
-              {coleccionDestino === 'aventuras' 
-                ? '🌟 Aventuras: Mantiene la estructura original (misiones > ejercicios). Ideal para juegos del día, Numberblocks, Expediciones.' 
+              {coleccionDestino === 'aventuras'
+                ? '🌟 Aventuras: Mantiene la estructura original (misiones > ejercicios). Ideal para juegos del día, Numberblocks, Expediciones.'
+                : coleccionDestino === 'ingles'
+                ? '🇬🇧 Inglés: Colección separada para contenido de inglés. Misma estructura que Aventuras (misiones > retos).'
                 : '🏆 Simulacros: Aplana la estructura para crear una lista de problemas. Ideal para exámenes y bancos de preguntas.'}
             </p>
           </div>

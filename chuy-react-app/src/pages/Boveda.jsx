@@ -90,7 +90,21 @@ const Boveda = () => {
           };
         });
 
-        setAventuras(listaAventuras);
+        // Cargar Inglés (misma estructura que aventuras, colección separada)
+        const inglesRef = collection(db, 'ingles');
+        const inglesSnapshot = await getDocs(inglesRef);
+        const listaIngles = inglesSnapshot.docs.map(doc => {
+          const data = doc.data();
+          return {
+            id: doc.id,
+            ...data,
+            tipo: data.tipo || 'word-bank',
+            materia: 'ingles',
+            coleccion: 'ingles'
+          };
+        }).sort((a, b) => b.id.localeCompare(a.id));
+
+        setAventuras([...listaAventuras, ...listaIngles]);
         setSimulacros(listaSimulacros);
       } catch (err) {
         console.error("Error cargando la bóveda:", err);
@@ -398,7 +412,7 @@ const Boveda = () => {
                       const progreso = getProgreso(item.id, item.tipo);
                       
                       // Determinar la ruta basándose en la colección de origen
-                      const esAventura = item.coleccion === 'aventuras';
+                      const esAventura = item.coleccion === 'aventuras' || item.coleccion === 'ingles';
                       const ruta = esAventura ? `/aventura/${item.id}` : `/simulacro/${item.id}`;
                       
                       // Obtener nombre del tipo para mostrar

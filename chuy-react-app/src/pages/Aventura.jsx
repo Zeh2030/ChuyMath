@@ -25,16 +25,27 @@ const Aventura = () => {
         setLoading(true);
         setError(null);
 
+        // Buscar primero en 'aventuras', luego en 'ingles'
         const aventuraRef = doc(db, 'aventuras', fecha);
         const aventuraSnap = await getDoc(aventuraRef);
 
         if (aventuraSnap.exists()) {
-          setAventura({ 
-            id: aventuraSnap.id, 
-            ...aventuraSnap.data() 
+          setAventura({
+            id: aventuraSnap.id,
+            ...aventuraSnap.data()
           });
         } else {
-          setError(`No se encontró la aventura con ID ${fecha}`);
+          // Intentar en colección 'ingles'
+          const inglesRef = doc(db, 'ingles', fecha);
+          const inglesSnap = await getDoc(inglesRef);
+          if (inglesSnap.exists()) {
+            setAventura({
+              id: inglesSnap.id,
+              ...inglesSnap.data()
+            });
+          } else {
+            setError(`No se encontró la aventura con ID ${fecha}`);
+          }
         }
       } catch (err) {
         console.error('Error al cargar aventura:', err);
