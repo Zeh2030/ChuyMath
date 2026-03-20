@@ -4,6 +4,7 @@
   "descripcion": "Build sentences in English using the Present Simple tense!",
   "tipo": "word-bank",
   "materia": "ingles",
+  "tema": "present-simple",
   "nivel": "basico",
   "misiones": [
     {

@@ -4,6 +4,7 @@
   "descripcion": "Is this English sentence correct? You decide!",
   "tipo": "true-or-false",
   "materia": "ingles",
+  "tema": "present-simple",
   "nivel": "basico",
   "misiones": [
     {

@@ -4,6 +4,7 @@
   "descripcion": "Transform sentences between affirmative, negative, and question forms!",
   "tipo": "sentence-transform",
   "materia": "ingles",
+  "tema": "present-simple",
   "nivel": "basico",
   "misiones": [
     {
