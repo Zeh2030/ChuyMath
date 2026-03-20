@@ -317,84 +317,26 @@ const Boveda = () => {
             {/* SECCIÓN 2: MI BÓVEDA (Histórico) */}
             {tabActivo === 'boveda' && (
               <section className="mi-boveda-section">
-                <h2 className="section-title">📚 Mi Bóveda</h2>
-                
-                {/* Filtros - SIMPLIFICADO */}
-                <div className="filtros-container">
-                  <button 
-                    className={`filtro-btn ${filtro === 'todos' ? 'activo' : ''}`}
-                    onClick={() => setFiltro('todos')}
-                  >
-                    Todo 
-                    <span className="filtro-badge">{aventuras.filter(filterMateria).length + simulacros.filter(filterMateria).length}</span>
-                  </button>
-                  <button
-                    className={`filtro-btn ${filtro === 'aventuras' ? 'activo' : ''}`}
-                    onClick={() => setFiltro('aventuras')}
-                  >
-                    🌟 Aventuras
-                    <span className="filtro-badge">{contarPorTipo('aventuras')}</span>
-                  </button>
-                  {/* Filtros dinámicos por cada tipo que tenga contenido */}
-                  {tiposJuegosFiltrados.filter(t => t.tipo !== 'aventura').map(tipo => {
-                    const count = contarPorTipo(tipo.id);
-                    if (count === 0) return null;
-                    return (
-                      <button
-                        key={tipo.id}
-                        className={`filtro-btn ${filtro === tipo.id ? 'activo' : ''}`}
-                        onClick={() => setFiltro(tipo.id)}
-                      >
-                        {tipo.emoji} {tipo.nombre}
-                        <span className="filtro-badge">{count}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-
-                {/* Filtros adicionales por grado (simulacros) y nivel (aventuras/expediciones) */}
-                <div className="filtros-adicionales">
-                  <div className="filtro-extra">
-                    <span>🎓 Grado (simulacros):</span>
-                    <div className="chips">
-                      <button 
-                        className={`chip ${filtroGrado === 'todos' ? 'activo' : ''}`}
-                        onClick={() => setFiltroGrado('todos')}
-                      >
-                        Todos
-                      </button>
-                      {gradosDisponibles.map(g => (
-                        <button
-                          key={g}
-                          className={`chip ${String(filtroGrado) === String(g) ? 'activo' : ''}`}
-                          onClick={() => setFiltroGrado(g)}
-                        >
-                          {g}°
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="filtro-extra">
-                    <span>⭐ Nivel (aventuras/expediciones):</span>
-                    <div className="chips">
-                      <button 
-                        className={`chip ${filtroNivel === 'todos' ? 'activo' : ''}`}
-                        onClick={() => setFiltroNivel('todos')}
-                      >
-                        Todos
-                      </button>
-                      {nivelesDisponibles.map(n => (
-                        <button
-                          key={n}
-                          className={`chip ${filtroNivel === n ? 'activo' : ''}`}
-                          onClick={() => setFiltroNivel(n)}
-                        >
-                          {n}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
+                {/* Compact filter chip — shows what's selected, tap ✕ to see all */}
+                <div className="boveda-filter-bar">
+                  {filtro !== 'todos' ? (
+                    <>
+                      <span className="boveda-filter-chip active">
+                        {(() => {
+                          const tipoData = tiposJuegos.find(t => t.id === filtro);
+                          return tipoData ? `${tipoData.emoji} ${tipoData.nombre}` : filtro;
+                        })()}
+                        <button className="boveda-filter-clear" onClick={() => setFiltro('todos')}>✕</button>
+                      </span>
+                      <span className="boveda-filter-count">
+                        {contenidoMostrar().length} {contenidoMostrar().length === 1 ? 'item' : 'items'}
+                      </span>
+                    </>
+                  ) : (
+                    <span className="boveda-filter-chip all">
+                      📚 Todo ({aventuras.filter(filterMateria).length + simulacros.filter(filterMateria).length})
+                    </span>
+                  )}
                 </div>
 
                 {/* Contenido */}
