@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { db } from '../services/firebase';
 import { useAuth } from '../hooks/useAuth';
@@ -12,15 +12,26 @@ import './Boveda.css';
 const Boveda = () => {
   const { currentUser } = useAuth();
   const { profile } = useProfile(currentUser?.uid);
+  const [searchParams] = useSearchParams();
+  const filtroFromUrl = searchParams.get('filtro');
   const [aventuras, setAventuras] = useState([]);
   const [simulacros, setSimulacros] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [filtro, setFiltro] = useState('todos'); // 'todos', 'aventuras', 'simulacros', o tipo específico
-  const [tabActivo, setTabActivo] = useState('accesos'); // 'accesos' o 'boveda'
-  const [filtroGrado, setFiltroGrado] = useState('todos'); // solo simulacros
-  const [filtroNivel, setFiltroNivel] = useState('todos'); // solo aventuras/expediciones
-  const [materia, setMateria] = useState('matematicas');
+  const [filtro, setFiltro] = useState(filtroFromUrl || 'todos');
+  const [tabActivo, setTabActivo] = useState(filtroFromUrl ? 'boveda' : 'accesos');
+  const [filtroGrado, setFiltroGrado] = useState('todos');
+  const [filtroNivel, setFiltroNivel] = useState('todos');
+
+  // Detect materia from URL filter
+  const detectMateria = (f) => {
+    if (!f || f === 'todos') return 'matematicas';
+    const englishTypes = ['word-bank', 'verb-conjugator', 'true-or-false', 'fill-the-gap',
+      'tap-the-pairs', 'sentence-transform', 'image-picker', 'word-scramble',
+      'listen-and-type', 'expediciones-en', 'mini-story'];
+    return englishTypes.includes(f) ? 'ingles' : 'matematicas';
+  };
+  const [materia, setMateria] = useState(detectMateria(filtroFromUrl));
 
   // Definir tipos de juegos disponibles
   const tiposJuegos = [
