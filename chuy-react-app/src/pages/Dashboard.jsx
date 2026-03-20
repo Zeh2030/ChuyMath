@@ -142,6 +142,7 @@ const Dashboard = () => {
     { id: 'image-picker', emoji: '🖼️', nombre: 'Image Picker', filtro: 'image-picker', disponible: true, materia: 'ingles' },
     { id: 'word-scramble', emoji: '🔠', nombre: 'Scramble', filtro: 'word-scramble', disponible: true, materia: 'ingles' },
     { id: 'listen-and-type', emoji: '👂', nombre: 'Listen & Type', filtro: 'listen-and-type', disponible: true, materia: 'ingles' },
+    { id: 'expediciones-en', emoji: '🗺️', nombre: 'Expeditions', filtro: 'expediciones-en', disponible: true, materia: 'ingles' },
   ];
 
   const tiposDeJuegoFiltrados = tiposDeJuego.filter(t => t.materia === materia);

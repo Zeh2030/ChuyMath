@@ -1,6 +1,6 @@
 # Guía para Crear Contenido de Inglés
 
-Guía técnica con plantillas JSON para los 9 tipos de juego de inglés en ChuyMath.
+Guía técnica con plantillas JSON para los 10 tipos de juego de inglés en ChuyMath.
 
 ## Campos comunes (raíz del JSON)
 
@@ -335,6 +335,78 @@ El niño escucha una oración en inglés (Web Speech API) y la escribe.
 - Botón 🔊 Play (velocidad normal) y 🐢 Slow (velocidad lenta)
 - Comparación ignora puntuación y mayúsculas/minúsculas
 - Pista aparece automáticamente después de 2 errores
+
+---
+
+---
+
+## 10. Expedición Inglés (Multi-misión temática)
+
+Una expedición combina varios tipos de juego en una aventura temática con hilo narrativo.
+**No es un componente nuevo** — es un JSON con `tipo: "expedicion-ingles"` cuyas misiones usan los tipos de juego existentes (word-bank, verb-conjugator, image-picker, etc.)
+
+**Carpeta:** `_content/expedicion-ingles/`
+
+```json
+{
+  "id": "A1-09_expedicion_school-day",
+  "titulo": "Expedition: A School Day",
+  "tipo": "expedicion-ingles",
+  "materia": "ingles",
+  "tema": "present-simple-affirmative",
+  "nivel": "A1-09",
+  "descripcion": "Join the adventure of a school day in English!",
+  "misiones": [
+    {
+      "id": "mision-exp-1",
+      "tipo": "image-picker",
+      "titulo": "Mission 1: Morning Vocabulary",
+      "instruccion": "Learn the action words!",
+      "retos": [...]
+    },
+    {
+      "id": "mision-exp-2",
+      "tipo": "verb-conjugator",
+      "titulo": "Mission 2: At School",
+      "instruccion": "Choose the correct verb form.",
+      "retos": [...]
+    },
+    {
+      "id": "mision-exp-3",
+      "tipo": "word-bank",
+      "titulo": "Mission 3: Build Sentences",
+      "instruccion": "Build sentences about lunch time!",
+      "retos": [...]
+    },
+    {
+      "id": "mision-exp-4",
+      "tipo": "listen-and-type",
+      "titulo": "Mission 4: Final Challenge",
+      "instruccion": "Listen and type what the teacher says!",
+      "retos": [...]
+    }
+  ]
+}
+```
+
+**Estructura de cada misión:** Exactamente igual que el tipo individual (ver secciones 1-9 arriba). Cada misión tiene su propio `tipo` y `retos`.
+
+**Reglas para expediciones:**
+- 3-5 misiones por expedición (variedad sin cansar)
+- Cada misión usa un tipo de juego diferente
+- Progresión lógica: vocabulario → gramática → construcción → dictado
+- Hilo narrativo: un tema que conecta todas las misiones (school day, a trip, etc.)
+- 2-4 retos por misión (menos que juegos individuales, ya que hay varias misiones)
+- Se sube como **Aventura** en el migrador
+
+**Tipos de juego recomendados para mezclar:**
+
+| Posición | Tipo sugerido | Por qué |
+|----------|--------------|---------|
+| Misión 1 | image-picker | Calentamiento visual, baja dificultad |
+| Misión 2 | verb-conjugator o fill-the-gap | Gramática guiada |
+| Misión 3 | word-bank o sentence-transform | Construcción activa |
+| Misión 4 | listen-and-type o true-or-false | Desafío final |
 
 ---
 

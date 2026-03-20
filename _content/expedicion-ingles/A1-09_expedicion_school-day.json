@@ -1,0 +1,145 @@
+{
+  "id": "A1-09_expedicion_school-day",
+  "titulo": "🗺️ Expedition: A School Day",
+  "tipo": "expedicion-ingles",
+  "materia": "ingles",
+  "tema": "present-simple-affirmative",
+  "nivel": "A1-09",
+  "descripcion": "Join the adventure of a school day in English! Complete 4 missions using Present Simple.",
+  "misiones": [
+    {
+      "id": "mision-exp-school-1",
+      "tipo": "image-picker",
+      "titulo": "🖼️ Mission 1: Morning Vocabulary",
+      "instruccion": "Before school starts, learn the action words! Pick the correct image.",
+      "retos": [
+        {
+          "palabra_en": "eat",
+          "palabra_es": "comer",
+          "opciones": [
+            { "emoji": "🍕", "label": "eat" },
+            { "emoji": "🏃", "label": "run" },
+            { "emoji": "😴", "label": "sleep" },
+            { "emoji": "📖", "label": "read" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Eat = comer. I eat breakfast every morning."
+        },
+        {
+          "palabra_en": "study",
+          "palabra_es": "estudiar",
+          "opciones": [
+            { "emoji": "🎮", "label": "play games" },
+            { "emoji": "📚", "label": "study" },
+            { "emoji": "💃", "label": "dance" },
+            { "emoji": "🏊", "label": "swim" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Study = estudiar. She studies English at school."
+        },
+        {
+          "palabra_en": "walk",
+          "palabra_es": "caminar",
+          "opciones": [
+            { "emoji": "🎵", "label": "sing" },
+            { "emoji": "✈️", "label": "fly" },
+            { "emoji": "🚶", "label": "walk" },
+            { "emoji": "🍳", "label": "cook" }
+          ],
+          "respuesta": 2,
+          "explicacion": "Walk = caminar. I walk to school every day."
+        }
+      ]
+    },
+    {
+      "id": "mision-exp-school-2",
+      "tipo": "verb-conjugator",
+      "titulo": "🔤 Mission 2: At School - Conjugation",
+      "instruccion": "You're at school now! Choose the correct verb form.",
+      "retos": [
+        {
+          "pronombre": "She",
+          "verbo_base": "study",
+          "opciones": ["study", "studies", "studys"],
+          "respuesta": 1,
+          "oracion_completa": "She studies math in the morning",
+          "traduccion": "Ella estudia matematicas en la manana",
+          "regla": "Study → studies con She (la -y cambia a -ies)"
+        },
+        {
+          "pronombre": "We",
+          "verbo_base": "eat",
+          "opciones": ["eats", "eat", "eating"],
+          "respuesta": 1,
+          "oracion_completa": "We eat lunch at school",
+          "traduccion": "Nosotros comemos en la escuela",
+          "regla": "Con We el verbo va sin -s"
+        },
+        {
+          "pronombre": "He",
+          "verbo_base": "walk",
+          "opciones": ["walk", "walks", "walkes"],
+          "respuesta": 1,
+          "oracion_completa": "He walks home after school",
+          "traduccion": "El camina a casa despues de la escuela",
+          "regla": "Con He se agrega -s al verbo"
+        }
+      ]
+    },
+    {
+      "id": "mision-exp-school-3",
+      "tipo": "word-bank",
+      "titulo": "📝 Mission 3: Lunch Time - Build Sentences",
+      "instruccion": "It's lunch time! Build sentences about what everyone does.",
+      "retos": [
+        {
+          "oracion_es": "Ella come pizza en la escuela",
+          "palabras": ["She", "eats", "pizza", "at", "school"],
+          "respuesta": ["She", "eats", "pizza", "at", "school"],
+          "palabras_extra": ["eat", "the"],
+          "explicacion": "She eats (tercera persona lleva -s)"
+        },
+        {
+          "oracion_es": "Nosotros jugamos futbol despues de comer",
+          "palabras": ["We", "play", "soccer", "after", "lunch"],
+          "respuesta": ["We", "play", "soccer", "after", "lunch"],
+          "palabras_extra": ["plays"],
+          "explicacion": "We play (sin -s con we)"
+        },
+        {
+          "oracion_es": "El lee un libro en la tarde",
+          "palabras": ["He", "reads", "a", "book", "in", "the", "afternoon"],
+          "respuesta": ["He", "reads", "a", "book", "in", "the", "afternoon"],
+          "palabras_extra": ["read"],
+          "explicacion": "He reads (tercera persona lleva -s)"
+        }
+      ]
+    },
+    {
+      "id": "mision-exp-school-4",
+      "tipo": "listen-and-type",
+      "titulo": "👂 Mission 4: Final Challenge - Listen & Write",
+      "instruccion": "School's almost over! Listen to what the teacher says and type it.",
+      "retos": [
+        {
+          "texto_en": "She studies English",
+          "traduccion": "Ella estudia ingles",
+          "pista": "She ___ English (3 words)",
+          "explicacion": "She studies - study cambia a studies con she"
+        },
+        {
+          "texto_en": "We eat lunch at school",
+          "traduccion": "Nosotros comemos en la escuela",
+          "pista": "We ___ lunch at school (5 words)",
+          "explicacion": "We eat - sin -s con we"
+        },
+        {
+          "texto_en": "He walks home every day",
+          "traduccion": "El camina a casa todos los dias",
+          "pista": "He ___ home every day (5 words)",
+          "explicacion": "He walks - tercera persona con -s"
+        }
+      ]
+    }
+  ]
+}
