@@ -1,6 +1,6 @@
 # Guía para Crear Contenido de Inglés
 
-Guía técnica con plantillas JSON para los 10 tipos de juego de inglés en ChuyMath.
+Guía técnica con plantillas JSON para los 11 tipos de juego de inglés en ChuyMath.
 
 ## Campos comunes (raíz del JSON)
 
@@ -410,6 +410,89 @@ Una expedición combina varios tipos de juego en una aventura temática con hilo
 
 ---
 
+---
+
+## 11. Mini Story (Historia corta con comprensión)
+
+Historia en inglés dividida en párrafos. Después de leer cada párrafo, el niño responde preguntas de comprensión. Incluye TTS para escuchar la narración y toggle de traducción.
+
+**Carpeta:** `_content/mini-story/`
+
+```json
+{
+  "tipo": "mini-story",
+  "materia": "ingles",
+  "misiones": [{
+    "id": "mision-story-1",
+    "tipo": "mini-story",
+    "titulo": "Emma's School Day",
+    "instruccion": "Read each part of the story, then answer the question!",
+    "parrafos": [
+      {
+        "texto": "Emma wakes up at seven o'clock. She eats breakfast.",
+        "traduccion": "Emma se despierta a las siete. Desayuna.",
+        "emoji": "🌅",
+        "preguntas": [
+          {
+            "tipo": "fill-the-gap",
+            "oracion": "Emma ___ up at seven.",
+            "opciones": ["wake", "wakes", "waking"],
+            "respuesta": 1
+          }
+        ]
+      },
+      {
+        "texto": "She walks to school. She doesn't take the bus.",
+        "traduccion": "Camina a la escuela. No toma el camión.",
+        "emoji": "🚶",
+        "preguntas": [
+          {
+            "tipo": "true-or-false",
+            "oracion": "Emma goes to school by bus.",
+            "correcto": false,
+            "correccion": "Emma walks to school."
+          }
+        ]
+      }
+    ]
+  }]
+}
+```
+
+**Estructura de cada párrafo:**
+
+| Campo | Tipo | Descripción |
+|-------|------|-------------|
+| `texto` | string | Texto del párrafo en inglés |
+| `traduccion` | string | Traducción (se muestra con toggle, oculta por defecto) |
+| `emoji` | string | Emoji contextual del párrafo (opcional) |
+| `preguntas` | array | 1-2 preguntas de comprensión |
+
+**Tipos de pregunta soportados:**
+
+| Tipo | Campos | Igual que |
+|------|--------|-----------|
+| `fill-the-gap` | `oracion`, `opciones`, `respuesta` | FillTheGap (sección 4) |
+| `true-or-false` | `oracion`, `correcto`, `correccion` | TrueOrFalse (sección 3) |
+
+**Reglas para mini stories:**
+- 4-6 párrafos por historia (suficiente para una narrativa completa)
+- 1-2 preguntas por párrafo (no saturar)
+- Vocabulario del nivel actual del niño
+- Mezclar fill-the-gap y true-or-false para variedad
+- La historia debe tener inicio, desarrollo y cierre
+- Usar emojis para contexto visual en cada párrafo
+- Al final se muestra la historia completa como resumen
+
+**Características del componente:**
+- 🔊 Botón de audio en cada párrafo (Web Speech API)
+- 👀 Toggle para mostrar/ocultar traducción al español
+- Barra de progreso visual por párrafos
+- Preguntas aparecen después de leer cada párrafo
+- Pantalla final con la historia completa
+
+---
+
 ## Reglas generales para crear contenido de inglés
 
 1. **Explicaciones en español** — el niño habla español, las explicaciones deben ser en español
@@ -424,6 +507,6 @@ Una expedición combina varios tipos de juego en una aventura temática con hilo
 
 1. Crear JSON en `_content/{tipo-juego}/`
 2. Ir a Admin > Migración
-3. Seleccionar **Aventuras** (estructura misiones > retos)
+3. Seleccionar **🇬🇧 Inglés** (colección separada para contenido de inglés)
 4. Subir JSON
 5. Si el ID ya existe, se sobreescribe

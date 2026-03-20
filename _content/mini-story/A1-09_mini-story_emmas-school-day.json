@@ -1,0 +1,90 @@
+{
+  "id": "A1-09_mini-story_emmas-school-day",
+  "titulo": "Mini Story: Emma's School Day",
+  "descripcion": "Read about Emma's day at school and answer comprehension questions!",
+  "tipo": "mini-story",
+  "materia": "ingles",
+  "tema": "present-simple-affirmative",
+  "nivel": "A1-09",
+  "misiones": [
+    {
+      "id": "mision-story-emma",
+      "tipo": "mini-story",
+      "titulo": "Emma's School Day",
+      "instruccion": "Read each part of the story, then answer the question!",
+      "parrafos": [
+        {
+          "texto": "Emma wakes up at seven o'clock every morning. She eats breakfast with her family. She drinks orange juice and eats toast.",
+          "traduccion": "Emma se despierta a las siete cada mañana. Desayuna con su familia. Toma jugo de naranja y come pan tostado.",
+          "emoji": "🌅",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Emma ___ up at seven o'clock.",
+              "opciones": ["wake", "wakes", "waking"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "She walks to school with her brother Tom. They don't take the bus because the school is very close. Tom always walks fast!",
+          "traduccion": "Camina a la escuela con su hermano Tom. No toman el camión porque la escuela está muy cerca. Tom siempre camina rápido!",
+          "emoji": "🚶",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Emma goes to school by bus.",
+              "correcto": false,
+              "correccion": "Emma walks to school. The school is very close."
+            }
+          ]
+        },
+        {
+          "texto": "At school, Emma studies English and math. She likes English the most! Her teacher speaks English very well.",
+          "traduccion": "En la escuela, Emma estudia inglés y mates. Le gusta más el inglés! Su maestra habla inglés muy bien.",
+          "emoji": "📚",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Emma ___ English the most.",
+              "opciones": ["like", "likes", "liking"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "After school, Emma plays in the park with her friends. They run, jump, and dance together. Emma always has fun!",
+          "traduccion": "Después de la escuela, Emma juega en el parque con sus amigos. Corren, saltan y bailan juntos. Emma siempre se divierte!",
+          "emoji": "🏃",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Emma plays alone after school.",
+              "correcto": false,
+              "correccion": "Emma plays with her friends in the park."
+            },
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "They run, jump, and ___ together.",
+              "opciones": ["dances", "dance", "dancing"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "In the evening, Emma does her homework and reads a book. She goes to bed at nine o'clock. Good night, Emma!",
+          "traduccion": "En la noche, Emma hace su tarea y lee un libro. Se acuesta a las nueve. Buenas noches, Emma!",
+          "emoji": "🌙",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "She ___ to bed at nine o'clock.",
+              "opciones": ["go", "goes", "going"],
+              "respuesta": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
