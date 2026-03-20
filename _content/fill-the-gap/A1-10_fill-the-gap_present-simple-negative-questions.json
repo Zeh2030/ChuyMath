@@ -1,11 +1,11 @@
 {
-  "id": "2026-03-19_fill-the-gap-do-does-basico",
+  "id": "A1-10_fill-the-gap_present-simple-negative-questions",
   "titulo": "Fill the Gap: Do, Does, Don't, Doesn't",
   "descripcion": "Complete sentences with the correct auxiliary verb!",
   "tipo": "fill-the-gap",
   "materia": "ingles",
-  "tema": "present-simple",
-  "nivel": "basico",
+  "tema": "present-simple-negative-questions",
+  "nivel": "A1-10",
   "misiones": [
     {
       "id": "mision-ftg-do-does",

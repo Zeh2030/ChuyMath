@@ -1,11 +1,11 @@
 {
-  "id": "2026-03-20_image-picker-verbs-basico",
+  "id": "A1-09_image-picker_present-simple-affirmative",
   "titulo": "Image Picker: Action Verbs",
   "descripcion": "Pick the image that matches the English verb!",
   "tipo": "image-picker",
   "materia": "ingles",
-  "tema": "present-simple",
-  "nivel": "basico",
+  "tema": "present-simple-affirmative",
+  "nivel": "A1-09",
   "misiones": [
     {
       "id": "mision-ip-verbs",

@@ -1,11 +1,11 @@
 {
-  "id": "2026-03-20_word-scramble-verbs-basico",
+  "id": "A1-09_word-scramble_present-simple-affirmative",
   "titulo": "Word Scramble: Present Simple Verbs",
   "descripcion": "Unscramble the letters to form the correct verb!",
   "tipo": "word-scramble",
   "materia": "ingles",
-  "tema": "present-simple",
-  "nivel": "basico",
+  "tema": "present-simple-affirmative",
+  "nivel": "A1-09",
   "misiones": [
     {
       "id": "mision-ws-verbs",

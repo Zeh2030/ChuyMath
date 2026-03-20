@@ -1,11 +1,11 @@
 {
-  "id": "2026-03-20_listen-and-type-present-simple-basico",
+  "id": "A1-09_listen-and-type_present-simple-affirmative",
   "titulo": "Listen & Type: Present Simple",
   "descripcion": "Listen to the sentence and type it! Train your ear and spelling.",
   "tipo": "listen-and-type",
   "materia": "ingles",
-  "tema": "present-simple",
-  "nivel": "basico",
+  "tema": "present-simple-affirmative",
+  "nivel": "A1-09",
   "misiones": [
     {
       "id": "mision-lat-present-simple",

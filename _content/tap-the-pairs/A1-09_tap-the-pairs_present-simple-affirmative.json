@@ -1,11 +1,11 @@
 {
-  "id": "2026-03-19_tap-the-pairs-present-simple-basico",
+  "id": "A1-09_tap-the-pairs_present-simple-affirmative",
   "titulo": "Tap the Pairs: Present Simple",
   "descripcion": "Match the Spanish sentence with its English translation!",
   "tipo": "tap-the-pairs",
   "materia": "ingles",
-  "tema": "present-simple",
-  "nivel": "basico",
+  "tema": "present-simple-affirmative",
+  "nivel": "A1-09",
   "misiones": [
     {
       "id": "mision-ttp-present-simple-1",

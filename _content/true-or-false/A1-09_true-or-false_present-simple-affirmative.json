@@ -1,11 +1,11 @@
 {
-  "id": "2026-03-19_true-or-false-present-simple-basico",
+  "id": "A1-09_true-or-false_present-simple-affirmative",
   "titulo": "True or False: Present Simple",
   "descripcion": "Is this English sentence correct? You decide!",
   "tipo": "true-or-false",
   "materia": "ingles",
-  "tema": "present-simple",
-  "nivel": "basico",
+  "tema": "present-simple-affirmative",
+  "nivel": "A1-09",
   "misiones": [
     {
       "id": "mision-tof-present-simple",

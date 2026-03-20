@@ -1,11 +1,11 @@
 {
-  "id": "2026-03-19_word-bank-present-simple-basico",
+  "id": "A1-09_word-bank_present-simple-affirmative",
   "titulo": "Word Bank: Present Simple Sentences",
   "descripcion": "Build sentences in English using the Present Simple tense!",
   "tipo": "word-bank",
   "materia": "ingles",
-  "tema": "present-simple",
-  "nivel": "basico",
+  "tema": "present-simple-affirmative",
+  "nivel": "A1-09",
   "misiones": [
     {
       "id": "mision-wb-present-simple",

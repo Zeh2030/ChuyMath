@@ -1,11 +1,11 @@
 {
-  "id": "2026-03-19_sentence-transform-present-simple-basico",
+  "id": "A1-10_sentence-transform_present-simple-negative-questions",
   "titulo": "Sentence Transform: Present Simple",
   "descripcion": "Transform sentences between affirmative, negative, and question forms!",
   "tipo": "sentence-transform",
   "materia": "ingles",
-  "tema": "present-simple",
-  "nivel": "basico",
+  "tema": "present-simple-negative-questions",
+  "nivel": "A1-10",
   "misiones": [
     {
       "id": "mision-st-present-simple",
