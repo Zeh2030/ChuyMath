@@ -179,3 +179,16 @@
   color: #a0522d;
   font-family: 'Cinzel', serif;
 }
+
+/* Mobile responsive */
+@media (max-width: 480px) {
+  .simulacro-container { padding: 12px; }
+  .simulacro-titulo { font-size: 1.4rem; }
+  .simulacro-descripcion { font-size: 0.95rem; }
+  .problema-card { padding: 14px; }
+  .resultado-final { flex-direction: column; gap: 10px; text-align: center; }
+  .resultado-icono { font-size: 2rem; }
+  .simulacro-acciones { gap: 10px; }
+  .boton-calificar, .boton-reintentar { padding: 10px 18px; font-size: 0.95rem; width: 100%; }
+  .tema-ancestral { padding: 14px; }
+}

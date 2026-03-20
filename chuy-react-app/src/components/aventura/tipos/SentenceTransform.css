@@ -159,3 +159,12 @@
 .st-complete-icon { font-size: 3rem; margin-bottom: 12px; }
 .st-complete h3 { font-size: 1.5rem; color: #00695c; margin-bottom: 8px; }
 .st-complete p { color: #555; margin-bottom: 20px; }
+
+@media (max-width: 480px) {
+  .st-container { padding: 10px; }
+  .st-mode { font-size: 0.95rem; padding: 8px 14px; }
+  .st-original-text { font-size: 1rem; }
+  .st-word { padding: 6px 12px; font-size: 0.9rem; }
+  .st-sentence { padding: 10px; min-height: 48px; }
+  .st-btn { padding: 10px 24px; font-size: 1rem; }
+}

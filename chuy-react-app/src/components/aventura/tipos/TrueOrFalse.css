@@ -211,3 +211,11 @@
   color: #555;
   margin-bottom: 20px;
 }
+
+@media (max-width: 480px) {
+  .tof-english { font-size: 1.15rem; }
+  .tof-sentence { padding: 16px; }
+  .tof-buttons { gap: 10px; }
+  .tof-answer { max-width: none; flex: 1; padding: 14px 10px; }
+  .tof-answer-icon { font-size: 1.5rem; }
+}

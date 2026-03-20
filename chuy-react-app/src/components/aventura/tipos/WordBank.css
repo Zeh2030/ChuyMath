@@ -215,3 +215,11 @@
   color: #555;
   margin-bottom: 20px;
 }
+
+@media (max-width: 480px) {
+  .wb-container { padding: 10px; }
+  .wb-target-text { font-size: 1rem; }
+  .wb-word { padding: 6px 12px; font-size: 0.9rem; }
+  .wb-sentence { padding: 10px; min-height: 50px; }
+  .wb-btn { padding: 10px 24px; font-size: 1rem; }
+}

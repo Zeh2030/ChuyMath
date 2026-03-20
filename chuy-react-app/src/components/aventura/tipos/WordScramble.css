@@ -188,3 +188,11 @@
 .ws-complete-icon { font-size: 3rem; margin-bottom: 12px; }
 .ws-complete h3 { font-size: 1.5rem; color: #00695c; margin-bottom: 8px; }
 .ws-complete p { color: #555; margin-bottom: 20px; }
+
+@media (max-width: 480px) {
+  .ws-container { padding: 10px; }
+  .ws-hint-emoji { font-size: 2rem; }
+  .ws-slot { width: 38px; height: 44px; }
+  .ws-letra { width: 34px; height: 40px; font-size: 1.2rem; }
+  .ws-btn { padding: 10px 24px; font-size: 1rem; }
+}

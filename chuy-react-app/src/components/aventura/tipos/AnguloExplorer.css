@@ -452,4 +452,8 @@
     font-size: 0.75rem;
     padding: 4px 10px;
   }
+
+  .angulo-barra-180 {
+    max-width: 90%;
+  }
 }

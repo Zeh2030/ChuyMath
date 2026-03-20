@@ -94,3 +94,21 @@
   box-shadow: 0 4px 12px rgba(149, 165, 166, 0.4);
 }
 
+/* Mobile responsive */
+@media (max-width: 480px) {
+  .aventura-container { padding: 12px; }
+  .aventura-header { padding: 16px; margin-bottom: 16px; }
+  .aventura-titulo { font-size: 1.4rem; }
+  .mision-container { padding: 16px; margin-bottom: 16px; min-height: auto; }
+  .aventura-navegacion {
+    padding: 12px;
+    gap: 8px;
+  }
+  .boton-navegacion {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+    flex: 1;
+    text-align: center;
+  }
+}
+
