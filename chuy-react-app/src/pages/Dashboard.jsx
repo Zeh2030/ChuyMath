@@ -5,6 +5,7 @@ import { useProfile } from '../hooks/useProfile.jsx';
 import { useAventuraDelDia } from '../hooks/useAventuraDelDia.jsx';
 import PageWrapper from '../components/layout/PageWrapper';
 import Header from '../components/layout/Header';
+import MateriaToggle from '../components/layout/MateriaToggle';
 import './Dashboard.css';
 import './Dashboard.enhanced.css';
 
@@ -16,6 +17,7 @@ const Dashboard = () => {
   const [tabActivo, setTabActivo] = useState('inicio');
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
   const [mostrarModalTrofeos, setMostrarModalTrofeos] = useState(false);
+  const [materia, setMateria] = useState('matematicas');
 
   // Detectar si es móvil
   useEffect(() => {
@@ -113,23 +115,30 @@ const Dashboard = () => {
 
   // Tipos de juegos para accesos rápidos
   const tiposDeJuego = [
-    { id: 'aventuras', emoji: '🎯', nombre: 'Aventuras', filtro: 'aventuras', disponible: true },
-    { id: 'expediciones', emoji: '🚀', nombre: 'Expediciones', filtro: 'expediciones', disponible: true },
-    { id: 'simulacros', emoji: '🏆', nombre: 'Simulacros', filtro: 'simulacros', disponible: true },
-    { id: 'numberblocks', emoji: '🧱', nombre: 'Numberblocks', filtro: 'numberblocks-constructor', disponible: true },
-    { id: 'kakooma', emoji: '🧠', nombre: 'Kakooma', filtro: 'kakooma', disponible: true },
-    { id: 'conteo', emoji: '💠', nombre: 'Conteo', filtro: 'conteo-figuras', disponible: true },
-    { id: 'area', emoji: '📐', nombre: 'Área', filtro: 'area-constructor', disponible: true },
-    { id: 'fracciones', emoji: '🍕', nombre: 'Fracciones', filtro: 'fraccion-explorer', disponible: true },
-    { id: 'angulos', emoji: '📏', nombre: 'Ángulos', filtro: 'angulo-explorer', disponible: true },
-    { id: 'frac-operaciones', emoji: '🧮', nombre: 'Op. Fracciones', filtro: 'fraccion-operaciones', disponible: true },
-    { id: 'secuencias', emoji: '🔢', nombre: 'Secuencias', filtro: 'secuencias', disponible: true },
-    { id: 'detectives', emoji: '🔎', nombre: 'Detectives', filtro: 'tabla-doble-entrada', disponible: true },
-    { id: 'operaciones', emoji: '➕', nombre: 'Operaciones', filtro: 'operaciones', disponible: true },
-    { id: 'cripto', emoji: '🍇', nombre: 'Cripto', filtro: 'criptoaritmetica', disponible: true },
-    { id: 'balanza', emoji: '⚖️', nombre: 'Balanza', filtro: 'balanza-logica', disponible: true },
-    { id: 'cubos', emoji: '🧊', nombre: 'Cubos', filtro: 'desarrollo-cubos', disponible: true }
+    // Matemáticas
+    { id: 'aventuras', emoji: '🎯', nombre: 'Aventuras', filtro: 'aventuras', disponible: true, materia: 'matematicas' },
+    { id: 'expediciones', emoji: '🚀', nombre: 'Expediciones', filtro: 'expediciones', disponible: true, materia: 'matematicas' },
+    { id: 'simulacros', emoji: '🏆', nombre: 'Simulacros', filtro: 'simulacros', disponible: true, materia: 'matematicas' },
+    { id: 'numberblocks', emoji: '🧱', nombre: 'Numberblocks', filtro: 'numberblocks-constructor', disponible: true, materia: 'matematicas' },
+    { id: 'kakooma', emoji: '🧠', nombre: 'Kakooma', filtro: 'kakooma', disponible: true, materia: 'matematicas' },
+    { id: 'conteo', emoji: '💠', nombre: 'Conteo', filtro: 'conteo-figuras', disponible: true, materia: 'matematicas' },
+    { id: 'area', emoji: '📐', nombre: 'Área', filtro: 'area-constructor', disponible: true, materia: 'matematicas' },
+    { id: 'fracciones', emoji: '🍕', nombre: 'Fracciones', filtro: 'fraccion-explorer', disponible: true, materia: 'matematicas' },
+    { id: 'angulos', emoji: '📏', nombre: 'Ángulos', filtro: 'angulo-explorer', disponible: true, materia: 'matematicas' },
+    { id: 'frac-operaciones', emoji: '🧮', nombre: 'Op. Fracciones', filtro: 'fraccion-operaciones', disponible: true, materia: 'matematicas' },
+    { id: 'secuencias', emoji: '🔢', nombre: 'Secuencias', filtro: 'secuencias', disponible: true, materia: 'matematicas' },
+    { id: 'detectives', emoji: '🔎', nombre: 'Detectives', filtro: 'tabla-doble-entrada', disponible: true, materia: 'matematicas' },
+    { id: 'operaciones', emoji: '➕', nombre: 'Operaciones', filtro: 'operaciones', disponible: true, materia: 'matematicas' },
+    { id: 'cripto', emoji: '🍇', nombre: 'Cripto', filtro: 'criptoaritmetica', disponible: true, materia: 'matematicas' },
+    { id: 'balanza', emoji: '⚖️', nombre: 'Balanza', filtro: 'balanza-logica', disponible: true, materia: 'matematicas' },
+    { id: 'cubos', emoji: '🧊', nombre: 'Cubos', filtro: 'desarrollo-cubos', disponible: true, materia: 'matematicas' },
+    // English
+    { id: 'word-bank', emoji: '📝', nombre: 'Word Bank', filtro: 'word-bank', disponible: true, materia: 'ingles' },
+    { id: 'verb-conjugator', emoji: '🔤', nombre: 'Conjugation', filtro: 'verb-conjugator', disponible: true, materia: 'ingles' },
+    { id: 'true-or-false', emoji: '✅', nombre: 'True or False', filtro: 'true-or-false', disponible: true, materia: 'ingles' },
   ];
+
+  const tiposDeJuegoFiltrados = tiposDeJuego.filter(t => t.materia === materia);
 
   if (profileLoading) {
     return (
@@ -181,6 +190,9 @@ const Dashboard = () => {
     <PageWrapper>
       <Header title={profile?.nombre ? `Centro de Mando de ${profile.nombre}` : 'Centro de Mando de Chuy'} subtitle={`¡Bienvenido de nuevo, ${profile?.nombre || 'súper explorador'}!`} />
 
+      {/* Materia toggle */}
+      <MateriaToggle materia={materia} onChange={setMateria} />
+
       {/* Tabs móvil */}
       {isMobile && (
         <div className="dashboard-tabs">
@@ -208,6 +220,22 @@ const Dashboard = () => {
       <div className={`dashboard-grid ${isMobile ? 'dashboard-mobile' : ''}`}>
         {/* Columna Principal: Próxima Aventura (Progresión Cronológica) */}
         <main className={`main-column dashboard-section ${!isMobile || tabActivo === 'inicio' ? 'active' : ''}`}>
+          {materia === 'ingles' ? (
+            <section className="widget aventura-widget" style={{ borderTopColor: '#00897b' }}>
+              <h2 className="widget-title">🇬🇧 English Corner</h2>
+              <div className="aventura-content">
+                <p style={{ textAlign: 'center', fontSize: '1.1rem', color: '#00695c' }}>
+                  Practice your English with fun games!
+                </p>
+                <p style={{ textAlign: 'center', color: '#888', fontSize: '0.9rem', marginTop: '10px' }}>
+                  Tap a game type below to get started.
+                </p>
+              </div>
+              <button className="boton-principal" style={{ background: 'linear-gradient(135deg, #00897b, #00695c)' }} onClick={() => navigate('/boveda?filtro=word-bank')}>
+                Explore English Games
+              </button>
+            </section>
+          ) : (
           <section className="widget aventura-widget" style={{ borderTopColor: getColorDelDia() }}>
             {/* Header personalizado */}
             {profile?.nombre && (
@@ -282,6 +310,7 @@ const Dashboard = () => {
               </>
             )}
           </section>
+          )}
         </main>
 
         {/* Columna Secundaria: Progreso y Portales */}
@@ -382,7 +411,7 @@ const Dashboard = () => {
           <section className={`widget exploracion-widget ${isMobile && tabActivo !== 'explorar' ? 'hidden' : ''}`}>
             <h2 className="widget-title">⚡ Accesos Rápidos</h2>
             <div className="accesos-rapidos-mini-grid">
-              {tiposDeJuego.map((tipo) => (
+              {tiposDeJuegoFiltrados.map((tipo) => (
                 <button 
                   key={tipo.id}
                   className={`acceso-rapido-mini ${!tipo.disponible ? 'disabled' : ''}`}

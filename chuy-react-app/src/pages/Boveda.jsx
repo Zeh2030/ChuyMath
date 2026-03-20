@@ -6,6 +6,7 @@ import { useAuth } from '../hooks/useAuth';
 import { useProfile } from '../hooks/useProfile';
 import PageWrapper from '../components/layout/PageWrapper';
 import Header from '../components/layout/Header';
+import MateriaToggle from '../components/layout/MateriaToggle';
 import './Boveda.css';
 
 const Boveda = () => {
@@ -19,27 +20,35 @@ const Boveda = () => {
   const [tabActivo, setTabActivo] = useState('accesos'); // 'accesos' o 'boveda'
   const [filtroGrado, setFiltroGrado] = useState('todos'); // solo simulacros
   const [filtroNivel, setFiltroNivel] = useState('todos'); // solo aventuras/expediciones
+  const [materia, setMateria] = useState('matematicas');
 
   // Definir tipos de juegos disponibles
   const tiposJuegos = [
-    { id: 'aventuras', emoji: '🎯', nombre: 'Aventuras Diarias', tipo: 'aventura', descripcion: 'Aventuras diarias' },
-    { id: 'expediciones', emoji: '🚀', nombre: 'Expediciones', tipo: 'expedicion', descripcion: 'Viajes temáticos' },
-    { id: 'simulacros', emoji: '🏆', nombre: 'Simulacros', tipo: 'simulacro', descripcion: 'Exámenes completos' },
-    { id: 'numberblocks-constructor', emoji: '🧱', nombre: 'Numberblocks', tipo: 'numberblocks-constructor', descripcion: 'Construye rectángulos con bloques' },
-    { id: 'area-constructor', emoji: '📐', nombre: 'Área Constructor', tipo: 'area-constructor', descripcion: 'Mide y calcula áreas' },
-    { id: 'fraccion-explorer', emoji: '🍕', nombre: 'Fracciones', tipo: 'fraccion-explorer', descripcion: 'Aprende fracciones con pizza y chocolate' },
-    { id: 'angulo-explorer', emoji: '📏', nombre: 'Ángulos', tipo: 'angulo-explorer', descripcion: 'Clasifica ángulos y resuelve triángulos' },
-    { id: 'fraccion-operaciones', emoji: '🧮', nombre: 'Operaciones Fracciones', tipo: 'fraccion-operaciones', descripcion: 'Suma, resta, multiplica y divide fracciones' },
-    { id: 'kakooma', emoji: '🧠', nombre: 'Kakooma', tipo: 'kakooma', descripcion: 'Cálculo mental visual' },
-    { id: 'conteo-figuras', emoji: '💠', nombre: 'Conteo de Figuras', tipo: 'conteo-figuras', descripcion: 'Cuenta figuras geométricas' },
-    { id: 'secuencias', emoji: '🔢', nombre: 'Secuencias', tipo: 'secuencia', descripcion: 'Patrones y secuencias' },
-    { id: 'tabla-doble-entrada', emoji: '🔎', nombre: 'Juega al Detective', tipo: 'tabla-doble-entrada', descripcion: 'Resuelve misterios con lógica' },
-    { id: 'operaciones', emoji: '➕', nombre: 'Operaciones', tipo: 'operaciones', descripcion: 'Matemáticas' },
-    { id: 'criptoaritmetica', emoji: '🍇', nombre: 'Criptoaritmetica', tipo: 'criptoaritmetica', descripcion: 'Acertijos matemáticos' },
-    { id: 'balanza-logica', emoji: '⚖️', nombre: 'Balanza Lógica', tipo: 'balanza-logica', descripcion: 'Lógica y equilibrio' },
-    { id: 'desarrollo-cubos', emoji: '🧊', nombre: 'Desarrollo de Cubos', tipo: 'desarrollo-cubos', descripcion: 'Espacios 3D' },
-    { id: 'palabra-del-dia', emoji: '📝', nombre: 'Palabra del Día', tipo: 'palabra-del-dia', descripcion: 'Vocabulario' }
+    // Matemáticas
+    { id: 'aventuras', emoji: '🎯', nombre: 'Aventuras Diarias', tipo: 'aventura', descripcion: 'Aventuras diarias', materia: 'matematicas' },
+    { id: 'expediciones', emoji: '🚀', nombre: 'Expediciones', tipo: 'expedicion', descripcion: 'Viajes temáticos', materia: 'matematicas' },
+    { id: 'simulacros', emoji: '🏆', nombre: 'Simulacros', tipo: 'simulacro', descripcion: 'Exámenes completos', materia: 'matematicas' },
+    { id: 'numberblocks-constructor', emoji: '🧱', nombre: 'Numberblocks', tipo: 'numberblocks-constructor', descripcion: 'Construye rectángulos con bloques', materia: 'matematicas' },
+    { id: 'area-constructor', emoji: '📐', nombre: 'Área Constructor', tipo: 'area-constructor', descripcion: 'Mide y calcula áreas', materia: 'matematicas' },
+    { id: 'fraccion-explorer', emoji: '🍕', nombre: 'Fracciones', tipo: 'fraccion-explorer', descripcion: 'Aprende fracciones con pizza y chocolate', materia: 'matematicas' },
+    { id: 'angulo-explorer', emoji: '📏', nombre: 'Ángulos', tipo: 'angulo-explorer', descripcion: 'Clasifica ángulos y resuelve triángulos', materia: 'matematicas' },
+    { id: 'fraccion-operaciones', emoji: '🧮', nombre: 'Operaciones Fracciones', tipo: 'fraccion-operaciones', descripcion: 'Suma, resta, multiplica y divide fracciones', materia: 'matematicas' },
+    { id: 'kakooma', emoji: '🧠', nombre: 'Kakooma', tipo: 'kakooma', descripcion: 'Cálculo mental visual', materia: 'matematicas' },
+    { id: 'conteo-figuras', emoji: '💠', nombre: 'Conteo de Figuras', tipo: 'conteo-figuras', descripcion: 'Cuenta figuras geométricas', materia: 'matematicas' },
+    { id: 'secuencias', emoji: '🔢', nombre: 'Secuencias', tipo: 'secuencia', descripcion: 'Patrones y secuencias', materia: 'matematicas' },
+    { id: 'tabla-doble-entrada', emoji: '🔎', nombre: 'Juega al Detective', tipo: 'tabla-doble-entrada', descripcion: 'Resuelve misterios con lógica', materia: 'matematicas' },
+    { id: 'operaciones', emoji: '➕', nombre: 'Operaciones', tipo: 'operaciones', descripcion: 'Matemáticas', materia: 'matematicas' },
+    { id: 'criptoaritmetica', emoji: '🍇', nombre: 'Criptoaritmetica', tipo: 'criptoaritmetica', descripcion: 'Acertijos matemáticos', materia: 'matematicas' },
+    { id: 'balanza-logica', emoji: '⚖️', nombre: 'Balanza Lógica', tipo: 'balanza-logica', descripcion: 'Lógica y equilibrio', materia: 'matematicas' },
+    { id: 'desarrollo-cubos', emoji: '🧊', nombre: 'Desarrollo de Cubos', tipo: 'desarrollo-cubos', descripcion: 'Espacios 3D', materia: 'matematicas' },
+    { id: 'palabra-del-dia', emoji: '📝', nombre: 'Palabra del Día', tipo: 'palabra-del-dia', descripcion: 'Vocabulario', materia: 'matematicas' },
+    // English
+    { id: 'word-bank', emoji: '📝', nombre: 'Word Bank', tipo: 'word-bank', descripcion: 'Build sentences in English', materia: 'ingles' },
+    { id: 'verb-conjugator', emoji: '🔤', nombre: 'Conjugation', tipo: 'verb-conjugator', descripcion: 'Conjugate verbs in English', materia: 'ingles' },
+    { id: 'true-or-false', emoji: '✅', nombre: 'True or False', tipo: 'true-or-false', descripcion: 'Is this sentence correct?', materia: 'ingles' },
   ];
+
+  const tiposJuegosFiltrados = tiposJuegos.filter(t => t.materia === materia);
 
   // SIMPLIFICADO: Solo cargar de 'aventuras' y 'simulacros'
   useEffect(() => {
@@ -143,35 +152,44 @@ const Boveda = () => {
     return Array.from(niveles);
   }, [aventuras]);
 
+  // Helper: filtrar por materia (sin campo = matematicas)
+  const filterMateria = (item) => {
+    if (materia === 'matematicas') return !item.materia || item.materia === 'matematicas';
+    return item.materia === materia;
+  };
+
   // SIMPLIFICADO: Filtrar contenido
   const contenidoMostrar = () => {
     let items = [];
-    
+
     // Si el filtro es un tipo específico
     const tipoEspecifico = tiposJuegos.find(t => t.id === filtro);
     if (tipoEspecifico) {
       // Aventuras genéricas (sin tipo específico)
       if (tipoEspecifico.tipo === 'aventura') {
         return aventuras
+          .filter(filterMateria)
           .filter(a => a.tipo === 'aventura')
           .filter(a => filtroNivel === 'todos' ? true : a.nivel === filtroNivel);
       } else {
         // Buscar en ambas colecciones por tipo específico (incluyendo 'expedicion')
         const enAventuras = aventuras
+          .filter(filterMateria)
           .filter(a => a.tipo === tipoEspecifico.tipo)
           .filter(a => filtroNivel === 'todos' ? true : a.nivel === filtroNivel);
         const enSimulacros = simulacros
+          .filter(filterMateria)
           .filter(s => s.tipo === tipoEspecifico.tipo)
           .filter(s => filtroGrado === 'todos' ? true : String(s.grado) === String(filtroGrado));
         return [...enAventuras, ...enSimulacros];
       }
     }
-    
+
     // Filtros generales (todos)
     if (filtro === 'todos') {
       items = [
-        ...aventuras.filter(a => filtroNivel === 'todos' ? true : a.nivel === filtroNivel),
-        ...simulacros.filter(s => filtroGrado === 'todos' ? true : String(s.grado) === String(filtroGrado))
+        ...aventuras.filter(filterMateria).filter(a => filtroNivel === 'todos' ? true : a.nivel === filtroNivel),
+        ...simulacros.filter(filterMateria).filter(s => filtroGrado === 'todos' ? true : String(s.grado) === String(filtroGrado))
       ];
     }
     return items;
@@ -184,12 +202,12 @@ const Boveda = () => {
     
     // Aventuras genéricas (sin tipo específico)
     if (tipoData.tipo === 'aventura') {
-      return aventuras.filter(a => a.tipo === 'aventura').length;
+      return aventuras.filter(filterMateria).filter(a => a.tipo === 'aventura').length;
     }
-    
+
     // Buscar en ambas colecciones por tipo específico
-    const enAventuras = aventuras.filter(a => a.tipo === tipoData.tipo).length;
-    const enSimulacros = simulacros.filter(s => s.tipo === tipoData.tipo).length;
+    const enAventuras = aventuras.filter(filterMateria).filter(a => a.tipo === tipoData.tipo).length;
+    const enSimulacros = simulacros.filter(filterMateria).filter(s => s.tipo === tipoData.tipo).length;
     return enAventuras + enSimulacros;
   };
 
@@ -211,6 +229,9 @@ const Boveda = () => {
             </div>
           </div>
         )}
+
+        {/* Materia toggle */}
+        <MateriaToggle materia={materia} onChange={(m) => { setMateria(m); setFiltro('todos'); }} />
 
         {/* Tabs para móvil */}
         <div className="boveda-tabs">
@@ -244,7 +265,7 @@ const Boveda = () => {
               <section className="accesos-rapidos-section">
                 <h2 className="section-title">⚡ Accesos Rápidos</h2>
                 <div className="tipos-juegos-grid">
-                  {tiposJuegos.map(tipo => {
+                  {tiposJuegosFiltrados.map(tipo => {
                     const count = contarPorTipo(tipo.id);
                     return (
                       <button
@@ -283,17 +304,17 @@ const Boveda = () => {
                     onClick={() => setFiltro('todos')}
                   >
                     Todo 
-                    <span className="filtro-badge">{aventuras.length + simulacros.length}</span>
+                    <span className="filtro-badge">{aventuras.filter(filterMateria).length + simulacros.filter(filterMateria).length}</span>
                   </button>
-                  <button 
+                  <button
                     className={`filtro-btn ${filtro === 'aventuras' ? 'activo' : ''}`}
                     onClick={() => setFiltro('aventuras')}
                   >
                     🌟 Aventuras
                     <span className="filtro-badge">{contarPorTipo('aventuras')}</span>
                   </button>
-                  {/* Filtros dinámicos por cada tipo de simulacro que tenga contenido */}
-                  {tiposJuegos.filter(t => t.tipo !== 'aventura').map(tipo => {
+                  {/* Filtros dinámicos por cada tipo que tenga contenido */}
+                  {tiposJuegosFiltrados.filter(t => t.tipo !== 'aventura').map(tipo => {
                     const count = contarPorTipo(tipo.id);
                     if (count === 0) return null;
                     return (

@@ -1,0 +1,74 @@
+{
+  "id": "2026-03-19_true-or-false-present-simple-basico",
+  "titulo": "True or False: Present Simple",
+  "descripcion": "Is this English sentence correct? You decide!",
+  "tipo": "true-or-false",
+  "materia": "ingles",
+  "nivel": "basico",
+  "misiones": [
+    {
+      "id": "mision-tof-present-simple",
+      "tipo": "true-or-false",
+      "titulo": "Correct or Incorrect?",
+      "instruccion": "Read the sentence and decide if it is grammatically correct.",
+      "retos": [
+        {
+          "oracion": "She play basketball on Saturdays",
+          "traduccion": "Ella juega basketball los sabados",
+          "correcto": false,
+          "correccion": "She plays basketball on Saturdays",
+          "explicacion": "Con She se usa plays, no play (tercera persona lleva -s)"
+        },
+        {
+          "oracion": "I drink milk every day",
+          "traduccion": "Yo tomo leche todos los dias",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Correcto! Con I el verbo va sin cambios"
+        },
+        {
+          "oracion": "He gos to school",
+          "traduccion": "El va a la escuela",
+          "correcto": false,
+          "correccion": "He goes to school",
+          "explicacion": "Go es irregular: con He/She/It se escribe goes, no gos"
+        },
+        {
+          "oracion": "They watch TV at night",
+          "traduccion": "Ellos ven TV en la noche",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Correcto! Con They el verbo va sin -s"
+        },
+        {
+          "oracion": "She studys English on Mondays",
+          "traduccion": "Ella estudia ingles los lunes",
+          "correcto": false,
+          "correccion": "She studies English on Mondays",
+          "explicacion": "Study cambia a studies con She (la -y cambia a -ies)"
+        },
+        {
+          "oracion": "We eat lunch at school",
+          "traduccion": "Nosotros comemos en la escuela",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Correcto! Con We el verbo va sin cambios"
+        },
+        {
+          "oracion": "He don't like vegetables",
+          "traduccion": "A el no le gustan las verduras",
+          "correcto": false,
+          "correccion": "He doesn't like vegetables",
+          "explicacion": "Con He/She/It se usa doesn't, no don't"
+        },
+        {
+          "oracion": "Does she speak Spanish?",
+          "traduccion": "Ella habla espanol?",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Correcto! Para preguntas con She se usa Does + verbo base"
+        }
+      ]
+    }
+  ]
+}

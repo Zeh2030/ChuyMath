@@ -1,0 +1,60 @@
+{
+  "id": "2026-03-19_word-bank-present-simple-basico",
+  "titulo": "Word Bank: Present Simple Sentences",
+  "descripcion": "Build sentences in English using the Present Simple tense!",
+  "tipo": "word-bank",
+  "materia": "ingles",
+  "nivel": "basico",
+  "misiones": [
+    {
+      "id": "mision-wb-present-simple",
+      "tipo": "word-bank",
+      "titulo": "Build the Sentence!",
+      "instruccion": "Tap the words in the correct order to build the English sentence.",
+      "retos": [
+        {
+          "oracion_es": "Ella come sandia en el parque",
+          "palabras": ["She", "eats", "watermelon", "in", "the", "park"],
+          "respuesta": ["She", "eats", "watermelon", "in", "the", "park"],
+          "palabras_extra": ["eat", "a"],
+          "explicacion": "She eats (tercera persona: he/she/it lleva -s)"
+        },
+        {
+          "oracion_es": "Yo juego futbol todos los dias",
+          "palabras": ["I", "play", "soccer", "every", "day"],
+          "respuesta": ["I", "play", "soccer", "every", "day"],
+          "palabras_extra": ["plays", "the"],
+          "explicacion": "I play (primera persona: sin -s)"
+        },
+        {
+          "oracion_es": "El salta en la calle muy feliz",
+          "palabras": ["He", "jumps", "in", "the", "street", "very", "happy"],
+          "respuesta": ["He", "jumps", "in", "the", "street", "very", "happy"],
+          "palabras_extra": ["jump"],
+          "explicacion": "He jumps (tercera persona: he/she/it lleva -s)"
+        },
+        {
+          "oracion_es": "Nosotros bailamos juntos en la escuela",
+          "palabras": ["We", "dance", "together", "at", "school"],
+          "respuesta": ["We", "dance", "together", "at", "school"],
+          "palabras_extra": ["dances", "the"],
+          "explicacion": "We dance (we/they/I/you: sin -s)"
+        },
+        {
+          "oracion_es": "Ellos toman jugo de naranja en la casa",
+          "palabras": ["They", "drink", "orange", "juice", "at", "home"],
+          "respuesta": ["They", "drink", "orange", "juice", "at", "home"],
+          "palabras_extra": ["drinks", "the"],
+          "explicacion": "They drink (they: sin -s)"
+        },
+        {
+          "oracion_es": "Ella estudia en la tarde",
+          "palabras": ["She", "studies", "in", "the", "afternoon"],
+          "respuesta": ["She", "studies", "in", "the", "afternoon"],
+          "palabras_extra": ["study"],
+          "explicacion": "She studies (verbos que terminan en -y: cambia a -ies con he/she/it)"
+        }
+      ]
+    }
+  ]
+}

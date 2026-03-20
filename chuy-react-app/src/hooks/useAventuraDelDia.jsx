@@ -52,10 +52,10 @@ export const useAventuraDelDia = (userId) => {
           }
         }
 
-        // 4. Filtrar aventuras NO completadas
-        const aventurasSinCompletar = todasLasAventuras.filter(
-          av => !aventurasCompletadasIds.includes(av.id)
-        );
+        // 4. Filtrar aventuras NO completadas (solo matemáticas)
+        const aventurasSinCompletar = todasLasAventuras
+          .filter(av => !av.materia || av.materia === 'matematicas')
+          .filter(av => !aventurasCompletadasIds.includes(av.id));
 
         if (aventurasSinCompletar.length === 0) {
           // Todas completadas

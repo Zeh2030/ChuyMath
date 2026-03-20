@@ -1,0 +1,90 @@
+{
+  "id": "2026-03-19_verb-conjugator-present-simple-basico",
+  "titulo": "Verb Conjugation: Present Simple",
+  "descripcion": "Learn when to use do/does and when to add -s to verbs!",
+  "tipo": "verb-conjugator",
+  "materia": "ingles",
+  "nivel": "basico",
+  "misiones": [
+    {
+      "id": "mision-vc-present-simple",
+      "tipo": "verb-conjugator",
+      "titulo": "Conjugate the Verb!",
+      "instruccion": "Choose the correct form of the verb for each pronoun.",
+      "retos": [
+        {
+          "pronombre": "He",
+          "verbo_base": "play",
+          "opciones": ["play", "plays", "playes"],
+          "respuesta": 1,
+          "oracion_completa": "He plays soccer every day",
+          "traduccion": "El juega futbol todos los dias",
+          "regla": "Con He/She/It se agrega -s al verbo"
+        },
+        {
+          "pronombre": "They",
+          "verbo_base": "eat",
+          "opciones": ["eats", "eat", "eating"],
+          "respuesta": 1,
+          "oracion_completa": "They eat breakfast at 7",
+          "traduccion": "Ellos desayunan a las 7",
+          "regla": "Con They/We/I/You el verbo va sin -s"
+        },
+        {
+          "pronombre": "She",
+          "verbo_base": "study",
+          "opciones": ["studys", "studies", "study"],
+          "respuesta": 1,
+          "oracion_completa": "She studies in the afternoon",
+          "traduccion": "Ella estudia en la tarde",
+          "regla": "Verbos que terminan en -y: con He/She/It cambian -y por -ies"
+        },
+        {
+          "pronombre": "I",
+          "verbo_base": "drink",
+          "opciones": ["drinks", "drink", "drinkes"],
+          "respuesta": 1,
+          "oracion_completa": "I drink milk every day",
+          "traduccion": "Yo tomo leche todos los dias",
+          "regla": "Con I el verbo va sin cambios"
+        },
+        {
+          "pronombre": "She",
+          "verbo_base": "watch",
+          "opciones": ["watchs", "watch", "watches"],
+          "respuesta": 2,
+          "oracion_completa": "She watches TV on Sundays",
+          "traduccion": "Ella ve TV los domingos",
+          "regla": "Verbos que terminan en -ch/-sh/-x/-ss: se agrega -es con He/She/It"
+        },
+        {
+          "pronombre": "We",
+          "verbo_base": "go",
+          "opciones": ["goes", "go", "gos"],
+          "respuesta": 1,
+          "oracion_completa": "We go to school on Mondays",
+          "traduccion": "Nosotros vamos a la escuela los lunes",
+          "regla": "Con We el verbo va sin cambios"
+        },
+        {
+          "pronombre": "He",
+          "verbo_base": "go",
+          "opciones": ["go", "gos", "goes"],
+          "respuesta": 2,
+          "oracion_completa": "He goes to the park after school",
+          "traduccion": "El va al parque despues de la escuela",
+          "regla": "Go es especial: con He/She/It se escribe goes"
+        },
+        {
+          "pronombre": "It",
+          "verbo_base": "rain",
+          "opciones": ["rain", "rains", "raines"],
+          "respuesta": 1,
+          "oracion_completa": "It rains a lot in summer",
+          "traduccion": "Llueve mucho en verano",
+          "regla": "Con It (para clima, animales, cosas) se agrega -s"
+        }
+      ]
+    }
+  ]
+}

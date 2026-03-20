@@ -16,6 +16,9 @@ import AreaConstructor from './tipos/AreaConstructor';
 import FraccionExplorer from './tipos/FraccionExplorer';
 import AnguloExplorer from './tipos/AnguloExplorer';
 import FraccionOperaciones from './tipos/FraccionOperaciones';
+import WordBank from './tipos/WordBank';
+import VerbConjugator from './tipos/VerbConjugator';
+import TrueOrFalse from './tipos/TrueOrFalse';
 import './MisionRenderer.css';
 
 /**
@@ -231,6 +234,34 @@ const MisionRenderer = ({
       case 'fraccion-operaciones':
         return (
           <FraccionOperaciones
+            key={mision.id}
+            mision={mision}
+            onCompletar={onCompletar}
+          />
+        );
+
+      // === English game types ===
+      case 'word-bank':
+        return (
+          <WordBank
+            key={mision.id}
+            mision={mision}
+            onCompletar={onCompletar}
+          />
+        );
+
+      case 'verb-conjugator':
+        return (
+          <VerbConjugator
+            key={mision.id}
+            mision={mision}
+            onCompletar={onCompletar}
+          />
+        );
+
+      case 'true-or-false':
+        return (
+          <TrueOrFalse
             key={mision.id}
             mision={mision}
             onCompletar={onCompletar}

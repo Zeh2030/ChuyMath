@@ -1,0 +1,64 @@
+.materia-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 16px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+  padding: 4px;
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.materia-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  background: transparent;
+  color: #888;
+}
+
+.materia-btn:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.materia-btn.active {
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.materia-mates.active {
+  background: linear-gradient(135deg, #7c4dff, #651fff);
+}
+
+.materia-english.active {
+  background: linear-gradient(135deg, #00897b, #00695c);
+}
+
+.materia-emoji {
+  font-size: 1.2rem;
+}
+
+.materia-label {
+  font-size: 0.95rem;
+}
+
+@media (max-width: 480px) {
+  .materia-toggle {
+    max-width: 280px;
+  }
+  .materia-btn {
+    padding: 8px 14px;
+    font-size: 0.9rem;
+  }
+}
