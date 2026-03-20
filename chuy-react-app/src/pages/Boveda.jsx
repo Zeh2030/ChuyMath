@@ -46,6 +46,9 @@ const Boveda = () => {
     { id: 'word-bank', emoji: '📝', nombre: 'Word Bank', tipo: 'word-bank', descripcion: 'Build sentences in English', materia: 'ingles' },
     { id: 'verb-conjugator', emoji: '🔤', nombre: 'Conjugation', tipo: 'verb-conjugator', descripcion: 'Conjugate verbs in English', materia: 'ingles' },
     { id: 'true-or-false', emoji: '✅', nombre: 'True or False', tipo: 'true-or-false', descripcion: 'Is this sentence correct?', materia: 'ingles' },
+    { id: 'fill-the-gap', emoji: '🔲', nombre: 'Fill the Gap', tipo: 'fill-the-gap', descripcion: 'Complete the missing word', materia: 'ingles' },
+    { id: 'tap-the-pairs', emoji: '🔗', nombre: 'Tap the Pairs', tipo: 'tap-the-pairs', descripcion: 'Match English and Spanish', materia: 'ingles' },
+    { id: 'sentence-transform', emoji: '🔄', nombre: 'Transform', tipo: 'sentence-transform', descripcion: 'Change sentence form', materia: 'ingles' },
   ];
 
   const tiposJuegosFiltrados = tiposJuegos.filter(t => t.materia === materia);

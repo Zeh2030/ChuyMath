@@ -1,0 +1,45 @@
+{
+  "id": "2026-03-19_tap-the-pairs-present-simple-basico",
+  "titulo": "Tap the Pairs: Present Simple",
+  "descripcion": "Match the Spanish sentence with its English translation!",
+  "tipo": "tap-the-pairs",
+  "materia": "ingles",
+  "nivel": "basico",
+  "misiones": [
+    {
+      "id": "mision-ttp-present-simple-1",
+      "tipo": "tap-the-pairs",
+      "titulo": "Match the Sentences!",
+      "instruccion": "Tap one from each column to match Spanish with English.",
+      "retos": [
+        {
+          "pares": [
+            { "es": "Yo juego", "en": "I play" },
+            { "es": "El juega", "en": "He plays" },
+            { "es": "Ella juega", "en": "She plays" },
+            { "es": "Nosotros jugamos", "en": "We play" },
+            { "es": "Ellos juegan", "en": "They play" }
+          ]
+        },
+        {
+          "pares": [
+            { "es": "Ella come sandia", "en": "She eats watermelon" },
+            { "es": "El salta feliz", "en": "He jumps happy" },
+            { "es": "Yo tomo leche", "en": "I drink milk" },
+            { "es": "Nosotros bailamos", "en": "We dance" },
+            { "es": "Ellos estudian", "en": "They study" }
+          ]
+        },
+        {
+          "pares": [
+            { "es": "Juega el?", "en": "Does he play?" },
+            { "es": "Juegas tu?", "en": "Do you play?" },
+            { "es": "El no juega", "en": "He doesn't play" },
+            { "es": "Yo no juego", "en": "I don't play" },
+            { "es": "Juegan ellos?", "en": "Do they play?" }
+          ]
+        }
+      ]
+    }
+  ]
+}

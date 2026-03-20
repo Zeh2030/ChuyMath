@@ -1,0 +1,74 @@
+{
+  "id": "2026-03-19_fill-the-gap-do-does-basico",
+  "titulo": "Fill the Gap: Do, Does, Don't, Doesn't",
+  "descripcion": "Complete sentences with the correct auxiliary verb!",
+  "tipo": "fill-the-gap",
+  "materia": "ingles",
+  "nivel": "basico",
+  "misiones": [
+    {
+      "id": "mision-ftg-do-does",
+      "tipo": "fill-the-gap",
+      "titulo": "Do or Does?",
+      "instruccion": "Choose the correct word to complete the sentence.",
+      "retos": [
+        {
+          "oracion": "___ you play soccer?",
+          "traduccion": "Juegas futbol?",
+          "opciones": ["Do", "Does", "Don't", "Doesn't"],
+          "respuesta": 0,
+          "explicacion": "Do you play? - Con You se usa Do para preguntar"
+        },
+        {
+          "oracion": "___ she speak English?",
+          "traduccion": "Ella habla ingles?",
+          "opciones": ["Do", "Does", "Don't", "Doesn't"],
+          "respuesta": 1,
+          "explicacion": "Does she speak? - Con She se usa Does para preguntar"
+        },
+        {
+          "oracion": "They ___ go to the cinema on Mondays.",
+          "traduccion": "Ellos no van al cine los lunes.",
+          "opciones": ["do", "does", "don't", "doesn't"],
+          "respuesta": 2,
+          "explicacion": "They don't go - Con They se usa don't para negar"
+        },
+        {
+          "oracion": "He ___ like vegetables.",
+          "traduccion": "A el no le gustan las verduras.",
+          "opciones": ["do", "does", "don't", "doesn't"],
+          "respuesta": 3,
+          "explicacion": "He doesn't like - Con He se usa doesn't para negar"
+        },
+        {
+          "oracion": "___ they play basketball?",
+          "traduccion": "Ellos juegan basketball?",
+          "opciones": ["Do", "Does", "Don't", "Doesn't"],
+          "respuesta": 0,
+          "explicacion": "Do they play? - Con They se usa Do para preguntar"
+        },
+        {
+          "oracion": "She ___ eat breakfast every day.",
+          "traduccion": "Ella no desayuna todos los dias.",
+          "opciones": ["do", "does", "don't", "doesn't"],
+          "respuesta": 3,
+          "explicacion": "She doesn't eat - Con She se usa doesn't para negar"
+        },
+        {
+          "oracion": "I ___ always have breakfast.",
+          "traduccion": "Yo no siempre desayuno.",
+          "opciones": ["do", "does", "don't", "doesn't"],
+          "respuesta": 2,
+          "explicacion": "I don't always have - Con I se usa don't para negar"
+        },
+        {
+          "oracion": "___ he go to school on Saturdays?",
+          "traduccion": "El va a la escuela los sabados?",
+          "opciones": ["Do", "Does", "Don't", "Doesn't"],
+          "respuesta": 1,
+          "explicacion": "Does he go? - Con He se usa Does para preguntar"
+        }
+      ]
+    }
+  ]
+}

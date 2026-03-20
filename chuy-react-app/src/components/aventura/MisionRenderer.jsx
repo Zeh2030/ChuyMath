@@ -19,6 +19,9 @@ import FraccionOperaciones from './tipos/FraccionOperaciones';
 import WordBank from './tipos/WordBank';
 import VerbConjugator from './tipos/VerbConjugator';
 import TrueOrFalse from './tipos/TrueOrFalse';
+import FillTheGap from './tipos/FillTheGap';
+import TapThePairs from './tipos/TapThePairs';
+import SentenceTransform from './tipos/SentenceTransform';
 import './MisionRenderer.css';
 
 /**
@@ -262,6 +265,33 @@ const MisionRenderer = ({
       case 'true-or-false':
         return (
           <TrueOrFalse
+            key={mision.id}
+            mision={mision}
+            onCompletar={onCompletar}
+          />
+        );
+
+      case 'fill-the-gap':
+        return (
+          <FillTheGap
+            key={mision.id}
+            mision={mision}
+            onCompletar={onCompletar}
+          />
+        );
+
+      case 'tap-the-pairs':
+        return (
+          <TapThePairs
+            key={mision.id}
+            mision={mision}
+            onCompletar={onCompletar}
+          />
+        );
+
+      case 'sentence-transform':
+        return (
+          <SentenceTransform
             key={mision.id}
             mision={mision}
             onCompletar={onCompletar}

@@ -1,0 +1,90 @@
+{
+  "id": "2026-03-19_sentence-transform-present-simple-basico",
+  "titulo": "Sentence Transform: Present Simple",
+  "descripcion": "Transform sentences between affirmative, negative, and question forms!",
+  "tipo": "sentence-transform",
+  "materia": "ingles",
+  "nivel": "basico",
+  "misiones": [
+    {
+      "id": "mision-st-present-simple",
+      "tipo": "sentence-transform",
+      "titulo": "Transform the Sentence!",
+      "instruccion": "Change the sentence to the form shown. Use the word bank!",
+      "retos": [
+        {
+          "modo": "negativo",
+          "oracion_original": "She plays basketball",
+          "traduccion": "Ella juega basketball",
+          "palabras": ["She", "doesn't", "play", "basketball"],
+          "respuesta": ["She", "doesn't", "play", "basketball"],
+          "palabras_extra": ["don't", "plays"],
+          "explicacion": "Con She: doesn't + verbo base (sin -s). She doesn't play."
+        },
+        {
+          "modo": "interrogativo",
+          "oracion_original": "He drinks milk",
+          "traduccion": "El toma leche",
+          "palabras": ["Does", "he", "drink", "milk?"],
+          "respuesta": ["Does", "he", "drink", "milk?"],
+          "palabras_extra": ["Do", "drinks"],
+          "explicacion": "Con He: Does + sujeto + verbo base. Does he drink milk?"
+        },
+        {
+          "modo": "negativo",
+          "oracion_original": "They go to school",
+          "traduccion": "Ellos van a la escuela",
+          "palabras": ["They", "don't", "go", "to", "school"],
+          "respuesta": ["They", "don't", "go", "to", "school"],
+          "palabras_extra": ["doesn't", "goes"],
+          "explicacion": "Con They: don't + verbo base. They don't go to school."
+        },
+        {
+          "modo": "interrogativo",
+          "oracion_original": "She studies English",
+          "traduccion": "Ella estudia ingles",
+          "palabras": ["Does", "she", "study", "English?"],
+          "respuesta": ["Does", "she", "study", "English?"],
+          "palabras_extra": ["Do", "studies"],
+          "explicacion": "Con She: Does + she + verbo base (study, no studies). Does she study English?"
+        },
+        {
+          "modo": "negativo",
+          "oracion_original": "I eat breakfast every day",
+          "traduccion": "Yo desayuno todos los dias",
+          "palabras": ["I", "don't", "eat", "breakfast", "every", "day"],
+          "respuesta": ["I", "don't", "eat", "breakfast", "every", "day"],
+          "palabras_extra": ["doesn't"],
+          "explicacion": "Con I: don't + verbo base. I don't eat breakfast every day."
+        },
+        {
+          "modo": "interrogativo",
+          "oracion_original": "You play soccer",
+          "traduccion": "Tu juegas futbol",
+          "palabras": ["Do", "you", "play", "soccer?"],
+          "respuesta": ["Do", "you", "play", "soccer?"],
+          "palabras_extra": ["Does", "plays"],
+          "explicacion": "Con You: Do + you + verbo base. Do you play soccer?"
+        },
+        {
+          "modo": "negativo",
+          "oracion_original": "He watches TV at night",
+          "traduccion": "El ve TV en la noche",
+          "palabras": ["He", "doesn't", "watch", "TV", "at", "night"],
+          "respuesta": ["He", "doesn't", "watch", "TV", "at", "night"],
+          "palabras_extra": ["don't", "watches"],
+          "explicacion": "Con He: doesn't + verbo base (watch, no watches). He doesn't watch TV."
+        },
+        {
+          "modo": "interrogativo",
+          "oracion_original": "We dance at school",
+          "traduccion": "Nosotros bailamos en la escuela",
+          "palabras": ["Do", "we", "dance", "at", "school?"],
+          "respuesta": ["Do", "we", "dance", "at", "school?"],
+          "palabras_extra": ["Does", "dances"],
+          "explicacion": "Con We: Do + we + verbo base. Do we dance at school?"
+        }
+      ]
+    }
+  ]
+}
