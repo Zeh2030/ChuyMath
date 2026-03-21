@@ -2,41 +2,11 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import abcjs from 'abcjs';
 import './MusicPrompter.css';
 
-/**
- * Estima el total de beats en una cadena de notación ABC.
- * Asume L:1/4 (cada nota sin modificador = 1 beat).
- */
-function estimateTotalBeats(abcNotation) {
-  const lines = abcNotation.split('\n');
-  const notesLine = lines
-    .filter(l => l && !l.match(/^[A-Z]:/))
-    .join(' ');
-
-  let beats = 0;
-  const noteRegex = /([A-Ga-gz][',]*)((\d+)?(\/(\d+))?)/g;
-  let match;
-  while ((match = noteRegex.exec(notesLine)) !== null) {
-    const fullDuration = match[2];
-    if (!fullDuration || fullDuration === '') {
-      beats += 1;
-    } else if (match[3] && !match[4]) {
-      beats += parseInt(match[3], 10);
-    } else if (match[4]) {
-      const num = match[3] ? parseInt(match[3], 10) : 1;
-      const den = parseInt(match[5], 10);
-      beats += num / den;
-    } else {
-      beats += 1;
-    }
-  }
-  return Math.max(beats, 1);
-}
-
 const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar }) => {
   const [estado, setEstado] = useState('parado');
   const [bpmActual, setBpmActual] = useState(bpm || 80);
   const [sonidoOn, setSonidoOn] = useState(true);
-  const [synthReady, setSynthReady] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   const containerRef = useRef(null);
   const abcTargetRef = useRef(null);
@@ -47,9 +17,10 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar }) => {
   const viewportWidthRef = useRef(600);
   const pixelsPerSecondRef = useRef(0);
   const playheadOffsetRef = useRef(150);
+  const audioDurationRef = useRef(0);
 
   // Audio refs
-  const synthControlRef = useRef(null);
+  const synthRef = useRef(null);
   const visualObjRef = useRef(null);
   const audioContextRef = useRef(null);
 
@@ -74,32 +45,34 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar }) => {
       if (svg) {
         totalWidthRef.current = svg.getBoundingClientRect().width;
       }
-      if (containerRef.current) {
-        viewportWidthRef.current = containerRef.current.clientWidth;
-        playheadOffsetRef.current = viewportWidthRef.current * 0.25;
-      }
-      recalcSpeed();
+      measureViewport();
       translateXRef.current = 0;
       applyTransform();
+
+      // Init synth con BPM actual
+      prepareSynth(bpmActual);
     });
 
-    // Inicializar sintetizador
-    initSynth();
-
     return () => {
-      // Cleanup synth
-      if (synthControlRef.current) {
-        try { synthControlRef.current.stop(); } catch(e) {}
+      if (synthRef.current) {
+        try { synthRef.current.stop(); } catch(e) {}
       }
     };
   }, [abcNotation]);
 
-  // --- Inicializar sintetizador de audio ---
-  const initSynth = async () => {
+  // --- Medir viewport ---
+  const measureViewport = useCallback(() => {
+    if (containerRef.current) {
+      viewportWidthRef.current = containerRef.current.clientWidth;
+      playheadOffsetRef.current = viewportWidthRef.current * 0.25;
+    }
+  }, []);
+
+  // --- Preparar synth y calibrar scroll con duración real ---
+  const prepareSynth = async (qpm) => {
     try {
       if (!visualObjRef.current) return;
 
-      // Crear AudioContext si no existe
       if (!audioContextRef.current) {
         const AudioContext = window.AudioContext || window.webkitAudioContext;
         audioContextRef.current = new AudioContext();
@@ -109,36 +82,79 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar }) => {
       await synth.init({
         visualObj: visualObjRef.current,
         audioContext: audioContextRef.current,
-        millisecondsPerMeasure: undefined, // Usará el tempo del ABC
         options: {
-          qpm: bpmActual, // quarters per minute
+          qpm: qpm,
           soundFontUrl: 'https://paulrosen.github.io/midi-js-soundfonts/FluidR3_GM/',
-          program: 0, // Acoustic Grand Piano
+          program: 0,
         },
       });
 
       await synth.prime();
-      synthControlRef.current = synth;
-      setSynthReady(true);
+
+      // Obtener duración real del audio (fuente de verdad)
+      const realDuration = synth.duration;
+      audioDurationRef.current = realDuration;
+
+      // Calibrar scroll con duración real del audio
+      const scrollableWidth = totalWidthRef.current;
+      pixelsPerSecondRef.current = scrollableWidth > 0 && realDuration > 0
+        ? scrollableWidth / realDuration
+        : 0;
+
+      synthRef.current = synth;
     } catch (err) {
       console.warn('Audio synth no disponible:', err);
-      setSynthReady(false);
+      // Fallback: calcular sin audio
+      calibrateScrollFallback(qpm);
     }
   };
 
-  // --- Recalcular velocidad ---
-  const recalcSpeed = useCallback(() => {
-    const totalBeats = estimateTotalBeats(abcNotation);
-    const totalDurationSec = (totalBeats / bpmActual) * 60;
-    const scrollableWidth = totalWidthRef.current;
-    pixelsPerSecondRef.current = scrollableWidth > 0
-      ? scrollableWidth / totalDurationSec
-      : 0;
-  }, [abcNotation, bpmActual]);
+  // Fallback si synth no funciona
+  const calibrateScrollFallback = (qpm) => {
+    const lines = abcNotation.split('\n');
+    const notesLine = lines.filter(l => l && !l.match(/^[A-Z]:/)).join(' ');
+    let beats = 0;
+    const noteRegex = /([A-Ga-gz][',]*)((\d+)?(\/(\d+))?)/g;
+    let match;
+    while ((match = noteRegex.exec(notesLine)) !== null) {
+      const d = match[2];
+      if (!d || d === '') beats += 1;
+      else if (match[3] && !match[4]) beats += parseInt(match[3], 10);
+      else if (match[4]) {
+        const num = match[3] ? parseInt(match[3], 10) : 1;
+        beats += num / parseInt(match[5], 10);
+      } else beats += 1;
+    }
+    beats = Math.max(beats, 1);
+    const duration = (beats / qpm) * 60;
+    audioDurationRef.current = duration;
+    pixelsPerSecondRef.current = totalWidthRef.current > 0
+      ? totalWidthRef.current / duration : 0;
+  };
 
+  // --- Cambio de BPM: parar, re-preparar, reset ---
   useEffect(() => {
-    recalcSpeed();
-  }, [bpmActual, recalcSpeed]);
+    // Skip en mount inicial (ya se hace en el useEffect de abcNotation)
+    if (!visualObjRef.current) return;
+
+    // Parar todo
+    if (rafIdRef.current) {
+      cancelAnimationFrame(rafIdRef.current);
+      rafIdRef.current = null;
+    }
+    if (synthRef.current) {
+      try { synthRef.current.stop(); } catch(e) {}
+    }
+
+    // Reset posición
+    translateXRef.current = 0;
+    lastTimestampRef.current = null;
+    applyTransform();
+    setEstado('parado');
+
+    // Re-preparar synth con nuevo BPM
+    prepareSynth(bpmActual);
+  }, [bpmActual]);
 
   // --- Aplicar transform CSS ---
   const applyTransform = useCallback(() => {
@@ -187,22 +203,53 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar }) => {
     };
   }, [estado, animate]);
 
+  // --- Fullscreen ---
+  useEffect(() => {
+    const onFsChange = () => {
+      const isFull = !!document.fullscreenElement;
+      setIsFullscreen(isFull);
+      // Recalcular viewport después de transición fullscreen
+      setTimeout(() => {
+        measureViewport();
+        // Recalibrar si está parado
+        if (translateXRef.current === 0) {
+          applyTransform();
+        }
+      }, 300);
+    };
+
+    document.addEventListener('fullscreenchange', onFsChange);
+    document.addEventListener('webkitfullscreenchange', onFsChange);
+    return () => {
+      document.removeEventListener('fullscreenchange', onFsChange);
+      document.removeEventListener('webkitfullscreenchange', onFsChange);
+    };
+  }, [measureViewport, applyTransform]);
+
+  const toggleFullscreen = async () => {
+    try {
+      if (!document.fullscreenElement) {
+        await containerRef.current?.parentElement?.requestFullscreen();
+      } else {
+        await document.exitFullscreen();
+      }
+    } catch (err) {
+      console.warn('Fullscreen no disponible:', err);
+    }
+  };
+
   // --- Handlers ---
   const handlePlay = async () => {
-    // Resumir AudioContext si está suspendido (requiere interacción del usuario)
     if (audioContextRef.current?.state === 'suspended') {
       await audioContextRef.current.resume();
     }
 
-    // Iniciar/reanudar audio
-    if (sonidoOn && synthControlRef.current) {
+    if (sonidoOn && synthRef.current) {
       try {
         if (estado === 'pausado') {
-          synthControlRef.current.resume();
+          synthRef.current.resume();
         } else {
-          // Re-init synth con BPM actual para nuevo play
-          await initSynth();
-          synthControlRef.current.start();
+          synthRef.current.start();
         }
       } catch (err) {
         console.warn('Error al reproducir audio:', err);
@@ -213,8 +260,8 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar }) => {
   };
 
   const handlePause = () => {
-    if (sonidoOn && synthControlRef.current) {
-      try { synthControlRef.current.pause(); } catch(e) {}
+    if (synthRef.current) {
+      try { synthRef.current.pause(); } catch(e) {}
     }
     setEstado('pausado');
   };
@@ -224,21 +271,24 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar }) => {
       cancelAnimationFrame(rafIdRef.current);
       rafIdRef.current = null;
     }
-    if (synthControlRef.current) {
-      try { synthControlRef.current.stop(); } catch(e) {}
+    if (synthRef.current) {
+      try { synthRef.current.stop(); } catch(e) {}
     }
     translateXRef.current = 0;
     lastTimestampRef.current = null;
     applyTransform();
     setEstado('parado');
+
+    // Re-preparar synth para siguiente play
+    prepareSynth(bpmActual);
   };
 
   const handleBpmUp = () => setBpmActual(prev => Math.min(200, prev + 5));
   const handleBpmDown = () => setBpmActual(prev => Math.max(20, prev - 5));
 
   const toggleSonido = () => {
-    if (sonidoOn && synthControlRef.current && estado === 'tocando') {
-      try { synthControlRef.current.stop(); } catch(e) {}
+    if (sonidoOn && synthRef.current && estado === 'tocando') {
+      try { synthRef.current.stop(); } catch(e) {}
     }
     setSonidoOn(prev => !prev);
   };
@@ -247,7 +297,7 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar }) => {
   const esTempoOriginal = bpmActual === bpmOriginal;
 
   return (
-    <div className="mp-container">
+    <div className={`mp-container ${isFullscreen ? 'mp-fullscreen' : ''}`}>
       <div className="mp-header">
         <h3>🎹 {titulo}</h3>
         {autor && <p className="mp-autor">{autor}</p>}
@@ -285,6 +335,14 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar }) => {
           {sonidoOn ? '🔊' : '🔇'}
         </button>
 
+        <button
+          className="mp-btn mp-btn-fullscreen"
+          onClick={toggleFullscreen}
+          title={isFullscreen ? 'Salir de pantalla completa' : 'Pantalla completa'}
+        >
+          {isFullscreen ? '✕' : '⛶'}
+        </button>
+
         <div className="mp-bpm-control">
           <span className="mp-bpm-label">BPM</span>
           <button className="mp-bpm-btn" onClick={handleBpmDown}>−</button>
@@ -305,12 +363,12 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar }) => {
       <p className="mp-instruction">
         {!esTempoOriginal && (
           <span className="mp-tempo-badge">
-            Tempo: {bpmActual < bpmOriginal ? '🐢 Lento' : '🐇 Rápido'} ({bpmActual}/{bpmOriginal})
+            {bpmActual < bpmOriginal ? '🐢 Lento' : '🐇 Rápido'} ({bpmActual}/{bpmOriginal})
           </span>
         )}
         {esTempoOriginal
           ? 'Presiona Play y sigue las notas cuando pasen por la línea roja'
-          : ' — Ajusta la velocidad para practicar'}
+          : ' — Al cambiar BPM se reinicia la canción'}
       </p>
     </div>
   );

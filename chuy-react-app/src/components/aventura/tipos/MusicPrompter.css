@@ -23,17 +23,6 @@
   margin: 0;
 }
 
-.mp-nivel {
-  display: inline-block;
-  background: #e8f4fd;
-  color: #2980b9;
-  padding: 3px 10px;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  margin-top: 6px;
-}
-
 /* Viewport */
 .mp-viewport {
   position: relative;
@@ -84,7 +73,6 @@
   border-radius: 4px;
 }
 
-/* Playhead triangle indicator */
 .mp-playhead::after {
   content: '';
   position: absolute;
@@ -148,6 +136,32 @@
   cursor: not-allowed;
 }
 
+/* Sound toggle */
+.mp-btn-sound-on {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  box-shadow: 0 3px 0 #1f6dad;
+  font-size: 1.2rem;
+  padding: 10px 16px;
+}
+
+.mp-btn-sound-off {
+  background: linear-gradient(135deg, #bdc3c7, #95a5a6);
+  color: white;
+  box-shadow: 0 3px 0 #7f8c8d;
+  font-size: 1.2rem;
+  padding: 10px 16px;
+}
+
+/* Fullscreen toggle */
+.mp-btn-fullscreen {
+  background: linear-gradient(135deg, #8e44ad, #9b59b6);
+  color: white;
+  box-shadow: 0 3px 0 #6c3483;
+  font-size: 1.2rem;
+  padding: 10px 16px;
+}
+
 /* BPM Control */
 .mp-bpm-control {
   display: flex;
@@ -195,23 +209,6 @@
   color: #2c3e50;
 }
 
-/* Sound toggle */
-.mp-btn-sound-on {
-  background: linear-gradient(135deg, #3498db, #2980b9);
-  color: white;
-  box-shadow: 0 3px 0 #1f6dad;
-  font-size: 1.2rem;
-  padding: 10px 16px;
-}
-
-.mp-btn-sound-off {
-  background: linear-gradient(135deg, #bdc3c7, #95a5a6);
-  color: white;
-  box-shadow: 0 3px 0 #7f8c8d;
-  font-size: 1.2rem;
-  padding: 10px 16px;
-}
-
 /* BPM reset button */
 .mp-bpm-reset {
   width: 28px;
@@ -254,6 +251,104 @@
   color: #95a5a6;
 }
 
+/* ===== FULLSCREEN MODE ===== */
+.mp-fullscreen {
+  max-width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 24px;
+  background: #1a1a2e;
+  box-sizing: border-box;
+}
+
+.mp-fullscreen .mp-header h3 {
+  color: #fff;
+  font-size: 1.8rem;
+}
+
+.mp-fullscreen .mp-autor {
+  color: #aaa;
+}
+
+.mp-fullscreen .mp-viewport {
+  flex: 1;
+  height: auto;
+  min-height: 0;
+  border-color: #444;
+  background: #fffef5;
+  border-radius: 16px;
+  margin-bottom: 16px;
+}
+
+.mp-fullscreen .mp-controls {
+  padding: 12px 0;
+  gap: 12px;
+}
+
+.mp-fullscreen .mp-btn {
+  padding: 14px 28px;
+  font-size: 1.15rem;
+  border-radius: 14px;
+}
+
+.mp-fullscreen .mp-btn-sound-on,
+.mp-fullscreen .mp-btn-sound-off,
+.mp-fullscreen .mp-btn-fullscreen {
+  padding: 14px 20px;
+  font-size: 1.4rem;
+}
+
+.mp-fullscreen .mp-bpm-control {
+  background: rgba(255,255,255,0.1);
+  padding: 8px 18px;
+  border-radius: 14px;
+}
+
+.mp-fullscreen .mp-bpm-label {
+  color: #aaa;
+}
+
+.mp-fullscreen .mp-bpm-value {
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.mp-fullscreen .mp-bpm-btn {
+  width: 36px;
+  height: 36px;
+  border-color: #5dade2;
+  color: #5dade2;
+  background: transparent;
+}
+
+.mp-fullscreen .mp-bpm-btn:hover {
+  background: #5dade2;
+  color: #1a1a2e;
+}
+
+.mp-fullscreen .mp-bpm-reset {
+  border-color: #f39c12;
+  color: #f39c12;
+  background: transparent;
+}
+
+.mp-fullscreen .mp-bpm-reset:hover {
+  background: #f39c12;
+  color: #1a1a2e;
+}
+
+.mp-fullscreen .mp-instruction {
+  color: #777;
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+.mp-fullscreen .mp-tempo-badge {
+  background: rgba(254, 243, 205, 0.15);
+  color: #f39c12;
+}
+
 /* Mobile */
 @media (max-width: 600px) {
   .mp-container { padding: 10px; }
@@ -261,4 +356,7 @@
   .mp-btn { padding: 8px 16px; font-size: 0.9rem; }
   .mp-bpm-control { margin-left: 0; margin-top: 8px; }
   .mp-controls { gap: 8px; }
+
+  .mp-fullscreen .mp-btn { padding: 10px 18px; font-size: 1rem; }
+  .mp-fullscreen .mp-header h3 { font-size: 1.3rem; }
 }
