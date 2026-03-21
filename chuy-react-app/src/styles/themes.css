@@ -531,7 +531,8 @@
 }
 
 [data-theme="pizarron"] .coleccion-selector,
-[data-theme="pizarron"] div[style*="background: rgb(232, 246, 243)"] {
+[data-theme="pizarron"] div[style*="background: rgb(232, 246, 243)"],
+[data-theme="pizarron"] div[style*="#e8f6f3"] {
   background: rgba(30, 58, 42, 0.7) !important;
   border-color: rgba(76, 175, 80, 0.4) !important;
 }
@@ -539,6 +540,23 @@
 [data-theme="pizarron"] .coleccion-selector label,
 [data-theme="pizarron"] .coleccion-selector p {
   color: #ccc !important;
+}
+
+[data-theme="pizarron"] label[style*="background"] {
+  background: rgba(20, 40, 30, 0.6) !important;
+  border-color: rgba(76, 175, 80, 0.3) !important;
+  color: #e0e0e0 !important;
+}
+
+[data-theme="pizarron"] label[style*="2px solid"] {
+  border-color: #4CAF50 !important;
+  background: rgba(76, 175, 80, 0.15) !important;
+}
+
+[data-theme="pizarron"] p[style*="background: rgb(248, 249, 250)"],
+[data-theme="pizarron"] p[style*="#f8f9fa"] {
+  background: rgba(20, 40, 30, 0.5) !important;
+  color: #aaa !important;
 }
 
 [data-theme="pizarron"] .tarjeta-desc,
@@ -779,8 +797,10 @@
   color: #FFD600 !important;
 }
 
+/* Migración - colección selector container (inline bg override) */
 [data-theme="espacial"] .coleccion-selector,
-[data-theme="espacial"] div[style*="background: rgb(232, 246, 243)"] {
+[data-theme="espacial"] div[style*="background: rgb(232, 246, 243)"],
+[data-theme="espacial"] div[style*="#e8f6f3"] {
   background: rgba(27, 40, 56, 0.7) !important;
   border-color: rgba(92, 107, 192, 0.4) !important;
 }
@@ -788,6 +808,26 @@
 [data-theme="espacial"] .coleccion-selector label,
 [data-theme="espacial"] .coleccion-selector p {
   color: #ccc !important;
+}
+
+/* Migración - radio button labels (inline styles override) */
+[data-theme="espacial"] label[style*="background"] {
+  background: rgba(13, 27, 42, 0.6) !important;
+  border-color: rgba(92, 107, 192, 0.3) !important;
+  color: #e0e0e0 !important;
+}
+
+/* Selected radio label - brighter border */
+[data-theme="espacial"] label[style*="2px solid"] {
+  border-color: #5C6BC0 !important;
+  background: rgba(92, 107, 192, 0.15) !important;
+}
+
+/* Description paragraph inside selector */
+[data-theme="espacial"] p[style*="background: rgb(248, 249, 250)"],
+[data-theme="espacial"] p[style*="#f8f9fa"] {
+  background: rgba(13, 27, 42, 0.5) !important;
+  color: #aaa !important;
 }
 
 /* Admin Usuarios - list items and small text */
