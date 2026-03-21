@@ -60,6 +60,12 @@ const PageWrapper = ({ children }) => {
             <div className="chalk ch6">∑</div>
             <div className="chalk ch7">√</div>
             <div className="chalk ch8">∞</div>
+            <div className="chalk ch9">%</div>
+            <div className="chalk ch10">△</div>
+            <div className="chalk ch11">∠</div>
+            <div className="chalk ch12">½</div>
+            <div className="chalk ch13">★</div>
+            <div className="chalk ch14">?</div>
           </>
         ) : tema === 'princesa' ? (
           <>

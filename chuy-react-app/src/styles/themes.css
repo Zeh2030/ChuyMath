@@ -416,9 +416,10 @@
 [data-theme="pizarron"] .problema-card,
 [data-theme="pizarron"] .tarjeta-contenido,
 [data-theme="pizarron"] .tipo-juego-card {
-  background: rgba(30, 58, 42, 0.9);
+  background: rgba(26, 53, 40, 0.85);
   color: #e0e0e0;
-  border-color: rgba(76, 175, 80, 0.3);
+  border: 2px dashed rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
 }
 
 [data-theme="pizarron"] .aventura-header,
@@ -442,8 +443,8 @@
 }
 
 [data-theme="pizarron"] .acceso-rapido-mini {
-  background: rgba(30, 58, 42, 0.8);
-  border-color: rgba(76, 175, 80, 0.3);
+  background: rgba(26, 53, 40, 0.7);
+  border: 2px dashed rgba(255, 255, 255, 0.12);
   color: #e0e0e0;
 }
 
@@ -463,8 +464,9 @@
 
 [data-theme="pizarron"] form > div,
 [data-theme="pizarron"] .card {
-  background: rgba(30, 58, 42, 0.9) !important;
+  background: rgba(26, 53, 40, 0.85) !important;
   color: #e0e0e0 !important;
+  border: 2px dashed rgba(255, 255, 255, 0.12) !important;
 }
 
 [data-theme="pizarron"] form > div button {
@@ -484,8 +486,9 @@
 [data-theme="pizarron"] div[style*="background: white"],
 [data-theme="pizarron"] div[style*="background:white"],
 [data-theme="pizarron"] div[style*="rgb(255, 255, 255)"] {
-  background: rgba(30, 58, 42, 0.9) !important;
+  background: rgba(26, 53, 40, 0.85) !important;
   color: #e0e0e0 !important;
+  border: 2px dashed rgba(255, 255, 255, 0.12) !important;
 }
 
 [data-theme="pizarron"] .instrucciones {
@@ -574,7 +577,15 @@
 }
 
 [data-theme="pizarron"] .boveda-header-personalizado {
-  background: linear-gradient(135deg, #1E3A2A, #2E7D32);
+  background: linear-gradient(135deg, #1A3528, #2E5A3E);
+  border: 2px dashed rgba(255, 255, 255, 0.12);
+}
+
+/* Pizarrón: headings look like chalk text */
+[data-theme="pizarron"] h1,
+[data-theme="pizarron"] h2,
+[data-theme="pizarron"] h3 {
+  text-shadow: 0 0 10px rgba(255,255,255,0.08);
 }
 
 /* Espacial dark mode overrides */
