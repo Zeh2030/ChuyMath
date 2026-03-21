@@ -146,7 +146,7 @@ const Perfil = () => {
                 { id: 'oceano', label: 'Océano', color1: '#00BCD4', color2: '#0097A7' },
                 { id: 'explorador', label: 'Explorador', color1: '#4CAF50', color2: '#2E7D32' },
                 { id: 'selva', label: 'Selva', color1: '#1B5E20', color2: '#2E7D32' },
-                { id: 'arcoiris', label: 'Arcoíris', color1: '#FF6B6B', color2: '#FFD93D' },
+                { id: 'arcoiris', label: 'Arcoíris', color1: '#FF6B6B', color2: '#FFD93D', rainbow: true },
                 { id: 'neutro', label: 'Neutro', color1: '#607D8B', color2: '#455A64' },
               ].map((tema) => (
                 <button
@@ -155,7 +155,9 @@ const Perfil = () => {
                   onClick={() => setTemaSeleccionado(tema.id)}
                   style={{
                     ...styles.themeButton,
-                    background: `linear-gradient(135deg, ${tema.color1}, ${tema.color2})`,
+                    background: tema.rainbow
+                      ? 'linear-gradient(135deg, #FF6B6B, #FFD93D, #00B894, #6C5CE7, #A29BFE)'
+                      : `linear-gradient(135deg, ${tema.color1}, ${tema.color2})`,
                     ...(temaSeleccionado === tema.id ? styles.themeSelected : {}),
                   }}
                 >
@@ -164,6 +166,11 @@ const Perfil = () => {
               ))}
             </div>
           </div>
+
+          <button type="submit" style={styles.saveButton} disabled={guardando}>
+            {guardando ? 'Guardando...' : ' Guardar Cambios'}
+          </button>
+          {mensaje && <p style={styles.successMessage}>{mensaje}</p>}
 
           <div style={styles.card}>
             <h3>Mi Avatar</h3>

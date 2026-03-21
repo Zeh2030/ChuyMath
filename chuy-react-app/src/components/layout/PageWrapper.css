@@ -193,7 +193,17 @@
 
 /* ===== Arcoíris theme background ===== */
 .bg-arcoiris {
-  background: linear-gradient(to bottom, #FFF8E1, #FFECB3 50%, #FFE0B2 100%);
+  background: linear-gradient(
+    to bottom,
+    #FFE0E0 0%,
+    #FFF3D4 15%,
+    #FEFFD4 30%,
+    #D4FFE0 45%,
+    #D4F0FF 60%,
+    #E0D4FF 75%,
+    #F5D4FF 90%,
+    #FFE0F0 100%
+  );
 }
 
 /* Arcoíris reuses bubble animation from océano with colorful bubbles */

@@ -483,3 +483,92 @@
 [data-theme="espacial"] .boveda-tabs .tab-btn.active {
   background: linear-gradient(135deg, var(--theme-grad-1), var(--theme-grad-2));
 }
+
+/* Admin pages - override inline white backgrounds for dark theme */
+[data-theme="espacial"] div[style*="background: white"],
+[data-theme="espacial"] div[style*="background:white"],
+[data-theme="espacial"] div[style*="rgb(255, 255, 255)"] {
+  background: rgba(27, 40, 56, 0.9) !important;
+  color: #e0e0e0 !important;
+}
+
+/* Admin pages - form inputs */
+[data-theme="espacial"] input[type="text"],
+[data-theme="espacial"] input[type="email"],
+[data-theme="espacial"] textarea,
+[data-theme="espacial"] select {
+  background: rgba(13, 27, 42, 0.8) !important;
+  color: #fff !important;
+  border-color: rgba(92, 107, 192, 0.4) !important;
+}
+
+/* Admin pages - container text */
+[data-theme="espacial"] div[style*="color: rgb(51, 51, 51)"],
+[data-theme="espacial"] div[style*='color: "#333"'] {
+  color: #e0e0e0 !important;
+}
+
+/* Admin Migración - widget, instrucciones, nota */
+[data-theme="espacial"] .instrucciones {
+  background: rgba(27, 40, 56, 0.7) !important;
+  border-left-color: #5C6BC0 !important;
+}
+
+[data-theme="espacial"] .instrucciones p,
+[data-theme="espacial"] .instrucciones li {
+  color: #ccc !important;
+}
+
+[data-theme="espacial"] .json-textarea {
+  background: rgba(13, 27, 42, 0.8) !important;
+  color: #e0e0e0 !important;
+  border-color: rgba(92, 107, 192, 0.4) !important;
+}
+
+[data-theme="espacial"] .file-upload-section {
+  background: rgba(27, 40, 56, 0.6) !important;
+  border-color: rgba(92, 107, 192, 0.3) !important;
+}
+
+[data-theme="espacial"] .file-label {
+  color: #ccc !important;
+}
+
+[data-theme="espacial"] .nota-importante {
+  background: rgba(40, 35, 20, 0.8) !important;
+  border-left-color: #FFD600 !important;
+}
+
+[data-theme="espacial"] .nota-importante p {
+  color: #ccc !important;
+}
+
+[data-theme="espacial"] .nota-importante code {
+  background: rgba(255, 214, 0, 0.2) !important;
+  color: #FFD600 !important;
+}
+
+[data-theme="espacial"] .coleccion-selector,
+[data-theme="espacial"] div[style*="background: rgb(232, 246, 243)"] {
+  background: rgba(27, 40, 56, 0.7) !important;
+  border-color: rgba(92, 107, 192, 0.4) !important;
+}
+
+[data-theme="espacial"] .coleccion-selector label,
+[data-theme="espacial"] .coleccion-selector p {
+  color: #ccc !important;
+}
+
+/* Admin Usuarios - list items and small text */
+[data-theme="espacial"] small {
+  color: #aaa !important;
+}
+
+[data-theme="espacial"] strong {
+  color: #fff !important;
+}
+
+/* Perfil subtitle */
+[data-theme="espacial"] div[style*="color: rgb(85, 85, 85)"] {
+  color: #ccc !important;
+}
