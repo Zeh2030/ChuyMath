@@ -133,13 +133,13 @@
 }
 
 .boton-calificar {
-  background-color: #2ecc71;
+  background-color: var(--theme-progress-2, #2ecc71);
   color: white;
   box-shadow: 0 4px 0 #27ae60;
 }
 
 .boton-reintentar {
-  background-color: #3498db;
+  background-color: var(--theme-accent, #3498db);
   color: white;
   box-shadow: 0 4px 0 #2980b9;
 }

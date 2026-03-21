@@ -38,7 +38,7 @@
 }
 
 .materia-mates.active {
-  background: linear-gradient(135deg, #7c4dff, #651fff);
+  background: linear-gradient(135deg, var(--theme-grad-1), var(--theme-grad-2));
 }
 
 .materia-english.active {
