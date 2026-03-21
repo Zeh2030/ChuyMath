@@ -213,6 +213,150 @@
   --theme-btn-trofeos-2: #0097A7;
 }
 
+/* ============================================
+   EXPLORADOR - Verde / tierra
+   ============================================ */
+[data-theme="explorador"] {
+  --theme-grad-1: #4CAF50;
+  --theme-grad-2: #2E7D32;
+  --theme-primary: #4CAF50;
+  --theme-primary-dark: #2E7D32;
+  --theme-primary-rgb: 76, 175, 80;
+  --theme-active: #388E3C;
+  --theme-active-rgb: 56, 142, 60;
+  --theme-accent: #8D6E63;
+  --theme-accent-dark: #6D4C41;
+  --theme-bg: #F1F8E9;
+  --theme-card-hover: linear-gradient(135deg, #F1F8E9, #DCEDC8);
+  --theme-btn-hero-1: #FF8F00;
+  --theme-btn-hero-2: #FFB300;
+  --theme-btn-hero-shadow: #2E7D32;
+  --theme-nav-1: #4CAF50;
+  --theme-nav-2: #2E7D32;
+  --theme-progress-1: #4CAF50;
+  --theme-progress-2: #8BC34A;
+  --theme-spinner: #4CAF50;
+  --theme-acceso-hover-1: #4CAF50;
+  --theme-acceso-hover-2: #2E7D32;
+  --theme-acceso-border: #4CAF50;
+  --theme-boveda-header-1: #2E7D32;
+  --theme-boveda-header-2: #4CAF50;
+  --theme-header-btn-1: #4CAF50;
+  --theme-header-btn-2: #2E7D32;
+  --theme-trophy-1: #FF8F00;
+  --theme-trophy-2: #F57C00;
+  --theme-btn-trofeos-1: #4CAF50;
+  --theme-btn-trofeos-2: #2E7D32;
+}
+
+/* ============================================
+   SELVA - Verde intenso / tropical
+   ============================================ */
+[data-theme="selva"] {
+  --theme-grad-1: #1B5E20;
+  --theme-grad-2: #2E7D32;
+  --theme-primary: #2E7D32;
+  --theme-primary-dark: #1B5E20;
+  --theme-primary-rgb: 46, 125, 50;
+  --theme-active: #388E3C;
+  --theme-active-rgb: 56, 142, 60;
+  --theme-accent: #66BB6A;
+  --theme-accent-dark: #43A047;
+  --theme-bg: #E8F5E9;
+  --theme-card-hover: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+  --theme-btn-hero-1: #FFD600;
+  --theme-btn-hero-2: #FFEE58;
+  --theme-btn-hero-shadow: #1B5E20;
+  --theme-nav-1: #2E7D32;
+  --theme-nav-2: #1B5E20;
+  --theme-progress-1: #43A047;
+  --theme-progress-2: #66BB6A;
+  --theme-spinner: #2E7D32;
+  --theme-acceso-hover-1: #2E7D32;
+  --theme-acceso-hover-2: #1B5E20;
+  --theme-acceso-border: #2E7D32;
+  --theme-boveda-header-1: #1B5E20;
+  --theme-boveda-header-2: #2E7D32;
+  --theme-header-btn-1: #2E7D32;
+  --theme-header-btn-2: #1B5E20;
+  --theme-trophy-1: #FFD600;
+  --theme-trophy-2: #FFC107;
+  --theme-btn-trofeos-1: #2E7D32;
+  --theme-btn-trofeos-2: #1B5E20;
+}
+
+/* ============================================
+   ARCOÍRIS - Multicolor / gradientes
+   ============================================ */
+[data-theme="arcoiris"] {
+  --theme-grad-1: #FF6B6B;
+  --theme-grad-2: #FFD93D;
+  --theme-primary: #FF6B6B;
+  --theme-primary-dark: #EE5A24;
+  --theme-primary-rgb: 255, 107, 107;
+  --theme-active: #6C5CE7;
+  --theme-active-rgb: 108, 92, 231;
+  --theme-accent: #00B894;
+  --theme-accent-dark: #00896F;
+  --theme-bg: #FFF8E1;
+  --theme-card-hover: linear-gradient(135deg, #FFF8E1, #FFE0B2);
+  --theme-btn-hero-1: #6C5CE7;
+  --theme-btn-hero-2: #A29BFE;
+  --theme-btn-hero-shadow: #EE5A24;
+  --theme-nav-1: #00B894;
+  --theme-nav-2: #00896F;
+  --theme-progress-1: #FF6B6B;
+  --theme-progress-2: #FFD93D;
+  --theme-spinner: #6C5CE7;
+  --theme-acceso-hover-1: #FF6B6B;
+  --theme-acceso-hover-2: #6C5CE7;
+  --theme-acceso-border: #FF6B6B;
+  --theme-boveda-header-1: #6C5CE7;
+  --theme-boveda-header-2: #A29BFE;
+  --theme-header-btn-1: #00B894;
+  --theme-header-btn-2: #00896F;
+  --theme-trophy-1: #FFD93D;
+  --theme-trophy-2: #FFA502;
+  --theme-btn-trofeos-1: #6C5CE7;
+  --theme-btn-trofeos-2: #A29BFE;
+}
+
+/* ============================================
+   NEUTRO - Gris / minimalista
+   ============================================ */
+[data-theme="neutro"] {
+  --theme-grad-1: #607D8B;
+  --theme-grad-2: #455A64;
+  --theme-primary: #607D8B;
+  --theme-primary-dark: #455A64;
+  --theme-primary-rgb: 96, 125, 139;
+  --theme-active: #546E7A;
+  --theme-active-rgb: 84, 110, 122;
+  --theme-accent: #78909C;
+  --theme-accent-dark: #546E7A;
+  --theme-bg: #FAFAFA;
+  --theme-card-hover: linear-gradient(135deg, #FAFAFA, #F5F5F5);
+  --theme-btn-hero-1: #607D8B;
+  --theme-btn-hero-2: #78909C;
+  --theme-btn-hero-shadow: #37474F;
+  --theme-nav-1: #607D8B;
+  --theme-nav-2: #455A64;
+  --theme-progress-1: #607D8B;
+  --theme-progress-2: #90A4AE;
+  --theme-spinner: #607D8B;
+  --theme-acceso-hover-1: #607D8B;
+  --theme-acceso-hover-2: #455A64;
+  --theme-acceso-border: #607D8B;
+  --theme-boveda-header-1: #455A64;
+  --theme-boveda-header-2: #607D8B;
+  --theme-header-btn-1: #607D8B;
+  --theme-header-btn-2: #455A64;
+  --theme-trophy-1: #FFB300;
+  --theme-trophy-2: #FF8F00;
+  --theme-btn-trofeos-1: #607D8B;
+  --theme-btn-trofeos-2: #455A64;
+}
+
 /* Espacial dark mode overrides */
 [data-theme="espacial"] .widget,
 [data-theme="espacial"] .mision-container,

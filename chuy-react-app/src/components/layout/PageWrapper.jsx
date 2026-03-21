@@ -12,7 +12,33 @@ const PageWrapper = ({ children }) => {
     <div data-theme={tema}>
       {/* Fondo animado */}
       <div className={`background-sky bg-${tema}`}>
-        {tema === 'princesa' ? (
+        {tema === 'explorador' ? (
+          <>
+            <div className="leaf l1">🍃</div>
+            <div className="leaf l2">🍂</div>
+            <div className="leaf l3">🍃</div>
+            <div className="leaf l4">🍂</div>
+            <div className="leaf l5">🍃</div>
+          </>
+        ) : tema === 'selva' ? (
+          <>
+            <div className="butterfly bf1">🦋</div>
+            <div className="butterfly bf2">🦋</div>
+            <div className="butterfly bf3">🦋</div>
+            <div className="butterfly bf4">🦋</div>
+            <div className="butterfly bf5">🦋</div>
+          </>
+        ) : tema === 'arcoiris' ? (
+          <>
+            <div className="rainbow-bubble rb1"></div>
+            <div className="rainbow-bubble rb2"></div>
+            <div className="rainbow-bubble rb3"></div>
+            <div className="rainbow-bubble rb4"></div>
+            <div className="rainbow-bubble rb5"></div>
+            <div className="rainbow-bubble rb6"></div>
+          </>
+        ) : tema === 'neutro' ? null
+        : tema === 'princesa' ? (
           <>
             <div className="sparkle s1"></div>
             <div className="sparkle s2"></div>
