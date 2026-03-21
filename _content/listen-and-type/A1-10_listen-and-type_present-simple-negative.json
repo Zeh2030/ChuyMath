@@ -1,0 +1,55 @@
+{
+  "id": "A1-10_listen-and-type_present-simple-negative",
+  "titulo": "Listen & Type: Present Simple Negative",
+  "descripcion": "Listen to the negative sentence and type it! Train your ear and spelling.",
+  "tipo": "listen-and-type",
+  "materia": "ingles",
+  "tema": "present-simple-negative",
+  "nivel": "A1-10",
+  "misiones": [
+    {
+      "id": "mision-lat-negative",
+      "tipo": "listen-and-type",
+      "titulo": "Listen and Write!",
+      "instruccion": "Press Play to hear the sentence. Then type exactly what you hear!",
+      "retos": [
+        {
+          "texto_en": "I don't play soccer",
+          "traduccion": "Yo no juego futbol",
+          "pista": "I ___ play soccer (4 words)",
+          "explicacion": "I don't play - con I se usa don't + verbo base"
+        },
+        {
+          "texto_en": "She doesn't eat meat",
+          "traduccion": "Ella no come carne",
+          "pista": "She ___ eat meat (4 words)",
+          "explicacion": "She doesn't eat - con She se usa doesn't + verbo base"
+        },
+        {
+          "texto_en": "They don't like rain",
+          "traduccion": "No les gusta la lluvia",
+          "pista": "They ___ like rain (4 words)",
+          "explicacion": "They don't like - con They se usa don't + verbo base"
+        },
+        {
+          "texto_en": "He doesn't go to school",
+          "traduccion": "El no va a la escuela",
+          "pista": "He ___ go to school (5 words)",
+          "explicacion": "He doesn't go - con He se usa doesn't + verbo base"
+        },
+        {
+          "texto_en": "We don't watch TV",
+          "traduccion": "No vemos TV",
+          "pista": "We ___ watch TV (4 words)",
+          "explicacion": "We don't watch - con We se usa don't + verbo base"
+        },
+        {
+          "texto_en": "She doesn't drink milk",
+          "traduccion": "Ella no toma leche",
+          "pista": "She ___ drink milk (4 words)",
+          "explicacion": "She doesn't drink - con She se usa doesn't + verbo base"
+        }
+      ]
+    }
+  ]
+}

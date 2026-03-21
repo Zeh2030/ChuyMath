@@ -1,0 +1,75 @@
+{
+  "id": "A1-10_true-or-false_present-simple-negative",
+  "titulo": "True or False: Present Simple Negative",
+  "descripcion": "Is this negative sentence correct? You decide!",
+  "tipo": "true-or-false",
+  "materia": "ingles",
+  "tema": "present-simple-negative",
+  "nivel": "A1-10",
+  "misiones": [
+    {
+      "id": "mision-tof-negative",
+      "tipo": "true-or-false",
+      "titulo": "Correct or Incorrect?",
+      "instruccion": "Read the negative sentence and decide if it is grammatically correct.",
+      "retos": [
+        {
+          "oracion": "She don't like pizza",
+          "traduccion": "A ella no le gusta la pizza",
+          "correcto": false,
+          "correccion": "She doesn't like pizza",
+          "explicacion": "Con She se usa doesn't, no don't"
+        },
+        {
+          "oracion": "I don't play soccer",
+          "traduccion": "Yo no juego futbol",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Correcto! Con I se usa don't + verbo base"
+        },
+        {
+          "oracion": "He don't go to school",
+          "traduccion": "El no va a la escuela",
+          "correcto": false,
+          "correccion": "He doesn't go to school",
+          "explicacion": "Con He se usa doesn't, no don't"
+        },
+        {
+          "oracion": "They doesn't run",
+          "traduccion": "Ellos no corren",
+          "correcto": false,
+          "correccion": "They don't run",
+          "explicacion": "Con They se usa don't, no doesn't"
+        },
+        {
+          "oracion": "We don't eat meat",
+          "traduccion": "No comemos carne",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Correcto! Con We se usa don't + verbo base"
+        },
+        {
+          "oracion": "She doesn't study English",
+          "traduccion": "Ella no estudia ingles",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Correcto! Con She se usa doesn't + verbo base (study, no studies)"
+        },
+        {
+          "oracion": "I doesn't like rain",
+          "traduccion": "No me gusta la lluvia",
+          "correcto": false,
+          "correccion": "I don't like rain",
+          "explicacion": "Con I se usa don't, no doesn't"
+        },
+        {
+          "oracion": "He doesn't swim",
+          "traduccion": "El no nada",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Correcto! Con He se usa doesn't + verbo base"
+        }
+      ]
+    }
+  ]
+}

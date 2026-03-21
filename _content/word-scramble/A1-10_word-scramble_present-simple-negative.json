@@ -1,0 +1,61 @@
+{
+  "id": "A1-10_word-scramble_present-simple-negative",
+  "titulo": "Word Scramble: Don't vs Doesn't",
+  "descripcion": "Unscramble the letters to form don't or doesn't!",
+  "tipo": "word-scramble",
+  "materia": "ingles",
+  "tema": "present-simple-negative",
+  "nivel": "A1-10",
+  "misiones": [
+    {
+      "id": "mision-ws-negative",
+      "tipo": "word-scramble",
+      "titulo": "Unscramble the Word!",
+      "instruccion": "The letters are mixed up! Put them in order to make the negative helper word. Use the hint!",
+      "retos": [
+        {
+          "respuesta": "don't",
+          "letras_desordenadas": "tdon'",
+          "pista_es": "I ___ play (negativo con I/you/we/they)",
+          "pista_emoji": "❌",
+          "explicacion": "DON'T - I don't play. Con I/you/we/they se usa don't"
+        },
+        {
+          "respuesta": "doesn't",
+          "letras_desordenadas": "tesdon'",
+          "pista_es": "She ___ eat (negativo con he/she/it)",
+          "pista_emoji": "❌",
+          "explicacion": "DOESN'T - She doesn't eat. Con he/she/it se usa doesn't"
+        },
+        {
+          "respuesta": "don't",
+          "letras_desordenadas": "n'odt",
+          "pista_es": "They ___ run (negativo con I/you/we/they)",
+          "pista_emoji": "❌",
+          "explicacion": "DON'T - They don't run. Con they se usa don't"
+        },
+        {
+          "respuesta": "doesn't",
+          "letras_desordenadas": "sn'edot",
+          "pista_es": "He ___ swim (negativo con he/she/it)",
+          "pista_emoji": "❌",
+          "explicacion": "DOESN'T - He doesn't swim. Con he se usa doesn't"
+        },
+        {
+          "respuesta": "don't",
+          "letras_desordenadas": "otn'd",
+          "pista_es": "We ___ dance (negativo con I/you/we/they)",
+          "pista_emoji": "❌",
+          "explicacion": "DON'T - We don't dance. Con we se usa don't"
+        },
+        {
+          "respuesta": "doesn't",
+          "letras_desordenadas": "odetn's",
+          "pista_es": "It ___ rain (negativo con he/she/it)",
+          "pista_emoji": "❌",
+          "explicacion": "DOESN'T - It doesn't rain. Con it se usa doesn't"
+        }
+      ]
+    }
+  ]
+}

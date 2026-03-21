@@ -1,0 +1,37 @@
+{
+  "id": "A1-10_tap-the-pairs_present-simple-negative",
+  "titulo": "Tap the Pairs: Present Simple Negative",
+  "descripcion": "Match the Spanish negative sentence with its English translation!",
+  "tipo": "tap-the-pairs",
+  "materia": "ingles",
+  "tema": "present-simple-negative",
+  "nivel": "A1-10",
+  "misiones": [
+    {
+      "id": "mision-ttp-negative-1",
+      "tipo": "tap-the-pairs",
+      "titulo": "Match the Negative Sentences!",
+      "instruccion": "Tap one from each column to match Spanish with English.",
+      "retos": [
+        {
+          "pares": [
+            { "es": "Yo no juego", "en": "I don't play" },
+            { "es": "Ella no come", "en": "She doesn't eat" },
+            { "es": "Ellos no corren", "en": "They don't run" },
+            { "es": "El no nada", "en": "He doesn't swim" },
+            { "es": "Nosotros no bailamos", "en": "We don't dance" }
+          ]
+        },
+        {
+          "pares": [
+            { "es": "Ella no estudia", "en": "She doesn't study" },
+            { "es": "Yo no tomo leche", "en": "I don't drink milk" },
+            { "es": "El no va", "en": "He doesn't go" },
+            { "es": "Ellos no leen", "en": "They don't read" },
+            { "es": "Tu no cantas", "en": "You don't sing" }
+          ]
+        }
+      ]
+    }
+  ]
+}

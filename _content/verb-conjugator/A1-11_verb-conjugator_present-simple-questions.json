@@ -1,0 +1,91 @@
+{
+  "id": "A1-11_verb-conjugator_present-simple-questions",
+  "titulo": "Verb Conjugation: Present Simple Questions",
+  "descripcion": "Learn to form questions with Do and Does!",
+  "tipo": "verb-conjugator",
+  "materia": "ingles",
+  "tema": "present-simple-questions",
+  "nivel": "A1-11",
+  "misiones": [
+    {
+      "id": "mision-vc-questions",
+      "tipo": "verb-conjugator",
+      "titulo": "Form the Question!",
+      "instruccion": "Choose the correct question form for each pronoun and verb.",
+      "retos": [
+        {
+          "pronombre": "you",
+          "verbo_base": "play",
+          "opciones": ["Do you play?", "Does you play?", "Do you plays?"],
+          "respuesta": 0,
+          "oracion_completa": "Do you play soccer?",
+          "traduccion": "¿Juegas futbol?",
+          "regla": "Con You se usa Do + verbo base"
+        },
+        {
+          "pronombre": "she",
+          "verbo_base": "eat",
+          "opciones": ["Do she eat?", "Does she eat?", "Does she eats?"],
+          "respuesta": 1,
+          "oracion_completa": "Does she eat pizza?",
+          "traduccion": "¿Come ella pizza?",
+          "regla": "Con She se usa Does + verbo base (sin -s)"
+        },
+        {
+          "pronombre": "they",
+          "verbo_base": "run",
+          "opciones": ["Do they run?", "Does they run?", "Do they runs?"],
+          "respuesta": 0,
+          "oracion_completa": "Do they run fast?",
+          "traduccion": "¿Corren ellos rápido?",
+          "regla": "Con They se usa Do + verbo base"
+        },
+        {
+          "pronombre": "he",
+          "verbo_base": "swim",
+          "opciones": ["Do he swim?", "Does he swims?", "Does he swim?"],
+          "respuesta": 2,
+          "oracion_completa": "Does he swim every day?",
+          "traduccion": "¿Nada él todos los días?",
+          "regla": "Con He se usa Does + verbo base (sin -s)"
+        },
+        {
+          "pronombre": "we",
+          "verbo_base": "dance",
+          "opciones": ["Does we dance?", "Do we dance?", "Do we dances?"],
+          "respuesta": 1,
+          "oracion_completa": "Do we dance together?",
+          "traduccion": "¿Bailamos juntos?",
+          "regla": "Con We se usa Do + verbo base"
+        },
+        {
+          "pronombre": "it",
+          "verbo_base": "rain",
+          "opciones": ["Does it rain?", "Do it rain?", "Does it rains?"],
+          "respuesta": 0,
+          "oracion_completa": "Does it rain a lot?",
+          "traduccion": "¿Llueve mucho?",
+          "regla": "Con It se usa Does + verbo base (sin -s)"
+        },
+        {
+          "pronombre": "I",
+          "verbo_base": "need",
+          "opciones": ["Does I need?", "Do I need?", "Do I needs?"],
+          "respuesta": 1,
+          "oracion_completa": "Do I need help?",
+          "traduccion": "¿Necesito ayuda?",
+          "regla": "Con I se usa Do + verbo base"
+        },
+        {
+          "pronombre": "she",
+          "verbo_base": "study",
+          "opciones": ["Do she study?", "Does she studies?", "Does she study?"],
+          "respuesta": 2,
+          "oracion_completa": "Does she study English?",
+          "traduccion": "¿Estudia ella inglés?",
+          "regla": "Con She se usa Does + verbo base (study, no studies)"
+        }
+      ]
+    }
+  ]
+}

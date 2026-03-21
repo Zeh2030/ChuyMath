@@ -1,0 +1,38 @@
+{
+  "id": "A1-12_tap-the-pairs_time-expressions",
+  "titulo": "Tap the Pairs: Time Expressions",
+  "descripcion": "Match the Spanish time expression with its English translation!",
+  "tipo": "tap-the-pairs",
+  "materia": "ingles",
+  "tema": "time-expressions",
+  "nivel": "A1-12",
+  "misiones": [
+    {
+      "id": "mision-ttp-time-expressions-1",
+      "tipo": "tap-the-pairs",
+      "titulo": "Match the Frequency Words!",
+      "instruccion": "Tap one from each column to match Spanish with English.",
+      "retos": [
+        {
+          "pares": [
+            { "es": "siempre", "en": "always" },
+            { "es": "nunca", "en": "never" },
+            { "es": "a veces", "en": "sometimes" },
+            { "es": "usualmente", "en": "usually" },
+            { "es": "seguido", "en": "often" },
+            { "es": "raramente", "en": "rarely" }
+          ]
+        },
+        {
+          "pares": [
+            { "es": "todos los dias", "en": "every day" },
+            { "es": "los lunes", "en": "on Mondays" },
+            { "es": "en la manana", "en": "in the morning" },
+            { "es": "en la noche", "en": "at night" },
+            { "es": "los fines de semana", "en": "on weekends" }
+          ]
+        }
+      ]
+    }
+  ]
+}

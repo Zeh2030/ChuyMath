@@ -1,0 +1,75 @@
+{
+  "id": "A1-11_fill-the-gap_present-simple-questions",
+  "titulo": "Fill the Gap: Present Simple Questions",
+  "descripcion": "Complete the questions with Do, Does, or the correct verb!",
+  "tipo": "fill-the-gap",
+  "materia": "ingles",
+  "tema": "present-simple-questions",
+  "nivel": "A1-11",
+  "misiones": [
+    {
+      "id": "mision-ftg-questions",
+      "tipo": "fill-the-gap",
+      "titulo": "Do or Does?",
+      "instruccion": "Choose the correct word to complete the question or answer.",
+      "retos": [
+        {
+          "oracion": "___ you play soccer?",
+          "traduccion": "¿Juegas futbol?",
+          "opciones": ["Do", "Does", "Don't", "Doesn't"],
+          "respuesta": 0,
+          "explicacion": "Do you play? - Con You se usa Do para preguntar"
+        },
+        {
+          "oracion": "___ she eat pizza?",
+          "traduccion": "¿Come ella pizza?",
+          "opciones": ["Do", "Does", "Don't", "Doesn't"],
+          "respuesta": 1,
+          "explicacion": "Does she eat? - Con She se usa Does para preguntar"
+        },
+        {
+          "oracion": "___ they like music?",
+          "traduccion": "¿Les gusta la música?",
+          "opciones": ["Do", "Does", "Don't", "Doesn't"],
+          "respuesta": 0,
+          "explicacion": "Do they like? - Con They se usa Do para preguntar"
+        },
+        {
+          "oracion": "___ he go to school?",
+          "traduccion": "¿Va él a la escuela?",
+          "opciones": ["Do", "Does", "Don't", "Doesn't"],
+          "respuesta": 1,
+          "explicacion": "Does he go? - Con He se usa Does para preguntar"
+        },
+        {
+          "oracion": "Does she ___ English?",
+          "traduccion": "¿Habla ella inglés?",
+          "opciones": ["speak", "speaks", "speaking", "spoke"],
+          "respuesta": 0,
+          "explicacion": "Does she speak? - Despues de Does el verbo va en forma base (sin -s)"
+        },
+        {
+          "oracion": "Do you ___ milk?",
+          "traduccion": "¿Tomas leche?",
+          "opciones": ["drink", "drinks", "drinking", "drank"],
+          "respuesta": 0,
+          "explicacion": "Do you drink? - Despues de Do el verbo va en forma base"
+        },
+        {
+          "oracion": "Yes, I ___.",
+          "traduccion": "Sí.",
+          "opciones": ["do", "does", "am", "is"],
+          "respuesta": 0,
+          "explicacion": "Yes, I do. - Respuesta corta afirmativa con I usa do"
+        },
+        {
+          "oracion": "No, she ___.",
+          "traduccion": "No.",
+          "opciones": ["don't", "doesn't", "not", "do"],
+          "respuesta": 1,
+          "explicacion": "No, she doesn't. - Respuesta corta negativa con She usa doesn't"
+        }
+      ]
+    }
+  ]
+}

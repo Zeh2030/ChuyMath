@@ -1,0 +1,61 @@
+{
+  "id": "A1-12_word-bank_time-expressions",
+  "titulo": "Word Bank: Time Expressions",
+  "descripcion": "Build sentences with adverbs of frequency in the correct order!",
+  "tipo": "word-bank",
+  "materia": "ingles",
+  "tema": "time-expressions",
+  "nivel": "A1-12",
+  "misiones": [
+    {
+      "id": "mision-wb-time-expressions",
+      "tipo": "word-bank",
+      "titulo": "Build the Sentence!",
+      "instruccion": "Tap the words in the correct order to build the English sentence.",
+      "retos": [
+        {
+          "oracion_es": "Siempre juego futbol",
+          "palabras": ["I", "always", "play", "soccer"],
+          "respuesta": ["I", "always", "play", "soccer"],
+          "palabras_extra": ["plays", "never"],
+          "explicacion": "I always play - el adverbio va ANTES del verbo"
+        },
+        {
+          "oracion_es": "Ella nunca come carne",
+          "palabras": ["She", "never", "eats", "meat"],
+          "respuesta": ["She", "never", "eats", "meat"],
+          "palabras_extra": ["don't", "eat"],
+          "explicacion": "She never eats - never va antes del verbo, y con she se usa eats"
+        },
+        {
+          "oracion_es": "A veces van al parque",
+          "palabras": ["They", "sometimes", "go", "to", "the", "park"],
+          "respuesta": ["They", "sometimes", "go", "to", "the", "park"],
+          "palabras_extra": ["goes", "always"],
+          "explicacion": "They sometimes go - sometimes va antes del verbo go"
+        },
+        {
+          "oracion_es": "El usualmente lee en la noche",
+          "palabras": ["He", "usually", "reads", "at", "night"],
+          "respuesta": ["He", "usually", "reads", "at", "night"],
+          "palabras_extra": ["read", "in"],
+          "explicacion": "He usually reads - usually antes del verbo, at night al final"
+        },
+        {
+          "oracion_es": "Juego futbol todos los dias",
+          "palabras": ["I", "play", "soccer", "every", "day"],
+          "respuesta": ["I", "play", "soccer", "every", "day"],
+          "palabras_extra": ["plays", "always"],
+          "explicacion": "Every day va al final de la oracion"
+        },
+        {
+          "oracion_es": "Ella estudia los lunes",
+          "palabras": ["She", "studies", "on", "Mondays"],
+          "respuesta": ["She", "studies", "on", "Mondays"],
+          "palabras_extra": ["study", "in"],
+          "explicacion": "On Mondays - con dias de la semana se usa ON"
+        }
+      ]
+    }
+  ]
+}

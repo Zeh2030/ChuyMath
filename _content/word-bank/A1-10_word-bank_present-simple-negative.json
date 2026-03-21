@@ -1,0 +1,61 @@
+{
+  "id": "A1-10_word-bank_present-simple-negative",
+  "titulo": "Word Bank: Present Simple Negative",
+  "descripcion": "Build negative sentences in English using don't and doesn't!",
+  "tipo": "word-bank",
+  "materia": "ingles",
+  "tema": "present-simple-negative",
+  "nivel": "A1-10",
+  "misiones": [
+    {
+      "id": "mision-wb-negative",
+      "tipo": "word-bank",
+      "titulo": "Build the Negative Sentence!",
+      "instruccion": "Tap the words in the correct order to build the English negative sentence.",
+      "retos": [
+        {
+          "oracion_es": "Yo no juego futbol",
+          "palabras": ["I", "don't", "play", "soccer"],
+          "respuesta": ["I", "don't", "play", "soccer"],
+          "palabras_extra": ["doesn't", "plays"],
+          "explicacion": "I don't play - con I se usa don't + verbo base (sin -s)"
+        },
+        {
+          "oracion_es": "Ella no come carne",
+          "palabras": ["She", "doesn't", "eat", "meat"],
+          "respuesta": ["She", "doesn't", "eat", "meat"],
+          "palabras_extra": ["don't", "eats"],
+          "explicacion": "She doesn't eat - con She se usa doesn't + verbo base (sin -s)"
+        },
+        {
+          "oracion_es": "Ellos no corren",
+          "palabras": ["They", "don't", "run"],
+          "respuesta": ["They", "don't", "run"],
+          "palabras_extra": ["doesn't", "runs"],
+          "explicacion": "They don't run - con They se usa don't + verbo base"
+        },
+        {
+          "oracion_es": "El no va a la escuela",
+          "palabras": ["He", "doesn't", "go", "to", "school"],
+          "respuesta": ["He", "doesn't", "go", "to", "school"],
+          "palabras_extra": ["don't", "goes"],
+          "explicacion": "He doesn't go - con He se usa doesn't + verbo base (go, no goes)"
+        },
+        {
+          "oracion_es": "No vemos TV",
+          "palabras": ["We", "don't", "watch", "TV"],
+          "respuesta": ["We", "don't", "watch", "TV"],
+          "palabras_extra": ["doesn't", "watches"],
+          "explicacion": "We don't watch - con We se usa don't + verbo base"
+        },
+        {
+          "oracion_es": "Ella no estudia",
+          "palabras": ["She", "doesn't", "study"],
+          "respuesta": ["She", "doesn't", "study"],
+          "palabras_extra": ["don't", "studies"],
+          "explicacion": "She doesn't study - con She se usa doesn't + verbo base (study, no studies)"
+        }
+      ]
+    }
+  ]
+}

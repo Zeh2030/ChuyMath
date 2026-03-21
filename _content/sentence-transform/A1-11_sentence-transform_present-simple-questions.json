@@ -1,0 +1,91 @@
+{
+  "id": "A1-11_sentence-transform_present-simple-questions",
+  "titulo": "Sentence Transform: Present Simple Questions",
+  "descripcion": "Transform affirmative sentences into questions!",
+  "tipo": "sentence-transform",
+  "materia": "ingles",
+  "tema": "present-simple-questions",
+  "nivel": "A1-11",
+  "misiones": [
+    {
+      "id": "mision-st-questions",
+      "tipo": "sentence-transform",
+      "titulo": "Transform to a Question!",
+      "instruccion": "Change the sentence into a question. Use the word bank!",
+      "retos": [
+        {
+          "modo": "interrogativo",
+          "oracion_original": "You play soccer",
+          "traduccion": "Tu juegas futbol",
+          "palabras": ["Do", "you", "play", "soccer?"],
+          "respuesta": ["Do", "you", "play", "soccer?"],
+          "palabras_extra": ["Does", "plays"],
+          "explicacion": "Con You: Do + you + verbo base. Do you play soccer?"
+        },
+        {
+          "modo": "interrogativo",
+          "oracion_original": "She eats pizza",
+          "traduccion": "Ella come pizza",
+          "palabras": ["Does", "she", "eat", "pizza?"],
+          "respuesta": ["Does", "she", "eat", "pizza?"],
+          "palabras_extra": ["Do", "eats"],
+          "explicacion": "Con She: Does + she + verbo base (eat, no eats). Does she eat pizza?"
+        },
+        {
+          "modo": "interrogativo",
+          "oracion_original": "They run fast",
+          "traduccion": "Ellos corren rápido",
+          "palabras": ["Do", "they", "run", "fast?"],
+          "respuesta": ["Do", "they", "run", "fast?"],
+          "palabras_extra": ["Does", "runs"],
+          "explicacion": "Con They: Do + they + verbo base. Do they run fast?"
+        },
+        {
+          "modo": "interrogativo",
+          "oracion_original": "He swims well",
+          "traduccion": "El nada bien",
+          "palabras": ["Does", "he", "swim", "well?"],
+          "respuesta": ["Does", "he", "swim", "well?"],
+          "palabras_extra": ["Do", "swims"],
+          "explicacion": "Con He: Does + he + verbo base (swim, no swims). Does he swim well?"
+        },
+        {
+          "modo": "interrogativo",
+          "oracion_original": "We dance together",
+          "traduccion": "Nosotros bailamos juntos",
+          "palabras": ["Do", "we", "dance", "together?"],
+          "respuesta": ["Do", "we", "dance", "together?"],
+          "palabras_extra": ["Does", "dances"],
+          "explicacion": "Con We: Do + we + verbo base. Do we dance together?"
+        },
+        {
+          "modo": "interrogativo",
+          "oracion_original": "She studies English",
+          "traduccion": "Ella estudia inglés",
+          "palabras": ["Does", "she", "study", "English?"],
+          "respuesta": ["Does", "she", "study", "English?"],
+          "palabras_extra": ["Do", "studies"],
+          "explicacion": "Con She: Does + she + verbo base (study, no studies). Does she study English?"
+        },
+        {
+          "modo": "interrogativo",
+          "oracion_original": "It rains a lot",
+          "traduccion": "Llueve mucho",
+          "palabras": ["Does", "it", "rain", "a", "lot?"],
+          "respuesta": ["Does", "it", "rain", "a", "lot?"],
+          "palabras_extra": ["Do", "rains"],
+          "explicacion": "Con It: Does + it + verbo base (rain, no rains). Does it rain a lot?"
+        },
+        {
+          "modo": "interrogativo",
+          "oracion_original": "You like music",
+          "traduccion": "Te gusta la música",
+          "palabras": ["Do", "you", "like", "music?"],
+          "respuesta": ["Do", "you", "like", "music?"],
+          "palabras_extra": ["Does", "likes"],
+          "explicacion": "Con You: Do + you + verbo base. Do you like music?"
+        }
+      ]
+    }
+  ]
+}

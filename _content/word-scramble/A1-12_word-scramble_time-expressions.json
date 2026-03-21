@@ -1,0 +1,61 @@
+{
+  "id": "A1-12_word-scramble_time-expressions",
+  "titulo": "Word Scramble: Time Expressions",
+  "descripcion": "Unscramble the letters to form the correct frequency word!",
+  "tipo": "word-scramble",
+  "materia": "ingles",
+  "tema": "time-expressions",
+  "nivel": "A1-12",
+  "misiones": [
+    {
+      "id": "mision-ws-time-expressions",
+      "tipo": "word-scramble",
+      "titulo": "Unscramble the Word!",
+      "instruccion": "The letters are mixed up! Put them in order to make the frequency word. Use the sound button to hear it!",
+      "retos": [
+        {
+          "respuesta": "always",
+          "letras_desordenadas": "yawlas",
+          "pista_es": "Siempre (100%)",
+          "pista_emoji": "✅",
+          "explicacion": "ALWAYS - Siempre. I always play soccer."
+        },
+        {
+          "respuesta": "never",
+          "letras_desordenadas": "revne",
+          "pista_es": "Nunca (0%)",
+          "pista_emoji": "❌",
+          "explicacion": "NEVER - Nunca. She never eats meat."
+        },
+        {
+          "respuesta": "sometimes",
+          "letras_desordenadas": "mosstemie",
+          "pista_es": "A veces (50%)",
+          "pista_emoji": "🤷",
+          "explicacion": "SOMETIMES - A veces. They sometimes go to the park."
+        },
+        {
+          "respuesta": "usually",
+          "letras_desordenadas": "lyuslau",
+          "pista_es": "Usualmente (80%)",
+          "pista_emoji": "📊",
+          "explicacion": "USUALLY - Usualmente. He usually reads at night."
+        },
+        {
+          "respuesta": "often",
+          "letras_desordenadas": "tenof",
+          "pista_es": "Seguido (70%)",
+          "pista_emoji": "🔄",
+          "explicacion": "OFTEN - Seguido. We often dance at school."
+        },
+        {
+          "respuesta": "rarely",
+          "letras_desordenadas": "lyrera",
+          "pista_es": "Raramente (10%)",
+          "pista_emoji": "🤏",
+          "explicacion": "RARELY - Raramente. I rarely watch TV."
+        }
+      ]
+    }
+  ]
+}

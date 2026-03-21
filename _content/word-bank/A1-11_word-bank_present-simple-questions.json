@@ -1,0 +1,61 @@
+{
+  "id": "A1-11_word-bank_present-simple-questions",
+  "titulo": "Word Bank: Present Simple Questions",
+  "descripcion": "Build questions in English using Do and Does!",
+  "tipo": "word-bank",
+  "materia": "ingles",
+  "tema": "present-simple-questions",
+  "nivel": "A1-11",
+  "misiones": [
+    {
+      "id": "mision-wb-questions",
+      "tipo": "word-bank",
+      "titulo": "Build the Question!",
+      "instruccion": "Tap the words in the correct order to build the English question.",
+      "retos": [
+        {
+          "oracion_es": "¿Juegas futbol?",
+          "palabras": ["Do", "you", "play", "soccer?"],
+          "respuesta": ["Do", "you", "play", "soccer?"],
+          "palabras_extra": ["Does", "plays"],
+          "explicacion": "Do you play soccer? - Con You se usa Do + verbo base"
+        },
+        {
+          "oracion_es": "¿Come ella pizza?",
+          "palabras": ["Does", "she", "eat", "pizza?"],
+          "respuesta": ["Does", "she", "eat", "pizza?"],
+          "palabras_extra": ["Do", "eats"],
+          "explicacion": "Does she eat pizza? - Con She se usa Does + verbo base (sin -s)"
+        },
+        {
+          "oracion_es": "¿Corren ellos?",
+          "palabras": ["Do", "they", "run?"],
+          "respuesta": ["Do", "they", "run?"],
+          "palabras_extra": ["Does", "runs"],
+          "explicacion": "Do they run? - Con They se usa Do + verbo base"
+        },
+        {
+          "oracion_es": "¿Va él a la escuela?",
+          "palabras": ["Does", "he", "go", "to", "school?"],
+          "respuesta": ["Does", "he", "go", "to", "school?"],
+          "palabras_extra": ["Do", "goes"],
+          "explicacion": "Does he go to school? - Con He se usa Does + verbo base"
+        },
+        {
+          "oracion_es": "¿Bailamos nosotros?",
+          "palabras": ["Do", "we", "dance?"],
+          "respuesta": ["Do", "we", "dance?"],
+          "palabras_extra": ["Does", "dances"],
+          "explicacion": "Do we dance? - Con We se usa Do + verbo base"
+        },
+        {
+          "oracion_es": "¿Habla ella inglés?",
+          "palabras": ["Does", "she", "speak", "English?"],
+          "respuesta": ["Does", "she", "speak", "English?"],
+          "palabras_extra": ["Do", "speaks"],
+          "explicacion": "Does she speak English? - Con She se usa Does + verbo base (sin -s)"
+        }
+      ]
+    }
+  ]
+}

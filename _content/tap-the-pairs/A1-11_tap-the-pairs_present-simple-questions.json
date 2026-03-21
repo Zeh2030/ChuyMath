@@ -1,0 +1,37 @@
+{
+  "id": "A1-11_tap-the-pairs_present-simple-questions",
+  "titulo": "Tap the Pairs: Present Simple Questions",
+  "descripcion": "Match the Spanish question with its English translation!",
+  "tipo": "tap-the-pairs",
+  "materia": "ingles",
+  "tema": "present-simple-questions",
+  "nivel": "A1-11",
+  "misiones": [
+    {
+      "id": "mision-ttp-questions-1",
+      "tipo": "tap-the-pairs",
+      "titulo": "Match the Questions!",
+      "instruccion": "Tap one from each column to match Spanish with English.",
+      "retos": [
+        {
+          "pares": [
+            { "es": "¿Juegas tú?", "en": "Do you play?" },
+            { "es": "¿Come ella?", "en": "Does she eat?" },
+            { "es": "¿Corren ellos?", "en": "Do they run?" },
+            { "es": "¿Nada él?", "en": "Does he swim?" },
+            { "es": "¿Bailamos?", "en": "Do we dance?" }
+          ]
+        },
+        {
+          "pares": [
+            { "es": "Sí, juego", "en": "Yes, I do" },
+            { "es": "No, ella no come", "en": "No, she doesn't" },
+            { "es": "Sí, corren", "en": "Yes, they do" },
+            { "es": "No, él no nada", "en": "No, he doesn't" },
+            { "es": "Sí, bailamos", "en": "Yes, we do" }
+          ]
+        }
+      ]
+    }
+  ]
+}

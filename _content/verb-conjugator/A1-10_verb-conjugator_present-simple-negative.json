@@ -1,0 +1,91 @@
+{
+  "id": "A1-10_verb-conjugator_present-simple-negative",
+  "titulo": "Verb Conjugation: Present Simple Negative",
+  "descripcion": "Learn when to use don't and when to use doesn't!",
+  "tipo": "verb-conjugator",
+  "materia": "ingles",
+  "tema": "present-simple-negative",
+  "nivel": "A1-10",
+  "misiones": [
+    {
+      "id": "mision-vc-negative",
+      "tipo": "verb-conjugator",
+      "titulo": "Choose the Correct Negative Form!",
+      "instruccion": "Choose the correct negative form of the verb for each pronoun.",
+      "retos": [
+        {
+          "pronombre": "I",
+          "verbo_base": "play",
+          "opciones": ["don't play", "doesn't play", "don't plays"],
+          "respuesta": 0,
+          "oracion_completa": "I don't play soccer",
+          "traduccion": "Yo no juego futbol",
+          "regla": "Con I/you/we/they se usa don't + verbo base"
+        },
+        {
+          "pronombre": "She",
+          "verbo_base": "eat",
+          "opciones": ["don't eat", "doesn't eat", "doesn't eats"],
+          "respuesta": 1,
+          "oracion_completa": "She doesn't eat meat",
+          "traduccion": "Ella no come carne",
+          "regla": "Con he/she/it se usa doesn't + verbo base (sin -s)"
+        },
+        {
+          "pronombre": "They",
+          "verbo_base": "run",
+          "opciones": ["doesn't run", "don't runs", "don't run"],
+          "respuesta": 2,
+          "oracion_completa": "They don't run in the morning",
+          "traduccion": "Ellos no corren en la manana",
+          "regla": "Con they se usa don't + verbo base"
+        },
+        {
+          "pronombre": "He",
+          "verbo_base": "swim",
+          "opciones": ["don't swim", "doesn't swim", "doesn't swims"],
+          "respuesta": 1,
+          "oracion_completa": "He doesn't swim on Mondays",
+          "traduccion": "El no nada los lunes",
+          "regla": "Con he se usa doesn't + verbo base"
+        },
+        {
+          "pronombre": "We",
+          "verbo_base": "dance",
+          "opciones": ["don't dance", "doesn't dance", "don't dances"],
+          "respuesta": 0,
+          "oracion_completa": "We don't dance at school",
+          "traduccion": "No bailamos en la escuela",
+          "regla": "Con we se usa don't + verbo base"
+        },
+        {
+          "pronombre": "It",
+          "verbo_base": "rain",
+          "opciones": ["don't rain", "doesn't rains", "doesn't rain"],
+          "respuesta": 2,
+          "oracion_completa": "It doesn't rain in summer",
+          "traduccion": "No llueve en verano",
+          "regla": "Con it se usa doesn't + verbo base (sin -s)"
+        },
+        {
+          "pronombre": "You",
+          "verbo_base": "sing",
+          "opciones": ["doesn't sing", "don't sing", "don't sings"],
+          "respuesta": 1,
+          "oracion_completa": "You don't sing in class",
+          "traduccion": "Tu no cantas en clase",
+          "regla": "Con you se usa don't + verbo base"
+        },
+        {
+          "pronombre": "She",
+          "verbo_base": "go",
+          "opciones": ["don't go", "doesn't goes", "doesn't go"],
+          "respuesta": 2,
+          "oracion_completa": "She doesn't go to the park",
+          "traduccion": "Ella no va al parque",
+          "regla": "Con she se usa doesn't + verbo base (go, no goes)"
+        }
+      ]
+    }
+  ]
+}

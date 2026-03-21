@@ -1,0 +1,61 @@
+{
+  "id": "A1-11_word-scramble_present-simple-questions",
+  "titulo": "Word Scramble: Present Simple Questions",
+  "descripcion": "Unscramble the letters to form Do or Does!",
+  "tipo": "word-scramble",
+  "materia": "ingles",
+  "tema": "present-simple-questions",
+  "nivel": "A1-11",
+  "misiones": [
+    {
+      "id": "mision-ws-questions",
+      "tipo": "word-scramble",
+      "titulo": "Unscramble the Word!",
+      "instruccion": "The letters are mixed up! Put them in order to make the word. Use the hint to help!",
+      "retos": [
+        {
+          "respuesta": "does",
+          "letras_desordenadas": "sode",
+          "pista_es": "___ she play? (pregunta con she)",
+          "pista_emoji": "❓",
+          "explicacion": "DOES - Does she play? Con He/She/It usamos Does para preguntar"
+        },
+        {
+          "respuesta": "do",
+          "letras_desordenadas": "od",
+          "pista_es": "___ you like pizza? (pregunta con you)",
+          "pista_emoji": "❓",
+          "explicacion": "DO - Do you like pizza? Con I/You/We/They usamos Do para preguntar"
+        },
+        {
+          "respuesta": "does",
+          "letras_desordenadas": "edos",
+          "pista_es": "___ he swim? (pregunta con he)",
+          "pista_emoji": "❓",
+          "explicacion": "DOES - Does he swim? Con He usamos Does para preguntar"
+        },
+        {
+          "respuesta": "do",
+          "letras_desordenadas": "od",
+          "pista_es": "___ they run fast? (pregunta con they)",
+          "pista_emoji": "❓",
+          "explicacion": "DO - Do they run fast? Con They usamos Do para preguntar"
+        },
+        {
+          "respuesta": "does",
+          "letras_desordenadas": "oesd",
+          "pista_es": "___ it rain a lot? (pregunta con it)",
+          "pista_emoji": "❓",
+          "explicacion": "DOES - Does it rain? Con It usamos Does para preguntar"
+        },
+        {
+          "respuesta": "do",
+          "letras_desordenadas": "od",
+          "pista_es": "___ we dance together? (pregunta con we)",
+          "pista_emoji": "❓",
+          "explicacion": "DO - Do we dance? Con We usamos Do para preguntar"
+        }
+      ]
+    }
+  ]
+}

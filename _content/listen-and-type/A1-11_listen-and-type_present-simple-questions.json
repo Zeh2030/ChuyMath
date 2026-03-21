@@ -1,0 +1,55 @@
+{
+  "id": "A1-11_listen-and-type_present-simple-questions",
+  "titulo": "Listen & Type: Present Simple Questions",
+  "descripcion": "Listen to the question and type it! Train your ear and spelling.",
+  "tipo": "listen-and-type",
+  "materia": "ingles",
+  "tema": "present-simple-questions",
+  "nivel": "A1-11",
+  "misiones": [
+    {
+      "id": "mision-lat-questions",
+      "tipo": "listen-and-type",
+      "titulo": "Listen and Write!",
+      "instruccion": "Press Play to hear the sentence. Then type exactly what you hear!",
+      "retos": [
+        {
+          "texto_en": "Do you play soccer",
+          "traduccion": "¿Juegas futbol?",
+          "pista": "Do you ___ soccer (4 words)",
+          "explicacion": "Do you play - pregunta con Do + you + verbo base"
+        },
+        {
+          "texto_en": "Does she eat pizza",
+          "traduccion": "¿Come ella pizza?",
+          "pista": "Does she ___ pizza (4 words)",
+          "explicacion": "Does she eat - pregunta con Does + she + verbo base"
+        },
+        {
+          "texto_en": "Do they like music",
+          "traduccion": "¿Les gusta la música?",
+          "pista": "Do they ___ music (4 words)",
+          "explicacion": "Do they like - pregunta con Do + they + verbo base"
+        },
+        {
+          "texto_en": "Does he go to school",
+          "traduccion": "¿Va él a la escuela?",
+          "pista": "Does he ___ to school (5 words)",
+          "explicacion": "Does he go - pregunta con Does + he + verbo base"
+        },
+        {
+          "texto_en": "Yes I do",
+          "traduccion": "Sí",
+          "pista": "Yes I ___ (3 words)",
+          "explicacion": "Yes, I do - respuesta corta afirmativa"
+        },
+        {
+          "texto_en": "No she doesn't",
+          "traduccion": "No, ella no",
+          "pista": "No she ___ (3 words)",
+          "explicacion": "No, she doesn't - respuesta corta negativa con she"
+        }
+      ]
+    }
+  ]
+}

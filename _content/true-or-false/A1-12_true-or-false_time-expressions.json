@@ -1,0 +1,75 @@
+{
+  "id": "A1-12_true-or-false_time-expressions",
+  "titulo": "True or False: Time Expressions",
+  "descripcion": "Is this sentence correct? Check adverb placement and prepositions!",
+  "tipo": "true-or-false",
+  "materia": "ingles",
+  "tema": "time-expressions",
+  "nivel": "A1-12",
+  "misiones": [
+    {
+      "id": "mision-tof-time-expressions",
+      "tipo": "true-or-false",
+      "titulo": "Correct or Incorrect?",
+      "instruccion": "Read the sentence and decide if it is grammatically correct.",
+      "retos": [
+        {
+          "oracion": "I always play soccer",
+          "traduccion": "Siempre juego futbol",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Correcto! Always va antes del verbo: I always play"
+        },
+        {
+          "oracion": "She eats never meat",
+          "traduccion": "Nunca come carne",
+          "correcto": false,
+          "correccion": "She never eats meat",
+          "explicacion": "Never va ANTES del verbo: She never eats, no She eats never"
+        },
+        {
+          "oracion": "They sometimes go to the park",
+          "traduccion": "A veces van al parque",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Correcto! Sometimes va antes del verbo: They sometimes go"
+        },
+        {
+          "oracion": "He reads usually at night",
+          "traduccion": "Usualmente lee en la noche",
+          "correcto": false,
+          "correccion": "He usually reads at night",
+          "explicacion": "Usually va ANTES del verbo: He usually reads, no He reads usually"
+        },
+        {
+          "oracion": "I play soccer every day",
+          "traduccion": "Juego futbol todos los dias",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Correcto! Every day va al final de la oracion"
+        },
+        {
+          "oracion": "She studies in Mondays",
+          "traduccion": "Ella estudia los lunes",
+          "correcto": false,
+          "correccion": "She studies on Mondays",
+          "explicacion": "Con dias de la semana se usa ON, no IN: on Mondays"
+        },
+        {
+          "oracion": "We eat breakfast on the morning",
+          "traduccion": "Desayunamos en la manana",
+          "correcto": false,
+          "correccion": "We eat breakfast in the morning",
+          "explicacion": "Con morning/afternoon/evening se usa IN, no ON: in the morning"
+        },
+        {
+          "oracion": "He goes to bed at night",
+          "traduccion": "Se va a la cama en la noche",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Correcto! Con night se usa AT: at night"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "id": "A1-12_verb-conjugator_time-expressions",
+  "titulo": "Verb Conjugation: Time Expressions",
+  "descripcion": "Place the adverb of frequency in the correct position!",
+  "tipo": "verb-conjugator",
+  "materia": "ingles",
+  "tema": "time-expressions",
+  "nivel": "A1-12",
+  "misiones": [
+    {
+      "id": "mision-vc-time-expressions",
+      "tipo": "verb-conjugator",
+      "titulo": "Where does the adverb go?",
+      "instruccion": "Choose the sentence with the adverb in the correct position.",
+      "retos": [
+        {
+          "pronombre": "He",
+          "verbo_base": "play / always",
+          "opciones": ["He always plays", "He plays always", "Always he plays"],
+          "respuesta": 0,
+          "oracion_completa": "He always plays soccer",
+          "traduccion": "El siempre juega futbol",
+          "regla": "El adverbio de frecuencia va ANTES del verbo: Subject + adverb + verb"
+        },
+        {
+          "pronombre": "She",
+          "verbo_base": "eat / never",
+          "opciones": ["She never eats", "She eats never", "Never she eats"],
+          "respuesta": 0,
+          "oracion_completa": "She never eats breakfast",
+          "traduccion": "Ella nunca desayuna",
+          "regla": "El adverbio de frecuencia va ANTES del verbo: Subject + adverb + verb"
+        },
+        {
+          "pronombre": "They",
+          "verbo_base": "go / sometimes",
+          "opciones": ["They sometimes go", "Sometimes they go", "They go sometimes"],
+          "respuesta": 0,
+          "oracion_completa": "They sometimes go to the park",
+          "traduccion": "A veces van al parque",
+          "regla": "El adverbio de frecuencia va ANTES del verbo: Subject + adverb + verb"
+        },
+        {
+          "pronombre": "I",
+          "verbo_base": "read / usually",
+          "opciones": ["I usually read", "I read usually", "Usually I read"],
+          "respuesta": 0,
+          "oracion_completa": "I usually read at night",
+          "traduccion": "Usualmente leo en la noche",
+          "regla": "El adverbio de frecuencia va ANTES del verbo: Subject + adverb + verb"
+        },
+        {
+          "pronombre": "We",
+          "verbo_base": "dance / often",
+          "opciones": ["We often dance", "We dance often", "Often we dance"],
+          "respuesta": 0,
+          "oracion_completa": "We often dance at school",
+          "traduccion": "Seguido bailamos en la escuela",
+          "regla": "El adverbio de frecuencia va ANTES del verbo: Subject + adverb + verb"
+        },
+        {
+          "pronombre": "He",
+          "verbo_base": "study / rarely",
+          "opciones": ["He rarely studies", "He studies rarely", "Rarely he studies"],
+          "respuesta": 0,
+          "oracion_completa": "He rarely studies on weekends",
+          "traduccion": "Raramente estudia los fines de semana",
+          "regla": "El adverbio de frecuencia va ANTES del verbo: Subject + adverb + verb"
+        },
+        {
+          "pronombre": "She",
+          "verbo_base": "drink / always",
+          "opciones": ["She always drinks", "She drinks always", "Always she drinks"],
+          "respuesta": 0,
+          "oracion_completa": "She always drinks milk",
+          "traduccion": "Ella siempre toma leche",
+          "regla": "El adverbio de frecuencia va ANTES del verbo: Subject + adverb + verb"
+        },
+        {
+          "pronombre": "I",
+          "verbo_base": "sing / never",
+          "opciones": ["I never sing", "I sing never", "Never I sing"],
+          "respuesta": 0,
+          "oracion_completa": "I never sing in class",
+          "traduccion": "Nunca canto en clase",
+          "regla": "El adverbio de frecuencia va ANTES del verbo: Subject + adverb + verb"
+        }
+      ]
+    }
+  ]
+}

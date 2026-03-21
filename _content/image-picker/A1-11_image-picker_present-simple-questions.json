@@ -1,0 +1,91 @@
+{
+  "id": "A1-11_image-picker_present-simple-questions",
+  "titulo": "Image Picker: Present Simple Questions",
+  "descripcion": "Pick the correct question form for each action!",
+  "tipo": "image-picker",
+  "materia": "ingles",
+  "tema": "present-simple-questions",
+  "nivel": "A1-11",
+  "misiones": [
+    {
+      "id": "mision-ip-questions",
+      "tipo": "image-picker",
+      "titulo": "Which question is correct?",
+      "instruccion": "Look at the emoji and the pronoun. Tap the correct question!",
+      "retos": [
+        {
+          "palabra_en": "❓⚽ (he)",
+          "palabra_es": "¿Juega él?",
+          "opciones": [
+            { "emoji": "✅", "label": "Does he play?" },
+            { "emoji": "❌", "label": "Do he play?" },
+            { "emoji": "❌", "label": "Does he plays?" },
+            { "emoji": "❌", "label": "He plays?" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Does he play? - Con He se usa Does + verbo base (sin -s)"
+        },
+        {
+          "palabra_en": "❓🍕 (you)",
+          "palabra_es": "¿Comes tú?",
+          "opciones": [
+            { "emoji": "❌", "label": "Does you eat?" },
+            { "emoji": "✅", "label": "Do you eat?" },
+            { "emoji": "❌", "label": "Do you eats?" },
+            { "emoji": "❌", "label": "You eat?" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Do you eat? - Con You se usa Do + verbo base"
+        },
+        {
+          "palabra_en": "❓📖 (she)",
+          "palabra_es": "¿Lee ella?",
+          "opciones": [
+            { "emoji": "❌", "label": "Do she read?" },
+            { "emoji": "❌", "label": "Does she reads?" },
+            { "emoji": "✅", "label": "Does she read?" },
+            { "emoji": "❌", "label": "She reads?" }
+          ],
+          "respuesta": 2,
+          "explicacion": "Does she read? - Con She se usa Does + verbo base (sin -s)"
+        },
+        {
+          "palabra_en": "❓🏊 (they)",
+          "palabra_es": "¿Nadan ellos?",
+          "opciones": [
+            { "emoji": "✅", "label": "Do they swim?" },
+            { "emoji": "❌", "label": "Does they swim?" },
+            { "emoji": "❌", "label": "Do they swims?" },
+            { "emoji": "❌", "label": "They swim?" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Do they swim? - Con They se usa Do + verbo base"
+        },
+        {
+          "palabra_en": "❓💃 (he)",
+          "palabra_es": "¿Baila él?",
+          "opciones": [
+            { "emoji": "❌", "label": "Do he dance?" },
+            { "emoji": "❌", "label": "Does he dances?" },
+            { "emoji": "❌", "label": "He dances?" },
+            { "emoji": "✅", "label": "Does he dance?" }
+          ],
+          "respuesta": 3,
+          "explicacion": "Does he dance? - Con He se usa Does + verbo base (sin -s)"
+        },
+        {
+          "palabra_en": "❓🎵 (we)",
+          "palabra_es": "¿Cantamos nosotros?",
+          "opciones": [
+            { "emoji": "❌", "label": "Does we sing?" },
+            { "emoji": "✅", "label": "Do we sing?" },
+            { "emoji": "❌", "label": "Do we sings?" },
+            { "emoji": "❌", "label": "We sing?" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Do we sing? - Con We se usa Do + verbo base"
+        }
+      ]
+    }
+  ]
+}

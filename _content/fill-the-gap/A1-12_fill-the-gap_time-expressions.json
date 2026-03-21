@@ -1,0 +1,75 @@
+{
+  "id": "A1-12_fill-the-gap_time-expressions",
+  "titulo": "Fill the Gap: Time Expressions",
+  "descripcion": "Complete sentences with the correct adverb or preposition!",
+  "tipo": "fill-the-gap",
+  "materia": "ingles",
+  "tema": "time-expressions",
+  "nivel": "A1-12",
+  "misiones": [
+    {
+      "id": "mision-ftg-time-expressions",
+      "tipo": "fill-the-gap",
+      "titulo": "Complete the Sentence!",
+      "instruccion": "Choose the correct word to complete the sentence.",
+      "retos": [
+        {
+          "oracion": "I ___ play soccer.",
+          "traduccion": "Siempre juego futbol.",
+          "opciones": ["always", "plays", "is", "the"],
+          "respuesta": 0,
+          "explicacion": "I always play - El adverbio always va antes del verbo"
+        },
+        {
+          "oracion": "She ___ eats breakfast.",
+          "traduccion": "Nunca desayuna.",
+          "opciones": ["never", "don't", "doesn't", "not"],
+          "respuesta": 0,
+          "explicacion": "She never eats - El adverbio never va antes del verbo"
+        },
+        {
+          "oracion": "They ___ go to the park.",
+          "traduccion": "A veces van al parque.",
+          "opciones": ["sometimes", "sometime", "some time", "some"],
+          "respuesta": 0,
+          "explicacion": "They sometimes go - Sometimes = a veces (una sola palabra)"
+        },
+        {
+          "oracion": "He ___ reads at night.",
+          "traduccion": "Usualmente lee en la noche.",
+          "opciones": ["usually", "usual", "use", "using"],
+          "respuesta": 0,
+          "explicacion": "He usually reads - Usually va antes del verbo"
+        },
+        {
+          "oracion": "I play soccer ___ day.",
+          "traduccion": "Juego futbol todos los dias.",
+          "opciones": ["every", "all", "the", "a"],
+          "respuesta": 0,
+          "explicacion": "Every day = todos los dias. Every + sustantivo"
+        },
+        {
+          "oracion": "She studies ___ Mondays.",
+          "traduccion": "Ella estudia los lunes.",
+          "opciones": ["in", "on", "at", "the"],
+          "respuesta": 1,
+          "explicacion": "On Mondays - Con dias de la semana se usa ON"
+        },
+        {
+          "oracion": "We eat breakfast ___ the morning.",
+          "traduccion": "Desayunamos en la manana.",
+          "opciones": ["in", "on", "at", "to"],
+          "respuesta": 0,
+          "explicacion": "In the morning - Con morning/afternoon/evening se usa IN"
+        },
+        {
+          "oracion": "He goes to bed ___ night.",
+          "traduccion": "Se va a la cama en la noche.",
+          "opciones": ["in", "on", "at", "to"],
+          "respuesta": 2,
+          "explicacion": "At night - Con night se usa AT"
+        }
+      ]
+    }
+  ]
+}

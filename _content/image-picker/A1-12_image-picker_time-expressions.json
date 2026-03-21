@@ -1,0 +1,91 @@
+{
+  "id": "A1-12_image-picker_time-expressions",
+  "titulo": "Image Picker: Time Expressions",
+  "descripcion": "Match the frequency word with its visual representation!",
+  "tipo": "image-picker",
+  "materia": "ingles",
+  "tema": "time-expressions",
+  "nivel": "A1-12",
+  "misiones": [
+    {
+      "id": "mision-ip-time-expressions",
+      "tipo": "image-picker",
+      "titulo": "Which frequency matches?",
+      "instruccion": "Look at the frequency word and pick the image that shows how often it happens!",
+      "retos": [
+        {
+          "palabra_en": "always",
+          "palabra_es": "siempre (100%)",
+          "opciones": [
+            { "emoji": "✅✅✅✅✅", "label": "100%" },
+            { "emoji": "✅❌✅❌✅", "label": "50%" },
+            { "emoji": "❌❌❌❌✅", "label": "10%" },
+            { "emoji": "❌❌❌❌❌", "label": "0%" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Always = siempre. It happens 100% of the time!"
+        },
+        {
+          "palabra_en": "never",
+          "palabra_es": "nunca (0%)",
+          "opciones": [
+            { "emoji": "✅✅✅✅❌", "label": "80%" },
+            { "emoji": "❌❌❌❌❌", "label": "0%" },
+            { "emoji": "✅✅✅❌❌", "label": "70%" },
+            { "emoji": "✅❌✅❌✅", "label": "50%" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Never = nunca. It happens 0% of the time!"
+        },
+        {
+          "palabra_en": "sometimes",
+          "palabra_es": "a veces (50%)",
+          "opciones": [
+            { "emoji": "❌❌❌❌❌", "label": "0%" },
+            { "emoji": "✅✅✅✅✅", "label": "100%" },
+            { "emoji": "✅❌✅❌✅", "label": "50%" },
+            { "emoji": "❌❌❌❌✅", "label": "10%" }
+          ],
+          "respuesta": 2,
+          "explicacion": "Sometimes = a veces. It happens about 50% of the time!"
+        },
+        {
+          "palabra_en": "usually",
+          "palabra_es": "usualmente (80%)",
+          "opciones": [
+            { "emoji": "❌❌❌❌✅", "label": "10%" },
+            { "emoji": "✅❌✅❌✅", "label": "50%" },
+            { "emoji": "✅✅✅❌❌", "label": "70%" },
+            { "emoji": "✅✅✅✅❌", "label": "80%" }
+          ],
+          "respuesta": 3,
+          "explicacion": "Usually = usualmente. It happens about 80% of the time!"
+        },
+        {
+          "palabra_en": "often",
+          "palabra_es": "seguido (70%)",
+          "opciones": [
+            { "emoji": "✅✅✅❌❌", "label": "70%" },
+            { "emoji": "✅✅✅✅✅", "label": "100%" },
+            { "emoji": "❌❌❌❌❌", "label": "0%" },
+            { "emoji": "✅✅✅✅❌", "label": "80%" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Often = seguido. It happens about 70% of the time!"
+        },
+        {
+          "palabra_en": "rarely",
+          "palabra_es": "raramente (10%)",
+          "opciones": [
+            { "emoji": "✅❌✅❌✅", "label": "50%" },
+            { "emoji": "✅✅✅✅✅", "label": "100%" },
+            { "emoji": "❌❌❌❌✅", "label": "10%" },
+            { "emoji": "✅✅✅❌❌", "label": "70%" }
+          ],
+          "respuesta": 2,
+          "explicacion": "Rarely = raramente. It almost never happens, only 10%!"
+        }
+      ]
+    }
+  ]
+}

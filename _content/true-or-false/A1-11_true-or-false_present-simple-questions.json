@@ -1,0 +1,75 @@
+{
+  "id": "A1-11_true-or-false_present-simple-questions",
+  "titulo": "True or False: Present Simple Questions",
+  "descripcion": "Is this English question correct? You decide!",
+  "tipo": "true-or-false",
+  "materia": "ingles",
+  "tema": "present-simple-questions",
+  "nivel": "A1-11",
+  "misiones": [
+    {
+      "id": "mision-tof-questions",
+      "tipo": "true-or-false",
+      "titulo": "Correct or Incorrect?",
+      "instruccion": "Read the question and decide if it is grammatically correct.",
+      "retos": [
+        {
+          "oracion": "Does you play soccer?",
+          "traduccion": "¿Juegas futbol?",
+          "correcto": false,
+          "correccion": "Do you play soccer?",
+          "explicacion": "Con You se usa Do, no Does. Do you play soccer?"
+        },
+        {
+          "oracion": "Do they like music?",
+          "traduccion": "¿Les gusta la música?",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Correcto! Con They se usa Do + verbo base"
+        },
+        {
+          "oracion": "Do she eat pizza?",
+          "traduccion": "¿Come ella pizza?",
+          "correcto": false,
+          "correccion": "Does she eat pizza?",
+          "explicacion": "Con She se usa Does, no Do. Does she eat pizza?"
+        },
+        {
+          "oracion": "Does he go to school?",
+          "traduccion": "¿Va él a la escuela?",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Correcto! Con He se usa Does + verbo base"
+        },
+        {
+          "oracion": "Does they run fast?",
+          "traduccion": "¿Corren ellos rápido?",
+          "correcto": false,
+          "correccion": "Do they run fast?",
+          "explicacion": "Con They se usa Do, no Does. Do they run fast?"
+        },
+        {
+          "oracion": "Do we dance together?",
+          "traduccion": "¿Bailamos juntos?",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Correcto! Con We se usa Do + verbo base"
+        },
+        {
+          "oracion": "Does she speaks English?",
+          "traduccion": "¿Habla ella inglés?",
+          "correcto": false,
+          "correccion": "Does she speak English?",
+          "explicacion": "Despues de Does el verbo va en forma base (speak, no speaks)"
+        },
+        {
+          "oracion": "Do I need help?",
+          "traduccion": "¿Necesito ayuda?",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Correcto! Con I se usa Do + verbo base"
+        }
+      ]
+    }
+  ]
+}

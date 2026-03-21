@@ -1,0 +1,91 @@
+{
+  "id": "A1-10_image-picker_present-simple-negative",
+  "titulo": "Image Picker: Negative Sentences",
+  "descripcion": "Pick the correct negative sentence for each action!",
+  "tipo": "image-picker",
+  "materia": "ingles",
+  "tema": "present-simple-negative",
+  "nivel": "A1-10",
+  "misiones": [
+    {
+      "id": "mision-ip-negative",
+      "tipo": "image-picker",
+      "titulo": "Which sentence is correct?",
+      "instruccion": "Look at the emoji with the X. It means NOT doing that action. Tap the correct negative sentence!",
+      "retos": [
+        {
+          "palabra_en": "He doesn't play",
+          "palabra_es": "El no juega",
+          "opciones": [
+            { "emoji": "❌⚽", "label": "He doesn't play" },
+            { "emoji": "❌⚽", "label": "He don't play" },
+            { "emoji": "❌⚽", "label": "He not play" },
+            { "emoji": "⚽", "label": "He plays" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Con He se usa doesn't + verbo base: He doesn't play"
+        },
+        {
+          "palabra_en": "She doesn't eat",
+          "palabra_es": "Ella no come",
+          "opciones": [
+            { "emoji": "❌🍕", "label": "She don't eat" },
+            { "emoji": "❌🍕", "label": "She doesn't eat" },
+            { "emoji": "❌🍕", "label": "She not eat" },
+            { "emoji": "🍕", "label": "She eats" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Con She se usa doesn't + verbo base: She doesn't eat"
+        },
+        {
+          "palabra_en": "I don't read",
+          "palabra_es": "Yo no leo",
+          "opciones": [
+            { "emoji": "❌📖", "label": "I doesn't read" },
+            { "emoji": "❌📖", "label": "I not read" },
+            { "emoji": "📖", "label": "I reads" },
+            { "emoji": "❌📖", "label": "I don't read" }
+          ],
+          "respuesta": 3,
+          "explicacion": "Con I se usa don't + verbo base: I don't read"
+        },
+        {
+          "palabra_en": "They don't swim",
+          "palabra_es": "Ellos no nadan",
+          "opciones": [
+            { "emoji": "❌🏊", "label": "They don't swim" },
+            { "emoji": "❌🏊", "label": "They doesn't swim" },
+            { "emoji": "❌🏊", "label": "They not swim" },
+            { "emoji": "🏊", "label": "They swims" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Con They se usa don't + verbo base: They don't swim"
+        },
+        {
+          "palabra_en": "She doesn't dance",
+          "palabra_es": "Ella no baila",
+          "opciones": [
+            { "emoji": "❌💃", "label": "She not dance" },
+            { "emoji": "❌💃", "label": "She don't dance" },
+            { "emoji": "💃", "label": "She dances" },
+            { "emoji": "❌💃", "label": "She doesn't dance" }
+          ],
+          "respuesta": 3,
+          "explicacion": "Con She se usa doesn't + verbo base: She doesn't dance"
+        },
+        {
+          "palabra_en": "We don't watch TV",
+          "palabra_es": "No vemos TV",
+          "opciones": [
+            { "emoji": "❌📺", "label": "We doesn't watch TV" },
+            { "emoji": "❌📺", "label": "We don't watch TV" },
+            { "emoji": "❌📺", "label": "We not watch TV" },
+            { "emoji": "📺", "label": "We watches TV" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Con We se usa don't + verbo base: We don't watch TV"
+        }
+      ]
+    }
+  ]
+}

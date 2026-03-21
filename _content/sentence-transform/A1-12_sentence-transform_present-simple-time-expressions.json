@@ -1,0 +1,73 @@
+{
+  "id": "A1-12_sentence-transform_present-simple-time-expressions",
+  "titulo": "Sentence Transform: Time Expressions",
+  "descripcion": "Add the time expression to the sentence in the correct position!",
+  "tipo": "sentence-transform",
+  "materia": "ingles",
+  "tema": "time-expressions",
+  "nivel": "A1-12",
+  "misiones": [
+    {
+      "id": "mision-st-time-expressions",
+      "tipo": "sentence-transform",
+      "titulo": "Add the Time Expression!",
+      "instruccion": "Place the adverb or time expression in the correct position. Use the word bank!",
+      "retos": [
+        {
+          "modo": "afirmativo",
+          "oracion_original": "I play soccer (always)",
+          "traduccion": "Siempre juego futbol",
+          "palabras": ["I", "always", "play", "soccer"],
+          "respuesta": ["I", "always", "play", "soccer"],
+          "palabras_extra": ["plays", "never"],
+          "explicacion": "Always va ANTES del verbo: I always play soccer"
+        },
+        {
+          "modo": "afirmativo",
+          "oracion_original": "She eats meat (never)",
+          "traduccion": "Ella nunca come carne",
+          "palabras": ["She", "never", "eats", "meat"],
+          "respuesta": ["She", "never", "eats", "meat"],
+          "palabras_extra": ["eat", "always"],
+          "explicacion": "Never va ANTES del verbo: She never eats meat"
+        },
+        {
+          "modo": "afirmativo",
+          "oracion_original": "They go to the park (sometimes)",
+          "traduccion": "A veces van al parque",
+          "palabras": ["They", "sometimes", "go", "to", "the", "park"],
+          "respuesta": ["They", "sometimes", "go", "to", "the", "park"],
+          "palabras_extra": ["goes", "always"],
+          "explicacion": "Sometimes va ANTES del verbo: They sometimes go to the park"
+        },
+        {
+          "modo": "afirmativo",
+          "oracion_original": "He reads (usually) at night",
+          "traduccion": "El usualmente lee en la noche",
+          "palabras": ["He", "usually", "reads", "at", "night"],
+          "respuesta": ["He", "usually", "reads", "at", "night"],
+          "palabras_extra": ["read", "never"],
+          "explicacion": "Usually va ANTES del verbo: He usually reads at night"
+        },
+        {
+          "modo": "afirmativo",
+          "oracion_original": "I play soccer (every day)",
+          "traduccion": "Juego futbol todos los dias",
+          "palabras": ["I", "play", "soccer", "every", "day"],
+          "respuesta": ["I", "play", "soccer", "every", "day"],
+          "palabras_extra": ["plays", "always"],
+          "explicacion": "Every day va al FINAL de la oracion: I play soccer every day"
+        },
+        {
+          "modo": "afirmativo",
+          "oracion_original": "She studies (on Mondays)",
+          "traduccion": "Ella estudia los lunes",
+          "palabras": ["She", "studies", "on", "Mondays"],
+          "respuesta": ["She", "studies", "on", "Mondays"],
+          "palabras_extra": ["study", "in"],
+          "explicacion": "On Mondays va al final. Con dias se usa ON: She studies on Mondays"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "id": "A1-12_listen-and-type_time-expressions",
+  "titulo": "Listen & Type: Time Expressions",
+  "descripcion": "Listen to the sentence and type it! Practice adverbs of frequency.",
+  "tipo": "listen-and-type",
+  "materia": "ingles",
+  "tema": "time-expressions",
+  "nivel": "A1-12",
+  "misiones": [
+    {
+      "id": "mision-lat-time-expressions",
+      "tipo": "listen-and-type",
+      "titulo": "Listen and Write!",
+      "instruccion": "Press Play to hear the sentence. Then type exactly what you hear!",
+      "retos": [
+        {
+          "texto_en": "I always play soccer",
+          "traduccion": "Siempre juego futbol",
+          "pista": "I ___ ___ soccer (4 words)",
+          "explicacion": "I always play - el adverbio always va antes del verbo play"
+        },
+        {
+          "texto_en": "She never eats meat",
+          "traduccion": "Nunca come carne",
+          "pista": "She ___ ___ meat (4 words)",
+          "explicacion": "She never eats - el adverbio never va antes del verbo eats"
+        },
+        {
+          "texto_en": "They sometimes go to the park",
+          "traduccion": "A veces van al parque",
+          "pista": "They ___ ___ to the park (6 words)",
+          "explicacion": "They sometimes go - el adverbio sometimes va antes del verbo go"
+        },
+        {
+          "texto_en": "He usually reads at night",
+          "traduccion": "Usualmente lee en la noche",
+          "pista": "He ___ ___ at night (5 words)",
+          "explicacion": "He usually reads - el adverbio usually va antes del verbo reads"
+        },
+        {
+          "texto_en": "I play soccer every day",
+          "traduccion": "Juego futbol todos los dias",
+          "pista": "I play soccer ___ ___ (5 words)",
+          "explicacion": "Every day = todos los dias. Va al final de la oracion"
+        },
+        {
+          "texto_en": "She studies on Mondays",
+          "traduccion": "Estudia los lunes",
+          "pista": "She ___ on ___ (4 words)",
+          "explicacion": "On Mondays - con dias de la semana se usa on"
+        }
+      ]
+    }
+  ]
+}
