@@ -1,0 +1,23 @@
+{
+  "id": "A0-01_listen-and-type_greetings",
+  "titulo": "Listen & Type: Greetings",
+  "descripcion": "Listen to the greeting and type it!",
+  "tipo": "listen-and-type",
+  "materia": "ingles",
+  "tema": "greetings",
+  "nivel": "A0-01",
+  "misiones": [{
+    "id": "mision-lat-greetings",
+    "tipo": "listen-and-type",
+    "titulo": "Listen and Write!",
+    "instruccion": "Press Play to hear the word. Then type it!",
+    "retos": [
+      {"texto_en": "Hello", "traduccion": "Hola", "pista": "H____ (5 letters)", "explicacion": "Hello = Hola"},
+      {"texto_en": "Bye", "traduccion": "Adi\u00f3s", "pista": "B__ (3 letters)", "explicacion": "Bye = Adi\u00f3s"},
+      {"texto_en": "Good morning", "traduccion": "Buenos d\u00edas", "pista": "Good m______ (2 words)", "explicacion": "Good morning = Buenos d\u00edas"},
+      {"texto_en": "Thank you", "traduccion": "Gracias", "pista": "Thank y__ (2 words)", "explicacion": "Thank you = Gracias"},
+      {"texto_en": "Please", "traduccion": "Por favor", "pista": "P_____ (6 letters)", "explicacion": "Please = Por favor"},
+      {"texto_en": "Good night", "traduccion": "Buenas noches", "pista": "Good n____ (2 words)", "explicacion": "Good night = Buenas noches"}
+    ]
+  }]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "A0-06_tap-the-pairs_family",
+  "titulo": "Tap the Pairs: Family",
+  "descripcion": "Match the Spanish family word with its English translation!",
+  "tipo": "tap-the-pairs",
+  "materia": "ingles",
+  "tema": "family",
+  "nivel": "A0-06",
+  "misiones": [
+    {
+      "id": "mision-ttp-family",
+      "tipo": "tap-the-pairs",
+      "titulo": "Match the Family!",
+      "instruccion": "Tap one from each column to match Spanish with English.",
+      "retos": [
+        {
+          "pares": [
+            { "es": "mama", "en": "mom" },
+            { "es": "papa", "en": "dad" },
+            { "es": "hermano", "en": "brother" },
+            { "es": "hermana", "en": "sister" },
+            { "es": "abuela", "en": "grandma" },
+            { "es": "abuelo", "en": "grandpa" }
+          ]
+        }
+      ]
+    }
+  ]
+}

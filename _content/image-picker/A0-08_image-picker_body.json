@@ -1,0 +1,23 @@
+{
+  "id": "A0-08_image-picker_body",
+  "titulo": "Image Picker: Body Parts",
+  "descripcion": "Learn the parts of the body in English!",
+  "tipo": "image-picker",
+  "materia": "ingles",
+  "tema": "body-parts",
+  "nivel": "A0-08",
+  "misiones": [{
+    "id": "mision-ip-body",
+    "tipo": "image-picker",
+    "titulo": "What body part is it?",
+    "instruccion": "Tap the image that matches the body part!",
+    "retos": [
+      {"palabra_en": "head", "palabra_es": "cabeza", "opciones": [{"emoji": "🧠", "label": "head"}, {"emoji": "👀", "label": "eyes"}, {"emoji": "👃", "label": "nose"}, {"emoji": "👄", "label": "mouth"}], "respuesta": 0, "explicacion": "Head = Cabeza. Touch your head!"},
+      {"palabra_en": "eyes", "palabra_es": "ojos", "opciones": [{"emoji": "👃", "label": "nose"}, {"emoji": "👀", "label": "eyes"}, {"emoji": "👄", "label": "mouth"}, {"emoji": "👂", "label": "ears"}], "respuesta": 1, "explicacion": "Eyes = Ojos. I have two eyes!"},
+      {"palabra_en": "nose", "palabra_es": "nariz", "opciones": [{"emoji": "👄", "label": "mouth"}, {"emoji": "🧠", "label": "head"}, {"emoji": "👃", "label": "nose"}, {"emoji": "👀", "label": "eyes"}], "respuesta": 2, "explicacion": "Nose = Nariz. Touch your nose!"},
+      {"palabra_en": "mouth", "palabra_es": "boca", "opciones": [{"emoji": "👂", "label": "ears"}, {"emoji": "👃", "label": "nose"}, {"emoji": "👀", "label": "eyes"}, {"emoji": "👄", "label": "mouth"}], "respuesta": 3, "explicacion": "Mouth = Boca. Open your mouth!"},
+      {"palabra_en": "hands", "palabra_es": "manos", "opciones": [{"emoji": "🖐️", "label": "hands"}, {"emoji": "🦶", "label": "feet"}, {"emoji": "💪", "label": "arms"}, {"emoji": "👂", "label": "ears"}], "respuesta": 0, "explicacion": "Hands = Manos. Clap your hands!"},
+      {"palabra_en": "feet", "palabra_es": "pies", "opciones": [{"emoji": "🖐️", "label": "hands"}, {"emoji": "💪", "label": "arms"}, {"emoji": "🦶", "label": "feet"}, {"emoji": "🧠", "label": "head"}], "respuesta": 2, "explicacion": "Feet = Pies. Stamp your feet!"}
+    ]
+  }]
+}

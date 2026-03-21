@@ -1,0 +1,23 @@
+{
+  "id": "A0-02_listen-and-type_colors",
+  "titulo": "Listen & Type: Colors",
+  "descripcion": "Listen to the color and type it!",
+  "tipo": "listen-and-type",
+  "materia": "ingles",
+  "tema": "colors",
+  "nivel": "A0-02",
+  "misiones": [{
+    "id": "mision-lat-colors",
+    "tipo": "listen-and-type",
+    "titulo": "Listen and Write the Color!",
+    "instruccion": "Press Play to hear the sentence. Then type it!",
+    "retos": [
+      {"texto_en": "It is red", "traduccion": "Es rojo", "pista": "It is r__ (3 words)", "explicacion": "It is red = Es rojo"},
+      {"texto_en": "It is blue", "traduccion": "Es azul", "pista": "It is b___ (3 words)", "explicacion": "It is blue = Es azul"},
+      {"texto_en": "I like green", "traduccion": "Me gusta el verde", "pista": "I like g____ (3 words)", "explicacion": "I like green = Me gusta el verde"},
+      {"texto_en": "The sun is yellow", "traduccion": "El sol es amarillo", "pista": "The sun is y_____ (4 words)", "explicacion": "The sun is yellow = El sol es amarillo"},
+      {"texto_en": "I see orange", "traduccion": "Veo naranja", "pista": "I see o_____ (3 words)", "explicacion": "I see orange = Veo naranja"},
+      {"texto_en": "It is black and white", "traduccion": "Es blanco y negro", "pista": "It is b____ and w____ (5 words)", "explicacion": "Black and white = Negro y blanco"}
+    ]
+  }]
+}

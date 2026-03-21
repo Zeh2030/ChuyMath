@@ -1,0 +1,25 @@
+{
+  "id": "A0-02_word-scramble_colors",
+  "titulo": "Word Scramble: Colors",
+  "descripcion": "Unscramble the letters to spell the color!",
+  "tipo": "word-scramble",
+  "materia": "ingles",
+  "tema": "colors",
+  "nivel": "A0-02",
+  "misiones": [{
+    "id": "mision-ws-colors",
+    "tipo": "word-scramble",
+    "titulo": "Spell the Color!",
+    "instruccion": "The letters are mixed up! Put them in order!",
+    "retos": [
+      {"respuesta": "red", "letras_desordenadas": "der", "pista_es": "Rojo", "pista_emoji": "\ud83d\udd34", "explicacion": "RED = Rojo"},
+      {"respuesta": "blue", "letras_desordenadas": "leub", "pista_es": "Azul", "pista_emoji": "\ud83d\udd35", "explicacion": "BLUE = Azul"},
+      {"respuesta": "green", "letras_desordenadas": "neerg", "pista_es": "Verde", "pista_emoji": "\ud83d\udfe2", "explicacion": "GREEN = Verde"},
+      {"respuesta": "yellow", "letras_desordenadas": "lowley", "pista_es": "Amarillo", "pista_emoji": "\ud83d\udfe1", "explicacion": "YELLOW = Amarillo"},
+      {"respuesta": "orange", "letras_desordenadas": "gonare", "pista_es": "Naranja", "pista_emoji": "\ud83d\udfe0", "explicacion": "ORANGE = Naranja"},
+      {"respuesta": "purple", "letras_desordenadas": "plupre", "pista_es": "Morado", "pista_emoji": "\ud83d\udfe3", "explicacion": "PURPLE = Morado"},
+      {"respuesta": "black", "letras_desordenadas": "klacb", "pista_es": "Negro", "pista_emoji": "\u26ab", "explicacion": "BLACK = Negro"},
+      {"respuesta": "white", "letras_desordenadas": "thiwe", "pista_es": "Blanco", "pista_emoji": "\u26aa", "explicacion": "WHITE = Blanco"}
+    ]
+  }]
+}

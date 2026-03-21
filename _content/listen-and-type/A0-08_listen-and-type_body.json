@@ -1,0 +1,23 @@
+{
+  "id": "A0-08_listen-and-type_body",
+  "titulo": "Listen & Type: Body Parts",
+  "descripcion": "Listen and type sentences about the body!",
+  "tipo": "listen-and-type",
+  "materia": "ingles",
+  "tema": "body-parts",
+  "nivel": "A0-08",
+  "misiones": [{
+    "id": "mision-lat-body",
+    "tipo": "listen-and-type",
+    "titulo": "Listen and Write!",
+    "instruccion": "Press Play to hear the sentence. Then type it!",
+    "retos": [
+      {"texto_en": "Touch your nose", "traduccion": "Toca tu nariz", "pista": "Touch your n___ (3 words)", "explicacion": "Touch your nose = Toca tu nariz"},
+      {"texto_en": "I have two hands", "traduccion": "Tengo dos manos", "pista": "I have two h____ (4 words)", "explicacion": "I have two hands = Tengo dos manos"},
+      {"texto_en": "Open your mouth", "traduccion": "Abre tu boca", "pista": "Open your m____ (3 words)", "explicacion": "Open your mouth = Abre tu boca"},
+      {"texto_en": "Clap your hands", "traduccion": "Aplaude tus manos", "pista": "Clap your h____ (3 words)", "explicacion": "Clap your hands = Aplaude"},
+      {"texto_en": "I have two eyes", "traduccion": "Tengo dos ojos", "pista": "I have two e___ (4 words)", "explicacion": "I have two eyes = Tengo dos ojos"},
+      {"texto_en": "Touch your head", "traduccion": "Toca tu cabeza", "pista": "Touch your h___ (3 words)", "explicacion": "Touch your head = Toca tu cabeza"}
+    ]
+  }]
+}

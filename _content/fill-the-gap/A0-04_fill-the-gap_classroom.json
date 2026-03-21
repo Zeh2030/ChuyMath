@@ -1,0 +1,61 @@
+{
+  "id": "A0-04_fill-the-gap_classroom",
+  "titulo": "Fill the Gap: Classroom Articles",
+  "descripcion": "Complete sentences about classroom objects with the correct word!",
+  "tipo": "fill-the-gap",
+  "materia": "ingles",
+  "tema": "classroom",
+  "nivel": "A0-04",
+  "misiones": [
+    {
+      "id": "mision-ftg-classroom",
+      "tipo": "fill-the-gap",
+      "titulo": "A or An?",
+      "instruccion": "Choose the correct word to complete the sentence.",
+      "retos": [
+        {
+          "oracion": "This is ___ pencil.",
+          "traduccion": "Este es un lapiz.",
+          "opciones": ["a", "an", "the", "is"],
+          "respuesta": 0,
+          "explicacion": "A pencil - usamos 'a' antes de consonante (p)"
+        },
+        {
+          "oracion": "This is ___ eraser.",
+          "traduccion": "Este es un borrador.",
+          "opciones": ["a", "an", "the", "is"],
+          "respuesta": 1,
+          "explicacion": "An eraser - usamos 'an' antes de vocal (e)"
+        },
+        {
+          "oracion": "I have ___ book.",
+          "traduccion": "Yo tengo un libro.",
+          "opciones": ["a", "an", "the", "is"],
+          "respuesta": 0,
+          "explicacion": "A book - usamos 'a' antes de consonante (b)"
+        },
+        {
+          "oracion": "___ is my bag.",
+          "traduccion": "Esta es mi mochila.",
+          "opciones": ["This", "A", "An", "Is"],
+          "respuesta": 0,
+          "explicacion": "This is my bag - 'This' para senalar algo cercano"
+        },
+        {
+          "oracion": "What ___ this?",
+          "traduccion": "Que es esto?",
+          "opciones": ["is", "are", "am", "do"],
+          "respuesta": 0,
+          "explicacion": "What is this? - usamos 'is' con 'this' (singular)"
+        },
+        {
+          "oracion": "I have ___ ruler.",
+          "traduccion": "Yo tengo una regla.",
+          "opciones": ["a", "an", "the", "is"],
+          "respuesta": 0,
+          "explicacion": "A ruler - usamos 'a' antes de consonante (r)"
+        }
+      ]
+    }
+  ]
+}

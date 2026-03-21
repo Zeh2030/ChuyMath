@@ -1,0 +1,23 @@
+{
+  "id": "A0-07_listen-and-type_feelings",
+  "titulo": "Listen & Type: Feelings",
+  "descripcion": "Listen and type the sentence about feelings!",
+  "tipo": "listen-and-type",
+  "materia": "ingles",
+  "tema": "feelings",
+  "nivel": "A0-07",
+  "misiones": [{
+    "id": "mision-lat-feelings",
+    "tipo": "listen-and-type",
+    "titulo": "Listen and Write!",
+    "instruccion": "Press Play to hear the sentence. Then type it!",
+    "retos": [
+      {"texto_en": "I am happy", "traduccion": "Estoy feliz", "pista": "I __ happy (3 words)", "explicacion": "I am happy = Estoy feliz"},
+      {"texto_en": "She is sad", "traduccion": "Ella está triste", "pista": "She __ sad (3 words)", "explicacion": "She is sad = Ella está triste"},
+      {"texto_en": "He is angry", "traduccion": "Él está enojado", "pista": "He __ angry (3 words)", "explicacion": "He is angry = Él está enojado"},
+      {"texto_en": "I am tired", "traduccion": "Estoy cansado", "pista": "I __ tired (3 words)", "explicacion": "I am tired = Estoy cansado"},
+      {"texto_en": "Are you hungry", "traduccion": "Tienes hambre?", "pista": "Are you h_____ (3 words)", "explicacion": "Are you hungry? = ¿Tienes hambre?"},
+      {"texto_en": "She is scared", "traduccion": "Ella está asustada", "pista": "She __ scared (3 words)", "explicacion": "She is scared = Ella está asustada"}
+    ]
+  }]
+}

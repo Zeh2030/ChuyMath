@@ -1,0 +1,23 @@
+{
+  "id": "A0-07_image-picker_feelings",
+  "titulo": "Image Picker: Feelings",
+  "descripcion": "How are you feeling? Pick the right emoji!",
+  "tipo": "image-picker",
+  "materia": "ingles",
+  "tema": "feelings",
+  "nivel": "A0-07",
+  "misiones": [{
+    "id": "mision-ip-feelings",
+    "tipo": "image-picker",
+    "titulo": "How do you feel?",
+    "instruccion": "Tap the emoji that matches the feeling!",
+    "retos": [
+      {"palabra_en": "happy", "palabra_es": "feliz", "opciones": [{"emoji": "😊", "label": "happy"}, {"emoji": "😢", "label": "sad"}, {"emoji": "😠", "label": "angry"}, {"emoji": "😴", "label": "tired"}], "respuesta": 0, "explicacion": "Happy = Feliz. I am happy!"},
+      {"palabra_en": "sad", "palabra_es": "triste", "opciones": [{"emoji": "😊", "label": "happy"}, {"emoji": "😢", "label": "sad"}, {"emoji": "😨", "label": "scared"}, {"emoji": "🤤", "label": "hungry"}], "respuesta": 1, "explicacion": "Sad = Triste. She is sad."},
+      {"palabra_en": "angry", "palabra_es": "enojado", "opciones": [{"emoji": "😴", "label": "tired"}, {"emoji": "😊", "label": "happy"}, {"emoji": "😠", "label": "angry"}, {"emoji": "😢", "label": "sad"}], "respuesta": 2, "explicacion": "Angry = Enojado. He is angry!"},
+      {"palabra_en": "tired", "palabra_es": "cansado", "opciones": [{"emoji": "😴", "label": "tired"}, {"emoji": "😠", "label": "angry"}, {"emoji": "😊", "label": "happy"}, {"emoji": "😨", "label": "scared"}], "respuesta": 0, "explicacion": "Tired = Cansado. I am tired."},
+      {"palabra_en": "hungry", "palabra_es": "con hambre", "opciones": [{"emoji": "😢", "label": "sad"}, {"emoji": "😊", "label": "happy"}, {"emoji": "🤤", "label": "hungry"}, {"emoji": "😴", "label": "tired"}], "respuesta": 2, "explicacion": "Hungry = Con hambre. I am hungry!"},
+      {"palabra_en": "scared", "palabra_es": "asustado", "opciones": [{"emoji": "😠", "label": "angry"}, {"emoji": "😨", "label": "scared"}, {"emoji": "😊", "label": "happy"}, {"emoji": "😢", "label": "sad"}], "respuesta": 1, "explicacion": "Scared = Asustado. She is scared!"}
+    ]
+  }]
+}

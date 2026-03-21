@@ -1,0 +1,23 @@
+{
+  "id": "A0-07_word-scramble_feelings",
+  "titulo": "Word Scramble: Feelings",
+  "descripcion": "Unscramble the feeling word!",
+  "tipo": "word-scramble",
+  "materia": "ingles",
+  "tema": "feelings",
+  "nivel": "A0-07",
+  "misiones": [{
+    "id": "mision-ws-feelings",
+    "tipo": "word-scramble",
+    "titulo": "Spell the Feeling!",
+    "instruccion": "The letters are mixed up! Put them in order!",
+    "retos": [
+      {"respuesta": "happy", "letras_desordenadas": "pahyp", "pista_es": "Feliz", "pista_emoji": "😊", "explicacion": "HAPPY = Feliz"},
+      {"respuesta": "sad", "letras_desordenadas": "dsa", "pista_es": "Triste", "pista_emoji": "😢", "explicacion": "SAD = Triste"},
+      {"respuesta": "angry", "letras_desordenadas": "gnray", "pista_es": "Enojado", "pista_emoji": "😠", "explicacion": "ANGRY = Enojado"},
+      {"respuesta": "tired", "letras_desordenadas": "diret", "pista_es": "Cansado", "pista_emoji": "😴", "explicacion": "TIRED = Cansado"},
+      {"respuesta": "hungry", "letras_desordenadas": "gyhunr", "pista_es": "Con hambre", "pista_emoji": "🤤", "explicacion": "HUNGRY = Con hambre"},
+      {"respuesta": "scared", "letras_desordenadas": "dscaer", "pista_es": "Asustado", "pista_emoji": "😨", "explicacion": "SCARED = Asustado"}
+    ]
+  }]
+}

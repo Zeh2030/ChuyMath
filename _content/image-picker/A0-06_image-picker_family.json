@@ -1,0 +1,91 @@
+{
+  "id": "A0-06_image-picker_family",
+  "titulo": "Image Picker: Family",
+  "descripcion": "Pick the image that matches the family member!",
+  "tipo": "image-picker",
+  "materia": "ingles",
+  "tema": "family",
+  "nivel": "A0-06",
+  "misiones": [
+    {
+      "id": "mision-ip-family",
+      "tipo": "image-picker",
+      "titulo": "Who is it?",
+      "instruccion": "Look at the word, listen to it, and tap the correct image!",
+      "retos": [
+        {
+          "palabra_en": "mom",
+          "palabra_es": "mama",
+          "opciones": [
+            { "emoji": "\ud83d\udc69", "label": "mom" },
+            { "emoji": "\ud83d\udc68", "label": "dad" },
+            { "emoji": "\ud83d\udc66", "label": "brother" },
+            { "emoji": "\ud83d\udc76", "label": "baby" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Mom = mama. This is my mom."
+        },
+        {
+          "palabra_en": "dad",
+          "palabra_es": "papa",
+          "opciones": [
+            { "emoji": "\ud83d\udc67", "label": "sister" },
+            { "emoji": "\ud83d\udc68", "label": "dad" },
+            { "emoji": "\ud83d\udc75", "label": "grandma" },
+            { "emoji": "\ud83d\udc76", "label": "baby" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Dad = papa. He is my dad."
+        },
+        {
+          "palabra_en": "brother",
+          "palabra_es": "hermano",
+          "opciones": [
+            { "emoji": "\ud83d\udc69", "label": "mom" },
+            { "emoji": "\ud83d\udc75", "label": "grandma" },
+            { "emoji": "\ud83d\udc66", "label": "brother" },
+            { "emoji": "\ud83d\udc67", "label": "sister" }
+          ],
+          "respuesta": 2,
+          "explicacion": "Brother = hermano. He is my brother."
+        },
+        {
+          "palabra_en": "sister",
+          "palabra_es": "hermana",
+          "opciones": [
+            { "emoji": "\ud83d\udc68", "label": "dad" },
+            { "emoji": "\ud83d\udc67", "label": "sister" },
+            { "emoji": "\ud83d\udc76", "label": "baby" },
+            { "emoji": "\ud83d\udc66", "label": "brother" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Sister = hermana. She is my sister."
+        },
+        {
+          "palabra_en": "baby",
+          "palabra_es": "bebe",
+          "opciones": [
+            { "emoji": "\ud83d\udc75", "label": "grandma" },
+            { "emoji": "\ud83d\udc69", "label": "mom" },
+            { "emoji": "\ud83d\udc68", "label": "dad" },
+            { "emoji": "\ud83d\udc76", "label": "baby" }
+          ],
+          "respuesta": 3,
+          "explicacion": "Baby = bebe. The baby is small."
+        },
+        {
+          "palabra_en": "grandma",
+          "palabra_es": "abuela",
+          "opciones": [
+            { "emoji": "\ud83d\udc67", "label": "sister" },
+            { "emoji": "\ud83d\udc75", "label": "grandma" },
+            { "emoji": "\ud83d\udc69", "label": "mom" },
+            { "emoji": "\ud83d\udc66", "label": "brother" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Grandma = abuela. She is my grandma."
+        }
+      ]
+    }
+  ]
+}

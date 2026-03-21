@@ -1,0 +1,61 @@
+{
+  "id": "A0-06_word-bank_family",
+  "titulo": "Word Bank: Family",
+  "descripcion": "Build sentences about family in English!",
+  "tipo": "word-bank",
+  "materia": "ingles",
+  "tema": "family",
+  "nivel": "A0-06",
+  "misiones": [
+    {
+      "id": "mision-wb-family",
+      "tipo": "word-bank",
+      "titulo": "Build the Sentence!",
+      "instruccion": "Tap the words in the correct order to build the English sentence.",
+      "retos": [
+        {
+          "oracion_es": "Esta es mi mama",
+          "palabras": ["This", "is", "my", "mom"],
+          "respuesta": ["This", "is", "my", "mom"],
+          "palabras_extra": ["are", "his"],
+          "explicacion": "This is my mom - 'my' indica posesion"
+        },
+        {
+          "oracion_es": "El es mi hermano",
+          "palabras": ["He", "is", "my", "brother"],
+          "respuesta": ["He", "is", "my", "brother"],
+          "palabras_extra": ["She", "her"],
+          "explicacion": "He is my brother - 'He' se usa para hombres"
+        },
+        {
+          "oracion_es": "Ella es mi hermana",
+          "palabras": ["She", "is", "my", "sister"],
+          "respuesta": ["She", "is", "my", "sister"],
+          "palabras_extra": ["He", "his"],
+          "explicacion": "She is my sister - 'She' se usa para mujeres"
+        },
+        {
+          "oracion_es": "Este es mi papa",
+          "palabras": ["This", "is", "my", "dad"],
+          "respuesta": ["This", "is", "my", "dad"],
+          "palabras_extra": ["are", "her"],
+          "explicacion": "This is my dad - 'This' se usa para presentar"
+        },
+        {
+          "oracion_es": "Amo a mi familia",
+          "palabras": ["I", "love", "my", "family"],
+          "respuesta": ["I", "love", "my", "family"],
+          "palabras_extra": ["is", "a"],
+          "explicacion": "I love my family - 'I' siempre va en mayuscula"
+        },
+        {
+          "oracion_es": "Mi abuela es buena",
+          "palabras": ["My", "grandma", "is", "nice"],
+          "respuesta": ["My", "grandma", "is", "nice"],
+          "palabras_extra": ["He", "a"],
+          "explicacion": "My grandma is nice - nice = buena/agradable"
+        }
+      ]
+    }
+  ]
+}

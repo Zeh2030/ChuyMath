@@ -1,0 +1,61 @@
+{
+  "id": "A0-03_fill-the-gap_numbers",
+  "titulo": "Fill the Gap: Numbers in Sentences",
+  "descripcion": "Complete the sentence with the correct number word!",
+  "tipo": "fill-the-gap",
+  "materia": "ingles",
+  "tema": "numbers",
+  "nivel": "A0-03",
+  "misiones": [
+    {
+      "id": "mision-ftg-numbers",
+      "tipo": "fill-the-gap",
+      "titulo": "How many?",
+      "instruccion": "Choose the correct number word to complete the sentence.",
+      "retos": [
+        {
+          "oracion": "I have ___ hands.",
+          "traduccion": "Yo tengo dos manos.",
+          "opciones": ["two", "three", "four", "five"],
+          "respuesta": 0,
+          "explicacion": "Two = dos. We have two hands!"
+        },
+        {
+          "oracion": "A cat has ___ legs.",
+          "traduccion": "Un gato tiene cuatro patas.",
+          "opciones": ["two", "three", "four", "five"],
+          "respuesta": 2,
+          "explicacion": "Four = cuatro. Cats have four legs!"
+        },
+        {
+          "oracion": "There are ___ days in a week.",
+          "traduccion": "Hay siete dias en una semana.",
+          "opciones": ["five", "six", "seven", "eight"],
+          "respuesta": 2,
+          "explicacion": "Seven = siete. A week has seven days!"
+        },
+        {
+          "oracion": "I have ___ fingers.",
+          "traduccion": "Yo tengo diez dedos.",
+          "opciones": ["eight", "nine", "ten", "eleven"],
+          "respuesta": 2,
+          "explicacion": "Ten = diez. We have ten fingers!"
+        },
+        {
+          "oracion": "There are ___ months in a year.",
+          "traduccion": "Hay doce meses en un ano.",
+          "opciones": ["ten", "eleven", "twelve", "thirteen"],
+          "respuesta": 2,
+          "explicacion": "Twelve = doce. A year has twelve months!"
+        },
+        {
+          "oracion": "A triangle has ___ sides.",
+          "traduccion": "Un triangulo tiene tres lados.",
+          "opciones": ["two", "three", "four", "five"],
+          "respuesta": 1,
+          "explicacion": "Three = tres. A triangle has three sides!"
+        }
+      ]
+    }
+  ]
+}

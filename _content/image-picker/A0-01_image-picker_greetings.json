@@ -1,0 +1,89 @@
+{
+  "id": "A0-01_image-picker_greetings",
+  "titulo": "Image Picker: Greetings",
+  "descripcion": "Match the greeting with the right image!",
+  "tipo": "image-picker",
+  "materia": "ingles",
+  "tema": "greetings",
+  "nivel": "A0-01",
+  "misiones": [{
+    "id": "mision-ip-greetings",
+    "tipo": "image-picker",
+    "titulo": "Greetings!",
+    "instruccion": "Tap the image that matches the word!",
+    "retos": [
+      {
+        "palabra_en": "hello",
+        "palabra_es": "hola",
+        "opciones": [
+          {"emoji": "\ud83d\udc4b", "label": "hello"},
+          {"emoji": "\ud83d\ude34", "label": "good night"},
+          {"emoji": "\ud83d\ude22", "label": "sad"},
+          {"emoji": "\ud83c\udfc3", "label": "run"}
+        ],
+        "respuesta": 0,
+        "explicacion": "Hello = Hola. We say hello when we see someone!"
+      },
+      {
+        "palabra_en": "bye",
+        "palabra_es": "adi\u00f3s",
+        "opciones": [
+          {"emoji": "\ud83c\udf55", "label": "eat"},
+          {"emoji": "\ud83d\udc4b", "label": "bye"},
+          {"emoji": "\ud83d\ude0a", "label": "happy"},
+          {"emoji": "\ud83d\udcd6", "label": "read"}
+        ],
+        "respuesta": 1,
+        "explicacion": "Bye = Adi\u00f3s. We say bye when we leave!"
+      },
+      {
+        "palabra_en": "good morning",
+        "palabra_es": "buenos d\u00edas",
+        "opciones": [
+          {"emoji": "\ud83c\udf19", "label": "good night"},
+          {"emoji": "\ud83c\udf05", "label": "good morning"},
+          {"emoji": "\ud83c\udf27\ufe0f", "label": "rain"},
+          {"emoji": "\u2b50", "label": "star"}
+        ],
+        "respuesta": 1,
+        "explicacion": "Good morning = Buenos d\u00edas. We say it when the sun comes up!"
+      },
+      {
+        "palabra_en": "good night",
+        "palabra_es": "buenas noches",
+        "opciones": [
+          {"emoji": "\u2600\ufe0f", "label": "good morning"},
+          {"emoji": "\ud83c\udfae", "label": "play"},
+          {"emoji": "\ud83c\udf19", "label": "good night"},
+          {"emoji": "\ud83d\udcda", "label": "study"}
+        ],
+        "respuesta": 2,
+        "explicacion": "Good night = Buenas noches. We say it before going to sleep!"
+      },
+      {
+        "palabra_en": "thank you",
+        "palabra_es": "gracias",
+        "opciones": [
+          {"emoji": "\ud83d\ude4f", "label": "thank you"},
+          {"emoji": "\ud83d\udc4b", "label": "hello"},
+          {"emoji": "\ud83d\ude20", "label": "angry"},
+          {"emoji": "\ud83c\udfe0", "label": "home"}
+        ],
+        "respuesta": 0,
+        "explicacion": "Thank you = Gracias. We say it when someone helps us!"
+      },
+      {
+        "palabra_en": "please",
+        "palabra_es": "por favor",
+        "opciones": [
+          {"emoji": "\ud83d\ude34", "label": "sleep"},
+          {"emoji": "\ud83e\udd32", "label": "please"},
+          {"emoji": "\ud83c\udfc3", "label": "run"},
+          {"emoji": "\ud83c\udf4e", "label": "apple"}
+        ],
+        "respuesta": 1,
+        "explicacion": "Please = Por favor. We say it when we ask for something!"
+      }
+    ]
+  }]
+}

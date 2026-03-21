@@ -1,0 +1,55 @@
+{
+  "id": "A0-04_listen-and-type_classroom",
+  "titulo": "Listen & Type: Classroom Sentences",
+  "descripcion": "Listen to the sentence and type it! Train your ear and spelling.",
+  "tipo": "listen-and-type",
+  "materia": "ingles",
+  "tema": "classroom",
+  "nivel": "A0-04",
+  "misiones": [
+    {
+      "id": "mision-lat-classroom",
+      "tipo": "listen-and-type",
+      "titulo": "Listen and Write!",
+      "instruccion": "Press Play to hear the sentence. Then type exactly what you hear!",
+      "retos": [
+        {
+          "texto_en": "This is a book",
+          "traduccion": "Este es un libro",
+          "pista": "This ___ a book (4 words)",
+          "explicacion": "This is a book - Este es un libro"
+        },
+        {
+          "texto_en": "I have a pencil",
+          "traduccion": "Yo tengo un lapiz",
+          "pista": "I ___ a pencil (4 words)",
+          "explicacion": "I have a pencil - Yo tengo un lapiz"
+        },
+        {
+          "texto_en": "Where is my bag",
+          "traduccion": "Donde esta mi mochila",
+          "pista": "Where ___ my bag (4 words)",
+          "explicacion": "Where is my bag - Donde esta mi mochila"
+        },
+        {
+          "texto_en": "This is an eraser",
+          "traduccion": "Este es un borrador",
+          "pista": "This is ___ eraser (4 words)",
+          "explicacion": "This is an eraser - usamos 'an' antes de vocal"
+        },
+        {
+          "texto_en": "I need a ruler",
+          "traduccion": "Necesito una regla",
+          "pista": "I ___ a ruler (4 words)",
+          "explicacion": "I need a ruler - Necesito una regla"
+        },
+        {
+          "texto_en": "Sit on the chair",
+          "traduccion": "Sientate en la silla",
+          "pista": "Sit ___ the chair (4 words)",
+          "explicacion": "Sit on the chair - Sientate en la silla"
+        }
+      ]
+    }
+  ]
+}

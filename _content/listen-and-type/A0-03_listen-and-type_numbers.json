@@ -1,0 +1,67 @@
+{
+  "id": "A0-03_listen-and-type_numbers",
+  "titulo": "Listen & Type: Numbers",
+  "descripcion": "Listen to the number and type it! Train your ear and spelling.",
+  "tipo": "listen-and-type",
+  "materia": "ingles",
+  "tema": "numbers",
+  "nivel": "A0-03",
+  "misiones": [
+    {
+      "id": "mision-lat-numbers",
+      "tipo": "listen-and-type",
+      "titulo": "Listen and Write the Number!",
+      "instruccion": "Press Play to hear the number. Then type the word exactly as you hear it!",
+      "retos": [
+        {
+          "texto_en": "one",
+          "traduccion": "uno",
+          "pista": "o_e (3 letters)",
+          "explicacion": "ONE - uno. The first number!"
+        },
+        {
+          "texto_en": "three",
+          "traduccion": "tres",
+          "pista": "t_r_e (5 letters)",
+          "explicacion": "THREE - tres. It has two e's!"
+        },
+        {
+          "texto_en": "five",
+          "traduccion": "cinco",
+          "pista": "f_v_ (4 letters)",
+          "explicacion": "FIVE - cinco. Rhymes with dive!"
+        },
+        {
+          "texto_en": "seven",
+          "traduccion": "siete",
+          "pista": "s_v_n (5 letters)",
+          "explicacion": "SEVEN - siete. Days in a week!"
+        },
+        {
+          "texto_en": "ten",
+          "traduccion": "diez",
+          "pista": "t_n (3 letters)",
+          "explicacion": "TEN - diez. Our fingers!"
+        },
+        {
+          "texto_en": "twelve",
+          "traduccion": "doce",
+          "pista": "t_e_v_ (6 letters)",
+          "explicacion": "TWELVE - doce. Months in a year!"
+        },
+        {
+          "texto_en": "fifteen",
+          "traduccion": "quince",
+          "pista": "f_f_e_n (7 letters)",
+          "explicacion": "FIFTEEN - quince. Five plus ten!"
+        },
+        {
+          "texto_en": "twenty",
+          "traduccion": "veinte",
+          "pista": "t_e_t_ (6 letters)",
+          "explicacion": "TWENTY - veinte. Two times ten!"
+        }
+      ]
+    }
+  ]
+}

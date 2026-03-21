@@ -1,0 +1,36 @@
+{
+  "id": "A0-08_tap-the-pairs_body",
+  "titulo": "Tap the Pairs: Body Parts",
+  "descripcion": "Match the body part in Spanish with English!",
+  "tipo": "tap-the-pairs",
+  "materia": "ingles",
+  "tema": "body-parts",
+  "nivel": "A0-08",
+  "misiones": [{
+    "id": "mision-ttp-body",
+    "tipo": "tap-the-pairs",
+    "titulo": "Match the Body Parts!",
+    "instruccion": "Tap one from each column to match!",
+    "retos": [
+      {
+        "pares": [
+          {"es": "Cabeza", "en": "Head"},
+          {"es": "Ojos", "en": "Eyes"},
+          {"es": "Nariz", "en": "Nose"},
+          {"es": "Boca", "en": "Mouth"},
+          {"es": "Orejas", "en": "Ears"},
+          {"es": "Manos", "en": "Hands"}
+        ]
+      },
+      {
+        "pares": [
+          {"es": "Pies", "en": "Feet"},
+          {"es": "Brazos", "en": "Arms"},
+          {"es": "Piernas", "en": "Legs"},
+          {"es": "Dedos", "en": "Fingers"},
+          {"es": "Pelo", "en": "Hair"}
+        ]
+      }
+    ]
+  }]
+}

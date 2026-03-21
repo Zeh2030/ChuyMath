@@ -1,0 +1,23 @@
+{
+  "id": "A0-08_fill-the-gap_body",
+  "titulo": "Fill the Gap: Body Parts",
+  "descripcion": "Complete sentences about body parts!",
+  "tipo": "fill-the-gap",
+  "materia": "ingles",
+  "tema": "body-parts",
+  "nivel": "A0-08",
+  "misiones": [{
+    "id": "mision-ftg-body",
+    "tipo": "fill-the-gap",
+    "titulo": "Complete the sentence!",
+    "instruccion": "Choose the correct word!",
+    "retos": [
+      {"oracion": "I have two ___.", "traduccion": "Tengo dos ojos.", "opciones": ["nose", "eyes", "mouth", "head"], "respuesta": 1, "explicacion": "I have two eyes = Tengo dos ojos"},
+      {"oracion": "I have two ___.", "traduccion": "Tengo dos manos.", "opciones": ["feet", "ears", "hands", "nose"], "respuesta": 2, "explicacion": "I have two hands = Tengo dos manos"},
+      {"oracion": "I have one ___.", "traduccion": "Tengo una nariz.", "opciones": ["eyes", "ears", "hands", "nose"], "respuesta": 3, "explicacion": "I have one nose = Tengo una nariz"},
+      {"oracion": "Touch your ___.", "traduccion": "Toca tu cabeza.", "opciones": ["head", "happy", "red", "play"], "respuesta": 0, "explicacion": "Touch your head = Toca tu cabeza"},
+      {"oracion": "Open your ___.", "traduccion": "Abre tu boca.", "opciones": ["eyes", "nose", "mouth", "ears"], "respuesta": 2, "explicacion": "Open your mouth = Abre tu boca"},
+      {"oracion": "I have two ___.", "traduccion": "Tengo dos pies.", "opciones": ["hands", "head", "nose", "feet"], "respuesta": 3, "explicacion": "I have two feet = Tengo dos pies"}
+    ]
+  }]
+}

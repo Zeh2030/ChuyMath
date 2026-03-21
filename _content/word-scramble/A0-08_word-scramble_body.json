@@ -1,0 +1,25 @@
+{
+  "id": "A0-08_word-scramble_body",
+  "titulo": "Word Scramble: Body Parts",
+  "descripcion": "Unscramble the body part word!",
+  "tipo": "word-scramble",
+  "materia": "ingles",
+  "tema": "body-parts",
+  "nivel": "A0-08",
+  "misiones": [{
+    "id": "mision-ws-body",
+    "tipo": "word-scramble",
+    "titulo": "Spell the Body Part!",
+    "instruccion": "The letters are mixed up! Put them in order!",
+    "retos": [
+      {"respuesta": "head", "letras_desordenadas": "deah", "pista_es": "Cabeza", "pista_emoji": "🧠", "explicacion": "HEAD = Cabeza"},
+      {"respuesta": "eyes", "letras_desordenadas": "yese", "pista_es": "Ojos", "pista_emoji": "👀", "explicacion": "EYES = Ojos"},
+      {"respuesta": "nose", "letras_desordenadas": "sone", "pista_es": "Nariz", "pista_emoji": "👃", "explicacion": "NOSE = Nariz"},
+      {"respuesta": "mouth", "letras_desordenadas": "thoum", "pista_es": "Boca", "pista_emoji": "👄", "explicacion": "MOUTH = Boca"},
+      {"respuesta": "hands", "letras_desordenadas": "dnahs", "pista_es": "Manos", "pista_emoji": "🖐️", "explicacion": "HANDS = Manos"},
+      {"respuesta": "feet", "letras_desordenadas": "etef", "pista_es": "Pies", "pista_emoji": "🦶", "explicacion": "FEET = Pies"},
+      {"respuesta": "ears", "letras_desordenadas": "rase", "pista_es": "Orejas", "pista_emoji": "👂", "explicacion": "EARS = Orejas"},
+      {"respuesta": "arms", "letras_desordenadas": "smar", "pista_es": "Brazos", "pista_emoji": "💪", "explicacion": "ARMS = Brazos"}
+    ]
+  }]
+}

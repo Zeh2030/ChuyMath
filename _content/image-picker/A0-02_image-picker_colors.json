@@ -1,0 +1,25 @@
+{
+  "id": "A0-02_image-picker_colors",
+  "titulo": "Image Picker: Colors",
+  "descripcion": "Pick the correct color!",
+  "tipo": "image-picker",
+  "materia": "ingles",
+  "tema": "colors",
+  "nivel": "A0-02",
+  "misiones": [{
+    "id": "mision-ip-colors",
+    "tipo": "image-picker",
+    "titulo": "What color is it?",
+    "instruccion": "Tap the image that matches the color!",
+    "retos": [
+      {"palabra_en": "red", "palabra_es": "rojo", "opciones": [{"emoji": "\ud83d\udd34", "label": "red"}, {"emoji": "\ud83d\udd35", "label": "blue"}, {"emoji": "\ud83d\udfe2", "label": "green"}, {"emoji": "\ud83d\udfe1", "label": "yellow"}], "respuesta": 0, "explicacion": "Red = Rojo. The apple is red!"},
+      {"palabra_en": "blue", "palabra_es": "azul", "opciones": [{"emoji": "\ud83d\udfe1", "label": "yellow"}, {"emoji": "\ud83d\udd35", "label": "blue"}, {"emoji": "\ud83d\udfe2", "label": "green"}, {"emoji": "\ud83d\udd34", "label": "red"}], "respuesta": 1, "explicacion": "Blue = Azul. The sky is blue!"},
+      {"palabra_en": "green", "palabra_es": "verde", "opciones": [{"emoji": "\ud83d\udd34", "label": "red"}, {"emoji": "\ud83d\udfe1", "label": "yellow"}, {"emoji": "\ud83d\udfe2", "label": "green"}, {"emoji": "\ud83d\udfe3", "label": "purple"}], "respuesta": 2, "explicacion": "Green = Verde. The grass is green!"},
+      {"palabra_en": "yellow", "palabra_es": "amarillo", "opciones": [{"emoji": "\ud83d\udfe1", "label": "yellow"}, {"emoji": "\ud83d\udd34", "label": "red"}, {"emoji": "\ud83d\udd35", "label": "blue"}, {"emoji": "\u26ab", "label": "black"}], "respuesta": 0, "explicacion": "Yellow = Amarillo. The sun is yellow!"},
+      {"palabra_en": "orange", "palabra_es": "naranja", "opciones": [{"emoji": "\ud83d\udfe2", "label": "green"}, {"emoji": "\ud83d\udfe0", "label": "orange"}, {"emoji": "\ud83d\udd35", "label": "blue"}, {"emoji": "\ud83d\udd34", "label": "red"}], "respuesta": 1, "explicacion": "Orange = Naranja. The orange fruit is orange!"},
+      {"palabra_en": "purple", "palabra_es": "morado", "opciones": [{"emoji": "\ud83d\udd35", "label": "blue"}, {"emoji": "\ud83d\udfe1", "label": "yellow"}, {"emoji": "\ud83d\udfe3", "label": "purple"}, {"emoji": "\ud83d\udfe2", "label": "green"}], "respuesta": 2, "explicacion": "Purple = Morado"},
+      {"palabra_en": "black", "palabra_es": "negro", "opciones": [{"emoji": "\u26aa", "label": "white"}, {"emoji": "\ud83d\udfe4", "label": "brown"}, {"emoji": "\ud83d\udd35", "label": "blue"}, {"emoji": "\u26ab", "label": "black"}], "respuesta": 3, "explicacion": "Black = Negro. The night is black!"},
+      {"palabra_en": "white", "palabra_es": "blanco", "opciones": [{"emoji": "\u26ab", "label": "black"}, {"emoji": "\u26aa", "label": "white"}, {"emoji": "\ud83d\udfe4", "label": "brown"}, {"emoji": "\ud83d\udfe3", "label": "purple"}], "respuesta": 1, "explicacion": "White = Blanco. Snow is white!"}
+    ]
+  }]
+}

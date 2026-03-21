@@ -1,0 +1,54 @@
+{
+  "id": "A0-05_word-scramble_shapes",
+  "titulo": "Word Scramble: Shapes",
+  "descripcion": "Unscramble the letters to form the correct shape!",
+  "tipo": "word-scramble",
+  "materia": "ingles",
+  "tema": "shapes",
+  "nivel": "A0-05",
+  "misiones": [
+    {
+      "id": "mision-ws-shapes",
+      "tipo": "word-scramble",
+      "titulo": "Unscramble the Shape!",
+      "instruccion": "The letters are mixed up! Put them in order to make the word. Use the sound button to hear it!",
+      "retos": [
+        {
+          "respuesta": "CIRCLE",
+          "letras_desordenadas": "rclice",
+          "pista_es": "circulo",
+          "pista_emoji": "\ud83d\udd34",
+          "explicacion": "CIRCLE - A circle is round. Circulo en espanol."
+        },
+        {
+          "respuesta": "SQUARE",
+          "letras_desordenadas": "qusare",
+          "pista_es": "cuadrado",
+          "pista_emoji": "\ud83d\udd32",
+          "explicacion": "SQUARE - A square has four equal sides. Cuadrado en espanol."
+        },
+        {
+          "respuesta": "TRIANGLE",
+          "letras_desordenadas": "gletiran",
+          "pista_es": "triangulo",
+          "pista_emoji": "\ud83d\udd3a",
+          "explicacion": "TRIANGLE - A triangle has three sides. Triangulo en espanol."
+        },
+        {
+          "respuesta": "STAR",
+          "letras_desordenadas": "tars",
+          "pista_es": "estrella",
+          "pista_emoji": "\u2b50",
+          "explicacion": "STAR - A star has five points. Estrella en espanol."
+        },
+        {
+          "respuesta": "RECTANGLE",
+          "letras_desordenadas": "glectaner",
+          "pista_es": "rectangulo",
+          "pista_emoji": "\u25ac",
+          "explicacion": "RECTANGLE - A rectangle has four sides. Rectangulo en espanol."
+        }
+      ]
+    }
+  ]
+}

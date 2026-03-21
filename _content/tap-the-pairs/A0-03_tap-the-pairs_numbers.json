@@ -1,0 +1,37 @@
+{
+  "id": "A0-03_tap-the-pairs_numbers",
+  "titulo": "Tap the Pairs: Numbers 1-10",
+  "descripcion": "Match the Spanish number with its English translation!",
+  "tipo": "tap-the-pairs",
+  "materia": "ingles",
+  "tema": "numbers",
+  "nivel": "A0-03",
+  "misiones": [
+    {
+      "id": "mision-ttp-numbers",
+      "tipo": "tap-the-pairs",
+      "titulo": "Match the Numbers!",
+      "instruccion": "Tap one from each column to match Spanish with English.",
+      "retos": [
+        {
+          "pares": [
+            { "es": "uno", "en": "one" },
+            { "es": "dos", "en": "two" },
+            { "es": "tres", "en": "three" },
+            { "es": "cuatro", "en": "four" },
+            { "es": "cinco", "en": "five" }
+          ]
+        },
+        {
+          "pares": [
+            { "es": "seis", "en": "six" },
+            { "es": "siete", "en": "seven" },
+            { "es": "ocho", "en": "eight" },
+            { "es": "nueve", "en": "nine" },
+            { "es": "diez", "en": "ten" }
+          ]
+        }
+      ]
+    }
+  ]
+}

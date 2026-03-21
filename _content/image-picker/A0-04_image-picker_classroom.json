@@ -1,0 +1,91 @@
+{
+  "id": "A0-04_image-picker_classroom",
+  "titulo": "Image Picker: Classroom Objects",
+  "descripcion": "Pick the image that matches the classroom object!",
+  "tipo": "image-picker",
+  "materia": "ingles",
+  "tema": "classroom",
+  "nivel": "A0-04",
+  "misiones": [
+    {
+      "id": "mision-ip-classroom",
+      "tipo": "image-picker",
+      "titulo": "Which object is it?",
+      "instruccion": "Look at the word, listen to it, and tap the correct image!",
+      "retos": [
+        {
+          "palabra_en": "pencil",
+          "palabra_es": "lapiz",
+          "opciones": [
+            { "emoji": "✏️", "label": "pencil" },
+            { "emoji": "📖", "label": "book" },
+            { "emoji": "📏", "label": "ruler" },
+            { "emoji": "🎒", "label": "bag" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Pencil = lapiz. I write with a pencil!"
+        },
+        {
+          "palabra_en": "book",
+          "palabra_es": "libro",
+          "opciones": [
+            { "emoji": "📏", "label": "ruler" },
+            { "emoji": "📖", "label": "book" },
+            { "emoji": "✏️", "label": "pencil" },
+            { "emoji": "🪑", "label": "desk" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Book = libro. I read a book every day!"
+        },
+        {
+          "palabra_en": "ruler",
+          "palabra_es": "regla",
+          "opciones": [
+            { "emoji": "🎒", "label": "bag" },
+            { "emoji": "🧹", "label": "eraser" },
+            { "emoji": "📏", "label": "ruler" },
+            { "emoji": "✏️", "label": "pencil" }
+          ],
+          "respuesta": 2,
+          "explicacion": "Ruler = regla. I measure with a ruler!"
+        },
+        {
+          "palabra_en": "eraser",
+          "palabra_es": "borrador",
+          "opciones": [
+            { "emoji": "📖", "label": "book" },
+            { "emoji": "🪑", "label": "desk" },
+            { "emoji": "🎒", "label": "bag" },
+            { "emoji": "🧹", "label": "eraser" }
+          ],
+          "respuesta": 3,
+          "explicacion": "Eraser = borrador. I erase mistakes with an eraser!"
+        },
+        {
+          "palabra_en": "bag",
+          "palabra_es": "mochila",
+          "opciones": [
+            { "emoji": "🪑", "label": "desk" },
+            { "emoji": "🎒", "label": "bag" },
+            { "emoji": "📖", "label": "book" },
+            { "emoji": "📏", "label": "ruler" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Bag = mochila. I carry my books in my bag!"
+        },
+        {
+          "palabra_en": "desk",
+          "palabra_es": "escritorio",
+          "opciones": [
+            { "emoji": "✏️", "label": "pencil" },
+            { "emoji": "🧹", "label": "eraser" },
+            { "emoji": "🎒", "label": "bag" },
+            { "emoji": "🪑", "label": "desk" }
+          ],
+          "respuesta": 3,
+          "explicacion": "Desk = escritorio. I sit at my desk in class!"
+        }
+      ]
+    }
+  ]
+}

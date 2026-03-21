@@ -1,0 +1,79 @@
+{
+  "id": "A0-05_image-picker_shapes",
+  "titulo": "Image Picker: Shapes",
+  "descripcion": "Pick the image that matches the shape!",
+  "tipo": "image-picker",
+  "materia": "ingles",
+  "tema": "shapes",
+  "nivel": "A0-05",
+  "misiones": [
+    {
+      "id": "mision-ip-shapes",
+      "tipo": "image-picker",
+      "titulo": "Which shape is it?",
+      "instruccion": "Look at the word, listen to it, and tap the correct shape!",
+      "retos": [
+        {
+          "palabra_en": "circle",
+          "palabra_es": "circulo",
+          "opciones": [
+            { "emoji": "\ud83d\udd34", "label": "circle" },
+            { "emoji": "\u2b1c", "label": "square" },
+            { "emoji": "\ud83d\udd3a", "label": "triangle" },
+            { "emoji": "\u2b50", "label": "star" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Circle = circulo. A circle is round."
+        },
+        {
+          "palabra_en": "square",
+          "palabra_es": "cuadrado",
+          "opciones": [
+            { "emoji": "\ud83d\udd3a", "label": "triangle" },
+            { "emoji": "\ud83d\udd32", "label": "square" },
+            { "emoji": "\ud83d\udd34", "label": "circle" },
+            { "emoji": "\u25ac", "label": "rectangle" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Square = cuadrado. A square has four equal sides."
+        },
+        {
+          "palabra_en": "triangle",
+          "palabra_es": "triangulo",
+          "opciones": [
+            { "emoji": "\u25ac", "label": "rectangle" },
+            { "emoji": "\u2b50", "label": "star" },
+            { "emoji": "\ud83d\udd3a", "label": "triangle" },
+            { "emoji": "\ud83d\udd34", "label": "circle" }
+          ],
+          "respuesta": 2,
+          "explicacion": "Triangle = triangulo. A triangle has three sides."
+        },
+        {
+          "palabra_en": "rectangle",
+          "palabra_es": "rectangulo",
+          "opciones": [
+            { "emoji": "\ud83d\udd34", "label": "circle" },
+            { "emoji": "\ud83d\udd3a", "label": "triangle" },
+            { "emoji": "\u2b50", "label": "star" },
+            { "emoji": "\u25ac", "label": "rectangle" }
+          ],
+          "respuesta": 3,
+          "explicacion": "Rectangle = rectangulo. A rectangle has four sides."
+        },
+        {
+          "palabra_en": "star",
+          "palabra_es": "estrella",
+          "opciones": [
+            { "emoji": "\u2b50", "label": "star" },
+            { "emoji": "\ud83d\udd32", "label": "square" },
+            { "emoji": "\ud83d\udd3a", "label": "triangle" },
+            { "emoji": "\u25ac", "label": "rectangle" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Star = estrella. A star has five points."
+        }
+      ]
+    }
+  ]
+}

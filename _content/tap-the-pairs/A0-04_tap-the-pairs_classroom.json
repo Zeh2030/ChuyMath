@@ -1,0 +1,29 @@
+{
+  "id": "A0-04_tap-the-pairs_classroom",
+  "titulo": "Tap the Pairs: Classroom Objects",
+  "descripcion": "Match the Spanish word with its English translation!",
+  "tipo": "tap-the-pairs",
+  "materia": "ingles",
+  "tema": "classroom",
+  "nivel": "A0-04",
+  "misiones": [
+    {
+      "id": "mision-ttp-classroom",
+      "tipo": "tap-the-pairs",
+      "titulo": "Match the Classroom Words!",
+      "instruccion": "Tap one from each column to match Spanish with English.",
+      "retos": [
+        {
+          "pares": [
+            { "es": "lapiz", "en": "pencil" },
+            { "es": "libro", "en": "book" },
+            { "es": "regla", "en": "ruler" },
+            { "es": "borrador", "en": "eraser" },
+            { "es": "mochila", "en": "bag" },
+            { "es": "silla", "en": "chair" }
+          ]
+        }
+      ]
+    }
+  ]
+}

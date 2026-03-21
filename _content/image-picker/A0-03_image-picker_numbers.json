@@ -1,0 +1,115 @@
+{
+  "id": "A0-03_image-picker_numbers",
+  "titulo": "Image Picker: Numbers 1-8",
+  "descripcion": "Pick the correct English word for each number!",
+  "tipo": "image-picker",
+  "materia": "ingles",
+  "tema": "numbers",
+  "nivel": "A0-03",
+  "misiones": [
+    {
+      "id": "mision-ip-numbers",
+      "tipo": "image-picker",
+      "titulo": "Which number is it?",
+      "instruccion": "Look at the number, listen to it, and tap the correct English word!",
+      "retos": [
+        {
+          "palabra_en": "one",
+          "palabra_es": "uno",
+          "opciones": [
+            { "emoji": "1️⃣", "label": "one" },
+            { "emoji": "2️⃣", "label": "two" },
+            { "emoji": "3️⃣", "label": "three" },
+            { "emoji": "4️⃣", "label": "four" }
+          ],
+          "respuesta": 0,
+          "explicacion": "One = Uno. 1!"
+        },
+        {
+          "palabra_en": "two",
+          "palabra_es": "dos",
+          "opciones": [
+            { "emoji": "3️⃣", "label": "three" },
+            { "emoji": "1️⃣", "label": "one" },
+            { "emoji": "2️⃣", "label": "two" },
+            { "emoji": "4️⃣", "label": "four" }
+          ],
+          "respuesta": 2,
+          "explicacion": "Two = Dos. 2!"
+        },
+        {
+          "palabra_en": "three",
+          "palabra_es": "tres",
+          "opciones": [
+            { "emoji": "4️⃣", "label": "four" },
+            { "emoji": "3️⃣", "label": "three" },
+            { "emoji": "2️⃣", "label": "two" },
+            { "emoji": "1️⃣", "label": "one" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Three = Tres. 3!"
+        },
+        {
+          "palabra_en": "four",
+          "palabra_es": "cuatro",
+          "opciones": [
+            { "emoji": "2️⃣", "label": "two" },
+            { "emoji": "5️⃣", "label": "five" },
+            { "emoji": "3️⃣", "label": "three" },
+            { "emoji": "4️⃣", "label": "four" }
+          ],
+          "respuesta": 3,
+          "explicacion": "Four = Cuatro. 4!"
+        },
+        {
+          "palabra_en": "five",
+          "palabra_es": "cinco",
+          "opciones": [
+            { "emoji": "5️⃣", "label": "five" },
+            { "emoji": "6️⃣", "label": "six" },
+            { "emoji": "7️⃣", "label": "seven" },
+            { "emoji": "8️⃣", "label": "eight" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Five = Cinco. 5!"
+        },
+        {
+          "palabra_en": "six",
+          "palabra_es": "seis",
+          "opciones": [
+            { "emoji": "8️⃣", "label": "eight" },
+            { "emoji": "5️⃣", "label": "five" },
+            { "emoji": "6️⃣", "label": "six" },
+            { "emoji": "7️⃣", "label": "seven" }
+          ],
+          "respuesta": 2,
+          "explicacion": "Six = Seis. 6!"
+        },
+        {
+          "palabra_en": "seven",
+          "palabra_es": "siete",
+          "opciones": [
+            { "emoji": "6️⃣", "label": "six" },
+            { "emoji": "8️⃣", "label": "eight" },
+            { "emoji": "5️⃣", "label": "five" },
+            { "emoji": "7️⃣", "label": "seven" }
+          ],
+          "respuesta": 3,
+          "explicacion": "Seven = Siete. 7!"
+        },
+        {
+          "palabra_en": "eight",
+          "palabra_es": "ocho",
+          "opciones": [
+            { "emoji": "7️⃣", "label": "seven" },
+            { "emoji": "8️⃣", "label": "eight" },
+            { "emoji": "6️⃣", "label": "six" },
+            { "emoji": "5️⃣", "label": "five" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Eight = Ocho. 8!"
+        }
+      ]
+    }
+  ]
+}

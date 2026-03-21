@@ -1,0 +1,61 @@
+{
+  "id": "A0-06_word-scramble_family",
+  "titulo": "Word Scramble: Family",
+  "descripcion": "Unscramble the letters to form the correct family word!",
+  "tipo": "word-scramble",
+  "materia": "ingles",
+  "tema": "family",
+  "nivel": "A0-06",
+  "misiones": [
+    {
+      "id": "mision-ws-family",
+      "tipo": "word-scramble",
+      "titulo": "Unscramble the Word!",
+      "instruccion": "The letters are mixed up! Put them in order to make the word. Use the sound button to hear it!",
+      "retos": [
+        {
+          "respuesta": "MOM",
+          "letras_desordenadas": "omm",
+          "pista_es": "mama",
+          "pista_emoji": "\ud83d\udc69",
+          "explicacion": "MOM - This is my mom. Mama en espanol."
+        },
+        {
+          "respuesta": "DAD",
+          "letras_desordenadas": "dda",
+          "pista_es": "papa",
+          "pista_emoji": "\ud83d\udc68",
+          "explicacion": "DAD - He is my dad. Papa en espanol."
+        },
+        {
+          "respuesta": "BROTHER",
+          "letras_desordenadas": "therbor",
+          "pista_es": "hermano",
+          "pista_emoji": "\ud83d\udc66",
+          "explicacion": "BROTHER - He is my brother. Hermano en espanol."
+        },
+        {
+          "respuesta": "SISTER",
+          "letras_desordenadas": "stires",
+          "pista_es": "hermana",
+          "pista_emoji": "\ud83d\udc67",
+          "explicacion": "SISTER - She is my sister. Hermana en espanol."
+        },
+        {
+          "respuesta": "BABY",
+          "letras_desordenadas": "ybab",
+          "pista_es": "bebe",
+          "pista_emoji": "\ud83d\udc76",
+          "explicacion": "BABY - The baby is small. Bebe en espanol."
+        },
+        {
+          "respuesta": "GRANDMA",
+          "letras_desordenadas": "dgranma",
+          "pista_es": "abuela",
+          "pista_emoji": "\ud83d\udc75",
+          "explicacion": "GRANDMA - She is my grandma. Abuela en espanol."
+        }
+      ]
+    }
+  ]
+}

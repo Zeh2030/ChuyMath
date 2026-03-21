@@ -1,0 +1,35 @@
+{
+  "id": "A0-01_tap-the-pairs_greetings",
+  "titulo": "Tap the Pairs: Greetings",
+  "descripcion": "Match the Spanish greeting with its English translation!",
+  "tipo": "tap-the-pairs",
+  "materia": "ingles",
+  "tema": "greetings",
+  "nivel": "A0-01",
+  "misiones": [{
+    "id": "mision-ttp-greetings",
+    "tipo": "tap-the-pairs",
+    "titulo": "Match the Greetings!",
+    "instruccion": "Tap one from each column to match!",
+    "retos": [
+      {
+        "pares": [
+          {"es": "Hola", "en": "Hello"},
+          {"es": "Adi\u00f3s", "en": "Bye"},
+          {"es": "Buenos d\u00edas", "en": "Good morning"},
+          {"es": "Buenas noches", "en": "Good night"},
+          {"es": "Gracias", "en": "Thank you"}
+        ]
+      },
+      {
+        "pares": [
+          {"es": "Por favor", "en": "Please"},
+          {"es": "S\u00ed", "en": "Yes"},
+          {"es": "No", "en": "No"},
+          {"es": "Perd\u00f3n", "en": "Sorry"},
+          {"es": "\u00bfC\u00f3mo te llamas?", "en": "What is your name?"}
+        ]
+      }
+    ]
+  }]
+}

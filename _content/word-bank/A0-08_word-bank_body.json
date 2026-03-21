@@ -1,0 +1,23 @@
+{
+  "id": "A0-08_word-bank_body",
+  "titulo": "Word Bank: Body Parts",
+  "descripcion": "Build sentences about body parts!",
+  "tipo": "word-bank",
+  "materia": "ingles",
+  "tema": "body-parts",
+  "nivel": "A0-08",
+  "misiones": [{
+    "id": "mision-wb-body",
+    "tipo": "word-bank",
+    "titulo": "Build the Sentence!",
+    "instruccion": "Tap words to build sentences about the body!",
+    "retos": [
+      {"oracion_es": "Toca tu cabeza", "palabras": ["Touch", "your", "head"], "respuesta": ["Touch", "your", "head"], "palabras_extra": ["my", "nose"], "explicacion": "Touch your head = Toca tu cabeza"},
+      {"oracion_es": "Tengo dos ojos", "palabras": ["I", "have", "two", "eyes"], "respuesta": ["I", "have", "two", "eyes"], "palabras_extra": ["is", "one"], "explicacion": "I have two eyes = Tengo dos ojos"},
+      {"oracion_es": "Abre tu boca", "palabras": ["Open", "your", "mouth"], "respuesta": ["Open", "your", "mouth"], "palabras_extra": ["my", "close"], "explicacion": "Open your mouth = Abre tu boca"},
+      {"oracion_es": "Aplaude tus manos", "palabras": ["Clap", "your", "hands"], "respuesta": ["Clap", "your", "hands"], "palabras_extra": ["my", "feet"], "explicacion": "Clap your hands = Aplaude tus manos"},
+      {"oracion_es": "Ella tiene pelo largo", "palabras": ["She", "has", "long", "hair"], "respuesta": ["She", "has", "long", "hair"], "palabras_extra": ["have", "short"], "explicacion": "She has long hair. Con She se usa has."},
+      {"oracion_es": "Pisa con tus pies", "palabras": ["Stamp", "your", "feet"], "respuesta": ["Stamp", "your", "feet"], "palabras_extra": ["my", "hands"], "explicacion": "Stamp your feet = Pisa con tus pies"}
+    ]
+  }]
+}

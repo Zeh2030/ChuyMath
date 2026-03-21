@@ -1,0 +1,28 @@
+{
+  "id": "A0-05_tap-the-pairs_shapes",
+  "titulo": "Tap the Pairs: Shapes",
+  "descripcion": "Match the Spanish shape with its English translation!",
+  "tipo": "tap-the-pairs",
+  "materia": "ingles",
+  "tema": "shapes",
+  "nivel": "A0-05",
+  "misiones": [
+    {
+      "id": "mision-ttp-shapes",
+      "tipo": "tap-the-pairs",
+      "titulo": "Match the Shapes!",
+      "instruccion": "Tap one from each column to match Spanish with English.",
+      "retos": [
+        {
+          "pares": [
+            { "es": "circulo", "en": "circle" },
+            { "es": "cuadrado", "en": "square" },
+            { "es": "triangulo", "en": "triangle" },
+            { "es": "rectangulo", "en": "rectangle" },
+            { "es": "estrella", "en": "star" }
+          ]
+        }
+      ]
+    }
+  ]
+}

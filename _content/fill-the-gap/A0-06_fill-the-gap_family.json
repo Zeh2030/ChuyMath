@@ -1,0 +1,61 @@
+{
+  "id": "A0-06_fill-the-gap_family",
+  "titulo": "Fill the Gap: Family",
+  "descripcion": "Complete sentences about family!",
+  "tipo": "fill-the-gap",
+  "materia": "ingles",
+  "tema": "family",
+  "nivel": "A0-06",
+  "misiones": [
+    {
+      "id": "mision-ftg-family",
+      "tipo": "fill-the-gap",
+      "titulo": "Complete the Sentence!",
+      "instruccion": "Choose the correct word to complete the sentence.",
+      "retos": [
+        {
+          "oracion": "This is ___ mom",
+          "traduccion": "Esta es mi mama",
+          "opciones": ["my", "I", "me", "a"],
+          "respuesta": 0,
+          "explicacion": "My mom - usamos 'my' para indicar posesion (mi)"
+        },
+        {
+          "oracion": "___ is my dad",
+          "traduccion": "El es mi papa",
+          "opciones": ["He", "She", "It", "My"],
+          "respuesta": 0,
+          "explicacion": "He is my dad - usamos 'He' para hombres"
+        },
+        {
+          "oracion": "___ is my sister",
+          "traduccion": "Ella es mi hermana",
+          "opciones": ["He", "She", "It", "My"],
+          "respuesta": 1,
+          "explicacion": "She is my sister - usamos 'She' para mujeres"
+        },
+        {
+          "oracion": "I love ___ family",
+          "traduccion": "Amo a mi familia",
+          "opciones": ["my", "me", "I", "a"],
+          "respuesta": 0,
+          "explicacion": "My family - usamos 'my' para indicar posesion (mi)"
+        },
+        {
+          "oracion": "This is ___ brother",
+          "traduccion": "Este es mi hermano",
+          "opciones": ["my", "me", "I", "a"],
+          "respuesta": 0,
+          "explicacion": "My brother - usamos 'my' para indicar posesion (mi)"
+        },
+        {
+          "oracion": "My ___ is a baby",
+          "traduccion": "Mi hermana es una bebe",
+          "opciones": ["sister", "mom", "dad", "grandpa"],
+          "respuesta": 0,
+          "explicacion": "My sister is a baby - sister = hermana"
+        }
+      ]
+    }
+  ]
+}

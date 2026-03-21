@@ -1,0 +1,23 @@
+{
+  "id": "A0-07_word-bank_feelings",
+  "titulo": "Word Bank: Feelings",
+  "descripcion": "Build sentences about feelings!",
+  "tipo": "word-bank",
+  "materia": "ingles",
+  "tema": "feelings",
+  "nivel": "A0-07",
+  "misiones": [{
+    "id": "mision-wb-feelings",
+    "tipo": "word-bank",
+    "titulo": "Build the Sentence!",
+    "instruccion": "Tap words to build the sentence about feelings!",
+    "retos": [
+      {"oracion_es": "Yo estoy feliz", "palabras": ["I", "am", "happy"], "respuesta": ["I", "am", "happy"], "palabras_extra": ["is", "are"], "explicacion": "I am happy. Con I se usa am."},
+      {"oracion_es": "Ella está triste", "palabras": ["She", "is", "sad"], "respuesta": ["She", "is", "sad"], "palabras_extra": ["am", "are"], "explicacion": "She is sad. Con She se usa is."},
+      {"oracion_es": "Estás cansado?", "palabras": ["Are", "you", "tired?"], "respuesta": ["Are", "you", "tired?"], "palabras_extra": ["Am", "Is"], "explicacion": "Are you tired? Para preguntar usamos Are you..."},
+      {"oracion_es": "Él está enojado", "palabras": ["He", "is", "angry"], "respuesta": ["He", "is", "angry"], "palabras_extra": ["am", "She"], "explicacion": "He is angry. Con He se usa is."},
+      {"oracion_es": "Nosotros estamos felices", "palabras": ["We", "are", "happy"], "respuesta": ["We", "are", "happy"], "palabras_extra": ["is", "am"], "explicacion": "We are happy. Con We se usa are."},
+      {"oracion_es": "Tengo hambre", "palabras": ["I", "am", "hungry"], "respuesta": ["I", "am", "hungry"], "palabras_extra": ["is", "tired"], "explicacion": "I am hungry = Tengo hambre."}
+    ]
+  }]
+}

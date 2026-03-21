@@ -1,0 +1,23 @@
+{
+  "id": "A0-07_fill-the-gap_feelings",
+  "titulo": "Fill the Gap: Feelings",
+  "descripcion": "Complete the sentence about feelings!",
+  "tipo": "fill-the-gap",
+  "materia": "ingles",
+  "tema": "feelings",
+  "nivel": "A0-07",
+  "misiones": [{
+    "id": "mision-ftg-feelings",
+    "tipo": "fill-the-gap",
+    "titulo": "How do I feel?",
+    "instruccion": "Choose the correct word!",
+    "retos": [
+      {"oracion": "I ___ happy.", "traduccion": "Yo estoy feliz.", "opciones": ["am", "is", "are", "do"], "respuesta": 0, "explicacion": "I am happy. Con I se usa am."},
+      {"oracion": "She ___ sad.", "traduccion": "Ella está triste.", "opciones": ["am", "is", "are", "do"], "respuesta": 1, "explicacion": "She is sad. Con She se usa is."},
+      {"oracion": "Are you ___?", "traduccion": "¿Estás cansado?", "opciones": ["happy", "tired", "am", "is"], "respuesta": 1, "explicacion": "Are you tired? = ¿Estás cansado?"},
+      {"oracion": "He ___ angry.", "traduccion": "Él está enojado.", "opciones": ["am", "is", "are", "do"], "respuesta": 1, "explicacion": "He is angry. Con He se usa is."},
+      {"oracion": "We ___ happy.", "traduccion": "Nosotros estamos felices.", "opciones": ["am", "is", "are", "do"], "respuesta": 2, "explicacion": "We are happy. Con We se usa are."},
+      {"oracion": "I am ___.", "traduccion": "Tengo hambre.", "opciones": ["sad", "tired", "hungry", "happy"], "respuesta": 2, "explicacion": "I am hungry = Tengo hambre."}
+    ]
+  }]
+}

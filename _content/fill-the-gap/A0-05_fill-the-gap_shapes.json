@@ -1,0 +1,54 @@
+{
+  "id": "A0-05_fill-the-gap_shapes",
+  "titulo": "Fill the Gap: Shapes",
+  "descripcion": "Complete sentences about shapes!",
+  "tipo": "fill-the-gap",
+  "materia": "ingles",
+  "tema": "shapes",
+  "nivel": "A0-05",
+  "misiones": [
+    {
+      "id": "mision-ftg-shapes",
+      "tipo": "fill-the-gap",
+      "titulo": "Complete the Sentence!",
+      "instruccion": "Choose the correct word to complete the sentence.",
+      "retos": [
+        {
+          "oracion": "It is ___ circle",
+          "traduccion": "Es un circulo",
+          "opciones": ["a", "an", "the", "is"],
+          "respuesta": 0,
+          "explicacion": "A circle - usamos 'a' antes de consonante (c)"
+        },
+        {
+          "oracion": "A square has ___ sides",
+          "traduccion": "Un cuadrado tiene cuatro lados",
+          "opciones": ["three", "four", "five", "six"],
+          "respuesta": 1,
+          "explicacion": "Four sides - un cuadrado tiene 4 lados iguales"
+        },
+        {
+          "oracion": "A triangle has ___ sides",
+          "traduccion": "Un triangulo tiene tres lados",
+          "opciones": ["three", "four", "five", "six"],
+          "respuesta": 0,
+          "explicacion": "Three sides - un triangulo tiene 3 lados"
+        },
+        {
+          "oracion": "This is ___ star",
+          "traduccion": "Esta es una estrella",
+          "opciones": ["a", "an", "the", "is"],
+          "respuesta": 0,
+          "explicacion": "A star - usamos 'a' antes de consonante (s)"
+        },
+        {
+          "oracion": "The ___ is big",
+          "traduccion": "El circulo es grande",
+          "opciones": ["circle", "big", "a", "is"],
+          "respuesta": 0,
+          "explicacion": "The circle is big - circle es el sustantivo de la oracion"
+        }
+      ]
+    }
+  ]
+}

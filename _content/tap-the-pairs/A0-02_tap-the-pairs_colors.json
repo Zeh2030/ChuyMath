@@ -1,0 +1,35 @@
+{
+  "id": "A0-02_tap-the-pairs_colors",
+  "titulo": "Tap the Pairs: Colors",
+  "descripcion": "Match the Spanish color with its English name!",
+  "tipo": "tap-the-pairs",
+  "materia": "ingles",
+  "tema": "colors",
+  "nivel": "A0-02",
+  "misiones": [{
+    "id": "mision-ttp-colors",
+    "tipo": "tap-the-pairs",
+    "titulo": "Match the Colors!",
+    "instruccion": "Tap one from each column to match!",
+    "retos": [
+      {
+        "pares": [
+          {"es": "\ud83d\udd34 Rojo", "en": "Red"},
+          {"es": "\ud83d\udd35 Azul", "en": "Blue"},
+          {"es": "\ud83d\udfe2 Verde", "en": "Green"},
+          {"es": "\ud83d\udfe1 Amarillo", "en": "Yellow"},
+          {"es": "\ud83d\udfe0 Naranja", "en": "Orange"}
+        ]
+      },
+      {
+        "pares": [
+          {"es": "\ud83d\udfe3 Morado", "en": "Purple"},
+          {"es": "\u26ab Negro", "en": "Black"},
+          {"es": "\u26aa Blanco", "en": "White"},
+          {"es": "\ud83d\udfe4 Caf\u00e9", "en": "Brown"},
+          {"es": "\ud83d\udc97 Rosa", "en": "Pink"}
+        ]
+      }
+    ]
+  }]
+}

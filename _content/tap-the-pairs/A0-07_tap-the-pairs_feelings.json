@@ -1,0 +1,25 @@
+{
+  "id": "A0-07_tap-the-pairs_feelings",
+  "titulo": "Tap the Pairs: Feelings",
+  "descripcion": "Match the feeling in Spanish with English!",
+  "tipo": "tap-the-pairs",
+  "materia": "ingles",
+  "tema": "feelings",
+  "nivel": "A0-07",
+  "misiones": [{
+    "id": "mision-ttp-feelings",
+    "tipo": "tap-the-pairs",
+    "titulo": "Match the Feelings!",
+    "instruccion": "Tap one from each column to match!",
+    "retos": [{
+      "pares": [
+        {"es": "😊 Feliz", "en": "Happy"},
+        {"es": "😢 Triste", "en": "Sad"},
+        {"es": "😠 Enojado", "en": "Angry"},
+        {"es": "😴 Cansado", "en": "Tired"},
+        {"es": "🤤 Con hambre", "en": "Hungry"},
+        {"es": "😨 Asustado", "en": "Scared"}
+      ]
+    }]
+  }]
+}

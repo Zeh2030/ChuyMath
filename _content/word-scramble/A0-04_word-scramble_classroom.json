@@ -1,0 +1,61 @@
+{
+  "id": "A0-04_word-scramble_classroom",
+  "titulo": "Word Scramble: Classroom Objects",
+  "descripcion": "Unscramble the letters to form the correct classroom word!",
+  "tipo": "word-scramble",
+  "materia": "ingles",
+  "tema": "classroom",
+  "nivel": "A0-04",
+  "misiones": [
+    {
+      "id": "mision-ws-classroom",
+      "tipo": "word-scramble",
+      "titulo": "Unscramble the Word!",
+      "instruccion": "The letters are mixed up! Put them in order to make the word. Use the sound button to hear it!",
+      "retos": [
+        {
+          "respuesta": "pencil",
+          "letras_desordenadas": "licnpe",
+          "pista_es": "Lapiz - escribo con un ___",
+          "pista_emoji": "✏️",
+          "explicacion": "PENCIL - lapiz. I write with a pencil!"
+        },
+        {
+          "respuesta": "book",
+          "letras_desordenadas": "okbo",
+          "pista_es": "Libro - leo un ___",
+          "pista_emoji": "📖",
+          "explicacion": "BOOK - libro. I read a book!"
+        },
+        {
+          "respuesta": "ruler",
+          "letras_desordenadas": "lerur",
+          "pista_es": "Regla - mido con una ___",
+          "pista_emoji": "📏",
+          "explicacion": "RULER - regla. I measure with a ruler!"
+        },
+        {
+          "respuesta": "eraser",
+          "letras_desordenadas": "searer",
+          "pista_es": "Borrador - borro con un ___",
+          "pista_emoji": "🧹",
+          "explicacion": "ERASER - borrador. I erase with an eraser!"
+        },
+        {
+          "respuesta": "desk",
+          "letras_desordenadas": "skde",
+          "pista_es": "Escritorio - me siento en el ___",
+          "pista_emoji": "🪑",
+          "explicacion": "DESK - escritorio. I sit at my desk!"
+        },
+        {
+          "respuesta": "chair",
+          "letras_desordenadas": "hicar",
+          "pista_es": "Silla - me siento en una ___",
+          "pista_emoji": "🪑",
+          "explicacion": "CHAIR - silla. I sit on a chair!"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "id": "A0-06_listen-and-type_family",
+  "titulo": "Listen & Type: Family",
+  "descripcion": "Listen to the sentence and type it! Learn family words.",
+  "tipo": "listen-and-type",
+  "materia": "ingles",
+  "tema": "family",
+  "nivel": "A0-06",
+  "misiones": [
+    {
+      "id": "mision-lat-family",
+      "tipo": "listen-and-type",
+      "titulo": "Listen and Write!",
+      "instruccion": "Press Play to hear the sentence. Then type exactly what you hear!",
+      "retos": [
+        {
+          "texto_en": "This is my mom",
+          "traduccion": "Esta es mi mama",
+          "pista": "This ___ my mom (4 words)",
+          "explicacion": "This is my mom - 'is' conecta el sujeto con el complemento"
+        },
+        {
+          "texto_en": "He is my dad",
+          "traduccion": "El es mi papa",
+          "pista": "He ___ my dad (4 words)",
+          "explicacion": "He is my dad - 'He' se usa para hombres"
+        },
+        {
+          "texto_en": "She is my sister",
+          "traduccion": "Ella es mi hermana",
+          "pista": "She ___ my sister (4 words)",
+          "explicacion": "She is my sister - 'She' se usa para mujeres"
+        },
+        {
+          "texto_en": "I love my family",
+          "traduccion": "Amo a mi familia",
+          "pista": "I ___ my family (4 words)",
+          "explicacion": "I love my family - love = amar"
+        },
+        {
+          "texto_en": "My brother is funny",
+          "traduccion": "Mi hermano es gracioso",
+          "pista": "My brother ___ funny (4 words)",
+          "explicacion": "My brother is funny - funny = gracioso/chistoso"
+        },
+        {
+          "texto_en": "This is my grandma",
+          "traduccion": "Esta es mi abuela",
+          "pista": "This ___ my grandma (4 words)",
+          "explicacion": "This is my grandma - grandma = abuela"
+        }
+      ]
+    }
+  ]
+}
