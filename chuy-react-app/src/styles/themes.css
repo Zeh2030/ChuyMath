@@ -222,3 +222,66 @@
 [data-theme="espacial"] .numero-racha {
   color: #FFD600;
 }
+
+/* Perfil page */
+[data-theme="espacial"] h1,
+[data-theme="espacial"] h2,
+[data-theme="espacial"] h3 {
+  color: #fff;
+}
+
+[data-theme="espacial"] p,
+[data-theme="espacial"] label,
+[data-theme="espacial"] span {
+  color: #ccc;
+}
+
+/* Cards in profile and general */
+[data-theme="espacial"] form > div,
+[data-theme="espacial"] .card {
+  background: rgba(27, 40, 56, 0.9);
+  color: #e0e0e0;
+}
+
+/* Inputs */
+[data-theme="espacial"] input[type="text"],
+[data-theme="espacial"] input[type="email"] {
+  background: rgba(13, 27, 42, 0.8);
+  color: #fff;
+  border-color: rgba(92, 107, 192, 0.4);
+}
+
+/* Boveda filter chip text */
+[data-theme="espacial"] .boveda-filter-chip.all {
+  background: rgba(27, 40, 56, 0.8);
+  color: #e0e0e0;
+}
+
+[data-theme="espacial"] .boveda-filter-count {
+  color: #aaa;
+}
+
+/* MateriaToggle */
+[data-theme="espacial"] .materia-toggle {
+  background: rgba(27, 40, 56, 0.6);
+}
+
+[data-theme="espacial"] .materia-btn {
+  color: #aaa;
+}
+
+/* Tarjeta desc and fecha */
+[data-theme="espacial"] .tarjeta-desc,
+[data-theme="espacial"] .tarjeta-fecha,
+[data-theme="espacial"] .tarjeta-tipo {
+  color: #aaa;
+}
+
+[data-theme="espacial"] .tipo-nombre {
+  color: #ccc;
+}
+
+/* Theme selector buttons - text visible on dark bg */
+[data-theme="espacial"] .boveda-tabs .tab-btn.active {
+  background: linear-gradient(135deg, var(--theme-grad-1), var(--theme-grad-2));
+}
