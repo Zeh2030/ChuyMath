@@ -1,0 +1,23 @@
+{
+  "id": "A1-05_fill-the-gap_weather",
+  "titulo": "Fill the Gap: Weather",
+  "descripcion": "Complete the sentence about weather!",
+  "tipo": "fill-the-gap",
+  "materia": "ingles",
+  "tema": "weather",
+  "nivel": "A1-05",
+  "misiones": [{
+    "id": "mision-ftg-weather",
+    "tipo": "fill-the-gap",
+    "titulo": "What's the weather like?",
+    "instruccion": "Choose the correct word!",
+    "retos": [
+      {"oracion": "It ___ sunny today.", "traduccion": "Está soleado hoy.", "opciones": ["is", "am", "are", "was"], "respuesta": 0, "explicacion": "It is sunny today. Con It se usa is."},
+      {"oracion": "What is the ___ like?", "traduccion": "¿Cómo está el clima?", "opciones": ["weather", "day", "time", "name"], "respuesta": 0, "explicacion": "What is the weather like? = ¿Cómo está el clima?"},
+      {"oracion": "It is ___ in winter.", "traduccion": "Hace frío en invierno.", "opciones": ["hot", "cold", "sunny", "rainy"], "respuesta": 1, "explicacion": "It is cold in winter. Cold = Frío."},
+      {"oracion": "I like ___ days.", "traduccion": "Me gustan los días soleados.", "opciones": ["sunny", "sun", "suns", "sunning"], "respuesta": 0, "explicacion": "I like sunny days. Sunny es el adjetivo de sun."},
+      {"oracion": "It ___ raining.", "traduccion": "Está lloviendo.", "opciones": ["is", "am", "are", "do"], "respuesta": 0, "explicacion": "It is raining. Con It se usa is."},
+      {"oracion": "In ___ the flowers grow.", "traduccion": "En primavera las flores crecen.", "opciones": ["winter", "spring", "summer", "fall"], "respuesta": 1, "explicacion": "In spring the flowers grow. Spring = Primavera."}
+    ]
+  }]
+}

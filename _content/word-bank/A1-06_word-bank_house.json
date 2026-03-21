@@ -1,0 +1,23 @@
+{
+  "id": "A1-06_word-bank_house",
+  "titulo": "Word Bank: My House",
+  "descripcion": "Build sentences about the house!",
+  "tipo": "word-bank",
+  "materia": "ingles",
+  "tema": "house",
+  "nivel": "A1-06",
+  "misiones": [{
+    "id": "mision-wb-house",
+    "tipo": "word-bank",
+    "titulo": "Build the Sentence!",
+    "instruccion": "Tap words to build the sentence about the house!",
+    "retos": [
+      {"oracion_es": "Hay una cama en mi cuarto", "palabras": ["There", "is", "a", "bed", "in", "my", "bedroom"], "respuesta": ["There", "is", "a", "bed", "in", "my", "bedroom"], "palabras_extra": ["are", "the"], "explicacion": "There is a bed in my bedroom. There is = Hay (singular)."},
+      {"oracion_es": "La cocina es grande", "palabras": ["The", "kitchen", "is", "big"], "respuesta": ["The", "kitchen", "is", "big"], "palabras_extra": ["are", "a"], "explicacion": "The kitchen is big. Big = Grande."},
+      {"oracion_es": "¿Dónde está el baño?", "palabras": ["Where", "is", "the", "bathroom?"], "respuesta": ["Where", "is", "the", "bathroom?"], "palabras_extra": ["are", "a"], "explicacion": "Where is the bathroom? Para preguntar ubicación usamos Where is..."},
+      {"oracion_es": "El gato está en la mesa", "palabras": ["The", "cat", "is", "on", "the", "table"], "respuesta": ["The", "cat", "is", "on", "the", "table"], "palabras_extra": ["in", "a"], "explicacion": "The cat is on the table. On = sobre/encima de."},
+      {"oracion_es": "Hay dos sillas", "palabras": ["There", "are", "two", "chairs"], "respuesta": ["There", "are", "two", "chairs"], "palabras_extra": ["is", "a"], "explicacion": "There are two chairs. There are = Hay (plural)."},
+      {"oracion_es": "Abre la puerta", "palabras": ["Open", "the", "door"], "respuesta": ["Open", "the", "door"], "palabras_extra": ["a", "close"], "explicacion": "Open the door. Open = Abrir/Abre."}
+    ]
+  }]
+}

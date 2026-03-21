@@ -1,0 +1,23 @@
+{
+  "id": "A1-03_word-scramble_clothes",
+  "titulo": "Word Scramble: Clothes",
+  "descripcion": "Unscramble the clothing word!",
+  "tipo": "word-scramble",
+  "materia": "ingles",
+  "tema": "clothes",
+  "nivel": "A1-03",
+  "misiones": [{
+    "id": "mision-ws-clothes",
+    "tipo": "word-scramble",
+    "titulo": "Spell the Clothing Item!",
+    "instruccion": "The letters are mixed up! Put them in order!",
+    "retos": [
+      {"respuesta": "shirt", "letras_desordenadas": "rshit", "pista_es": "Camisa", "pista_emoji": "👕", "explicacion": "SHIRT = Camisa"},
+      {"respuesta": "pants", "letras_desordenadas": "sntap", "pista_es": "Pantalón", "pista_emoji": "👖", "explicacion": "PANTS = Pantalón"},
+      {"respuesta": "shoes", "letras_desordenadas": "hesoe", "pista_es": "Zapatos", "pista_emoji": "👟", "explicacion": "SHOES = Zapatos"},
+      {"respuesta": "hat", "letras_desordenadas": "tah", "pista_es": "Sombrero", "pista_emoji": "🎩", "explicacion": "HAT = Sombrero"},
+      {"respuesta": "dress", "letras_desordenadas": "serds", "pista_es": "Vestido", "pista_emoji": "👗", "explicacion": "DRESS = Vestido"},
+      {"respuesta": "socks", "letras_desordenadas": "ksosc", "pista_es": "Calcetines", "pista_emoji": "🧦", "explicacion": "SOCKS = Calcetines"}
+    ]
+  }]
+}

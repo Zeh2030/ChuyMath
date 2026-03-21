@@ -1,0 +1,23 @@
+{
+  "id": "A1-03_fill-the-gap_clothes",
+  "titulo": "Fill the Gap: Clothes",
+  "descripcion": "Complete sentences about clothes!",
+  "tipo": "fill-the-gap",
+  "materia": "ingles",
+  "tema": "clothes",
+  "nivel": "A1-03",
+  "misiones": [{
+    "id": "mision-ftg-clothes",
+    "tipo": "fill-the-gap",
+    "titulo": "Complete the sentence!",
+    "instruccion": "Choose the correct word!",
+    "retos": [
+      {"oracion": "I am ___ a shirt.", "traduccion": "Estoy usando una camisa.", "opciones": ["wearing", "wear", "wears", "wore"], "respuesta": 0, "explicacion": "I am wearing a shirt = Estoy usando una camisa"},
+      {"oracion": "She is wearing ___ dress.", "traduccion": "Ella está usando un vestido.", "opciones": ["a", "an", "the", "is"], "respuesta": 0, "explicacion": "She is wearing a dress = Ella está usando un vestido"},
+      {"oracion": "He ___ wearing pants.", "traduccion": "Él está usando pantalones.", "opciones": ["am", "is", "are", "was"], "respuesta": 1, "explicacion": "He is wearing pants = Él está usando pantalones"},
+      {"oracion": "Put on your ___.", "traduccion": "Ponte tus zapatos.", "opciones": ["shoes", "shirt", "happy", "red"], "respuesta": 0, "explicacion": "Put on your shoes = Ponte tus zapatos"},
+      {"oracion": "I like ___ hat.", "traduccion": "Me gusta mi sombrero.", "opciones": ["my", "me", "I", "a"], "respuesta": 0, "explicacion": "I like my hat = Me gusta mi sombrero"},
+      {"oracion": "They are wearing ___.", "traduccion": "Ellos están usando calcetines.", "opciones": ["sock", "socks", "a sock", "the"], "respuesta": 1, "explicacion": "They are wearing socks = Ellos están usando calcetines"}
+    ]
+  }]
+}

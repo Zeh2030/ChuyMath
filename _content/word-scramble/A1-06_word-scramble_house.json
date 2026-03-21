@@ -1,0 +1,23 @@
+{
+  "id": "A1-06_word-scramble_house",
+  "titulo": "Word Scramble: My House",
+  "descripcion": "Unscramble the house word!",
+  "tipo": "word-scramble",
+  "materia": "ingles",
+  "tema": "house",
+  "nivel": "A1-06",
+  "misiones": [{
+    "id": "mision-ws-house",
+    "tipo": "word-scramble",
+    "titulo": "Spell the Room!",
+    "instruccion": "The letters are mixed up! Put them in order!",
+    "retos": [
+      {"respuesta": "bedroom", "letras_desordenadas": "mrodobe", "pista_es": "Dormitorio", "pista_emoji": "🛏️", "explicacion": "BEDROOM = Dormitorio"},
+      {"respuesta": "kitchen", "letras_desordenadas": "hcnktie", "pista_es": "Cocina", "pista_emoji": "🍳", "explicacion": "KITCHEN = Cocina"},
+      {"respuesta": "bathroom", "letras_desordenadas": "rmoohtab", "pista_es": "Baño", "pista_emoji": "🚿", "explicacion": "BATHROOM = Baño"},
+      {"respuesta": "door", "letras_desordenadas": "rodo", "pista_es": "Puerta", "pista_emoji": "🚪", "explicacion": "DOOR = Puerta"},
+      {"respuesta": "window", "letras_desordenadas": "wodnwi", "pista_es": "Ventana", "pista_emoji": "🪟", "explicacion": "WINDOW = Ventana"},
+      {"respuesta": "table", "letras_desordenadas": "elbat", "pista_es": "Mesa", "pista_emoji": "🪑", "explicacion": "TABLE = Mesa"}
+    ]
+  }]
+}

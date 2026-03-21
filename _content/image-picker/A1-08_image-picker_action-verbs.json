@@ -1,0 +1,25 @@
+{
+  "id": "A1-08_image-picker_action-verbs",
+  "titulo": "Image Picker: Action Verbs",
+  "descripcion": "Learn action verbs in English!",
+  "tipo": "image-picker",
+  "materia": "ingles",
+  "tema": "action-verbs",
+  "nivel": "A1-08",
+  "misiones": [{
+    "id": "mision-ip-verbs",
+    "tipo": "image-picker",
+    "titulo": "What action is it?",
+    "instruccion": "Tap the image that matches the action!",
+    "retos": [
+      {"palabra_en": "run", "palabra_es": "correr", "opciones": [{"emoji": "🏃", "label": "run"}, {"emoji": "🏊", "label": "swim"}, {"emoji": "✈️", "label": "fly"}, {"emoji": "📖", "label": "read"}], "respuesta": 0, "explicacion": "Run = Correr. I can run fast!"},
+      {"palabra_en": "swim", "palabra_es": "nadar", "opciones": [{"emoji": "💃", "label": "dance"}, {"emoji": "🏊", "label": "swim"}, {"emoji": "🏃", "label": "run"}, {"emoji": "✏️", "label": "write"}], "respuesta": 1, "explicacion": "Swim = Nadar. Can you swim?"},
+      {"palabra_en": "fly", "palabra_es": "volar", "opciones": [{"emoji": "🎵", "label": "sing"}, {"emoji": "🏃", "label": "run"}, {"emoji": "✈️", "label": "fly"}, {"emoji": "🍕", "label": "eat"}], "respuesta": 2, "explicacion": "Fly = Volar. Birds can fly!"},
+      {"palabra_en": "read", "palabra_es": "leer", "opciones": [{"emoji": "📖", "label": "read"}, {"emoji": "🎨", "label": "draw"}, {"emoji": "🏊", "label": "swim"}, {"emoji": "💃", "label": "dance"}], "respuesta": 0, "explicacion": "Read = Leer. I can read books!"},
+      {"palabra_en": "write", "palabra_es": "escribir", "opciones": [{"emoji": "🏃", "label": "run"}, {"emoji": "🎵", "label": "sing"}, {"emoji": "🍕", "label": "eat"}, {"emoji": "✏️", "label": "write"}], "respuesta": 3, "explicacion": "Write = Escribir. I can write my name!"},
+      {"palabra_en": "draw", "palabra_es": "dibujar", "opciones": [{"emoji": "🎨", "label": "draw"}, {"emoji": "📖", "label": "read"}, {"emoji": "🏃", "label": "run"}, {"emoji": "🏊", "label": "swim"}], "respuesta": 0, "explicacion": "Draw = Dibujar. She can draw very well!"},
+      {"palabra_en": "sing", "palabra_es": "cantar", "opciones": [{"emoji": "✏️", "label": "write"}, {"emoji": "💃", "label": "dance"}, {"emoji": "🎵", "label": "sing"}, {"emoji": "🏃", "label": "run"}], "respuesta": 2, "explicacion": "Sing = Cantar. I can sing a song!"},
+      {"palabra_en": "dance", "palabra_es": "bailar", "opciones": [{"emoji": "🎵", "label": "sing"}, {"emoji": "💃", "label": "dance"}, {"emoji": "📖", "label": "read"}, {"emoji": "✈️", "label": "fly"}], "respuesta": 1, "explicacion": "Dance = Bailar. We can dance together!"}
+    ]
+  }]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "A1-01_word-bank_animals",
+  "titulo": "Word Bank: Animals",
+  "descripcion": "Build sentences about animals!",
+  "tipo": "word-bank",
+  "materia": "ingles",
+  "tema": "animals",
+  "nivel": "A1-01",
+  "misiones": [{
+    "id": "mision-wb-animals",
+    "tipo": "word-bank",
+    "titulo": "Build the Sentence!",
+    "instruccion": "Tap words to build the sentence about animals!",
+    "retos": [
+      {"oracion_es": "Me gustan los gatos", "palabras": ["I", "like", "cats"], "respuesta": ["I", "like", "cats"], "palabras_extra": ["likes", "cat"], "explicacion": "I like cats. Usamos like con I y el plural cats."},
+      {"oracion_es": "El perro es grande", "palabras": ["The", "dog", "is", "big"], "respuesta": ["The", "dog", "is", "big"], "palabras_extra": ["are", "a"], "explicacion": "The dog is big. Con the hablamos de un perro específico."},
+      {"oracion_es": "Un pájaro puede volar", "palabras": ["A", "bird", "can", "fly"], "respuesta": ["A", "bird", "can", "fly"], "palabras_extra": ["the", "flies"], "explicacion": "A bird can fly. Can + verbo base (fly, no flies)."},
+      {"oracion_es": "Tengo un pez", "palabras": ["I", "have", "a", "fish"], "respuesta": ["I", "have", "a", "fish"], "palabras_extra": ["has", "the"], "explicacion": "I have a fish. Con I usamos have, no has."},
+      {"oracion_es": "El elefante es gris", "palabras": ["The", "elephant", "is", "gray"], "respuesta": ["The", "elephant", "is", "gray"], "palabras_extra": ["are", "an"], "explicacion": "The elephant is gray. Con The elephant usamos is."},
+      {"oracion_es": "Una rana puede saltar", "palabras": ["A", "frog", "can", "jump"], "respuesta": ["A", "frog", "can", "jump"], "palabras_extra": ["the", "jumps"], "explicacion": "A frog can jump. Can + verbo base (jump, no jumps)."}
+    ]
+  }]
+}

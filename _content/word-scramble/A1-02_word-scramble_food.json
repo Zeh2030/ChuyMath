@@ -1,0 +1,25 @@
+{
+  "id": "A1-02_word-scramble_food",
+  "titulo": "Word Scramble: Food & Drinks",
+  "descripcion": "Unscramble the food word!",
+  "tipo": "word-scramble",
+  "materia": "ingles",
+  "tema": "food",
+  "nivel": "A1-02",
+  "misiones": [{
+    "id": "mision-ws-food",
+    "tipo": "word-scramble",
+    "titulo": "Spell the Food!",
+    "instruccion": "The letters are mixed up! Put them in order!",
+    "retos": [
+      {"respuesta": "apple", "letras_desordenadas": "pelap", "pista_es": "Manzana", "pista_emoji": "🍎", "explicacion": "APPLE = Manzana"},
+      {"respuesta": "banana", "letras_desordenadas": "naanba", "pista_es": "Plátano", "pista_emoji": "🍌", "explicacion": "BANANA = Plátano"},
+      {"respuesta": "bread", "letras_desordenadas": "dearb", "pista_es": "Pan", "pista_emoji": "🍞", "explicacion": "BREAD = Pan"},
+      {"respuesta": "milk", "letras_desordenadas": "klim", "pista_es": "Leche", "pista_emoji": "🥛", "explicacion": "MILK = Leche"},
+      {"respuesta": "water", "letras_desordenadas": "tware", "pista_es": "Agua", "pista_emoji": "💧", "explicacion": "WATER = Agua"},
+      {"respuesta": "juice", "letras_desordenadas": "ciuje", "pista_es": "Jugo", "pista_emoji": "🧃", "explicacion": "JUICE = Jugo"},
+      {"respuesta": "pizza", "letras_desordenadas": "azzpi", "pista_es": "Pizza", "pista_emoji": "🍕", "explicacion": "PIZZA = Pizza"},
+      {"respuesta": "chicken", "letras_desordenadas": "kcchien", "pista_es": "Pollo", "pista_emoji": "🍗", "explicacion": "CHICKEN = Pollo"}
+    ]
+  }]
+}

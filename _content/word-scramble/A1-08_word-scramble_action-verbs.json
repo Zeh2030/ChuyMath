@@ -1,0 +1,25 @@
+{
+  "id": "A1-08_word-scramble_action-verbs",
+  "titulo": "Word Scramble: Action Verbs",
+  "descripcion": "Unscramble the action verb!",
+  "tipo": "word-scramble",
+  "materia": "ingles",
+  "tema": "action-verbs",
+  "nivel": "A1-08",
+  "misiones": [{
+    "id": "mision-ws-verbs",
+    "tipo": "word-scramble",
+    "titulo": "Spell the Action!",
+    "instruccion": "Put the letters in order!",
+    "retos": [
+      {"respuesta": "run", "letras_desordenadas": "nru", "pista_es": "Correr", "pista_emoji": "🏃", "explicacion": "RUN = Correr"},
+      {"respuesta": "swim", "letras_desordenadas": "mwis", "pista_es": "Nadar", "pista_emoji": "🏊", "explicacion": "SWIM = Nadar"},
+      {"respuesta": "read", "letras_desordenadas": "daer", "pista_es": "Leer", "pista_emoji": "📖", "explicacion": "READ = Leer"},
+      {"respuesta": "write", "letras_desordenadas": "teirw", "pista_es": "Escribir", "pista_emoji": "✏️", "explicacion": "WRITE = Escribir"},
+      {"respuesta": "dance", "letras_desordenadas": "cedan", "pista_es": "Bailar", "pista_emoji": "💃", "explicacion": "DANCE = Bailar"},
+      {"respuesta": "sing", "letras_desordenadas": "gnis", "pista_es": "Cantar", "pista_emoji": "🎵", "explicacion": "SING = Cantar"},
+      {"respuesta": "jump", "letras_desordenadas": "pmuj", "pista_es": "Saltar", "pista_emoji": "🤸", "explicacion": "JUMP = Saltar"},
+      {"respuesta": "draw", "letras_desordenadas": "wrad", "pista_es": "Dibujar", "pista_emoji": "🎨", "explicacion": "DRAW = Dibujar"}
+    ]
+  }]
+}

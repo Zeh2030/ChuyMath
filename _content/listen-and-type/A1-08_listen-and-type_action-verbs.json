@@ -1,0 +1,23 @@
+{
+  "id": "A1-08_listen-and-type_action-verbs",
+  "titulo": "Listen & Type: Action Verbs",
+  "descripcion": "Listen and type sentences with can!",
+  "tipo": "listen-and-type",
+  "materia": "ingles",
+  "tema": "action-verbs",
+  "nivel": "A1-08",
+  "misiones": [{
+    "id": "mision-lat-verbs",
+    "tipo": "listen-and-type",
+    "titulo": "Listen and Write!",
+    "instruccion": "Press Play to hear. Then type it!",
+    "retos": [
+      {"texto_en": "I can run fast", "traduccion": "Puedo correr rápido", "pista": "I can r__ f___ (4 words)", "explicacion": "I can run fast"},
+      {"texto_en": "She can swim", "traduccion": "Ella puede nadar", "pista": "She can s___ (3 words)", "explicacion": "She can swim"},
+      {"texto_en": "Can you dance", "traduccion": "¿Puedes bailar?", "pista": "Can you d____ (3 words)", "explicacion": "Can you dance?"},
+      {"texto_en": "Birds can fly", "traduccion": "Los pájaros pueden volar", "pista": "Birds can f__ (3 words)", "explicacion": "Birds can fly"},
+      {"texto_en": "I can read and write", "traduccion": "Puedo leer y escribir", "pista": "I can r___ and w____ (5 words)", "explicacion": "I can read and write"},
+      {"texto_en": "He can draw very well", "traduccion": "Él puede dibujar muy bien", "pista": "He can d___ very w___ (5 words)", "explicacion": "He can draw very well"}
+    ]
+  }]
+}

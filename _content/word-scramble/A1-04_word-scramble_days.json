@@ -1,0 +1,24 @@
+{
+  "id": "A1-04_word-scramble_days",
+  "titulo": "Word Scramble: Days of the Week",
+  "descripcion": "Unscramble the day of the week!",
+  "tipo": "word-scramble",
+  "materia": "ingles",
+  "tema": "days",
+  "nivel": "A1-04",
+  "misiones": [{
+    "id": "mision-ws-days",
+    "tipo": "word-scramble",
+    "titulo": "Spell the Day!",
+    "instruccion": "The letters are mixed up! Put them in order!",
+    "retos": [
+      {"respuesta": "monday", "letras_desordenadas": "ydnoma", "pista_es": "Lunes", "pista_emoji": "1️⃣", "explicacion": "MONDAY = Lunes"},
+      {"respuesta": "tuesday", "letras_desordenadas": "yadsetu", "pista_es": "Martes", "pista_emoji": "2️⃣", "explicacion": "TUESDAY = Martes"},
+      {"respuesta": "wednesday", "letras_desordenadas": "ydsenedaw", "pista_es": "Miércoles", "pista_emoji": "3️⃣", "explicacion": "WEDNESDAY = Miércoles"},
+      {"respuesta": "thursday", "letras_desordenadas": "ydahsrut", "pista_es": "Jueves", "pista_emoji": "4️⃣", "explicacion": "THURSDAY = Jueves"},
+      {"respuesta": "friday", "letras_desordenadas": "ydairf", "pista_es": "Viernes", "pista_emoji": "5️⃣", "explicacion": "FRIDAY = Viernes"},
+      {"respuesta": "saturday", "letras_desordenadas": "ydatursa", "pista_es": "Sábado", "pista_emoji": "6️⃣", "explicacion": "SATURDAY = Sábado"},
+      {"respuesta": "sunday", "letras_desordenadas": "ydanus", "pista_es": "Domingo", "pista_emoji": "7️⃣", "explicacion": "SUNDAY = Domingo"}
+    ]
+  }]
+}

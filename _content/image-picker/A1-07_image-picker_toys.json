@@ -1,0 +1,23 @@
+{
+  "id": "A1-07_image-picker_toys",
+  "titulo": "Image Picker: Toys & Playtime",
+  "descripcion": "Learn toy names in English!",
+  "tipo": "image-picker",
+  "materia": "ingles",
+  "tema": "toys",
+  "nivel": "A1-07",
+  "misiones": [{
+    "id": "mision-ip-toys",
+    "tipo": "image-picker",
+    "titulo": "What toy is it?",
+    "instruccion": "Tap the image that matches the toy!",
+    "retos": [
+      {"palabra_en": "ball", "palabra_es": "pelota", "opciones": [{"emoji": "⚽", "label": "ball"}, {"emoji": "🚗", "label": "car"}, {"emoji": "🧸", "label": "teddy bear"}, {"emoji": "🪁", "label": "kite"}], "respuesta": 0, "explicacion": "Ball = Pelota. I play with a ball!"},
+      {"palabra_en": "car", "palabra_es": "carro", "opciones": [{"emoji": "🎮", "label": "game"}, {"emoji": "🚗", "label": "car"}, {"emoji": "⚽", "label": "ball"}, {"emoji": "🤖", "label": "robot"}], "respuesta": 1, "explicacion": "Car = Carro. The car is fast!"},
+      {"palabra_en": "doll", "palabra_es": "muñeca", "opciones": [{"emoji": "🚲", "label": "bike"}, {"emoji": "⚽", "label": "ball"}, {"emoji": "🧸", "label": "teddy bear"}, {"emoji": "🪆", "label": "doll"}], "respuesta": 3, "explicacion": "Doll = Muñeca"},
+      {"palabra_en": "teddy bear", "palabra_es": "oso de peluche", "opciones": [{"emoji": "🧸", "label": "teddy bear"}, {"emoji": "🚗", "label": "car"}, {"emoji": "🪁", "label": "kite"}, {"emoji": "🎮", "label": "game"}], "respuesta": 0, "explicacion": "Teddy bear = Oso de peluche. I love my teddy bear!"},
+      {"palabra_en": "bike", "palabra_es": "bicicleta", "opciones": [{"emoji": "🤖", "label": "robot"}, {"emoji": "🚲", "label": "bike"}, {"emoji": "⚽", "label": "ball"}, {"emoji": "🪆", "label": "doll"}], "respuesta": 1, "explicacion": "Bike = Bicicleta. I ride my bike!"},
+      {"palabra_en": "robot", "palabra_es": "robot", "opciones": [{"emoji": "🧸", "label": "teddy bear"}, {"emoji": "🪁", "label": "kite"}, {"emoji": "🤖", "label": "robot"}, {"emoji": "🚗", "label": "car"}], "respuesta": 2, "explicacion": "Robot = Robot. My robot is cool!"}
+    ]
+  }]
+}

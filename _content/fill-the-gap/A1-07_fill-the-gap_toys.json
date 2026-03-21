@@ -1,0 +1,23 @@
+{
+  "id": "A1-07_fill-the-gap_toys",
+  "titulo": "Fill the Gap: Toys",
+  "descripcion": "Complete sentences about toys!",
+  "tipo": "fill-the-gap",
+  "materia": "ingles",
+  "tema": "toys",
+  "nivel": "A1-07",
+  "misiones": [{
+    "id": "mision-ftg-toys",
+    "tipo": "fill-the-gap",
+    "titulo": "Complete the sentence!",
+    "instruccion": "Choose the correct word!",
+    "retos": [
+      {"oracion": "I have ___ ball.", "traduccion": "Tengo una pelota.", "opciones": ["a", "an", "the", "is"], "respuesta": 0, "explicacion": "I have a ball. Ball empieza con consonante → a"},
+      {"oracion": "Can I ___ with your car?", "traduccion": "¿Puedo jugar con tu carro?", "opciones": ["play", "plays", "playing", "played"], "respuesta": 0, "explicacion": "Can I play? Después de can va el verbo base."},
+      {"oracion": "This is ___ teddy bear.", "traduccion": "Este es mi oso de peluche.", "opciones": ["my", "me", "I", "a"], "respuesta": 0, "explicacion": "This is my teddy bear. My = mi/mis."},
+      {"oracion": "She ___ a new doll.", "traduccion": "Ella tiene una muñeca nueva.", "opciones": ["have", "has", "having", "had"], "respuesta": 1, "explicacion": "She has. Con She se usa has, no have."},
+      {"oracion": "I ___ ride my bike.", "traduccion": "Puedo montar mi bicicleta.", "opciones": ["can", "am", "is", "do"], "respuesta": 0, "explicacion": "I can ride. Can = puedo/puede."},
+      {"oracion": "The ___ is very fast.", "traduccion": "El carro es muy rápido.", "opciones": ["ball", "doll", "car", "kite"], "respuesta": 2, "explicacion": "The car is very fast. Car = carro."}
+    ]
+  }]
+}

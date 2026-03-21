@@ -1,0 +1,25 @@
+{
+  "id": "A1-07_tap-the-pairs_toys",
+  "titulo": "Tap the Pairs: Toys",
+  "descripcion": "Match the toy in Spanish with English!",
+  "tipo": "tap-the-pairs",
+  "materia": "ingles",
+  "tema": "toys",
+  "nivel": "A1-07",
+  "misiones": [{
+    "id": "mision-ttp-toys",
+    "tipo": "tap-the-pairs",
+    "titulo": "Match the Toys!",
+    "instruccion": "Tap one from each column to match!",
+    "retos": [{
+      "pares": [
+        {"es": "⚽ Pelota", "en": "Ball"},
+        {"es": "🚗 Carro", "en": "Car"},
+        {"es": "🪆 Muñeca", "en": "Doll"},
+        {"es": "🧸 Oso de peluche", "en": "Teddy bear"},
+        {"es": "🚲 Bicicleta", "en": "Bike"},
+        {"es": "🤖 Robot", "en": "Robot"}
+      ]
+    }]
+  }]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "A1-05_word-scramble_weather",
+  "titulo": "Word Scramble: Weather",
+  "descripcion": "Unscramble the weather word!",
+  "tipo": "word-scramble",
+  "materia": "ingles",
+  "tema": "weather",
+  "nivel": "A1-05",
+  "misiones": [{
+    "id": "mision-ws-weather",
+    "tipo": "word-scramble",
+    "titulo": "Spell the Weather!",
+    "instruccion": "The letters are mixed up! Put them in order!",
+    "retos": [
+      {"respuesta": "sunny", "letras_desordenadas": "nusny", "pista_es": "Soleado", "pista_emoji": "☀️", "explicacion": "SUNNY = Soleado"},
+      {"respuesta": "rainy", "letras_desordenadas": "yrnia", "pista_es": "Lluvioso", "pista_emoji": "🌧️", "explicacion": "RAINY = Lluvioso"},
+      {"respuesta": "cloudy", "letras_desordenadas": "yducol", "pista_es": "Nublado", "pista_emoji": "☁️", "explicacion": "CLOUDY = Nublado"},
+      {"respuesta": "windy", "letras_desordenadas": "ydniw", "pista_es": "Ventoso", "pista_emoji": "🌬️", "explicacion": "WINDY = Ventoso"},
+      {"respuesta": "spring", "letras_desordenadas": "gnirps", "pista_es": "Primavera", "pista_emoji": "🌸", "explicacion": "SPRING = Primavera"},
+      {"respuesta": "winter", "letras_desordenadas": "retnwi", "pista_es": "Invierno", "pista_emoji": "⛄", "explicacion": "WINTER = Invierno"}
+    ]
+  }]
+}

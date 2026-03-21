@@ -1,0 +1,23 @@
+{
+  "id": "A1-08_word-bank_action-verbs",
+  "titulo": "Word Bank: Action Verbs & Can",
+  "descripcion": "Build sentences with can and action verbs!",
+  "tipo": "word-bank",
+  "materia": "ingles",
+  "tema": "action-verbs",
+  "nivel": "A1-08",
+  "misiones": [{
+    "id": "mision-wb-verbs",
+    "tipo": "word-bank",
+    "titulo": "Build the Sentence!",
+    "instruccion": "Tap words to build sentences with can!",
+    "retos": [
+      {"oracion_es": "Puedo correr rápido", "palabras": ["I", "can", "run", "fast"], "respuesta": ["I", "can", "run", "fast"], "palabras_extra": ["am", "runs"], "explicacion": "I can run fast. Can + verbo base."},
+      {"oracion_es": "Ella puede nadar", "palabras": ["She", "can", "swim"], "respuesta": ["She", "can", "swim"], "palabras_extra": ["swims", "is"], "explicacion": "She can swim. Can es igual para todos."},
+      {"oracion_es": "¿Puedes bailar?", "palabras": ["Can", "you", "dance?"], "respuesta": ["Can", "you", "dance?"], "palabras_extra": ["Do", "dances"], "explicacion": "Can you dance? Pregunta con can."},
+      {"oracion_es": "No puedo volar", "palabras": ["I", "can't", "fly"], "respuesta": ["I", "can't", "fly"], "palabras_extra": ["can", "flies"], "explicacion": "I can't fly. Can't = no puedo."},
+      {"oracion_es": "Los pájaros pueden volar", "palabras": ["Birds", "can", "fly"], "respuesta": ["Birds", "can", "fly"], "palabras_extra": ["flies", "the"], "explicacion": "Birds can fly. Can + verbo base."},
+      {"oracion_es": "Él puede dibujar muy bien", "palabras": ["He", "can", "draw", "very", "well"], "respuesta": ["He", "can", "draw", "very", "well"], "palabras_extra": ["draws", "is"], "explicacion": "He can draw very well. Después de can, sin -s."}
+    ]
+  }]
+}

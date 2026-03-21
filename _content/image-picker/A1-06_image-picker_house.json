@@ -1,0 +1,23 @@
+{
+  "id": "A1-06_image-picker_house",
+  "titulo": "Image Picker: My House",
+  "descripcion": "What room is it? Pick the right emoji!",
+  "tipo": "image-picker",
+  "materia": "ingles",
+  "tema": "house",
+  "nivel": "A1-06",
+  "misiones": [{
+    "id": "mision-ip-house",
+    "tipo": "image-picker",
+    "titulo": "What's in the house?",
+    "instruccion": "Tap the emoji that matches the room or object!",
+    "retos": [
+      {"palabra_en": "bedroom", "palabra_es": "dormitorio", "opciones": [{"emoji": "🛏️", "label": "bedroom"}, {"emoji": "🍳", "label": "kitchen"}, {"emoji": "🚿", "label": "bathroom"}, {"emoji": "🛋️", "label": "living room"}], "respuesta": 0, "explicacion": "Bedroom = Dormitorio. I sleep in my bedroom."},
+      {"palabra_en": "kitchen", "palabra_es": "cocina", "opciones": [{"emoji": "🚪", "label": "door"}, {"emoji": "🍳", "label": "kitchen"}, {"emoji": "🛏️", "label": "bedroom"}, {"emoji": "🪟", "label": "window"}], "respuesta": 1, "explicacion": "Kitchen = Cocina. We cook in the kitchen."},
+      {"palabra_en": "bathroom", "palabra_es": "baño", "opciones": [{"emoji": "🛋️", "label": "living room"}, {"emoji": "🚪", "label": "door"}, {"emoji": "🚿", "label": "bathroom"}, {"emoji": "🍳", "label": "kitchen"}], "respuesta": 2, "explicacion": "Bathroom = Baño. I brush my teeth in the bathroom."},
+      {"palabra_en": "living room", "palabra_es": "sala", "opciones": [{"emoji": "🚿", "label": "bathroom"}, {"emoji": "🪟", "label": "window"}, {"emoji": "🛏️", "label": "bedroom"}, {"emoji": "🛋️", "label": "living room"}], "respuesta": 3, "explicacion": "Living room = Sala. We watch TV in the living room."},
+      {"palabra_en": "door", "palabra_es": "puerta", "opciones": [{"emoji": "🚪", "label": "door"}, {"emoji": "🪟", "label": "window"}, {"emoji": "🛏️", "label": "bedroom"}, {"emoji": "🚿", "label": "bathroom"}], "respuesta": 0, "explicacion": "Door = Puerta. Open the door, please!"},
+      {"palabra_en": "window", "palabra_es": "ventana", "opciones": [{"emoji": "🍳", "label": "kitchen"}, {"emoji": "🪟", "label": "window"}, {"emoji": "🚪", "label": "door"}, {"emoji": "🛋️", "label": "living room"}], "respuesta": 1, "explicacion": "Window = Ventana. Look through the window!"}
+    ]
+  }]
+}

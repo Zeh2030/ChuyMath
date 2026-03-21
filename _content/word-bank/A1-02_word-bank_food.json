@@ -1,0 +1,23 @@
+{
+  "id": "A1-02_word-bank_food",
+  "titulo": "Word Bank: Food & Drinks",
+  "descripcion": "Build sentences about food and drinks!",
+  "tipo": "word-bank",
+  "materia": "ingles",
+  "tema": "food",
+  "nivel": "A1-02",
+  "misiones": [{
+    "id": "mision-wb-food",
+    "tipo": "word-bank",
+    "titulo": "Build the Sentence!",
+    "instruccion": "Tap words to build the sentence about food!",
+    "retos": [
+      {"oracion_es": "Me gusta la pizza", "palabras": ["I", "like", "pizza"], "respuesta": ["I", "like", "pizza"], "palabras_extra": ["likes", "a"], "explicacion": "I like pizza. Con I usamos like, sin artículo."},
+      {"oracion_es": "Ella come pollo", "palabras": ["She", "eats", "chicken"], "respuesta": ["She", "eats", "chicken"], "palabras_extra": ["eat", "the"], "explicacion": "She eats chicken. Con She usamos eats (tercera persona)."},
+      {"oracion_es": "Yo tomo leche", "palabras": ["I", "drink", "milk"], "respuesta": ["I", "drink", "milk"], "palabras_extra": ["drinks", "a"], "explicacion": "I drink milk. Con I usamos drink, sin artículo."},
+      {"oracion_es": "¿Te gustan los plátanos?", "palabras": ["Do", "you", "like", "bananas?"], "respuesta": ["Do", "you", "like", "bananas?"], "palabras_extra": ["Does", "banana"], "explicacion": "Do you like bananas? Para preguntar con you usamos Do."},
+      {"oracion_es": "Quiero agua", "palabras": ["I", "want", "water"], "respuesta": ["I", "want", "water"], "palabras_extra": ["wants", "a"], "explicacion": "I want water. Water es incontable, sin artículo."},
+      {"oracion_es": "Comemos pan", "palabras": ["We", "eat", "bread"], "respuesta": ["We", "eat", "bread"], "palabras_extra": ["eats", "a"], "explicacion": "We eat bread. Con We usamos eat, sin artículo."}
+    ]
+  }]
+}

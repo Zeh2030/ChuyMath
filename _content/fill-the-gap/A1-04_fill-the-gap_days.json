@@ -1,0 +1,23 @@
+{
+  "id": "A1-04_fill-the-gap_days",
+  "titulo": "Fill the Gap: Days of the Week",
+  "descripcion": "Complete sentences about the days of the week!",
+  "tipo": "fill-the-gap",
+  "materia": "ingles",
+  "tema": "days",
+  "nivel": "A1-04",
+  "misiones": [{
+    "id": "mision-ftg-days",
+    "tipo": "fill-the-gap",
+    "titulo": "Complete the sentence!",
+    "instruccion": "Choose the correct word!",
+    "retos": [
+      {"oracion": "Today is ___.", "traduccion": "Hoy es lunes.", "opciones": ["Monday", "monday", "Mondays", "the Monday"], "respuesta": 0, "explicacion": "Today is Monday = Hoy es lunes. Days start with a capital letter!"},
+      {"oracion": "I play soccer ___ Saturdays.", "traduccion": "Juego fútbol los sábados.", "opciones": ["in", "on", "at", "to"], "respuesta": 1, "explicacion": "I play soccer on Saturdays. We use 'on' with days of the week!"},
+      {"oracion": "___ is the first day of the week.", "traduccion": "El lunes es el primer día de la semana.", "opciones": ["Sunday", "Monday", "Friday", "Saturday"], "respuesta": 1, "explicacion": "Monday is the first day of the school week!"},
+      {"oracion": "I go to school ___ Monday.", "traduccion": "Voy a la escuela el lunes.", "opciones": ["in", "on", "at", "the"], "respuesta": 1, "explicacion": "I go to school on Monday. We use 'on' with days!"},
+      {"oracion": "The weekend is Saturday and ___.", "traduccion": "El fin de semana es sábado y domingo.", "opciones": ["Friday", "Sunday", "Monday", "Tuesday"], "respuesta": 1, "explicacion": "The weekend is Saturday and Sunday = El fin de semana es sábado y domingo"},
+      {"oracion": "What day is ___ today?", "traduccion": "¿Qué día es hoy?", "opciones": ["it", "is", "the", "a"], "respuesta": 0, "explicacion": "What day is it today? = ¿Qué día es hoy?"}
+    ]
+  }]
+}

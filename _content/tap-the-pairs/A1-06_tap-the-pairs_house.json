@@ -1,0 +1,25 @@
+{
+  "id": "A1-06_tap-the-pairs_house",
+  "titulo": "Tap the Pairs: My House",
+  "descripcion": "Match the house words in Spanish with English!",
+  "tipo": "tap-the-pairs",
+  "materia": "ingles",
+  "tema": "house",
+  "nivel": "A1-06",
+  "misiones": [{
+    "id": "mision-ttp-house",
+    "tipo": "tap-the-pairs",
+    "titulo": "Match the Rooms!",
+    "instruccion": "Tap one from each column to match!",
+    "retos": [{
+      "pares": [
+        {"es": "🛏️ Dormitorio", "en": "Bedroom"},
+        {"es": "🍳 Cocina", "en": "Kitchen"},
+        {"es": "🚿 Baño", "en": "Bathroom"},
+        {"es": "🛋️ Sala", "en": "Living room"},
+        {"es": "🚪 Puerta", "en": "Door"},
+        {"es": "🪟 Ventana", "en": "Window"}
+      ]
+    }]
+  }]
+}

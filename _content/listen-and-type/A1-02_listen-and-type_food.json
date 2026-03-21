@@ -1,0 +1,23 @@
+{
+  "id": "A1-02_listen-and-type_food",
+  "titulo": "Listen & Type: Food & Drinks",
+  "descripcion": "Listen and type the sentence about food!",
+  "tipo": "listen-and-type",
+  "materia": "ingles",
+  "tema": "food",
+  "nivel": "A1-02",
+  "misiones": [{
+    "id": "mision-lat-food",
+    "tipo": "listen-and-type",
+    "titulo": "Listen and Write!",
+    "instruccion": "Press Play to hear the sentence. Then type it!",
+    "retos": [
+      {"texto_en": "I like pizza", "traduccion": "Me gusta la pizza", "pista": "I ____ pizza (3 words)", "explicacion": "I like pizza = Me gusta la pizza"},
+      {"texto_en": "She eats chicken", "traduccion": "Ella come pollo", "pista": "She ____ chicken (3 words)", "explicacion": "She eats chicken = Ella come pollo"},
+      {"texto_en": "I drink milk", "traduccion": "Yo tomo leche", "pista": "I _____ milk (3 words)", "explicacion": "I drink milk = Yo tomo leche"},
+      {"texto_en": "Do you like bananas", "traduccion": "¿Te gustan los plátanos?", "pista": "Do you ____ bananas (4 words)", "explicacion": "Do you like bananas? = ¿Te gustan los plátanos?"},
+      {"texto_en": "I want water", "traduccion": "Quiero agua", "pista": "I ____ water (3 words)", "explicacion": "I want water = Quiero agua"},
+      {"texto_en": "We eat bread", "traduccion": "Comemos pan", "pista": "We ___ bread (3 words)", "explicacion": "We eat bread = Comemos pan"}
+    ]
+  }]
+}

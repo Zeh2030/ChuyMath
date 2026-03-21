@@ -1,0 +1,23 @@
+{
+  "id": "A1-08_fill-the-gap_action-verbs",
+  "titulo": "Fill the Gap: Action Verbs & Can",
+  "descripcion": "Complete sentences with action verbs and can/can't!",
+  "tipo": "fill-the-gap",
+  "materia": "ingles",
+  "tema": "action-verbs",
+  "nivel": "A1-08",
+  "misiones": [{
+    "id": "mision-ftg-verbs",
+    "tipo": "fill-the-gap",
+    "titulo": "Can you do it?",
+    "instruccion": "Choose the correct word!",
+    "retos": [
+      {"oracion": "I ___ run fast.", "traduccion": "Puedo correr rápido.", "opciones": ["can", "am", "is", "do"], "respuesta": 0, "explicacion": "I can run. Can = puedo/puede."},
+      {"oracion": "She ___ swim.", "traduccion": "Ella puede nadar.", "opciones": ["am", "is", "can", "do"], "respuesta": 2, "explicacion": "She can swim. Can se usa igual con todos."},
+      {"oracion": "Birds can ___.", "traduccion": "Los pájaros pueden volar.", "opciones": ["fly", "flies", "flying", "flew"], "respuesta": 0, "explicacion": "Birds can fly. Después de can va el verbo base."},
+      {"oracion": "I ___ fly.", "traduccion": "No puedo volar.", "opciones": ["can", "can't", "am", "don't"], "respuesta": 1, "explicacion": "I can't fly. Can't = no puedo."},
+      {"oracion": "___ you swim?", "traduccion": "¿Puedes nadar?", "opciones": ["Do", "Are", "Can", "Is"], "respuesta": 2, "explicacion": "Can you swim? Para preguntar con can."},
+      {"oracion": "He can ___ very well.", "traduccion": "Él puede dibujar muy bien.", "opciones": ["draws", "draw", "drawing", "drew"], "respuesta": 1, "explicacion": "He can draw. Después de can, verbo base sin -s."}
+    ]
+  }]
+}

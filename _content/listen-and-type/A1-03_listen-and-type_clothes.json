@@ -1,0 +1,23 @@
+{
+  "id": "A1-03_listen-and-type_clothes",
+  "titulo": "Listen & Type: Clothes",
+  "descripcion": "Listen and type sentences about clothes!",
+  "tipo": "listen-and-type",
+  "materia": "ingles",
+  "tema": "clothes",
+  "nivel": "A1-03",
+  "misiones": [{
+    "id": "mision-lat-clothes",
+    "tipo": "listen-and-type",
+    "titulo": "Listen and Write!",
+    "instruccion": "Press Play to hear the sentence. Then type it!",
+    "retos": [
+      {"texto_en": "I am wearing a shirt", "traduccion": "Estoy usando una camisa", "pista": "I am w______ a s____ (5 words)", "explicacion": "I am wearing a shirt = Estoy usando una camisa"},
+      {"texto_en": "She is wearing a dress", "traduccion": "Ella está usando un vestido", "pista": "She is w______ a d____ (5 words)", "explicacion": "She is wearing a dress = Ella está usando un vestido"},
+      {"texto_en": "Put on your shoes", "traduccion": "Ponte tus zapatos", "pista": "Put on your s____ (4 words)", "explicacion": "Put on your shoes = Ponte tus zapatos"},
+      {"texto_en": "He has a hat", "traduccion": "Él tiene un sombrero", "pista": "He has a h__ (4 words)", "explicacion": "He has a hat = Él tiene un sombrero"},
+      {"texto_en": "I like my jacket", "traduccion": "Me gusta mi chaqueta", "pista": "I like my j_____ (4 words)", "explicacion": "I like my jacket = Me gusta mi chaqueta"},
+      {"texto_en": "Where are my socks", "traduccion": "Dónde están mis calcetines", "pista": "Where are my s____ (4 words)", "explicacion": "Where are my socks = Dónde están mis calcetines"}
+    ]
+  }]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "A1-01_listen-and-type_animals",
+  "titulo": "Listen & Type: Animals",
+  "descripcion": "Listen and type the sentence about animals!",
+  "tipo": "listen-and-type",
+  "materia": "ingles",
+  "tema": "animals",
+  "nivel": "A1-01",
+  "misiones": [{
+    "id": "mision-lat-animals",
+    "tipo": "listen-and-type",
+    "titulo": "Listen and Write!",
+    "instruccion": "Press Play to hear the sentence. Then type it!",
+    "retos": [
+      {"texto_en": "I like cats", "traduccion": "Me gustan los gatos", "pista": "I ____ cats (3 words)", "explicacion": "I like cats = Me gustan los gatos"},
+      {"texto_en": "The dog is big", "traduccion": "El perro es grande", "pista": "The ___ is big (4 words)", "explicacion": "The dog is big = El perro es grande"},
+      {"texto_en": "A bird can fly", "traduccion": "Un pájaro puede volar", "pista": "A ____ can fly (4 words)", "explicacion": "A bird can fly = Un pájaro puede volar"},
+      {"texto_en": "I have a fish", "traduccion": "Tengo un pez", "pista": "I have a ____ (4 words)", "explicacion": "I have a fish = Tengo un pez"},
+      {"texto_en": "The elephant is gray", "traduccion": "El elefante es gris", "pista": "The ________ is gray (4 words)", "explicacion": "The elephant is gray = El elefante es gris"},
+      {"texto_en": "A frog can jump", "traduccion": "Una rana puede saltar", "pista": "A ____ can jump (4 words)", "explicacion": "A frog can jump = Una rana puede saltar"}
+    ]
+  }]
+}

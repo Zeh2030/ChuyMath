@@ -1,0 +1,35 @@
+{
+  "id": "A1-05_tap-the-pairs_weather",
+  "titulo": "Tap the Pairs: Weather & Seasons",
+  "descripcion": "Match the weather and season words in Spanish with English!",
+  "tipo": "tap-the-pairs",
+  "materia": "ingles",
+  "tema": "weather",
+  "nivel": "A1-05",
+  "misiones": [{
+    "id": "mision-ttp-weather",
+    "tipo": "tap-the-pairs",
+    "titulo": "Match the Weather!",
+    "instruccion": "Tap one from each column to match!",
+    "retos": [
+      {
+        "pares": [
+          {"es": "☀️ Soleado", "en": "Sunny"},
+          {"es": "🌧️ Lluvioso", "en": "Rainy"},
+          {"es": "☁️ Nublado", "en": "Cloudy"},
+          {"es": "🌬️ Ventoso", "en": "Windy"},
+          {"es": "🔥 Caliente", "en": "Hot"}
+        ]
+      },
+      {
+        "pares": [
+          {"es": "❄️ Frío", "en": "Cold"},
+          {"es": "🌸 Primavera", "en": "Spring"},
+          {"es": "☀️ Verano", "en": "Summer"},
+          {"es": "🍂 Otoño", "en": "Fall"},
+          {"es": "⛄ Invierno", "en": "Winter"}
+        ]
+      }
+    ]
+  }]
+}

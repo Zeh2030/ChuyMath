@@ -1,0 +1,25 @@
+{
+  "id": "A1-05_image-picker_weather",
+  "titulo": "Image Picker: Weather",
+  "descripcion": "What's the weather like? Pick the right emoji!",
+  "tipo": "image-picker",
+  "materia": "ingles",
+  "tema": "weather",
+  "nivel": "A1-05",
+  "misiones": [{
+    "id": "mision-ip-weather",
+    "tipo": "image-picker",
+    "titulo": "What's the weather?",
+    "instruccion": "Tap the emoji that matches the weather word!",
+    "retos": [
+      {"palabra_en": "sunny", "palabra_es": "soleado", "opciones": [{"emoji": "☀️", "label": "sunny"}, {"emoji": "🌧️", "label": "rainy"}, {"emoji": "☁️", "label": "cloudy"}, {"emoji": "🌬️", "label": "windy"}], "respuesta": 0, "explicacion": "Sunny = Soleado. It is sunny today!"},
+      {"palabra_en": "rainy", "palabra_es": "lluvioso", "opciones": [{"emoji": "☀️", "label": "sunny"}, {"emoji": "🌧️", "label": "rainy"}, {"emoji": "❄️", "label": "cold"}, {"emoji": "🌬️", "label": "windy"}], "respuesta": 1, "explicacion": "Rainy = Lluvioso. It is rainy outside."},
+      {"palabra_en": "cloudy", "palabra_es": "nublado", "opciones": [{"emoji": "🔥", "label": "hot"}, {"emoji": "🌨️", "label": "snowy"}, {"emoji": "☁️", "label": "cloudy"}, {"emoji": "☀️", "label": "sunny"}], "respuesta": 2, "explicacion": "Cloudy = Nublado. It is cloudy today."},
+      {"palabra_en": "windy", "palabra_es": "ventoso", "opciones": [{"emoji": "🌧️", "label": "rainy"}, {"emoji": "☀️", "label": "sunny"}, {"emoji": "⛈️", "label": "stormy"}, {"emoji": "🌬️", "label": "windy"}], "respuesta": 3, "explicacion": "Windy = Ventoso. It is very windy!"},
+      {"palabra_en": "hot", "palabra_es": "caliente", "opciones": [{"emoji": "🔥", "label": "hot"}, {"emoji": "❄️", "label": "cold"}, {"emoji": "🌧️", "label": "rainy"}, {"emoji": "☁️", "label": "cloudy"}], "respuesta": 0, "explicacion": "Hot = Caliente. It is hot in summer!"},
+      {"palabra_en": "cold", "palabra_es": "frío", "opciones": [{"emoji": "☀️", "label": "sunny"}, {"emoji": "❄️", "label": "cold"}, {"emoji": "🔥", "label": "hot"}, {"emoji": "🌬️", "label": "windy"}], "respuesta": 1, "explicacion": "Cold = Frío. It is cold in winter."},
+      {"palabra_en": "snowy", "palabra_es": "nevado", "opciones": [{"emoji": "🌧️", "label": "rainy"}, {"emoji": "⛈️", "label": "stormy"}, {"emoji": "🌨️", "label": "snowy"}, {"emoji": "☀️", "label": "sunny"}], "respuesta": 2, "explicacion": "Snowy = Nevado. It is snowy outside!"},
+      {"palabra_en": "stormy", "palabra_es": "tormentoso", "opciones": [{"emoji": "☁️", "label": "cloudy"}, {"emoji": "🌬️", "label": "windy"}, {"emoji": "❄️", "label": "cold"}, {"emoji": "⛈️", "label": "stormy"}], "respuesta": 3, "explicacion": "Stormy = Tormentoso. It is stormy tonight!"}
+    ]
+  }]
+}

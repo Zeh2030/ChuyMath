@@ -1,0 +1,27 @@
+{
+  "id": "A1-03_tap-the-pairs_clothes",
+  "titulo": "Tap the Pairs: Clothes",
+  "descripcion": "Match the clothing item in Spanish with English!",
+  "tipo": "tap-the-pairs",
+  "materia": "ingles",
+  "tema": "clothes",
+  "nivel": "A1-03",
+  "misiones": [{
+    "id": "mision-ttp-clothes",
+    "tipo": "tap-the-pairs",
+    "titulo": "Match the Clothes!",
+    "instruccion": "Tap one from each column to match!",
+    "retos": [
+      {
+        "pares": [
+          {"es": "Camisa", "en": "Shirt"},
+          {"es": "Pantalón", "en": "Pants"},
+          {"es": "Zapatos", "en": "Shoes"},
+          {"es": "Sombrero", "en": "Hat"},
+          {"es": "Vestido", "en": "Dress"},
+          {"es": "Calcetines", "en": "Socks"}
+        ]
+      }
+    ]
+  }]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "A1-04_listen-and-type_days",
+  "titulo": "Listen & Type: Days of the Week",
+  "descripcion": "Listen and type the days of the week!",
+  "tipo": "listen-and-type",
+  "materia": "ingles",
+  "tema": "days",
+  "nivel": "A1-04",
+  "misiones": [{
+    "id": "mision-lat-days",
+    "tipo": "listen-and-type",
+    "titulo": "Listen and Write!",
+    "instruccion": "Press Play to hear the word. Then type it!",
+    "retos": [
+      {"texto_en": "Monday", "traduccion": "Lunes", "pista": "M_____ (1 word, starts with M)", "explicacion": "Monday = Lunes. The first day of the school week!"},
+      {"texto_en": "Tuesday", "traduccion": "Martes", "pista": "T______ (1 word, starts with Tu)", "explicacion": "Tuesday = Martes. The second day of the school week!"},
+      {"texto_en": "Wednesday", "traduccion": "Miércoles", "pista": "W________ (1 word, starts with W)", "explicacion": "Wednesday = Miércoles. The middle of the week!"},
+      {"texto_en": "Thursday", "traduccion": "Jueves", "pista": "T_______ (1 word, starts with Th)", "explicacion": "Thursday = Jueves. Almost Friday!"},
+      {"texto_en": "Friday", "traduccion": "Viernes", "pista": "F_____ (1 word, starts with F)", "explicacion": "Friday = Viernes. The last school day!"},
+      {"texto_en": "Saturday", "traduccion": "Sábado", "pista": "S_______ (1 word, starts with Sa)", "explicacion": "Saturday = Sábado. Time to play!"},
+      {"texto_en": "Sunday", "traduccion": "Domingo", "pista": "S_____ (1 word, starts with Su)", "explicacion": "Sunday = Domingo. Time to rest!"}
+    ]
+  }]
+}

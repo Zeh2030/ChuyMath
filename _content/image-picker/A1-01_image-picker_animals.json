@@ -1,0 +1,25 @@
+{
+  "id": "A1-01_image-picker_animals",
+  "titulo": "Image Picker: Animals",
+  "descripcion": "Pick the correct animal emoji!",
+  "tipo": "image-picker",
+  "materia": "ingles",
+  "tema": "animals",
+  "nivel": "A1-01",
+  "misiones": [{
+    "id": "mision-ip-animals",
+    "tipo": "image-picker",
+    "titulo": "Which animal is it?",
+    "instruccion": "Tap the emoji that matches the animal!",
+    "retos": [
+      {"palabra_en": "cat", "palabra_es": "gato", "opciones": [{"emoji": "🐱", "label": "cat"}, {"emoji": "🐕", "label": "dog"}, {"emoji": "🐦", "label": "bird"}, {"emoji": "🐟", "label": "fish"}], "respuesta": 0, "explicacion": "Cat = Gato. I have a cat!"},
+      {"palabra_en": "dog", "palabra_es": "perro", "opciones": [{"emoji": "🐱", "label": "cat"}, {"emoji": "🐕", "label": "dog"}, {"emoji": "🐴", "label": "horse"}, {"emoji": "🐒", "label": "monkey"}], "respuesta": 1, "explicacion": "Dog = Perro. The dog is big!"},
+      {"palabra_en": "bird", "palabra_es": "pájaro", "opciones": [{"emoji": "🐟", "label": "fish"}, {"emoji": "🐄", "label": "cow"}, {"emoji": "🐦", "label": "bird"}, {"emoji": "🐘", "label": "elephant"}], "respuesta": 2, "explicacion": "Bird = Pájaro. A bird can fly!"},
+      {"palabra_en": "fish", "palabra_es": "pez", "opciones": [{"emoji": "🐴", "label": "horse"}, {"emoji": "🐟", "label": "fish"}, {"emoji": "🐱", "label": "cat"}, {"emoji": "🐕", "label": "dog"}], "respuesta": 1, "explicacion": "Fish = Pez. A fish lives in water!"},
+      {"palabra_en": "horse", "palabra_es": "caballo", "opciones": [{"emoji": "🐴", "label": "horse"}, {"emoji": "🐒", "label": "monkey"}, {"emoji": "🐄", "label": "cow"}, {"emoji": "🐦", "label": "bird"}], "respuesta": 0, "explicacion": "Horse = Caballo. The horse is fast!"},
+      {"palabra_en": "cow", "palabra_es": "vaca", "opciones": [{"emoji": "🐘", "label": "elephant"}, {"emoji": "🐱", "label": "cat"}, {"emoji": "🐄", "label": "cow"}, {"emoji": "🐕", "label": "dog"}], "respuesta": 2, "explicacion": "Cow = Vaca. The cow says moo!"},
+      {"palabra_en": "monkey", "palabra_es": "mono", "opciones": [{"emoji": "🐦", "label": "bird"}, {"emoji": "🐒", "label": "monkey"}, {"emoji": "🐟", "label": "fish"}, {"emoji": "🐴", "label": "horse"}], "respuesta": 1, "explicacion": "Monkey = Mono. The monkey is funny!"},
+      {"palabra_en": "elephant", "palabra_es": "elefante", "opciones": [{"emoji": "🐄", "label": "cow"}, {"emoji": "🐕", "label": "dog"}, {"emoji": "🐒", "label": "monkey"}, {"emoji": "🐘", "label": "elephant"}], "respuesta": 3, "explicacion": "Elephant = Elefante. The elephant is big!"}
+    ]
+  }]
+}

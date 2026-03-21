@@ -1,0 +1,25 @@
+{
+  "id": "A1-02_image-picker_food",
+  "titulo": "Image Picker: Food & Drinks",
+  "descripcion": "Pick the correct food or drink emoji!",
+  "tipo": "image-picker",
+  "materia": "ingles",
+  "tema": "food",
+  "nivel": "A1-02",
+  "misiones": [{
+    "id": "mision-ip-food",
+    "tipo": "image-picker",
+    "titulo": "Which food is it?",
+    "instruccion": "Tap the emoji that matches the food or drink!",
+    "retos": [
+      {"palabra_en": "apple", "palabra_es": "manzana", "opciones": [{"emoji": "🍎", "label": "apple"}, {"emoji": "🍌", "label": "banana"}, {"emoji": "🍞", "label": "bread"}, {"emoji": "🍕", "label": "pizza"}], "respuesta": 0, "explicacion": "Apple = Manzana. I eat an apple!"},
+      {"palabra_en": "banana", "palabra_es": "plátano", "opciones": [{"emoji": "🍗", "label": "chicken"}, {"emoji": "🍌", "label": "banana"}, {"emoji": "🥛", "label": "milk"}, {"emoji": "🍎", "label": "apple"}], "respuesta": 1, "explicacion": "Banana = Plátano. The banana is yellow!"},
+      {"palabra_en": "bread", "palabra_es": "pan", "opciones": [{"emoji": "💧", "label": "water"}, {"emoji": "🧃", "label": "juice"}, {"emoji": "🍞", "label": "bread"}, {"emoji": "🍌", "label": "banana"}], "respuesta": 2, "explicacion": "Bread = Pan. We eat bread for breakfast!"},
+      {"palabra_en": "milk", "palabra_es": "leche", "opciones": [{"emoji": "🍕", "label": "pizza"}, {"emoji": "🍎", "label": "apple"}, {"emoji": "🍗", "label": "chicken"}, {"emoji": "🥛", "label": "milk"}], "respuesta": 3, "explicacion": "Milk = Leche. I drink milk!"},
+      {"palabra_en": "water", "palabra_es": "agua", "opciones": [{"emoji": "💧", "label": "water"}, {"emoji": "🧃", "label": "juice"}, {"emoji": "🥛", "label": "milk"}, {"emoji": "🍞", "label": "bread"}], "respuesta": 0, "explicacion": "Water = Agua. I want water!"},
+      {"palabra_en": "juice", "palabra_es": "jugo", "opciones": [{"emoji": "🥛", "label": "milk"}, {"emoji": "🧃", "label": "juice"}, {"emoji": "💧", "label": "water"}, {"emoji": "🍎", "label": "apple"}], "respuesta": 1, "explicacion": "Juice = Jugo. Orange juice is delicious!"},
+      {"palabra_en": "pizza", "palabra_es": "pizza", "opciones": [{"emoji": "🍞", "label": "bread"}, {"emoji": "🍗", "label": "chicken"}, {"emoji": "🍕", "label": "pizza"}, {"emoji": "🍌", "label": "banana"}], "respuesta": 2, "explicacion": "Pizza = Pizza. I like pizza!"},
+      {"palabra_en": "chicken", "palabra_es": "pollo", "opciones": [{"emoji": "🍌", "label": "banana"}, {"emoji": "🍕", "label": "pizza"}, {"emoji": "💧", "label": "water"}, {"emoji": "🍗", "label": "chicken"}], "respuesta": 3, "explicacion": "Chicken = Pollo. She eats chicken!"}
+    ]
+  }]
+}

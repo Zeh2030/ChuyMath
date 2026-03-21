@@ -1,0 +1,23 @@
+{
+  "id": "A1-03_image-picker_clothes",
+  "titulo": "Image Picker: Clothes",
+  "descripcion": "Learn the names of clothes in English!",
+  "tipo": "image-picker",
+  "materia": "ingles",
+  "tema": "clothes",
+  "nivel": "A1-03",
+  "misiones": [{
+    "id": "mision-ip-clothes",
+    "tipo": "image-picker",
+    "titulo": "What clothing item is it?",
+    "instruccion": "Tap the image that matches the clothing item!",
+    "retos": [
+      {"palabra_en": "shirt", "palabra_es": "camisa", "opciones": [{"emoji": "👕", "label": "shirt"}, {"emoji": "👖", "label": "pants"}, {"emoji": "👗", "label": "dress"}, {"emoji": "🧥", "label": "jacket"}], "respuesta": 0, "explicacion": "Shirt = Camisa. I am wearing a shirt!"},
+      {"palabra_en": "pants", "palabra_es": "pantalón", "opciones": [{"emoji": "👟", "label": "shoes"}, {"emoji": "👖", "label": "pants"}, {"emoji": "👕", "label": "shirt"}, {"emoji": "🎩", "label": "hat"}], "respuesta": 1, "explicacion": "Pants = Pantalón. He is wearing pants!"},
+      {"palabra_en": "shoes", "palabra_es": "zapatos", "opciones": [{"emoji": "🧥", "label": "jacket"}, {"emoji": "🎩", "label": "hat"}, {"emoji": "👟", "label": "shoes"}, {"emoji": "👗", "label": "dress"}], "respuesta": 2, "explicacion": "Shoes = Zapatos. Put on your shoes!"},
+      {"palabra_en": "hat", "palabra_es": "sombrero", "opciones": [{"emoji": "👖", "label": "pants"}, {"emoji": "👕", "label": "shirt"}, {"emoji": "👟", "label": "shoes"}, {"emoji": "🎩", "label": "hat"}], "respuesta": 3, "explicacion": "Hat = Sombrero. I like my hat!"},
+      {"palabra_en": "dress", "palabra_es": "vestido", "opciones": [{"emoji": "👗", "label": "dress"}, {"emoji": "👕", "label": "shirt"}, {"emoji": "🧥", "label": "jacket"}, {"emoji": "👖", "label": "pants"}], "respuesta": 0, "explicacion": "Dress = Vestido. She is wearing a dress!"},
+      {"palabra_en": "jacket", "palabra_es": "chaqueta", "opciones": [{"emoji": "👟", "label": "shoes"}, {"emoji": "🧥", "label": "jacket"}, {"emoji": "🎩", "label": "hat"}, {"emoji": "👗", "label": "dress"}], "respuesta": 1, "explicacion": "Jacket = Chaqueta. Put on your jacket!"}
+    ]
+  }]
+}

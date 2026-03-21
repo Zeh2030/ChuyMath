@@ -1,0 +1,35 @@
+{
+  "id": "A1-02_tap-the-pairs_food",
+  "titulo": "Tap the Pairs: Food & Drinks",
+  "descripcion": "Match the food in Spanish with English!",
+  "tipo": "tap-the-pairs",
+  "materia": "ingles",
+  "tema": "food",
+  "nivel": "A1-02",
+  "misiones": [{
+    "id": "mision-ttp-food",
+    "tipo": "tap-the-pairs",
+    "titulo": "Match the Food!",
+    "instruccion": "Tap one from each column to match!",
+    "retos": [
+      {
+        "pares": [
+          {"es": "🍎 Manzana", "en": "Apple"},
+          {"es": "🍌 Plátano", "en": "Banana"},
+          {"es": "🍞 Pan", "en": "Bread"},
+          {"es": "🥛 Leche", "en": "Milk"},
+          {"es": "💧 Agua", "en": "Water"}
+        ]
+      },
+      {
+        "pares": [
+          {"es": "🧃 Jugo", "en": "Juice"},
+          {"es": "🍕 Pizza", "en": "Pizza"},
+          {"es": "🍗 Pollo", "en": "Chicken"},
+          {"es": "🥚 Huevo", "en": "Egg"},
+          {"es": "🍚 Arroz", "en": "Rice"}
+        ]
+      }
+    ]
+  }]
+}

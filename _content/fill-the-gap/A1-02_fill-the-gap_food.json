@@ -1,0 +1,23 @@
+{
+  "id": "A1-02_fill-the-gap_food",
+  "titulo": "Fill the Gap: Food & Drinks",
+  "descripcion": "Complete the sentence about food and drinks!",
+  "tipo": "fill-the-gap",
+  "materia": "ingles",
+  "tema": "food",
+  "nivel": "A1-02",
+  "misiones": [{
+    "id": "mision-ftg-food",
+    "tipo": "fill-the-gap",
+    "titulo": "Complete the Sentence!",
+    "instruccion": "Choose the correct word!",
+    "retos": [
+      {"oracion": "I like ___.", "traduccion": "Me gusta la pizza.", "opciones": ["pizza", "pizzas", "a pizza", "the"], "respuesta": 0, "explicacion": "I like pizza. Con comida en general no usamos artículo."},
+      {"oracion": "I ___ like milk.", "traduccion": "No me gusta la leche.", "opciones": ["do", "don't", "does", "doesn't"], "respuesta": 1, "explicacion": "I don't like milk. Don't = do not, para negar con I."},
+      {"oracion": "Do you like ___?", "traduccion": "¿Te gustan los plátanos?", "opciones": ["banana", "bananas", "a banana", "the"], "respuesta": 1, "explicacion": "Do you like bananas? Usamos plural para hablar en general."},
+      {"oracion": "She ___ chicken.", "traduccion": "A ella le gusta el pollo.", "opciones": ["like", "likes", "liking", "liked"], "respuesta": 1, "explicacion": "She likes chicken. Con She/He usamos likes (tercera persona)."},
+      {"oracion": "I want ___.", "traduccion": "Quiero agua.", "opciones": ["water", "waters", "a water", "the water"], "respuesta": 0, "explicacion": "I want water. Water es incontable, no lleva artículo."},
+      {"oracion": "We eat ___ for breakfast.", "traduccion": "Comemos pan en el desayuno.", "opciones": ["bread", "breads", "a bread", "the"], "respuesta": 0, "explicacion": "We eat bread. Bread es incontable, no tiene plural."}
+    ]
+  }]
+}

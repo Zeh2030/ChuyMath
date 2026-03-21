@@ -1,0 +1,24 @@
+{
+  "id": "A1-04_image-picker_days",
+  "titulo": "Image Picker: Days of the Week",
+  "descripcion": "Learn the days of the week in English!",
+  "tipo": "image-picker",
+  "materia": "ingles",
+  "tema": "days",
+  "nivel": "A1-04",
+  "misiones": [{
+    "id": "mision-ip-days",
+    "tipo": "image-picker",
+    "titulo": "What day is it?",
+    "instruccion": "Tap the option that matches the day of the week!",
+    "retos": [
+      {"palabra_en": "Monday", "palabra_es": "Lunes", "opciones": [{"emoji": "1️⃣", "label": "Monday"}, {"emoji": "2️⃣", "label": "Tuesday"}, {"emoji": "3️⃣", "label": "Wednesday"}, {"emoji": "5️⃣", "label": "Friday"}], "respuesta": 0, "explicacion": "Monday = Lunes. It is the first day of the school week!"},
+      {"palabra_en": "Tuesday", "palabra_es": "Martes", "opciones": [{"emoji": "4️⃣", "label": "Thursday"}, {"emoji": "2️⃣", "label": "Tuesday"}, {"emoji": "1️⃣", "label": "Monday"}, {"emoji": "6️⃣", "label": "Saturday"}], "respuesta": 1, "explicacion": "Tuesday = Martes. It is the second day of the school week!"},
+      {"palabra_en": "Wednesday", "palabra_es": "Miércoles", "opciones": [{"emoji": "5️⃣", "label": "Friday"}, {"emoji": "1️⃣", "label": "Monday"}, {"emoji": "3️⃣", "label": "Wednesday"}, {"emoji": "4️⃣", "label": "Thursday"}], "respuesta": 2, "explicacion": "Wednesday = Miércoles. It is the middle of the week!"},
+      {"palabra_en": "Thursday", "palabra_es": "Jueves", "opciones": [{"emoji": "2️⃣", "label": "Tuesday"}, {"emoji": "6️⃣", "label": "Saturday"}, {"emoji": "3️⃣", "label": "Wednesday"}, {"emoji": "4️⃣", "label": "Thursday"}], "respuesta": 3, "explicacion": "Thursday = Jueves. Almost Friday!"},
+      {"palabra_en": "Friday", "palabra_es": "Viernes", "opciones": [{"emoji": "5️⃣", "label": "Friday"}, {"emoji": "7️⃣", "label": "Sunday"}, {"emoji": "3️⃣", "label": "Wednesday"}, {"emoji": "1️⃣", "label": "Monday"}], "respuesta": 0, "explicacion": "Friday = Viernes. The weekend is coming!"},
+      {"palabra_en": "Saturday", "palabra_es": "Sábado", "opciones": [{"emoji": "4️⃣", "label": "Thursday"}, {"emoji": "6️⃣", "label": "Saturday"}, {"emoji": "7️⃣", "label": "Sunday"}, {"emoji": "2️⃣", "label": "Tuesday"}], "respuesta": 1, "explicacion": "Saturday = Sábado. Time to play!"},
+      {"palabra_en": "Sunday", "palabra_es": "Domingo", "opciones": [{"emoji": "5️⃣", "label": "Friday"}, {"emoji": "1️⃣", "label": "Monday"}, {"emoji": "7️⃣", "label": "Sunday"}, {"emoji": "6️⃣", "label": "Saturday"}], "respuesta": 2, "explicacion": "Sunday = Domingo. Time to rest!"}
+    ]
+  }]
+}

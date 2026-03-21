@@ -1,0 +1,23 @@
+{
+  "id": "A1-05_listen-and-type_weather",
+  "titulo": "Listen & Type: Weather",
+  "descripcion": "Listen and type the sentence about weather!",
+  "tipo": "listen-and-type",
+  "materia": "ingles",
+  "tema": "weather",
+  "nivel": "A1-05",
+  "misiones": [{
+    "id": "mision-lat-weather",
+    "tipo": "listen-and-type",
+    "titulo": "Listen and Write!",
+    "instruccion": "Press Play to hear the sentence. Then type it!",
+    "retos": [
+      {"texto_en": "It is sunny", "traduccion": "Está soleado", "pista": "It __ sunny (3 words)", "explicacion": "It is sunny = Está soleado"},
+      {"texto_en": "It is raining", "traduccion": "Está lloviendo", "pista": "It __ raining (3 words)", "explicacion": "It is raining = Está lloviendo"},
+      {"texto_en": "It is cold today", "traduccion": "Hace frío hoy", "pista": "It __ cold today (4 words)", "explicacion": "It is cold today = Hace frío hoy"},
+      {"texto_en": "I like summer", "traduccion": "Me gusta el verano", "pista": "I like s_____ (3 words)", "explicacion": "I like summer = Me gusta el verano"},
+      {"texto_en": "It is windy outside", "traduccion": "Hace viento afuera", "pista": "It __ windy outside (4 words)", "explicacion": "It is windy outside = Hace viento afuera"},
+      {"texto_en": "What is the weather like", "traduccion": "Cómo está el clima", "pista": "What __ the weather ____ (5 words)", "explicacion": "What is the weather like = ¿Cómo está el clima?"}
+    ]
+  }]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "A1-06_listen-and-type_house",
+  "titulo": "Listen & Type: My House",
+  "descripcion": "Listen and type the sentence about the house!",
+  "tipo": "listen-and-type",
+  "materia": "ingles",
+  "tema": "house",
+  "nivel": "A1-06",
+  "misiones": [{
+    "id": "mision-lat-house",
+    "tipo": "listen-and-type",
+    "titulo": "Listen and Write!",
+    "instruccion": "Press Play to hear the sentence. Then type it!",
+    "retos": [
+      {"texto_en": "There is a bed", "traduccion": "Hay una cama", "pista": "There __ a bed (4 words)", "explicacion": "There is a bed = Hay una cama"},
+      {"texto_en": "The kitchen is big", "traduccion": "La cocina es grande", "pista": "The kitchen __ big (4 words)", "explicacion": "The kitchen is big = La cocina es grande"},
+      {"texto_en": "Where is the bathroom", "traduccion": "Dónde está el baño", "pista": "Where __ the bathroom (4 words)", "explicacion": "Where is the bathroom = ¿Dónde está el baño?"},
+      {"texto_en": "Open the door", "traduccion": "Abre la puerta", "pista": "Open the d___ (3 words)", "explicacion": "Open the door = Abre la puerta"},
+      {"texto_en": "I sleep in my bedroom", "traduccion": "Yo duermo en mi dormitorio", "pista": "I sleep __ my bedroom (5 words)", "explicacion": "I sleep in my bedroom = Yo duermo en mi dormitorio"},
+      {"texto_en": "There are two chairs", "traduccion": "Hay dos sillas", "pista": "There ___ two chairs (4 words)", "explicacion": "There are two chairs = Hay dos sillas"}
+    ]
+  }]
+}

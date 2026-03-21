@@ -1,0 +1,35 @@
+{
+  "id": "A1-01_tap-the-pairs_animals",
+  "titulo": "Tap the Pairs: Animals",
+  "descripcion": "Match the animal in Spanish with English!",
+  "tipo": "tap-the-pairs",
+  "materia": "ingles",
+  "tema": "animals",
+  "nivel": "A1-01",
+  "misiones": [{
+    "id": "mision-ttp-animals",
+    "tipo": "tap-the-pairs",
+    "titulo": "Match the Animals!",
+    "instruccion": "Tap one from each column to match!",
+    "retos": [
+      {
+        "pares": [
+          {"es": "🐱 Gato", "en": "Cat"},
+          {"es": "🐕 Perro", "en": "Dog"},
+          {"es": "🐦 Pájaro", "en": "Bird"},
+          {"es": "🐟 Pez", "en": "Fish"},
+          {"es": "🐴 Caballo", "en": "Horse"}
+        ]
+      },
+      {
+        "pares": [
+          {"es": "🐄 Vaca", "en": "Cow"},
+          {"es": "🐒 Mono", "en": "Monkey"},
+          {"es": "🐘 Elefante", "en": "Elephant"},
+          {"es": "🐍 Serpiente", "en": "Snake"},
+          {"es": "🐸 Rana", "en": "Frog"}
+        ]
+      }
+    ]
+  }]
+}

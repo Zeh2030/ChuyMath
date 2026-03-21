@@ -1,0 +1,23 @@
+{
+  "id": "A1-01_fill-the-gap_animals",
+  "titulo": "Fill the Gap: Animals",
+  "descripcion": "Complete the sentence about animals!",
+  "tipo": "fill-the-gap",
+  "materia": "ingles",
+  "tema": "animals",
+  "nivel": "A1-01",
+  "misiones": [{
+    "id": "mision-ftg-animals",
+    "tipo": "fill-the-gap",
+    "titulo": "Complete the Sentence!",
+    "instruccion": "Choose the correct word!",
+    "retos": [
+      {"oracion": "I like ___.", "traduccion": "Me gustan los gatos.", "opciones": ["cats", "cat", "a cat", "the"], "respuesta": 0, "explicacion": "I like cats. Usamos el plural para hablar en general."},
+      {"oracion": "A ___ can fly.", "traduccion": "Un pájaro puede volar.", "opciones": ["fish", "bird", "cat", "dog"], "respuesta": 1, "explicacion": "A bird can fly. Los pájaros pueden volar."},
+      {"oracion": "The ___ is big.", "traduccion": "El elefante es grande.", "opciones": ["cat", "fish", "elephant", "bird"], "respuesta": 2, "explicacion": "The elephant is big. El elefante es un animal grande."},
+      {"oracion": "I have a ___.", "traduccion": "Tengo un perro.", "opciones": ["dogs", "dog", "an dog", "the dog"], "respuesta": 1, "explicacion": "I have a dog. Usamos a antes de consonante."},
+      {"oracion": "A ___ lives in water.", "traduccion": "Un pez vive en el agua.", "opciones": ["bird", "cat", "fish", "horse"], "respuesta": 2, "explicacion": "A fish lives in water. Los peces viven en el agua."},
+      {"oracion": "The ___ says moo.", "traduccion": "La vaca dice muu.", "opciones": ["dog", "cat", "cow", "frog"], "respuesta": 2, "explicacion": "The cow says moo. La vaca hace muu."}
+    ]
+  }]
+}

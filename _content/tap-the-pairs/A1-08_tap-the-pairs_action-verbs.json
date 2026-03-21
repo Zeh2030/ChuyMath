@@ -1,0 +1,37 @@
+{
+  "id": "A1-08_tap-the-pairs_action-verbs",
+  "titulo": "Tap the Pairs: Action Verbs",
+  "descripcion": "Match the action verb!",
+  "tipo": "tap-the-pairs",
+  "materia": "ingles",
+  "tema": "action-verbs",
+  "nivel": "A1-08",
+  "misiones": [{
+    "id": "mision-ttp-verbs",
+    "tipo": "tap-the-pairs",
+    "titulo": "Match the Actions!",
+    "instruccion": "Tap one from each column to match!",
+    "retos": [
+      {
+        "pares": [
+          {"es": "🏃 Correr", "en": "Run"},
+          {"es": "🏊 Nadar", "en": "Swim"},
+          {"es": "✈️ Volar", "en": "Fly"},
+          {"es": "📖 Leer", "en": "Read"},
+          {"es": "✏️ Escribir", "en": "Write"},
+          {"es": "🎨 Dibujar", "en": "Draw"}
+        ]
+      },
+      {
+        "pares": [
+          {"es": "🎵 Cantar", "en": "Sing"},
+          {"es": "💃 Bailar", "en": "Dance"},
+          {"es": "🍕 Comer", "en": "Eat"},
+          {"es": "🥛 Beber", "en": "Drink"},
+          {"es": "⚽ Jugar", "en": "Play"},
+          {"es": "🤸 Saltar", "en": "Jump"}
+        ]
+      }
+    ]
+  }]
+}

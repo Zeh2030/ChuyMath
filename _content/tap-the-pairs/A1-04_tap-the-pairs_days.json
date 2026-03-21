@@ -1,0 +1,28 @@
+{
+  "id": "A1-04_tap-the-pairs_days",
+  "titulo": "Tap the Pairs: Days of the Week",
+  "descripcion": "Match the day in Spanish with English!",
+  "tipo": "tap-the-pairs",
+  "materia": "ingles",
+  "tema": "days",
+  "nivel": "A1-04",
+  "misiones": [{
+    "id": "mision-ttp-days",
+    "tipo": "tap-the-pairs",
+    "titulo": "Match the Days!",
+    "instruccion": "Tap one from each column to match!",
+    "retos": [
+      {
+        "pares": [
+          {"es": "Lunes", "en": "Monday"},
+          {"es": "Martes", "en": "Tuesday"},
+          {"es": "Miércoles", "en": "Wednesday"},
+          {"es": "Jueves", "en": "Thursday"},
+          {"es": "Viernes", "en": "Friday"},
+          {"es": "Sábado", "en": "Saturday"},
+          {"es": "Domingo", "en": "Sunday"}
+        ]
+      }
+    ]
+  }]
+}

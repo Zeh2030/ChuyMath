@@ -1,0 +1,23 @@
+{
+  "id": "A1-07_word-scramble_toys",
+  "titulo": "Word Scramble: Toys",
+  "descripcion": "Unscramble the toy name!",
+  "tipo": "word-scramble",
+  "materia": "ingles",
+  "tema": "toys",
+  "nivel": "A1-07",
+  "misiones": [{
+    "id": "mision-ws-toys",
+    "tipo": "word-scramble",
+    "titulo": "Spell the Toy!",
+    "instruccion": "The letters are mixed up! Put them in order!",
+    "retos": [
+      {"respuesta": "ball", "letras_desordenadas": "lalb", "pista_es": "Pelota", "pista_emoji": "⚽", "explicacion": "BALL = Pelota"},
+      {"respuesta": "car", "letras_desordenadas": "rac", "pista_es": "Carro", "pista_emoji": "🚗", "explicacion": "CAR = Carro"},
+      {"respuesta": "doll", "letras_desordenadas": "llod", "pista_es": "Muñeca", "pista_emoji": "🪆", "explicacion": "DOLL = Muñeca"},
+      {"respuesta": "bike", "letras_desordenadas": "kebi", "pista_es": "Bicicleta", "pista_emoji": "🚲", "explicacion": "BIKE = Bicicleta"},
+      {"respuesta": "robot", "letras_desordenadas": "tobor", "pista_es": "Robot", "pista_emoji": "🤖", "explicacion": "ROBOT = Robot"},
+      {"respuesta": "kite", "letras_desordenadas": "etik", "pista_es": "Cometa/Papalote", "pista_emoji": "🪁", "explicacion": "KITE = Cometa"}
+    ]
+  }]
+}

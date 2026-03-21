@@ -1,0 +1,23 @@
+{
+  "id": "A1-07_listen-and-type_toys",
+  "titulo": "Listen & Type: Toys",
+  "descripcion": "Listen and type sentences about toys!",
+  "tipo": "listen-and-type",
+  "materia": "ingles",
+  "tema": "toys",
+  "nivel": "A1-07",
+  "misiones": [{
+    "id": "mision-lat-toys",
+    "tipo": "listen-and-type",
+    "titulo": "Listen and Write!",
+    "instruccion": "Press Play to hear. Then type it!",
+    "retos": [
+      {"texto_en": "I have a ball", "traduccion": "Tengo una pelota", "pista": "I have a b___ (4 words)", "explicacion": "I have a ball = Tengo una pelota"},
+      {"texto_en": "The car is fast", "traduccion": "El carro es rápido", "pista": "The car is f___ (4 words)", "explicacion": "The car is fast = El carro es rápido"},
+      {"texto_en": "I love my teddy bear", "traduccion": "Amo mi oso de peluche", "pista": "I love my t____ b___ (5 words)", "explicacion": "I love my teddy bear"},
+      {"texto_en": "Can I play", "traduccion": "¿Puedo jugar?", "pista": "Can I p___ (3 words)", "explicacion": "Can I play? = ¿Puedo jugar?"},
+      {"texto_en": "She has a new doll", "traduccion": "Ella tiene una muñeca nueva", "pista": "She has a new d___ (5 words)", "explicacion": "She has a new doll"},
+      {"texto_en": "I ride my bike", "traduccion": "Monto mi bicicleta", "pista": "I ride my b___ (4 words)", "explicacion": "I ride my bike = Monto mi bici"}
+    ]
+  }]
+}

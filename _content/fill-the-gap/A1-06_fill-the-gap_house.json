@@ -1,0 +1,23 @@
+{
+  "id": "A1-06_fill-the-gap_house",
+  "titulo": "Fill the Gap: My House",
+  "descripcion": "Complete the sentence about the house!",
+  "tipo": "fill-the-gap",
+  "materia": "ingles",
+  "tema": "house",
+  "nivel": "A1-06",
+  "misiones": [{
+    "id": "mision-ftg-house",
+    "tipo": "fill-the-gap",
+    "titulo": "Inside My House!",
+    "instruccion": "Choose the correct word!",
+    "retos": [
+      {"oracion": "There ___ a bed in my bedroom.", "traduccion": "Hay una cama en mi dormitorio.", "opciones": ["is", "are", "am", "do"], "respuesta": 0, "explicacion": "There is a bed. Se usa is con singular (a bed)."},
+      {"oracion": "There ___ two chairs in the kitchen.", "traduccion": "Hay dos sillas en la cocina.", "opciones": ["is", "are", "am", "was"], "respuesta": 1, "explicacion": "There are two chairs. Se usa are con plural (two chairs)."},
+      {"oracion": "The cat is ___ the table.", "traduccion": "El gato está sobre la mesa.", "opciones": ["in", "on", "at", "to"], "respuesta": 1, "explicacion": "The cat is on the table. On = sobre/encima de."},
+      {"oracion": "Where ___ the bathroom?", "traduccion": "¿Dónde está el baño?", "opciones": ["is", "are", "am", "do"], "respuesta": 0, "explicacion": "Where is the bathroom? Se usa is con singular."},
+      {"oracion": "___ is a window in my room.", "traduccion": "Hay una ventana en mi cuarto.", "opciones": ["There", "It", "This", "The"], "respuesta": 0, "explicacion": "There is a window. There is = Hay (singular)."},
+      {"oracion": "I sleep in my ___.", "traduccion": "Yo duermo en mi dormitorio.", "opciones": ["kitchen", "bedroom", "bathroom", "door"], "respuesta": 1, "explicacion": "I sleep in my bedroom. Bedroom = Dormitorio."}
+    ]
+  }]
+}

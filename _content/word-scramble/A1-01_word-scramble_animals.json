@@ -1,0 +1,25 @@
+{
+  "id": "A1-01_word-scramble_animals",
+  "titulo": "Word Scramble: Animals",
+  "descripcion": "Unscramble the animal word!",
+  "tipo": "word-scramble",
+  "materia": "ingles",
+  "tema": "animals",
+  "nivel": "A1-01",
+  "misiones": [{
+    "id": "mision-ws-animals",
+    "tipo": "word-scramble",
+    "titulo": "Spell the Animal!",
+    "instruccion": "The letters are mixed up! Put them in order!",
+    "retos": [
+      {"respuesta": "cat", "letras_desordenadas": "tac", "pista_es": "Gato", "pista_emoji": "🐱", "explicacion": "CAT = Gato"},
+      {"respuesta": "dog", "letras_desordenadas": "god", "pista_es": "Perro", "pista_emoji": "🐕", "explicacion": "DOG = Perro"},
+      {"respuesta": "bird", "letras_desordenadas": "drbi", "pista_es": "Pájaro", "pista_emoji": "🐦", "explicacion": "BIRD = Pájaro"},
+      {"respuesta": "fish", "letras_desordenadas": "shfi", "pista_es": "Pez", "pista_emoji": "🐟", "explicacion": "FISH = Pez"},
+      {"respuesta": "horse", "letras_desordenadas": "srohe", "pista_es": "Caballo", "pista_emoji": "🐴", "explicacion": "HORSE = Caballo"},
+      {"respuesta": "monkey", "letras_desordenadas": "kyemon", "pista_es": "Mono", "pista_emoji": "🐒", "explicacion": "MONKEY = Mono"},
+      {"respuesta": "elephant", "letras_desordenadas": "tphelean", "pista_es": "Elefante", "pista_emoji": "🐘", "explicacion": "ELEPHANT = Elefante"},
+      {"respuesta": "snake", "letras_desordenadas": "kanes", "pista_es": "Serpiente", "pista_emoji": "🐍", "explicacion": "SNAKE = Serpiente"}
+    ]
+  }]
+}
