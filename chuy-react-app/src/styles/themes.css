@@ -114,3 +114,111 @@
   --theme-btn-trofeos-1: #E8899E;
   --theme-btn-trofeos-2: #C2627A;
 }
+
+/* ============================================
+   ESPACIAL - Azul oscuro / estrellas
+   ============================================ */
+[data-theme="espacial"] {
+  --theme-grad-1: #1A237E;
+  --theme-grad-2: #0D47A1;
+
+  --theme-primary: #3F51B5;
+  --theme-primary-dark: #1A237E;
+  --theme-primary-rgb: 63, 81, 181;
+
+  --theme-active: #5C6BC0;
+  --theme-active-rgb: 92, 107, 192;
+
+  --theme-accent: #7C4DFF;
+  --theme-accent-dark: #651FFF;
+
+  --theme-bg: #0D1B2A;
+  --theme-card-hover: linear-gradient(135deg, #1B2838, #1E3A5F);
+
+  --theme-btn-hero-1: #7C4DFF;
+  --theme-btn-hero-2: #B388FF;
+  --theme-btn-hero-shadow: #1A237E;
+
+  --theme-nav-1: #3F51B5;
+  --theme-nav-2: #1A237E;
+
+  --theme-progress-1: #7C4DFF;
+  --theme-progress-2: #00E5FF;
+
+  --theme-spinner: #7C4DFF;
+
+  --theme-acceso-hover-1: #3F51B5;
+  --theme-acceso-hover-2: #1A237E;
+  --theme-acceso-border: #5C6BC0;
+
+  --theme-boveda-header-1: #1A237E;
+  --theme-boveda-header-2: #3F51B5;
+
+  --theme-header-btn-1: #3F51B5;
+  --theme-header-btn-2: #1A237E;
+
+  --theme-trophy-1: #FFD600;
+  --theme-trophy-2: #FFC107;
+
+  --theme-btn-trofeos-1: #3F51B5;
+  --theme-btn-trofeos-2: #1A237E;
+}
+
+/* Espacial dark mode overrides */
+[data-theme="espacial"] .widget,
+[data-theme="espacial"] .mision-container,
+[data-theme="espacial"] .problema-card,
+[data-theme="espacial"] .tarjeta-contenido,
+[data-theme="espacial"] .tipo-juego-card {
+  background: rgba(27, 40, 56, 0.9);
+  color: #e0e0e0;
+  border-color: rgba(92, 107, 192, 0.3);
+}
+
+[data-theme="espacial"] .aventura-header,
+[data-theme="espacial"] .aventura-navegacion {
+  background: rgba(27, 40, 56, 0.9);
+  color: #e0e0e0;
+}
+
+[data-theme="espacial"] .dashboard-header,
+[data-theme="espacial"] .header-text h1,
+[data-theme="espacial"] .header-text p {
+  color: #e0e0e0;
+}
+
+[data-theme="espacial"] .aventura-titulo,
+[data-theme="espacial"] .widget-title,
+[data-theme="espacial"] .section-title,
+[data-theme="espacial"] .acceso-nombre,
+[data-theme="espacial"] .tarjeta-titulo {
+  color: #fff;
+}
+
+[data-theme="espacial"] .boveda-header-personalizado {
+  background: linear-gradient(135deg, #1A237E, #3F51B5);
+}
+
+[data-theme="espacial"] .acceso-rapido-mini,
+[data-theme="espacial"] .mi-boveda-section {
+  color: #e0e0e0;
+}
+
+[data-theme="espacial"] .acceso-rapido-mini {
+  background: rgba(27, 40, 56, 0.8);
+  border-color: rgba(92, 107, 192, 0.3);
+}
+
+[data-theme="espacial"] .tab-btn {
+  background: rgba(27, 40, 56, 0.8);
+  color: #e0e0e0;
+  border-color: rgba(92, 107, 192, 0.3);
+}
+
+[data-theme="espacial"] .contador-racha {
+  background: rgba(27, 40, 56, 0.8);
+}
+
+[data-theme="espacial"] .numero-racha {
+  color: #FFD600;
+}

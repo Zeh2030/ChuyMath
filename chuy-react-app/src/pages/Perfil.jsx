@@ -161,6 +161,7 @@ const Perfil = () => {
               {[
                 { id: 'aventurero', label: 'Aventurero', color1: '#667eea', color2: '#764ba2' },
                 { id: 'princesa', label: 'Princesa', color1: '#E8899E', color2: '#C2627A' },
+                { id: 'espacial', label: 'Espacial', color1: '#1A237E', color2: '#0D47A1' },
               ].map((tema) => (
                 <button
                   key={tema.id}

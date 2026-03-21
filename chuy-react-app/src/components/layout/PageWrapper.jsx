@@ -21,6 +21,20 @@ const PageWrapper = ({ children }) => {
             <div className="sparkle s5"></div>
             <div className="sparkle s6"></div>
           </>
+        ) : tema === 'espacial' ? (
+          <>
+            <div className="star st1"></div>
+            <div className="star st2"></div>
+            <div className="star st3"></div>
+            <div className="star st4"></div>
+            <div className="star st5"></div>
+            <div className="star st6"></div>
+            <div className="star st7"></div>
+            <div className="star st8"></div>
+            <div className="star st9"></div>
+            <div className="star st10"></div>
+            <div className="planet"></div>
+          </>
         ) : (
           <>
             <div className="cloud c1"></div>
