@@ -236,11 +236,16 @@
   color: #ccc;
 }
 
-/* Cards in profile and general */
+/* Cards in profile and general (!important needed to override inline styles) */
 [data-theme="espacial"] form > div,
 [data-theme="espacial"] .card {
-  background: rgba(27, 40, 56, 0.9);
-  color: #e0e0e0;
+  background: rgba(27, 40, 56, 0.9) !important;
+  color: #e0e0e0 !important;
+}
+
+[data-theme="espacial"] form > div button {
+  background: rgba(13, 27, 42, 0.6) !important;
+  border-color: rgba(92, 107, 192, 0.3) !important;
 }
 
 /* Inputs */
