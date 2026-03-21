@@ -56,6 +56,13 @@ const PageWrapper = ({ children }) => {
             <div className="bubble b5"></div>
             <div className="bubble b6"></div>
             <div className="bubble b7"></div>
+            <div className="bubble b8"></div>
+            <div className="bubble b9"></div>
+            <div className="bubble b10"></div>
+            <div className="bubble b11"></div>
+            <div className="bubble b12"></div>
+            <div className="bubble b13"></div>
+            <div className="bubble b14"></div>
           </>
         ) : tema === 'espacial' ? (
           <>
