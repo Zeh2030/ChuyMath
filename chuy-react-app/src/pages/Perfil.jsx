@@ -137,6 +137,31 @@ const Perfil = () => {
           </div>
 
           <div style={styles.card}>
+            <h3>🎨 Mi Tema</h3>
+            <div style={styles.themeGrid}>
+              {[
+                { id: 'aventurero', label: 'Aventurero', color1: '#667eea', color2: '#764ba2' },
+                { id: 'princesa', label: 'Princesa', color1: '#E8899E', color2: '#C2627A' },
+                { id: 'espacial', label: 'Espacial', color1: '#1A237E', color2: '#0D47A1' },
+                { id: 'oceano', label: 'Océano', color1: '#00BCD4', color2: '#0097A7' },
+              ].map((tema) => (
+                <button
+                  key={tema.id}
+                  type="button"
+                  onClick={() => setTemaSeleccionado(tema.id)}
+                  style={{
+                    ...styles.themeButton,
+                    background: `linear-gradient(135deg, ${tema.color1}, ${tema.color2})`,
+                    ...(temaSeleccionado === tema.id ? styles.themeSelected : {}),
+                  }}
+                >
+                  <span style={styles.themeLabel}>{tema.label}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div style={styles.card}>
             <h3>Mi Avatar</h3>
             <div style={styles.avatarGrid}>
               {avatares.map((avatar, index) => (
@@ -150,30 +175,6 @@ const Perfil = () => {
                   }}
                 >
                   {avatar}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div style={styles.card}>
-            <h3>🎨 Mi Tema</h3>
-            <div style={styles.themeGrid}>
-              {[
-                { id: 'aventurero', label: 'Aventurero', color1: '#667eea', color2: '#764ba2' },
-                { id: 'princesa', label: 'Princesa', color1: '#E8899E', color2: '#C2627A' },
-                { id: 'espacial', label: 'Espacial', color1: '#1A237E', color2: '#0D47A1' },
-              ].map((tema) => (
-                <button
-                  key={tema.id}
-                  type="button"
-                  onClick={() => setTemaSeleccionado(tema.id)}
-                  style={{
-                    ...styles.themeButton,
-                    background: `linear-gradient(135deg, ${tema.color1}, ${tema.color2})`,
-                    ...(temaSeleccionado === tema.id ? styles.themeSelected : {}),
-                  }}
-                >
-                  <span style={styles.themeLabel}>{tema.label}</span>
                 </button>
               ))}
             </div>

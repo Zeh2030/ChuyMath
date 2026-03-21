@@ -164,6 +164,55 @@
   --theme-btn-trofeos-2: #1A237E;
 }
 
+/* ============================================
+   OCÉANO - Turquesa / burbujas
+   ============================================ */
+[data-theme="oceano"] {
+  --theme-grad-1: #00BCD4;
+  --theme-grad-2: #0097A7;
+
+  --theme-primary: #00BCD4;
+  --theme-primary-dark: #0097A7;
+  --theme-primary-rgb: 0, 188, 212;
+
+  --theme-active: #00ACC1;
+  --theme-active-rgb: 0, 172, 193;
+
+  --theme-accent: #26C6DA;
+  --theme-accent-dark: #0097A7;
+
+  --theme-bg: #E0F7FA;
+  --theme-card-hover: linear-gradient(135deg, #E0F7FA, #B2EBF2);
+
+  --theme-btn-hero-1: #00BCD4;
+  --theme-btn-hero-2: #26C6DA;
+  --theme-btn-hero-shadow: #00838F;
+
+  --theme-nav-1: #00BCD4;
+  --theme-nav-2: #0097A7;
+
+  --theme-progress-1: #00BCD4;
+  --theme-progress-2: #4DD0E1;
+
+  --theme-spinner: #00BCD4;
+
+  --theme-acceso-hover-1: #00BCD4;
+  --theme-acceso-hover-2: #0097A7;
+  --theme-acceso-border: #00BCD4;
+
+  --theme-boveda-header-1: #0097A7;
+  --theme-boveda-header-2: #00BCD4;
+
+  --theme-header-btn-1: #00BCD4;
+  --theme-header-btn-2: #0097A7;
+
+  --theme-trophy-1: #FFB300;
+  --theme-trophy-2: #FF8F00;
+
+  --theme-btn-trofeos-1: #00BCD4;
+  --theme-btn-trofeos-2: #0097A7;
+}
+
 /* Espacial dark mode overrides */
 [data-theme="espacial"] .widget,
 [data-theme="espacial"] .mision-container,
