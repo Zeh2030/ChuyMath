@@ -26,6 +26,7 @@ import ImagePicker from './tipos/ImagePicker';
 import WordScramble from './tipos/WordScramble';
 import ListenAndType from './tipos/ListenAndType';
 import MiniStory from './tipos/MiniStory';
+const PianoPrompter = React.lazy(() => import('./tipos/PianoPrompter'));
 import './MisionRenderer.css';
 
 /**
@@ -336,6 +337,18 @@ const MisionRenderer = ({
             mision={mision}
             onCompletar={onCompletar}
           />
+        );
+
+      // === Piano ===
+      case 'piano-prompter':
+        return (
+          <React.Suspense fallback={<div style={{ textAlign: 'center', padding: '40px' }}>Cargando piano...</div>}>
+            <PianoPrompter
+              key={mision.id}
+              mision={mision}
+              onCompletar={onCompletar}
+            />
+          </React.Suspense>
         );
 
       default:
