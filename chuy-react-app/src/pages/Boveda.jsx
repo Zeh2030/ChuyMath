@@ -29,7 +29,10 @@ const Boveda = () => {
     const englishTypes = ['word-bank', 'verb-conjugator', 'true-or-false', 'fill-the-gap',
       'tap-the-pairs', 'sentence-transform', 'image-picker', 'word-scramble',
       'listen-and-type', 'expediciones-en', 'mini-story'];
-    return englishTypes.includes(f) ? 'ingles' : 'matematicas';
+    const pianoTypes = ['piano-prompter'];
+    if (englishTypes.includes(f)) return 'ingles';
+    if (pianoTypes.includes(f)) return 'piano';
+    return 'matematicas';
   };
   const [materia, setMateria] = useState(detectMateria(filtroFromUrl));
 
@@ -65,6 +68,8 @@ const Boveda = () => {
     { id: 'listen-and-type', emoji: '👂', nombre: 'Listen & Type', tipo: 'listen-and-type', descripcion: 'Listen and write', materia: 'ingles' },
     { id: 'expediciones-en', emoji: '🗺️', nombre: 'Expeditions', tipo: 'expedicion-ingles', descripcion: 'Themed English journeys', materia: 'ingles' },
     { id: 'mini-story', emoji: '📖', nombre: 'Mini Stories', tipo: 'mini-story', descripcion: 'Read stories and answer questions', materia: 'ingles' },
+    // Piano
+    { id: 'piano-prompter', emoji: '🎹', nombre: 'Teleprompter', tipo: 'piano-prompter', descripcion: 'Practica lectura de partituras', materia: 'piano' },
   ];
 
   const tiposJuegosFiltrados = tiposJuegos.filter(t => t.materia === materia);
@@ -116,7 +121,21 @@ const Boveda = () => {
           };
         }).sort((a, b) => b.id.localeCompare(a.id));
 
-        setAventuras([...listaAventuras, ...listaIngles]);
+        // Cargar Piano (colección separada)
+        const pianoRef = collection(db, 'piano');
+        const pianoSnapshot = await getDocs(pianoRef);
+        const listaPiano = pianoSnapshot.docs.map(doc => {
+          const data = doc.data();
+          return {
+            id: doc.id,
+            ...data,
+            tipo: data.tipo || 'piano-prompter',
+            materia: 'piano',
+            coleccion: 'piano'
+          };
+        }).sort((a, b) => a.id.localeCompare(b.id));
+
+        setAventuras([...listaAventuras, ...listaIngles, ...listaPiano]);
         setSimulacros(listaSimulacros);
       } catch (err) {
         console.error("Error cargando la bóveda:", err);
@@ -188,6 +207,7 @@ const Boveda = () => {
   // Helper: filtrar por materia (sin campo = matematicas)
   const filterMateria = (item) => {
     if (materia === 'matematicas') return !item.materia || item.materia === 'matematicas';
+    if (materia === 'piano') return item.materia === 'piano';
     return item.materia === materia;
   };
 
@@ -366,7 +386,7 @@ const Boveda = () => {
                       const progreso = getProgreso(item.id, item.tipo);
                       
                       // Determinar la ruta basándose en la colección de origen
-                      const esAventura = item.coleccion === 'aventuras' || item.coleccion === 'ingles';
+                      const esAventura = item.coleccion === 'aventuras' || item.coleccion === 'ingles' || item.coleccion === 'piano';
                       const ruta = esAventura ? `/aventura/${item.id}` : `/simulacro/${item.id}`;
                       
                       // Obtener nombre del tipo para mostrar

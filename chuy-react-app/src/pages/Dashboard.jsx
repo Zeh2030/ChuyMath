@@ -144,6 +144,8 @@ const Dashboard = () => {
     { id: 'listen-and-type', emoji: '👂', nombre: 'Listen & Type', filtro: 'listen-and-type', disponible: true, materia: 'ingles' },
     { id: 'expediciones-en', emoji: '🗺️', nombre: 'Expeditions', filtro: 'expediciones-en', disponible: true, materia: 'ingles' },
     { id: 'mini-story', emoji: '📖', nombre: 'Mini Stories', filtro: 'mini-story', disponible: true, materia: 'ingles' },
+    // Piano
+    { id: 'piano-prompter', emoji: '🎹', nombre: 'Teleprompter', filtro: 'piano-prompter', disponible: true, materia: 'piano' },
   ];
 
   const tiposDeJuegoFiltrados = tiposDeJuego.filter(t => t.materia === materia);

@@ -1,23 +1,25 @@
 import React from 'react';
 import './MateriaToggle.css';
 
+const materias = [
+  { id: 'matematicas', emoji: '🔢', label: 'Mates', className: 'materia-mates' },
+  { id: 'ingles', emoji: '🇬🇧', label: 'English', className: 'materia-english' },
+  { id: 'piano', emoji: '🎹', label: 'Piano', className: 'materia-piano' },
+];
+
 const MateriaToggle = ({ materia, onChange }) => {
   return (
     <div className="materia-toggle">
-      <button
-        className={`materia-btn materia-mates ${materia === 'matematicas' ? 'active' : ''}`}
-        onClick={() => onChange('matematicas')}
-      >
-        <span className="materia-emoji">🔢</span>
-        <span className="materia-label">Mates</span>
-      </button>
-      <button
-        className={`materia-btn materia-english ${materia === 'ingles' ? 'active' : ''}`}
-        onClick={() => onChange('ingles')}
-      >
-        <span className="materia-emoji">🇬🇧</span>
-        <span className="materia-label">English</span>
-      </button>
+      {materias.map(m => (
+        <button
+          key={m.id}
+          className={`materia-btn ${m.className} ${materia === m.id ? 'active' : ''}`}
+          onClick={() => onChange(m.id)}
+        >
+          <span className="materia-emoji">{m.emoji}</span>
+          <span className="materia-label">{m.label}</span>
+        </button>
+      ))}
     </div>
   );
 };
