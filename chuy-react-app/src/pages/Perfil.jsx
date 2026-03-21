@@ -14,6 +14,7 @@ const Perfil = () => {
 
   const [nombreEditado, setNombreEditado] = useState('');
   const [avatarSeleccionado, setAvatarSeleccionado] = useState('');
+  const [temaSeleccionado, setTemaSeleccionado] = useState('aventurero');
   const [guardando, setGuardando] = useState(false);
   const [mensaje, setMensaje] = useState('');
 
@@ -21,7 +22,8 @@ const Perfil = () => {
   useEffect(() => {
     if (profile) {
       setNombreEditado(profile.nombre || currentUser.displayName || '');
-      setAvatarSeleccionado(profile.avatar || ''); // Emoji por defecto
+      setAvatarSeleccionado(profile.avatar || '');
+      setTemaSeleccionado(profile.tema || 'aventurero');
     }
   }, [profile, currentUser]);
 
@@ -38,6 +40,7 @@ const Perfil = () => {
       await updateDoc(profileRef, {
         nombre: nombreEditado.trim(),
         avatar: avatarSeleccionado,
+        tema: temaSeleccionado,
       });
 
       setMensaje('¡Perfil actualizado con éxito!');
@@ -151,7 +154,30 @@ const Perfil = () => {
               ))}
             </div>
           </div>
-          
+
+          <div style={styles.card}>
+            <h3>🎨 Mi Tema</h3>
+            <div style={styles.themeGrid}>
+              {[
+                { id: 'aventurero', label: 'Aventurero', color1: '#667eea', color2: '#764ba2' },
+                { id: 'princesa', label: 'Princesa', color1: '#E8899E', color2: '#C2627A' },
+              ].map((tema) => (
+                <button
+                  key={tema.id}
+                  type="button"
+                  onClick={() => setTemaSeleccionado(tema.id)}
+                  style={{
+                    ...styles.themeButton,
+                    background: `linear-gradient(135deg, ${tema.color1}, ${tema.color2})`,
+                    ...(temaSeleccionado === tema.id ? styles.themeSelected : {}),
+                  }}
+                >
+                  <span style={styles.themeLabel}>{tema.label}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
           <button type="submit" style={styles.saveButton} disabled={guardando}>
             {guardando ? 'Guardando...' : ' Guardar Cambios'}
           </button>
@@ -231,6 +257,34 @@ const styles = {
     borderColor: '#3498db',
     boxShadow: '0 0 0 3px #3498db',
     transform: 'scale(1.1)',
+  },
+  themeGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(2, 1fr)',
+    gap: '12px',
+    marginTop: '15px',
+  },
+  themeButton: {
+    border: '3px solid transparent',
+    borderRadius: '14px',
+    padding: '20px 16px',
+    cursor: 'pointer',
+    transition: 'all 0.2s ease',
+    minHeight: '70px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  themeSelected: {
+    borderColor: '#fff',
+    boxShadow: '0 0 0 3px #333, 0 4px 12px rgba(0,0,0,0.3)',
+    transform: 'scale(1.05)',
+  },
+  themeLabel: {
+    color: '#fff',
+    fontWeight: '800',
+    fontSize: '1rem',
+    textShadow: '0 1px 2px rgba(0,0,0,0.3)',
   },
   saveButton: {
     padding: '15px 30px',

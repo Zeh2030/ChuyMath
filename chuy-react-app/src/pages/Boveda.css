@@ -10,11 +10,11 @@
   align-items: center;
   gap: 20px;
   margin-bottom: 30px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, var(--theme-grad-1), var(--theme-grad-2));
   padding: 25px;
   border-radius: 20px;
   color: white;
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 8px 20px rgba(var(--theme-primary-rgb), 0.3);
 }
 
 .boveda-avatar {
@@ -56,15 +56,15 @@
 }
 
 .tab-btn:hover {
-  border-color: #667eea;
+  border-color: var(--theme-primary);
   transform: translateY(-2px);
 }
 
 .tab-btn.active {
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, var(--theme-grad-1), var(--theme-grad-2));
   color: white;
-  border-color: #667eea;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  border-color: var(--theme-primary);
+  box-shadow: 0 4px 12px rgba(var(--theme-primary-rgb), 0.3);
 }
 
 /* Secciones */
@@ -115,10 +115,10 @@
 }
 
 .tipo-juego-card:hover:not(:disabled) {
-  border-color: #667eea;
+  border-color: var(--theme-primary);
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.2);
-  background: linear-gradient(135deg, #f5f7ff, #faf8ff);
+  box-shadow: 0 8px 20px rgba(var(--theme-primary-rgb), 0.2);
+  background: var(--theme-card-hover);
 }
 
 .tipo-juego-card:disabled {
@@ -167,11 +167,11 @@
 .boveda-header {
   text-align: center;
   margin-bottom: 30px;
-  background: linear-gradient(135deg, #8e44ad, #9b59b6);
+  background: linear-gradient(135deg, var(--theme-boveda-header-1), var(--theme-boveda-header-2));
   padding: 40px 20px;
   border-radius: 20px;
   color: white;
-  box-shadow: 0 10px 25px rgba(142, 68, 173, 0.3);
+  box-shadow: 0 10px 25px rgba(var(--theme-active-rgb), 0.3);
 }
 
 .titulo-boveda {
@@ -235,10 +235,10 @@
 }
 
 .filtro-btn.activo {
-  background-color: #8e44ad;
-  border-color: #8e44ad;
+  background-color: var(--theme-active);
+  border-color: var(--theme-active);
   color: white;
-  box-shadow: 0 4px 10px rgba(142, 68, 173, 0.3);
+  box-shadow: 0 4px 10px rgba(var(--theme-active-rgb), 0.3);
 }
 
 /* Compact filter bar (Mi Bóveda) */
@@ -261,7 +261,7 @@
 }
 
 .boveda-filter-chip.active {
-  background: #8e44ad;
+  background: var(--theme-active);
   color: #fff;
 }
 
@@ -397,7 +397,7 @@
 .btn-abrir {
   font-weight: 700;
   font-size: 0.9rem;
-  color: #8e44ad;
+  color: var(--theme-active);
 }
 
 /* Badge de Progreso */
@@ -457,7 +457,7 @@
 /* Loading Animado Mejorado */
 .spinner {
   border: 4px solid #f3f3f3;
-  border-top: 4px solid #8e44ad;
+  border-top: 4px solid var(--theme-active);
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -467,7 +467,7 @@
 
 .loading-text {
   font-size: 1.1rem;
-  color: #8e44ad;
+  color: var(--theme-active);
   font-weight: 600;
   animation: pulse 1.5s infinite;
 }

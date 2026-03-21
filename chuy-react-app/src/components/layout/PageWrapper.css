@@ -67,6 +67,34 @@
   }
 }
 
+/* ===== Princesa theme background ===== */
+.bg-princesa {
+  background: linear-gradient(to bottom, #FFF0F3, #FFE0E6 50%, #FFF8F9 100%);
+}
+
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #F0C27A;
+  border-radius: 50%;
+  opacity: 0;
+  animation: twinkle 3s ease-in-out infinite;
+  box-shadow: 0 0 6px 2px rgba(240, 194, 122, 0.4);
+}
+
+.sparkle.s1 { top: 10%; left: 20%; animation-delay: 0s; animation-duration: 2.5s; }
+.sparkle.s2 { top: 25%; left: 70%; animation-delay: 0.8s; animation-duration: 3.2s; }
+.sparkle.s3 { top: 40%; left: 40%; animation-delay: 1.5s; animation-duration: 2.8s; }
+.sparkle.s4 { top: 60%; left: 85%; animation-delay: 0.3s; animation-duration: 3.5s; }
+.sparkle.s5 { top: 75%; left: 15%; animation-delay: 2.0s; animation-duration: 2.3s; }
+.sparkle.s6 { top: 50%; left: 55%; animation-delay: 1.2s; animation-duration: 3.0s; }
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1.5); }
+}
+
 /* Contenedor Principal */
 .main-container {
   max-width: 1100px;

@@ -57,7 +57,7 @@
 }
 
 .boveda-btn {
-  background: linear-gradient(135deg, #9b59b6, #8e44ad);
+  background: linear-gradient(135deg, var(--theme-header-btn-1), var(--theme-header-btn-2));
 }
 
 @media (min-width: 768px) {

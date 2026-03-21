@@ -61,11 +61,11 @@ button {
 
 /* Estilos mejorados del aventura widget */
 .aventura-widget {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--theme-grad-1) 0%, var(--theme-grad-2) 100%);
   color: white;
   padding: 40px;
   border-radius: 25px;
-  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.15);
+  box-shadow: 0 8px 32px rgba(var(--theme-primary-rgb), 0.15);
   border: none;
 }
 
@@ -272,7 +272,7 @@ button {
 
 /* Cambiar: Mis Notas → Grid de Logros */
 .calificaciones-widget {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--theme-grad-1) 0%, var(--theme-grad-2) 100%);
   color: white;
   margin-top: 0;
 }

@@ -451,7 +451,7 @@
 .boton-ver-todos-trofeos {
   width: 100%;
   padding: 14px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, var(--theme-grad-1), var(--theme-grad-2));
   color: white;
   border: none;
   border-radius: 12px;
@@ -459,7 +459,7 @@
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 12px rgba(var(--theme-primary-rgb), 0.3);
 }
 
 .boton-ver-todos-trofeos:hover {
@@ -666,10 +666,10 @@
 }
 
 .acceso-rapido-mini:hover:not(:disabled) {
-  border-color: #667eea;
+  border-color: var(--theme-primary);
   transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.25);
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  box-shadow: 0 8px 20px rgba(var(--theme-primary-rgb), 0.25);
+  background: linear-gradient(135deg, var(--theme-grad-1), var(--theme-grad-2));
 }
 
 .acceso-rapido-mini:hover:not(:disabled) .acceso-emoji {

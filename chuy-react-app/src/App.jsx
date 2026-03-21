@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from './hooks/useAuth.jsx';
+import './styles/themes.css';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import AdminMigracion from './pages/AdminMigracion';

@@ -41,7 +41,7 @@
 
 .progreso-barra-fill {
   height: 100%;
-  background: linear-gradient(90deg, #3498db, #2ecc71);
+  background: linear-gradient(90deg, var(--theme-progress-1), var(--theme-progress-2));
   transition: width 0.3s ease;
 }
 
@@ -72,7 +72,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  background: linear-gradient(135deg, #3498db, #2980b9);
+  background: linear-gradient(135deg, var(--theme-nav-1), var(--theme-nav-2));
   color: white;
 }
 

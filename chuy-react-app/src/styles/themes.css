@@ -1,0 +1,116 @@
+/* ============================================
+   CHUYMATH THEMES
+   Solo colores cambian. Tipografía, layout,
+   tamaños de botones NO se modifican.
+   ============================================ */
+
+/* Default: Aventurero (azul/púrpura) */
+:root,
+[data-theme="aventurero"] {
+  /* Primary gradient */
+  --theme-grad-1: #667eea;
+  --theme-grad-2: #764ba2;
+
+  /* Primary solid */
+  --theme-primary: #667eea;
+  --theme-primary-dark: #764ba2;
+  --theme-primary-rgb: 102, 126, 234;
+
+  /* Active/selected */
+  --theme-active: #8e44ad;
+  --theme-active-rgb: 142, 68, 173;
+
+  /* Accent */
+  --theme-accent: #3498db;
+  --theme-accent-dark: #2980b9;
+
+  /* Backgrounds */
+  --theme-bg: #e8f4fd;
+  --theme-card-hover: linear-gradient(135deg, #f5f7ff, #faf8ff);
+
+  /* Button - hero action */
+  --theme-btn-hero-1: #ff6b6b;
+  --theme-btn-hero-2: #feca57;
+  --theme-btn-hero-shadow: #d35400;
+
+  /* Navigation */
+  --theme-nav-1: #3498db;
+  --theme-nav-2: #2980b9;
+
+  /* Progress bar */
+  --theme-progress-1: #3498db;
+  --theme-progress-2: #2ecc71;
+
+  /* Spinner */
+  --theme-spinner: #8e44ad;
+
+  /* Accesos rápidos hover */
+  --theme-acceso-hover-1: #667eea;
+  --theme-acceso-hover-2: #764ba2;
+  --theme-acceso-border: #667eea;
+
+  /* Boveda header */
+  --theme-boveda-header-1: #8e44ad;
+  --theme-boveda-header-2: #9b59b6;
+
+  /* Header buttons */
+  --theme-header-btn-1: #9b59b6;
+  --theme-header-btn-2: #8e44ad;
+
+  /* Trophy/logros */
+  --theme-trophy-1: #f39c12;
+  --theme-trophy-2: #e67e22;
+
+  /* "Ver todos trofeos" button */
+  --theme-btn-trofeos-1: #667eea;
+  --theme-btn-trofeos-2: #764ba2;
+}
+
+/* ============================================
+   PRINCESA - Rosa pastel / dorado
+   ============================================ */
+[data-theme="princesa"] {
+  --theme-grad-1: #E8899E;
+  --theme-grad-2: #C2627A;
+
+  --theme-primary: #E8899E;
+  --theme-primary-dark: #C2627A;
+  --theme-primary-rgb: 232, 137, 158;
+
+  --theme-active: #D4738B;
+  --theme-active-rgb: 212, 115, 139;
+
+  --theme-accent: #F0C27A;
+  --theme-accent-dark: #D4A653;
+
+  --theme-bg: #FFF0F3;
+  --theme-card-hover: linear-gradient(135deg, #FFF8F9, #FFE8ED);
+
+  --theme-btn-hero-1: #F0C27A;
+  --theme-btn-hero-2: #FFD700;
+  --theme-btn-hero-shadow: #C2627A;
+
+  --theme-nav-1: #E8899E;
+  --theme-nav-2: #C2627A;
+
+  --theme-progress-1: #E8899E;
+  --theme-progress-2: #7ECEB0;
+
+  --theme-spinner: #E8899E;
+
+  --theme-acceso-hover-1: #E8899E;
+  --theme-acceso-hover-2: #C2627A;
+  --theme-acceso-border: #E8899E;
+
+  --theme-boveda-header-1: #D4738B;
+  --theme-boveda-header-2: #E8899E;
+
+  --theme-header-btn-1: #E8899E;
+  --theme-header-btn-2: #C2627A;
+
+  --theme-trophy-1: #F0C27A;
+  --theme-trophy-2: #D4A653;
+
+  --theme-btn-trofeos-1: #E8899E;
+  --theme-btn-trofeos-2: #C2627A;
+}
