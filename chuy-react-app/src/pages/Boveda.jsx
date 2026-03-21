@@ -22,6 +22,7 @@ const Boveda = () => {
   const [tabActivo, setTabActivo] = useState(filtroFromUrl ? 'boveda' : 'accesos');
   const [filtroGrado, setFiltroGrado] = useState('todos');
   const [filtroNivel, setFiltroNivel] = useState('todos');
+  const [busqueda, setBusqueda] = useState('');
 
   // Detect materia from URL filter
   const detectMateria = (f) => {
@@ -198,11 +199,53 @@ const Boveda = () => {
 
   const nivelesDisponibles = React.useMemo(() => {
     const niveles = new Set();
-    aventuras.forEach(a => {
+    aventuras.filter(filterMateria).forEach(a => {
       if (a.nivel) niveles.add(a.nivel);
     });
-    return Array.from(niveles);
-  }, [aventuras]);
+    return Array.from(niveles).sort();
+  }, [aventuras, materia]);
+
+  // Grupos de nivel (A0, A1, P1, etc.)
+  const gruposNivel = React.useMemo(() => {
+    const grupos = new Set();
+    nivelesDisponibles.forEach(n => {
+      const grupo = n.replace(/-\d+$/, ''); // A1-09 → A1
+      grupos.add(grupo);
+    });
+    return Array.from(grupos).sort();
+  }, [nivelesDisponibles]);
+
+  // Temas disponibles agrupados
+  const temasAgrupados = React.useMemo(() => {
+    const temas = {};
+    aventuras.filter(filterMateria).forEach(a => {
+      const tema = a.tema || a.nivel || 'sin-tema';
+      const nivel = a.nivel || '';
+      const key = `${nivel}_${tema}`;
+      if (!temas[key]) {
+        temas[key] = {
+          tema: tema,
+          nivel: nivel,
+          label: a.titulo?.replace(/^(Word Bank|Fill the Gap|Image Picker|Tap the Pairs|Word Scramble|Listen and Type|Verb Conjugator|True or False|Sentence Transform|Mini Story|Expedición):?\s*/i, '').split(':')[0] || tema,
+          items: [],
+        };
+      }
+      temas[key].items.push(a);
+    });
+    // Agrupar por tema (no por key), merge items del mismo tema
+    const merged = {};
+    Object.values(temas).forEach(t => {
+      const temaKey = `${t.nivel}_${t.tema}`;
+      if (!merged[temaKey]) {
+        merged[temaKey] = { ...t };
+      } else {
+        merged[temaKey].items.push(...t.items);
+      }
+    });
+    return Object.values(merged)
+      .filter(t => t.items.length > 0)
+      .sort((a, b) => a.nivel.localeCompare(b.nivel));
+  }, [aventuras, materia]);
 
   // Helper: filtrar por materia (sin campo = matematicas)
   const filterMateria = (item) => {
@@ -211,41 +254,53 @@ const Boveda = () => {
     return item.materia === materia;
   };
 
-  // SIMPLIFICADO: Filtrar contenido
+  // Filtrar por nivel (soporta grupo como "A0" o específico como "A1-09")
+  const matchNivel = (item) => {
+    if (filtroNivel === 'todos') return true;
+    if (!item.nivel) return false;
+    // Si el filtro es un grupo (ej "A0"), match cualquier nivel que empiece con "A0"
+    if (!filtroNivel.includes('-')) return item.nivel.startsWith(filtroNivel);
+    return item.nivel === filtroNivel;
+  };
+
+  // Filtrar por búsqueda
+  const matchBusqueda = (item) => {
+    if (!busqueda.trim()) return true;
+    const q = busqueda.toLowerCase();
+    return (item.titulo || '').toLowerCase().includes(q) ||
+           (item.tema || '').toLowerCase().includes(q) ||
+           (item.nivel || '').toLowerCase().includes(q) ||
+           (item.descripcion || '').toLowerCase().includes(q);
+  };
+
+  // Filtrar contenido
   const contenidoMostrar = () => {
     let items = [];
 
-    // Si el filtro es un tipo específico
     const tipoEspecifico = tiposJuegos.find(t => t.id === filtro);
     if (tipoEspecifico) {
-      // Aventuras genéricas (sin tipo específico)
       if (tipoEspecifico.tipo === 'aventura') {
-        return aventuras
+        items = aventuras
           .filter(filterMateria)
-          .filter(a => a.tipo === 'aventura')
-          .filter(a => filtroNivel === 'todos' ? true : a.nivel === filtroNivel);
+          .filter(a => a.tipo === 'aventura');
       } else {
-        // Buscar en ambas colecciones por tipo específico (incluyendo 'expedicion')
         const enAventuras = aventuras
           .filter(filterMateria)
-          .filter(a => a.tipo === tipoEspecifico.tipo)
-          .filter(a => filtroNivel === 'todos' ? true : a.nivel === filtroNivel);
+          .filter(a => a.tipo === tipoEspecifico.tipo);
         const enSimulacros = simulacros
           .filter(filterMateria)
           .filter(s => s.tipo === tipoEspecifico.tipo)
           .filter(s => filtroGrado === 'todos' ? true : String(s.grado) === String(filtroGrado));
-        return [...enAventuras, ...enSimulacros];
+        items = [...enAventuras, ...enSimulacros];
       }
-    }
-
-    // Filtros generales (todos)
-    if (filtro === 'todos') {
+    } else if (filtro === 'todos') {
       items = [
-        ...aventuras.filter(filterMateria).filter(a => filtroNivel === 'todos' ? true : a.nivel === filtroNivel),
+        ...aventuras.filter(filterMateria),
         ...simulacros.filter(filterMateria).filter(s => filtroGrado === 'todos' ? true : String(s.grado) === String(filtroGrado))
       ];
     }
-    return items;
+
+    return items.filter(matchNivel).filter(matchBusqueda);
   };
 
   // Contar contenido disponible
@@ -348,10 +403,10 @@ const Boveda = () => {
             {/* SECCIÓN 2: MI BÓVEDA (Histórico) */}
             {tabActivo === 'boveda' && (
               <section className="mi-boveda-section">
-                {/* Compact filter chip — shows what's selected, tap ✕ to see all */}
+                {/* Filter bar: tipo + nivel + búsqueda */}
                 <div className="boveda-filter-bar">
-                  {filtro !== 'todos' ? (
-                    <>
+                  <div className="boveda-filter-row">
+                    {filtro !== 'todos' ? (
                       <span className="boveda-filter-chip active">
                         {(() => {
                           const tipoData = tiposJuegos.find(t => t.id === filtro);
@@ -359,15 +414,64 @@ const Boveda = () => {
                         })()}
                         <button className="boveda-filter-clear" onClick={() => setFiltro('todos')}>✕</button>
                       </span>
-                      <span className="boveda-filter-count">
-                        {contenidoMostrar().length} {contenidoMostrar().length === 1 ? 'item' : 'items'}
+                    ) : (
+                      <span className="boveda-filter-chip all">
+                        📚 Todo
                       </span>
-                    </>
-                  ) : (
-                    <span className="boveda-filter-chip all">
-                      📚 Todo ({aventuras.filter(filterMateria).length + simulacros.filter(filterMateria).length})
+                    )}
+                    <span className="boveda-filter-count">
+                      {contenidoMostrar().length} {contenidoMostrar().length === 1 ? 'item' : 'items'}
                     </span>
+                  </div>
+
+                  {/* Level filter chips */}
+                  {(materia === 'ingles' || materia === 'piano') && nivelesDisponibles.length > 1 && (
+                    <div className="boveda-nivel-chips">
+                      <button
+                        className={`nivel-chip ${filtroNivel === 'todos' ? 'active' : ''}`}
+                        onClick={() => setFiltroNivel('todos')}
+                      >
+                        Todos
+                      </button>
+                      {gruposNivel.map(grupo => (
+                        <button
+                          key={grupo}
+                          className={`nivel-chip nivel-grupo ${filtroNivel === grupo ? 'active' : ''}`}
+                          onClick={() => setFiltroNivel(filtroNivel === grupo ? 'todos' : grupo)}
+                        >
+                          {grupo}
+                        </button>
+                      ))}
+                      {/* Specific levels when a group is selected */}
+                      {filtroNivel !== 'todos' && !filtroNivel.includes('-') && (
+                        nivelesDisponibles
+                          .filter(n => n.startsWith(filtroNivel))
+                          .map(nivel => (
+                            <button
+                              key={nivel}
+                              className={`nivel-chip nivel-especifico ${filtroNivel === nivel ? 'active' : ''}`}
+                              onClick={() => setFiltroNivel(filtroNivel === nivel ? filtroNivel.replace(/-\d+$/, '') : nivel)}
+                            >
+                              {nivel}
+                            </button>
+                          ))
+                      )}
+                    </div>
                   )}
+
+                  {/* Search */}
+                  <div className="boveda-search">
+                    <input
+                      type="text"
+                      placeholder="Buscar por tema, nivel o título..."
+                      value={busqueda}
+                      onChange={(e) => setBusqueda(e.target.value)}
+                      className="boveda-search-input"
+                    />
+                    {busqueda && (
+                      <button className="boveda-search-clear" onClick={() => setBusqueda('')}>✕</button>
+                    )}
+                  </div>
                 </div>
 
                 {/* Contenido */}

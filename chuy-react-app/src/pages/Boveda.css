@@ -244,10 +244,114 @@
 /* Compact filter bar (Mi Bóveda) */
 .boveda-filter-bar {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  flex-direction: column;
+  gap: 10px;
   margin-bottom: 16px;
   padding: 8px 0;
+}
+
+.boveda-filter-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Level filter chips */
+.boveda-nivel-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.nivel-chip {
+  padding: 5px 14px;
+  border-radius: 16px;
+  border: 2px solid #ddd;
+  background: #f8f9fa;
+  color: #555;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+
+.nivel-chip:hover {
+  border-color: var(--theme-primary);
+  color: var(--theme-primary);
+}
+
+.nivel-chip.active {
+  background: var(--theme-primary);
+  color: #fff;
+  border-color: var(--theme-primary);
+}
+
+.nivel-chip.nivel-grupo {
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+}
+
+.nivel-chip.nivel-especifico {
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  background: #e8f4fd;
+  border-color: #b3d9f2;
+  color: #2980b9;
+}
+
+.nivel-chip.nivel-especifico.active {
+  background: #2980b9;
+  color: #fff;
+  border-color: #2980b9;
+}
+
+/* Search */
+.boveda-search {
+  position: relative;
+}
+
+.boveda-search-input {
+  width: 100%;
+  padding: 10px 40px 10px 14px;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  background: #f8f9fa;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.boveda-search-input:focus {
+  outline: none;
+  border-color: var(--theme-primary);
+  background: #fff;
+}
+
+.boveda-search-clear {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #ccc;
+  border: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 0.75rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.boveda-search-clear:hover {
+  background: #999;
 }
 
 .boveda-filter-chip {
