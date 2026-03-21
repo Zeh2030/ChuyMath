@@ -147,7 +147,8 @@ const Perfil = () => {
                 { id: 'explorador', label: 'Explorador', color1: '#4CAF50', color2: '#2E7D32' },
                 { id: 'selva', label: 'Selva', color1: '#1B5E20', color2: '#2E7D32' },
                 { id: 'arcoiris', label: 'Arcoíris', color1: '#FF6B6B', color2: '#FFD93D', rainbow: true },
-                { id: 'neutro', label: 'Neutro', color1: '#607D8B', color2: '#455A64' },
+                { id: 'elegante', label: 'Elegante', color1: '#8D6E63', color2: '#D4A574' },
+                { id: 'pizarron', label: 'Pizarrón', color1: '#2D4A3E', color2: '#1E3A2A' },
               ].map((tema) => (
                 <button
                   key={tema.id}

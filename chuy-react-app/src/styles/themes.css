@@ -322,39 +322,259 @@
 }
 
 /* ============================================
-   NEUTRO - Gris / minimalista
+   ELEGANTE - Crema cálido / dorado sutil
    ============================================ */
-[data-theme="neutro"] {
-  --theme-grad-1: #607D8B;
-  --theme-grad-2: #455A64;
-  --theme-primary: #607D8B;
-  --theme-primary-dark: #455A64;
-  --theme-primary-rgb: 96, 125, 139;
-  --theme-active: #546E7A;
-  --theme-active-rgb: 84, 110, 122;
-  --theme-accent: #78909C;
-  --theme-accent-dark: #546E7A;
-  --theme-bg: #FAFAFA;
-  --theme-card-hover: linear-gradient(135deg, #FAFAFA, #F5F5F5);
-  --theme-btn-hero-1: #607D8B;
-  --theme-btn-hero-2: #78909C;
-  --theme-btn-hero-shadow: #37474F;
-  --theme-nav-1: #607D8B;
-  --theme-nav-2: #455A64;
-  --theme-progress-1: #607D8B;
-  --theme-progress-2: #90A4AE;
-  --theme-spinner: #607D8B;
-  --theme-acceso-hover-1: #607D8B;
-  --theme-acceso-hover-2: #455A64;
-  --theme-acceso-border: #607D8B;
-  --theme-boveda-header-1: #455A64;
-  --theme-boveda-header-2: #607D8B;
-  --theme-header-btn-1: #607D8B;
-  --theme-header-btn-2: #455A64;
+[data-theme="elegante"] {
+  --theme-grad-1: #8D6E63;
+  --theme-grad-2: #6D4C41;
+  --theme-primary: #8D6E63;
+  --theme-primary-dark: #6D4C41;
+  --theme-primary-rgb: 141, 110, 99;
+  --theme-active: #A1887F;
+  --theme-active-rgb: 161, 136, 127;
+  --theme-accent: #D4A574;
+  --theme-accent-dark: #8D6E63;
+  --theme-bg: #FFF8F0;
+  --theme-card-hover: linear-gradient(135deg, #FFF8F0, #FAEBD7);
+  --theme-btn-hero-1: #8D6E63;
+  --theme-btn-hero-2: #A1887F;
+  --theme-btn-hero-shadow: #5D4037;
+  --theme-nav-1: #6D4C41;
+  --theme-nav-2: #5D4037;
+  --theme-progress-1: #D4A574;
+  --theme-progress-2: #E6C9A8;
+  --theme-spinner: #8D6E63;
+  --theme-acceso-hover-1: #8D6E63;
+  --theme-acceso-hover-2: #6D4C41;
+  --theme-acceso-border: #D4A574;
+  --theme-boveda-header-1: #6D4C41;
+  --theme-boveda-header-2: #8D6E63;
+  --theme-header-btn-1: #8D6E63;
+  --theme-header-btn-2: #6D4C41;
   --theme-trophy-1: #FFB300;
   --theme-trophy-2: #FF8F00;
-  --theme-btn-trofeos-1: #607D8B;
-  --theme-btn-trofeos-2: #455A64;
+  --theme-btn-trofeos-1: #8D6E63;
+  --theme-btn-trofeos-2: #6D4C41;
+}
+
+/* ============================================
+   PIZARRÓN - Verde pizarra / tiza
+   ============================================ */
+[data-theme="pizarron"] {
+  --theme-grad-1: #2E7D32;
+  --theme-grad-2: #1B5E20;
+  --theme-primary: #4CAF50;
+  --theme-primary-dark: #2E7D32;
+  --theme-primary-rgb: 76, 175, 80;
+  --theme-active: #66BB6A;
+  --theme-active-rgb: 102, 187, 106;
+  --theme-accent: #FFD54F;
+  --theme-accent-dark: #FFC107;
+  --theme-bg: #2D4A3E;
+  --theme-card-hover: linear-gradient(135deg, #3A5A4E, #2D4A3E);
+  --theme-btn-hero-1: #4CAF50;
+  --theme-btn-hero-2: #66BB6A;
+  --theme-btn-hero-shadow: #1B5E20;
+  --theme-nav-1: #2E4A3A;
+  --theme-nav-2: #1E3A2A;
+  --theme-progress-1: #FFD54F;
+  --theme-progress-2: #FFF176;
+  --theme-spinner: #FFD54F;
+  --theme-acceso-hover-1: #4CAF50;
+  --theme-acceso-hover-2: #2E7D32;
+  --theme-acceso-border: #4CAF50;
+  --theme-boveda-header-1: #1E3A2A;
+  --theme-boveda-header-2: #2E4A3A;
+  --theme-header-btn-1: #2E7D32;
+  --theme-header-btn-2: #1B5E20;
+  --theme-trophy-1: #FFD54F;
+  --theme-trophy-2: #FFC107;
+  --theme-btn-trofeos-1: #4CAF50;
+  --theme-btn-trofeos-2: #2E7D32;
+}
+
+/* Pizarrón dark mode overrides */
+[data-theme="pizarron"] h1,
+[data-theme="pizarron"] h2,
+[data-theme="pizarron"] h3 {
+  color: #fff;
+}
+
+[data-theme="pizarron"] p,
+[data-theme="pizarron"] label,
+[data-theme="pizarron"] span,
+[data-theme="pizarron"] small {
+  color: #d0d0d0;
+}
+
+[data-theme="pizarron"] strong {
+  color: #fff;
+}
+
+[data-theme="pizarron"] .widget,
+[data-theme="pizarron"] .mision-container,
+[data-theme="pizarron"] .problema-card,
+[data-theme="pizarron"] .tarjeta-contenido,
+[data-theme="pizarron"] .tipo-juego-card {
+  background: rgba(30, 58, 42, 0.9);
+  color: #e0e0e0;
+  border-color: rgba(76, 175, 80, 0.3);
+}
+
+[data-theme="pizarron"] .aventura-header,
+[data-theme="pizarron"] .aventura-navegacion {
+  background: rgba(30, 58, 42, 0.9);
+  color: #e0e0e0;
+}
+
+[data-theme="pizarron"] .dashboard-header,
+[data-theme="pizarron"] .header-text h1,
+[data-theme="pizarron"] .header-text p {
+  color: #e0e0e0;
+}
+
+[data-theme="pizarron"] .aventura-titulo,
+[data-theme="pizarron"] .widget-title,
+[data-theme="pizarron"] .section-title,
+[data-theme="pizarron"] .acceso-nombre,
+[data-theme="pizarron"] .tarjeta-titulo {
+  color: #fff;
+}
+
+[data-theme="pizarron"] .acceso-rapido-mini {
+  background: rgba(30, 58, 42, 0.8);
+  border-color: rgba(76, 175, 80, 0.3);
+  color: #e0e0e0;
+}
+
+[data-theme="pizarron"] .tab-btn {
+  background: rgba(30, 58, 42, 0.8);
+  color: #e0e0e0;
+  border-color: rgba(76, 175, 80, 0.3);
+}
+
+[data-theme="pizarron"] .contador-racha {
+  background: rgba(30, 58, 42, 0.8);
+}
+
+[data-theme="pizarron"] .numero-racha {
+  color: #FFD54F;
+}
+
+[data-theme="pizarron"] form > div,
+[data-theme="pizarron"] .card {
+  background: rgba(30, 58, 42, 0.9) !important;
+  color: #e0e0e0 !important;
+}
+
+[data-theme="pizarron"] form > div button {
+  background: rgba(20, 40, 30, 0.6) !important;
+  border-color: rgba(76, 175, 80, 0.3) !important;
+}
+
+[data-theme="pizarron"] input[type="text"],
+[data-theme="pizarron"] input[type="email"],
+[data-theme="pizarron"] textarea,
+[data-theme="pizarron"] select {
+  background: rgba(20, 40, 30, 0.8) !important;
+  color: #fff !important;
+  border-color: rgba(76, 175, 80, 0.4) !important;
+}
+
+[data-theme="pizarron"] div[style*="background: white"],
+[data-theme="pizarron"] div[style*="background:white"],
+[data-theme="pizarron"] div[style*="rgb(255, 255, 255)"] {
+  background: rgba(30, 58, 42, 0.9) !important;
+  color: #e0e0e0 !important;
+}
+
+[data-theme="pizarron"] .instrucciones {
+  background: rgba(30, 58, 42, 0.7) !important;
+  border-left-color: #4CAF50 !important;
+}
+
+[data-theme="pizarron"] .instrucciones p,
+[data-theme="pizarron"] .instrucciones li {
+  color: #ccc !important;
+}
+
+[data-theme="pizarron"] .json-textarea {
+  background: rgba(20, 40, 30, 0.8) !important;
+  color: #e0e0e0 !important;
+  border-color: rgba(76, 175, 80, 0.4) !important;
+}
+
+[data-theme="pizarron"] .file-upload-section {
+  background: rgba(30, 58, 42, 0.6) !important;
+  border-color: rgba(76, 175, 80, 0.3) !important;
+}
+
+[data-theme="pizarron"] .file-label {
+  color: #ccc !important;
+}
+
+[data-theme="pizarron"] .nota-importante {
+  background: rgba(50, 45, 20, 0.8) !important;
+  border-left-color: #FFD54F !important;
+}
+
+[data-theme="pizarron"] .nota-importante p {
+  color: #ccc !important;
+}
+
+[data-theme="pizarron"] .nota-importante code {
+  background: rgba(255, 213, 79, 0.2) !important;
+  color: #FFD54F !important;
+}
+
+[data-theme="pizarron"] .coleccion-selector,
+[data-theme="pizarron"] div[style*="background: rgb(232, 246, 243)"] {
+  background: rgba(30, 58, 42, 0.7) !important;
+  border-color: rgba(76, 175, 80, 0.4) !important;
+}
+
+[data-theme="pizarron"] .coleccion-selector label,
+[data-theme="pizarron"] .coleccion-selector p {
+  color: #ccc !important;
+}
+
+[data-theme="pizarron"] .tarjeta-desc,
+[data-theme="pizarron"] .tarjeta-fecha,
+[data-theme="pizarron"] .tarjeta-tipo {
+  color: #aaa;
+}
+
+[data-theme="pizarron"] .tipo-nombre {
+  color: #ccc;
+}
+
+[data-theme="pizarron"] .boveda-filter-chip.all {
+  background: rgba(30, 58, 42, 0.8);
+  color: #e0e0e0;
+}
+
+[data-theme="pizarron"] .boveda-filter-count {
+  color: #aaa;
+}
+
+[data-theme="pizarron"] .materia-toggle {
+  background: rgba(30, 58, 42, 0.6);
+}
+
+[data-theme="pizarron"] .materia-btn {
+  color: #aaa;
+}
+
+[data-theme="pizarron"] .boveda-tabs .tab-btn.active {
+  background: linear-gradient(135deg, var(--theme-grad-1), var(--theme-grad-2));
+}
+
+[data-theme="pizarron"] .mi-boveda-section {
+  color: #e0e0e0;
+}
+
+[data-theme="pizarron"] .boveda-header-personalizado {
+  background: linear-gradient(135deg, #1E3A2A, #2E7D32);
 }
 
 /* Espacial dark mode overrides */

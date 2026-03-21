@@ -222,11 +222,68 @@
 .rainbow-bubble.rb5 { left: 70%; width: 20px; height: 20px; background: #FF6B6B; animation-duration: 7.5s; animation-delay: 2s; }
 .rainbow-bubble.rb6 { left: 85%; width: 10px; height: 10px; background: #00B894; animation-duration: 12s; animation-delay: 4s; }
 
-/* ===== Neutro theme background ===== */
-.bg-neutro {
-  background: linear-gradient(to bottom, #FAFAFA, #F5F5F5 50%, #EEEEEE 100%);
+/* ===== Elegante theme background ===== */
+.bg-elegante {
+  background: linear-gradient(to bottom, #FFF8F0, #FAEBD7 40%, #F5E6D3 100%);
 }
-/* Neutro: no animation elements */
+
+.dust {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, rgba(212, 165, 116, 0.6), transparent);
+  border-radius: 50%;
+  animation: dust-float ease-in-out infinite;
+}
+
+.dust.d1  { top: 8%;  left: 15%; width: 5px;  height: 5px;  animation-duration: 8s;  animation-delay: 0s;   }
+.dust.d2  { top: 20%; left: 70%; width: 7px;  height: 7px;  animation-duration: 10s; animation-delay: 1.5s; }
+.dust.d3  { top: 35%; left: 30%; width: 4px;  height: 4px;  animation-duration: 12s; animation-delay: 0.8s; }
+.dust.d4  { top: 50%; left: 85%; width: 8px;  height: 8px;  animation-duration: 9s;  animation-delay: 3s;   }
+.dust.d5  { top: 65%; left: 10%; width: 6px;  height: 6px;  animation-duration: 11s; animation-delay: 2s;   }
+.dust.d6  { top: 75%; left: 55%; width: 5px;  height: 5px;  animation-duration: 7s;  animation-delay: 4s;   }
+.dust.d7  { top: 15%; left: 45%; width: 9px;  height: 9px;  animation-duration: 13s; animation-delay: 1s;   }
+.dust.d8  { top: 45%; left: 60%; width: 4px;  height: 4px;  animation-duration: 10s; animation-delay: 5s;   }
+.dust.d9  { top: 85%; left: 35%; width: 7px;  height: 7px;  animation-duration: 9s;  animation-delay: 2.5s; }
+.dust.d10 { top: 55%; left: 90%; width: 5px;  height: 5px;  animation-duration: 14s; animation-delay: 0.5s; }
+
+@keyframes dust-float {
+  0%, 100% { transform: translate(0, 0); opacity: 0; }
+  20% { opacity: 0.7; }
+  50% { transform: translate(15px, -20px); opacity: 0.5; }
+  80% { opacity: 0.3; }
+  100% { transform: translate(-10px, 15px); opacity: 0; }
+}
+
+/* ===== Pizarrón theme background ===== */
+.bg-pizarron {
+  background: linear-gradient(to bottom, #2D4A3E, #1E3A2A 40%, #2D4A3E 100%);
+}
+
+.chalk {
+  position: absolute;
+  font-size: 1.4rem;
+  opacity: 0;
+  color: rgba(255, 255, 255, 0.15);
+  font-family: 'Courier New', monospace;
+  animation: chalk-appear ease-in-out infinite;
+  pointer-events: none;
+}
+
+.chalk.ch1  { top: 5%;  left: 8%;  content: '+'; animation-duration: 8s;  animation-delay: 0s;   }
+.chalk.ch2  { top: 15%; left: 75%; animation-duration: 10s; animation-delay: 2s;   font-size: 1.2rem; }
+.chalk.ch3  { top: 30%; left: 25%; animation-duration: 7s;  animation-delay: 1s;   font-size: 1.8rem; }
+.chalk.ch4  { top: 50%; left: 60%; animation-duration: 9s;  animation-delay: 3.5s; }
+.chalk.ch5  { top: 70%; left: 40%; animation-duration: 11s; animation-delay: 0.5s; font-size: 1.6rem; }
+.chalk.ch6  { top: 85%; left: 15%; animation-duration: 12s; animation-delay: 4s;   font-size: 1rem; }
+.chalk.ch7  { top: 40%; left: 88%; animation-duration: 8.5s; animation-delay: 1.5s; }
+.chalk.ch8  { top: 60%; left: 5%;  animation-duration: 10s; animation-delay: 5s;   font-size: 1.3rem; }
+
+@keyframes chalk-appear {
+  0%, 100% { opacity: 0; transform: scale(0.8); }
+  30% { opacity: 0.25; transform: scale(1); }
+  70% { opacity: 0.2; transform: scale(1.05); }
+}
 
 /* ===== Océano theme background ===== */
 .bg-oceano {

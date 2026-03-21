@@ -37,8 +37,31 @@ const PageWrapper = ({ children }) => {
             <div className="rainbow-bubble rb5"></div>
             <div className="rainbow-bubble rb6"></div>
           </>
-        ) : tema === 'neutro' ? null
-        : tema === 'princesa' ? (
+        ) : tema === 'elegante' ? (
+          <>
+            <div className="dust d1"></div>
+            <div className="dust d2"></div>
+            <div className="dust d3"></div>
+            <div className="dust d4"></div>
+            <div className="dust d5"></div>
+            <div className="dust d6"></div>
+            <div className="dust d7"></div>
+            <div className="dust d8"></div>
+            <div className="dust d9"></div>
+            <div className="dust d10"></div>
+          </>
+        ) : tema === 'pizarron' ? (
+          <>
+            <div className="chalk ch1">+</div>
+            <div className="chalk ch2">÷</div>
+            <div className="chalk ch3">π</div>
+            <div className="chalk ch4">×</div>
+            <div className="chalk ch5">=</div>
+            <div className="chalk ch6">∑</div>
+            <div className="chalk ch7">√</div>
+            <div className="chalk ch8">∞</div>
+          </>
+        ) : tema === 'princesa' ? (
           <>
             <div className="sparkle s1"></div>
             <div className="sparkle s2"></div>
