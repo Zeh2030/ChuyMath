@@ -197,6 +197,13 @@ const Boveda = () => {
     return Array.from(grados).sort((a, b) => a - b);
   }, [simulacros]);
 
+  // Helper: filtrar por materia (sin campo = matematicas)
+  const filterMateria = (item) => {
+    if (materia === 'matematicas') return !item.materia || item.materia === 'matematicas';
+    if (materia === 'piano') return item.materia === 'piano';
+    return item.materia === materia;
+  };
+
   const nivelesDisponibles = React.useMemo(() => {
     const niveles = new Set();
     aventuras.filter(filterMateria).forEach(a => {
@@ -246,13 +253,6 @@ const Boveda = () => {
       .filter(t => t.items.length > 0)
       .sort((a, b) => a.nivel.localeCompare(b.nivel));
   }, [aventuras, materia]);
-
-  // Helper: filtrar por materia (sin campo = matematicas)
-  const filterMateria = (item) => {
-    if (materia === 'matematicas') return !item.materia || item.materia === 'matematicas';
-    if (materia === 'piano') return item.materia === 'piano';
-    return item.materia === materia;
-  };
 
   // Filtrar por nivel (soporta grupo como "A0" o específico como "A1-09")
   const matchNivel = (item) => {
