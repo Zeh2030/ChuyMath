@@ -140,11 +140,9 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar }) => {
         const noteRect = noteEl.getBoundingClientRect();
         const svgRect = abcTargetRef.current?.querySelector('svg')?.getBoundingClientRect();
         if (svgRect) {
-          // Posición de la nota relativa al SVG (sin transform aplicado)
-          // Necesitamos la posición original, así que compensamos el transform actual
-          const currentTranslate = translateXRef.current;
-          const noteOriginalX = noteRect.left - svgRect.left + currentTranslate;
-          targetXRef.current = noteOriginalX;
+          // noteRect y svgRect ambos incluyen el transform, así que la diferencia
+          // da la posición original de la nota dentro del SVG
+          targetXRef.current = noteRect.left - svgRect.left;
         }
       }
     }
