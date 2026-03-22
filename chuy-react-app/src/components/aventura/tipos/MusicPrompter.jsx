@@ -14,6 +14,8 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar }) => {
   const rafIdRef = useRef(null);
   const lastTimestampRef = useRef(null);
   const totalWidthRef = useRef(0);
+  const firstNoteOffsetRef = useRef(0); // X offset donde empieza la primera nota
+  const musicWidthRef = useRef(0); // Ancho solo de la sección musical (sin preámbulo)
   const viewportWidthRef = useRef(600);
   const pixelsPerSecondRef = useRef(0);
   const playheadOffsetRef = useRef(150);
@@ -43,7 +45,18 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar }) => {
     requestAnimationFrame(() => {
       const svg = abcTargetRef.current?.querySelector('svg');
       if (svg) {
-        totalWidthRef.current = svg.getBoundingClientRect().width;
+        const svgRect = svg.getBoundingClientRect();
+        totalWidthRef.current = svgRect.width;
+
+        // Encontrar la primera nota para medir el preámbulo (clave, compás)
+        const firstNote = svg.querySelector('.abcjs-note, .abcjs-rest');
+        if (firstNote) {
+          const noteRect = firstNote.getBoundingClientRect();
+          firstNoteOffsetRef.current = noteRect.left - svgRect.left;
+        } else {
+          firstNoteOffsetRef.current = 0;
+        }
+        musicWidthRef.current = totalWidthRef.current - firstNoteOffsetRef.current;
       }
       measureViewport();
       translateXRef.current = 0;
@@ -95,8 +108,8 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar }) => {
       const realDuration = synth.duration;
       audioDurationRef.current = realDuration;
 
-      // Calibrar scroll con duración real del audio
-      const scrollableWidth = totalWidthRef.current;
+      // Calibrar scroll con duración real del audio (solo la parte musical, sin preámbulo)
+      const scrollableWidth = musicWidthRef.current || totalWidthRef.current;
       pixelsPerSecondRef.current = scrollableWidth > 0 && realDuration > 0
         ? scrollableWidth / realDuration
         : 0;
@@ -128,8 +141,8 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar }) => {
     beats = Math.max(beats, 1);
     const duration = (beats / qpm) * 60;
     audioDurationRef.current = duration;
-    pixelsPerSecondRef.current = totalWidthRef.current > 0
-      ? totalWidthRef.current / duration : 0;
+    const w = musicWidthRef.current || totalWidthRef.current;
+    pixelsPerSecondRef.current = w > 0 ? w / duration : 0;
   };
 
   // --- Cambio de BPM: parar, re-preparar, reset ---
@@ -157,9 +170,10 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar }) => {
   }, [bpmActual]);
 
   // --- Aplicar transform CSS ---
+  // El offset inicial coloca la primera nota (no la clave de Sol) en el playhead
   const applyTransform = useCallback(() => {
     if (abcTargetRef.current) {
-      const offset = playheadOffsetRef.current - translateXRef.current;
+      const offset = playheadOffsetRef.current - firstNoteOffsetRef.current - translateXRef.current;
       abcTargetRef.current.style.transform = `translateX(${offset}px)`;
     }
   }, []);
@@ -175,7 +189,7 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar }) => {
 
     translateXRef.current += pixelsPerSecondRef.current * (deltaMs / 1000);
 
-    const maxScroll = totalWidthRef.current;
+    const maxScroll = musicWidthRef.current || totalWidthRef.current;
     if (translateXRef.current >= maxScroll) {
       translateXRef.current = maxScroll;
       applyTransform();
