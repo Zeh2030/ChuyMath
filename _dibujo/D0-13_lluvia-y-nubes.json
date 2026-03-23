@@ -1,0 +1,17 @@
+{
+  "id": "D0-13_lluvia-y-nubes",
+  "titulo": "Lluvia y Nubes",
+  "materia": "dibujo",
+  "nivel": "D0-13",
+  "tema": "dibujo-libre-basico",
+  "misiones": [
+    {
+      "id": "dib-lluvia-01",
+      "tipo": "dibujo-libre",
+      "titulo": "Lluvia y Nubes",
+      "emoji": "🌧️",
+      "instruccion": "Dibuja un cielo con nubes y gotitas de lluvia!",
+      "sugerencias": ["Haz nubes grandes y esponjosas", "Las gotas de lluvia son como rayitas hacia abajo", "Puedes agregar un charco abajo"]
+    }
+  ]
+}

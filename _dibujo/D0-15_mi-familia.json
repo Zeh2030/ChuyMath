@@ -1,0 +1,17 @@
+{
+  "id": "D0-15_mi-familia",
+  "titulo": "Mi Familia",
+  "materia": "dibujo",
+  "nivel": "D0-15",
+  "tema": "dibujo-libre-basico",
+  "misiones": [
+    {
+      "id": "dib-familia-01",
+      "tipo": "dibujo-libre",
+      "titulo": "Mi Familia",
+      "emoji": "👨‍👩‍👧‍👦",
+      "instruccion": "Dibuja a tu familia! Papa, mama, hermanos... todos!",
+      "sugerencias": ["Dibuja a cada uno con algo que los haga especiales", "Puedes ponerles ropa de colores", "No olvides las sonrisas!"]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "D1-15_mi-pokemon-favorito",
+  "titulo": "Mi Pokemon Favorito",
+  "materia": "dibujo",
+  "nivel": "D1-15",
+  "tema": "dibujo-libre-personajes",
+  "misiones": [
+    {
+      "id": "dib-pokemon-01",
+      "tipo": "dibujo-libre",
+      "titulo": "Mi Pokemon Favorito",
+      "emoji": "⚡",
+      "instruccion": "Dibuja tu Pokemon favorito o inventa uno nuevo!",
+      "sugerencias": ["Empieza con formas simples: circulos y ovalos para el cuerpo", "Agrega ojos grandes y expresivos", "Dale un ataque especial con efectos de colores"]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "D2-10_mi-superheroe",
+  "titulo": "Disena tu Superheroe",
+  "materia": "dibujo",
+  "nivel": "D2-10",
+  "tema": "personajes",
+  "misiones": [
+    {
+      "id": "dib-hero-01",
+      "tipo": "dibujo-libre",
+      "titulo": "Disena tu Superheroe",
+      "emoji": "🦸",
+      "instruccion": "Inventa y dibuja tu propio superheroe! Dale nombre, traje y superpoderes.",
+      "sugerencias": ["Piensa en un superpoder unico", "Disena un traje con colores llamativos", "Dale una pose de accion", "Ponle un simbolo en el pecho"]
+    }
+  ]
+}
