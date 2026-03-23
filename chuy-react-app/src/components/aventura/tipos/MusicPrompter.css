@@ -45,6 +45,11 @@
   will-change: transform;
 }
 
+/* Grand staff (two staves - treble + bass) */
+.mp-viewport-grand {
+  height: 320px;
+}
+
 /* Hide abcjs title since we show our own header */
 .mp-sheet svg text[font-size="20"] {
   display: none;
@@ -357,6 +362,7 @@
   .mp-bpm-control { margin-left: 0; margin-top: 8px; }
   .mp-controls { gap: 8px; }
 
+  .mp-viewport-grand { height: 260px; }
   .mp-fullscreen .mp-btn { padding: 10px 18px; font-size: 1rem; }
   .mp-fullscreen .mp-header h3 { font-size: 1.3rem; }
 }

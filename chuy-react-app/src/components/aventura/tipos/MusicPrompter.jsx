@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import abcjs from 'abcjs';
 import './MusicPrompter.css';
 
-const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar }) => {
+const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice = false }) => {
   const [estado, setEstado] = useState('parado');
   const [bpmActual, setBpmActual] = useState(bpm || 80);
   const [sonidoOn, setSonidoOn] = useState(true);
@@ -356,7 +356,7 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar }) => {
         {autor && <p className="mp-autor">{autor}</p>}
       </div>
 
-      <div className="mp-viewport" ref={containerRef}>
+      <div className={`mp-viewport ${multiVoice ? 'mp-viewport-grand' : ''}`} ref={containerRef}>
         <div className="mp-playhead"></div>
         <div className="mp-sheet" ref={abcTargetRef}></div>
       </div>

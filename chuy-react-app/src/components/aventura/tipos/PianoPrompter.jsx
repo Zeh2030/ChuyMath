@@ -16,15 +16,31 @@ const PianoPrompter = ({ mision, onCompletar }) => {
 
   const { compas = '4/4', tonalidad = 'C', clave = 'treble' } = configuracion;
 
+  // Detectar si es multi-voz (contiene V: o %%staves)
+  const isMultiVoice = notas.includes('V:') || notas.includes('%%staves');
+
   // Construir notación ABC desde los datos estructurados
-  const abcNotation = [
-    'X:1',
-    `T:${titulo}`,
-    `M:${compas}`,
-    'L:1/4',
-    `K:${tonalidad} clef=${clave}`,
-    notas,
-  ].join('\n');
+  const abcNotation = isMultiVoice
+    ? [
+        'X:1',
+        `T:${titulo}`,
+        `M:${compas}`,
+        'L:1/4',
+        notas, // notas ya contiene %%staves, V:, K: implícito via tonalidad en cada voz
+      ].join('\n')
+    : [
+        'X:1',
+        `T:${titulo}`,
+        `M:${compas}`,
+        'L:1/4',
+        `K:${tonalidad} clef=${clave}`,
+        notas,
+      ].join('\n');
+
+  // Para multi-voz, insertar K: antes de la primera V: si no está en notas
+  const finalAbc = isMultiVoice && !notas.includes('K:')
+    ? abcNotation.replace(/(V:1)/, `K:${tonalidad}\n$1`)
+    : abcNotation;
 
   const handleTerminar = () => {
     setTerminado(true);
@@ -51,11 +67,12 @@ const PianoPrompter = ({ mision, onCompletar }) => {
 
   return (
     <MusicPrompter
-      abcNotation={abcNotation}
+      abcNotation={finalAbc}
       bpm={bpm}
       titulo={titulo}
       autor={autor}
       onTerminar={handleTerminar}
+      multiVoice={isMultiVoice}
     />
   );
 };

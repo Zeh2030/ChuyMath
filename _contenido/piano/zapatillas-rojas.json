@@ -1,0 +1,22 @@
+{
+  "id": "piano-zapatillas-rojas",
+  "titulo": "Las Zapatillas Rojas",
+  "misiones": [
+    {
+      "id": "zapatillas-01",
+      "tipo": "piano-prompter",
+      "titulo": "Las Zapatillas Rojas",
+      "instruccion": "Sigue las notas de ambas manos. ¡Tempo Andante, tranquilo!",
+      "autor": "A. Diabelli",
+      "bpm": 80,
+      "dificultad": "principiante",
+      "nivel": "P1-06",
+      "configuracion": {
+        "compas": "4/4",
+        "tonalidad": "F",
+        "clave": "treble"
+      },
+      "notas": "%%staves {1 2}\nV:1\n\"!mp!\".C .F .A .c | (c3/2 d/2 c) A | (=B =B) (=B/c/ d/=B/) | c G z2 |\n\"!mf!\".C .F .A .c | (c3/2 d/2 c) A | (B B) (B/c/ d/B/) | F z z2 |]\nV:2 clef=bass\nz4 | z4 | =B,, [D,F,] z2 | C, [E,G,] z2 |\nz4 | z4 | C, [E,G,] z2 | F,, [A,,C,] z2 |]"
+    }
+  ]
+}
