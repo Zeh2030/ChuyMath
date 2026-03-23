@@ -22,24 +22,25 @@ const PianoPrompter = ({ mision, onCompletar }) => {
   // Construir notación ABC desde los datos estructurados
   let finalAbc;
   if (isMultiVoice) {
-    // Procesar notas multi-voz: juntar líneas dentro de cada voz para evitar
-    // que abcjs haga salto de sistema en medio de una voz.
-    // Solo preservar \n antes de directivas (V:, %%)
-    const processedNotas = notas
-      .split('\n')
-      .reduce((acc, line) => {
-        const trimmed = line.trim();
-        if (trimmed.startsWith('V:') || trimmed.startsWith('%%')) {
-          acc.push(trimmed);
-        } else if (acc.length > 0) {
-          // Agregar a la línea anterior con espacio
-          acc[acc.length - 1] += ' ' + trimmed;
-        } else {
-          acc.push(trimmed);
-        }
-        return acc;
-      }, [])
-      .join('\n');
+    // Procesar notas multi-voz: juntar líneas de notas dentro de cada voz
+    // para evitar que abcjs haga salto de sistema.
+    // Preservar \n antes de directivas (V:, %%) y después de V: declarations.
+    const lines = notas.split('\n').map(l => l.trim()).filter(l => l);
+    const processed = [];
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+      const isDirective = line.startsWith('V:') || line.startsWith('%%');
+      const prevIsDirective = i > 0 && (lines[i-1].startsWith('V:') || lines[i-1].startsWith('%%'));
+
+      if (isDirective || prevIsDirective || processed.length === 0) {
+        // Directivas y primera línea de notas después de V: van en línea propia
+        processed.push(line);
+      } else {
+        // Líneas de notas consecutivas se juntan con espacio
+        processed[processed.length - 1] += ' ' + line;
+      }
+    }
+    const processedNotas = processed.join('\n');
 
     const header = [
       'X:1',
