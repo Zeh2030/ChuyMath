@@ -38,7 +38,8 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     abcTargetRef.current.innerHTML = '';
 
     const visualObj = abcjs.renderAbc(abcTargetRef.current, abcNotation, {
-      staffwidth: 3000,
+      staffwidth: multiVoice ? 8000 : 3000,
+      wrap: null,
       add_classes: true,
       paddingtop: 10,
       paddingbottom: 10,
