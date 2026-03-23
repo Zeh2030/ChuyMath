@@ -52,15 +52,19 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
       const svg = abcTargetRef.current?.querySelector('svg');
       if (svg) {
         const svgRect = svg.getBoundingClientRect();
-        const totalWidth = svgRect.width;
 
-        const firstNote = svg.querySelector('.abcjs-note, .abcjs-rest');
-        if (firstNote) {
-          firstNoteOffsetRef.current = firstNote.getBoundingClientRect().left - svgRect.left;
+        // Encontrar primera y última nota para medir el rango real de la música
+        const allNotes = svg.querySelectorAll('.abcjs-note, .abcjs-rest');
+        if (allNotes.length > 0) {
+          const firstRect = allNotes[0].getBoundingClientRect();
+          const lastRect = allNotes[allNotes.length - 1].getBoundingClientRect();
+          firstNoteOffsetRef.current = firstRect.left - svgRect.left;
+          // Ancho real = desde primera nota hasta el final de la última nota
+          musicWidthRef.current = (lastRect.right - firstRect.left) + 50; // +50 margen
         } else {
           firstNoteOffsetRef.current = 0;
+          musicWidthRef.current = svgRect.width;
         }
-        musicWidthRef.current = totalWidth - firstNoteOffsetRef.current;
       }
       measureViewport();
       translateXRef.current = 0;
