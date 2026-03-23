@@ -1,0 +1,190 @@
+.dlibre-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Suggestions */
+.dlibre-sugerencias {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.dlibre-sugerencia {
+  background: #fef9e7;
+  border: 1px solid #f9e79f;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: #7d6608;
+}
+
+/* Workspace */
+.dlibre-workspace {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  align-items: stretch;
+}
+
+.dlibre-referencia {
+  flex: 0 0 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.dlibre-referencia.collapsed {
+  flex: 0 0 auto;
+}
+
+.dlibre-ref-toggle {
+  background: #eee;
+  border: none;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: #666;
+}
+.dlibre-ref-toggle:hover { background: #ddd; }
+
+.dlibre-ref-img {
+  max-width: 100%;
+  max-height: 280px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border: 2px solid #eee;
+}
+
+.dlibre-canvas-area {
+  flex: 1;
+  min-width: 0;
+}
+
+.dlibre-canvas-wrapper {
+  width: 100%;
+  height: 380px;
+  border: 3px solid #ddd;
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+  cursor: crosshair;
+  touch-action: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.dlibre-canvas-wrapper canvas { display: block; }
+
+/* Toolbar */
+.dlibre-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  padding: 8px 14px;
+  border-radius: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.dlibre-colores {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.dlibre-color-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.dlibre-color-btn:hover { transform: scale(1.1); }
+.dlibre-color-btn.active { transform: scale(1.15); box-shadow: 0 0 0 2px #3498db; }
+
+.dlibre-eraser-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  background: #f8f8f8;
+  cursor: pointer;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dlibre-eraser-btn.active { border-color: #e74c3c; background: #fdecea; }
+
+.dlibre-grosores { display: flex; gap: 5px; }
+
+.dlibre-grosor-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #eee;
+  background: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dlibre-grosor-btn.active { border-color: #3498db; background: #ebf5fb; }
+
+.dlibre-grosor-dot {
+  border-radius: 50%;
+  background: #333;
+  display: block;
+}
+
+.dlibre-limpiar-btn {
+  padding: 4px 12px;
+  border-radius: 16px;
+  border: none;
+  background: #ecf0f1;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #7f8c8d;
+}
+.dlibre-limpiar-btn:hover { background: #bdc3c7; color: white; }
+
+/* Finish */
+.dlibre-terminar-btn {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f39c12, #e67e22);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.dlibre-terminar-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(230, 126, 34, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .dlibre-workspace { flex-direction: column; }
+  .dlibre-referencia { flex: none; }
+  .dlibre-ref-img { max-height: 160px; }
+  .dlibre-canvas-wrapper { height: 300px; }
+}

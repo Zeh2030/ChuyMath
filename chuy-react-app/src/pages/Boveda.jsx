@@ -32,9 +32,11 @@ const Boveda = () => {
       'listen-and-type', 'expediciones-en', 'mini-story'];
     const pianoTypes = ['piano-prompter'];
     const cienciasTypes = ['experimento-guia'];
+    const dibujoTypes = ['colorear', 'dibujo-guiado', 'dibujo-libre'];
     if (englishTypes.includes(f)) return 'ingles';
     if (pianoTypes.includes(f)) return 'piano';
     if (cienciasTypes.includes(f)) return 'ciencias';
+    if (dibujoTypes.includes(f)) return 'dibujo';
     return 'matematicas';
   };
   const [materia, setMateria] = useState(detectMateria(filtroFromUrl));
@@ -75,6 +77,10 @@ const Boveda = () => {
     { id: 'piano-prompter', emoji: '🎹', nombre: 'Teleprompter', tipo: 'piano-prompter', descripcion: 'Practica lectura de partituras', materia: 'piano' },
     // Ciencias
     { id: 'experimento-guia', emoji: '🧪', nombre: 'Experimentos', tipo: 'experimento-guia', descripcion: 'Experimentos caseros paso a paso', materia: 'ciencias' },
+    // Dibujo
+    { id: 'colorear', emoji: '🖍️', nombre: 'Colorear', tipo: 'colorear', descripcion: 'Colorea figuras con tu paleta', materia: 'dibujo' },
+    { id: 'dibujo-guiado', emoji: '✏️', nombre: 'Dibujo Guiado', tipo: 'dibujo-guiado', descripcion: 'Aprende a dibujar paso a paso', materia: 'dibujo' },
+    { id: 'dibujo-libre', emoji: '🎨', nombre: 'Dibujo Libre', tipo: 'dibujo-libre', descripcion: 'Dibuja lo que quieras', materia: 'dibujo' },
   ];
 
   const tiposJuegosFiltrados = tiposJuegos.filter(t => t.materia === materia);
@@ -154,7 +160,21 @@ const Boveda = () => {
           };
         }).sort((a, b) => a.id.localeCompare(b.id));
 
-        setAventuras([...listaAventuras, ...listaIngles, ...listaPiano, ...listaCiencias]);
+        // Cargar Dibujo (coleccion separada)
+        const dibujoRef = collection(db, 'dibujo');
+        const dibujoSnapshot = await getDocs(dibujoRef);
+        const listaDibujo = dibujoSnapshot.docs.map(doc => {
+          const data = doc.data();
+          return {
+            id: doc.id,
+            ...data,
+            tipo: data.tipo || 'dibujo-libre',
+            materia: 'dibujo',
+            coleccion: 'dibujo'
+          };
+        }).sort((a, b) => a.id.localeCompare(b.id));
+
+        setAventuras([...listaAventuras, ...listaIngles, ...listaPiano, ...listaCiencias, ...listaDibujo]);
         setSimulacros(listaSimulacros);
       } catch (err) {
         console.error("Error cargando la bóveda:", err);
@@ -220,6 +240,7 @@ const Boveda = () => {
     if (materia === 'matematicas') return !item.materia || item.materia === 'matematicas';
     if (materia === 'piano') return item.materia === 'piano';
     if (materia === 'ciencias') return item.materia === 'ciencias';
+    if (materia === 'dibujo') return item.materia === 'dibujo';
     return item.materia === materia;
   };
 
@@ -444,7 +465,7 @@ const Boveda = () => {
                   </div>
 
                   {/* Level filter chips */}
-                  {(materia === 'ingles' || materia === 'piano' || materia === 'ciencias') && nivelesDisponibles.length > 1 && (
+                  {(materia === 'ingles' || materia === 'piano' || materia === 'ciencias' || materia === 'dibujo') && nivelesDisponibles.length > 1 && (
                     <div className="boveda-nivel-chips">
                       <button
                         className={`nivel-chip ${filtroNivel === 'todos' ? 'active' : ''}`}
@@ -509,7 +530,7 @@ const Boveda = () => {
                       const progreso = getProgreso(item.id, item.tipo);
                       
                       // Determinar la ruta basándose en la colección de origen
-                      const esAventura = item.coleccion === 'aventuras' || item.coleccion === 'ingles' || item.coleccion === 'piano' || item.coleccion === 'ciencias';
+                      const esAventura = item.coleccion === 'aventuras' || item.coleccion === 'ingles' || item.coleccion === 'piano' || item.coleccion === 'ciencias' || item.coleccion === 'dibujo';
                       const ruta = esAventura ? `/aventura/${item.id}` : `/simulacro/${item.id}`;
                       
                       // Obtener nombre del tipo para mostrar

@@ -27,6 +27,9 @@ import WordScramble from './tipos/WordScramble';
 import ListenAndType from './tipos/ListenAndType';
 import MiniStory from './tipos/MiniStory';
 import ExperimentoGuia from './tipos/ExperimentoGuia';
+import Colorear from './tipos/Colorear';
+import DibujoGuiado from './tipos/DibujoGuiado';
+import DibujoLibre from './tipos/DibujoLibre';
 const PianoPrompter = React.lazy(() => import('./tipos/PianoPrompter'));
 import './MisionRenderer.css';
 
@@ -344,6 +347,34 @@ const MisionRenderer = ({
       case 'experimento-guia':
         return (
           <ExperimentoGuia
+            key={mision.id}
+            mision={mision}
+            onCompletar={onCompletar}
+          />
+        );
+
+      // === Dibujo ===
+      case 'colorear':
+        return (
+          <Colorear
+            key={mision.id}
+            mision={mision}
+            onCompletar={onCompletar}
+          />
+        );
+
+      case 'dibujo-guiado':
+        return (
+          <DibujoGuiado
+            key={mision.id}
+            mision={mision}
+            onCompletar={onCompletar}
+          />
+        );
+
+      case 'dibujo-libre':
+        return (
+          <DibujoLibre
             key={mision.id}
             mision={mision}
             onCompletar={onCompletar}

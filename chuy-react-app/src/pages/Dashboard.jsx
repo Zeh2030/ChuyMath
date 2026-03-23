@@ -148,6 +148,10 @@ const Dashboard = () => {
     { id: 'piano-prompter', emoji: '🎹', nombre: 'Teleprompter', filtro: 'piano-prompter', disponible: true, materia: 'piano' },
     // Ciencias
     { id: 'experimento-guia', emoji: '🧪', nombre: 'Experimentos', filtro: 'experimento-guia', disponible: true, materia: 'ciencias' },
+    // Dibujo
+    { id: 'colorear', emoji: '🖍️', nombre: 'Colorear', filtro: 'colorear', disponible: true, materia: 'dibujo' },
+    { id: 'dibujo-guiado', emoji: '✏️', nombre: 'Dibujo Guiado', filtro: 'dibujo-guiado', disponible: true, materia: 'dibujo' },
+    { id: 'dibujo-libre', emoji: '🎨', nombre: 'Dibujo Libre', filtro: 'dibujo-libre', disponible: true, materia: 'dibujo' },
   ];
 
   const tiposDeJuegoFiltrados = tiposDeJuego.filter(t => t.materia === materia);

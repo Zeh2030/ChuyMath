@@ -6,7 +6,7 @@
   background: rgba(255, 255, 255, 0.6);
   border-radius: 16px;
   padding: 4px;
-  max-width: 420px;
+  max-width: 520px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -53,6 +53,10 @@
   background: linear-gradient(135deg, #43a047, #2e7d32);
 }
 
+.materia-dibujo.active {
+  background: linear-gradient(135deg, #e67e22, #d35400);
+}
+
 .materia-emoji {
   font-size: 1.2rem;
 }
@@ -63,7 +67,7 @@
 
 @media (max-width: 480px) {
   .materia-toggle {
-    max-width: 360px;
+    max-width: 440px;
   }
   .materia-btn {
     padding: 8px 14px;
