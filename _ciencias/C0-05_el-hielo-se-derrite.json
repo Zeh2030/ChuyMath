@@ -1,0 +1,41 @@
+{
+  "id": "C0-05_el-hielo-se-derrite",
+  "titulo": "El Hielo se Derrite!",
+  "materia": "ciencias",
+  "nivel": "C0-05",
+  "tema": "hielo",
+  "misiones": [
+    {
+      "id": "exp-hielo-mini-01",
+      "tipo": "experimento-guia",
+      "titulo": "El Hielo se Derrite!",
+      "emoji": "🧊",
+      "instruccion": "Vamos a ver que le pasa al hielo cuando lo sacas del congelador!",
+      "tema": "hielo",
+      "materiales": ["Cubos de hielo", "Plato", "Tus manos"],
+      "materiales_emoji": ["🧊", "🍽️", "🤲"],
+      "prediccion": {
+        "pregunta": "Que le pasa al hielo si lo pones en tu mano?",
+        "opciones": ["Se derrite y se hace agua!", "Se queda igual"]
+      },
+      "pasos": [
+        { "instruccion": "Toca el hielo. Como se siente? Frio? Duro?", "emoji": "🧊" },
+        { "instruccion": "Pon el hielo en el plato. Espera un ratito y mira que pasa", "emoji": "👀" },
+        { "instruccion": "Pon otro hielo en tu mano y aprieta. Se derrite mas rapido!", "emoji": "🤲" }
+      ],
+      "observacion": {
+        "pregunta": "Que le paso al hielo?",
+        "opciones": ["Se convirtio en agua!", "Se quedo duro"]
+      },
+      "explicacion": "El hielo es agua muy fria que se puso dura. Cuando se calienta un poquito, se vuelve a hacer agua liquida. Eso se llama derretirse. En tu mano se derrite mas rapido porque tu mano esta calientita! Todo lo frio se derrite cuando se calienta.",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "En que se convierte el hielo cuando se calienta?",
+          "opciones": ["En agua", "En piedra"],
+          "respuesta": "En agua"
+        }
+      ]
+    }
+  ]
+}

@@ -53,7 +53,17 @@ const Aventura = () => {
                 ...pianoSnap.data()
               });
             } else {
-              setError(`No se encontró la aventura con ID ${fecha}`);
+              // Intentar en colección 'ciencias'
+              const cienciasRef = doc(db, 'ciencias', fecha);
+              const cienciasSnap = await getDoc(cienciasRef);
+              if (cienciasSnap.exists()) {
+                setAventura({
+                  id: cienciasSnap.id,
+                  ...cienciasSnap.data()
+                });
+              } else {
+                setError(`No se encontró la aventura con ID ${fecha}`);
+              }
             }
           }
         }

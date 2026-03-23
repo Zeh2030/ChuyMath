@@ -1,0 +1,54 @@
+{
+  "id": "C1-14_que-absorbe-mas",
+  "titulo": "Que Absorbe Mas?",
+  "materia": "ciencias",
+  "nivel": "C1-14",
+  "tema": "absorcion",
+  "misiones": [
+    {
+      "id": "exp-absorbe-01",
+      "tipo": "experimento-guia",
+      "titulo": "Que Absorbe Mas?",
+      "emoji": "🧽",
+      "instruccion": "Vamos a descubrir que materiales absorben agua y cuales no!",
+      "tema": "absorcion",
+      "materiales": ["Esponja", "Pedazo de tela (algodon)", "Pedazo de plastico (bolsa)", "Papel aluminio", "Servilleta de papel", "Platos pequenos o tapas (uno por material)", "Agua con colorante (para ver mejor)"],
+      "materiales_emoji": ["🧽", "👕", "🛍️", "🫕", "🧻", "🍽️", "💧"],
+      "prediccion": {
+        "pregunta": "Cual de estos materiales crees que absorbe MAS agua?",
+        "opciones": ["Plastico", "Esponja", "Aluminio", "Todos absorben igual"]
+      },
+      "pasos": [
+        { "instruccion": "Pon cada material en un plato separado", "emoji": "🍽️" },
+        { "instruccion": "Con una cuchara, echa la misma cantidad de agua con colorante sobre cada material (2 cucharadas)", "emoji": "💧" },
+        { "instruccion": "Espera 30 segundos y observa cada plato", "emoji": "⏱️" },
+        { "instruccion": "Levanta cada material. Cuanta agua quedo en el plato debajo?", "emoji": "👆" },
+        { "instruccion": "Ordena los materiales del que mas absorbe al que menos absorbe", "emoji": "📊" }
+      ],
+      "observacion": {
+        "pregunta": "Cual material absorbe mas agua?",
+        "opciones": ["La esponja y la servilleta absorben mucho, el plastico y aluminio nada", "Todos absorbieron igual", "Solo el aluminio absorbio", "Ninguno absorbio agua"]
+      },
+      "explicacion": "Algunos materiales tienen muchos espacios pequenos (como agujeritos) donde el agua puede entrar y quedarse. La esponja esta llena de huecos, por eso absorbe mucho. La servilleta y la tela de algodon tambien tienen fibras con espacios. El plastico y el aluminio NO tienen esos espacios, son lisos y cerrados, por eso el agua resbala y no se absorbe. A los materiales que no absorben agua les decimos IMPERMEABLES.",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Por que la esponja absorbe mucha agua?",
+          "opciones": ["Porque es amarilla", "Porque tiene muchos huecos pequenos donde entra el agua", "Porque es muy pesada"],
+          "respuesta": "Porque tiene muchos huecos pequenos donde entra el agua"
+        },
+        {
+          "tipo": "true-or-false",
+          "pregunta": "El plastico es un material impermeable (no absorbe agua)",
+          "respuesta": true
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Cual de estos materiales es mejor para secar un charco de agua?",
+          "opciones": ["Bolsa de plastico", "Papel aluminio", "Tela de algodon"],
+          "respuesta": "Tela de algodon"
+        }
+      ]
+    }
+  ]
+}

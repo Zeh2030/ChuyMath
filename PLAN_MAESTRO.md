@@ -22,14 +22,14 @@
 
 ## 2. TOGGLE DE MATERIAS ✅ COMPLETADO (expandible)
 
-MateriaToggle dinámico. Actualmente 3 botones: 🔢 Mates | 🇬🇧 English | 🎹 Piano
+MateriaToggle dinámico. Actualmente 4 botones: 🔢 Mates | 🇬🇧 English | 🎹 Piano | 🔬 Ciencias
 
 | Materia | Colección Firebase | Estado |
 |---------|-------------------|--------|
 | Matemáticas 🔢 | aventuras + simulacros | ✅ |
 | English 🇬🇧 | ingles | ✅ |
 | Piano 🎹 | piano | ✅ |
-| Ciencias 🔬 | ciencias | Planeado |
+| Ciencias 🔬 | ciencias | ✅ |
 | Geografía 🌍 | geografia | Planeado |
 
 Agregar nueva materia requiere: MateriaToggle entry, colección Firebase, reglas Firestore, Dashboard acceso rápido, Bóveda loader, AdminMigracion radio button, Aventura.jsx fallback.
@@ -88,76 +88,55 @@ Crear 10-15 canciones progresivas:
 
 ---
 
-## 5. CIENCIAS APLICADAS (NUEVO)
+## 5. CIENCIAS APLICADAS ✅ COMPONENTE LISTO
 
-### Objetivo
-Módulo de experimentos caseros para aprender física, química y biología de forma práctica. El niño sigue instrucciones paso a paso, hace predicciones, ejecuta el experimento y responde preguntas de comprensión.
+### Completado ✅
+- `ExperimentoGuia.jsx` — wizard paso a paso (Portada → Predicción → Pasos → Observación → Explicación → Quiz → Fin)
+- Registrado como `case 'experimento-guia'` en MisionRenderer
+- Integrado en: MateriaToggle, Dashboard, Bóveda, AdminMigración, Aventura.jsx
+- Colección Firebase: `ciencias`
+- Programa completo: `_ciencias/PROGRAMA_CIENCIAS.md` (4 niveles, 70 experimentos)
 
-### Formato: Tutorial interactivo paso a paso
-A diferencia de los juegos existentes (respuesta rápida), ciencias es **guiado y secuencial**:
+### Niveles
 
-1. **Portada**: Título, imagen/emoji del experimento, materiales necesarios
-2. **Predicción**: "¿Qué crees que pasará si...?" (el niño elige antes de experimentar)
-3. **Pasos**: Instrucciones detalladas con emojis, cada paso con checkbox para marcar completado
-4. **Observación**: "¿Qué pasó?" — el niño describe o selecciona lo que observó
-5. **Explicación**: Concepto científico explicado para niño de 7 años
-6. **Quiz**: 2-3 preguntas de comprensión (reutiliza true-or-false, fill-the-gap, opcion-multiple)
+| Nivel | Nombre | Edad | Experimentos | Estado |
+|-------|--------|------|--------------|--------|
+| C0 | Mis Sentidos | 3-5 años (hija) | 10 | ✅ **Completo** (10/10) |
+| C1 | Explorador | 5-7 años (hijo, inicio) | 20 | ✅ **Completo** (20/20) |
+| C2 | Investigador | 7-9 años | 20 | Planeado |
+| C3 | Científico Jr. | 9-11 años | 20 | Planeado |
 
-### Componente nuevo necesario
-- `ExperimentoGuia.jsx` — tipo step-by-step wizard
-- Registrar como `case 'experimento-guia'` en MisionRenderer
-- Reutiliza componentes existentes para el quiz final
+### Contenido creado
 
-### Colección Firebase: `ciencias`
-```json
-{
-  "id": "C1-01_volcán-de-vinagre",
-  "titulo": "El Volcán de Vinagre",
-  "materia": "ciencias",
-  "nivel": "C1-01",
-  "tema": "reacciones-quimicas",
-  "misiones": [{
-    "tipo": "experimento-guia",
-    "titulo": "El Volcán de Vinagre",
-    "materiales": ["Vinagre", "Bicarbonato", "Botella", "Colorante rojo"],
-    "materiales_emoji": ["🫗", "🧂", "🍶", "🔴"],
-    "prediccion": {
-      "pregunta": "¿Qué crees que pase si mezclas vinagre con bicarbonato?",
-      "opciones": ["No pasa nada", "Hace burbujas y espuma", "Se congela", "Cambia de color"]
-    },
-    "pasos": [
-      { "instruccion": "Pon la botella sobre un plato", "emoji": "🍶" },
-      { "instruccion": "Agrega 3 cucharadas de bicarbonato", "emoji": "🥄" },
-      { "instruccion": "Agrega unas gotas de colorante rojo", "emoji": "🔴" },
-      { "instruccion": "Vierte medio vaso de vinagre... ¡y observa!", "emoji": "🫗" }
-    ],
-    "explicacion": "El vinagre (ácido) reacciona con el bicarbonato (base) y produce gas CO₂. ¡Ese gas hace las burbujas! Es una reacción química.",
-    "quiz": [
-      { "tipo": "true-or-false", "pregunta": "La espuma se produce por un gas llamado CO₂", "respuesta": true },
-      { "tipo": "opcion-multiple", "pregunta": "¿Qué tipo de reacción ocurrió?", "opciones": ["Magnética", "Química", "Eléctrica"], "respuesta": "Química" }
-    ]
-  }]
-}
-```
+| Archivo | Nivel | Tema |
+|---------|-------|------|
+| `C1-01_volcan-de-vinagre.json` | C1-01 | Reacciones químicas |
+| `C1-02_torre-de-liquidos.json` | C1-02 | Densidad |
+| `C1-03_que-atrae-un-iman.json` | C1-03 | Magnetismo |
+| `C1-04_flota-o-se-hunde.json` | C1-04 | Flotabilidad |
+| `C1-05_hielo-agua-vapor.json` | C1-05 | Estados de materia |
+| `C1-06_separando-mezclas.json` | C1-06 | Mezclas |
+| `C1-07_el-aire-ocupa-espacio.json` | C1-07 | Aire |
+| `C1-08_arcoiris-casero.json` | C1-08 | Luz y color |
+| `C1-09_telefono-de-vasos.json` | C1-09 | Sonido |
+| `C1-10_semilla-en-algodon.json` | C1-10 | Plantas |
 
-### Temas de experimentos propuestos
+| `C1-11_globo-magico.json` | C1-11 | Electricidad estatica |
+| `C1-12_carrito-de-globo.json` | C1-12 | Fuerza (accion-reaccion) |
+| `C1-13_carrera-de-caidas.json` | C1-13 | Gravedad |
+| `C1-14_que-absorbe-mas.json` | C1-14 | Absorcion |
+| `C1-15_leche-magica.json` | C1-15 | Quimica de cocina |
+| `C1-16_huevo-en-botella.json` | C1-16 | Presion de aire |
+| `C1-17_flores-que-cambian-de-color.json` | C1-17 | Capilaridad |
+| `C1-18_barcos-de-papel-aluminio.json` | C1-18 | Superficie y flotacion |
+| `C1-19_derretir-hielo-rapido.json` | C1-19 | Temperatura |
+| `C1-20_mini-terrario.json` | C1-20 | Ecosistema |
 
-| Nivel | Tema | Experimentos ejemplo |
-|-------|------|---------------------|
-| C1-01 | Reacciones químicas | Volcán de vinagre, Leche mágica con colorante |
-| C1-02 | Densidad | Torre de líquidos (miel, agua, aceite) |
-| C1-03 | Magnetismo | ¿Qué atrae un imán? |
-| C1-04 | Estados de la materia | Hielo → agua → vapor |
-| C1-05 | Luz y color | Disco de Newton (mezcla de colores) |
-| C1-06 | Fuerza y movimiento | Carrito con globo (acción-reacción) |
-| C1-07 | Plantas | Germinación en algodón |
-| C1-08 | Sonido | Teléfono con vasos y cuerda |
-| C1-09 | Electricidad estática | Globo que atrae papelitos |
-| C1-10 | Flotabilidad | ¿Qué flota y qué se hunde? |
-
-### Esfuerzo estimado
-- 1 sesión: componente ExperimentoGuia + integración (materia, toggle, migrador)
-- 1-2 sesiones: contenido (10 experimentos C1-01 a C1-10)
+### Pendiente - Contenido
+- C1 completo (20/20) ✅
+- Siguiente: Lote 3 — C0-01 a C0-10 (Mis Sentidos, para hija) o Lote 4 — C2-01 a C2-10
+- Producción en lotes de 10, ritmo 1 experimento/semana
+- Ver `_ciencias/PROGRAMA_CIENCIAS.md` para programa completo
 
 ---
 
@@ -231,8 +210,8 @@ Aprender países, capitales, cultura, ríos, montañas y datos curiosos de forma
 | ~~4~~ | ~~Contenido inglés A0-A1 (118 JSONs)~~ | — | ✅ |
 | ~~5~~ | ~~Filtros Bóveda (nivel + búsqueda)~~ | — | ✅ |
 | **6** | Contenido piano (10-15 canciones) | 1-2 sesiones | Pendiente |
-| **7** | Ciencias: ExperimentoGuia + integración | 1 sesión | Pendiente |
-| **8** | Ciencias: contenido (10 experimentos) | 1-2 sesiones | Pendiente |
+| ~~7~~ | ~~Ciencias: ExperimentoGuia + integración~~ | — | ✅ |
+| ~~8~~ | ~~Ciencias: contenido C1-01 a C1-10 (Lote 1)~~ | — | ✅ |
 | **9** | Geografía: ExploradorMapa + integración | 1-2 sesiones | Pendiente |
 | **10** | Geografía: contenido (mapas + datos) | 2-3 sesiones | Pendiente |
 | **11** | Piano: clave de Fa (mano izquierda) | 1 sesión | Pendiente |

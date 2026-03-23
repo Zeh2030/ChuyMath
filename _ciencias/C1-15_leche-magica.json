@@ -1,0 +1,54 @@
+{
+  "id": "C1-15_leche-magica",
+  "titulo": "Leche Magica",
+  "materia": "ciencias",
+  "nivel": "C1-15",
+  "tema": "quimica-de-cocina",
+  "misiones": [
+    {
+      "id": "exp-leche-01",
+      "tipo": "experimento-guia",
+      "titulo": "Leche Magica",
+      "emoji": "🥛",
+      "instruccion": "Vamos a crear una explosion de colores en un plato de leche!",
+      "tema": "quimica-de-cocina",
+      "materiales": ["Leche entera (no light ni deslactosada)", "Plato hondo", "Colorantes de comida (2-3 colores)", "Jabon liquido para trastes", "Cotonete o palillo"],
+      "materiales_emoji": ["🥛", "🍽️", "🎨", "🧴", "🪥"],
+      "prediccion": {
+        "pregunta": "Que crees que pase si pones colorante en leche y luego tocas con jabon?",
+        "opciones": ["No pasa nada", "Los colores explotan y se mueven solos!", "La leche se vuelve transparente", "Los colores desaparecen"]
+      },
+      "pasos": [
+        { "instruccion": "Vierte leche en el plato hondo hasta cubrir el fondo (1 cm de profundidad)", "emoji": "🥛" },
+        { "instruccion": "Pon 3-4 gotas de cada colorante separadas en diferentes partes de la leche. NO revuelvas!", "emoji": "🎨" },
+        { "instruccion": "Moja la punta del cotonete en jabon liquido", "emoji": "🧴" },
+        { "instruccion": "Toca suavemente el centro de la leche con el cotonete enjabonado. Observa!", "emoji": "✨" },
+        { "instruccion": "Toca diferentes puntos de la leche. Los colores siguen moviendose?", "emoji": "🌀" }
+      ],
+      "observacion": {
+        "pregunta": "Que paso cuando el jabon toco la leche?",
+        "opciones": ["Nada cambio", "Los colores explotaron y se movieron en todas direcciones!", "La leche se puso blanca otra vez", "Los colores se hundieron"]
+      },
+      "explicacion": "La leche tiene grasa (gotitas de grasa flotando en agua). El jabon es un campeon rompiendo grasa: sus moleculas tienen un lado que ama el agua y otro que ama la grasa. Cuando el jabon toca la leche, sus moleculas corren en todas direcciones buscando grasa para atrapar. Ese movimiento empuja los colorantes creando la explosion de colores! Por eso el jabon es tan bueno lavando platos grasosos.",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Por que los colores se mueven cuando el jabon toca la leche?",
+          "opciones": ["Por el calor", "Porque el jabon rompe la grasa de la leche y sus moleculas se mueven", "Por la gravedad"],
+          "respuesta": "Porque el jabon rompe la grasa de la leche y sus moleculas se mueven"
+        },
+        {
+          "tipo": "true-or-false",
+          "pregunta": "La leche contiene gotitas de grasa",
+          "respuesta": true
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Por que el jabon es bueno para lavar platos grasosos?",
+          "opciones": ["Porque huele bien", "Porque sus moleculas atrapan la grasa", "Porque es liquido"],
+          "respuesta": "Porque sus moleculas atrapan la grasa"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "id": "C0-03_juego-de-texturas",
+  "titulo": "El Juego de las Texturas",
+  "materia": "ciencias",
+  "nivel": "C0-03",
+  "tema": "texturas",
+  "misiones": [
+    {
+      "id": "exp-texturas-01",
+      "tipo": "experimento-guia",
+      "titulo": "El Juego de las Texturas",
+      "emoji": "🤚",
+      "instruccion": "Vamos a tocar muchas cosas y sentir si son suaves, rugosas, lisas o asperas!",
+      "tema": "texturas",
+      "materiales": ["Algodon o peluche", "Lija (papel de lija)", "Esponja", "Piedra lisa", "Tela suave (como terciopelo o cobija)", "Una bolsa opaca para no ver adentro"],
+      "materiales_emoji": ["☁️", "📋", "🧽", "🪨", "🧣", "👜"],
+      "prediccion": {
+        "pregunta": "Podras adivinar que cosa es solo tocandola sin verla?",
+        "opciones": ["Si!", "No se..."]
+      },
+      "pasos": [
+        { "instruccion": "Toca cada objeto con los ojos abiertos. Di como se siente: suave, aspero, liso?", "emoji": "👀" },
+        { "instruccion": "Ahora cierra los ojos (o usa la bolsa). Papa te da un objeto. Adivina cual es!", "emoji": "🙈" },
+        { "instruccion": "Toca otro objeto con los ojos cerrados. Cual es?", "emoji": "✋" }
+      ],
+      "observacion": {
+        "pregunta": "Pudiste adivinar los objetos solo tocandolos?",
+        "opciones": ["Si, los adivine!", "Algunos si y algunos no"]
+      },
+      "explicacion": "Tus manos pueden sentir como son las cosas. Suave como el algodon, aspero como la lija, liso como la piedra. Eso se llama TEXTURA. Tus dedos tienen muchos sensores que mandan mensajes a tu cerebro. Por eso puedes saber que estas tocando aunque no lo veas!",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Que es suave?",
+          "opciones": ["La lija", "El algodon"],
+          "respuesta": "El algodon"
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Que es aspero?",
+          "opciones": ["La lija", "La tela suave"],
+          "respuesta": "La lija"
+        }
+      ]
+    }
+  ]
+}

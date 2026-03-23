@@ -26,6 +26,7 @@ import ImagePicker from './tipos/ImagePicker';
 import WordScramble from './tipos/WordScramble';
 import ListenAndType from './tipos/ListenAndType';
 import MiniStory from './tipos/MiniStory';
+import ExperimentoGuia from './tipos/ExperimentoGuia';
 const PianoPrompter = React.lazy(() => import('./tipos/PianoPrompter'));
 import './MisionRenderer.css';
 
@@ -333,6 +334,16 @@ const MisionRenderer = ({
       case 'mini-story':
         return (
           <MiniStory
+            key={mision.id}
+            mision={mision}
+            onCompletar={onCompletar}
+          />
+        );
+
+      // === Ciencias ===
+      case 'experimento-guia':
+        return (
+          <ExperimentoGuia
             key={mision.id}
             mision={mision}
             onCompletar={onCompletar}

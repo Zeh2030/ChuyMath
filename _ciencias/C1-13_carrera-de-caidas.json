@@ -1,0 +1,54 @@
+{
+  "id": "C1-13_carrera-de-caidas",
+  "titulo": "Carrera de Caidas",
+  "materia": "ciencias",
+  "nivel": "C1-13",
+  "tema": "gravedad",
+  "misiones": [
+    {
+      "id": "exp-gravedad-01",
+      "tipo": "experimento-guia",
+      "titulo": "Carrera de Caidas",
+      "emoji": "⬇️",
+      "instruccion": "Que cae mas rapido: algo pesado o algo ligero? Vamos a averiguarlo!",
+      "tema": "gravedad",
+      "materiales": ["Pelota de tenis o similar", "Hoja de papel", "Otra hoja de papel hecha bolita", "Zapato", "Pluma o pluma de ave (o servilleta abierta)"],
+      "materiales_emoji": ["🎾", "📄", "📄", "👟", "🪶"],
+      "prediccion": {
+        "pregunta": "Si sueltas una pelota y una hoja de papel al mismo tiempo desde la misma altura, cual llega primero al piso?",
+        "opciones": ["La pelota porque pesa mas", "La hoja porque es mas ligera", "Llegan al mismo tiempo", "Ninguna cae"]
+      },
+      "pasos": [
+        { "instruccion": "Ponte de pie y levanta una pelota en una mano y una hoja abierta en la otra, a la misma altura", "emoji": "🙌" },
+        { "instruccion": "Sueltalas al mismo tiempo. Cual llego primero al piso?", "emoji": "⬇️" },
+        { "instruccion": "Ahora haz una bolita apretada con otra hoja de papel", "emoji": "✊" },
+        { "instruccion": "Suelta la pelota y la bolita de papel al mismo tiempo. Cual llego primero?", "emoji": "⬇️" },
+        { "instruccion": "Suelta el zapato y la bolita de papel. Cual llego primero?", "emoji": "👟" }
+      ],
+      "observacion": {
+        "pregunta": "Que paso con la pelota y la bolita de papel?",
+        "opciones": ["La pelota llego mucho antes", "Llegaron casi al mismo tiempo!", "La bolita de papel llego primero", "Ninguna cayo"]
+      },
+      "explicacion": "La gravedad jala TODO hacia abajo con la misma fuerza, sin importar cuanto pese. Entonces por que la hoja abierta cae mas lento? Por el AIRE! La hoja abierta tiene mucha superficie y el aire la frena (eso se llama resistencia del aire). Cuando la haces bolita, tiene menos superficie y el aire la frena menos, por eso cae casi igual que la pelota. Si no hubiera aire (como en la Luna), todo caeria exactamente igual de rapido!",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Por que la hoja abierta cae mas lento que la pelota?",
+          "opciones": ["Porque pesa menos", "Por la resistencia del aire", "Porque la gravedad no le afecta"],
+          "respuesta": "Por la resistencia del aire"
+        },
+        {
+          "tipo": "true-or-false",
+          "pregunta": "En la Luna (sin aire), una pluma y una pelota caerian al mismo tiempo",
+          "respuesta": true
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "La gravedad es una fuerza que...",
+          "opciones": ["Empuja las cosas hacia arriba", "Jala las cosas hacia abajo", "Mueve las cosas de lado"],
+          "respuesta": "Jala las cosas hacia abajo"
+        }
+      ]
+    }
+  ]
+}

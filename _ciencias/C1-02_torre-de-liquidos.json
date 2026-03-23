@@ -1,0 +1,54 @@
+{
+  "id": "C1-02_torre-de-liquidos",
+  "titulo": "La Torre de Liquidos",
+  "materia": "ciencias",
+  "nivel": "C1-02",
+  "tema": "densidad",
+  "misiones": [
+    {
+      "id": "exp-torre-01",
+      "tipo": "experimento-guia",
+      "titulo": "La Torre de Liquidos",
+      "emoji": "🏗️",
+      "instruccion": "Vamos a apilar liquidos uno encima de otro! Parece magia pero es ciencia.",
+      "tema": "densidad",
+      "materiales": ["Miel o jarabe", "Agua (con colorante azul)", "Aceite vegetal", "Vaso transparente alto", "Colorante azul"],
+      "materiales_emoji": ["🍯", "💧", "🫒", "🥛", "🔵"],
+      "prediccion": {
+        "pregunta": "Si viertes miel, agua y aceite en un vaso, que crees que pase?",
+        "opciones": ["Se mezclan todos", "Se separan en capas", "Explotan", "Se convierten en hielo"]
+      },
+      "pasos": [
+        { "instruccion": "Vierte miel o jarabe en el fondo del vaso (llena un tercio)", "emoji": "🍯" },
+        { "instruccion": "Agrega unas gotas de colorante azul al agua y mezcla", "emoji": "🔵" },
+        { "instruccion": "Vierte el agua con colorante DESPACIO por la pared del vaso", "emoji": "💧" },
+        { "instruccion": "Vierte el aceite vegetal DESPACIO por la pared del vaso", "emoji": "🫒" },
+        { "instruccion": "Observa las capas que se forman. Espera 1 minuto sin mover el vaso", "emoji": "👀" }
+      ],
+      "observacion": {
+        "pregunta": "Que observaste en el vaso?",
+        "opciones": ["Todo se mezclo", "Se formaron 3 capas separadas", "Solo se separaron 2 liquidos", "Los liquidos desaparecieron"]
+      },
+      "explicacion": "Cada liquido tiene una densidad diferente. La densidad es que tan pesado es algo comparado con su tamanio. La miel es la mas densa (pesada), por eso se queda abajo. El agua es menos densa que la miel pero mas que el aceite, por eso queda en medio. El aceite es el menos denso, por eso flota arriba de todo!",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Cual liquido es el mas denso (pesado)?",
+          "opciones": ["Aceite", "Agua", "Miel"],
+          "respuesta": "Miel"
+        },
+        {
+          "tipo": "true-or-false",
+          "pregunta": "El aceite flota sobre el agua porque es menos denso",
+          "respuesta": true
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "La densidad nos dice...",
+          "opciones": ["Que tan caliente es algo", "Que tan pesado es algo comparado con su tamanio", "De que color es un liquido"],
+          "respuesta": "Que tan pesado es algo comparado con su tamanio"
+        }
+      ]
+    }
+  ]
+}

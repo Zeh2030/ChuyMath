@@ -1,0 +1,54 @@
+{
+  "id": "C1-17_flores-que-cambian-de-color",
+  "titulo": "Flores que Cambian de Color",
+  "materia": "ciencias",
+  "nivel": "C1-17",
+  "tema": "capilaridad",
+  "misiones": [
+    {
+      "id": "exp-flores-01",
+      "tipo": "experimento-guia",
+      "titulo": "Flores que Cambian de Color",
+      "emoji": "🌸",
+      "instruccion": "Vamos a hacer que flores blancas cambien de color solo con agua y colorante!",
+      "tema": "capilaridad",
+      "materiales": ["2-3 flores blancas (claveles o margaritas) o tallos de apio", "Vasos con agua", "Colorantes de comida (rojo, azul)", "Tijeras"],
+      "materiales_emoji": ["🌼", "🥛", "🎨", "✂️"],
+      "prediccion": {
+        "pregunta": "Si pones una flor blanca en agua con colorante azul, que crees que pase despues de unas horas?",
+        "opciones": ["La flor se queda blanca", "Los petalos se ponen azules!", "La flor se muere", "Solo el tallo cambia de color"]
+      },
+      "pasos": [
+        { "instruccion": "Llena cada vaso con agua y agrega bastante colorante (que quede bien oscuro)", "emoji": "🎨" },
+        { "instruccion": "Corta el tallo de cada flor en diagonal con las tijeras (pide ayuda a un adulto)", "emoji": "✂️" },
+        { "instruccion": "Pon una flor en el vaso con colorante rojo y otra en el azul", "emoji": "🌼" },
+        { "instruccion": "Espera unas horas (4-6 horas funciona mejor). Revisa cada hora!", "emoji": "⏰" },
+        { "instruccion": "Observa los petalos. Han cambiado de color?", "emoji": "👀" }
+      ],
+      "observacion": {
+        "pregunta": "Que paso con los petalos de las flores despues de unas horas?",
+        "opciones": ["Se quedaron blancos", "Tomaron el color del agua con colorante!", "Se cayeron", "Solo el tallo cambio"]
+      },
+      "explicacion": "Las plantas absorben agua por el tallo a traves de tubitos muy delgados llamados vasos de XILEMA. El agua sube por esos tubitos hasta los petalos, como cuando sube agua por un popote muy delgado. Este fenomeno se llama CAPILARIDAD. Como el agua tenia colorante, el color tambien subio hasta los petalos y los tino! Asi es como las plantas reales absorben agua y nutrientes del suelo para alimentarse.",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Como se llaman los tubitos por donde sube el agua en las plantas?",
+          "opciones": ["Raices", "Xilema", "Petalos"],
+          "respuesta": "Xilema"
+        },
+        {
+          "tipo": "true-or-false",
+          "pregunta": "La capilaridad es la capacidad del agua de subir por tubos muy delgados",
+          "respuesta": true
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Por que los petalos cambiaron de color?",
+          "opciones": ["Porque el sol los tino", "Porque el agua con colorante subio por el tallo hasta los petalos", "Porque el aire tiene color"],
+          "respuesta": "Porque el agua con colorante subio por el tallo hasta los petalos"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "id": "C0-10_bichos-del-jardin",
+  "titulo": "Bichos del Jardin",
+  "materia": "ciencias",
+  "nivel": "C0-10",
+  "tema": "tierra",
+  "misiones": [
+    {
+      "id": "exp-bichos-01",
+      "tipo": "experimento-guia",
+      "titulo": "Bichos del Jardin",
+      "emoji": "🐛",
+      "instruccion": "Vamos al jardin a buscar bichitos y ver donde viven!",
+      "tema": "tierra",
+      "materiales": ["Jardin, parque o maceta grande", "Lupa (si tienes, sino con los ojos esta bien)", "Una hoja de papel para poner lo que encuentres"],
+      "materiales_emoji": ["🌿", "🔍", "📄"],
+      "prediccion": {
+        "pregunta": "Cuantos bichitos crees que viven en el jardin?",
+        "opciones": ["Muchos!", "Poquitos"]
+      },
+      "pasos": [
+        { "instruccion": "Sal al jardin o mira en una maceta. Busca bichitos en las hojas!", "emoji": "🍃" },
+        { "instruccion": "Mueve una piedra con cuidado. Que hay debajo?", "emoji": "🪨" },
+        { "instruccion": "Mira la tierra de cerca. Ves hormigas, lombrices o cochinillas?", "emoji": "🐜" }
+      ],
+      "observacion": {
+        "pregunta": "Que bichitos encontraste?",
+        "opciones": ["Hormigas, lombrices y otros bichitos!", "No encontre ningun bicho"]
+      },
+      "explicacion": "Debajo de las piedras y en la tierra viven muchos animalitos: hormigas, lombrices, cochinillas, escarabajos y mas! Aunque son chiquitos, son muy importantes. Las lombrices hacen tuneles que ayudan a la tierra a tener aire. Las hormigas limpian restos de comida. Cada bichito tiene un trabajo que ayuda al jardin a estar sano!",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Donde viven las lombrices?",
+          "opciones": ["En la tierra", "En el cielo"],
+          "respuesta": "En la tierra"
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Que hacen las lombrices?",
+          "opciones": ["Ayudan a la tierra", "Comen piedras"],
+          "respuesta": "Ayudan a la tierra"
+        }
+      ]
+    }
+  ]
+}

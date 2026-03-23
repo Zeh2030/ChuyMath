@@ -1,0 +1,62 @@
+{
+  "id": "C1-03_que-atrae-un-iman",
+  "titulo": "Que Atrae un Iman?",
+  "materia": "ciencias",
+  "nivel": "C1-03",
+  "tema": "magnetismo",
+  "misiones": [
+    {
+      "id": "exp-iman-01",
+      "tipo": "experimento-guia",
+      "titulo": "Que Atrae un Iman?",
+      "emoji": "🧲",
+      "instruccion": "Vamos a descubrir que objetos son atraidos por un iman y cuales no!",
+      "tema": "magnetismo",
+      "materiales": ["Un iman (de refrigerador sirve)", "Clip metalico", "Moneda", "Boton de plastico", "Cuchara de metal", "Pedazo de papel", "Lapiz de madera", "Llave"],
+      "materiales_emoji": ["🧲", "📎", "🪙", "🔘", "🥄", "📄", "✏️", "🔑"],
+      "prediccion": {
+        "pregunta": "Cuantos de los 7 objetos crees que seran atraidos por el iman?",
+        "opciones": ["Todos (7)", "La mayoria (4-6)", "Algunos (2-3)", "Ninguno (0)"]
+      },
+      "pasos": [
+        { "instruccion": "Coloca todos los objetos sobre la mesa, separados entre si", "emoji": "🪑" },
+        { "instruccion": "Acerca el iman al clip metalico. Se pega o no?", "emoji": "📎" },
+        { "instruccion": "Acerca el iman a la moneda. Se pega o no?", "emoji": "🪙" },
+        { "instruccion": "Acerca el iman al boton de plastico. Se pega o no?", "emoji": "🔘" },
+        { "instruccion": "Acerca el iman a la cuchara de metal. Se pega o no?", "emoji": "🥄" },
+        { "instruccion": "Acerca el iman al papel. Se pega o no?", "emoji": "📄" },
+        { "instruccion": "Acerca el iman al lapiz de madera. Se pega o no?", "emoji": "✏️" },
+        { "instruccion": "Acerca el iman a la llave. Se pega o no?", "emoji": "🔑" }
+      ],
+      "observacion": {
+        "pregunta": "Que objetos fueron atraidos por el iman?",
+        "opciones": [
+          "Solo los de metal (clip, cuchara, llave)",
+          "Todos los objetos",
+          "Ninguno de los objetos",
+          "Solo el papel y el plastico"
+        ]
+      },
+      "explicacion": "Los imanes atraen objetos hechos de ciertos metales, especialmente hierro, niquel y cobalto. Por eso el clip, la cuchara de metal y la llave se pegaron al iman. El papel, la madera y el plastico no son magneticos. Dato curioso: no todas las monedas son magneticas, depende del metal con el que estan hechas!",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Cual de estos materiales es atraido por un iman?",
+          "opciones": ["Madera", "Plastico", "Hierro"],
+          "respuesta": "Hierro"
+        },
+        {
+          "tipo": "true-or-false",
+          "pregunta": "Un iman puede atraer objetos de plastico",
+          "respuesta": false
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Por que el clip se pega al iman?",
+          "opciones": ["Porque es pequenio", "Porque esta hecho de metal magnetico", "Porque tiene electricidad"],
+          "respuesta": "Porque esta hecho de metal magnetico"
+        }
+      ]
+    }
+  ]
+}

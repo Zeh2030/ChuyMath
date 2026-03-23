@@ -1,0 +1,47 @@
+{
+  "id": "C0-02_flota-o-se-hunde",
+  "titulo": "Flota o Se Hunde?",
+  "materia": "ciencias",
+  "nivel": "C0-02",
+  "tema": "agua",
+  "misiones": [
+    {
+      "id": "exp-flota-mini-01",
+      "tipo": "experimento-guia",
+      "titulo": "Flota o Se Hunde?",
+      "emoji": "🛟",
+      "instruccion": "Vamos a poner cosas en el agua y ver que pasa!",
+      "tema": "agua",
+      "materiales": ["Tina con agua", "Corcho o tapadera", "Piedra pequena", "Cuchara de metal", "Hoja de arbol", "Juguete de plastico"],
+      "materiales_emoji": ["🫧", "🪵", "🪨", "🥄", "🍃", "🧸"],
+      "prediccion": {
+        "pregunta": "La piedra flota o se hunde?",
+        "opciones": ["Flota!", "Se hunde!"]
+      },
+      "pasos": [
+        { "instruccion": "Pon la piedra en el agua. Se hundio o floto?", "emoji": "🪨" },
+        { "instruccion": "Pon el corcho en el agua. Se hundio o floto?", "emoji": "🪵" },
+        { "instruccion": "Pon la hoja en el agua. Se hundio o floto?", "emoji": "🍃" }
+      ],
+      "observacion": {
+        "pregunta": "Que cosas flotaron?",
+        "opciones": ["El corcho y la hoja flotaron!", "Todo se hundio"]
+      },
+      "explicacion": "Las cosas ligeras como el corcho y la hoja flotan encima del agua. Las cosas pesadas como la piedra y la cuchara se van al fondo. Flotar o hundirse depende de que tan pesado es algo comparado con el agua.",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Que flota en el agua?",
+          "opciones": ["La piedra", "El corcho"],
+          "respuesta": "El corcho"
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Que se hunde en el agua?",
+          "opciones": ["La hoja", "La piedra"],
+          "respuesta": "La piedra"
+        }
+      ]
+    }
+  ]
+}

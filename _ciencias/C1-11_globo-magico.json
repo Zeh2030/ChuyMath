@@ -1,0 +1,54 @@
+{
+  "id": "C1-11_globo-magico",
+  "titulo": "El Globo Magico",
+  "materia": "ciencias",
+  "nivel": "C1-11",
+  "tema": "electricidad-estatica",
+  "misiones": [
+    {
+      "id": "exp-globo-01",
+      "tipo": "experimento-guia",
+      "titulo": "El Globo Magico",
+      "emoji": "🎈",
+      "instruccion": "Vamos a hacer que un globo atraiga cosas sin tocarlascomo si fuera magia!",
+      "tema": "electricidad-estatica",
+      "materiales": ["Globo inflado", "Papelitos pequenos (confeti o papel cortado)", "Tu cabello o un sueter de lana", "Lata de aluminio vacia (opcional)"],
+      "materiales_emoji": ["🎈", "📄", "💇", "🥫"],
+      "prediccion": {
+        "pregunta": "Que crees que pase si frotas un globo en tu cabello y lo acercas a papelitos?",
+        "opciones": ["No pasa nada", "Los papelitos saltan hacia el globo", "El globo explota", "Los papelitos se alejan"]
+      },
+      "pasos": [
+        { "instruccion": "Corta papelitos muy pequenos y ponlos sobre la mesa", "emoji": "✂️" },
+        { "instruccion": "Infla el globo y amarralo", "emoji": "🎈" },
+        { "instruccion": "Frota el globo en tu cabello o en un sueter de lana por 10 segundos", "emoji": "💇" },
+        { "instruccion": "Acerca el globo despacio a los papelitos. Que pasa?", "emoji": "✨" },
+        { "instruccion": "Extra: acerca el globo a una lata de aluminio acostada. Empujala sin tocarla!", "emoji": "🥫" }
+      ],
+      "observacion": {
+        "pregunta": "Que paso cuando acercaste el globo a los papelitos?",
+        "opciones": ["No paso nada", "Los papelitos saltaron y se pegaron al globo", "Los papelitos se alejaron", "El globo se desinflo"]
+      },
+      "explicacion": "Cuando frotas el globo en tu cabello, el globo roba pequenas particulas llamadas ELECTRONES del cabello. Eso le da al globo una carga electrica negativa. Los papelitos no tienen esa carga, asi que el globo los atrae, como un iman pero con electricidad! Esto se llama ELECTRICIDAD ESTATICA. Es la misma razon por la que a veces te da un toquecito cuando tocas algo de metal.",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Como se llama este tipo de electricidad?",
+          "opciones": ["Electricidad magnetica", "Electricidad estatica", "Electricidad solar"],
+          "respuesta": "Electricidad estatica"
+        },
+        {
+          "tipo": "true-or-false",
+          "pregunta": "Al frotar el globo en tu cabello, el globo gana electrones",
+          "respuesta": true
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Por que los papelitos saltan hacia el globo?",
+          "opciones": ["Por el viento", "Por la carga electrica del globo", "Porque el globo pesa mucho"],
+          "respuesta": "Por la carga electrica del globo"
+        }
+      ]
+    }
+  ]
+}

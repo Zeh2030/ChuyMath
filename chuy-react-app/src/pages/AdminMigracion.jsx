@@ -46,6 +46,23 @@ const AdminMigracion = () => {
     }
   };
 
+  // Función para migrar contenido de ciencias (misma estructura que aventura, colección separada)
+  const migrarCiencias = async (cienciasData) => {
+    try {
+      const cienciasRef = doc(db, 'ciencias', cienciasData.id);
+      await setDoc(cienciasRef, {
+        titulo: cienciasData.titulo,
+        misiones: cienciasData.misiones || [],
+        ...cienciasData,
+        materia: 'ciencias'
+      });
+      return { exito: true, id: cienciasData.id, titulo: cienciasData.titulo };
+    } catch (error) {
+      console.error(`Error al migrar ciencias ${cienciasData.id}:`, error);
+      return { exito: false, id: cienciasData.id, error: error.message };
+    }
+  };
+
   // Función para migrar contenido de piano (misma estructura que aventura, colección separada)
   const migrarPiano = async (pianoData) => {
     try {
@@ -146,6 +163,9 @@ const AdminMigracion = () => {
       } else if (coleccionDestino === 'piano') {
         console.log(`Migrando a colección 'piano' (estructura anidada)...`);
         resultado = await migrarPiano(data);
+      } else if (coleccionDestino === 'ciencias') {
+        console.log(`Migrando a colección 'ciencias' (estructura anidada)...`);
+        resultado = await migrarCiencias(data);
       } else {
         console.log(`Migrando a colección 'simulacros' (estructura plana)...`);
         resultado = await migrarSimulacro(data);
@@ -265,6 +285,17 @@ const AdminMigracion = () => {
                 />
                 <strong>🎹 Piano</strong>
               </label>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '1rem', padding: '10px 15px', background: coleccionDestino === 'ciencias' ? '#e8f5e9' : '#fff', borderRadius: '8px', border: coleccionDestino === 'ciencias' ? '2px solid #43a047' : '1px solid #ddd' }}>
+                <input
+                  type="radio"
+                  name="coleccion"
+                  value="ciencias"
+                  checked={coleccionDestino === 'ciencias'}
+                  onChange={() => setColeccionDestino('ciencias')}
+                  style={{ width: '20px', height: '20px' }}
+                />
+                <strong>🔬 Ciencias</strong>
+              </label>
             </div>
             <p style={{ marginTop: '15px', fontSize: '0.9rem', color: '#7f8c8d', background: '#f8f9fa', padding: '10px', borderRadius: '5px' }}>
               {coleccionDestino === 'aventuras'
@@ -273,6 +304,8 @@ const AdminMigracion = () => {
                 ? '🇬🇧 Inglés: Colección separada para contenido de inglés. Misma estructura que Aventuras (misiones > retos).'
                 : coleccionDestino === 'piano'
                 ? '🎹 Piano: Colección para partituras. Misma estructura anidada (misiones con tipo piano-prompter).'
+                : coleccionDestino === 'ciencias'
+                ? '🔬 Ciencias: Colección para experimentos. Misma estructura anidada (misiones con tipo experimento-guia).'
                 : '🏆 Simulacros: Aplana la estructura para crear una lista de problemas. Ideal para exámenes y bancos de preguntas.'}
             </p>
           </div>
@@ -312,7 +345,7 @@ const AdminMigracion = () => {
           >
             {migrando
               ? 'Migrando...'
-              : `Migrar a ${coleccionDestino === 'aventuras' ? '🌟 Aventuras' : coleccionDestino === 'ingles' ? '🇬🇧 Inglés' : coleccionDestino === 'piano' ? '🎹 Piano' : '🏆 Simulacros'}`}
+              : `Migrar a ${coleccionDestino === 'aventuras' ? '🌟 Aventuras' : coleccionDestino === 'ingles' ? '🇬🇧 Inglés' : coleccionDestino === 'piano' ? '🎹 Piano' : coleccionDestino === 'ciencias' ? '🔬 Ciencias' : '🏆 Simulacros'}`}
           </button>
 
           {resultado && (

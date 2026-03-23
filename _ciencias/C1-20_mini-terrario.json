@@ -1,0 +1,55 @@
+{
+  "id": "C1-20_mini-terrario",
+  "titulo": "Mini Terrario",
+  "materia": "ciencias",
+  "nivel": "C1-20",
+  "tema": "ecosistema",
+  "misiones": [
+    {
+      "id": "exp-terrario-01",
+      "tipo": "experimento-guia",
+      "titulo": "Mini Terrario",
+      "emoji": "🌿",
+      "instruccion": "Vamos a crear un mini mundo con plantas dentro de un frasco! Es un ecosistema en miniatura.",
+      "tema": "ecosistema",
+      "materiales": ["Frasco grande de vidrio con tapa (o botella de plastico cortada)", "Piedras pequenas o grava", "Carbon activado (de acuario, opcional)", "Tierra para macetas", "Plantitas pequenas (suculentas, musgo, o plantitas de jardin)", "Agua", "Cuchara"],
+      "materiales_emoji": ["🫙", "🪨", "⚫", "🟤", "🌱", "💧", "🥄"],
+      "prediccion": {
+        "pregunta": "Si cierras un frasco con tierra y plantas y le echas agua, que crees que pase despues de una semana?",
+        "opciones": ["Las plantas se mueren", "Las plantas siguen vivas porque reciclan el agua!", "El agua desaparece", "La tierra se seca"]
+      },
+      "pasos": [
+        { "instruccion": "Pon una capa de piedras en el fondo del frasco (2-3 cm). Esto es el drenaje", "emoji": "🪨" },
+        { "instruccion": "Si tienes carbon activado, pon una capa delgada encima de las piedras", "emoji": "⚫" },
+        { "instruccion": "Agrega tierra para macetas (5-7 cm de profundidad)", "emoji": "🟤" },
+        { "instruccion": "Planta las plantitas en la tierra. Haz hoyitos con el dedo o la cuchara", "emoji": "🌱" },
+        { "instruccion": "Riega con un poquito de agua (que la tierra quede humeda pero no encharcada)", "emoji": "💧" },
+        { "instruccion": "Cierra el frasco con la tapa y ponlo donde le de luz indirecta (no sol directo)", "emoji": "☀️" }
+      ],
+      "observacion": {
+        "pregunta": "Que observas dentro del frasco despues de unos dias?",
+        "opciones": ["Las plantas se murieron", "Se forman gotitas de agua en las paredes del frasco y las plantas estan verdes!", "No paso nada", "La tierra se seco por completo"]
+      },
+      "explicacion": "Acabas de crear un ECOSISTEMA cerrado! El agua que pusiste se recicla sola: las plantas la absorben, luego la sueltan por sus hojas (TRANSPIRACION), el vapor se condensa en las paredes del frasco y baja otra vez a la tierra como si fuera lluvia. Las plantas hacen FOTOSINTESIS con la luz: toman CO2 y producen oxigeno. Y de noche respiran oxigeno y producen CO2. Es un ciclo que se repite solo! La Tierra funciona parecido: es un terrario gigante.",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Por que las plantas del terrario cerrado no necesitan que las riegues?",
+          "opciones": ["Porque no necesitan agua", "Porque el agua se recicla dentro del frasco", "Porque las piedras les dan agua"],
+          "respuesta": "Porque el agua se recicla dentro del frasco"
+        },
+        {
+          "tipo": "true-or-false",
+          "pregunta": "Las gotitas en las paredes del frasco son agua que las plantas soltaron por sus hojas",
+          "respuesta": true
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Un terrario es un ejemplo de...",
+          "opciones": ["Un acuario", "Un ecosistema en miniatura", "Una maceta normal"],
+          "respuesta": "Un ecosistema en miniatura"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "id": "C0-09_adivina-el-olor",
+  "titulo": "Adivina el Olor",
+  "materia": "ciencias",
+  "nivel": "C0-09",
+  "tema": "olores",
+  "misiones": [
+    {
+      "id": "exp-olores-01",
+      "tipo": "experimento-guia",
+      "titulo": "Adivina el Olor",
+      "emoji": "👃",
+      "instruccion": "Vamos a usar tu nariz para adivinar que cosa estas oliendo!",
+      "tema": "olores",
+      "materiales": ["Canela en polvo", "Limon cortado", "Cafe molido", "Vainilla", "Vinagre", "5 vasos o frascos pequenos", "Papel aluminio o tela para tapar"],
+      "materiales_emoji": ["🟤", "🍋", "☕", "🟡", "🫗", "🥛", "🫕"],
+      "prediccion": {
+        "pregunta": "Podras adivinar que hay en los vasos solo oliendolos?",
+        "opciones": ["Si puedo!", "No se..."]
+      },
+      "pasos": [
+        { "instruccion": "Papa pone cada cosa en un vaso y los tapa para que no veas que hay adentro", "emoji": "🫙" },
+        { "instruccion": "Cierra los ojos. Papa te acerca un vaso. Huele y adivina que es!", "emoji": "👃" },
+        { "instruccion": "Huele todos los vasos y trata de adivinarlos. Luego destapa para ver si acertaste!", "emoji": "🎉" }
+      ],
+      "observacion": {
+        "pregunta": "Cuantos olores adivinaste?",
+        "opciones": ["Casi todos!", "Algunos fueron dificiles"]
+      },
+      "explicacion": "Tu nariz es super poderosa! Puede reconocer miles de olores diferentes. Adentro de tu nariz hay sensores diminutos que detectan los olores y le dicen a tu cerebro que estas oliendo. Por eso puedes saber si algo huele a limon, a cafe o a canela sin verlo. Los animales como los perros tienen una nariz todavia mas poderosa que la tuya!",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Con que parte del cuerpo hueles?",
+          "opciones": ["La nariz", "Las manos"],
+          "respuesta": "La nariz"
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Que animal tiene la mejor nariz?",
+          "opciones": ["El perro", "El pez"],
+          "respuesta": "El perro"
+        }
+      ]
+    }
+  ]
+}

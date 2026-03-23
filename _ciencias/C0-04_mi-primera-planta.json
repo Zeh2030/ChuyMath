@@ -1,0 +1,41 @@
+{
+  "id": "C0-04_mi-primera-planta",
+  "titulo": "Mi Primera Planta",
+  "materia": "ciencias",
+  "nivel": "C0-04",
+  "tema": "semillas",
+  "misiones": [
+    {
+      "id": "exp-planta-mini-01",
+      "tipo": "experimento-guia",
+      "titulo": "Mi Primera Planta",
+      "emoji": "🌱",
+      "instruccion": "Vamos a plantar un frijolito y ver como nace una planta!",
+      "tema": "semillas",
+      "materiales": ["Frijol crudo", "Algodon", "Vaso transparente", "Agua"],
+      "materiales_emoji": ["🫘", "☁️", "🥛", "💧"],
+      "prediccion": {
+        "pregunta": "Que saldra del frijol si le pones agua?",
+        "opciones": ["Una plantita!", "Nada"]
+      },
+      "pasos": [
+        { "instruccion": "Pon algodon mojado en el vaso", "emoji": "☁️" },
+        { "instruccion": "Pon el frijol encima del algodon", "emoji": "🫘" },
+        { "instruccion": "Ponlo donde le de luz. Cada dia pon un poquito de agua para que no se seque", "emoji": "☀️" }
+      ],
+      "observacion": {
+        "pregunta": "Que le paso al frijol despues de unos dias?",
+        "opciones": ["Le salio una raiz y un tallito verde!", "No paso nada"]
+      },
+      "explicacion": "La semilla del frijol tiene una plantita dormida adentro. Cuando le das agua y calor, la plantita despierta y empieza a crecer. Primero sale la raiz que busca agua, y despues el tallo verde que busca la luz del sol. Las plantas necesitan agua y sol para crecer!",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Que necesita una semilla para crecer?",
+          "opciones": ["Agua y sol", "Juguetes"],
+          "respuesta": "Agua y sol"
+        }
+      ]
+    }
+  ]
+}

@@ -5,6 +5,7 @@ const materias = [
   { id: 'matematicas', emoji: '🔢', label: 'Mates', className: 'materia-mates' },
   { id: 'ingles', emoji: '🇬🇧', label: 'English', className: 'materia-english' },
   { id: 'piano', emoji: '🎹', label: 'Piano', className: 'materia-piano' },
+  { id: 'ciencias', emoji: '🔬', label: 'Ciencias', className: 'materia-ciencias' },
 ];
 
 const MateriaToggle = ({ materia, onChange }) => {

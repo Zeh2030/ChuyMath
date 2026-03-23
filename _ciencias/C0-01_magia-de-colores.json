@@ -1,0 +1,47 @@
+{
+  "id": "C0-01_magia-de-colores",
+  "titulo": "Magia de Colores",
+  "materia": "ciencias",
+  "nivel": "C0-01",
+  "tema": "colores",
+  "misiones": [
+    {
+      "id": "exp-colores-01",
+      "tipo": "experimento-guia",
+      "titulo": "Magia de Colores",
+      "emoji": "🎨",
+      "instruccion": "Vamos a mezclar colores y ver que colores nuevos aparecen!",
+      "tema": "colores",
+      "materiales": ["Pintura roja", "Pintura azul", "Pintura amarilla", "3 platos o tapas", "Pinceles o deditos"],
+      "materiales_emoji": ["🔴", "🔵", "🟡", "🍽️", "🖌️"],
+      "prediccion": {
+        "pregunta": "Si mezclas rojo con amarillo, que color sale?",
+        "opciones": ["Naranja", "Morado"]
+      },
+      "pasos": [
+        { "instruccion": "Pon un poco de pintura roja y amarilla en un plato. Mezcla con el dedo!", "emoji": "🟠" },
+        { "instruccion": "Pon pintura roja y azul en otro plato. Mezcla!", "emoji": "🟣" },
+        { "instruccion": "Pon pintura azul y amarilla en el ultimo plato. Mezcla!", "emoji": "🟢" }
+      ],
+      "observacion": {
+        "pregunta": "Que colores nuevos aparecieron?",
+        "opciones": ["Naranja, morado y verde!", "No aparecio ningun color nuevo"]
+      },
+      "explicacion": "Los colores se pueden mezclar para crear colores nuevos. Rojo y amarillo hacen naranja. Rojo y azul hacen morado. Azul y amarillo hacen verde. A los colores rojo, azul y amarillo les decimos colores primarios porque con ellos puedes hacer casi todos los demas colores!",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Que color sale si mezclas azul y amarillo?",
+          "opciones": ["Verde", "Morado"],
+          "respuesta": "Verde"
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Que color sale si mezclas rojo y azul?",
+          "opciones": ["Naranja", "Morado"],
+          "respuesta": "Morado"
+        }
+      ]
+    }
+  ]
+}

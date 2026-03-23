@@ -1,0 +1,47 @@
+{
+  "id": "C0-07_fabrica-de-burbujas",
+  "titulo": "Fabrica de Burbujas",
+  "materia": "ciencias",
+  "nivel": "C0-07",
+  "tema": "burbujas",
+  "misiones": [
+    {
+      "id": "exp-burbujas-01",
+      "tipo": "experimento-guia",
+      "titulo": "Fabrica de Burbujas",
+      "emoji": "🫧",
+      "instruccion": "Vamos a hacer burbujas gigantes y chiquitas!",
+      "tema": "burbujas",
+      "materiales": ["Agua", "Jabon liquido para trastes", "Recipiente ancho", "Popote", "Un aro grande (puedes hacerlo con un alambre o limpiapipas)"],
+      "materiales_emoji": ["💧", "🧴", "🥣", "🥤", "⭕"],
+      "prediccion": {
+        "pregunta": "De que forma son las burbujas?",
+        "opciones": ["Redondas!", "Cuadradas"]
+      },
+      "pasos": [
+        { "instruccion": "Mezcla agua con mucho jabon en el recipiente. Revuelve despacio", "emoji": "🧴" },
+        { "instruccion": "Mete el popote en la mezcla y sopla despacito. Salen burbujitas!", "emoji": "🫧" },
+        { "instruccion": "Ahora usa el aro grande y muevelo en el aire. Sale una burbuja gigante!", "emoji": "⭕" }
+      ],
+      "observacion": {
+        "pregunta": "Que forma tienen las burbujas?",
+        "opciones": ["Todas son redondas como pelotitas!", "Tienen diferentes formas"]
+      },
+      "explicacion": "Las burbujas siempre son redondas! No importa que forma tenga el aro, la burbuja se hace bolita. Eso pasa porque el jabon y el agua hacen una peliculita delgada que se estira y siempre busca la forma mas pequena posible, que es la esfera (bolita). Adentro de la burbuja hay aire atrapado!",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "De que forma son las burbujas?",
+          "opciones": ["Redondas", "Cuadradas"],
+          "respuesta": "Redondas"
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Que hay adentro de una burbuja?",
+          "opciones": ["Aire", "Agua"],
+          "respuesta": "Aire"
+        }
+      ]
+    }
+  ]
+}

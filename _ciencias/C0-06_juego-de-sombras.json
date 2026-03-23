@@ -1,0 +1,41 @@
+{
+  "id": "C0-06_juego-de-sombras",
+  "titulo": "Juego de Sombras",
+  "materia": "ciencias",
+  "nivel": "C0-06",
+  "tema": "sombras",
+  "misiones": [
+    {
+      "id": "exp-sombras-01",
+      "tipo": "experimento-guia",
+      "titulo": "Juego de Sombras",
+      "emoji": "👤",
+      "instruccion": "Vamos a jugar con sombras usando una linterna!",
+      "tema": "sombras",
+      "materiales": ["Linterna (del celular sirve)", "Juguetes o figuras", "Tus manos", "Pared blanca o sabana", "Cuarto un poco oscuro"],
+      "materiales_emoji": ["🔦", "🧸", "🤚", "🏠", "🌑"],
+      "prediccion": {
+        "pregunta": "Si pones tu mano frente a la linterna, que aparece en la pared?",
+        "opciones": ["Una sombra de tu mano!", "Nada"]
+      },
+      "pasos": [
+        { "instruccion": "Apaga la luz del cuarto y prende la linterna hacia la pared", "emoji": "🔦" },
+        { "instruccion": "Pon tu mano frente a la linterna. Mira la sombra en la pared!", "emoji": "🤚" },
+        { "instruccion": "Haz figuras con tus manos: un perro, un pajaro, un conejo!", "emoji": "🐕" }
+      ],
+      "observacion": {
+        "pregunta": "Que viste en la pared?",
+        "opciones": ["Sombras de mis manos y juguetes!", "No vi nada"]
+      },
+      "explicacion": "La luz de la linterna viaja en linea recta. Cuando tu mano se pone en el camino, la luz no puede pasar y se forma una sombra al otro lado. La sombra tiene la misma forma que tu mano! Si acercas la mano a la linterna, la sombra se hace mas grande. Si la alejas, se hace chiquita.",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Que necesitas para hacer una sombra?",
+          "opciones": ["Luz y algo que la tape", "Solo agua"],
+          "respuesta": "Luz y algo que la tape"
+        }
+      ]
+    }
+  ]
+}

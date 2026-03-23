@@ -1,0 +1,54 @@
+{
+  "id": "C1-12_carrito-de-globo",
+  "titulo": "El Carrito de Globo",
+  "materia": "ciencias",
+  "nivel": "C1-12",
+  "tema": "fuerza",
+  "misiones": [
+    {
+      "id": "exp-carrito-01",
+      "tipo": "experimento-guia",
+      "titulo": "El Carrito de Globo",
+      "emoji": "🚗",
+      "instruccion": "Vamos a mover un carrito sin tocarlo usando solo el aire de un globo!",
+      "tema": "fuerza",
+      "materiales": ["Carrito de juguete o cajita ligera con ruedas (puedes pegar tapas como ruedas)", "Globo", "Popote", "Cinta adhesiva"],
+      "materiales_emoji": ["🚗", "🎈", "🥤", "📎"],
+      "prediccion": {
+        "pregunta": "Si pegas un globo inflado a un carrito y sueltas el aire, que crees que pase?",
+        "opciones": ["El carrito no se mueve", "El carrito avanza hacia adelante", "El carrito se va hacia arriba", "El globo se pega al piso"]
+      },
+      "pasos": [
+        { "instruccion": "Pega el popote encima del carrito con cinta, apuntando hacia atras", "emoji": "🥤" },
+        { "instruccion": "Infla el globo y sin amarrarlo, estira la boquilla sobre el popote. Sostenlo para que no se escape el aire", "emoji": "🎈" },
+        { "instruccion": "Pon el carrito en el piso o en una mesa lisa", "emoji": "🚗" },
+        { "instruccion": "Suelta el globo y observa que pasa con el carrito!", "emoji": "💨" },
+        { "instruccion": "Intenta de nuevo inflando mas o menos el globo. Cambia la distancia?", "emoji": "📏" }
+      ],
+      "observacion": {
+        "pregunta": "Que paso cuando soltaste el globo?",
+        "opciones": ["El carrito no se movio", "El carrito avanzo mientras el aire salia del globo", "El carrito fue hacia atras", "El globo se salio del popote"]
+      },
+      "explicacion": "El aire sale del globo hacia atras con fuerza. Esa fuerza empuja el carrito hacia ADELANTE. Esto se llama ACCION Y REACCION (la tercera ley de Newton): para cada accion hay una reaccion igual pero en direccion opuesta. Es el mismo principio que usan los cohetes! El combustible sale hacia abajo y el cohete sube hacia arriba.",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "El carrito se mueve por el principio de...",
+          "opciones": ["Gravedad", "Accion y reaccion", "Magnetismo"],
+          "respuesta": "Accion y reaccion"
+        },
+        {
+          "tipo": "true-or-false",
+          "pregunta": "Los cohetes espaciales usan el mismo principio que el carrito de globo",
+          "respuesta": true
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Si el aire sale hacia atras, el carrito va...",
+          "opciones": ["Hacia atras tambien", "Hacia adelante", "Hacia arriba"],
+          "respuesta": "Hacia adelante"
+        }
+      ]
+    }
+  ]
+}

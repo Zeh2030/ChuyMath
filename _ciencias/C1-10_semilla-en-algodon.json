@@ -1,0 +1,54 @@
+{
+  "id": "C1-10_semilla-en-algodon",
+  "titulo": "Semilla en Algodon",
+  "materia": "ciencias",
+  "nivel": "C1-10",
+  "tema": "plantas",
+  "misiones": [
+    {
+      "id": "exp-semilla-01",
+      "tipo": "experimento-guia",
+      "titulo": "Semilla en Algodon",
+      "emoji": "🌱",
+      "instruccion": "Vamos a hacer crecer una planta desde una semilla usando solo algodon y agua!",
+      "tema": "plantas",
+      "materiales": ["3 frijoles o lentejas crudas", "Algodon", "Vaso transparente", "Agua", "Lugar con luz (ventana)"],
+      "materiales_emoji": ["🫘", "☁️", "🥛", "💧", "☀️"],
+      "prediccion": {
+        "pregunta": "Cuantos dias crees que tarde una semilla en empezar a crecer en algodon humedo?",
+        "opciones": ["1 dia", "3 a 5 dias", "2 semanas", "Un mes"]
+      },
+      "pasos": [
+        { "instruccion": "Pon una capa de algodon en el fondo del vaso", "emoji": "☁️" },
+        { "instruccion": "Coloca los 3 frijoles sobre el algodon, separados entre si", "emoji": "🫘" },
+        { "instruccion": "Moja el algodon con agua. Debe estar humedo pero NO inundado", "emoji": "💧" },
+        { "instruccion": "Pon el vaso cerca de una ventana donde le de luz", "emoji": "☀️" },
+        { "instruccion": "Cada dia revisa y agrega un poquito de agua si el algodon se seco. Observa los cambios!", "emoji": "👀" }
+      ],
+      "observacion": {
+        "pregunta": "Despues de unos dias, que observaste?",
+        "opciones": ["No paso nada", "La semilla se abrio y salio una raiz y un tallito", "La semilla se deshizo", "El algodon se puso verde"]
+      },
+      "explicacion": "Las semillas tienen todo lo necesario para crear una nueva planta. Cuando les das agua y calor, la semilla se activa: primero sale la RAIZ hacia abajo (busca agua) y luego el TALLO hacia arriba (busca luz). Esto se llama GERMINACION. La semilla no necesita tierra para germinar, solo agua y temperatura adecuada. Pero para seguir creciendo grande y fuerte si necesitara tierra con nutrientes y luz del sol para hacer FOTOSINTESIS.",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Como se llama cuando una semilla empieza a crecer?",
+          "opciones": ["Fotosintesis", "Germinacion", "Evaporacion"],
+          "respuesta": "Germinacion"
+        },
+        {
+          "tipo": "true-or-false",
+          "pregunta": "La raiz crece hacia abajo buscando agua",
+          "respuesta": true
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Que necesita una semilla para germinar?",
+          "opciones": ["Solo luz", "Agua y temperatura adecuada", "Tierra y fertilizante"],
+          "respuesta": "Agua y temperatura adecuada"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "id": "C1-04_flota-o-se-hunde",
+  "titulo": "Flota o Se Hunde?",
+  "materia": "ciencias",
+  "nivel": "C1-04",
+  "tema": "flotabilidad",
+  "misiones": [
+    {
+      "id": "exp-flota-01",
+      "tipo": "experimento-guia",
+      "titulo": "Flota o Se Hunde?",
+      "emoji": "🛟",
+      "instruccion": "Vamos a descubrir que objetos flotan en el agua y cuales se hunden!",
+      "tema": "flotabilidad",
+      "materiales": ["Tina o recipiente grande con agua", "Naranja con cascara", "Naranja sin cascara", "Clip metalico", "Corcho", "Moneda", "Manzana", "Piedra", "Tapadera de plastico"],
+      "materiales_emoji": ["🫧", "🍊", "🍊", "📎", "🪵", "🪙", "🍎", "🪨", "🫙"],
+      "prediccion": {
+        "pregunta": "Que crees que pase con la naranja con cascara y la naranja sin cascara?",
+        "opciones": ["Las dos flotan", "Las dos se hunden", "Con cascara flota, sin cascara se hunde", "Sin cascara flota, con cascara se hunde"]
+      },
+      "pasos": [
+        { "instruccion": "Llena la tina con agua hasta la mitad", "emoji": "💧" },
+        { "instruccion": "Pon la naranja CON cascara en el agua. Flota o se hunde?", "emoji": "🍊" },
+        { "instruccion": "Pela la otra naranja y ponla en el agua. Flota o se hunde?", "emoji": "🍊" },
+        { "instruccion": "Ahora prueba con el clip metalico", "emoji": "📎" },
+        { "instruccion": "Prueba con el corcho", "emoji": "🪵" },
+        { "instruccion": "Prueba con la moneda, la manzana, la piedra y la tapadera", "emoji": "🪨" }
+      ],
+      "observacion": {
+        "pregunta": "Que paso con la naranja?",
+        "opciones": ["Las dos flotaron", "Las dos se hundieron", "Con cascara floto y sin cascara se hundio", "No hubo diferencia"]
+      },
+      "explicacion": "La naranja con cascara flota porque su cascara tiene muchas bolsitas de aire que la hacen menos densa que el agua. Sin cascara, pierde esas bolsitas de aire y se vuelve mas densa, por eso se hunde. Un objeto flota cuando es menos denso que el agua, y se hunde cuando es mas denso. El corcho y la manzana flotan porque tienen aire adentro!",
+      "quiz": [
+        {
+          "tipo": "true-or-false",
+          "pregunta": "La naranja con cascara flota porque la cascara tiene bolsitas de aire",
+          "respuesta": true
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Un objeto se hunde cuando es...",
+          "opciones": ["Mas denso que el agua", "Menos denso que el agua", "Del mismo color que el agua"],
+          "respuesta": "Mas denso que el agua"
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Cual de estos objetos flota?",
+          "opciones": ["Moneda", "Piedra", "Corcho"],
+          "respuesta": "Corcho"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "C0-08_que-hace-ruido",
+  "titulo": "Que Hace Ruido?",
+  "materia": "ciencias",
+  "nivel": "C0-08",
+  "tema": "sonidos",
+  "misiones": [
+    {
+      "id": "exp-sonidos-01",
+      "tipo": "experimento-guia",
+      "titulo": "Que Hace Ruido?",
+      "emoji": "🔔",
+      "instruccion": "Vamos a escuchar los sonidos que hacen diferentes cosas!",
+      "tema": "sonidos",
+      "materiales": ["Cuchara de metal", "Vaso de vidrio (con cuidado)", "Papel para arrugar", "Campana o cascabel", "Tapa de olla", "Botella con arroz o frijoles adentro"],
+      "materiales_emoji": ["🥄", "🥛", "📄", "🔔", "🫕", "🍶"],
+      "prediccion": {
+        "pregunta": "Que suena mas fuerte: una campana o un papel?",
+        "opciones": ["La campana!", "El papel!"]
+      },
+      "pasos": [
+        { "instruccion": "Golpea suavemente el vaso con la cuchara. Que sonido hace?", "emoji": "🥄" },
+        { "instruccion": "Arruga el papel con tus manos. Que sonido hace?", "emoji": "📄" },
+        { "instruccion": "Agita la botella con arroz. Suena como lluvia!", "emoji": "🌧️" }
+      ],
+      "observacion": {
+        "pregunta": "Cual cosa hizo el sonido mas fuerte?",
+        "opciones": ["Las cosas de metal suenan mas fuerte!", "Todas sonaron igual"]
+      },
+      "explicacion": "Todo lo que suena es porque esta TEMBLANDO muy rapido. Cuando golpeas el vaso, el vidrio tiembla y hace un sonido bonito. Cuando arrugas el papel, el papel tiembla diferente y suena diferente. Cada cosa tiene su propio sonido! Las cosas de metal tiemblan mucho y suenan mas fuerte.",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Por que las cosas suenan?",
+          "opciones": ["Porque tiemblan!", "Porque estan pintadas"],
+          "respuesta": "Porque tiemblan!"
+        }
+      ]
+    }
+  ]
+}

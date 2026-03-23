@@ -1,0 +1,53 @@
+{
+  "id": "C1-06_separando-mezclas",
+  "titulo": "Separando Mezclas",
+  "materia": "ciencias",
+  "nivel": "C1-06",
+  "tema": "mezclas",
+  "misiones": [
+    {
+      "id": "exp-mezclas-01",
+      "tipo": "experimento-guia",
+      "titulo": "Separando Mezclas",
+      "emoji": "🧪",
+      "instruccion": "Vamos a mezclar cosas con agua y luego intentar separarlas!",
+      "tema": "mezclas",
+      "materiales": ["3 vasos transparentes", "Agua", "Sal", "Arena o tierra", "Filtro de cafe o servilleta", "Cuchara", "Embudo (o haz uno con papel)"],
+      "materiales_emoji": ["🥛", "💧", "🧂", "🏖️", "☕", "🥄", "📐"],
+      "prediccion": {
+        "pregunta": "Si mezclas sal con agua y arena con agua, cual crees que puedas separar con un filtro?",
+        "opciones": ["Las dos se pueden filtrar", "Solo la arena se puede filtrar", "Solo la sal se puede filtrar", "Ninguna se puede filtrar"]
+      },
+      "pasos": [
+        { "instruccion": "En el primer vaso pon agua y agrega 2 cucharadas de sal. Revuelve bien", "emoji": "🧂" },
+        { "instruccion": "En el segundo vaso pon agua y agrega 2 cucharadas de arena. Revuelve", "emoji": "🏖️" },
+        { "instruccion": "Observa los dos vasos. En cual puedes ver lo que agregaste?", "emoji": "👀" },
+        { "instruccion": "Pon el filtro de cafe en el embudo y filtra el agua con arena al tercer vaso", "emoji": "☕" },
+        { "instruccion": "Ahora intenta filtrar el agua con sal. Que queda en el filtro?", "emoji": "🧐" }
+      ],
+      "observacion": {
+        "pregunta": "Que paso cuando filtraste cada mezcla?",
+        "opciones": ["La arena quedo en el filtro pero la sal paso con el agua", "Las dos quedaron en el filtro", "Las dos pasaron con el agua", "La sal quedo en el filtro pero la arena paso"]
+      },
+      "explicacion": "La sal se DISUELVE en el agua: sus particulas son tan pequenas que se mezclan completamente y pasan por el filtro. Por eso no puedes verla, pero si la pruebas sabe salada! La arena NO se disuelve: sus granos son grandes y quedan atrapados en el filtro. Un filtro separa particulas grandes (como arena) pero no puede atrapar particulas disueltas (como sal).",
+      "quiz": [
+        {
+          "tipo": "true-or-false",
+          "pregunta": "La sal se disuelve en el agua",
+          "respuesta": true
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Por que la arena se queda en el filtro?",
+          "opciones": ["Porque es magnetica", "Porque sus granos son grandes y no pasan", "Porque se evapora"],
+          "respuesta": "Porque sus granos son grandes y no pasan"
+        },
+        {
+          "tipo": "true-or-false",
+          "pregunta": "Un filtro de cafe puede separar la sal del agua",
+          "respuesta": false
+        }
+      ]
+    }
+  ]
+}

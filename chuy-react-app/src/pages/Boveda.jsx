@@ -31,8 +31,10 @@ const Boveda = () => {
       'tap-the-pairs', 'sentence-transform', 'image-picker', 'word-scramble',
       'listen-and-type', 'expediciones-en', 'mini-story'];
     const pianoTypes = ['piano-prompter'];
+    const cienciasTypes = ['experimento-guia'];
     if (englishTypes.includes(f)) return 'ingles';
     if (pianoTypes.includes(f)) return 'piano';
+    if (cienciasTypes.includes(f)) return 'ciencias';
     return 'matematicas';
   };
   const [materia, setMateria] = useState(detectMateria(filtroFromUrl));
@@ -71,6 +73,8 @@ const Boveda = () => {
     { id: 'mini-story', emoji: '📖', nombre: 'Mini Stories', tipo: 'mini-story', descripcion: 'Read stories and answer questions', materia: 'ingles' },
     // Piano
     { id: 'piano-prompter', emoji: '🎹', nombre: 'Teleprompter', tipo: 'piano-prompter', descripcion: 'Practica lectura de partituras', materia: 'piano' },
+    // Ciencias
+    { id: 'experimento-guia', emoji: '🧪', nombre: 'Experimentos', tipo: 'experimento-guia', descripcion: 'Experimentos caseros paso a paso', materia: 'ciencias' },
   ];
 
   const tiposJuegosFiltrados = tiposJuegos.filter(t => t.materia === materia);
@@ -136,7 +140,21 @@ const Boveda = () => {
           };
         }).sort((a, b) => a.id.localeCompare(b.id));
 
-        setAventuras([...listaAventuras, ...listaIngles, ...listaPiano]);
+        // Cargar Ciencias (colección separada)
+        const cienciasRef = collection(db, 'ciencias');
+        const cienciasSnapshot = await getDocs(cienciasRef);
+        const listaCiencias = cienciasSnapshot.docs.map(doc => {
+          const data = doc.data();
+          return {
+            id: doc.id,
+            ...data,
+            tipo: data.tipo || 'experimento-guia',
+            materia: 'ciencias',
+            coleccion: 'ciencias'
+          };
+        }).sort((a, b) => a.id.localeCompare(b.id));
+
+        setAventuras([...listaAventuras, ...listaIngles, ...listaPiano, ...listaCiencias]);
         setSimulacros(listaSimulacros);
       } catch (err) {
         console.error("Error cargando la bóveda:", err);
@@ -201,6 +219,7 @@ const Boveda = () => {
   const filterMateria = (item) => {
     if (materia === 'matematicas') return !item.materia || item.materia === 'matematicas';
     if (materia === 'piano') return item.materia === 'piano';
+    if (materia === 'ciencias') return item.materia === 'ciencias';
     return item.materia === materia;
   };
 
@@ -425,7 +444,7 @@ const Boveda = () => {
                   </div>
 
                   {/* Level filter chips */}
-                  {(materia === 'ingles' || materia === 'piano') && nivelesDisponibles.length > 1 && (
+                  {(materia === 'ingles' || materia === 'piano' || materia === 'ciencias') && nivelesDisponibles.length > 1 && (
                     <div className="boveda-nivel-chips">
                       <button
                         className={`nivel-chip ${filtroNivel === 'todos' ? 'active' : ''}`}
@@ -490,7 +509,7 @@ const Boveda = () => {
                       const progreso = getProgreso(item.id, item.tipo);
                       
                       // Determinar la ruta basándose en la colección de origen
-                      const esAventura = item.coleccion === 'aventuras' || item.coleccion === 'ingles' || item.coleccion === 'piano';
+                      const esAventura = item.coleccion === 'aventuras' || item.coleccion === 'ingles' || item.coleccion === 'piano' || item.coleccion === 'ciencias';
                       const ruta = esAventura ? `/aventura/${item.id}` : `/simulacro/${item.id}`;
                       
                       // Obtener nombre del tipo para mostrar

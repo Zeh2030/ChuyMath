@@ -1,0 +1,54 @@
+{
+  "id": "C1-05_hielo-agua-vapor",
+  "titulo": "Hielo, Agua y Vapor",
+  "materia": "ciencias",
+  "nivel": "C1-05",
+  "tema": "estados-de-materia",
+  "misiones": [
+    {
+      "id": "exp-estados-01",
+      "tipo": "experimento-guia",
+      "titulo": "Hielo, Agua y Vapor",
+      "emoji": "🧊",
+      "instruccion": "Vamos a ver como el agua cambia de forma: solido, liquido y gas!",
+      "tema": "estados-de-materia",
+      "materiales": ["Cubos de hielo", "Olla pequena", "Tapa de olla", "Estufa (solo un adulto la usa)", "Plato"],
+      "materiales_emoji": ["🧊", "🍳", "🫕", "🔥", "🍽️"],
+      "prediccion": {
+        "pregunta": "Si calientas hielo en una olla, que crees que pase?",
+        "opciones": ["Se queda igual", "Se derrite y luego sale humo", "Se hace mas duro", "Desaparece de golpe"]
+      },
+      "pasos": [
+        { "instruccion": "Toca un cubo de hielo. Esta duro y frio. Esto es un SOLIDO", "emoji": "🧊" },
+        { "instruccion": "Un ADULTO pone los cubos de hielo en la olla sobre la estufa a fuego bajo", "emoji": "🔥" },
+        { "instruccion": "Observa como el hielo se derrite poco a poco. Ahora es LIQUIDO (agua)", "emoji": "💧" },
+        { "instruccion": "Espera a que el agua hierva. Ves el vapor que sube? Eso es GAS", "emoji": "♨️" },
+        { "instruccion": "Un ADULTO pone la tapa sobre la olla 10 segundos y la quita. Mira las gotitas en la tapa!", "emoji": "🫕" }
+      ],
+      "observacion": {
+        "pregunta": "Que viste que le paso al hielo?",
+        "opciones": ["Se convirtio primero en agua y luego en vapor", "Se quedo igual todo el tiempo", "Solo se hizo agua pero no vapor", "Se convirtio directamente en vapor"]
+      },
+      "explicacion": "El agua existe en 3 estados: SOLIDO (hielo), LIQUIDO (agua) y GAS (vapor). Cuando calientas el hielo, sus moleculas se mueven mas rapido y se separan, pasando de solido a liquido. Si sigues calentando, las moleculas se mueven tanto que se escapan al aire como vapor. Las gotitas en la tapa son vapor que se enfrio y volvio a ser liquido. Eso se llama condensacion!",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Cuales son los 3 estados del agua?",
+          "opciones": ["Frio, tibio y caliente", "Solido, liquido y gas", "Hielo, lluvia y nube"],
+          "respuesta": "Solido, liquido y gas"
+        },
+        {
+          "tipo": "true-or-false",
+          "pregunta": "El vapor es agua en estado gaseoso",
+          "respuesta": true
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Las gotitas que se forman en la tapa de la olla se llaman...",
+          "opciones": ["Evaporacion", "Condensacion", "Congelacion"],
+          "respuesta": "Condensacion"
+        }
+      ]
+    }
+  ]
+}

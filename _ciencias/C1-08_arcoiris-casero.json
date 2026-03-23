@@ -1,0 +1,54 @@
+{
+  "id": "C1-08_arcoiris-casero",
+  "titulo": "El Arcoiris Casero",
+  "materia": "ciencias",
+  "nivel": "C1-08",
+  "tema": "luz-y-color",
+  "misiones": [
+    {
+      "id": "exp-arcoiris-01",
+      "tipo": "experimento-guia",
+      "titulo": "El Arcoiris Casero",
+      "emoji": "🌈",
+      "instruccion": "Vamos a crear un arcoiris usando solo agua y luz!",
+      "tema": "luz-y-color",
+      "materiales": ["Vaso transparente con agua", "Hoja blanca de papel", "Linterna del celular o luz solar directa", "Habitacion un poco oscura (si usas linterna)"],
+      "materiales_emoji": ["🥛", "📄", "🔦", "🌑"],
+      "prediccion": {
+        "pregunta": "Que crees que pase si haces pasar luz a traves de un vaso con agua?",
+        "opciones": ["No pasa nada", "Se forma un arcoiris en el papel", "El agua cambia de color", "La luz se apaga"]
+      },
+      "pasos": [
+        { "instruccion": "Llena el vaso con agua casi hasta el borde", "emoji": "💧" },
+        { "instruccion": "Pon la hoja blanca en el piso o en una mesa", "emoji": "📄" },
+        { "instruccion": "Coloca el vaso en el borde de la mesa, que la luz lo atraviese de lado", "emoji": "🥛" },
+        { "instruccion": "Apunta la linterna al vaso (o dejalo cerca de una ventana con sol directo)", "emoji": "🔦" },
+        { "instruccion": "Mueve la hoja de papel para encontrar el arcoiris proyectado. Puede estar en el piso o la pared!", "emoji": "🌈" }
+      ],
+      "observacion": {
+        "pregunta": "Que viste en la hoja de papel?",
+        "opciones": ["Nada especial", "Una franja con colores del arcoiris", "Un circulo de luz blanca", "Una sombra oscura"]
+      },
+      "explicacion": "La luz blanca del sol o de la linterna en realidad esta hecha de TODOS los colores mezclados. Cuando la luz pasa por el agua del vaso, se dobla (eso se llama refraccion) y cada color se dobla un poquito diferente. Por eso los colores se separan y puedes verlos: rojo, naranja, amarillo, verde, azul y violeta. Es lo mismo que pasa en el cielo con las gotas de lluvia para formar un arcoiris de verdad!",
+      "quiz": [
+        {
+          "tipo": "true-or-false",
+          "pregunta": "La luz blanca esta hecha de todos los colores mezclados",
+          "respuesta": true
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Como se llama cuando la luz se dobla al pasar por el agua?",
+          "opciones": ["Reflexion", "Refraccion", "Evaporacion"],
+          "respuesta": "Refraccion"
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Por que se forma un arcoiris real en el cielo?",
+          "opciones": ["Por las nubes", "Por la luna", "Por la luz del sol pasando por gotas de lluvia"],
+          "respuesta": "Por la luz del sol pasando por gotas de lluvia"
+        }
+      ]
+    }
+  ]
+}

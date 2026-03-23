@@ -1,0 +1,54 @@
+{
+  "id": "C1-16_huevo-en-botella",
+  "titulo": "El Huevo en la Botella",
+  "materia": "ciencias",
+  "nivel": "C1-16",
+  "tema": "presion-de-aire",
+  "misiones": [
+    {
+      "id": "exp-huevo-01",
+      "tipo": "experimento-guia",
+      "titulo": "El Huevo en la Botella",
+      "emoji": "🥚",
+      "instruccion": "Vamos a hacer que un huevo entre en una botella sin empujarlo. Solo con la fuerza del aire!",
+      "tema": "presion-de-aire",
+      "materiales": ["Huevo cocido y pelado", "Botella de vidrio con boca un poco mas chica que el huevo (botella de jugo)", "Cerillo o fosforo (SOLO UN ADULTO lo usa)", "Tiritas de papel"],
+      "materiales_emoji": ["🥚", "🍶", "🔥", "📄"],
+      "prediccion": {
+        "pregunta": "Crees que un huevo pueda entrar en una botella sin que lo empujes?",
+        "opciones": ["No, es imposible", "Si, con fuego adentro de la botella", "Si, con agua", "Solo si rompes el huevo"]
+      },
+      "pasos": [
+        { "instruccion": "Hierve un huevo, dejalo enfriar y pelalo. Ponlo sobre la boca de la botella para ver que NO cabe", "emoji": "🥚" },
+        { "instruccion": "Quita el huevo de la botella", "emoji": "👆" },
+        { "instruccion": "Un ADULTO enciende una tirita de papel y la mete dentro de la botella", "emoji": "🔥" },
+        { "instruccion": "Rapidamente pon el huevo sobre la boca de la botella y observa!", "emoji": "👀" },
+        { "instruccion": "Mira como el huevo se mete solo dentro de la botella!", "emoji": "🤯" }
+      ],
+      "observacion": {
+        "pregunta": "Que paso con el huevo?",
+        "opciones": ["No paso nada", "El huevo fue empujado hacia dentro de la botella!", "El huevo se rompio", "El huevo salio volando"]
+      },
+      "explicacion": "El fuego dentro de la botella calienta el aire y lo hace expandirse (parte del aire se escapa). Cuando pones el huevo arriba y el fuego se apaga, el aire adentro se enfria y se encoge. Eso crea menos presion adentro que afuera. El aire de AFUERA empuja el huevo hacia dentro de la botella porque tiene mas fuerza (mas presion). Es como si el aire de afuera dijera: yo soy mas fuerte y empujo este huevo para adentro!",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Que empuja el huevo dentro de la botella?",
+          "opciones": ["El fuego", "La presion del aire de afuera", "La gravedad"],
+          "respuesta": "La presion del aire de afuera"
+        },
+        {
+          "tipo": "true-or-false",
+          "pregunta": "El aire caliente ocupa mas espacio que el aire frio",
+          "respuesta": true
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Cuando el aire dentro de la botella se enfria...",
+          "opciones": ["La presion adentro aumenta", "La presion adentro disminuye", "No cambia nada"],
+          "respuesta": "La presion adentro disminuye"
+        }
+      ]
+    }
+  ]
+}

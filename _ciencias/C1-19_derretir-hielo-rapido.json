@@ -1,0 +1,55 @@
+{
+  "id": "C1-19_derretir-hielo-rapido",
+  "titulo": "Derretir Hielo Rapido",
+  "materia": "ciencias",
+  "nivel": "C1-19",
+  "tema": "temperatura",
+  "misiones": [
+    {
+      "id": "exp-hielo-01",
+      "tipo": "experimento-guia",
+      "titulo": "Derretir Hielo Rapido",
+      "emoji": "🧊",
+      "instruccion": "Que derrite el hielo mas rapido: sal, azucar, arena o nada? Vamos a hacer una carrera!",
+      "tema": "temperatura",
+      "materiales": ["4 cubos de hielo del mismo tamano", "4 platos iguales", "Sal", "Azucar", "Arena o tierra", "Cuchara", "Reloj o cronometro"],
+      "materiales_emoji": ["🧊", "🍽️", "🧂", "🍬", "🏖️", "🥄", "⏱️"],
+      "prediccion": {
+        "pregunta": "Cual crees que derrita el hielo mas rapido?",
+        "opciones": ["Sal", "Azucar", "Arena", "Nada (el hielo solo se derrite igual)"]
+      },
+      "pasos": [
+        { "instruccion": "Pon un cubo de hielo en cada plato. Marcalos: SAL, AZUCAR, ARENA, NADA", "emoji": "🧊" },
+        { "instruccion": "Agrega 1 cucharada de sal sobre el primer hielo", "emoji": "🧂" },
+        { "instruccion": "Agrega 1 cucharada de azucar sobre el segundo hielo", "emoji": "🍬" },
+        { "instruccion": "Agrega 1 cucharada de arena sobre el tercer hielo", "emoji": "🏖️" },
+        { "instruccion": "El cuarto hielo dejalo solo, sin nada (es el de control)", "emoji": "🧊" },
+        { "instruccion": "Revisa cada 5 minutos. Cual se esta derritiendo mas rapido?", "emoji": "⏱️" }
+      ],
+      "observacion": {
+        "pregunta": "Cual hielo se derriti primero?",
+        "opciones": ["El de la sal", "El del azucar", "El de la arena", "Todos se derritieron igual"]
+      },
+      "explicacion": "La SAL gana! Cuando la sal toca el hielo, baja su temperatura de congelacion. Eso significa que el hielo necesita estar MAS frio para seguir siendo hielo, asi que se derrite mas rapido. El azucar tambien baja un poco la temperatura de congelacion pero menos que la sal. La arena casi no hace nada. Por eso en paises con nieve echan sal en las calles para derretir el hielo! El hielo sin nada (control) te muestra la velocidad normal de derretimiento.",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Que sustancia derrite el hielo mas rapido?",
+          "opciones": ["Azucar", "Arena", "Sal"],
+          "respuesta": "Sal"
+        },
+        {
+          "tipo": "true-or-false",
+          "pregunta": "En paises con nieve echan sal en las calles para derretir el hielo",
+          "respuesta": true
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Por que la sal derrite el hielo?",
+          "opciones": ["Porque la sal es caliente", "Porque baja la temperatura a la que el agua se congela", "Porque la sal absorbe el hielo"],
+          "respuesta": "Porque baja la temperatura a la que el agua se congela"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "id": "C1-18_barcos-de-papel-aluminio",
+  "titulo": "Barcos de Papel Aluminio",
+  "materia": "ciencias",
+  "nivel": "C1-18",
+  "tema": "superficie",
+  "misiones": [
+    {
+      "id": "exp-barcos-01",
+      "tipo": "experimento-guia",
+      "titulo": "Barcos de Papel Aluminio",
+      "emoji": "⛵",
+      "instruccion": "Vamos a descubrir por que los barcos enormes de metal pueden flotar!",
+      "tema": "superficie",
+      "materiales": ["Papel aluminio (3 pedazos del mismo tamano)", "Tina o recipiente grande con agua", "Monedas (muchas, del mismo tipo)"],
+      "materiales_emoji": ["🫕", "🫧", "🪙"],
+      "prediccion": {
+        "pregunta": "Si haces una bolita de aluminio y un barco abierto con el mismo pedazo, cual flota?",
+        "opciones": ["Los dos flotan", "Los dos se hunden", "Solo el barco flota", "Solo la bolita flota"]
+      },
+      "pasos": [
+        { "instruccion": "Con el primer pedazo de aluminio, haz una bolita apretada. Ponla en el agua. Flota o se hunde?", "emoji": "⚫" },
+        { "instruccion": "Con el segundo pedazo, haz un barco: dobla los bordes hacia arriba para hacer una bandeja (como un plato). Ponlo en el agua", "emoji": "⛵" },
+        { "instruccion": "Ahora pon monedas una por una dentro del barco. Cuantas aguanta antes de hundirse?", "emoji": "🪙" },
+        { "instruccion": "Con el tercer pedazo, haz un barco mas grande y ancho. Cuantas monedas aguanta este?", "emoji": "⛴️" },
+        { "instruccion": "Compara: cual barco aguanto mas monedas?", "emoji": "📊" }
+      ],
+      "observacion": {
+        "pregunta": "Que paso con la bolita vs el barco?",
+        "opciones": ["Los dos flotaron", "La bolita se hundio pero el barco floto!", "Los dos se hundieron", "Solo la bolita floto"]
+      },
+      "explicacion": "La bolita y el barco pesan LO MISMO (son el mismo pedazo de aluminio). Pero el barco flota porque su forma abierta ocupa mas espacio en el agua. Mientras mas agua desplaza (empuja a los lados), mas fuerza hacia arriba recibe. Eso se llama EMPUJE o principio de Arquimedes. Por eso los barcos de metal enormes flotan: aunque el metal es pesado, la forma del barco desplaza MUCHA agua. El barco mas ancho aguanto mas monedas porque desplaza mas agua!",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Por que el barco de aluminio flota pero la bolita se hunde?",
+          "opciones": ["Porque el barco pesa menos", "Porque la forma del barco desplaza mas agua", "Porque el aluminio del barco es diferente"],
+          "respuesta": "Porque la forma del barco desplaza mas agua"
+        },
+        {
+          "tipo": "true-or-false",
+          "pregunta": "Un barco mas ancho puede cargar mas peso que uno angosto",
+          "respuesta": true
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Los barcos reales de metal flotan porque...",
+          "opciones": ["El metal de los barcos es especial y ligero", "Su forma desplaza mucha agua y reciben empuje hacia arriba", "Tienen motores que los mantienen arriba"],
+          "respuesta": "Su forma desplaza mucha agua y reciben empuje hacia arriba"
+        }
+      ]
+    }
+  ]
+}

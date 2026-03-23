@@ -1,0 +1,53 @@
+{
+  "id": "C1-01_volcan-de-vinagre",
+  "titulo": "El Volcan de Vinagre",
+  "materia": "ciencias",
+  "nivel": "C1-01",
+  "tema": "reacciones-quimicas",
+  "misiones": [
+    {
+      "id": "exp-volcan-01",
+      "tipo": "experimento-guia",
+      "titulo": "El Volcan de Vinagre",
+      "emoji": "🌋",
+      "instruccion": "Vamos a crear una erupcion volcaanica con materiales de cocina!",
+      "tema": "reacciones-quimicas",
+      "materiales": ["Vinagre", "Bicarbonato de sodio", "Botella de plastico", "Colorante rojo", "Plato hondo", "Cuchara"],
+      "materiales_emoji": ["🫗", "🧂", "🍶", "🔴", "🍽️", "🥄"],
+      "prediccion": {
+        "pregunta": "Que crees que pase si mezclas vinagre con bicarbonato de sodio?",
+        "opciones": ["No pasa nada", "Hace burbujas y espuma", "Se congela", "Cambia de color solamente"]
+      },
+      "pasos": [
+        { "instruccion": "Pon la botella de plastico sobre el plato hondo", "emoji": "🍶" },
+        { "instruccion": "Agrega 3 cucharadas de bicarbonato de sodio dentro de la botella", "emoji": "🥄" },
+        { "instruccion": "Agrega unas gotas de colorante rojo al bicarbonato", "emoji": "🔴" },
+        { "instruccion": "Vierte medio vaso de vinagre dentro de la botella... y observa!", "emoji": "🫗" }
+      ],
+      "observacion": {
+        "pregunta": "Que paso cuando agregaste el vinagre?",
+        "opciones": ["No paso nada", "Salio espuma burbujeante de la botella", "El liquido se congelo", "Solo cambio de color"]
+      },
+      "explicacion": "El vinagre es un acido y el bicarbonato de sodio es una base. Cuando se mezclan, ocurre una reaccion quimica que produce un gas llamado dioxido de carbono (CO2). Ese gas es el que hace todas las burbujas y espuma que viste salir de la botella, como si fuera un volcan de verdad!",
+      "quiz": [
+        {
+          "tipo": "true-or-false",
+          "pregunta": "La espuma se produce porque se forma un gas llamado CO2",
+          "respuesta": true
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Que tipo de reaccion ocurrio en el experimento?",
+          "opciones": ["Magnetica", "Quimica", "Electrica"],
+          "respuesta": "Quimica"
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "El vinagre es un...",
+          "opciones": ["Acido", "Base", "Gas"],
+          "respuesta": "Acido"
+        }
+      ]
+    }
+  ]
+}

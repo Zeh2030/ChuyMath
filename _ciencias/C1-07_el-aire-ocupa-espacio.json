@@ -1,0 +1,54 @@
+{
+  "id": "C1-07_el-aire-ocupa-espacio",
+  "titulo": "El Aire Ocupa Espacio",
+  "materia": "ciencias",
+  "nivel": "C1-07",
+  "tema": "aire",
+  "misiones": [
+    {
+      "id": "exp-aire-01",
+      "tipo": "experimento-guia",
+      "titulo": "El Aire Ocupa Espacio",
+      "emoji": "💨",
+      "instruccion": "Vamos a demostrar que el aire es real aunque no lo puedas ver!",
+      "tema": "aire",
+      "materiales": ["Vaso transparente", "Servilleta o papel", "Tina o recipiente hondo con agua", "Cinta adhesiva (opcional)"],
+      "materiales_emoji": ["🥛", "🧻", "🫧", "📎"],
+      "prediccion": {
+        "pregunta": "Si metes un vaso boca abajo en el agua con una servilleta adentro, que crees que pase con la servilleta?",
+        "opciones": ["Se moja completamente", "Se queda seca", "Se desintegra", "Flota fuera del vaso"]
+      },
+      "pasos": [
+        { "instruccion": "Llena la tina con agua, casi hasta el borde", "emoji": "💧" },
+        { "instruccion": "Arruga una servilleta y metela en el fondo del vaso (que no se caiga)", "emoji": "🧻" },
+        { "instruccion": "Voltea el vaso boca abajo. La servilleta debe quedarse arriba pegada al fondo", "emoji": "🥛" },
+        { "instruccion": "Mete el vaso boca abajo en el agua, completamente derecho, sin inclinarlo", "emoji": "⬇️" },
+        { "instruccion": "Saca el vaso derecho y revisa la servilleta. Esta mojada o seca?", "emoji": "🤔" }
+      ],
+      "observacion": {
+        "pregunta": "Que paso con la servilleta?",
+        "opciones": ["Se mojo completamente", "Se quedo seca!", "Se mojo un poquito", "Se salio del vaso"]
+      },
+      "explicacion": "La servilleta se quedo seca! Aunque no lo veas, el vaso estaba lleno de AIRE. Cuando metiste el vaso boca abajo, el aire quedo atrapado adentro y no dejo entrar al agua. El aire ocupa espacio igual que los objetos solidos, solo que es invisible. Si inclinas el vaso bajo el agua, veras burbujas salir: ese es el aire escapando!",
+      "quiz": [
+        {
+          "tipo": "true-or-false",
+          "pregunta": "El aire ocupa espacio aunque no lo podamos ver",
+          "respuesta": true
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Por que la servilleta no se mojo?",
+          "opciones": ["Porque el vaso es magico", "Porque el aire atrapado no dejo entrar al agua", "Porque la servilleta es impermeable"],
+          "respuesta": "Porque el aire atrapado no dejo entrar al agua"
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Si inclinas el vaso bajo el agua, que saldria?",
+          "opciones": ["Nada", "Burbujas de aire", "Humo"],
+          "respuesta": "Burbujas de aire"
+        }
+      ]
+    }
+  ]
+}

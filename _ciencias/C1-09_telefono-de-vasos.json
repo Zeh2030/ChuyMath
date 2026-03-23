@@ -1,0 +1,54 @@
+{
+  "id": "C1-09_telefono-de-vasos",
+  "titulo": "Telefono de Vasos",
+  "materia": "ciencias",
+  "nivel": "C1-09",
+  "tema": "sonido",
+  "misiones": [
+    {
+      "id": "exp-telefono-01",
+      "tipo": "experimento-guia",
+      "titulo": "Telefono de Vasos",
+      "emoji": "📞",
+      "instruccion": "Vamos a construir un telefono de verdad con solo vasos y cuerda!",
+      "tema": "sonido",
+      "materiales": ["2 vasos de plastico o papel", "Cuerda larga (3-5 metros)", "Clip o palillo de dientes", "Un ayudante (papa, mama o hermano)"],
+      "materiales_emoji": ["🥤", "🧵", "📎", "👤"],
+      "prediccion": {
+        "pregunta": "Crees que puedas escuchar a alguien hablar a traves de una cuerda?",
+        "opciones": ["Si, se escuchara claro", "No, la cuerda no transmite sonido", "Solo si gritas muy fuerte", "Solo si la cuerda es de metal"]
+      },
+      "pasos": [
+        { "instruccion": "Haz un pequeno agujero en el fondo de cada vaso", "emoji": "🕳️" },
+        { "instruccion": "Pasa un extremo de la cuerda por cada vaso y amarralo a un clip para que no se salga", "emoji": "🧵" },
+        { "instruccion": "Tu toma un vaso y tu ayudante el otro. Alejense hasta que la cuerda quede TENSA (estirada)", "emoji": "↔️" },
+        { "instruccion": "Tu ayudante habla bajito en su vaso mientras tu pones tu vaso en la oreja. Escuchas?", "emoji": "👂" },
+        { "instruccion": "Ahora intenta con la cuerda floja (sin estirar). Se escucha igual?", "emoji": "〰️" }
+      ],
+      "observacion": {
+        "pregunta": "Que paso cuando la cuerda estaba tensa?",
+        "opciones": ["No se escucho nada", "Se escucho la voz del otro lado!", "Solo se escucho un zumbido", "Se rompio la cuerda"]
+      },
+      "explicacion": "El sonido es una vibracion. Cuando tu ayudante habla en el vaso, su voz hace vibrar el fondo del vaso. Esa vibracion viaja por la cuerda tensa hasta tu vaso, que vibra y mueve el aire dentro, y tu oreja lo escucha! Cuando la cuerda esta floja, las vibraciones se pierden y no llegan. Por eso el sonido necesita algo que vibre para viajar: aire, cuerda, agua o cualquier material.",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "El sonido es una...",
+          "opciones": ["Luz", "Vibracion", "Temperatura"],
+          "respuesta": "Vibracion"
+        },
+        {
+          "tipo": "true-or-false",
+          "pregunta": "El telefono de vasos funciona mejor con la cuerda tensa que con la cuerda floja",
+          "respuesta": true
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "Por que se escucha la voz en el otro vaso?",
+          "opciones": ["Porque la cuerda es magica", "Porque las vibraciones viajan por la cuerda tensa", "Porque el vaso amplifica el sonido solo"],
+          "respuesta": "Porque las vibraciones viajan por la cuerda tensa"
+        }
+      ]
+    }
+  ]
+}
