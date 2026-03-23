@@ -20,27 +20,50 @@ const PianoPrompter = ({ mision, onCompletar }) => {
   const isMultiVoice = notas.includes('V:') || notas.includes('%%staves');
 
   // Construir notación ABC desde los datos estructurados
-  const abcNotation = isMultiVoice
-    ? [
-        'X:1',
-        `T:${titulo}`,
-        `M:${compas}`,
-        'L:1/4',
-        notas, // notas ya contiene %%staves, V:, K: implícito via tonalidad en cada voz
-      ].join('\n')
-    : [
-        'X:1',
-        `T:${titulo}`,
-        `M:${compas}`,
-        'L:1/4',
-        `K:${tonalidad} clef=${clave}`,
-        notas,
-      ].join('\n');
+  let finalAbc;
+  if (isMultiVoice) {
+    // Procesar notas multi-voz: juntar líneas dentro de cada voz para evitar
+    // que abcjs haga salto de sistema en medio de una voz.
+    // Solo preservar \n antes de directivas (V:, %%)
+    const processedNotas = notas
+      .split('\n')
+      .reduce((acc, line) => {
+        const trimmed = line.trim();
+        if (trimmed.startsWith('V:') || trimmed.startsWith('%%')) {
+          acc.push(trimmed);
+        } else if (acc.length > 0) {
+          // Agregar a la línea anterior con espacio
+          acc[acc.length - 1] += ' ' + trimmed;
+        } else {
+          acc.push(trimmed);
+        }
+        return acc;
+      }, [])
+      .join('\n');
 
-  // Para multi-voz, insertar K: antes de la primera V: si no está en notas
-  const finalAbc = isMultiVoice && !notas.includes('K:')
-    ? abcNotation.replace(/(V:1)/, `K:${tonalidad}\n$1`)
-    : abcNotation;
+    const header = [
+      'X:1',
+      `T:${titulo}`,
+      `M:${compas}`,
+      'L:1/4',
+    ].join('\n');
+
+    // Insertar K: antes de V:1 si no está en notas
+    const notasWithKey = processedNotas.includes('K:')
+      ? processedNotas
+      : processedNotas.replace(/(V:1)/, `K:${tonalidad}\n$1`);
+
+    finalAbc = header + '\n' + notasWithKey;
+  } else {
+    finalAbc = [
+      'X:1',
+      `T:${titulo}`,
+      `M:${compas}`,
+      'L:1/4',
+      `K:${tonalidad} clef=${clave}`,
+      notas,
+    ].join('\n');
+  }
 
   const handleTerminar = () => {
     setTerminado(true);
