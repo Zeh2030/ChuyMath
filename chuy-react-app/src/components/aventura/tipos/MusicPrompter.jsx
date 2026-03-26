@@ -145,27 +145,14 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     const musicWidth = musicWidthRef.current;
     const firstNoteX = firstNoteOffsetRef.current;
     const totalMs = totalDurationSec * 1000;
-    const MIN_SPACING = 20; // Minimum px between consecutive notes
 
-    // First pass: calculate desired positions and enforce minimum spacing
-    const noteData = [];
     timing.noteTimings.forEach(event => {
       if (!event.elements || event.milliseconds === undefined) return;
-      let desiredRelX = (event.milliseconds / totalMs) * musicWidth;
 
-      // Enforce minimum spacing from previous note
-      if (noteData.length > 0) {
-        const prevX = noteData[noteData.length - 1].desiredRelX;
-        if (desiredRelX - prevX < MIN_SPACING) {
-          desiredRelX = prevX + MIN_SPACING;
-        }
-      }
+      // Where this note SHOULD be (proportional to time)
+      const desiredRelX = (event.milliseconds / totalMs) * musicWidth;
 
-      noteData.push({ event, desiredRelX });
-    });
-
-    // Second pass: apply transforms
-    noteData.forEach(({ event, desiredRelX }) => {
+      // Reposition each voice's elements
       event.elements.forEach(voiceElements => {
         if (!Array.isArray(voiceElements)) return;
         voiceElements.forEach(el => {
