@@ -174,6 +174,9 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
       return;
     }
 
+    // En multi-voz, elements[0] = V:1 (mano derecha), elements[1] = V:2 (mano izquierda).
+    // Solo usar V:1 para corrección de scroll — si usamos ambas, la corrección se
+    // acumula doble y causa acelerones bruscos.
     if (event.elements && event.elements.length > 0 && event.elements[0].length > 0) {
       const noteEl = event.elements[0][0];
       if (noteEl && abcTargetRef.current) {
@@ -184,10 +187,9 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
           const noteRealX = noteRect.left - svgRect.left;
           // Posición donde el scroll cree que está (relativo a firstNoteOffset)
           const scrollX = translateXRef.current + firstNoteOffsetRef.current;
-          // Diferencia = error acumulado
+          // Diferencia = error actual (no acumulativo — reemplaza en vez de sumar)
           const error = noteRealX - scrollX;
-          // Aplicar corrección suave (se absorbe gradualmente en el rAF loop)
-          correctionRef.current += error;
+          correctionRef.current = error;
         }
       }
     }
