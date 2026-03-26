@@ -354,6 +354,29 @@
   color: #f39c12;
 }
 
+/* Barline overlays (visual only, no spacing impact) */
+.mp-barlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.mp-barline-mark {
+  position: absolute;
+  top: 12%;
+  bottom: 12%;
+  width: 1px;
+  background: rgba(0, 0, 0, 0.18);
+  pointer-events: none;
+}
+
+.mp-fullscreen .mp-barline-mark {
+  background: rgba(0, 0, 0, 0.12);
+}
+
 /* Mobile */
 @media (max-width: 600px) {
   .mp-container { padding: 10px; }

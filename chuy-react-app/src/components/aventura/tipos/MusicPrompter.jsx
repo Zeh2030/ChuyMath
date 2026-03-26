@@ -2,14 +2,38 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import abcjs from 'abcjs';
 import './MusicPrompter.css';
 
+/**
+ * Strip internal barlines from ABC notation for uniform note spacing.
+ * Without barlines, abcjs spaces notes purely by duration → constant-speed
+ * scroll works perfectly as a visual metronome.
+ * Preserves final barlines (|]), repeat signs (|: :|), and header/directive lines.
+ */
+const stripBarlines = (abc) => {
+  return abc.split('\n').map(line => {
+    // Keep header lines (X:, T:, M:, K:, V:, etc.) and directives (%%)
+    if (line.match(/^[A-Z]:/) || line.startsWith('%%') || line.trim() === '') return line;
+    // Protect special barlines, strip regular ones, restore protected
+    return line
+      .replace(/\|\]/g, '\x00END\x00')
+      .replace(/\|:/g, '\x00RS\x00')
+      .replace(/:\|/g, '\x00RE\x00')
+      .replace(/\|/g, ' ')
+      .replace(/\x00END\x00/g, '|]')
+      .replace(/\x00RS\x00/g, '|:')
+      .replace(/\x00RE\x00/g, ':|');
+  }).join('\n');
+};
+
 const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice = false }) => {
   const [estado, setEstado] = useState('parado');
   const [bpmActual, setBpmActual] = useState(bpm || 80);
   const [sonidoOn, setSonidoOn] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [barlinePositions, setBarlinePositions] = useState([]);
 
   const containerRef = useRef(null);
   const abcTargetRef = useRef(null);
+  const barlinesRef = useRef(null);
   const translateXRef = useRef(0);
   const rafIdRef = useRef(null);
   const lastTimestampRef = useRef(null);
@@ -18,9 +42,6 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
   const playheadOffsetRef = useRef(150);
   const firstNoteOffsetRef = useRef(0);
   const musicWidthRef = useRef(0);
-
-  // Correction refs (híbrido: scroll continuo + corrección por nota)
-  const correctionRef = useRef(0); // px de corrección acumulada
 
   // Audio refs
   const synthRef = useRef(null);
@@ -31,13 +52,15 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
 
   useEffect(() => { estadoRef.current = estado; }, [estado]);
 
-  // --- Renderizar ABC → SVG ---
+  // --- Renderizar ABC → SVG (barlines stripped for uniform spacing) ---
   useEffect(() => {
     if (!abcTargetRef.current || !abcNotation) return;
 
     abcTargetRef.current.innerHTML = '';
 
-    const visualObj = abcjs.renderAbc(abcTargetRef.current, abcNotation, {
+    const strippedAbc = stripBarlines(abcNotation);
+
+    const visualObj = abcjs.renderAbc(abcTargetRef.current, strippedAbc, {
       staffwidth: multiVoice ? 8000 : 3000,
       wrap: null,
       add_classes: true,
@@ -53,14 +76,12 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
       if (svg) {
         const svgRect = svg.getBoundingClientRect();
 
-        // Encontrar primera y última nota para medir el rango real de la música
         const allNotes = svg.querySelectorAll('.abcjs-note, .abcjs-rest');
         if (allNotes.length > 0) {
           const firstRect = allNotes[0].getBoundingClientRect();
           const lastRect = allNotes[allNotes.length - 1].getBoundingClientRect();
           firstNoteOffsetRef.current = firstRect.left - svgRect.left;
-          // Ancho real = desde primera nota hasta el final de la última nota
-          musicWidthRef.current = (lastRect.right - firstRect.left) + 50; // +50 margen
+          musicWidthRef.current = (lastRect.right - firstRect.left) + 50;
         } else {
           firstNoteOffsetRef.current = 0;
           musicWidthRef.current = svgRect.width;
@@ -68,7 +89,6 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
       }
       measureViewport();
       translateXRef.current = 0;
-      correctionRef.current = 0;
       applyTransform();
 
       prepareAll(bpmActual);
@@ -97,6 +117,19 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
       playheadOffsetRef.current = viewportWidthRef.current * 0.25;
     }
   }, []);
+
+  // --- Calculate barline overlay positions (visual only, no spacing impact) ---
+  const calculateBarlines = (qpm, duration) => {
+    const mMatch = abcNotation.match(/M:(\d+)\/(\d+)/);
+    const beatsPerMeasure = mMatch ? parseInt(mMatch[1]) : 4;
+    const secondsPerMeasure = (beatsPerMeasure / qpm) * 60;
+    const scrollWidth = musicWidthRef.current;
+    const positions = [];
+    for (let i = 1; i * secondsPerMeasure < duration; i++) {
+      positions.push((i * secondsPerMeasure / duration) * scrollWidth);
+    }
+    setBarlinePositions(positions);
+  };
 
   // --- Preparar synth + TimingCallbacks ---
   const prepareAll = async (qpm) => {
@@ -129,7 +162,10 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
         ? scrollableWidth / realDuration
         : 0;
 
-      // TimingCallbacks para corrección por nota
+      // Calculate barline overlay positions
+      calculateBarlines(qpm, realDuration);
+
+      // TimingCallbacks for end-of-song detection
       const timing = new abcjs.TimingCallbacks(visualObjRef.current, {
         qpm: qpm,
         eventCallback: onNoteEvent,
@@ -161,49 +197,32 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     const duration = (beats / qpm) * 60;
     const w = musicWidthRef.current;
     pixelsPerSecondRef.current = w > 0 ? w / duration : 0;
+
+    calculateBarlines(qpm, duration);
   };
 
-  // --- Callback por nota: calcular corrección ---
+  // --- Callback: only detect end of song ---
   const onNoteEvent = (event) => {
     if (!event) {
-      // Fin de la canción
       if (estadoRef.current === 'tocando') {
         setEstado('parado');
         if (onTerminar) onTerminar();
       }
-      return;
-    }
-
-    // En multi-voz, elements[0] = V:1 (mano derecha), elements[1] = V:2 (mano izquierda).
-    // Solo usar V:1 para corrección de scroll — si usamos ambas, la corrección se
-    // acumula doble y causa acelerones bruscos.
-    if (event.elements && event.elements.length > 0 && event.elements[0].length > 0) {
-      const noteEl = event.elements[0][0];
-      if (noteEl && abcTargetRef.current) {
-        const svgRect = abcTargetRef.current.querySelector('svg')?.getBoundingClientRect();
-        if (svgRect) {
-          const noteRect = noteEl.getBoundingClientRect();
-          // Posición real de la nota en el SVG (ambos incluyen transform, se cancelan)
-          const noteRealX = noteRect.left - svgRect.left;
-          // Posición donde el scroll cree que está (relativo a firstNoteOffset)
-          const scrollX = translateXRef.current + firstNoteOffsetRef.current;
-          // Diferencia = error actual (no acumulativo — reemplaza en vez de sumar)
-          const error = noteRealX - scrollX;
-          correctionRef.current = error;
-        }
-      }
     }
   };
 
-  // --- Aplicar transform CSS ---
+  // --- Aplicar transform CSS (sheet + barlines move together) ---
   const applyTransform = useCallback(() => {
+    const offset = playheadOffsetRef.current - firstNoteOffsetRef.current - translateXRef.current;
     if (abcTargetRef.current) {
-      const offset = playheadOffsetRef.current - firstNoteOffsetRef.current - translateXRef.current;
       abcTargetRef.current.style.transform = `translateX(${offset}px)`;
+    }
+    if (barlinesRef.current) {
+      barlinesRef.current.style.transform = `translateX(${offset}px)`;
     }
   }, []);
 
-  // --- Loop de animación: scroll continuo + absorción de corrección ---
+  // --- Loop de animación: scroll constante puro (metronomo visual) ---
   const animate = useCallback((timestamp) => {
     if (!lastTimestampRef.current) {
       lastTimestampRef.current = timestamp;
@@ -212,24 +231,10 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     const deltaMs = timestamp - lastTimestampRef.current;
     lastTimestampRef.current = timestamp;
 
-    // Avance continuo (velocidad constante basada en duración real)
-    let advance = pixelsPerSecondRef.current * (deltaMs / 1000);
+    translateXRef.current += pixelsPerSecondRef.current * (deltaMs / 1000);
 
-    // Absorber corrección suavemente (20% por frame)
-    if (Math.abs(correctionRef.current) > 0.5) {
-      const correction = correctionRef.current * 0.2;
-      advance += correction;
-      correctionRef.current -= correction;
-    } else {
-      correctionRef.current = 0;
-    }
-
-    translateXRef.current += advance;
-
-    // Fin de canción
-    const maxScroll = musicWidthRef.current;
-    if (translateXRef.current >= maxScroll) {
-      translateXRef.current = maxScroll;
+    if (translateXRef.current >= musicWidthRef.current) {
+      translateXRef.current = musicWidthRef.current;
       applyTransform();
       return;
     }
@@ -259,7 +264,6 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
 
     cleanup();
     translateXRef.current = 0;
-    correctionRef.current = 0;
     lastTimestampRef.current = null;
     applyTransform();
     setEstado('parado');
@@ -336,7 +340,6 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
   const handleReset = () => {
     cleanup();
     translateXRef.current = 0;
-    correctionRef.current = 0;
     lastTimestampRef.current = null;
     applyTransform();
     setEstado('parado');
@@ -366,6 +369,15 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
       <div className={`mp-viewport ${multiVoice ? 'mp-viewport-grand' : ''}`} ref={containerRef}>
         <div className="mp-playhead"></div>
         <div className="mp-sheet" ref={abcTargetRef}></div>
+        <div className="mp-barlines" ref={barlinesRef}>
+          {barlinePositions.map((x, i) => (
+            <div
+              key={i}
+              className="mp-barline-mark"
+              style={{ left: `${firstNoteOffsetRef.current + x}px` }}
+            />
+          ))}
+        </div>
       </div>
 
       <div className="mp-controls">
