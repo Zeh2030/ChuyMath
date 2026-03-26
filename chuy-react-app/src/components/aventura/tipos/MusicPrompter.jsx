@@ -7,50 +7,37 @@ import './MusicPrompter.css';
  * Ensures even sixteenth notes have readable spacing after time-proportional
  * repositioning. targetPxPerBeat controls density (higher = more spread out).
  */
-const calcStaffWidth = (abc, multiVoice, targetPxPerBeat = 150) => {
-  const MIN_WIDTH = multiVoice ? 8000 : 4000;
+const calcStaffWidth = (abc, multiVoice, targetPxPerBeat = 200) => {
+  const MIN_WIDTH = multiVoice ? 10000 : 6000;
+  const MIN_PX_PER_NOTE = 50; // minimum pixels between consecutive shortest notes
 
-  // Find shortest note duration in beats (L:1/4 → quarter note = 1 beat)
-  let shortestBeats = 1;
   // Only scan note lines, skip headers/directives
   const noteLines = abc.split('\n').filter(l =>
     l.trim() && !l.match(/^[A-Z]:/) && !l.startsWith('%%')
   ).join(' ');
 
-  const noteRegex = /[A-Ga-gz][',]*((\d+)?(\/(\d+))?)/g;
+  // Find shortest note duration in beats (L:1/4 → quarter note = 1 beat)
+  let shortestBeats = 1;
+  let totalBeats = 0;
+  const noteRegex = /([A-Ga-gz][',]*)((\d+)?(\/(\d+))?)/g;
   let m;
   while ((m = noteRegex.exec(noteLines)) !== null) {
-    const full = m[1];
-    if (!full || full === '') continue; // default = 1 beat, skip
-    let beats = 1;
-    const num = m[2] ? parseInt(m[2]) : 1;
-    const den = m[4] ? parseInt(m[4]) : 1;
-    beats = num / den;
+    const num = m[3] ? parseInt(m[3]) : 1;
+    const den = m[5] ? parseInt(m[5]) : 1;
+    const beats = num / den;
+    totalBeats += beats;
     if (beats > 0 && beats < shortestBeats) shortestBeats = beats;
   }
 
-  // Count total beats (rough: count all notes + their durations)
-  let totalBeats = 0;
-  const countRegex = /([A-Ga-gz][',]*)((\d+)?(\/(\d+))?)/g;
-  let cm;
-  while ((cm = countRegex.exec(noteLines)) !== null) {
-    const full = cm[2];
-    if (!full || full === '') { totalBeats += 1; continue; }
-    const num = cm[3] ? parseInt(cm[3]) : 1;
-    const den = cm[5] ? parseInt(cm[5]) : 1;
-    totalBeats += num / den;
-  }
-  // For multi-voice, beats are per voice (not additive), take half
+  // For multi-voice, beats are per voice (not additive)
   if (multiVoice) totalBeats = totalBeats / 2;
   totalBeats = Math.max(totalBeats, 4);
 
-  // staffwidth = totalBeats * targetPxPerBeat, ensuring shortest note gets
-  // at least 30px: shortestBeats * targetPxPerBeat >= 30
-  const minTarget = 30 / shortestBeats; // minimum px/beat for readability
-  const pxPerBeat = Math.max(targetPxPerBeat, minTarget);
-  const calculated = Math.round(totalBeats * pxPerBeat);
+  // Ensure shortest note gets at least MIN_PX_PER_NOTE pixels
+  const minPxPerBeat = MIN_PX_PER_NOTE / shortestBeats;
+  const pxPerBeat = Math.max(targetPxPerBeat, minPxPerBeat);
 
-  return Math.max(MIN_WIDTH, calculated);
+  return Math.max(MIN_WIDTH, Math.round(totalBeats * pxPerBeat));
 };
 
 /**
@@ -141,6 +128,26 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
           musicWidthRef.current = svgRect.width;
         }
       }
+
+      // Reposition notes IMMEDIATELY (synchronous) so user never sees
+      // the original abcjs spacing. TimingCallbacks is synchronous —
+      // it computes noteTimings in its constructor without needing audio.
+      if (visualObjRef.current) {
+        try {
+          const earlyTiming = new abcjs.TimingCallbacks(visualObjRef.current, {
+            qpm: bpmActual,
+            eventCallback: () => {},
+          });
+          if (earlyTiming.noteTimings && earlyTiming.noteTimings.length > 0) {
+            // Estimate duration from last event timing
+            const lastEvent = earlyTiming.noteTimings[earlyTiming.noteTimings.length - 1];
+            const estimatedDuration = (lastEvent.milliseconds / 1000) + 1; // +1s for last note sustain
+            repositionNotes(earlyTiming, estimatedDuration);
+          }
+          earlyTiming.stop();
+        } catch(e) {}
+      }
+
       measureViewport();
       translateXRef.current = 0;
       applyTransform();
@@ -252,18 +259,16 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
         ? scrollableWidth / realDuration
         : 0;
 
-      // TimingCallbacks for end-of-song detection + note timing data
+      // TimingCallbacks for end-of-song detection
       const timing = new abcjs.TimingCallbacks(visualObjRef.current, {
         qpm: qpm,
         eventCallback: onNoteEvent,
       });
       timingRef.current = timing;
 
-      // Reposition notes to time-proportional positions
-      // (must happen AFTER measuring musicWidth but BEFORE playing)
-      repositionNotes(timing, realDuration);
-
-      // Calculate barline overlay positions (uses original musicWidth)
+      // Note: repositioning already happened synchronously after render
+      // (see earlyTiming in the render useEffect). Here we just calibrate
+      // scroll speed with the synth's precise duration and set barlines.
       calculateBarlines(qpm, realDuration);
 
     } catch (err) {
