@@ -261,11 +261,11 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
       await synth.prime();
       synthRef.current = synth;
 
-      // Recalibrate scroll speed with synth's precise duration
-      const realDuration = synth.duration;
-      if (musicWidthRef.current > 0 && realDuration > 0) {
-        pixelsPerSecondRef.current = musicWidthRef.current / realDuration;
-      }
+      // Do NOT recalibrate scroll speed here. pixelsPerSecondRef was set
+      // during render using calcDurationFromAbc — the same duration used
+      // for note repositioning. Using synth.duration here would desync
+      // because synth adds release/decay time that differs from the
+      // mathematical duration used for positioning.
 
       // TimingCallbacks for end-of-song detection
       if (timingRef.current) { try { timingRef.current.stop(); } catch(e) {} }
