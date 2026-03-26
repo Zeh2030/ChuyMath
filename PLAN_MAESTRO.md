@@ -36,39 +36,50 @@ Agregar nueva materia requiere: MateriaToggle entry, colección Firebase, reglas
 
 ---
 
-## 3. PIANO / TELEPROMPTER MUSICAL
+## 3. PIANO — CURSO INTEGRAL
 
 ### Completado ✅
 - `abcjs` instalado y lazy-loaded (React.lazy + Suspense)
 - MusicPrompter.jsx: ABC→SVG, scroll con rAF, playhead rojo al 25%
 - Audio sintetizado (abcjs synth + FluidR3 SoundFont piano)
 - Sincronización audio↔scroll usando `synth.duration` como fuente de verdad
-- Primera nota alineada con playhead (compensa preámbulo clave+compás)
-- BPM reactivo: cambiar BPM re-crea synth + recalibra scroll
-- Controles: Play/Pause/Reset, 🔊/🔇 sonido, ⛶ fullscreen
-- Fullscreen: fondo oscuro, viewport expandido, controles grandes para tablet
+- BPM reactivo, controles Play/Pause/Reset, sonido, fullscreen
+- Multi-voz (grand staff): clave de Sol + Fa con `%%staves {1 2}`
 - Integrado: Dashboard, Bóveda, MateriaToggle, AdminMigracion, Aventura.jsx
+- Notas verificadas: twinkle-twinkle ✅, zapatillas-rojas ✅
 
-### Pendiente - Contenido
-Crear 10-15 canciones progresivas:
+### Programa completo: `_piano/PROGRAMA_PIANO.md`
 
-| Nivel | Descripción | Ejemplo |
-|-------|-------------|---------|
-| P1-01 | Solo Do (C) | Ejercicio de una nota |
-| P1-02 | Do-Re (C-D) | Dos notas |
-| P1-03 | Do-Re-Mi (C-D-E) | Mary Had a Little Lamb |
-| P1-04 | Do-Re-Mi-Fa-Sol | Twinkle Twinkle ✅ |
-| P1-05 | Escala completa | Hot Cross Buns |
-| P1-06 | Mano izquierda (clave de Fa) | Ejercicios básicos |
-| P1-07 | Ambas manos | Coordinación |
-| P2-01+ | Canciones populares | Melodías conocidas |
+| Nivel | Nombre | Canciones | Teoría | Estado |
+|-------|--------|-----------|--------|--------|
+| P1 | Primeras Notas | 10 | 10 | 1/10 canciones creada |
+| P2 | Dos Manos | 10 | 10 | Planeado |
+| P3 | Coordinación | 10 | 10 | Planeado |
+| P4 | Piezas Completas | 10 | 10 | 1/10 creada (Zapatillas Rojas) |
+| P5 | Intermedio | 10 | 10 | Futuro |
 
-### Pendiente - Clave de Fa (mano izquierda)
-- Segunda línea de pentagrama (clave de Fa) debajo de la de Sol
-- Acordes o melodía de mano izquierda con mismo teleprompter
-- Requiere ABC con dos voces: `V:1 clef=treble` + `V:2 clef=bass`
-- abcjs soporta múltiples voces nativamente
-- Aplica a partir de nivel P1-06
+### Tipos de actividad
+
+| Tipo | Estado | Descripción |
+|------|--------|-------------|
+| `piano-prompter` | ✅ Existe | Teleprompter con scroll, audio, BPM ajustable |
+| `identifica-nota` | Pendiente | Nota en pentagrama → elegir nombre (lectura musical) |
+| `identifica-acorde` | Pendiente | Acorde en pentagrama → elegir nombre |
+| Tipos existentes reutilizados | Pendiente (solo contenido) | opcion-multiple, true-or-false, tap-the-pairs, fill-the-gap, mini-story, image-picker |
+
+### Pendiente — Features
+
+1. **Selector de manos**: antes de reproducir, elegir Sol (derecha), Fa (izquierda), o Ambas. Solo para piezas multi-voz.
+2. **Componente identifica-nota**: juego de lectura de notas en pentagrama (usa abcjs para renderizar 1 nota)
+3. **Componente identifica-acorde**: igual pero con acordes (reutiliza 90% de identifica-nota)
+
+### Pendiente — Contenido
+
+- Canciones P1-02 a P1-10 (mano derecha, melodías conocidas)
+- Teoría P1-T01 a P1-T10 (partes del piano, notas, duraciones, Mozart)
+- Canciones P4-02 a P4-10 (nivel actual del alumno)
+- Biografías: Mozart, Beethoven, Bach, Chopin, Tchaikovsky, Clara Schumann
+- Guía de extracción desde foto incluida en PROGRAMA_PIANO.md
 
 ---
 
