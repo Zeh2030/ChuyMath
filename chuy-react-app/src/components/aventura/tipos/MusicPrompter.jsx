@@ -131,6 +131,43 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     setBarlinePositions(positions);
   };
 
+  // --- Reposition notes to be time-proportional ---
+  // abcjs spaces notes by musical convention (longer notes = more space),
+  // but not linearly proportional to time. This function moves each note
+  // to its exact time-proportional position so constant-speed scroll syncs perfectly.
+  const repositionNotes = (timing, totalDurationSec) => {
+    const svg = abcTargetRef.current?.querySelector('svg');
+    if (!svg || !timing.noteTimings || timing.noteTimings.length === 0) return;
+
+    const svgRect = svg.getBoundingClientRect();
+    const musicWidth = musicWidthRef.current;
+    const firstNoteX = firstNoteOffsetRef.current;
+    const totalMs = totalDurationSec * 1000;
+
+    timing.noteTimings.forEach(event => {
+      if (!event.elements || event.milliseconds === undefined) return;
+
+      // Where this note SHOULD be (proportional to time)
+      const desiredRelX = (event.milliseconds / totalMs) * musicWidth;
+
+      // Reposition each voice's elements
+      event.elements.forEach(voiceElements => {
+        if (!Array.isArray(voiceElements)) return;
+        voiceElements.forEach(el => {
+          if (!el) return;
+          const elRect = el.getBoundingClientRect();
+          // Current position relative to first note
+          const currentRelX = (elRect.left - svgRect.left) - firstNoteX;
+          const deltaX = desiredRelX - currentRelX;
+          if (Math.abs(deltaX) > 0.5) {
+            const existing = el.getAttribute('transform') || '';
+            el.setAttribute('transform', `${existing} translate(${deltaX}, 0)`);
+          }
+        });
+      });
+    });
+  };
+
   // --- Preparar synth + TimingCallbacks ---
   const prepareAll = async (qpm) => {
     try {
@@ -162,15 +199,19 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
         ? scrollableWidth / realDuration
         : 0;
 
-      // Calculate barline overlay positions
-      calculateBarlines(qpm, realDuration);
-
-      // TimingCallbacks for end-of-song detection
+      // TimingCallbacks for end-of-song detection + note timing data
       const timing = new abcjs.TimingCallbacks(visualObjRef.current, {
         qpm: qpm,
         eventCallback: onNoteEvent,
       });
       timingRef.current = timing;
+
+      // Reposition notes to time-proportional positions
+      // (must happen AFTER measuring musicWidth but BEFORE playing)
+      repositionNotes(timing, realDuration);
+
+      // Calculate barline overlay positions (uses original musicWidth)
+      calculateBarlines(qpm, realDuration);
 
     } catch (err) {
       console.warn('Error preparando audio/timing:', err);

@@ -1,0 +1,22 @@
+{
+  "id": "piano-test-duraciones",
+  "titulo": "Test de Duraciones",
+  "misiones": [
+    {
+      "id": "test-dur-01",
+      "tipo": "piano-prompter",
+      "titulo": "Test de Duraciones",
+      "instruccion": "Prueba tecnica: verifica sincronizacion visual con semicorcheas, corcheas, negras, blancas y redondas.",
+      "autor": "Test",
+      "bpm": 80,
+      "dificultad": "test",
+      "nivel": "TEST",
+      "configuracion": {
+        "compas": "4/4",
+        "tonalidad": "C",
+        "clave": "treble"
+      },
+      "notas": "C/4 D/4 E/4 F/4 G/4 A/4 B/4 c/4 | C/2 D/2 E/2 F/2 G/2 A/2 B/2 c/2 | C D E F | G A B c | C2 E2 | G2 B2 | C4 | c4 |]"
+    }
+  ]
+}
