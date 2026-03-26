@@ -52,13 +52,36 @@ const stripBarlines = (abc) => {
   }).join('\n');
 };
 
+/**
+ * Calculate duration in seconds from ABC content and BPM.
+ * Used for repositioning before synth is available (no audio context needed).
+ */
+const calcDurationFromAbc = (abc, qpm, multiVoice) => {
+  const noteLines = abc.split('\n').filter(l =>
+    l.trim() && !l.match(/^[A-Z]:/) && !l.startsWith('%%')
+  ).join(' ');
+
+  let totalBeats = 0;
+  const noteRegex = /([A-Ga-gz][',]*)((\d+)?(\/(\d+))?)/g;
+  let m;
+  while ((m = noteRegex.exec(noteLines)) !== null) {
+    const num = m[3] ? parseInt(m[3]) : 1;
+    const den = m[5] ? parseInt(m[5]) : 1;
+    totalBeats += num / den;
+  }
+  if (multiVoice) totalBeats = totalBeats / 2;
+  totalBeats = Math.max(totalBeats, 1);
+  return (totalBeats / qpm) * 60;
+};
+
 const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice = false }) => {
   const [estado, setEstado] = useState('parado');
   const [bpmActual, setBpmActual] = useState(bpm || 80);
   const [sonidoOn, setSonidoOn] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [barlinePositions, setBarlinePositions] = useState([]);
-  const [cargando, setCargando] = useState(true);
+  const [cargando, setCargando] = useState(false);
+  const [synthReady, setSynthReady] = useState(false);
 
   const containerRef = useRef(null);
   const abcTargetRef = useRef(null);
@@ -80,11 +103,11 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
 
   useEffect(() => { estadoRef.current = estado; }, [estado]);
 
-  // ─── Render ABC → SVG, then prepare synth, then reposition with exact duration ───
+  // ─── Render ABC → SVG, reposition immediately (no audio needed) ───
   useEffect(() => {
     if (!abcTargetRef.current || !abcNotation) return;
 
-    setCargando(true);
+    setSynthReady(false);
     abcTargetRef.current.innerHTML = '';
 
     const strippedAbc = stripBarlines(abcNotation);
@@ -105,12 +128,30 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
 
     requestAnimationFrame(() => {
       measureSvg();
+
+      // Reposition using calculated duration (no audio required).
+      // This is synchronous and accurate for BPM-based timing.
+      if (visualObjRef.current) {
+        try {
+          const timing = new abcjs.TimingCallbacks(visualObjRef.current, {
+            qpm: bpmActual,
+            eventCallback: () => {},
+          });
+          if (timing.noteTimings && timing.noteTimings.length > 0) {
+            // Calculate duration from BPM + total beats (same as calibrateScrollFallback)
+            const calcDuration = calcDurationFromAbc(abcNotation, bpmActual, multiVoice);
+            repositionNotes(timing, calcDuration);
+            pixelsPerSecondRef.current = musicWidthRef.current > 0 && calcDuration > 0
+              ? musicWidthRef.current / calcDuration : 0;
+            calculateBarlines(bpmActual, calcDuration);
+          }
+          timing.stop();
+        } catch(e) {}
+      }
+
       measureViewport();
       translateXRef.current = 0;
       applyTransform();
-
-      // Prepare synth (async) then reposition with precise duration
-      prepareAndReposition(bpmActual);
     });
 
     return () => { cleanup(); };
@@ -191,14 +232,20 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     });
   };
 
-  // ─── Prepare synth + reposition with exact duration (no estimate) ───
-  const prepareAndReposition = async (qpm) => {
+  // ─── Prepare synth (called on first Play, requires user gesture for AudioContext) ───
+  const prepareSynth = async (qpm) => {
+    if (synthReady && synthRef.current) return; // already prepared
+
+    setCargando(true);
     try {
       if (!visualObjRef.current) return;
 
       if (!audioContextRef.current) {
         const AudioContext = window.AudioContext || window.webkitAudioContext;
         audioContextRef.current = new AudioContext();
+      }
+      if (audioContextRef.current.state === 'suspended') {
+        await audioContextRef.current.resume();
       }
 
       const synth = new abcjs.synth.CreateSynth();
@@ -214,52 +261,25 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
       await synth.prime();
       synthRef.current = synth;
 
-      // Use synth's precise duration for BOTH scroll speed AND repositioning
+      // Recalibrate scroll speed with synth's precise duration
       const realDuration = synth.duration;
-      pixelsPerSecondRef.current = musicWidthRef.current > 0 && realDuration > 0
-        ? musicWidthRef.current / realDuration
-        : 0;
+      if (musicWidthRef.current > 0 && realDuration > 0) {
+        pixelsPerSecondRef.current = musicWidthRef.current / realDuration;
+      }
 
-      // TimingCallbacks — used for repositioning + end-of-song detection
+      // TimingCallbacks for end-of-song detection
+      if (timingRef.current) { try { timingRef.current.stop(); } catch(e) {} }
       const timing = new abcjs.TimingCallbacks(visualObjRef.current, {
         qpm: qpm,
         eventCallback: onNoteEvent,
       });
       timingRef.current = timing;
 
-      // Reposition using EXACT synth duration → perfect sync
-      repositionNotes(timing, realDuration);
-
-      // Barlines also use exact duration
-      calculateBarlines(qpm, realDuration);
-
+      setSynthReady(true);
     } catch (err) {
       console.warn('Error preparando audio:', err);
-      calibrateScrollFallback(qpm);
     }
-
     setCargando(false);
-  };
-
-  const calibrateScrollFallback = (qpm) => {
-    const lines = abcNotation.split('\n');
-    const notesLine = lines.filter(l => l && !l.match(/^[A-Z]:/)).join(' ');
-    let beats = 0;
-    const noteRegex = /([A-Ga-gz][',]*)((\d+)?(\/(\d+))?)/g;
-    let match;
-    while ((match = noteRegex.exec(notesLine)) !== null) {
-      const d = match[2];
-      if (!d || d === '') beats += 1;
-      else if (match[3] && !match[4]) beats += parseInt(match[3], 10);
-      else if (match[4]) {
-        const num = match[3] ? parseInt(match[3], 10) : 1;
-        beats += num / parseInt(match[5], 10);
-      } else beats += 1;
-    }
-    beats = Math.max(beats, 1);
-    const duration = (beats / qpm) * 60;
-    pixelsPerSecondRef.current = musicWidthRef.current > 0 ? musicWidthRef.current / duration : 0;
-    calculateBarlines(qpm, duration);
   };
 
   // ─── End of song detection ───
@@ -311,15 +331,45 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     return () => { if (rafIdRef.current) { cancelAnimationFrame(rafIdRef.current); rafIdRef.current = null; } };
   }, [estado, animate]);
 
-  // ─── BPM change ───
+  // ─── BPM change: re-render needed since repositioning depends on BPM ───
   useEffect(() => {
-    if (!visualObjRef.current) return;
+    if (!visualObjRef.current || !abcTargetRef.current) return;
+
     cleanup();
+    setSynthReady(false);
+    synthRef.current = null;
     translateXRef.current = 0;
     lastTimestampRef.current = null;
-    applyTransform();
     setEstado('parado');
-    prepareAndReposition(bpmActual);
+
+    // Re-render and reposition with new BPM
+    abcTargetRef.current.innerHTML = '';
+    const strippedAbc = stripBarlines(abcNotation);
+    const adaptiveWidth = calcStaffWidth(abcNotation, multiVoice);
+    const visualObj = abcjs.renderAbc(abcTargetRef.current, strippedAbc, {
+      staffwidth: adaptiveWidth, scale: 2, wrap: null, add_classes: true,
+      paddingtop: 0, paddingbottom: 0, paddingleft: 20,
+    });
+    visualObjRef.current = visualObj[0];
+
+    requestAnimationFrame(() => {
+      measureSvg();
+      if (visualObjRef.current) {
+        try {
+          const timing = new abcjs.TimingCallbacks(visualObjRef.current, { qpm: bpmActual, eventCallback: () => {} });
+          if (timing.noteTimings && timing.noteTimings.length > 0) {
+            const calcDuration = calcDurationFromAbc(abcNotation, bpmActual, multiVoice);
+            repositionNotes(timing, calcDuration);
+            pixelsPerSecondRef.current = musicWidthRef.current > 0 && calcDuration > 0
+              ? musicWidthRef.current / calcDuration : 0;
+            calculateBarlines(bpmActual, calcDuration);
+          }
+          timing.stop();
+        } catch(e) {}
+      }
+      measureViewport();
+      applyTransform();
+    });
   }, [bpmActual]);
 
   // ─── Fullscreen events ───
@@ -356,6 +406,11 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
           applyTransform();
         } catch (err) {}
       }
+
+      // Prepare synth on first play (requires user gesture for AudioContext)
+      if (!synthRef.current) {
+        await prepareSynth(bpmActual);
+      }
     }
 
     if (audioContextRef.current?.state === 'suspended') {
@@ -385,7 +440,8 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     lastTimestampRef.current = null;
     applyTransform();
     setEstado('parado');
-    prepareAndReposition(bpmActual);
+    setSynthReady(false);
+    synthRef.current = null;
   };
 
   const handleBpmUp = () => setBpmActual(prev => Math.min(200, prev + 5));
