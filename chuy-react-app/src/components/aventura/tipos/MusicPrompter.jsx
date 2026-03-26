@@ -60,8 +60,10 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
 
     const strippedAbc = stripBarlines(abcNotation);
 
+    // Larger staffwidth ensures short notes remain readable after
+    // time-proportional repositioning (sixteenths need more room)
     const visualObj = abcjs.renderAbc(abcTargetRef.current, strippedAbc, {
-      staffwidth: multiVoice ? 8000 : 3000,
+      staffwidth: multiVoice ? 12000 : 6000,
       wrap: null,
       add_classes: true,
       paddingtop: 10,
@@ -143,20 +145,32 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     const musicWidth = musicWidthRef.current;
     const firstNoteX = firstNoteOffsetRef.current;
     const totalMs = totalDurationSec * 1000;
+    const MIN_SPACING = 20; // Minimum px between consecutive notes
 
+    // First pass: calculate desired positions and enforce minimum spacing
+    const noteData = [];
     timing.noteTimings.forEach(event => {
       if (!event.elements || event.milliseconds === undefined) return;
+      let desiredRelX = (event.milliseconds / totalMs) * musicWidth;
 
-      // Where this note SHOULD be (proportional to time)
-      const desiredRelX = (event.milliseconds / totalMs) * musicWidth;
+      // Enforce minimum spacing from previous note
+      if (noteData.length > 0) {
+        const prevX = noteData[noteData.length - 1].desiredRelX;
+        if (desiredRelX - prevX < MIN_SPACING) {
+          desiredRelX = prevX + MIN_SPACING;
+        }
+      }
 
-      // Reposition each voice's elements
+      noteData.push({ event, desiredRelX });
+    });
+
+    // Second pass: apply transforms
+    noteData.forEach(({ event, desiredRelX }) => {
       event.elements.forEach(voiceElements => {
         if (!Array.isArray(voiceElements)) return;
         voiceElements.forEach(el => {
           if (!el) return;
           const elRect = el.getBoundingClientRect();
-          // Current position relative to first note
           const currentRelX = (elRect.left - svgRect.left) - firstNoteX;
           const deltaX = desiredRelX - currentRelX;
           if (Math.abs(deltaX) > 0.5) {
