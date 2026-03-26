@@ -53,25 +53,17 @@ const stripBarlines = (abc) => {
 };
 
 /**
- * Calculate duration in seconds from ABC content and BPM.
- * Used for repositioning before synth is available (no audio context needed).
+ * Derive total duration from TimingCallbacks noteTimings (abcjs's own timing).
+ * Uses the last event's timestamp + estimated last note duration (from gap
+ * between last two events). Single source of truth — matches synth playback.
  */
-const calcDurationFromAbc = (abc, qpm, multiVoice) => {
-  const noteLines = abc.split('\n').filter(l =>
-    l.trim() && !l.match(/^[A-Z]:/) && !l.startsWith('%%')
-  ).join(' ');
-
-  let totalBeats = 0;
-  const noteRegex = /([A-Ga-gz][',]*)((\d+)?(\/(\d+))?)/g;
-  let m;
-  while ((m = noteRegex.exec(noteLines)) !== null) {
-    const num = m[3] ? parseInt(m[3]) : 1;
-    const den = m[5] ? parseInt(m[5]) : 1;
-    totalBeats += num / den;
-  }
-  if (multiVoice) totalBeats = totalBeats / 2;
-  totalBeats = Math.max(totalBeats, 1);
-  return (totalBeats / qpm) * 60;
+const durationFromTimings = (noteTimings) => {
+  if (!noteTimings || noteTimings.length < 2) return 0;
+  const last = noteTimings[noteTimings.length - 1];
+  const secondLast = noteTimings[noteTimings.length - 2];
+  const lastGap = last.milliseconds - secondLast.milliseconds;
+  // Total = last note start + estimated last note duration
+  return (last.milliseconds + Math.max(lastGap, 500)) / 1000;
 };
 
 const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice = false }) => {
@@ -137,13 +129,15 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
             qpm: bpmActual,
             eventCallback: () => {},
           });
-          if (timing.noteTimings && timing.noteTimings.length > 0) {
-            // Calculate duration from BPM + total beats (same as calibrateScrollFallback)
-            const calcDuration = calcDurationFromAbc(abcNotation, bpmActual, multiVoice);
-            repositionNotes(timing, calcDuration);
-            pixelsPerSecondRef.current = musicWidthRef.current > 0 && calcDuration > 0
-              ? musicWidthRef.current / calcDuration : 0;
-            calculateBarlines(bpmActual, calcDuration);
+          if (timing.noteTimings && timing.noteTimings.length > 1) {
+            // Derive duration from abcjs's own timing data (single source of truth)
+            const duration = durationFromTimings(timing.noteTimings);
+            if (duration > 0) {
+              repositionNotes(timing, duration);
+              pixelsPerSecondRef.current = musicWidthRef.current > 0
+                ? musicWidthRef.current / duration : 0;
+              calculateBarlines(bpmActual, duration);
+            }
           }
           timing.stop();
         } catch(e) {}
@@ -357,12 +351,14 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
       if (visualObjRef.current) {
         try {
           const timing = new abcjs.TimingCallbacks(visualObjRef.current, { qpm: bpmActual, eventCallback: () => {} });
-          if (timing.noteTimings && timing.noteTimings.length > 0) {
-            const calcDuration = calcDurationFromAbc(abcNotation, bpmActual, multiVoice);
-            repositionNotes(timing, calcDuration);
-            pixelsPerSecondRef.current = musicWidthRef.current > 0 && calcDuration > 0
-              ? musicWidthRef.current / calcDuration : 0;
-            calculateBarlines(bpmActual, calcDuration);
+          if (timing.noteTimings && timing.noteTimings.length > 1) {
+            const duration = durationFromTimings(timing.noteTimings);
+            if (duration > 0) {
+              repositionNotes(timing, duration);
+              pixelsPerSecondRef.current = musicWidthRef.current > 0
+                ? musicWidthRef.current / duration : 0;
+              calculateBarlines(bpmActual, duration);
+            }
           }
           timing.stop();
         } catch(e) {}
