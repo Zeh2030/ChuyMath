@@ -3,6 +3,57 @@ import abcjs from 'abcjs';
 import './MusicPrompter.css';
 
 /**
+ * Calculate adaptive staffwidth based on shortest note duration in the ABC.
+ * Ensures even sixteenth notes have readable spacing after time-proportional
+ * repositioning. targetPxPerBeat controls density (higher = more spread out).
+ */
+const calcStaffWidth = (abc, multiVoice, targetPxPerBeat = 150) => {
+  const MIN_WIDTH = multiVoice ? 8000 : 4000;
+
+  // Find shortest note duration in beats (L:1/4 → quarter note = 1 beat)
+  let shortestBeats = 1;
+  // Only scan note lines, skip headers/directives
+  const noteLines = abc.split('\n').filter(l =>
+    l.trim() && !l.match(/^[A-Z]:/) && !l.startsWith('%%')
+  ).join(' ');
+
+  const noteRegex = /[A-Ga-gz][',]*((\d+)?(\/(\d+))?)/g;
+  let m;
+  while ((m = noteRegex.exec(noteLines)) !== null) {
+    const full = m[1];
+    if (!full || full === '') continue; // default = 1 beat, skip
+    let beats = 1;
+    const num = m[2] ? parseInt(m[2]) : 1;
+    const den = m[4] ? parseInt(m[4]) : 1;
+    beats = num / den;
+    if (beats > 0 && beats < shortestBeats) shortestBeats = beats;
+  }
+
+  // Count total beats (rough: count all notes + their durations)
+  let totalBeats = 0;
+  const countRegex = /([A-Ga-gz][',]*)((\d+)?(\/(\d+))?)/g;
+  let cm;
+  while ((cm = countRegex.exec(noteLines)) !== null) {
+    const full = cm[2];
+    if (!full || full === '') { totalBeats += 1; continue; }
+    const num = cm[3] ? parseInt(cm[3]) : 1;
+    const den = cm[5] ? parseInt(cm[5]) : 1;
+    totalBeats += num / den;
+  }
+  // For multi-voice, beats are per voice (not additive), take half
+  if (multiVoice) totalBeats = totalBeats / 2;
+  totalBeats = Math.max(totalBeats, 4);
+
+  // staffwidth = totalBeats * targetPxPerBeat, ensuring shortest note gets
+  // at least 30px: shortestBeats * targetPxPerBeat >= 30
+  const minTarget = 30 / shortestBeats; // minimum px/beat for readability
+  const pxPerBeat = Math.max(targetPxPerBeat, minTarget);
+  const calculated = Math.round(totalBeats * pxPerBeat);
+
+  return Math.max(MIN_WIDTH, calculated);
+};
+
+/**
  * Strip internal barlines from ABC notation for uniform note spacing.
  * Without barlines, abcjs spaces notes purely by duration → constant-speed
  * scroll works perfectly as a visual metronome.
@@ -60,10 +111,11 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
 
     const strippedAbc = stripBarlines(abcNotation);
 
-    // Larger staffwidth ensures short notes remain readable after
-    // time-proportional repositioning (sixteenths need more room)
+    // Adaptive staffwidth: wider for pieces with short notes (sixteenths)
+    // so they remain readable after time-proportional repositioning
+    const adaptiveWidth = calcStaffWidth(abcNotation, multiVoice);
     const visualObj = abcjs.renderAbc(abcTargetRef.current, strippedAbc, {
-      staffwidth: multiVoice ? 12000 : 6000,
+      staffwidth: adaptiveWidth,
       wrap: null,
       add_classes: true,
       paddingtop: 10,
@@ -344,8 +396,27 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     }
   };
 
+  // --- Enter fullscreen automatically on first play ---
+  const enterFullscreen = async () => {
+    if (document.fullscreenElement) return; // already fullscreen
+    try {
+      await containerRef.current?.parentElement?.requestFullscreen();
+    } catch (err) {
+      // Fullscreen not available (desktop browser restriction, etc.) — continue anyway
+    }
+  };
+
   // --- Handlers ---
   const handlePlay = async () => {
+    // Auto-fullscreen on first play for better readability
+    if (estado !== 'pausado') {
+      await enterFullscreen();
+      // Give fullscreen a moment to settle before starting audio
+      await new Promise(r => setTimeout(r, 200));
+      measureViewport();
+      applyTransform();
+    }
+
     if (audioContextRef.current?.state === 'suspended') {
       await audioContextRef.current.resume();
     }
@@ -449,13 +520,15 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
           {sonidoOn ? '🔊' : '🔇'}
         </button>
 
-        <button
-          className="mp-btn mp-btn-fullscreen"
-          onClick={toggleFullscreen}
-          title={isFullscreen ? 'Salir de pantalla completa' : 'Pantalla completa'}
-        >
-          {isFullscreen ? '✕' : '⛶'}
-        </button>
+        {isFullscreen && (
+          <button
+            className="mp-btn mp-btn-fullscreen"
+            onClick={toggleFullscreen}
+            title="Salir de pantalla completa"
+          >
+            ✕
+          </button>
+        )}
 
         <div className="mp-bpm-control">
           <span className="mp-bpm-label">BPM</span>
