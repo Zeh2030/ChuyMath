@@ -196,11 +196,9 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     // Base advance: constant speed (visual metronome)
     let advance = pixelsPerSecondRef.current * (deltaMs / 1000);
 
-    // Absorb per-note correction gradually (5% per frame, capped at 30% of normal advance)
+    // Absorb per-note correction smoothly (20% per frame)
     if (Math.abs(correctionRef.current) > 0.5) {
-      const maxCorrection = Math.max(advance * 0.3, 0.5);
-      const raw = correctionRef.current * 0.05;
-      const correction = Math.max(-maxCorrection, Math.min(maxCorrection, raw));
+      const correction = correctionRef.current * 0.2;
       advance += correction;
       correctionRef.current -= correction;
     } else {
