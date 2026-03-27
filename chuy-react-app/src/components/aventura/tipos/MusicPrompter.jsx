@@ -4,6 +4,7 @@ import './MusicPrompter.css';
 
 /**
  * Strip internal barlines from ABC for more uniform note spacing.
+ * Preserves |] (final), |: and :| (repeats).
  */
 const stripBarlines = (abc) => {
   return abc.split('\n').map(line => {
@@ -24,22 +25,19 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
   const [bpmActual, setBpmActual] = useState(bpm || 80);
   const [sonidoOn, setSonidoOn] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [barlinePositions, setBarlinePositions] = useState([]);
   const [cargando, setCargando] = useState(false);
 
   const containerRef = useRef(null);
   const abcTargetRef = useRef(null);
-  const barlinesRef = useRef(null);
+  const translateXRef = useRef(0);
   const rafIdRef = useRef(null);
   const lastTimestampRef = useRef(null);
-  const elapsedRef = useRef(0); // elapsed time in seconds since play started
   const viewportWidthRef = useRef(600);
+  const pixelsPerSecondRef = useRef(0);
   const playheadOffsetRef = useRef(150);
   const firstNoteOffsetRef = useRef(0);
   const musicWidthRef = useRef(0);
-
-  // Scroll map: [{time: seconds, x: pixels}, ...] built from TimingCallbacks
-  const scrollMapRef = useRef([]);
+  const correctionRef = useRef(0);
 
   const synthRef = useRef(null);
   const visualObjRef = useRef(null);
@@ -49,12 +47,11 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
 
   useEffect(() => { estadoRef.current = estado; }, [estado]);
 
-  // ─── Render ABC → SVG + build scroll map (no audio needed) ───
+  // ─── Render ABC → SVG ───
   useEffect(() => {
     if (!abcTargetRef.current || !abcNotation) return;
 
     abcTargetRef.current.innerHTML = '';
-
     const strippedAbc = stripBarlines(abcNotation);
 
     const visualObj = abcjs.renderAbc(abcTargetRef.current, strippedAbc, {
@@ -70,121 +67,28 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     visualObjRef.current = visualObj[0];
 
     requestAnimationFrame(() => {
-      // Measure SVG
       const svg = abcTargetRef.current?.querySelector('svg');
-      if (!svg) return;
-      const svgRect = svg.getBoundingClientRect();
-      const allNotes = svg.querySelectorAll('.abcjs-note, .abcjs-rest');
-      if (allNotes.length > 0) {
-        const firstRect = allNotes[0].getBoundingClientRect();
-        const lastRect = allNotes[allNotes.length - 1].getBoundingClientRect();
-        firstNoteOffsetRef.current = firstRect.left - svgRect.left;
-        musicWidthRef.current = (lastRect.right - firstRect.left) + 100;
-      } else {
-        firstNoteOffsetRef.current = 0;
-        musicWidthRef.current = svgRect.width;
+      if (svg) {
+        const svgRect = svg.getBoundingClientRect();
+        const allNotes = svg.querySelectorAll('.abcjs-note, .abcjs-rest');
+        if (allNotes.length > 0) {
+          const firstRect = allNotes[0].getBoundingClientRect();
+          const lastRect = allNotes[allNotes.length - 1].getBoundingClientRect();
+          firstNoteOffsetRef.current = firstRect.left - svgRect.left;
+          musicWidthRef.current = (lastRect.right - firstRect.left) + 100;
+        } else {
+          firstNoteOffsetRef.current = 0;
+          musicWidthRef.current = svgRect.width;
+        }
       }
-
-      // Build scroll map from TimingCallbacks
-      buildScrollMap(bpmActual);
-
       measureViewport();
-      elapsedRef.current = 0;
-      applyScrollPosition(0);
+      translateXRef.current = 0;
+      correctionRef.current = 0;
+      applyTransform();
     });
 
     return () => { cleanup(); };
   }, [abcNotation]);
-
-  // ─── Build time→position scroll map from abcjs TimingCallbacks ───
-  const buildScrollMap = (qpm) => {
-    if (!visualObjRef.current) return;
-
-    const svg = abcTargetRef.current?.querySelector('svg');
-    if (!svg) return;
-    const svgRect = svg.getBoundingClientRect();
-    const firstNoteX = firstNoteOffsetRef.current;
-
-    try {
-      const timing = new abcjs.TimingCallbacks(visualObjRef.current, {
-        qpm: qpm,
-        eventCallback: () => {},
-      });
-
-      if (!timing.noteTimings || timing.noteTimings.length === 0) {
-        timing.stop();
-        return;
-      }
-
-      const map = [];
-      timing.noteTimings.forEach(event => {
-        if (!event.elements || event.milliseconds === undefined) return;
-
-        // Get the x position of the first element (voice 1)
-        let noteX = null;
-        for (const voiceEls of event.elements) {
-          if (Array.isArray(voiceEls) && voiceEls.length > 0 && voiceEls[0]) {
-            const rect = voiceEls[0].getBoundingClientRect();
-            noteX = (rect.left + rect.width / 2) - svgRect.left - firstNoteX;
-            break;
-          }
-        }
-
-        if (noteX !== null) {
-          map.push({ time: event.milliseconds / 1000, x: noteX });
-        }
-      });
-
-      // Add end point: last note position + estimated last note duration
-      if (map.length >= 2) {
-        const last = map[map.length - 1];
-        const secondLast = map[map.length - 2];
-        const lastDuration = last.time - secondLast.time;
-        map.push({ time: last.time + Math.max(lastDuration, 0.5), x: musicWidthRef.current });
-      }
-
-      scrollMapRef.current = map;
-      timing.stop();
-
-      // Calculate barline positions using the map's total duration
-      if (map.length > 0) {
-        const totalDuration = map[map.length - 1].time;
-        const mMatch = abcNotation.match(/M:(\d+)\/(\d+)/);
-        const beatsPerMeasure = mMatch ? parseInt(mMatch[1]) : 4;
-        const secondsPerMeasure = (beatsPerMeasure / qpm) * 60;
-        const positions = [];
-        for (let i = 1; i * secondsPerMeasure < totalDuration; i++) {
-          // Interpolate barline x position from scroll map
-          const barTime = i * secondsPerMeasure;
-          const barX = interpolateX(barTime, map);
-          positions.push(barX);
-        }
-        setBarlinePositions(positions);
-      }
-    } catch (e) {
-      console.warn('Error building scroll map:', e);
-    }
-  };
-
-  // ─── Interpolate x position for a given time using scroll map ───
-  const interpolateX = (time, map) => {
-    if (!map || map.length === 0) return 0;
-    if (time <= map[0].time) return map[0].x;
-    if (time >= map[map.length - 1].time) return map[map.length - 1].x;
-
-    // Binary search for bracketing entries
-    let lo = 0, hi = map.length - 1;
-    while (lo < hi - 1) {
-      const mid = (lo + hi) >> 1;
-      if (map[mid].time <= time) lo = mid;
-      else hi = mid;
-    }
-
-    const a = map[lo];
-    const b = map[hi];
-    const t = (time - a.time) / (b.time - a.time);
-    return a.x + t * (b.x - a.x);
-  };
 
   const cleanup = () => {
     if (rafIdRef.current) { cancelAnimationFrame(rafIdRef.current); rafIdRef.current = null; }
@@ -199,18 +103,34 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     }
   }, []);
 
-  // ─── Apply scroll position (used by both initial render and animation) ───
-  const applyScrollPosition = useCallback((scrollX) => {
-    const offset = playheadOffsetRef.current - firstNoteOffsetRef.current - scrollX;
-    if (abcTargetRef.current) {
-      abcTargetRef.current.style.transform = `translateX(${offset}px)`;
+  // ─── Per-note correction callback ───
+  // Only uses V:1 (voice 1) to avoid double-correction in multi-voice.
+  // Sets correction (not accumulates) to prevent overcorrection.
+  const onNoteEvent = (event) => {
+    if (!event) {
+      if (estadoRef.current === 'tocando') {
+        setEstado('parado');
+        if (onTerminar) onTerminar();
+      }
+      return;
     }
-    if (barlinesRef.current) {
-      barlinesRef.current.style.transform = `translateX(${offset}px)`;
-    }
-  }, []);
 
-  // ─── Prepare synth (called on first Play — requires user gesture) ───
+    if (event.elements && event.elements.length > 0 && event.elements[0].length > 0) {
+      const noteEl = event.elements[0][0];
+      if (noteEl && abcTargetRef.current) {
+        const svgRect = abcTargetRef.current.querySelector('svg')?.getBoundingClientRect();
+        if (svgRect) {
+          const noteRect = noteEl.getBoundingClientRect();
+          const noteRealX = noteRect.left - svgRect.left;
+          const scrollX = translateXRef.current + firstNoteOffsetRef.current;
+          const error = noteRealX - scrollX;
+          correctionRef.current = error;
+        }
+      }
+    }
+  };
+
+  // ─── Prepare synth (called on Play — requires user gesture) ───
   const prepareSynth = async (qpm) => {
     if (synthRef.current) return;
 
@@ -239,7 +159,13 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
       await synth.prime();
       synthRef.current = synth;
 
-      // TimingCallbacks for end-of-song detection
+      // Calibrate scroll speed with synth's precise duration
+      const realDuration = synth.duration;
+      if (musicWidthRef.current > 0 && realDuration > 0) {
+        pixelsPerSecondRef.current = musicWidthRef.current / realDuration;
+      }
+
+      // TimingCallbacks for per-note correction + end detection
       if (timingRef.current) { try { timingRef.current.stop(); } catch(e) {} }
       const timing = new abcjs.TimingCallbacks(visualObjRef.current, {
         qpm: qpm,
@@ -252,40 +178,44 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     setCargando(false);
   };
 
-  // ─── End of song detection ───
-  const onNoteEvent = (event) => {
-    if (!event) {
-      if (estadoRef.current === 'tocando') {
-        setEstado('parado');
-        if (onTerminar) onTerminar();
-      }
+  // ─── Apply CSS transform ───
+  const applyTransform = useCallback(() => {
+    const offset = playheadOffsetRef.current - firstNoteOffsetRef.current - translateXRef.current;
+    if (abcTargetRef.current) {
+      abcTargetRef.current.style.transform = `translateX(${offset}px)`;
     }
-  };
+  }, []);
 
-  // ─── Animation loop: interpolated scroll (smooth, perfectly synced) ───
+  // ─── Animation: constant speed + smooth per-note correction ───
   const animate = useCallback((timestamp) => {
     if (!lastTimestampRef.current) lastTimestampRef.current = timestamp;
 
     const deltaMs = timestamp - lastTimestampRef.current;
     lastTimestampRef.current = timestamp;
 
-    elapsedRef.current += deltaMs / 1000;
+    // Base advance: constant speed (visual metronome)
+    let advance = pixelsPerSecondRef.current * (deltaMs / 1000);
 
-    const map = scrollMapRef.current;
-    if (!map || map.length === 0) return;
-
-    const totalDuration = map[map.length - 1].time;
-    if (elapsedRef.current >= totalDuration) {
-      applyScrollPosition(musicWidthRef.current);
-      return; // song ended — onNoteEvent handles state change
+    // Absorb per-note correction smoothly (20% per frame)
+    if (Math.abs(correctionRef.current) > 0.5) {
+      const correction = correctionRef.current * 0.2;
+      advance += correction;
+      correctionRef.current -= correction;
+    } else {
+      correctionRef.current = 0;
     }
 
-    // Interpolate scroll position from time→position map
-    const scrollX = interpolateX(elapsedRef.current, map);
-    applyScrollPosition(scrollX);
+    translateXRef.current += advance;
 
+    if (translateXRef.current >= musicWidthRef.current) {
+      translateXRef.current = musicWidthRef.current;
+      applyTransform();
+      return;
+    }
+
+    applyTransform();
     rafIdRef.current = requestAnimationFrame(animate);
-  }, [applyScrollPosition]);
+  }, [applyTransform]);
 
   // ─── Animation state control ───
   useEffect(() => {
@@ -302,11 +232,12 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
 
     cleanup();
     synthRef.current = null;
-    elapsedRef.current = 0;
+    translateXRef.current = 0;
+    correctionRef.current = 0;
     lastTimestampRef.current = null;
     setEstado('parado');
 
-    // Re-render with new BPM
+    // Re-render
     abcTargetRef.current.innerHTML = '';
     const strippedAbc = stripBarlines(abcNotation);
     const visualObj = abcjs.renderAbc(abcTargetRef.current, strippedAbc, {
@@ -327,18 +258,17 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
           musicWidthRef.current = (lastRect.right - firstRect.left) + 100;
         }
       }
-      buildScrollMap(bpmActual);
       measureViewport();
-      applyScrollPosition(0);
+      applyTransform();
     });
   }, [bpmActual]);
 
-  // ─── Fullscreen events ───
+  // ─── Fullscreen ───
   useEffect(() => {
     const onFsChange = () => {
       const isFull = !!document.fullscreenElement;
       setIsFullscreen(isFull);
-      setTimeout(() => { measureViewport(); if (elapsedRef.current === 0) applyScrollPosition(0); }, 300);
+      setTimeout(() => { measureViewport(); if (translateXRef.current === 0) applyTransform(); }, 300);
     };
     document.addEventListener('fullscreenchange', onFsChange);
     document.addEventListener('webkitfullscreenchange', onFsChange);
@@ -346,7 +276,7 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
       document.removeEventListener('fullscreenchange', onFsChange);
       document.removeEventListener('webkitfullscreenchange', onFsChange);
     };
-  }, [measureViewport, applyScrollPosition]);
+  }, [measureViewport, applyTransform]);
 
   const toggleFullscreen = async () => {
     try {
@@ -357,17 +287,17 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
 
   // ─── Handlers ───
   const handlePlay = async () => {
-    // Auto-fullscreen on first play
     if (estado !== 'pausado') {
+      // Auto-fullscreen
       if (!document.fullscreenElement) {
         try {
           await containerRef.current?.parentElement?.requestFullscreen();
           await new Promise(r => setTimeout(r, 250));
           measureViewport();
-          applyScrollPosition(0);
+          applyTransform();
         } catch (err) {}
       }
-
+      // Prepare synth on first play
       if (!synthRef.current) {
         await prepareSynth(bpmActual);
       }
@@ -396,9 +326,10 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
 
   const handleReset = () => {
     cleanup();
-    elapsedRef.current = 0;
+    translateXRef.current = 0;
+    correctionRef.current = 0;
     lastTimestampRef.current = null;
-    applyScrollPosition(0);
+    applyTransform();
     setEstado('parado');
     synthRef.current = null;
   };
@@ -429,15 +360,6 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
         )}
         <div className="mp-playhead"></div>
         <div className="mp-sheet" ref={abcTargetRef}></div>
-        <div className="mp-barlines" ref={barlinesRef}>
-          {barlinePositions.map((x, i) => (
-            <div
-              key={i}
-              className="mp-barline-mark"
-              style={{ left: `${firstNoteOffsetRef.current + x}px` }}
-            />
-          ))}
-        </div>
       </div>
 
       <div className="mp-controls">
