@@ -1,6 +1,8 @@
 {
   "id": "P1-T06_notas-fa-sol-la-si",
   "titulo": "Mas Notas: Fa, Sol, La, Si",
+  "tipo": "identifica-nota",
+  "nivel": "P1-T06",
   "misiones": [
     {
       "id": "idn-fsls-01",

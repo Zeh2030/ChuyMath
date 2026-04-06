@@ -1,6 +1,8 @@
 {
   "id": "P1-T04_notas-do-re-mi",
   "titulo": "Conoce las Notas: Do Re Mi",
+  "tipo": "identifica-nota",
+  "nivel": "P1-T04",
   "misiones": [
     {
       "id": "idn-drm-01",
