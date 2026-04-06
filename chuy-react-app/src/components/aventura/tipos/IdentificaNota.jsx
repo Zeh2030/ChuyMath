@@ -28,6 +28,8 @@ const IdentificaNota = ({ mision, onCompletar }) => {
   const [aciertos, setAciertos] = useState(0);
   const [mostrarFeedback, setMostrarFeedback] = useState(false);
   const staffRef = useRef(null);
+  const visualObjRef = useRef(null);
+  const audioContextRef = useRef(null);
 
   const retoActual = retos[idx];
   const total = retos.length;
@@ -45,7 +47,7 @@ const IdentificaNota = ({ mision, onCompletar }) => {
     ].join('\n');
 
     staffRef.current.innerHTML = '';
-    abcjs.renderAbc(staffRef.current, abc, {
+    const visual = abcjs.renderAbc(staffRef.current, abc, {
       scale: 2.5,
       paddingtop: 10,
       paddingbottom: 10,
@@ -54,7 +56,37 @@ const IdentificaNota = ({ mision, onCompletar }) => {
       staffwidth: 250,
       wrap: null,
     });
+    visualObjRef.current = visual[0];
   }, [idx, retoActual, clave, tonalidad]);
+
+  // Play current note using abcjs synth
+  const playNote = async () => {
+    if (!visualObjRef.current) return;
+    try {
+      if (!audioContextRef.current) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        audioContextRef.current = new AudioContext();
+      }
+      if (audioContextRef.current.state === 'suspended') {
+        await audioContextRef.current.resume();
+      }
+
+      const synth = new abcjs.synth.CreateSynth();
+      await synth.init({
+        visualObj: visualObjRef.current,
+        audioContext: audioContextRef.current,
+        options: {
+          qpm: 60,
+          soundFontUrl: 'https://paulrosen.github.io/midi-js-soundfonts/FluidR3_GM/',
+          program: 0,
+        },
+      });
+      await synth.prime();
+      synth.start();
+    } catch (e) {
+      console.warn('Error playing note:', e);
+    }
+  };
 
   const handleSeleccion = (opcion) => {
     if (mostrarFeedback) return;
@@ -63,6 +95,9 @@ const IdentificaNota = ({ mision, onCompletar }) => {
 
     const correcto = opcion === retoActual.respuesta;
     if (correcto) setAciertos(prev => prev + 1);
+
+    // Play the note's sound — helps pedagogically whether answer was right or wrong
+    playNote();
 
     setTimeout(() => {
       if (idx + 1 >= total) {
