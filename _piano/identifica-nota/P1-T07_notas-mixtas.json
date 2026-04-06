@@ -1,0 +1,31 @@
+{
+  "id": "P1-T07_notas-mixtas",
+  "titulo": "Reto: Las 7 Notas Mezcladas",
+  "tipo": "identifica-nota",
+  "nivel": "P1-T07",
+  "misiones": [
+    {
+      "id": "idn-mix-01",
+      "tipo": "identifica-nota",
+      "titulo": "Desafio: Todas las Notas",
+      "instruccion": "Reto final de clave de Sol. Identifica las 7 notas con 4 opciones.",
+      "clave": "treble",
+      "tonalidad": "C",
+      "nivel": "P1-T07",
+      "retos": [
+        { "nota_abc": "E", "respuesta": "Mi", "opciones": ["Do", "Re", "Mi", "Fa"] },
+        { "nota_abc": "A", "respuesta": "La", "opciones": ["Sol", "La", "Si", "Do"] },
+        { "nota_abc": "C", "respuesta": "Do", "opciones": ["Si", "Do", "Re", "Mi"] },
+        { "nota_abc": "G", "respuesta": "Sol", "opciones": ["Fa", "Sol", "La", "Si"] },
+        { "nota_abc": "D", "respuesta": "Re", "opciones": ["Do", "Re", "Mi", "Fa"] },
+        { "nota_abc": "B", "respuesta": "Si", "opciones": ["La", "Si", "Do", "Re"] },
+        { "nota_abc": "F", "respuesta": "Fa", "opciones": ["Mi", "Fa", "Sol", "La"] },
+        { "nota_abc": "c", "respuesta": "Do alto", "opciones": ["Si", "Do alto", "Re alto", "La"] },
+        { "nota_abc": "A", "respuesta": "La", "opciones": ["Sol", "La", "Si", "Do"] },
+        { "nota_abc": "E", "respuesta": "Mi", "opciones": ["Re", "Mi", "Fa", "Sol"] },
+        { "nota_abc": "F", "respuesta": "Fa", "opciones": ["Mi", "Fa", "Sol", "La"] },
+        { "nota_abc": "D", "respuesta": "Re", "opciones": ["Do", "Re", "Mi", "Fa"] }
+      ]
+    }
+  ]
+}

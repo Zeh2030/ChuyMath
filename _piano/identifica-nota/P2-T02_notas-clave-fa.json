@@ -1,0 +1,29 @@
+{
+  "id": "P2-T02_notas-clave-fa",
+  "titulo": "Notas en Clave de Fa",
+  "tipo": "identifica-nota",
+  "nivel": "P2-T02",
+  "misiones": [
+    {
+      "id": "idn-fa-01",
+      "tipo": "identifica-nota",
+      "titulo": "Lectura de Clave de Fa (mano izquierda)",
+      "instruccion": "Mira la nota en clave de Fa y elige su nombre. La mano izquierda usa esta clave.",
+      "clave": "bass",
+      "tonalidad": "C",
+      "nivel": "P2-T02",
+      "retos": [
+        { "nota_abc": "F,", "respuesta": "Fa", "opciones": ["Fa", "Sol", "La"] },
+        { "nota_abc": "G,", "respuesta": "Sol", "opciones": ["Fa", "Sol", "La"] },
+        { "nota_abc": "A,", "respuesta": "La", "opciones": ["Sol", "La", "Si"] },
+        { "nota_abc": "C", "respuesta": "Do", "opciones": ["Si", "Do", "Re"] },
+        { "nota_abc": "D", "respuesta": "Re", "opciones": ["Do", "Re", "Mi"] },
+        { "nota_abc": "E", "respuesta": "Mi", "opciones": ["Re", "Mi", "Fa"] },
+        { "nota_abc": "B,", "respuesta": "Si", "opciones": ["La", "Si", "Do"] },
+        { "nota_abc": "F,", "respuesta": "Fa", "opciones": ["Mi", "Fa", "Sol"] },
+        { "nota_abc": "A,", "respuesta": "La", "opciones": ["Sol", "La", "Si"] },
+        { "nota_abc": "D", "respuesta": "Re", "opciones": ["Do", "Re", "Mi"] }
+      ]
+    }
+  ]
+}
