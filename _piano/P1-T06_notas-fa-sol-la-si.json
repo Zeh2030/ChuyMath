@@ -1,0 +1,27 @@
+{
+  "id": "P1-T06_notas-fa-sol-la-si",
+  "titulo": "Mas Notas: Fa, Sol, La, Si",
+  "misiones": [
+    {
+      "id": "idn-fsls-01",
+      "tipo": "identifica-nota",
+      "titulo": "Las 7 Notas en Clave de Sol",
+      "instruccion": "Ahora conoces las 7 notas. Identifica cada una!",
+      "clave": "treble",
+      "tonalidad": "C",
+      "nivel": "P1-T06",
+      "retos": [
+        { "nota_abc": "F", "respuesta": "Fa", "opciones": ["Mi", "Fa", "Sol", "La"] },
+        { "nota_abc": "G", "respuesta": "Sol", "opciones": ["Fa", "Sol", "La", "Si"] },
+        { "nota_abc": "A", "respuesta": "La", "opciones": ["Sol", "La", "Si", "Do"] },
+        { "nota_abc": "B", "respuesta": "Si", "opciones": ["La", "Si", "Do", "Re"] },
+        { "nota_abc": "C", "respuesta": "Do", "opciones": ["Si", "Do", "Re", "Mi"] },
+        { "nota_abc": "E", "respuesta": "Mi", "opciones": ["Re", "Mi", "Fa", "Sol"] },
+        { "nota_abc": "G", "respuesta": "Sol", "opciones": ["Fa", "Sol", "La", "Si"] },
+        { "nota_abc": "F", "respuesta": "Fa", "opciones": ["Mi", "Fa", "Sol", "La"] },
+        { "nota_abc": "A", "respuesta": "La", "opciones": ["Sol", "La", "Si", "Do"] },
+        { "nota_abc": "B", "respuesta": "Si", "opciones": ["La", "Si", "Do", "Re"] }
+      ]
+    }
+  ]
+}

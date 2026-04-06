@@ -1,0 +1,25 @@
+{
+  "id": "P1-T04_notas-do-re-mi",
+  "titulo": "Conoce las Notas: Do Re Mi",
+  "misiones": [
+    {
+      "id": "idn-drm-01",
+      "tipo": "identifica-nota",
+      "titulo": "Do, Re, Mi en Clave de Sol",
+      "instruccion": "Mira la nota en el pentagrama y elige su nombre.",
+      "clave": "treble",
+      "tonalidad": "C",
+      "nivel": "P1-T04",
+      "retos": [
+        { "nota_abc": "C", "respuesta": "Do", "opciones": ["Do", "Re", "Mi"] },
+        { "nota_abc": "D", "respuesta": "Re", "opciones": ["Do", "Re", "Mi"] },
+        { "nota_abc": "E", "respuesta": "Mi", "opciones": ["Do", "Re", "Mi"] },
+        { "nota_abc": "D", "respuesta": "Re", "opciones": ["Do", "Re", "Mi"] },
+        { "nota_abc": "C", "respuesta": "Do", "opciones": ["Do", "Re", "Mi"] },
+        { "nota_abc": "E", "respuesta": "Mi", "opciones": ["Do", "Re", "Mi"] },
+        { "nota_abc": "D", "respuesta": "Re", "opciones": ["Do", "Re", "Mi"] },
+        { "nota_abc": "E", "respuesta": "Mi", "opciones": ["Do", "Re", "Mi"] }
+      ]
+    }
+  ]
+}
