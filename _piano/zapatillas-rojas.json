@@ -7,16 +7,16 @@
       "tipo": "piano-prompter",
       "titulo": "Las Zapatillas Rojas (mano derecha)",
       "instruccion": "Sigue las notas con la mano derecha. Tempo Andante, tranquilo.",
-      "autor": "A. Diabelli",
-      "bpm": 80,
+      "autor": "Tradicional Japonesa",
+      "bpm": 76,
       "dificultad": "principiante",
       "nivel": "P4-01",
       "configuracion": {
         "compas": "4/4",
-        "tonalidad": "F",
+        "tonalidad": "Dm",
         "clave": "treble"
       },
-      "notas": "\"!mp!\".C .F .A .c | (c3/2 d/2 c) A | (=B =B) (=B/c/ d/=B/) | c G z2 | \"!mf!\".C .F .A .c | (c3/2 d/2 c) A | (=B =B) (=B/c/ d/=B/) | F z z2 |]"
+      "notas": "\"!mp!\".A .F .D .D | (A3/2 A/2 .G) z | (A A/2G/2F/2G/2 A-) | A z z \"!mf!\"d |]"
     }
   ]
 }
