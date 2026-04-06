@@ -30,7 +30,7 @@ const Boveda = () => {
     const englishTypes = ['word-bank', 'verb-conjugator', 'true-or-false', 'fill-the-gap',
       'tap-the-pairs', 'sentence-transform', 'image-picker', 'word-scramble',
       'listen-and-type', 'expediciones-en', 'mini-story'];
-    const pianoTypes = ['piano-prompter'];
+    const pianoTypes = ['piano-prompter', 'identifica-nota'];
     const cienciasTypes = ['experimento-guia'];
     const dibujoTypes = ['colorear', 'dibujo-guiado', 'dibujo-libre'];
     if (englishTypes.includes(f)) return 'ingles';
@@ -75,6 +75,7 @@ const Boveda = () => {
     { id: 'mini-story', emoji: '📖', nombre: 'Mini Stories', tipo: 'mini-story', descripcion: 'Read stories and answer questions', materia: 'ingles' },
     // Piano
     { id: 'piano-prompter', emoji: '🎹', nombre: 'Teleprompter', tipo: 'piano-prompter', descripcion: 'Practica lectura de partituras', materia: 'piano' },
+    { id: 'identifica-nota', emoji: '🎼', nombre: 'Identifica la Nota', tipo: 'identifica-nota', descripcion: 'Aprende a leer notas en el pentagrama', materia: 'piano' },
     // Ciencias
     { id: 'experimento-guia', emoji: '🧪', nombre: 'Experimentos', tipo: 'experimento-guia', descripcion: 'Experimentos caseros paso a paso', materia: 'ciencias' },
     // Dibujo

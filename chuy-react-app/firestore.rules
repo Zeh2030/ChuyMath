@@ -1,0 +1,90 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ============================================
+    // FUNCIONES HELPER
+    // ============================================
+    
+    // Verifica si el usuario es el dueño del documento
+    function isOwner(userId) {
+      return request.auth != null && request.auth.uid == userId;
+    }
+
+    // Verifica si es admin consultando la colección 'admins'
+    function isAdmin() {
+      return request.auth != null && (
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid)) ||
+        request.auth.token.email == 'jesuscarrillog@gmail.com' // Respaldo hardcoded por seguridad
+      );
+    }
+
+    // ============================================
+    // COLECCIONES DE SISTEMA
+    // ============================================
+
+    // WHITELIST: Usuarios autorizados
+    // Lectura: Pública (para validar acceso al login)
+    // Escritura: Solo Admin (desde panel de AdminUsuarios)
+    match /whitelist/{document=**} {
+      allow read: if true; 
+      allow write: if isAdmin();
+    }
+
+    // ADMINS: Lista de administradores
+    // Lectura: Pública (para verificar permisos en UI)
+    // Escritura: Solo Admin existente puede agregar otros
+    match /admins/{userId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // ============================================
+    // PERFILES DE USUARIO
+    // ============================================
+
+    match /profiles/{userId} {
+      allow read: if isOwner(userId) || isAdmin(); // Admin puede leer perfiles para soporte
+      allow write: if isOwner(userId) || isAdmin();
+    }
+    
+    // Mantener regla legacy por si acaso se usa en algún lado
+    match /users/{userId} {
+      allow read, write: if isOwner(userId);
+    }
+
+    // ============================================
+    // COLECCIONES DE CONTENIDO (Juegos y Aventuras)
+    // Lectura: Requiere Autenticación (como tenías antes)
+    // Escritura: Solo Admin
+    // ============================================
+
+    // Colecciones Principales
+    match /aventuras/{document=**} {
+      allow read: if request.auth != null;
+      allow write: if isAdmin();
+    }
+    match /simulacros/{document=**} {
+      allow read: if request.auth != null;
+      allow write: if isAdmin();
+    }
+    match /expediciones/{document=**} {
+      allow read: if request.auth != null;
+      allow write: if isAdmin();
+    }
+
+    // Tipos de Juego Específicos (Legacy y Nuevos)
+    match /kakooma/{document=**} { allow read: if request.auth != null; allow write: if isAdmin(); }
+    match /numberblocks-constructor/{document=**} { allow read: if request.auth != null; allow write: if isAdmin(); }
+    
+    // Colecciones Legacy (para compatibilidad con estructura anterior)
+    match /conteo-figuras/{document=**} { allow read: if request.auth != null; allow write: if isAdmin(); }
+    match /secuencias/{document=**} { allow read: if request.auth != null; allow write: if isAdmin(); }
+    match /tabla-doble-entrada/{document=**} { allow read: if request.auth != null; allow write: if isAdmin(); }
+    match /operaciones/{document=**} { allow read: if request.auth != null; allow write: if isAdmin(); }
+    match /criptoaritmetica/{document=**} { allow read: if request.auth != null; allow write: if isAdmin(); }
+    match /balanza-logica/{document=**} { allow read: if request.auth != null; allow write: if isAdmin(); }
+    match /desarrollo-cubos/{document=**} { allow read: if request.auth != null; allow write: if isAdmin(); }
+    match /palabra-del-dia/{document=**} { allow read: if request.auth != null; allow write: if isAdmin(); }
+  }
+}
