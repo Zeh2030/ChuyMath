@@ -191,22 +191,89 @@ Cada uno usa `mini-story` con datos interesantes para ninos + 2-3 preguntas al f
 
 ---
 
-## Estructura de JSON sugerida
+## Estructura de JSON implementada
 
 ```
 _piano/
-  prompter/          ← teleprompter
-  identifica-nota/   ← lectura de notas
-  teoria/            ← NUEVA: opcion-multiple, true-or-false, tap-the-pairs, fill-the-gap
-  compositores/      ← NUEVA: mini-story con biografias
+  prompter/          ← teleprompter (3 JSONs)
+  identifica-nota/   ← lectura de notas (4 JSONs)
+  opcion-multiple/   ← teoria con preguntas (2 JSONs)
+  tap-the-pairs/     ← emparejar conceptos (3 JSONs)
+  image-picker/      ← simbolos visuales (1 JSON)
+  true-or-false/     ← verdadero o falso (2 JSONs)
+  fill-the-gap/      ← completar frases (2 JSONs)
+  mini-story/        ← biografias compositores (7 JSONs)
 ```
+
+Cada tipo de juego tiene su propia subcarpeta. Total entregado: **24 JSONs**.
 
 ---
 
-## Pendiente tambien (componentes nuevos, futuro)
+## Pendiente — Contenido
 
-- `identifica-acorde` — reconocer acordes (Do mayor, La menor, etc.)
-- **Selector de manos** en teleprompter (Sol / Fa / Ambas)
-- Posibles: `eco-musical` (escuchar y reproducir), `dictado-ritmico`
+### Mas biografias de compositores (mini-story)
+- **Clara Schumann** — pianista prodigio mujer, compositora desde niña, una de las mejores de la historia
+- **Liszt** — el primer "rockstar", mujeres se desmayaban en sus conciertos
+- **Satie** — el excentrico, titulos absurdos, precursor de la musica ambiental
+- **Vivaldi** — "Las Cuatro Estaciones", el cura compositor pelirrojo
+- **Haydn** — el padre de la sinfonia, profesor de Beethoven
+- **Schumann** (Robert) — esposo de Clara, compositor romantico
 
-Ver `PROGRAMA_PIANO.md` para el programa completo P1-P5.
+### Teoria pendiente
+- **P4-T01 Acordes de 7a** (identifica-acorde — necesita componente nuevo)
+- **P4-T03 Forma sonata** (opcion-multiple): exposicion, desarrollo, recapitulacion
+- **P4-T04 Ornamentos** (tap-the-pairs): trino, mordente, grupeto ↔ simbolo
+- **P4-T06 Pedales del piano** (true-or-false): sustain, sostenuto, una corda
+- **P4-T07 Circulo de quintas** (image-picker): relacion entre tonalidades
+- **P4-T09 Semicorcheas y tresillos** (opcion-multiple): subdivisiones ritmicas
+- **P4-T10 Grandes Pianistas** (tap-the-pairs): Liszt, Rachmaninoff, Horowitz, Lang Lang, Argerich
+
+### Canciones del teleprompter (prompter)
+- Crear gradualmente segun avance del niño
+- Ver PROGRAMA_PIANO.md tabla P1-P5 para el catalogo
+- Prioridad: P1-02 a P1-10 (mano derecha sola) y P4-02 a P4-10 (nivel actual)
+
+---
+
+## Pendiente — Componentes nuevos
+
+### `identifica-acorde` (alta prioridad cuando se introduzcan acordes)
+- Similar a `identifica-nota` pero con 2-3 notas simultaneas en pentagrama
+- Reutiliza ~90% del codigo de IdentificaNota.jsx
+- Reproducir el acorde con synth al hacer click (ya esta en identifica-nota)
+- Esfuerzo: 0.5 sesiones
+
+### **Selector de manos en teleprompter** (alta prioridad para grand staff)
+- Antes de Play, en piezas multi-voz, mostrar 3 botones:
+  - 🎼 Solo Sol (mano derecha)
+  - 🎵 Solo Fa (mano izquierda)
+  - 🎹 Ambas manos
+- Filtrar el ABC: para "Sol" reemplazar V:2 con silencios; para "Fa" reemplazar V:1
+- Necesario para volver a agregar la mano izquierda de Zapatillas Rojas
+- Esfuerzo: 1 sesion
+
+### `eco-musical` (futuro, baja prioridad)
+- Escucha una secuencia de notas y reproducela
+- Empieza con 2-3 notas, sube dificultad
+- Para entrenar el oido absoluto/relativo
+
+### `dictado-ritmico` (futuro)
+- Escucha un patron ritmico y lo replica
+- Para reforzar la lectura ritmica
+
+---
+
+## Pendiente — Mejoras al PianoPrompter
+
+El sync actual con correccion al 20% es "casi perfecto" pero el usuario noto que todavia hay
+ajuste visible al cambiar de seccion. Posibles mejoras futuras:
+
+- Probar valores intermedios de absorption (10-15%) con cap proporcional
+- Investigar si abcjs expone duracion exacta del visualObj sin necesidad de synth
+- Considerar pre-computar todas las posiciones de notas al render para evitar correccion
+- Ver `HISTORIAL_TELEPROMPTER.md` para no repetir enfoques fallidos
+
+---
+
+Ver `PROGRAMA_PIANO.md` para el programa completo P1-P5 y `HISTORIAL_TELEPROMPTER.md`
+para el historial de iteraciones del teleprompter.
