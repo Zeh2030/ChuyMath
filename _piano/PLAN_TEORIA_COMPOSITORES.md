@@ -179,15 +179,15 @@ Cada uno usa `mini-story` con datos interesantes para ninos + 2-3 preguntas al f
 
 ## Orden de produccion sugerido
 
-| Fase | Contenido | JSONs |
-|------|-----------|-------|
-| **A** | Teoria basica P1 (T01, T02, T03, T05, T09, T10) | 6 JSONs |
-| **B** | Biografia Mozart P1-T08 (mini-story) | 1 JSON |
-| **C** | Vocabulario intermedio P2-P3 (dinamicas, tempos, formas) | 4 JSONs |
-| **D** | Biografias Beethoven, Bach, Chopin, Tchaikovsky | 4 JSONs |
-| **E** | Biografia Debussy y compositores avanzados | 2 JSONs |
+| Fase | Contenido | JSONs | Estado |
+|------|-----------|-------|--------|
+| **A** | Teoria basica P1 (T01, T02, T03, T05, T09, T10) | 6 JSONs | ✅ |
+| **B** | Biografia Mozart P1-T08 (mini-story) | 1 JSON | ✅ |
+| **C** | Vocabulario intermedio P2-P3 (dinamicas, tempos, formas) | 4 JSONs | ✅ |
+| **D** | Biografias Beethoven, Bach, Chopin, Tchaikovsky | 4 JSONs | ✅ |
+| **E** | Biografia Debussy + Joplin (ragtime) | 2 JSONs | ✅ |
 
-**Total planeado:** ~17 JSONs de teoria y compositores
+**Total entregado:** 17 JSONs de teoria y compositores ✅
 
 ---
 

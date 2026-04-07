@@ -1,0 +1,91 @@
+{
+  "id": "P4-T05_joplin-rey-ragtime",
+  "titulo": "Scott Joplin: El Rey del Ragtime",
+  "descripcion": "Conoce al pianista afroamericano que revoluciono la musica popular con un nuevo estilo lleno de ritmo.",
+  "tipo": "mini-story",
+  "materia": "piano",
+  "tema": "compositores",
+  "nivel": "P4-T05",
+  "misiones": [
+    {
+      "id": "mision-story-joplin",
+      "tipo": "mini-story",
+      "titulo": "Scott Joplin: El Rey del Ragtime",
+      "instruccion": "Lee la historia de Scott Joplin y responde las preguntas.",
+      "parrafos": [
+        {
+          "texto": "Scott Joplin nacio en Texas, Estados Unidos, en 1868. Era hijo de papas que habian sido esclavos. Aunque su familia era pobre, su mama era cantante y su papa tocaba violin. Cuando una vecina blanca escucho a Scott tocando el piano, le dio clases gratis porque vio cuanto talento tenia.",
+          "emoji": "🇺🇸",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Scott Joplin nacio en ___, Estados Unidos.",
+              "opciones": ["Nueva York", "California", "Texas", "Florida"],
+              "respuesta": 2
+            }
+          ]
+        },
+        {
+          "texto": "Cuando crecio, Joplin viajaba por las ciudades tocando piano en bares y cafes. Empezo a inventar un estilo nuevo de musica que mezclaba ritmos africanos con melodias europeas. A este estilo le pusieron 'ragtime' porque tiene un ritmo 'desigual' y saltarin que da ganas de bailar.",
+          "emoji": "🎹",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "El ragtime mezcla ritmos africanos con melodias europeas.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Su pieza mas famosa se llama 'Maple Leaf Rag' (El Rag de la Hoja de Arce). La escribio en 1899 y se vendio mas de un millon de copias en partituras. ¡Era como ser un cantante numero uno hoy en dia! Joplin fue el primer compositor afroamericano en vender tantas copias de una pieza de piano.",
+          "emoji": "🍁",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "La pieza mas famosa de Joplin se llama 'Maple Leaf ___'.",
+              "opciones": ["Song", "Rag", "Dance", "Blues"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "Otra pieza famosisima de Joplin es 'The Entertainer' (El Entretenedor). Es alegre, divertida y muy facil de reconocer. La usaron en una pelicula muchos años despues y se hizo famosa en todo el mundo. Si la escuchas, sientes ganas de saltar y bailar.",
+          "emoji": "🎭",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "'The Entertainer' es una pieza alegre y divertida de Joplin.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Joplin queria que el ragtime fuera respetado como musica seria, no solo como musica de bar. Tambien escribio una opera completa llamada 'Treemonisha'. Pero en su tiempo, mucha gente no apreciaba la musica afroamericana. Recibio el reconocimiento que merecia muchos años despues de morir.",
+          "emoji": "🎼",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Joplin escribio una opera llamada '___'.",
+              "opciones": ["The Entertainer", "Treemonisha", "Maple Leaf", "Cakewalk"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "Joplin murio en 1917 a los 49 años. Hoy se le considera 'el rey del ragtime' y un padre del jazz, el blues y mucha musica popular moderna. Su musica nos enseña que se puede crear cosas nuevas mezclando lo que ya existe, y que el ritmo puede hacer feliz a cualquiera.",
+          "emoji": "👑",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "A Scott Joplin se le considera 'el rey del ragtime'.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

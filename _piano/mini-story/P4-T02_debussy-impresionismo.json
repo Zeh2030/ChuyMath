@@ -1,0 +1,91 @@
+{
+  "id": "P4-T02_debussy-impresionismo",
+  "titulo": "Debussy: El Pintor de Sonidos",
+  "descripcion": "Conoce a Claude Debussy, el compositor frances que pintaba paisajes con musica.",
+  "tipo": "mini-story",
+  "materia": "piano",
+  "tema": "compositores",
+  "nivel": "P4-T02",
+  "misiones": [
+    {
+      "id": "mision-story-debussy",
+      "tipo": "mini-story",
+      "titulo": "Debussy: El Pintor de Sonidos",
+      "instruccion": "Lee la historia de Claude Debussy y responde las preguntas.",
+      "parrafos": [
+        {
+          "texto": "Claude Debussy nacio en Francia en 1862. Su familia no tenia mucho dinero ni eran musicos, pero una tia rica noto que el pequeño Claude tenia talento y le pago clases de piano. A los 10 años entro al Conservatorio de Paris, una de las escuelas de musica mas importantes del mundo.",
+          "emoji": "🇫🇷",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Debussy entro al Conservatorio de Paris a los ___ años.",
+              "opciones": ["7", "10", "15", "20"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "Debussy era un poco rebelde. Cuando los maestros le enseñaban las reglas tradicionales de la musica, el preguntaba: 'Por que tiene que ser asi?' y luego rompia las reglas creando sonidos nuevos que nadie habia escuchado antes. A veces los maestros se enojaban, pero el seguia experimentando.",
+          "emoji": "🎨",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Debussy seguia siempre las reglas tradicionales de la musica.",
+              "correcto": false,
+              "correccion": "Debussy rompia las reglas tradicionales para crear sonidos nuevos."
+            }
+          ]
+        },
+        {
+          "texto": "En esa epoca, los pintores impresionistas como Monet pintaban paisajes con manchas de color que parecian borrosos pero hermosos. A Debussy le encantaba ese estilo y quiso hacer lo mismo con musica. En lugar de melodias claras, creaba sonidos como nubes, agua, viento... ¡musica que parecia una pintura!",
+          "emoji": "🌊",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Debussy se inspiro en los pintores ___.",
+              "opciones": ["clasicos", "impresionistas", "modernos", "abstractos"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "Su pieza mas famosa se llama 'Claro de Luna' (en frances 'Clair de Lune'). Cuando la escuchas, parece que estas viendo la luz de la luna sobre un lago tranquilo en la noche. Es magica y muy famosa: la usan en peliculas, comerciales y videojuegos.",
+          "emoji": "🌙",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "La pieza mas famosa de Debussy se llama '___'.",
+              "opciones": ["Para Elisa", "Claro de Luna", "Sonata Patetica", "Las Estaciones"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "Debussy tambien amaba el mar. Compuso una obra grande para orquesta llamada 'La Mer' (El Mar) donde puedes 'escuchar' las olas, el viento marino y los amaneceres en el oceano. Era como si la orquesta entera fuera el mar.",
+          "emoji": "🌊",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "'La Mer' de Debussy es una obra inspirada en el mar.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Debussy murio en 1918 a los 55 años, pero abrio la puerta a la musica moderna. Sin el, no existirian muchas de las melodias que escuchamos hoy en peliculas y videojuegos. Nos enseño que las reglas se pueden romper para crear belleza nueva.",
+          "emoji": "🎼",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Debussy abrio la puerta a la musica moderna que escuchamos hoy.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
