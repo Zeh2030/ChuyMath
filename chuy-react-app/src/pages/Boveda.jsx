@@ -27,6 +27,8 @@ const Boveda = () => {
   // Detect materia from URL filter
   const detectMateria = (f) => {
     if (!f || f === 'todos') return 'matematicas';
+    // Piano-specific ids (piano-*) take priority over generic types
+    if (f.startsWith('piano-') || f === 'identifica-nota') return 'piano';
     const englishTypes = ['word-bank', 'verb-conjugator', 'true-or-false', 'fill-the-gap',
       'tap-the-pairs', 'sentence-transform', 'image-picker', 'word-scramble',
       'listen-and-type', 'expediciones-en', 'mini-story'];
@@ -76,6 +78,12 @@ const Boveda = () => {
     // Piano
     { id: 'piano-prompter', emoji: '🎹', nombre: 'Teleprompter', tipo: 'piano-prompter', descripcion: 'Practica lectura de partituras', materia: 'piano' },
     { id: 'identifica-nota', emoji: '🎼', nombre: 'Identifica la Nota', tipo: 'identifica-nota', descripcion: 'Aprende a leer notas en el pentagrama', materia: 'piano' },
+    { id: 'piano-opcion-multiple', emoji: '❓', nombre: 'Teoria Musical', tipo: 'opcion-multiple', descripcion: 'Preguntas sobre teoria musical', materia: 'piano' },
+    { id: 'piano-tap-the-pairs', emoji: '🔗', nombre: 'Empareja', tipo: 'tap-the-pairs', descripcion: 'Empareja conceptos musicales', materia: 'piano' },
+    { id: 'piano-image-picker', emoji: '🎵', nombre: 'Simbolos Musicales', tipo: 'image-picker', descripcion: 'Identifica simbolos del lenguaje musical', materia: 'piano' },
+    { id: 'piano-true-or-false', emoji: '✅', nombre: 'Verdadero o Falso', tipo: 'true-or-false', descripcion: 'Conceptos musicales verdaderos o falsos', materia: 'piano' },
+    { id: 'piano-fill-the-gap', emoji: '🔲', nombre: 'Completa la Frase', tipo: 'fill-the-gap', descripcion: 'Completa frases sobre musica', materia: 'piano' },
+    { id: 'piano-mini-story', emoji: '📖', nombre: 'Compositores', tipo: 'mini-story', descripcion: 'Historias de grandes compositores', materia: 'piano' },
     // Ciencias
     { id: 'experimento-guia', emoji: '🧪', nombre: 'Experimentos', tipo: 'experimento-guia', descripcion: 'Experimentos caseros paso a paso', materia: 'ciencias' },
     // Dibujo
@@ -325,6 +333,8 @@ const Boveda = () => {
           .filter(filterMateria)
           .filter(a => a.tipo === 'aventura');
       } else {
+        // filterMateria already restricts by current materia,
+        // so generic types like 'true-or-false' won't mix english/piano
         const enAventuras = aventuras
           .filter(filterMateria)
           .filter(a => a.tipo === tipoEspecifico.tipo);
@@ -534,8 +544,10 @@ const Boveda = () => {
                       const esAventura = item.coleccion === 'aventuras' || item.coleccion === 'ingles' || item.coleccion === 'piano' || item.coleccion === 'ciencias' || item.coleccion === 'dibujo';
                       const ruta = esAventura ? `/aventura/${item.id}` : `/simulacro/${item.id}`;
                       
-                      // Obtener nombre del tipo para mostrar
-                      const tipoData = tiposJuegos.find(t => t.tipo === item.tipo);
+                      // Obtener nombre del tipo para mostrar (considera materia para evitar colisiones)
+                      const itemMateria = item.materia || 'matematicas';
+                      const tipoData = tiposJuegos.find(t => t.tipo === item.tipo && t.materia === itemMateria)
+                        || tiposJuegos.find(t => t.tipo === item.tipo);
                       const nombreTipo = tipoData ? tipoData.nombre : (esAventura ? 'Aventura' : 'Simulacro');
                       const emojiTipo = tipoData ? tipoData.emoji : (esAventura ? '🗺️' : '🎓');
                       
