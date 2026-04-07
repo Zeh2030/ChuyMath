@@ -1,0 +1,61 @@
+{
+  "id": "P3-T05_formas-musicales",
+  "titulo": "Formas Musicales",
+  "descripcion": "Aprende los nombres de las distintas formas y estructuras musicales",
+  "tipo": "fill-the-gap",
+  "materia": "piano",
+  "tema": "formas",
+  "nivel": "P3-T05",
+  "misiones": [
+    {
+      "id": "mision-ftg-formas",
+      "tipo": "fill-the-gap",
+      "titulo": "Vocabulario Musical",
+      "instruccion": "Completa cada oracion con la palabra correcta.",
+      "retos": [
+        {
+          "oracion": "Una pieza para piano solo se llama ___.",
+          "opciones": ["sonata", "sinfonia", "opera", "vals"],
+          "respuesta": 0,
+          "explicacion": "Una sonata es una obra para uno o dos instrumentos solistas, generalmente piano. Mozart y Beethoven escribieron muchas sonatas para piano."
+        },
+        {
+          "oracion": "Una obra para un solista (como un pianista) acompañado por orquesta es un ___.",
+          "opciones": ["aria", "concierto", "preludio", "estudio"],
+          "respuesta": 1,
+          "explicacion": "En un concierto, un solista (piano, violin, etc.) toca con una orquesta completa. El solista lleva la melodia principal."
+        },
+        {
+          "oracion": "Una obra grande para orquesta completa, sin solista, es una ___.",
+          "opciones": ["sinfonia", "marcha", "cancion", "danza"],
+          "respuesta": 0,
+          "explicacion": "Una sinfonia es una obra para orquesta completa, normalmente dividida en 4 movimientos. Beethoven escribio 9 sinfonias famosas."
+        },
+        {
+          "oracion": "El numero que ordena las obras de un compositor se llama ___.",
+          "opciones": ["nivel", "tomo", "opus", "capitulo"],
+          "respuesta": 2,
+          "explicacion": "Opus (abreviado Op.) significa 'obra' en latin. Por ejemplo: 'Sonata Op. 27 No. 2' es la obra 27, segunda pieza."
+        },
+        {
+          "oracion": "Una obra cantada en un teatro con orquesta y disfraces es una ___.",
+          "opciones": ["sonata", "balada", "opera", "marcha"],
+          "respuesta": 2,
+          "explicacion": "Una opera es como una pelicula cantada: tiene historia, personajes, vestuario y orquesta. Mozart escribio 'La Flauta Magica'."
+        },
+        {
+          "oracion": "Una pieza corta que se usa para introducir una obra mas larga se llama ___.",
+          "opciones": ["preludio", "final", "coda", "puente"],
+          "respuesta": 0,
+          "explicacion": "Un preludio es como una introduccion. Bach escribio muchos preludios para piano que duran solo 2 o 3 minutos."
+        },
+        {
+          "oracion": "Una pieza corta para practicar tecnica en piano se llama ___.",
+          "opciones": ["estudio", "vals", "danza", "nocturno"],
+          "respuesta": 0,
+          "explicacion": "Los estudios (etudes en frances) son piezas hechas para mejorar la tecnica del pianista. Chopin escribio estudios muy famosos."
+        }
+      ]
+    }
+  ]
+}

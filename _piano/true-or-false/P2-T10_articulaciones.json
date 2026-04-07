@@ -1,0 +1,61 @@
+{
+  "id": "P2-T10_articulaciones",
+  "titulo": "Articulaciones Musicales",
+  "descripcion": "Verdadero o falso sobre staccato, legato y otras articulaciones",
+  "tipo": "true-or-false",
+  "materia": "piano",
+  "tema": "articulaciones",
+  "nivel": "P2-T10",
+  "misiones": [
+    {
+      "id": "mision-tof-articulaciones",
+      "tipo": "true-or-false",
+      "titulo": "Verdadero o Falso?",
+      "instruccion": "Las articulaciones nos dicen como tocar las notas. Decide si cada afirmacion es verdadera o falsa.",
+      "retos": [
+        {
+          "oracion": "Staccato significa tocar las notas separadas y cortas",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! Staccato (un puntito sobre la nota) significa tocar la nota muy corta, como un saltito. Las notas suenan separadas."
+        },
+        {
+          "oracion": "Legato es tocar todas las notas en silencio",
+          "correcto": false,
+          "correccion": "Legato es tocar las notas unidas y suaves, sin separacion entre ellas",
+          "explicacion": "Falso! Legato significa tocar las notas unidas, una despues de otra sin parar. Es lo contrario al staccato."
+        },
+        {
+          "oracion": "La ligadura une dos notas iguales y suenan como una sola nota larga",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! Una ligadura entre dos notas iguales (por ejemplo Do + Do) las une en una sola nota mas larga. Solo tocas la primera y dejas que suene."
+        },
+        {
+          "oracion": "Un trino es tocar una sola nota muy lentamente",
+          "correcto": false,
+          "correccion": "Un trino es alternar rapidamente entre dos notas vecinas",
+          "explicacion": "Falso! Un trino (tr) es alternar muy rapido entre dos notas que estan juntas, como Do-Re-Do-Re-Do-Re. Suena como un trino de pajaro."
+        },
+        {
+          "oracion": "El acento (>) significa tocar esa nota mas fuerte que las demas",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! Un acento sobre una nota indica que esa nota debe sonar mas fuerte o destacada que las demas."
+        },
+        {
+          "oracion": "El simbolo de calderon (𝄐) significa tocar la nota muy rapido",
+          "correcto": false,
+          "correccion": "El calderon significa mantener la nota o silencio mas tiempo del normal",
+          "explicacion": "Falso! El calderon (parece un ojo) significa que esa nota o silencio dura MAS tiempo del que indica su figura. Lo decide el interprete."
+        },
+        {
+          "oracion": "La frase (slur) es una linea curva que une varias notas para tocarlas legato",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! Cuando una linea curva pasa por encima de varias notas DIFERENTES, indica que se tocan ligadas (legato), suaves y conectadas."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "P3-T04_tempos",
+  "titulo": "Los Tempos Musicales",
+  "descripcion": "Empareja los nombres italianos de tempos con su significado",
+  "tipo": "tap-the-pairs",
+  "materia": "piano",
+  "tema": "tempos",
+  "nivel": "P3-T04",
+  "misiones": [
+    {
+      "id": "mision-ttp-tempos",
+      "tipo": "tap-the-pairs",
+      "titulo": "De Lento a Rapido",
+      "instruccion": "Los tempos indican la velocidad de la musica. Empareja cada palabra italiana con su significado.",
+      "retos": [
+        {
+          "pares": [
+            { "es": "Largo", "en": "Muy lento" },
+            { "es": "Adagio", "en": "Lento y tranquilo" },
+            { "es": "Andante", "en": "Caminando" },
+            { "es": "Moderato", "en": "Velocidad media" }
+          ]
+        },
+        {
+          "pares": [
+            { "es": "Allegro", "en": "Rapido y alegre" },
+            { "es": "Vivace", "en": "Muy vivo" },
+            { "es": "Presto", "en": "Muy rapido" },
+            { "es": "Prestissimo", "en": "Lo mas rapido posible" }
+          ]
+        }
+      ]
+    }
+  ]
+}

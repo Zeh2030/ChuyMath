@@ -1,0 +1,35 @@
+{
+  "id": "P2-T08_dinamicas",
+  "titulo": "Las Dinamicas Musicales",
+  "descripcion": "Empareja los simbolos de dinamica con su nombre y significado",
+  "tipo": "tap-the-pairs",
+  "materia": "piano",
+  "tema": "dinamicas",
+  "nivel": "P2-T08",
+  "misiones": [
+    {
+      "id": "mision-ttp-dinamicas",
+      "tipo": "tap-the-pairs",
+      "titulo": "Empareja Simbolos y Nombres",
+      "instruccion": "Las dinamicas indican que tan fuerte o suave tocas. Empareja cada simbolo con su nombre.",
+      "retos": [
+        {
+          "pares": [
+            { "es": "pp", "en": "pianissimo (muy suave)" },
+            { "es": "p", "en": "piano (suave)" },
+            { "es": "mp", "en": "mezzopiano (medio suave)" },
+            { "es": "mf", "en": "mezzoforte (medio fuerte)" }
+          ]
+        },
+        {
+          "pares": [
+            { "es": "f", "en": "forte (fuerte)" },
+            { "es": "ff", "en": "fortissimo (muy fuerte)" },
+            { "es": "<", "en": "crescendo (de suave a fuerte)" },
+            { "es": ">", "en": "diminuendo (de fuerte a suave)" }
+          ]
+        }
+      ]
+    }
+  ]
+}
