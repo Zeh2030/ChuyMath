@@ -1,0 +1,91 @@
+{
+  "id": "P3-T07_tchaikovsky-ballet",
+  "titulo": "Tchaikovsky: El Mago del Ballet",
+  "descripcion": "Conoce al compositor ruso que escribio 'El Cascanueces' y 'El Lago de los Cisnes'.",
+  "tipo": "mini-story",
+  "materia": "piano",
+  "tema": "compositores",
+  "nivel": "P3-T07",
+  "misiones": [
+    {
+      "id": "mision-story-tchaikovsky",
+      "tipo": "mini-story",
+      "titulo": "Tchaikovsky: El Mago del Ballet",
+      "instruccion": "Lee la historia de Piotr Ilich Tchaikovsky y responde las preguntas.",
+      "parrafos": [
+        {
+          "texto": "Piotr Ilich Tchaikovsky nacio en Rusia en 1840. Su nombre se pronuncia 'Pio-tr Cha-i-koff-ski'. Desde niño era muy emotivo y sensible. Cuando escuchaba musica, lloraba de emocion. Su mama tocaba el piano y eso lo enamoro de la musica.",
+          "emoji": "🇷🇺",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Tchaikovsky nacio en ___.",
+              "opciones": ["Polonia", "Rusia", "Alemania", "Italia"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "Aunque amaba la musica, sus padres querian que estudiara para ser abogado. Asi que Tchaikovsky trabajo como abogado por un tiempo, pero no era feliz. A los 23 años decidio dejarlo todo y dedicarse solo a la musica. ¡Fue una decision valiente!",
+          "emoji": "⚖️",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Tchaikovsky primero trabajo como abogado antes de ser compositor.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Tchaikovsky es famoso por escribir musica para BALLET. Sus tres ballets mas conocidos son 'El Lago de los Cisnes', 'La Bella Durmiente' y 'El Cascanueces'. Si en navidad has escuchado la 'Danza del Hada de Azucar', ¡es de Tchaikovsky! El cascanueces se toca cada navidad en todo el mundo.",
+          "emoji": "🩰",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "El ballet de navidad mas famoso de Tchaikovsky es ___.",
+              "opciones": ["El Lago de los Cisnes", "La Bella Durmiente", "El Cascanueces", "Romeo y Julieta"],
+              "respuesta": 2
+            }
+          ]
+        },
+        {
+          "texto": "Una señora rica, Nadezhda von Meck, le mando dinero a Tchaikovsky durante 14 años para que pudiera componer sin preocupaciones. Lo curioso es que nunca se conocieron en persona. Solo se escribian cartas. ¡Eran amigos por correo aunque vivian en la misma ciudad!",
+          "emoji": "💌",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Tchaikovsky y su mecenas Nadezhda nunca se conocieron en persona.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Tchaikovsky tambien escribio sinfonias y conciertos para piano. Su 'Concierto para Piano No. 1' es uno de los mas famosos del mundo. Sus melodias son tan emocionales que cuando las escuchas, te sientes conmovido aunque no sepas por que. Asi era su musica: hablaba directo al corazon.",
+          "emoji": "❤️",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Tchaikovsky escribio el famoso 'Concierto para ___ No. 1'.",
+              "opciones": ["Violin", "Piano", "Guitarra", "Flauta"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "Tchaikovsky amaba a su pais Rusia y muchas de sus obras tienen melodias rusas tradicionales. Murio en 1893 a los 53 años. Hoy es el compositor ruso mas amado y famoso del mundo. Su musica vive cada vez que un bailarin sube al escenario para bailar 'El Cascanueces'.",
+          "emoji": "🌟",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Tchaikovsky es uno de los compositores rusos mas famosos del mundo.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

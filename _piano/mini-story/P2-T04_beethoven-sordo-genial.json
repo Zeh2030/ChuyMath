@@ -1,0 +1,91 @@
+{
+  "id": "P2-T04_beethoven-sordo-genial",
+  "titulo": "Beethoven: El Sordo Genial",
+  "descripcion": "La historia de Ludwig van Beethoven, el compositor que perdio la audicion pero siguio creando musica maravillosa.",
+  "tipo": "mini-story",
+  "materia": "piano",
+  "tema": "compositores",
+  "nivel": "P2-T04",
+  "misiones": [
+    {
+      "id": "mision-story-beethoven",
+      "tipo": "mini-story",
+      "titulo": "Beethoven: El Sordo Genial",
+      "instruccion": "Lee la increible historia de Beethoven y responde las preguntas.",
+      "parrafos": [
+        {
+          "texto": "Ludwig van Beethoven nacio en Alemania en 1770. Su padre tambien era musico y queria que Ludwig fuera famoso como Mozart. Lo hacia practicar piano horas y horas todos los dias, a veces hasta llorar. Pero asi Beethoven se volvio un pianista increible.",
+          "emoji": "🎹",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Beethoven nacio en ___.",
+              "opciones": ["Italia", "Francia", "Alemania", "Inglaterra"],
+              "respuesta": 2
+            }
+          ]
+        },
+        {
+          "texto": "A los 17 años, Beethoven viajo a Viena para conocer a Mozart. Cuenta la leyenda que toco para el y Mozart dijo: 'Pongan atencion a este joven, dara mucho que hablar al mundo'. Y tenia razon!",
+          "emoji": "✨",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Mozart predijo que Beethoven seria famoso.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Cuando Beethoven tenia 28 años, comenzo a perder la audicion. ¡Imagina que tristeza para un musico! Poco a poco se fue quedando sordo, pero en lugar de rendirse, siguio componiendo. Decia: 'Tomare al destino por el cuello, no me dejare vencer'.",
+          "emoji": "👂",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Beethoven empezo a perder la audicion a los ___ años.",
+              "opciones": ["18", "28", "38", "48"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "Para poder componer aunque no oia, Beethoven mordia un palito de madera y lo apoyaba en el piano. Sentia las vibraciones por sus dientes y asi 'escuchaba' la musica con su cuerpo. ¡Que ingenioso!",
+          "emoji": "🪵",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Beethoven sentia la musica a traves de las vibraciones del piano.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Su 9a Sinfonia, una obra gigantesca para orquesta y coro, la compuso completamente sordo. Cuando la dirigio en concierto, no podia oir los aplausos del publico. Una cantante tuvo que tomarlo del brazo y voltearlo para que viera a la gente aplaudiendo de pie. Lloro de emocion.",
+          "emoji": "🎻",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Beethoven compuso su ___ Sinfonia estando completamente sordo.",
+              "opciones": ["3a", "5a", "7a", "9a"],
+              "respuesta": 3
+            }
+          ]
+        },
+        {
+          "texto": "Beethoven tambien compuso 'Para Elisa', una pieza para piano que casi todos hemos escuchado. Murio en 1827, pero su musica sigue siendo de las mas tocadas en todo el mundo. Nos enseño que las dificultades no detienen a quien tiene pasion por crear.",
+          "emoji": "💪",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Beethoven dejo de componer cuando se quedo sordo.",
+              "correcto": false,
+              "correccion": "Beethoven siguio componiendo aun siendo completamente sordo, incluso sus obras mas famosas."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

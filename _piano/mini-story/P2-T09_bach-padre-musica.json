@@ -1,0 +1,91 @@
+{
+  "id": "P2-T09_bach-padre-musica",
+  "titulo": "Bach: El Padre de la Musica",
+  "descripcion": "Conoce a Johann Sebastian Bach, considerado el padre de la musica clasica.",
+  "tipo": "mini-story",
+  "materia": "piano",
+  "tema": "compositores",
+  "nivel": "P2-T09",
+  "misiones": [
+    {
+      "id": "mision-story-bach",
+      "tipo": "mini-story",
+      "titulo": "Bach: El Padre de la Musica",
+      "instruccion": "Lee la historia de Johann Sebastian Bach y responde las preguntas.",
+      "parrafos": [
+        {
+          "texto": "Johann Sebastian Bach nacio en Alemania en 1685. ¡Su familia era una familia de musicos! Tuvo padres, tios, hermanos y primos que tambien hacian musica. En total, mas de 50 musicos famosos llevaron el apellido Bach a lo largo de los años.",
+          "emoji": "👨‍👩‍👧‍👦",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "La familia de Bach tenia mas de ___ musicos famosos.",
+              "opciones": ["10", "20", "50", "100"],
+              "respuesta": 2
+            }
+          ]
+        },
+        {
+          "texto": "Bach quedo huerfano a los 10 años. Su hermano mayor lo crio y le enseño a tocar el organo. Pero el hermano era estricto y le escondia las partituras dificiles. Bach las copiaba de noche, a la luz de la luna, sin que su hermano supiera. ¡Tenia hambre de aprender!",
+          "emoji": "🌙",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Bach copiaba partituras a la luz de la luna sin permiso de su hermano.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Una vez, Bach quiso escuchar tocar a un organista famoso llamado Buxtehude. Le dieron permiso de viajar 4 semanas, pero Bach camino mas de 400 kilometros y se quedo casi 4 meses escuchandolo. Cuando regreso, su jefe estaba muy enojado, pero Bach habia aprendido tantisimo!",
+          "emoji": "🚶",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Bach camino mas de ___ kilometros para oir a un gran organista.",
+              "opciones": ["40", "100", "400", "1000"],
+              "respuesta": 2
+            }
+          ]
+        },
+        {
+          "texto": "Bach se caso dos veces en su vida y tuvo 20 hijos en total. ¡Veinte! Algunos de sus hijos tambien se hicieron compositores muy famosos: Carl Philipp Emanuel y Johann Christian. La casa de Bach siempre estaba llena de musica y niños.",
+          "emoji": "👶",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Bach tuvo ___ hijos en total.",
+              "opciones": ["5", "10", "15", "20"],
+              "respuesta": 3
+            }
+          ]
+        },
+        {
+          "texto": "Bach trabajo como musico de iglesia toda su vida. Cada semana componia musica nueva para los servicios religiosos. Asi escribio mas de 1,000 obras: cantatas, fugas, preludios, conciertos, y los famosos 'Conciertos de Brandeburgo' que aun hoy se tocan en todo el mundo.",
+          "emoji": "⛪",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Bach trabajo como musico de iglesia y componia musica nueva cada semana.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Bach es considerado 'el padre de la musica clasica' porque sus obras son tan perfectas que parecen rompecabezas matematicos. Cada nota tiene su lugar exacto. Inventores de musica, programadores y matematicos estudian su musica todavia. Murio en 1750, pero su legado nunca morira.",
+          "emoji": "🧩",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Bach es considerado el padre de la musica ___.",
+              "opciones": ["pop", "rock", "clasica", "jazz"],
+              "respuesta": 2
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

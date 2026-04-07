@@ -1,0 +1,91 @@
+{
+  "id": "P3-T03_chopin-poeta-piano",
+  "titulo": "Chopin: El Poeta del Piano",
+  "descripcion": "La historia del compositor que dedico toda su vida al piano y le decian 'el poeta del piano'.",
+  "tipo": "mini-story",
+  "materia": "piano",
+  "tema": "compositores",
+  "nivel": "P3-T03",
+  "misiones": [
+    {
+      "id": "mision-story-chopin",
+      "tipo": "mini-story",
+      "titulo": "Chopin: El Poeta del Piano",
+      "instruccion": "Lee la historia de Frederic Chopin y responde las preguntas.",
+      "parrafos": [
+        {
+          "texto": "Frederic Chopin nacio en Polonia en 1810. Desde pequeño mostro un talento increible para el piano. A los 7 años ya componia sus primeras piezas y dio su primer concierto publico a los 8 años. ¡Toda Polonia hablaba de el!",
+          "emoji": "🇵🇱",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Chopin nacio en ___.",
+              "opciones": ["Francia", "Polonia", "Rusia", "Alemania"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "Chopin amaba tanto el piano que casi todas sus obras fueron escritas para ese instrumento. Es muy raro entre los grandes compositores: Mozart, Beethoven y Bach escribieron sinfonias, operas y mucho mas. Chopin eligio un solo instrumento y lo perfecciono hasta el limite.",
+          "emoji": "🎹",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Chopin escribio casi todas sus obras para piano solo.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Cuando tenia 20 años, Chopin se mudo a Paris, Francia, donde vivio el resto de su vida. Pero nunca olvido a Polonia. Llevaba un frasquito con tierra polaca a donde fuera, para sentirse en casa. Su musica esta llena de melodias y bailes polacos.",
+          "emoji": "🌍",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Chopin se mudo a ___ a los 20 años.",
+              "opciones": ["Roma", "Londres", "Paris", "Viena"],
+              "respuesta": 2
+            }
+          ]
+        },
+        {
+          "texto": "Era muy timido. No le gustaban los conciertos en grandes salas con miles de personas. Prefería tocar en casas elegantes para grupos pequeños de amigos. Decia: 'No estoy hecho para los grandes conciertos, la multitud me asusta'. Aun asi, sus admiradores lo adoraban.",
+          "emoji": "🤫",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Chopin disfrutaba tocar para grandes multitudes.",
+              "correcto": false,
+              "correccion": "Chopin era timido y prefería tocar en grupos pequeños porque las multitudes lo asustaban."
+            }
+          ]
+        },
+        {
+          "texto": "Su musica es muy especial: suena como si el piano estuviera contando una historia o cantando un poema. Por eso le decian 'el poeta del piano'. Sus piezas mas famosas son sus valses, nocturnos (musica para la noche) y mazurkas (bailes polacos).",
+          "emoji": "📜",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "A Chopin le decian 'el ___ del piano'.",
+              "opciones": ["rey", "mago", "poeta", "dueño"],
+              "respuesta": 2
+            }
+          ]
+        },
+        {
+          "texto": "Chopin murio joven, a los 39 años, por una enfermedad de los pulmones. Pidio que lo enterraran en Paris pero que su corazon volviera a Polonia. Y asi se hizo: su corazon descansa en una iglesia de Varsovia, su pais natal. Su musica sigue emocionando a quien la escucha.",
+          "emoji": "❤️",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "El corazon de Chopin esta enterrado en Polonia, su pais natal.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
