@@ -1,0 +1,82 @@
+{
+  "id": "P1-T05_duraciones-basicas",
+  "titulo": "Duraciones Basicas",
+  "descripcion": "Aprende cuanto dura cada figura musical",
+  "tipo": "opcion-multiple",
+  "materia": "piano",
+  "tema": "duraciones",
+  "nivel": "P1-T05",
+  "misiones": [
+    {
+      "id": "mision-pt05-negra",
+      "tipo": "opcion-multiple",
+      "titulo": "La Negra",
+      "instruccion": "Elige cuantos tiempos dura.",
+      "pregunta": "Cuantos tiempos dura una negra?",
+      "opciones": ["Medio tiempo", "1 tiempo", "2 tiempos", "4 tiempos"],
+      "respuesta": "1",
+      "explicacion_correcta": "Correcto! La negra es la figura base: dura 1 tiempo. Es como dar 1 paso al caminar.",
+      "explicacion_incorrecta": "La negra dura exactamente 1 tiempo (es la unidad basica)."
+    },
+    {
+      "id": "mision-pt05-blanca",
+      "tipo": "opcion-multiple",
+      "titulo": "La Blanca",
+      "instruccion": "Elige la duracion correcta.",
+      "pregunta": "Cuantos tiempos dura una blanca?",
+      "opciones": ["1 tiempo", "2 tiempos", "3 tiempos", "4 tiempos"],
+      "respuesta": "1",
+      "explicacion_correcta": "Correcto! La blanca dura 2 tiempos, el doble que una negra.",
+      "explicacion_incorrecta": "La blanca dura 2 tiempos (el doble que una negra)."
+    },
+    {
+      "id": "mision-pt05-redonda",
+      "tipo": "opcion-multiple",
+      "titulo": "La Redonda",
+      "instruccion": "Elige la duracion correcta.",
+      "pregunta": "Cuantos tiempos dura una redonda?",
+      "opciones": ["1 tiempo", "2 tiempos", "3 tiempos", "4 tiempos"],
+      "respuesta": "3",
+      "explicacion_correcta": "Correcto! La redonda dura 4 tiempos, ocupa un compas completo en 4/4.",
+      "explicacion_incorrecta": "La redonda dura 4 tiempos completos."
+    },
+    {
+      "id": "mision-pt05-corchea",
+      "tipo": "opcion-multiple",
+      "titulo": "La Corchea",
+      "instruccion": "Elige la duracion correcta.",
+      "pregunta": "Cuantos tiempos dura una corchea?",
+      "opciones": ["Medio tiempo", "1 tiempo", "2 tiempos", "Un cuarto de tiempo"],
+      "respuesta": "0",
+      "explicacion_correcta": "Correcto! La corchea dura medio tiempo. Caben 2 corcheas en 1 tiempo.",
+      "explicacion_incorrecta": "La corchea dura medio tiempo (la mitad de una negra)."
+    },
+    {
+      "id": "mision-pt05-comparar",
+      "tipo": "opcion-multiple",
+      "titulo": "Cual Es Mas Larga?",
+      "instruccion": "Compara las duraciones.",
+      "pregunta": "Cual figura dura mas tiempo?",
+      "opciones": ["Negra", "Corchea", "Blanca", "Semicorchea"],
+      "respuesta": "2",
+      "explicacion_correcta": "Correcto! La blanca (2 tiempos) es mas larga que la negra (1), la corchea (medio) y la semicorchea (cuarto).",
+      "explicacion_incorrecta": "La blanca dura 2 tiempos, mas que las otras opciones."
+    },
+    {
+      "id": "mision-pt05-orden",
+      "tipo": "opcion-multiple",
+      "titulo": "Orden de Duraciones",
+      "instruccion": "Que orden es de mas larga a mas corta?",
+      "pregunta": "De mayor a menor duracion, cual orden es correcto?",
+      "opciones": [
+        "Negra, Blanca, Redonda, Corchea",
+        "Redonda, Blanca, Negra, Corchea",
+        "Corchea, Negra, Blanca, Redonda",
+        "Blanca, Redonda, Negra, Corchea"
+      ],
+      "respuesta": "1",
+      "explicacion_correcta": "Correcto! Redonda (4) > Blanca (2) > Negra (1) > Corchea (1/2). Cada figura dura la mitad de la anterior!",
+      "explicacion_incorrecta": "El orden de mayor a menor es: Redonda, Blanca, Negra, Corchea, Semicorchea..."
+    }
+  ]
+}

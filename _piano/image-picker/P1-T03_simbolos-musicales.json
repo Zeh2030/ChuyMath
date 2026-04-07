@@ -1,0 +1,79 @@
+{
+  "id": "P1-T03_simbolos-musicales",
+  "titulo": "Simbolos Musicales",
+  "descripcion": "Identifica los simbolos basicos del lenguaje musical",
+  "tipo": "image-picker",
+  "materia": "piano",
+  "tema": "simbolos",
+  "nivel": "P1-T03",
+  "misiones": [
+    {
+      "id": "mision-ip-simbolos",
+      "tipo": "image-picker",
+      "titulo": "Reconoce los Simbolos",
+      "instruccion": "Toca el simbolo que corresponde al nombre.",
+      "retos": [
+        {
+          "palabra_en": "Clave de Sol",
+          "palabra_es": "Clave de Sol",
+          "opciones": [
+            { "emoji": "𝄞", "label": "Clave de Sol" },
+            { "emoji": "𝄢", "label": "Clave de Fa" },
+            { "emoji": "♯", "label": "Sostenido" },
+            { "emoji": "♭", "label": "Bemol" }
+          ],
+          "respuesta": 0,
+          "explicacion": "La clave de Sol se usa para la mano derecha en piano. Su forma curva rodea la linea del Sol."
+        },
+        {
+          "palabra_en": "Clave de Fa",
+          "palabra_es": "Clave de Fa",
+          "opciones": [
+            { "emoji": "𝄞", "label": "Clave de Sol" },
+            { "emoji": "𝄢", "label": "Clave de Fa" },
+            { "emoji": "♮", "label": "Becuadro" },
+            { "emoji": "𝄐", "label": "Calderon" }
+          ],
+          "respuesta": 1,
+          "explicacion": "La clave de Fa se usa para la mano izquierda. Sus dos puntos rodean la linea del Fa."
+        },
+        {
+          "palabra_en": "Sostenido",
+          "palabra_es": "Sostenido (#)",
+          "opciones": [
+            { "emoji": "♭", "label": "Bemol" },
+            { "emoji": "♯", "label": "Sostenido" },
+            { "emoji": "♮", "label": "Becuadro" },
+            { "emoji": "𝄐", "label": "Calderon" }
+          ],
+          "respuesta": 1,
+          "explicacion": "El sostenido (#) sube la nota medio tono. Por ejemplo: Do# es Do un poquito mas alto."
+        },
+        {
+          "palabra_en": "Bemol",
+          "palabra_es": "Bemol (b)",
+          "opciones": [
+            { "emoji": "♯", "label": "Sostenido" },
+            { "emoji": "♭", "label": "Bemol" },
+            { "emoji": "♪", "label": "Nota" },
+            { "emoji": "♬", "label": "Corcheas" }
+          ],
+          "respuesta": 1,
+          "explicacion": "El bemol (b) baja la nota medio tono. Por ejemplo: Sib es Si un poquito mas bajo."
+        },
+        {
+          "palabra_en": "Becuadro",
+          "palabra_es": "Becuadro",
+          "opciones": [
+            { "emoji": "♯", "label": "Sostenido" },
+            { "emoji": "♭", "label": "Bemol" },
+            { "emoji": "♮", "label": "Becuadro" },
+            { "emoji": "𝄢", "label": "Clave Fa" }
+          ],
+          "respuesta": 2,
+          "explicacion": "El becuadro cancela un sostenido o bemol y devuelve la nota a su forma natural."
+        }
+      ]
+    }
+  ]
+}

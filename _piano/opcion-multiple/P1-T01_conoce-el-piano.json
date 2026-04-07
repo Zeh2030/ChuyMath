@@ -1,0 +1,76 @@
+{
+  "id": "P1-T01_conoce-el-piano",
+  "titulo": "Conoce el Piano",
+  "descripcion": "Aprende las partes y caracteristicas del piano",
+  "tipo": "opcion-multiple",
+  "materia": "piano",
+  "tema": "instrumento",
+  "nivel": "P1-T01",
+  "misiones": [
+    {
+      "id": "mision-pt01-piano",
+      "tipo": "opcion-multiple",
+      "titulo": "Las Partes del Piano",
+      "instruccion": "Elige la respuesta correcta sobre el piano.",
+      "pregunta": "Cuantas teclas tiene un piano completo?",
+      "opciones": ["66", "76", "88", "100"],
+      "respuesta": "2",
+      "explicacion_correcta": "Correcto! Un piano completo tiene 88 teclas: 52 blancas y 36 negras.",
+      "explicacion_incorrecta": "Un piano completo tiene 88 teclas en total."
+    },
+    {
+      "id": "mision-pt01-teclas-negras",
+      "tipo": "opcion-multiple",
+      "titulo": "Las Teclas Negras",
+      "instruccion": "Elige la respuesta correcta.",
+      "pregunta": "Como se llaman las notas que se tocan en las teclas negras?",
+      "opciones": ["Solo sostenidos", "Solo bemoles", "Sostenidos y bemoles", "Naturales"],
+      "respuesta": "2",
+      "explicacion_correcta": "Correcto! Las teclas negras producen sostenidos (#) y bemoles (b). La misma tecla puede llamarse de dos formas (Do# = Reb).",
+      "explicacion_incorrecta": "Las teclas negras pueden ser sostenidos O bemoles, depende de la tonalidad."
+    },
+    {
+      "id": "mision-pt01-pedales",
+      "tipo": "opcion-multiple",
+      "titulo": "Los Pedales",
+      "instruccion": "Elige la respuesta correcta.",
+      "pregunta": "Cuantos pedales tiene un piano de cola tradicional?",
+      "opciones": ["1", "2", "3", "4"],
+      "respuesta": "2",
+      "explicacion_correcta": "Correcto! Tiene 3 pedales: sostenuto (izq), una corda (centro), y sustain o resonancia (der).",
+      "explicacion_incorrecta": "Un piano de cola tiene 3 pedales con funciones diferentes."
+    },
+    {
+      "id": "mision-pt01-pedal-derecho",
+      "tipo": "opcion-multiple",
+      "titulo": "El Pedal Derecho",
+      "instruccion": "Elige la respuesta correcta.",
+      "pregunta": "Que hace el pedal derecho del piano?",
+      "opciones": [
+        "Hace el sonido mas suave",
+        "Sostiene el sonido aunque sueltes las teclas",
+        "Cambia el tono",
+        "Apaga el sonido"
+      ],
+      "respuesta": "1",
+      "explicacion_correcta": "Correcto! El pedal derecho (sustain) hace que las notas sigan sonando aunque levantes los dedos.",
+      "explicacion_incorrecta": "El pedal derecho mantiene el sonido. El que lo hace mas suave es el izquierdo (una corda)."
+    },
+    {
+      "id": "mision-pt01-grupos",
+      "tipo": "opcion-multiple",
+      "titulo": "Las Teclas Negras en Grupos",
+      "instruccion": "Mira tu piano y observa.",
+      "pregunta": "En que grupos estan organizadas las teclas negras del piano?",
+      "opciones": [
+        "Grupos de 1 y 2",
+        "Grupos de 2 y 3",
+        "Grupos de 3 y 4",
+        "Todas iguales"
+      ],
+      "respuesta": "1",
+      "explicacion_correcta": "Correcto! Las teclas negras estan en grupos de 2 y 3 alternados. Esto te ayuda a ubicar las notas!",
+      "explicacion_incorrecta": "Las teclas negras siempre estan en grupos de 2 y de 3 alternados."
+    }
+  ]
+}

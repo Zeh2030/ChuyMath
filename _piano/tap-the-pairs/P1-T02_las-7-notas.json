@@ -1,0 +1,35 @@
+{
+  "id": "P1-T02_las-7-notas",
+  "titulo": "Las 7 Notas Musicales",
+  "descripcion": "Empareja los nombres en espanol con sus letras internacionales",
+  "tipo": "tap-the-pairs",
+  "materia": "piano",
+  "tema": "notas",
+  "nivel": "P1-T02",
+  "misiones": [
+    {
+      "id": "mision-ttp-notas",
+      "tipo": "tap-the-pairs",
+      "titulo": "Empareja las Notas",
+      "instruccion": "Toca un nombre de cada columna para emparejarlos!",
+      "retos": [
+        {
+          "pares": [
+            { "es": "Do", "en": "C" },
+            { "es": "Re", "en": "D" },
+            { "es": "Mi", "en": "E" },
+            { "es": "Fa", "en": "F" }
+          ]
+        },
+        {
+          "pares": [
+            { "es": "Sol", "en": "G" },
+            { "es": "La", "en": "A" },
+            { "es": "Si", "en": "B" },
+            { "es": "Do (alto)", "en": "C (alto)" }
+          ]
+        }
+      ]
+    }
+  ]
+}

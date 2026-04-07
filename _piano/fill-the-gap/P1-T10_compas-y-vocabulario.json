@@ -1,0 +1,68 @@
+{
+  "id": "P1-T10_compas-y-vocabulario",
+  "titulo": "El Compas y el Vocabulario Musical",
+  "descripcion": "Completa las oraciones sobre compases y vocabulario basico",
+  "tipo": "fill-the-gap",
+  "materia": "piano",
+  "tema": "compas",
+  "nivel": "P1-T10",
+  "misiones": [
+    {
+      "id": "mision-ftg-compas",
+      "tipo": "fill-the-gap",
+      "titulo": "Completa la Frase",
+      "instruccion": "Elige la palabra correcta para completar cada oracion.",
+      "retos": [
+        {
+          "oracion": "En un compas de 4/4 caben ___ tiempos.",
+          "traduccion": "El numero de arriba indica los tiempos por compas",
+          "opciones": ["2", "3", "4", "5"],
+          "respuesta": 2,
+          "explicacion": "En 4/4 caben 4 tiempos. El numero de arriba dice cuantos tiempos por compas."
+        },
+        {
+          "oracion": "Las lineas verticales que separan los compases se llaman ___.",
+          "traduccion": "Las divisiones verticales del pentagrama",
+          "opciones": ["claves", "barras", "notas", "puntos"],
+          "respuesta": 1,
+          "explicacion": "Las barras de compas dividen el pentagrama en compases iguales."
+        },
+        {
+          "oracion": "El conjunto de 5 lineas donde escribimos las notas se llama ___.",
+          "traduccion": "Las 5 lineas horizontales",
+          "opciones": ["compas", "pentagrama", "clave", "tonalidad"],
+          "respuesta": 1,
+          "explicacion": "El pentagrama tiene 5 lineas y 4 espacios donde se colocan las notas."
+        },
+        {
+          "oracion": "Un compas de 3/4 se usa para la musica de ___.",
+          "traduccion": "Compas ternario tipico",
+          "opciones": ["marcha", "vals", "rock", "rap"],
+          "respuesta": 1,
+          "explicacion": "El compas de 3/4 (3 tiempos) es el clasico del vals: UN-dos-tres, UN-dos-tres."
+        },
+        {
+          "oracion": "El simbolo que aparece al inicio del pentagrama se llama ___.",
+          "traduccion": "Lo primero que se escribe",
+          "opciones": ["nota", "clave", "barra", "compas"],
+          "respuesta": 1,
+          "explicacion": "La clave (de Sol o de Fa) se escribe al inicio para indicar como leer las notas."
+        },
+        {
+          "oracion": "El piano se toca con la mano derecha en clave de Sol y con la izquierda en clave de ___.",
+          "traduccion": "Otra clave para notas mas graves",
+          "opciones": ["Do", "Re", "Mi", "Fa"],
+          "respuesta": 3,
+          "explicacion": "La mano izquierda lee en clave de Fa, que es para las notas graves."
+        },
+        {
+          "oracion": "Una nota mas alta se escribe mas ___ en el pentagrama.",
+          "traduccion": "Direccion vertical",
+          "opciones": ["abajo", "arriba", "izquierda", "derecha"],
+          "respuesta": 1,
+          "explicacion": "Las notas mas agudas (altas) se escriben arriba; las graves (bajas) abajo."
+        }
+      ]
+    }
+  ]
+}

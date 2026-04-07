@@ -1,0 +1,68 @@
+{
+  "id": "P1-T09_silencios",
+  "titulo": "Los Silencios en la Musica",
+  "descripcion": "Verdadero o falso sobre los silencios musicales",
+  "tipo": "true-or-false",
+  "materia": "piano",
+  "tema": "silencios",
+  "nivel": "P1-T09",
+  "misiones": [
+    {
+      "id": "mision-tof-silencios",
+      "tipo": "true-or-false",
+      "titulo": "Verdadero o Falso?",
+      "instruccion": "Lee cada afirmacion y decide si es verdadera o falsa.",
+      "retos": [
+        {
+          "oracion": "Los silencios tienen duracion como las notas",
+          "traduccion": "Los silencios duran tiempos igual que las notas",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! Cada silencio tiene una duracion: silencio de negra (1), de blanca (2), de redonda (4)."
+        },
+        {
+          "oracion": "Un silencio de negra dura 2 tiempos",
+          "traduccion": "Un silencio de negra dura 2 tiempos",
+          "correcto": false,
+          "correccion": "Un silencio de negra dura 1 tiempo",
+          "explicacion": "Falso! El silencio de negra dura 1 tiempo, igual que la nota negra. El de 2 tiempos es el silencio de blanca."
+        },
+        {
+          "oracion": "En la musica los silencios no son importantes",
+          "traduccion": "Los silencios no importan",
+          "correcto": false,
+          "correccion": "Los silencios son tan importantes como las notas",
+          "explicacion": "Falso! Los silencios dan respiraciones, ritmo y emocion. Sin silencios la musica seria caotica."
+        },
+        {
+          "oracion": "El silencio sirve para respirar entre frases musicales",
+          "traduccion": "Sirve para tomar aire",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! Los silencios separan frases musicales como las comas y los puntos en una oracion."
+        },
+        {
+          "oracion": "Un silencio de redonda dura 4 tiempos",
+          "traduccion": "El silencio de redonda dura 4 tiempos",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! El silencio de redonda dura 4 tiempos, igual que la nota redonda. Ocupa un compas entero en 4/4."
+        },
+        {
+          "oracion": "Cuando hay un silencio puedo seguir tocando",
+          "traduccion": "El silencio significa seguir tocando",
+          "correcto": false,
+          "correccion": "Cuando hay un silencio dejas de tocar",
+          "explicacion": "Falso! Silencio = no tocar. Si lo ves en la partitura, sueltas las teclas y esperas su duracion."
+        },
+        {
+          "oracion": "Un compas puede tener solo silencios y ningun sonido",
+          "traduccion": "Un compas puede ser todo silencio",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! Un compas puede ser todo silencio (compas en blanco). Es comun cuando una mano descansa mientras la otra toca."
+        }
+      ]
+    }
+  ]
+}
