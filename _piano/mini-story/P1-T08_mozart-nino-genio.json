@@ -1,0 +1,97 @@
+{
+  "id": "P1-T08_mozart-nino-genio",
+  "titulo": "Mozart: El Niño Genio",
+  "descripcion": "Conoce la increible historia de Wolfgang Amadeus Mozart, el niño que asombro al mundo con su musica.",
+  "tipo": "mini-story",
+  "materia": "piano",
+  "tema": "compositores",
+  "nivel": "P1-T08",
+  "misiones": [
+    {
+      "id": "mision-story-mozart",
+      "tipo": "mini-story",
+      "titulo": "Mozart: El Niño Genio",
+      "instruccion": "Lee cada parte de la historia de Mozart y responde la pregunta!",
+      "parrafos": [
+        {
+          "texto": "Wolfgang Amadeus Mozart nacio en Salzburgo, Austria, en 1756. Desde muy pequeño mostro un talento increible para la musica. A los 3 años ya tocaba el clavecin (un instrumento parecido al piano) y a los 4 años podia repetir cualquier melodia que escuchaba.",
+          "emoji": "👶",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Mozart nacio en ___, Austria.",
+              "opciones": ["Viena", "Salzburgo", "Berlin", "Madrid"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "A los 5 años, Mozart compuso su primera pieza musical. ¡Imagina! La mayoria de los niños a esa edad apenas estan aprendiendo a leer, y el ya escribia musica. Su padre, Leopold, era musico y le enseño todo lo que sabia.",
+          "emoji": "🎼",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Mozart compuso su primera pieza a los 5 años de edad.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "A los 6 años, Mozart ya daba conciertos para reyes y reinas en toda Europa. Viajaba con su familia en carretas por meses para tocar en palacios. La gente no podia creer que un niño tan pequeño tocara tan bien y ademas compusiera su propia musica.",
+          "emoji": "👑",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "A los ___ años Mozart daba conciertos para reyes.",
+              "opciones": ["3", "5", "6", "10"],
+              "respuesta": 2
+            }
+          ]
+        },
+        {
+          "texto": "Mozart tenia una memoria increible. Una vez, a los 14 años, escucho una pieza musical complicada en una iglesia de Roma una sola vez. Al llegar a casa, ¡la escribio completa de memoria! La pieza era un secreto del Vaticano y nadie podia copiarla.",
+          "emoji": "🧠",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Mozart pudo escribir de memoria una pieza despues de escucharla solo una vez.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Durante su vida, Mozart escribio mas de 600 obras musicales: sinfonias, conciertos, sonatas, operas y mucho mas. Compuso musica para piano, violin, voz, orquestas completas... ¡de todo! Algunas de sus piezas mas famosas son 'Una Pequeña Serenata Nocturna' y la opera 'La Flauta Magica'.",
+          "emoji": "📜",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Mozart escribio mas de ___ obras musicales en su vida.",
+              "opciones": ["100", "300", "600", "1000"],
+              "respuesta": 2
+            }
+          ]
+        },
+        {
+          "texto": "Mozart murio joven, a los 35 años, pero dejo una musica que sigue viva hoy. Sus obras se tocan en todo el mundo y muchos consideran que es uno de los compositores mas grandes de la historia. Su musica nos enseña que el talento puede florecer a cualquier edad, incluso en un niño.",
+          "emoji": "⭐",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "La musica de Mozart ya no se toca hoy en dia.",
+              "correcto": false,
+              "correccion": "La musica de Mozart se sigue tocando en todo el mundo y es de las mas famosas de la historia."
+            },
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Mozart vivio ___ años.",
+              "opciones": ["25", "35", "50", "70"],
+              "respuesta": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
