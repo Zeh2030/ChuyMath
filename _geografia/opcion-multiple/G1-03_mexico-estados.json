@@ -1,0 +1,99 @@
+{
+  "id": "G1-03_mexico-estados",
+  "titulo": "Estados de Mexico",
+  "descripcion": "Conoce los estados mas importantes de Mexico y sus caracteristicas",
+  "tipo": "opcion-multiple",
+  "materia": "geografia",
+  "tema": "mexico-estados",
+  "nivel": "G1-03",
+  "misiones": [
+    {
+      "id": "mision-om-mx-cuantos-estados",
+      "tipo": "opcion-multiple",
+      "titulo": "Mexico y sus Estados",
+      "instruccion": "Elige la respuesta correcta.",
+      "pregunta": "¿Cuantos estados tiene Mexico?",
+      "opciones": ["20", "25", "31", "32"],
+      "respuesta": "3",
+      "explicacion_correcta": "Correcto! Mexico tiene 32 entidades: 31 estados + la Ciudad de Mexico (CDMX).",
+      "explicacion_incorrecta": "Mexico tiene 32 entidades en total: 31 estados + la Ciudad de Mexico (CDMX)."
+    },
+    {
+      "id": "mision-om-mx-yucatan",
+      "tipo": "opcion-multiple",
+      "titulo": "El Estado de la Peninsula",
+      "instruccion": "Elige la respuesta correcta.",
+      "pregunta": "¿Cual estado mexicano esta en la peninsula que se mete al mar Caribe, donde estan Cancun y las piramides de Chichen Itza?",
+      "opciones": ["Yucatan", "Sonora", "Chihuahua", "Veracruz"],
+      "respuesta": "0",
+      "explicacion_correcta": "Correcto! Yucatan esta en la peninsula al sureste, llena de cenotes y ruinas mayas.",
+      "explicacion_incorrecta": "Es Yucatan, en el sureste de Mexico. Tiene playas de Cancun y la piramide de Chichen Itza."
+    },
+    {
+      "id": "mision-om-mx-jalisco",
+      "tipo": "opcion-multiple",
+      "titulo": "El Estado del Mariachi",
+      "instruccion": "Elige la respuesta correcta.",
+      "pregunta": "¿De que estado mexicano son originarios el mariachi y el tequila?",
+      "opciones": ["Oaxaca", "Jalisco", "Puebla", "Michoacan"],
+      "respuesta": "1",
+      "explicacion_correcta": "Correcto! Jalisco es la cuna del mariachi y del tequila. Su capital es Guadalajara.",
+      "explicacion_incorrecta": "Es Jalisco. Su capital es Guadalajara y es famoso por el mariachi y el tequila."
+    },
+    {
+      "id": "mision-om-mx-mas-grande",
+      "tipo": "opcion-multiple",
+      "titulo": "El Estado MAS GRANDE",
+      "instruccion": "Elige la respuesta correcta.",
+      "pregunta": "¿Cual es el estado mas GRANDE de Mexico (mas territorio)?",
+      "opciones": ["Sonora", "Chihuahua", "Veracruz", "Oaxaca"],
+      "respuesta": "1",
+      "explicacion_correcta": "Correcto! Chihuahua es el estado mas grande, esta en el norte y comparte frontera con Estados Unidos.",
+      "explicacion_incorrecta": "Es Chihuahua, el estado mas grande de Mexico. Esta al norte, frontera con USA."
+    },
+    {
+      "id": "mision-om-mx-mas-pequeno",
+      "tipo": "opcion-multiple",
+      "titulo": "La Capital del Pais",
+      "instruccion": "Elige la respuesta correcta.",
+      "pregunta": "¿Cual es la entidad mas pequeña de Mexico (donde vive mas gente en menos espacio)?",
+      "opciones": ["Tlaxcala", "Ciudad de Mexico", "Morelos", "Aguascalientes"],
+      "respuesta": "1",
+      "explicacion_correcta": "Correcto! La Ciudad de Mexico (CDMX) es la mas pequeña en territorio pero la mas poblada del pais!",
+      "explicacion_incorrecta": "Es la Ciudad de Mexico. Aunque es la mas chica en superficie, vive muchisima gente ahi."
+    },
+    {
+      "id": "mision-om-mx-tabasco",
+      "tipo": "opcion-multiple",
+      "titulo": "El Estado del Petroleo",
+      "instruccion": "Elige la respuesta correcta.",
+      "pregunta": "¿En que estado del sureste de Mexico se produce mucho petroleo y hace mucho calor?",
+      "opciones": ["Tabasco", "Hidalgo", "Tlaxcala", "Zacatecas"],
+      "respuesta": "0",
+      "explicacion_correcta": "Correcto! Tabasco esta junto al Golfo de Mexico, hace mucho calor y produce petroleo.",
+      "explicacion_incorrecta": "Es Tabasco, en el sureste. Es muy caluroso y rico en petroleo."
+    },
+    {
+      "id": "mision-om-mx-baja-california",
+      "tipo": "opcion-multiple",
+      "titulo": "La Peninsula del Noroeste",
+      "instruccion": "Elige la respuesta correcta.",
+      "pregunta": "¿Como se llama la peninsula larga al noroeste de Mexico, junto a California (USA)?",
+      "opciones": ["Yucatan", "Tehuantepec", "Baja California", "Veracruz"],
+      "respuesta": "2",
+      "explicacion_correcta": "Correcto! La peninsula de Baja California es muy larga, mas de 1,200 km. Tiene Tijuana y Cabo San Lucas.",
+      "explicacion_incorrecta": "Es la peninsula de Baja California. Es larguisima y sus playas son famosas en el mundo."
+    },
+    {
+      "id": "mision-om-mx-frontera",
+      "tipo": "opcion-multiple",
+      "titulo": "Estados con USA",
+      "instruccion": "Elige la respuesta correcta.",
+      "pregunta": "¿Cuantos estados mexicanos tienen frontera con Estados Unidos?",
+      "opciones": ["3", "4", "5", "6"],
+      "respuesta": "3",
+      "explicacion_correcta": "Correcto! Son 6 estados frontera: Baja California, Sonora, Chihuahua, Coahuila, Nuevo Leon y Tamaulipas.",
+      "explicacion_incorrecta": "Son 6 estados: Baja California, Sonora, Chihuahua, Coahuila, Nuevo Leon y Tamaulipas."
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "id": "G1-02_oceanos",
+  "titulo": "Los 5 Oceanos del Mundo",
+  "descripcion": "Identifica los 5 oceanos del planeta Tierra",
+  "tipo": "image-picker",
+  "materia": "geografia",
+  "tema": "oceanos",
+  "nivel": "G1-02",
+  "misiones": [
+    {
+      "id": "mision-ip-oceanos",
+      "tipo": "image-picker",
+      "titulo": "Conoce los 5 Oceanos",
+      "instruccion": "Toca el oceano que se describe.",
+      "retos": [
+        {
+          "palabra_es": "El oceano MAS GRANDE del mundo, mas grande que toda la tierra firme junta",
+          "opciones": [
+            { "emoji": "🌊", "label": "Oceano Pacifico" },
+            { "emoji": "⛵", "label": "Oceano Atlantico" },
+            { "emoji": "🐠", "label": "Oceano Indico" },
+            { "emoji": "🧊", "label": "Oceano Artico" }
+          ],
+          "respuesta": 0,
+          "explicacion": "El Pacifico es el oceano mas grande! Esta entre America y Asia."
+        },
+        {
+          "palabra_es": "El oceano que esta entre America y Europa, donde paso el Titanic",
+          "opciones": [
+            { "emoji": "🌊", "label": "Oceano Pacifico" },
+            { "emoji": "🚢", "label": "Oceano Atlantico" },
+            { "emoji": "🐠", "label": "Oceano Indico" },
+            { "emoji": "🐧", "label": "Oceano Antartico" }
+          ],
+          "respuesta": 1,
+          "explicacion": "El Atlantico esta entre America y Europa. Es el segundo mas grande."
+        },
+        {
+          "palabra_es": "El oceano calido entre Africa, Asia y Australia, lleno de vida tropical",
+          "opciones": [
+            { "emoji": "🧊", "label": "Oceano Artico" },
+            { "emoji": "🌊", "label": "Oceano Pacifico" },
+            { "emoji": "🐠", "label": "Oceano Indico" },
+            { "emoji": "🚢", "label": "Oceano Atlantico" }
+          ],
+          "respuesta": 2,
+          "explicacion": "El Indico esta al sur de Asia. Es calido y tiene corales hermosos."
+        },
+        {
+          "palabra_es": "El oceano del POLO NORTE, lleno de hielo donde viven los osos polares",
+          "opciones": [
+            { "emoji": "🐠", "label": "Oceano Indico" },
+            { "emoji": "🌊", "label": "Oceano Pacifico" },
+            { "emoji": "🧊", "label": "Oceano Artico" },
+            { "emoji": "🐧", "label": "Oceano Antartico" }
+          ],
+          "respuesta": 2,
+          "explicacion": "El Artico esta en el Polo Norte. Sus aguas son las mas frias y hay hielo casi todo el año."
+        },
+        {
+          "palabra_es": "El oceano del POLO SUR, donde viven los pinguinos",
+          "opciones": [
+            { "emoji": "🧊", "label": "Oceano Artico" },
+            { "emoji": "🐧", "label": "Oceano Antartico" },
+            { "emoji": "🐠", "label": "Oceano Indico" },
+            { "emoji": "🚢", "label": "Oceano Atlantico" }
+          ],
+          "respuesta": 1,
+          "explicacion": "El Antartico rodea el continente helado de la Antartida. Hogar de pinguinos y ballenas."
+        },
+        {
+          "palabra_es": "El oceano que toca las costas de Mexico al oeste",
+          "opciones": [
+            { "emoji": "🚢", "label": "Oceano Atlantico" },
+            { "emoji": "🌊", "label": "Oceano Pacifico" },
+            { "emoji": "🧊", "label": "Oceano Artico" },
+            { "emoji": "🐠", "label": "Oceano Indico" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Las costas de Acapulco, Puerto Vallarta y Mazatlan estan en el Pacifico!"
+        }
+      ]
+    }
+  ]
+}

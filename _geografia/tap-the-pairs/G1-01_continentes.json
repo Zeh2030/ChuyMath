@@ -1,0 +1,35 @@
+{
+  "id": "G1-01_continentes",
+  "titulo": "Los 7 Continentes del Mundo",
+  "descripcion": "Aprende los nombres de los 7 continentes y algo curioso de cada uno",
+  "tipo": "tap-the-pairs",
+  "materia": "geografia",
+  "tema": "continentes",
+  "nivel": "G1-01",
+  "misiones": [
+    {
+      "id": "mision-ttp-continentes-nombres",
+      "tipo": "tap-the-pairs",
+      "titulo": "Empareja Cada Continente con su Caracteristica",
+      "instruccion": "Hay 7 continentes en el mundo. Toca un continente y luego algo que lo represente.",
+      "retos": [
+        {
+          "pares": [
+            { "es": "America", "en": "Aqui vivimos nosotros" },
+            { "es": "Africa", "en": "Tiene leones y elefantes" },
+            { "es": "Europa", "en": "Tiene la Torre Eiffel" },
+            { "es": "Asia", "en": "El mas grande del mundo" }
+          ]
+        },
+        {
+          "pares": [
+            { "es": "Oceania", "en": "Australia y muchas islas" },
+            { "es": "Antartida", "en": "El mas frio, todo de hielo" },
+            { "es": "Africa", "en": "Tiene el desierto del Sahara" },
+            { "es": "Asia", "en": "Estan China y Japon" }
+          ]
+        }
+      ]
+    }
+  ]
+}

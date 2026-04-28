@@ -1,0 +1,97 @@
+{
+  "id": "G1-04_capital-mexico",
+  "titulo": "La Ciudad de Mexico: Capital Sobre un Lago",
+  "descripcion": "Conoce la increible historia de la capital de Mexico, una ciudad construida sobre un lago.",
+  "tipo": "mini-story",
+  "materia": "geografia",
+  "tema": "capital-mexico",
+  "nivel": "G1-04",
+  "misiones": [
+    {
+      "id": "mision-story-cdmx",
+      "tipo": "mini-story",
+      "titulo": "Tenochtitlan: La Ciudad Sobre un Lago",
+      "instruccion": "Lee cada parte de la historia y responde la pregunta.",
+      "parrafos": [
+        {
+          "texto": "Hace mucho tiempo, los aztecas (un pueblo antiguo de Mexico) buscaban un lugar para construir su ciudad. Los dioses les dijeron que se quedaran donde vieran un aguila parada sobre un nopal comiendo una serpiente. ¡Y la encontraron en medio de un gran lago llamado Texcoco!",
+          "emoji": "🦅",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Los aztecas buscaban un aguila sobre un ___ comiendo una serpiente.",
+              "opciones": ["arbol", "nopal", "cacto", "rio"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "Los aztecas construyeron su ciudad EN MEDIO DEL LAGO. ¿Como? Hicieron islas artificiales con tierra y juncos. Le pusieron Tenochtitlan, que significa 'lugar del nopal'. La ciudad tenia canales como Venecia y era enorme, con piramides gigantes!",
+          "emoji": "🏛️",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Tenochtitlan estaba construida sobre un lago.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "En 1521 llegaron los españoles, conquistaron Tenochtitlan y construyeron una nueva ciudad encima. Le pusieron 'Ciudad de Mexico'. Poco a poco, secaron el lago Texcoco para tener mas terreno para construir. ¡Por eso hoy CDMX se hunde un poco cada año!",
+          "emoji": "🏛️",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Los españoles secaron el lago ___ donde estaba Tenochtitlan.",
+              "opciones": ["Texcoco", "Patzcuaro", "Chapala", "Catemaco"],
+              "respuesta": 0
+            }
+          ]
+        },
+        {
+          "texto": "Hoy en dia, la Ciudad de Mexico (CDMX para abreviar) es la capital del pais. Es la ciudad MAS POBLADA de Mexico, con mas de 9 millones de personas viviendo ahi. ¡Y si contamos los alrededores, son mas de 22 millones!",
+          "emoji": "🏙️",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "La Ciudad de Mexico se llama CDMX y es la ___ de Mexico.",
+              "opciones": ["estrella", "bandera", "capital", "playa"],
+              "respuesta": 2
+            }
+          ]
+        },
+        {
+          "texto": "En el centro de la CDMX esta el Zocalo, una plaza enorme donde antes estaba el centro de Tenochtitlan. Junto al Zocalo hay un museo llamado Templo Mayor donde puedes ver las ruinas de la antigua ciudad azteca debajo del piso moderno!",
+          "emoji": "🏛️",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Bajo la CDMX moderna estan las ruinas de Tenochtitlan.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Y el simbolo de aquella aguila sobre el nopal comiendo la serpiente que vieron los aztecas... ¡esta en la bandera de Mexico hasta el dia de hoy! Cada vez que ves la bandera mexicana, recuerdas la historia de como nacio Tenochtitlan.",
+          "emoji": "🇲🇽",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "El aguila de la bandera mexicana viene de la leyenda de Tenochtitlan.",
+              "correcto": true,
+              "correccion": null
+            },
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "La capital de Mexico se llama Ciudad de ___.",
+              "opciones": ["Aztecas", "Mexico", "Tenochtitlan", "Texcoco"],
+              "respuesta": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
