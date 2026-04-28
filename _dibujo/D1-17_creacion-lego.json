@@ -1,0 +1,23 @@
+{
+  "id": "D1-17_creacion-lego",
+  "titulo": "Mi Creacion de Lego",
+  "descripcion": "Dibuja una construccion estilo Lego",
+  "materia": "dibujo",
+  "nivel": "D1-17",
+  "tema": "dibujo-libre-creacion",
+  "misiones": [
+    {
+      "id": "dib-lego-01",
+      "tipo": "dibujo-libre",
+      "titulo": "Construccion Lego",
+      "emoji": "🧱",
+      "instruccion": "Imagina algo cool y dibujalo como si fuera de Lego. Puede ser un carro, una nave, un castillo, lo que quieras!",
+      "sugerencias": [
+        "Los bloques de Lego son rectangulos con bolitas arriba",
+        "Usa colores brillantes: rojo, azul, amarillo, verde",
+        "Puedes dibujar minifiguras (personajes redonditos)",
+        "Si quieres, dibujalo desplegado (como las instrucciones)"
+      ]
+    }
+  ]
+}

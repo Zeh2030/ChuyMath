@@ -1,0 +1,25 @@
+{
+  "id": "D2-21_personaje-anime",
+  "titulo": "Personaje Estilo Anime",
+  "descripcion": "Dibuja un personaje con ojos grandes estilo anime/manga",
+  "materia": "dibujo",
+  "nivel": "D2-21",
+  "tema": "personajes-anime",
+  "misiones": [
+    {
+      "id": "dib-anime-01",
+      "tipo": "dibujo-libre",
+      "titulo": "Personaje Anime",
+      "emoji": "✨",
+      "instruccion": "Dibuja un personaje estilo anime! Puede ser de un anime que te guste o uno inventado.",
+      "sugerencias": [
+        "Caracteristica clave anime: OJOS GIGANTES con brillitos",
+        "Pelo con puntas y colores raros (azul, rosa, blanco)",
+        "Boca chiquita, naricita simple (como una L o triangulo)",
+        "Pueden tener accesorios: mochila, espada, pociones",
+        "Inspiracion: Naruto, Pokemon, Demon Slayer, Studio Ghibli",
+        "Tip: empieza con un ovalo para la cara y dibuja los ojos enormes"
+      ]
+    }
+  ]
+}

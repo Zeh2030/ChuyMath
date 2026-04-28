@@ -1,0 +1,24 @@
+{
+  "id": "D1-16_mundo-minecraft",
+  "titulo": "Mi Mundo de Minecraft",
+  "descripcion": "Dibuja un mundo cuadrado estilo Minecraft con tu casa y mobs",
+  "materia": "dibujo",
+  "nivel": "D1-16",
+  "tema": "dibujo-libre-videojuegos",
+  "misiones": [
+    {
+      "id": "dib-mc-01",
+      "tipo": "dibujo-libre",
+      "titulo": "Mundo Minecraft",
+      "emoji": "⛏️",
+      "instruccion": "Dibuja tu mundo de Minecraft! Recuerda: TODO se hace con cuadrados.",
+      "sugerencias": [
+        "Suelo: cuadrados verdes (pasto) y marrones (tierra)",
+        "Tu casa de bloques (puertas, ventanas)",
+        "Arboles cuadrados con hojas verdes",
+        "Puedes agregar a Steve, un creeper verde, o una vaca",
+        "El sol y las nubes tambien son cuadrados!"
+      ]
+    }
+  ]
+}

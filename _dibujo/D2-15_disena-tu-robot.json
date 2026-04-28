@@ -1,0 +1,25 @@
+{
+  "id": "D2-15_disena-tu-robot",
+  "titulo": "Diseña tu Robot",
+  "descripcion": "Inventa un robot original con partes mecanicas",
+  "materia": "dibujo",
+  "nivel": "D2-15",
+  "tema": "creacion-robot",
+  "misiones": [
+    {
+      "id": "dib-robot-01",
+      "tipo": "dibujo-libre",
+      "titulo": "Robot Original",
+      "emoji": "🤖",
+      "instruccion": "Inventa tu propio robot! Decide para que sirve y dibujalo con sus partes mecanicas.",
+      "sugerencias": [
+        "¿Es un robot que vuela, que nada, o que camina?",
+        "Cabeza: rectangular o redonda con antenas",
+        "Cuerpo con tornillos, focos, botones, pantallas",
+        "Piensa en sus brazos: ¿pinzas, herramientas, manos?",
+        "Dale un nombre cool y un superpoder",
+        "Tip: usa un color base + 1 acento brillante"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "D2-20_mi-obra-maestra",
+  "titulo": "Mi Obra Maestra",
+  "descripcion": "Dibujo libre total: tema libre, usa todo lo que has aprendido",
+  "materia": "dibujo",
+  "nivel": "D2-20",
+  "tema": "creacion-libre",
+  "misiones": [
+    {
+      "id": "dib-obra-01",
+      "tipo": "dibujo-libre",
+      "titulo": "Mi Obra Maestra",
+      "emoji": "🎨",
+      "instruccion": "Esta es TU obra maestra. Dibuja lo que quieras. Tema libre, sin reglas. Usa todo lo que has aprendido!",
+      "sugerencias": [
+        "Piensa: ¿que es lo que MAS te gusta dibujar?",
+        "Puede ser real (un paisaje, persona, animal) o inventado",
+        "Tomate tu tiempo: este dibujo es especial",
+        "Usa muchos colores, agrega detalles",
+        "Cuando termines, ponle un titulo a tu obra"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "D2-18_ciudad-futurista",
+  "titulo": "Ciudad del Futuro",
+  "descripcion": "Imagina y dibuja como sera una ciudad en el año 3000",
+  "materia": "dibujo",
+  "nivel": "D2-18",
+  "tema": "creacion-paisaje",
+  "misiones": [
+    {
+      "id": "dib-futuro-01",
+      "tipo": "dibujo-libre",
+      "titulo": "Ciudad Futurista",
+      "emoji": "🏙️",
+      "instruccion": "Imagina como se vera una ciudad en el futuro y dibujala! ¿Tendra carros voladores? ¿Edificios curvos?",
+      "sugerencias": [
+        "Edificios super altos con formas raras (cilindros, espirales, esferas)",
+        "Carros voladores y trenes flotantes",
+        "Pantallas gigantes con anuncios",
+        "Personas con ropa futurista o robots caminando",
+        "Tip: usa morados, azules y rosas neon para sentir futuro",
+        "Piensa: ¿hay arboles? ¿es de dia o de noche con luces?"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "D0-18_frozen-elsa-anna",
+  "titulo": "Elsa y Anna de Frozen",
+  "descripcion": "Dibuja a las princesas hermanas en su castillo de hielo",
+  "materia": "dibujo",
+  "nivel": "D0-18",
+  "tema": "dibujo-libre-personajes",
+  "misiones": [
+    {
+      "id": "dib-frozen-01",
+      "tipo": "dibujo-libre",
+      "titulo": "Frozen: Elsa y Anna",
+      "emoji": "❄️",
+      "instruccion": "Dibuja a Elsa y Anna! Pueden estar en el castillo de hielo o en el bosque.",
+      "sugerencias": [
+        "Elsa lleva vestido azul brillante",
+        "Anna tiene vestido verde con capa",
+        "Agrega copos de nieve volando",
+        "Puedes dibujar a Olaf el muñeco de nieve"
+      ]
+    }
+  ]
+}

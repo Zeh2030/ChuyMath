@@ -1,0 +1,23 @@
+{
+  "id": "D0-20_dinosaurio",
+  "titulo": "Mi Dinosaurio Favorito",
+  "descripcion": "Dibuja un dinosaurio en su mundo prehistorico",
+  "materia": "dibujo",
+  "nivel": "D0-20",
+  "tema": "dibujo-libre-animales",
+  "misiones": [
+    {
+      "id": "dib-dino-01",
+      "tipo": "dibujo-libre",
+      "titulo": "Mi Dinosaurio",
+      "emoji": "🦖",
+      "instruccion": "Dibuja tu dinosaurio favorito! Puede ser un T-Rex, brontosaurio, o uno que tu inventes.",
+      "sugerencias": [
+        "T-Rex: cabeza grande, dientes filosos, brazos chiquitos",
+        "Brontosaurio: cuello LARGUISIMO, cuerpo grande",
+        "Pueden tener escamas o piel con manchas",
+        "Agrega volcanes, palmeras o un meteorito en el cielo"
+      ]
+    }
+  ]
+}

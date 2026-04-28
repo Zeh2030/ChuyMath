@@ -1,0 +1,23 @@
+{
+  "id": "D0-19_mario-bros",
+  "titulo": "Super Mario Bros",
+  "descripcion": "Dibuja a Mario en el Reino Champinon",
+  "materia": "dibujo",
+  "nivel": "D0-19",
+  "tema": "dibujo-libre-videojuegos",
+  "misiones": [
+    {
+      "id": "dib-mario-01",
+      "tipo": "dibujo-libre",
+      "titulo": "Mario en Aventura",
+      "emoji": "🍄",
+      "instruccion": "Dibuja a Mario! Puede estar saltando, corriendo o agarrando una estrella.",
+      "sugerencias": [
+        "Mario lleva gorra roja con la letra M",
+        "Tiene overol azul y camisa roja",
+        "Bigote negro grande",
+        "Puedes dibujar champiñones, estrellas o monedas alrededor"
+      ]
+    }
+  ]
+}

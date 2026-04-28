@@ -1,0 +1,25 @@
+{
+  "id": "D2-22_mi-comida-favorita",
+  "titulo": "Mi Comida Favorita",
+  "descripcion": "Dibuja con detalle el platillo que mas te gusta comer",
+  "materia": "dibujo",
+  "nivel": "D2-22",
+  "tema": "objetos-detalle",
+  "misiones": [
+    {
+      "id": "dib-comida-01",
+      "tipo": "dibujo-libre",
+      "titulo": "Tu Comida Favorita",
+      "emoji": "🍕",
+      "instruccion": "Dibuja la comida que mas te gusta! Pueden ser tacos, pizza, hamburguesa, sushi, helado... lo que sea!",
+      "sugerencias": [
+        "Dibujala como si la vieras desde arriba (en un plato)",
+        "Cuida los detalles: si es taco, dibuja la tortilla, carne, queso, salsa",
+        "Si es pizza, marca cada rebanada con sus toppings",
+        "Si es hamburguesa, dibuja las capas: pan, carne, lechuga, jitomate, queso",
+        "Tip: usa colores apetitosos (rojo, naranja, amarillo) para que de hambre",
+        "Puedes agregar bebida y postre al lado"
+      ]
+    }
+  ]
+}
