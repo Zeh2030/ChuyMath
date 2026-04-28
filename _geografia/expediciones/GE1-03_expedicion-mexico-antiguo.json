@@ -1,0 +1,187 @@
+{
+  "id": "GE1-03_expedicion-mexico-antiguo",
+  "titulo": "🏛️ Expedicion al Mexico Antiguo",
+  "tipo": "expedicion",
+  "tema": "mexico-antiguo",
+  "materia": "geografia",
+  "nivel": "GE1-03",
+  "descripcion": "¡Viaja en el tiempo a explorar Tenochtitlan, Chichen Itza y Teotihuacan! Conoceras a los aztecas, los mayas y como vivian en Mexico hace mas de 1,000 años.",
+  "misiones": [
+    {
+      "id": "mx-ant-01-yucatan",
+      "tipo": "explorador-mapa",
+      "mapa": "mexico-estados",
+      "modo": "quiz",
+      "titulo": "🗺️ Mision 1: Encuentra Yucatan",
+      "instruccion": "Chichen Itza esta en el estado de Yucatan, en la peninsula del sureste de Mexico.",
+      "retos": [
+        {
+          "id": "31",
+          "nombre": "Yucatan",
+          "pregunta": "¿Donde esta Yucatan? (peninsula del sureste, junto al mar Caribe)"
+        }
+      ]
+    },
+    {
+      "id": "mx-ant-02-chichen",
+      "tipo": "opcion-multiple",
+      "titulo": "🏛️ Mision 2: Chichen Itza",
+      "instruccion": "Chichen Itza es la piramide mas famosa de Mexico. Es enorme, mide 30 metros de alto y tiene 4 escaleras.",
+      "pregunta": "¿Que cultura antigua construyo Chichen Itza?",
+      "opciones": [
+        { "texto": "A) Los aztecas", "valor": "aztecas" },
+        { "texto": "B) Los mayas", "valor": "mayas" },
+        { "texto": "C) Los egipcios", "valor": "egipcios" },
+        { "texto": "D) Los incas", "valor": "incas" }
+      ],
+      "respuesta": "mayas",
+      "explicacion_correcta": "¡Correcto! Los mayas la construyeron hace mas de 1,000 años. Cada año, en el equinoccio, una sombra de serpiente baja por la escalera. ¡Magia!",
+      "explicacion_incorrecta": "La construyeron los MAYAS, una cultura muy avanzada que vivio en el sureste de Mexico hace mas de 1,000 años."
+    },
+    {
+      "id": "mx-ant-03-mayas",
+      "tipo": "mini-story",
+      "titulo": "📖 Mision 3: Los Mayas",
+      "instruccion": "Conoce a la gente que construyo las piramides de Yucatan.",
+      "parrafos": [
+        {
+          "texto": "Los mayas vivieron en el sureste de Mexico, Guatemala y Belice hace mas de 2,000 años. Eran muy inteligentes! Inventaron las matematicas con el numero CERO antes que en Europa. Tenian un calendario super exacto.",
+          "emoji": "🔢",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Los mayas inventaron el numero ___ antes que los europeos.",
+              "opciones": ["uno", "cero", "diez", "cien"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "Los mayas tenian un juego de pelota muy importante. Jugaban con una pelota dura de hule (caucho) y tenian que meterla en un aro de piedra usando solo la cadera. Era un juego sagrado, no un deporte cualquiera.",
+          "emoji": "⚽",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Los mayas jugaban un juego de pelota golpeandola con la cadera.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Los mayas escribian con dibujitos llamados JEROGLIFICOS, parecidos a los de Egipto. Tenian libros de papel hecho de corteza de arbol. Casi todos se quemaron cuando llegaron los españoles, ¡que pena!",
+          "emoji": "📜",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Los mayas escribian con dibujitos llamados ___.",
+              "opciones": ["letras", "numeros", "jeroglificos", "emojis"],
+              "respuesta": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mx-ant-04-edomex",
+      "tipo": "explorador-mapa",
+      "mapa": "mexico-estados",
+      "modo": "quiz",
+      "titulo": "🗺️ Mision 4: Encuentra el Estado de Mexico",
+      "instruccion": "Teotihuacan esta en el Estado de Mexico, muy cerca de la Ciudad de Mexico.",
+      "retos": [
+        {
+          "id": "15",
+          "nombre": "Mexico (Estado)",
+          "pregunta": "¿Donde esta el Estado de Mexico? (rodea casi a la Ciudad de Mexico, en el centro del pais)"
+        }
+      ]
+    },
+    {
+      "id": "mx-ant-05-teotihuacan",
+      "tipo": "opcion-multiple",
+      "titulo": "☀️ Mision 5: Teotihuacan",
+      "instruccion": "Teotihuacan tiene 2 piramides gigantes. La mas grande mide 65 metros de alto, mas que la Estatua de la Libertad sin su base.",
+      "pregunta": "¿Como se llaman las 2 piramides mas famosas de Teotihuacan?",
+      "opciones": [
+        { "texto": "A) Piramide del Sol y de la Luna", "valor": "sol-luna" },
+        { "texto": "B) Piramide del Agua y del Fuego", "valor": "agua-fuego" },
+        { "texto": "C) Piramide del Norte y del Sur", "valor": "norte-sur" },
+        { "texto": "D) Piramide del Aguila y del Jaguar", "valor": "aguila-jaguar" }
+      ],
+      "respuesta": "sol-luna",
+      "explicacion_correcta": "¡Correcto! La Piramide del Sol es la mas grande, la de la Luna mas chica. Las construyeron hace 2,000 años pero NO sabemos exactamente que pueblo las hizo. ¡Es un misterio!",
+      "explicacion_incorrecta": "Son la Piramide del Sol (la mas grande) y la de la Luna. Su nombre 'Teotihuacan' significa 'lugar donde nacen los dioses'."
+    },
+    {
+      "id": "mx-ant-06-aztecas",
+      "tipo": "true-or-false",
+      "titulo": "🦅 Mision 6: Los Aztecas",
+      "instruccion": "Los aztecas (tambien llamados mexicas) construyeron Tenochtitlan en medio de un lago. ¡Era una de las ciudades mas grandes del mundo!",
+      "retos": [
+        {
+          "oracion": "Los aztecas construyeron su ciudad Tenochtitlan en medio de un lago.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! El lago se llamaba Texcoco. Hicieron islas artificiales con tierra y juncos. La ciudad era mas grande que Madrid en esa epoca!"
+        },
+        {
+          "oracion": "Los aztecas hablaban español como nosotros.",
+          "correcto": false,
+          "correccion": "Los aztecas hablaban NAHUATL, no español. El español llego con los conquistadores.",
+          "explicacion": "Falso! Hablaban nahuatl. De ahi vienen palabras que usamos hoy: chocolate, tomate, aguacate, coyote, chile. ¡Cada vez que dices 'chocolate' estas hablando un poquito de nahuatl!"
+        },
+        {
+          "oracion": "Los aztecas inventaron una bebida especial: el chocolate.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! Pero lo tomaban con CHILE, no con leche dulce. Era una bebida para los reyes y guerreros importantes."
+        }
+      ]
+    },
+    {
+      "id": "mx-ant-07-leyenda",
+      "tipo": "mini-story",
+      "titulo": "📖 Mision 7: La Leyenda del Aguila",
+      "instruccion": "Conoce la historia de como nacio Mexico.",
+      "parrafos": [
+        {
+          "texto": "Hace mucho tiempo, los aztecas eran nomadas: caminaban de un lado a otro buscando un lugar para vivir. Sus dioses les dijeron que se quedaran donde vieran un AGUILA parada sobre un NOPAL comiendo una SERPIENTE.",
+          "emoji": "🦅",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Los aztecas debian buscar un aguila sobre un ___ comiendo una serpiente.",
+              "opciones": ["arbol", "nopal", "rio", "cerro"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "Despues de buscar muchos años, encontraron la señal en una islita en medio del lago Texcoco. Ahi fundaron su ciudad: TENOCHTITLAN. Hoy, en ese mismo lugar esta la Ciudad de Mexico.",
+          "emoji": "🏛️",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "La ciudad que fundaron los aztecas se llamaba ___.",
+              "opciones": ["Teotihuacan", "Tenochtitlan", "Chichen", "Cuzco"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "Y por eso hoy en la BANDERA DE MEXICO esta dibujada esa aguila parada sobre el nopal comiendo la serpiente. ¡Cada vez que ves la bandera, ves la leyenda!",
+          "emoji": "🇲🇽",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "El aguila de la bandera de Mexico viene de la leyenda azteca.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

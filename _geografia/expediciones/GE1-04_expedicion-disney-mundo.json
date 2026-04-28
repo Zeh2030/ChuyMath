@@ -1,0 +1,177 @@
+{
+  "id": "GE1-04_expedicion-disney-mundo",
+  "titulo": "🐭 Expedicion Disney por el Mundo",
+  "tipo": "expedicion",
+  "tema": "disney",
+  "materia": "geografia",
+  "nivel": "GE1-04",
+  "descripcion": "¡Viaja a los 6 parques Disney del mundo! Disneyland California, Disney World Florida, Disneyland Paris, Tokyo Disney, Hong Kong Disney y Shanghai Disney. ¡Mickey te espera!",
+  "misiones": [
+    {
+      "id": "disney-01-creador",
+      "tipo": "opcion-multiple",
+      "titulo": "🎬 Mision 1: ¿Quien creo Disney?",
+      "instruccion": "Antes de visitar los parques, conoce a la persona que invento todo este mundo magico.",
+      "pregunta": "¿Como se llamaba el señor que creo Mickey Mouse y construyo Disneyland?",
+      "opciones": [
+        { "texto": "A) Steve Jobs", "valor": "jobs" },
+        { "texto": "B) Walt Disney", "valor": "walt" },
+        { "texto": "C) Mickey Mouse", "valor": "mickey" },
+        { "texto": "D) Pixar", "valor": "pixar" }
+      ],
+      "respuesta": "walt",
+      "explicacion_correcta": "¡Correcto! Walt Disney era un dibujante. En 1928 creo a Mickey Mouse y luego invento muchas peliculas y los parques. Sin el no existirian Frozen, Toy Story ni Coco.",
+      "explicacion_incorrecta": "Walt Disney lo creo todo. Empezo dibujando caricaturas y termino haciendo el imperio Disney."
+    },
+    {
+      "id": "disney-02-cuantos",
+      "tipo": "opcion-multiple",
+      "titulo": "🌎 Mision 2: ¿Cuantos parques Disney hay?",
+      "instruccion": "Disney tiene parques en varios paises del mundo. Cada uno tiene su propio castillo y atracciones.",
+      "pregunta": "¿Cuantos parques Disney hay en el mundo?",
+      "opciones": [
+        { "texto": "A) 2 parques", "valor": "2" },
+        { "texto": "B) 4 parques", "valor": "4" },
+        { "texto": "C) 6 parques", "valor": "6" },
+        { "texto": "D) 20 parques", "valor": "20" }
+      ],
+      "respuesta": "6",
+      "explicacion_correcta": "¡Correcto! Son 6 parques: Disneyland California, Disney World Florida, Disneyland Paris, Tokyo Disney, Hong Kong Disney y Shanghai Disney.",
+      "explicacion_incorrecta": "Son 6 parques en 5 paises diferentes (USA tiene 2). California, Florida, Francia, Japon, Hong Kong y China continental."
+    },
+    {
+      "id": "disney-03-mapa-usa",
+      "tipo": "explorador-mapa",
+      "mapa": "usa-estados",
+      "modo": "quiz",
+      "titulo": "🗺️ Mision 3: Los 2 Disney en USA",
+      "instruccion": "USA es el pais con MAS parques Disney: tiene Disneyland en California (oeste) y Disney World en Florida (sureste).",
+      "retos": [
+        {
+          "id": "06",
+          "nombre": "California",
+          "pregunta": "¿Donde esta California? (Disneyland el primer parque, abrio en 1955)"
+        },
+        {
+          "id": "12",
+          "nombre": "Florida",
+          "pregunta": "¿Y Florida? (Disney World, el parque MAS GRANDE del mundo)"
+        }
+      ]
+    },
+    {
+      "id": "disney-04-disneyland-cal",
+      "tipo": "true-or-false",
+      "titulo": "🏰 Mision 4: Disneyland California",
+      "instruccion": "El primer parque Disney del mundo abrio en California, USA. Decide si estas afirmaciones son verdaderas o falsas.",
+      "retos": [
+        {
+          "oracion": "Disneyland California fue el PRIMER parque Disney, abrio en 1955.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! Walt Disney lo abrio el 17 de julio de 1955 en Anaheim, California. ¡Tiene mas de 70 años!"
+        },
+        {
+          "oracion": "Disneyland California es el parque Disney mas GRANDE del mundo.",
+          "correcto": false,
+          "correccion": "El mas grande es DISNEY WORLD en Florida, no Disneyland California.",
+          "explicacion": "Falso! Disneyland California es el primero, pero Disney World en Florida es el mas grande. Disney World tiene 4 parques tematicos juntos!"
+        },
+        {
+          "oracion": "El castillo principal de Disneyland California es el de la Bella Durmiente.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! El castillo de California es el de Aurora (la Bella Durmiente). Otros castillos son de Cenicienta (Florida y Tokyo) y Frozen no, jeje."
+        }
+      ]
+    },
+    {
+      "id": "disney-05-disney-world",
+      "tipo": "opcion-multiple",
+      "titulo": "🎢 Mision 5: Disney World, El Gigante",
+      "instruccion": "Disney World en Florida es enorme. Tan grande que dentro caben 4 parques diferentes mas hoteles, lagos y campos.",
+      "pregunta": "¿De que tamaño es Disney World en Florida?",
+      "opciones": [
+        { "texto": "A) Como tu casa", "valor": "casa" },
+        { "texto": "B) Como una colonia", "valor": "colonia" },
+        { "texto": "C) Como una ciudad mediana (similar a San Francisco)", "valor": "ciudad" },
+        { "texto": "D) Como todo Mexico", "valor": "mexico" }
+      ],
+      "respuesta": "ciudad",
+      "explicacion_correcta": "¡Correcto! Disney World mide 100 km cuadrados, parecido a una ciudad como San Francisco. Tiene su propio sistema de transporte y hasta su propia policia.",
+      "explicacion_incorrecta": "Es del tamaño de una ciudad. ¡Tiene su propio metro, monorriel, hoteles y hasta un campo de golf gigante!"
+    },
+    {
+      "id": "disney-06-paris",
+      "tipo": "opcion-multiple",
+      "titulo": "🇪🇺 Mision 6: Disneyland Paris",
+      "instruccion": "El unico parque Disney de Europa esta en Francia, cerca de la capital.",
+      "pregunta": "¿Cerca de que ciudad esta Disneyland Paris?",
+      "opciones": [
+        { "texto": "A) Madrid (España)", "valor": "madrid" },
+        { "texto": "B) Paris (Francia)", "valor": "paris" },
+        { "texto": "C) Roma (Italia)", "valor": "roma" },
+        { "texto": "D) Londres (Reino Unido)", "valor": "londres" }
+      ],
+      "respuesta": "paris",
+      "explicacion_correcta": "¡Correcto! Disneyland Paris esta a 32 km del centro de Paris. Asi que en el mismo viaje puedes ver la Torre Eiffel Y conocer a Mickey.",
+      "explicacion_incorrecta": "Esta en Paris, Francia. Abrio en 1992 y es el unico parque Disney en Europa."
+    },
+    {
+      "id": "disney-07-asia",
+      "tipo": "mini-story",
+      "titulo": "📖 Mision 7: Disney en Asia",
+      "instruccion": "Asia tiene 3 parques Disney en 3 paises diferentes!",
+      "parrafos": [
+        {
+          "texto": "Tokyo Disney en JAPON abrio en 1983. Fue el primer parque Disney FUERA de Estados Unidos. Los japoneses son super fans, hay gente que va casi cada semana. Tiene un castillo muy parecido al de Cenicienta.",
+          "emoji": "🇯🇵",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Tokyo Disney esta en el pais de ___.",
+              "opciones": ["China", "Japon", "Corea", "Tailandia"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "Hong Kong Disney abrio en 2005. Es el parque Disney mas chiquito de todos, pero esta en una isla con vista al mar. Tiene atracciones unicas como 'Mystic Manor' y un castillo muy bonito.",
+          "emoji": "🏯",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Hong Kong Disney es uno de los parques Disney mas chiquitos.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Shanghai Disney en China continental es el mas NUEVO (abrio en 2016) y el segundo mas grande despues de Florida. Tiene el castillo Disney mas grande del mundo y atracciones inspiradas en peliculas chinas como Mulan.",
+          "emoji": "🐉",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Shanghai Disney esta en el pais de ___.",
+              "opciones": ["Japon", "Corea", "China", "Vietnam"],
+              "respuesta": 2
+            }
+          ]
+        },
+        {
+          "texto": "Asi que si quieres conocer TODOS los Disney del mundo, tienes que viajar a Estados Unidos (2 parques), Francia, Japon, Hong Kong y China. ¡6 parques en 5 paises!",
+          "emoji": "🌎",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Hay ___ parques Disney en 5 paises diferentes.",
+              "opciones": ["3", "5", "6", "10"],
+              "respuesta": 2
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

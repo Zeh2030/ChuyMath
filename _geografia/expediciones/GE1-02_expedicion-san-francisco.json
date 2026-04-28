@@ -1,0 +1,160 @@
+{
+  "id": "GE1-02_expedicion-san-francisco",
+  "titulo": "🌉 Expedicion por San Francisco",
+  "tipo": "expedicion",
+  "tema": "san-francisco",
+  "materia": "geografia",
+  "nivel": "GE1-02",
+  "descripcion": "¡Vamos a explorar San Francisco! La ciudad de las colinas, el puente rojo gigante, los tranvias historicos y los leones marinos. Esta en California, USA.",
+  "misiones": [
+    {
+      "id": "sf-01-mapa",
+      "tipo": "explorador-mapa",
+      "mapa": "usa-estados",
+      "modo": "quiz",
+      "titulo": "🗺️ Mision 1: Ubica California",
+      "instruccion": "San Francisco esta en el estado de California, en la costa OESTE de Estados Unidos.",
+      "retos": [
+        {
+          "id": "06",
+          "nombre": "California",
+          "pregunta": "¿Donde esta California? (en la costa oeste de USA, junto al oceano Pacifico)"
+        }
+      ]
+    },
+    {
+      "id": "sf-02-golden-gate",
+      "tipo": "opcion-multiple",
+      "titulo": "🌉 Mision 2: El Puente Rojo Gigante",
+      "instruccion": "El simbolo mas famoso de San Francisco es un puente enorme color naranja-rojo que cruza la bahia.",
+      "pregunta": "¿Como se llama ese puente famoso?",
+      "opciones": [
+        { "texto": "A) Brooklyn Bridge", "valor": "brooklyn" },
+        { "texto": "B) Golden Gate", "valor": "golden-gate" },
+        { "texto": "C) London Bridge", "valor": "london" },
+        { "texto": "D) Tower Bridge", "valor": "tower" }
+      ],
+      "respuesta": "golden-gate",
+      "explicacion_correcta": "¡Correcto! El Golden Gate Bridge mide casi 3 kilometros y es de color naranja para que se vea entre la niebla. Es uno de los puentes mas famosos del mundo.",
+      "explicacion_incorrecta": "Es el Golden Gate. Cuando se construyo en 1937 era el puente colgante mas largo del mundo. Sale en muchisimas peliculas."
+    },
+    {
+      "id": "sf-03-alcatraz",
+      "tipo": "true-or-false",
+      "titulo": "🏝️ Mision 3: La Isla Prision",
+      "instruccion": "En la bahia de San Francisco hay una isla muy famosa llamada Alcatraz. Decide si estas afirmaciones son verdaderas o falsas.",
+      "retos": [
+        {
+          "oracion": "Alcatraz era una prision de alta seguridad en una isla.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! Estuvo abierta de 1934 a 1963 y ahi metieron a los criminales mas peligrosos de USA, como Al Capone."
+        },
+        {
+          "oracion": "Era facil escapar de Alcatraz nadando hasta la ciudad.",
+          "correcto": false,
+          "correccion": "Era casi IMPOSIBLE escapar. El agua es muy fria y hay corrientes peligrosas.",
+          "explicacion": "Falso! Por eso eligieron esa isla: el agua de la bahia esta heladisima y nadie podia nadar hasta la ciudad. Solo 3 personas intentaron escapar... y nadie sabe si lo lograron."
+        },
+        {
+          "oracion": "Hoy Alcatraz es un museo que la gente puede visitar.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! Cerro como prision en 1963 y ahora es un museo. Llegas en un bote y caminas por las celdas."
+        }
+      ]
+    },
+    {
+      "id": "sf-04-tranvias",
+      "tipo": "opcion-multiple",
+      "titulo": "🚋 Mision 4: Los Tranvias Antiguos",
+      "instruccion": "San Francisco tiene unos transportes historicos que suben y bajan las colinas usando un cable bajo la calle. Funcionan desde 1873!",
+      "pregunta": "¿Como se llaman esos tranvias historicos famosos de San Francisco?",
+      "opciones": [
+        { "texto": "A) Cable Cars", "valor": "cable" },
+        { "texto": "B) Metro", "valor": "metro" },
+        { "texto": "C) Helicopteros", "valor": "heli" },
+        { "texto": "D) Lanchas", "valor": "lancha" }
+      ],
+      "respuesta": "cable",
+      "explicacion_correcta": "¡Correcto! Los Cable Cars son tranvias que se agarran a un cable que se mueve bajo la calle. Son los unicos del mundo que aun funcionan asi. ¡Te puedes asomar de los lados!",
+      "explicacion_incorrecta": "Se llaman Cable Cars. Tienen 150 años de antigüedad y son el simbolo de la ciudad. Suben colinas tan empinadas que parece que vas a caerte para atras."
+    },
+    {
+      "id": "sf-05-leones-marinos",
+      "tipo": "true-or-false",
+      "titulo": "🦭 Mision 5: Los Vecinos Ruidosos",
+      "instruccion": "En el muelle Pier 39 de San Francisco vive una familia muy especial.",
+      "retos": [
+        {
+          "oracion": "En el Pier 39 viven cientos de leones marinos que ladran como perros.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! Llegaron en 1989 y se quedaron porque les gusto el lugar. Ahora son la atraccion gratis mas famosa de SF. Hacen 'ARG ARG ARG' todo el dia."
+        },
+        {
+          "oracion": "San Francisco tiene un barrio chino llamado Chinatown, el mas antiguo de USA.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! Chinatown de San Francisco es el barrio chino mas antiguo de Estados Unidos. Tiene templos, dragones de papel y comida china autentica."
+        }
+      ]
+    },
+    {
+      "id": "sf-06-historia",
+      "tipo": "mini-story",
+      "titulo": "📖 Mision 6: La Historia de San Francisco",
+      "instruccion": "Aprende como crecio San Francisco.",
+      "parrafos": [
+        {
+          "texto": "San Francisco era un pueblito chiquito hasta que en 1848 alguien encontro ORO cerca de ahi! La noticia se regó por todo el mundo y miles de personas llegaron buscando hacerse ricos. A esto se le llamo la 'Fiebre del Oro' (Gold Rush).",
+          "emoji": "💰",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "En 1848 encontraron ___ cerca de San Francisco y mucha gente fue a buscarlo.",
+              "opciones": ["oro", "petroleo", "diamantes", "plata"],
+              "respuesta": 0
+            }
+          ]
+        },
+        {
+          "texto": "En 1906 hubo un terremoto enorme que destruyo casi toda la ciudad. Pero los habitantes la reconstruyeron mas fuerte y mas bonita. Por eso muchos edificios de SF son modernos.",
+          "emoji": "🏚️",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "San Francisco tuvo un terremoto enorme en 1906.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Cerca de San Francisco esta SILICON VALLEY, donde nacieron Apple, Google, Facebook, YouTube y muchas mas empresas de tecnologia. ¡Tu celular y los videojuegos vienen de ideas que se inventaron ahi!",
+          "emoji": "💻",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Cerca de SF esta ___ Valley, donde se inventan los celulares y aplicaciones.",
+              "opciones": ["Disney", "Silicon", "Hudson", "Death"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "La ciudad tambien es famosa por sus calles MUY empinadas. La calle Lombard es tan inclinada y curveada que los carros tienen que bajar haciendo zigzag entre flores. Ha salido en muchas peliculas y videojuegos.",
+          "emoji": "🚗",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "San Francisco tiene calles muy empinadas y con curvas.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
