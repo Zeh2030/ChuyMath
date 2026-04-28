@@ -381,6 +381,78 @@ Cada tema debe incluir 1-2 datos sorprendentes. Ejemplos:
 
 ---
 
+## Expediciones (formato extendido)
+
+Las **expediciones** son aventuras tematicas largas que combinan multiples tipos de juego en una narrativa. Inspiradas en `_contenido/aventuras/` (expedicion-ancestral, expedicion-galactica, etc.).
+
+### Estructura
+
+```json
+{
+  "id": "GE1-01_expedicion-new-york",
+  "titulo": "🗽 Expedicion por New York",
+  "tipo": "expedicion",
+  "tema": "ny",
+  "materia": "geografia",
+  "descripcion": "Recorre los lugares mas famosos de NY",
+  "misiones": [
+    {
+      "id": "ny-01",
+      "tipo": "explorador-mapa",
+      "mapa": "usa-estados",
+      "modo": "quiz",
+      "titulo": "Encuentra New York",
+      "instruccion": "Antes de explorar, ubica el estado",
+      "retos": [{ "id": "36", "nombre": "New York", "pregunta": "¿Donde esta NY?" }]
+    },
+    {
+      "id": "ny-02",
+      "tipo": "image-picker",
+      "titulo": "La Estatua de la Libertad",
+      ...
+    },
+    {
+      "id": "ny-03",
+      "tipo": "opcion-multiple",
+      "titulo": "Times Square",
+      ...
+    },
+    {
+      "id": "ny-04",
+      "tipo": "mini-story",
+      "titulo": "La historia de Manhattan",
+      ...
+    },
+    {
+      "id": "ny-05",
+      "tipo": "true-or-false",
+      "titulo": "Datos curiosos de NY",
+      ...
+    }
+  ]
+}
+```
+
+### Convenciones expediciones
+
+- **ID**: `GE{nivel}-{NN}_expedicion-{tema}` (ej: `GE1-01_expedicion-new-york`)
+- **Carpeta**: `_geografia/expediciones/`
+- **Nivel**: numerico G0/G1/G2/G3 (igual que juegos individuales)
+- **Misiones**: 5-8 misiones recomendadas, mezclando tipos para variedad
+- **Imagenes**: SIEMPRE incluir imagenes reales de Wikimedia Commons o flagcdn
+- **Narrativa**: cada mision debe sentirse como un "siguiente paso" del viaje
+- **Datos atractivos**: Hollywood, Disney, peliculas, deportes, comida famosa
+
+### Plantilla de imagen para opcion-multiple
+
+```json
+"imagen": "<img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/...\" alt=\"...\" style=\"max-width:100%; height:auto; border-radius:15px; box-shadow:0 8px 16px rgba(0,0,0,0.2);\">"
+```
+
+(Mismo patron que las expediciones de matematicas en `_contenido/aventuras/`)
+
+---
+
 ## Verificacion antes de migrar
 
 - ¿`tipo` esta a nivel raiz Y a nivel mision?

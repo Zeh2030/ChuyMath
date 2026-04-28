@@ -102,6 +102,7 @@ const Boveda = () => {
     { id: 'geografia-opcion-multiple', emoji: '❓', nombre: 'Preguntas del Mundo', tipo: 'opcion-multiple', descripcion: 'Preguntas sobre geografia', materia: 'geografia' },
     { id: 'geografia-word-scramble', emoji: '🔠', nombre: 'Adivina el Pais', tipo: 'word-scramble', descripcion: 'Desordena letras de paises y capitales', materia: 'geografia' },
     { id: 'geografia-mini-story', emoji: '📖', nombre: 'Historias del Mundo', tipo: 'mini-story', descripcion: 'Historias culturales de paises y civilizaciones', materia: 'geografia' },
+    { id: 'geografia-expediciones', emoji: '🚀', nombre: 'Expediciones Geo', tipo: 'expedicion', descripcion: 'Aventuras tematicas por lugares famosos del mundo', materia: 'geografia' },
   ];
 
   const tiposJuegosFiltrados = tiposJuegos.filter(t => t.materia === materia);

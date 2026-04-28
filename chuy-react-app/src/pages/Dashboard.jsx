@@ -168,6 +168,7 @@ const Dashboard = () => {
     { id: 'geografia-opcion-multiple', emoji: '❓', nombre: 'Preguntas del Mundo', filtro: 'geografia-opcion-multiple', disponible: true, materia: 'geografia' },
     { id: 'geografia-word-scramble', emoji: '🔠', nombre: 'Adivina el Pais', filtro: 'geografia-word-scramble', disponible: true, materia: 'geografia' },
     { id: 'geografia-mini-story', emoji: '📖', nombre: 'Historias del Mundo', filtro: 'geografia-mini-story', disponible: true, materia: 'geografia' },
+    { id: 'geografia-expediciones', emoji: '🚀', nombre: 'Expediciones Geo', filtro: 'geografia-expediciones', disponible: true, materia: 'geografia' },
   ];
 
   const tiposDeJuegoFiltrados = tiposDeJuego.filter(t => t.materia === materia);

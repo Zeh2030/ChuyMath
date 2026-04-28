@@ -217,6 +217,18 @@ const Aventura = () => {
     navigate('/dashboard');
   };
 
+  // Función para volver atrás (historial del navegador → Boveda filtrada o de donde haya venido)
+  const volverAtras = () => {
+    // Si hay historial, regresar; si no, ir a la Boveda de la materia
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else if (aventura?.materia) {
+      navigate(`/boveda?filtro=${encodeURIComponent(aventura.materia)}`);
+    } else {
+      navigate('/dashboard');
+    }
+  };
+
   if (loading) {
     return (
       <PageWrapper>
@@ -234,9 +246,14 @@ const Aventura = () => {
         <div style={{ textAlign: 'center', padding: '40px' }}>
           <h2 style={{ color: '#e74c3c', marginBottom: '20px' }}>❌ Error</h2>
           <p style={{ color: '#7f8c8d', marginBottom: '30px' }}>{error || 'No se pudo cargar la aventura'}</p>
-          <button onClick={volverAlDashboard} className="boton-principal">
-            Volver al Dashboard
-          </button>
+          <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <button onClick={volverAtras} className="boton-principal">
+              ← Volver
+            </button>
+            <button onClick={volverAlDashboard} className="boton-principal boton-secundario">
+              🏠 Dashboard
+            </button>
+          </div>
         </div>
       </PageWrapper>
     );
@@ -262,13 +279,22 @@ const Aventura = () => {
           <p style={{ fontSize: '1.2rem', color: '#555', marginBottom: '30px' }}>
             ¡Excelente trabajo! Has completado todas las misiones de la aventura.
           </p>
-          <button 
-            onClick={volverAlDashboard}
-            className="boton-principal"
-            style={{ fontSize: '1.1rem', padding: '15px 30px' }}
-          >
-            🏠 Volver al Dashboard
-          </button>
+          <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <button
+              onClick={volverAtras}
+              className="boton-principal"
+              style={{ fontSize: '1.1rem', padding: '15px 30px' }}
+            >
+              ← Volver
+            </button>
+            <button
+              onClick={volverAlDashboard}
+              className="boton-principal boton-secundario"
+              style={{ fontSize: '1.1rem', padding: '15px 30px' }}
+            >
+              🏠 Dashboard
+            </button>
+          </div>
         </div>
       </PageWrapper>
     );
@@ -312,7 +338,15 @@ const Aventura = () => {
           >
             ← Anterior
           </button>
-          
+
+          <button
+            onClick={volverAtras}
+            className="boton-navegacion boton-secundario"
+            title="Volver a la sección anterior"
+          >
+            ⬅ Volver
+          </button>
+
           <button
             onClick={volverAlDashboard}
             className="boton-navegacion boton-secundario"

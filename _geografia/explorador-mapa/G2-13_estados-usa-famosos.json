@@ -1,7 +1,7 @@
 {
   "id": "G2-13_estados-usa-famosos",
   "titulo": "Estados Famosos de Estados Unidos",
-  "descripcion": "Encuentra los estados de USA mas conocidos: California, Florida, New York, Texas y mas",
+  "descripcion": "Encuentra los estados de USA mas conocidos por sus lugares y atracciones famosas",
   "tipo": "explorador-mapa",
   "materia": "geografia",
   "tema": "usa-estados",
@@ -18,42 +18,42 @@
         {
           "id": "06",
           "nombre": "California",
-          "pregunta": "¿Donde esta California? (donde estan Hollywood y Disneyland, en la costa oeste)"
+          "pregunta": "¿Donde esta California? Aqui estan Hollywood (donde se hacen las peliculas), Disneyland, el Golden Gate Bridge de San Francisco, y Alcatraz (la prision-isla famosa). En la costa oeste."
         },
         {
           "id": "12",
           "nombre": "Florida",
-          "pregunta": "¿Donde esta Florida? (peninsula al sureste, donde esta Disney World y Miami)"
+          "pregunta": "¿Donde esta Florida? Es la peninsula del sureste, donde estan Disney World, el Kennedy Space Center (donde despegan los cohetes!), Miami Beach y los caimanes en los pantanos."
         },
         {
           "id": "48",
           "nombre": "Texas",
-          "pregunta": "¿Donde esta Texas? (estado grandote al sur, frontera con Mexico)"
+          "pregunta": "¿Donde esta Texas? Es el estado grandote al sur, frontera con Mexico. Aqui estan los famosos cowboys, Houston (donde estan los astronautas de la NASA) y el Alamo."
         },
         {
           "id": "36",
           "nombre": "New York",
-          "pregunta": "¿Donde esta New York? (al noreste, donde esta la Estatua de la Libertad)"
+          "pregunta": "¿Donde esta New York? Al noreste, donde estan la Estatua de la Libertad, Times Square (con todas las pantallas brillantes), Central Park y los rascacielos del Empire State."
         },
         {
           "id": "32",
           "nombre": "Nevada",
-          "pregunta": "¿Donde esta Nevada? (donde esta Las Vegas, junto a California)"
+          "pregunta": "¿Donde esta Nevada? Junto a California. Aqui esta Las Vegas (la ciudad mas brillante del desierto, con luces de neon en todos lados)."
         },
         {
           "id": "04",
           "nombre": "Arizona",
-          "pregunta": "¿Donde esta Arizona? (donde esta el Gran Cañon, frontera con Mexico)"
+          "pregunta": "¿Donde esta Arizona? Aqui esta el Gran Cañon (un cañon enorme tallado por un rio millones de años), y tambien hay desierto y cactus saguaros gigantes. Frontera con Mexico."
         },
         {
           "id": "15",
           "nombre": "Hawaii",
-          "pregunta": "¿Donde esta Hawaii? (islas tropicales en medio del Oceano Pacifico)"
+          "pregunta": "¿Donde esta Hawaii? Son islas tropicales en medio del Oceano Pacifico, lejos de la costa. Tienen volcanes activos, playas con surf y collares de flores 'lei'."
         },
         {
           "id": "02",
           "nombre": "Alaska",
-          "pregunta": "¿Donde esta Alaska? (estado MAS GRANDE, al noroeste, lleno de hielo)"
+          "pregunta": "¿Donde esta Alaska? Es el estado MAS GRANDE de USA, al noroeste, separado del resto. Lleno de hielo, osos polares, ballenas y la aurora boreal en el cielo!"
         }
       ]
     }

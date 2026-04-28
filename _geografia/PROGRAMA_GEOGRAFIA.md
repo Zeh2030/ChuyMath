@@ -190,6 +190,44 @@ G3  → Geografo Junior    (9-11 años) — Tectonica, climas, demografia, geopo
 3. **Mapas**: usar componente ExploradorMapa con SVGs descargados
 4. **Mexico primero**: empezar siempre con lo familiar antes de expandir
 5. **Datos curiosos**: incluir 1-2 datos "wow" por tema (ej: "Brasil tiene tanta selva como toda Europa junta")
+6. **Atracciones para niños**: SIEMPRE incluir referencias atractivas para edades 4-7 (Disney, Hollywood, peliculas, deportes, animales famosos, comida, museos infantiles). Esto convierte el aprendizaje en algo memorable.
+
+### Catalogo de "ganchos" por region (referencias atractivas para niños)
+
+**USA**:
+- California: Hollywood, Disneyland, Golden Gate Bridge, Alcatraz, surfing
+- Florida: Disney World, Kennedy Space Center, Miami, caimanes
+- Nevada: Las Vegas (luces de neon), Grand Canyon (limita con Arizona)
+- New York: Estatua de la Libertad, Times Square, Central Park, rascacielos
+- Arizona: Gran Cañon, cactus saguaro
+- Hawaii: volcanes, surf, collares de flores
+- Alaska: osos polares, aurora boreal, Iditarod (carrera de perros)
+- Texas: cowboys, NASA Houston, Alamo
+- Washington DC: Casa Blanca, monumentos
+
+**Mexico**:
+- CDMX: Angel de la Independencia, Zocalo, Bellas Artes, Templo Mayor
+- Yucatan: Chichen Itza (piramide), cenotes, Cancun
+- Quintana Roo: Tulum, Riviera Maya, Cozumel
+- Jalisco: mariachi, tequila, Guadalajara
+- Oaxaca: Monte Alban, mole, alebrijes
+- Estado de Mexico: Teotihuacan (piramides del Sol y Luna)
+- Chihuahua: Barrancas del Cobre, perritos chihuahua
+- Baja California Sur: ballenas grises, Cabo San Lucas, Arco
+
+**Mundo**:
+- Francia: Torre Eiffel, Louvre (Mona Lisa), Disneyland Paris
+- Reino Unido: Big Ben, London Eye, Stonehenge
+- Italia: Coliseo, Torre de Pisa, pizza, Vaticano
+- Egipto: Piramides Giza, esfinge, Nilo, faraones
+- China: Gran Muralla, pandas, Ciudad Prohibida
+- Japon: Tokyo, sushi, samuray, Monte Fuji, Pokemon (origen)
+- India: Taj Mahal, elefantes, Bollywood
+- Brasil: Cristo Redentor, Amazonas, futbol, carnaval
+- Argentina: tango, Patagonia, glaciares, futbol (Messi)
+- Australia: canguros, koalas, Opera de Sydney, Gran Barrera
+- Peru: Machu Picchu, llamas, incas
+- Grecia: Acropolis, mitologia, dioses
 
 ### Especifico G0 (4 años)
 - Sin lectura — papa lee, hija interactua
@@ -252,3 +290,68 @@ Ejemplo: `G1-05_banderas-latam.json`
 | Contenido G3 | Pendiente (cuando aplique) |
 
 Ver `GUIA_CREACION_GEOGRAFIA.md` para convenciones de creacion de JSONs.
+
+---
+
+## Expediciones tematicas (formato extendido)
+
+Ademas de los juegos individuales, podemos crear **expediciones**: aventuras tematicas largas que combinan multiples tipos de juego en una sola narrativa inmersiva. Inspiradas en `_contenido/aventuras/2025-10-06_expedicion-ancestral.json`.
+
+### Formato
+
+Un JSON de expedicion tiene MULTIPLES misiones con DIFERENTES tipos en una secuencia narrativa:
+
+```json
+{
+  "id": "GE1-01_expedicion-new-york",
+  "titulo": "🗽 Expedicion por New York",
+  "tipo": "expedicion",
+  "tema": "ny",
+  "materia": "geografia",
+  "descripcion": "Recorre los lugares mas famosos de NY",
+  "misiones": [
+    { "tipo": "explorador-mapa", ... },     // primero ubica NY en el mapa
+    { "tipo": "image-picker", ... },         // identifica Estatua Libertad
+    { "tipo": "opcion-multiple", ... },      // pregunta sobre Times Square
+    { "tipo": "mini-story", ... },           // historia de Manhattan
+    { "tipo": "true-or-false", ... }         // datos sobre NY
+  ]
+}
+```
+
+Carpeta sugerida: `_geografia/expediciones/`
+
+### Expediciones planeadas
+
+| ID | Tema | Lugares incluidos | Audiencia |
+|----|------|-------------------|-----------|
+| GE1-01 | 🗽 Expedicion por New York | Estatua Libertad, Times Square, Central Park, Empire State, Brooklyn Bridge | G1 |
+| GE1-02 | 🌉 Expedicion por San Francisco | Golden Gate, Alcatraz, tranvias historicos, China Town | G1 |
+| GE1-03 | 🏛️ Expedicion por Mexico antiguo | Tenochtitlan, Chichen Itza, Teotihuacan, mayas, aztecas | G1 |
+| GE1-04 | 🐭 Expedicion Disney | Disneyland California, Disney World Florida, Disneyland Paris, Tokyo Disney | G1 |
+| GE2-01 | 🗼 Expedicion por Paris | Torre Eiffel, Louvre (Mona Lisa), Notre Dame, Champs-Elysees | G2 |
+| GE2-02 | 🏯 Expedicion por Asia | Gran Muralla China, Tokyo, Taj Mahal, templos | G2 |
+| GE2-03 | 🦘 Expedicion por Australia | Sydney (Opera), canguros, koalas, Gran Barrera de Coral | G2 |
+| GE2-04 | 🏖️ Expedicion por el Caribe | Cancun, Cuba, Republica Dominicana, Puerto Rico | G2 |
+| GE2-05 | ⛰️ Expedicion por Sudamerica | Machu Picchu, Cristo Redentor, Patagonia, Amazonas | G2 |
+| GE3-01 | 🌍 Expedicion 7 Maravillas | Las 7 maravillas modernas (Chichen Itza, Petra, Cristo Redentor, Coliseo, Machu Picchu, Taj Mahal, Gran Muralla) | G3 |
+
+Cada expedicion tiene 5-8 misiones combinando explorador-mapa, image-picker, opcion-multiple, mini-story y true-or-false.
+
+---
+
+## Astronomia (Espacio) → CIENCIAS, no Geografia
+
+Aunque a veces se llama "geografia universal", el sistema solar y los planetas pertenecen a ciencias (astronomia es una ciencia fisica). Geografia se enfoca en la Tierra.
+
+**Lo que NO va en geografia:**
+- Sistema solar y planetas
+- Estrellas, galaxias, universo
+- Sol, Luna (cuerpos celestes)
+- Cohetes, astronautas
+
+**Lo que SI puede tener geografia (puente con astronomia):**
+- G3: "La Tierra en el Sistema Solar" (mini-story breve introductoria)
+- G3: "Como vemos la Tierra desde el espacio" (satellites, ISS)
+
+Ver `_ciencias/PROGRAMA_CIENCIAS.md` seccion Astronomia para el contenido espacial.

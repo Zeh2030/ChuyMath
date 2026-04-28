@@ -1,0 +1,146 @@
+{
+  "id": "GE1-01_expedicion-new-york",
+  "titulo": "🗽 Expedicion por New York",
+  "tipo": "expedicion",
+  "tema": "ny",
+  "materia": "geografia",
+  "nivel": "GE1-01",
+  "descripcion": "¡Vamos a explorar la ciudad mas famosa de Estados Unidos! Pasaras por la Estatua de la Libertad, Times Square, Central Park y los rascacielos de Manhattan.",
+  "misiones": [
+    {
+      "id": "ny-01-mapa",
+      "tipo": "explorador-mapa",
+      "mapa": "usa-estados",
+      "modo": "quiz",
+      "titulo": "🗺️ Mision 1: Ubica New York",
+      "instruccion": "Antes de explorar la ciudad, encontremos el estado en el mapa de USA.",
+      "retos": [
+        {
+          "id": "36",
+          "nombre": "New York",
+          "pregunta": "¿Donde esta el estado de New York? (en la costa noreste de USA)"
+        }
+      ]
+    },
+    {
+      "id": "ny-02-estatua",
+      "tipo": "opcion-multiple",
+      "titulo": "🗽 Mision 2: La Estatua de la Libertad",
+      "instruccion": "Mira esta foto de uno de los simbolos mas famosos de NY.",
+      "pregunta": "¿Que sostiene la Estatua de la Libertad en su mano derecha?",
+      "imagen": "<img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Front_view_of_Statue_of_Liberty_with_pedestal_and_base_2024.jpg/800px-Front_view_of_Statue_of_Liberty_with_pedestal_and_base_2024.jpg\" alt=\"Estatua de la Libertad\" style=\"max-width:100%; height:auto; border-radius:15px; box-shadow:0 8px 16px rgba(0,0,0,0.2);\">",
+      "opciones": [
+        { "texto": "A) Una espada", "valor": "espada" },
+        { "texto": "B) Una antorcha de fuego", "valor": "antorcha" },
+        { "texto": "C) Un libro", "valor": "libro" },
+        { "texto": "D) Una bandera", "valor": "bandera" }
+      ],
+      "respuesta": "antorcha",
+      "explicacion_correcta": "¡Correcto! La antorcha simboliza la libertad iluminando al mundo. La estatua fue un regalo de Francia a USA en 1886.",
+      "explicacion_incorrecta": "Es la antorcha de fuego, simbolo de libertad. La estatua mide 93 metros con su base, casi como un edificio de 30 pisos!"
+    },
+    {
+      "id": "ny-03-times-square",
+      "tipo": "true-or-false",
+      "titulo": "✅ Mision 3: Times Square",
+      "instruccion": "Times Square es la plaza con MUCHAS pantallas brillantes. Decide si estas afirmaciones son verdaderas o falsas.",
+      "retos": [
+        {
+          "oracion": "Times Square esta lleno de pantallas y luces de neon que estan prendidas dia y noche.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! Las pantallas de Times Square nunca se apagan, ni en la madrugada. Es de los lugares mas iluminados del mundo."
+        },
+        {
+          "oracion": "En Times Square se celebra la fiesta de Año Nuevo mas famosa del mundo, donde cae una bola brillante a la medianoche.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! Cada 31 de diciembre, una bola gigante de cristales baja exactamente a la medianoche. La ven millones de personas en todo el mundo."
+        },
+        {
+          "oracion": "Times Square es una playa donde la gente va a nadar.",
+          "correcto": false,
+          "correccion": "Times Square es una plaza llena de pantallas y luces, no una playa.",
+          "explicacion": "Falso! Times Square es una plaza en el centro de Manhattan, llena de pantallas y teatros (Broadway)."
+        }
+      ]
+    },
+    {
+      "id": "ny-04-central-park",
+      "tipo": "opcion-multiple",
+      "titulo": "🌳 Mision 4: Central Park",
+      "instruccion": "Central Park es el parque mas famoso de NY, un bosque verde en medio de la ciudad.",
+      "pregunta": "Mira esta foto. ¿Que es lo MAS curioso de Central Park?",
+      "imagen": "<img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Central_Park_New_York_City_New_York_30.jpg/1280px-Central_Park_New_York_City_New_York_30.jpg\" alt=\"Central Park visto desde arriba\" style=\"max-width:100%; height:auto; border-radius:15px; box-shadow:0 8px 16px rgba(0,0,0,0.2);\">",
+      "opciones": [
+        { "texto": "A) Esta rodeado por todos lados de rascacielos gigantes", "valor": "rascacielos" },
+        { "texto": "B) Es el parque mas chiquito del mundo", "valor": "chico" },
+        { "texto": "C) No tiene arboles", "valor": "sin-arboles" }
+      ],
+      "respuesta": "rascacielos",
+      "explicacion_correcta": "¡Correcto! Central Park es un cuadrado verde gigante rodeado de rascacielos por TODOS lados. Tiene lagos, zoo, fuentes y hasta un castillo!",
+      "explicacion_incorrecta": "Lo mas curioso es como esta rodeado de rascacielos. Mide 4 km de largo y dentro hay lagos, zoo y un castillo!"
+    },
+    {
+      "id": "ny-05-empire-state",
+      "tipo": "opcion-multiple",
+      "titulo": "🏙️ Mision 5: Los Rascacielos",
+      "instruccion": "NY es famosa por sus edificios altisimos. Uno de los mas conocidos es el Empire State Building.",
+      "pregunta": "¿Cuantos pisos tiene el Empire State Building?",
+      "imagen": "<img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Empire_State_Building_%28aerial_view%29.jpg/800px-Empire_State_Building_%28aerial_view%29.jpg\" alt=\"Empire State Building\" style=\"max-width:100%; height:auto; border-radius:15px; box-shadow:0 8px 16px rgba(0,0,0,0.2);\">",
+      "opciones": [
+        { "texto": "A) 50 pisos", "valor": "50" },
+        { "texto": "B) 102 pisos", "valor": "102" },
+        { "texto": "C) 200 pisos", "valor": "200" },
+        { "texto": "D) 30 pisos", "valor": "30" }
+      ],
+      "respuesta": "102",
+      "explicacion_correcta": "¡Correcto! 102 pisos. ¡Es como apilar mas de 100 casas una encima de otra! Cuando se construyo en 1931 era el edificio mas alto del mundo.",
+      "explicacion_incorrecta": "Tiene 102 pisos. Mide 443 metros con su antena. Hay un mirador en el piso 86 para ver toda NY!"
+    },
+    {
+      "id": "ny-06-historia",
+      "tipo": "mini-story",
+      "titulo": "📖 Mision 6: La Historia de Manhattan",
+      "instruccion": "Aprende como nacio New York.",
+      "parrafos": [
+        {
+          "texto": "Hace mas de 400 años, Manhattan era una isla con bosques y rios donde vivian indigenas. Llegaron unos exploradores holandeses y le compraron la isla a los indigenas... ¡por solo 24 dolares en cuentas y herramientas!",
+          "emoji": "🌳",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Los holandeses compraron Manhattan por solo ___ dolares.",
+              "opciones": ["10", "24", "100", "1000"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "Los holandeses le pusieron 'Nueva Amsterdam' a la isla. Despues, los ingleses la conquistaron y le cambiaron el nombre a 'New York' (Nueva York), en honor al Duque de York.",
+          "emoji": "🏴",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Antes de llamarse New York, la isla se llamaba Nueva ___.",
+              "opciones": ["York", "Inglaterra", "Amsterdam", "Francia"],
+              "respuesta": 2
+            }
+          ]
+        },
+        {
+          "texto": "Hoy New York es una de las ciudades mas importantes del mundo. Mas de 8 millones de personas viven ahi y vienen visitantes de todos los paises del mundo. Por eso le dicen 'The Big Apple' (La Gran Manzana).",
+          "emoji": "🍎",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "A New York le dicen 'La Gran Manzana'.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -314,6 +314,97 @@ Se crean 10 experimentos por solicitud, en orden de nivel.
 
 ---
 
+## Tipos de juego para Ciencias
+
+Actualmente solo se usa `experimento-guia` (componente nativo). Pero podemos enriquecer ciencias reutilizando componentes que ya existen en la app, igual que hicimos con piano y geografia. Cero codigo nuevo, solo contenido JSON.
+
+### Tipos reutilizables para Ciencias
+
+| Tipo existente | Uso en ciencias | Ejemplo de tema |
+|---------------|-----------------|-----------------|
+| `experimento-guia` ✅ | Experimentos paso a paso (actual) | Volcan de vinagre |
+| `opcion-multiple` | Preguntas teoricas | "¿Que es la gravedad?" |
+| `true-or-false` | Datos cientificos verdadero/falso | "Las plantas respiran" |
+| `tap-the-pairs` | Empareja conceptos | Animal ↔ habitat, Organo ↔ funcion |
+| `image-picker` | Identificar visualmente | "¿Cual es el corazon?" |
+| `fill-the-gap` | Completar definiciones | "Los seres vivos necesitan ___" |
+| `mini-story` | Biografias de cientificos, historias de descubrimientos | Marie Curie, Newton, evolucion |
+| `word-scramble` | Vocabulario cientifico | "ATOMO", "CELULA", "EVOLUCION" |
+| `explorador-mapa` | Para temas geo-cientificos | Volcanes del mundo, biomas |
+
+### Estructura de carpetas extendida
+
+```
+_ciencias/
+  PROGRAMA_CIENCIAS.md
+  experimento-guia/      ← actual (todos los C0/C1)
+  opcion-multiple/       ← NUEVO: teoria con preguntas
+  true-or-false/         ← NUEVO: datos cientificos
+  tap-the-pairs/         ← NUEVO: emparejar conceptos
+  image-picker/          ← NUEVO: identificar visualmente
+  fill-the-gap/          ← NUEVO: completar frases
+  mini-story/            ← NUEVO: cientificos famosos + historias
+  word-scramble/         ← NUEVO: vocabulario
+  expediciones/          ← NUEVO: aventuras tematicas
+```
+
+### Cientificos famosos (mini-story propuesto)
+
+| # | Cientifico | Por que es interesante para niños |
+|---|-----------|-----------------------------------|
+| CB-01 | Marie Curie | Primera mujer en ganar el Nobel, descubrio elementos quimicos peligrosos |
+| CB-02 | Albert Einstein | E=mc², no le iba bien en la escuela, despeinado |
+| CB-03 | Isaac Newton | Manzana cayendo le inspiro la gravedad |
+| CB-04 | Charles Darwin | Viajo en barco por todo el mundo descubriendo evolucion |
+| CB-05 | Galileo Galilei | El telescopio, contradijo a la iglesia |
+| CB-06 | Thomas Edison | Bombilla, fonografo, mas de 1000 inventos |
+| CB-07 | Nikola Tesla | Electricidad inalambrica, rivalidad con Edison |
+| CB-08 | Stephen Hawking | Agujeros negros, en silla de ruedas pero brillante |
+| CB-09 | Jane Goodall | Vivio con chimpances en Africa |
+| CB-10 | Carl Sagan | Hizo entender el universo a todos |
+
+---
+
+## Astronomia (NUEVA SECCION C2/C3)
+
+Espacio, planetas, estrellas, sistema solar — pertenecen a CIENCIAS (no geografia, aunque a veces se llame "geografia universal" en escuela).
+
+### Temas planeados — Astronomia (C2-21 a C2-30)
+
+| # | Tema | Tipo de juego sugerido | Notas |
+|---|------|------------------------|-------|
+| C2-21 | El Sistema Solar | tap-the-pairs (planeta ↔ caracteristica) | 8 planetas, su orden |
+| C2-22 | Los 8 planetas | image-picker | Fotos reales NASA de cada planeta |
+| C2-23 | El Sol | mini-story | Estrella mas cercana, da vida |
+| C2-24 | La Luna | mini-story + true-or-false | Fases lunares, Apollo 11, Neil Armstrong |
+| C2-25 | La Tierra desde el espacio | image-picker | Fotos satelitales, ISS |
+| C2-26 | Estrellas y constelaciones | tap-the-pairs | Osa Mayor, Orion, Cruz del Sur |
+| C2-27 | Cohetes y astronautas | mini-story + opcion-multiple | NASA, SpaceX, primer hombre en la luna |
+| C2-28 | Eclipses | experimento-guia | Linterna+pelota+pelota chica para simular |
+| C2-29 | Galaxia Via Lactea | mini-story | Donde estamos, miles de millones de estrellas |
+| C2-30 | Marte y exploracion | opcion-multiple + image-picker | Rovers, posible vida, futuras misiones |
+
+### Datos "wow" para captar interes (4-7 años)
+
+- El Sol es tan grande que dentro caben 1.3 MILLONES de Tierras
+- Jupiter tiene una tormenta GIGANTE (la Mancha Roja) mas grande que la Tierra
+- Saturno flotaria en agua si hubiera un oceano gigante (es muy ligero)
+- Marte tiene el volcan mas alto del sistema solar (Olympus Mons, 3 veces el Everest)
+- En Venus llueve acido y un dia dura mas que un año
+- La Luna se aleja de la Tierra ~3.8 cm cada año
+- Hay mas estrellas en el universo que granos de arena en TODAS las playas de la Tierra
+
+### Espacio como expedicion
+
+Tambien podemos crear expediciones espaciales (similar al formato de `expedicion-galactica.json` que ya existe en `_contenido/aventuras/`):
+
+- 🚀 Expedicion al Sistema Solar (recorrido por los 8 planetas)
+- 🌙 Expedicion a la Luna (mision Apollo 11)
+- 🔴 Expedicion a Marte (rovers y futuras misiones)
+- ⭐ Expedicion por las Constelaciones
+
+---
+
 ## Fuentes y referencias pedagogicas
 
 - Next Generation Science Standards (NGSS) - K-5 framework
