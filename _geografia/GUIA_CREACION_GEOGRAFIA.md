@@ -69,8 +69,29 @@ Tamaños disponibles: `w20`, `w40`, `w80`, `w160`, `w320`, `w640`, `w1280`, `w25
 
 ### Monumentos y lugares — Wikimedia Commons
 
-Buscar en https://commons.wikimedia.org y usar URLs publicas. Ejemplos:
-- Torre Eiffel, Piramides de Egipto, Cristo Redentor, Machu Picchu, etc.
+Buscar en https://commons.wikimedia.org o en el articulo de Wikipedia del lugar.
+
+**REGLA CRITICA — Usar URLs ORIGINALES (sin `/thumb/`):**
+
+✅ **FUNCIONAN siempre:** `https://upload.wikimedia.org/wikipedia/commons/X/XX/FILENAME.jpg`
+
+❌ **NO funcionan (HTTP 400):** `https://upload.wikimedia.org/wikipedia/commons/thumb/X/XX/FILENAME.jpg/800px-FILENAME.jpg` con tamaños arbitrarios. Wikimedia solo permite tamaños especificos que ya generaron para sus articulos. Pedir 640px, 800px, 1024px etc. da error 400 ("Use thumbnail steps").
+
+**Como obtener la URL correcta:**
+1. Ir al articulo de Wikipedia del lugar (ej: `https://en.wikipedia.org/wiki/Statue_of_Liberty`)
+2. Click derecho en la imagen principal → "Copiar direccion de imagen"
+3. La URL sera tipo: `.../thumb/X/XX/FILENAME.jpg/250px-FILENAME.jpg`
+4. **Quitar `/thumb/` y `/250px-FILENAME.jpg` finales** dejando solo: `.../X/XX/FILENAME.jpg`
+5. Resultado: URL original que SIEMPRE funciona
+
+**Style recomendado para no saturar pantalla:**
+```html
+<img src="..." style="max-width:100%; height:auto; max-height:400px; object-fit:contain; border-radius:15px; box-shadow:0 8px 16px rgba(0,0,0,0.2);">
+```
+
+El navegador hace el resize via CSS — no necesitas pedir thumbnails de tamaño especifico.
+
+Ejemplos validos: Torre Eiffel, Piramides de Egipto, Cristo Redentor, Machu Picchu, Estatua de la Libertad, Empire State, Big Ben, Coliseo, Taj Mahal, etc.
 
 ### Mapas — descargar SVGs
 
@@ -449,11 +470,7 @@ Las **expediciones** son aventuras tematicas largas que combinan multiples tipos
 "imagen": "<img src=\"https://upload.wikimedia.org/wikipedia/commons/X/XX/FILENAME.jpg\" alt=\"...\" style=\"max-width:100%; height:auto; max-height:400px; object-fit:contain; border-radius:15px; box-shadow:0 8px 16px rgba(0,0,0,0.2);\">"
 ```
 
-**IMPORTANTE — Wikimedia URLs:**
-- Usar URL **original** (sin `/thumb/`) — siempre funcionan: `commons/X/XX/FILENAME.jpg`
-- Las URLs `commons/thumb/X/XX/FILENAME.jpg/800px-FILENAME.jpg` SOLO funcionan con tamaños especificos que Wikipedia ya ha generado para sus articulos. Pedir tamaños arbitrarios (640px, 800px) suele dar HTTP 400.
-- Para encontrar la URL correcta: buscar el archivo en `commons.wikimedia.org`, click derecho en la imagen, "Copiar URL de imagen", y QUITAR la parte `/thumb/.../800px-` para quedarte con la original.
-- Usar `max-height:400px; object-fit:contain` en el style para que la imagen no domine la pantalla.
+Ver seccion "Monumentos y lugares — Wikimedia Commons" arriba para la regla de URLs originales (sin `/thumb/`).
 
 ---
 
