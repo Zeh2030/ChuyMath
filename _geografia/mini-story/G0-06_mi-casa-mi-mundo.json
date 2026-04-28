@@ -1,0 +1,79 @@
+{
+  "id": "G0-06_mi-casa-mi-mundo",
+  "titulo": "Mi Casa, Mi Calle, Mi Mundo",
+  "descripcion": "Conoce los lugares donde vives, desde tu casa hasta el planeta",
+  "tipo": "mini-story",
+  "materia": "geografia",
+  "tema": "mi-mundo",
+  "nivel": "G0-06",
+  "misiones": [
+    {
+      "id": "mision-story-mi-casa",
+      "tipo": "mini-story",
+      "titulo": "De Mi Casa al Planeta",
+      "instruccion": "Papa lee y tu eliges la respuesta.",
+      "parrafos": [
+        {
+          "texto": "Tu CASA es el lugar donde vives con tu familia. Tiene tu cuarto, la cocina, la sala y el baño. ¡Es el lugar mas importante porque ahi te quieren mucho!",
+          "emoji": "🏠",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "El lugar donde vivo con mi familia se llama mi ___.",
+              "opciones": ["casa", "escuela", "tienda"],
+              "respuesta": 0
+            }
+          ]
+        },
+        {
+          "texto": "Tu CALLE es donde esta tu casa. En la calle hay otras casas, pasan carros y a veces juegan otros niños. Tu calle tiene un nombre especial.",
+          "emoji": "🛣️",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "En la calle hay casas y pasan carros.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Muchas calles juntas forman una COLONIA o un barrio. En tu colonia hay una tienda, un parque, quiza una escuela o una iglesia.",
+          "emoji": "🏘️",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Muchas calles juntas forman una ___.",
+              "opciones": ["casa", "colonia", "luna"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "Y muchas colonias juntas forman una CIUDAD. La ciudad es enorme, con miles de casas, edificios altos, parques y muchas calles. Todos vivimos en alguna ciudad.",
+          "emoji": "🏙️",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Una ciudad es mas grande que mi casa.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Y todas las ciudades estan en un PAIS. Y todos los paises estan en el mismo PLANETA: la Tierra. Tu eres chiquita, pero tu mundo va creciendo: casa → calle → colonia → ciudad → pais → planeta.",
+          "emoji": "🌍",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "El planeta donde vivimos se llama la ___.",
+              "opciones": ["Luna", "Tierra", "Estrella"],
+              "respuesta": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

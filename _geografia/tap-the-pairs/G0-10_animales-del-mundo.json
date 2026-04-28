@@ -1,0 +1,40 @@
+{
+  "id": "G0-10_animales-del-mundo",
+  "titulo": "¿Donde Vive Cada Animal?",
+  "descripcion": "Empareja cada animal con el lugar donde vive",
+  "tipo": "tap-the-pairs",
+  "materia": "geografia",
+  "tema": "animales-mundo",
+  "nivel": "G0-10",
+  "misiones": [
+    {
+      "id": "mision-ttp-animales-mundo",
+      "tipo": "tap-the-pairs",
+      "titulo": "Cada Animal en su Casa",
+      "instruccion": "Papa lee. Tu tocas un animal y luego el lugar donde vive.",
+      "retos": [
+        {
+          "pares": [
+            { "es": "🐧 Pingüino", "en": "Polo Sur (hielo)" },
+            { "es": "🐪 Camello", "en": "Desierto (arena)" },
+            { "es": "🐒 Mono", "en": "Selva (arboles)" }
+          ]
+        },
+        {
+          "pares": [
+            { "es": "🐻‍❄️ Oso polar", "en": "Polo Norte (frio)" },
+            { "es": "🦁 Leon", "en": "Sabana (pasto)" },
+            { "es": "🐠 Pez", "en": "Oceano (agua)" }
+          ]
+        },
+        {
+          "pares": [
+            { "es": "🦘 Canguro", "en": "Australia" },
+            { "es": "🐼 Panda", "en": "China" },
+            { "es": "🦅 Aguila", "en": "Mexico" }
+          ]
+        }
+      ]
+    }
+  ]
+}

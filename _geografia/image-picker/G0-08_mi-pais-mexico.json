@@ -1,0 +1,59 @@
+{
+  "id": "G0-08_mi-pais-mexico",
+  "titulo": "Mi Pais: Mexico",
+  "descripcion": "Conoce a Mexico, el pais donde vives",
+  "tipo": "image-picker",
+  "materia": "geografia",
+  "tema": "mexico",
+  "nivel": "G0-08",
+  "misiones": [
+    {
+      "id": "mision-ip-mexico",
+      "tipo": "image-picker",
+      "titulo": "Mi Pais Mexico",
+      "instruccion": "Papa lee y tu eliges la respuesta.",
+      "retos": [
+        {
+          "palabra_es": "¿Como se llama el PAIS donde vivimos tu y yo?",
+          "opciones": [
+            { "emoji": "🌮", "label": "Mexico" },
+            { "emoji": "🐼", "label": "China" },
+            { "emoji": "🦘", "label": "Australia" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Vivimos en Mexico! Es nuestro pais y aqui hablamos español."
+        },
+        {
+          "palabra_es": "¿En que CONTINENTE esta Mexico?",
+          "opciones": [
+            { "emoji": "🌎", "label": "America" },
+            { "emoji": "🌍", "label": "Africa" },
+            { "emoji": "🌏", "label": "Asia" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Mexico esta en America! Tiene como vecinos a Estados Unidos arriba y a Guatemala abajo."
+        },
+        {
+          "palabra_es": "¿Como se llama la CAPITAL de Mexico, la ciudad mas importante?",
+          "opciones": [
+            { "emoji": "🏙️", "label": "Ciudad de Mexico" },
+            { "emoji": "🗽", "label": "New York" },
+            { "emoji": "🌴", "label": "Cancun" }
+          ],
+          "respuesta": 0,
+          "explicacion": "La capital es la Ciudad de Mexico, le decimos CDMX. Esta llena de gente, museos y monumentos."
+        },
+        {
+          "palabra_es": "Mexico es famoso en el mundo por su comida deliciosa. ¿Cual de estas comidas es de Mexico?",
+          "opciones": [
+            { "emoji": "🍣", "label": "Sushi" },
+            { "emoji": "🌮", "label": "Tacos" },
+            { "emoji": "🍕", "label": "Pizza" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Los tacos son mexicanos! Tambien las quesadillas, los tamales y el mole."
+        }
+      ]
+    }
+  ]
+}

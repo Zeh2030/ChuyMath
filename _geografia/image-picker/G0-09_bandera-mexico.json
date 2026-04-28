@@ -1,0 +1,70 @@
+{
+  "id": "G0-09_bandera-mexico",
+  "titulo": "La Bandera de Mexico",
+  "descripcion": "Conoce los colores y el simbolo de la bandera mexicana",
+  "tipo": "image-picker",
+  "materia": "geografia",
+  "tema": "bandera-mexico",
+  "nivel": "G0-09",
+  "misiones": [
+    {
+      "id": "mision-ip-bandera-mx",
+      "tipo": "image-picker",
+      "titulo": "Nuestra Bandera",
+      "instruccion": "Papa lee y tu eliges la respuesta.",
+      "retos": [
+        {
+          "imagen_url": "https://flagcdn.com/w320/mx.png",
+          "palabra_es": "¿De que PAIS es esta bandera?",
+          "opciones": [
+            { "label": "Mexico" },
+            { "label": "Italia" },
+            { "label": "Brasil" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Es la bandera de Mexico! Verde, blanco y rojo, con un aguila en el centro."
+        },
+        {
+          "palabra_es": "La bandera de Mexico tiene 3 colores. ¿Cuales son?",
+          "opciones": [
+            { "emoji": "🟢⚪🔴", "label": "Verde, blanco y rojo" },
+            { "emoji": "🔵⚪🔴", "label": "Azul, blanco y rojo" },
+            { "emoji": "🟡⚪🟢", "label": "Amarillo, blanco y verde" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Verde, blanco y rojo! El verde es la esperanza, el blanco la paz y el rojo la sangre de los heroes."
+        },
+        {
+          "palabra_es": "¿Que ANIMAL esta dibujado en el centro de la bandera?",
+          "opciones": [
+            { "emoji": "🦅", "label": "Un aguila" },
+            { "emoji": "🦁", "label": "Un leon" },
+            { "emoji": "🐶", "label": "Un perro" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Es un aguila! El aguila viene de una leyenda muy antigua de los aztecas."
+        },
+        {
+          "palabra_es": "El aguila esta parada SOBRE una planta. ¿Cual?",
+          "opciones": [
+            { "emoji": "🌵", "label": "Un nopal (cactus)" },
+            { "emoji": "🌳", "label": "Un arbol" },
+            { "emoji": "🌷", "label": "Una flor" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Esta sobre un nopal! El nopal es un cactus mexicano, y de el sale una fruta llamada tuna."
+        },
+        {
+          "palabra_es": "Y el aguila tiene algo en su pico. ¿Que es?",
+          "opciones": [
+            { "emoji": "🐍", "label": "Una serpiente" },
+            { "emoji": "🍎", "label": "Una manzana" },
+            { "emoji": "🐟", "label": "Un pescado" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Una serpiente! Asi vieron los aztecas la señal de los dioses para construir su ciudad: un aguila parada en un nopal comiendose una serpiente."
+        }
+      ]
+    }
+  ]
+}

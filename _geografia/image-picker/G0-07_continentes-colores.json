@@ -1,0 +1,79 @@
+{
+  "id": "G0-07_continentes-colores",
+  "titulo": "Los Continentes y sus Animales",
+  "descripcion": "Conoce los continentes con sus animales famosos (estilo Montessori)",
+  "tipo": "image-picker",
+  "materia": "geografia",
+  "tema": "continentes-colores",
+  "nivel": "G0-07",
+  "misiones": [
+    {
+      "id": "mision-ip-continentes-colores",
+      "tipo": "image-picker",
+      "titulo": "¿Que continente es?",
+      "instruccion": "Papa lee y tu eliges la respuesta.",
+      "retos": [
+        {
+          "palabra_es": "El continente donde viven leones, elefantes y jirafas. Tiene un desierto enorme.",
+          "opciones": [
+            { "emoji": "🦁", "label": "Africa" },
+            { "emoji": "🐨", "label": "Australia" },
+            { "emoji": "🐧", "label": "Antartida" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Es Africa! Ahi viven los animales del Rey Leon."
+        },
+        {
+          "palabra_es": "El continente donde vivimos NOSOTROS, donde esta Mexico, USA y Brasil.",
+          "opciones": [
+            { "emoji": "🌮", "label": "America" },
+            { "emoji": "🐼", "label": "Asia" },
+            { "emoji": "🦘", "label": "Australia" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Es America! Mexico esta en America. Es el continente donde vivimos."
+        },
+        {
+          "palabra_es": "El continente de los pandas, dragones y la Gran Muralla.",
+          "opciones": [
+            { "emoji": "🦁", "label": "Africa" },
+            { "emoji": "🐼", "label": "Asia" },
+            { "emoji": "🐧", "label": "Antartida" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Es Asia! Ahi estan China, Japon, India. Es el continente mas grande del mundo."
+        },
+        {
+          "palabra_es": "El continente de los castillos, la Torre Eiffel y los principes y princesas.",
+          "opciones": [
+            { "emoji": "🏰", "label": "Europa" },
+            { "emoji": "🦒", "label": "Africa" },
+            { "emoji": "🐨", "label": "Australia" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Es Europa! Ahi esta Disneyland Paris y muchos castillos de cuento."
+        },
+        {
+          "palabra_es": "El continente helado del Polo SUR, donde viven los pingüinos.",
+          "opciones": [
+            { "emoji": "🐨", "label": "Australia" },
+            { "emoji": "🦁", "label": "Africa" },
+            { "emoji": "🐧", "label": "Antartida" }
+          ],
+          "respuesta": 2,
+          "explicacion": "Es la Antartida! Es el lugar mas frio del mundo. Casi nadie vive ahi, solo pingüinos y cientificos."
+        },
+        {
+          "palabra_es": "El continente de los canguros y los koalas.",
+          "opciones": [
+            { "emoji": "🐨", "label": "Oceania (Australia)" },
+            { "emoji": "🐼", "label": "Asia" },
+            { "emoji": "🐧", "label": "Antartida" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Es Oceania! Ahi esta Australia, donde viven los canguros y koalas. Tambien tiene la Opera de Sydney."
+        }
+      ]
+    }
+  ]
+}
