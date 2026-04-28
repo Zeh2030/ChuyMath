@@ -1,0 +1,139 @@
+{
+  "id": "G1-08_banderas-mundo",
+  "titulo": "Banderas Conocidas del Mundo",
+  "descripcion": "Identifica las banderas de 10 paises famosos del mundo",
+  "tipo": "image-picker",
+  "materia": "geografia",
+  "tema": "banderas-mundo",
+  "nivel": "G1-08",
+  "misiones": [
+    {
+      "id": "mision-ip-banderas-mundo",
+      "tipo": "image-picker",
+      "titulo": "¿De que pais es esta bandera?",
+      "instruccion": "Mira la bandera y elige el pais correcto.",
+      "retos": [
+        {
+          "imagen_url": "https://flagcdn.com/w320/us.png",
+          "palabra_es": "Estados Unidos",
+          "opciones": [
+            { "label": "Estados Unidos" },
+            { "label": "Reino Unido" },
+            { "label": "Australia" },
+            { "label": "Francia" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Es la bandera de Estados Unidos! Tiene 50 estrellas (una por cada estado) y 13 franjas (por las 13 colonias originales). Ahi estan Hollywood, Disney y New York."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/jp.png",
+          "palabra_es": "Japon",
+          "opciones": [
+            { "label": "China" },
+            { "label": "Japon" },
+            { "label": "Corea" },
+            { "label": "Tailandia" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Es la bandera de Japon! Un circulo rojo (el sol) sobre blanco. Por eso le dicen 'Tierra del Sol Naciente'. Japon es el pais de los Pokemon, sushi y samurais."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/fr.png",
+          "palabra_es": "Francia",
+          "opciones": [
+            { "label": "Italia" },
+            { "label": "Holanda" },
+            { "label": "Rusia" },
+            { "label": "Francia" }
+          ],
+          "respuesta": 3,
+          "explicacion": "Es la bandera de Francia! Tres franjas verticales: azul, blanco, rojo. En Francia esta la Torre Eiffel y Disneyland Paris."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/gb.png",
+          "palabra_es": "Reino Unido",
+          "opciones": [
+            { "label": "Estados Unidos" },
+            { "label": "Australia" },
+            { "label": "Reino Unido" },
+            { "label": "Noruega" }
+          ],
+          "respuesta": 2,
+          "explicacion": "Es la bandera de Reino Unido (Gran Bretaña)! Le dicen 'Union Jack'. Ahi vive el Rey, esta el Big Ben y Harry Potter es de ahi."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/it.png",
+          "palabra_es": "Italia",
+          "opciones": [
+            { "label": "Mexico" },
+            { "label": "Italia" },
+            { "label": "Irlanda" },
+            { "label": "Hungria" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Es la bandera de Italia! Verde, blanco y rojo (igual que Mexico, pero sin escudo). En Italia esta el Coliseo, la Torre de Pisa y... ¡la pizza!"
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/de.png",
+          "palabra_es": "Alemania",
+          "opciones": [
+            { "label": "Belgica" },
+            { "label": "Rusia" },
+            { "label": "Alemania" },
+            { "label": "España" }
+          ],
+          "respuesta": 2,
+          "explicacion": "Es la bandera de Alemania! Tres franjas horizontales: negro, rojo, amarillo. Alemania es famosa por sus castillos como el de la Bella Durmiente de Disney."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/es.png",
+          "palabra_es": "España",
+          "opciones": [
+            { "label": "Portugal" },
+            { "label": "Marruecos" },
+            { "label": "España" },
+            { "label": "Italia" }
+          ],
+          "respuesta": 2,
+          "explicacion": "Es la bandera de España! Roja y amarilla con un escudo. España es la tierra del Real Madrid, el flamenco y la paella. ¡Hablan español como nosotros!"
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/cn.png",
+          "palabra_es": "China",
+          "opciones": [
+            { "label": "Vietnam" },
+            { "label": "China" },
+            { "label": "Japon" },
+            { "label": "Corea del Norte" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Es la bandera de China! Roja con 5 estrellas amarillas. En China esta la Gran Muralla (la construccion mas larga del mundo) y los pandas gigantes."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/ca.png",
+          "palabra_es": "Canada",
+          "opciones": [
+            { "label": "Suiza" },
+            { "label": "Polonia" },
+            { "label": "Canada" },
+            { "label": "Dinamarca" }
+          ],
+          "respuesta": 2,
+          "explicacion": "Es la bandera de Canada! Roja y blanca con una hoja de arce en el centro. Canada es famoso por sus osos, hockey sobre hielo y por las Cataratas del Niagara."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/au.png",
+          "palabra_es": "Australia",
+          "opciones": [
+            { "label": "Australia" },
+            { "label": "Reino Unido" },
+            { "label": "Nueva Zelanda" },
+            { "label": "Estados Unidos" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Es la bandera de Australia! Azul con la bandera britanica chiquita en la esquina y estrellas blancas. En Australia viven los canguros, koalas y esta la Opera de Sydney."
+        }
+      ]
+    }
+  ]
+}

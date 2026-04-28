@@ -1,0 +1,49 @@
+{
+  "id": "G1-07b_vecinos-mexico-datos",
+  "titulo": "Vecinos de Mexico: Datos Curiosos",
+  "descripcion": "Aprende datos sorprendentes sobre USA, Guatemala y Belice, los 3 vecinos de Mexico",
+  "tipo": "true-or-false",
+  "materia": "geografia",
+  "tema": "vecinos-mexico",
+  "nivel": "G1-07b",
+  "misiones": [
+    {
+      "id": "mision-tof-vecinos-mexico",
+      "tipo": "true-or-false",
+      "titulo": "Verdadero o Falso?",
+      "instruccion": "Mexico tiene 3 paises vecinos. Decide si estas afirmaciones son verdaderas o falsas.",
+      "retos": [
+        {
+          "oracion": "Estados Unidos esta al NORTE de Mexico.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! La frontera entre Mexico y USA es una de las mas largas del mundo: mas de 3,000 km. Por ahi se cruza para ir a Disneyland California o a Hollywood."
+        },
+        {
+          "oracion": "Guatemala esta al NORTE de Mexico, junto a Estados Unidos.",
+          "correcto": false,
+          "correccion": "Guatemala esta al SUR de Mexico, no al norte.",
+          "explicacion": "Falso! Guatemala esta al SUR de Mexico. Ahi esta la piramide maya de Tikal, una de las mas grandes del mundo."
+        },
+        {
+          "oracion": "Belice es un pais chiquito que esta al sureste de Mexico.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! Belice es vecino chiquito de Mexico. Tiene playas hermosas y un arrecife de coral gigante donde viven tortugas y tiburones."
+        },
+        {
+          "oracion": "En Belice se habla español como idioma principal, igual que en Mexico.",
+          "correcto": false,
+          "correccion": "En Belice se habla INGLES como idioma principal, no español.",
+          "explicacion": "Falso! Belice habla ingles porque antes era una colonia britanica. Es el unico pais de Centroamerica donde el ingles es el idioma oficial."
+        },
+        {
+          "oracion": "Mexico tiene exactamente 3 paises vecinos: USA, Guatemala y Belice.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! Solo 3 paises tocan a Mexico por tierra. Por agua tambien tiene vecinos cercanos como Cuba, separado por el Golfo de Mexico."
+        }
+      ]
+    }
+  ]
+}

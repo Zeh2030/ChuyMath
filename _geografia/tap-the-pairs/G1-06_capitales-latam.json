@@ -1,0 +1,37 @@
+{
+  "id": "G1-06_capitales-latam",
+  "titulo": "Capitales de America Latina",
+  "descripcion": "Empareja cada pais latinoamericano con su capital",
+  "tipo": "tap-the-pairs",
+  "materia": "geografia",
+  "tema": "capitales-latam",
+  "nivel": "G1-06",
+  "misiones": [
+    {
+      "id": "mision-ttp-capitales-latam",
+      "tipo": "tap-the-pairs",
+      "titulo": "Empareja Pais con Capital",
+      "instruccion": "Toca un pais y luego su capital para emparejarlos. Las capitales son las ciudades mas importantes de cada pais.",
+      "retos": [
+        {
+          "pares": [
+            { "es": "Mexico", "en": "Ciudad de Mexico" },
+            { "es": "Guatemala", "en": "Ciudad de Guatemala" },
+            { "es": "Costa Rica", "en": "San Jose" },
+            { "es": "Cuba", "en": "La Habana" },
+            { "es": "Republica Dominicana", "en": "Santo Domingo" }
+          ]
+        },
+        {
+          "pares": [
+            { "es": "Colombia", "en": "Bogota" },
+            { "es": "Peru", "en": "Lima" },
+            { "es": "Brasil", "en": "Brasilia" },
+            { "es": "Argentina", "en": "Buenos Aires" },
+            { "es": "Chile", "en": "Santiago" }
+          ]
+        }
+      ]
+    }
+  ]
+}

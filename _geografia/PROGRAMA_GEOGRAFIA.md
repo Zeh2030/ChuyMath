@@ -282,12 +282,13 @@ Ejemplo: `G1-05_banderas-latam.json`
 |------------|--------|
 | Programa documentado (este archivo) | ✅ |
 | Estructura de carpetas | ✅ |
-| Componente ExploradorMapa.jsx | Pendiente (Lote 1) |
-| Integracion en Boveda/Dashboard/etc | Pendiente (Lote 1) |
+| Componente ExploradorMapa.jsx | ✅ Lote 1 (3 mapas: world, mexico-estados, usa-estados) |
+| Integracion en Boveda/Dashboard/etc | ✅ Lote 1 |
 | Contenido G0 | Pendiente (Lote 4, 6) |
-| Contenido G1 | Pendiente (Lote 2, 3, 5) |
-| Contenido G2 | Pendiente (Lote 7+) |
+| Contenido G1 | ✅ Lote 2 (G1-01..04) + Lote 3 (G1-05..08) — pendiente Lote 5 (G1-09..12) |
+| Contenido G2 | G2-13 estados-usa-famosos (bonus); resto pendiente Lote 7+ |
 | Contenido G3 | Pendiente (cuando aplique) |
+| Expediciones | GE1-01 New York creada y validada (✅ banderas + imagenes) |
 
 Ver `GUIA_CREACION_GEOGRAFIA.md` para convenciones de creacion de JSONs.
 
