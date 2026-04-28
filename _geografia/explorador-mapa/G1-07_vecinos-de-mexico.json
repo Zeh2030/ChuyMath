@@ -10,7 +10,7 @@
     {
       "id": "mision-em-vecinos-mexico",
       "tipo": "explorador-mapa",
-      "mapa": "america-latina",
+      "mapa": "americas",
       "modo": "quiz",
       "titulo": "Encuentra a los Vecinos de Mexico",
       "instruccion": "Mexico tiene tres paises vecinos: USA al norte, Guatemala y Belice al sur. ¡Encuentralos en el mapa!",

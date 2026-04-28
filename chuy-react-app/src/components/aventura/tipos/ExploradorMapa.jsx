@@ -26,8 +26,16 @@ import './ExploradorMapa.css';
 // Paises por region (ISO 3166-1 numerico). Para filtrar el mapa por continente.
 const REGIONES = {
   'world': null, // todos los paises
+  // Americas: Norte + Centro + Sur America (incluye USA, Canada y todo Latinoamerica)
+  'americas': [
+    '124','840','484', // North America: Canada, USA, Mexico
+    '084','188','222','320','340','558','591', // Central America: Belize, CR, ES, GT, HN, NI, PA
+    '044','052','192','212','214','308','332','388','630','659','662','670','780','533','028', // Caribbean
+    '032','068','076','152','170','218','254','328','600','604','740','858','862','238' // South America
+  ],
+  // America Latina (sin USA ni Canada)
   'america-latina': [
-    '484','320','340','222','188','558','591','862','068','076','032','152',
+    '484','084','320','340','222','188','558','591','862','068','076','032','152',
     '600','604','858','170','218','328','740','192','214','388','332','630','533',
     '028','052','662','670','780','044','238'
   ],
@@ -53,7 +61,8 @@ const REGIONES = {
 // Configuracion de proyeccion por mapa
 const PROJECTIONS = {
   'world':           { proj: 'naturalEarth1', center: [0, 0],     scale: 145 },
-  'america-latina':  { proj: 'mercator',      center: [-65, -10], scale: 380 },
+  'americas':        { proj: 'mercator',      center: [-90, 5],   scale: 230 },
+  'america-latina':  { proj: 'mercator',      center: [-75, -5],  scale: 320 },
   'europa':          { proj: 'mercator',      center: [15, 55],   scale: 600 },
   'asia':            { proj: 'mercator',      center: [90, 30],   scale: 250 },
   'africa':          { proj: 'mercator',      center: [20, 0],    scale: 350 },
