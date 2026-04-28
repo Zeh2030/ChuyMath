@@ -1,0 +1,61 @@
+{
+  "id": "G2-13_estados-usa-famosos",
+  "titulo": "Estados Famosos de Estados Unidos",
+  "descripcion": "Encuentra los estados de USA mas conocidos: California, Florida, New York, Texas y mas",
+  "tipo": "explorador-mapa",
+  "materia": "geografia",
+  "tema": "usa-estados",
+  "nivel": "G2-13",
+  "misiones": [
+    {
+      "id": "mision-em-usa-estados-famosos",
+      "tipo": "explorador-mapa",
+      "mapa": "usa-estados",
+      "modo": "quiz",
+      "titulo": "Estados de USA que Conoces",
+      "instruccion": "Encuentra estos estados famosos de Estados Unidos en el mapa.",
+      "retos": [
+        {
+          "id": "06",
+          "nombre": "California",
+          "pregunta": "¿Donde esta California? (donde estan Hollywood y Disneyland, en la costa oeste)"
+        },
+        {
+          "id": "12",
+          "nombre": "Florida",
+          "pregunta": "¿Donde esta Florida? (peninsula al sureste, donde esta Disney World y Miami)"
+        },
+        {
+          "id": "48",
+          "nombre": "Texas",
+          "pregunta": "¿Donde esta Texas? (estado grandote al sur, frontera con Mexico)"
+        },
+        {
+          "id": "36",
+          "nombre": "New York",
+          "pregunta": "¿Donde esta New York? (al noreste, donde esta la Estatua de la Libertad)"
+        },
+        {
+          "id": "32",
+          "nombre": "Nevada",
+          "pregunta": "¿Donde esta Nevada? (donde esta Las Vegas, junto a California)"
+        },
+        {
+          "id": "04",
+          "nombre": "Arizona",
+          "pregunta": "¿Donde esta Arizona? (donde esta el Gran Cañon, frontera con Mexico)"
+        },
+        {
+          "id": "15",
+          "nombre": "Hawaii",
+          "pregunta": "¿Donde esta Hawaii? (islas tropicales en medio del Oceano Pacifico)"
+        },
+        {
+          "id": "02",
+          "nombre": "Alaska",
+          "pregunta": "¿Donde esta Alaska? (estado MAS GRANDE, al noroeste, lleno de hielo)"
+        }
+      ]
+    }
+  ]
+}

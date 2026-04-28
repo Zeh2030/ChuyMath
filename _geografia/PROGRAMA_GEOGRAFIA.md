@@ -110,6 +110,7 @@ G3  → Geografo Junior    (9-11 años) — Tectonica, climas, demografia, geopo
 | G2-10 | Husos horarios basicos | opcion-multiple | "Cuando son las 12 en MX, ¿que hora es en Tokio?" |
 | G2-11 | Maravillas del mundo moderno | mini-story + image-picker | Chichen Itza, Machu Picchu, Coliseo, etc. |
 | G2-12 | Mexico fisico | ExploradorMapa | Sierras, costas, golfos, Peninsula Yucatan |
+| G2-13 | Estados famosos de USA | ExploradorMapa | California (Hollywood), Florida (Disney), Texas, New York, Nevada (Vegas), Arizona (Gran Cañon), Hawaii, Alaska |
 
 ### G3 — Geografo Junior (9-11 años)
 
@@ -154,10 +155,12 @@ G3  → Geografo Junior    (9-11 años) — Tectonica, climas, demografia, geopo
 - Modo `explorar`: hover muestra nombre, click muestra info (capital, poblacion, bandera URL)
 
 ### Mapas a usar
-- `world.svg` — mundo completo
-- `america-latina.svg` — Mexico, Centroamerica, Sudamerica
-- `europa.svg`, `asia.svg`, `africa.svg`
-- `mexico-estados.svg` — los 32 estados de Mexico
+- `world` — mundo completo (TopoJSON world-atlas, Natural Earth)
+- `americas` — Norte+Centro+Sur America (incluye USA, Canada, Mexico)
+- `america-latina` — Mexico, Centroamerica, Sudamerica (sin USA/Canada)
+- `europa`, `asia`, `africa` — por continente
+- `mexico-estados` — los 32 estados de Mexico (GeoJSON, INEGI)
+- `usa-estados` — los 50 estados de USA (TopoJSON us-atlas, FIPS codes)
 
 ### Fuentes de mapas (descargar, no generar)
 - Natural Earth Data (dominio publico)

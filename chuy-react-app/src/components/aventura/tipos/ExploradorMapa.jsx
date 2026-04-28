@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { feature } from 'topojson-client';
-import { geoNaturalEarth1, geoMercator, geoPath } from 'd3-geo';
+import { geoNaturalEarth1, geoMercator, geoAlbersUsa, geoPath } from 'd3-geo';
 import worldData from 'world-atlas/countries-110m.json';
+import usaStatesData from 'us-atlas/states-10m.json';
 import mexicoStatesData from './maps/mexico-estados.json';
 import './ExploradorMapa.css';
 
@@ -68,6 +69,16 @@ const PROJECTIONS = {
   'asia':            { proj: 'mercator',      center: [90, 30],   scale: 250 },
   'africa':          { proj: 'mercator',      center: [20, 0],    scale: 350 },
   'mexico-estados':  { proj: 'mercator',      center: [-102, 24], scale: 1200 },
+  // USA usa Albers porque maneja Alaska/Hawaii. No requiere center/scale manuales.
+  'usa-estados':     { proj: 'albersUsa',     scale: 900 },
+};
+
+// Mapas que usan TopoJSON propio (no world-atlas)
+const MAPAS_TOPOJSON_ALT = {
+  'usa-estados': {
+    data: usaStatesData,
+    objectKey: 'states',
+  },
 };
 
 // Mapas que usan datos GeoJSON (no TopoJSON) — datos de fuentes alternativas
@@ -150,20 +161,27 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
     } catch (err) {}
   };
 
-  // Extraer features y proyectar — soporta TopoJSON (world-atlas) y GeoJSON (mexico-estados)
+  // Extraer features y proyectar — soporta TopoJSON (world-atlas, us-atlas) y GeoJSON (mexico-estados)
   const { countries, pathGenerator, idGetter, nameGetter } = useMemo(() => {
     let allFeatures;
     let getId;
     let getName;
 
     const geojsonConfig = MAPAS_GEOJSON[mapa];
+    const topojsonAltConfig = MAPAS_TOPOJSON_ALT[mapa];
+
     if (geojsonConfig) {
       // GeoJSON: features ya estan en .features con propiedades custom
       allFeatures = geojsonConfig.data.features;
       getId = (f) => String(f.properties[geojsonConfig.idField]);
       getName = (f) => f.properties[geojsonConfig.nameField] || '';
+    } else if (topojsonAltConfig) {
+      // TopoJSON alternativo (us-atlas): mismo helper pero con su propio object key
+      allFeatures = feature(topojsonAltConfig.data, topojsonAltConfig.data.objects[topojsonAltConfig.objectKey]).features;
+      getId = (f) => String(f.id).padStart(2, '0'); // FIPS codes (estado: 01-56)
+      getName = (f) => f.properties?.name || '';
     } else {
-      // TopoJSON: extraer features con topojson-client
+      // TopoJSON default (world-atlas)
       allFeatures = feature(worldData, worldData.objects.countries).features;
       getId = (f) => String(f.id).padStart(3, '0');
       getName = (f) => f.properties?.name || '';
@@ -175,10 +193,22 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
       : allFeatures;
 
     const config = PROJECTIONS[mapa] || PROJECTIONS['world'];
-    const projection = (config.proj === 'mercator' ? geoMercator() : geoNaturalEarth1())
-      .center(config.center)
-      .scale(config.scale)
-      .translate([VIEWPORT.width / 2, VIEWPORT.height / 2]);
+    let projection;
+    if (config.proj === 'albersUsa') {
+      projection = geoAlbersUsa()
+        .scale(config.scale)
+        .translate([VIEWPORT.width / 2, VIEWPORT.height / 2]);
+    } else if (config.proj === 'mercator') {
+      projection = geoMercator()
+        .center(config.center)
+        .scale(config.scale)
+        .translate([VIEWPORT.width / 2, VIEWPORT.height / 2]);
+    } else {
+      projection = geoNaturalEarth1()
+        .center(config.center)
+        .scale(config.scale)
+        .translate([VIEWPORT.width / 2, VIEWPORT.height / 2]);
+    }
 
     return {
       countries: filtered,
@@ -188,13 +218,15 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
     };
   }, [mapa]);
 
-  // Normalizar IDs (world-atlas usa string sin padding, JSON puede usar "076" o "76";
-  // mexico-estados usa numeros 1-32, JSON puede usar "9" o "09")
+  // Normalizar IDs segun el tipo de mapa:
+  // - paises (ISO 3166-1): 3 digitos con padding ("076", "484")
+  // - mexico-estados (INEGI): 1-2 digitos sin padding ("9", "31")
+  // - usa-estados (FIPS): 2 digitos con padding ("06", "48")
   const normalizeId = (id) => {
     if (id === null || id === undefined) return '';
     const s = String(id);
-    // Para mexico-estados, ID es 1-32 (1-2 digitos). Para paises ISO, 3 digitos.
     if (mapa === 'mexico-estados') return s.replace(/^0+/, '') || '0';
+    if (mapa === 'usa-estados') return s.padStart(2, '0');
     return s.padStart(3, '0');
   };
 
@@ -265,7 +297,8 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
             const isCorrect = esModoQuiz && cid === normalizeId(reto?.id);
             const isSelected = cid === normalizeId(seleccionado);
             const isHovered = cid === normalizeId(hovered);
-            const baseColor = getColorPais(cid.padStart(3, '0'));
+            // Usar el ID sin padding para hash (consistente entre tipos de mapa)
+            const baseColor = getColorPais(cid);
 
             let className = 'em-pais';
             let fillColor = baseColor;
