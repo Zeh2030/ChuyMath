@@ -1,0 +1,41 @@
+{
+  "id": "G1-07_vecinos-de-mexico",
+  "titulo": "Los Vecinos de Mexico",
+  "descripcion": "Encuentra los paises que comparten frontera con Mexico",
+  "tipo": "explorador-mapa",
+  "materia": "geografia",
+  "tema": "vecinos-mexico",
+  "nivel": "G1-07",
+  "misiones": [
+    {
+      "id": "mision-em-vecinos-mexico",
+      "tipo": "explorador-mapa",
+      "mapa": "america-latina",
+      "modo": "quiz",
+      "titulo": "Encuentra a los Vecinos de Mexico",
+      "instruccion": "Mexico tiene tres paises vecinos: USA al norte, Guatemala y Belice al sur. ¡Encuentralos en el mapa!",
+      "retos": [
+        {
+          "id": "484",
+          "nombre": "Mexico",
+          "pregunta": "Primero, ¿donde esta Mexico?"
+        },
+        {
+          "id": "840",
+          "nombre": "Estados Unidos",
+          "pregunta": "¿Donde esta Estados Unidos? (al norte de Mexico)"
+        },
+        {
+          "id": "320",
+          "nombre": "Guatemala",
+          "pregunta": "¿Y Guatemala? (al sur de Mexico)"
+        },
+        {
+          "id": "084",
+          "nombre": "Belice",
+          "pregunta": "¿Donde esta Belice? (vecino chiquito al sureste)"
+        }
+      ]
+    }
+  ]
+}

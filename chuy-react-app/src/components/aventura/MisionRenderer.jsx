@@ -32,6 +32,7 @@ import DibujoGuiado from './tipos/DibujoGuiado';
 import DibujoLibre from './tipos/DibujoLibre';
 const PianoPrompter = React.lazy(() => import('./tipos/PianoPrompter'));
 import IdentificaNota from './tipos/IdentificaNota';
+const ExploradorMapa = React.lazy(() => import('./tipos/ExploradorMapa'));
 import './MisionRenderer.css';
 
 /**
@@ -396,6 +397,18 @@ const MisionRenderer = ({
         return (
           <React.Suspense fallback={<div style={{ textAlign: 'center', padding: '40px' }}>Cargando piano...</div>}>
             <PianoPrompter
+              key={mision.id}
+              mision={mision}
+              onCompletar={onCompletar}
+            />
+          </React.Suspense>
+        );
+
+      // === Geografia ===
+      case 'explorador-mapa':
+        return (
+          <React.Suspense fallback={<div style={{ textAlign: 'center', padding: '40px' }}>Cargando mapa...</div>}>
+            <ExploradorMapa
               key={mision.id}
               mision={mision}
               onCompletar={onCompletar}
