@@ -146,6 +146,13 @@ const Dashboard = () => {
     { id: 'mini-story', emoji: '📖', nombre: 'Mini Stories', filtro: 'mini-story', disponible: true, materia: 'ingles' },
     // Piano
     { id: 'piano-prompter', emoji: '🎹', nombre: 'Teleprompter', filtro: 'piano-prompter', disponible: true, materia: 'piano' },
+    { id: 'identifica-nota', emoji: '🎼', nombre: 'Identifica la Nota', filtro: 'identifica-nota', disponible: true, materia: 'piano' },
+    { id: 'piano-opcion-multiple', emoji: '❓', nombre: 'Teoria Musical', filtro: 'piano-opcion-multiple', disponible: true, materia: 'piano' },
+    { id: 'piano-tap-the-pairs', emoji: '🔗', nombre: 'Empareja', filtro: 'piano-tap-the-pairs', disponible: true, materia: 'piano' },
+    { id: 'piano-image-picker', emoji: '🎵', nombre: 'Simbolos Musicales', filtro: 'piano-image-picker', disponible: true, materia: 'piano' },
+    { id: 'piano-true-or-false', emoji: '✅', nombre: 'Verdadero o Falso', filtro: 'piano-true-or-false', disponible: true, materia: 'piano' },
+    { id: 'piano-fill-the-gap', emoji: '🔲', nombre: 'Completa la Frase', filtro: 'piano-fill-the-gap', disponible: true, materia: 'piano' },
+    { id: 'piano-mini-story', emoji: '📖', nombre: 'Compositores', filtro: 'piano-mini-story', disponible: true, materia: 'piano' },
     // Ciencias
     { id: 'experimento-guia', emoji: '🧪', nombre: 'Experimentos', filtro: 'experimento-guia', disponible: true, materia: 'ciencias' },
     // Dibujo
