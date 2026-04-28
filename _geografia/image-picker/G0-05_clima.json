@@ -1,0 +1,69 @@
+{
+  "id": "G0-05_clima",
+  "titulo": "El Clima: Sol, Lluvia y Nieve",
+  "descripcion": "Identifica los climas que vemos cada dia",
+  "tipo": "image-picker",
+  "materia": "geografia",
+  "tema": "clima",
+  "nivel": "G0-05",
+  "misiones": [
+    {
+      "id": "mision-ip-clima",
+      "tipo": "image-picker",
+      "titulo": "¿Que clima es?",
+      "instruccion": "Papa lee y tu eliges la imagen correcta.",
+      "retos": [
+        {
+          "palabra_es": "Cae mucha agua del cielo y se hacen charcos.",
+          "opciones": [
+            { "emoji": "🌧️", "label": "Lluvia" },
+            { "emoji": "☀️", "label": "Sol" },
+            { "emoji": "❄️", "label": "Nieve" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Es lluvia! El agua de la lluvia ayuda a que crezcan las plantas."
+        },
+        {
+          "palabra_es": "El cielo brilla, hace calorcito y queremos ir a la playa.",
+          "opciones": [
+            { "emoji": "☀️", "label": "Soleado" },
+            { "emoji": "❄️", "label": "Nieve" },
+            { "emoji": "⛈️", "label": "Tormenta" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Es un dia soleado! El Sol nos da luz y calor."
+        },
+        {
+          "palabra_es": "Cae blanco del cielo y hace MUCHO frio. Podemos hacer muñecos!",
+          "opciones": [
+            { "emoji": "🌧️", "label": "Lluvia" },
+            { "emoji": "❄️", "label": "Nieve" },
+            { "emoji": "🌈", "label": "Arcoiris" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Es nieve! La nieve es agua congelada. En Mexico solo nieva en montañas altas."
+        },
+        {
+          "palabra_es": "Despues de la lluvia aparece en el cielo con muchos colores.",
+          "opciones": [
+            { "emoji": "☁️", "label": "Nube" },
+            { "emoji": "🌈", "label": "Arcoiris" },
+            { "emoji": "🌪️", "label": "Tornado" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Es un arcoiris! Tiene 7 colores: rojo, naranja, amarillo, verde, azul, indigo y violeta."
+        },
+        {
+          "palabra_es": "Son blancas, esponjosas y flotan en el cielo.",
+          "opciones": [
+            { "emoji": "☁️", "label": "Nubes" },
+            { "emoji": "⭐", "label": "Estrellas" },
+            { "emoji": "🌙", "label": "Luna" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Son nubes! Las nubes estan hechas de gotitas chiquitas de agua."
+        }
+      ]
+    }
+  ]
+}

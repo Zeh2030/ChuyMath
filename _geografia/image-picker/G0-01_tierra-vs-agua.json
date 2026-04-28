@@ -1,0 +1,59 @@
+{
+  "id": "G0-01_tierra-vs-agua",
+  "titulo": "Tierra y Agua",
+  "descripcion": "El planeta Tierra tiene tierra y mucha agua. ¡Aprendelos!",
+  "tipo": "image-picker",
+  "materia": "geografia",
+  "tema": "tierra-agua",
+  "nivel": "G0-01",
+  "misiones": [
+    {
+      "id": "mision-ip-tierra-agua",
+      "tipo": "image-picker",
+      "titulo": "Tierra o Agua?",
+      "instruccion": "Papa lee y tu eliges la imagen correcta.",
+      "retos": [
+        {
+          "palabra_es": "¿Donde hay mucha AGUA?",
+          "opciones": [
+            { "emoji": "🌊", "label": "Mar" },
+            { "emoji": "🌳", "label": "Bosque" },
+            { "emoji": "⛰️", "label": "Montaña" }
+          ],
+          "respuesta": 0,
+          "explicacion": "El mar tiene muchisima agua! El agua del mar es salada."
+        },
+        {
+          "palabra_es": "¿Donde hay TIERRA seca?",
+          "opciones": [
+            { "emoji": "⛰️", "label": "Montaña" },
+            { "emoji": "🌊", "label": "Oceano" },
+            { "emoji": "🌧️", "label": "Lluvia" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Las montañas son de tierra y rocas! Estan altisimas."
+        },
+        {
+          "palabra_es": "¿Cual es nuestro PLANETA, donde vivimos?",
+          "opciones": [
+            { "emoji": "🌍", "label": "La Tierra" },
+            { "emoji": "⭐", "label": "Una estrella" },
+            { "emoji": "🌙", "label": "La Luna" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Vivimos en el planeta Tierra! Es una bola gigante en el espacio."
+        },
+        {
+          "palabra_es": "Si miramos la Tierra desde el cielo, ¿de que color es la mayor parte?",
+          "opciones": [
+            { "emoji": "🟦", "label": "Azul" },
+            { "emoji": "🟩", "label": "Verde" },
+            { "emoji": "🟥", "label": "Rojo" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Azul! Porque hay MUCHA mas agua que tierra. Por eso le dicen 'el planeta azul'."
+        }
+      ]
+    }
+  ]
+}

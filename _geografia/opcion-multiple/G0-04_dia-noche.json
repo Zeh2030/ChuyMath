@@ -1,0 +1,55 @@
+{
+  "id": "G0-04_dia-noche",
+  "titulo": "El Dia y la Noche",
+  "descripcion": "Aprende cuando es de dia y cuando es de noche",
+  "tipo": "opcion-multiple",
+  "materia": "geografia",
+  "tema": "dia-noche",
+  "nivel": "G0-04",
+  "misiones": [
+    {
+      "id": "mision-om-sol-dia",
+      "tipo": "opcion-multiple",
+      "titulo": "El Sol",
+      "instruccion": "Papa lee y tu eliges.",
+      "pregunta": "☀️ ¿Cuando vemos el SOL?",
+      "opciones": ["De dia", "De noche", "Nunca"],
+      "respuesta": "0",
+      "explicacion_correcta": "De dia! El Sol sale en la mañana y se va al anochecer.",
+      "explicacion_incorrecta": "El Sol lo vemos de DIA, cuando hay luz afuera."
+    },
+    {
+      "id": "mision-om-luna-noche",
+      "tipo": "opcion-multiple",
+      "titulo": "La Luna",
+      "instruccion": "Papa lee y tu eliges.",
+      "pregunta": "🌙 ¿Cuando vemos la LUNA?",
+      "opciones": ["Al medio dia", "De noche", "Cuando llueve"],
+      "respuesta": "1",
+      "explicacion_correcta": "De noche! La Luna brilla cuando ya se fue el Sol.",
+      "explicacion_incorrecta": "La Luna se ve de NOCHE, cuando todo esta oscuro."
+    },
+    {
+      "id": "mision-om-noche-actividad",
+      "tipo": "opcion-multiple",
+      "titulo": "De Noche...",
+      "instruccion": "Papa lee y tu eliges.",
+      "pregunta": "🌙 ¿Que hacemos cuando es de NOCHE?",
+      "opciones": ["Dormir", "Nadar en la playa", "Ir a la escuela"],
+      "respuesta": "0",
+      "explicacion_correcta": "Dormir! De noche descansamos para tener energia mañana.",
+      "explicacion_incorrecta": "De noche dormimos. Asi mañana tenemos energia para jugar!"
+    },
+    {
+      "id": "mision-om-cuando-oscuro",
+      "tipo": "opcion-multiple",
+      "titulo": "Cuando esta Oscuro",
+      "instruccion": "Papa lee y tu eliges.",
+      "pregunta": "Cuando todo esta MUY oscuro afuera, es de...",
+      "opciones": ["Dia", "Noche", "Tarde"],
+      "respuesta": "1",
+      "explicacion_correcta": "Es de noche! Cuando se va el Sol, todo se pone oscurito.",
+      "explicacion_incorrecta": "Es de NOCHE. El Sol ya se fue y por eso no hay luz."
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "id": "G0-03_cielo",
+  "titulo": "El Cielo: Sol, Luna y Estrellas",
+  "descripcion": "Conoce las cosas que vemos en el cielo",
+  "tipo": "true-or-false",
+  "materia": "geografia",
+  "tema": "cielo",
+  "nivel": "G0-03",
+  "misiones": [
+    {
+      "id": "mision-tof-cielo",
+      "tipo": "true-or-false",
+      "titulo": "Verdadero o Falso?",
+      "instruccion": "Papa lee la frase. Tu decides si es VERDAD o si es FALSO.",
+      "retos": [
+        {
+          "oracion": "El Sol nos da luz y calor de dia.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! El Sol calienta toda la Tierra. Por eso podemos ver y jugar de dia."
+        },
+        {
+          "oracion": "La Luna brilla mucho de DIA, cuando estamos en la escuela.",
+          "correcto": false,
+          "correccion": "La Luna se ve de NOCHE, no de dia.",
+          "explicacion": "Falso! La Luna se ve de noche, cuando ya no esta el Sol."
+        },
+        {
+          "oracion": "En la noche se ven MUCHAS estrellas en el cielo.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! Hay millones y millones de estrellas. Son tan lejanas que las vemos chiquitas."
+        },
+        {
+          "oracion": "El Sol es chiquito como una pelota de tenis.",
+          "correcto": false,
+          "correccion": "El Sol es GIGANTE, mas grande que toda la Tierra.",
+          "explicacion": "Falso! El Sol es gigantisimo. Lo vemos chiquito porque esta lejisimos."
+        }
+      ]
+    }
+  ]
+}

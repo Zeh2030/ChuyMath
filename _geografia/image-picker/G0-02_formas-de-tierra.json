@@ -1,0 +1,59 @@
+{
+  "id": "G0-02_formas-de-tierra",
+  "titulo": "Formas de la Tierra",
+  "descripcion": "Conoce la montaña, la isla, el lago y el rio",
+  "tipo": "image-picker",
+  "materia": "geografia",
+  "tema": "formas-tierra",
+  "nivel": "G0-02",
+  "misiones": [
+    {
+      "id": "mision-ip-formas-tierra",
+      "tipo": "image-picker",
+      "titulo": "¿Que forma de tierra es?",
+      "instruccion": "Papa lee y tu eliges la imagen correcta.",
+      "retos": [
+        {
+          "palabra_es": "Tierra muy ALTA, con punta arriba.",
+          "opciones": [
+            { "emoji": "⛰️", "label": "Montaña" },
+            { "emoji": "🏝️", "label": "Isla" },
+            { "emoji": "💧", "label": "Lago" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Es una montaña! Las mas altas tienen nieve arriba."
+        },
+        {
+          "palabra_es": "Tierra rodeada de AGUA por todos lados, como una palmera en el mar.",
+          "opciones": [
+            { "emoji": "🌊", "label": "Oceano" },
+            { "emoji": "🏝️", "label": "Isla" },
+            { "emoji": "⛰️", "label": "Montaña" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Es una isla! Cuba y Hawaii son islas grandes."
+        },
+        {
+          "palabra_es": "Agua QUIETA rodeada de tierra. No se mueve mucho.",
+          "opciones": [
+            { "emoji": "💧", "label": "Lago" },
+            { "emoji": "🌊", "label": "Mar" },
+            { "emoji": "🏞️", "label": "Rio" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Es un lago! El agua se queda en un solo lugar, como una piscina gigante."
+        },
+        {
+          "palabra_es": "Agua que CORRE desde la montaña hasta el mar.",
+          "opciones": [
+            { "emoji": "🏞️", "label": "Rio" },
+            { "emoji": "💧", "label": "Lago" },
+            { "emoji": "🏝️", "label": "Isla" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Es un rio! El agua siempre se mueve, baja de la montaña hasta el mar."
+        }
+      ]
+    }
+  ]
+}
