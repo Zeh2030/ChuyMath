@@ -1,0 +1,77 @@
+{
+  "id": "G2-04_rios-mas-largos",
+  "titulo": "Rios Mas Largos del Mundo",
+  "descripcion": "Conoce los rios gigantes del planeta y donde estan",
+  "tipo": "opcion-multiple",
+  "materia": "geografia",
+  "tema": "rios",
+  "nivel": "G2-04",
+  "misiones": [
+    {
+      "id": "mision-om-rio-largo",
+      "tipo": "opcion-multiple",
+      "titulo": "El Rio Mas Largo",
+      "instruccion": "Elige la respuesta correcta.",
+      "pregunta": "¿Cual es el rio mas LARGO del mundo?",
+      "opciones": ["Amazonas", "Nilo", "Yangtze", "Misisipi"],
+      "respuesta": "1",
+      "explicacion_correcta": "Correcto! El Nilo mide aproximadamente 6,650 km. Algunos cientificos creen que el Amazonas es un poquito mas largo (debate abierto), pero oficialmente el Nilo gana.",
+      "explicacion_incorrecta": "El rio mas largo es el Nilo (6,650 km), en Africa. El Amazonas es el segundo (6,400 km). Si estiraran el Nilo desde Mexico, llegaria hasta Canada."
+    },
+    {
+      "id": "mision-om-rio-caudaloso",
+      "tipo": "opcion-multiple",
+      "titulo": "El Rio Mas CAUDALOSO",
+      "instruccion": "El rio caudaloso es el que lleva mas agua.",
+      "pregunta": "¿Cual rio lleva MAS agua del mundo (mas caudaloso)?",
+      "opciones": ["Nilo", "Amazonas", "Mississippi", "Yangtze"],
+      "respuesta": "1",
+      "explicacion_correcta": "Correcto! El Amazonas lleva la quinta parte (20%) de toda el agua dulce de los rios del mundo. En su desembocadura mide 200 km de ancho.",
+      "explicacion_incorrecta": "El Amazonas es el mas caudaloso. Lleva tanta agua que si la juntaras, tendrias el 20% del agua de todos los rios del mundo."
+    },
+    {
+      "id": "mision-om-rio-amazonas",
+      "tipo": "opcion-multiple",
+      "titulo": "El Rio Amazonas",
+      "instruccion": "El Amazonas cruza varios paises.",
+      "pregunta": "¿En que continente esta el rio Amazonas?",
+      "opciones": ["Africa", "Asia", "Sudamerica", "Norte America"],
+      "respuesta": "2",
+      "explicacion_correcta": "Correcto! El Amazonas nace en Peru, atraviesa Colombia y la mayor parte recorre Brasil, hasta desembocar en el oceano Atlantico.",
+      "explicacion_incorrecta": "Esta en Sudamerica. Pasa por Peru, Colombia y Brasil. La selva amazonica que lo rodea es la mas grande del mundo."
+    },
+    {
+      "id": "mision-om-rio-yangtze",
+      "tipo": "opcion-multiple",
+      "titulo": "El Rio Yangtze",
+      "instruccion": "Es el rio mas largo de Asia.",
+      "pregunta": "¿Por que pais cruza el rio Yangtze, el rio mas largo de Asia?",
+      "opciones": ["Japon", "India", "China", "Rusia"],
+      "respuesta": "2",
+      "explicacion_correcta": "Correcto! El Yangtze cruza China de oeste a este. Mide 6,300 km. Tiene la presa mas grande del mundo (Tres Gargantas).",
+      "explicacion_incorrecta": "Esta en China. El Yangtze cruza el pais de los Andes tibetanos hasta el oceano Pacifico, pasando por Shanghai."
+    },
+    {
+      "id": "mision-om-rio-mexico",
+      "tipo": "opcion-multiple",
+      "titulo": "El Rio Mexicano Frontera",
+      "instruccion": "Hay un rio que separa a Mexico de Estados Unidos.",
+      "pregunta": "¿Como se llama el rio que es FRONTERA entre Mexico y USA?",
+      "opciones": ["Rio Grande / Rio Bravo", "Rio Lerma", "Rio Balsas", "Rio Coatzacoalcos"],
+      "respuesta": "0",
+      "explicacion_correcta": "Correcto! En USA le dicen 'Rio Grande' y en Mexico 'Rio Bravo'. Es el mismo rio. Mide 3,051 km y separa a Texas de los estados de Tamaulipas, Coahuila y Chihuahua.",
+      "explicacion_incorrecta": "Es el Rio Bravo (en Mexico) o Rio Grande (en USA). Es el mismo rio con dos nombres. Forma una buena parte de la frontera entre los dos paises."
+    },
+    {
+      "id": "mision-om-rio-egipto",
+      "tipo": "opcion-multiple",
+      "titulo": "El Rio del Antiguo Egipto",
+      "instruccion": "Sin este rio no habria existido el Egipto antiguo.",
+      "pregunta": "¿Que rio le dio vida al antiguo Egipto y sus piramides?",
+      "opciones": ["Tigris", "Jordan", "Nilo", "Eufrates"],
+      "respuesta": "2",
+      "explicacion_correcta": "Correcto! El Nilo es el rio del Egipto antiguo y moderno. Sin sus inundaciones anuales, no habria habido cosechas y la civilizacion egipcia no habria existido. Las piramides estan a su lado.",
+      "explicacion_incorrecta": "Es el Nilo. Cada año se desbordaba y dejaba tierra fertil para sembrar. Por eso los egipcios pudieron cultivar en medio del desierto y construir civilizacion."
+    }
+  ]
+}

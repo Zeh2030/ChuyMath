@@ -1,0 +1,91 @@
+{
+  "id": "G2-01_capitales-europa",
+  "titulo": "Capitales de Europa",
+  "descripcion": "Completa la capital correcta de cada pais europeo",
+  "tipo": "fill-the-gap",
+  "materia": "geografia",
+  "tema": "capitales-europa",
+  "nivel": "G2-01",
+  "misiones": [
+    {
+      "id": "mision-ftg-capitales-europa",
+      "tipo": "fill-the-gap",
+      "titulo": "¿Cual es la capital?",
+      "instruccion": "Completa cada frase con la capital correcta del pais europeo.",
+      "retos": [
+        {
+          "oracion": "La capital de Francia es ___.",
+          "opciones": ["Madrid", "Paris", "Roma", "Berlin"],
+          "respuesta": 1,
+          "explicacion": "Paris es la capital de Francia. Ahi esta la Torre Eiffel y el museo del Louvre."
+        },
+        {
+          "oracion": "La capital de España es ___.",
+          "opciones": ["Barcelona", "Sevilla", "Madrid", "Valencia"],
+          "respuesta": 2,
+          "explicacion": "Madrid es la capital de España. Esta en el centro del pais y tiene el museo del Prado."
+        },
+        {
+          "oracion": "La capital de Italia es ___.",
+          "opciones": ["Milan", "Roma", "Venecia", "Florencia"],
+          "respuesta": 1,
+          "explicacion": "Roma es la capital de Italia. Ahi esta el Coliseo y el Vaticano."
+        },
+        {
+          "oracion": "La capital de Alemania es ___.",
+          "opciones": ["Munich", "Hamburgo", "Frankfurt", "Berlin"],
+          "respuesta": 3,
+          "explicacion": "Berlin es la capital de Alemania. Tuvo un muro famoso que la dividio durante 28 años (1961-1989)."
+        },
+        {
+          "oracion": "La capital de Reino Unido es ___.",
+          "opciones": ["Edimburgo", "Manchester", "Londres", "Liverpool"],
+          "respuesta": 2,
+          "explicacion": "Londres es la capital de Reino Unido. Ahi vive el Rey y esta el Big Ben."
+        },
+        {
+          "oracion": "La capital de Portugal es ___.",
+          "opciones": ["Lisboa", "Oporto", "Madrid", "Sevilla"],
+          "respuesta": 0,
+          "explicacion": "Lisboa es la capital de Portugal. Es famosa por sus tranvias amarillos y los azulejos azules."
+        },
+        {
+          "oracion": "La capital de Grecia es ___.",
+          "opciones": ["Esparta", "Atenas", "Santorini", "Tesalonica"],
+          "respuesta": 1,
+          "explicacion": "Atenas es la capital de Grecia. Ahi esta la Acropolis y nacio la democracia hace 2,500 años."
+        },
+        {
+          "oracion": "La capital de Holanda (Paises Bajos) es ___.",
+          "opciones": ["Amsterdam", "Rotterdam", "La Haya", "Utrecht"],
+          "respuesta": 0,
+          "explicacion": "Amsterdam es la capital. Es famosa por sus canales de agua, bicis y los molinos cerca."
+        },
+        {
+          "oracion": "La capital de Rusia es ___.",
+          "opciones": ["San Petersburgo", "Kiev", "Moscu", "Estocolmo"],
+          "respuesta": 2,
+          "explicacion": "Moscu es la capital de Rusia. Tiene la famosa Plaza Roja y el Kremlin con la catedral colorida de San Basilio."
+        },
+        {
+          "oracion": "La capital de Suecia es ___.",
+          "opciones": ["Helsinki", "Oslo", "Copenhague", "Estocolmo"],
+          "respuesta": 3,
+          "explicacion": "Estocolmo es la capital de Suecia. Esta sobre 14 islas conectadas por puentes. Ahi se entregan los premios Nobel."
+        },
+        {
+          "oracion": "La capital de Belgica es ___.",
+          "opciones": ["Brujas", "Bruselas", "Amberes", "Lieja"],
+          "respuesta": 1,
+          "explicacion": "Bruselas es la capital de Belgica y tambien la 'capital' no oficial de la Union Europea."
+        },
+        {
+          "oracion": "La capital de Suiza es ___.",
+          "opciones": ["Ginebra", "Zurich", "Basilea", "Berna"],
+          "respuesta": 3,
+          "explicacion": "Berna es la capital de Suiza. Sorpresa: NO es Zurich ni Ginebra (esas son mas grandes pero no son capital)."
+        }
+      ]
+    }
+  ]
+}

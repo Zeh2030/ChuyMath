@@ -1,0 +1,85 @@
+{
+  "id": "G2-05_montanas-mas-altas",
+  "titulo": "Montañas Mas Altas del Mundo",
+  "descripcion": "Conoce los picos gigantes del planeta y en que continente estan",
+  "tipo": "image-picker",
+  "materia": "geografia",
+  "tema": "montanas",
+  "nivel": "G2-05",
+  "misiones": [
+    {
+      "id": "mision-ip-montanas",
+      "tipo": "image-picker",
+      "titulo": "¿Que montaña es?",
+      "instruccion": "Lee la descripcion y elige la montaña correcta.",
+      "retos": [
+        {
+          "palabra_es": "La montaña MAS ALTA del mundo, mide 8,849 metros. Esta en la cordillera del Himalaya, entre Nepal y China. Cientos de personas mueren intentando subirla.",
+          "opciones": [
+            { "emoji": "🏔️", "label": "Everest" },
+            { "emoji": "🗻", "label": "Monte Fuji" },
+            { "emoji": "⛰️", "label": "Aconcagua" },
+            { "emoji": "🌋", "label": "Kilimanjaro" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Es el Everest! Lo escalo por primera vez Edmund Hillary en 1953. Hay tan poco oxigeno arriba que los escaladores llevan tanques."
+        },
+        {
+          "palabra_es": "La montaña mas alta de AMERICA. Mide 6,961 metros. Esta en la cordillera de los Andes, en Argentina, cerca de la frontera con Chile.",
+          "opciones": [
+            { "emoji": "🏔️", "label": "Everest" },
+            { "emoji": "⛰️", "label": "Aconcagua" },
+            { "emoji": "🌋", "label": "Popocatepetl" },
+            { "emoji": "🗻", "label": "Kilimanjaro" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Es el Aconcagua! Es la montaña mas alta de todo el continente americano y la mas alta fuera de Asia. Esta en Argentina."
+        },
+        {
+          "palabra_es": "La montaña mas alta de AFRICA. Es un volcan de 5,895 metros. Tiene NIEVE arriba aunque esta en Tanzania, cerca del ecuador.",
+          "opciones": [
+            { "emoji": "🌋", "label": "Kilimanjaro" },
+            { "emoji": "🏔️", "label": "Everest" },
+            { "emoji": "⛰️", "label": "Aconcagua" },
+            { "emoji": "🗻", "label": "Monte Fuji" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Es el Kilimanjaro! Aunque esta en Africa cerca del ecuador (donde hace calor), su pico esta tan alto que tiene nieve permanente. Es un volcan dormido."
+        },
+        {
+          "palabra_es": "Una montaña SAGRADA en Japon, con forma casi perfecta de cono. Mide 3,776 metros. Es el simbolo del pais.",
+          "opciones": [
+            { "emoji": "🌋", "label": "Kilimanjaro" },
+            { "emoji": "🗻", "label": "Monte Fuji" },
+            { "emoji": "🏔️", "label": "Everest" },
+            { "emoji": "⛰️", "label": "Aconcagua" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Es el Monte Fuji! Es un volcan dormido. Para los japoneses es sagrado, sale en muchisimas pinturas tradicionales japonesas."
+        },
+        {
+          "palabra_es": "El volcan MAS ALTO de Mexico, con 5,636 metros. Esta cerca de Puebla y la Ciudad de Mexico. Su nombre significa 'estrella que humea'.",
+          "opciones": [
+            { "emoji": "🌋", "label": "Citlaltepetl (Pico de Orizaba)" },
+            { "emoji": "🗻", "label": "Monte Fuji" },
+            { "emoji": "🏔️", "label": "Everest" },
+            { "emoji": "⛰️", "label": "Popocatepetl" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Es el Pico de Orizaba (Citlaltepetl en nahuatl). Es el volcan mas alto de Mexico y el tercero mas alto de America del Norte. Lleva mucho tiempo dormido."
+        },
+        {
+          "palabra_es": "Cordillera GIGANTESCA que cruza casi toda Sudamerica de norte a sur, desde Venezuela hasta Argentina-Chile. Es la mas larga del mundo (7,000 km).",
+          "opciones": [
+            { "emoji": "🏔️", "label": "Himalaya" },
+            { "emoji": "⛰️", "label": "Andes" },
+            { "emoji": "🗻", "label": "Alpes" },
+            { "emoji": "🌋", "label": "Rocallosas" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Son los Andes! Cruzan 7 paises sudamericanos. Son la cordillera mas larga del mundo. Ahi vive la llama y se construyo Machu Picchu."
+        }
+      ]
+    }
+  ]
+}

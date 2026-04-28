@@ -1,0 +1,59 @@
+{
+  "id": "G2-02_capitales-asia",
+  "titulo": "Capitales de Asia (Desordenadas)",
+  "descripcion": "Las letras de la capital estan desordenadas. Ordenalas para descubrir el nombre",
+  "tipo": "word-scramble",
+  "materia": "geografia",
+  "tema": "capitales-asia",
+  "nivel": "G2-02",
+  "misiones": [
+    {
+      "id": "mision-ws-capitales-asia",
+      "tipo": "word-scramble",
+      "titulo": "Adivina la Capital",
+      "instruccion": "Las letras estan desordenadas. ¿Que capital es?",
+      "retos": [
+        {
+          "palabra": "TOKIO",
+          "pista": "Capital de Japon, ciudad de los Pokemon y el sushi",
+          "explicacion": "Tokio es la capital de Japon. Es una de las ciudades mas pobladas del mundo (38 millones)."
+        },
+        {
+          "palabra": "PEKIN",
+          "pista": "Capital de China, cerca de la Gran Muralla",
+          "explicacion": "Pekin (o Beijing) es la capital de China. Tiene la Ciudad Prohibida, palacio antiguo de los emperadores."
+        },
+        {
+          "palabra": "SEUL",
+          "pista": "Capital de Corea del Sur, hogar del K-pop y BTS",
+          "explicacion": "Seul es la capital de Corea del Sur. Es famosa por su tecnologia, K-pop y Squid Game."
+        },
+        {
+          "palabra": "BANGKOK",
+          "pista": "Capital de Tailandia, llena de templos dorados",
+          "explicacion": "Bangkok es la capital de Tailandia. Tiene mas de 400 templos budistas y mercados flotantes en canales."
+        },
+        {
+          "palabra": "MANILA",
+          "pista": "Capital de Filipinas, archipielago con 7,000 islas",
+          "explicacion": "Manila es la capital de Filipinas. Filipinas es un grupo de mas de 7,000 islas en el oceano Pacifico."
+        },
+        {
+          "palabra": "HANOI",
+          "pista": "Capital de Vietnam, en el sureste de Asia",
+          "explicacion": "Hanoi es la capital de Vietnam. Es famosa por su comida (pho, banh mi) y sus calles llenas de motos."
+        },
+        {
+          "palabra": "JAKARTA",
+          "pista": "Capital de Indonesia, pais con mas islas del mundo",
+          "explicacion": "Jakarta es la capital de Indonesia. Indonesia tiene 17,508 islas, mas que cualquier otro pais."
+        },
+        {
+          "palabra": "TEHERAN",
+          "pista": "Capital de Iran, en el medio oriente",
+          "explicacion": "Teheran es la capital de Iran (antes llamado Persia). Esta rodeada de montañas y tiene 9 millones de habitantes."
+        }
+      ]
+    }
+  ]
+}

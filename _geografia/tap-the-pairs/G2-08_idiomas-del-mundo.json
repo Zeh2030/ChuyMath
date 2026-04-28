@@ -1,0 +1,46 @@
+{
+  "id": "G2-08_idiomas-del-mundo",
+  "titulo": "Idiomas del Mundo",
+  "descripcion": "Empareja cada pais con el idioma que se habla principalmente",
+  "tipo": "tap-the-pairs",
+  "materia": "geografia",
+  "tema": "idiomas",
+  "nivel": "G2-08",
+  "misiones": [
+    {
+      "id": "mision-ttp-idiomas-mundo",
+      "tipo": "tap-the-pairs",
+      "titulo": "Pais y su Idioma",
+      "instruccion": "Toca un pais y luego el idioma que se habla principalmente ahi.",
+      "retos": [
+        {
+          "pares": [
+            { "es": "Mexico", "en": "Español" },
+            { "es": "Brasil", "en": "Portugues" },
+            { "es": "Estados Unidos", "en": "Ingles" },
+            { "es": "Francia", "en": "Frances" },
+            { "es": "Alemania", "en": "Aleman" }
+          ]
+        },
+        {
+          "pares": [
+            { "es": "Italia", "en": "Italiano" },
+            { "es": "Japon", "en": "Japones" },
+            { "es": "China", "en": "Chino mandarin" },
+            { "es": "Rusia", "en": "Ruso" },
+            { "es": "Arabia Saudita", "en": "Arabe" }
+          ]
+        },
+        {
+          "pares": [
+            { "es": "Egipto", "en": "Arabe" },
+            { "es": "India", "en": "Hindi e ingles" },
+            { "es": "Corea del Sur", "en": "Coreano" },
+            { "es": "Tailandia", "en": "Tailandes" },
+            { "es": "Israel", "en": "Hebreo" }
+          ]
+        }
+      ]
+    }
+  ]
+}
