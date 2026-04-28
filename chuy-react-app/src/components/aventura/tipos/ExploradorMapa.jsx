@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { feature } from 'topojson-client';
 import { geoNaturalEarth1, geoMercator, geoPath } from 'd3-geo';
 import worldData from 'world-atlas/countries-110m.json';
+import mexicoStatesData from './maps/mexico-estados.json';
 import './ExploradorMapa.css';
 
 /**
@@ -66,6 +67,16 @@ const PROJECTIONS = {
   'europa':          { proj: 'mercator',      center: [15, 55],   scale: 600 },
   'asia':            { proj: 'mercator',      center: [90, 30],   scale: 250 },
   'africa':          { proj: 'mercator',      center: [20, 0],    scale: 350 },
+  'mexico-estados':  { proj: 'mercator',      center: [-102, 24], scale: 1200 },
+};
+
+// Mapas que usan datos GeoJSON (no TopoJSON) — datos de fuentes alternativas
+const MAPAS_GEOJSON = {
+  'mexico-estados': {
+    data: mexicoStatesData,
+    idField: 'state_code',  // propiedad usada como ID
+    nameField: 'state_name', // propiedad usada como nombre
+  },
 };
 
 const VIEWPORT = { width: 800, height: 500 };
@@ -139,13 +150,29 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
     } catch (err) {}
   };
 
-  // Extraer features del topojson y proyectar
-  const { countries, pathGenerator } = useMemo(() => {
-    const allCountries = feature(worldData, worldData.objects.countries).features;
+  // Extraer features y proyectar — soporta TopoJSON (world-atlas) y GeoJSON (mexico-estados)
+  const { countries, pathGenerator, idGetter, nameGetter } = useMemo(() => {
+    let allFeatures;
+    let getId;
+    let getName;
+
+    const geojsonConfig = MAPAS_GEOJSON[mapa];
+    if (geojsonConfig) {
+      // GeoJSON: features ya estan en .features con propiedades custom
+      allFeatures = geojsonConfig.data.features;
+      getId = (f) => String(f.properties[geojsonConfig.idField]);
+      getName = (f) => f.properties[geojsonConfig.nameField] || '';
+    } else {
+      // TopoJSON: extraer features con topojson-client
+      allFeatures = feature(worldData, worldData.objects.countries).features;
+      getId = (f) => String(f.id).padStart(3, '0');
+      getName = (f) => f.properties?.name || '';
+    }
+
     const filterIds = REGIONES[mapa];
     const filtered = filterIds
-      ? allCountries.filter(c => filterIds.includes(String(c.id).padStart(3, '0')))
-      : allCountries;
+      ? allFeatures.filter(f => filterIds.includes(getId(f)))
+      : allFeatures;
 
     const config = PROJECTIONS[mapa] || PROJECTIONS['world'];
     const projection = (config.proj === 'mercator' ? geoMercator() : geoNaturalEarth1())
@@ -156,11 +183,20 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
     return {
       countries: filtered,
       pathGenerator: geoPath(projection),
+      idGetter: getId,
+      nameGetter: getName,
     };
   }, [mapa]);
 
-  // Normalizar IDs (world-atlas usa string sin padding, JSON puede usar "076" o "76")
-  const normalizeId = (id) => String(id).padStart(3, '0');
+  // Normalizar IDs (world-atlas usa string sin padding, JSON puede usar "076" o "76";
+  // mexico-estados usa numeros 1-32, JSON puede usar "9" o "09")
+  const normalizeId = (id) => {
+    if (id === null || id === undefined) return '';
+    const s = String(id);
+    // Para mexico-estados, ID es 1-32 (1-2 digitos). Para paises ISO, 3 digitos.
+    if (mapa === 'mexico-estados') return s.replace(/^0+/, '') || '0';
+    return s.padStart(3, '0');
+  };
 
   const handleClick = (countryId) => {
     if (!esModoQuiz) {
@@ -186,10 +222,10 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
     }, 2000);
   };
 
-  // Buscar nombre de pais por ID (para tooltips en modo explorar)
+  // Buscar nombre de pais/estado por ID
   const getCountryName = (id) => {
-    const country = countries.find(c => normalizeId(c.id) === normalizeId(id));
-    return country?.properties?.name || '';
+    const country = countries.find(c => normalizeId(idGetter(c)) === normalizeId(id));
+    return country ? nameGetter(country) : '';
   };
 
   if (!reto && esModoQuiz) {
@@ -223,12 +259,13 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="xMidYMid meet"
         >
-          {countries.map(country => {
-            const cid = normalizeId(country.id);
+          {countries.map((country, idx) => {
+            const rawId = idGetter(country);
+            const cid = normalizeId(rawId);
             const isCorrect = esModoQuiz && cid === normalizeId(reto?.id);
             const isSelected = cid === normalizeId(seleccionado);
             const isHovered = cid === normalizeId(hovered);
-            const baseColor = getColorPais(cid);
+            const baseColor = getColorPais(cid.padStart(3, '0'));
 
             let className = 'em-pais';
             let fillColor = baseColor;
@@ -243,12 +280,12 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
 
             return (
               <path
-                key={country.id}
+                key={`${cid}-${idx}`}
                 d={pathGenerator(country)}
                 className={className}
                 style={fillColor ? { fill: fillColor } : undefined}
-                onClick={() => handleClick(country.id)}
-                onMouseEnter={() => setHovered(country.id)}
+                onClick={() => handleClick(rawId)}
+                onMouseEnter={() => setHovered(rawId)}
                 onMouseLeave={() => setHovered(null)}
               />
             );
