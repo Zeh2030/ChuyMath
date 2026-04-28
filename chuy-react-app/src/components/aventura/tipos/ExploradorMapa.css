@@ -1,5 +1,5 @@
 .em-container {
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 16px;
   text-align: center;
@@ -8,10 +8,12 @@
 .em-progreso {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 16px;
   font-size: 1rem;
   font-weight: 600;
   color: #555;
+  gap: 8px;
 }
 
 .em-contador {
@@ -27,8 +29,24 @@
   border-radius: 14px;
 }
 
+.em-fs-btn {
+  background: linear-gradient(135deg, #8e44ad, #9b59b6);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 8px 14px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 2px 0 #6c3483;
+  transition: transform 0.15s;
+  margin-left: auto;
+}
+
+.em-fs-btn:hover { transform: translateY(-1px); }
+.em-fs-btn:active { transform: scale(0.96); }
+
 .em-pregunta {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 600;
   color: #2c3e50;
   margin-bottom: 16px;
@@ -36,53 +54,56 @@
 
 .em-mapa-wrapper {
   position: relative;
-  background: #e6f3ff;
-  border: 2px solid #b0d4f1;
-  border-radius: 14px;
-  padding: 8px;
+  background: linear-gradient(180deg, #cce7f5 0%, #a8d4ec 100%);
+  border: 3px solid #7fb8d8;
+  border-radius: 16px;
+  padding: 12px;
   margin-bottom: 16px;
-  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .em-mapa {
   width: 100%;
   height: auto;
   display: block;
-  background: linear-gradient(180deg, #e6f3ff 0%, #d0e8f8 100%);
   border-radius: 10px;
+  /* Ocean color via background — countries paint over this */
+  background: linear-gradient(180deg, #d4ebf7 0%, #b8dbef 100%);
+  max-height: 75vh;
 }
 
 .em-pais {
-  fill: #95c98a;
+  fill: #95c98a; /* fallback if no inline color */
   stroke: #ffffff;
   stroke-width: 0.5;
   cursor: pointer;
-  transition: fill 0.15s ease, stroke-width 0.15s ease;
+  transition: opacity 0.15s ease, stroke-width 0.15s ease, filter 0.15s ease;
 }
 
 .em-pais:hover,
 .em-pais.em-hover {
-  fill: #6fb360;
-  stroke-width: 1;
+  filter: brightness(1.15);
+  stroke-width: 1.2;
+  stroke: #2c3e50;
 }
 
 .em-pais.em-seleccionado {
-  fill: #3498db;
+  fill: #3498db !important;
   stroke: #2980b9;
   stroke-width: 1.5;
 }
 
 .em-pais.em-correcto {
-  fill: #27ae60;
+  fill: #27ae60 !important;
   stroke: #1e8449;
-  stroke-width: 1.5;
+  stroke-width: 2;
   animation: em-pulse 0.5s ease;
 }
 
 .em-pais.em-incorrecto {
-  fill: #e74c3c;
+  fill: #e74c3c !important;
   stroke: #c0392b;
-  stroke-width: 1.5;
+  stroke-width: 2;
   animation: em-shake 0.4s ease;
 }
 
@@ -115,7 +136,7 @@
 }
 
 .em-feedback {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-weight: 700;
   padding: 14px;
   border-radius: 12px;
@@ -163,8 +184,57 @@
   color: #e74c3c;
 }
 
+/* === Fullscreen Mode === */
+.em-fullscreen {
+  max-width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 24px;
+  background: #1a1a2e;
+  box-sizing: border-box;
+}
+
+.em-fullscreen .em-pregunta {
+  color: #fff;
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+}
+
+.em-fullscreen .em-progreso {
+  color: #ddd;
+  margin-bottom: 12px;
+}
+
+.em-fullscreen .em-contador,
+.em-fullscreen .em-racha {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+.em-fullscreen .em-mapa-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #1c3d5a 0%, #2c5a82 100%);
+  border-color: #3a6890;
+  margin-bottom: 12px;
+}
+
+.em-fullscreen .em-mapa {
+  max-height: 100%;
+  height: auto;
+  background: linear-gradient(180deg, #4a90c2 0%, #2e5a82 100%);
+}
+
+.em-fullscreen .em-feedback {
+  margin-top: 0;
+}
+
 @media (max-width: 600px) {
   .em-container { padding: 10px; }
   .em-pregunta { font-size: 1.1rem; }
-  .em-mapa-wrapper { padding: 4px; }
+  .em-mapa-wrapper { padding: 6px; }
+  .em-fs-btn { padding: 6px 10px; font-size: 1rem; }
 }
