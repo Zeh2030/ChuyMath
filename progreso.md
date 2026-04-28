@@ -1,6 +1,6 @@
 # 📈 Progreso del Desarrollo: El Mundo de Chuy (React Edition)
 
-> Registro de avances y checklist de tareas completadas. Se actualiza al finalizar cada hito importante del `plan.md`.
+> Registro de avances y checklist de tareas completadas. Se actualiza al finalizar cada hito importante del [HISTORIA_MIGRACION_REACT.md](HISTORIA_MIGRACION_REACT.md) (anteriormente `plan.md`). Para el roadmap activo del proyecto consulta [PLAN_MAESTRO.md](PLAN_MAESTRO.md).
 
 ---
 
@@ -18,7 +18,7 @@
 
 *   [x] **Crear Archivos de Planificación:**
     *   [x] `arquitectura.md`
-    *   [x] `plan.md`
+    *   [x] `plan.md` (renombrado a `HISTORIA_MIGRACION_REACT.md`)
     *   [x] `progreso.md`
     *   [x] `enseñanza.md`
 *   [x] **Inicializar el Proyecto React:**

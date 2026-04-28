@@ -1,6 +1,6 @@
-# 🗺️ Plan de Desarrollo: El Mundo de Chuy (React Edition)
+# 📜 Historia de la Migración a React (Referencia Histórica)
 
-> Plan de acción detallado para la refactorización del proyecto. Define las fases, tareas y objetivos de cada etapa del desarrollo.
+> **Documento histórico.** Este archivo (anteriormente `plan.md`) registra el plan de migración del proyecto a React + Vite + Firebase, completado en su totalidad. Se conserva como referencia del trabajo realizado durante esa fase. Para el roadmap activo del proyecto consulta [PLAN_MAESTRO.md](PLAN_MAESTRO.md).
 
 ---
 
