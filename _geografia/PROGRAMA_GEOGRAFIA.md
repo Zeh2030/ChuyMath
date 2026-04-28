@@ -288,7 +288,7 @@ Ejemplo: `G1-05_banderas-latam.json`
 | Contenido G1 | ✅ COMPLETO — Lote 2 (G1-01..04) + Lote 3 (G1-05..08) + Lote 5 (G1-09..12) |
 | Contenido G2 | G2-13 estados-usa-famosos (bonus); resto pendiente Lote 7+ |
 | Contenido G3 | Pendiente (cuando aplique) |
-| Expediciones | ✅ G1 (4): NY, SF, Mexico antiguo, Disney mundo + ✅ G2 (5): Paris, Asia, Australia, Caribe, Sudamerica |
+| Expediciones | ✅ COMPLETO — G1 (4) + G2 (5) + G3 (1) = **10 expediciones**. G1: NY, SF, Mexico antiguo, Disney. G2: Paris, Asia, Australia, Caribe, Sudamerica. G3: 7 Maravillas. |
 
 Ver `GUIA_CREACION_GEOGRAFIA.md` para convenciones de creacion de JSONs.
 

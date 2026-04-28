@@ -1,0 +1,271 @@
+{
+  "id": "GE3-01_expedicion-7-maravillas",
+  "titulo": "🌍 Expedicion: Las 7 Maravillas del Mundo",
+  "tipo": "expedicion",
+  "tema": "7-maravillas",
+  "materia": "geografia",
+  "nivel": "GE3-01",
+  "descripcion": "Las 7 Maravillas del Mundo Moderno son los monumentos mas espectaculares hechos por humanos, votados por la gente del mundo en 2007. Recorreras los 5 continentes para conocerlas: Chichen Itza, Petra, Cristo Redentor, Coliseo, Machu Picchu, Taj Mahal y la Gran Muralla China. ¡Y al final conoceras la 'octava' honoraria!",
+  "misiones": [
+    {
+      "id": "mar-01-intro",
+      "tipo": "opcion-multiple",
+      "titulo": "🏆 Mision 1: ¿Que son las 7 Maravillas?",
+      "instruccion": "Las 7 Maravillas del Mundo Moderno son monumentos elegidos por mas de 100 millones de personas en una votacion mundial. Es la lista oficial mas reconocida desde entonces.",
+      "pregunta": "¿En que año se eligieron las 7 Maravillas del Mundo Moderno?",
+      "opciones": [
+        { "texto": "A) En 1900 (hace mas de 120 años)", "valor": "1900" },
+        { "texto": "B) En 1950 (despues de la Segunda Guerra Mundial)", "valor": "1950" },
+        { "texto": "C) En 2007 (en una votacion mundial via internet y telefono)", "valor": "2007" },
+        { "texto": "D) En 2020 (durante la pandemia)", "valor": "2020" }
+      ],
+      "respuesta": "2007",
+      "explicacion_correcta": "¡Correcto! Se eligieron el 7 de julio de 2007 (07-07-07). Una organizacion suiza organizo la votacion y mas de 100 millones de personas participaron. Antes habia 21 candidatos finalistas.",
+      "explicacion_incorrecta": "Se eligieron en 2007. Curiosamente, la fecha fue el 07-07-07 (7 de julio de 2007). Antes existian las '7 Maravillas Antiguas' (de la epoca de los griegos), pero esta lista es moderna."
+    },
+    {
+      "id": "mar-02-las-7",
+      "tipo": "mini-story",
+      "titulo": "📖 Mision 2: Recorrido por las 7 Maravillas",
+      "instruccion": "Conoce cada una de las 7 maravillas, una por una.",
+      "parrafos": [
+        {
+          "texto": "1️⃣ CHICHEN ITZA (Mexico, Yucatan): Es una piramide maya construida hace mas de 1,000 años. Mide 30 metros y se llama 'El Castillo' o 'Templo de Kukulcan'. Cada equinoccio (21 de marzo y 21 de septiembre), la sombra del sol crea la ilusion de una serpiente bajando por la escalera.",
+          "emoji": "🐍",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Chichen Itza fue construida por los ___, una civilizacion antigua de Mexico.",
+              "opciones": ["aztecas", "mayas", "olmecas", "toltecas"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "2️⃣ PETRA (Jordania): Es una ciudad TALLADA EN ROCA color rosa, construida hace mas de 2,000 años por un pueblo llamado nabateos. La ciudad estaba ESCONDIDA y se redescubrio en 1812. Sale en la pelicula 'Indiana Jones y la Ultima Cruzada' como el lugar donde estaba el Santo Grial.",
+          "emoji": "🏛️",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Petra esta tallada en roca color ___.",
+              "opciones": ["azul", "verde", "rosa", "negra"],
+              "respuesta": 2
+            }
+          ]
+        },
+        {
+          "texto": "3️⃣ CRISTO REDENTOR (Brasil, Rio de Janeiro): Estatua de Jesus de 38 metros con los brazos abiertos sobre el cerro Corcovado. Tardaron 9 años en construirla (1922-1931). Esta cubierta de mosaicos triangulares de piedra. Se ve desde toda Rio.",
+          "emoji": "⛪",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "El Cristo Redentor mide 38 metros y tiene los brazos abiertos.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "4️⃣ COLISEO (Italia, Roma): Anfiteatro romano de hace 2,000 años (terminado en el año 80 d.C.). Cabian 50,000 espectadores. Ahi peleaban gladiadores y a veces inundaban el suelo para hacer batallas navales. Mide 188 metros de largo.",
+          "emoji": "🏟️",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "En el Coliseo peleaban los ___, guerreros profesionales del imperio romano.",
+              "opciones": ["caballeros", "gladiadores", "vikingos", "samuray"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "5️⃣ MACHU PICCHU (Peru): Ciudad inca construida arriba de los Andes a 2,400 metros de altura. Tiene 200 edificios y 3,000 escalones. Estuvo escondida y olvidada en la selva hasta 1911 cuando la encontro el explorador Hiram Bingham. ¡Las piedras encajan tan bien que no usaron cemento!",
+          "emoji": "🏔️",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Machu Picchu fue construida por los ___, otra civilizacion antigua de America.",
+              "opciones": ["mayas", "incas", "aztecas", "vikingos"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "6️⃣ TAJ MAHAL (India, Agra): Mausoleo (tumba elegante) de marmol blanco construido por el emperador Shah Jahan para enterrar a su esposa Mumtaz, a quien amaba muchisimo. Tardaron 22 años (1632-1653) y trabajaron 20,000 personas. Tiene 4 minaretes.",
+          "emoji": "🕌",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "El Taj Mahal es una tumba que un emperador construyo para su esposa.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "7️⃣ GRAN MURALLA CHINA: La construccion mas LARGA del mundo hecha por humanos: 21,000 km. La construyeron a lo largo de 2,000 años, desde el siglo VII a.C. hasta el siglo XVII. Se ve desde el espacio (en buenas condiciones). Le dicen 'la cola del dragon'.",
+          "emoji": "🐉",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "La Gran Muralla mide aproximadamente ___ km.",
+              "opciones": ["100", "1,000", "21,000", "100,000"],
+              "respuesta": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mar-03-mapa",
+      "tipo": "explorador-mapa",
+      "mapa": "world",
+      "modo": "quiz",
+      "titulo": "🗺️ Mision 3: Ubica las Maravillas",
+      "instruccion": "Las 7 maravillas estan en 5 continentes diferentes. Encuentra en el mapa los paises donde se encuentran 4 de ellas.",
+      "retos": [
+        {
+          "id": "484",
+          "nombre": "Mexico",
+          "pregunta": "¿Donde esta MEXICO? (donde esta Chichen Itza)"
+        },
+        {
+          "id": "380",
+          "nombre": "Italia",
+          "pregunta": "¿Donde esta ITALIA? (donde esta el Coliseo de Roma)"
+        },
+        {
+          "id": "604",
+          "nombre": "Peru",
+          "pregunta": "¿Donde esta PERU? (donde esta Machu Picchu)"
+        },
+        {
+          "id": "356",
+          "nombre": "India",
+          "pregunta": "¿Donde esta INDIA? (donde esta el Taj Mahal)"
+        }
+      ]
+    },
+    {
+      "id": "mar-04-petra",
+      "tipo": "opcion-multiple",
+      "titulo": "🏛️ Mision 4: Petra a Detalle",
+      "instruccion": "Petra es probablemente la maravilla menos conocida pero mas misteriosa. Esta en JORDANIA, en medio del desierto. Su nombre significa 'roca' en griego. La ciudad fue capital del reino nabateo.",
+      "pregunta": "¿Cual es el monumento mas famoso de Petra, una fachada gigante tallada directamente en la roca?",
+      "opciones": [
+        { "texto": "A) El Tesoro (Al-Khazneh)", "valor": "tesoro" },
+        { "texto": "B) La Gran Muralla", "valor": "muralla" },
+        { "texto": "C) La Esfinge", "valor": "esfinge" },
+        { "texto": "D) El Partenon", "valor": "partenon" }
+      ],
+      "respuesta": "tesoro",
+      "explicacion_correcta": "¡Correcto! 'Al-Khazneh' (que significa 'El Tesoro') es la fachada de un mausoleo tallada directamente en la pared de roca rosa. Mide 40 metros de alto. Aparece en Indiana Jones y la Ultima Cruzada como el lugar del Santo Grial. ¡Es la postal mas famosa del Medio Oriente!",
+      "explicacion_incorrecta": "Es 'El Tesoro' (Al-Khazneh). Tiene 40 metros de altura y esta tallado en la pared de un cañon. Es la imagen mas iconica de Petra y aparece en peliculas como Indiana Jones."
+    },
+    {
+      "id": "mar-05-comparativa",
+      "tipo": "true-or-false",
+      "titulo": "✅ Mision 5: Datos Comparativos de las 7 Maravillas",
+      "instruccion": "Algunas maravillas son mas antiguas, mas grandes o mas altas que otras. Decide si las afirmaciones son verdaderas o falsas.",
+      "retos": [
+        {
+          "oracion": "El Coliseo de Roma es mas ANTIGUO que Machu Picchu.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! El Coliseo se termino en el año 80 d.C. y Machu Picchu se construyo alrededor del año 1450 d.C. Hay casi 1,400 años de diferencia. Cuando los incas construyeron Machu Picchu, el Coliseo ya tenia 1,000 años de antiguo."
+        },
+        {
+          "oracion": "Las 7 Maravillas estan en 7 paises diferentes.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! Mexico, Jordania, Brasil, Italia, Peru, India y China. Cada pais tiene exactamente UNA maravilla. Y estan en 5 continentes (3 en Asia/Oriente, 2 en America, 1 en Europa, 0 en Africa, 0 en Oceania)."
+        },
+        {
+          "oracion": "La Gran Muralla China es la mas LARGA, pero el Taj Mahal es la mas ALTA.",
+          "correcto": false,
+          "correccion": "Cristo Redentor (38m) es mas alto que el Taj Mahal (73m incluyendo la cupula y minaretes).",
+          "explicacion": "Falso! En realidad, el Taj Mahal con sus minaretes y cupula es mas ALTO que el Cristo Redentor. Y la Gran Muralla es la mas larga (21,000 km). Pero la mas alta de todas es la Gran Muralla en sus partes mas elevadas (sobre montañas), seguida del Coliseo (48m) y luego Cristo Redentor (38m)."
+        },
+        {
+          "oracion": "Africa NO tiene ninguna de las 7 Maravillas Modernas.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! Africa quedo fuera de la lista. Pero por eso le dieron status especial a las Piramides de Giza (Egipto) como 'maravilla honoraria', porque no era justo que Africa, cuna de la humanidad y de las primeras civilizaciones, no estuviera."
+        },
+        {
+          "oracion": "Mexico y Peru son los UNICOS paises de America que tienen una maravilla en la lista.",
+          "correcto": false,
+          "correccion": "Tambien BRASIL tiene una maravilla: el Cristo Redentor.",
+          "explicacion": "Falso! Hay 3 paises de America con maravillas: Mexico (Chichen Itza), Peru (Machu Picchu) y Brasil (Cristo Redentor). America tiene mas maravillas que ningun otro continente (3 de las 7)."
+        }
+      ]
+    },
+    {
+      "id": "mar-06-egipto-honoraria",
+      "tipo": "mini-story",
+      "titulo": "📖 Mision 6: La Maravilla 'Honoraria' (Egipto)",
+      "instruccion": "Conoce la unica maravilla del mundo ANTIGUO que aun sobrevive y por que tiene un lugar especial.",
+      "parrafos": [
+        {
+          "texto": "En la antigüedad (hace mas de 2,000 años) habia OTRA lista de 7 maravillas, escrita por los griegos. Eran: las Piramides de Egipto, los Jardines de Babilonia, el Templo de Artemisa, la Estatua de Zeus, el Mausoleo de Halicarnaso, el Coloso de Rodas y el Faro de Alejandria.",
+          "emoji": "📜",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "La lista antigua de las 7 maravillas la escribieron los ___ hace 2,000 años.",
+              "opciones": ["egipcios", "griegos", "romanos", "chinos"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "De esas 7 antiguas, solo UNA sobrevive hoy: las PIRAMIDES DE GIZA en Egipto. Las otras 6 fueron destruidas por terremotos, incendios o invasiones a lo largo de los siglos. Las piramides estan ahi desde hace 4,500 años, las construyeron los faraones.",
+          "emoji": "🔺",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "De las 7 maravillas ANTIGUAS, la unica que sobrevive hoy son las ___.",
+              "opciones": ["Jardines de Babilonia", "Piramides de Egipto", "Coloso de Rodas", "Faro de Alejandria"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "En 2007, cuando se hizo la votacion para las 7 maravillas MODERNAS, las Piramides estaban entre las candidatas. Pero Egipto se quejo: '¡No es justo competir contra cosas mas nuevas! Llevamos 4,500 años siendo maravilla.' Asi que las Piramides recibieron un titulo HONORARIO especial: 'Maravilla Honoraria'.",
+          "emoji": "👑",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Las Piramides de Egipto recibieron un titulo HONORARIO en 2007 por su antigüedad.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Hoy las 7 maravillas (mas la honoraria) son protegidas por la UNESCO como PATRIMONIO DE LA HUMANIDAD: lugares tan importantes que pertenecen a TODOS los humanos del planeta, no solo al pais donde estan. La UNESCO tiene una lista de mas de 1,200 sitios protegidos en el mundo.",
+          "emoji": "🌍",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Los lugares importantes protegidos para la humanidad son llamados Patrimonio de la ___.",
+              "opciones": ["Tierra", "Humanidad", "Naturaleza", "Cultura"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "Recapitulando: las 7 Maravillas MODERNAS estan en 7 paises de 5 continentes. Cada una tiene mas de 600 años de historia (la mas nueva es Cristo Redentor de 1931, casi 'recien construida'). Y las Piramides de Egipto son la honoraria, recordandonos que la humanidad ha construido cosas magnificas desde hace MUCHO.",
+          "emoji": "🏆",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Las 7 Maravillas Modernas estan en ___ paises diferentes.",
+              "opciones": ["5", "6", "7", "10"],
+              "respuesta": 2
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
