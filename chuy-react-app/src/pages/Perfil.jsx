@@ -6,6 +6,7 @@ import { doc, updateDoc } from 'firebase/firestore';
 import PageWrapper from '../components/layout/PageWrapper';
 import Header from '../components/layout/Header';
 import { useNavigate } from 'react-router-dom';
+import './Perfil.css';
 
 const Perfil = () => {
   const { currentUser } = useAuth();
@@ -104,12 +105,12 @@ const Perfil = () => {
   return (
     <PageWrapper>
       <Header />
-      <div style={styles.container}>
+      <div style={styles.container} className="perfil-container">
         <h1> Mi Perfil</h1>
         <p style={styles.subtitle}>Personaliza tu aventura, {profile.nombre || 'súper explorador'}!</p>
 
         <form onSubmit={handleGuardarPerfil} style={styles.form}>
-          <div style={styles.card}>
+          <div style={styles.card} className="perfil-card">
             <h3>Información Básica</h3>
             <div style={styles.inputGroup}>
               <label htmlFor="email">Correo</label>
@@ -136,9 +137,9 @@ const Perfil = () => {
             </div>
           </div>
 
-          <div style={styles.card}>
+          <div style={styles.card} className="perfil-card">
             <h3>🎨 Mi Tema</h3>
-            <div style={styles.themeGrid}>
+            <div style={styles.themeGrid} className="perfil-theme-grid">
               {[
                 { id: 'aventurero', label: 'Aventurero', color1: '#667eea', color2: '#764ba2' },
                 { id: 'princesa', label: 'Princesa', color1: '#E8899E', color2: '#C2627A' },
@@ -154,6 +155,7 @@ const Perfil = () => {
                   key={tema.id}
                   type="button"
                   onClick={() => setTemaSeleccionado(tema.id)}
+                  className="perfil-theme-btn"
                   style={{
                     ...styles.themeButton,
                     background: tema.rainbow
@@ -173,14 +175,15 @@ const Perfil = () => {
           </button>
           {mensaje && <p style={styles.successMessage}>{mensaje}</p>}
 
-          <div style={styles.card}>
+          <div style={styles.card} className="perfil-card">
             <h3>Mi Avatar</h3>
-            <div style={styles.avatarGrid}>
+            <div style={styles.avatarGrid} className="perfil-avatar-grid">
               {avatares.map((avatar, index) => (
                 <button
                   key={index}
                   type="button"
                   onClick={() => setAvatarSeleccionado(avatar)}
+                  className="perfil-avatar-btn"
                   style={{
                     ...styles.avatarButton,
                     ...(avatarSeleccionado === avatar ? styles.avatarSelected : {}),
@@ -249,7 +252,7 @@ const styles = {
   },
   avatarGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(5, 1fr)',
+    gridTemplateColumns: 'repeat(5, minmax(0, 1fr))',
     gap: '15px',
     marginTop: '15px',
   },
@@ -274,7 +277,7 @@ const styles = {
   },
   themeGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
+    gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
     gap: '12px',
     marginTop: '15px',
   },

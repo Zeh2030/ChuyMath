@@ -1,0 +1,34 @@
+/* Perfil — overrides responsivos para móvil
+   Los estilos base viven inline en Perfil.jsx; aquí solo ajustamos mobile. */
+
+@media (max-width: 600px) {
+  .perfil-container {
+    padding: 12px !important;
+  }
+
+  .perfil-card {
+    padding: 16px !important;
+  }
+
+  .perfil-avatar-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    gap: 6px !important;
+  }
+
+  .perfil-avatar-btn {
+    padding: 6px !important;
+    font-size: 1.8rem !important;
+    min-height: 52px !important;
+    min-width: 0 !important;
+    border-radius: 10px !important;
+  }
+
+  .perfil-theme-grid {
+    gap: 8px !important;
+  }
+
+  .perfil-theme-btn {
+    padding: 14px 8px !important;
+    min-height: 56px !important;
+  }
+}
