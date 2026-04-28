@@ -1,0 +1,171 @@
+{
+  "id": "GE2-05_expedicion-sudamerica",
+  "titulo": "⛰️ Expedicion por Sudamerica",
+  "tipo": "expedicion",
+  "tema": "sudamerica",
+  "materia": "geografia",
+  "nivel": "GE2-05",
+  "descripcion": "Sudamerica tiene de TODO: la cordillera mas larga del mundo (los Andes), la selva mas grande (el Amazonas), las cataratas mas espectaculares (Iguazu), la civilizacion inca (Machu Picchu) y los glaciares de la Patagonia.",
+  "misiones": [
+    {
+      "id": "sa-01-mapa-peru",
+      "tipo": "explorador-mapa",
+      "mapa": "world",
+      "modo": "quiz",
+      "titulo": "🗺️ Mision 1: Ubica Peru",
+      "instruccion": "Peru esta en la costa oeste de Sudamerica, junto al oceano Pacifico. Por el cruzan los Andes y ahi nace el rio Amazonas.",
+      "retos": [
+        {
+          "id": "604",
+          "nombre": "Peru",
+          "pregunta": "¿Donde esta Peru? (oeste de Sudamerica, junto al oceano Pacifico)"
+        }
+      ]
+    },
+    {
+      "id": "sa-02-machu-picchu",
+      "tipo": "opcion-multiple",
+      "titulo": "🏔️ Mision 2: Machu Picchu",
+      "instruccion": "Machu Picchu es una ciudad antigua construida arriba de las MONTAÑAS de los Andes, a 2,400 metros de altura. La construyeron los incas hace unos 600 años. Estuvo escondida en la selva hasta 1911.",
+      "pregunta": "¿Que civilizacion construyo Machu Picchu?",
+      "opciones": [
+        { "texto": "A) Los mayas", "valor": "mayas" },
+        { "texto": "B) Los aztecas", "valor": "aztecas" },
+        { "texto": "C) Los incas", "valor": "incas" },
+        { "texto": "D) Los romanos", "valor": "romanos" }
+      ],
+      "respuesta": "incas",
+      "explicacion_correcta": "¡Correcto! Los incas tuvieron el imperio mas grande de America antes de los españoles. Construyeron Machu Picchu sin usar cemento: las piedras encajan tan perfecto que ni una hoja de papel pasa entre ellas.",
+      "explicacion_incorrecta": "Fueron los INCAS, no los mayas (esos eran de Mexico/Guatemala). Los incas vivieron en Peru, Bolivia, Ecuador, Chile y Argentina. Su capital era Cuzco."
+    },
+    {
+      "id": "sa-03-mapa-brasil",
+      "tipo": "explorador-mapa",
+      "mapa": "world",
+      "modo": "quiz",
+      "titulo": "🗺️ Mision 3: Ubica Brasil",
+      "instruccion": "Brasil es el pais MAS GRANDE de Sudamerica (y el quinto mas grande del mundo). Ocupa casi la mitad del continente. Ahi esta la selva del Amazonas y la ciudad de Rio de Janeiro.",
+      "retos": [
+        {
+          "id": "076",
+          "nombre": "Brasil",
+          "pregunta": "¿Donde esta Brasil? (el pais mas grande de Sudamerica, en el este, frente al Atlantico)"
+        }
+      ]
+    },
+    {
+      "id": "sa-04-cristo",
+      "tipo": "opcion-multiple",
+      "titulo": "⛪ Mision 4: El Cristo Redentor",
+      "instruccion": "En Rio de Janeiro hay una estatua gigante de Jesus con los brazos abiertos, sobre el cerro Corcovado. Mira hacia toda la ciudad. Es uno de los simbolos mas reconocidos de Brasil.",
+      "pregunta": "¿Cuanto mide el Cristo Redentor?",
+      "opciones": [
+        { "texto": "A) 5 metros (como un poste)", "valor": "5" },
+        { "texto": "B) 38 metros (como un edificio de 13 pisos)", "valor": "38" },
+        { "texto": "C) 100 metros", "valor": "100" },
+        { "texto": "D) 300 metros", "valor": "300" }
+      ],
+      "respuesta": "38",
+      "explicacion_correcta": "¡Correcto! Mide 38 metros con su pedestal. Sus brazos abiertos miden 28 metros de punta a punta. Esta sobre el cerro Corcovado, a 700 metros de altura, asi que se ve desde toda Rio.",
+      "explicacion_incorrecta": "Mide 38 metros. La construyeron entre 1922 y 1931 con concreto recubierto de mosaicos triangulares de piedra. Es Patrimonio de la Humanidad."
+    },
+    {
+      "id": "sa-05-amazonas",
+      "tipo": "true-or-false",
+      "titulo": "🐍 Mision 5: La Selva del Amazonas",
+      "instruccion": "El Amazonas es la selva mas grande del mundo. Cubre 9 paises de Sudamerica. Decide si las afirmaciones son verdaderas o falsas.",
+      "retos": [
+        {
+          "oracion": "El Amazonas es tan grande que produce el 20% del oxigeno del planeta.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! Por eso le dicen 'el pulmon del mundo'. Tiene mas arboles que toda Europa junta. La cuarta parte de las medicinas modernas vienen de plantas amazonicas."
+        },
+        {
+          "oracion": "El rio Amazonas es el mas CAUDALOSO del mundo (lleva mas agua que ningun otro).",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! Lleva 1/5 del agua dulce de todos los rios del mundo. En algunas partes mide 10 km de ancho. Si fuera oceano, seria el mas grande de America."
+        },
+        {
+          "oracion": "En el Amazonas viven los osos polares y los pingüinos.",
+          "correcto": false,
+          "correccion": "El Amazonas es SELVA TROPICAL: ahi viven jaguares, monos, pirañas, anacondas, no osos polares.",
+          "explicacion": "Falso! En la selva amazonica viven 2.5 millones de especies de insectos, jaguares, monos, perezosos, anacondas, pirañas, delfines rosas y mas. Los osos polares y pingüinos viven en los polos, no en la selva."
+        }
+      ]
+    },
+    {
+      "id": "sa-06-patagonia",
+      "tipo": "opcion-multiple",
+      "titulo": "🏔️ Mision 6: La Patagonia",
+      "instruccion": "La Patagonia es la region del SUR de Argentina y Chile. Es famosa por sus paisajes de glaciares, montañas con picos puntiagudos, lagos azules y pingüinos. Aqui los antiguos exploradores creian que vivian gigantes (de ahi el nombre 'patagones').",
+      "pregunta": "¿Que paises comparten la Patagonia?",
+      "opciones": [
+        { "texto": "A) Brasil y Peru", "valor": "br-pe" },
+        { "texto": "B) Argentina y Chile", "valor": "ar-cl" },
+        { "texto": "C) Colombia y Venezuela", "valor": "co-ve" },
+        { "texto": "D) Uruguay y Paraguay", "valor": "uy-py" }
+      ],
+      "respuesta": "ar-cl",
+      "explicacion_correcta": "¡Correcto! La Patagonia esta dividida entre Argentina (este) y Chile (oeste), separada por la cordillera de los Andes. Ahi esta el Glaciar Perito Moreno, uno de los pocos glaciares del mundo que SIGUE creciendo.",
+      "explicacion_incorrecta": "Argentina y Chile. La Patagonia argentina tiene los glaciares (Perito Moreno) y la chilena tiene Torres del Paine, montañas con tres picos puntiagudos famosos."
+    },
+    {
+      "id": "sa-07-cultura",
+      "tipo": "mini-story",
+      "titulo": "📖 Mision 7: Cultura y Pasiones de Sudamerica",
+      "instruccion": "Conoce las pasiones que unen a los sudamericanos.",
+      "parrafos": [
+        {
+          "texto": "El FUTBOL es la pasion del continente. Sudamerica ha ganado mas Mundiales de futbol que cualquier otra region: Brasil 5, Argentina 3, Uruguay 2. Jugadores como Pele, Maradona, Messi, Ronaldinho, Neymar, todos son sudamericanos.",
+          "emoji": "⚽",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Lionel Messi es del pais de ___.",
+              "opciones": ["Brasil", "Argentina", "Colombia", "Chile"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "La MUSICA tambien es muy variada: el TANGO en Argentina (musica romantica con bandoneon), la SAMBA y BOSSA NOVA en Brasil (con guitarra y percusion), la CUMBIA en Colombia, y los huayños andinos con flautas en Peru y Bolivia.",
+          "emoji": "🎶",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "El tango es la musica tipica de ___.",
+              "opciones": ["Brasil", "Peru", "Argentina", "Colombia"],
+              "respuesta": 2
+            }
+          ]
+        },
+        {
+          "texto": "La COMIDA varia por pais: en Argentina el ASADO (carne a la parrilla), en Peru el CEVICHE (pescado crudo en limon), en Brasil la FEIJOADA (frijoles negros con carne), en Colombia la BANDEJA PAISA (un platote con de todo). ¡Y todos toman cafe colombiano!",
+          "emoji": "🍴",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "El ceviche, pescado crudo en jugo de limon, es de ___.",
+              "opciones": ["Brasil", "Peru", "Argentina", "Chile"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "Y el CARNAVAL de Rio de Janeiro en Brasil es la fiesta mas grande del mundo. Por una semana en febrero, millones de personas bailan samba en las calles con disfraces brillantes. ¡Es como mil dias de muertos juntos pero con musica brasileña!",
+          "emoji": "🎭",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "El Carnaval de Rio en Brasil es una de las fiestas mas grandes del mundo.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

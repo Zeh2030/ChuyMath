@@ -1,0 +1,156 @@
+{
+  "id": "GE2-01_expedicion-paris",
+  "titulo": "🗼 Expedicion por Paris",
+  "tipo": "expedicion",
+  "tema": "paris",
+  "materia": "geografia",
+  "nivel": "GE2-01",
+  "descripcion": "¡Bienvenido a Paris, la capital de Francia! Conoceras la Torre Eiffel, el museo del Louvre con la Mona Lisa, la catedral Notre-Dame y los Campos Eliseos. Es conocida como 'la ciudad del amor' y 'la ciudad de la luz'.",
+  "misiones": [
+    {
+      "id": "paris-01-mapa",
+      "tipo": "explorador-mapa",
+      "mapa": "world",
+      "modo": "quiz",
+      "titulo": "🗺️ Mision 1: Ubica Francia",
+      "instruccion": "Paris es la capital de Francia, un pais en el oeste de Europa. Esta junto al canal de la Mancha, frente al Reino Unido.",
+      "retos": [
+        {
+          "id": "250",
+          "nombre": "Francia",
+          "pregunta": "¿Donde esta Francia? (oeste de Europa, junto al oceano Atlantico)"
+        }
+      ]
+    },
+    {
+      "id": "paris-02-eiffel",
+      "tipo": "opcion-multiple",
+      "titulo": "🗼 Mision 2: La Torre Eiffel",
+      "instruccion": "La Torre Eiffel es el monumento mas famoso de Paris. La construyeron de hierro en 1889 para una expo internacional. Mide 330 metros (con antena), tan alta como un edificio de 100 pisos.",
+      "pregunta": "¿De que material esta hecha la Torre Eiffel?",
+      "opciones": [
+        { "texto": "A) Madera", "valor": "madera" },
+        { "texto": "B) Hierro", "valor": "hierro" },
+        { "texto": "C) Concreto", "valor": "concreto" },
+        { "texto": "D) Oro", "valor": "oro" }
+      ],
+      "respuesta": "hierro",
+      "explicacion_correcta": "¡Correcto! Es 100% hierro. Tiene mas de 18,000 piezas unidas con 2.5 millones de remaches. ¡Y cada noche se ilumina con 20,000 luces que parpadean cada hora!",
+      "explicacion_incorrecta": "Es de hierro. Pesa 10,000 toneladas (como 1,500 elefantes) y mide 330 metros con su antena. Iba a ser temporal, pero gusto tanto que se quedo."
+    },
+    {
+      "id": "paris-03-louvre",
+      "tipo": "opcion-multiple",
+      "titulo": "🖼️ Mision 3: El Museo del Louvre",
+      "instruccion": "El Louvre es uno de los museos mas grandes del mundo. Antes era un palacio donde vivian reyes franceses. Ahora guarda mas de 380,000 obras de arte. Su entrada es una piramide de cristal moderna.",
+      "pregunta": "¿Cual es la pintura mas famosa del Louvre, una mujer con sonrisa misteriosa pintada por Leonardo da Vinci?",
+      "opciones": [
+        { "texto": "A) La Noche Estrellada", "valor": "noche" },
+        { "texto": "B) La Mona Lisa", "valor": "mona" },
+        { "texto": "C) El Grito", "valor": "grito" },
+        { "texto": "D) Los Girasoles", "valor": "girasoles" }
+      ],
+      "respuesta": "mona",
+      "explicacion_correcta": "¡Correcto! La Mona Lisa (o La Gioconda) la pinto Leonardo da Vinci hace 500 años. Es chiquita (77 x 53 cm) pero tiene una vitrina blindada porque es la pintura mas valiosa del mundo.",
+      "explicacion_incorrecta": "Es la Mona Lisa, pintada por Leonardo da Vinci alrededor de 1503. Su sonrisa es famosa porque cambia segun como la mires. ¡Millones de personas la visitan cada año!"
+    },
+    {
+      "id": "paris-04-notre-dame",
+      "tipo": "true-or-false",
+      "titulo": "⛪ Mision 4: Notre-Dame",
+      "instruccion": "Notre-Dame es una catedral gotica del siglo XII (¡tiene mas de 850 años!). En 2019 hubo un incendio que dañó parte del techo y la aguja, pero la han ido reconstruyendo.",
+      "retos": [
+        {
+          "oracion": "Notre-Dame es una catedral muy antigua, de hace mas de 800 años.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! La empezaron a construir en 1163 y la terminaron 200 años despues. Sale en la pelicula 'El Jorobado de Notre-Dame' de Disney."
+        },
+        {
+          "oracion": "Notre-Dame esta hecha completamente de oro y diamantes.",
+          "correcto": false,
+          "correccion": "Notre-Dame esta hecha de PIEDRA, no de oro.",
+          "explicacion": "Falso! Es una catedral de piedra. Tiene gargolas (figuras de monstruos) en los techos, vitrales gigantes de colores y dos torres de 69 metros."
+        },
+        {
+          "oracion": "Notre-Dame esta en una islita en medio del rio Sena.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! Esta en la 'Ile de la Cite', una isla pequeña en el rio Sena que cruza Paris. Ahi nacio la ciudad."
+        }
+      ]
+    },
+    {
+      "id": "paris-05-champs",
+      "tipo": "opcion-multiple",
+      "titulo": "🛍️ Mision 5: Los Campos Eliseos",
+      "instruccion": "Los Campos Eliseos (Champs-Elysees en frances) es la avenida mas famosa de Paris. Mide 2 km de larga y termina en un arco gigante llamado Arco del Triunfo.",
+      "pregunta": "¿Que esta al final de la avenida Campos Eliseos?",
+      "opciones": [
+        { "texto": "A) La Torre Eiffel", "valor": "eiffel" },
+        { "texto": "B) El Arco del Triunfo", "valor": "arco" },
+        { "texto": "C) Notre-Dame", "valor": "notre" },
+        { "texto": "D) Disneyland", "valor": "disney" }
+      ],
+      "respuesta": "arco",
+      "explicacion_correcta": "¡Correcto! El Arco del Triunfo lo mando construir Napoleon en 1806 para celebrar sus victorias. Mide 50 metros de alto y desde arriba se ven las 12 avenidas que salen como una estrella.",
+      "explicacion_incorrecta": "Es el Arco del Triunfo. Es como una puerta enorme de piedra. Cada 14 de julio (dia nacional de Francia) hay un desfile gigante por toda esta avenida."
+    },
+    {
+      "id": "paris-06-historia",
+      "tipo": "mini-story",
+      "titulo": "📖 Mision 6: Paris, la Ciudad de la Luz",
+      "instruccion": "Conoce la historia y la cultura de Paris.",
+      "parrafos": [
+        {
+          "texto": "Paris es la capital de Francia desde hace mas de 1,000 años. Por ahi paso todo: la Edad Media con caballeros, los reyes Luis (especialmente Luis XIV el 'Rey Sol' que vivio en el palacio de Versalles), la Revolucion Francesa de 1789... y dos guerras mundiales.",
+          "emoji": "👑",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Paris es la capital de ___.",
+              "opciones": ["España", "Italia", "Francia", "Inglaterra"],
+              "respuesta": 2
+            }
+          ]
+        },
+        {
+          "texto": "Le dicen 'Ciudad de la Luz' porque fue una de las primeras ciudades del mundo en tener faroles en las calles, y tambien porque ahi nacieron muchas ideas brillantes (filosofos, escritores, cientificos como Madame Curie).",
+          "emoji": "💡",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "A Paris le dicen 'Ciudad de la Luz'.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "La comida francesa es famosa en el mundo: BAGUETTE (el pan largo crujiente), CROISSANT (el cuernito), QUESOS (mas de 400 tipos diferentes), MACARONS (galletitas de colores) y por supuesto los crepes con Nutella o azucar.",
+          "emoji": "🥖",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "El pan largo y crujiente tipico frances se llama ___.",
+              "opciones": ["bolillo", "baguette", "tortilla", "pizza"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "A 32 km de Paris esta DISNEYLAND PARIS, abierto desde 1992. Es el unico parque Disney de Europa. Asi que cuando visites Paris, en un dia puedes ver la Torre Eiffel y al dia siguiente conocer a Mickey.",
+          "emoji": "🐭",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Disneyland Paris es el unico parque Disney en Europa.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "id": "GE2-02_expedicion-asia",
+  "titulo": "🏯 Expedicion por Asia",
+  "tipo": "expedicion",
+  "tema": "asia",
+  "materia": "geografia",
+  "nivel": "GE2-02",
+  "descripcion": "Asia es el continente mas grande del mundo. Recorreras la Gran Muralla de China, la ciudad futurista de Tokio en Japon, y el palacio de marmol Taj Mahal en India.",
+  "misiones": [
+    {
+      "id": "asia-01-mapa-china",
+      "tipo": "explorador-mapa",
+      "mapa": "world",
+      "modo": "quiz",
+      "titulo": "🗺️ Mision 1: Ubica China",
+      "instruccion": "Empezamos por China, el pais mas poblado del mundo (1,400 millones de habitantes). Esta en el este de Asia.",
+      "retos": [
+        {
+          "id": "156",
+          "nombre": "China",
+          "pregunta": "¿Donde esta China? (este de Asia, frente al oceano Pacifico)"
+        }
+      ]
+    },
+    {
+      "id": "asia-02-muralla",
+      "tipo": "opcion-multiple",
+      "titulo": "🐉 Mision 2: La Gran Muralla China",
+      "instruccion": "La Gran Muralla China es la construccion mas LARGA del mundo hecha por humanos. La construyeron hace mas de 2,000 años para protegerse de invasores. Le dicen 'la cola del dragon' porque sube y baja por las montañas.",
+      "pregunta": "¿Cuanto mide aproximadamente la Gran Muralla?",
+      "opciones": [
+        { "texto": "A) 100 km (como un pueblo)", "valor": "100" },
+        { "texto": "B) 1,000 km (largo)", "valor": "1000" },
+        { "texto": "C) 21,000 km (la mitad de la Tierra)", "valor": "21000" },
+        { "texto": "D) 100,000 km", "valor": "100000" }
+      ],
+      "respuesta": "21000",
+      "explicacion_correcta": "¡Correcto! Mide 21,000 km, casi la mitad de la circunferencia de la Tierra. Es tan larga que se puede ver desde el espacio (en buenas condiciones). ¡Necesitarias 1 año caminando para recorrerla toda!",
+      "explicacion_incorrecta": "Mide aproximadamente 21,000 km. Si pudieras estirarla en linea recta llegaria de Mexico hasta Australia. La construyeron a mano durante mas de 1,500 años."
+    },
+    {
+      "id": "asia-03-mapa-japon",
+      "tipo": "explorador-mapa",
+      "mapa": "world",
+      "modo": "quiz",
+      "titulo": "🗺️ Mision 3: Ubica Japon",
+      "instruccion": "Japon es un archipielago (un grupo de islas) en el oceano Pacifico, al este de China. Tiene mas de 6,800 islas, pero la mayoria son chiquitas.",
+      "retos": [
+        {
+          "id": "392",
+          "nombre": "Japon",
+          "pregunta": "¿Donde esta Japon? (islas en el oceano Pacifico, al este de China y Corea)"
+        }
+      ]
+    },
+    {
+      "id": "asia-04-tokio",
+      "tipo": "opcion-multiple",
+      "titulo": "🗼 Mision 4: Tokio, Capital de Japon",
+      "instruccion": "Tokio es la capital de Japon y una de las ciudades mas pobladas del mundo (38 millones en su area metropolitana). Es famosa por sus rascacielos, neon, anime, sushi y el Monte Fuji al fondo.",
+      "pregunta": "¿Cual de estos NO es japones?",
+      "opciones": [
+        { "texto": "A) Pokemon", "valor": "pokemon" },
+        { "texto": "B) Sushi", "valor": "sushi" },
+        { "texto": "C) Tacos", "valor": "tacos" },
+        { "texto": "D) Mario Bros", "valor": "mario" }
+      ],
+      "respuesta": "tacos",
+      "explicacion_correcta": "¡Correcto! Los tacos son MEXICANOS. Pokemon, sushi y Mario Bros son japoneses. ¡La cultura pop japonesa esta en todo el mundo!",
+      "explicacion_incorrecta": "Los tacos son mexicanos, no japoneses. Pokemon, sushi y Mario Bros son creaciones japonesas que conquistaron el mundo."
+    },
+    {
+      "id": "asia-05-mapa-india",
+      "tipo": "explorador-mapa",
+      "mapa": "world",
+      "modo": "quiz",
+      "titulo": "🗺️ Mision 5: Ubica India",
+      "instruccion": "India es el segundo pais mas poblado del mundo (1,420 millones). Esta en el sur de Asia, en una peninsula que se mete al oceano Indico.",
+      "retos": [
+        {
+          "id": "356",
+          "nombre": "India",
+          "pregunta": "¿Donde esta India? (peninsula en el sur de Asia, junto al oceano Indico)"
+        }
+      ]
+    },
+    {
+      "id": "asia-06-taj-mahal",
+      "tipo": "opcion-multiple",
+      "titulo": "🕌 Mision 6: El Taj Mahal",
+      "instruccion": "El Taj Mahal es uno de los edificios mas hermosos del mundo. Es de marmol BLANCO y tiene 4 minaretes (torres) en sus esquinas. Esta en India, junto a un rio.",
+      "pregunta": "¿Por que se construyo el Taj Mahal?",
+      "opciones": [
+        { "texto": "A) Como un palacio para vivir", "valor": "palacio" },
+        { "texto": "B) Como tumba: un emperador lo construyo para su esposa amada", "valor": "tumba" },
+        { "texto": "C) Como mercado", "valor": "mercado" },
+        { "texto": "D) Como escuela", "valor": "escuela" }
+      ],
+      "respuesta": "tumba",
+      "explicacion_correcta": "¡Correcto! El emperador Shah Jahan lo mando construir en 1632 para enterrar a su esposa Mumtaz, a quien amaba muchisimo. Tardaron 22 años y trabajaron 20,000 personas. Es un monumento al amor.",
+      "explicacion_incorrecta": "Es la TUMBA mas hermosa del mundo. La construyeron porque el emperador Shah Jahan estaba devastado cuando murio su esposa Mumtaz, y queria un lugar magnifico para ella."
+    },
+    {
+      "id": "asia-07-templos",
+      "tipo": "mini-story",
+      "titulo": "📖 Mision 7: Las Religiones y Templos de Asia",
+      "instruccion": "Asia es la cuna de muchas religiones del mundo, cada una con sus templos hermosos.",
+      "parrafos": [
+        {
+          "texto": "El BUDISMO empezo en la India hace 2,500 años con un principe llamado Buda. Hoy se practica en muchos paises de Asia: Tailandia, Vietnam, Camboya, China, Japon. Sus templos son llamados PAGODAS y tienen techos puntiagudos en varios pisos.",
+          "emoji": "☸️",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "El budismo empezo en el pais de ___.",
+              "opciones": ["China", "Japon", "India", "Tailandia"],
+              "respuesta": 2
+            }
+          ]
+        },
+        {
+          "texto": "El HINDUISMO es la religion principal de India y tiene mas de 4,000 años. Tiene muchos dioses (Brahma, Vishnu, Shiva, Ganesha el dios elefante). Sus templos son super coloridos y tienen estatuas de los dioses talladas en piedra.",
+          "emoji": "🐘",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Ganesha es un dios hindu con cabeza de elefante.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "En Japon esta el SINTOISMO, que cree que hay espiritus en los rios, montañas y arboles. Sus templos se llaman SANTUARIOS y tienen puertas rojas llamadas TORII en la entrada. Los gatitos 'maneki-neko' que saludan con la pata son de esta religion.",
+          "emoji": "⛩️",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Las puertas rojas en los templos de Japon se llaman ___.",
+              "opciones": ["pagodas", "torii", "domos", "minaretes"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "Y el ISLAM, que aunque empezo en Arabia, hoy es practicado por millones en Asia (Indonesia, Pakistan, Bangladesh, Malasia). Sus templos se llaman MEZQUITAS y tienen domos redondos y minaretes. El Taj Mahal tambien es un edificio islamico.",
+          "emoji": "🕌",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Los templos del islam se llaman ___.",
+              "opciones": ["pagodas", "santuarios", "mezquitas", "templos"],
+              "respuesta": 2
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

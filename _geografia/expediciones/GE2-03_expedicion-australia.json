@@ -1,0 +1,144 @@
+{
+  "id": "GE2-03_expedicion-australia",
+  "titulo": "🦘 Expedicion por Australia",
+  "tipo": "expedicion",
+  "tema": "australia",
+  "materia": "geografia",
+  "nivel": "GE2-03",
+  "descripcion": "Australia es el unico pais que tambien es un continente entero! Conoceras la Opera de Sydney, los canguros y koalas, la Gran Barrera de Coral y el desierto rojo del Outback.",
+  "misiones": [
+    {
+      "id": "aus-01-mapa",
+      "tipo": "explorador-mapa",
+      "mapa": "world",
+      "modo": "quiz",
+      "titulo": "🗺️ Mision 1: Ubica Australia",
+      "instruccion": "Australia esta en el hemisferio sur, rodeada por agua. Cuando aqui es invierno, alla es verano. Sus vecinos mas cercanos son Indonesia al norte y Nueva Zelanda al sureste.",
+      "retos": [
+        {
+          "id": "036",
+          "nombre": "Australia",
+          "pregunta": "¿Donde esta Australia? (continente isla en el hemisferio sur, entre los oceanos Indico y Pacifico)"
+        }
+      ]
+    },
+    {
+      "id": "aus-02-continente-pais",
+      "tipo": "opcion-multiple",
+      "titulo": "🌏 Mision 2: ¿Continente o Pais?",
+      "instruccion": "Australia tiene una caracteristica unica en el mundo: es a la vez un PAIS y un CONTINENTE entero.",
+      "pregunta": "¿Cuantos paises HAY en el continente de Australia?",
+      "opciones": [
+        { "texto": "A) 1 pais (todo es Australia)", "valor": "1" },
+        { "texto": "B) 5 paises", "valor": "5" },
+        { "texto": "C) 20 paises", "valor": "20" },
+        { "texto": "D) 50 paises", "valor": "50" }
+      ],
+      "respuesta": "1",
+      "explicacion_correcta": "¡Correcto! Australia es el unico pais del mundo que ocupa un continente entero. Por eso le decimos 'continente-pais'. Tiene 25 millones de habitantes en un territorio enorme (mas grande que toda Europa).",
+      "explicacion_incorrecta": "Australia es UN solo pais que ocupa todo el continente. Es el continente mas chiquito (junto con la Antartida) pero el unico que es un pais entero."
+    },
+    {
+      "id": "aus-03-sydney",
+      "tipo": "opcion-multiple",
+      "titulo": "🎭 Mision 3: La Opera de Sydney",
+      "instruccion": "Sydney es la ciudad mas grande de Australia (aunque NO es la capital, esa es Canberra). Su edificio mas famoso es la Opera de Sydney, que parece estar hecho de velas blancas o conchas marinas.",
+      "pregunta": "¿A que se parece el techo de la Opera de Sydney?",
+      "opciones": [
+        { "texto": "A) Pelotas de futbol", "valor": "pelotas" },
+        { "texto": "B) Velas de barco o conchas marinas blancas", "valor": "velas" },
+        { "texto": "C) Piramides triangulares", "valor": "piramides" },
+        { "texto": "D) Una caja cuadrada", "valor": "caja" }
+      ],
+      "respuesta": "velas",
+      "explicacion_correcta": "¡Correcto! Las 'velas' o 'conchas' son lo que hace tan unico al edificio. Lo diseño un arquitecto danes y se inauguro en 1973. Tiene 6 salas de concierto y orquesta dentro.",
+      "explicacion_incorrecta": "Parece estar hecho de velas de barco o conchas marinas blancas. Esta junto al puerto de Sydney, frente a la bahia. Es Patrimonio de la Humanidad."
+    },
+    {
+      "id": "aus-04-animales",
+      "tipo": "true-or-false",
+      "titulo": "🐨 Mision 4: Los Animales Australianos",
+      "instruccion": "Australia tiene animales unicos que no existen en ningun otro lugar del mundo (porque estuvo separada de los demas continentes durante millones de años).",
+      "retos": [
+        {
+          "oracion": "Los canguros y koalas viven SOLO en Australia (en estado salvaje).",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! Son endemicos de Australia. En otros paises los puedes ver en zoologicos, pero en su habitat natural solo estan ahi. Hay mas canguros que personas en Australia: 50 millones de canguros vs 25 millones de personas."
+        },
+        {
+          "oracion": "El koala es un oso pequeño que come carne.",
+          "correcto": false,
+          "correccion": "El koala NO es un oso, es un MARSUPIAL. Y solo come hojas de eucalipto, no carne.",
+          "explicacion": "Falso! Aunque parece osito, no lo es. Es un marsupial (la mama tiene una bolsa donde guarda al bebe, igual que el canguro). Solo come hojas de un arbol llamado eucalipto y duerme 20 horas al dia."
+        },
+        {
+          "oracion": "En Australia hay arañas y serpientes muy peligrosas.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! Australia es famosa por tener algunos de los animales mas venenosos del mundo: arañas, serpientes, medusas y hasta peces. Por eso los australianos siempre revisan los zapatos antes de ponerselos."
+        }
+      ]
+    },
+    {
+      "id": "aus-05-coral",
+      "tipo": "opcion-multiple",
+      "titulo": "🐠 Mision 5: La Gran Barrera de Coral",
+      "instruccion": "Frente a la costa noreste de Australia esta la GRAN BARRERA DE CORAL: el ARRECIFE mas grande del mundo. Es tan enorme que se puede ver desde el espacio.",
+      "pregunta": "¿Cuanto mide la Gran Barrera de Coral?",
+      "opciones": [
+        { "texto": "A) 10 km (como una playa)", "valor": "10" },
+        { "texto": "B) 100 km (como una ciudad)", "valor": "100" },
+        { "texto": "C) 2,300 km (como ir de Mexico a Texas)", "valor": "2300" },
+        { "texto": "D) 50,000 km", "valor": "50000" }
+      ],
+      "respuesta": "2300",
+      "explicacion_correcta": "¡Correcto! 2,300 km de largo. Esta hecha por billones de animalitos chiquitos llamados POLIPOS de coral. Es hogar de 1,500 especies de peces, tortugas, tiburones y la pelicula 'Buscando a Nemo' se inspiro ahi.",
+      "explicacion_incorrecta": "Mide 2,300 km. Es tan grande que se puede ver desde el espacio. Por desgracia, esta amenazada por el cambio climatico que esta blanqueando los corales."
+    },
+    {
+      "id": "aus-06-outback",
+      "tipo": "mini-story",
+      "titulo": "📖 Mision 6: El Outback y los Aborigenes",
+      "instruccion": "El centro de Australia es muy diferente a las costas. Ahi esta el OUTBACK.",
+      "parrafos": [
+        {
+          "texto": "El centro de Australia se llama OUTBACK: es un desierto enorme de tierra ROJA, casi sin lluvia, con pocos arboles y muchos animales del desierto. Es un paisaje unico, parece otro planeta.",
+          "emoji": "🏜️",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "El desierto del centro de Australia se llama ___.",
+              "opciones": ["Sahara", "Outback", "Gobi", "Atacama"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "En el centro del Outback esta ULURU (tambien llamado Ayers Rock): una ROCA gigante color naranja-rojo, sagrada para los aborigenes. Mide 348 metros de alto. Cambia de color durante el dia: amanece amarilla, al medio dia es ocre y al atardecer es rojo brillante.",
+          "emoji": "🪨",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Uluru es una roca gigante en Australia que cambia de color con la luz del sol.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Los ABORIGENES son el pueblo original de Australia. Llegaron hace mas de 65,000 años (mucho antes que los europeos). Pintan con puntos coloridos, tocan un instrumento llamado DIDGERIDOO (un tubo largo) y conocen como sobrevivir en el Outback.",
+          "emoji": "🎨",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "El pueblo original de Australia son los ___.",
+              "opciones": ["mayas", "aborigenes", "vikingos", "incas"],
+              "respuesta": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

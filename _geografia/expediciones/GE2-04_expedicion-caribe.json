@@ -1,0 +1,143 @@
+{
+  "id": "GE2-04_expedicion-caribe",
+  "titulo": "🏖️ Expedicion por el Caribe",
+  "tipo": "expedicion",
+  "tema": "caribe",
+  "materia": "geografia",
+  "nivel": "GE2-04",
+  "descripcion": "El mar Caribe es uno de los mas hermosos del mundo: agua turquesa, palmeras, arena blanca y arrecifes de coral. Recorreras Cancun (Mexico), Cuba, Republica Dominicana y conoceras de piratas, huracanes y cultura caribeña.",
+  "misiones": [
+    {
+      "id": "caribe-01-mapa-mexico",
+      "tipo": "explorador-mapa",
+      "mapa": "world",
+      "modo": "quiz",
+      "titulo": "🗺️ Mision 1: Ubica Mexico",
+      "instruccion": "El Caribe baña la peninsula de Yucatan en Mexico, donde esta Cancun, una de las playas mas famosas del mundo.",
+      "retos": [
+        {
+          "id": "484",
+          "nombre": "Mexico",
+          "pregunta": "¿Donde esta Mexico? (en America del Norte, su sureste toca el mar Caribe)"
+        }
+      ]
+    },
+    {
+      "id": "caribe-02-cancun",
+      "tipo": "opcion-multiple",
+      "titulo": "🐠 Mision 2: Cancun, Mexico",
+      "instruccion": "Cancun esta en el estado de Quintana Roo, en la Riviera Maya. Su agua es famosamente TURQUESA y la arena tan blanca que no quema los pies. Cerca estan Tulum, Cozumel y muchos cenotes.",
+      "pregunta": "¿Que son los CENOTES tipicos de Yucatan?",
+      "opciones": [
+        { "texto": "A) Cuevas con agua dulce subterranea, donde se puede nadar", "valor": "cuevas" },
+        { "texto": "B) Animales del Caribe", "valor": "animales" },
+        { "texto": "C) Comidas tipicas", "valor": "comidas" },
+        { "texto": "D) Tipo de palmera", "valor": "palmera" }
+      ],
+      "respuesta": "cuevas",
+      "explicacion_correcta": "¡Correcto! Los cenotes son cuevas con agua dulce y cristalina. Hay miles en Yucatan. Para los mayas eran sagrados, creian que conectaban con el inframundo. ¡Hoy se nada y bucea en ellos!",
+      "explicacion_incorrecta": "Son cuevas naturales con agua dulce subterranea. Los formo el agua de la lluvia disolviendo la roca caliza durante miles de años. Yucatan es la unica region del mundo con tantos cenotes."
+    },
+    {
+      "id": "caribe-03-mapa-cuba",
+      "tipo": "explorador-mapa",
+      "mapa": "world",
+      "modo": "quiz",
+      "titulo": "🗺️ Mision 3: Ubica Cuba",
+      "instruccion": "Cuba es la isla mas GRANDE del Caribe. Esta a solo 144 km al sur de Florida (USA) y unos 200 km al este de Yucatan (Mexico).",
+      "retos": [
+        {
+          "id": "192",
+          "nombre": "Cuba",
+          "pregunta": "¿Donde esta Cuba? (la isla mas grande del Caribe, al sur de USA)"
+        }
+      ]
+    },
+    {
+      "id": "caribe-04-cuba",
+      "tipo": "opcion-multiple",
+      "titulo": "🎺 Mision 4: La Cultura Cubana",
+      "instruccion": "Cuba es famosa por su musica alegre y sus carros antiguos de los años 50 que aun circulan por la calle (porque despues de la revolucion ya no entraron carros nuevos).",
+      "pregunta": "¿Cual de estos generos musicales NACIO en Cuba?",
+      "opciones": [
+        { "texto": "A) Salsa", "valor": "salsa" },
+        { "texto": "B) Tango", "valor": "tango" },
+        { "texto": "C) Mariachi", "valor": "mariachi" },
+        { "texto": "D) Reggaeton", "valor": "reggaeton" }
+      ],
+      "respuesta": "salsa",
+      "explicacion_correcta": "¡Correcto! La salsa nacio en Cuba (junto con el son cubano y el cha cha cha). El tango es de Argentina, el mariachi de Mexico, y el reggaeton de Puerto Rico/Panama.",
+      "explicacion_incorrecta": "La salsa es cubana. Tambien nacieron alli el son cubano, el cha cha cha y el mambo. Es un pais super musical, todos saben bailar."
+    },
+    {
+      "id": "caribe-05-rep-dom-pr",
+      "tipo": "true-or-false",
+      "titulo": "🏝️ Mision 5: Republica Dominicana y Puerto Rico",
+      "instruccion": "Otras dos islas importantes del Caribe son Republica Dominicana y Puerto Rico. Decide si las afirmaciones son verdaderas o falsas.",
+      "retos": [
+        {
+          "oracion": "Republica Dominicana y Haiti comparten una misma isla.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! La isla se llama LA ESPAÑOLA (o Hispaniola). Republica Dominicana ocupa el este (donde se habla español) y Haiti ocupa el oeste (donde se habla creole y frances)."
+        },
+        {
+          "oracion": "Puerto Rico es un pais independiente como Cuba o Mexico.",
+          "correcto": false,
+          "correccion": "Puerto Rico NO es independiente: es un territorio de Estados Unidos.",
+          "explicacion": "Falso! Puerto Rico es un 'estado libre asociado' a USA desde 1898. Sus habitantes son ciudadanos de USA, usan el dolar y hablan español e ingles. Por eso le dicen 'la isla del encanto'."
+        },
+        {
+          "oracion": "El BEISBOL es muy popular en el Caribe, especialmente en Republica Dominicana, Cuba y Puerto Rico.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Verdadero! Muchos jugadores famosos de las Grandes Ligas vienen de estas islas. Republica Dominicana ha producido a Pedro Martinez, David Ortiz, Albert Pujols, entre muchos otros."
+        }
+      ]
+    },
+    {
+      "id": "caribe-06-historia",
+      "tipo": "mini-story",
+      "titulo": "📖 Mision 6: Piratas, Huracanes y Sabor",
+      "instruccion": "Conoce la historia y la naturaleza del Caribe.",
+      "parrafos": [
+        {
+          "texto": "Hace 300-400 años, el mar Caribe estaba lleno de PIRATAS! Atacaban barcos españoles que llevaban oro de America hacia Europa. Los piratas mas famosos fueron Barbanegra, Henry Morgan y Anne Bonny. Las peliculas 'Piratas del Caribe' con Jack Sparrow se inspiran en esta epoca.",
+          "emoji": "🏴‍☠️",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Las peliculas de Piratas del Caribe se inspiran en piratas de verdad.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "El Caribe tiene clima TROPICAL: hace calor todo el año (entre 25 y 30 grados). Pero entre junio y noviembre vienen los HURACANES: tormentas gigantes con vientos de hasta 250 km/h. Los huracanes del Atlantico se forman en Africa y cruzan el oceano hasta llegar al Caribe.",
+          "emoji": "🌪️",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Las tormentas gigantes que afectan al Caribe se llaman ___.",
+              "opciones": ["tornados", "huracanes", "tsunamis", "ciclones"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "La comida caribeña tiene mucho SABOR: tostones (platanos fritos), mofongo (Puerto Rico), ropa vieja (carne deshebrada cubana), arroz con frijoles, mariscos frescos, y de tomar... agua de coco. Y de postre flan o tres leches.",
+          "emoji": "🥥",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "El agua de coco es una bebida tipica del Caribe.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
