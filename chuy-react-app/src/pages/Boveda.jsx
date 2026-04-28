@@ -27,18 +27,21 @@ const Boveda = () => {
   // Detect materia from URL filter
   const detectMateria = (f) => {
     if (!f || f === 'todos') return 'matematicas';
-    // Piano-specific ids (piano-*) take priority over generic types
+    // Subject-specific ids (piano-*, geografia-*) take priority over generic types
     if (f.startsWith('piano-') || f === 'identifica-nota') return 'piano';
+    if (f.startsWith('geografia-') || f === 'explorador-mapa') return 'geografia';
     const englishTypes = ['word-bank', 'verb-conjugator', 'true-or-false', 'fill-the-gap',
       'tap-the-pairs', 'sentence-transform', 'image-picker', 'word-scramble',
       'listen-and-type', 'expediciones-en', 'mini-story'];
     const pianoTypes = ['piano-prompter', 'identifica-nota'];
     const cienciasTypes = ['experimento-guia'];
     const dibujoTypes = ['colorear', 'dibujo-guiado', 'dibujo-libre'];
+    const geografiaTypes = ['explorador-mapa'];
     if (englishTypes.includes(f)) return 'ingles';
     if (pianoTypes.includes(f)) return 'piano';
     if (cienciasTypes.includes(f)) return 'ciencias';
     if (dibujoTypes.includes(f)) return 'dibujo';
+    if (geografiaTypes.includes(f)) return 'geografia';
     return 'matematicas';
   };
   const [materia, setMateria] = useState(detectMateria(filtroFromUrl));
@@ -90,6 +93,15 @@ const Boveda = () => {
     { id: 'colorear', emoji: '🖍️', nombre: 'Colorear', tipo: 'colorear', descripcion: 'Colorea figuras con tu paleta', materia: 'dibujo' },
     { id: 'dibujo-guiado', emoji: '✏️', nombre: 'Dibujo Guiado', tipo: 'dibujo-guiado', descripcion: 'Aprende a dibujar paso a paso', materia: 'dibujo' },
     { id: 'dibujo-libre', emoji: '🎨', nombre: 'Dibujo Libre', tipo: 'dibujo-libre', descripcion: 'Dibuja lo que quieras', materia: 'dibujo' },
+    // Geografia
+    { id: 'explorador-mapa', emoji: '🗺️', nombre: 'Explora el Mapa', tipo: 'explorador-mapa', descripcion: 'Encuentra paises en mapas reales', materia: 'geografia' },
+    { id: 'geografia-image-picker', emoji: '🏞️', nombre: 'Banderas y Mapas', tipo: 'image-picker', descripcion: 'Identifica banderas y monumentos del mundo', materia: 'geografia' },
+    { id: 'geografia-tap-the-pairs', emoji: '🔗', nombre: 'Empareja Pais-Capital', tipo: 'tap-the-pairs', descripcion: 'Empareja paises con sus capitales y banderas', materia: 'geografia' },
+    { id: 'geografia-fill-the-gap', emoji: '🔲', nombre: 'Completa Capitales', tipo: 'fill-the-gap', descripcion: 'Completa frases sobre paises y capitales', materia: 'geografia' },
+    { id: 'geografia-true-or-false', emoji: '✅', nombre: 'Datos Verdadero/Falso', tipo: 'true-or-false', descripcion: 'Datos curiosos sobre el mundo', materia: 'geografia' },
+    { id: 'geografia-opcion-multiple', emoji: '❓', nombre: 'Preguntas del Mundo', tipo: 'opcion-multiple', descripcion: 'Preguntas sobre geografia', materia: 'geografia' },
+    { id: 'geografia-word-scramble', emoji: '🔠', nombre: 'Adivina el Pais', tipo: 'word-scramble', descripcion: 'Desordena letras de paises y capitales', materia: 'geografia' },
+    { id: 'geografia-mini-story', emoji: '📖', nombre: 'Historias del Mundo', tipo: 'mini-story', descripcion: 'Historias culturales de paises y civilizaciones', materia: 'geografia' },
   ];
 
   const tiposJuegosFiltrados = tiposJuegos.filter(t => t.materia === materia);
@@ -183,7 +195,21 @@ const Boveda = () => {
           };
         }).sort((a, b) => a.id.localeCompare(b.id));
 
-        setAventuras([...listaAventuras, ...listaIngles, ...listaPiano, ...listaCiencias, ...listaDibujo]);
+        // Cargar Geografia (coleccion separada)
+        const geografiaRef = collection(db, 'geografia');
+        const geografiaSnapshot = await getDocs(geografiaRef);
+        const listaGeografia = geografiaSnapshot.docs.map(doc => {
+          const data = doc.data();
+          return {
+            id: doc.id,
+            ...data,
+            tipo: data.tipo || 'explorador-mapa',
+            materia: 'geografia',
+            coleccion: 'geografia'
+          };
+        }).sort((a, b) => a.id.localeCompare(b.id));
+
+        setAventuras([...listaAventuras, ...listaIngles, ...listaPiano, ...listaCiencias, ...listaDibujo, ...listaGeografia]);
         setSimulacros(listaSimulacros);
       } catch (err) {
         console.error("Error cargando la bóveda:", err);
@@ -250,6 +276,7 @@ const Boveda = () => {
     if (materia === 'piano') return item.materia === 'piano';
     if (materia === 'ciencias') return item.materia === 'ciencias';
     if (materia === 'dibujo') return item.materia === 'dibujo';
+    if (materia === 'geografia') return item.materia === 'geografia';
     return item.materia === materia;
   };
 
@@ -476,7 +503,7 @@ const Boveda = () => {
                   </div>
 
                   {/* Level filter chips */}
-                  {(materia === 'ingles' || materia === 'piano' || materia === 'ciencias' || materia === 'dibujo') && nivelesDisponibles.length > 1 && (
+                  {(materia === 'ingles' || materia === 'piano' || materia === 'ciencias' || materia === 'dibujo' || materia === 'geografia') && nivelesDisponibles.length > 1 && (
                     <div className="boveda-nivel-chips">
                       <button
                         className={`nivel-chip ${filtroNivel === 'todos' ? 'active' : ''}`}
@@ -541,7 +568,7 @@ const Boveda = () => {
                       const progreso = getProgreso(item.id, item.tipo);
                       
                       // Determinar la ruta basándose en la colección de origen
-                      const esAventura = item.coleccion === 'aventuras' || item.coleccion === 'ingles' || item.coleccion === 'piano' || item.coleccion === 'ciencias' || item.coleccion === 'dibujo';
+                      const esAventura = item.coleccion === 'aventuras' || item.coleccion === 'ingles' || item.coleccion === 'piano' || item.coleccion === 'ciencias' || item.coleccion === 'dibujo' || item.coleccion === 'geografia';
                       const ruta = esAventura ? `/aventura/${item.id}` : `/simulacro/${item.id}`;
                       
                       // Obtener nombre del tipo para mostrar (considera materia para evitar colisiones)

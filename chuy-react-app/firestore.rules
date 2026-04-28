@@ -73,6 +73,28 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
 
+    // Colecciones por Materia (cada modulo tiene su coleccion separada)
+    match /ingles/{document=**} {
+      allow read: if request.auth != null;
+      allow write: if isAdmin();
+    }
+    match /piano/{document=**} {
+      allow read: if request.auth != null;
+      allow write: if isAdmin();
+    }
+    match /ciencias/{document=**} {
+      allow read: if request.auth != null;
+      allow write: if isAdmin();
+    }
+    match /dibujo/{document=**} {
+      allow read: if request.auth != null;
+      allow write: if isAdmin();
+    }
+    match /geografia/{document=**} {
+      allow read: if request.auth != null;
+      allow write: if isAdmin();
+    }
+
     // Tipos de Juego Específicos (Legacy y Nuevos)
     match /kakooma/{document=**} { allow read: if request.auth != null; allow write: if isAdmin(); }
     match /numberblocks-constructor/{document=**} { allow read: if request.auth != null; allow write: if isAdmin(); }

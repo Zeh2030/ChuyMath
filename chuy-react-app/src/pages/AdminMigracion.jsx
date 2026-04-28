@@ -97,6 +97,23 @@ const AdminMigracion = () => {
     }
   };
 
+  // Función para migrar contenido de geografia (misma estructura que aventura, colección separada)
+  const migrarGeografia = async (geografiaData) => {
+    try {
+      const geografiaRef = doc(db, 'geografia', geografiaData.id);
+      await setDoc(geografiaRef, {
+        titulo: geografiaData.titulo,
+        misiones: geografiaData.misiones || [],
+        ...geografiaData,
+        materia: 'geografia'
+      });
+      return { exito: true, id: geografiaData.id, titulo: geografiaData.titulo };
+    } catch (error) {
+      console.error(`Error al migrar geografia ${geografiaData.id}:`, error);
+      return { exito: false, id: geografiaData.id, error: error.message };
+    }
+  };
+
   // Función para migrar un simulacro (aplana estructura para lista de problemas)
   const migrarSimulacro = async (simulacroData) => {
     try {
@@ -186,6 +203,9 @@ const AdminMigracion = () => {
       } else if (coleccionDestino === 'dibujo') {
         console.log(`Migrando a colección 'dibujo' (estructura anidada)...`);
         resultado = await migrarDibujo(data);
+      } else if (coleccionDestino === 'geografia') {
+        console.log(`Migrando a colección 'geografia' (estructura anidada)...`);
+        resultado = await migrarGeografia(data);
       } else {
         console.log(`Migrando a colección 'simulacros' (estructura plana)...`);
         resultado = await migrarSimulacro(data);
@@ -327,6 +347,17 @@ const AdminMigracion = () => {
                 />
                 <strong>🎨 Dibujo</strong>
               </label>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '1rem', padding: '10px 15px', background: coleccionDestino === 'geografia' ? '#e3f2fd' : '#fff', borderRadius: '8px', border: coleccionDestino === 'geografia' ? '2px solid #1e88e5' : '1px solid #ddd' }}>
+                <input
+                  type="radio"
+                  name="coleccion"
+                  value="geografia"
+                  checked={coleccionDestino === 'geografia'}
+                  onChange={() => setColeccionDestino('geografia')}
+                  style={{ width: '20px', height: '20px' }}
+                />
+                <strong>🌍 Geografia</strong>
+              </label>
             </div>
             <p style={{ marginTop: '15px', fontSize: '0.9rem', color: '#7f8c8d', background: '#f8f9fa', padding: '10px', borderRadius: '5px' }}>
               {coleccionDestino === 'aventuras'
@@ -339,6 +370,8 @@ const AdminMigracion = () => {
                 ? '🔬 Ciencias: Colección para experimentos. Misma estructura anidada (misiones con tipo experimento-guia).'
                 : coleccionDestino === 'dibujo'
                 ? '🎨 Dibujo: Colección para actividades de arte. Tipos: colorear, dibujo-guiado, dibujo-libre.'
+                : coleccionDestino === 'geografia'
+                ? '🌍 Geografia: Colección para contenido geográfico. Incluye tipos: explorador-mapa, image-picker, tap-the-pairs, fill-the-gap, true-or-false, opcion-multiple, word-scramble, mini-story.'
                 : '🏆 Simulacros: Aplana la estructura para crear una lista de problemas. Ideal para exámenes y bancos de preguntas.'}
             </p>
           </div>

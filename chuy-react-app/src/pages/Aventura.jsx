@@ -71,7 +71,17 @@ const Aventura = () => {
                     ...dibujoSnap.data()
                   });
                 } else {
-                  setError(`No se encontró la aventura con ID ${fecha}`);
+                  // Intentar en colección 'geografia'
+                  const geografiaRef = doc(db, 'geografia', fecha);
+                  const geografiaSnap = await getDoc(geografiaRef);
+                  if (geografiaSnap.exists()) {
+                    setAventura({
+                      id: geografiaSnap.id,
+                      ...geografiaSnap.data()
+                    });
+                  } else {
+                    setError(`No se encontró la aventura con ID ${fecha}`);
+                  }
                 }
               }
             }

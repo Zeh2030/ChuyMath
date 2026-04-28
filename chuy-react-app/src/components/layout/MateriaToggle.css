@@ -58,6 +58,10 @@
   background: linear-gradient(135deg, #e67e22, #d35400);
 }
 
+.materia-geografia.active {
+  background: linear-gradient(135deg, #1e88e5, #43a047);
+}
+
 .materia-emoji {
   font-size: 1.2rem;
 }

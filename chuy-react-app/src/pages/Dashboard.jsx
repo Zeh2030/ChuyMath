@@ -159,6 +159,15 @@ const Dashboard = () => {
     { id: 'colorear', emoji: '🖍️', nombre: 'Colorear', filtro: 'colorear', disponible: true, materia: 'dibujo' },
     { id: 'dibujo-guiado', emoji: '✏️', nombre: 'Dibujo Guiado', filtro: 'dibujo-guiado', disponible: true, materia: 'dibujo' },
     { id: 'dibujo-libre', emoji: '🎨', nombre: 'Dibujo Libre', filtro: 'dibujo-libre', disponible: true, materia: 'dibujo' },
+    // Geografia
+    { id: 'explorador-mapa', emoji: '🗺️', nombre: 'Explora el Mapa', filtro: 'explorador-mapa', disponible: true, materia: 'geografia' },
+    { id: 'geografia-image-picker', emoji: '🏞️', nombre: 'Banderas y Mapas', filtro: 'geografia-image-picker', disponible: true, materia: 'geografia' },
+    { id: 'geografia-tap-the-pairs', emoji: '🔗', nombre: 'Empareja Pais-Capital', filtro: 'geografia-tap-the-pairs', disponible: true, materia: 'geografia' },
+    { id: 'geografia-fill-the-gap', emoji: '🔲', nombre: 'Completa Capitales', filtro: 'geografia-fill-the-gap', disponible: true, materia: 'geografia' },
+    { id: 'geografia-true-or-false', emoji: '✅', nombre: 'Datos Verdadero/Falso', filtro: 'geografia-true-or-false', disponible: true, materia: 'geografia' },
+    { id: 'geografia-opcion-multiple', emoji: '❓', nombre: 'Preguntas del Mundo', filtro: 'geografia-opcion-multiple', disponible: true, materia: 'geografia' },
+    { id: 'geografia-word-scramble', emoji: '🔠', nombre: 'Adivina el Pais', filtro: 'geografia-word-scramble', disponible: true, materia: 'geografia' },
+    { id: 'geografia-mini-story', emoji: '📖', nombre: 'Historias del Mundo', filtro: 'geografia-mini-story', disponible: true, materia: 'geografia' },
   ];
 
   const tiposDeJuegoFiltrados = tiposDeJuego.filter(t => t.materia === materia);
