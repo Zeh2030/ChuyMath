@@ -1,0 +1,61 @@
+{
+  "id": "G2-12_mexico-fisico",
+  "titulo": "Mexico Fisico: Peninsulas, Golfos y Sierras",
+  "descripcion": "Identifica los estados de Mexico por su geografia fisica",
+  "tipo": "explorador-mapa",
+  "materia": "geografia",
+  "tema": "mexico-fisico",
+  "nivel": "G2-12",
+  "misiones": [
+    {
+      "id": "mision-em-mexico-fisico",
+      "tipo": "explorador-mapa",
+      "mapa": "mexico-estados",
+      "modo": "quiz",
+      "titulo": "Geografia Fisica de Mexico",
+      "instruccion": "Encuentra el estado segun su caracteristica geografica.",
+      "retos": [
+        {
+          "id": "31",
+          "nombre": "Yucatan",
+          "pregunta": "¿En que estado de la PENINSULA DE YUCATAN esta Chichen Itza? (sureste, junto al Caribe)"
+        },
+        {
+          "id": "23",
+          "nombre": "Quintana Roo",
+          "pregunta": "¿Que estado de la peninsula de Yucatan tiene Cancun y la Riviera Maya? (este de la peninsula)"
+        },
+        {
+          "id": "2",
+          "nombre": "Baja California",
+          "pregunta": "¿Donde esta la peninsula NORTE de Baja California? (frontera con USA, donde esta Tijuana)"
+        },
+        {
+          "id": "3",
+          "nombre": "Baja California Sur",
+          "pregunta": "¿Donde esta la peninsula SUR de Baja California? (con Cabo San Lucas y Los Cabos)"
+        },
+        {
+          "id": "30",
+          "nombre": "Veracruz",
+          "pregunta": "¿Que estado largo y angosto esta junto al GOLFO DE MEXICO? (al este del pais, con costa al Atlantico)"
+        },
+        {
+          "id": "12",
+          "nombre": "Guerrero",
+          "pregunta": "¿Que estado tiene Acapulco y costa al oceano PACIFICO? (al sur, junto al mar)"
+        },
+        {
+          "id": "8",
+          "nombre": "Chihuahua",
+          "pregunta": "¿Cual es el estado MAS GRANDE de Mexico? (al norte, frontera con USA, con la Sierra Tarahumara)"
+        },
+        {
+          "id": "7",
+          "nombre": "Chiapas",
+          "pregunta": "¿En que estado del SURESTE esta la Selva Lacandona? (frontera con Guatemala)"
+        }
+      ]
+    }
+  ]
+}

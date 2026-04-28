@@ -1,0 +1,61 @@
+{
+  "id": "G2-07_paises-asia",
+  "titulo": "Paises de Asia",
+  "descripcion": "Encuentra los paises asiaticos en el mapa",
+  "tipo": "explorador-mapa",
+  "materia": "geografia",
+  "tema": "paises-asia",
+  "nivel": "G2-07",
+  "misiones": [
+    {
+      "id": "mision-em-paises-asia",
+      "tipo": "explorador-mapa",
+      "mapa": "asia",
+      "modo": "quiz",
+      "titulo": "Ubica el Pais Asiatico",
+      "instruccion": "Click en el pais correcto del mapa de Asia.",
+      "retos": [
+        {
+          "id": "156",
+          "nombre": "China",
+          "pregunta": "¿Donde esta China? (el pais mas poblado de Asia, donde esta la Gran Muralla)"
+        },
+        {
+          "id": "392",
+          "nombre": "Japon",
+          "pregunta": "¿Donde esta Japon? (archipielago de islas en el este, frente al Pacifico)"
+        },
+        {
+          "id": "356",
+          "nombre": "India",
+          "pregunta": "¿Donde esta India? (peninsula en el sur, donde esta el Taj Mahal)"
+        },
+        {
+          "id": "410",
+          "nombre": "Corea del Sur",
+          "pregunta": "¿Donde esta Corea del Sur? (peninsula al este, hogar del K-pop)"
+        },
+        {
+          "id": "360",
+          "nombre": "Indonesia",
+          "pregunta": "¿Donde esta Indonesia? (mas de 17,000 islas en el sureste, en el ecuador)"
+        },
+        {
+          "id": "704",
+          "nombre": "Vietnam",
+          "pregunta": "¿Donde esta Vietnam? (sureste de Asia, junto a China)"
+        },
+        {
+          "id": "682",
+          "nombre": "Arabia Saudita",
+          "pregunta": "¿Donde esta Arabia Saudita? (peninsula en el suroeste, lugar sagrado del islam)"
+        },
+        {
+          "id": "496",
+          "nombre": "Mongolia",
+          "pregunta": "¿Donde esta Mongolia? (entre Rusia y China, tierra de Genghis Khan)"
+        }
+      ]
+    }
+  ]
+}

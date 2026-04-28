@@ -1,0 +1,46 @@
+{
+  "id": "G2-09_monedas-del-mundo",
+  "titulo": "Monedas del Mundo",
+  "descripcion": "Empareja cada pais con la moneda que se usa ahi",
+  "tipo": "tap-the-pairs",
+  "materia": "geografia",
+  "tema": "monedas",
+  "nivel": "G2-09",
+  "misiones": [
+    {
+      "id": "mision-ttp-monedas",
+      "tipo": "tap-the-pairs",
+      "titulo": "Pais y su Moneda",
+      "instruccion": "Toca un pais y luego la moneda que usan ahi para comprar cosas.",
+      "retos": [
+        {
+          "pares": [
+            { "es": "Mexico", "en": "Peso mexicano" },
+            { "es": "Estados Unidos", "en": "Dolar" },
+            { "es": "Brasil", "en": "Real" },
+            { "es": "Argentina", "en": "Peso argentino" },
+            { "es": "Reino Unido", "en": "Libra esterlina" }
+          ]
+        },
+        {
+          "pares": [
+            { "es": "Francia", "en": "Euro" },
+            { "es": "España", "en": "Euro" },
+            { "es": "Alemania", "en": "Euro" },
+            { "es": "Italia", "en": "Euro" },
+            { "es": "Portugal", "en": "Euro" }
+          ]
+        },
+        {
+          "pares": [
+            { "es": "Japon", "en": "Yen" },
+            { "es": "China", "en": "Yuan" },
+            { "es": "India", "en": "Rupia" },
+            { "es": "Rusia", "en": "Rublo" },
+            { "es": "Suiza", "en": "Franco suizo" }
+          ]
+        }
+      ]
+    }
+  ]
+}

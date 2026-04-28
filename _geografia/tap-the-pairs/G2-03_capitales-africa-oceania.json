@@ -1,0 +1,45 @@
+{
+  "id": "G2-03_capitales-africa-oceania",
+  "titulo": "Capitales de Africa y Oceania",
+  "descripcion": "Empareja paises africanos y oceanicos con su capital",
+  "tipo": "tap-the-pairs",
+  "materia": "geografia",
+  "tema": "capitales-africa-oceania",
+  "nivel": "G2-03",
+  "misiones": [
+    {
+      "id": "mision-ttp-capitales-af-oc",
+      "tipo": "tap-the-pairs",
+      "titulo": "Pais y su Capital",
+      "instruccion": "Toca un pais y luego su capital para emparejarlos.",
+      "retos": [
+        {
+          "pares": [
+            { "es": "Egipto", "en": "El Cairo" },
+            { "es": "Sudafrica", "en": "Pretoria" },
+            { "es": "Marruecos", "en": "Rabat" },
+            { "es": "Nigeria", "en": "Abuja" },
+            { "es": "Kenia", "en": "Nairobi" }
+          ]
+        },
+        {
+          "pares": [
+            { "es": "Etiopia", "en": "Addis Abeba" },
+            { "es": "Senegal", "en": "Dakar" },
+            { "es": "Ghana", "en": "Accra" },
+            { "es": "Tanzania", "en": "Dodoma" },
+            { "es": "Madagascar", "en": "Antananarivo" }
+          ]
+        },
+        {
+          "pares": [
+            { "es": "Australia", "en": "Canberra" },
+            { "es": "Nueva Zelanda", "en": "Wellington" },
+            { "es": "Papua Nueva Guinea", "en": "Port Moresby" },
+            { "es": "Fiji", "en": "Suva" }
+          ]
+        }
+      ]
+    }
+  ]
+}

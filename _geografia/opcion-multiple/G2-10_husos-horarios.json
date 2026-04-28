@@ -1,0 +1,66 @@
+{
+  "id": "G2-10_husos-horarios",
+  "titulo": "Husos Horarios del Mundo",
+  "descripcion": "Aprende como la hora cambia en diferentes partes del mundo",
+  "tipo": "opcion-multiple",
+  "materia": "geografia",
+  "tema": "husos-horarios",
+  "nivel": "G2-10",
+  "misiones": [
+    {
+      "id": "mision-om-husos-cuantos",
+      "tipo": "opcion-multiple",
+      "titulo": "Husos Horarios en el Mundo",
+      "instruccion": "El planeta esta dividido en regiones que tienen la misma hora.",
+      "pregunta": "¿En cuantos HUSOS HORARIOS esta dividido el mundo?",
+      "opciones": ["12", "24", "50", "100"],
+      "respuesta": "1",
+      "explicacion_correcta": "Correcto! El mundo se divide en 24 husos horarios, uno por cada hora del dia. Como la Tierra gira 360 grados en 24 horas, cada huso son 15 grados de longitud.",
+      "explicacion_incorrecta": "Son 24 husos horarios. La Tierra da una vuelta completa en 24 horas, asi que se divide en 24 'rebanadas' de 15 grados cada una."
+    },
+    {
+      "id": "mision-om-husos-tokio",
+      "tipo": "opcion-multiple",
+      "titulo": "Mexico vs Japon",
+      "instruccion": "Cuando aqui es de dia, en Japon es de noche (esta del otro lado del planeta).",
+      "pregunta": "Si en la Ciudad de Mexico son las 12 del medio dia, ¿que hora aproximadamente es en Tokio, Japon?",
+      "opciones": ["12 del medio dia tambien", "6 de la mañana", "3 de la madrugada (del dia siguiente)", "8 de la noche"],
+      "respuesta": "2",
+      "explicacion_correcta": "Correcto! Tokio esta 15 horas adelantado de la CDMX. Cuando aqui son las 12 del dia, alla son las 3 de la madrugada del siguiente dia. ¡Ya estan dormidos!",
+      "explicacion_incorrecta": "Son las 3 de la madrugada del siguiente dia. Tokio esta 15 horas adelantado a CDMX. Por eso cuando juega Mexico vs Japon en futbol, los mexicanos ven el partido en la mañana y los japoneses en la noche."
+    },
+    {
+      "id": "mision-om-husos-rusia",
+      "tipo": "opcion-multiple",
+      "titulo": "El Pais con Mas Husos",
+      "instruccion": "Hay un pais TAN grande que cuando es de mañana en una parte, en la otra ya es de noche.",
+      "pregunta": "¿Cual pais tiene MAS husos horarios (porque es muy ancho)?",
+      "opciones": ["Estados Unidos", "China", "Rusia", "Brasil"],
+      "respuesta": "2",
+      "explicacion_correcta": "Correcto! Rusia tiene 11 husos horarios (es tan ancha que abarca casi medio planeta). Cuando en Moscu (oeste) son las 8 de la mañana, en Vladivostok (este) son las 7 de la noche.",
+      "explicacion_incorrecta": "Es Rusia, con 11 husos horarios. Curiosamente China, aunque tambien es muy grande, USA UN SOLO huso horario en todo el pais para mantener todo coordinado (decision politica)."
+    },
+    {
+      "id": "mision-om-meridiano",
+      "tipo": "opcion-multiple",
+      "titulo": "El Meridiano de Greenwich",
+      "instruccion": "Los husos horarios se miden a partir de una linea imaginaria que pasa por Inglaterra.",
+      "pregunta": "¿Por que ciudad pasa el MERIDIANO 0 (donde empiezan los husos horarios)?",
+      "opciones": ["Paris", "Madrid", "Greenwich (Londres)", "Roma"],
+      "respuesta": "2",
+      "explicacion_correcta": "Correcto! El meridiano 0 pasa por Greenwich, un barrio de Londres. Por eso a la hora 'oficial' del mundo se le llama GMT (Greenwich Mean Time). Mexico esta 6 horas atras de Greenwich (UTC-6).",
+      "explicacion_incorrecta": "Es Greenwich, en Londres. Es la referencia mundial para medir las horas (GMT). Hay un observatorio donde puedes pisar la linea que divide los hemisferios este y oeste."
+    },
+    {
+      "id": "mision-om-cambio-fecha",
+      "tipo": "opcion-multiple",
+      "titulo": "La Linea Internacional de Cambio de Fecha",
+      "instruccion": "Hay una linea imaginaria en el oceano Pacifico donde si la cruzas, ¡cambias de DIA!",
+      "pregunta": "Si cruzas la Linea Internacional de Cambio de Fecha hacia el OESTE, ¿que pasa?",
+      "opciones": ["Adelantas un dia", "Atrasas un dia", "Te quedas igual", "Cambias de año"],
+      "respuesta": "0",
+      "explicacion_correcta": "Correcto! Hacia el oeste adelantas un dia (de Lunes a Martes). Hacia el este atrasas un dia. La linea pasa cerca de Hawaii. Es como una maquina del tiempo natural.",
+      "explicacion_incorrecta": "Adelantas un dia hacia el oeste. La Linea Internacional de Cambio de Fecha esta a 180 grados del meridiano de Greenwich. Pasa por el Pacifico para no cruzar paises (asi nadie tiene 2 fechas distintas en su casa)."
+    }
+  ]
+}

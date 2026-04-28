@@ -1,0 +1,61 @@
+{
+  "id": "G2-06_paises-europa",
+  "titulo": "Paises de Europa",
+  "descripcion": "Encuentra los paises europeos en el mapa",
+  "tipo": "explorador-mapa",
+  "materia": "geografia",
+  "tema": "paises-europa",
+  "nivel": "G2-06",
+  "misiones": [
+    {
+      "id": "mision-em-paises-europa",
+      "tipo": "explorador-mapa",
+      "mapa": "europa",
+      "modo": "quiz",
+      "titulo": "Ubica el Pais Europeo",
+      "instruccion": "Click en el pais correcto del mapa de Europa.",
+      "retos": [
+        {
+          "id": "250",
+          "nombre": "Francia",
+          "pregunta": "¿Donde esta Francia? (su capital es Paris, frente al canal de la Mancha)"
+        },
+        {
+          "id": "724",
+          "nombre": "España",
+          "pregunta": "¿Donde esta España? (peninsula iberica, junto a Portugal)"
+        },
+        {
+          "id": "380",
+          "nombre": "Italia",
+          "pregunta": "¿Donde esta Italia? (peninsula con forma de bota en el Mediterraneo)"
+        },
+        {
+          "id": "276",
+          "nombre": "Alemania",
+          "pregunta": "¿Donde esta Alemania? (centro de Europa, capital Berlin)"
+        },
+        {
+          "id": "826",
+          "nombre": "Reino Unido",
+          "pregunta": "¿Donde esta Reino Unido? (isla al noroeste de Europa)"
+        },
+        {
+          "id": "620",
+          "nombre": "Portugal",
+          "pregunta": "¿Donde esta Portugal? (oeste de la peninsula iberica, junto al Atlantico)"
+        },
+        {
+          "id": "300",
+          "nombre": "Grecia",
+          "pregunta": "¿Donde esta Grecia? (sureste de Europa, donde nacio la democracia)"
+        },
+        {
+          "id": "752",
+          "nombre": "Suecia",
+          "pregunta": "¿Donde esta Suecia? (peninsula escandinava, en el norte)"
+        }
+      ]
+    }
+  ]
+}
