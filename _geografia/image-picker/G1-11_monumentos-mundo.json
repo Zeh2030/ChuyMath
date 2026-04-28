@@ -1,0 +1,85 @@
+{
+  "id": "G1-11_monumentos-mundo",
+  "titulo": "Monumentos Famosos del Mundo",
+  "descripcion": "Identifica los monumentos mas conocidos del planeta",
+  "tipo": "image-picker",
+  "materia": "geografia",
+  "tema": "monumentos",
+  "nivel": "G1-11",
+  "misiones": [
+    {
+      "id": "mision-ip-monumentos",
+      "tipo": "image-picker",
+      "titulo": "¿Que monumento es?",
+      "instruccion": "Lee la descripcion y elige el monumento correcto.",
+      "retos": [
+        {
+          "palabra_es": "Una torre de hierro de 330 metros en Paris, Francia. De noche se prende con luces que brillan cada hora.",
+          "opciones": [
+            { "emoji": "🗼", "label": "Torre Eiffel" },
+            { "emoji": "🗽", "label": "Estatua de la Libertad" },
+            { "emoji": "🕌", "label": "Taj Mahal" },
+            { "emoji": "🏛️", "label": "Coliseo" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Es la Torre Eiffel! La construyeron en 1889 como una atraccion temporal, pero gusto tanto que se quedo. Cerca esta Disneyland Paris."
+        },
+        {
+          "palabra_es": "Construcciones gigantes de piedra con forma de triangulo, en el desierto de Egipto. Tienen mas de 4,000 años. Los faraones se enterraban adentro.",
+          "opciones": [
+            { "emoji": "🏛️", "label": "Coliseo" },
+            { "emoji": "🔺", "label": "Piramides de Egipto" },
+            { "emoji": "🗿", "label": "Estatuas Moai" },
+            { "emoji": "🕌", "label": "Taj Mahal" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Son las Piramides de Giza! La mas grande mide 147 metros (como un edificio de 50 pisos). Cuando los romanos las visitaron, ya tenian 2,500 años!"
+        },
+        {
+          "palabra_es": "Una mujer de cobre verde con una antorcha y una corona de rayos. Esta en el puerto de Nueva York. Fue regalo de Francia.",
+          "opciones": [
+            { "emoji": "🗽", "label": "Estatua de la Libertad" },
+            { "emoji": "🗼", "label": "Torre Eiffel" },
+            { "emoji": "⛪", "label": "Cristo Redentor" },
+            { "emoji": "🏛️", "label": "Partenon" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Es la Estatua de la Libertad! Mide 93 metros con su base. La antorcha representa la libertad iluminando al mundo."
+        },
+        {
+          "palabra_es": "Una estatua gigante de Jesus con los brazos abiertos, sobre una montaña en Rio de Janeiro, Brasil. Mira a toda la ciudad.",
+          "opciones": [
+            { "emoji": "🗽", "label": "Estatua de la Libertad" },
+            { "emoji": "⛪", "label": "Cristo Redentor" },
+            { "emoji": "🗿", "label": "Estatuas Moai" },
+            { "emoji": "🕌", "label": "Taj Mahal" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Es el Cristo Redentor! Mide 38 metros y esta en el cerro Corcovado, Rio de Janeiro. En carnaval se ve toda la ciudad bailando samba debajo de el."
+        },
+        {
+          "palabra_es": "Una torre con un reloj enorme arriba, en Londres, Reino Unido. Su campana se llama 'Ben' y suena cada hora.",
+          "opciones": [
+            { "emoji": "🗼", "label": "Torre Eiffel" },
+            { "emoji": "🕰️", "label": "Big Ben" },
+            { "emoji": "🏰", "label": "Castillo de Disney" },
+            { "emoji": "⛪", "label": "Cristo Redentor" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Es el Big Ben! El reloj mide 7 metros de diametro. Cerca esta el palacio donde vive el Rey y donde Harry Potter toma el tren a Hogwarts."
+        },
+        {
+          "palabra_es": "Un estadio antiguo gigante en Roma, Italia. Hace 2,000 años los romanos veian peleas de gladiadores adentro.",
+          "opciones": [
+            { "emoji": "🏟️", "label": "Coliseo de Roma" },
+            { "emoji": "🏰", "label": "Castillo de Disney" },
+            { "emoji": "🔺", "label": "Piramides de Egipto" },
+            { "emoji": "🗼", "label": "Torre Eiffel" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Es el Coliseo! Cabian 50,000 espectadores. Los gladiadores eran los 'futbolistas' de ese tiempo, todos los romanos los conocian."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "id": "G1-10_biomas",
+  "titulo": "Selvas, Desiertos y Bosques",
+  "descripcion": "Identifica los grandes paisajes naturales del mundo",
+  "tipo": "image-picker",
+  "materia": "geografia",
+  "tema": "biomas",
+  "nivel": "G1-10",
+  "misiones": [
+    {
+      "id": "mision-ip-biomas",
+      "tipo": "image-picker",
+      "titulo": "¿Que paisaje es?",
+      "instruccion": "Lee la descripcion y elige el bioma correcto.",
+      "retos": [
+        {
+          "palabra_es": "Lugar muy verde, con muchos arboles altos, lluvia casi todos los dias y animales como monos, tucanes y jaguares. La mas famosa es la Amazonia en Brasil.",
+          "opciones": [
+            { "emoji": "🌳", "label": "Selva" },
+            { "emoji": "🌵", "label": "Desierto" },
+            { "emoji": "❄️", "label": "Tundra" },
+            { "emoji": "🌾", "label": "Sabana" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Es la selva! La selva del Amazonas produce mucho del oxigeno que respiramos. Por eso le dicen 'el pulmon del mundo'."
+        },
+        {
+          "palabra_es": "Lugar de mucha arena, casi sin agua y muy caluroso. Tiene cactus y camellos. El mas grande del mundo es el Sahara en Africa.",
+          "opciones": [
+            { "emoji": "🌳", "label": "Selva" },
+            { "emoji": "🌵", "label": "Desierto" },
+            { "emoji": "🌲", "label": "Bosque" },
+            { "emoji": "🌊", "label": "Oceano" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Es el desierto! El Sahara es tan grande que dentro cabrian Estados Unidos completito. Casi nunca llueve."
+        },
+        {
+          "palabra_es": "Tiene muchos arboles altos como pinos. Hace frio en invierno y se llena de nieve. Ahi viven los osos, ciervos y ardillas.",
+          "opciones": [
+            { "emoji": "🌵", "label": "Desierto" },
+            { "emoji": "🌲", "label": "Bosque" },
+            { "emoji": "🌾", "label": "Sabana" },
+            { "emoji": "🏝️", "label": "Isla tropical" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Es el bosque! En Canada y en partes de Mexico hay bosques enormes. Las mariposas monarcas vuelan desde Canada hasta Michoacan, Mexico."
+        },
+        {
+          "palabra_es": "Pasto seco amarillento con pocos arboles. Ahi viven leones, cebras, jirafas, elefantes y guepardos. Esta sobre todo en Africa.",
+          "opciones": [
+            { "emoji": "🌳", "label": "Selva" },
+            { "emoji": "❄️", "label": "Tundra" },
+            { "emoji": "🦒", "label": "Sabana" },
+            { "emoji": "🌲", "label": "Bosque" }
+          ],
+          "respuesta": 2,
+          "explicacion": "Es la sabana! Es el lugar donde estan los animales del Rey Leon. La sabana africana es famosa por sus 'safaris'."
+        },
+        {
+          "palabra_es": "Lugar muy frio, casi sin arboles. Esta cerca de los polos, lleno de hielo y nieve. Viven osos polares, focas y zorros articos.",
+          "opciones": [
+            { "emoji": "🌵", "label": "Desierto" },
+            { "emoji": "❄️", "label": "Tundra" },
+            { "emoji": "🌳", "label": "Selva" },
+            { "emoji": "🏖️", "label": "Playa" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Es la tundra! Esta en el Artico, Groenlandia, norte de Canada y Rusia. En verano se descongela un poquito y crecen florecitas."
+        }
+      ]
+    }
+  ]
+}

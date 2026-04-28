@@ -1,0 +1,91 @@
+{
+  "id": "G1-09_polos",
+  "titulo": "Los Polos: Norte y Sur",
+  "descripcion": "Conoce los 2 polos de la Tierra, donde todo es hielo y nieve",
+  "tipo": "mini-story",
+  "materia": "geografia",
+  "tema": "polos",
+  "nivel": "G1-09",
+  "misiones": [
+    {
+      "id": "mision-story-polos",
+      "tipo": "mini-story",
+      "titulo": "Los 2 Polos del Planeta",
+      "instruccion": "Lee cada parte y responde la pregunta.",
+      "parrafos": [
+        {
+          "texto": "La Tierra es como una pelota gigante. En la parte de ARRIBA esta el Polo Norte (tambien llamado Artico) y en la parte de ABAJO esta el Polo Sur (llamado Antartida). En los dos hace muchisimo frio y todo esta cubierto de hielo!",
+          "emoji": "🌍",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "El polo de ARRIBA en el planeta se llama Polo ___.",
+              "opciones": ["Sur", "Este", "Norte", "Oeste"],
+              "respuesta": 2
+            }
+          ]
+        },
+        {
+          "texto": "El Polo Norte tiene algo SUPER curioso: ¡no es tierra firme! Es solo hielo gigante flotando sobre el oceano Artico. Si pudieras cavar abajo del hielo, encontrarias agua, no tierra. Por eso es muy dificil construir casas ahi.",
+          "emoji": "🧊",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "El Polo Norte es solo hielo flotando sobre el mar, no es tierra.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "El Polo Sur es muy diferente: SI es tierra firme, un continente entero llamado Antartida. Es enorme, mas grande que toda Europa! Pero esta cubierto de hielo grueso, hasta de 3 kilometros (como apilar 1,000 casas una encima de otra).",
+          "emoji": "🗻",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "El continente del Polo Sur se llama ___.",
+              "opciones": ["Africa", "Antartida", "Australia", "Asia"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "Aqui hay un dato sorprendente: los OSOS POLARES viven SOLO en el Polo Norte. Los PINGÜINOS viven SOLO en el Polo Sur. ¡Nunca se ven juntos! Si en una pelicula sale un oso polar con un pinguino, esta mal.",
+          "emoji": "🐧",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Los osos polares y los pingüinos viven juntos en el mismo polo.",
+              "correcto": false,
+              "correccion": "Los osos viven en el NORTE y los pingüinos en el SUR. Nunca se ven juntos."
+            }
+          ]
+        },
+        {
+          "texto": "El Polo Sur es el lugar MAS FRIO de toda la Tierra. La temperatura puede llegar a -89 grados! Eso es como meter la mano en un congelador, pero MUCHO mas frio. Ningun humano vive ahi de manera permanente, solo cientificos por temporadas.",
+          "emoji": "🥶",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "El lugar mas frio del planeta es el Polo ___.",
+              "opciones": ["Norte", "Sur", "Este", "Oeste"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "En los polos, a veces aparecen luces de colores en el cielo: la AURORA BOREAL (en el norte) o AUSTRAL (en el sur). Son verdes, rosas y moradas, como magia! Las causa el viento solar chocando con el aire de la Tierra.",
+          "emoji": "🌌",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Las luces de colores que se ven en el cielo de los polos se llaman ___.",
+              "opciones": ["arcoiris", "aurora", "estrellas", "lluvia"],
+              "respuesta": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

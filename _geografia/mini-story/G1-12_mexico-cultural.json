@@ -1,0 +1,97 @@
+{
+  "id": "G1-12_mexico-cultural",
+  "titulo": "Mexico Cultural: Tradiciones y Sabores",
+  "descripcion": "Conoce lo que hace especial a Mexico: el dia de muertos, mariachi, comida y tradiciones",
+  "tipo": "mini-story",
+  "materia": "geografia",
+  "tema": "mexico-cultural",
+  "nivel": "G1-12",
+  "misiones": [
+    {
+      "id": "mision-story-mexico-cultural",
+      "tipo": "mini-story",
+      "titulo": "Lo que hace UNICO a Mexico",
+      "instruccion": "Lee cada parte y responde la pregunta.",
+      "parrafos": [
+        {
+          "texto": "Mexico tiene una fiesta SUPER especial: el Dia de Muertos, el 1 y 2 de noviembre. No es triste, es ALEGRE! Las familias ponen un altar con foto de sus abuelitos, comida, flores naranjas (cempasuchil) y velas. Creen que ese dia las almas regresan a visitar.",
+          "emoji": "💀",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "El Dia de Muertos se celebra en el mes de ___.",
+              "opciones": ["enero", "abril", "noviembre", "diciembre"],
+              "respuesta": 2
+            }
+          ]
+        },
+        {
+          "texto": "La pelicula 'Coco' de Disney/Pixar trata sobre el Dia de Muertos. La hicieron despues de visitar muchos pueblos de Mexico. La calavera Catrina, las flores naranjas, el alebrije Pepita... ¡todo es de verdad!",
+          "emoji": "🎬",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "La pelicula 'Coco' de Disney es sobre el Dia de Muertos mexicano.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Otra cosa muy mexicana es el MARIACHI: musicos vestidos con trajes elegantes con sombrero grande, que tocan trompeta, violin y guitarra. Cantan canciones romanticas como 'Cielito Lindo'. El mariachi nacio en Jalisco, Mexico.",
+          "emoji": "🎺",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "El mariachi nacio en el estado mexicano de ___.",
+              "opciones": ["Veracruz", "Jalisco", "Yucatan", "Sonora"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "La comida mexicana es famosa en TODO el mundo. Tenemos tacos, quesadillas, tamales, pozole, mole y enchiladas. ¿Sabias que el chocolate fue INVENTADO por los aztecas en Mexico? Lo tomaban como bebida con chile. Cuando llegaron los españoles se lo llevaron al mundo.",
+          "emoji": "🌮",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "El ___ fue inventado en Mexico por los aztecas.",
+              "opciones": ["pan", "queso", "chocolate", "azucar"],
+              "respuesta": 2
+            }
+          ]
+        },
+        {
+          "texto": "Cada 16 de septiembre se celebra la Independencia de Mexico. La noche del 15, el presidente sale al balcon de Palacio Nacional y grita '¡Viva Mexico!' Muchas veces. La gente contesta '¡Viva!' Despues hay fuegos artificiales y se come pozole.",
+          "emoji": "🎆",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "La Independencia de Mexico se celebra el 16 de ___.",
+              "opciones": ["mayo", "julio", "septiembre", "diciembre"],
+              "respuesta": 2
+            }
+          ]
+        },
+        {
+          "texto": "Mexico tiene piramides antiguas mas grandes que las de Egipto! Chichen Itza (en Yucatan) es maya, Teotihuacan (cerca de CDMX) tiene la Piramide del Sol y la de la Luna. Estas culturas vivieron en Mexico hace 1,500 años, antes que llegaran los españoles.",
+          "emoji": "🏛️",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "En Mexico hay piramides antiguas hechas por mayas y aztecas.",
+              "correcto": true,
+              "correccion": null
+            },
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "La piramide maya mas famosa esta en ___, Mexico.",
+              "opciones": ["Yucatan", "Veracruz", "Sonora", "Guerrero"],
+              "respuesta": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

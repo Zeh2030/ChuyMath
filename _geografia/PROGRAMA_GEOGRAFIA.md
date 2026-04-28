@@ -285,7 +285,7 @@ Ejemplo: `G1-05_banderas-latam.json`
 | Componente ExploradorMapa.jsx | ✅ Lote 1 (3 mapas: world, mexico-estados, usa-estados) |
 | Integracion en Boveda/Dashboard/etc | ✅ Lote 1 |
 | Contenido G0 | ✅ Lote 4 (G0-01..05) — pendiente Lote 6 (G0-06..10) |
-| Contenido G1 | ✅ Lote 2 (G1-01..04) + Lote 3 (G1-05..08) — pendiente Lote 5 (G1-09..12) |
+| Contenido G1 | ✅ COMPLETO — Lote 2 (G1-01..04) + Lote 3 (G1-05..08) + Lote 5 (G1-09..12) |
 | Contenido G2 | G2-13 estados-usa-famosos (bonus); resto pendiente Lote 7+ |
 | Contenido G3 | Pendiente (cuando aplique) |
 | Expediciones | GE1-01 New York creada y validada (✅ banderas + imagenes) |
