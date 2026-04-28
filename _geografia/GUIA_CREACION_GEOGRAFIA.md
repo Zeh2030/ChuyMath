@@ -446,10 +446,14 @@ Las **expediciones** son aventuras tematicas largas que combinan multiples tipos
 ### Plantilla de imagen para opcion-multiple
 
 ```json
-"imagen": "<img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/...\" alt=\"...\" style=\"max-width:100%; height:auto; border-radius:15px; box-shadow:0 8px 16px rgba(0,0,0,0.2);\">"
+"imagen": "<img src=\"https://upload.wikimedia.org/wikipedia/commons/X/XX/FILENAME.jpg\" alt=\"...\" style=\"max-width:100%; height:auto; max-height:400px; object-fit:contain; border-radius:15px; box-shadow:0 8px 16px rgba(0,0,0,0.2);\">"
 ```
 
-(Mismo patron que las expediciones de matematicas en `_contenido/aventuras/`)
+**IMPORTANTE — Wikimedia URLs:**
+- Usar URL **original** (sin `/thumb/`) — siempre funcionan: `commons/X/XX/FILENAME.jpg`
+- Las URLs `commons/thumb/X/XX/FILENAME.jpg/800px-FILENAME.jpg` SOLO funcionan con tamaños especificos que Wikipedia ya ha generado para sus articulos. Pedir tamaños arbitrarios (640px, 800px) suele dar HTTP 400.
+- Para encontrar la URL correcta: buscar el archivo en `commons.wikimedia.org`, click derecho en la imagen, "Copiar URL de imagen", y QUITAR la parte `/thumb/.../800px-` para quedarte con la original.
+- Usar `max-height:400px; object-fit:contain` en el style para que la imagen no domine la pantalla.
 
 ---
 

@@ -28,7 +28,7 @@
       "titulo": "🗽 Mision 2: La Estatua de la Libertad",
       "instruccion": "Mira esta foto de uno de los simbolos mas famosos de NY.",
       "pregunta": "¿Que sostiene la Estatua de la Libertad en su mano derecha?",
-      "imagen": "<img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Front_view_of_Statue_of_Liberty_with_pedestal_and_base_2024.jpg/800px-Front_view_of_Statue_of_Liberty_with_pedestal_and_base_2024.jpg\" alt=\"Estatua de la Libertad\" style=\"max-width:100%; height:auto; border-radius:15px; box-shadow:0 8px 16px rgba(0,0,0,0.2);\">",
+      "imagen": "<img src=\"https://upload.wikimedia.org/wikipedia/commons/8/89/Front_view_of_Statue_of_Liberty_%28cropped%29.jpg\" alt=\"Estatua de la Libertad\" style=\"max-width:100%; height:auto; max-height:400px; object-fit:contain; border-radius:15px; box-shadow:0 8px 16px rgba(0,0,0,0.2);\">",
       "opciones": [
         { "texto": "A) Una espada", "valor": "espada" },
         { "texto": "B) Una antorcha de fuego", "valor": "antorcha" },
@@ -71,7 +71,7 @@
       "titulo": "🌳 Mision 4: Central Park",
       "instruccion": "Central Park es el parque mas famoso de NY, un bosque verde en medio de la ciudad.",
       "pregunta": "Mira esta foto. ¿Que es lo MAS curioso de Central Park?",
-      "imagen": "<img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Central_Park_New_York_City_New_York_30.jpg/1280px-Central_Park_New_York_City_New_York_30.jpg\" alt=\"Central Park visto desde arriba\" style=\"max-width:100%; height:auto; border-radius:15px; box-shadow:0 8px 16px rgba(0,0,0,0.2);\">",
+      "imagen": "<img src=\"https://upload.wikimedia.org/wikipedia/commons/f/f1/Global_Citizen_Festival_Central_Park_New_York_City_from_NYonAir_%2815351915006%29.jpg\" alt=\"Central Park desde el aire\" style=\"max-width:100%; height:auto; max-height:400px; object-fit:contain; border-radius:15px; box-shadow:0 8px 16px rgba(0,0,0,0.2);\">",
       "opciones": [
         { "texto": "A) Esta rodeado por todos lados de rascacielos gigantes", "valor": "rascacielos" },
         { "texto": "B) Es el parque mas chiquito del mundo", "valor": "chico" },
@@ -87,7 +87,7 @@
       "titulo": "🏙️ Mision 5: Los Rascacielos",
       "instruccion": "NY es famosa por sus edificios altisimos. Uno de los mas conocidos es el Empire State Building.",
       "pregunta": "¿Cuantos pisos tiene el Empire State Building?",
-      "imagen": "<img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Empire_State_Building_%28aerial_view%29.jpg/800px-Empire_State_Building_%28aerial_view%29.jpg\" alt=\"Empire State Building\" style=\"max-width:100%; height:auto; border-radius:15px; box-shadow:0 8px 16px rgba(0,0,0,0.2);\">",
+      "imagen": "<img src=\"https://upload.wikimedia.org/wikipedia/commons/c/c7/View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City_dllu_%28cropped2%29.jpg\" alt=\"Empire State Building\" style=\"max-width:100%; height:auto; max-height:400px; object-fit:contain; border-radius:15px; box-shadow:0 8px 16px rgba(0,0,0,0.2);\">",
       "opciones": [
         { "texto": "A) 50 pisos", "valor": "50" },
         { "texto": "B) 102 pisos", "valor": "102" },
