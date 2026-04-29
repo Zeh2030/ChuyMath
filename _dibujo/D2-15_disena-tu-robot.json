@@ -2,6 +2,7 @@
   "id": "D2-15_disena-tu-robot",
   "titulo": "Diseña tu Robot",
   "descripcion": "Inventa un robot original con partes mecanicas",
+  "tipo": "dibujo-libre",
   "materia": "dibujo",
   "nivel": "D2-15",
   "tema": "creacion-robot",

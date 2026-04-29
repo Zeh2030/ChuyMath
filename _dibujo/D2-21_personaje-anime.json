@@ -2,6 +2,7 @@
   "id": "D2-21_personaje-anime",
   "titulo": "Personaje Estilo Anime",
   "descripcion": "Dibuja un personaje con ojos grandes estilo anime/manga",
+  "tipo": "dibujo-libre",
   "materia": "dibujo",
   "nivel": "D2-21",
   "tema": "personajes-anime",

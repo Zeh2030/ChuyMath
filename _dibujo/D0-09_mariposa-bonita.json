@@ -2,6 +2,7 @@
   "id": "D0-09_mariposa-bonita",
   "titulo": "Mariposa Bonita",
   "descripcion": "Colorea una mariposa simetrica con sus alas",
+  "tipo": "colorear",
   "materia": "dibujo",
   "nivel": "D0-09",
   "tema": "colorear-basico",
@@ -13,7 +14,14 @@
       "emoji": "🦋",
       "instruccion": "Colorea la mariposa! Tip: las dos alas pueden ser iguales (simetria) o cada una de un color.",
       "imagen_contorno_url": "https://openclipart.org/image/800px/352670",
-      "colores_sugeridos": ["#3498db", "#9b59b6", "#e91e63", "#f1c40f", "#e67e22", "#2ecc71"],
+      "colores_sugeridos": [
+        "#3498db",
+        "#9b59b6",
+        "#e91e63",
+        "#f1c40f",
+        "#e67e22",
+        "#2ecc71"
+      ],
       "dificultad": "facil"
     }
   ]

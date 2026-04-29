@@ -1,6 +1,7 @@
 {
   "id": "D0-14_castillo-de-princesa",
   "titulo": "Castillo de Princesa",
+  "tipo": "dibujo-libre",
   "materia": "dibujo",
   "nivel": "D0-14",
   "tema": "dibujo-libre-basico",
@@ -11,7 +12,11 @@
       "titulo": "Castillo de Princesa",
       "emoji": "🏰",
       "instruccion": "Dibuja un castillo magico con torres y una princesa!",
-      "sugerencias": ["Las torres son rectangulos con triangulos arriba", "Pon una puerta grande en el centro", "Agrega una bandera en cada torre"]
+      "sugerencias": [
+        "Las torres son rectangulos con triangulos arriba",
+        "Pon una puerta grande en el centro",
+        "Agrega una bandera en cada torre"
+      ]
     }
   ]
 }

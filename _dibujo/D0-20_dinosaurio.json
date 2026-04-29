@@ -2,6 +2,7 @@
   "id": "D0-20_dinosaurio",
   "titulo": "Mi Dinosaurio Favorito",
   "descripcion": "Dibuja un dinosaurio en su mundo prehistorico",
+  "tipo": "dibujo-libre",
   "materia": "dibujo",
   "nivel": "D0-20",
   "tema": "dibujo-libre-animales",

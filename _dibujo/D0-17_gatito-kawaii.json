@@ -1,6 +1,7 @@
 {
   "id": "D0-17_gatito-kawaii",
   "titulo": "Gatito Kawaii",
+  "tipo": "dibujo-libre",
   "materia": "dibujo",
   "nivel": "D0-17",
   "tema": "dibujo-libre-animales",
@@ -11,7 +12,12 @@
       "titulo": "Gatito Kawaii",
       "emoji": "🐱",
       "instruccion": "Dibuja un gatito super tierno con ojos grandes!",
-      "sugerencias": ["La cabeza es un circulo grande", "Ponle orejas triangulares", "Ojos enormes y brillantes lo hacen kawaii", "Agrega bigotes y una colita curva"]
+      "sugerencias": [
+        "La cabeza es un circulo grande",
+        "Ponle orejas triangulares",
+        "Ojos enormes y brillantes lo hacen kawaii",
+        "Agrega bigotes y una colita curva"
+      ]
     }
   ]
 }

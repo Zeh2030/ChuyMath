@@ -2,6 +2,7 @@
   "id": "D1-17_creacion-lego",
   "titulo": "Mi Creacion de Lego",
   "descripcion": "Dibuja una construccion estilo Lego",
+  "tipo": "dibujo-libre",
   "materia": "dibujo",
   "nivel": "D1-17",
   "tema": "dibujo-libre-creacion",

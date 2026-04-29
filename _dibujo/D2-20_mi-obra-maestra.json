@@ -2,6 +2,7 @@
   "id": "D2-20_mi-obra-maestra",
   "titulo": "Mi Obra Maestra",
   "descripcion": "Dibujo libre total: tema libre, usa todo lo que has aprendido",
+  "tipo": "dibujo-libre",
   "materia": "dibujo",
   "nivel": "D2-20",
   "tema": "creacion-libre",

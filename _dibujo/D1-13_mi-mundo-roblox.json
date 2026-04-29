@@ -1,6 +1,7 @@
 {
   "id": "D1-13_mi-mundo-roblox",
   "titulo": "Mi Mundo de Roblox",
+  "tipo": "dibujo-libre",
   "materia": "dibujo",
   "nivel": "D1-13",
   "tema": "dibujo-libre-videojuegos",
@@ -11,7 +12,11 @@
       "titulo": "Mi Mundo de Roblox",
       "emoji": "🎮",
       "instruccion": "Dibuja tu personaje de Roblox o tu juego favorito de Roblox!",
-      "sugerencias": ["Los personajes de Roblox son como cubos con brazos y piernas", "Dibuja el escenario de tu juego favorito", "Ponle accesorios a tu personaje"]
+      "sugerencias": [
+        "Los personajes de Roblox son como cubos con brazos y piernas",
+        "Dibuja el escenario de tu juego favorito",
+        "Ponle accesorios a tu personaje"
+      ]
     }
   ]
 }

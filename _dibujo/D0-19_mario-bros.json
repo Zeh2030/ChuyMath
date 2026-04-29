@@ -2,6 +2,7 @@
   "id": "D0-19_mario-bros",
   "titulo": "Super Mario Bros",
   "descripcion": "Dibuja a Mario en el Reino Champinon",
+  "tipo": "dibujo-libre",
   "materia": "dibujo",
   "nivel": "D0-19",
   "tema": "dibujo-libre-videojuegos",

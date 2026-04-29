@@ -1,6 +1,7 @@
 {
   "id": "D1-15_mi-pokemon-favorito",
   "titulo": "Mi Pokemon Favorito",
+  "tipo": "dibujo-libre",
   "materia": "dibujo",
   "nivel": "D1-15",
   "tema": "dibujo-libre-personajes",
@@ -11,7 +12,11 @@
       "titulo": "Mi Pokemon Favorito",
       "emoji": "⚡",
       "instruccion": "Dibuja tu Pokemon favorito o inventa uno nuevo!",
-      "sugerencias": ["Empieza con formas simples: circulos y ovalos para el cuerpo", "Agrega ojos grandes y expresivos", "Dale un ataque especial con efectos de colores"]
+      "sugerencias": [
+        "Empieza con formas simples: circulos y ovalos para el cuerpo",
+        "Agrega ojos grandes y expresivos",
+        "Dale un ataque especial con efectos de colores"
+      ]
     }
   ]
 }

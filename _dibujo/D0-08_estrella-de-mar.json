@@ -2,6 +2,7 @@
   "id": "D0-08_estrella-de-mar",
   "titulo": "Estrella de Mar",
   "descripcion": "Colorea una estrella de mar de 5 puntas",
+  "tipo": "colorear",
   "materia": "dibujo",
   "nivel": "D0-08",
   "tema": "colorear-basico",
@@ -13,7 +14,13 @@
       "emoji": "⭐",
       "instruccion": "Colorea la estrella de mar! Las estrellas de mar de verdad son de muchos colores.",
       "imagen_contorno_url": "https://openclipart.org/image/800px/174579",
-      "colores_sugeridos": ["#e74c3c", "#e67e22", "#e91e63", "#f1c40f", "#9b59b6"],
+      "colores_sugeridos": [
+        "#e74c3c",
+        "#e67e22",
+        "#e91e63",
+        "#f1c40f",
+        "#9b59b6"
+      ],
       "dificultad": "facil"
     }
   ]

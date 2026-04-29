@@ -2,6 +2,7 @@
   "id": "D0-06_sol-brillante",
   "titulo": "Sol Brillante",
   "descripcion": "Colorea un sol grande con rayos",
+  "tipo": "colorear",
   "materia": "dibujo",
   "nivel": "D0-06",
   "tema": "colorear-basico",
@@ -13,7 +14,12 @@
       "emoji": "☀️",
       "instruccion": "Colorea el sol con colores brillantes! Pinta el centro y los rayos.",
       "imagen_contorno_url": "https://openclipart.org/image/800px/214398",
-      "colores_sugeridos": ["#f1c40f", "#e67e22", "#e74c3c", "#fff200"],
+      "colores_sugeridos": [
+        "#f1c40f",
+        "#e67e22",
+        "#e74c3c",
+        "#fff200"
+      ],
       "dificultad": "facil"
     }
   ]

@@ -2,6 +2,7 @@
   "id": "D2-22_mi-comida-favorita",
   "titulo": "Mi Comida Favorita",
   "descripcion": "Dibuja con detalle el platillo que mas te gusta comer",
+  "tipo": "dibujo-libre",
   "materia": "dibujo",
   "nivel": "D2-22",
   "tema": "objetos-detalle",

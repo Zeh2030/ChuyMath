@@ -1,6 +1,7 @@
 {
   "id": "D0-16_unicornio-magico",
   "titulo": "Unicornio Magico",
+  "tipo": "dibujo-libre",
   "materia": "dibujo",
   "nivel": "D0-16",
   "tema": "dibujo-libre-fantasia",
@@ -11,7 +12,11 @@
       "titulo": "Unicornio Magico",
       "emoji": "🦄",
       "instruccion": "Dibuja un unicornio con su cuerno brillante y arcoiris!",
-      "sugerencias": ["El cuerpo es como un caballo con un cuerno en la frente", "Hazle una melena de muchos colores", "Puedes agregar estrellas y arcoiris alrededor"]
+      "sugerencias": [
+        "El cuerpo es como un caballo con un cuerno en la frente",
+        "Hazle una melena de muchos colores",
+        "Puedes agregar estrellas y arcoiris alrededor"
+      ]
     }
   ]
 }
