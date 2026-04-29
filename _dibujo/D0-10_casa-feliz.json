@@ -1,0 +1,20 @@
+{
+  "id": "D0-10_casa-feliz",
+  "titulo": "Casa Feliz",
+  "descripcion": "Colorea una casa con techo y puerta",
+  "materia": "dibujo",
+  "nivel": "D0-10",
+  "tema": "colorear-basico",
+  "misiones": [
+    {
+      "id": "dib-casa-color-01",
+      "tipo": "colorear",
+      "titulo": "Casa Feliz",
+      "emoji": "🏠",
+      "instruccion": "Colorea la casa! El techo, las paredes, la puerta y las ventanas. ¿De que color quieres tu casa?",
+      "imagen_contorno_url": "https://openclipart.org/image/800px/213780",
+      "colores_sugeridos": ["#e74c3c", "#f1c40f", "#795548", "#2ecc71", "#3498db"],
+      "dificultad": "facil"
+    }
+  ]
+}

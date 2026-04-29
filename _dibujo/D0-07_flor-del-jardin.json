@@ -1,0 +1,20 @@
+{
+  "id": "D0-07_flor-del-jardin",
+  "titulo": "Flor del Jardin",
+  "descripcion": "Colorea una flor con sus petalos",
+  "materia": "dibujo",
+  "nivel": "D0-07",
+  "tema": "colorear-basico",
+  "misiones": [
+    {
+      "id": "dib-flor-color-01",
+      "tipo": "colorear",
+      "titulo": "Flor del Jardin",
+      "emoji": "🌸",
+      "instruccion": "Colorea la flor! Cada petalo puede tener un color diferente.",
+      "imagen_contorno_url": "https://openclipart.org/image/800px/214395",
+      "colores_sugeridos": ["#e91e63", "#9b59b6", "#f1c40f", "#2ecc71", "#e74c3c"],
+      "dificultad": "facil"
+    }
+  ]
+}
