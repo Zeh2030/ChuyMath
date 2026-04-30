@@ -161,6 +161,19 @@
 }
 .dlibre-limpiar-btn:hover { background: #bdc3c7; color: white; }
 
+.dlibre-borrar-guardado-btn {
+  padding: 4px 12px;
+  border-radius: 16px;
+  border: none;
+  background: #fdecea;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #c0392b;
+  margin-left: 6px;
+}
+.dlibre-borrar-guardado-btn:hover { background: #e74c3c; color: white; }
+
 /* Finish */
 .dlibre-terminar-btn {
   display: block;

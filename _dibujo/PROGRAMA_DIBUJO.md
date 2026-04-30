@@ -403,3 +403,28 @@ El flujo es: buscar/crear imagenes → subir a Firebase Storage → obtener URLs
 5. Siempre incluir la opcion de "dibujo libre" al final de cada bloque para creatividad
 6. No evaluar con calificacion — el boton es "Termine mi dibujo!" no "Verificar"
 7. Para D0: instrucciones muy cortas (papa lee), maximo 1 oracion por paso
+
+---
+
+## Persistencia de dibujos del nino
+
+### Nivel 1 (MVP) — localStorage [IMPLEMENTADO 2026-04-29]
+- Cada actividad guarda el ultimo dibujo del nino en `localStorage`
+- Key: `chuymath_dibujo_{userId}_{misionId}` (separado por usuario y actividad)
+- Sobrescribe (no historial). Se carga automaticamente al volver a la actividad.
+- Boton "🧽 Borrar guardado" disponible cuando existe dibujo previo.
+- Util: `chuy-react-app/src/utils/dibujoStorage.js`
+- Componentes integrados: Colorear, DibujoLibre, DibujoGuiado.
+
+### Nivel 2 (PENDIENTE) — Firebase Storage + galeria multi-dispositivo
+Cuando el Nivel 1 tenga validacion, escalar a:
+- Subir dataURL del canvas a Firebase Storage en `usuarios/{uid}/dibujos/{misionId}.png`
+- Documento en Firestore `usuarios/{uid}/dibujos_meta/{misionId}` con `{ fecha, titulo, storage_url }`
+- Vista nueva `MisDibujos.jsx`: galeria del usuario activo con todos sus dibujos.
+- Hijos pueden ver galerias de los hermanos (no es info sensible).
+- Boton borrar individual y boton de descargar PNG (compartir).
+- Free tier de Storage (5 GB) alcanza ~5,000 dibujos. Suficiente por años para 3 ninos.
+
+### Nivel 3 (FUTURO) — historial de versiones
+- En lugar de sobrescribir, guardar `{misionId}_{timestamp}.png` para ver evolucion.
+- "Antes/despues": comparar primer y ultimo dibujo de la misma actividad.

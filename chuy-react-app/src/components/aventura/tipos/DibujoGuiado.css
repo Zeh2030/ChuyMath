@@ -173,6 +173,17 @@
 }
 .dguiado-limpiar-btn:hover { background: #bdc3c7; }
 
+.dguiado-borrar-guardado-btn {
+  padding: 4px 10px;
+  border-radius: 16px;
+  border: none;
+  background: #fdecea;
+  color: #c0392b;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.dguiado-borrar-guardado-btn:hover { background: #e74c3c; color: white; }
+
 /* === NAVIGATION === */
 .dguiado-nav {
   display: flex;

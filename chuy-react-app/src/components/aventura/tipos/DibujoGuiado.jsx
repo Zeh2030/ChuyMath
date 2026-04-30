@@ -1,11 +1,17 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import './DibujoGuiado.css';
+import { useAuth } from '../../../hooks/useAuth.jsx';
+import { loadDibujo, saveDibujo, deleteDibujo } from '../../../utils/dibujoStorage';
 
 /**
  * DibujoGuiado - Tutorial paso a paso con imagen de referencia + canvas para dibujar.
  * Wizard: Intro → Paso 1..N (imagen + canvas) → Resultado final
  */
 const DibujoGuiado = ({ mision, onCompletar }) => {
+  const { currentUser } = useAuth();
+  const userId = currentUser?.uid;
+  const misionId = mision?.id;
+
   const [fase, setFase] = useState('intro'); // intro | pasos | fin
   const [pasoActual, setPasoActual] = useState(0);
   const canvasRef = useRef(null);
@@ -14,6 +20,7 @@ const DibujoGuiado = ({ mision, onCompletar }) => {
   const [color, setColor] = useState('#2c3e50');
   const [lineWidth, setLineWidth] = useState(4);
   const [tool, setTool] = useState('brush');
+  const [tieneGuardado, setTieneGuardado] = useState(false);
 
   const { pasos = [], imagen_final_url } = mision;
 
@@ -45,7 +52,17 @@ const DibujoGuiado = ({ mision, onCompletar }) => {
     ctx.lineJoin = 'round';
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-  }, []);
+
+    const saved = loadDibujo(userId, misionId);
+    if (saved) {
+      const img = new Image();
+      img.onload = () => ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      img.src = saved;
+      setTieneGuardado(true);
+    } else {
+      setTieneGuardado(false);
+    }
+  }, [userId, misionId]);
 
   useEffect(() => {
     if (fase === 'pasos') {
@@ -97,7 +114,32 @@ const DibujoGuiado = ({ mision, onCompletar }) => {
     }
   };
 
-  const clearCanvas = () => initCanvas();
+  // "Limpiar" descarta los trazos en pantalla pero conserva el dibujo guardado.
+  const clearCanvas = () => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  };
+
+  const guardarDibujoActual = () => {
+    try {
+      const dataURL = canvasRef.current?.toDataURL('image/png');
+      if (dataURL) {
+        const ok = saveDibujo(userId, misionId, dataURL);
+        if (ok) setTieneGuardado(true);
+      }
+    } catch (e) {
+      console.warn('No se pudo guardar el dibujo:', e);
+    }
+  };
+
+  const handleBorrarGuardado = () => {
+    deleteDibujo(userId, misionId);
+    setTieneGuardado(false);
+    clearCanvas();
+  };
 
   // === INTRO ===
   if (fase === 'intro') {
@@ -212,6 +254,15 @@ const DibujoGuiado = ({ mision, onCompletar }) => {
           ))}
         </div>
         <button className="dguiado-limpiar-btn" onClick={clearCanvas}>🗑️</button>
+        {tieneGuardado && (
+          <button
+            className="dguiado-borrar-guardado-btn"
+            onClick={handleBorrarGuardado}
+            title="Borrar el dibujo guardado de esta actividad"
+          >
+            🧽
+          </button>
+        )}
       </div>
 
       {/* Navigation */}
@@ -233,7 +284,7 @@ const DibujoGuiado = ({ mision, onCompletar }) => {
         ) : (
           <button
             className="dguiado-btn-principal"
-            onClick={() => setFase('fin')}
+            onClick={() => { guardarDibujoActual(); setFase('fin'); }}
           >
             Termine!
           </button>

@@ -133,6 +133,23 @@
   color: white;
 }
 
+.colorear-borrar-guardado-btn {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: none;
+  background: #fdecea;
+  color: #c0392b;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.15s;
+}
+
+.colorear-borrar-guardado-btn:hover {
+  background: #e74c3c;
+  color: white;
+}
+
 /* Finish button */
 .colorear-terminar-btn {
   display: block;
