@@ -25,6 +25,23 @@ D3  → Artista Jr.      (9-11 anos) ← Meta a largo plazo
 
 ---
 
+## Estructura de carpetas
+
+Los JSONs se organizan en subcarpetas por tipo de juego (igual que geografia / ingles):
+
+```
+_dibujo/
+  PROGRAMA_DIBUJO.md       <- este archivo
+  colorear/                <- tipo "colorear" (canvas con imagen de contorno)
+  dibujo-libre/            <- tipo "dibujo-libre" (canvas en blanco + sugerencias)
+  dibujo-guiado/           <- tipo "dibujo-guiado" (wizard pasos con referencia)
+```
+
+Esto solo afecta organizacion del repo. Firebase mantiene la coleccion `dibujo`
+plana — no le importan los subfolders. La migracion (subir a Firebase) sigue igual.
+
+---
+
 ## Tipos de actividad
 
 ### 3 tipos de juego (componentes)
