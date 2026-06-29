@@ -1,0 +1,28 @@
+{
+  "id": "D1-21_primarios-y-secundarios",
+  "titulo": "Primarios y Secundarios",
+  "descripcion": "Aprende a crear los colores secundarios mezclando los primarios",
+  "tipo": "mezclador-colores",
+  "materia": "dibujo",
+  "nivel": "D1-21",
+  "tema": "teoria-del-color",
+  "misiones": [
+    {
+      "id": "dib-color-prim-01",
+      "tipo": "mezclador-colores",
+      "titulo": "Primarios y Secundarios",
+      "emoji": "🎨",
+      "modo": "completo",
+      "instruccion": "Como en tus clases de dibujo: mezcla los 3 colores primarios para crear los secundarios.",
+      "leccion": "Un artista solo necesita 3 colores primarios (rojo, amarillo y azul) para crear muchísimos más. Los que salen de mezclar dos primarios se llaman secundarios.",
+      "colores_base": ["rojo", "amarillo", "azul"],
+      "mostrar_rueda": false,
+      "retos": [
+        { "objetivo": "naranja", "pista": "Mezcla los dos colores cálidos." },
+        { "objetivo": "verde", "pista": "Necesitas el amarillo." },
+        { "objetivo": "morado", "pista": "Mezcla el más cálido con el más frío." }
+      ],
+      "dato_curioso": "Con tus pinturas reales, agrega el color claro poco a poco sobre el oscuro. ¡Así controlas mejor el tono que quieres lograr!"
+    }
+  ]
+}

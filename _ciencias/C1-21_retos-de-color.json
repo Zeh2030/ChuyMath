@@ -1,0 +1,26 @@
+{
+  "id": "C1-21_retos-de-color",
+  "titulo": "Retos de Color",
+  "materia": "ciencias",
+  "nivel": "C1-21",
+  "tema": "colores",
+  "misiones": [
+    {
+      "id": "lab-colores-c1-01",
+      "tipo": "mezclador-colores",
+      "titulo": "Retos de Color",
+      "emoji": "🧪",
+      "modo": "completo",
+      "instruccion": "Primero explora libremente. Luego resuelve los retos: ¡haz el color que te pidan!",
+      "leccion": "Cuando mezclas dos colores primarios obtienes un color secundario: naranja, verde o morado.",
+      "colores_base": ["rojo", "amarillo", "azul"],
+      "mostrar_rueda": false,
+      "retos": [
+        { "objetivo": "naranja", "pista": "Un color cálido como el atardecer." },
+        { "objetivo": "verde", "pista": "El color de las plantas." },
+        { "objetivo": "morado", "pista": "El color de las uvas." }
+      ],
+      "dato_curioso": "Si mezclas dos colores que son opuestos (como rojo y verde) ¡sale café! Por eso los pintores cuidan mucho qué colores juntan."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "C0-21_laboratorio-de-colores",
+  "titulo": "Laboratorio de Colores",
+  "materia": "ciencias",
+  "nivel": "C0-21",
+  "tema": "colores",
+  "misiones": [
+    {
+      "id": "lab-colores-c0-01",
+      "tipo": "mezclador-colores",
+      "titulo": "Laboratorio de Colores",
+      "emoji": "🎨",
+      "modo": "explorar",
+      "instruccion": "Toca dos colores y descubre qué color nuevo aparece en la probeta.",
+      "leccion": "El rojo, el amarillo y el azul son colores primarios. ¡Mezclándolos puedes crear colores nuevos!",
+      "colores_base": ["rojo", "amarillo", "azul"],
+      "mostrar_rueda": false,
+      "dato_curioso": "Después de jugar aquí, ¡pídele a papá o mamá pintura de verdad y comprueba si sale el mismo color!"
+    }
+  ]
+}

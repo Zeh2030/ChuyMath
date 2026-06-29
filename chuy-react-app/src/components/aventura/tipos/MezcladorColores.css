@@ -1,0 +1,237 @@
+.mezcla-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  font-family: 'Fredoka', 'Segoe UI', sans-serif;
+  text-align: center;
+}
+
+/* ---------- Botones ---------- */
+.mezcla-btn-principal {
+  margin-top: 18px;
+  padding: 14px 30px;
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #8e44ad, #c0392b 50%, #e67e22);
+  color: white;
+  font-size: 1.15rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(142, 68, 173, 0.35);
+  transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+}
+.mezcla-btn-principal:hover:not(:disabled) { transform: translateY(-2px); }
+.mezcla-btn-principal:disabled { opacity: 0.45; cursor: not-allowed; }
+.mezcla-btn-principal.pulso { animation: mezcla-pulso 1s ease-in-out infinite; }
+
+.mezcla-btn-secundario {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 14px;
+  background: #ecf0f1;
+  color: #7f8c8d;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.mezcla-btn-secundario:hover { background: #d6dbdf; color: #2c3e50; }
+
+@keyframes mezcla-pulso {
+  0%, 100% { transform: scale(1); box-shadow: 0 4px 14px rgba(142, 68, 173, 0.35); }
+  50% { transform: scale(1.05); box-shadow: 0 6px 22px rgba(142, 68, 173, 0.55); }
+}
+
+/* ---------- Portada ---------- */
+.mezcla-portada { display: flex; flex-direction: column; align-items: center; padding: 12px; }
+.mezcla-emoji-grande { font-size: 4rem; animation: mezcla-flota 3s ease-in-out infinite; }
+.mezcla-titulo { font-size: 1.8rem; color: #2c3e50; margin: 8px 0; }
+.mezcla-instruccion { font-size: 1.05rem; color: #555; max-width: 480px; margin: 4px 0 12px; }
+.mezcla-leccion {
+  display: flex; gap: 10px; align-items: flex-start;
+  background: #fef9e7; border: 2px solid #f9e79f; border-radius: 14px;
+  padding: 12px 16px; max-width: 500px; text-align: left; margin-bottom: 12px;
+}
+.mezcla-leccion-icono { font-size: 1.4rem; }
+.mezcla-leccion p { margin: 0; color: #7d6608; font-size: 0.98rem; }
+
+.mezcla-base-preview { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 6px 0; }
+.mezcla-base-chip {
+  display: flex; align-items: center; gap: 6px;
+  background: white; border: 2px solid #eee; border-radius: 20px;
+  padding: 4px 12px 4px 6px; font-size: 0.9rem; font-weight: 600; color: #2c3e50;
+}
+.mezcla-base-bola { width: 18px; height: 18px; border-radius: 50%; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+
+@keyframes mezcla-flota {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-8px) rotate(3deg); }
+}
+
+/* ---------- Fase (explorar / reto) ---------- */
+.mezcla-fase { display: flex; flex-direction: column; align-items: center; width: 100%; padding: 8px; }
+.mezcla-progreso-texto {
+  font-size: 1.05rem; font-weight: 700; color: #8e44ad;
+  background: #f4ecf7; border-radius: 20px; padding: 6px 18px; margin-bottom: 14px;
+}
+
+/* ---------- Probeta ---------- */
+.mezcla-probeta { display: flex; flex-direction: column; align-items: center; margin-bottom: 10px; }
+.mezcla-probeta-vidrio {
+  position: relative;
+  width: 130px; height: 150px;
+  border: 5px solid #cfd8dc; border-top: none;
+  border-radius: 0 0 40px 40px / 0 0 60px 60px;
+  background: rgba(236, 240, 241, 0.4);
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: inset 0 -6px 14px rgba(0,0,0,0.06);
+}
+.mezcla-probeta-mitad { position: absolute; top: 0; bottom: 0; width: 50%; opacity: 0.92; }
+.mezcla-probeta-mitad.izq { left: 0; }
+.mezcla-probeta-mitad.der { right: 0; }
+.mezcla-probeta-lleno { position: absolute; inset: 0; }
+.mezcla-probeta-hint { color: #95a5a6; font-size: 0.85rem; padding: 0 10px; }
+.mezcla-probeta-base { width: 60px; height: 10px; background: #cfd8dc; border-radius: 0 0 6px 6px; }
+.mezcla-probeta.animar .mezcla-probeta-lleno { animation: mezcla-swirl 0.7s ease; }
+
+@keyframes mezcla-swirl {
+  0% { transform: scale(0.2) rotate(-40deg); opacity: 0; }
+  60% { transform: scale(1.12) rotate(10deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+/* ---------- Ecuación de resultado ---------- */
+.mezcla-ecuacion {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center;
+  background: white; border-radius: 18px; padding: 10px 18px; margin-bottom: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  animation: mezcla-aparece 0.4s ease;
+}
+.mezcla-signo { font-size: 1.4rem; font-weight: 700; color: #95a5a6; }
+.mezcla-resultado-nombre { font-size: 1.2rem; font-weight: 700; color: #2c3e50; margin-left: 4px; }
+
+.mezcla-bola { width: 34px; height: 34px; border-radius: 50%; box-shadow: 0 2px 6px rgba(0,0,0,0.2); display: inline-block; }
+.mezcla-bola.grande { width: 46px; height: 46px; }
+.mezcla-bola.vacia { background: #ecf0f1; }
+
+@keyframes mezcla-aparece {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Paleta ---------- */
+.mezcla-paleta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 8px 0; }
+.mezcla-gota {
+  position: relative;
+  width: 74px; height: 74px;
+  border-radius: 50% 50% 50% 6px;
+  transform: rotate(45deg);
+  border: 4px solid white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.mezcla-gota:hover:not(:disabled) { transform: rotate(45deg) scale(1.08); }
+.mezcla-gota:disabled { cursor: not-allowed; opacity: 0.5; }
+.mezcla-gota.usado { box-shadow: 0 0 0 4px #2c3e50, 0 4px 10px rgba(0,0,0,0.2); }
+.mezcla-gota-nombre {
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  font-size: 0.72rem; font-weight: 700; color: white;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.35); pointer-events: none; white-space: nowrap;
+}
+
+/* ---------- Acciones ---------- */
+.mezcla-acciones { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 6px; }
+
+/* ---------- Objetivo (reto) ---------- */
+.mezcla-objetivo { display: flex; flex-direction: column; align-items: center; margin-bottom: 12px; }
+.mezcla-objetivo-label { font-size: 1rem; font-weight: 600; color: #555; margin-bottom: 8px; }
+.mezcla-objetivo-bola {
+  width: 110px; height: 110px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+  border: 5px solid white;
+}
+.mezcla-objetivo-nombre { color: white; font-weight: 700; font-size: 1.05rem; text-shadow: 0 1px 3px rgba(0,0,0,0.4); }
+.mezcla-pista { font-size: 0.9rem; color: #7f8c8d; margin: 8px 0 0; }
+
+/* ---------- Slots de reto ---------- */
+.mezcla-slots { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; }
+.mezcla-slot-reto {
+  width: 70px; height: 70px; border-radius: 50%;
+  border: 4px dashed #bdc3c7; background: #f8f9fa;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: transform 0.15s;
+}
+.mezcla-slot-reto.lleno { border-style: solid; border-color: white; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+.mezcla-slot-reto:hover { transform: scale(1.05); }
+.mezcla-slot-vacio { font-size: 1.6rem; color: #bdc3c7; font-weight: 700; }
+
+/* ---------- Feedback ---------- */
+.mezcla-feedback {
+  margin-top: 12px; padding: 12px 18px; border-radius: 14px;
+  font-weight: 600; font-size: 1rem; max-width: 480px; animation: mezcla-aparece 0.3s ease;
+}
+.mezcla-feedback.correcto { background: #eafaf1; color: #1e8449; border: 2px solid #abebc6; }
+.mezcla-feedback.incorrecto { background: #fef5e7; color: #b9770e; border: 2px solid #fad7a0; }
+.mezcla-score-mini { margin-top: 14px; font-size: 0.9rem; color: #95a5a6; font-weight: 600; }
+
+/* ---------- Colección de descubiertos ---------- */
+.mezcla-coleccion { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 12px 0; }
+.mezcla-coleccion-item {
+  display: flex; align-items: center; gap: 6px;
+  background: white; border-radius: 18px; padding: 4px 12px 4px 5px;
+  font-size: 0.85rem; font-weight: 600; color: #2c3e50;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08); animation: mezcla-aparece 0.3s ease;
+}
+.mezcla-coleccion-bola { width: 18px; height: 18px; border-radius: 50%; }
+
+/* ---------- Rueda de color ---------- */
+.mezcla-rueda { position: relative; margin: 16px auto 4px; }
+.mezcla-rueda-centro {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  font-size: 0.78rem; font-weight: 700; color: #95a5a6; line-height: 1.1; text-align: center;
+}
+.mezcla-rueda-spoke {
+  position: absolute; width: 38px; height: 38px; border-radius: 50%;
+  transform: translate(-50%, -50%);
+  border: 3px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; color: #b0b0b0; font-size: 1rem;
+  transition: background 0.4s ease, transform 0.3s ease;
+}
+.mezcla-rueda-spoke.on { transform: translate(-50%, -50%) scale(1.05); }
+
+/* ---------- Final ---------- */
+.mezcla-fin { display: flex; flex-direction: column; align-items: center; padding: 20px; }
+.mezcla-fin-emoji { font-size: 4.5rem; animation: mezcla-pop 0.6s ease; }
+.mezcla-fin h2 { color: #2c3e50; margin: 8px 0 14px; }
+.mezcla-dato {
+  display: flex; gap: 10px; align-items: flex-start;
+  background: #eef7ff; border: 2px solid #aed6f1; border-radius: 14px;
+  padding: 14px 18px; max-width: 500px; text-align: left;
+}
+.mezcla-dato-icono { font-size: 1.5rem; }
+.mezcla-dato p { margin: 0; color: #1a5276; font-size: 0.98rem; }
+
+@keyframes mezcla-pop {
+  0% { transform: scale(0.3); opacity: 0; }
+  70% { transform: scale(1.2); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 480px) {
+  .mezcla-gota { width: 60px; height: 60px; }
+  .mezcla-gota-nombre { font-size: 0.62rem; }
+  .mezcla-objetivo-bola { width: 92px; height: 92px; }
+  .mezcla-probeta-vidrio { width: 110px; height: 130px; }
+  .mezcla-rueda { transform: scale(0.9); }
+}

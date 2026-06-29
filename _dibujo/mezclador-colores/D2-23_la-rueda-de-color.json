@@ -1,0 +1,31 @@
+{
+  "id": "D2-23_la-rueda-de-color",
+  "titulo": "La Rueda de Color",
+  "descripcion": "Completa la rueda de color creando los colores terciarios",
+  "tipo": "mezclador-colores",
+  "materia": "dibujo",
+  "nivel": "D2-23",
+  "tema": "teoria-del-color",
+  "misiones": [
+    {
+      "id": "dib-color-rueda-01",
+      "tipo": "mezclador-colores",
+      "titulo": "La Rueda de Color",
+      "emoji": "🌈",
+      "modo": "completo",
+      "instruccion": "Mezcla primarios con secundarios para crear los colores terciarios y completar toda la rueda.",
+      "leccion": "La rueda de color ordena los 12 colores. Un color terciario nace de mezclar un primario con el secundario que tiene al lado, por ejemplo amarillo + verde = amarillo verdoso.",
+      "colores_base": ["rojo", "amarillo", "azul", "naranja", "verde", "morado"],
+      "mostrar_rueda": true,
+      "retos": [
+        { "objetivo": "amarillo-naranja", "pista": "Amarillo con su secundario vecino cálido." },
+        { "objetivo": "rojo-naranja", "pista": "Rojo con el naranja." },
+        { "objetivo": "amarillo-verde", "pista": "Amarillo con el verde." },
+        { "objetivo": "azul-verde", "pista": "Azul con el verde." },
+        { "objetivo": "azul-morado", "pista": "Azul con el morado." },
+        { "objetivo": "rojo-morado", "pista": "Rojo con el morado." }
+      ],
+      "dato_curioso": "En la rueda de color, los colores que están uno frente al otro se llaman complementarios. ¡Juntos en un dibujo resaltan muchísimo, pero mezclados se vuelven café!"
+    }
+  ]
+}

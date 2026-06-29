@@ -35,6 +35,7 @@ _dibujo/
   colorear/                <- tipo "colorear" (canvas con imagen de contorno)
   dibujo-libre/            <- tipo "dibujo-libre" (canvas en blanco + sugerencias)
   dibujo-guiado/           <- tipo "dibujo-guiado" (wizard pasos con referencia)
+  mezclador-colores/       <- tipo "mezclador-colores" (teoria del color)
 ```
 
 Esto solo afecta organizacion del repo. Firebase mantiene la coleccion `dibujo`
@@ -44,13 +45,26 @@ plana — no le importan los subfolders. La migracion (subir a Firebase) sigue i
 
 ## Tipos de actividad
 
-### 3 tipos de juego (componentes)
+### 4 tipos de juego (componentes)
 
 | Tipo | Descripcion | Componente | Estado |
 |------|-------------|------------|--------|
-| `colorear` | Imagen de contornos como fondo, nino pinta encima | Nuevo (basado en LienzoDibujo) | Por crear |
-| `dibujo-guiado` | Tutorial paso a paso con imagen de referencia por paso | Nuevo (wizard + canvas) | Por crear |
-| `dibujo-libre` | Canvas libre con tema e imagen de referencia al lado | LienzoDibujo existente (extender) | Parcial |
+| `colorear` | Imagen de contornos como fondo, nino pinta encima | Nuevo (basado en LienzoDibujo) | ✅ Creado |
+| `dibujo-guiado` | Tutorial paso a paso con imagen de referencia por paso | Nuevo (wizard + canvas) | ✅ Creado |
+| `dibujo-libre` | Canvas libre con tema e imagen de referencia al lado | LienzoDibujo existente (extender) | ✅ Creado |
+| `mezclador-colores` | Mezcla de colores RYB: explorar + retos + rueda de color | `MezcladorColores.jsx` (compartido con ciencias) | ✅ Creado |
+
+> **Nota:** `mezclador-colores` es agnostico de materia (igual que `tap-the-pairs`).
+> En Ciencias enmarca el *descubrimiento* del fenomeno; en Dibujo enmarca la
+> *teoria del color* del artista. Mismo componente, distinto contenido JSON.
+
+#### Mezclador dentro del lienzo (fase 2 — IMPLEMENTADO)
+
+Ademas del juego `mezclador-colores`, los componentes `colorear` y `dibujo-libre`
+incluyen un mini-mezclador (`MezcladorLienzo.jsx`, boton 🧪 en la barra): el nino
+elige dos colores, los mezcla (modelo RYB), los aclara/oscurece (tinte/sombra) y
+pinta con el color que creo. Los colores mezclados quedan en una fila para reusarlos.
+Toda la logica de mezcla vive en `src/utils/colorMix.js`.
 
 ### Como funcionan tecnicamente
 
@@ -270,6 +284,43 @@ y se usa la URL de descarga. No guardamos PNGs en el repositorio.
 
 ---
 
+## Bloque de Teoria del Color (mezclador-colores)
+
+Progresion de artista, transversal a los niveles. Usa el tipo `mezclador-colores`.
+
+| # | Titulo | Modo | Enfoque | Estado |
+|---|--------|------|---------|--------|
+| D1-21 | Primarios y Secundarios | completo | 3 primarios → 3 secundarios | ✅ Creado |
+| D2-23 | La Rueda de Color | completo | + secundarios → 6 terciarios (rueda completa) | ✅ Creado |
+| D2-24 | Calidos, Frios y Complementarios | explorar | temperaturas + opuestos = cafe | ✅ Creado |
+
+Campos JSON del tipo `mezclador-colores`:
+
+```json
+{
+  "tipo": "mezclador-colores",
+  "modo": "explorar | reto | completo",
+  "instruccion": "...",
+  "leccion": "texto que aparece en la portada",
+  "colores_base": ["rojo", "amarillo", "azul"],
+  "mostrar_rueda": true,
+  "retos": [ { "objetivo": "naranja", "pista": "..." } ],
+  "dato_curioso": "texto al terminar"
+}
+```
+
+ids de color validos (en `src/utils/colorMix.js`): `rojo`, `amarillo`, `azul`,
+`naranja`, `verde`, `morado`, `rojo-naranja`, `amarillo-naranja`, `amarillo-verde`,
+`azul-verde`, `azul-morado`, `rojo-morado`, `cafe`.
+
+### Pendiente (siguiente lote de teoria del color)
+- Complementarios como reto de emparejar → reutilizar `tap-the-pairs`.
+- Calido vs frio como clasificacion → reutilizar `opcion-multiple`.
+- Tintes y sombras (agregar blanco/negro) ya existen en el mezclador del lienzo;
+  podrian volverse su propia leccion.
+
+---
+
 ## Coleccion Firebase: `dibujo`
 
 ### Estructura del JSON
@@ -384,7 +435,7 @@ Misma pauta que Piano y Ciencias:
 | Boveda.jsx | Cargar coleccion `dibujo`, tipos `colorear`, `dibujo-guiado`, `dibujo-libre` |
 | AdminMigracion.jsx | Radio button `Dibujo` |
 | Aventura.jsx | Fallback busqueda en coleccion `dibujo` |
-| MisionRenderer.jsx | 3 cases: `colorear`, `dibujo-guiado`, `dibujo-libre` |
+| MisionRenderer.jsx | 4 cases: `colorear`, `dibujo-guiado`, `dibujo-libre`, `mezclador-colores` |
 
 ### Coleccion Firebase: `dibujo`
 ### Carpeta contenido: `_dibujo/`

@@ -310,6 +310,8 @@ Se crean 10 experimentos por solicitud, en orden de nivel.
 | `C0-08_que-hace-ruido.json` | C0-08 | ✅ Creado |
 | `C0-09_adivina-el-olor.json` | C0-09 | ✅ Creado |
 | `C0-10_bichos-del-jardin.json` | C0-10 | ✅ Creado |
+| `C0-21_laboratorio-de-colores.json` | C0-21 | ✅ Creado (tipo `mezclador-colores`, modo explorar) |
+| `C1-21_retos-de-color.json` | C1-21 | ✅ Creado (tipo `mezclador-colores`, modo completo) |
 | C2-01 a C2-10 | C2 | Pendiente (Lote 4) |
 
 ---
@@ -323,6 +325,7 @@ Actualmente solo se usa `experimento-guia` (componente nativo). Pero podemos enr
 | Tipo existente | Uso en ciencias | Ejemplo de tema |
 |---------------|-----------------|-----------------|
 | `experimento-guia` ✅ | Experimentos paso a paso (actual) | Volcan de vinagre |
+| `mezclador-colores` ✅ | Mezcla interactiva de colores (RYB) | Laboratorio de Colores (compañero digital de C0-01) |
 | `opcion-multiple` | Preguntas teoricas | "¿Que es la gravedad?" |
 | `true-or-false` | Datos cientificos verdadero/falso | "Las plantas respiran" |
 | `tap-the-pairs` | Empareja conceptos | Animal ↔ habitat, Organo ↔ funcion |

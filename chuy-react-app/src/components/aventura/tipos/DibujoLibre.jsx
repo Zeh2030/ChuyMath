@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect, useCallback } from 'react';
 import './DibujoLibre.css';
 import { useAuth } from '../../../hooks/useAuth.jsx';
 import { loadDibujo, saveDibujo, deleteDibujo } from '../../../utils/dibujoStorage';
+import MezcladorLienzo from './MezcladorLienzo';
 
 /**
  * DibujoLibre - Canvas libre con imagen de referencia opcional y sugerencias.
@@ -20,6 +21,7 @@ const DibujoLibre = ({ mision, onCompletar }) => {
   const [tool, setTool] = useState('brush');
   const [showRef, setShowRef] = useState(true);
   const [tieneGuardado, setTieneGuardado] = useState(false);
+  const [coloresMezclados, setColoresMezclados] = useState([]);
 
   const { imagen_referencia_url, sugerencias = [] } = mision;
 
@@ -132,6 +134,13 @@ const DibujoLibre = ({ mision, onCompletar }) => {
     clearCanvas();
   };
 
+  // Color creado en el mezclador del lienzo: lo activa como pincel y lo conserva.
+  const usarColorMezclado = (hex) => {
+    setColor(hex);
+    setTool('brush');
+    setColoresMezclados(prev => (prev.includes(hex) ? prev : [...prev, hex].slice(-6)));
+  };
+
   return (
     <div className="dlibre-container">
       {/* Suggestions */}
@@ -184,6 +193,16 @@ const DibujoLibre = ({ mision, onCompletar }) => {
               onClick={() => { setColor(c.hex); setTool('brush'); }}
             />
           ))}
+          {coloresMezclados.map((hex, i) => (
+            <button
+              key={`mix-${i}`}
+              className={`dlibre-color-btn ${color === hex && tool === 'brush' ? 'active' : ''}`}
+              style={{ backgroundColor: hex, border: '2px solid white' }}
+              onClick={() => { setColor(hex); setTool('brush'); }}
+              title="Color que mezclaste"
+            />
+          ))}
+          <MezcladorLienzo onUsar={usarColorMezclado} />
           <button
             className={`dlibre-eraser-btn ${tool === 'eraser' ? 'active' : ''}`}
             onClick={() => setTool(tool === 'eraser' ? 'brush' : 'eraser')}

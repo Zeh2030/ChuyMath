@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect, useCallback } from 'react';
 import './Colorear.css';
 import { useAuth } from '../../../hooks/useAuth.jsx';
 import { loadDibujo, saveDibujo, deleteDibujo } from '../../../utils/dibujoStorage';
+import MezcladorLienzo from './MezcladorLienzo';
 
 /**
  * Colorear - Canvas con imagen de contorno como fondo.
@@ -21,6 +22,7 @@ const Colorear = ({ mision, onCompletar }) => {
   const [bgLoaded, setBgLoaded] = useState(false);
   const [bgError, setBgError] = useState(false);
   const [tieneGuardado, setTieneGuardado] = useState(false);
+  const [coloresMezclados, setColoresMezclados] = useState([]);
   const bgImageRef = useRef(null);
 
   const coloresSugeridos = mision.colores_sugeridos || null;
@@ -188,6 +190,14 @@ const Colorear = ({ mision, onCompletar }) => {
     clearCanvas();
   };
 
+  // Color creado en el mezclador del lienzo: lo activa como pincel y lo guarda
+  // en la fila de colores mezclados para reutilizarlo.
+  const usarColorMezclado = (hex) => {
+    setColor(hex);
+    setTool('brush');
+    setColoresMezclados(prev => (prev.includes(hex) ? prev : [...prev, hex].slice(-6)));
+  };
+
   if (!bgLoaded && !bgError) {
     return (
       <div className="colorear-container">
@@ -224,6 +234,16 @@ const Colorear = ({ mision, onCompletar }) => {
               title={c.name}
             />
           ))}
+          {coloresMezclados.map((hex, i) => (
+            <button
+              key={`mix-${i}`}
+              className={`colorear-color-btn ${color === hex && tool === 'brush' ? 'active' : ''}`}
+              style={{ backgroundColor: hex }}
+              onClick={() => { setColor(hex); setTool('brush'); }}
+              title="Color que mezclaste"
+            />
+          ))}
+          <MezcladorLienzo onUsar={usarColorMezclado} />
           <button
             className={`colorear-tool-btn ${tool === 'eraser' ? 'active' : ''}`}
             onClick={() => setTool(tool === 'eraser' ? 'brush' : 'eraser')}

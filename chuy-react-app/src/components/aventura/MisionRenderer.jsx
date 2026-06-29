@@ -30,6 +30,7 @@ import ExperimentoGuia from './tipos/ExperimentoGuia';
 import Colorear from './tipos/Colorear';
 import DibujoGuiado from './tipos/DibujoGuiado';
 import DibujoLibre from './tipos/DibujoLibre';
+import MezcladorColores from './tipos/MezcladorColores';
 const PianoPrompter = React.lazy(() => import('./tipos/PianoPrompter'));
 import IdentificaNota from './tipos/IdentificaNota';
 const ExploradorMapa = React.lazy(() => import('./tipos/ExploradorMapa'));
@@ -377,6 +378,16 @@ const MisionRenderer = ({
       case 'dibujo-libre':
         return (
           <DibujoLibre
+            key={mision.id}
+            mision={mision}
+            onCompletar={onCompletar}
+          />
+        );
+
+      // === Color (ciencias + dibujo) ===
+      case 'mezclador-colores':
+        return (
+          <MezcladorColores
             key={mision.id}
             mision={mision}
             onCompletar={onCompletar}

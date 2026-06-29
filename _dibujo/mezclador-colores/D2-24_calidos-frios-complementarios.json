@@ -1,0 +1,23 @@
+{
+  "id": "D2-24_calidos-frios-complementarios",
+  "titulo": "Cálidos, Fríos y Complementarios",
+  "descripcion": "Descubre qué pasa al mezclar colores opuestos de la rueda",
+  "tipo": "mezclador-colores",
+  "materia": "dibujo",
+  "nivel": "D2-24",
+  "tema": "teoria-del-color",
+  "misiones": [
+    {
+      "id": "dib-color-comp-01",
+      "tipo": "mezclador-colores",
+      "titulo": "Cálidos, Fríos y Complementarios",
+      "emoji": "🔥",
+      "modo": "explorar",
+      "instruccion": "Mezcla colores que están frente a frente en la rueda y observa qué sucede.",
+      "leccion": "Los colores cálidos (rojo, naranja, amarillo) recuerdan al sol y al fuego. Los fríos (azul, verde, morado) recuerdan al agua y al hielo. Los pares opuestos en la rueda se llaman complementarios: rojo-verde, azul-naranja y amarillo-morado.",
+      "colores_base": ["rojo", "amarillo", "azul", "naranja", "verde", "morado"],
+      "mostrar_rueda": true,
+      "dato_curioso": "Cuando mezclas dos complementarios obtienes café o gris. Los artistas usan este truco para crear sombras y tonos tierra sin usar pintura café directamente."
+    }
+  ]
+}
