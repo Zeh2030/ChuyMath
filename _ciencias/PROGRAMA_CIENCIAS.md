@@ -310,8 +310,8 @@ Se crean 10 experimentos por solicitud, en orden de nivel.
 | `C0-08_que-hace-ruido.json` | C0-08 | ✅ Creado |
 | `C0-09_adivina-el-olor.json` | C0-09 | ✅ Creado |
 | `C0-10_bichos-del-jardin.json` | C0-10 | ✅ Creado |
-| `C0-21_laboratorio-de-colores.json` | C0-21 | ✅ Creado (tipo `mezclador-colores`, modo explorar) |
-| `C1-21_retos-de-color.json` | C1-21 | ✅ Creado (tipo `mezclador-colores`, modo completo) |
+| `C0-11_laboratorio-de-colores.json` | C0-11 | ✅ Creado (tipo `mezclador-colores`, modo explorar — hija) |
+| `C1-21_retos-de-color.json` | C1-21 | ✅ Creado (tipo `mezclador-colores`, modo completo — hijo) |
 | C2-01 a C2-10 | C2 | Pendiente (Lote 4) |
 
 ---
