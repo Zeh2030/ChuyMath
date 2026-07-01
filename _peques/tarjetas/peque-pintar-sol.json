@@ -1,0 +1,10 @@
+{
+  "id": "peque-pintar-sol",
+  "titulo": "Pintar",
+  "emoji": "🎨",
+  "color": "#ff8fab",
+  "orden": 6,
+  "kind": "atajo",
+  "coleccion": "dibujo",
+  "docId": "D0-06_sol-brillante"
+}

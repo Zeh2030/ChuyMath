@@ -114,6 +114,21 @@ const AdminMigracion = () => {
     }
   };
 
+  // Función para migrar una tarjeta de Modo Peques (estructura plana de tarjeta, no misiones)
+  const migrarPeques = async (pequeData) => {
+    try {
+      const pequeRef = doc(db, 'peques', pequeData.id);
+      await setDoc(pequeRef, {
+        ...pequeData,
+        materia: 'peques',
+      });
+      return { exito: true, id: pequeData.id, titulo: pequeData.titulo };
+    } catch (error) {
+      console.error(`Error al migrar peques ${pequeData.id}:`, error);
+      return { exito: false, id: pequeData.id, error: error.message };
+    }
+  };
+
   // Función para migrar un simulacro (aplana estructura para lista de problemas)
   const migrarSimulacro = async (simulacroData) => {
     try {
@@ -206,6 +221,9 @@ const AdminMigracion = () => {
       } else if (coleccionDestino === 'geografia') {
         console.log(`Migrando a colección 'geografia' (estructura anidada)...`);
         resultado = await migrarGeografia(data);
+      } else if (coleccionDestino === 'peques') {
+        console.log(`Migrando a colección 'peques' (tarjeta de Modo Peques)...`);
+        resultado = await migrarPeques(data);
       } else {
         console.log(`Migrando a colección 'simulacros' (estructura plana)...`);
         resultado = await migrarSimulacro(data);
@@ -358,6 +376,17 @@ const AdminMigracion = () => {
                 />
                 <strong>🌍 Geografia</strong>
               </label>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '1rem', padding: '10px 15px', background: coleccionDestino === 'peques' ? '#f4ecf7' : '#fff', borderRadius: '8px', border: coleccionDestino === 'peques' ? '2px solid #8e44ad' : '1px solid #ddd' }}>
+                <input
+                  type="radio"
+                  name="coleccion"
+                  value="peques"
+                  checked={coleccionDestino === 'peques'}
+                  onChange={() => setColeccionDestino('peques')}
+                  style={{ width: '20px', height: '20px' }}
+                />
+                <strong>🧸 Peques</strong>
+              </label>
             </div>
             <p style={{ marginTop: '15px', fontSize: '0.9rem', color: '#7f8c8d', background: '#f8f9fa', padding: '10px', borderRadius: '5px' }}>
               {coleccionDestino === 'aventuras'
@@ -372,6 +401,8 @@ const AdminMigracion = () => {
                 ? '🎨 Dibujo: Colección para actividades de arte. Tipos: colorear, dibujo-guiado, dibujo-libre.'
                 : coleccionDestino === 'geografia'
                 ? '🌍 Geografia: Colección para contenido geográfico. Incluye tipos: explorador-mapa, image-picker, tap-the-pairs, fill-the-gap, true-or-false, opcion-multiple, word-scramble, mini-story.'
+                : coleccionDestino === 'peques'
+                ? '🧸 Peques: Tarjetas del Modo Peques (juegos 2-5 años). Estructura plana de TARJETA (no misiones): kind "nativo" (con mision.tipo + contenido) o "atajo" (coleccion + docId). Campo "orden" para el orden en el lanzador.'
                 : '🏆 Simulacros: Aplana la estructura para crear una lista de problemas. Ideal para exámenes y bancos de preguntas.'}
             </p>
           </div>
@@ -411,7 +442,7 @@ const AdminMigracion = () => {
           >
             {migrando
               ? 'Migrando...'
-              : `Migrar a ${coleccionDestino === 'aventuras' ? '🌟 Aventuras' : coleccionDestino === 'ingles' ? '🇬🇧 Inglés' : coleccionDestino === 'piano' ? '🎹 Piano' : coleccionDestino === 'ciencias' ? '🔬 Ciencias' : coleccionDestino === 'dibujo' ? '🎨 Dibujo' : '🏆 Simulacros'}`}
+              : `Migrar a ${coleccionDestino === 'aventuras' ? '🌟 Aventuras' : coleccionDestino === 'ingles' ? '🇬🇧 Inglés' : coleccionDestino === 'piano' ? '🎹 Piano' : coleccionDestino === 'ciencias' ? '🔬 Ciencias' : coleccionDestino === 'dibujo' ? '🎨 Dibujo' : coleccionDestino === 'geografia' ? '🌍 Geografia' : coleccionDestino === 'peques' ? '🧸 Peques' : '🏆 Simulacros'}`}
           </button>
 
           {resultado && (

@@ -162,6 +162,53 @@ Reading-heavy (sopa de letras, crucigrama, "palabras secretas", "cuenta y escrib
 
 ---
 
+### Esquema real de tarjeta (colección `peques`) — IMPLEMENTADO 2026-07-01
+
+El lanzador lee la colección `peques` y ordena por `orden`. **Si está vacía, muestra las
+tarjetas nativas por defecto** (respaldo). Cada documento es una TARJETA (no lleva `misiones`).
+Se suben con **Admin → Migración → 🧸 Peques**. Ejemplos en `_peques/tarjetas/`.
+
+**Juego nativo** (el motor vive en el código; el JSON solo trae su contenido y presentación):
+```json
+{
+  "id": "peque-memoria-animales",
+  "titulo": "Memoria",
+  "emoji": "🧠",
+  "color": "#ffd6a5",
+  "orden": 4,
+  "kind": "nativo",
+  "mision": { "tipo": "memoria", "emojis": ["🐶", "🐱", "🦊", "🐰"], "pares": 4 }
+}
+```
+
+**Atajo** (apunta a una actividad existente de otra colección, se renderiza con MisionRenderer):
+```json
+{
+  "id": "peque-pintar-sol",
+  "titulo": "Pintar",
+  "emoji": "🎨",
+  "color": "#ff8fab",
+  "orden": 6,
+  "kind": "atajo",
+  "coleccion": "dibujo",
+  "docId": "D0-06_sol-brillante"
+}
+```
+
+Tipos nativos y su contenido dentro de `mision`:
+
+| tipo | contenido |
+|------|-----------|
+| `tap-and-celebrate` | `emojis` (opcional) |
+| `cual-es-diferente` | `retos: [{ iguales, diferente, total, pos }]` |
+| `memoria` | `emojis: [...]`, `pares` (número) |
+| `relaciona-sombras` | `retos: [{ objeto, opciones: [...] }]` (una opción === objeto) |
+
+> Requiere desplegar las reglas de Firestore (colección `peques`, lectura autenticada).
+> Mientras no subas nada, el respaldo nativo funciona sin tocar Firebase.
+
+---
+
 ## Progreso
 
 Los peques **no necesitan puntaje ni rachas**. Guardado mínimo (opcional):

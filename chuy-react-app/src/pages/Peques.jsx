@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, collection, getDocs } from 'firebase/firestore';
 import { db } from '../services/firebase';
 import { useAuth } from '../hooks/useAuth.jsx';
 import MisionRenderer from '../components/aventura/MisionRenderer';
@@ -11,7 +11,8 @@ import './Peques.css';
  * Tarjetones grandes, sin menús, con candado de adultos para salir.
  * Cada tarjeta es un juego nativo o un "atajo" a una actividad existente.
  */
-const CARDS = [
+// Tarjetas por defecto (respaldo si la colección `peques` de Firestore está vacía).
+const CARDS_FALLBACK = [
   { key: 'celebra', titulo: '¡Toca!', emoji: '✨', color: '#f6c445',
     kind: 'nativo', mision: { id: 'peque-celebra', tipo: 'tap-and-celebrate' } },
   { key: 'diferente', titulo: '¿Cuál es diferente?', emoji: '🔎', color: '#c3b1e1',
@@ -33,6 +34,35 @@ const Peques = () => {
   const navigate = useNavigate();
   const [carta, setCarta] = useState(null);
   const [gate, setGate] = useState(null); // null | { a, b, correcto, opciones }
+  const [cards, setCards] = useState(null); // null = cargando; luego array de tarjetas
+
+  // Lee las tarjetas de la colección `peques`; si está vacía o falla, usa las nativas.
+  useEffect(() => {
+    let vivo = true;
+    (async () => {
+      try {
+        const snap = await getDocs(collection(db, 'peques'));
+        if (!vivo) return;
+        if (snap.empty) { setCards(CARDS_FALLBACK); return; }
+        const lista = snap.docs
+          .map((d) => ({ key: d.id, ...d.data() }))
+          .sort((a, b) => (a.orden ?? 999) - (b.orden ?? 999));
+        setCards(lista);
+      } catch (e) {
+        console.warn('No se pudo leer la colección peques; usando juegos nativos:', e);
+        if (vivo) setCards(CARDS_FALLBACK);
+      }
+    })();
+    return () => { vivo = false; };
+  }, []);
+
+  if (!cards) {
+    return (
+      <div className="peques-bg">
+        <div className="peques-cargando">Cargando… ⏳</div>
+      </div>
+    );
+  }
 
   const volver = () => setCarta(null);
 
@@ -66,7 +96,7 @@ const Peques = () => {
           </div>
 
           <div className="peques-grid">
-            {CARDS.map((c) => (
+            {cards.map((c) => (
               <button key={c.key} className="peques-card" style={{ background: c.color }} onClick={() => setCarta(c)}>
                 <span className="peques-card-emoji">{c.emoji}</span>
                 <span className="peques-card-titulo">{c.titulo}</span>
