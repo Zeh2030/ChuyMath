@@ -1,0 +1,98 @@
+.cued {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  text-align: center;
+  padding: 8px;
+}
+
+.cued-pregunta {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 6px;
+}
+.cued-progreso {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #8e44ad;
+  background: #f4ecf7;
+  border-radius: 20px;
+  padding: 4px 16px;
+  margin-bottom: 20px;
+}
+
+.cued-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+.cued-grid[data-total="5"],
+.cued-grid[data-total="6"] { grid-template-columns: repeat(3, 1fr); }
+
+.cued-item {
+  aspect-ratio: 1 / 1;
+  border: none;
+  border-radius: 22px;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-size: 3.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s, box-shadow 0.15s;
+  user-select: none;
+}
+.cued-item:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16); }
+.cued-item:active { transform: scale(0.96); }
+
+.cued-item.mal { animation: cued-shake 0.4s; }
+.cued-item.bien {
+  animation: cued-pop 0.7s ease;
+  box-shadow: 0 0 0 5px #2ecc71, 0 8px 18px rgba(46, 204, 113, 0.4);
+}
+
+@keyframes cued-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+}
+@keyframes cued-pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.25) rotate(6deg); }
+  100% { transform: scale(1); }
+}
+
+/* Fin */
+.cued-fin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+}
+.cued-fin-emoji { font-size: 4.5rem; animation: cued-pop 0.6s ease; }
+.cued-fin h2 { color: #2c3e50; margin: 10px 0 20px; }
+.cued-btn {
+  padding: 14px 34px;
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #8e44ad, #e67e22);
+  color: white;
+  font-size: 1.15rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+@media (max-width: 420px) {
+  .cued-item { font-size: 2.6rem; border-radius: 18px; }
+}

@@ -14,6 +14,8 @@ import './Peques.css';
 const CARDS = [
   { key: 'celebra', titulo: '¡Toca!', emoji: '✨', color: '#f6c445',
     kind: 'nativo', mision: { id: 'peque-celebra', tipo: 'tap-and-celebrate' } },
+  { key: 'diferente', titulo: '¿Cuál es diferente?', emoji: '🔎', color: '#c3b1e1',
+    kind: 'nativo', mision: { id: 'peque-diferente', tipo: 'cual-es-diferente' } },
   { key: 'colores', titulo: 'Colores', emoji: '🌈', color: '#a0e8af',
     kind: 'atajo', coleccion: 'ciencias', docId: 'C0-11_laboratorio-de-colores' },
   { key: 'pintar', titulo: 'Pintar', emoji: '🎨', color: '#ff8fab',
