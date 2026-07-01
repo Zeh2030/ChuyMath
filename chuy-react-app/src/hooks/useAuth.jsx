@@ -18,6 +18,8 @@ const perfilPorDefecto = (ownerUid, datos = {}) => ({
   nombre: (datos.nombre || 'Nuevo jugador').trim(),
   avatar: datos.avatar || '🦸',
   tema: datos.tema || 'aventurero',
+  esPeque: datos.esPeque || false,
+  edad: datos.edad || null,
   racha: 0,
   ultimaVisita: null,
   habilidades: {},
@@ -110,9 +112,12 @@ export const AuthProvider = ({ children }) => {
   // 2) Suscripción en tiempo real a los perfiles (hijos) de la cuenta activa.
   useEffect(() => {
     if (!currentUser) {
+      // Reset al cerrar sesión (sincronización intencional del estado).
+      /* eslint-disable react-hooks/set-state-in-effect */
       setProfiles([]);
       setProfilesLoading(false);
       setActiveProfileId(null);
+      /* eslint-enable react-hooks/set-state-in-effect */
       return;
     }
 
@@ -195,6 +200,7 @@ export const AuthProvider = ({ children }) => {
 };
 
 // Hook personalizado para usar el contexto de autenticación
+// eslint-disable-next-line react-refresh/only-export-components
 export const useAuth = () => {
   return useContext(AuthContext);
 };

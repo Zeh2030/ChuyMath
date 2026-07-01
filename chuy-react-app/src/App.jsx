@@ -11,6 +11,7 @@ import Simulacro from './pages/Simulacro';
 import Boveda from './pages/Boveda';
 import Perfil from './pages/Perfil';
 import ProfileSelector from './pages/ProfileSelector';
+import Peques from './pages/Peques';
 
 const ProtectedRoute = ({ children }) => {
   const { currentUser, loading } = useAuth();
@@ -53,6 +54,18 @@ function App() {
           element={
             <ProtectedRoute>
               <ProfileSelector />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Modo Peques (requiere perfil activo; los perfiles esPeque arrancan aquí) */}
+        <Route
+          path="/peques"
+          element={
+            <ProtectedRoute>
+              <ProfileRequired>
+                <Peques />
+              </ProfileRequired>
             </ProtectedRoute>
           }
         />

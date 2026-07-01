@@ -16,6 +16,7 @@ const Perfil = () => {
   const [nombreEditado, setNombreEditado] = useState('');
   const [avatarSeleccionado, setAvatarSeleccionado] = useState('');
   const [temaSeleccionado, setTemaSeleccionado] = useState('aventurero');
+  const [esPequeEditado, setEsPequeEditado] = useState(false);
   const [guardando, setGuardando] = useState(false);
   const [mensaje, setMensaje] = useState('');
 
@@ -25,6 +26,7 @@ const Perfil = () => {
       setNombreEditado(profile.nombre || currentUser.displayName || '');
       setAvatarSeleccionado(profile.avatar || '');
       setTemaSeleccionado(profile.tema || 'aventurero');
+      setEsPequeEditado(profile.esPeque || false);
     }
   }, [profile, currentUser]);
 
@@ -42,6 +44,7 @@ const Perfil = () => {
         nombre: nombreEditado.trim(),
         avatar: avatarSeleccionado,
         tema: temaSeleccionado,
+        esPeque: esPequeEditado,
       });
 
       setMensaje('¡Perfil actualizado con éxito!');
@@ -134,6 +137,17 @@ const Perfil = () => {
                 style={styles.input}
                 maxLength="20"
               />
+            </div>
+            <div style={styles.inputGroup}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
+                <input
+                  type="checkbox"
+                  checked={esPequeEditado}
+                  onChange={(e) => setEsPequeEditado(e.target.checked)}
+                  style={{ width: '18px', height: '18px' }}
+                />
+                Es un niño pequeño (2-5 años) · Modo Peques 🧸
+              </label>
             </div>
           </div>
 

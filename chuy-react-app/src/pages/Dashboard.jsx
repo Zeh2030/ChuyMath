@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth.jsx';
 import { useProfile } from '../hooks/useProfile.jsx';
 import { useAventuraDelDia } from '../hooks/useAventuraDelDia.jsx';
@@ -10,7 +10,7 @@ import './Dashboard.css';
 import './Dashboard.enhanced.css';
 
 const Dashboard = () => {
-  const { currentUser, logout, activeProfileId } = useAuth();
+  const { currentUser, logout, activeProfileId, activeProfile } = useAuth();
   const { profile, loading: profileLoading } = useProfile(activeProfileId);
   const { aventura, loading: aventuraLoading } = useAventuraDelDia(activeProfileId);
   const navigate = useNavigate();
@@ -27,6 +27,11 @@ const Dashboard = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  // Los perfiles de niño pequeño arrancan directo en Modo Peques.
+  if (activeProfile?.esPeque) {
+    return <Navigate to="/peques" replace />;
+  }
 
   // Obtener color del día
   const getColorDelDia = () => {

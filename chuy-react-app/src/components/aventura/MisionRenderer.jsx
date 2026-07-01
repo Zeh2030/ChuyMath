@@ -31,6 +31,7 @@ import Colorear from './tipos/Colorear';
 import DibujoGuiado from './tipos/DibujoGuiado';
 import DibujoLibre from './tipos/DibujoLibre';
 import MezcladorColores from './tipos/MezcladorColores';
+import TapAndCelebrate from './tipos/TapAndCelebrate';
 const PianoPrompter = React.lazy(() => import('./tipos/PianoPrompter'));
 import IdentificaNota from './tipos/IdentificaNota';
 const ExploradorMapa = React.lazy(() => import('./tipos/ExploradorMapa'));
@@ -388,6 +389,16 @@ const MisionRenderer = ({
       case 'mezclador-colores':
         return (
           <MezcladorColores
+            key={mision.id}
+            mision={mision}
+            onCompletar={onCompletar}
+          />
+        );
+
+      // === Peques ===
+      case 'tap-and-celebrate':
+        return (
+          <TapAndCelebrate
             key={mision.id}
             mision={mision}
             onCompletar={onCompletar}

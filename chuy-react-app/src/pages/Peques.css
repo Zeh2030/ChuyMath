@@ -1,0 +1,145 @@
+.peques-bg {
+  min-height: 100vh;
+  background: linear-gradient(160deg, #fff6e6 0%, #ffe9f2 50%, #e9f6ff 100%);
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+/* ---- Barra superior ---- */
+.peques-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 720px;
+  margin: 0 auto 24px;
+  gap: 12px;
+}
+.peques-titulo {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin: 0;
+}
+.peques-titulo span { font-size: 2rem; }
+
+.peques-lock {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.8);
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  flex-shrink: 0;
+}
+
+/* ---- Grid de tarjetones ---- */
+.peques-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 18px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.peques-card {
+  border: none;
+  border-radius: 26px;
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
+  transition: transform 0.15s, box-shadow 0.15s;
+  color: #2c3e50;
+}
+.peques-card:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 12px 24px rgba(0, 0, 0, 0.22); }
+.peques-card:active { transform: scale(0.97); }
+.peques-card-emoji { font-size: 3.8rem; line-height: 1; }
+.peques-card-titulo { font-size: 1.25rem; font-weight: 700; }
+
+/* ---- Vista de juego ---- */
+.peques-juego {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+  padding-top: 56px;
+}
+.peques-home {
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 50;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: white;
+  font-size: 1.7rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.peques-home:hover { transform: scale(1.06); }
+
+.peques-cargando {
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 1.3rem;
+  color: #7f8c8d;
+}
+
+/* ---- Candado de adultos ---- */
+.peques-gate-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(44, 62, 80, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 20px;
+}
+.peques-gate {
+  background: white;
+  border-radius: 20px;
+  padding: 28px 24px;
+  text-align: center;
+  max-width: 340px;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+.peques-gate-titulo { font-size: 1rem; color: #7f8c8d; margin: 0 0 8px; font-weight: 600; }
+.peques-gate-op { font-size: 1.6rem; color: #2c3e50; margin: 0 0 18px; font-weight: 700; }
+.peques-gate-opciones { display: flex; gap: 12px; justify-content: center; }
+.peques-gate-opciones button {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  border: 2px solid #eee;
+  background: #f8f9fa;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  color: #2c3e50;
+}
+.peques-gate-opciones button:hover { border-color: #764ba2; background: #f4ecf7; }
+.peques-gate-cancelar {
+  margin-top: 18px;
+  border: none;
+  background: none;
+  color: #95a5a6;
+  font-size: 0.9rem;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+@media (max-width: 420px) {
+  .peques-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .peques-card-emoji { font-size: 3rem; }
+}

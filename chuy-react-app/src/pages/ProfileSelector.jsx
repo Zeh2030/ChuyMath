@@ -21,12 +21,13 @@ const ProfileSelector = () => {
   const [gestionando, setGestionando] = useState(false);
   const [nombre, setNombre] = useState('');
   const [avatar, setAvatar] = useState(AVATARES_RAPIDOS[0]);
+  const [esPeque, setEsPeque] = useState(false);
   const [creando, setCreando] = useState(false);
   const [porBorrar, setPorBorrar] = useState(null); // id pendiente de confirmar
 
-  const elegir = (id) => {
-    switchProfile(id);
-    navigate('/dashboard');
+  const elegir = (p) => {
+    switchProfile(p.id);
+    navigate(p.esPeque ? '/peques' : '/dashboard');
   };
 
   const editar = (id) => {
@@ -39,8 +40,8 @@ const ProfileSelector = () => {
     if (!nombre.trim()) return;
     setCreando(true);
     try {
-      await crearPerfilHijo({ nombre, avatar });
-      navigate('/dashboard');
+      await crearPerfilHijo({ nombre, avatar, esPeque });
+      navigate(esPeque ? '/peques' : '/dashboard');
     } catch (err) {
       console.error('Error al crear perfil:', err);
       setCreando(false);
@@ -107,6 +108,10 @@ const ProfileSelector = () => {
               maxLength={20}
               autoFocus
             />
+            <label className="psel-check">
+              <input type="checkbox" checked={esPeque} onChange={(e) => setEsPeque(e.target.checked)} />
+              <span>Es un niño pequeño (2-5 años) · Modo Peques 🧸</span>
+            </label>
             <div className="psel-form-acciones">
               <button type="button" className="psel-btn-sec" onClick={() => setModo('ver')}>
                 Cancelar
@@ -121,7 +126,7 @@ const ProfileSelector = () => {
             <div className="psel-grid">
               {profiles.map((p) => (
                 <div key={p.id} className="psel-card-wrap">
-                  <button className="psel-card" onClick={() => elegir(p.id)}>
+                  <button className="psel-card" onClick={() => elegir(p)}>
                     <span className="psel-card-avatar">{p.avatar || '🙂'}</span>
                     <span className="psel-card-nombre">{p.nombre || 'Jugador'}</span>
                   </button>
