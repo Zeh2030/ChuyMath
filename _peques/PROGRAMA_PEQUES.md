@@ -106,6 +106,22 @@ Se revisó un pack imprimible comprado (6 módulos, ~380 hojas, edad ~4-8). Conc
 > copyright) con arte propio o de licencia libre. NO incrustar las imágenes del pack en la app,
 > sobre todo si ChuyMath llega a ser público/SaaS.
 
+### Barrido completo (6 módulos) — mecánicas NUEVAS encontradas
+
+Se revisaron los ~380 páginas. El muestreo ya cubría lo principal; el barrido confirmó eso y
+sacó a la luz estas mecánicas que NO tenemos y valen la pena digitalizar (con arte propio):
+
+| Mecánica nueva | Qué es | Edad | Nota |
+|----------------|--------|------|------|
+| **¿Cuál es diferente?** (odd-one-out / "tacha el intruso") | Tocar el elemento que NO pertenece a la fila | 3-6 | ⭐ Aparece en varios módulos; sin lectura; ideal peques |
+| **Relaciona sombras** | Emparejar objeto ↔ su silueta/sombra | 4-6 | Reusa la mecánica de `tap-the-pairs` con imágenes |
+| **Secuencia de rutinas** | Ordenar los pasos de una rutina (pictogramas) | 4-10 | Práctico (vida diaria); usa los pictogramas del bundle como referencia |
+| **Copia el modelo / patrón** | Reproducir un patrón de colores/formas en una grilla | 3-6 | Hermano de `colorea-por-clave` |
+| **Sigue el recorrido / flechas** | Seguir un camino o patrón de flechas en una tabla | 5-7 | Atención; medio valor |
+| **Simetría / orientación** ("paravoz") | Elegir la imagen simétrica o bien orientada | 6-9 | Para el hijo mayor, no peques |
+
+Reading-heavy (sopa de letras, crucigrama, "palabras secretas", "cuenta y escribe") → **solo imprimir**.
+
 ---
 
 ## Modelo de datos
