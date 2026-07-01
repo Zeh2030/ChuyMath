@@ -4,8 +4,8 @@ import { useProfile } from '../../hooks/useProfile';
 import './PageWrapper.css';
 
 const PageWrapper = ({ children }) => {
-  const { currentUser } = useAuth();
-  const { profile } = useProfile(currentUser?.uid);
+  const { activeProfileId } = useAuth();
+  const { profile } = useProfile(activeProfileId);
   const tema = profile?.tema || 'aventurero';
 
   return (

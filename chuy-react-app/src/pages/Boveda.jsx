@@ -10,8 +10,8 @@ import MateriaToggle from '../components/layout/MateriaToggle';
 import './Boveda.css';
 
 const Boveda = () => {
-  const { currentUser } = useAuth();
-  const { profile } = useProfile(currentUser?.uid);
+  const { activeProfileId } = useAuth();
+  const { profile } = useProfile(activeProfileId);
   const [searchParams] = useSearchParams();
   const filtroFromUrl = searchParams.get('filtro');
   const [aventuras, setAventuras] = useState([]);

@@ -43,9 +43,22 @@ service cloud.firestore {
     // PERFILES DE USUARIO
     // ============================================
 
-    match /profiles/{userId} {
-      allow read: if isOwner(userId) || isAdmin(); // Admin puede leer perfiles para soporte
-      allow write: if isOwner(userId) || isAdmin();
+    // ACCOUNTS: la cuenta del adulto (una por cuenta de Google, id = uid)
+    match /accounts/{uid} {
+      allow read, write: if isOwner(uid) || isAdmin();
+    }
+
+    // PROFILES: perfiles de hijo. El acceso se basa en el campo ownerUid (la cuenta dueña).
+    // Se conserva isOwner(profileId) para el perfil legacy (id == uid) durante/antes de la migración.
+    match /profiles/{profileId} {
+      allow read: if isAdmin()
+        || isOwner(profileId)
+        || (request.auth != null && resource.data.ownerUid == request.auth.uid);
+      allow create: if isAdmin()
+        || (request.auth != null && request.resource.data.ownerUid == request.auth.uid);
+      allow update, delete: if isAdmin()
+        || isOwner(profileId)
+        || (request.auth != null && resource.data.ownerUid == request.auth.uid);
     }
     
     // Mantener regla legacy por si acaso se usa en algún lado

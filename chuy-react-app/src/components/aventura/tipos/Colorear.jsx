@@ -9,8 +9,8 @@ import MezcladorLienzo from './MezcladorLienzo';
  * El niño pinta encima con dedo/mouse.
  */
 const Colorear = ({ mision, onCompletar }) => {
-  const { currentUser } = useAuth();
-  const userId = currentUser?.uid;
+  const { activeProfileId } = useAuth();
+  const userId = activeProfileId;
   const misionId = mision?.id;
 
   const canvasRef = useRef(null);

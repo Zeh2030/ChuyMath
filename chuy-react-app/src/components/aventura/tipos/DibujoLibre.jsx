@@ -9,8 +9,8 @@ import MezcladorLienzo from './MezcladorLienzo';
  * Extiende la funcionalidad de LienzoDibujo con referencia visual.
  */
 const DibujoLibre = ({ mision, onCompletar }) => {
-  const { currentUser } = useAuth();
-  const userId = currentUser?.uid;
+  const { activeProfileId } = useAuth();
+  const userId = activeProfileId;
   const misionId = mision?.id;
 
   const canvasRef = useRef(null);

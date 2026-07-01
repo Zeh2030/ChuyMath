@@ -10,9 +10,9 @@ import './Dashboard.css';
 import './Dashboard.enhanced.css';
 
 const Dashboard = () => {
-  const { currentUser, logout } = useAuth();
-  const { profile, loading: profileLoading } = useProfile(currentUser?.uid);
-  const { aventura, loading: aventuraLoading } = useAventuraDelDia(currentUser?.uid);
+  const { currentUser, logout, activeProfileId } = useAuth();
+  const { profile, loading: profileLoading } = useProfile(activeProfileId);
+  const { aventura, loading: aventuraLoading } = useAventuraDelDia(activeProfileId);
   const navigate = useNavigate();
   const [tabActivo, setTabActivo] = useState('inicio');
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);

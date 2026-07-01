@@ -9,8 +9,8 @@ import { useNavigate } from 'react-router-dom';
 import './Perfil.css';
 
 const Perfil = () => {
-  const { currentUser } = useAuth();
-  const { profile, loading: profileLoading, error: profileError } = useProfile(currentUser?.uid);
+  const { currentUser, activeProfileId } = useAuth();
+  const { profile, loading: profileLoading, error: profileError } = useProfile(activeProfileId);
   const navigate = useNavigate();
 
   const [nombreEditado, setNombreEditado] = useState('');
@@ -37,7 +37,7 @@ const Perfil = () => {
       setGuardando(true);
       setMensaje('');
 
-      const profileRef = doc(db, 'profiles', currentUser.uid);
+      const profileRef = doc(db, 'profiles', activeProfileId);
       await updateDoc(profileRef, {
         nombre: nombreEditado.trim(),
         avatar: avatarSeleccionado,

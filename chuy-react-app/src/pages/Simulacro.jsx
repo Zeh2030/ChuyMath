@@ -11,7 +11,7 @@ import './Simulacro.css';
 
 const Simulacro = () => {
   const { id } = useParams(); // Obtener el ID del simulacro
-  const { currentUser } = useAuth();
+  const { activeProfileId } = useAuth();
   const navigate = useNavigate();
   const [simulacro, setSimulacro] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -180,10 +180,10 @@ const Simulacro = () => {
     setCalificado(true);
     
     // Guardar resultado en Firestore
-    if (currentUser) {
+    if (activeProfileId) {
       try {
         const porcentaje = Math.round((aciertos / items.length) * 100);
-        const userRef = doc(db, 'profiles', currentUser.uid);
+        const userRef = doc(db, 'profiles', activeProfileId);
         
         // Obtener el perfil actual para calcular la racha
         const profileSnap = await getDoc(userRef);

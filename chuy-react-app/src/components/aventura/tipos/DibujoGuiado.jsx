@@ -8,8 +8,8 @@ import { loadDibujo, saveDibujo, deleteDibujo } from '../../../utils/dibujoStora
  * Wizard: Intro → Paso 1..N (imagen + canvas) → Resultado final
  */
 const DibujoGuiado = ({ mision, onCompletar }) => {
-  const { currentUser } = useAuth();
-  const userId = currentUser?.uid;
+  const { activeProfileId } = useAuth();
+  const userId = activeProfileId;
   const misionId = mision?.id;
 
   const [fase, setFase] = useState('intro'); // intro | pasos | fin

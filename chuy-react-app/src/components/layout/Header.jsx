@@ -5,7 +5,7 @@ import LogoutButton from '../ui/LogoutButton';
 import './Header.css';
 
 const Header = ({ title, subtitle }) => {
-  const { currentUser } = useAuth();
+  const { currentUser, activeProfile } = useAuth();
   const location = useLocation();
   const esDashboard = location.pathname === '/dashboard';
   const esBoveda = location.pathname === '/boveda';
@@ -23,6 +23,18 @@ const Header = ({ title, subtitle }) => {
           </p>
         </div>
         <div className="header-actions">
+          {activeProfile && (
+            <Link
+              to="/elegir-perfil"
+              className="nav-btn perfil-chip"
+              style={{ backgroundColor: '#34495e', fontSize: '0.9rem' }}
+              title="Cambiar de jugador"
+            >
+              <span style={{ fontSize: '1.15rem', marginRight: '4px' }}>{activeProfile.avatar || '🙂'}</span>
+              {activeProfile.nombre}
+            </Link>
+          )}
+
           {!esDashboard && (
             <Link to="/dashboard" className="nav-btn dashboard-btn">
               🏠 Dashboard

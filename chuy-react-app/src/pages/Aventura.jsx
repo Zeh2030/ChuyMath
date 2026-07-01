@@ -10,7 +10,7 @@ import './Aventura.css';
 
 const Aventura = () => {
   const { fecha } = useParams(); // Obtener el parámetro de la URL
-  const { currentUser } = useAuth();
+  const { activeProfileId } = useAuth();
   const navigate = useNavigate();
   const [aventura, setAventura] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -133,10 +133,10 @@ const Aventura = () => {
 
   // Marcar aventura iniciada (sin fecha)
   const marcarAventuraIniciada = async () => {
-    if (!currentUser || !aventura) return;
+    if (!activeProfileId || !aventura) return;
 
     try {
-      const userRef = doc(db, 'profiles', currentUser.uid);
+      const userRef = doc(db, 'profiles', activeProfileId);
       const profileSnap = await getDoc(userRef);
       const progreso = profileSnap.data()?.aventurasProgreso || {};
       const actual = progreso[aventura.id];
@@ -156,10 +156,10 @@ const Aventura = () => {
 
   // Función para guardar que completó la aventura
   const marcarAventuraCompletada = async () => {
-    if (!currentUser || !aventura) return;
+    if (!activeProfileId || !aventura) return;
 
     try {
-      const userRef = doc(db, 'profiles', currentUser.uid);
+      const userRef = doc(db, 'profiles', activeProfileId);
       
       // Obtener el perfil actual para calcular la racha
       const profileSnap = await getDoc(userRef);
