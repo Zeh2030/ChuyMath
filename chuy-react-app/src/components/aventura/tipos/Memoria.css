@@ -1,0 +1,79 @@
+.mem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 8px;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+}
+
+.mem-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  width: 100%;
+}
+.mem-grid[data-cartas="4"] { grid-template-columns: repeat(2, 1fr); max-width: 300px; }
+.mem-grid[data-cartas="6"] { grid-template-columns: repeat(3, 1fr); max-width: 420px; }
+
+.mem-carta {
+  aspect-ratio: 1 / 1;
+  border: none;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #8e44ad, #6c5ce7);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.6rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.15s, background 0.2s;
+}
+.mem-carta:hover { transform: translateY(-2px); }
+.mem-carta:active { transform: scale(0.96); }
+.mem-carta .mem-cara { filter: grayscale(0); }
+.mem-carta:not(.arriba) .mem-cara { opacity: 0.85; }
+
+.mem-carta.arriba {
+  background: white;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  animation: mem-flip 0.25s ease;
+}
+.mem-carta.ok {
+  background: #eafaf1;
+  box-shadow: 0 0 0 4px #2ecc71, 0 4px 12px rgba(46, 204, 113, 0.35);
+}
+
+@keyframes mem-flip {
+  from { transform: rotateY(90deg); }
+  to { transform: rotateY(0); }
+}
+
+/* Portada / fin */
+.mem-portada {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 44px 20px;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  text-align: center;
+}
+.mem-portada-emoji { font-size: 4.5rem; }
+.mem-portada h2 { color: #2c3e50; margin: 12px 0 22px; }
+.mem-btn {
+  padding: 14px 34px;
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #8e44ad, #e67e22);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+@media (max-width: 420px) {
+  .mem-carta { font-size: 2rem; border-radius: 14px; }
+}

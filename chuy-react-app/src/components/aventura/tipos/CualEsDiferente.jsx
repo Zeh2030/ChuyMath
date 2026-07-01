@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './CualEsDiferente.css';
+import { sonar } from '../../../utils/sonido';
 
 /**
  * CualEsDiferente — "¿Cuál es diferente?" (odd-one-out) para peques (3-6 años).
@@ -17,28 +18,6 @@ const RETOS_DEFAULT = [
   { iguales: '🐟', diferente: '🐙', total: 6, pos: 1 },
   { iguales: '🌻', diferente: '🐝', total: 6, pos: 5 },
 ];
-
-let audioCtx = null;
-const sonar = (freq) => {
-  try {
-    const Ctx = window.AudioContext || window.webkitAudioContext;
-    if (!Ctx) return;
-    if (!audioCtx) audioCtx = new Ctx();
-    const o = audioCtx.createOscillator();
-    const g = audioCtx.createGain();
-    o.type = 'sine';
-    o.frequency.value = freq;
-    g.gain.setValueAtTime(0.0001, audioCtx.currentTime);
-    g.gain.exponentialRampToValueAtTime(0.25, audioCtx.currentTime + 0.02);
-    g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.35);
-    o.connect(g);
-    g.connect(audioCtx.destination);
-    o.start();
-    o.stop(audioCtx.currentTime + 0.37);
-  } catch {
-    /* sin audio */
-  }
-};
 
 const CualEsDiferente = ({ mision, onCompletar }) => {
   const retos = (mision && mision.retos && mision.retos.length) ? mision.retos : RETOS_DEFAULT;

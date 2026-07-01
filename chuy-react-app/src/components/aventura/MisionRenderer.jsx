@@ -33,6 +33,8 @@ import DibujoLibre from './tipos/DibujoLibre';
 import MezcladorColores from './tipos/MezcladorColores';
 import TapAndCelebrate from './tipos/TapAndCelebrate';
 import CualEsDiferente from './tipos/CualEsDiferente';
+import Memoria from './tipos/Memoria';
+import RelacionaSombras from './tipos/RelacionaSombras';
 const PianoPrompter = React.lazy(() => import('./tipos/PianoPrompter'));
 import IdentificaNota from './tipos/IdentificaNota';
 const ExploradorMapa = React.lazy(() => import('./tipos/ExploradorMapa'));
@@ -409,6 +411,24 @@ const MisionRenderer = ({
       case 'cual-es-diferente':
         return (
           <CualEsDiferente
+            key={mision.id}
+            mision={mision}
+            onCompletar={onCompletar}
+          />
+        );
+
+      case 'memoria':
+        return (
+          <Memoria
+            key={mision.id}
+            mision={mision}
+            onCompletar={onCompletar}
+          />
+        );
+
+      case 'relaciona-sombras':
+        return (
+          <RelacionaSombras
             key={mision.id}
             mision={mision}
             onCompletar={onCompletar}

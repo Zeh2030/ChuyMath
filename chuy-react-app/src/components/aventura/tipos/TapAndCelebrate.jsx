@@ -1,41 +1,17 @@
-import React, { useRef, useState, useCallback } from 'react';
+import React, { useRef, useState } from 'react';
 import './TapAndCelebrate.css';
+import { sonar, NOTAS } from '../../../utils/sonido';
 
 /**
  * TapAndCelebrate — juguete de causa-efecto para los más pequeños (2-3 años).
  * Tocar la pantalla lanza emojis que vuelan + un sonido alegre. Sin lectura, sin objetivo.
  */
 const EMOJIS_DEFAULT = ['⭐', '🎈', '✨', '🎉', '💫', '🌈', '❤️', '🐱', '🦄', '🌟'];
-const NOTAS = [523.25, 587.33, 659.25, 783.99, 880.0]; // pentatónica alegre
-
-let audioCtx = null;
 
 const TapAndCelebrate = ({ mision }) => {
   const emojis = (mision && mision.emojis) || EMOJIS_DEFAULT;
   const [particulas, setParticulas] = useState([]);
   const idRef = useRef(0);
-
-  const sonar = useCallback(() => {
-    try {
-      const Ctx = window.AudioContext || window.webkitAudioContext;
-      if (!Ctx) return;
-      if (!audioCtx) audioCtx = new Ctx();
-      const f = NOTAS[Math.floor(Math.random() * NOTAS.length)];
-      const o = audioCtx.createOscillator();
-      const g = audioCtx.createGain();
-      o.type = 'sine';
-      o.frequency.value = f;
-      g.gain.setValueAtTime(0.0001, audioCtx.currentTime);
-      g.gain.exponentialRampToValueAtTime(0.25, audioCtx.currentTime + 0.02);
-      g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.4);
-      o.connect(g);
-      g.connect(audioCtx.destination);
-      o.start();
-      o.stop(audioCtx.currentTime + 0.42);
-    } catch {
-      /* sin audio, no pasa nada */
-    }
-  }, []);
 
   const celebrar = (e) => {
     e.preventDefault();
@@ -57,7 +33,7 @@ const TapAndCelebrate = ({ mision }) => {
       });
     }
     setParticulas((prev) => [...prev, ...nuevas]);
-    sonar();
+    sonar(NOTAS[Math.floor(Math.random() * NOTAS.length)]);
     const ids = nuevas.map((p) => p.id);
     window.setTimeout(() => {
       setParticulas((prev) => prev.filter((p) => !ids.includes(p.id)));
