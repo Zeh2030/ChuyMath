@@ -47,6 +47,10 @@ const Header = ({ title, subtitle }) => {
             </Link>
           )}
 
+          <Link to="/peques" className="nav-btn juegos-btn" style={{ backgroundColor: '#e67e22', fontSize: '0.9rem' }}>
+            🧸 Juegos
+          </Link>
+
           {!esPerfil && (
             <Link to="/perfil" className="nav-btn perfil-btn" style={{ backgroundColor: '#9b59b6', fontSize: '0.9rem' }}>
               👤 Mi Perfil
