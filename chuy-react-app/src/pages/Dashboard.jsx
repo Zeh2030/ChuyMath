@@ -449,6 +449,14 @@ const Dashboard = () => {
           <section className={`widget exploracion-widget ${isMobile && tabActivo !== 'explorar' ? 'hidden' : ''}`}>
             <h2 className="widget-title">⚡ Accesos Rápidos</h2>
             <div className="accesos-rapidos-mini-grid">
+              <button
+                className="acceso-rapido-mini"
+                onClick={() => navigate('/peques')}
+                title="Juegos rápidos para divertirse"
+              >
+                <span className="acceso-emoji">🧸</span>
+                <span className="acceso-nombre">Juegos</span>
+              </button>
               {tiposDeJuegoFiltrados.map((tipo) => (
                 <button 
                   key={tipo.id}

@@ -64,6 +64,7 @@ const Peques = () => {
     );
   }
 
+  const esPeque = activeProfile?.esPeque;
   const volver = () => setCarta(null);
 
   // Genera el reto del candado en el handler (no durante el render).
@@ -92,7 +93,11 @@ const Peques = () => {
             <h1 className="peques-titulo">
               ¡Hola, {activeProfile?.nombre || 'peque'}! <span>{activeProfile?.avatar || '🙂'}</span>
             </h1>
-            <button className="peques-lock" onClick={abrirGate} title="Salida para adultos">🔒</button>
+            {esPeque ? (
+              <button className="peques-lock" onClick={abrirGate} title="Salida para adultos">🔒</button>
+            ) : (
+              <button className="peques-lock" onClick={() => navigate('/dashboard')} title="Salir">🚪</button>
+            )}
           </div>
 
           <div className="peques-grid">
