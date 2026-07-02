@@ -35,6 +35,11 @@ import TapAndCelebrate from './tipos/TapAndCelebrate';
 import CualEsDiferente from './tipos/CualEsDiferente';
 import Memoria from './tipos/Memoria';
 import RelacionaSombras from './tipos/RelacionaSombras';
+import Contar from './tipos/Contar';
+import QueSigue from './tipos/QueSigue';
+import Tamanos from './tipos/Tamanos';
+import MasMenos from './tipos/MasMenos';
+import Formas from './tipos/Formas';
 const PianoPrompter = React.lazy(() => import('./tipos/PianoPrompter'));
 import IdentificaNota from './tipos/IdentificaNota';
 const ExploradorMapa = React.lazy(() => import('./tipos/ExploradorMapa'));
@@ -433,6 +438,31 @@ const MisionRenderer = ({
             mision={mision}
             onCompletar={onCompletar}
           />
+        );
+
+      case 'contar':
+        return (
+          <Contar key={mision.id} mision={mision} onCompletar={onCompletar} />
+        );
+
+      case 'que-sigue':
+        return (
+          <QueSigue key={mision.id} mision={mision} onCompletar={onCompletar} />
+        );
+
+      case 'tamanos':
+        return (
+          <Tamanos key={mision.id} mision={mision} onCompletar={onCompletar} />
+        );
+
+      case 'mas-menos':
+        return (
+          <MasMenos key={mision.id} mision={mision} onCompletar={onCompletar} />
+        );
+
+      case 'formas':
+        return (
+          <Formas key={mision.id} mision={mision} onCompletar={onCompletar} />
         );
 
       // === Piano ===

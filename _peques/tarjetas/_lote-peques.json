@@ -239,6 +239,51 @@
     }
   },
   {
+    "id": "peque-contar",
+    "titulo": "Contar",
+    "emoji": "🔢",
+    "color": "#a0c4ff",
+    "orden": 34,
+    "kind": "nativo",
+    "mision": { "id": "peque-contar", "tipo": "contar" }
+  },
+  {
+    "id": "peque-que-sigue",
+    "titulo": "¿Qué sigue?",
+    "emoji": "➡️",
+    "color": "#b8e0d2",
+    "orden": 35,
+    "kind": "nativo",
+    "mision": { "id": "peque-que-sigue", "tipo": "que-sigue" }
+  },
+  {
+    "id": "peque-tamanos",
+    "titulo": "Grande y pequeño",
+    "emoji": "📏",
+    "color": "#ffb3c1",
+    "orden": 36,
+    "kind": "nativo",
+    "mision": { "id": "peque-tamanos", "tipo": "tamanos" }
+  },
+  {
+    "id": "peque-mas-menos",
+    "titulo": "Más o menos",
+    "emoji": "⚖️",
+    "color": "#ffd8a8",
+    "orden": 37,
+    "kind": "nativo",
+    "mision": { "id": "peque-mas-menos", "tipo": "mas-menos" }
+  },
+  {
+    "id": "peque-formas",
+    "titulo": "Formas",
+    "emoji": "🔷",
+    "color": "#d0bfff",
+    "orden": 38,
+    "kind": "nativo",
+    "mision": { "id": "peque-formas", "tipo": "formas" }
+  },
+  {
     "id": "peque-colores",
     "titulo": "Colores",
     "emoji": "🌈",

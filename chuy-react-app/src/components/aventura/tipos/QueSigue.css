@@ -1,0 +1,84 @@
+.qs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 8px;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  text-align: center;
+}
+
+.qs-pregunta { font-size: 1.8rem; font-weight: 700; color: #2c3e50; margin-bottom: 4px; }
+.qs-progreso {
+  font-size: 1rem; font-weight: 600; color: #8e44ad;
+  background: #f4ecf7; border-radius: 20px; padding: 4px 16px; margin-bottom: 20px;
+}
+
+.qs-secuencia {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  background: #f8f9fa;
+  border-radius: 20px;
+  padding: 16px;
+  margin-bottom: 22px;
+}
+.qs-item { font-size: 3rem; line-height: 1; }
+.qs-hueco {
+  color: #adb5bd;
+  background: #fff;
+  border: 3px dashed #ced4da;
+  border-radius: 14px;
+  width: 3.4rem;
+  height: 3.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: qs-blink 1.2s ease-in-out infinite;
+}
+
+.qs-opciones { display: flex; gap: 16px; justify-content: center; }
+.qs-opcion {
+  width: 88px;
+  height: 88px;
+  border-radius: 20px;
+  border: none;
+  background: white;
+  font-size: 3rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s;
+}
+.qs-opcion:hover { transform: translateY(-3px) scale(1.04); }
+.qs-opcion:active { transform: scale(0.95); }
+.qs-opcion.mal { animation: qs-shake 0.4s; }
+.qs-opcion.bien {
+  box-shadow: 0 0 0 5px #2ecc71, 0 6px 16px rgba(46, 204, 113, 0.4);
+  animation: qs-pop 0.6s ease;
+}
+
+@keyframes qs-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+@keyframes qs-shake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-7px); } 75% { transform: translateX(7px); } }
+@keyframes qs-pop { 0% { transform: scale(1); } 45% { transform: scale(1.22); } 100% { transform: scale(1); } }
+
+.qs-fin { display: flex; flex-direction: column; align-items: center; padding: 44px 20px; text-align: center; font-family: 'Fredoka', 'Nunito', sans-serif; }
+.qs-fin-emoji { font-size: 4.5rem; animation: qs-pop 0.6s ease; }
+.qs-fin h2 { color: #2c3e50; margin: 10px 0 20px; }
+.qs-btn {
+  padding: 14px 34px; border: none; border-radius: 16px;
+  background: linear-gradient(135deg, #8e44ad, #e67e22);
+  color: white; font-size: 1.15rem; font-weight: 700; font-family: inherit; cursor: pointer;
+}
+
+@media (max-width: 420px) {
+  .qs-item { font-size: 2.4rem; }
+  .qs-hueco { width: 2.8rem; height: 2.8rem; }
+  .qs-opcion { width: 72px; height: 72px; font-size: 2.4rem; }
+}

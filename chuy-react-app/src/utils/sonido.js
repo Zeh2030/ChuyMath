@@ -24,3 +24,18 @@ export function sonar(freq = 660) {
 
 // Notas de una escala pentatónica alegre (para variar el tono).
 export const NOTAS = [523.25, 587.33, 659.25, 783.99, 880.0];
+
+// Voz (Web Speech) en español, para que los pre-lectores escuchen la instrucción.
+// Funciona offline con las voces del sistema operativo. Si no hay, no pasa nada.
+export function hablar(texto) {
+  try {
+    if (!window.speechSynthesis || !texto) return;
+    const u = new SpeechSynthesisUtterance(texto);
+    u.lang = 'es-MX';
+    u.rate = 0.95;
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(u);
+  } catch {
+    /* sin voz, no pasa nada */
+  }
+}

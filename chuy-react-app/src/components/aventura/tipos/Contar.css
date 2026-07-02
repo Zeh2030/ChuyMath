@@ -1,0 +1,75 @@
+.contar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 8px;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  text-align: center;
+}
+
+.contar-pregunta { font-size: 1.8rem; font-weight: 700; color: #2c3e50; margin-bottom: 4px; }
+.contar-progreso {
+  font-size: 1rem; font-weight: 600; color: #8e44ad;
+  background: #f4ecf7; border-radius: 20px; padding: 4px 16px; margin-bottom: 16px;
+}
+
+.contar-escena {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  min-height: 130px;
+  background: #f8f9fa;
+  border-radius: 20px;
+  padding: 18px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+.contar-item { font-size: 3.2rem; line-height: 1; animation: contar-in 0.3s ease; }
+
+.contar-opciones { display: flex; gap: 16px; justify-content: center; }
+.contar-num {
+  width: 84px;
+  height: 84px;
+  border-radius: 20px;
+  border: none;
+  background: linear-gradient(135deg, #74c0fc, #4dabf7);
+  color: white;
+  font-size: 2.6rem;
+  font-weight: 800;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.15s;
+}
+.contar-num:hover { transform: translateY(-3px) scale(1.04); }
+.contar-num:active { transform: scale(0.95); }
+.contar-num.mal { animation: contar-shake 0.4s; background: linear-gradient(135deg, #ffa8a8, #ff8787); }
+.contar-num.bien {
+  background: linear-gradient(135deg, #69db7c, #40c057);
+  box-shadow: 0 0 0 5px #2ecc71, 0 6px 16px rgba(46, 204, 113, 0.4);
+  animation: contar-pop 0.6s ease;
+}
+
+@keyframes contar-in { from { transform: scale(0); } to { transform: scale(1); } }
+@keyframes contar-shake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-7px); } 75% { transform: translateX(7px); } }
+@keyframes contar-pop { 0% { transform: scale(1); } 45% { transform: scale(1.25); } 100% { transform: scale(1); } }
+
+.contar-fin { display: flex; flex-direction: column; align-items: center; padding: 44px 20px; text-align: center; font-family: 'Fredoka', 'Nunito', sans-serif; }
+.contar-fin-emoji { font-size: 4.5rem; animation: contar-pop 0.6s ease; }
+.contar-fin h2 { color: #2c3e50; margin: 10px 0 20px; }
+.contar-btn {
+  padding: 14px 34px; border: none; border-radius: 16px;
+  background: linear-gradient(135deg, #8e44ad, #e67e22);
+  color: white; font-size: 1.15rem; font-weight: 700; font-family: inherit; cursor: pointer;
+}
+
+@media (max-width: 420px) {
+  .contar-item { font-size: 2.6rem; }
+  .contar-num { width: 70px; height: 70px; font-size: 2.2rem; }
+}
