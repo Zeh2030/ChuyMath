@@ -207,6 +207,12 @@ Tipos nativos y su contenido dentro de `mision`:
 > Requiere desplegar las reglas de Firestore (colección `peques`, lectura autenticada).
 > Mientras no subas nada, el respaldo nativo funciona sin tocar Firebase.
 
+**Carga en lote (recomendado):** el migrador acepta un **array** de tarjetas, así subes todas
+de un solo clic. Usa `_peques/tarjetas/_lote-peques.json` (12 juegos variados: 3 de
+`cual-es-diferente`, 2 de `memoria`, 3 de `relaciona-sombras`, `tap-and-celebrate` y 3 atajos).
+Recuerda: la colección REEMPLAZA al respaldo nativo, así que sube un set completo (incluye toca
+y algún atajo), no solo un tipo.
+
 ---
 
 ## Progreso

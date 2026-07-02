@@ -193,52 +193,42 @@ const AdminMigracion = () => {
     setResultado(null);
 
     try {
-      // Parsear el JSON
-      const data = JSON.parse(jsonInput);
+      // Parsear el JSON (acepta un objeto o un ARRAY de objetos para carga en lote)
+      const parsed = JSON.parse(jsonInput);
+      const items = Array.isArray(parsed) ? parsed : [parsed];
 
-      // Validar que tenga los campos necesarios
-      if (!data.id) {
-        throw new Error('El JSON debe tener un campo "id"');
+      if (items.some((it) => !it || !it.id)) {
+        throw new Error('Cada elemento del JSON debe tener un campo "id"');
       }
 
-      // Migrar según la colección destino
-      let resultado;
-      if (coleccionDestino === 'aventuras') {
-        console.log(`Migrando a colección 'aventuras' (estructura anidada)...`);
-        resultado = await migrarAventura(data);
-      } else if (coleccionDestino === 'ingles') {
-        console.log(`Migrando a colección 'ingles' (estructura anidada)...`);
-        resultado = await migrarIngles(data);
-      } else if (coleccionDestino === 'piano') {
-        console.log(`Migrando a colección 'piano' (estructura anidada)...`);
-        resultado = await migrarPiano(data);
-      } else if (coleccionDestino === 'ciencias') {
-        console.log(`Migrando a colección 'ciencias' (estructura anidada)...`);
-        resultado = await migrarCiencias(data);
-      } else if (coleccionDestino === 'dibujo') {
-        console.log(`Migrando a colección 'dibujo' (estructura anidada)...`);
-        resultado = await migrarDibujo(data);
-      } else if (coleccionDestino === 'geografia') {
-        console.log(`Migrando a colección 'geografia' (estructura anidada)...`);
-        resultado = await migrarGeografia(data);
-      } else if (coleccionDestino === 'peques') {
-        console.log(`Migrando a colección 'peques' (tarjeta de Modo Peques)...`);
-        resultado = await migrarPeques(data);
-      } else {
-        console.log(`Migrando a colección 'simulacros' (estructura plana)...`);
-        resultado = await migrarSimulacro(data);
-      }
+      // Elige la función de migración según la colección destino.
+      const migrarUno = (item) => {
+        if (coleccionDestino === 'aventuras') return migrarAventura(item);
+        if (coleccionDestino === 'ingles') return migrarIngles(item);
+        if (coleccionDestino === 'piano') return migrarPiano(item);
+        if (coleccionDestino === 'ciencias') return migrarCiencias(item);
+        if (coleccionDestino === 'dibujo') return migrarDibujo(item);
+        if (coleccionDestino === 'geografia') return migrarGeografia(item);
+        if (coleccionDestino === 'peques') return migrarPeques(item);
+        return migrarSimulacro(item);
+      };
 
-      if (resultado.exito) {
+      const resultados = [];
+      for (const item of items) {
+        resultados.push(await migrarUno(item));
+      }
+      const fallos = resultados.filter((r) => !r.exito);
+
+      if (fallos.length === 0) {
         setResultado({
           tipo: 'exito',
-          mensaje: `✅ Contenido migrado exitosamente a la colección '${coleccionDestino}'. ID: ${resultado.id}`,
+          mensaje: `✅ ${resultados.length} elemento(s) migrado(s) a la colección '${coleccionDestino}'.`,
         });
         setJsonInput(''); // Limpiar el input
       } else {
         setResultado({
           tipo: 'error',
-          mensaje: `❌ Error al migrar: ${resultado.error}`,
+          mensaje: `⚠️ ${resultados.length - fallos.length} migrado(s), ${fallos.length} con error: ${fallos.map((f) => f.id).join(', ')}`,
         });
       }
     } catch (error) {
