@@ -1,0 +1,37 @@
+{
+  "id": "D1-01_robot-de-cuadrados",
+  "titulo": "Robot de Cuadrados",
+  "descripcion": "Dibujar un robot usando solo cuadrados y rectangulos",
+  "tipo": "dibujo-guiado",
+  "materia": "dibujo",
+  "nivel": "D1-01",
+  "tema": "formas-geometricas",
+  "misiones": [
+    {
+      "id": "dib-robot-01",
+      "tipo": "dibujo-guiado",
+      "titulo": "Robot de Cuadrados",
+      "emoji": "🤖",
+      "instruccion": "Este robot esta hecho solo de cuadrados y rectangulos. Lo nuevo de cada paso aparece en rojo!",
+      "pasos": [
+        {
+          "instruccion": "Dibuja un rectangulo: la cabeza del robot.",
+          "imagen_url": "/dibujo/guiado/D1-01_robot_paso1.svg"
+        },
+        {
+          "instruccion": "Dibuja un rectangulo mas grande abajo: el cuerpo. Conectalo con un cuellito.",
+          "imagen_url": "/dibujo/guiado/D1-01_robot_paso2.svg"
+        },
+        {
+          "instruccion": "Agrega los brazos a los lados y las piernas abajo: son rectangulos.",
+          "imagen_url": "/dibujo/guiado/D1-01_robot_paso3.svg"
+        },
+        {
+          "instruccion": "Dale vida: ojos cuadrados, boca, antena, panel y botones.",
+          "imagen_url": "/dibujo/guiado/D1-01_robot_paso4.svg"
+        }
+      ],
+      "imagen_final_url": "/dibujo/guiado/D1-01_robot_final.svg"
+    }
+  ]
+}

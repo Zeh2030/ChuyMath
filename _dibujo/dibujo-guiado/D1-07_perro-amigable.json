@@ -1,0 +1,41 @@
+{
+  "id": "D1-07_perro-amigable",
+  "titulo": "Perro Amigable",
+  "descripcion": "Formas redondeadas: cabeza, orejas, cuerpo, patas, cola",
+  "tipo": "dibujo-guiado",
+  "materia": "dibujo",
+  "nivel": "D1-07",
+  "tema": "animales-simples",
+  "misiones": [
+    {
+      "id": "dib-perro-01",
+      "tipo": "dibujo-guiado",
+      "titulo": "Perro Amigable",
+      "emoji": "🐶",
+      "instruccion": "Vamos a dibujar un perrito con formas redonditas. Lo nuevo de cada paso aparece en rojo!",
+      "pasos": [
+        {
+          "instruccion": "Dibuja un ovalo grande: la cabeza.",
+          "imagen_url": "/dibujo/guiado/D1-07_perro_paso1.svg"
+        },
+        {
+          "instruccion": "Agrega dos orejas caidas a los lados, como gotas alargadas.",
+          "imagen_url": "/dibujo/guiado/D1-07_perro_paso2.svg"
+        },
+        {
+          "instruccion": "Dibuja los ojos, la nariz ovalada y la boca.",
+          "imagen_url": "/dibujo/guiado/D1-07_perro_paso3.svg"
+        },
+        {
+          "instruccion": "Dibuja el cuerpo: otro ovalo debajo de la cabeza.",
+          "imagen_url": "/dibujo/guiado/D1-07_perro_paso4.svg"
+        },
+        {
+          "instruccion": "Agrega las patas y la cola contenta. Guau!",
+          "imagen_url": "/dibujo/guiado/D1-07_perro_paso5.svg"
+        }
+      ],
+      "imagen_final_url": "/dibujo/guiado/D1-07_perro_final.svg"
+    }
+  ]
+}

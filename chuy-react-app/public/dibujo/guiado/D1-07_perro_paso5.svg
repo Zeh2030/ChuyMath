@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <rect width="800" height="800" fill="#ffffff"/>
+  <path d="M 572 560 Q 665 530 680 455" fill="none" stroke="#e74c3c" stroke-width="18" stroke-linecap="round"/>
+  <ellipse cx="400" cy="575" rx="185" ry="135" fill="#ffffff" stroke="#2b2b2b" stroke-width="12"/>
+  <g fill="#ffffff" stroke="#e74c3c" stroke-width="10"><ellipse cx="330" cy="700" rx="45" ry="22"/><ellipse cx="470" cy="700" rx="45" ry="22"/></g>
+  <g fill="#ffffff" stroke="#2b2b2b" stroke-width="12"><ellipse cx="250" cy="300" rx="55" ry="110" transform="rotate(15,250,300)"/><ellipse cx="550" cy="300" rx="55" ry="110" transform="rotate(-15,550,300)"/></g>
+  <ellipse cx="400" cy="300" rx="170" ry="145" fill="#ffffff" stroke="#2b2b2b" stroke-width="12"/>
+  <g fill="#2b2b2b"><circle cx="340" cy="265" r="14"/><circle cx="460" cy="265" r="14"/><ellipse cx="400" cy="330" rx="26" ry="18"/></g><g fill="none" stroke="#2b2b2b" stroke-width="8" stroke-linecap="round"><path d="M 400 348 V 378"/><path d="M 400 378 Q 372 402 345 388"/><path d="M 400 378 Q 428 402 455 388"/></g>
+</svg>

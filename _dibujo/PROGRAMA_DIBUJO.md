@@ -151,10 +151,10 @@ y se usa la URL de descarga. No guardamos PNGs en el repositorio.
 
 | # | Titulo | Tipo | Descripcion |
 |---|--------|------|-------------|
-| D0-11 | Mi Cara | dibujo-guiado | Dibujar una cara: circulo + ojos + boca (3 pasos) |
+| D0-11 | Mi Cara | dibujo-guiado | Dibujar una cara: circulo + ojos + boca (3 pasos) ✅ Creado |
 | D0-12 | Arbol con Manzanas | colorear | Colorear arbol + agregar manzanas rojas (dibujar circulos) ✅ Creado |
 | D0-13 | Lluvia y Nubes | dibujo-libre | Dibujo libre: cielo con nubes y gotas de lluvia |
-| D0-14 | Gusanito de Circulos | dibujo-guiado | Dibujar gusano: circulos conectados + antenas |
+| D0-14 | Gusanito de Circulos | dibujo-guiado | Dibujar gusano: circulos conectados + antenas ✅ Creado |
 | D0-15 | Mi Familia | dibujo-libre | Dibujo libre: dibuja a tu familia |
 
 ---
@@ -168,8 +168,8 @@ y se usa la URL de descarga. No guardamos PNGs en el repositorio.
 
 | # | Titulo | Tipo | Descripcion |
 |---|--------|------|-------------|
-| D1-01 | Robot de Cuadrados | dibujo-guiado | Dibujar un robot usando solo cuadrados y rectangulos (4 pasos) |
-| D1-02 | Cohete Espacial | dibujo-guiado | Triangulo + rectangulo + circulos = cohete (4 pasos) |
+| D1-01 | Robot de Cuadrados | dibujo-guiado | Dibujar un robot usando solo cuadrados y rectangulos (4 pasos) ✅ Creado |
+| D1-02 | Cohete Espacial | dibujo-guiado | Triangulo + rectangulo + circulos = cohete (4 pasos) ✅ Creado |
 | D1-03 | Tren de Figuras | dibujo-guiado | Locomotora con rectangulos, circulos como ruedas (5 pasos) |
 | D1-04 | Ciudad de Noche | colorear | Colorear edificios rectangulares con ventanas y luna ✅ Creado |
 | D1-05 | Pecera Redonda | dibujo-guiado | Ovalo grande + peces triangulares + burbujas circulares (4 pasos) |
@@ -179,9 +179,9 @@ y se usa la URL de descarga. No guardamos PNGs en el repositorio.
 | # | Titulo | Tipo | Descripcion |
 |---|--------|------|-------------|
 | D1-06 | Gato Facil | dibujo-guiado | Circulo + triangulos (orejas) + bigotes (5 pasos) ✅ Creado |
-| D1-07 | Perro Amigable | dibujo-guiado | Formas redondeadas: cabeza, cuerpo, patas, cola (5 pasos) |
+| D1-07 | Perro Amigable | dibujo-guiado | Formas redondeadas: cabeza, cuerpo, patas, cola (5 pasos) ✅ Creado |
 | D1-08 | Pez Tropical | colorear | Colorear pez con franjas y aletas (muchos espacios) ✅ Creado |
-| D1-09 | Buho Nocturno | dibujo-guiado | Circulos concentricos (ojos grandes), triangulo (pico) (5 pasos) |
+| D1-09 | Buho Nocturno | dibujo-guiado | Circulos concentricos (ojos grandes), triangulo (pico) (5 pasos) ✅ Creado |
 | D1-10 | Dinosaurio | colorear | Colorear dinosaurio con fondo de volcanes ✅ Creado |
 
 ### Bloque 3: Escenas (D1-11 a D1-15)

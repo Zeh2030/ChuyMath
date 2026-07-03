@@ -1,0 +1,33 @@
+{
+  "id": "D0-14_gusanito-de-circulos",
+  "titulo": "Gusanito de Circulos",
+  "descripcion": "Dibujar gusano: circulos conectados + antenas",
+  "tipo": "dibujo-guiado",
+  "materia": "dibujo",
+  "nivel": "D0-14",
+  "tema": "primeras-creaciones",
+  "misiones": [
+    {
+      "id": "dib-gusano-01",
+      "tipo": "dibujo-guiado",
+      "titulo": "Gusanito de Circulos",
+      "emoji": "🐛",
+      "instruccion": "Un gusanito esta hecho de puros circulos! Lo nuevo de cada paso aparece en rojo.",
+      "pasos": [
+        {
+          "instruccion": "Dibuja un circulo: la cabeza del gusanito.",
+          "imagen_url": "/dibujo/guiado/D0-14_gusano_paso1.svg"
+        },
+        {
+          "instruccion": "Agrega circulos en fila para el cuerpo, cada vez mas pequenos.",
+          "imagen_url": "/dibujo/guiado/D0-14_gusano_paso2.svg"
+        },
+        {
+          "instruccion": "Ponle antenas y una carita feliz.",
+          "imagen_url": "/dibujo/guiado/D0-14_gusano_paso3.svg"
+        }
+      ],
+      "imagen_final_url": "/dibujo/guiado/D0-14_gusano_final.svg"
+    }
+  ]
+}

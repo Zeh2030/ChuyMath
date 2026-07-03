@@ -1,0 +1,41 @@
+{
+  "id": "D1-09_buho-nocturno",
+  "titulo": "Buho Nocturno",
+  "descripcion": "Circulos concentricos (ojos grandes), triangulo (pico)",
+  "tipo": "dibujo-guiado",
+  "materia": "dibujo",
+  "nivel": "D1-09",
+  "tema": "animales-simples",
+  "misiones": [
+    {
+      "id": "dib-buho-01",
+      "tipo": "dibujo-guiado",
+      "titulo": "Buho Nocturno",
+      "emoji": "🦉",
+      "instruccion": "Un buho de ojos enormes! Lo nuevo de cada paso aparece en rojo.",
+      "pasos": [
+        {
+          "instruccion": "Dibuja un ovalo grande como huevo: el cuerpo.",
+          "imagen_url": "/dibujo/guiado/D1-09_buho_paso1.svg"
+        },
+        {
+          "instruccion": "Los ojos: dos circulos grandes, con circulos mas chicos adentro.",
+          "imagen_url": "/dibujo/guiado/D1-09_buho_paso2.svg"
+        },
+        {
+          "instruccion": "Dibuja un triangulo pequeno entre los ojos: el pico.",
+          "imagen_url": "/dibujo/guiado/D1-09_buho_paso3.svg"
+        },
+        {
+          "instruccion": "Agrega las alas a los lados: dos ovalos inclinados.",
+          "imagen_url": "/dibujo/guiado/D1-09_buho_paso4.svg"
+        },
+        {
+          "instruccion": "Ponle plumitas arriba, patitas abajo y la luna en el cielo.",
+          "imagen_url": "/dibujo/guiado/D1-09_buho_paso5.svg"
+        }
+      ],
+      "imagen_final_url": "/dibujo/guiado/D1-09_buho_final.svg"
+    }
+  ]
+}

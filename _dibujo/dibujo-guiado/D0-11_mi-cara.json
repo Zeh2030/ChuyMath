@@ -1,0 +1,33 @@
+{
+  "id": "D0-11_mi-cara",
+  "titulo": "Mi Cara",
+  "descripcion": "Dibujar una cara: circulo + ojos + boca",
+  "tipo": "dibujo-guiado",
+  "materia": "dibujo",
+  "nivel": "D0-11",
+  "tema": "primeras-creaciones",
+  "misiones": [
+    {
+      "id": "dib-cara-01",
+      "tipo": "dibujo-guiado",
+      "titulo": "Mi Cara",
+      "emoji": "🙂",
+      "instruccion": "Vamos a dibujar una cara feliz en 3 pasos. Lo nuevo de cada paso aparece en rojo!",
+      "pasos": [
+        {
+          "instruccion": "Dibuja un circulo grande: es la cara.",
+          "imagen_url": "/dibujo/guiado/D0-11_cara_paso1.svg"
+        },
+        {
+          "instruccion": "Dibuja los dos ojos.",
+          "imagen_url": "/dibujo/guiado/D0-11_cara_paso2.svg"
+        },
+        {
+          "instruccion": "Dibuja una boca sonriente. Puedes agregarle pelo, nariz y orejas!",
+          "imagen_url": "/dibujo/guiado/D0-11_cara_paso3.svg"
+        }
+      ],
+      "imagen_final_url": "/dibujo/guiado/D0-11_cara_final.svg"
+    }
+  ]
+}
