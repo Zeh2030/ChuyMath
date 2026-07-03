@@ -1,0 +1,41 @@
+{
+  "id": "D0-01_lineas-locas",
+  "titulo": "Lineas Locas",
+  "descripcion": "Trazar lineas rectas siguiendo la guia punteada",
+  "tipo": "colorear",
+  "materia": "dibujo",
+  "nivel": "D0-01",
+  "tema": "trazos-basicos",
+  "misiones": [
+    {
+      "id": "dib-trazo-lineas-h",
+      "tipo": "colorear",
+      "titulo": "Lineas acostadas",
+      "emoji": "✏️",
+      "instruccion": "Sigue los puntitos con tu dedo: del punto verde al punto rojo!",
+      "imagen_contorno_url": "/dibujo/trazos/D0-01a_horizontales.svg",
+      "colores_sugeridos": ["#e74c3c", "#e67e22", "#2ecc71", "#9b59b6"],
+      "dificultad": "facil"
+    },
+    {
+      "id": "dib-trazo-lineas-v",
+      "tipo": "colorear",
+      "titulo": "Lineas paradas",
+      "emoji": "✏️",
+      "instruccion": "Ahora de arriba hacia abajo: empieza en el verde y llega al rojo!",
+      "imagen_contorno_url": "/dibujo/trazos/D0-01b_verticales.svg",
+      "colores_sugeridos": ["#e74c3c", "#e67e22", "#2ecc71", "#9b59b6"],
+      "dificultad": "facil"
+    },
+    {
+      "id": "dib-trazo-lineas-reja",
+      "tipo": "colorear",
+      "titulo": "Una reja!",
+      "emoji": "🪟",
+      "instruccion": "Traza todas las lineas y construye una reja!",
+      "imagen_contorno_url": "/dibujo/trazos/D0-01c_reja.svg",
+      "colores_sugeridos": ["#e74c3c", "#e67e22", "#2ecc71", "#9b59b6"],
+      "dificultad": "facil"
+    }
+  ]
+}

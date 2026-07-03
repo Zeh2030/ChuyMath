@@ -123,13 +123,19 @@ y se usa la URL de descarga. No guardamos PNGs en el repositorio.
 
 ### Bloque 1: Trazos basicos (D0-01 a D0-05)
 
-| # | Titulo | Tipo | Descripcion |
-|---|--------|------|-------------|
-| D0-01 | Lineas Locas | dibujo-guiado | Trazar lineas rectas horizontales y verticales entre puntos |
-| D0-02 | Circulos y Mas Circulos | dibujo-guiado | Trazar circulos siguiendo la guia punteada |
-| D0-03 | Olas del Mar | dibujo-guiado | Trazar ondas (lineas curvas) de izquierda a derecha |
-| D0-04 | Zigzag de Rayo | dibujo-guiado | Trazar lineas en zigzag (montanas, rayos) |
-| D0-05 | Espirales Magicas | dibujo-guiado | Trazar espirales desde el centro hacia afuera |
+> **Nota (2026-07-03):** los trazos se implementaron como tipo `colorear` en vez de
+> `dibujo-guiado`: la guia punteada (SVG con `stroke-dasharray`, punto verde =
+> inicio, punto rojo = fin) va como fondo del canvas y la nina traza ENCIMA.
+> Para 3-4 anos calcar es mejor que copiar mirando una imagen al lado.
+> Cada actividad tiene 2-3 misiones que suben de dificultad.
+
+| # | Titulo | Tipo | Descripcion | Estado |
+|---|--------|------|-------------|--------|
+| D0-01 | Lineas Locas | colorear (trazo) | Horizontales, verticales y reja (3 misiones) | ✅ Creado |
+| D0-02 | Circulos y Mas Circulos | colorear (trazo) | Circulo grande + circulos de tamanos (2 misiones) | ✅ Creado |
+| D0-03 | Olas del Mar | colorear (trazo) | Una ola + dos olas con pececito (2 misiones) | ✅ Creado |
+| D0-04 | Zigzag de Rayo | colorear (trazo) | Montanas + rayo vertical (2 misiones) | ✅ Creado |
+| D0-05 | Espirales Magicas | colorear (trazo) | Espiral + concha de caracol (2 misiones) | ✅ Creado |
 
 ### Bloque 2: Colorear figuras simples (D0-06 a D0-10)
 
@@ -172,7 +178,7 @@ y se usa la URL de descarga. No guardamos PNGs en el repositorio.
 
 | # | Titulo | Tipo | Descripcion |
 |---|--------|------|-------------|
-| D1-06 | Gato Facil | dibujo-guiado | Circulo + triangulos (orejas) + bigotes (5 pasos) |
+| D1-06 | Gato Facil | dibujo-guiado | Circulo + triangulos (orejas) + bigotes (5 pasos) ✅ Creado |
 | D1-07 | Perro Amigable | dibujo-guiado | Formas redondeadas: cabeza, cuerpo, patas, cola (5 pasos) |
 | D1-08 | Pez Tropical | colorear | Colorear pez con escamas y aletas (muchos espacios) |
 | D1-09 | Buho Nocturno | dibujo-guiado | Circulos concentricos (ojos grandes), triangulo (pico) (5 pasos) |
@@ -431,8 +437,12 @@ Los SVG llevan `width`/`height` explicitos (no solo viewBox) para que
 Galeria de revision interna: `http://localhost:5173/dibujo/galeria.html`
 (agregar cada SVG nuevo a `public/dibujo/galeria.html`).
 
-**Piloto hecho:** D0-06 a D0-10 (sol, flor, estrella de mar, mariposa, casa) ya
-usan SVG local. Requiere re-migrar esos 5 JSONs a Firebase.
+**Hecho con SVG local (migrar JSONs a Firebase tras cada lote):**
+- D0-06 a D0-10 colorear (sol, flor, estrella de mar, mariposa, casa) — piloto.
+- D0-01 a D0-05 trazos (guias punteadas, 11 SVGs en `public/dibujo/trazos/`).
+- D1-06 Gato Facil, primer dibujo-guiado real: SVG por paso en
+  `public/dibujo/guiado/`, paso nuevo resaltado en rojo, anteriores en negro,
+  mas modelo final. Esta es la plantilla para el resto de dibujo-guiado.
 
 **Excepcion:** para el 5-10% de casos que de verdad necesite foto o arte complejo
 (referencias de dibujo-libre, D2/D3 realista), se permite URL externa o Firebase

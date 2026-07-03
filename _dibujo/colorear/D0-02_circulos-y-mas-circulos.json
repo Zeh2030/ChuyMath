@@ -1,0 +1,31 @@
+{
+  "id": "D0-02_circulos-y-mas-circulos",
+  "titulo": "Circulos y Mas Circulos",
+  "descripcion": "Trazar circulos siguiendo la guia punteada",
+  "tipo": "colorear",
+  "materia": "dibujo",
+  "nivel": "D0-02",
+  "tema": "trazos-basicos",
+  "misiones": [
+    {
+      "id": "dib-trazo-circulo-grande",
+      "tipo": "colorear",
+      "titulo": "Circulo grande",
+      "emoji": "⭕",
+      "instruccion": "Empieza en el punto verde y da la vuelta completa sin levantar el dedo!",
+      "imagen_contorno_url": "/dibujo/trazos/D0-02a_circulo-grande.svg",
+      "colores_sugeridos": ["#e74c3c", "#e67e22", "#2ecc71", "#9b59b6"],
+      "dificultad": "facil"
+    },
+    {
+      "id": "dib-trazo-circulos-tamanos",
+      "tipo": "colorear",
+      "titulo": "Grandes y pequenos",
+      "emoji": "🫧",
+      "instruccion": "Traza cada circulo: hay grandes, medianos y pequenos!",
+      "imagen_contorno_url": "/dibujo/trazos/D0-02b_circulos-tamanos.svg",
+      "colores_sugeridos": ["#e74c3c", "#e67e22", "#2ecc71", "#9b59b6"],
+      "dificultad": "facil"
+    }
+  ]
+}

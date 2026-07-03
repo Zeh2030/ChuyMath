@@ -6,26 +6,54 @@
   <title>Galería de contornos — revisión interna</title>
   <style>
     body { font-family: system-ui, sans-serif; background: #eaf6f8; margin: 0; padding: 24px; }
-    h1 { color: #2c3e50; }
+    h1, h2 { color: #2c3e50; }
+    h2 { margin-top: 36px; border-bottom: 2px solid #bcd; padding-bottom: 6px; }
     p.nota { color: #556; max-width: 700px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
     .card { background: white; border-radius: 16px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
     .card img { width: 100%; aspect-ratio: 1; border: 1px solid #ddd; border-radius: 8px; }
-    .card h3 { margin: 10px 0 2px; color: #2c3e50; }
+    .card h3 { margin: 10px 0 2px; color: #2c3e50; font-size: 16px; }
     .card code { font-size: 12px; color: #789; }
   </style>
 </head>
 <body>
   <h1>🎨 Galería de contornos (revisión)</h1>
-  <p class="nota">Página interna para revisar los SVGs de colorear antes de usarlos.
+  <p class="nota">Página interna para revisar los SVGs de dibujo antes de usarlos.
      Abrir en dev: <code>http://localhost:5173/dibujo/galeria.html</code>.
      Al agregar un SVG nuevo, añadir su tarjeta aquí.</p>
+
+  <h2>✏️ Trazos (D0-01 a D0-05)</h2>
+  <div class="grid">
+    <div class="card"><img src="/dibujo/trazos/D0-01a_horizontales.svg" alt="Líneas horizontales"><h3>Líneas acostadas</h3><code>D0-01a</code></div>
+    <div class="card"><img src="/dibujo/trazos/D0-01b_verticales.svg" alt="Líneas verticales"><h3>Líneas paradas</h3><code>D0-01b</code></div>
+    <div class="card"><img src="/dibujo/trazos/D0-01c_reja.svg" alt="Reja"><h3>¡Una reja!</h3><code>D0-01c</code></div>
+    <div class="card"><img src="/dibujo/trazos/D0-02a_circulo-grande.svg" alt="Círculo grande"><h3>Círculo grande</h3><code>D0-02a</code></div>
+    <div class="card"><img src="/dibujo/trazos/D0-02b_circulos-tamanos.svg" alt="Círculos de tamaños"><h3>Círculos grandes y pequeños</h3><code>D0-02b</code></div>
+    <div class="card"><img src="/dibujo/trazos/D0-03a_ola.svg" alt="Ola"><h3>Una ola</h3><code>D0-03a</code></div>
+    <div class="card"><img src="/dibujo/trazos/D0-03b_olas-pez.svg" alt="Olas con pez"><h3>Olas para el pececito</h3><code>D0-03b</code></div>
+    <div class="card"><img src="/dibujo/trazos/D0-04a_zigzag-montanas.svg" alt="Zigzag montañas"><h3>Montañas</h3><code>D0-04a</code></div>
+    <div class="card"><img src="/dibujo/trazos/D0-04b_rayo.svg" alt="Rayo"><h3>Un rayo</h3><code>D0-04b</code></div>
+    <div class="card"><img src="/dibujo/trazos/D0-05a_espiral.svg" alt="Espiral"><h3>Espiral mágica</h3><code>D0-05a</code></div>
+    <div class="card"><img src="/dibujo/trazos/D0-05b_caracol.svg" alt="Caracol"><h3>La casita del caracol</h3><code>D0-05b</code></div>
+  </div>
+
+  <h2>🖍️ Colorear (D0-06 a D0-10)</h2>
   <div class="grid">
     <div class="card"><img src="/dibujo/colorear/D0-06_sol-brillante.svg" alt="Sol"><h3>☀️ Sol Brillante</h3><code>D0-06</code></div>
     <div class="card"><img src="/dibujo/colorear/D0-07_flor-del-jardin.svg" alt="Flor"><h3>🌼 Flor del Jardín</h3><code>D0-07</code></div>
     <div class="card"><img src="/dibujo/colorear/D0-08_estrella-de-mar.svg" alt="Estrella de mar"><h3>⭐ Estrella de Mar</h3><code>D0-08</code></div>
     <div class="card"><img src="/dibujo/colorear/D0-09_mariposa-bonita.svg" alt="Mariposa"><h3>🦋 Mariposa Bonita</h3><code>D0-09</code></div>
     <div class="card"><img src="/dibujo/colorear/D0-10_casa-feliz.svg" alt="Casa"><h3>🏠 Casa Feliz</h3><code>D0-10</code></div>
+  </div>
+
+  <h2>🐱 Dibujo guiado: Gato Fácil (D1-06)</h2>
+  <div class="grid">
+    <div class="card"><img src="/dibujo/guiado/D1-06_gato_paso1.svg" alt="Paso 1"><h3>Paso 1: cabeza</h3><code>D1-06 p1</code></div>
+    <div class="card"><img src="/dibujo/guiado/D1-06_gato_paso2.svg" alt="Paso 2"><h3>Paso 2: orejas</h3><code>D1-06 p2</code></div>
+    <div class="card"><img src="/dibujo/guiado/D1-06_gato_paso3.svg" alt="Paso 3"><h3>Paso 3: cara</h3><code>D1-06 p3</code></div>
+    <div class="card"><img src="/dibujo/guiado/D1-06_gato_paso4.svg" alt="Paso 4"><h3>Paso 4: bigotes</h3><code>D1-06 p4</code></div>
+    <div class="card"><img src="/dibujo/guiado/D1-06_gato_paso5.svg" alt="Paso 5"><h3>Paso 5: cuerpo y cola</h3><code>D1-06 p5</code></div>
+    <div class="card"><img src="/dibujo/guiado/D1-06_gato_final.svg" alt="Final"><h3>Modelo final</h3><code>D1-06 final</code></div>
   </div>
 </body>
 </html>

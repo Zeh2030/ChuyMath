@@ -1,0 +1,31 @@
+{
+  "id": "D0-03_olas-del-mar",
+  "titulo": "Olas del Mar",
+  "descripcion": "Trazar ondas de izquierda a derecha",
+  "tipo": "colorear",
+  "materia": "dibujo",
+  "nivel": "D0-03",
+  "tema": "trazos-basicos",
+  "misiones": [
+    {
+      "id": "dib-trazo-ola",
+      "tipo": "colorear",
+      "titulo": "Una ola",
+      "emoji": "🌊",
+      "instruccion": "Traza la ola del verde al rojo: sube y baja como el mar!",
+      "imagen_contorno_url": "/dibujo/trazos/D0-03a_ola.svg",
+      "colores_sugeridos": ["#3498db", "#2ecc71", "#9b59b6", "#e74c3c"],
+      "dificultad": "facil"
+    },
+    {
+      "id": "dib-trazo-olas-pez",
+      "tipo": "colorear",
+      "titulo": "Olas para el pececito",
+      "emoji": "🐟",
+      "instruccion": "Traza las dos olas: el pececito quiere nadar!",
+      "imagen_contorno_url": "/dibujo/trazos/D0-03b_olas-pez.svg",
+      "colores_sugeridos": ["#3498db", "#2ecc71", "#9b59b6", "#e74c3c"],
+      "dificultad": "facil"
+    }
+  ]
+}

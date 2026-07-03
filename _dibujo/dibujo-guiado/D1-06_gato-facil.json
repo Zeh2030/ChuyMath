@@ -1,0 +1,41 @@
+{
+  "id": "D1-06_gato-facil",
+  "titulo": "Gato Facil",
+  "descripcion": "Dibujar un gato paso a paso con formas simples",
+  "tipo": "dibujo-guiado",
+  "materia": "dibujo",
+  "nivel": "D1-06",
+  "tema": "animales-simples",
+  "misiones": [
+    {
+      "id": "dib-gato-01",
+      "tipo": "dibujo-guiado",
+      "titulo": "Gato Facil",
+      "emoji": "🐱",
+      "instruccion": "Vamos a dibujar un gato paso a paso. En cada paso, lo nuevo aparece en rojo!",
+      "pasos": [
+        {
+          "instruccion": "Dibuja un circulo grande: es la cabeza del gato.",
+          "imagen_url": "/dibujo/guiado/D1-06_gato_paso1.svg"
+        },
+        {
+          "instruccion": "Agrega dos triangulos arriba: las orejas.",
+          "imagen_url": "/dibujo/guiado/D1-06_gato_paso2.svg"
+        },
+        {
+          "instruccion": "Dibuja los ojos, la nariz de triangulo y la boca.",
+          "imagen_url": "/dibujo/guiado/D1-06_gato_paso3.svg"
+        },
+        {
+          "instruccion": "Ponle bigotes: 3 lineas de cada lado.",
+          "imagen_url": "/dibujo/guiado/D1-06_gato_paso4.svg"
+        },
+        {
+          "instruccion": "Dibuja el cuerpo ovalado y la cola curva. Listo!",
+          "imagen_url": "/dibujo/guiado/D1-06_gato_paso5.svg"
+        }
+      ],
+      "imagen_final_url": "/dibujo/guiado/D1-06_gato_final.svg"
+    }
+  ]
+}

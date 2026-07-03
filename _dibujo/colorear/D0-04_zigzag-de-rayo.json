@@ -1,0 +1,31 @@
+{
+  "id": "D0-04_zigzag-de-rayo",
+  "titulo": "Zigzag de Rayo",
+  "descripcion": "Trazar lineas en zigzag (montanas y rayos)",
+  "tipo": "colorear",
+  "materia": "dibujo",
+  "nivel": "D0-04",
+  "tema": "trazos-basicos",
+  "misiones": [
+    {
+      "id": "dib-trazo-zigzag-montanas",
+      "tipo": "colorear",
+      "titulo": "Montanas",
+      "emoji": "⛰️",
+      "instruccion": "Sube y baja como montanas, sin levantar el dedo!",
+      "imagen_contorno_url": "/dibujo/trazos/D0-04a_zigzag-montanas.svg",
+      "colores_sugeridos": ["#e67e22", "#2ecc71", "#9b59b6", "#e74c3c"],
+      "dificultad": "facil"
+    },
+    {
+      "id": "dib-trazo-rayo",
+      "tipo": "colorear",
+      "titulo": "Un rayo",
+      "emoji": "⚡",
+      "instruccion": "Traza el rayo de arriba hasta abajo... zas!",
+      "imagen_contorno_url": "/dibujo/trazos/D0-04b_rayo.svg",
+      "colores_sugeridos": ["#f1c40f", "#e67e22", "#9b59b6", "#e74c3c"],
+      "dificultad": "facil"
+    }
+  ]
+}

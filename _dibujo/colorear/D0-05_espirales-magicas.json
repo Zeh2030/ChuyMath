@@ -1,0 +1,31 @@
+{
+  "id": "D0-05_espirales-magicas",
+  "titulo": "Espirales Magicas",
+  "descripcion": "Trazar espirales desde el centro hacia afuera",
+  "tipo": "colorear",
+  "materia": "dibujo",
+  "nivel": "D0-05",
+  "tema": "trazos-basicos",
+  "misiones": [
+    {
+      "id": "dib-trazo-espiral",
+      "tipo": "colorear",
+      "titulo": "Espiral magica",
+      "emoji": "🌀",
+      "instruccion": "Empieza en el punto verde del centro y gira hacia afuera!",
+      "imagen_contorno_url": "/dibujo/trazos/D0-05a_espiral.svg",
+      "colores_sugeridos": ["#9b59b6", "#3498db", "#e91e63", "#2ecc71"],
+      "dificultad": "facil"
+    },
+    {
+      "id": "dib-trazo-caracol",
+      "tipo": "colorear",
+      "titulo": "La casita del caracol",
+      "emoji": "🐌",
+      "instruccion": "Traza la espiral para hacerle su concha al caracol!",
+      "imagen_contorno_url": "/dibujo/trazos/D0-05b_caracol.svg",
+      "colores_sugeridos": ["#e67e22", "#9b59b6", "#e91e63", "#2ecc71"],
+      "dificultad": "facil"
+    }
+  ]
+}
