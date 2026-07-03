@@ -1,0 +1,21 @@
+{
+  "id": "D1-08_pez-tropical",
+  "titulo": "Pez Tropical",
+  "descripcion": "Colorear pez con franjas y aletas",
+  "tipo": "colorear",
+  "materia": "dibujo",
+  "nivel": "D1-08",
+  "tema": "animales-simples",
+  "misiones": [
+    {
+      "id": "dib-pez-color-01",
+      "tipo": "colorear",
+      "titulo": "Pez Tropical",
+      "emoji": "🐠",
+      "instruccion": "Colorea el pez tropical! Las franjas pueden ser de colores diferentes, como un pez payaso.",
+      "imagen_contorno_url": "/dibujo/colorear/D1-08_pez-tropical.svg",
+      "colores_sugeridos": ["#e67e22", "#f1c40f", "#3498db", "#e91e63", "#2ecc71"],
+      "dificultad": "media"
+    }
+  ]
+}

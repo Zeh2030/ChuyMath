@@ -152,7 +152,7 @@ y se usa la URL de descarga. No guardamos PNGs en el repositorio.
 | # | Titulo | Tipo | Descripcion |
 |---|--------|------|-------------|
 | D0-11 | Mi Cara | dibujo-guiado | Dibujar una cara: circulo + ojos + boca (3 pasos) |
-| D0-12 | Arbol con Manzanas | colorear | Colorear arbol + agregar manzanas rojas (dibujar circulos) |
+| D0-12 | Arbol con Manzanas | colorear | Colorear arbol + agregar manzanas rojas (dibujar circulos) ✅ Creado |
 | D0-13 | Lluvia y Nubes | dibujo-libre | Dibujo libre: cielo con nubes y gotas de lluvia |
 | D0-14 | Gusanito de Circulos | dibujo-guiado | Dibujar gusano: circulos conectados + antenas |
 | D0-15 | Mi Familia | dibujo-libre | Dibujo libre: dibuja a tu familia |
@@ -171,7 +171,7 @@ y se usa la URL de descarga. No guardamos PNGs en el repositorio.
 | D1-01 | Robot de Cuadrados | dibujo-guiado | Dibujar un robot usando solo cuadrados y rectangulos (4 pasos) |
 | D1-02 | Cohete Espacial | dibujo-guiado | Triangulo + rectangulo + circulos = cohete (4 pasos) |
 | D1-03 | Tren de Figuras | dibujo-guiado | Locomotora con rectangulos, circulos como ruedas (5 pasos) |
-| D1-04 | Ciudad de Noche | colorear | Colorear edificios rectangulares con ventanas y luna |
+| D1-04 | Ciudad de Noche | colorear | Colorear edificios rectangulares con ventanas y luna ✅ Creado |
 | D1-05 | Pecera Redonda | dibujo-guiado | Ovalo grande + peces triangulares + burbujas circulares (4 pasos) |
 
 ### Bloque 2: Animales simples (D1-06 a D1-10)
@@ -180,16 +180,16 @@ y se usa la URL de descarga. No guardamos PNGs en el repositorio.
 |---|--------|------|-------------|
 | D1-06 | Gato Facil | dibujo-guiado | Circulo + triangulos (orejas) + bigotes (5 pasos) ✅ Creado |
 | D1-07 | Perro Amigable | dibujo-guiado | Formas redondeadas: cabeza, cuerpo, patas, cola (5 pasos) |
-| D1-08 | Pez Tropical | colorear | Colorear pez con escamas y aletas (muchos espacios) |
+| D1-08 | Pez Tropical | colorear | Colorear pez con franjas y aletas (muchos espacios) ✅ Creado |
 | D1-09 | Buho Nocturno | dibujo-guiado | Circulos concentricos (ojos grandes), triangulo (pico) (5 pasos) |
-| D1-10 | Dinosaurio | colorear | Colorear dinosaurio con fondo de volcanes |
+| D1-10 | Dinosaurio | colorear | Colorear dinosaurio con fondo de volcanes ✅ Creado |
 
 ### Bloque 3: Escenas (D1-11 a D1-15)
 
 | # | Titulo | Tipo | Descripcion |
 |---|--------|------|-------------|
 | D1-11 | Paisaje con Montana | dibujo-guiado | Montana (triangulo) + sol + rio + arboles (5 pasos) |
-| D1-12 | Fondo del Mar | colorear | Colorear escena submarina: peces, corales, tortuga |
+| D1-12 | Fondo del Mar | colorear | Colorear escena submarina: peces, corales, tortuga ✅ Creado |
 | D1-13 | Mi Cuarto | dibujo-libre | Dibujo libre con referencia: dibuja tu cuarto (cama, juguetes, ventana) |
 | D1-14 | Castillo Medieval | dibujo-guiado | Torres con rectangulos y triangulos, puerta, bandera (5 pasos) |
 | D1-15 | Retrato de mi Mascota | dibujo-libre | Dibujo libre: dibuja a tu mascota (o animal favorito) con referencia |
@@ -228,7 +228,7 @@ y se usa la URL de descarga. No guardamos PNGs en el repositorio.
 | D2-11 | Auto Deportivo | dibujo-guiado | Perspectiva lateral, ruedas, ventanas, detalles (6 pasos) |
 | D2-12 | Avion de Pasajeros | dibujo-guiado | Fuselaje, alas, cola, ventanillas (6 pasos) |
 | D2-13 | Barco Pirata | dibujo-guiado | Casco, mastil, velas, bandera pirata (7 pasos) |
-| D2-14 | Mandala Basico | colorear | Colorear mandala con patron repetitivo circular |
+| D2-14 | Mandala Basico | colorear | Colorear mandala con patron repetitivo circular ✅ Creado |
 | D2-15 | Disena tu Robot | dibujo-libre | Dibujo libre: inventa un robot con partes mecanicas |
 
 ### Bloque 4: Escenas y fondos (D2-16 a D2-20)
@@ -440,6 +440,9 @@ Galeria de revision interna: `http://localhost:5173/dibujo/galeria.html`
 **Hecho con SVG local (migrar JSONs a Firebase tras cada lote):**
 - D0-06 a D0-10 colorear (sol, flor, estrella de mar, mariposa, casa) — piloto.
 - D0-01 a D0-05 trazos (guias punteadas, 11 SVGs en `public/dibujo/trazos/`).
+- Todos los colorear restantes de D0-D2: D0-12 arbol, D1-04 ciudad de noche,
+  D1-08 pez tropical, D1-10 dinosaurio, D1-12 fondo del mar, D2-14 mandala
+  basico (el mandala se genera con simetria rotacional — SVG ideal).
 - D1-06 Gato Facil, primer dibujo-guiado real: SVG por paso en
   `public/dibujo/guiado/`, paso nuevo resaltado en rojo, anteriores en negro,
   mas modelo final. Esta es la plantilla para el resto de dibujo-guiado.

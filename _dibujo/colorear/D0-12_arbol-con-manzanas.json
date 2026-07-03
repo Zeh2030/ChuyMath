@@ -1,0 +1,21 @@
+{
+  "id": "D0-12_arbol-con-manzanas",
+  "titulo": "Arbol con Manzanas",
+  "descripcion": "Colorear arbol y agregar manzanas rojas",
+  "tipo": "colorear",
+  "materia": "dibujo",
+  "nivel": "D0-12",
+  "tema": "primeras-creaciones",
+  "misiones": [
+    {
+      "id": "dib-arbol-color-01",
+      "tipo": "colorear",
+      "titulo": "Arbol con Manzanas",
+      "emoji": "🌳",
+      "instruccion": "Colorea el arbol y pinta las manzanas de rojo. Puedes dibujarle mas manzanas: son circulos!",
+      "imagen_contorno_url": "/dibujo/colorear/D0-12_arbol-con-manzanas.svg",
+      "colores_sugeridos": ["#2ecc71", "#795548", "#e74c3c", "#f1c40f"],
+      "dificultad": "facil"
+    }
+  ]
+}

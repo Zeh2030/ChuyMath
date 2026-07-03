@@ -1,0 +1,20 @@
+{
+  "id": "D2-14_mandala-basico",
+  "titulo": "Mandala Basico",
+  "descripcion": "Colorear mandala con patron repetitivo circular",
+  "tipo": "colorear",
+  "materia": "dibujo",
+  "nivel": "D2-14",
+  "tema": "mandalas",
+  "misiones": [
+    {
+      "id": "dib-mandala-color-01",
+      "tipo": "colorear",
+      "titulo": "Mandala Basico",
+      "emoji": "🌸",
+      "instruccion": "Colorea el mandala! Tip de artista: repite los colores siguiendo el patron, por ejemplo todos los petalos iguales o alternando dos colores.",
+      "imagen_contorno_url": "/dibujo/colorear/D2-14_mandala-basico.svg",
+      "dificultad": "media"
+    }
+  ]
+}

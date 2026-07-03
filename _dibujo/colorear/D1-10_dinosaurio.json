@@ -1,0 +1,21 @@
+{
+  "id": "D1-10_dinosaurio",
+  "titulo": "Dinosaurio",
+  "descripcion": "Colorear dinosaurio de cuello largo con volcan",
+  "tipo": "colorear",
+  "materia": "dibujo",
+  "nivel": "D1-10",
+  "tema": "animales-simples",
+  "misiones": [
+    {
+      "id": "dib-dino-color-01",
+      "tipo": "colorear",
+      "titulo": "Dinosaurio",
+      "emoji": "🦕",
+      "instruccion": "Colorea el dinosaurio de cuello largo! No olvides el volcan con su humo.",
+      "imagen_contorno_url": "/dibujo/colorear/D1-10_dinosaurio.svg",
+      "colores_sugeridos": ["#2ecc71", "#27ae60", "#e67e22", "#795548", "#e74c3c"],
+      "dificultad": "media"
+    }
+  ]
+}

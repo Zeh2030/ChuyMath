@@ -1,0 +1,21 @@
+{
+  "id": "D1-04_ciudad-de-noche",
+  "titulo": "Ciudad de Noche",
+  "descripcion": "Colorear edificios con ventanas, luna y estrellas",
+  "tipo": "colorear",
+  "materia": "dibujo",
+  "nivel": "D1-04",
+  "tema": "formas-geometricas",
+  "misiones": [
+    {
+      "id": "dib-ciudad-color-01",
+      "tipo": "colorear",
+      "titulo": "Ciudad de Noche",
+      "emoji": "🌃",
+      "instruccion": "Es de noche en la ciudad! Pinta el cielo oscuro, las ventanas encendidas de amarillo y la luna brillante.",
+      "imagen_contorno_url": "/dibujo/colorear/D1-04_ciudad-de-noche.svg",
+      "colores_sugeridos": ["#2c3e50", "#34495e", "#f1c40f", "#9b59b6", "#95a5a6"],
+      "dificultad": "media"
+    }
+  ]
+}

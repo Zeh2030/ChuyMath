@@ -1,0 +1,21 @@
+{
+  "id": "D1-12_fondo-del-mar",
+  "titulo": "Fondo del Mar",
+  "descripcion": "Colorear escena submarina: tortuga, peces, coral",
+  "tipo": "colorear",
+  "materia": "dibujo",
+  "nivel": "D1-12",
+  "tema": "escenas",
+  "misiones": [
+    {
+      "id": "dib-mar-color-01",
+      "tipo": "colorear",
+      "titulo": "Fondo del Mar",
+      "emoji": "🐢",
+      "instruccion": "Colorea el fondo del mar: la tortuga, los peces, el coral y el agua alrededor!",
+      "imagen_contorno_url": "/dibujo/colorear/D1-12_fondo-del-mar.svg",
+      "colores_sugeridos": ["#3498db", "#2ecc71", "#e67e22", "#f1c40f", "#e91e63", "#795548"],
+      "dificultad": "media"
+    }
+  ]
+}
