@@ -170,9 +170,9 @@ y se usa la URL de descarga. No guardamos PNGs en el repositorio.
 |---|--------|------|-------------|
 | D1-01 | Robot de Cuadrados | dibujo-guiado | Dibujar un robot usando solo cuadrados y rectangulos (4 pasos) ✅ Creado |
 | D1-02 | Cohete Espacial | dibujo-guiado | Triangulo + rectangulo + circulos = cohete (4 pasos) ✅ Creado |
-| D1-03 | Tren de Figuras | dibujo-guiado | Locomotora con rectangulos, circulos como ruedas (5 pasos) |
+| D1-03 | Tren de Figuras | dibujo-guiado | Locomotora con rectangulos, circulos como ruedas (5 pasos) ✅ Creado |
 | D1-04 | Ciudad de Noche | colorear | Colorear edificios rectangulares con ventanas y luna ✅ Creado |
-| D1-05 | Pecera Redonda | dibujo-guiado | Ovalo grande + peces triangulares + burbujas circulares (4 pasos) |
+| D1-05 | Pecera Redonda | dibujo-guiado | Ovalo grande + peces triangulares + burbujas circulares (4 pasos) ✅ Creado |
 
 ### Bloque 2: Animales simples (D1-06 a D1-10)
 
@@ -188,10 +188,10 @@ y se usa la URL de descarga. No guardamos PNGs en el repositorio.
 
 | # | Titulo | Tipo | Descripcion |
 |---|--------|------|-------------|
-| D1-11 | Paisaje con Montana | dibujo-guiado | Montana (triangulo) + sol + rio + arboles (5 pasos) |
+| D1-11 | Paisaje con Montana | dibujo-guiado | Montana (triangulo) + sol + rio + arboles (5 pasos) ✅ Creado |
 | D1-12 | Fondo del Mar | colorear | Colorear escena submarina: peces, corales, tortuga ✅ Creado |
 | D1-13 | Mi Cuarto | dibujo-libre | Dibujo libre con referencia: dibuja tu cuarto (cama, juguetes, ventana) |
-| D1-14 | Castillo Medieval | dibujo-guiado | Torres con rectangulos y triangulos, puerta, bandera (5 pasos) |
+| D1-14 | Castillo Medieval | dibujo-guiado | Torres con rectangulos y triangulos, puerta, bandera (5 pasos) ✅ Creado |
 | D1-15 | Retrato de mi Mascota | dibujo-libre | Dibujo libre: dibuja a tu mascota (o animal favorito) con referencia |
 
 ---
@@ -205,8 +205,8 @@ y se usa la URL de descarga. No guardamos PNGs en el repositorio.
 
 | # | Titulo | Tipo | Descripcion |
 |---|--------|------|-------------|
-| D2-01 | Perro Realista | dibujo-guiado | Proporciones reales: cabeza, hocico, cuerpo, patas, cola (6 pasos) |
-| D2-02 | Gato Sentado | dibujo-guiado | Postura de gato sentado, ojos almendrados, bigotes (6 pasos) |
+| D2-01 | Perro Realista | dibujo-guiado | Proporciones reales: cabeza, hocico, cuerpo, patas, cola (6 pasos) ✅ Creado |
+| D2-02 | Gato Sentado | dibujo-guiado | Postura de gato sentado, ojos almendrados, bigotes (6 pasos) ✅ Creado |
 | D2-03 | Caballo al Trote | dibujo-guiado | Cuerpo alargado, patas en movimiento, crin (7 pasos) |
 | D2-04 | Aguila en Vuelo | dibujo-guiado | Alas extendidas, plumas, garras (7 pasos) |
 | D2-05 | Tortuga Marina | colorear | Colorear tortuga con patron de caparazon detallado |
@@ -215,7 +215,7 @@ y se usa la URL de descarga. No guardamos PNGs en el repositorio.
 
 | # | Titulo | Tipo | Descripcion |
 |---|--------|------|-------------|
-| D2-06 | Cara con Expresiones | dibujo-guiado | Proporciones del rostro: ojos al centro, nariz, boca (6 pasos) |
+| D2-06 | Cara con Expresiones | dibujo-guiado | Proporciones del rostro: ojos al centro, nariz, boca (6 pasos) ✅ Creado |
 | D2-07 | Cuerpo Completo | dibujo-guiado | Figura humana: cabeza, torso, brazos, piernas, proporciones (7 pasos) |
 | D2-08 | Ninja | dibujo-guiado | Personaje de accion con pose dinamica (7 pasos) |
 | D2-09 | Princesa / Principe | dibujo-guiado | Personaje con ropa detallada, corona, capa (7 pasos) |
@@ -225,7 +225,7 @@ y se usa la URL de descarga. No guardamos PNGs en el repositorio.
 
 | # | Titulo | Tipo | Descripcion |
 |---|--------|------|-------------|
-| D2-11 | Auto Deportivo | dibujo-guiado | Perspectiva lateral, ruedas, ventanas, detalles (6 pasos) |
+| D2-11 | Auto Deportivo | dibujo-guiado | Perspectiva lateral, ruedas, ventanas, detalles (6 pasos) ✅ Creado |
 | D2-12 | Avion de Pasajeros | dibujo-guiado | Fuselaje, alas, cola, ventanillas (6 pasos) |
 | D2-13 | Barco Pirata | dibujo-guiado | Casco, mastil, velas, bandera pirata (7 pasos) |
 | D2-14 | Mandala Basico | colorear | Colorear mandala con patron repetitivo circular ✅ Creado |

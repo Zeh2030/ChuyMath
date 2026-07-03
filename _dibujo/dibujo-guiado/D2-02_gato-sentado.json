@@ -1,0 +1,45 @@
+{
+  "id": "D2-02_gato-sentado",
+  "titulo": "Gato Sentado",
+  "descripcion": "Postura de gato sentado, ojos almendrados, bigotes",
+  "tipo": "dibujo-guiado",
+  "materia": "dibujo",
+  "nivel": "D2-02",
+  "tema": "animales-detallados",
+  "misiones": [
+    {
+      "id": "dib-gato-sentado-01",
+      "tipo": "dibujo-guiado",
+      "titulo": "Gato Sentado",
+      "emoji": "🐈",
+      "instruccion": "Un gato sentado y elegante. Lo nuevo de cada paso aparece en rojo.",
+      "pasos": [
+        {
+          "instruccion": "Dibuja un ovalo parado: el cuerpo del gato sentado.",
+          "imagen_url": "/dibujo/guiado/D2-02_gato-sentado_paso1.svg"
+        },
+        {
+          "instruccion": "La cabeza: un circulo arriba, un poco encimado al cuerpo.",
+          "imagen_url": "/dibujo/guiado/D2-02_gato-sentado_paso2.svg"
+        },
+        {
+          "instruccion": "Las orejas: dos triangulos.",
+          "imagen_url": "/dibujo/guiado/D2-02_gato-sentado_paso3.svg"
+        },
+        {
+          "instruccion": "Las patas delanteras: bajan rectas hasta el piso.",
+          "imagen_url": "/dibujo/guiado/D2-02_gato-sentado_paso4.svg"
+        },
+        {
+          "instruccion": "La cola enroscada por delante.",
+          "imagen_url": "/dibujo/guiado/D2-02_gato-sentado_paso5.svg"
+        },
+        {
+          "instruccion": "La cara: ojos almendrados, nariz de triangulo, boca y bigotes.",
+          "imagen_url": "/dibujo/guiado/D2-02_gato-sentado_paso6.svg"
+        }
+      ],
+      "imagen_final_url": "/dibujo/guiado/D2-02_gato-sentado_final.svg"
+    }
+  ]
+}

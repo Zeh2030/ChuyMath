@@ -1,0 +1,45 @@
+{
+  "id": "D2-01_perro-realista",
+  "titulo": "Perro Realista",
+  "descripcion": "Proporciones reales: cabeza, hocico, cuerpo, patas, cola",
+  "tipo": "dibujo-guiado",
+  "materia": "dibujo",
+  "nivel": "D2-01",
+  "tema": "animales-detallados",
+  "misiones": [
+    {
+      "id": "dib-perro-real-01",
+      "tipo": "dibujo-guiado",
+      "titulo": "Perro Realista",
+      "emoji": "🐕",
+      "instruccion": "Ahora un perro de cuerpo completo, visto de lado. Lo nuevo de cada paso aparece en rojo.",
+      "pasos": [
+        {
+          "instruccion": "Dibuja un ovalo acostado grande: el cuerpo.",
+          "imagen_url": "/dibujo/guiado/D2-01_perro-realista_paso1.svg"
+        },
+        {
+          "instruccion": "La cabeza: un circulo adelante, con el hocico ovalado.",
+          "imagen_url": "/dibujo/guiado/D2-01_perro-realista_paso2.svg"
+        },
+        {
+          "instruccion": "Agrega la oreja caida, asomando detras de la cabeza.",
+          "imagen_url": "/dibujo/guiado/D2-01_perro-realista_paso3.svg"
+        },
+        {
+          "instruccion": "Dibuja las 4 patas: como esta de lado, se ven las cuatro.",
+          "imagen_url": "/dibujo/guiado/D2-01_perro-realista_paso4.svg"
+        },
+        {
+          "instruccion": "La cola levantada: esta contento.",
+          "imagen_url": "/dibujo/guiado/D2-01_perro-realista_paso5.svg"
+        },
+        {
+          "instruccion": "Termina: ojo, nariz, boca y las manchas del lomo.",
+          "imagen_url": "/dibujo/guiado/D2-01_perro-realista_paso6.svg"
+        }
+      ],
+      "imagen_final_url": "/dibujo/guiado/D2-01_perro-realista_final.svg"
+    }
+  ]
+}

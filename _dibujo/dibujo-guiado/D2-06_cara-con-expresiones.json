@@ -1,0 +1,45 @@
+{
+  "id": "D2-06_cara-con-expresiones",
+  "titulo": "Cara con Expresiones",
+  "descripcion": "Proporciones del rostro: ojos al centro, nariz, boca",
+  "tipo": "dibujo-guiado",
+  "materia": "dibujo",
+  "nivel": "D2-06",
+  "tema": "personajes",
+  "misiones": [
+    {
+      "id": "dib-cara-prop-01",
+      "tipo": "dibujo-guiado",
+      "titulo": "Cara con Expresiones",
+      "emoji": "😊",
+      "instruccion": "El secreto de los artistas: las proporciones del rostro. Lo nuevo de cada paso aparece en rojo.",
+      "pasos": [
+        {
+          "instruccion": "Dibuja un ovalo: la forma de la cabeza.",
+          "imagen_url": "/dibujo/guiado/D2-06_cara-proporciones_paso1.svg"
+        },
+        {
+          "instruccion": "Las lineas guia (punteadas, suaves): los ojos van a la MITAD de la cara, no arriba!",
+          "imagen_url": "/dibujo/guiado/D2-06_cara-proporciones_paso2.svg"
+        },
+        {
+          "instruccion": "Dibuja los ojos SOBRE la linea horizontal, separados un ojo de distancia.",
+          "imagen_url": "/dibujo/guiado/D2-06_cara-proporciones_paso3.svg"
+        },
+        {
+          "instruccion": "La nariz: baja desde el centro, a medio camino entre ojos y barbilla.",
+          "imagen_url": "/dibujo/guiado/D2-06_cara-proporciones_paso4.svg"
+        },
+        {
+          "instruccion": "La boca: entre la nariz y la barbilla.",
+          "imagen_url": "/dibujo/guiado/D2-06_cara-proporciones_paso5.svg"
+        },
+        {
+          "instruccion": "Termina: orejas (entre la linea de ojos y la nariz), cejas y pelo. Prueba cambiar la boca y cejas para otras expresiones!",
+          "imagen_url": "/dibujo/guiado/D2-06_cara-proporciones_paso6.svg"
+        }
+      ],
+      "imagen_final_url": "/dibujo/guiado/D2-06_cara-proporciones_final.svg"
+    }
+  ]
+}

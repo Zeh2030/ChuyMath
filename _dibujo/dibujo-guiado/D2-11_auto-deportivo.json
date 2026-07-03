@@ -1,0 +1,45 @@
+{
+  "id": "D2-11_auto-deportivo",
+  "titulo": "Auto Deportivo",
+  "descripcion": "Perspectiva lateral, ruedas, ventanas, detalles",
+  "tipo": "dibujo-guiado",
+  "materia": "dibujo",
+  "nivel": "D2-11",
+  "tema": "objetos-y-vehiculos",
+  "misiones": [
+    {
+      "id": "dib-auto-01",
+      "tipo": "dibujo-guiado",
+      "titulo": "Auto Deportivo",
+      "emoji": "🏎️",
+      "instruccion": "Un auto visto de lado, con todos sus detalles. Lo nuevo de cada paso aparece en rojo.",
+      "pasos": [
+        {
+          "instruccion": "Dibuja la carroceria: un rectangulo bajo con esquinas redondeadas.",
+          "imagen_url": "/dibujo/guiado/D2-11_auto_paso1.svg"
+        },
+        {
+          "instruccion": "La cabina: un trapecio arriba (el techo es mas angosto que la base).",
+          "imagen_url": "/dibujo/guiado/D2-11_auto_paso2.svg"
+        },
+        {
+          "instruccion": "Las ruedas: circulos con su rin adentro. Y la linea del piso.",
+          "imagen_url": "/dibujo/guiado/D2-11_auto_paso3.svg"
+        },
+        {
+          "instruccion": "Las ventanas: divide la cabina en dos con el parabrisas inclinado.",
+          "imagen_url": "/dibujo/guiado/D2-11_auto_paso4.svg"
+        },
+        {
+          "instruccion": "Detalles: faros adelante y atras, la puerta y su manija.",
+          "imagen_url": "/dibujo/guiado/D2-11_auto_paso5.svg"
+        },
+        {
+          "instruccion": "Toque final: el aleron deportivo y lineas de velocidad. Brrrum!",
+          "imagen_url": "/dibujo/guiado/D2-11_auto_paso6.svg"
+        }
+      ],
+      "imagen_final_url": "/dibujo/guiado/D2-11_auto_final.svg"
+    }
+  ]
+}
