@@ -413,13 +413,30 @@ ids de color validos (en `src/utils/colorMix.js`): `rojo`, `amarillo`, `azul`,
 
 ### Sobre las imagenes
 
-**Enfoque pragmatico:** NO vamos a crear SVGs a mano. Las imagenes vienen de:
+**Enfoque SVG-first (decidido 2026-07-02):** los contornos y referencias se generan
+como SVG propios y viven en el repo (`chuy-react-app/public/dibujo/`). Razones:
 
-1. **Colorear:** Descargar PNGs de contornos de sitios gratuitos, subirlos a Firebase Storage
-2. **Dibujo guiado:** Capturar/recortar imagenes de tutoriales "how to draw step by step"
-3. **Referencia:** URLs directas de imagenes libres (Unsplash, Pexels, Wikimedia)
+- Las URLs externas se rompen: openclipart manda el header CORS duplicado (`*,*`)
+  y el navegador rechaza la imagen aunque la URL responda 200 → canvas en blanco.
+- SVGs propios: sin copyright, sin Storage, funcionan offline, estilo consistente,
+  editables (si un contorno queda dificil para la nina, se simplifica).
+- Para `dibujo-guiado`: un SVG maestro en capas genera los pasos (paso N =
+  capas 1..N visibles, con el trazo nuevo resaltado en color). Esto era el
+  cuello de botella del enfoque de recortes de internet.
+- Los trazos punteados de D0-01 a D0-05 salen nativos con `stroke-dasharray`.
 
-Las URLs van en el JSON. Si una URL muere, se actualiza el JSON.
+En el JSON va la ruta local: `"imagen_contorno_url": "/dibujo/colorear/D0-06_sol-brillante.svg"`.
+Los SVG llevan `width`/`height` explicitos (no solo viewBox) para que
+`drawImage()` los escale bien en el canvas.
+Galeria de revision interna: `http://localhost:5173/dibujo/galeria.html`
+(agregar cada SVG nuevo a `public/dibujo/galeria.html`).
+
+**Piloto hecho:** D0-06 a D0-10 (sol, flor, estrella de mar, mariposa, casa) ya
+usan SVG local. Requiere re-migrar esos 5 JSONs a Firebase.
+
+**Excepcion:** para el 5-10% de casos que de verdad necesite foto o arte complejo
+(referencias de dibujo-libre, D2/D3 realista), se permite URL externa o Firebase
+Storage como antes. El esquema JSON no cambia.
 
 ---
 

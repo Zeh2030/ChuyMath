@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería de contornos — revisión interna</title>
+  <style>
+    body { font-family: system-ui, sans-serif; background: #eaf6f8; margin: 0; padding: 24px; }
+    h1 { color: #2c3e50; }
+    p.nota { color: #556; max-width: 700px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+    .card { background: white; border-radius: 16px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+    .card img { width: 100%; aspect-ratio: 1; border: 1px solid #ddd; border-radius: 8px; }
+    .card h3 { margin: 10px 0 2px; color: #2c3e50; }
+    .card code { font-size: 12px; color: #789; }
+  </style>
+</head>
+<body>
+  <h1>🎨 Galería de contornos (revisión)</h1>
+  <p class="nota">Página interna para revisar los SVGs de colorear antes de usarlos.
+     Abrir en dev: <code>http://localhost:5173/dibujo/galeria.html</code>.
+     Al agregar un SVG nuevo, añadir su tarjeta aquí.</p>
+  <div class="grid">
+    <div class="card"><img src="/dibujo/colorear/D0-06_sol-brillante.svg" alt="Sol"><h3>☀️ Sol Brillante</h3><code>D0-06</code></div>
+    <div class="card"><img src="/dibujo/colorear/D0-07_flor-del-jardin.svg" alt="Flor"><h3>🌼 Flor del Jardín</h3><code>D0-07</code></div>
+    <div class="card"><img src="/dibujo/colorear/D0-08_estrella-de-mar.svg" alt="Estrella de mar"><h3>⭐ Estrella de Mar</h3><code>D0-08</code></div>
+    <div class="card"><img src="/dibujo/colorear/D0-09_mariposa-bonita.svg" alt="Mariposa"><h3>🦋 Mariposa Bonita</h3><code>D0-09</code></div>
+    <div class="card"><img src="/dibujo/colorear/D0-10_casa-feliz.svg" alt="Casa"><h3>🏠 Casa Feliz</h3><code>D0-10</code></div>
+  </div>
+</body>
+</html>
