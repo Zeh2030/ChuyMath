@@ -8,10 +8,43 @@ import './Peques.css';
 
 /**
  * Peques — "Modo Peques": lanzador kid-safe para niños de 2-5 años.
- * Tarjetones grandes, sin menús, con candado de adultos para salir.
- * Cada tarjeta es un juego nativo o un "atajo" a una actividad existente.
+ * Dos niveles: (1) TIPOS de juego; (2) al tocar un tipo, la LISTA visual de sus juegos.
+ * Si un tipo tiene un solo juego, se abre directo. Candado de adultos para salir.
  */
-// Tarjetas por defecto (respaldo si la colección `peques` de Firestore está vacía).
+
+// Grupos (tipos de juego) que se muestran en el primer nivel.
+const GRUPOS = [
+  { id: 'toca', titulo: '¡Toca!', emoji: '✨', color: '#f6c445', orden: 1 },
+  { id: 'diferente', titulo: '¿Cuál es diferente?', emoji: '🔎', color: '#c3b1e1', orden: 2 },
+  { id: 'memoria', titulo: 'Memoria', emoji: '🧠', color: '#ffd6a5', orden: 3 },
+  { id: 'sombras', titulo: 'Sombras', emoji: '🕵️', color: '#bde0fe', orden: 4 },
+  { id: 'contar', titulo: 'Contar', emoji: '🔢', color: '#a0c4ff', orden: 5 },
+  { id: 'patrones', titulo: '¿Qué sigue?', emoji: '➡️', color: '#b8e0d2', orden: 6 },
+  { id: 'tamanos', titulo: 'Grande y pequeño', emoji: '📏', color: '#ffb3c1', orden: 7 },
+  { id: 'masmenos', titulo: 'Más o menos', emoji: '⚖️', color: '#ffd8a8', orden: 8 },
+  { id: 'formas', titulo: 'Formas', emoji: '🔷', color: '#d0bfff', orden: 9 },
+  { id: 'crear', titulo: 'Dibujar y Colores', emoji: '🎨', color: '#a0e8af', orden: 10 },
+];
+
+const TIPO_GRUPO = {
+  'tap-and-celebrate': 'toca',
+  'cual-es-diferente': 'diferente',
+  'memoria': 'memoria',
+  'relaciona-sombras': 'sombras',
+  'contar': 'contar',
+  'que-sigue': 'patrones',
+  'tamanos': 'tamanos',
+  'mas-menos': 'masmenos',
+  'formas': 'formas',
+  'mezclador-colores': 'crear',
+  'dibujo-libre': 'crear',
+  'colorear': 'crear',
+};
+
+const grupoDe = (card) => (card.kind === 'atajo' ? 'crear' : (TIPO_GRUPO[card.mision?.tipo] || 'crear'));
+
+// Tarjetas por defecto (respaldo si la colección `peques` está vacía o no hay internet).
+// Todas NATIVAS = funcionan offline.
 const CARDS_FALLBACK = [
   { key: 'celebra', titulo: '¡Toca!', emoji: '✨', color: '#f6c445',
     kind: 'nativo', mision: { id: 'peque-celebra', tipo: 'tap-and-celebrate' } },
@@ -32,21 +65,19 @@ const CARDS_FALLBACK = [
   { key: 'formas', titulo: 'Formas', emoji: '🔷', color: '#d0bfff',
     kind: 'nativo', mision: { id: 'peque-formas', tipo: 'formas' } },
   { key: 'colores', titulo: 'Colores', emoji: '🌈', color: '#a0e8af',
-    kind: 'atajo', coleccion: 'ciencias', docId: 'C0-11_laboratorio-de-colores' },
-  { key: 'pintar', titulo: 'Pintar', emoji: '🎨', color: '#ff8fab',
-    kind: 'atajo', coleccion: 'dibujo', docId: 'D0-06_sol-brillante' },
+    kind: 'nativo', mision: { id: 'peque-colores', tipo: 'mezclador-colores', modo: 'explorar', colores_base: ['rojo', 'amarillo', 'azul'], instruccion: 'Toca dos colores y mira qué sale.' } },
   { key: 'dibujar', titulo: 'Dibujar', emoji: '✏️', color: '#8ecae6',
-    kind: 'atajo', coleccion: 'dibujo', docId: 'D0-15_mi-familia' },
+    kind: 'nativo', mision: { id: 'peque-dibujar', tipo: 'dibujo-libre', sugerencias: ['Dibuja lo que quieras'] } },
 ];
 
 const Peques = () => {
   const { activeProfile } = useAuth();
   const navigate = useNavigate();
-  const [carta, setCarta] = useState(null);
-  const [gate, setGate] = useState(null); // null | { a, b, correcto, opciones }
-  const [cards, setCards] = useState(null); // null = cargando; luego array de tarjetas
+  const [cards, setCards] = useState(null); // null = cargando
+  const [grupoAbierto, setGrupoAbierto] = useState(null); // id de grupo o null (nivel 1)
+  const [carta, setCarta] = useState(null); // juego en curso
+  const [gate, setGate] = useState(null);
 
-  // Lee las tarjetas de la colección `peques`; si está vacía o falla, usa las nativas.
   useEffect(() => {
     let vivo = true;
     (async () => {
@@ -77,7 +108,17 @@ const Peques = () => {
   const esPeque = activeProfile?.esPeque;
   const volver = () => setCarta(null);
 
-  // Genera el reto del candado en el handler (no durante el render).
+  // Grupos que tienen al menos un juego, con sus cartas.
+  const grupos = GRUPOS
+    .map((g) => ({ ...g, cartas: cards.filter((c) => grupoDe(c) === g.id) }))
+    .filter((g) => g.cartas.length > 0);
+  const grupoActual = grupos.find((g) => g.id === grupoAbierto) || null;
+
+  const abrirGrupo = (g) => {
+    if (g.cartas.length === 1) setCarta(g.cartas[0]);
+    else setGrupoAbierto(g.id);
+  };
+
   const abrirGate = () => {
     const a = 3 + Math.floor(Math.random() * 6);
     const b = 2 + Math.floor(Math.random() * 6);
@@ -86,9 +127,10 @@ const Peques = () => {
     setGate({ a, b, correcto, opciones });
   };
 
-  return (
-    <div className="peques-bg">
-      {carta ? (
+  // === Vista de juego ===
+  if (carta) {
+    return (
+      <div className="peques-bg">
         <div className="peques-juego">
           <button className="peques-home" onClick={volver} title="Volver">🏠</button>
           {carta.kind === 'nativo' ? (
@@ -97,41 +139,61 @@ const Peques = () => {
             <AtajoRunner coleccion={carta.coleccion} docId={carta.docId} onCompletar={volver} />
           )}
         </div>
-      ) : (
-        <>
-          <div className="peques-top">
-            <h1 className="peques-titulo">
-              ¡Hola, {activeProfile?.nombre || 'peque'}! <span>{activeProfile?.avatar || '🙂'}</span>
-            </h1>
-            {esPeque ? (
-              <button className="peques-lock" onClick={abrirGate} title="Salida para adultos">🔒</button>
-            ) : (
-              <button className="peques-lock" onClick={() => navigate('/dashboard')} title="Salir">🚪</button>
-            )}
-          </div>
+      </div>
+    );
+  }
 
-          <div className="peques-grid">
-            {cards.map((c) => (
-              <button key={c.key} className="peques-card" style={{ background: c.color }} onClick={() => setCarta(c)}>
-                <span className="peques-card-emoji">{c.emoji}</span>
-                <span className="peques-card-titulo">{c.titulo}</span>
-              </button>
-            ))}
-          </div>
+  const cartasVisibles = grupoActual ? grupoActual.cartas : null;
 
-          {gate && (
-            <ParentGate reto={gate} onCerrar={() => setGate(null)} onOk={() => navigate('/elegir-perfil')} />
-          )}
-        </>
+  return (
+    <div className="peques-bg">
+      <div className="peques-top">
+        {grupoActual ? (
+          <button className="peques-back" onClick={() => setGrupoAbierto(null)} title="Atrás">⬅️</button>
+        ) : (
+          <h1 className="peques-titulo">
+            ¡Hola, {activeProfile?.nombre || 'peque'}! <span>{activeProfile?.avatar || '🙂'}</span>
+          </h1>
+        )}
+        {esPeque ? (
+          <button className="peques-lock" onClick={abrirGate} title="Salida para adultos">🔒</button>
+        ) : (
+          <button className="peques-lock" onClick={() => navigate('/dashboard')} title="Salir">🚪</button>
+        )}
+      </div>
+
+      {grupoActual && (
+        <h2 className="peques-grupo-titulo">{grupoActual.emoji} {grupoActual.titulo}</h2>
+      )}
+
+      <div className="peques-grid">
+        {cartasVisibles
+          ? cartasVisibles.map((c) => (
+            <button key={c.key} className="peques-card" style={{ background: c.color }} onClick={() => setCarta(c)}>
+              <span className="peques-card-emoji">{c.emoji}</span>
+              <span className="peques-card-titulo">{c.titulo}</span>
+            </button>
+          ))
+          : grupos.map((g) => (
+            <button key={g.id} className="peques-card" style={{ background: g.color }} onClick={() => abrirGrupo(g)}>
+              <span className="peques-card-emoji">{g.emoji}</span>
+              <span className="peques-card-titulo">{g.titulo}</span>
+              {g.cartas.length > 1 && <span className="peques-card-badge">{g.cartas.length}</span>}
+            </button>
+          ))}
+      </div>
+
+      {gate && (
+        <ParentGate reto={gate} onCerrar={() => setGate(null)} onOk={() => navigate('/elegir-perfil')} />
       )}
     </div>
   );
 };
 
-/** Carga una actividad existente por {coleccion, id} y la renderiza con MisionRenderer. */
+/** Carga una actividad existente por {coleccion, id} y la renderiza (compat. con atajos). */
 const AtajoRunner = ({ coleccion, docId, onCompletar }) => {
   const [mision, setMision] = useState(null);
-  const [estado, setEstado] = useState('cargando'); // cargando | ok | error
+  const [estado, setEstado] = useState('cargando');
 
   useEffect(() => {
     let vivo = true;

@@ -284,43 +284,127 @@
     "mision": { "id": "peque-formas", "tipo": "formas" }
   },
   {
+    "id": "peque-contar-2",
+    "titulo": "Contar más",
+    "emoji": "🔟",
+    "color": "#74c0fc",
+    "orden": 50,
+    "kind": "nativo",
+    "mision": {
+      "id": "peque-contar-2",
+      "tipo": "contar",
+      "retos": [
+        { "emoji": "🐥", "cantidad": 4, "opciones": [3, 4, 5] },
+        { "emoji": "🍪", "cantidad": 6, "opciones": [6, 5, 7] },
+        { "emoji": "🌟", "cantidad": 7, "opciones": [8, 7, 6] },
+        { "emoji": "🐞", "cantidad": 5, "opciones": [5, 4, 6] },
+        { "emoji": "🎈", "cantidad": 8, "opciones": [7, 8, 9] },
+        { "emoji": "🍬", "cantidad": 3, "opciones": [2, 3, 4] }
+      ]
+    }
+  },
+  {
+    "id": "peque-que-sigue-2",
+    "titulo": "Patrones difíciles",
+    "emoji": "🔀",
+    "color": "#95d5b2",
+    "orden": 51,
+    "kind": "nativo",
+    "mision": {
+      "id": "peque-que-sigue-2",
+      "tipo": "que-sigue",
+      "retos": [
+        { "secuencia": ["🔴", "🟡", "🔵", "🔴", "🟡"], "opciones": ["🔵", "🟢", "🔴"], "respuesta": "🔵" },
+        { "secuencia": ["🐶", "🐱", "🐭", "🐶", "🐱"], "opciones": ["🐭", "🐰", "🐶"], "respuesta": "🐭" },
+        { "secuencia": ["⭐", "🌙", "☀️", "⭐", "🌙"], "opciones": ["☀️", "🌈", "⭐"], "respuesta": "☀️" },
+        { "secuencia": ["🍎", "🍌", "🍇", "🍎", "🍌"], "opciones": ["🍇", "🍓", "🍎"], "respuesta": "🍇" },
+        { "secuencia": ["🔺", "🟦", "⭐", "🔺", "🟦"], "opciones": ["⭐", "🔴", "🔺"], "respuesta": "⭐" }
+      ]
+    }
+  },
+  {
+    "id": "peque-tamanos-2",
+    "titulo": "Tamaños 2",
+    "emoji": "📐",
+    "color": "#ffc9c9",
+    "orden": 52,
+    "kind": "nativo",
+    "mision": {
+      "id": "peque-tamanos-2",
+      "tipo": "tamanos",
+      "retos": [
+        { "emoji": "🐘", "tamanos": [1, 2.1], "pregunta": "grande", "pos": 1 },
+        { "emoji": "🌟", "tamanos": [2.2, 1.4, 0.9], "pregunta": "pequeno", "pos": 2 },
+        { "emoji": "🍩", "tamanos": [1.8, 1], "pregunta": "pequeno", "pos": 1 },
+        { "emoji": "🎈", "tamanos": [1, 1.6, 2.2], "pregunta": "grande", "pos": 2 },
+        { "emoji": "🐟", "tamanos": [0.9, 1.9], "pregunta": "grande", "pos": 1 }
+      ]
+    }
+  },
+  {
+    "id": "peque-mas-menos-2",
+    "titulo": "Más o menos 2",
+    "emoji": "🧮",
+    "color": "#ffe8cc",
+    "orden": 53,
+    "kind": "nativo",
+    "mision": {
+      "id": "peque-mas-menos-2",
+      "tipo": "mas-menos",
+      "retos": [
+        { "emoji": "⭐", "izq": 3, "der": 5, "pregunta": "mas" },
+        { "emoji": "🍎", "izq": 6, "der": 2, "pregunta": "menos" },
+        { "emoji": "🐶", "izq": 4, "der": 1, "pregunta": "menos" },
+        { "emoji": "🎈", "izq": 2, "der": 5, "pregunta": "mas" },
+        { "emoji": "🍬", "izq": 4, "der": 6, "pregunta": "mas" }
+      ]
+    }
+  },
+  {
+    "id": "peque-formas-2",
+    "titulo": "Formas 2",
+    "emoji": "🔶",
+    "color": "#e5dbff",
+    "orden": 54,
+    "kind": "nativo",
+    "mision": {
+      "id": "peque-formas-2",
+      "tipo": "formas",
+      "retos": [
+        { "nombre": "estrella", "respuesta": "⭐", "opciones": ["🔵", "⭐", "🔺"] },
+        { "nombre": "círculo", "respuesta": "🔴", "opciones": ["🔴", "🟦", "🔷"] },
+        { "nombre": "corazón", "respuesta": "💜", "opciones": ["⭐", "💜", "🔺"] },
+        { "nombre": "cuadrado", "respuesta": "🟩", "opciones": ["🟩", "🔵", "❤️"] },
+        { "nombre": "triángulo", "respuesta": "🔻", "opciones": ["🔻", "🟨", "🔵"] }
+      ]
+    }
+  },
+  {
     "id": "peque-colores",
     "titulo": "Colores",
     "emoji": "🌈",
     "color": "#a0e8af",
     "orden": 40,
-    "kind": "atajo",
-    "coleccion": "ciencias",
-    "docId": "C0-11_laboratorio-de-colores"
-  },
-  {
-    "id": "peque-pintar",
-    "titulo": "Pintar",
-    "emoji": "🎨",
-    "color": "#ff8fab",
-    "orden": 41,
-    "kind": "atajo",
-    "coleccion": "dibujo",
-    "docId": "D0-06_sol-brillante"
-  },
-  {
-    "id": "peque-colorear-flor",
-    "titulo": "Colorear flor",
-    "emoji": "🌼",
-    "color": "#ffe08a",
-    "orden": 42,
-    "kind": "atajo",
-    "coleccion": "dibujo",
-    "docId": "D0-07_flor-del-jardin"
+    "kind": "nativo",
+    "mision": {
+      "id": "peque-colores",
+      "tipo": "mezclador-colores",
+      "modo": "explorar",
+      "colores_base": ["rojo", "amarillo", "azul"],
+      "instruccion": "Toca dos colores y mira qué sale."
+    }
   },
   {
     "id": "peque-dibujar",
     "titulo": "Dibujar",
     "emoji": "✏️",
     "color": "#8ecae6",
-    "orden": 43,
-    "kind": "atajo",
-    "coleccion": "dibujo",
-    "docId": "D0-15_mi-familia"
+    "orden": 41,
+    "kind": "nativo",
+    "mision": {
+      "id": "peque-dibujar",
+      "tipo": "dibujo-libre",
+      "sugerencias": ["Dibuja lo que quieras"]
+    }
   }
 ]
