@@ -1,0 +1,45 @@
+{
+  "id": "D2-16_atardecer-en-la-playa",
+  "titulo": "Atardecer en la Playa",
+  "descripcion": "Horizonte, sol poniente, palmera, reflejo en el agua",
+  "tipo": "dibujo-guiado",
+  "materia": "dibujo",
+  "nivel": "D2-16",
+  "tema": "escenas-y-fondos",
+  "misiones": [
+    {
+      "id": "dib-atardecer-01",
+      "tipo": "dibujo-guiado",
+      "titulo": "Atardecer en la Playa",
+      "emoji": "🌅",
+      "instruccion": "Tu primera escena de artista: un atardecer. Lo nuevo de cada paso aparece en rojo.",
+      "pasos": [
+        {
+          "instruccion": "La linea del horizonte: donde el mar toca el cielo.",
+          "imagen_url": "/dibujo/guiado/D2-16_atardecer_paso1.svg"
+        },
+        {
+          "instruccion": "El sol poniente: medio circulo hundiendose en el horizonte.",
+          "imagen_url": "/dibujo/guiado/D2-16_atardecer_paso2.svg"
+        },
+        {
+          "instruccion": "El mar: lineas cortas, y el reflejo del sol debajo de el.",
+          "imagen_url": "/dibujo/guiado/D2-16_atardecer_paso3.svg"
+        },
+        {
+          "instruccion": "La playa: una curva suave de arena al frente.",
+          "imagen_url": "/dibujo/guiado/D2-16_atardecer_paso4.svg"
+        },
+        {
+          "instruccion": "La palmera: tronco curvo, hojas que caen y sus cocos.",
+          "imagen_url": "/dibujo/guiado/D2-16_atardecer_paso5.svg"
+        },
+        {
+          "instruccion": "Termina: gaviotas (como letras m) y una nube.",
+          "imagen_url": "/dibujo/guiado/D2-16_atardecer_paso6.svg"
+        }
+      ],
+      "imagen_final_url": "/dibujo/guiado/D2-16_atardecer_final.svg"
+    }
+  ]
+}

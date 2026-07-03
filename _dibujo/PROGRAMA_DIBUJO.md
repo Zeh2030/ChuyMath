@@ -207,8 +207,8 @@ y se usa la URL de descarga. No guardamos PNGs en el repositorio.
 |---|--------|------|-------------|
 | D2-01 | Perro Realista | dibujo-guiado | Proporciones reales: cabeza, hocico, cuerpo, patas, cola (6 pasos) ✅ Creado |
 | D2-02 | Gato Sentado | dibujo-guiado | Postura de gato sentado, ojos almendrados, bigotes (6 pasos) ✅ Creado |
-| D2-03 | Caballo al Trote | dibujo-guiado | Cuerpo alargado, patas en movimiento, crin (7 pasos) |
-| D2-04 | Aguila en Vuelo | dibujo-guiado | Alas extendidas, plumas, garras (7 pasos) |
+| D2-03 | Caballo al Trote | dibujo-guiado | Cuerpo alargado, patas en movimiento, crin (7 pasos) ✅ Creado |
+| D2-04 | Aguila en Vuelo | dibujo-guiado | Alas extendidas, plumas, garras (7 pasos) ✅ Creado |
 | D2-05 | Tortuga Marina | colorear | Colorear tortuga con patron de caparazon detallado |
 
 ### Bloque 2: Personajes (D2-06 a D2-10)
@@ -217,8 +217,8 @@ y se usa la URL de descarga. No guardamos PNGs en el repositorio.
 |---|--------|------|-------------|
 | D2-06 | Cara con Expresiones | dibujo-guiado | Proporciones del rostro: ojos al centro, nariz, boca (6 pasos) ✅ Creado |
 | D2-07 | Cuerpo Completo | dibujo-guiado | Figura humana: cabeza, torso, brazos, piernas, proporciones (7 pasos) |
-| D2-08 | Ninja | dibujo-guiado | Personaje de accion con pose dinamica (7 pasos) |
-| D2-09 | Princesa / Principe | dibujo-guiado | Personaje con ropa detallada, corona, capa (7 pasos) |
+| D2-08 | Ninja | dibujo-guiado | Personaje de accion con pose dinamica (7 pasos) ✅ Creado |
+| D2-09 | Princesa / Principe | dibujo-guiado | Personaje con ropa detallada, corona, capa (7 pasos) ✅ Creado (version princesa) |
 | D2-10 | Superheroe | dibujo-libre | Dibujo libre: disena tu propio superheroe (con guia de proporciones) |
 
 ### Bloque 3: Objetos y vehiculos (D2-11 a D2-15)
@@ -226,8 +226,8 @@ y se usa la URL de descarga. No guardamos PNGs en el repositorio.
 | # | Titulo | Tipo | Descripcion |
 |---|--------|------|-------------|
 | D2-11 | Auto Deportivo | dibujo-guiado | Perspectiva lateral, ruedas, ventanas, detalles (6 pasos) ✅ Creado |
-| D2-12 | Avion de Pasajeros | dibujo-guiado | Fuselaje, alas, cola, ventanillas (6 pasos) |
-| D2-13 | Barco Pirata | dibujo-guiado | Casco, mastil, velas, bandera pirata (7 pasos) |
+| D2-12 | Avion de Pasajeros | dibujo-guiado | Fuselaje, alas, cola, ventanillas (6 pasos) ✅ Creado |
+| D2-13 | Barco Pirata | dibujo-guiado | Casco, mastil, velas, bandera pirata (7 pasos) ✅ Creado |
 | D2-14 | Mandala Basico | colorear | Colorear mandala con patron repetitivo circular ✅ Creado |
 | D2-15 | Disena tu Robot | dibujo-libre | Dibujo libre: inventa un robot con partes mecanicas |
 
@@ -235,10 +235,10 @@ y se usa la URL de descarga. No guardamos PNGs en el repositorio.
 
 | # | Titulo | Tipo | Descripcion |
 |---|--------|------|-------------|
-| D2-16 | Atardecer en la Playa | dibujo-guiado | Horizonte, sol poniente, palmeras, reflejo en agua (6 pasos) |
+| D2-16 | Atardecer en la Playa | dibujo-guiado | Horizonte, sol poniente, palmeras, reflejo en agua (6 pasos) ✅ Creado |
 | D2-17 | Bosque Encantado | colorear | Colorear escena compleja: arboles, hongos, hadas, rio |
 | D2-18 | Ciudad Futurista | dibujo-libre | Dibujo libre: imagina la ciudad del futuro |
-| D2-19 | Mapa del Tesoro | dibujo-guiado | Isla, camino, X marca el tesoro, brujula, barco (7 pasos) |
+| D2-19 | Mapa del Tesoro | dibujo-guiado | Isla, camino, X marca el tesoro, brujula, barco (7 pasos) ✅ Creado |
 | D2-20 | Mi Obra Maestra | dibujo-libre | Dibujo libre total: tema libre, usa todo lo aprendido |
 
 ---

@@ -1,0 +1,49 @@
+{
+  "id": "D2-08_ninja",
+  "titulo": "Ninja",
+  "descripcion": "Personaje de accion con pose dinamica",
+  "tipo": "dibujo-guiado",
+  "materia": "dibujo",
+  "nivel": "D2-08",
+  "tema": "personajes",
+  "misiones": [
+    {
+      "id": "dib-ninja-01",
+      "tipo": "dibujo-guiado",
+      "titulo": "Ninja",
+      "emoji": "🥷",
+      "instruccion": "Un ninja en pose de accion! Lo nuevo de cada paso aparece en rojo.",
+      "pasos": [
+        {
+          "instruccion": "Dibuja un circulo: la cabeza.",
+          "imagen_url": "/dibujo/guiado/D2-08_ninja_paso1.svg"
+        },
+        {
+          "instruccion": "El cuerpo: un rectangulo redondeado, un poquito inclinado (esta en accion).",
+          "imagen_url": "/dibujo/guiado/D2-08_ninja_paso2.svg"
+        },
+        {
+          "instruccion": "Los brazos: uno arriba (sostiene la espada) y otro abajo.",
+          "imagen_url": "/dibujo/guiado/D2-08_ninja_paso3.svg"
+        },
+        {
+          "instruccion": "Las piernas abiertas, en posicion de combate.",
+          "imagen_url": "/dibujo/guiado/D2-08_ninja_paso4.svg"
+        },
+        {
+          "instruccion": "La espada: el mango en la mano y la hoja larga.",
+          "imagen_url": "/dibujo/guiado/D2-08_ninja_paso5.svg"
+        },
+        {
+          "instruccion": "La mascara: solo se ven los ojos decididos. La banda ondea atras.",
+          "imagen_url": "/dibujo/guiado/D2-08_ninja_paso6.svg"
+        },
+        {
+          "instruccion": "Termina: el cinturon y una estrella ninja volando.",
+          "imagen_url": "/dibujo/guiado/D2-08_ninja_paso7.svg"
+        }
+      ],
+      "imagen_final_url": "/dibujo/guiado/D2-08_ninja_final.svg"
+    }
+  ]
+}

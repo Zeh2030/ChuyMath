@@ -1,0 +1,49 @@
+{
+  "id": "D2-09_princesa",
+  "titulo": "Princesa",
+  "descripcion": "Personaje con vestido, corona y capa",
+  "tipo": "dibujo-guiado",
+  "materia": "dibujo",
+  "nivel": "D2-09",
+  "tema": "personajes",
+  "misiones": [
+    {
+      "id": "dib-princesa-01",
+      "tipo": "dibujo-guiado",
+      "titulo": "Princesa",
+      "emoji": "👸",
+      "instruccion": "Una princesa con corona, vestido y capa. Lo nuevo de cada paso aparece en rojo.",
+      "pasos": [
+        {
+          "instruccion": "Dibuja un circulo: la cabeza.",
+          "imagen_url": "/dibujo/guiado/D2-09_princesa_paso1.svg"
+        },
+        {
+          "instruccion": "El pelo: el fleco arriba y dos mechones largos a los lados.",
+          "imagen_url": "/dibujo/guiado/D2-09_princesa_paso2.svg"
+        },
+        {
+          "instruccion": "La corona de picos sobre la cabeza.",
+          "imagen_url": "/dibujo/guiado/D2-09_princesa_paso3.svg"
+        },
+        {
+          "instruccion": "El vestido: un triangulo grande que se abre hacia abajo.",
+          "imagen_url": "/dibujo/guiado/D2-09_princesa_paso4.svg"
+        },
+        {
+          "instruccion": "Los brazos y las manos.",
+          "imagen_url": "/dibujo/guiado/D2-09_princesa_paso5.svg"
+        },
+        {
+          "instruccion": "La capa: cae desde los hombros por detras del vestido.",
+          "imagen_url": "/dibujo/guiado/D2-09_princesa_paso6.svg"
+        },
+        {
+          "instruccion": "Termina: carita feliz, la joya de la corona y el adorno del vestido.",
+          "imagen_url": "/dibujo/guiado/D2-09_princesa_paso7.svg"
+        }
+      ],
+      "imagen_final_url": "/dibujo/guiado/D2-09_princesa_final.svg"
+    }
+  ]
+}

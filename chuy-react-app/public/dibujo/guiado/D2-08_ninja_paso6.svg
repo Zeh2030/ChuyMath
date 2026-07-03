@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <rect width="800" height="800" fill="#ffffff"/>
+  <g fill="#ffffff" stroke="#2b2b2b" stroke-width="10" stroke-linejoin="round"><rect x="350" y="410" width="40" height="180" rx="18" transform="rotate(18,370,420)"/><rect x="410" y="410" width="40" height="180" rx="18" transform="rotate(-28,430,420)"/></g>
+  <g fill="#ffffff" stroke="#2b2b2b" stroke-width="10" stroke-linejoin="round"><rect x="435" y="170" width="36" height="150" rx="18" transform="rotate(35,453,320)"/><rect x="330" y="310" width="36" height="140" rx="18" transform="rotate(30,348,315)"/></g>
+  <rect x="350" y="285" width="100" height="140" rx="30" fill="#ffffff" stroke="#2b2b2b" stroke-width="12" transform="rotate(5,400,355)"/>
+  <path d="M 560 200 L 665 95" fill="none" stroke="#2b2b2b" stroke-width="12" stroke-linecap="round"/><path d="M 542 218 L 578 182" fill="none" stroke="#2b2b2b" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="400" cy="200" r="85" fill="#ffffff" stroke="#2b2b2b" stroke-width="12"/>
+  <g fill="none" stroke="#e74c3c" stroke-width="9" stroke-linecap="round"><path d="M 318 185 Q 400 163 482 185"/><path d="M 320 228 Q 400 252 480 228"/><path d="M 480 178 Q 540 165 562 135"/><path d="M 482 190 Q 548 192 572 172"/></g><g fill="#e74c3c"><circle cx="370" cy="206" r="8"/><circle cx="430" cy="206" r="8"/></g><g fill="none" stroke="#e74c3c" stroke-width="7" stroke-linecap="round"><path d="M 350 190 L 386 199"/><path d="M 450 190 L 414 199"/></g>
+</svg>

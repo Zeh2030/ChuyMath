@@ -1,0 +1,49 @@
+{
+  "id": "D2-13_barco-pirata",
+  "titulo": "Barco Pirata",
+  "descripcion": "Casco, mastil, velas, bandera pirata",
+  "tipo": "dibujo-guiado",
+  "materia": "dibujo",
+  "nivel": "D2-13",
+  "tema": "objetos-y-vehiculos",
+  "misiones": [
+    {
+      "id": "dib-barco-01",
+      "tipo": "dibujo-guiado",
+      "titulo": "Barco Pirata",
+      "emoji": "🏴‍☠️",
+      "instruccion": "Un barco pirata navegando! Lo nuevo de cada paso aparece en rojo.",
+      "pasos": [
+        {
+          "instruccion": "El casco: ancho arriba y mas angosto abajo, con fondo curvo.",
+          "imagen_url": "/dibujo/guiado/D2-13_barco_paso1.svg"
+        },
+        {
+          "instruccion": "El mastil: un palo alto en el centro.",
+          "imagen_url": "/dibujo/guiado/D2-13_barco_paso2.svg"
+        },
+        {
+          "instruccion": "Las velas: una grande y una chica, infladas por el viento.",
+          "imagen_url": "/dibujo/guiado/D2-13_barco_paso3.svg"
+        },
+        {
+          "instruccion": "La bandera pirata en la punta, con calavera.",
+          "imagen_url": "/dibujo/guiado/D2-13_barco_paso4.svg"
+        },
+        {
+          "instruccion": "Las ventanas redondas del casco (ojos de buey).",
+          "imagen_url": "/dibujo/guiado/D2-13_barco_paso5.svg"
+        },
+        {
+          "instruccion": "Las olas del mar.",
+          "imagen_url": "/dibujo/guiado/D2-13_barco_paso6.svg"
+        },
+        {
+          "instruccion": "Termina: el palo de proa y el barandal de cubierta.",
+          "imagen_url": "/dibujo/guiado/D2-13_barco_paso7.svg"
+        }
+      ],
+      "imagen_final_url": "/dibujo/guiado/D2-13_barco_final.svg"
+    }
+  ]
+}

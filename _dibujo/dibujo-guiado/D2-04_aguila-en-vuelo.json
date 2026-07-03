@@ -1,0 +1,49 @@
+{
+  "id": "D2-04_aguila-en-vuelo",
+  "titulo": "Aguila en Vuelo",
+  "descripcion": "Alas extendidas, plumas, garras",
+  "tipo": "dibujo-guiado",
+  "materia": "dibujo",
+  "nivel": "D2-04",
+  "tema": "animales-detallados",
+  "misiones": [
+    {
+      "id": "dib-aguila-01",
+      "tipo": "dibujo-guiado",
+      "titulo": "Aguila en Vuelo",
+      "emoji": "🦅",
+      "instruccion": "Un aguila con las alas bien abiertas, vista de frente. Lo nuevo de cada paso aparece en rojo.",
+      "pasos": [
+        {
+          "instruccion": "Dibuja un ovalo parado: el cuerpo.",
+          "imagen_url": "/dibujo/guiado/D2-04_aguila_paso1.svg"
+        },
+        {
+          "instruccion": "La cabeza: un circulo arriba.",
+          "imagen_url": "/dibujo/guiado/D2-04_aguila_paso2.svg"
+        },
+        {
+          "instruccion": "Las alas extendidas: dos ovalos grandes inclinados hacia abajo.",
+          "imagen_url": "/dibujo/guiado/D2-04_aguila_paso3.svg"
+        },
+        {
+          "instruccion": "Las plumas: lineas que recorren cada ala.",
+          "imagen_url": "/dibujo/guiado/D2-04_aguila_paso4.svg"
+        },
+        {
+          "instruccion": "La cola: un abanico abajo con sus lineas.",
+          "imagen_url": "/dibujo/guiado/D2-04_aguila_paso5.svg"
+        },
+        {
+          "instruccion": "El pico en triangulo y las garras.",
+          "imagen_url": "/dibujo/guiado/D2-04_aguila_paso6.svg"
+        },
+        {
+          "instruccion": "La mirada de aguila: ojos con cejas inclinadas.",
+          "imagen_url": "/dibujo/guiado/D2-04_aguila_paso7.svg"
+        }
+      ],
+      "imagen_final_url": "/dibujo/guiado/D2-04_aguila_final.svg"
+    }
+  ]
+}

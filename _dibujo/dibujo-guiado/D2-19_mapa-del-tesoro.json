@@ -1,0 +1,49 @@
+{
+  "id": "D2-19_mapa-del-tesoro",
+  "titulo": "Mapa del Tesoro",
+  "descripcion": "Isla, camino, X marca el tesoro, brujula, barco",
+  "tipo": "dibujo-guiado",
+  "materia": "dibujo",
+  "nivel": "D2-19",
+  "tema": "escenas-y-fondos",
+  "misiones": [
+    {
+      "id": "dib-mapa-01",
+      "tipo": "dibujo-guiado",
+      "titulo": "Mapa del Tesoro",
+      "emoji": "🗺️",
+      "instruccion": "Dibuja tu propio mapa pirata. Lo nuevo de cada paso aparece en rojo.",
+      "pasos": [
+        {
+          "instruccion": "El pergamino: un rectangulo grande con los bordes enrollados.",
+          "imagen_url": "/dibujo/guiado/D2-19_mapa_paso1.svg"
+        },
+        {
+          "instruccion": "La isla: un ovalo grande en el centro del mapa.",
+          "imagen_url": "/dibujo/guiado/D2-19_mapa_paso2.svg"
+        },
+        {
+          "instruccion": "El camino punteado que cruza la isla.",
+          "imagen_url": "/dibujo/guiado/D2-19_mapa_paso3.svg"
+        },
+        {
+          "instruccion": "La X marca el tesoro! Al final del camino.",
+          "imagen_url": "/dibujo/guiado/D2-19_mapa_paso4.svg"
+        },
+        {
+          "instruccion": "Decora la isla: una palmerita y una montana.",
+          "imagen_url": "/dibujo/guiado/D2-19_mapa_paso5.svg"
+        },
+        {
+          "instruccion": "La brujula en una esquina: circulo con aguja de rombo.",
+          "imagen_url": "/dibujo/guiado/D2-19_mapa_paso6.svg"
+        },
+        {
+          "instruccion": "Termina: el barquito navegando hacia la isla y sus olas.",
+          "imagen_url": "/dibujo/guiado/D2-19_mapa_paso7.svg"
+        }
+      ],
+      "imagen_final_url": "/dibujo/guiado/D2-19_mapa_final.svg"
+    }
+  ]
+}

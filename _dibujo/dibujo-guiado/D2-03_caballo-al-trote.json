@@ -1,0 +1,49 @@
+{
+  "id": "D2-03_caballo-al-trote",
+  "titulo": "Caballo al Trote",
+  "descripcion": "Cuerpo alargado, patas en movimiento, crin",
+  "tipo": "dibujo-guiado",
+  "materia": "dibujo",
+  "nivel": "D2-03",
+  "tema": "animales-detallados",
+  "misiones": [
+    {
+      "id": "dib-caballo-01",
+      "tipo": "dibujo-guiado",
+      "titulo": "Caballo al Trote",
+      "emoji": "🐴",
+      "instruccion": "Un caballo trotando: se construye con ovalos. Lo nuevo de cada paso aparece en rojo.",
+      "pasos": [
+        {
+          "instruccion": "Dibuja un ovalo grande acostado: el cuerpo.",
+          "imagen_url": "/dibujo/guiado/D2-03_caballo_paso1.svg"
+        },
+        {
+          "instruccion": "El cuello: un ovalo inclinado que sube hacia adelante.",
+          "imagen_url": "/dibujo/guiado/D2-03_caballo_paso2.svg"
+        },
+        {
+          "instruccion": "La cabeza: un ovalo alargado, con dos orejas de triangulo.",
+          "imagen_url": "/dibujo/guiado/D2-03_caballo_paso3.svg"
+        },
+        {
+          "instruccion": "Las 4 patas: fijate que van inclinadas, esta trotando!",
+          "imagen_url": "/dibujo/guiado/D2-03_caballo_paso4.svg"
+        },
+        {
+          "instruccion": "La cola al viento: dos lineas curvas.",
+          "imagen_url": "/dibujo/guiado/D2-03_caballo_paso5.svg"
+        },
+        {
+          "instruccion": "La crin: una linea gruesa que sigue el cuello.",
+          "imagen_url": "/dibujo/guiado/D2-03_caballo_paso6.svg"
+        },
+        {
+          "instruccion": "Termina: ojo, nariz y boca.",
+          "imagen_url": "/dibujo/guiado/D2-03_caballo_paso7.svg"
+        }
+      ],
+      "imagen_final_url": "/dibujo/guiado/D2-03_caballo_final.svg"
+    }
+  ]
+}

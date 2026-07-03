@@ -1,0 +1,45 @@
+{
+  "id": "D2-12_avion-de-pasajeros",
+  "titulo": "Avion de Pasajeros",
+  "descripcion": "Fuselaje, alas, cola, ventanillas",
+  "tipo": "dibujo-guiado",
+  "materia": "dibujo",
+  "nivel": "D2-12",
+  "tema": "objetos-y-vehiculos",
+  "misiones": [
+    {
+      "id": "dib-avion-01",
+      "tipo": "dibujo-guiado",
+      "titulo": "Avion de Pasajeros",
+      "emoji": "✈️",
+      "instruccion": "Un avion volando, visto de lado. Lo nuevo de cada paso aparece en rojo.",
+      "pasos": [
+        {
+          "instruccion": "El fuselaje: un ovalo muy alargado.",
+          "imagen_url": "/dibujo/guiado/D2-12_avion_paso1.svg"
+        },
+        {
+          "instruccion": "La cola: dos aletas de triangulo atras.",
+          "imagen_url": "/dibujo/guiado/D2-12_avion_paso2.svg"
+        },
+        {
+          "instruccion": "Las alas: una hacia adelante-abajo y otra se asoma arriba.",
+          "imagen_url": "/dibujo/guiado/D2-12_avion_paso3.svg"
+        },
+        {
+          "instruccion": "La cabina del piloto y la fila de ventanillas redondas.",
+          "imagen_url": "/dibujo/guiado/D2-12_avion_paso4.svg"
+        },
+        {
+          "instruccion": "El motor debajo del ala.",
+          "imagen_url": "/dibujo/guiado/D2-12_avion_paso5.svg"
+        },
+        {
+          "instruccion": "Termina: la puerta, la franja del costado y las lineas de vuelo.",
+          "imagen_url": "/dibujo/guiado/D2-12_avion_paso6.svg"
+        }
+      ],
+      "imagen_final_url": "/dibujo/guiado/D2-12_avion_final.svg"
+    }
+  ]
+}
