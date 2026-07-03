@@ -406,5 +406,50 @@
       "tipo": "dibujo-libre",
       "sugerencias": ["Dibuja lo que quieras"]
     }
+  },
+  {
+    "id": "peque-colorear-sol",
+    "titulo": "Colorear sol",
+    "emoji": "☀️",
+    "color": "#ffe08a",
+    "orden": 42,
+    "kind": "nativo",
+    "mision": {
+      "id": "peque-colorear-sol",
+      "tipo": "colorear",
+      "instruccion": "Colorea el sol con colores brillantes",
+      "imagen_contorno_url": "/dibujo/colorear/D0-06_sol-brillante.svg",
+      "colores_sugeridos": ["#f1c40f", "#e67e22", "#e74c3c", "#fff200"]
+    }
+  },
+  {
+    "id": "peque-colorear-mariposa",
+    "titulo": "Colorear mariposa",
+    "emoji": "🦋",
+    "color": "#bde0fe",
+    "orden": 43,
+    "kind": "nativo",
+    "mision": {
+      "id": "peque-colorear-mariposa",
+      "tipo": "colorear",
+      "instruccion": "Colorea la mariposa",
+      "imagen_contorno_url": "/dibujo/colorear/D0-09_mariposa-bonita.svg",
+      "colores_sugeridos": ["#3498db", "#e91e63", "#9b59b6", "#f1c40f"]
+    }
+  },
+  {
+    "id": "peque-colorear-flor",
+    "titulo": "Colorear flor",
+    "emoji": "🌼",
+    "color": "#ffd6a5",
+    "orden": 44,
+    "kind": "nativo",
+    "mision": {
+      "id": "peque-colorear-flor",
+      "tipo": "colorear",
+      "instruccion": "Colorea la flor",
+      "imagen_contorno_url": "/dibujo/colorear/D0-07_flor-del-jardin.svg",
+      "colores_sugeridos": ["#e91e63", "#f1c40f", "#2ecc71", "#e74c3c"]
+    }
   }
 ]
