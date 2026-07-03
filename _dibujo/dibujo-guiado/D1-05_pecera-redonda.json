@@ -1,0 +1,37 @@
+{
+  "id": "D1-05_pecera-redonda",
+  "titulo": "Pecera Redonda",
+  "descripcion": "Circulo grande + peces triangulares + burbujas",
+  "tipo": "dibujo-guiado",
+  "materia": "dibujo",
+  "nivel": "D1-05",
+  "tema": "formas-geometricas",
+  "misiones": [
+    {
+      "id": "dib-pecera-01",
+      "tipo": "dibujo-guiado",
+      "titulo": "Pecera Redonda",
+      "emoji": "🐟",
+      "instruccion": "Una pecera con pececitos felices! Lo nuevo de cada paso aparece en rojo.",
+      "pasos": [
+        {
+          "instruccion": "Dibuja un circulo muy grande: la pecera. Y la linea del agua arriba.",
+          "imagen_url": "/dibujo/guiado/D1-05_pecera_paso1.svg"
+        },
+        {
+          "instruccion": "Dibuja 2 peces: cuerpo de ovalo y cola de triangulo.",
+          "imagen_url": "/dibujo/guiado/D1-05_pecera_paso2.svg"
+        },
+        {
+          "instruccion": "Agrega plantas y piedritas en el fondo.",
+          "imagen_url": "/dibujo/guiado/D1-05_pecera_paso3.svg"
+        },
+        {
+          "instruccion": "Ultimo toque: burbujas subiendo!",
+          "imagen_url": "/dibujo/guiado/D1-05_pecera_paso4.svg"
+        }
+      ],
+      "imagen_final_url": "/dibujo/guiado/D1-05_pecera_final.svg"
+    }
+  ]
+}

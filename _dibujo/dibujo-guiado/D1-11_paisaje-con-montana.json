@@ -1,0 +1,41 @@
+{
+  "id": "D1-11_paisaje-con-montana",
+  "titulo": "Paisaje con Montana",
+  "descripcion": "Montana (triangulo) + sol + rio + arboles",
+  "tipo": "dibujo-guiado",
+  "materia": "dibujo",
+  "nivel": "D1-11",
+  "tema": "escenas",
+  "misiones": [
+    {
+      "id": "dib-paisaje-01",
+      "tipo": "dibujo-guiado",
+      "titulo": "Paisaje con Montana",
+      "emoji": "🏔️",
+      "instruccion": "Tu primer paisaje completo! Lo nuevo de cada paso aparece en rojo.",
+      "pasos": [
+        {
+          "instruccion": "Dibuja un triangulo grande: la montana, con su nieve en la punta.",
+          "imagen_url": "/dibujo/guiado/D1-11_paisaje_paso1.svg"
+        },
+        {
+          "instruccion": "Dibuja el sol: un circulo con rayos.",
+          "imagen_url": "/dibujo/guiado/D1-11_paisaje_paso2.svg"
+        },
+        {
+          "instruccion": "Traza el piso y el rio que baja de la montana.",
+          "imagen_url": "/dibujo/guiado/D1-11_paisaje_paso3.svg"
+        },
+        {
+          "instruccion": "Agrega arboles: triangulos con su tronco.",
+          "imagen_url": "/dibujo/guiado/D1-11_paisaje_paso4.svg"
+        },
+        {
+          "instruccion": "Termina con las nubes en el cielo.",
+          "imagen_url": "/dibujo/guiado/D1-11_paisaje_paso5.svg"
+        }
+      ],
+      "imagen_final_url": "/dibujo/guiado/D1-11_paisaje_final.svg"
+    }
+  ]
+}

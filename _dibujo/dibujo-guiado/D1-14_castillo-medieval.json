@@ -1,0 +1,41 @@
+{
+  "id": "D1-14_castillo-medieval",
+  "titulo": "Castillo Medieval",
+  "descripcion": "Torres con rectangulos y triangulos, puerta, bandera",
+  "tipo": "dibujo-guiado",
+  "materia": "dibujo",
+  "nivel": "D1-14",
+  "tema": "escenas",
+  "misiones": [
+    {
+      "id": "dib-castillo-01",
+      "tipo": "dibujo-guiado",
+      "titulo": "Castillo Medieval",
+      "emoji": "🏰",
+      "instruccion": "Un castillo de verdad, con torres y bandera! Lo nuevo de cada paso aparece en rojo.",
+      "pasos": [
+        {
+          "instruccion": "Dibuja un rectangulo grande: el muro del castillo.",
+          "imagen_url": "/dibujo/guiado/D1-14_castillo_paso1.svg"
+        },
+        {
+          "instruccion": "Agrega las torres a los lados, con techos de triangulo.",
+          "imagen_url": "/dibujo/guiado/D1-14_castillo_paso2.svg"
+        },
+        {
+          "instruccion": "Dibuja las almenas arriba del muro: cuadritos en fila.",
+          "imagen_url": "/dibujo/guiado/D1-14_castillo_paso3.svg"
+        },
+        {
+          "instruccion": "Agrega la puerta grande, la ventana redonda y las ventanitas de las torres.",
+          "imagen_url": "/dibujo/guiado/D1-14_castillo_paso4.svg"
+        },
+        {
+          "instruccion": "Termina con la bandera y el camino de entrada.",
+          "imagen_url": "/dibujo/guiado/D1-14_castillo_paso5.svg"
+        }
+      ],
+      "imagen_final_url": "/dibujo/guiado/D1-14_castillo_final.svg"
+    }
+  ]
+}

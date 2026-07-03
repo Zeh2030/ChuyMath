@@ -1,0 +1,41 @@
+{
+  "id": "D1-03_tren-de-figuras",
+  "titulo": "Tren de Figuras",
+  "descripcion": "Locomotora con rectangulos, circulos como ruedas",
+  "tipo": "dibujo-guiado",
+  "materia": "dibujo",
+  "nivel": "D1-03",
+  "tema": "formas-geometricas",
+  "misiones": [
+    {
+      "id": "dib-tren-01",
+      "tipo": "dibujo-guiado",
+      "titulo": "Tren de Figuras",
+      "emoji": "🚂",
+      "instruccion": "Un tren hecho de rectangulos y circulos! Lo nuevo de cada paso aparece en rojo.",
+      "pasos": [
+        {
+          "instruccion": "Dibuja un rectangulo parado: la cabina de la locomotora.",
+          "imagen_url": "/dibujo/guiado/D1-03_tren_paso1.svg"
+        },
+        {
+          "instruccion": "Agrega la caldera al frente: un rectangulo acostado con su chimenea.",
+          "imagen_url": "/dibujo/guiado/D1-03_tren_paso2.svg"
+        },
+        {
+          "instruccion": "Dibuja las ruedas: circulos con su centro. Y el riel abajo.",
+          "imagen_url": "/dibujo/guiado/D1-03_tren_paso3.svg"
+        },
+        {
+          "instruccion": "Agrega un vagon atras con sus 2 ruedas, unido con el enganche.",
+          "imagen_url": "/dibujo/guiado/D1-03_tren_paso4.svg"
+        },
+        {
+          "instruccion": "Termina con la ventana y el humo saliendo de la chimenea. Chu chu!",
+          "imagen_url": "/dibujo/guiado/D1-03_tren_paso5.svg"
+        }
+      ],
+      "imagen_final_url": "/dibujo/guiado/D1-03_tren_final.svg"
+    }
+  ]
+}
