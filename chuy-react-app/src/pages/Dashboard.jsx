@@ -164,6 +164,7 @@ const Dashboard = () => {
     { id: 'colorear', emoji: '🖍️', nombre: 'Colorear', filtro: 'colorear', disponible: true, materia: 'dibujo' },
     { id: 'dibujo-guiado', emoji: '✏️', nombre: 'Dibujo Guiado', filtro: 'dibujo-guiado', disponible: true, materia: 'dibujo' },
     { id: 'dibujo-libre', emoji: '🎨', nombre: 'Dibujo Libre', filtro: 'dibujo-libre', disponible: true, materia: 'dibujo' },
+    { id: 'mezclador-colores', emoji: '🌈', nombre: 'Teoría del Color', filtro: 'mezclador-colores', disponible: true, materia: 'dibujo' },
     // Geografia
     { id: 'explorador-mapa', emoji: '🗺️', nombre: 'Explora el Mapa', filtro: 'explorador-mapa', disponible: true, materia: 'geografia' },
     { id: 'geografia-image-picker', emoji: '🏞️', nombre: 'Banderas y Mapas', filtro: 'geografia-image-picker', disponible: true, materia: 'geografia' },

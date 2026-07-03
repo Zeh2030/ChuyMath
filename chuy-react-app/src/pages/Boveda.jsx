@@ -35,7 +35,7 @@ const Boveda = () => {
       'listen-and-type', 'expediciones-en', 'mini-story'];
     const pianoTypes = ['piano-prompter', 'identifica-nota'];
     const cienciasTypes = ['experimento-guia'];
-    const dibujoTypes = ['colorear', 'dibujo-guiado', 'dibujo-libre'];
+    const dibujoTypes = ['colorear', 'dibujo-guiado', 'dibujo-libre', 'mezclador-colores'];
     const geografiaTypes = ['explorador-mapa'];
     if (englishTypes.includes(f)) return 'ingles';
     if (pianoTypes.includes(f)) return 'piano';
@@ -93,6 +93,7 @@ const Boveda = () => {
     { id: 'colorear', emoji: '🖍️', nombre: 'Colorear', tipo: 'colorear', descripcion: 'Colorea figuras con tu paleta', materia: 'dibujo' },
     { id: 'dibujo-guiado', emoji: '✏️', nombre: 'Dibujo Guiado', tipo: 'dibujo-guiado', descripcion: 'Aprende a dibujar paso a paso', materia: 'dibujo' },
     { id: 'dibujo-libre', emoji: '🎨', nombre: 'Dibujo Libre', tipo: 'dibujo-libre', descripcion: 'Dibuja lo que quieras', materia: 'dibujo' },
+    { id: 'mezclador-colores', emoji: '🌈', nombre: 'Teoría del Color', tipo: 'mezclador-colores', descripcion: 'Mezcla colores como los artistas', materia: 'dibujo' },
     // Geografia
     { id: 'explorador-mapa', emoji: '🗺️', nombre: 'Explora el Mapa', tipo: 'explorador-mapa', descripcion: 'Encuentra paises en mapas reales', materia: 'geografia' },
     { id: 'geografia-image-picker', emoji: '🏞️', nombre: 'Banderas y Mapas', tipo: 'image-picker', descripcion: 'Identifica banderas y monumentos del mundo', materia: 'geografia' },
