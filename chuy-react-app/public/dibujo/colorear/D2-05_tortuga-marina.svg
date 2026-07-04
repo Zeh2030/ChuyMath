@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <rect width="800" height="800" fill="#ffffff"/>
+  <g fill="#ffffff" stroke="#2b2b2b" stroke-width="12" stroke-linejoin="round">
+    <ellipse cx="205" cy="255" rx="115" ry="55" transform="rotate(-40,205,255)"/>
+    <ellipse cx="595" cy="255" rx="115" ry="55" transform="rotate(40,595,255)"/>
+    <ellipse cx="250" cy="605" rx="78" ry="44" transform="rotate(38,250,605)"/>
+    <ellipse cx="550" cy="605" rx="78" ry="44" transform="rotate(-38,550,605)"/>
+  </g>
+  <polygon points="384,650 416,650 400,702" fill="#ffffff" stroke="#2b2b2b" stroke-width="10" stroke-linejoin="round"/>
+  <circle cx="400" cy="120" r="54" fill="#ffffff" stroke="#2b2b2b" stroke-width="12"/>
+  <ellipse cx="400" cy="410" rx="215" ry="250" fill="#ffffff" stroke="#2b2b2b" stroke-width="12"/>
+  <ellipse cx="400" cy="410" rx="165" ry="198" fill="#ffffff" stroke="#2b2b2b" stroke-width="8"/>
+  <g fill="#ffffff" stroke="#2b2b2b" stroke-width="8" stroke-linejoin="round">
+    <polygon points="376,247 424,247 448,289 424,331 376,331 352,289"/>
+    <polygon points="376,368 424,368 448,410 424,452 376,452 352,410"/>
+    <polygon points="376,489 424,489 448,531 424,573 376,573 352,531"/>
+  </g>
+  <g fill="none" stroke="#2b2b2b" stroke-width="8" stroke-linecap="round">
+    <path d="M 352 289 L 245 275"/>
+    <path d="M 352 410 L 235 410"/>
+    <path d="M 352 531 L 250 548"/>
+    <path d="M 448 289 L 555 275"/>
+    <path d="M 448 410 L 565 410"/>
+    <path d="M 448 531 L 550 548"/>
+  </g>
+  <g fill="#2b2b2b"><circle cx="382" cy="108" r="7"/><circle cx="418" cy="108" r="7"/></g>
+  <path d="M 384 135 Q 400 146 416 135" fill="none" stroke="#2b2b2b" stroke-width="7" stroke-linecap="round"/>
+</svg>

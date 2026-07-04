@@ -1,0 +1,21 @@
+{
+  "id": "D2-05_tortuga-marina",
+  "titulo": "Tortuga Marina",
+  "descripcion": "Colorear tortuga con patron de caparazon detallado",
+  "tipo": "colorear",
+  "materia": "dibujo",
+  "nivel": "D2-05",
+  "tema": "animales-detallados",
+  "misiones": [
+    {
+      "id": "dib-tortuga-color-01",
+      "tipo": "colorear",
+      "titulo": "Tortuga Marina",
+      "emoji": "🐢",
+      "instruccion": "Colorea la tortuga! El caparazon tiene muchas partes: dale un color a cada una para que se vea el patron.",
+      "imagen_contorno_url": "/dibujo/colorear/D2-05_tortuga-marina.svg",
+      "colores_sugeridos": ["#2ecc71", "#27ae60", "#e67e22", "#f1c40f", "#795548"],
+      "dificultad": "media"
+    }
+  ]
+}

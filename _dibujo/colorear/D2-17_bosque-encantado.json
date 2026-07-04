@@ -1,0 +1,21 @@
+{
+  "id": "D2-17_bosque-encantado",
+  "titulo": "Bosque Encantado",
+  "descripcion": "Colorear escena compleja: arboles, hongos, hada, rio",
+  "tipo": "colorear",
+  "materia": "dibujo",
+  "nivel": "D2-17",
+  "tema": "escenas-y-fondos",
+  "misiones": [
+    {
+      "id": "dib-bosque-color-01",
+      "tipo": "colorear",
+      "titulo": "Bosque Encantado",
+      "emoji": "🧚",
+      "instruccion": "Colorea el bosque encantado! Tiene arboles, hongos, un hada, un rio y la luna. Usa muchos colores.",
+      "imagen_contorno_url": "/dibujo/colorear/D2-17_bosque-encantado.svg",
+      "colores_sugeridos": ["#2ecc71", "#27ae60", "#3498db", "#e74c3c", "#f1c40f", "#9b59b6", "#795548"],
+      "dificultad": "media"
+    }
+  ]
+}

@@ -12,15 +12,11 @@ El modulo esta **EN PAUSA** unos dias por decision de Jesus. Resumen de donde qu
 **Hecho y en produccion (Firebase coleccion `dibujo`):**
 - **D0 completo** (15/15) — para la hija (~4 anos). Trazos, colorear, primeras creaciones.
 - **D1 completo** (15/15) — para el hijo (7 anos). Formas, animales, escenas.
-- **D2 casi completo (17/20)** — nivel del hijo. Guiados de animales, personajes,
-  vehiculos y escenas + colorear + dibujo-libre.
+- **D2 COMPLETO (20/20)** — nivel del hijo. Guiados de animales, personajes,
+  vehiculos y escenas + colorear + dibujo-libre. Las ultimas 3 (D2-05 Tortuga
+  Marina, D2-07 Cuerpo Completo, D2-17 Bosque Encantado) se crearon el 2026-07-03.
 - **Teoria del color** (mezclador-colores): D1-21, D2-23, D2-24. Tienen tarjeta
   propia 🌈 "Teoria del Color" en Dashboard y Boveda (materia Arte).
-
-**PENDIENTE de contenido (para cerrar D2 al retomar — solo faltan 3):**
-- D2-05 Tortuga Marina (colorear)
-- D2-07 Cuerpo Completo (dibujo-guiado)
-- D2-17 Bosque Encantado (colorear)
 
 **PENDIENTE mas grande:**
 - **Todo D3** (9-11 anos): sombreado, perspectiva, rostros, proyectos. Es el nivel
@@ -255,14 +251,14 @@ y se usa la URL de descarga. No guardamos PNGs en el repositorio.
 | D2-02 | Gato Sentado | dibujo-guiado | Postura de gato sentado, ojos almendrados, bigotes (6 pasos) ✅ Creado |
 | D2-03 | Caballo al Trote | dibujo-guiado | Cuerpo alargado, patas en movimiento, crin (7 pasos) ✅ Creado |
 | D2-04 | Aguila en Vuelo | dibujo-guiado | Alas extendidas, plumas, garras (7 pasos) ✅ Creado |
-| D2-05 | Tortuga Marina | colorear | Colorear tortuga con patron de caparazon detallado |
+| D2-05 | Tortuga Marina | colorear | Colorear tortuga con patron de caparazon detallado ✅ Creado |
 
 ### Bloque 2: Personajes (D2-06 a D2-10)
 
 | # | Titulo | Tipo | Descripcion |
 |---|--------|------|-------------|
 | D2-06 | Cara con Expresiones | dibujo-guiado | Proporciones del rostro: ojos al centro, nariz, boca (6 pasos) ✅ Creado |
-| D2-07 | Cuerpo Completo | dibujo-guiado | Figura humana: cabeza, torso, brazos, piernas, proporciones (7 pasos) |
+| D2-07 | Cuerpo Completo | dibujo-guiado | Figura humana: cabeza, torso, brazos, piernas, proporciones (7 pasos) ✅ Creado |
 | D2-08 | Ninja | dibujo-guiado | Personaje de accion con pose dinamica (7 pasos) ✅ Creado |
 | D2-09 | Princesa / Principe | dibujo-guiado | Personaje con ropa detallada, corona, capa (7 pasos) ✅ Creado (version princesa) |
 | D2-10 | Superheroe | dibujo-libre | Dibujo libre: disena tu propio superheroe (con guia de proporciones) |
@@ -282,7 +278,7 @@ y se usa la URL de descarga. No guardamos PNGs en el repositorio.
 | # | Titulo | Tipo | Descripcion |
 |---|--------|------|-------------|
 | D2-16 | Atardecer en la Playa | dibujo-guiado | Horizonte, sol poniente, palmeras, reflejo en agua (6 pasos) ✅ Creado |
-| D2-17 | Bosque Encantado | colorear | Colorear escena compleja: arboles, hongos, hadas, rio |
+| D2-17 | Bosque Encantado | colorear | Colorear escena compleja: arboles, hongos, hada, rio ✅ Creado |
 | D2-18 | Ciudad Futurista | dibujo-libre | Dibujo libre: imagina la ciudad del futuro |
 | D2-19 | Mapa del Tesoro | dibujo-guiado | Isla, camino, X marca el tesoro, brujula, barco (7 pasos) ✅ Creado |
 | D2-20 | Mi Obra Maestra | dibujo-libre | Dibujo libre total: tema libre, usa todo lo aprendido |

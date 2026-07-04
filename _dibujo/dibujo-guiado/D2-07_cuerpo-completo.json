@@ -1,0 +1,49 @@
+{
+  "id": "D2-07_cuerpo-completo",
+  "titulo": "Cuerpo Completo",
+  "descripcion": "Figura humana: cabeza, torso, brazos, piernas, proporciones",
+  "tipo": "dibujo-guiado",
+  "materia": "dibujo",
+  "nivel": "D2-07",
+  "tema": "personajes",
+  "misiones": [
+    {
+      "id": "dib-cuerpo-01",
+      "tipo": "dibujo-guiado",
+      "titulo": "Cuerpo Completo",
+      "emoji": "🧍",
+      "instruccion": "Dibuja una persona completa con buenas proporciones. Lo nuevo de cada paso aparece en rojo.",
+      "pasos": [
+        {
+          "instruccion": "Dibuja la cabeza (un ovalo) y las lineas guia punteadas: te ayudan a medir el cuerpo.",
+          "imagen_url": "/dibujo/guiado/D2-07_cuerpo_paso1.svg"
+        },
+        {
+          "instruccion": "El torso: baja desde el cuello, mas ancho en los hombros y angosto en la cintura.",
+          "imagen_url": "/dibujo/guiado/D2-07_cuerpo_paso2.svg"
+        },
+        {
+          "instruccion": "La cadera: va debajo del torso, en la linea guia de en medio.",
+          "imagen_url": "/dibujo/guiado/D2-07_cuerpo_paso3.svg"
+        },
+        {
+          "instruccion": "Los brazos: dos partes cada uno (brazo y antebrazo), a los lados.",
+          "imagen_url": "/dibujo/guiado/D2-07_cuerpo_paso4.svg"
+        },
+        {
+          "instruccion": "Las piernas: tambien en dos partes (muslo y pantorrilla).",
+          "imagen_url": "/dibujo/guiado/D2-07_cuerpo_paso5.svg"
+        },
+        {
+          "instruccion": "Las manos (circulos) y los pies (ovalos).",
+          "imagen_url": "/dibujo/guiado/D2-07_cuerpo_paso6.svg"
+        },
+        {
+          "instruccion": "Termina: la cara y el pelo. Ya puedes borrar las lineas guia!",
+          "imagen_url": "/dibujo/guiado/D2-07_cuerpo_paso7.svg"
+        }
+      ],
+      "imagen_final_url": "/dibujo/guiado/D2-07_cuerpo_final.svg"
+    }
+  ]
+}
