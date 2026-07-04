@@ -5,6 +5,46 @@ dibujo paso a paso y creacion libre. 1-2 actividades por semana.
 
 ---
 
+## 📌 ESTADO ACTUAL (actualizado 2026-07-03) — LEER PRIMERO AL RETOMAR
+
+El modulo esta **EN PAUSA** unos dias por decision de Jesus. Resumen de donde quedamos:
+
+**Hecho y en produccion (Firebase coleccion `dibujo`):**
+- **D0 completo** (15/15) — para la hija (~4 anos). Trazos, colorear, primeras creaciones.
+- **D1 completo** (15/15) — para el hijo (7 anos). Formas, animales, escenas.
+- **D2 casi completo (17/20)** — nivel del hijo. Guiados de animales, personajes,
+  vehiculos y escenas + colorear + dibujo-libre.
+- **Teoria del color** (mezclador-colores): D1-21, D2-23, D2-24. Tienen tarjeta
+  propia 🌈 "Teoria del Color" en Dashboard y Boveda (materia Arte).
+
+**PENDIENTE de contenido (para cerrar D2 al retomar — solo faltan 3):**
+- D2-05 Tortuga Marina (colorear)
+- D2-07 Cuerpo Completo (dibujo-guiado)
+- D2-17 Bosque Encantado (colorear)
+
+**PENDIENTE mas grande:**
+- **Todo D3** (9-11 anos): sombreado, perspectiva, rostros, proyectos. Es el nivel
+  mas tecnico; el SVG naif tendra que subir de calidad o combinar con referencia.
+- **Persistencia Nivel 2** (galeria Firebase Storage — ver seccion al final).
+
+**Flujo para agregar contenido:** crear SVG con el generador → rasterizar y revisar
+→ crear JSON → `git push` (Netlify auto-deploya) → **Jesus migra el JSON en
+AdminMigracion** (paso manual imprescindible; sin migrar, no aparece en la app).
+Ver seccion "Flujo de produccion SVG" mas abajo.
+
+**Notas de implementacion recientes (2026-07-03):**
+- Todas las imagenes son **SVG propios** en `chuy-react-app/public/dibujo/`
+  (NO se descargan de internet — ver "Enfoque SVG-first").
+- Se arreglaron 2 bugs del lienzo: (1) trazos rapidos/toques simples que no
+  pintaban — el flag de dibujo paso de estado de React a `useRef`; (2) el boton
+  Limpiar borraba el contorno base si antes se uso el borrador — se resetea
+  `globalCompositeOperation` antes de repintar. Afecta Colorear/DibujoLibre/DibujoGuiado.
+- Inconsistencia menor conocida: el codigo `D0-14` esta usado por dos docs
+  (`dibujo-guiado/D0-14_gusanito` del programa y `dibujo-libre/D0-14_castillo-de-princesa`
+  extra). Son docs distintos en Firebase (id distinto), solo comparten etiqueta de nivel.
+
+---
+
 ## Estructura de niveles
 
 ```
@@ -67,6 +107,12 @@ pinta con el color que creo. Los colores mezclados quedan en una fila para reusa
 Toda la logica de mezcla vive en `src/utils/colorMix.js`.
 
 ### Como funcionan tecnicamente
+
+> ⚠️ **SUPERADO (2026-07-02):** las subsecciones de abajo describen el plan
+> original de *descargar PNGs de internet*. Ese enfoque se descarto: ahora todo
+> es **SVG propio** en `public/dibujo/` (ver "Enfoque SVG-first" y "Flujo de
+> produccion SVG"). Se conserva el texto solo como referencia historica del
+> funcionamiento del canvas (que sigue siendo valido: imagen de fondo + pintar encima).
 
 #### `colorear`
 - Se carga una imagen PNG de contornos negros sobre fondo blanco como background del canvas
@@ -450,6 +496,58 @@ Galeria de revision interna: `http://localhost:5173/dibujo/galeria.html`
 **Excepcion:** para el 5-10% de casos que de verdad necesite foto o arte complejo
 (referencias de dibujo-libre, D2/D3 realista), se permite URL externa o Firebase
 Storage como antes. El esquema JSON no cambia.
+
+---
+
+## Flujo de produccion SVG (COMO SE CREO TODO — replicar al retomar)
+
+Toda la biblioteca D0-D2 se genero con este flujo. Reproducirlo para D3 o para
+las 3 actividades pendientes de D2.
+
+### 1. Colorear y trazos (SVG estatico)
+Un SVG 800x800 por actividad, en `public/dibujo/colorear/` o `public/dibujo/trazos/`:
+- `width`/`height` explicitos (no solo viewBox) para que `drawImage()` escale bien.
+- Fondo blanco, contornos `#2b2b2b`, grosor 12 (detalles 8-10), `stroke-linejoin/linecap="round"`.
+- Zonas grandes y cerradas (D0: max 5-6 zonas). Caritas felices para dar encanto.
+- Trazos guiados: guia punteada con `stroke-dasharray`, punto verde = inicio, rojo = fin.
+- Mandalas: se generan con simetria rotacional (`transform="rotate(...)"`) — el SVG es ideal.
+
+### 2. Dibujo-guiado (SVG por capas — la parte clave)
+Cada figura se define UNA vez como lista de "grupos", cada grupo con:
+- `step`: en que paso del tutorial aparece.
+- `z`: orden de dibujo (para que unas piezas queden delante/detras de otras).
+- `xml`: el fragmento SVG, con `{C}` donde va el color del trazo.
+
+Un script de PowerShell recorre los grupos y emite un SVG por paso:
+- Paso N = todos los grupos con `step <= N` visibles.
+- El grupo cuyo `step == N` (lo nuevo) se pinta en ROJO `#e74c3c`; el resto en negro.
+- Ademas emite `_final.svg` con todo en negro (modelo para comparar).
+- Nombres: `<prefijo>_paso1.svg` ... `_pasoN.svg` + `_final.svg` en `public/dibujo/guiado/`.
+
+Se creo un generador de referencia reutilizable en **`_dibujo/_generador-guiados.ps1`**
+(con una figura de ejemplo y comentarios). Los 3 generadores originales
+(`gen-guiados.ps1/-2/-3`) vivian en el scratchpad temporal y ya no existen; este
+archivo del repo preserva la tecnica.
+
+### 3. Rasterizar y auto-revisar (control de calidad)
+Los SVG se rasterizan a PNG con Edge headless y se revisan visualmente ANTES de
+publicar (asi se cazaron errores como orejas flotando o colas despegadas):
+```
+& "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" `
+  --headless --disable-gpu --screenshot="salida.png" --window-size=800,800 `
+  --default-background-color=FFFFFFFF "file:///ruta/al.svg"
+```
+Galeria de revision para ver todo junto en el navegador (con dev server):
+`http://localhost:5173/dibujo/galeria.html` — agregar cada SVG nuevo a
+`public/dibujo/galeria.html`.
+
+### 4. JSON + publicar
+- Crear el JSON en `_dibujo/<tipo>/` apuntando a las rutas locales
+  (`/dibujo/guiado/D2-03_caballo_paso1.svg`, etc.).
+- `git push origin master:main` (branch local `master`, remote principal `main`).
+  Netlify auto-deploya en ~2-3 min.
+- **Jesus migra el/los JSON en AdminMigracion** (radio "Dibujo"). Sin este paso
+  el contenido NO aparece en la app aunque el SVG este desplegado.
 
 ---
 
