@@ -290,6 +290,49 @@ y se usa la URL de descarga. No guardamos PNGs en el repositorio.
 **Perfil:** Nino de 9-11 anos. Introduce sombreado, perspectiva, volumen, texturas.
 **Nivel avanzado.** Actividades mas largas y tecnicas.
 
+### 📝 Plan para retomar D3 (estrategia — leer antes de producir)
+
+D3 es el salto tecnico. El estilo SVG plano (contorno negro + relleno blanco) que
+sirvio para D0-D2 NO alcanza tal cual para todo D3. Decidir por bloque:
+
+**Bloque 1 — Sombreado (D3-01 a D3-05): REQUIERE gradientes. Riesgo medio.**
+- El objetivo es ensenar luz y sombra, asi que el modelo de referencia debe MOSTRAR
+  el degradado. Anadir `<defs>` con `<radialGradient>`/`<linearGradient>` en el SVG
+  y rellenar la esfera/cubo/cilindro con ellos. El generador por capas sirve igual.
+- El lienzo donde pinta el nino sigue siendo plano (imita el sombreado con pincel).
+  Ayudaria tener opacidad/grosor variable (ver prerequisitos abajo), pero no bloquea.
+- Empezar validando la tecnica de gradientes con la esfera (D3-01).
+
+**Bloque 2 — Perspectiva (D3-06 a D3-10): FACIL en SVG. Riesgo bajo.**
+- Lineas punteadas que convergen a 1 o 2 puntos de fuga = mismo truco
+  `stroke-dasharray` que las guias de proporcion de D2-06/D2-07.
+- Paso 1 de cada uno = horizonte + punto(s) de fuga + lineas guia. Es el bloque
+  mas geometrico; encaja perfecto con el generador. Buen punto de arranque.
+
+**Bloque 3 — Personajes avanzados (D3-11 a D3-15): extension de D2. Riesgo bajo-medio.**
+- Rostro frente/perfil, manos/pies, figura en movimiento: extienden D2-06 (cara con
+  proporciones) y D2-07 (cuerpo). Usar 7-8 pasos y mas guias punteadas.
+- Manos/pies son lo mas dificil en SVG naif: simplificar a "formas basicas" (la
+  leccion es literalmente esa) y aceptar el estilo caricatura.
+
+**Bloque 4 — Proyectos finales (D3-16 a D3-20):**
+- D3-17 Mandala complejo: SVG IDEAL (simetria rotacional como D2-14, mas anillos).
+  El mas facil del bloque.
+- D3-16 Dragon (9 pasos) y D3-18 Paisaje completo: los mas ambiciosos por cantidad
+  de piezas; misma tecnica pero presupuestar iteracion visual. Riesgo alto.
+- D3-19 y D3-20 son dibujo-libre: solo JSON + sugerencias, sin SVG que crear.
+
+**Prerequisitos tecnicos que D3 espera y NO estan construidos** (ver tablas
+"Diferencias por nivel" y "Mejoras al LienzoDibujo"):
+- Grosor ya existe (fino/medio/grueso). Faltan **opacidad** y **deshacer** (utiles
+  para sombrear) y **zoom/pan** (era "opcional D3").
+- NINGUNO bloquea crear el contenido: se pueden producir los SVG de referencia y
+  los JSON aunque el lienzo no tenga opacidad todavia. Priorizar contenido.
+
+**Orden sugerido al retomar:** Bloque 2 (perspectiva, el mas mecanico) → Bloque 3
+(personajes, extiende D2) → Bloque 1 (sombreado, valida gradientes) → Bloque 4
+(proyectos). Flujo de siempre: generar → rasterizar/revisar → JSON → push → migrar.
+
 ### Bloque 1: Tecnicas de sombreado (D3-01 a D3-05)
 
 | # | Titulo | Tipo | Descripcion |
