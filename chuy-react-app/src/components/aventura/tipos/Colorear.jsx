@@ -15,7 +15,9 @@ const Colorear = ({ mision, onCompletar }) => {
 
   const canvasRef = useRef(null);
   const wrapperRef = useRef(null);
-  const [isDrawing, setIsDrawing] = useState(false);
+  // Flag de dibujo en un ref (no estado): se actualiza al instante, sin esperar
+  // el re-render de React. Con estado, los trazos rapidos/cortos se perdian.
+  const isDrawingRef = useRef(false);
   const [color, setColor] = useState('#e74c3c');
   const [lineWidth, setLineWidth] = useState(12);
   const [tool, setTool] = useState('brush'); // brush | eraser
@@ -70,6 +72,9 @@ const Colorear = ({ mision, onCompletar }) => {
     const canvas = canvasRef.current;
     if (!canvas || !bgImageRef.current) return;
     const ctx = canvas.getContext('2d');
+    // Reset del modo de composicion: si el nino uso el borrador, quedaba en
+    // 'destination-out' y el contorno base se dibujaba como mascara (invisible).
+    ctx.globalCompositeOperation = 'source-over';
     const img = bgImageRef.current;
     const scale = Math.min(canvas.width / img.width, canvas.height / img.height);
     const x = (canvas.width - img.width * scale) / 2;
@@ -142,12 +147,15 @@ const Colorear = ({ mision, onCompletar }) => {
       ctx.strokeStyle = color;
       ctx.lineWidth = lineWidth;
     }
-    setIsDrawing(true);
+    // Pinta un punto de inmediato: asi un toque simple (sin arrastrar) tambien marca.
+    ctx.lineTo(x + 0.01, y + 0.01);
+    ctx.stroke();
+    isDrawingRef.current = true;
   };
 
   const draw = (e) => {
     e.preventDefault();
-    if (!isDrawing) return;
+    if (!isDrawingRef.current) return;
     const ctx = canvasRef.current.getContext('2d');
     const { x, y } = getCoords(e);
     ctx.lineTo(x, y);
@@ -155,9 +163,9 @@ const Colorear = ({ mision, onCompletar }) => {
   };
 
   const stopDrawing = () => {
-    if (isDrawing) {
+    if (isDrawingRef.current) {
       canvasRef.current.getContext('2d').closePath();
-      setIsDrawing(false);
+      isDrawingRef.current = false;
     }
   };
 

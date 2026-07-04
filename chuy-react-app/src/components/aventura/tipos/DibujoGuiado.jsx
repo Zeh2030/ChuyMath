@@ -16,7 +16,9 @@ const DibujoGuiado = ({ mision, onCompletar }) => {
   const [pasoActual, setPasoActual] = useState(0);
   const canvasRef = useRef(null);
   const wrapperRef = useRef(null);
-  const [isDrawing, setIsDrawing] = useState(false);
+  // Flag de dibujo en un ref (no estado): se actualiza al instante, sin esperar
+  // el re-render de React. Con estado, los trazos rapidos/cortos se perdian.
+  const isDrawingRef = useRef(false);
   const [color, setColor] = useState('#2c3e50');
   const [lineWidth, setLineWidth] = useState(4);
   const [tool, setTool] = useState('brush');
@@ -95,12 +97,15 @@ const DibujoGuiado = ({ mision, onCompletar }) => {
       ctx.strokeStyle = color;
       ctx.lineWidth = lineWidth;
     }
-    setIsDrawing(true);
+    // Pinta un punto de inmediato: asi un toque simple (sin arrastrar) tambien marca.
+    ctx.lineTo(x + 0.01, y + 0.01);
+    ctx.stroke();
+    isDrawingRef.current = true;
   };
 
   const draw = (e) => {
     e.preventDefault();
-    if (!isDrawing) return;
+    if (!isDrawingRef.current) return;
     const ctx = canvasRef.current.getContext('2d');
     const { x, y } = getCoords(e);
     ctx.lineTo(x, y);
@@ -108,9 +113,9 @@ const DibujoGuiado = ({ mision, onCompletar }) => {
   };
 
   const stopDrawing = () => {
-    if (isDrawing) {
+    if (isDrawingRef.current) {
       canvasRef.current.getContext('2d').closePath();
-      setIsDrawing(false);
+      isDrawingRef.current = false;
     }
   };
 
@@ -119,6 +124,8 @@ const DibujoGuiado = ({ mision, onCompletar }) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
+    // Reset del modo de composicion por si el borrador quedo activo.
+    ctx.globalCompositeOperation = 'source-over';
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
   };
