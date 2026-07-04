@@ -4,6 +4,7 @@ import { doc, getDoc, collection, getDocs } from 'firebase/firestore';
 import { db } from '../services/firebase';
 import { useAuth } from '../hooks/useAuth.jsx';
 import MisionRenderer from '../components/aventura/MisionRenderer';
+import DibujarHub from './DibujarHub';
 import './Peques.css';
 
 /**
@@ -23,7 +24,6 @@ const GRUPOS = [
   { id: 'tamanos', titulo: 'Grande y pequeño', emoji: '📏', color: '#ffb3c1', orden: 7 },
   { id: 'masmenos', titulo: 'Más o menos', emoji: '⚖️', color: '#ffd8a8', orden: 8 },
   { id: 'formas', titulo: 'Formas', emoji: '🔷', color: '#d0bfff', orden: 9 },
-  { id: 'crear', titulo: 'Dibujar y Colores', emoji: '🎨', color: '#a0e8af', orden: 10 },
 ];
 
 const TIPO_GRUPO = {
@@ -83,6 +83,7 @@ const Peques = () => {
   const [grupoAbierto, setGrupoAbierto] = useState(null); // id de grupo o null (nivel 1)
   const [carta, setCarta] = useState(null); // juego en curso
   const [gate, setGate] = useState(null);
+  const [arteAbierto, setArteAbierto] = useState(false);
 
   useEffect(() => {
     let vivo = true;
@@ -149,6 +150,15 @@ const Peques = () => {
     );
   }
 
+  // === Sección Arte (hub dinámico de 3 niveles) ===
+  if (arteAbierto) {
+    return (
+      <div className="peques-bg">
+        <DibujarHub onSalir={() => setArteAbierto(false)} />
+      </div>
+    );
+  }
+
   const cartasVisibles = grupoActual ? grupoActual.cartas : null;
 
   return (
@@ -180,13 +190,21 @@ const Peques = () => {
               <span className="peques-card-titulo">{c.titulo}</span>
             </button>
           ))
-          : grupos.map((g) => (
-            <button key={g.id} className="peques-card" style={{ background: g.color }} onClick={() => abrirGrupo(g)}>
-              <span className="peques-card-emoji">{g.emoji}</span>
-              <span className="peques-card-titulo">{g.titulo}</span>
-              {g.cartas.length > 1 && <span className="peques-card-badge">{g.cartas.length}</span>}
-            </button>
-          ))}
+          : (
+            <>
+              {grupos.map((g) => (
+                <button key={g.id} className="peques-card" style={{ background: g.color }} onClick={() => abrirGrupo(g)}>
+                  <span className="peques-card-emoji">{g.emoji}</span>
+                  <span className="peques-card-titulo">{g.titulo}</span>
+                  {g.cartas.length > 1 && <span className="peques-card-badge">{g.cartas.length}</span>}
+                </button>
+              ))}
+              <button key="arte" className="peques-card" style={{ background: '#a0e8af' }} onClick={() => setArteAbierto(true)}>
+                <span className="peques-card-emoji">🎨</span>
+                <span className="peques-card-titulo">Arte</span>
+              </button>
+            </>
+          )}
       </div>
 
       {gate && (
