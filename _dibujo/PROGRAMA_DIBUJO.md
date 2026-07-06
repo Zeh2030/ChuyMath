@@ -18,6 +18,13 @@ El modulo esta **EN PAUSA** unos dias por decision de Jesus. Resumen de donde qu
 - **Teoria del color** (mezclador-colores): D1-21, D2-23, D2-24. Tienen tarjeta
   propia 🌈 "Teoria del Color" en Dashboard y Boveda (materia Arte).
 
+**Extra fuera de roadmap (2026-07-06):** 10 coloreables D0 mas, a peticion de la
+hija (quiere mas para colorear). Numerados **D0-21 a D0-30** para no chocar con el
+roadmap: unicornio, arcoiris, gatito, conejito, helado, corazones, mariquita,
+pastel de cumpleanos, casita de hongo, osito. Tipo `colorear`, en
+`public/dibujo/colorear/`. Patron a repetir si pide mas: temas que le gustan
+(magico / animalitos / dulces), contornos grandes con pocas zonas.
+
 **PENDIENTE mas grande:**
 - **Todo D3** (9-11 anos): sombreado, perspectiva, rostros, proyectos. Es el nivel
   mas tecnico; el SVG naif tendra que subir de calidad o combinar con referencia.

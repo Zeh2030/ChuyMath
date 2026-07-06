@@ -1,0 +1,21 @@
+{
+  "id": "D0-28_pastel-cumpleanos",
+  "titulo": "Pastel de Cumpleanos",
+  "descripcion": "Colorear un pastel de dos pisos con velitas",
+  "tipo": "colorear",
+  "materia": "dibujo",
+  "nivel": "D0-28",
+  "tema": "dulces",
+  "misiones": [
+    {
+      "id": "dib-pastel-color-01",
+      "tipo": "colorear",
+      "titulo": "Pastel de Cumpleanos",
+      "emoji": "🎂",
+      "instruccion": "Colorea el pastel de cumpleanos y sus velitas! Cuenta las velas: cuantas hay?",
+      "imagen_contorno_url": "/dibujo/colorear/D0-28_pastel-cumpleanos.svg",
+      "colores_sugeridos": ["#ff8fab", "#f1c40f", "#3498db", "#e74c3c", "#9b59b6"],
+      "dificultad": "facil"
+    }
+  ]
+}

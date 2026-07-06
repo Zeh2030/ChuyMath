@@ -1,0 +1,21 @@
+{
+  "id": "D0-22_arcoiris",
+  "titulo": "Arcoiris",
+  "descripcion": "Colorear un arcoiris con nubes",
+  "tipo": "colorear",
+  "materia": "dibujo",
+  "nivel": "D0-22",
+  "tema": "magico",
+  "misiones": [
+    {
+      "id": "dib-arcoiris-color-01",
+      "tipo": "colorear",
+      "titulo": "Arcoiris",
+      "emoji": "🌈",
+      "instruccion": "Colorea el arcoiris! Cada franja de un color distinto, y las nubes de azul clarito.",
+      "imagen_contorno_url": "/dibujo/colorear/D0-22_arcoiris.svg",
+      "colores_sugeridos": ["#e74c3c", "#e67e22", "#f1c40f", "#2ecc71", "#3498db", "#9b59b6"],
+      "dificultad": "facil"
+    }
+  ]
+}

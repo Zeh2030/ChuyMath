@@ -1,0 +1,21 @@
+{
+  "id": "D0-25_helado",
+  "titulo": "Helado",
+  "descripcion": "Colorear un helado de tres bolas con cereza",
+  "tipo": "colorear",
+  "materia": "dibujo",
+  "nivel": "D0-25",
+  "tema": "dulces",
+  "misiones": [
+    {
+      "id": "dib-helado-color-01",
+      "tipo": "colorear",
+      "titulo": "Helado",
+      "emoji": "🍦",
+      "instruccion": "Colorea cada bola de un sabor diferente! El barquillo cafe y la cereza roja.",
+      "imagen_contorno_url": "/dibujo/colorear/D0-25_helado.svg",
+      "colores_sugeridos": ["#ff8fab", "#f1c40f", "#795548", "#e74c3c", "#a0e8af"],
+      "dificultad": "facil"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "D0-23_gatito",
+  "titulo": "Gatito",
+  "descripcion": "Colorear un gatito sentado",
+  "tipo": "colorear",
+  "materia": "dibujo",
+  "nivel": "D0-23",
+  "tema": "animales",
+  "misiones": [
+    {
+      "id": "dib-gatito-color-01",
+      "tipo": "colorear",
+      "titulo": "Gatito",
+      "emoji": "🐱",
+      "instruccion": "Colorea el gatito como tu quieras. Puede ser cafe, gris, naranja o de fantasia!",
+      "imagen_contorno_url": "/dibujo/colorear/D0-23_gatito.svg",
+      "colores_sugeridos": ["#e67e22", "#95a5a6", "#795548", "#f1c40f", "#ff8fab"],
+      "dificultad": "facil"
+    }
+  ]
+}

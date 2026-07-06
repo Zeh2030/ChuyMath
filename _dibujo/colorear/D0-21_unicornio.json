@@ -1,0 +1,21 @@
+{
+  "id": "D0-21_unicornio",
+  "titulo": "Unicornio",
+  "descripcion": "Colorear un unicornio con su cuerno y melena",
+  "tipo": "colorear",
+  "materia": "dibujo",
+  "nivel": "D0-21",
+  "tema": "magico",
+  "misiones": [
+    {
+      "id": "dib-unicornio-color-01",
+      "tipo": "colorear",
+      "titulo": "Unicornio",
+      "emoji": "🦄",
+      "instruccion": "Colorea el unicornio! Su melena puede ser de muchos colores y el cuerno dorado.",
+      "imagen_contorno_url": "/dibujo/colorear/D0-21_unicornio.svg",
+      "colores_sugeridos": ["#e91e63", "#9b59b6", "#f1c40f", "#3498db", "#ff8fab"],
+      "dificultad": "facil"
+    }
+  ]
+}

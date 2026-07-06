@@ -1,0 +1,21 @@
+{
+  "id": "D0-29_casita-hongo",
+  "titulo": "Casita de Hongo",
+  "descripcion": "Colorear una casita dentro de un hongo",
+  "tipo": "colorear",
+  "materia": "dibujo",
+  "nivel": "D0-29",
+  "tema": "magico",
+  "misiones": [
+    {
+      "id": "dib-casita-hongo-color-01",
+      "tipo": "colorear",
+      "titulo": "Casita de Hongo",
+      "emoji": "🍄",
+      "instruccion": "Colorea la casita de hongo! El sombrero rojo con puntos blancos y la puerta de cafe.",
+      "imagen_contorno_url": "/dibujo/colorear/D0-29_casita-hongo.svg",
+      "colores_sugeridos": ["#e74c3c", "#795548", "#f1c40f", "#2ecc71", "#3498db"],
+      "dificultad": "facil"
+    }
+  ]
+}

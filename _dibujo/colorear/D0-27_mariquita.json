@@ -1,0 +1,21 @@
+{
+  "id": "D0-27_mariquita",
+  "titulo": "Mariquita",
+  "descripcion": "Colorear una mariquita con sus puntos",
+  "tipo": "colorear",
+  "materia": "dibujo",
+  "nivel": "D0-27",
+  "tema": "animales",
+  "misiones": [
+    {
+      "id": "dib-mariquita-color-01",
+      "tipo": "colorear",
+      "titulo": "Mariquita",
+      "emoji": "🐞",
+      "instruccion": "La mariquita es roja con puntos negros y su cabecita negra. Coloreala!",
+      "imagen_contorno_url": "/dibujo/colorear/D0-27_mariquita.svg",
+      "colores_sugeridos": ["#e74c3c", "#2c3e50", "#e67e22"],
+      "dificultad": "facil"
+    }
+  ]
+}

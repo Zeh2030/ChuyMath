@@ -1,0 +1,21 @@
+{
+  "id": "D0-26_corazones",
+  "titulo": "Corazones",
+  "descripcion": "Colorear un corazon grande y varios pequenos",
+  "tipo": "colorear",
+  "materia": "dibujo",
+  "nivel": "D0-26",
+  "tema": "magico",
+  "misiones": [
+    {
+      "id": "dib-corazones-color-01",
+      "tipo": "colorear",
+      "titulo": "Corazones",
+      "emoji": "❤️",
+      "instruccion": "Colorea todos los corazones! Puedes usar un color distinto para cada uno.",
+      "imagen_contorno_url": "/dibujo/colorear/D0-26_corazones.svg",
+      "colores_sugeridos": ["#e74c3c", "#ff8fab", "#9b59b6", "#e67e22", "#e91e63"],
+      "dificultad": "facil"
+    }
+  ]
+}
