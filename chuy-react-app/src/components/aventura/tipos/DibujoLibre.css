@@ -1,5 +1,5 @@
 .dlibre-container {
-  max-width: 800px;
+  max-width: min(900px, 96vw);
   margin: 0 auto;
   padding: 10px;
   display: flex;
@@ -30,7 +30,7 @@
   display: flex;
   gap: 12px;
   width: 100%;
-  align-items: stretch;
+  align-items: flex-start;
 }
 
 .dlibre-referencia {
@@ -71,7 +71,7 @@
 
 .dlibre-canvas-wrapper {
   width: 100%;
-  height: 380px;
+  height: clamp(300px, 56vh, 640px);
   border: 3px solid #ddd;
   border-radius: 12px;
   overflow: hidden;
@@ -199,5 +199,4 @@
   .dlibre-workspace { flex-direction: column; }
   .dlibre-referencia { flex: none; }
   .dlibre-ref-img { max-height: 160px; }
-  .dlibre-canvas-wrapper { height: 300px; }
 }

@@ -94,7 +94,7 @@
 /* ---- Vista de juego ---- */
 .peques-juego {
   position: relative;
-  max-width: 760px;
+  max-width: min(940px, 96vw);
   margin: 0 auto;
   padding-top: 56px;
 }
