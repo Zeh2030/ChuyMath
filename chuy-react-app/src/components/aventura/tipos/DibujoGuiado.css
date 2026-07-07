@@ -313,5 +313,5 @@
 /* Horizontal (landscape): usar más ancho, lienzo más bajo para que quepa el toolbar */
 @media (orientation: landscape) and (min-width: 640px) {
   .dguiado-container { max-width: min(1150px, 94vw); }
-  .dguiado-canvas-wrapper { height: clamp(280px, 70vh, 640px); }
+  .dguiado-canvas-wrapper { height: clamp(260px, 58vh, 540px); }
 }
