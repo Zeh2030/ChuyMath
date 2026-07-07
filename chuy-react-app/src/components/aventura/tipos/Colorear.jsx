@@ -5,8 +5,9 @@ import { loadDibujo, saveDibujo, deleteDibujo } from '../../../utils/dibujoStora
 import MezcladorLienzo from './MezcladorLienzo';
 
 /**
- * Colorear - Canvas con imagen de contorno como fondo.
- * El niño pinta encima con dedo/mouse.
+ * Colorear - Dos capas: (1) un canvas de PINTURA donde el niño pinta; (2) el contorno
+ * como imagen ENCIMA con `mix-blend-mode: multiply`, así las líneas negras se quedan
+ * siempre visibles (la pintura pasa por debajo) y el borrador solo borra pintura.
  */
 const Colorear = ({ mision, onCompletar }) => {
   const { activeProfileId } = useAuth();
@@ -21,11 +22,8 @@ const Colorear = ({ mision, onCompletar }) => {
   const [color, setColor] = useState('#e74c3c');
   const [lineWidth, setLineWidth] = useState(12);
   const [tool, setTool] = useState('brush'); // brush | eraser
-  const [bgLoaded, setBgLoaded] = useState(false);
-  const [bgError, setBgError] = useState(false);
   const [tieneGuardado, setTieneGuardado] = useState(false);
   const [coloresMezclados, setColoresMezclados] = useState([]);
-  const bgImageRef = useRef(null);
 
   const coloresSugeridos = mision.colores_sugeridos || null;
 
@@ -51,39 +49,7 @@ const Colorear = ({ mision, onCompletar }) => {
     { value: 24, label: 'Grueso' },
   ];
 
-  // Load background image
-  useEffect(() => {
-    if (mision.imagen_contorno_url) {
-      const img = new Image();
-      img.crossOrigin = 'anonymous';
-      img.onload = () => {
-        bgImageRef.current = img;
-        setBgLoaded(true);
-      };
-      img.onerror = () => setBgError(true);
-      img.src = mision.imagen_contorno_url;
-    } else {
-      setBgLoaded(true); // No background needed
-    }
-  }, [mision.imagen_contorno_url]);
-
-  // Dibuja el fondo de contorno (sin trazos guardados). Helper interno.
-  const drawBackground = useCallback(() => {
-    const canvas = canvasRef.current;
-    if (!canvas || !bgImageRef.current) return;
-    const ctx = canvas.getContext('2d');
-    // Reset del modo de composicion: si el nino uso el borrador, quedaba en
-    // 'destination-out' y el contorno base se dibujaba como mascara (invisible).
-    ctx.globalCompositeOperation = 'source-over';
-    const img = bgImageRef.current;
-    const scale = Math.min(canvas.width / img.width, canvas.height / img.height);
-    const x = (canvas.width - img.width * scale) / 2;
-    const y = (canvas.height - img.height * scale) / 2;
-    ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
-  }, []);
-
-  // Initialize canvas. Si hay dibujo guardado, lo carga (incluye fondo + trazos).
-  // Si no, solo dibuja el fondo.
+  // Inicializa el canvas de PINTURA (fondo blanco + trazos guardados si hay).
   const initCanvas = useCallback(() => {
     const canvas = canvasRef.current;
     const wrapper = wrapperRef.current;
@@ -95,34 +61,31 @@ const Colorear = ({ mision, onCompletar }) => {
     const ctx = canvas.getContext('2d');
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     const saved = loadDibujo(userId, misionId);
     if (saved) {
       const savedImg = new Image();
-      savedImg.onload = () => {
-        ctx.drawImage(savedImg, 0, 0, canvas.width, canvas.height);
-      };
+      savedImg.onload = () => ctx.drawImage(savedImg, 0, 0, canvas.width, canvas.height);
       savedImg.src = saved;
       setTieneGuardado(true);
     } else {
-      drawBackground();
       setTieneGuardado(false);
     }
-  }, [userId, misionId, drawBackground]);
+  }, [userId, misionId]);
 
   useEffect(() => {
-    if (bgLoaded) {
-      initCanvas();
-    }
-  }, [bgLoaded, initCanvas]);
+    const t = setTimeout(initCanvas, 50);
+    return () => clearTimeout(t);
+  }, [initCanvas]);
 
   useEffect(() => {
-    const handleResize = () => {
-      if (bgLoaded) initCanvas();
-    };
+    const handleResize = () => initCanvas();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [bgLoaded, initCanvas]);
+  }, [initCanvas]);
 
   const getCoords = (e) => {
     const canvas = canvasRef.current;
@@ -140,7 +103,10 @@ const Colorear = ({ mision, onCompletar }) => {
     ctx.beginPath();
     ctx.moveTo(x, y);
     if (tool === 'eraser') {
-      ctx.globalCompositeOperation = 'destination-out';
+      // El borrador pinta de BLANCO (no destination-out): así solo tapa la pintura,
+      // y el contorno (capa de arriba) nunca se ve afectado.
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.strokeStyle = 'white';
       ctx.lineWidth = lineWidth * 2;
     } else {
       ctx.globalCompositeOperation = 'source-over';
@@ -169,14 +135,15 @@ const Colorear = ({ mision, onCompletar }) => {
     }
   };
 
-  // "Limpiar" descarta los trazos en pantalla pero conserva el dibujo guardado en
-  // localStorage. Repinta solo el fondo de contorno.
+  // "Limpiar" descarta la pintura (rellena de blanco). El contorno es una capa
+  // aparte encima, así que NO se borra.
   const clearCanvas = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawBackground();
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
   };
 
   const handleTerminar = () => {
@@ -206,17 +173,9 @@ const Colorear = ({ mision, onCompletar }) => {
     setColoresMezclados(prev => (prev.includes(hex) ? prev : [...prev, hex].slice(-6)));
   };
 
-  if (!bgLoaded && !bgError) {
-    return (
-      <div className="colorear-container">
-        <div className="colorear-loading">Cargando imagen...</div>
-      </div>
-    );
-  }
-
   return (
     <div className="colorear-container">
-      {/* Canvas */}
+      {/* Canvas de pintura + contorno encima (multiply) */}
       <div className="colorear-canvas-wrapper" ref={wrapperRef}>
         <canvas
           ref={canvasRef}
@@ -228,6 +187,14 @@ const Colorear = ({ mision, onCompletar }) => {
           onTouchMove={draw}
           onTouchEnd={stopDrawing}
         />
+        {mision.imagen_contorno_url && (
+          <img
+            className="colorear-contorno"
+            src={mision.imagen_contorno_url}
+            alt=""
+            draggable={false}
+          />
+        )}
       </div>
 
       {/* Toolbar */}

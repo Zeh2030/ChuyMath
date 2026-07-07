@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: min(860px, 96vw);
+  max-width: min(900px, 96vw);
   margin: 0 auto;
   gap: 12px;
 }
@@ -17,6 +17,7 @@
 
 /* Canvas */
 .colorear-canvas-wrapper {
+  position: relative;
   width: 100%;
   height: clamp(320px, 62vh, 820px);
   border: 3px solid #ddd;
@@ -30,6 +31,19 @@
 
 .colorear-canvas-wrapper canvas {
   display: block;
+}
+
+/* Contorno como capa encima: multiply deja pasar la pintura por debajo y
+   mantiene las lineas negras siempre visibles. No recibe toques. */
+.colorear-contorno {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  user-select: none;
 }
 
 /* Toolbar */
