@@ -174,3 +174,9 @@
 @media (max-width: 480px) {
   .colorear-color-btn { width: 28px; height: 28px; }
 }
+
+/* Horizontal (landscape): más ancho, lienzo más bajo */
+@media (orientation: landscape) and (min-width: 640px) {
+  .colorear-container { max-width: min(1150px, 94vw); }
+  .colorear-canvas-wrapper { height: clamp(280px, 66vh, 560px); }
+}

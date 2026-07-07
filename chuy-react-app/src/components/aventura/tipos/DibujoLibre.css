@@ -200,3 +200,9 @@
   .dlibre-referencia { flex: none; }
   .dlibre-ref-img { max-height: 160px; }
 }
+
+/* Horizontal (landscape): más ancho, lienzo más bajo */
+@media (orientation: landscape) and (min-width: 640px) {
+  .dlibre-container { max-width: min(1150px, 94vw); }
+  .dlibre-canvas-wrapper { height: clamp(280px, 66vh, 560px); }
+}

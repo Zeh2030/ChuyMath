@@ -98,6 +98,9 @@
   margin: 0 auto;
   padding-top: 56px;
 }
+@media (orientation: landscape) {
+  .peques-juego { max-width: min(1200px, 96vw); }
+}
 .peques-home {
   position: fixed;
   top: 14px;

@@ -23,6 +23,8 @@ const DibujoGuiado = ({ mision, onCompletar }) => {
   const [lineWidth, setLineWidth] = useState(4);
   const [tool, setTool] = useState('brush');
   const [tieneGuardado, setTieneGuardado] = useState(false);
+  const [refVisible, setRefVisible] = useState(true);
+  const [refGrande, setRefGrande] = useState(false);
 
   const { pasos = [], imagen_final_url } = mision;
 
@@ -205,30 +207,34 @@ const DibujoGuiado = ({ mision, onCompletar }) => {
         <p className="dguiado-step-instruccion">{paso.instruccion}</p>
       </div>
 
-      {/* Main area: reference + canvas */}
-      <div className="dguiado-workspace">
-        {/* Reference image */}
-        {paso.imagen_url && (
-          <div className="dguiado-referencia">
-            <img src={paso.imagen_url} alt={`Paso ${pasoActual + 1}`} />
-          </div>
-        )}
-
-        {/* Canvas */}
-        <div className="dguiado-canvas-area">
-          <div className="dguiado-canvas-wrapper" ref={wrapperRef}>
-            <canvas
-              ref={canvasRef}
-              onMouseDown={startDrawing}
-              onMouseMove={draw}
-              onMouseUp={stopDrawing}
-              onMouseLeave={stopDrawing}
-              onTouchStart={startDrawing}
-              onTouchMove={draw}
-              onTouchEnd={stopDrawing}
-            />
-          </div>
+      {/* Canvas a ancho completo + referencia flotante en la esquina */}
+      <div className="dguiado-canvas-area">
+        <div className="dguiado-canvas-wrapper" ref={wrapperRef}>
+          <canvas
+            ref={canvasRef}
+            onMouseDown={startDrawing}
+            onMouseMove={draw}
+            onMouseUp={stopDrawing}
+            onMouseLeave={stopDrawing}
+            onTouchStart={startDrawing}
+            onTouchMove={draw}
+            onTouchEnd={stopDrawing}
+          />
         </div>
+
+        {paso.imagen_url && (refVisible ? (
+          <div className={`dguiado-ref-flotante ${refGrande ? 'grande' : ''}`}>
+            <img
+              src={paso.imagen_url}
+              alt={`Paso ${pasoActual + 1}`}
+              onClick={() => setRefGrande((v) => !v)}
+              title="Toca para agrandar o achicar"
+            />
+            <button className="dguiado-ref-cerrar" onClick={() => setRefVisible(false)} title="Ocultar modelo">✕</button>
+          </div>
+        ) : (
+          <button className="dguiado-ref-ver" onClick={() => setRefVisible(true)} title="Ver modelo">👁 Modelo</button>
+        ))}
       </div>
 
       {/* Tools */}
