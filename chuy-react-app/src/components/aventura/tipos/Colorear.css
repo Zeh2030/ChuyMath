@@ -18,7 +18,7 @@
 /* Canvas */
 .colorear-canvas-wrapper {
   width: 100%;
-  height: clamp(320px, 56vh, 660px);
+  height: clamp(320px, 62vh, 820px);
   border: 3px solid #ddd;
   border-radius: 16px;
   overflow: hidden;
@@ -178,5 +178,5 @@
 /* Horizontal (landscape): más ancho, lienzo más bajo */
 @media (orientation: landscape) and (min-width: 640px) {
   .colorear-container { max-width: min(1150px, 94vw); }
-  .colorear-canvas-wrapper { height: clamp(280px, 66vh, 560px); }
+  .colorear-canvas-wrapper { height: clamp(280px, 70vh, 640px); }
 }

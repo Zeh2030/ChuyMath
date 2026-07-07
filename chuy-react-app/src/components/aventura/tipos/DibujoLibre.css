@@ -71,7 +71,7 @@
 
 .dlibre-canvas-wrapper {
   width: 100%;
-  height: clamp(300px, 56vh, 640px);
+  height: clamp(300px, 62vh, 800px);
   border: 3px solid #ddd;
   border-radius: 12px;
   overflow: hidden;
@@ -204,5 +204,5 @@
 /* Horizontal (landscape): más ancho, lienzo más bajo */
 @media (orientation: landscape) and (min-width: 640px) {
   .dlibre-container { max-width: min(1150px, 94vw); }
-  .dlibre-canvas-wrapper { height: clamp(280px, 66vh, 560px); }
+  .dlibre-canvas-wrapper { height: clamp(280px, 70vh, 640px); }
 }
