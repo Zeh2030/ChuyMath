@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect, useCallback } from 'react';
 import './DibujoGuiado.css';
 import { useAuth } from '../../../hooks/useAuth.jsx';
 import { loadDibujo, saveDibujo, deleteDibujo } from '../../../utils/dibujoStorage';
+import { useLienzoFullscreen } from '../../../hooks/useLienzoFullscreen';
 
 /**
  * DibujoGuiado - Tutorial paso a paso con imagen de referencia + canvas para dibujar.
@@ -16,6 +17,7 @@ const DibujoGuiado = ({ mision, onCompletar }) => {
   const [pasoActual, setPasoActual] = useState(0);
   const canvasRef = useRef(null);
   const wrapperRef = useRef(null);
+  const rootRef = useRef(null);
   // Flag de dibujo en un ref (no estado): se actualiza al instante, sin esperar
   // el re-render de React. Con estado, los trazos rapidos/cortos se perdian.
   const isDrawingRef = useRef(false);
@@ -25,6 +27,7 @@ const DibujoGuiado = ({ mision, onCompletar }) => {
   const [tieneGuardado, setTieneGuardado] = useState(false);
   const [refVisible, setRefVisible] = useState(true);
   const [refGrande, setRefGrande] = useState(false);
+  const { fullscreen, toggle: toggleFullscreen } = useLienzoFullscreen({ canvasRef, wrapperRef, rootRef });
 
   const { pasos = [], imagen_final_url } = mision;
 
@@ -200,7 +203,10 @@ const DibujoGuiado = ({ mision, onCompletar }) => {
   const paso = pasos[pasoActual];
 
   return (
-    <div className="dguiado-container">
+    <div className={`dguiado-container ${fullscreen ? 'dguiado-fullscreen' : ''}`} ref={rootRef}>
+      {fullscreen && (
+        <button className="dguiado-fs-salir" onClick={toggleFullscreen} title="Salir de pantalla completa">✕</button>
+      )}
       {/* Step header */}
       <div className="dguiado-step-header">
         <span className="dguiado-step-num">Paso {pasoActual + 1} de {pasos.length}</span>
@@ -267,6 +273,7 @@ const DibujoGuiado = ({ mision, onCompletar }) => {
           ))}
         </div>
         <button className="dguiado-limpiar-btn" onClick={clearCanvas}>🗑️</button>
+        <button className="dguiado-fs-toggle" onClick={toggleFullscreen} title="Pantalla completa">⛶</button>
         {tieneGuardado && (
           <button
             className="dguiado-borrar-guardado-btn"

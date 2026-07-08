@@ -315,3 +315,52 @@
   .dguiado-container { max-width: min(1150px, 94vw); }
   .dguiado-canvas-wrapper { height: clamp(260px, 58vh, 540px); }
 }
+
+/* === PANTALLA COMPLETA === */
+.dguiado-container.dguiado-fullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  max-width: none;
+  margin: 0;
+  padding: 10px 12px 14px;
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+/* El lienzo llena todo el espacio que sobra (adiós al hueco, en cualquier orientación) */
+.dguiado-fullscreen .dguiado-step-header { margin-bottom: 0; }
+.dguiado-fullscreen .dguiado-canvas-area { flex: 1; min-height: 0; }
+.dguiado-fullscreen .dguiado-canvas-wrapper { height: 100%; }
+.dguiado-fullscreen .dguiado-toolbar { margin-bottom: 0; }
+.dguiado-fullscreen .dguiado-nav { margin-bottom: 0; }
+
+.dguiado-fs-toggle {
+  border: none;
+  background: #eef2f7;
+  border-radius: 16px;
+  padding: 5px 12px;
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+.dguiado-fs-toggle:hover { background: #dfe7ef; }
+
+.dguiado-fs-salir {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 1001;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: #e74c3c;
+  color: white;
+  font-size: 1.3rem;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+}
+.dguiado-fs-salir:hover { transform: scale(1.06); }
