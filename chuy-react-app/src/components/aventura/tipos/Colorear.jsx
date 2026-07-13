@@ -3,6 +3,7 @@ import './Colorear.css';
 import { useAuth } from '../../../hooks/useAuth.jsx';
 import { loadDibujo, saveDibujo, deleteDibujo } from '../../../utils/dibujoStorage';
 import MezcladorLienzo from './MezcladorLienzo';
+import { useLienzoFullscreen } from '../../../hooks/useLienzoFullscreen';
 
 /**
  * Colorear - Dos capas: (1) un canvas de PINTURA donde el niño pinta; (2) el contorno
@@ -16,6 +17,7 @@ const Colorear = ({ mision, onCompletar }) => {
 
   const canvasRef = useRef(null);
   const wrapperRef = useRef(null);
+  const rootRef = useRef(null);
   // Flag de dibujo en un ref (no estado): se actualiza al instante, sin esperar
   // el re-render de React. Con estado, los trazos rapidos/cortos se perdian.
   const isDrawingRef = useRef(false);
@@ -24,6 +26,7 @@ const Colorear = ({ mision, onCompletar }) => {
   const [tool, setTool] = useState('brush'); // brush | eraser
   const [tieneGuardado, setTieneGuardado] = useState(false);
   const [coloresMezclados, setColoresMezclados] = useState([]);
+  const { fullscreen, toggle: toggleFullscreen } = useLienzoFullscreen({ canvasRef, wrapperRef, rootRef });
 
   const coloresSugeridos = mision.colores_sugeridos || null;
 
@@ -80,12 +83,8 @@ const Colorear = ({ mision, onCompletar }) => {
     const t = setTimeout(initCanvas, 50);
     return () => clearTimeout(t);
   }, [initCanvas]);
-
-  useEffect(() => {
-    const handleResize = () => initCanvas();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [initCanvas]);
+  // El re-ajuste al cambiar de tamaño (rotar / pantalla completa) lo maneja
+  // useLienzoFullscreen (preserva la pintura), no initCanvas (recargaba lo guardado).
 
   const getCoords = (e) => {
     const canvas = canvasRef.current;
@@ -174,7 +173,10 @@ const Colorear = ({ mision, onCompletar }) => {
   };
 
   return (
-    <div className="colorear-container">
+    <div className={`colorear-container ${fullscreen ? 'colorear-fullscreen' : ''}`} ref={rootRef}>
+      {fullscreen && (
+        <button className="colorear-fs-salir" onClick={toggleFullscreen} title="Salir de pantalla completa">✕</button>
+      )}
       {/* Canvas de pintura + contorno encima (multiply) */}
       <div className="colorear-canvas-wrapper" ref={wrapperRef}>
         <canvas
@@ -243,6 +245,7 @@ const Colorear = ({ mision, onCompletar }) => {
         <button className="colorear-limpiar-btn" onClick={clearCanvas}>
           🗑️ Limpiar
         </button>
+        <button className="colorear-fs-toggle" onClick={toggleFullscreen} title="Pantalla completa">⛶</button>
 
         {tieneGuardado && (
           <button

@@ -3,6 +3,7 @@ import './DibujoLibre.css';
 import { useAuth } from '../../../hooks/useAuth.jsx';
 import { loadDibujo, saveDibujo, deleteDibujo } from '../../../utils/dibujoStorage';
 import MezcladorLienzo from './MezcladorLienzo';
+import { useLienzoFullscreen } from '../../../hooks/useLienzoFullscreen';
 
 /**
  * DibujoLibre - Canvas libre con imagen de referencia opcional y sugerencias.
@@ -15,6 +16,7 @@ const DibujoLibre = ({ mision, onCompletar }) => {
 
   const canvasRef = useRef(null);
   const wrapperRef = useRef(null);
+  const rootRef = useRef(null);
   // Flag de dibujo en un ref (no estado): se actualiza al instante, sin esperar
   // el re-render de React. Con estado, los trazos rapidos/cortos se perdian.
   const isDrawingRef = useRef(false);
@@ -24,6 +26,7 @@ const DibujoLibre = ({ mision, onCompletar }) => {
   const [showRef, setShowRef] = useState(true);
   const [tieneGuardado, setTieneGuardado] = useState(false);
   const [coloresMezclados, setColoresMezclados] = useState([]);
+  const { fullscreen, toggle: toggleFullscreen } = useLienzoFullscreen({ canvasRef, wrapperRef, rootRef });
 
   const { imagen_referencia_url, sugerencias = [] } = mision;
 
@@ -149,7 +152,10 @@ const DibujoLibre = ({ mision, onCompletar }) => {
   };
 
   return (
-    <div className="dlibre-container">
+    <div className={`dlibre-container ${fullscreen ? 'dlibre-fullscreen' : ''}`} ref={rootRef}>
+      {fullscreen && (
+        <button className="dlibre-fs-salir" onClick={toggleFullscreen} title="Salir de pantalla completa">✕</button>
+      )}
       {/* Suggestions */}
       {sugerencias.length > 0 && (
         <div className="dlibre-sugerencias">
@@ -229,6 +235,7 @@ const DibujoLibre = ({ mision, onCompletar }) => {
           ))}
         </div>
         <button className="dlibre-limpiar-btn" onClick={clearCanvas}>🗑️ Limpiar</button>
+        <button className="dlibre-fs-toggle" onClick={toggleFullscreen} title="Pantalla completa">⛶</button>
         {tieneGuardado && (
           <button
             className="dlibre-borrar-guardado-btn"
