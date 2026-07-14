@@ -451,5 +451,320 @@
       "imagen_contorno_url": "/dibujo/colorear/D0-07_flor-del-jardin.svg",
       "colores_sugeridos": ["#e91e63", "#f1c40f", "#2ecc71", "#e74c3c"]
     }
+  },
+  {
+    "id": "peque-toca-animales",
+    "titulo": "¡Toca! Animales",
+    "emoji": "🐾",
+    "color": "#b8e0d2",
+    "orden": 2,
+    "kind": "nativo",
+    "mision": { "id": "peque-toca-animales", "tipo": "tap-and-celebrate", "emojis": ["🐶", "🐱", "🐰", "🦊", "🐻", "🐸", "🐵", "🦁", "🐮", "🐷"] }
+  },
+  {
+    "id": "peque-toca-espacio",
+    "titulo": "¡Toca! Espacio",
+    "emoji": "🚀",
+    "color": "#c3b1e1",
+    "orden": 3,
+    "kind": "nativo",
+    "mision": { "id": "peque-toca-espacio", "tipo": "tap-and-celebrate", "emojis": ["🚀", "⭐", "🌙", "🪐", "☄️", "👽", "🛸", "✨", "🌟", "💫"] }
+  },
+  {
+    "id": "peque-diferente-transporte",
+    "titulo": "Diferente: Transporte",
+    "emoji": "🚗",
+    "color": "#cdb4db",
+    "orden": 14,
+    "kind": "nativo",
+    "mision": {
+      "id": "peque-diferente-transporte",
+      "tipo": "cual-es-diferente",
+      "retos": [
+        { "iguales": "🚗", "diferente": "✈️", "total": 4, "pos": 2 },
+        { "iguales": "🚌", "diferente": "🚲", "total": 5, "pos": 0 },
+        { "iguales": "🚂", "diferente": "🚁", "total": 4, "pos": 3 },
+        { "iguales": "⛵", "diferente": "🚗", "total": 5, "pos": 1 },
+        { "iguales": "🚀", "diferente": "🚌", "total": 6, "pos": 4 },
+        { "iguales": "🚲", "diferente": "⛵", "total": 6, "pos": 2 },
+        { "iguales": "🚁", "diferente": "🚗", "total": 5, "pos": 3 },
+        { "iguales": "✈️", "diferente": "🚂", "total": 6, "pos": 5 }
+      ]
+    }
+  },
+  {
+    "id": "peque-diferente-comida",
+    "titulo": "Diferente: Comida",
+    "emoji": "🍔",
+    "color": "#ffd8a8",
+    "orden": 15,
+    "kind": "nativo",
+    "mision": {
+      "id": "peque-diferente-comida",
+      "tipo": "cual-es-diferente",
+      "retos": [
+        { "iguales": "🍔", "diferente": "🍕", "total": 4, "pos": 2 },
+        { "iguales": "🍎", "diferente": "🍔", "total": 5, "pos": 0 },
+        { "iguales": "🍦", "diferente": "🍩", "total": 4, "pos": 3 },
+        { "iguales": "🌭", "diferente": "🍕", "total": 5, "pos": 1 },
+        { "iguales": "🍟", "diferente": "🍎", "total": 6, "pos": 4 },
+        { "iguales": "🍰", "diferente": "🍇", "total": 6, "pos": 2 },
+        { "iguales": "🥤", "diferente": "🍔", "total": 5, "pos": 3 },
+        { "iguales": "🍪", "diferente": "🍌", "total": 6, "pos": 5 }
+      ]
+    }
+  },
+  {
+    "id": "peque-memoria-transporte",
+    "titulo": "Memoria: Transporte",
+    "emoji": "🚗",
+    "color": "#a0c4ff",
+    "orden": 23,
+    "kind": "nativo",
+    "mision": { "id": "peque-memoria-transporte", "tipo": "memoria", "emojis": ["🚗", "🚌", "✈️", "🚂", "🚁", "⛵"], "pares": 4 }
+  },
+  {
+    "id": "peque-memoria-dificil",
+    "titulo": "Memoria difícil",
+    "emoji": "🧠",
+    "color": "#ff8fab",
+    "orden": 24,
+    "kind": "nativo",
+    "mision": { "id": "peque-memoria-dificil", "tipo": "memoria", "emojis": ["🐶", "🐱", "🦊", "🐰", "🐻", "🐼", "🦁", "🐸", "🐵", "🐮"], "pares": 6 }
+  },
+  {
+    "id": "peque-sombras-naturaleza",
+    "titulo": "Sombras: Naturaleza",
+    "emoji": "🌳",
+    "color": "#b7e4c7",
+    "orden": 34,
+    "kind": "nativo",
+    "mision": {
+      "id": "peque-sombras-naturaleza",
+      "tipo": "relaciona-sombras",
+      "retos": [
+        { "objeto": "🌳", "opciones": ["🌵", "🌳", "🌷"] },
+        { "objeto": "🌻", "opciones": ["🌻", "🍄", "🌸"] },
+        { "objeto": "🍄", "opciones": ["🌲", "🍄", "🌷"] },
+        { "objeto": "🌙", "opciones": ["☀️", "🌙", "⭐"] },
+        { "objeto": "🌈", "opciones": ["☁️", "🌈", "⚡"] },
+        { "objeto": "🌵", "opciones": ["🌴", "🌵", "🌾"] }
+      ]
+    }
+  },
+  {
+    "id": "peque-sombras-ropa",
+    "titulo": "Sombras: Ropa",
+    "emoji": "👕",
+    "color": "#ffc9c9",
+    "orden": 35,
+    "kind": "nativo",
+    "mision": {
+      "id": "peque-sombras-ropa",
+      "tipo": "relaciona-sombras",
+      "retos": [
+        { "objeto": "👕", "opciones": ["👗", "👕", "🧦"] },
+        { "objeto": "👗", "opciones": ["👗", "👖", "🧢"] },
+        { "objeto": "👟", "opciones": ["🧦", "👟", "🧤"] },
+        { "objeto": "🧢", "opciones": ["👒", "🧢", "👑"] },
+        { "objeto": "🧤", "opciones": ["🧤", "🧣", "🧦"] },
+        { "objeto": "👖", "opciones": ["👕", "👖", "👗"] }
+      ]
+    }
+  },
+  {
+    "id": "peque-contar-frutas",
+    "titulo": "Contar: Frutas",
+    "emoji": "🍎",
+    "color": "#ffb3c1",
+    "orden": 55,
+    "kind": "nativo",
+    "mision": {
+      "id": "peque-contar-frutas",
+      "tipo": "contar",
+      "retos": [
+        { "emoji": "🍎", "cantidad": 3, "opciones": [2, 3, 4] },
+        { "emoji": "🍓", "cantidad": 5, "opciones": [5, 4, 6] },
+        { "emoji": "🍌", "cantidad": 2, "opciones": [1, 2, 3] },
+        { "emoji": "🍇", "cantidad": 6, "opciones": [5, 6, 7] },
+        { "emoji": "🍊", "cantidad": 4, "opciones": [3, 4, 5] },
+        { "emoji": "🍒", "cantidad": 7, "opciones": [7, 6, 8] }
+      ]
+    }
+  },
+  {
+    "id": "peque-contar-alto",
+    "titulo": "Contar más alto",
+    "emoji": "🔟",
+    "color": "#74c0fc",
+    "orden": 56,
+    "kind": "nativo",
+    "mision": {
+      "id": "peque-contar-alto",
+      "tipo": "contar",
+      "retos": [
+        { "emoji": "⭐", "cantidad": 7, "opciones": [6, 7, 8] },
+        { "emoji": "🎈", "cantidad": 9, "opciones": [9, 8, 10] },
+        { "emoji": "🐟", "cantidad": 8, "opciones": [7, 8, 9] },
+        { "emoji": "🍪", "cantidad": 10, "opciones": [9, 10, 8] },
+        { "emoji": "🌸", "cantidad": 6, "opciones": [6, 5, 7] },
+        { "emoji": "🐤", "cantidad": 8, "opciones": [8, 7, 9] }
+      ]
+    }
+  },
+  {
+    "id": "peque-que-sigue-colores",
+    "titulo": "¿Qué sigue? Colores",
+    "emoji": "🌈",
+    "color": "#95d5b2",
+    "orden": 57,
+    "kind": "nativo",
+    "mision": {
+      "id": "peque-que-sigue-colores",
+      "tipo": "que-sigue",
+      "retos": [
+        { "secuencia": ["🔴", "🔵", "🔴", "🔵"], "opciones": ["🔴", "🟡", "🔵"], "respuesta": "🔴" },
+        { "secuencia": ["🟢", "🟡", "🟢", "🟡"], "opciones": ["🟢", "🔴", "🟡"], "respuesta": "🟢" },
+        { "secuencia": ["🔵", "🟣", "🔵", "🟣"], "opciones": ["🔵", "🟢", "🟣"], "respuesta": "🔵" },
+        { "secuencia": ["🟠", "🟡", "🟠", "🟡"], "opciones": ["🟠", "🔴", "🟡"], "respuesta": "🟠" },
+        { "secuencia": ["🔴", "🟢", "🔵", "🔴", "🟢"], "opciones": ["🔵", "🟡", "🔴"], "respuesta": "🔵" }
+      ]
+    }
+  },
+  {
+    "id": "peque-que-sigue-abc",
+    "titulo": "¿Qué sigue? Difícil",
+    "emoji": "🔀",
+    "color": "#b8e0d2",
+    "orden": 58,
+    "kind": "nativo",
+    "mision": {
+      "id": "peque-que-sigue-abc",
+      "tipo": "que-sigue",
+      "retos": [
+        { "secuencia": ["🐶", "🐱", "🐭", "🐶", "🐱"], "opciones": ["🐭", "🐰", "🐶"], "respuesta": "🐭" },
+        { "secuencia": ["🍎", "🍌", "🍇", "🍎", "🍌"], "opciones": ["🍇", "🍓", "🍎"], "respuesta": "🍇" },
+        { "secuencia": ["⭐", "🌙", "☀️", "⭐", "🌙"], "opciones": ["☀️", "🌈", "⭐"], "respuesta": "☀️" },
+        { "secuencia": ["🔴", "🔵", "🟢", "🔴", "🔵"], "opciones": ["🟢", "🟡", "🔴"], "respuesta": "🟢" },
+        { "secuencia": ["🚗", "🚌", "✈️", "🚗", "🚌"], "opciones": ["✈️", "🚂", "🚗"], "respuesta": "✈️" }
+      ]
+    }
+  },
+  {
+    "id": "peque-tamanos-animales",
+    "titulo": "Grande y pequeño: Animales",
+    "emoji": "🐘",
+    "color": "#ffb3c1",
+    "orden": 59,
+    "kind": "nativo",
+    "mision": {
+      "id": "peque-tamanos-animales",
+      "tipo": "tamanos",
+      "retos": [
+        { "emoji": "🐘", "tamanos": [1, 2.1], "pregunta": "grande", "pos": 1 },
+        { "emoji": "🐭", "tamanos": [2, 1.2, 0.8], "pregunta": "pequeno", "pos": 2 },
+        { "emoji": "🦁", "tamanos": [1, 1.9], "pregunta": "grande", "pos": 1 },
+        { "emoji": "🐢", "tamanos": [1.7, 0.9], "pregunta": "pequeno", "pos": 1 },
+        { "emoji": "🦋", "tamanos": [0.9, 1.5, 2.1], "pregunta": "grande", "pos": 2 },
+        { "emoji": "🐶", "tamanos": [1.3, 2, 0.8], "pregunta": "grande", "pos": 1 }
+      ]
+    }
+  },
+  {
+    "id": "peque-tamanos-cosas",
+    "titulo": "Grande y pequeño: Cosas",
+    "emoji": "🎈",
+    "color": "#ffc9c9",
+    "orden": 60,
+    "kind": "nativo",
+    "mision": {
+      "id": "peque-tamanos-cosas",
+      "tipo": "tamanos",
+      "retos": [
+        { "emoji": "🎈", "tamanos": [1, 2], "pregunta": "grande", "pos": 1 },
+        { "emoji": "⭐", "tamanos": [2.2, 1.3, 0.9], "pregunta": "pequeno", "pos": 2 },
+        { "emoji": "🍩", "tamanos": [1.6, 1], "pregunta": "pequeno", "pos": 1 },
+        { "emoji": "🌻", "tamanos": [1, 1.7, 2.3], "pregunta": "grande", "pos": 2 },
+        { "emoji": "🚗", "tamanos": [0.9, 1.9], "pregunta": "grande", "pos": 1 }
+      ]
+    }
+  },
+  {
+    "id": "peque-mas-menos-animales",
+    "titulo": "Más o menos: Animales",
+    "emoji": "🐶",
+    "color": "#ffe8cc",
+    "orden": 61,
+    "kind": "nativo",
+    "mision": {
+      "id": "peque-mas-menos-animales",
+      "tipo": "mas-menos",
+      "retos": [
+        { "emoji": "🐶", "izq": 3, "der": 5, "pregunta": "mas" },
+        { "emoji": "🐱", "izq": 6, "der": 2, "pregunta": "menos" },
+        { "emoji": "🐰", "izq": 2, "der": 4, "pregunta": "mas" },
+        { "emoji": "🐟", "izq": 5, "der": 1, "pregunta": "menos" },
+        { "emoji": "🐤", "izq": 4, "der": 6, "pregunta": "mas" }
+      ]
+    }
+  },
+  {
+    "id": "peque-mas-menos-cosas",
+    "titulo": "Más o menos: Cosas",
+    "emoji": "🧮",
+    "color": "#ffe066",
+    "orden": 62,
+    "kind": "nativo",
+    "mision": {
+      "id": "peque-mas-menos-cosas",
+      "tipo": "mas-menos",
+      "retos": [
+        { "emoji": "🍎", "izq": 4, "der": 7, "pregunta": "mas" },
+        { "emoji": "⭐", "izq": 6, "der": 3, "pregunta": "menos" },
+        { "emoji": "🎈", "izq": 2, "der": 5, "pregunta": "mas" },
+        { "emoji": "🍬", "izq": 7, "der": 4, "pregunta": "menos" },
+        { "emoji": "🌸", "izq": 3, "der": 6, "pregunta": "mas" }
+      ]
+    }
+  },
+  {
+    "id": "peque-formas-mas",
+    "titulo": "Formas 3",
+    "emoji": "🔶",
+    "color": "#d0bfff",
+    "orden": 63,
+    "kind": "nativo",
+    "mision": {
+      "id": "peque-formas-mas",
+      "tipo": "formas",
+      "retos": [
+        { "nombre": "círculo", "respuesta": "🟢", "opciones": ["🟢", "🔺", "🟨"] },
+        { "nombre": "triángulo", "respuesta": "🔻", "opciones": ["🔻", "🟦", "⭐"] },
+        { "nombre": "cuadrado", "respuesta": "🟨", "opciones": ["🔴", "🟨", "🔺"] },
+        { "nombre": "estrella", "respuesta": "⭐", "opciones": ["❤️", "⭐", "🔷"] },
+        { "nombre": "rombo", "respuesta": "🔶", "opciones": ["🔶", "🟩", "🔺"] },
+        { "nombre": "corazón", "respuesta": "❤️", "opciones": ["⭐", "❤️", "🔵"] }
+      ]
+    }
+  },
+  {
+    "id": "peque-formas-mix",
+    "titulo": "Formas 4",
+    "emoji": "🔷",
+    "color": "#e5dbff",
+    "orden": 64,
+    "kind": "nativo",
+    "mision": {
+      "id": "peque-formas-mix",
+      "tipo": "formas",
+      "retos": [
+        { "nombre": "estrella", "respuesta": "⭐", "opciones": ["🔵", "⭐", "🔺"] },
+        { "nombre": "círculo", "respuesta": "🔴", "opciones": ["🔴", "🟦", "🔷"] },
+        { "nombre": "cuadrado", "respuesta": "🟩", "opciones": ["🟩", "🔵", "❤️"] },
+        { "nombre": "corazón", "respuesta": "💜", "opciones": ["⭐", "💜", "🔺"] },
+        { "nombre": "triángulo", "respuesta": "🔺", "opciones": ["🔺", "🟨", "🔵"] },
+        { "nombre": "rombo", "respuesta": "🔷", "opciones": ["🔷", "🟩", "🔺"] }
+      ]
+    }
   }
 ]
