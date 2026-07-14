@@ -5,18 +5,18 @@
     {
       "id": "zapatillas-01",
       "tipo": "piano-prompter",
-      "titulo": "Las Zapatillas Rojas (mano derecha)",
-      "instruccion": "Sigue las notas con la mano derecha. Tempo Andante, tranquilo.",
-      "autor": "Tradicional Japonesa",
+      "titulo": "Las Zapatillas Rojas (dos manos)",
+      "instruccion": "Ahora con las dos manos: la izquierda acompana con acordes. Tempo Andante, tranquilo.",
+      "autor": "Tradicional Japonesa (Akai Kutsu)",
       "bpm": 76,
-      "dificultad": "principiante",
+      "dificultad": "intermedio",
       "nivel": "P4-01",
       "configuracion": {
         "compas": "4/4",
         "tonalidad": "Dm",
         "clave": "treble"
       },
-      "notas": "\"!mp!\"A3/2 | G3/2 F3/2 E3/2 D3/2 | E3/2 F/2 D3/2 F3/2 | E3/2 F/2 D/2 E/2 F/2 G/2 | A2 z A3/2 | G3/2 F3/2 E3/2 D3/2 | E3/2 F/2 D3/2 F3/2 | E3/2 G/2 F/2 E3/2 F/2 E/2 | D2 |]"
+      "notas": "%%staves {1 2}\nV:1\n!mp!.A | .G .F .E .D | (E3/2 F/2) .D .F | (E3/2 F/2) D/2E/2F/2G/2 | A2 z !mf!.A | .G .F .E .D | (E3/2 F/2) .D .F | (E3/2 G/2) F/2E/2 F/2E/2 | D2 z |]\nV:2 clef=bass\nz | z4 | [A,,^C,]2 [D,F,A,] z | [A,,^C,]2 [D,F,A,]2 | [A,,^C,]2 z2 | z4 | [A,,^C,]2 [D,F,A,] z | E,2 A,,2 | D,2 z |]"
     }
   ]
 }
