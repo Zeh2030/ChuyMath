@@ -1,0 +1,31 @@
+{
+  "id": "P4-T06_clave-sol-agudas",
+  "titulo": "Clave de Sol: Notas Agudas",
+  "tipo": "identifica-nota",
+  "nivel": "P4-T06",
+  "misiones": [
+    {
+      "id": "idn-sol-agudas-01",
+      "tipo": "identifica-nota",
+      "titulo": "Notas agudas con lineas adicionales",
+      "instruccion": "Notas altas de la mano derecha, arriba del pentagrama. Cuenta las lineas hacia arriba.",
+      "clave": "treble",
+      "tonalidad": "C",
+      "nivel": "P4-T06",
+      "retos": [
+        { "nota_abc": "g", "respuesta": "Sol", "opciones": ["Fa", "Sol", "La"] },
+        { "nota_abc": "c'", "respuesta": "Do", "opciones": ["Si", "Do", "Re"] },
+        { "nota_abc": "a", "respuesta": "La", "opciones": ["Sol", "La", "Si"] },
+        { "nota_abc": "e", "respuesta": "Mi", "opciones": ["Re", "Mi", "Fa"] },
+        { "nota_abc": "b", "respuesta": "Si", "opciones": ["La", "Si", "Do"] },
+        { "nota_abc": "d'", "respuesta": "Re", "opciones": ["Do", "Re", "Mi"] },
+        { "nota_abc": "f", "respuesta": "Fa", "opciones": ["Mi", "Fa", "Sol"] },
+        { "nota_abc": "c'", "respuesta": "Do", "opciones": ["Si", "Do", "Re"] },
+        { "nota_abc": "g", "respuesta": "Sol", "opciones": ["Fa", "Sol", "La"] },
+        { "nota_abc": "a", "respuesta": "La", "opciones": ["Sol", "La", "Si"] },
+        { "nota_abc": "b", "respuesta": "Si", "opciones": ["La", "Si", "Do"] },
+        { "nota_abc": "e", "respuesta": "Mi", "opciones": ["Re", "Mi", "Fa"] }
+      ]
+    }
+  ]
+}

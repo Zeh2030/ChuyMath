@@ -1,0 +1,31 @@
+{
+  "id": "P4-T04_clave-fa-graves",
+  "titulo": "Clave de Fa: Notas Graves",
+  "tipo": "identifica-nota",
+  "nivel": "P4-T04",
+  "misiones": [
+    {
+      "id": "idn-fa-graves-01",
+      "tipo": "identifica-nota",
+      "titulo": "Notas graves con lineas adicionales",
+      "instruccion": "Notas muy graves de la mano izquierda, abajo del pentagrama. Cuenta las lineas con calma.",
+      "clave": "bass",
+      "tonalidad": "C",
+      "nivel": "P4-T04",
+      "retos": [
+        { "nota_abc": "G,,", "respuesta": "Sol", "opciones": ["Fa", "Sol", "La"] },
+        { "nota_abc": "C,,", "respuesta": "Do", "opciones": ["Do", "Re", "Mi"] },
+        { "nota_abc": "E,,", "respuesta": "Mi", "opciones": ["Re", "Mi", "Fa"] },
+        { "nota_abc": "A,,", "respuesta": "La", "opciones": ["Sol", "La", "Si"] },
+        { "nota_abc": "B,,", "respuesta": "Si", "opciones": ["La", "Si", "Do"] },
+        { "nota_abc": "D,,", "respuesta": "Re", "opciones": ["Do", "Re", "Mi"] },
+        { "nota_abc": "F,,", "respuesta": "Fa", "opciones": ["Mi", "Fa", "Sol"] },
+        { "nota_abc": "C,,", "respuesta": "Do", "opciones": ["Si", "Do", "Re"] },
+        { "nota_abc": "G,,", "respuesta": "Sol", "opciones": ["Fa", "Sol", "La"] },
+        { "nota_abc": "A,,", "respuesta": "La", "opciones": ["Sol", "La", "Si"] },
+        { "nota_abc": "E,,", "respuesta": "Mi", "opciones": ["Re", "Mi", "Fa"] },
+        { "nota_abc": "B,,", "respuesta": "Si", "opciones": ["La", "Si", "Do"] }
+      ]
+    }
+  ]
+}

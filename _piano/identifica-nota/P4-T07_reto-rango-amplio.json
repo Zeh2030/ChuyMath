@@ -1,0 +1,31 @@
+{
+  "id": "P4-T07_reto-rango-amplio",
+  "titulo": "Reto: Lectura de Rango Amplio (Clave de Sol)",
+  "tipo": "identifica-nota",
+  "nivel": "P4-T07",
+  "misiones": [
+    {
+      "id": "idn-rango-amplio-01",
+      "tipo": "identifica-nota",
+      "titulo": "Misma nota, distinta altura",
+      "instruccion": "Ojo con la octava: no es lo mismo Do que Do alto. Fijate en que linea o espacio esta.",
+      "clave": "treble",
+      "tonalidad": "C",
+      "nivel": "P4-T07",
+      "retos": [
+        { "nota_abc": "C", "respuesta": "Do", "opciones": ["Do", "Do alto", "Re"] },
+        { "nota_abc": "c", "respuesta": "Do alto", "opciones": ["Do", "Do alto", "Si"] },
+        { "nota_abc": "E", "respuesta": "Mi", "opciones": ["Mi", "Mi alto", "Fa"] },
+        { "nota_abc": "d", "respuesta": "Re alto", "opciones": ["Re", "Re alto", "Mi alto"] },
+        { "nota_abc": "G", "respuesta": "Sol", "opciones": ["Fa", "Sol", "La"] },
+        { "nota_abc": "e", "respuesta": "Mi alto", "opciones": ["Do alto", "Re alto", "Mi alto"] },
+        { "nota_abc": "A", "respuesta": "La", "opciones": ["Sol", "La", "Si"] },
+        { "nota_abc": "D", "respuesta": "Re", "opciones": ["Do", "Re", "Mi"] },
+        { "nota_abc": "c", "respuesta": "Do alto", "opciones": ["Do", "Si", "Do alto"] },
+        { "nota_abc": "B", "respuesta": "Si", "opciones": ["La", "Si", "Do"] },
+        { "nota_abc": "F", "respuesta": "Fa", "opciones": ["Mi", "Fa", "Sol"] },
+        { "nota_abc": "d", "respuesta": "Re alto", "opciones": ["Re", "Re alto", "Mi"] }
+      ]
+    }
+  ]
+}
