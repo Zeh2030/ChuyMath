@@ -169,6 +169,13 @@ Un scroll a velocidad constante (px/seg) se desincroniza porque los pixeles no c
 - [x] F1 al oido (2026-07): twinkle-twinkle y test-duraciones (el caso extremo
       donde el motor viejo fallaba) — **"quedo perfecto"**, incluyendo pausas
       y cambios de BPM (mas lento y mas rapido)
-- [ ] F2: zapatillas-rojas (dos manos / grand staff) — deberia funcionar sin
-      cambios: las notas simultaneas comparten punto en el mapa
+- [x] F2 al oido (2026-07): zapatillas-rojas a DOS MANOS (grand staff, con la
+      izquierda recien transcrita del libro) — "sono bien". La limitacion
+      historica de "solo melodias sencillas" queda oficialmente superada.
 - [ ] F3: sonido apagado, repeticiones |: :| si algun dia una pieza las usa
+
+**Pipeline de contenido establecido:** el usuario manda fotos del libro Yamaha
+→ transcripcion a ABC (ambas manos) siguiendo la guia de PROGRAMA_PIANO.md →
+validacion de tiempos por compas → migrar. Ojo con la leccion aprendida en
+zapatillas: los puntos BAJO la cabeza son staccato (`.C`), NO puntillos (`C3/2`)
+— confundirlos infla los compases a 5-6 tiempos.
