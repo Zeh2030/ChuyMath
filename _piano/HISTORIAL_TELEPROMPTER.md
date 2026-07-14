@@ -83,14 +83,31 @@ Un scroll a velocidad constante (px/seg) se desincroniza porque los pixeles no c
 
 ---
 
-## Enfoque 4: Scroll interpolado por nota (ACTUAL — en implementacion)
+## Enfoque 4: Scroll interpolado por nota (IMPLEMENTADO — motor actual)
 
-**Como funciona:**
+**Estado: implementado en 2026-07 (F1).** El sistema de correccion reactiva
+(Enfoque 1) fue ELIMINADO por completo; TimingCallbacks ya no se usa.
+
+**Como funciona (implementacion real):**
 - Dejar notas donde abcjs las renderiza (cero manipulacion SVG)
-- Construir mapa tiempo→posicion desde TimingCallbacks: `[{t: 0, x: 50}, {t: 750, x: 120}, ...]`
-- En el animation loop, dado el tiempo transcurrido, interpolar linealmente entre las dos notas mas cercanas
-- El scroll es suave y continuo (sin saltos)
-- Cada nota llega al playhead exactamente cuando suena
+- Mapa tiempo→posicion PRECOMPUTADO antes de tocar, con la API sincrona de abcjs:
+  `visualObj.setTiming(qpm)` → `visualObj.noteTimings` (cada evento trae
+  `milliseconds` + `elements`). NO se usa TimingCallbacks en tiempo real.
+- La posicion x de cada nota se mide UNA vez con getBoundingClientRect relativo
+  al SVG (invariante al transform del scroll y a la escala)
+- Eventos con el mismo ms (acordes / dos manos) se fusionan en un punto (min x)
+- En el animation loop, x(t) = interpolacion lineal entre los dos puntos que
+  rodean al tiempo transcurrido → cada nota llega al playhead exactamente
+  cuando suena, por construccion
+- El RELOJ es el del AudioContext (el mismo del sintetizador): cero deriva
+  audio/animacion. Respaldo a performance.now() si no hay audio (funciona
+  offline / con sonido apagado, cosa que el motor anterior no podia)
+- Punto final del mapa: evento `end` de noteTimings, recalibrado con
+  `synth.duration` al preparar el audio (scroll y sonido terminan juntos)
+- Repeticiones (segmento con dx<0): mantener posicion y saltar al cambiar de
+  segmento (no interpolar en reversa) — pendiente de probar con pieza real
+- Pausa/reanudar: acumula ms transcurridos y re-ancla el reloj
+- Cambio de BPM: re-render + `setTiming(nuevoQpm)` reconstruye el mapa (barato)
 - La velocidad varia ligeramente entre secciones (imperceptible en piezas reales)
 
 **Ventajas:**
@@ -143,4 +160,15 @@ Un scroll a velocidad constante (px/seg) se desincroniza porque los pixeles no c
 | 4650865 | fix: defer AudioContext to user gesture |
 | e310a0c | fix: use same duration for scroll and repositioning |
 | ad343fe | fix: derive duration from TimingCallbacks |
-| PROXIMO | **Enfoque 4: scroll interpolado por nota** |
+| 2026-07 | **Enfoque 4 implementado: mapa setTiming/noteTimings + reloj AudioContext; correccion reactiva eliminada** |
+
+---
+
+## Validacion pendiente del Enfoque 4 (F2/F3)
+
+- [ ] F1 al oido: twinkle-twinkle (basica) y test-duraciones (caso extremo:
+      semicorcheas a redondas — donde el motor viejo fallaba)
+- [ ] F2: zapatillas-rojas (dos manos / grand staff) — deberia funcionar sin
+      cambios: las notas simultaneas comparten punto en el mapa
+- [ ] F3: pausa/reanudar a mitad de pieza, cambio de BPM, sonido apagado,
+      repeticiones |: :| si algun dia una pieza las usa
