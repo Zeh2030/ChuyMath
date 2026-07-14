@@ -1,0 +1,29 @@
+{
+  "id": "P3-T02_bemoles",
+  "titulo": "Bemoles (♭)",
+  "tipo": "identifica-nota",
+  "nivel": "P3-T02",
+  "misiones": [
+    {
+      "id": "idn-bemoles-01",
+      "tipo": "identifica-nota",
+      "titulo": "El bemol baja medio tono",
+      "instruccion": "El simbolo ♭ (bemol) va antes de la nota y la baja medio tono. Elige el nombre con su ♭.",
+      "clave": "treble",
+      "tonalidad": "C",
+      "nivel": "P3-T02",
+      "retos": [
+        { "nota_abc": "_B", "respuesta": "Si♭", "opciones": ["Si", "Si♭", "La"] },
+        { "nota_abc": "_E", "respuesta": "Mi♭", "opciones": ["Mi", "Mi♭", "Re"] },
+        { "nota_abc": "_A", "respuesta": "La♭", "opciones": ["La", "La♭", "Sol"] },
+        { "nota_abc": "_D", "respuesta": "Re♭", "opciones": ["Re", "Re♭", "Do"] },
+        { "nota_abc": "_G", "respuesta": "Sol♭", "opciones": ["Sol", "Sol♭", "Fa"] },
+        { "nota_abc": "_B", "respuesta": "Si♭", "opciones": ["Si♭", "La♭", "Si"] },
+        { "nota_abc": "_E", "respuesta": "Mi♭", "opciones": ["Mi♭", "Re♭", "Mi"] },
+        { "nota_abc": "_A", "respuesta": "La♭", "opciones": ["Sol♭", "La♭", "La"] },
+        { "nota_abc": "_D", "respuesta": "Re♭", "opciones": ["Re", "Re♭", "Mi♭"] },
+        { "nota_abc": "_G", "respuesta": "Sol♭", "opciones": ["Sol♭", "La♭", "Sol"] }
+      ]
+    }
+  ]
+}

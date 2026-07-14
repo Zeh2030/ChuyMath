@@ -1,0 +1,31 @@
+{
+  "id": "P3-T06_sostenidos-bemoles-reto",
+  "titulo": "Reto: Sostenidos y Bemoles",
+  "tipo": "identifica-nota",
+  "nivel": "P3-T06",
+  "misiones": [
+    {
+      "id": "idn-alteraciones-reto-01",
+      "tipo": "identifica-nota",
+      "titulo": "Sostenidos, bemoles y naturales mezclados",
+      "instruccion": "Ojo con el simbolo: ♯ sube, ♭ baja, y si no hay simbolo la nota es natural.",
+      "clave": "treble",
+      "tonalidad": "C",
+      "nivel": "P3-T06",
+      "retos": [
+        { "nota_abc": "^F", "respuesta": "Fa♯", "opciones": ["Fa", "Fa♯", "Sol"] },
+        { "nota_abc": "_B", "respuesta": "Si♭", "opciones": ["Si", "Si♭", "La"] },
+        { "nota_abc": "^C", "respuesta": "Do♯", "opciones": ["Do", "Do♯", "Re"] },
+        { "nota_abc": "_E", "respuesta": "Mi♭", "opciones": ["Mi", "Mi♭", "Fa"] },
+        { "nota_abc": "G", "respuesta": "Sol", "opciones": ["Sol", "Sol♯", "Fa"] },
+        { "nota_abc": "^G", "respuesta": "Sol♯", "opciones": ["Sol", "Sol♯", "La"] },
+        { "nota_abc": "_A", "respuesta": "La♭", "opciones": ["La", "La♭", "Sol"] },
+        { "nota_abc": "^D", "respuesta": "Re♯", "opciones": ["Re", "Re♯", "Mi"] },
+        { "nota_abc": "D", "respuesta": "Re", "opciones": ["Re", "Re♯", "Do"] },
+        { "nota_abc": "_G", "respuesta": "Sol♭", "opciones": ["Sol", "Sol♭", "Fa"] },
+        { "nota_abc": "^A", "respuesta": "La♯", "opciones": ["La", "La♯", "Si"] },
+        { "nota_abc": "F", "respuesta": "Fa", "opciones": ["Fa", "Fa♯", "Mi"] }
+      ]
+    }
+  ]
+}

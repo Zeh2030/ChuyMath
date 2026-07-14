@@ -1,0 +1,29 @@
+{
+  "id": "P3-T01_sostenidos",
+  "titulo": "Sostenidos (♯)",
+  "tipo": "identifica-nota",
+  "nivel": "P3-T01",
+  "misiones": [
+    {
+      "id": "idn-sostenidos-01",
+      "tipo": "identifica-nota",
+      "titulo": "El sostenido sube medio tono",
+      "instruccion": "El simbolo ♯ (sostenido) va antes de la nota y la sube medio tono. Elige el nombre con su ♯.",
+      "clave": "treble",
+      "tonalidad": "C",
+      "nivel": "P3-T01",
+      "retos": [
+        { "nota_abc": "^F", "respuesta": "Fa♯", "opciones": ["Fa", "Fa♯", "Sol"] },
+        { "nota_abc": "^C", "respuesta": "Do♯", "opciones": ["Do", "Do♯", "Re"] },
+        { "nota_abc": "^G", "respuesta": "Sol♯", "opciones": ["Sol", "Sol♯", "La"] },
+        { "nota_abc": "^D", "respuesta": "Re♯", "opciones": ["Re", "Re♯", "Mi"] },
+        { "nota_abc": "^A", "respuesta": "La♯", "opciones": ["La", "La♯", "Si"] },
+        { "nota_abc": "^F", "respuesta": "Fa♯", "opciones": ["Fa♯", "Sol♯", "Fa"] },
+        { "nota_abc": "^C", "respuesta": "Do♯", "opciones": ["Do♯", "Re♯", "Do"] },
+        { "nota_abc": "^G", "respuesta": "Sol♯", "opciones": ["Fa♯", "Sol♯", "Sol"] },
+        { "nota_abc": "^D", "respuesta": "Re♯", "opciones": ["Re", "Re♯", "Do♯"] },
+        { "nota_abc": "^A", "respuesta": "La♯", "opciones": ["Sol♯", "La♯", "La"] }
+      ]
+    }
+  ]
+}
