@@ -1,0 +1,68 @@
+/* Selector de manos (previo al teleprompter, solo piezas a dos manos) */
+.pp-selector {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 32px 20px;
+  text-align: center;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+}
+
+.pp-selector-header h3 {
+  font-size: 1.6rem;
+  color: #2c3e50;
+  margin: 0;
+}
+.pp-selector-autor {
+  color: #7f8c8d;
+  margin: 4px 0 0;
+  font-size: 0.95rem;
+}
+
+.pp-selector-pregunta {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #34495e;
+  margin: 26px 0 18px;
+}
+
+.pp-selector-botones {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.pp-mano-btn {
+  flex: 1 1 160px;
+  max-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 22px 16px;
+  border: 3px solid #e0e0e0;
+  border-radius: 20px;
+  background: white;
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+}
+.pp-mano-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+.pp-mano-btn:active { transform: scale(0.97); }
+
+.pp-mano-emoji { font-size: 2.6rem; line-height: 1; }
+.pp-mano-titulo { font-size: 1.1rem; font-weight: 700; color: #2c3e50; }
+.pp-mano-sub { font-size: 0.85rem; color: #95a5a6; }
+
+.pp-mano-der:hover { border-color: #3498db; }
+.pp-mano-izq:hover { border-color: #8e44ad; }
+.pp-mano-ambas:hover { border-color: #27ae60; }
+
+@media (max-width: 520px) {
+  .pp-selector-botones { flex-direction: column; align-items: stretch; }
+  .pp-mano-btn { max-width: none; flex-direction: row; justify-content: center; gap: 12px; padding: 16px; }
+  .pp-mano-emoji { font-size: 2rem; }
+}
