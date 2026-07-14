@@ -284,17 +284,24 @@ const Boveda = () => {
 
   const nivelesDisponibles = React.useMemo(() => {
     const niveles = new Set();
+    const tipoSel = tiposJuegos.find(t => t.id === filtro);
     aventuras.filter(filterMateria).forEach(a => {
+      // Si hay un tipo seleccionado (ej. identifica-nota), cuenta solo los niveles
+      // de ESE tipo, para que los chips coincidan con las tarjetas mostradas.
+      if (tipoSel) {
+        const tipoObjetivo = tipoSel.tipo === 'aventura' ? 'aventura' : tipoSel.tipo;
+        if (a.tipo !== tipoObjetivo) return;
+      }
       if (a.nivel) niveles.add(a.nivel);
     });
     return Array.from(niveles).sort();
-  }, [aventuras, materia]);
+  }, [aventuras, materia, filtro]);
 
   // Grupos de nivel (A0, A1, P1, etc.)
   const gruposNivel = React.useMemo(() => {
     const grupos = new Set();
     nivelesDisponibles.forEach(n => {
-      const grupo = n.replace(/-\d+$/, ''); // A1-09 → A1
+      const grupo = n.replace(/-T?\d+$/, ''); // A1-09 → A1 ; P1-T04 → P1
       grupos.add(grupo);
     });
     return Array.from(grupos).sort();
@@ -530,7 +537,7 @@ const Boveda = () => {
                             <button
                               key={nivel}
                               className={`nivel-chip nivel-especifico ${filtroNivel === nivel ? 'active' : ''}`}
-                              onClick={() => setFiltroNivel(filtroNivel === nivel ? filtroNivel.replace(/-\d+$/, '') : nivel)}
+                              onClick={() => setFiltroNivel(filtroNivel === nivel ? filtroNivel.replace(/-T?\d+$/, '') : nivel)}
                             >
                               {nivel}
                             </button>
