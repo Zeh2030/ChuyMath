@@ -212,30 +212,64 @@ Actualmente el teleprompter siempre muestra ambas manos sin opcion de separar.
 Agregar selector ANTES de iniciar reproduccion en PianoPrompter.jsx:
 
 ```
-┌─────────────────────────────────────┐
-│  🎹 Las Zapatillas Rojas            │
-│  A. Diabelli                        │
-│                                     │
-│  Practicar:                         │
-│  ┌──────┐ ┌──────┐ ┌──────────────┐│
-│  │🎼 Sol│ │🎵 Fa │ │🎹 Ambas     ││
-│  │(der) │ │(izq) │ │   manos     ││
-│  └──────┘ └──────┘ └──────────────┘│
-│                                     │
-│         ▶️ Reproducir                │
-└─────────────────────────────────────┘
+┌──────────────────────────────────────────┐
+│  🎹 Las Zapatillas Rojas                 │
+│  Tradicional Japonesa                    │
+│                                          │
+│  ¿Como quieres practicar?                │
+│  ┌───────────┐ ┌───────────┐ ┌─────────┐ │
+│  │🎼 Derecha │ │🎵 Izquierda│ │🎹 Dos   │ │
+│  │(clave Sol)│ │(clave Fa) │ │  manos  │ │
+│  └───────────┘ └───────────┘ └─────────┘ │
+└──────────────────────────────────────────┘
+   (al elegir, entra directo al teleprompter con esa mano)
 ```
 
-### Implementacion tecnica
-- Solo aparece cuando la pieza es multi-voz (`isMultiVoice`)
-- Opcion "Sol" → filtra ABC para solo incluir V:1 (reemplaza V:2 con silencios)
-- Opcion "Fa" → filtra ABC para solo incluir V:2 (reemplaza V:1 con silencios)
-- Opcion "Ambas" → comportamiento actual (default)
-- Para piezas de una sola mano, no se muestra selector (directo al teleprompter)
+### Estrategia elegida: filtrar a UN solo pentagrama  *(no silenciar la otra mano)*
 
-### Esfuerzo: 1 sesion
-- Modificar PianoPrompter.jsx (agregar estado de seleccion + filtro ABC)
-- No requiere nuevo componente ni cambios en MusicPrompter
+Con el motor nuevo (Enfoque 4, ver HISTORIAL_TELEPROMPTER) lo mas simple Y
+pedagogico es, para una sola mano, **renderizar solo esa voz como pieza de un
+pentagrama** (no grand staff con la otra en silencio). Ventajas:
+- El niño ve SOLO su clave, con notas mas grandes y sin distraccion.
+- El sintetizador toca solo esa voz automaticamente (solo esa voz esta en el ABC).
+- El motor de scroll ya esta validado para pieza de una voz (F1) — cero riesgo.
+- "Ambas" = comportamiento actual (grand staff), ya validado (F2).
+
+### Implementacion tecnica (lista para ejecutar)
+
+Todo en **PianoPrompter.jsx** (no toca MusicPrompter ni el motor):
+
+1. **Estado** `mano` ('ambas' | 'derecha' | 'izquierda'). Default: mostrar
+   selector si la pieza es multi-voz; si es de una sola voz, saltar directo
+   (comportamiento actual).
+2. **Selector**: pantalla previa con 3 botones (solo si `isMultiVoice`). Al
+   elegir, se setea `mano` y se muestra el `<MusicPrompter>`.
+3. **`filtrarVoz(notas, voz)`** — nueva funcion:
+   - Parsea las lineas de `notas`, agrupa las lineas de notas por su `V:N`
+     (robusto a que una voz ocupe varias lineas o aparezca intercalada).
+   - `'derecha'` → devuelve las notas de **V:1**, para armar single-staff
+     `clef=treble` (reusa el branch NO-multivoz que ya existe en el componente).
+   - `'izquierda'` → notas de **V:2**, single-staff `clef=bass` (la clave sale
+     de la declaracion `V:2 clef=bass`).
+   - `'ambas'` → devuelve `notas` sin cambio (grand staff, ruta actual).
+4. Se pasa `multiVoice={mano === 'ambas' && isMultiVoice}` para que el motor
+   trate una-mano como pieza sencilla.
+5. **Boton "🔄 Cambiar mano"** dentro del prompter (o en la pantalla de fin)
+   para volver al selector sin salir de la actividad.
+
+### Casos borde a cuidar
+- Anacrusa / silencios iniciales: preservarlos (en zapatillas V:2 abre con `z |`).
+- Dinamicas `!mp!`/`!mf!` viven en V:1 → al filtrar izquierda simplemente no
+  aparecen (correcto).
+- Piezas de una sola voz (twinkle): sin selector, directo (como hoy).
+- Confirmar que abcjs respeta `clef=bass` en el header de una sola voz (es
+  estandar; ya se usa en el branch single-staff via `configuracion.clave`).
+
+### Esfuerzo: ~1 sesion
+- Solo PianoPrompter.jsx (estado + selector UI + `filtrarVoz`) + un poco de CSS.
+- No requiere componente nuevo ni tocar el motor de scroll.
+- Reversible: es una capa ANTES del prompter; si algo falla, el default 'ambas'
+  reproduce la pieza como hoy.
 
 ---
 
