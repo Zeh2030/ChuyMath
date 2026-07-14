@@ -1,0 +1,33 @@
+{
+  "id": "P4-T03_reto-final-lectura",
+  "titulo": "Reto Final: Lectura Veloz (Clave de Sol)",
+  "tipo": "identifica-nota",
+  "nivel": "P4-T03",
+  "misiones": [
+    {
+      "id": "idn-reto-final-01",
+      "tipo": "identifica-nota",
+      "titulo": "Todas las notas, mezcladas y rapido",
+      "instruccion": "El reto mas dificil de lectura en clave de Sol: 7 notas mas el Do alto, con 4 opciones.",
+      "clave": "treble",
+      "tonalidad": "C",
+      "nivel": "P4-T03",
+      "retos": [
+        { "nota_abc": "E", "respuesta": "Mi", "opciones": ["Do", "Re", "Mi", "Fa"] },
+        { "nota_abc": "A", "respuesta": "La", "opciones": ["Sol", "La", "Si", "Do"] },
+        { "nota_abc": "c", "respuesta": "Do alto", "opciones": ["Sol", "La", "Si", "Do alto"] },
+        { "nota_abc": "F", "respuesta": "Fa", "opciones": ["Mi", "Fa", "Sol", "La"] },
+        { "nota_abc": "B", "respuesta": "Si", "opciones": ["Sol", "La", "Si", "Do alto"] },
+        { "nota_abc": "D", "respuesta": "Re", "opciones": ["Do", "Re", "Mi", "Fa"] },
+        { "nota_abc": "G", "respuesta": "Sol", "opciones": ["Fa", "Sol", "La", "Si"] },
+        { "nota_abc": "C", "respuesta": "Do", "opciones": ["La", "Si", "Do", "Re"] },
+        { "nota_abc": "c", "respuesta": "Do alto", "opciones": ["Sol", "La", "Si", "Do alto"] },
+        { "nota_abc": "F", "respuesta": "Fa", "opciones": ["Re", "Mi", "Fa", "Sol"] },
+        { "nota_abc": "A", "respuesta": "La", "opciones": ["Fa", "Sol", "La", "Si"] },
+        { "nota_abc": "E", "respuesta": "Mi", "opciones": ["Do", "Re", "Mi", "Fa"] },
+        { "nota_abc": "G", "respuesta": "Sol", "opciones": ["Mi", "Fa", "Sol", "La"] },
+        { "nota_abc": "B", "respuesta": "Si", "opciones": ["La", "Si", "Do", "Do alto"] }
+      ]
+    }
+  ]
+}

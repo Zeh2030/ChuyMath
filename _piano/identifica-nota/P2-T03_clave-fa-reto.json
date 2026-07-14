@@ -1,0 +1,31 @@
+{
+  "id": "P2-T03_clave-fa-reto",
+  "titulo": "Clave de Fa: Reto (4 opciones)",
+  "tipo": "identifica-nota",
+  "nivel": "P2-T03",
+  "misiones": [
+    {
+      "id": "idn-fa-reto-01",
+      "tipo": "identifica-nota",
+      "titulo": "Desafio de Clave de Fa",
+      "instruccion": "Ya conoces la clave de Fa. Ahora con 4 opciones, identifica cada nota.",
+      "clave": "bass",
+      "tonalidad": "C",
+      "nivel": "P2-T03",
+      "retos": [
+        { "nota_abc": "F,", "respuesta": "Fa", "opciones": ["Re", "Mi", "Fa", "Sol"] },
+        { "nota_abc": "C", "respuesta": "Do", "opciones": ["Si", "Do", "Re", "Mi"] },
+        { "nota_abc": "A,", "respuesta": "La", "opciones": ["Sol", "La", "Si", "Do"] },
+        { "nota_abc": "E", "respuesta": "Mi", "opciones": ["Do", "Re", "Mi", "Fa"] },
+        { "nota_abc": "G,", "respuesta": "Sol", "opciones": ["Fa", "Sol", "La", "Si"] },
+        { "nota_abc": "D", "respuesta": "Re", "opciones": ["Si", "Do", "Re", "Mi"] },
+        { "nota_abc": "B,", "respuesta": "Si", "opciones": ["La", "Si", "Do", "Re"] },
+        { "nota_abc": "F,", "respuesta": "Fa", "opciones": ["Mi", "Fa", "Sol", "La"] },
+        { "nota_abc": "C", "respuesta": "Do", "opciones": ["La", "Si", "Do", "Re"] },
+        { "nota_abc": "A,", "respuesta": "La", "opciones": ["Sol", "La", "Si", "Do"] },
+        { "nota_abc": "E", "respuesta": "Mi", "opciones": ["Re", "Mi", "Fa", "Sol"] },
+        { "nota_abc": "G,", "respuesta": "Sol", "opciones": ["Mi", "Fa", "Sol", "La"] }
+      ]
+    }
+  ]
+}

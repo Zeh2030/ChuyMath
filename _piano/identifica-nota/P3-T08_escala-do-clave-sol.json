@@ -1,0 +1,31 @@
+{
+  "id": "P3-T08_escala-do-clave-sol",
+  "titulo": "Escala de Do Mayor (Clave de Sol)",
+  "tipo": "identifica-nota",
+  "nivel": "P3-T08",
+  "misiones": [
+    {
+      "id": "idn-escala-do-01",
+      "tipo": "identifica-nota",
+      "titulo": "Sube y baja la Escala de Do",
+      "instruccion": "La escala de Do va Do-Re-Mi-Fa-Sol-La-Si-Do. Lee cada nota mientras subes y bajas.",
+      "clave": "treble",
+      "tonalidad": "C",
+      "nivel": "P3-T08",
+      "retos": [
+        { "nota_abc": "C", "respuesta": "Do", "opciones": ["Do", "Re", "Mi"] },
+        { "nota_abc": "D", "respuesta": "Re", "opciones": ["Do", "Re", "Mi"] },
+        { "nota_abc": "E", "respuesta": "Mi", "opciones": ["Re", "Mi", "Fa"] },
+        { "nota_abc": "F", "respuesta": "Fa", "opciones": ["Mi", "Fa", "Sol"] },
+        { "nota_abc": "G", "respuesta": "Sol", "opciones": ["Fa", "Sol", "La"] },
+        { "nota_abc": "A", "respuesta": "La", "opciones": ["Sol", "La", "Si"] },
+        { "nota_abc": "B", "respuesta": "Si", "opciones": ["La", "Si", "Do alto"] },
+        { "nota_abc": "c", "respuesta": "Do alto", "opciones": ["La", "Si", "Do alto"] },
+        { "nota_abc": "B", "respuesta": "Si", "opciones": ["La", "Si", "Do alto"] },
+        { "nota_abc": "G", "respuesta": "Sol", "opciones": ["Fa", "Sol", "La"] },
+        { "nota_abc": "E", "respuesta": "Mi", "opciones": ["Re", "Mi", "Fa"] },
+        { "nota_abc": "C", "respuesta": "Do", "opciones": ["Do", "Re", "Mi"] }
+      ]
+    }
+  ]
+}
