@@ -200,6 +200,10 @@ Estos componentes ya existen y se reutilizan con contenido de piano:
 
 ## Feature: Selector de manos (MEJORA al teleprompter)
 
+> ✅ **IMPLEMENTADO 2026-07-14** en PianoPrompter.jsx + PianoPrompter.css.
+> Se siguió la estrategia de "filtrar a un pentagrama". Pendiente: validar al
+> oído (izquierda/derecha por separado) con una pieza a dos manos.
+
 ### Problema
 Cuando una pieza tiene dos manos (multi-voz), el alumno necesita practicar:
 1. Solo mano derecha (clave de Sol)
