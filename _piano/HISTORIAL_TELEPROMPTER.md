@@ -164,11 +164,11 @@ Un scroll a velocidad constante (px/seg) se desincroniza porque los pixeles no c
 
 ---
 
-## Validacion pendiente del Enfoque 4 (F2/F3)
+## Validacion del Enfoque 4 (F2/F3)
 
-- [ ] F1 al oido: twinkle-twinkle (basica) y test-duraciones (caso extremo:
-      semicorcheas a redondas — donde el motor viejo fallaba)
+- [x] F1 al oido (2026-07): twinkle-twinkle y test-duraciones (el caso extremo
+      donde el motor viejo fallaba) — **"quedo perfecto"**, incluyendo pausas
+      y cambios de BPM (mas lento y mas rapido)
 - [ ] F2: zapatillas-rojas (dos manos / grand staff) — deberia funcionar sin
       cambios: las notas simultaneas comparten punto en el mapa
-- [ ] F3: pausa/reanudar a mitad de pieza, cambio de BPM, sonido apagado,
-      repeticiones |: :| si algun dia una pieza las usa
+- [ ] F3: sonido apagado, repeticiones |: :| si algun dia una pieza las usa
