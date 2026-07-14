@@ -154,6 +154,7 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
       scale: 2,
       wrap: null,
       add_classes: true,
+      selectTypes: false, // sin seleccion de notas al tocar (el rojo de abcjs)
       paddingtop: 0,
       paddingbottom: 0,
       paddingleft: 20,
@@ -285,7 +286,7 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     const strippedAbc = stripBarlines(abcNotation);
     const visualObj = abcjs.renderAbc(abcTargetRef.current, strippedAbc, {
       staffwidth: multiVoice ? 10000 : 6000, scale: 2, wrap: null, add_classes: true,
-      paddingtop: 0, paddingbottom: 0, paddingleft: 20,
+      selectTypes: false, paddingtop: 0, paddingbottom: 0, paddingleft: 20,
     });
     visualObjRef.current = visualObj[0];
 
