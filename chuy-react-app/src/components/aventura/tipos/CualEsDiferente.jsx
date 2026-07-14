@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './CualEsDiferente.css';
-import { sonar } from '../../../utils/sonido';
+import { sonar, hablar } from '../../../utils/sonido';
 
 /**
  * CualEsDiferente — "¿Cuál es diferente?" (odd-one-out) para peques (3-6 años).
@@ -29,6 +29,11 @@ const CualEsDiferente = ({ mision, onCompletar }) => {
   const reto = retos[idx];
   const total = Math.max(2, reto.total || 4);
   const pos = Math.min(reto.pos ?? 0, total - 1);
+
+  // Lee la instrucción en voz alta para los que aún no leen (cada reto nuevo).
+  useEffect(() => {
+    hablar('¿Cuál es diferente?');
+  }, [idx]);
 
   const tocar = (i) => {
     if (acierto) return;
@@ -59,7 +64,10 @@ const CualEsDiferente = ({ mision, onCompletar }) => {
 
   return (
     <div className="cued">
-      <div className="cued-pregunta">¿Cuál es diferente?</div>
+      <div className="cued-pregunta">
+        ¿Cuál es diferente?
+        <button className="cued-voz" onClick={() => hablar('¿Cuál es diferente?')} title="Escuchar">🔊</button>
+      </div>
       <div className="cued-progreso">{idx + 1} / {retos.length}</div>
       <div className="cued-grid" data-total={total}>
         {Array.from({ length: total }).map((_, i) => {

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './RelacionaSombras.css';
-import { sonar } from '../../../utils/sonido';
+import { sonar, hablar } from '../../../utils/sonido';
 
 /**
  * RelacionaSombras — emparejar un objeto con su sombra (silueta) para peques (4-6 años).
@@ -26,6 +26,11 @@ const RelacionaSombras = ({ mision, onCompletar }) => {
   const [fin, setFin] = useState(false);
 
   const reto = retos[idx];
+
+  // Lee la instrucción en voz alta para los que aún no leen (cada reto nuevo).
+  useEffect(() => {
+    hablar('¿De quién es la sombra?');
+  }, [idx]);
 
   const tocar = (opcion, i) => {
     if (ok) return;
@@ -56,7 +61,10 @@ const RelacionaSombras = ({ mision, onCompletar }) => {
 
   return (
     <div className="rs">
-      <div className="rs-pregunta">¿De quién es la sombra?</div>
+      <div className="rs-pregunta">
+        ¿De quién es la sombra?
+        <button className="rs-voz" onClick={() => hablar('¿De quién es la sombra?')} title="Escuchar">🔊</button>
+      </div>
       <div className="rs-progreso">{idx + 1} / {retos.length}</div>
       <div className="rs-objeto">{reto.objeto}</div>
       <div className="rs-flecha">⬇️</div>

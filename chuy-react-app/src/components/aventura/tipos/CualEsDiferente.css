@@ -15,7 +15,12 @@
   font-weight: 700;
   color: #2c3e50;
   margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
+.cued-voz { border: none; background: #f4ecf7; border-radius: 50%; width: 38px; height: 38px; font-size: 1.1rem; cursor: pointer; }
 .cued-progreso {
   font-size: 1rem;
   font-weight: 600;

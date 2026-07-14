@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import './TapAndCelebrate.css';
-import { sonar, NOTAS } from '../../../utils/sonido';
+import { sonar, NOTAS, hablar } from '../../../utils/sonido';
 
 /**
  * TapAndCelebrate — juguete de causa-efecto para los más pequeños (2-3 años).
@@ -12,6 +12,11 @@ const TapAndCelebrate = ({ mision }) => {
   const emojis = (mision && mision.emojis) || EMOJIS_DEFAULT;
   const [particulas, setParticulas] = useState([]);
   const idRef = useRef(0);
+
+  // Invita a jugar en voz alta al entrar (para los que aún no leen).
+  useEffect(() => {
+    hablar('¡Toca la pantalla!');
+  }, []);
 
   const celebrar = (e) => {
     e.preventDefault();

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Memoria.css';
-import { sonar } from '../../../utils/sonido';
+import { sonar, hablar } from '../../../utils/sonido';
 
 /**
  * Memoria — encontrar parejas de cartas iguales (memoria visual) para peques (4-6 años).
@@ -18,6 +18,11 @@ const Memoria = ({ mision, onCompletar }) => {
   const [volteadas, setVolteadas] = useState([]); // índices arriba (sin emparejar)
   const [encontradas, setEncontradas] = useState([]); // índices ya emparejados
   const [bloqueo, setBloqueo] = useState(false);
+
+  // Lee la instrucción en voz alta al entrar (para los que aún no leen).
+  useEffect(() => {
+    hablar('Encuentra las parejas');
+  }, []);
 
   const iniciar = () => {
     const sel = emojis.slice(0, pares);
@@ -59,6 +64,7 @@ const Memoria = ({ mision, onCompletar }) => {
       <div className="mem-portada">
         <div className="mem-portada-emoji">🧠</div>
         <h2>Encuentra las parejas</h2>
+        <button className="mem-voz" onClick={() => hablar('Encuentra las parejas')} title="Escuchar">🔊 Escuchar</button>
         <button className="mem-btn" onClick={iniciar}>▶️ Jugar</button>
       </div>
     );

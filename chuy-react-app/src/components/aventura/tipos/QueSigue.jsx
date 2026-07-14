@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './QueSigue.css';
-import { sonar } from '../../../utils/sonido';
+import { sonar, hablar } from '../../../utils/sonido';
 
 /**
  * QueSigue — "¿Qué sigue?" (patrones) para peques (3-5 años).
@@ -26,6 +26,11 @@ const QueSigue = ({ mision, onCompletar }) => {
   const [fin, setFin] = useState(false);
 
   const reto = retos[idx];
+
+  // Lee la instrucción en voz alta para los que aún no leen (cada reto nuevo).
+  useEffect(() => {
+    hablar('¿Qué sigue?');
+  }, [idx]);
 
   const tocar = (op, i) => {
     if (ok) return;
@@ -56,7 +61,10 @@ const QueSigue = ({ mision, onCompletar }) => {
 
   return (
     <div className="qs">
-      <div className="qs-pregunta">¿Qué sigue?</div>
+      <div className="qs-pregunta">
+        ¿Qué sigue?
+        <button className="qs-voz" onClick={() => hablar('¿Qué sigue?')} title="Escuchar">🔊</button>
+      </div>
       <div className="qs-progreso">{idx + 1} / {retos.length}</div>
 
       <div className="qs-secuencia">
