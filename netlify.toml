@@ -2,6 +2,11 @@
   base = "chuy-react-app"
   publish = "dist"
   command = "npm run build"
+  # Salta el build si NO cambió el código de la app (chuy-react-app/).
+  # Los pushes de solo-contenido (JSON que vive en Firebase) y de docs *.md no
+  # gastan minutos de build. Usa CACHED_COMMIT_REF (ultimo commit desplegado)
+  # para no perderse cambios cuando se pushean varios commits juntos.
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- ."
 
 [[redirects]]
   from = "/*"
