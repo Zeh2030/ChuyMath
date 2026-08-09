@@ -115,7 +115,8 @@ const LetraQuiz = ({ mision, onCompletar }) => {
       )}
       {modo === 'mayus-minus' && (
         <div className="lq-estimulo">
-          <span className="lq-estimulo-letra">{reto.letra}</span>
+          {/* translate="no": una letra suelta NUNCA se traduce (ver Abecedario.jsx). */}
+          <span className="lq-estimulo-letra" translate="no">{reto.letra}</span>
         </div>
       )}
       {modo === 'reconoce-letra' && (
@@ -130,6 +131,7 @@ const LetraQuiz = ({ mision, onCompletar }) => {
             key={i}
             className={`lq-opcion ${mal === i ? 'mal' : ''} ${ok && op === reto.respuesta ? 'bien' : ''}`}
             onClick={() => tocar(op, i)}
+            translate="no"
           >
             {op}
           </button>

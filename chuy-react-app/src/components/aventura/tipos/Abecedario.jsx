@@ -36,7 +36,9 @@ const Abecedario = ({ mision, onCompletar }) => {
       <div className="abc-escenario">
         {activa ? (
           <>
-            <div className="abc-escenario-letra">{activa.mayus} {activa.minus}</div>
+            {/* translate="no": una letra suelta NUNCA se traduce. Sin esto, un
+                traductor de pagina convierte la "U" en "tu" y la "E" en "mi". */}
+            <div className="abc-escenario-letra" translate="no">{activa.mayus} {activa.minus}</div>
             <div className="abc-escenario-palabra">
               <span className="abc-escenario-emoji">{activa.emoji}</span>
               <span>{activa.palabra}</span>
@@ -54,8 +56,8 @@ const Abecedario = ({ mision, onCompletar }) => {
             className={`abc-tecla ${activa && activa.mayus === l.mayus ? 'activa' : ''}`}
             onClick={() => decir(l)}
           >
-            <span className="abc-tecla-mayus">{l.mayus}</span>
-            <span className="abc-tecla-minus">{l.minus}</span>
+            <span className="abc-tecla-mayus" translate="no">{l.mayus}</span>
+            <span className="abc-tecla-minus" translate="no">{l.minus}</span>
           </button>
         ))}
       </div>
