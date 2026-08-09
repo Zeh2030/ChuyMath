@@ -6,7 +6,17 @@
   # Los pushes de solo-contenido (JSON que vive en Firebase) y de docs *.md no
   # gastan minutos de build. Usa CACHED_COMMIT_REF (ultimo commit desplegado)
   # para no perderse cambios cuando se pushean varios commits juntos.
-  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- ."
+  #
+  # OJO (bug arreglado 2026-08-09): en Netlify, exit 0 = CANCELAR el build.
+  # Si CACHED_COMMIT_REF viene vacio o no existe en el clon (pasa cuando no hay
+  # ningun deploy exitoso reciente que dejara cache), el comando degeneraba en
+  # `git diff --quiet $COMMIT_REF -- .` = comparar el checkout consigo mismo,
+  # que SIEMPRE da 0 y cancelaba todos los builds para siempre. Ante la duda,
+  # buildear: sin base de comparacion fiable, salimos con 1.
+  # El comando corre desde `base`, asi que "." = chuy-react-app/. Se vigila tambien
+  # ../netlify.toml para que un cambio de config (redirects, este mismo ignore)
+  # si redespliegue.
+  ignore = 'if [ -z "$CACHED_COMMIT_REF" ] || ! git cat-file -e "$CACHED_COMMIT_REF^{commit}" 2>/dev/null; then exit 1; fi; git diff --quiet "$CACHED_COMMIT_REF" "$COMMIT_REF" -- . ../netlify.toml'
 
 [[redirects]]
   from = "/*"
