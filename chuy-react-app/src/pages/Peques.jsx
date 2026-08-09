@@ -5,6 +5,7 @@ import { db } from '../services/firebase';
 import { useAuth } from '../hooks/useAuth.jsx';
 import MisionRenderer from '../components/aventura/MisionRenderer';
 import DibujarHub from './DibujarHub';
+import LetrasHub from './LetrasHub';
 import './Peques.css';
 
 /**
@@ -84,6 +85,7 @@ const Peques = () => {
   const [carta, setCarta] = useState(null); // juego en curso
   const [gate, setGate] = useState(null);
   const [arteAbierto, setArteAbierto] = useState(false);
+  const [letrasAbierto, setLetrasAbierto] = useState(false);
 
   useEffect(() => {
     let vivo = true;
@@ -159,6 +161,15 @@ const Peques = () => {
     );
   }
 
+  // === Sección Letras (mismo patrón que Arte: hub sobre la colección `letras`) ===
+  if (letrasAbierto) {
+    return (
+      <div className="peques-bg">
+        <LetrasHub onSalir={() => setLetrasAbierto(false)} />
+      </div>
+    );
+  }
+
   const cartasVisibles = grupoActual ? grupoActual.cartas : null;
 
   return (
@@ -199,6 +210,12 @@ const Peques = () => {
                   {g.cartas.length > 1 && <span className="peques-card-badge">{g.cartas.length}</span>}
                 </button>
               ))}
+              {/* Arte y Letras van hardcoded (no salen de la colección `peques`):
+                  son hubs con su propia colección, como en el módulo normal. */}
+              <button key="letras" className="peques-card" style={{ background: '#ffd6a5' }} onClick={() => setLetrasAbierto(true)}>
+                <span className="peques-card-emoji">📖</span>
+                <span className="peques-card-titulo">Letras</span>
+              </button>
               <button key="arte" className="peques-card" style={{ background: '#a0e8af' }} onClick={() => setArteAbierto(true)}>
                 <span className="peques-card-emoji">🎨</span>
                 <span className="peques-card-titulo">Arte</span>

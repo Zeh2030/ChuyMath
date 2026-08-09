@@ -114,6 +114,23 @@ const AdminMigracion = () => {
     }
   };
 
+  // Función para migrar contenido de letras (misma estructura que aventura, colección separada)
+  const migrarLetras = async (letrasData) => {
+    try {
+      const letrasRef = doc(db, 'letras', letrasData.id);
+      await setDoc(letrasRef, {
+        titulo: letrasData.titulo,
+        misiones: letrasData.misiones || [],
+        ...letrasData,
+        materia: 'letras'
+      });
+      return { exito: true, id: letrasData.id, titulo: letrasData.titulo };
+    } catch (error) {
+      console.error(`Error al migrar letras ${letrasData.id}:`, error);
+      return { exito: false, id: letrasData.id, error: error.message };
+    }
+  };
+
   // Función para migrar una tarjeta de Modo Peques (estructura plana de tarjeta, no misiones)
   const migrarPeques = async (pequeData) => {
     try {
@@ -209,6 +226,7 @@ const AdminMigracion = () => {
         if (coleccionDestino === 'ciencias') return migrarCiencias(item);
         if (coleccionDestino === 'dibujo') return migrarDibujo(item);
         if (coleccionDestino === 'geografia') return migrarGeografia(item);
+        if (coleccionDestino === 'letras') return migrarLetras(item);
         if (coleccionDestino === 'peques') return migrarPeques(item);
         return migrarSimulacro(item);
       };
@@ -366,6 +384,17 @@ const AdminMigracion = () => {
                 />
                 <strong>🌍 Geografia</strong>
               </label>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '1rem', padding: '10px 15px', background: coleccionDestino === 'letras' ? '#fff3e0' : '#fff', borderRadius: '8px', border: coleccionDestino === 'letras' ? '2px solid #e67e22' : '1px solid #ddd' }}>
+                <input
+                  type="radio"
+                  name="coleccion"
+                  value="letras"
+                  checked={coleccionDestino === 'letras'}
+                  onChange={() => setColeccionDestino('letras')}
+                  style={{ width: '20px', height: '20px' }}
+                />
+                <strong>📖 Letras</strong>
+              </label>
               <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '1rem', padding: '10px 15px', background: coleccionDestino === 'peques' ? '#f4ecf7' : '#fff', borderRadius: '8px', border: coleccionDestino === 'peques' ? '2px solid #8e44ad' : '1px solid #ddd' }}>
                 <input
                   type="radio"
@@ -391,6 +420,8 @@ const AdminMigracion = () => {
                 ? '🎨 Dibujo: Colección para actividades de arte. Tipos: colorear, dibujo-guiado, dibujo-libre.'
                 : coleccionDestino === 'geografia'
                 ? '🌍 Geografia: Colección para contenido geográfico. Incluye tipos: explorador-mapa, image-picker, tap-the-pairs, fill-the-gap, true-or-false, opcion-multiple, word-scramble, mini-story.'
+                : coleccionDestino === 'letras'
+                ? '📖 Letras: Coleccion para letras y lectura (pre-lectores). Tipos: abecedario, letra-quiz (modo primera-letra / reconoce-letra / mayus-minus) y colorear (trazo de letras).'
                 : coleccionDestino === 'peques'
                 ? '🧸 Peques: Tarjetas del Modo Peques (juegos 2-5 años). Estructura plana de TARJETA (no misiones): kind "nativo" (con mision.tipo + contenido) o "atajo" (coleccion + docId). Campo "orden" para el orden en el lanzador.'
                 : '🏆 Simulacros: Aplana la estructura para crear una lista de problemas. Ideal para exámenes y bancos de preguntas.'}
@@ -432,7 +463,7 @@ const AdminMigracion = () => {
           >
             {migrando
               ? 'Migrando...'
-              : `Migrar a ${coleccionDestino === 'aventuras' ? '🌟 Aventuras' : coleccionDestino === 'ingles' ? '🇬🇧 Inglés' : coleccionDestino === 'piano' ? '🎹 Piano' : coleccionDestino === 'ciencias' ? '🔬 Ciencias' : coleccionDestino === 'dibujo' ? '🎨 Dibujo' : coleccionDestino === 'geografia' ? '🌍 Geografia' : coleccionDestino === 'peques' ? '🧸 Peques' : '🏆 Simulacros'}`}
+              : `Migrar a ${coleccionDestino === 'aventuras' ? '🌟 Aventuras' : coleccionDestino === 'ingles' ? '🇬🇧 Inglés' : coleccionDestino === 'piano' ? '🎹 Piano' : coleccionDestino === 'ciencias' ? '🔬 Ciencias' : coleccionDestino === 'dibujo' ? '🎨 Dibujo' : coleccionDestino === 'geografia' ? '🌍 Geografia' : coleccionDestino === 'letras' ? '📖 Letras' : coleccionDestino === 'peques' ? '🧸 Peques' : '🏆 Simulacros'}`}
           </button>
 
           {resultado && (

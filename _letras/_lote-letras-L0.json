@@ -1,0 +1,374 @@
+[
+  {
+    "id": "L0-01_conoce-las-vocales",
+    "titulo": "Conoce las vocales",
+    "descripcion": "Toca cada vocal y escucha como suena, con su palabra y su dibujo",
+    "tipo": "abecedario",
+    "materia": "letras",
+    "nivel": "L0-01",
+    "tema": "vocales",
+    "misiones": [
+      {
+        "id": "let-abc-vocales",
+        "tipo": "abecedario",
+        "titulo": "Las cinco vocales",
+        "emoji": "🔤",
+        "instruccion": "Toca una letra para escucharla.",
+        "letras": [
+          {
+            "mayus": "A",
+            "minus": "a",
+            "palabra": "árbol",
+            "emoji": "🌳"
+          },
+          {
+            "mayus": "E",
+            "minus": "e",
+            "palabra": "elefante",
+            "emoji": "🐘"
+          },
+          {
+            "mayus": "I",
+            "minus": "i",
+            "palabra": "isla",
+            "emoji": "🏝️"
+          },
+          {
+            "mayus": "O",
+            "minus": "o",
+            "palabra": "oso",
+            "emoji": "🐻"
+          },
+          {
+            "mayus": "U",
+            "minus": "u",
+            "palabra": "uvas",
+            "emoji": "🍇"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "L0-02_con-que-empieza",
+    "titulo": "Con que empieza?",
+    "descripcion": "Mira el dibujo y elige la vocal con la que empieza su nombre",
+    "tipo": "letra-quiz",
+    "materia": "letras",
+    "nivel": "L0-02",
+    "tema": "vocales",
+    "misiones": [
+      {
+        "id": "let-primera-letra-vocales",
+        "tipo": "letra-quiz",
+        "modo": "primera-letra",
+        "titulo": "Con que empieza?",
+        "emoji": "🔎",
+        "instruccion": "Escucha la palabra y toca la letra con la que empieza.",
+        "retos": [
+          {
+            "emoji": "🌳",
+            "palabra": "árbol",
+            "respuesta": "A",
+            "opciones": [
+              "A",
+              "E",
+              "O"
+            ]
+          },
+          {
+            "emoji": "🐘",
+            "palabra": "elefante",
+            "respuesta": "E",
+            "opciones": [
+              "I",
+              "E",
+              "U"
+            ]
+          },
+          {
+            "emoji": "🏝️",
+            "palabra": "isla",
+            "respuesta": "I",
+            "opciones": [
+              "O",
+              "A",
+              "I"
+            ]
+          },
+          {
+            "emoji": "🐻",
+            "palabra": "oso",
+            "respuesta": "O",
+            "opciones": [
+              "O",
+              "U",
+              "E"
+            ]
+          },
+          {
+            "emoji": "🍇",
+            "palabra": "uvas",
+            "respuesta": "U",
+            "opciones": [
+              "A",
+              "U",
+              "I"
+            ]
+          },
+          {
+            "emoji": "🐝",
+            "palabra": "abeja",
+            "respuesta": "A",
+            "opciones": [
+              "E",
+              "A",
+              "U"
+            ]
+          },
+          {
+            "emoji": "⭐",
+            "palabra": "estrella",
+            "respuesta": "E",
+            "opciones": [
+              "E",
+              "O",
+              "I"
+            ]
+          },
+          {
+            "emoji": "🦄",
+            "palabra": "unicornio",
+            "respuesta": "U",
+            "opciones": [
+              "I",
+              "U",
+              "A"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "L0-03_toca-la-vocal",
+    "titulo": "Toca la vocal",
+    "descripcion": "Escucha una vocal y tocala entre las opciones (juego de oido)",
+    "tipo": "letra-quiz",
+    "materia": "letras",
+    "nivel": "L0-03",
+    "tema": "vocales",
+    "misiones": [
+      {
+        "id": "let-reconoce-vocales",
+        "tipo": "letra-quiz",
+        "modo": "reconoce-letra",
+        "titulo": "Toca la vocal",
+        "emoji": "👂",
+        "instruccion": "Escucha bien y toca la letra que oiste. Toca la oreja para repetir.",
+        "retos": [
+          {
+            "respuesta": "A",
+            "opciones": [
+              "E",
+              "A",
+              "I"
+            ]
+          },
+          {
+            "respuesta": "O",
+            "opciones": [
+              "O",
+              "U",
+              "A"
+            ]
+          },
+          {
+            "respuesta": "I",
+            "opciones": [
+              "E",
+              "U",
+              "I"
+            ]
+          },
+          {
+            "respuesta": "E",
+            "opciones": [
+              "E",
+              "A",
+              "O"
+            ]
+          },
+          {
+            "respuesta": "U",
+            "opciones": [
+              "I",
+              "O",
+              "U"
+            ]
+          },
+          {
+            "respuesta": "A",
+            "opciones": [
+              "U",
+              "O",
+              "A"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "L0-04_grande-y-chiquita",
+    "titulo": "Grande y chiquita",
+    "descripcion": "Empareja cada vocal mayuscula con su minuscula",
+    "tipo": "letra-quiz",
+    "materia": "letras",
+    "nivel": "L0-04",
+    "tema": "vocales",
+    "misiones": [
+      {
+        "id": "let-mayus-minus-vocales",
+        "tipo": "letra-quiz",
+        "modo": "mayus-minus",
+        "titulo": "Grande y chiquita",
+        "emoji": "🔠",
+        "instruccion": "Mira la letra grande y busca la misma letra, pero chiquita.",
+        "retos": [
+          {
+            "letra": "A",
+            "respuesta": "a",
+            "opciones": [
+              "a",
+              "e",
+              "o"
+            ]
+          },
+          {
+            "letra": "E",
+            "respuesta": "e",
+            "opciones": [
+              "i",
+              "e",
+              "u"
+            ]
+          },
+          {
+            "letra": "O",
+            "respuesta": "o",
+            "opciones": [
+              "a",
+              "u",
+              "o"
+            ]
+          },
+          {
+            "letra": "I",
+            "respuesta": "i",
+            "opciones": [
+              "i",
+              "o",
+              "e"
+            ]
+          },
+          {
+            "letra": "U",
+            "respuesta": "u",
+            "opciones": [
+              "e",
+              "u",
+              "a"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "L0-05_traza-las-vocales",
+    "titulo": "Traza las vocales",
+    "descripcion": "Sigue los puntitos con el dedo para escribir cada vocal, grande y chiquita",
+    "tipo": "colorear",
+    "materia": "letras",
+    "nivel": "L0-05",
+    "tema": "vocales",
+    "misiones": [
+      {
+        "id": "let-traza-a",
+        "tipo": "colorear",
+        "titulo": "La A",
+        "emoji": "🌳",
+        "instruccion": "Empieza en el punto verde y sigue los puntitos hasta el rojo. A de arbol!",
+        "imagen_contorno_url": "/letras/trazos/L0-A_vocal-a.svg",
+        "colores_sugeridos": [
+          "#e74c3c",
+          "#3498db",
+          "#2ecc71",
+          "#9b59b6"
+        ],
+        "dificultad": "facil"
+      },
+      {
+        "id": "let-traza-e",
+        "tipo": "colorear",
+        "titulo": "La E",
+        "emoji": "🐘",
+        "instruccion": "Primero el palito de arriba a abajo, luego las tres rayitas. E de elefante!",
+        "imagen_contorno_url": "/letras/trazos/L0-E_vocal-e.svg",
+        "colores_sugeridos": [
+          "#e74c3c",
+          "#3498db",
+          "#2ecc71",
+          "#9b59b6"
+        ],
+        "dificultad": "facil"
+      },
+      {
+        "id": "let-traza-i",
+        "tipo": "colorear",
+        "titulo": "La I",
+        "emoji": "🏝️",
+        "instruccion": "Un palito de arriba a abajo. La chiquita lleva su puntito. I de isla!",
+        "imagen_contorno_url": "/letras/trazos/L0-I_vocal-i.svg",
+        "colores_sugeridos": [
+          "#e74c3c",
+          "#3498db",
+          "#2ecc71",
+          "#9b59b6"
+        ],
+        "dificultad": "facil"
+      },
+      {
+        "id": "let-traza-o",
+        "tipo": "colorear",
+        "titulo": "La O",
+        "emoji": "🐻",
+        "instruccion": "Da la vuelta completa empezando arriba y yendo hacia la izquierda. O de oso!",
+        "imagen_contorno_url": "/letras/trazos/L0-O_vocal-o.svg",
+        "colores_sugeridos": [
+          "#e74c3c",
+          "#3498db",
+          "#2ecc71",
+          "#9b59b6"
+        ],
+        "dificultad": "facil"
+      },
+      {
+        "id": "let-traza-u",
+        "tipo": "colorear",
+        "titulo": "La U",
+        "emoji": "🍇",
+        "instruccion": "Baja, da la curvita y vuelve a subir. U de uvas!",
+        "imagen_contorno_url": "/letras/trazos/L0-U_vocal-u.svg",
+        "colores_sugeridos": [
+          "#e74c3c",
+          "#3498db",
+          "#2ecc71",
+          "#9b59b6"
+        ],
+        "dificultad": "facil"
+      }
+    ]
+  }
+]

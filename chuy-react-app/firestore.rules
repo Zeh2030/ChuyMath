@@ -111,6 +111,10 @@ service cloud.firestore {
       allow read: if request.auth != null;
       allow write: if isAdmin();
     }
+    match /letras/{document=**} {
+      allow read: if request.auth != null;
+      allow write: if isAdmin();
+    }
 
     // Tipos de Juego Específicos (Legacy y Nuevos)
     match /kakooma/{document=**} { allow read: if request.auth != null; allow write: if isAdmin(); }

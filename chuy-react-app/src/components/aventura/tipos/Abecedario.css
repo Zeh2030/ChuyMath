@@ -1,0 +1,93 @@
+.abc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 8px;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  text-align: center;
+}
+
+.abc-escenario {
+  width: 100%;
+  min-height: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #fff7e6;
+  border-radius: 24px;
+  padding: 18px;
+  margin-bottom: 22px;
+}
+.abc-escenario-letra {
+  font-size: 4.6rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #e67e22;
+  letter-spacing: 8px;
+}
+.abc-escenario-palabra {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+.abc-escenario-emoji { font-size: 2.4rem; }
+.abc-escenario-vacio { font-size: 1.3rem; color: #b08968; font-weight: 600; }
+
+.abc-teclado { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.abc-tecla {
+  width: 96px;
+  height: 110px;
+  border-radius: 22px;
+  border: none;
+  background: #f8f9fa;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  font-family: inherit;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.15s;
+}
+.abc-tecla:hover { transform: translateY(-3px) scale(1.04); }
+.abc-tecla:active { transform: scale(0.95); }
+.abc-tecla-mayus { font-size: 2.8rem; font-weight: 700; line-height: 1; color: #2c3e50; }
+.abc-tecla-minus { font-size: 1.7rem; font-weight: 600; line-height: 1; color: #7f8c8d; }
+.abc-tecla.activa {
+  background: #fdf2e0;
+  box-shadow: 0 0 0 5px #e67e22, 0 6px 16px rgba(230, 126, 34, 0.4);
+  animation: abc-pop 0.6s ease;
+}
+.abc-tecla.activa .abc-tecla-mayus,
+.abc-tecla.activa .abc-tecla-minus { color: #e67e22; }
+
+@keyframes abc-pop { 0% { transform: scale(1); } 45% { transform: scale(1.15); } 100% { transform: scale(1); } }
+
+.abc-btn {
+  margin-top: 26px;
+  padding: 14px 34px;
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #e67e22, #f1c40f);
+  color: white;
+  font-size: 1.15rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+@media (max-width: 420px) {
+  .abc-tecla { width: 74px; height: 88px; }
+  .abc-tecla-mayus { font-size: 2.2rem; }
+  .abc-tecla-minus { font-size: 1.4rem; }
+  .abc-escenario-letra { font-size: 3.6rem; }
+}

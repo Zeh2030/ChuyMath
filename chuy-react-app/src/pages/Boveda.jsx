@@ -30,6 +30,7 @@ const Boveda = () => {
     // Subject-specific ids (piano-*, geografia-*) take priority over generic types
     if (f.startsWith('piano-') || f === 'identifica-nota') return 'piano';
     if (f.startsWith('geografia-') || f === 'explorador-mapa') return 'geografia';
+    if (f.startsWith('letras-') || f === 'abecedario' || f === 'letra-quiz') return 'letras';
     const englishTypes = ['word-bank', 'verb-conjugator', 'true-or-false', 'fill-the-gap',
       'tap-the-pairs', 'sentence-transform', 'image-picker', 'word-scramble',
       'listen-and-type', 'expediciones-en', 'mini-story'];
@@ -104,6 +105,10 @@ const Boveda = () => {
     { id: 'geografia-word-scramble', emoji: '🔠', nombre: 'Adivina el Pais', tipo: 'word-scramble', descripcion: 'Desordena letras de paises y capitales', materia: 'geografia' },
     { id: 'geografia-mini-story', emoji: '📖', nombre: 'Historias del Mundo', tipo: 'mini-story', descripcion: 'Historias culturales de paises y civilizaciones', materia: 'geografia' },
     { id: 'geografia-expediciones', emoji: '🚀', nombre: 'Expediciones Geo', tipo: 'expedicion', descripcion: 'Aventuras tematicas por lugares famosos del mundo', materia: 'geografia' },
+    // Letras (lectura para pre-lectores)
+    { id: 'letras-abecedario', emoji: '🔤', nombre: 'Conoce las Letras', tipo: 'abecedario', descripcion: 'Toca cada letra y escucha como suena', materia: 'letras' },
+    { id: 'letras-quiz', emoji: '🔎', nombre: 'Juegos de Letras', tipo: 'letra-quiz', descripcion: 'Con que empieza, toca la letra, grande y chiquita', materia: 'letras' },
+    { id: 'letras-trazo', emoji: '✏️', nombre: 'Traza Letras', tipo: 'colorear', descripcion: 'Sigue los puntitos y escribe cada letra', materia: 'letras' },
   ];
 
   const tiposJuegosFiltrados = tiposJuegos.filter(t => t.materia === materia);
@@ -211,7 +216,21 @@ const Boveda = () => {
           };
         }).sort((a, b) => a.id.localeCompare(b.id));
 
-        setAventuras([...listaAventuras, ...listaIngles, ...listaPiano, ...listaCiencias, ...listaDibujo, ...listaGeografia]);
+        // Cargar Letras (coleccion separada)
+        const letrasRef = collection(db, 'letras');
+        const letrasSnapshot = await getDocs(letrasRef);
+        const listaLetras = letrasSnapshot.docs.map(doc => {
+          const data = doc.data();
+          return {
+            id: doc.id,
+            ...data,
+            tipo: data.tipo || 'abecedario',
+            materia: 'letras',
+            coleccion: 'letras'
+          };
+        }).sort((a, b) => a.id.localeCompare(b.id));
+
+        setAventuras([...listaAventuras, ...listaIngles, ...listaPiano, ...listaCiencias, ...listaDibujo, ...listaGeografia, ...listaLetras]);
         setSimulacros(listaSimulacros);
       } catch (err) {
         console.error("Error cargando la bóveda:", err);
@@ -512,7 +531,7 @@ const Boveda = () => {
                   </div>
 
                   {/* Level filter chips */}
-                  {(materia === 'ingles' || materia === 'piano' || materia === 'ciencias' || materia === 'dibujo' || materia === 'geografia') && nivelesDisponibles.length > 1 && (
+                  {(materia === 'ingles' || materia === 'piano' || materia === 'ciencias' || materia === 'dibujo' || materia === 'geografia' || materia === 'letras') && nivelesDisponibles.length > 1 && (
                     <div className="boveda-nivel-chips">
                       <button
                         className={`nivel-chip ${filtroNivel === 'todos' ? 'active' : ''}`}
@@ -577,7 +596,7 @@ const Boveda = () => {
                       const progreso = getProgreso(item.id, item.tipo);
                       
                       // Determinar la ruta basándose en la colección de origen
-                      const esAventura = item.coleccion === 'aventuras' || item.coleccion === 'ingles' || item.coleccion === 'piano' || item.coleccion === 'ciencias' || item.coleccion === 'dibujo' || item.coleccion === 'geografia';
+                      const esAventura = item.coleccion === 'aventuras' || item.coleccion === 'ingles' || item.coleccion === 'piano' || item.coleccion === 'ciencias' || item.coleccion === 'dibujo' || item.coleccion === 'geografia' || item.coleccion === 'letras';
                       const ruta = esAventura ? `/aventura/${item.id}` : `/simulacro/${item.id}`;
                       
                       // Obtener nombre del tipo para mostrar (considera materia para evitar colisiones)

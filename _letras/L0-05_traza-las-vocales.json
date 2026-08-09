@@ -1,0 +1,61 @@
+{
+  "id": "L0-05_traza-las-vocales",
+  "titulo": "Traza las vocales",
+  "descripcion": "Sigue los puntitos con el dedo para escribir cada vocal, grande y chiquita",
+  "tipo": "colorear",
+  "materia": "letras",
+  "nivel": "L0-05",
+  "tema": "vocales",
+  "misiones": [
+    {
+      "id": "let-traza-a",
+      "tipo": "colorear",
+      "titulo": "La A",
+      "emoji": "🌳",
+      "instruccion": "Empieza en el punto verde y sigue los puntitos hasta el rojo. A de arbol!",
+      "imagen_contorno_url": "/letras/trazos/L0-A_vocal-a.svg",
+      "colores_sugeridos": ["#e74c3c", "#3498db", "#2ecc71", "#9b59b6"],
+      "dificultad": "facil"
+    },
+    {
+      "id": "let-traza-e",
+      "tipo": "colorear",
+      "titulo": "La E",
+      "emoji": "🐘",
+      "instruccion": "Primero el palito de arriba a abajo, luego las tres rayitas. E de elefante!",
+      "imagen_contorno_url": "/letras/trazos/L0-E_vocal-e.svg",
+      "colores_sugeridos": ["#e74c3c", "#3498db", "#2ecc71", "#9b59b6"],
+      "dificultad": "facil"
+    },
+    {
+      "id": "let-traza-i",
+      "tipo": "colorear",
+      "titulo": "La I",
+      "emoji": "🏝️",
+      "instruccion": "Un palito de arriba a abajo. La chiquita lleva su puntito. I de isla!",
+      "imagen_contorno_url": "/letras/trazos/L0-I_vocal-i.svg",
+      "colores_sugeridos": ["#e74c3c", "#3498db", "#2ecc71", "#9b59b6"],
+      "dificultad": "facil"
+    },
+    {
+      "id": "let-traza-o",
+      "tipo": "colorear",
+      "titulo": "La O",
+      "emoji": "🐻",
+      "instruccion": "Da la vuelta completa empezando arriba y yendo hacia la izquierda. O de oso!",
+      "imagen_contorno_url": "/letras/trazos/L0-O_vocal-o.svg",
+      "colores_sugeridos": ["#e74c3c", "#3498db", "#2ecc71", "#9b59b6"],
+      "dificultad": "facil"
+    },
+    {
+      "id": "let-traza-u",
+      "tipo": "colorear",
+      "titulo": "La U",
+      "emoji": "🍇",
+      "instruccion": "Baja, da la curvita y vuelve a subir. U de uvas!",
+      "imagen_contorno_url": "/letras/trazos/L0-U_vocal-u.svg",
+      "colores_sugeridos": ["#e74c3c", "#3498db", "#2ecc71", "#9b59b6"],
+      "dificultad": "facil"
+    }
+  ]
+}

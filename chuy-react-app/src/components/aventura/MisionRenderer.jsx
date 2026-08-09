@@ -40,6 +40,8 @@ import QueSigue from './tipos/QueSigue';
 import Tamanos from './tipos/Tamanos';
 import MasMenos from './tipos/MasMenos';
 import Formas from './tipos/Formas';
+import Abecedario from './tipos/Abecedario';
+import LetraQuiz from './tipos/LetraQuiz';
 const PianoPrompter = React.lazy(() => import('./tipos/PianoPrompter'));
 import IdentificaNota from './tipos/IdentificaNota';
 const ExploradorMapa = React.lazy(() => import('./tipos/ExploradorMapa'));
@@ -463,6 +465,17 @@ const MisionRenderer = ({
       case 'formas':
         return (
           <Formas key={mision.id} mision={mision} onCompletar={onCompletar} />
+        );
+
+      // === Letras ===
+      case 'abecedario':
+        return (
+          <Abecedario key={mision.id} mision={mision} onCompletar={onCompletar} />
+        );
+
+      case 'letra-quiz':
+        return (
+          <LetraQuiz key={mision.id} mision={mision} onCompletar={onCompletar} />
         );
 
       // === Piano ===

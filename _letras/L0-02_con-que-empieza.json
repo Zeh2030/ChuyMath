@@ -1,0 +1,29 @@
+{
+  "id": "L0-02_con-que-empieza",
+  "titulo": "Con que empieza?",
+  "descripcion": "Mira el dibujo y elige la vocal con la que empieza su nombre",
+  "tipo": "letra-quiz",
+  "materia": "letras",
+  "nivel": "L0-02",
+  "tema": "vocales",
+  "misiones": [
+    {
+      "id": "let-primera-letra-vocales",
+      "tipo": "letra-quiz",
+      "modo": "primera-letra",
+      "titulo": "Con que empieza?",
+      "emoji": "🔎",
+      "instruccion": "Escucha la palabra y toca la letra con la que empieza.",
+      "retos": [
+        { "emoji": "🌳", "palabra": "árbol", "respuesta": "A", "opciones": ["A", "E", "O"] },
+        { "emoji": "🐘", "palabra": "elefante", "respuesta": "E", "opciones": ["I", "E", "U"] },
+        { "emoji": "🏝️", "palabra": "isla", "respuesta": "I", "opciones": ["O", "A", "I"] },
+        { "emoji": "🐻", "palabra": "oso", "respuesta": "O", "opciones": ["O", "U", "E"] },
+        { "emoji": "🍇", "palabra": "uvas", "respuesta": "U", "opciones": ["A", "U", "I"] },
+        { "emoji": "🐝", "palabra": "abeja", "respuesta": "A", "opciones": ["E", "A", "U"] },
+        { "emoji": "⭐", "palabra": "estrella", "respuesta": "E", "opciones": ["E", "O", "I"] },
+        { "emoji": "🦄", "palabra": "unicornio", "respuesta": "U", "opciones": ["I", "U", "A"] }
+      ]
+    }
+  ]
+}

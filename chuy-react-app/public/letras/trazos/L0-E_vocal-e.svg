@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <rect width="800" height="800" fill="#ffffff"/>
+  <!-- Renglon: linea superior, media (punteada) y base -->
+  <g stroke="#dfe6e9" stroke-width="4" fill="none">
+    <path d="M 60 200 H 760"/>
+    <path d="M 60 600 H 760"/>
+  </g>
+  <g stroke="#dfe6e9" stroke-width="3" stroke-dasharray="10 14" fill="none">
+    <path d="M 60 400 H 760"/>
+  </g>
+  <!-- Letra punteada: E mayuscula (4 trazos) + e minuscula (1 trazo) -->
+  <g fill="none" stroke="#5a9bd5" stroke-width="14" stroke-dasharray="20 26" stroke-linecap="round">
+    <path d="M 130 200 L 130 600"/>
+    <path d="M 130 200 L 300 200"/>
+    <path d="M 130 400 L 270 400"/>
+    <path d="M 130 600 L 300 600"/>
+    <path d="M 515 500 H 685 A 85 85 0 1 0 622 582"/>
+  </g>
+  <!-- Flechas de direccion -->
+  <g fill="#5a9bd5">
+    <polygon points="-16,-15 -16,15 16,0" transform="translate(130,310) rotate(90)"/>
+    <polygon points="-16,-15 -16,15 16,0" transform="translate(215,200) rotate(0)"/>
+    <polygon points="-16,-15 -16,15 16,0" transform="translate(200,400) rotate(0)"/>
+    <polygon points="-16,-15 -16,15 16,0" transform="translate(215,600) rotate(0)"/>
+    <polygon points="-16,-15 -16,15 16,0" transform="translate(600,500) rotate(0)"/>
+  </g>
+  <!-- Fin de cada trazo -->
+  <g fill="#e74c3c">
+    <circle cx="300" cy="200" r="16"/>
+    <circle cx="270" cy="400" r="16"/>
+    <circle cx="300" cy="600" r="16"/>
+    <circle cx="622" cy="582" r="16"/>
+  </g>
+  <!-- Inicio de cada trazo (se pinta al final para que quede encima) -->
+  <g fill="#2ecc71">
+    <circle cx="130" cy="200" r="16"/>
+    <circle cx="130" cy="400" r="16"/>
+    <circle cx="130" cy="600" r="16"/>
+    <circle cx="515" cy="500" r="16"/>
+  </g>
+</svg>
