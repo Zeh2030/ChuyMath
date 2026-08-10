@@ -1,7 +1,7 @@
 {
   "id": "L1-04_toca-la-silaba",
-  "titulo": "Toca la silaba",
-  "descripcion": "Escucha una silaba y tocala entre las opciones (juego de oido)",
+  "titulo": "Toca la sílaba",
+  "descripcion": "Escucha una sílaba y tócala entre las opciones (juego de oído)",
   "tipo": "letra-quiz",
   "materia": "letras",
   "nivel": "L1-04",
@@ -11,16 +11,58 @@
       "id": "let-reconoce-silaba",
       "tipo": "letra-quiz",
       "modo": "reconoce-letra",
-      "titulo": "Toca la silaba",
+      "titulo": "Toca la sílaba",
       "emoji": "👂",
-      "instruccion": "Escucha bien y toca la silaba que oiste. Toca la oreja para repetir.",
+      "instruccion": "Escucha bien y toca la sílaba que oíste. Toca la oreja para repetir.",
       "retos": [
-        { "respuesta": "ma", "opciones": ["me", "ma", "mi"] },
-        { "respuesta": "pi", "opciones": ["pi", "pa", "pu"] },
-        { "respuesta": "so", "opciones": ["se", "su", "so"] },
-        { "respuesta": "lu", "opciones": ["lu", "la", "lo"] },
-        { "respuesta": "me", "opciones": ["pe", "me", "se"] },
-        { "respuesta": "la", "opciones": ["ma", "sa", "la"] }
+        {
+          "respuesta": "ma",
+          "opciones": [
+            "me",
+            "ma",
+            "mi"
+          ]
+        },
+        {
+          "respuesta": "pi",
+          "opciones": [
+            "pi",
+            "pa",
+            "pu"
+          ]
+        },
+        {
+          "respuesta": "so",
+          "opciones": [
+            "se",
+            "su",
+            "so"
+          ]
+        },
+        {
+          "respuesta": "lu",
+          "opciones": [
+            "lu",
+            "la",
+            "lo"
+          ]
+        },
+        {
+          "respuesta": "me",
+          "opciones": [
+            "pe",
+            "me",
+            "se"
+          ]
+        },
+        {
+          "respuesta": "la",
+          "opciones": [
+            "ma",
+            "sa",
+            "la"
+          ]
+        }
       ]
     }
   ]

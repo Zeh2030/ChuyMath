@@ -1,7 +1,7 @@
 {
   "id": "L0-01_conoce-las-vocales",
   "titulo": "Conoce las vocales",
-  "descripcion": "Toca cada vocal y escucha como suena, con su palabra y su dibujo",
+  "descripcion": "Toca cada vocal y escucha cómo suena, con su palabra y su dibujo",
   "tipo": "abecedario",
   "materia": "letras",
   "nivel": "L0-01",
@@ -14,11 +14,36 @@
       "emoji": "🔤",
       "instruccion": "Toca una letra para escucharla.",
       "letras": [
-        { "mayus": "A", "minus": "a", "palabra": "árbol", "emoji": "🌳" },
-        { "mayus": "E", "minus": "e", "palabra": "elefante", "emoji": "🐘" },
-        { "mayus": "I", "minus": "i", "palabra": "isla", "emoji": "🏝️" },
-        { "mayus": "O", "minus": "o", "palabra": "oso", "emoji": "🐻" },
-        { "mayus": "U", "minus": "u", "palabra": "uvas", "emoji": "🍇" }
+        {
+          "mayus": "A",
+          "minus": "a",
+          "palabra": "árbol",
+          "emoji": "🌳"
+        },
+        {
+          "mayus": "E",
+          "minus": "e",
+          "palabra": "elefante",
+          "emoji": "🐘"
+        },
+        {
+          "mayus": "I",
+          "minus": "i",
+          "palabra": "isla",
+          "emoji": "🏝️"
+        },
+        {
+          "mayus": "O",
+          "minus": "o",
+          "palabra": "oso",
+          "emoji": "🐻"
+        },
+        {
+          "mayus": "U",
+          "minus": "u",
+          "palabra": "uvas",
+          "emoji": "🍇"
+        }
       ]
     }
   ]

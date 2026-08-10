@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './LetraQuiz.css';
-import { sonar, hablar } from '../../../utils/sonido';
+import { sonar, hablar, VOZ_LETRAS } from '../../../utils/sonido';
 
 /**
  * LetraQuiz — un solo motor para los tres retos de reconocimiento de letras.
@@ -64,7 +64,7 @@ const LetraQuiz = ({ mision, onCompletar }) => {
 
   // Dice la consigna al entrar a cada reto (aún no lee).
   useEffect(() => {
-    hablar(consigna.voz);
+    hablar(consigna.voz, VOZ_LETRAS);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idx]);
 
@@ -74,7 +74,7 @@ const LetraQuiz = ({ mision, onCompletar }) => {
       setOk(true);
       sonar(880);
       // Refuerzo: al acertar se vuelve a oír la letra ligada a su palabra clave.
-      hablar(reto.palabra ? `${reto.respuesta} de ${reto.palabra}` : (reto.voz || reto.respuesta));
+      hablar(reto.palabra ? `${reto.respuesta} de ${reto.palabra}` : (reto.voz || reto.respuesta), VOZ_LETRAS);
       window.setTimeout(() => {
         setOk(false);
         if (idx < retos.length - 1) setIdx(idx + 1);

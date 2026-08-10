@@ -12,9 +12,14 @@
       "tipo": "colorear",
       "titulo": "La M",
       "emoji": "👩",
-      "instruccion": "Sube, baja, sube y baja, sin levantar el dedo. M de mama!",
+      "instruccion": "Sube, baja, sube y baja, sin levantar el dedo. ¡M de mamá!",
       "imagen_contorno_url": "/letras/trazos/L1-M_consonante-m.svg",
-      "colores_sugeridos": ["#e74c3c", "#3498db", "#2ecc71", "#9b59b6"],
+      "colores_sugeridos": [
+        "#e74c3c",
+        "#3498db",
+        "#2ecc71",
+        "#9b59b6"
+      ],
       "dificultad": "facil"
     },
     {
@@ -22,9 +27,14 @@
       "tipo": "colorear",
       "titulo": "La P",
       "emoji": "👨",
-      "instruccion": "Primero el palito de arriba a abajo, luego la panza. P de papa!",
+      "instruccion": "Primero el palito de arriba a abajo, luego la panza. ¡P de papá!",
       "imagen_contorno_url": "/letras/trazos/L1-P_consonante-p.svg",
-      "colores_sugeridos": ["#e74c3c", "#3498db", "#2ecc71", "#9b59b6"],
+      "colores_sugeridos": [
+        "#e74c3c",
+        "#3498db",
+        "#2ecc71",
+        "#9b59b6"
+      ],
       "dificultad": "facil"
     },
     {
@@ -32,9 +42,14 @@
       "tipo": "colorear",
       "titulo": "La S",
       "emoji": "☀️",
-      "instruccion": "Una culebrita: empieza arriba, ve a la izquierda y baja dando vueltas. S de sol!",
+      "instruccion": "Una culebrita: empieza arriba, ve a la izquierda y baja dando vueltas. ¡S de sol!",
       "imagen_contorno_url": "/letras/trazos/L1-S_consonante-s.svg",
-      "colores_sugeridos": ["#e74c3c", "#3498db", "#2ecc71", "#9b59b6"],
+      "colores_sugeridos": [
+        "#e74c3c",
+        "#3498db",
+        "#2ecc71",
+        "#9b59b6"
+      ],
       "dificultad": "media"
     },
     {
@@ -42,9 +57,14 @@
       "tipo": "colorear",
       "titulo": "La L",
       "emoji": "🌙",
-      "instruccion": "Baja derechito y al final gira a la derecha. L de luna!",
+      "instruccion": "Baja derechito y al final gira a la derecha. ¡L de luna!",
       "imagen_contorno_url": "/letras/trazos/L1-L_consonante-l.svg",
-      "colores_sugeridos": ["#e74c3c", "#3498db", "#2ecc71", "#9b59b6"],
+      "colores_sugeridos": [
+        "#e74c3c",
+        "#3498db",
+        "#2ecc71",
+        "#9b59b6"
+      ],
       "dificultad": "facil"
     }
   ]

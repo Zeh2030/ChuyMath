@@ -2,7 +2,7 @@
   {
     "id": "L0-01_conoce-las-vocales",
     "titulo": "Conoce las vocales",
-    "descripcion": "Toca cada vocal y escucha como suena, con su palabra y su dibujo",
+    "descripcion": "Toca cada vocal y escucha cómo suena, con su palabra y su dibujo",
     "tipo": "abecedario",
     "materia": "letras",
     "nivel": "L0-01",
@@ -51,7 +51,7 @@
   },
   {
     "id": "L0-02_con-que-empieza",
-    "titulo": "Con que empieza?",
+    "titulo": "¿Con qué empieza?",
     "descripcion": "Mira el dibujo y elige la vocal con la que empieza su nombre",
     "tipo": "letra-quiz",
     "materia": "letras",
@@ -62,7 +62,7 @@
         "id": "let-primera-letra-vocales",
         "tipo": "letra-quiz",
         "modo": "primera-letra",
-        "titulo": "Con que empieza?",
+        "titulo": "¿Con qué empieza?",
         "emoji": "🔎",
         "instruccion": "Escucha la palabra y toca la letra con la que empieza.",
         "retos": [
@@ -153,7 +153,7 @@
   {
     "id": "L0-03_toca-la-vocal",
     "titulo": "Toca la vocal",
-    "descripcion": "Escucha una vocal y tocala entre las opciones (juego de oido)",
+    "descripcion": "Escucha una vocal y tócala entre las opciones (juego de oído)",
     "tipo": "letra-quiz",
     "materia": "letras",
     "nivel": "L0-03",
@@ -165,7 +165,7 @@
         "modo": "reconoce-letra",
         "titulo": "Toca la vocal",
         "emoji": "👂",
-        "instruccion": "Escucha bien y toca la letra que oiste. Toca la oreja para repetir.",
+        "instruccion": "Escucha bien y toca la letra que oíste. Toca la oreja para repetir.",
         "retos": [
           {
             "respuesta": "A",
@@ -222,7 +222,7 @@
   {
     "id": "L0-04_grande-y-chiquita",
     "titulo": "Grande y chiquita",
-    "descripcion": "Empareja cada vocal mayuscula con su minuscula",
+    "descripcion": "Empareja cada vocal mayúscula con su minúscula",
     "tipo": "letra-quiz",
     "materia": "letras",
     "nivel": "L0-04",
@@ -299,7 +299,7 @@
         "tipo": "colorear",
         "titulo": "La A",
         "emoji": "🌳",
-        "instruccion": "Empieza en el punto verde y sigue los puntitos hasta el rojo. A de arbol!",
+        "instruccion": "Empieza en el punto verde y sigue los puntitos hasta el rojo. ¡A de árbol!",
         "imagen_contorno_url": "/letras/trazos/L0-A_vocal-a.svg",
         "colores_sugeridos": [
           "#e74c3c",
@@ -314,7 +314,7 @@
         "tipo": "colorear",
         "titulo": "La E",
         "emoji": "🐘",
-        "instruccion": "Primero el palito de arriba a abajo, luego las tres rayitas. E de elefante!",
+        "instruccion": "Primero el palito de arriba a abajo, luego las tres rayitas. ¡E de elefante!",
         "imagen_contorno_url": "/letras/trazos/L0-E_vocal-e.svg",
         "colores_sugeridos": [
           "#e74c3c",
@@ -329,7 +329,7 @@
         "tipo": "colorear",
         "titulo": "La I",
         "emoji": "🏝️",
-        "instruccion": "Un palito de arriba a abajo. La chiquita lleva su puntito. I de isla!",
+        "instruccion": "Un palito de arriba a abajo. La chiquita lleva su puntito. ¡I de isla!",
         "imagen_contorno_url": "/letras/trazos/L0-I_vocal-i.svg",
         "colores_sugeridos": [
           "#e74c3c",
@@ -344,7 +344,7 @@
         "tipo": "colorear",
         "titulo": "La O",
         "emoji": "🐻",
-        "instruccion": "Da la vuelta completa empezando arriba y yendo hacia la izquierda. O de oso!",
+        "instruccion": "Da la vuelta completa empezando arriba y yendo hacia la izquierda. ¡O de oso!",
         "imagen_contorno_url": "/letras/trazos/L0-O_vocal-o.svg",
         "colores_sugeridos": [
           "#e74c3c",
@@ -359,7 +359,7 @@
         "tipo": "colorear",
         "titulo": "La U",
         "emoji": "🍇",
-        "instruccion": "Baja, da la curvita y vuelve a subir. U de uvas!",
+        "instruccion": "Baja, da la curvita y vuelve a subir. ¡U de uvas!",
         "imagen_contorno_url": "/letras/trazos/L0-U_vocal-u.svg",
         "colores_sugeridos": [
           "#e74c3c",

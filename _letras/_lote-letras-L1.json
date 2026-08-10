@@ -19,8 +19,7 @@
             "mayus": "M",
             "minus": "m",
             "palabra": "mamá",
-            "emoji": "👩",
-            "sonido": "mmm"
+            "emoji": "👩"
           },
           {
             "mayus": "P",
@@ -32,15 +31,13 @@
             "mayus": "S",
             "minus": "s",
             "palabra": "sol",
-            "emoji": "☀️",
-            "sonido": "sss"
+            "emoji": "☀️"
           },
           {
             "mayus": "L",
             "minus": "l",
             "palabra": "luna",
-            "emoji": "🌙",
-            "sonido": "lll"
+            "emoji": "🌙"
           }
         ]
       }
@@ -49,7 +46,7 @@
   {
     "id": "L1-02_silabas",
     "titulo": "Junta las letras",
-    "descripcion": "Une una consonante con cada vocal y forma silabas: ma me mi mo mu",
+    "descripcion": "Une una consonante con cada vocal y forma sílabas: ma me mi mo mu",
     "tipo": "silabas",
     "materia": "letras",
     "nivel": "L1-02",
@@ -58,12 +55,11 @@
       {
         "id": "let-silabas-m",
         "tipo": "silabas",
-        "titulo": "Silabas con M",
+        "titulo": "Sílabas con M",
         "emoji": "🧩",
-        "instruccion": "Toca una vocal y mira que silaba se forma.",
+        "instruccion": "Toca una vocal y mira qué sílaba se forma.",
         "consonante": "M",
         "consonante_minus": "m",
-        "sonido": "mmm",
         "silabas": [
           {
             "silaba": "ma",
@@ -100,9 +96,9 @@
       {
         "id": "let-silabas-p",
         "tipo": "silabas",
-        "titulo": "Silabas con P",
+        "titulo": "Sílabas con P",
         "emoji": "🧩",
-        "instruccion": "Toca una vocal y mira que silaba se forma.",
+        "instruccion": "Toca una vocal y mira qué sílaba se forma.",
         "consonante": "P",
         "consonante_minus": "p",
         "silabas": [
@@ -141,12 +137,11 @@
       {
         "id": "let-silabas-s",
         "tipo": "silabas",
-        "titulo": "Silabas con S",
+        "titulo": "Sílabas con S",
         "emoji": "🧩",
-        "instruccion": "Toca una vocal y mira que silaba se forma.",
+        "instruccion": "Toca una vocal y mira qué sílaba se forma.",
         "consonante": "S",
         "consonante_minus": "s",
-        "sonido": "sss",
         "silabas": [
           {
             "silaba": "sa",
@@ -183,12 +178,11 @@
       {
         "id": "let-silabas-l",
         "tipo": "silabas",
-        "titulo": "Silabas con L",
+        "titulo": "Sílabas con L",
         "emoji": "🧩",
-        "instruccion": "Toca una vocal y mira que silaba se forma.",
+        "instruccion": "Toca una vocal y mira qué sílaba se forma.",
         "consonante": "L",
         "consonante_minus": "l",
-        "sonido": "lll",
         "silabas": [
           {
             "silaba": "la",
@@ -226,8 +220,8 @@
   },
   {
     "id": "L1-03_con-que-silaba-empieza",
-    "titulo": "Con que silaba empieza?",
-    "descripcion": "Mira el dibujo y elige la silaba con la que empieza su nombre",
+    "titulo": "¿Con qué sílaba empieza?",
+    "descripcion": "Mira el dibujo y elige la sílaba con la que empieza su nombre",
     "tipo": "letra-quiz",
     "materia": "letras",
     "nivel": "L1-03",
@@ -237,9 +231,9 @@
         "id": "let-primera-silaba",
         "tipo": "letra-quiz",
         "modo": "primera-letra",
-        "titulo": "Con que silaba empieza?",
+        "titulo": "¿Con qué sílaba empieza?",
         "emoji": "🔎",
-        "instruccion": "Escucha la palabra y toca la silaba con la que empieza.",
+        "instruccion": "Escucha la palabra y toca la sílaba con la que empieza.",
         "retos": [
           {
             "emoji": "👩",
@@ -327,8 +321,8 @@
   },
   {
     "id": "L1-04_toca-la-silaba",
-    "titulo": "Toca la silaba",
-    "descripcion": "Escucha una silaba y tocala entre las opciones (juego de oido)",
+    "titulo": "Toca la sílaba",
+    "descripcion": "Escucha una sílaba y tócala entre las opciones (juego de oído)",
     "tipo": "letra-quiz",
     "materia": "letras",
     "nivel": "L1-04",
@@ -338,9 +332,9 @@
         "id": "let-reconoce-silaba",
         "tipo": "letra-quiz",
         "modo": "reconoce-letra",
-        "titulo": "Toca la silaba",
+        "titulo": "Toca la sílaba",
         "emoji": "👂",
-        "instruccion": "Escucha bien y toca la silaba que oiste. Toca la oreja para repetir.",
+        "instruccion": "Escucha bien y toca la sílaba que oíste. Toca la oreja para repetir.",
         "retos": [
           {
             "respuesta": "ma",
@@ -408,7 +402,7 @@
         "tipo": "colorear",
         "titulo": "La M",
         "emoji": "👩",
-        "instruccion": "Sube, baja, sube y baja, sin levantar el dedo. M de mama!",
+        "instruccion": "Sube, baja, sube y baja, sin levantar el dedo. ¡M de mamá!",
         "imagen_contorno_url": "/letras/trazos/L1-M_consonante-m.svg",
         "colores_sugeridos": [
           "#e74c3c",
@@ -423,7 +417,7 @@
         "tipo": "colorear",
         "titulo": "La P",
         "emoji": "👨",
-        "instruccion": "Primero el palito de arriba a abajo, luego la panza. P de papa!",
+        "instruccion": "Primero el palito de arriba a abajo, luego la panza. ¡P de papá!",
         "imagen_contorno_url": "/letras/trazos/L1-P_consonante-p.svg",
         "colores_sugeridos": [
           "#e74c3c",
@@ -438,7 +432,7 @@
         "tipo": "colorear",
         "titulo": "La S",
         "emoji": "☀️",
-        "instruccion": "Una culebrita: empieza arriba, ve a la izquierda y baja dando vueltas. S de sol!",
+        "instruccion": "Una culebrita: empieza arriba, ve a la izquierda y baja dando vueltas. ¡S de sol!",
         "imagen_contorno_url": "/letras/trazos/L1-S_consonante-s.svg",
         "colores_sugeridos": [
           "#e74c3c",
@@ -453,7 +447,7 @@
         "tipo": "colorear",
         "titulo": "La L",
         "emoji": "🌙",
-        "instruccion": "Baja derechito y al final gira a la derecha. L de luna!",
+        "instruccion": "Baja derechito y al final gira a la derecha. ¡L de luna!",
         "imagen_contorno_url": "/letras/trazos/L1-L_consonante-l.svg",
         "colores_sugeridos": [
           "#e74c3c",

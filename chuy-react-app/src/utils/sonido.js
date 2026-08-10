@@ -27,15 +27,63 @@ export const NOTAS = [523.25, 587.33, 659.25, 783.99, 880.0];
 
 // Voz (Web Speech) en español, para que los pre-lectores escuchen la instrucción.
 // Funciona offline con las voces del sistema operativo. Si no hay, no pasa nada.
-export function hablar(texto) {
+//
+// Antes solo se ponía `lang = 'es-MX'` y NO se elegía voz, así que el navegador usaba
+// la que trajera por defecto — normalmente la robótica de Windows. Elegir voz a mano
+// es lo que más mejora el tono, y de paso mejora todos los juegos que usan hablar().
+//
+// Preferencia: las de Google (Chrome, mucho más naturales) y luego las locales de
+// Windows en español de México.
+const VOCES_PREFERIDAS = [
+  'google español de estados unidos',
+  'google español',
+  'sabina',   // Microsoft Sabina — es-MX
+  'dalia',    // Microsoft Dalia — es-MX (Win 11)
+  'jorge',
+  'raul',
+];
+
+let vozElegida;
+
+function elegirVoz() {
+  const voces = window.speechSynthesis.getVoices() || [];
+  const es = voces.filter((v) => /^es\b|^es[-_]/i.test(v.lang));
+  if (!es.length) return null;
+  for (const pref of VOCES_PREFERIDAS) {
+    const v = es.find((x) => x.name.toLowerCase().includes(pref));
+    if (v) return v;
+  }
+  // Sin preferidas: latinoamericana antes que peninsular (es la que oyen en casa).
+  return es.find((v) => /mx|419|us/i.test(v.lang)) || es[0];
+}
+
+// Las voces cargan async en Chrome: la primera llamada suele devolver [].
+if (typeof window !== 'undefined' && window.speechSynthesis) {
+  window.speechSynthesis.onvoiceschanged = () => { vozElegida = elegirVoz(); };
+}
+
+/**
+ * @param {string} texto
+ * @param {{rate?: number, pitch?: number}} [opciones]
+ *   rate  0.1-10 (1 = normal). Más lento para letras y sílabas sueltas.
+ *   pitch 0-2 (1 = normal). Un poco arriba suena más cálido para los peques.
+ */
+export function hablar(texto, opciones = {}) {
   try {
     if (!window.speechSynthesis || !texto) return;
+    if (vozElegida === undefined) vozElegida = elegirVoz();
     const u = new SpeechSynthesisUtterance(texto);
     u.lang = 'es-MX';
-    u.rate = 0.95;
+    u.rate = opciones.rate ?? 0.95;
+    u.pitch = opciones.pitch ?? 1.1;
+    if (vozElegida) u.voice = vozElegida;
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(u);
   } catch {
     /* sin voz, no pasa nada */
   }
 }
+
+// Ritmo pausado y cálido para letras y sílabas sueltas, donde la voz normal
+// atropella. Lo usan Abecedario, LetraQuiz y Silabas.
+export const VOZ_LETRAS = { rate: 0.8, pitch: 1.15 };

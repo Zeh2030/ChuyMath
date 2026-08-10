@@ -1,7 +1,7 @@
 {
   "id": "L0-04_grande-y-chiquita",
   "titulo": "Grande y chiquita",
-  "descripcion": "Empareja cada vocal mayuscula con su minuscula",
+  "descripcion": "Empareja cada vocal mayúscula con su minúscula",
   "tipo": "letra-quiz",
   "materia": "letras",
   "nivel": "L0-04",
@@ -15,11 +15,51 @@
       "emoji": "🔠",
       "instruccion": "Mira la letra grande y busca la misma letra, pero chiquita.",
       "retos": [
-        { "letra": "A", "respuesta": "a", "opciones": ["a", "e", "o"] },
-        { "letra": "E", "respuesta": "e", "opciones": ["i", "e", "u"] },
-        { "letra": "O", "respuesta": "o", "opciones": ["a", "u", "o"] },
-        { "letra": "I", "respuesta": "i", "opciones": ["i", "o", "e"] },
-        { "letra": "U", "respuesta": "u", "opciones": ["e", "u", "a"] }
+        {
+          "letra": "A",
+          "respuesta": "a",
+          "opciones": [
+            "a",
+            "e",
+            "o"
+          ]
+        },
+        {
+          "letra": "E",
+          "respuesta": "e",
+          "opciones": [
+            "i",
+            "e",
+            "u"
+          ]
+        },
+        {
+          "letra": "O",
+          "respuesta": "o",
+          "opciones": [
+            "a",
+            "u",
+            "o"
+          ]
+        },
+        {
+          "letra": "I",
+          "respuesta": "i",
+          "opciones": [
+            "i",
+            "o",
+            "e"
+          ]
+        },
+        {
+          "letra": "U",
+          "respuesta": "u",
+          "opciones": [
+            "e",
+            "u",
+            "a"
+          ]
+        }
       ]
     }
   ]

@@ -1,7 +1,7 @@
 {
   "id": "L0-03_toca-la-vocal",
   "titulo": "Toca la vocal",
-  "descripcion": "Escucha una vocal y tocala entre las opciones (juego de oido)",
+  "descripcion": "Escucha una vocal y tócala entre las opciones (juego de oído)",
   "tipo": "letra-quiz",
   "materia": "letras",
   "nivel": "L0-03",
@@ -13,14 +13,56 @@
       "modo": "reconoce-letra",
       "titulo": "Toca la vocal",
       "emoji": "👂",
-      "instruccion": "Escucha bien y toca la letra que oiste. Toca la oreja para repetir.",
+      "instruccion": "Escucha bien y toca la letra que oíste. Toca la oreja para repetir.",
       "retos": [
-        { "respuesta": "A", "opciones": ["E", "A", "I"] },
-        { "respuesta": "O", "opciones": ["O", "U", "A"] },
-        { "respuesta": "I", "opciones": ["E", "U", "I"] },
-        { "respuesta": "E", "opciones": ["E", "A", "O"] },
-        { "respuesta": "U", "opciones": ["I", "O", "U"] },
-        { "respuesta": "A", "opciones": ["U", "O", "A"] }
+        {
+          "respuesta": "A",
+          "opciones": [
+            "E",
+            "A",
+            "I"
+          ]
+        },
+        {
+          "respuesta": "O",
+          "opciones": [
+            "O",
+            "U",
+            "A"
+          ]
+        },
+        {
+          "respuesta": "I",
+          "opciones": [
+            "E",
+            "U",
+            "I"
+          ]
+        },
+        {
+          "respuesta": "E",
+          "opciones": [
+            "E",
+            "A",
+            "O"
+          ]
+        },
+        {
+          "respuesta": "U",
+          "opciones": [
+            "I",
+            "O",
+            "U"
+          ]
+        },
+        {
+          "respuesta": "A",
+          "opciones": [
+            "U",
+            "O",
+            "A"
+          ]
+        }
       ]
     }
   ]

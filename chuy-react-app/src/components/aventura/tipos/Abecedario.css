@@ -39,7 +39,14 @@
   color: #2c3e50;
 }
 .abc-escenario-emoji { font-size: 2.4rem; }
-.abc-escenario-vacio { font-size: 1.3rem; color: #b08968; font-weight: 600; }
+.abc-escenario-vacio {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 1.3rem; color: #b08968; font-weight: 600;
+}
+.abc-voz {
+  border: none; background: #fdf2e0; border-radius: 50%;
+  width: 38px; height: 38px; font-size: 1.1rem; cursor: pointer;
+}
 
 .abc-teclado { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 .abc-tecla {

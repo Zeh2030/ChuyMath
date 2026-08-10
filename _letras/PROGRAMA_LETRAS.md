@@ -47,23 +47,37 @@ consonante suelta por su NOMBRE**: `hablar('M')` dice *"eme"*, no */mmm/*.
 Con las **vocales no hay problema** (el nombre ES el sonido). Con las consonantes sí,
 y el método silábico necesita el sonido.
 
-**Solución adoptada:** enseñar siempre la letra **ligada a una palabra clave**
-("M... M de mamá") y usar el campo opcional **`sonido`** para forzar lo que se
-pronuncia cuando el nombre no sirve:
+**Se intentó** un campo `sonido` con el fonema escrito (`"sonido": "mmm"`) para forzar la
+pronunciación. **No funciona y se quitó** (2026-08-09): el TTS lo deletrea — "mmm" se oye
+*"M, M, M"*, que es peor que "eme". Mismo resultado con "sss" y "lll". No hay forma de
+sacarle un fonema aislado a Web Speech.
 
-```json
-{ "mayus": "M", "minus": "m", "palabra": "mamá", "emoji": "👩", "sonido": "mmm" }
-```
+**Solución adoptada:** la letra se dice siempre **ligada a su palabra clave**
+("M de mamá"), y en `silabas` la consonante sola **no se pronuncia**: se VE en la
+ecuación y lo que se OYE es la vocal y la sílaba ya formada (*"u… mu. mu de música"*).
+La mezcla la hace el ojo junto con el oído. Es honesto y suena bien; lo otro sonaba a robot.
 
-**Mejora futura (opcional):** grabar audios cortos propios en `public/letras/audio/` y
-añadir un campo `audio_url` que tenga prioridad sobre el TTS. La voz de papá o mamá
-funciona mejor a esta edad. No hace falta rehacer nada: es un `if` en el motor.
+**Si algún día se quiere el fonema de verdad**, el único camino son audios grabados:
+MP3 cortos en `public/letras/audio/` y un campo `audio_url` con prioridad sobre el TTS.
+Es un `if` en el motor; no hay que rehacer nada. La voz de papá o mamá además funciona
+mejor a esta edad.
+
+### El tono de voz
+
+`hablar()` no elegía voz, así que el navegador usaba la de por defecto (la robótica de
+Windows). Ahora elige la mejor voz en español disponible — prefiere las de Google, que son
+mucho más naturales, y luego las locales de México (Sabina, Dalia). Esto mejoró de paso
+todos los juegos de Peques que usan `hablar()`.
+
+Los dos números a mover si el tono no convence están en `VOZ_LETRAS` (`src/utils/sonido.js`):
+`rate` (0.8 = pausado, para letras y sílabas sueltas) y `pitch` (1.15 = un poco más cálido).
 
 ### Reglas de autoría del contenido
 
-1. **Los campos que se HABLAN llevan acento** (`palabra`, `sonido`, `voz`), aunque el
-   resto del repo escriba los títulos sin acentos: sin acento el TTS pronuncia mal
-   ("arbol" → *ar-BOL*). Los `titulo` y `descripcion` siguen la convención del repo.
+1. **Todo el texto va con acentos correctos** — este módulo enseña a leer, así que lo que
+   se muestra tiene que estar bien escrito. Y además `instruccion`, `palabra` y `voz` se
+   **hablan**: sin acento el TTS pronuncia mal ("arbol" → *ar-BOL*, "silaba" → *si-LA-ba*).
+   Aquí NO aplica la costumbre del resto del repo de escribir sin acentos.
 2. **El emoji nunca decide la palabra** — la palabra va explícita en el JSON. 🍎 puede
    ser "manzana" o "fruta"; el motor dice lo que dice el campo `palabra`.
 3. Elegir emojis cuyo nombre en español empiece de verdad con la letra que se enseña.
@@ -231,13 +245,22 @@ L0 probado con la niña y aprobado, sin ajustes.
 - 4 SVG de trazo (M, P, S, L), verificados renderizados.
 - Contenido L1: 5 actividades / 11 misiones (`L1-01` … `L1-05`) + lote.
 - `_valida.js`: validador del contenido contra lo que esperan los motores.
-- El fonema por fin importa: M/S/L llevan `sonido` (`mmm`, `sss`, `lll`). La **P no lo
-  lleva a propósito** — es oclusiva, no hay sonido que sostener, así que la palabra clave
-  ("P de papá") hace el trabajo. Mismo criterio para las que vienen: t, d, k…
+
+**Ajustes tras probarlo (mismo día)**
+
+- **Se quitó el campo `sonido`.** El TTS deletreaba "mmm" como *"M, M, M"*. Ver
+  "El problema del fonema" arriba: no hay truco de escritura que funcione.
+- **`hablar()` ahora elige voz** (prefiere las de Google, luego Sabina/Dalia de es-MX) y
+  acepta `rate`/`pitch`. Antes no elegía ninguna y sonaba la robótica de Windows.
+  Mejora todos los juegos de Peques, no solo Letras.
+- **`abecedario` y `silabas` leen la instrucción al entrar** y tienen botón 🔊 para
+  repetir, como el resto de los juegos de peques. Se les había olvidado.
+- **Todo el texto se acentuó.** Al pasar a hablarse la `instruccion`, los acentos dejaron
+  de ser cosmética: "silaba" se oía *si-LA-ba*.
 
 **Siguiente (L2)**
 
-1. Probar L1 con la niña. La pregunta clave: ¿entiende que M + a = ma?
+1. Probar L1 con la niña. La pregunta clave: ¿entiende que m + a = ma?
 2. Resto de consonantes frecuentes (t, n, d, r, c) reusando los motores que ya hay.
 3. Motores `arma-la-palabra` y `lee-y-elige` — ahí ya lee palabras completas.
 

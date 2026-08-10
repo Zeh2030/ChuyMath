@@ -59,7 +59,14 @@
   color: #2c3e50;
 }
 .sil-palabra-emoji { font-size: 2.2rem; }
-.sil-vacio { font-size: 1.25rem; color: #b08968; font-weight: 600; }
+.sil-vacio {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 1.25rem; color: #b08968; font-weight: 600;
+}
+.sil-voz {
+  border: none; background: #fdf2e0; border-radius: 50%;
+  width: 38px; height: 38px; font-size: 1.1rem; cursor: pointer;
+}
 
 .sil-vocales { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 .sil-vocal {

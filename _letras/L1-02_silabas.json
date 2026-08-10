@@ -1,7 +1,7 @@
 {
   "id": "L1-02_silabas",
   "titulo": "Junta las letras",
-  "descripcion": "Une una consonante con cada vocal y forma silabas: ma me mi mo mu",
+  "descripcion": "Une una consonante con cada vocal y forma sílabas: ma me mi mo mu",
   "tipo": "silabas",
   "materia": "letras",
   "nivel": "L1-02",
@@ -10,68 +10,165 @@
     {
       "id": "let-silabas-m",
       "tipo": "silabas",
-      "titulo": "Silabas con M",
+      "titulo": "Sílabas con M",
       "emoji": "🧩",
-      "instruccion": "Toca una vocal y mira que silaba se forma.",
+      "instruccion": "Toca una vocal y mira qué sílaba se forma.",
       "consonante": "M",
       "consonante_minus": "m",
-      "sonido": "mmm",
       "silabas": [
-        { "silaba": "ma", "vocal": "a", "palabra": "mamá", "emoji": "👩" },
-        { "silaba": "me", "vocal": "e", "palabra": "melón", "emoji": "🍈" },
-        { "silaba": "mi", "vocal": "i", "palabra": "miel", "emoji": "🍯" },
-        { "silaba": "mo", "vocal": "o", "palabra": "moto", "emoji": "🏍️" },
-        { "silaba": "mu", "vocal": "u", "palabra": "música", "emoji": "🎶" }
+        {
+          "silaba": "ma",
+          "vocal": "a",
+          "palabra": "mamá",
+          "emoji": "👩"
+        },
+        {
+          "silaba": "me",
+          "vocal": "e",
+          "palabra": "melón",
+          "emoji": "🍈"
+        },
+        {
+          "silaba": "mi",
+          "vocal": "i",
+          "palabra": "miel",
+          "emoji": "🍯"
+        },
+        {
+          "silaba": "mo",
+          "vocal": "o",
+          "palabra": "moto",
+          "emoji": "🏍️"
+        },
+        {
+          "silaba": "mu",
+          "vocal": "u",
+          "palabra": "música",
+          "emoji": "🎶"
+        }
       ]
     },
     {
       "id": "let-silabas-p",
       "tipo": "silabas",
-      "titulo": "Silabas con P",
+      "titulo": "Sílabas con P",
       "emoji": "🧩",
-      "instruccion": "Toca una vocal y mira que silaba se forma.",
+      "instruccion": "Toca una vocal y mira qué sílaba se forma.",
       "consonante": "P",
       "consonante_minus": "p",
       "silabas": [
-        { "silaba": "pa", "vocal": "a", "palabra": "papá", "emoji": "👨" },
-        { "silaba": "pe", "vocal": "e", "palabra": "perro", "emoji": "🐕" },
-        { "silaba": "pi", "vocal": "i", "palabra": "piña", "emoji": "🍍" },
-        { "silaba": "po", "vocal": "o", "palabra": "pollo", "emoji": "🐔" },
-        { "silaba": "pu", "vocal": "u", "palabra": "puerta", "emoji": "🚪" }
+        {
+          "silaba": "pa",
+          "vocal": "a",
+          "palabra": "papá",
+          "emoji": "👨"
+        },
+        {
+          "silaba": "pe",
+          "vocal": "e",
+          "palabra": "perro",
+          "emoji": "🐕"
+        },
+        {
+          "silaba": "pi",
+          "vocal": "i",
+          "palabra": "piña",
+          "emoji": "🍍"
+        },
+        {
+          "silaba": "po",
+          "vocal": "o",
+          "palabra": "pollo",
+          "emoji": "🐔"
+        },
+        {
+          "silaba": "pu",
+          "vocal": "u",
+          "palabra": "puerta",
+          "emoji": "🚪"
+        }
       ]
     },
     {
       "id": "let-silabas-s",
       "tipo": "silabas",
-      "titulo": "Silabas con S",
+      "titulo": "Sílabas con S",
       "emoji": "🧩",
-      "instruccion": "Toca una vocal y mira que silaba se forma.",
+      "instruccion": "Toca una vocal y mira qué sílaba se forma.",
       "consonante": "S",
       "consonante_minus": "s",
-      "sonido": "sss",
       "silabas": [
-        { "silaba": "sa", "vocal": "a", "palabra": "sapo", "emoji": "🐸" },
-        { "silaba": "se", "vocal": "e", "palabra": "serpiente", "emoji": "🐍" },
-        { "silaba": "si", "vocal": "i", "palabra": "silla", "emoji": "🪑" },
-        { "silaba": "so", "vocal": "o", "palabra": "sol", "emoji": "☀️" },
-        { "silaba": "su", "vocal": "u", "palabra": "suéter", "emoji": "🧥" }
+        {
+          "silaba": "sa",
+          "vocal": "a",
+          "palabra": "sapo",
+          "emoji": "🐸"
+        },
+        {
+          "silaba": "se",
+          "vocal": "e",
+          "palabra": "serpiente",
+          "emoji": "🐍"
+        },
+        {
+          "silaba": "si",
+          "vocal": "i",
+          "palabra": "silla",
+          "emoji": "🪑"
+        },
+        {
+          "silaba": "so",
+          "vocal": "o",
+          "palabra": "sol",
+          "emoji": "☀️"
+        },
+        {
+          "silaba": "su",
+          "vocal": "u",
+          "palabra": "suéter",
+          "emoji": "🧥"
+        }
       ]
     },
     {
       "id": "let-silabas-l",
       "tipo": "silabas",
-      "titulo": "Silabas con L",
+      "titulo": "Sílabas con L",
       "emoji": "🧩",
-      "instruccion": "Toca una vocal y mira que silaba se forma.",
+      "instruccion": "Toca una vocal y mira qué sílaba se forma.",
       "consonante": "L",
       "consonante_minus": "l",
-      "sonido": "lll",
       "silabas": [
-        { "silaba": "la", "vocal": "a", "palabra": "lápiz", "emoji": "✏️" },
-        { "silaba": "le", "vocal": "e", "palabra": "león", "emoji": "🦁" },
-        { "silaba": "li", "vocal": "i", "palabra": "libro", "emoji": "📖" },
-        { "silaba": "lo", "vocal": "o", "palabra": "lobo", "emoji": "🐺" },
-        { "silaba": "lu", "vocal": "u", "palabra": "luna", "emoji": "🌙" }
+        {
+          "silaba": "la",
+          "vocal": "a",
+          "palabra": "lápiz",
+          "emoji": "✏️"
+        },
+        {
+          "silaba": "le",
+          "vocal": "e",
+          "palabra": "león",
+          "emoji": "🦁"
+        },
+        {
+          "silaba": "li",
+          "vocal": "i",
+          "palabra": "libro",
+          "emoji": "📖"
+        },
+        {
+          "silaba": "lo",
+          "vocal": "o",
+          "palabra": "lobo",
+          "emoji": "🐺"
+        },
+        {
+          "silaba": "lu",
+          "vocal": "u",
+          "palabra": "luna",
+          "emoji": "🌙"
+        }
       ]
     }
   ]

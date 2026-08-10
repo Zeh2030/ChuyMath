@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Silabas.css';
-import { sonar, hablar } from '../../../utils/sonido';
+import { sonar, hablar, VOZ_LETRAS } from '../../../utils/sonido';
 
 /**
  * Silabas — el corazon del metodo silabico: ver que una consonante MAS una vocal
@@ -9,16 +9,19 @@ import { sonar, hablar } from '../../../utils/sonido';
  *
  * No hay respuestas correctas ni puntaje: es exploracion, como `abecedario`.
  *
- * El campo `sonido` es el que hace que esto funcione: sin el, el TTS diria "eme"
- * en vez de /mmm/ y la mezcla no se oiria. Para las oclusivas (p, t) no hay un
- * sonido sostenible, asi que se deja sin `sonido` y la palabra clave hace el trabajo.
+ * OJO con la voz: la consonante sola NO se dice, a proposito. El TTS no sabe emitir
+ * un fonema aislado -- "m" lo lee "eme" y el truco de escribir "mmm" lo deletrea
+ * ("M, M, M"), que era peor. Asi que la consonante se VE en la ecuacion y lo que se
+ * OYE es la vocal y la silaba ya formada: "u... mu. mu de música". La mezcla la hace
+ * el ojo con el oido. Para decir fonemas de verdad hacen falta audios grabados.
  *
- * mision: { consonante, consonante_minus, sonido?, silabas: [{ silaba, vocal, palabra, emoji }] }
+ * mision: { consonante, consonante_minus, silabas: [{ silaba, vocal, palabra, emoji }] }
  */
+const INSTRUCCION_DEFAULT = 'Toca una vocal y mira qué sílaba se forma.';
+
 const DEFAULT = {
   consonante: 'M',
   consonante_minus: 'm',
-  sonido: 'mmm',
   silabas: [
     { silaba: 'ma', vocal: 'a', palabra: 'mamá', emoji: '👩' },
     { silaba: 'me', vocal: 'e', palabra: 'melón', emoji: '🍈' },
@@ -30,15 +33,22 @@ const DEFAULT = {
 
 const Silabas = ({ mision, onCompletar }) => {
   const datos = (mision && mision.silabas && mision.silabas.length) ? mision : DEFAULT;
-  const { consonante, consonante_minus: minus, sonido } = datos;
+  const { consonante, consonante_minus: minus } = datos;
   const silabas = datos.silabas;
+  const instruccion = (mision && mision.instruccion) || INSTRUCCION_DEFAULT;
   const [activa, setActiva] = useState(null);
+
+  // Lee la instruccion al entrar, como el resto de los juegos de peques.
+  useEffect(() => {
+    hablar(instruccion);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const armar = (s) => {
     setActiva(s);
     sonar(660);
-    // La mezcla: sonido de la consonante, la vocal, la silaba, y la palabra que la ancla.
-    hablar(`${sonido || consonante}... ${s.vocal}... ${s.silaba}. ${s.silaba} de ${s.palabra}`);
+    // La vocal y luego la silaba ya formada; la consonante se ve, no se oye (ver arriba).
+    hablar(`${s.vocal}... ${s.silaba}. ${s.silaba} de ${s.palabra}`, VOZ_LETRAS);
   };
 
   return (
@@ -58,9 +68,13 @@ const Silabas = ({ mision, onCompletar }) => {
           <div className="sil-palabra">
             <span className="sil-palabra-emoji">{activa.emoji}</span>
             <span>{activa.palabra}</span>
+            <button className="sil-voz" onClick={() => armar(activa)} title="Escuchar otra vez">🔊</button>
           </div>
         ) : (
-          <div className="sil-vacio">👆 Toca una vocal</div>
+          <div className="sil-vacio">
+            👆 Toca una vocal
+            <button className="sil-voz" onClick={() => hablar(instruccion)} title="Escuchar">🔊</button>
+          </div>
         )}
       </div>
 
