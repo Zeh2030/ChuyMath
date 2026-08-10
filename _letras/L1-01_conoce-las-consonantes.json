@@ -1,0 +1,24 @@
+{
+  "id": "L1-01_conoce-las-consonantes",
+  "titulo": "Conoce la M, la P, la S y la L",
+  "descripcion": "Toca cada consonante y escucha su sonido, con su palabra y su dibujo",
+  "tipo": "abecedario",
+  "materia": "letras",
+  "nivel": "L1-01",
+  "tema": "consonantes",
+  "misiones": [
+    {
+      "id": "let-abc-mpsl",
+      "tipo": "abecedario",
+      "titulo": "M, P, S y L",
+      "emoji": "🔤",
+      "instruccion": "Toca una letra para escuchar su sonido.",
+      "letras": [
+        { "mayus": "M", "minus": "m", "palabra": "mamá", "emoji": "👩", "sonido": "mmm" },
+        { "mayus": "P", "minus": "p", "palabra": "papá", "emoji": "👨" },
+        { "mayus": "S", "minus": "s", "palabra": "sol", "emoji": "☀️", "sonido": "sss" },
+        { "mayus": "L", "minus": "l", "palabra": "luna", "emoji": "🌙", "sonido": "lll" }
+      ]
+    }
+  ]
+}

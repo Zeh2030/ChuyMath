@@ -30,7 +30,7 @@ const Boveda = () => {
     // Subject-specific ids (piano-*, geografia-*) take priority over generic types
     if (f.startsWith('piano-') || f === 'identifica-nota') return 'piano';
     if (f.startsWith('geografia-') || f === 'explorador-mapa') return 'geografia';
-    if (f.startsWith('letras-') || f === 'abecedario' || f === 'letra-quiz') return 'letras';
+    if (f.startsWith('letras-') || f === 'abecedario' || f === 'letra-quiz' || f === 'silabas') return 'letras';
     const englishTypes = ['word-bank', 'verb-conjugator', 'true-or-false', 'fill-the-gap',
       'tap-the-pairs', 'sentence-transform', 'image-picker', 'word-scramble',
       'listen-and-type', 'expediciones-en', 'mini-story'];
@@ -108,6 +108,7 @@ const Boveda = () => {
     // Letras (lectura para pre-lectores)
     { id: 'letras-abecedario', emoji: '🔤', nombre: 'Conoce las Letras', tipo: 'abecedario', descripcion: 'Toca cada letra y escucha como suena', materia: 'letras' },
     { id: 'letras-quiz', emoji: '🔎', nombre: 'Juegos de Letras', tipo: 'letra-quiz', descripcion: 'Con que empieza, toca la letra, grande y chiquita', materia: 'letras' },
+    { id: 'letras-silabas', emoji: '🧩', nombre: 'Silabas', tipo: 'silabas', descripcion: 'Junta una consonante con cada vocal: ma me mi mo mu', materia: 'letras' },
     { id: 'letras-trazo', emoji: '✏️', nombre: 'Traza Letras', tipo: 'colorear', descripcion: 'Sigue los puntitos y escribe cada letra', materia: 'letras' },
   ];
 

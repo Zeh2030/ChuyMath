@@ -69,6 +69,15 @@ funciona mejor a esta edad. No hace falta rehacer nada: es un `if` en el motor.
 3. Elegir emojis cuyo nombre en español empiece de verdad con la letra que se enseña.
 4. Máximo **6-8 retos** por actividad. Sesiones cortas por diseño; sin cronómetro,
    sin puntaje, sin "perdiste".
+5. **Correr `node _letras/_valida.js` antes de subir nada.** Comprueba lo que los motores
+   dan por hecho y es fácil de romper a mano: que la `respuesta` esté entre las `opciones`,
+   que la palabra clave de verdad empiece con su letra o sílaba (ignorando acentos), que
+   cada sílaba sea consonante + vocal, que los SVG referenciados existan y que no haya ids
+   duplicados.
+6. **Los SVG de trazo se revisan renderizados, nunca leyendo el código.** En L0 el código
+   parecía correcto y la `e` salía casi cerrada (parecía una `o` con raya) y el puntito de
+   la `i`, un anillo roto. Basta con `chrome --headless --screenshot` sobre un HTML que
+   los muestre juntos.
 
 ---
 
@@ -80,7 +89,13 @@ funciona mejor a esta edad. No hace falta rehacer nada: es un `if` en el motor.
 |------|-----------|----------|
 | `abecedario` | `tipos/Abecedario.jsx` | Teclado sonoro: toca una letra y la oyes con su palabra clave. Exploración pura, sin respuestas correctas. |
 | `letra-quiz` | `tipos/LetraQuiz.jsx` | Estímulo + 3 opciones. Tres modos (abajo). |
+| `silabas` | `tipos/Silabas.jsx` | "M + a = ma": toca una vocal y la voz hace la mezcla (*"mmm… a… ma. ma de mamá"*). Exploración, sin puntaje. |
 | `colorear` | `tipos/Colorear.jsx` (reusado) | Trazar la letra sobre una guía punteada. Sin código nuevo. |
+
+`letra-quiz` **no distingue entre letras y sílabas**: sus tres modos funcionan igual con
+`respuesta: "A"` que con `respuesta: "ma"`. Por eso L1 no necesitó motores de quiz nuevos —
+solo contenido. El único motor nuevo de L1 fue `silabas`, porque **ver** cómo se combinan
+la consonante y la vocal es justo lo que el método silábico enseña y ningún otro motor lo hacía.
 
 `letra-quiz` es **un solo motor con campo `modo`** — los tres retos comparten mecánica,
 como ya pasa con Contar/Formas/Tamaños/MásMenos:
@@ -91,11 +106,10 @@ como ya pasa con Contar/Formas/Tamaños/MásMenos:
 | `reconoce-letra` | nada (juego de oído) | "Toca la M" | letras |
 | `mayus-minus` | la mayúscula grande | "¿Cuál es la m chiquita?" | minúsculas |
 
-### Pendientes (L1 en adelante)
+### Pendientes (L2 en adelante)
 
 | Tipo | Qué hace | Nivel |
 |------|----------|-------|
-| `silabas` | ma-me-mi-mo-mu: toca la sílaba que oyes | L1 |
 | `arma-la-palabra` | ordenar 2-3 sílabas para formar una palabra | L2 |
 | `lee-y-elige` | se lee una palabra → elegir entre 3 dibujos | L2 |
 
@@ -130,7 +144,9 @@ la guía nunca se borra por más que el niño pinte encima.
   ciencias / dibujo / geografía).
 - Estructura de documento idéntica a una aventura: `misiones: [...]`.
 - Se sube con **Admin → Migración → 📖 Letras**. Acepta un **array** para carga en lote:
-  usa `_letras/_lote-letras-L0.json` y subes todo el nivel de un clic.
+  usa `_letras/_lote-letras-L0.json` (o `-L1`) y subes todo el nivel de un clic. Los lotes
+  se regeneran juntando los `Lx-*.json` del nivel; el `id` del JSON es el id del documento,
+  así que volver a subir algo solo lo sobrescribe (no duplica).
 - Requiere desplegar `firestore.rules` (ya incluye `letras`, lectura autenticada).
   **Sin desplegar, el respaldo nativo offline funciona igual** (ver abajo).
 
@@ -207,12 +223,23 @@ Dos detalles del hub que difieren de `DibujarHub`, a propósito:
 - Respaldo offline: los motores traen las vocales por defecto, así que el hub funciona
   sin internet y aunque no se haya subido nada a Firestore.
 
-**Siguiente (L1)**
+L0 probado con la niña y aprobado, sin ajustes.
 
-1. Probar L0 con la niña y ajustar (velocidad de la voz, tamaño de los botones).
-2. Motor `silabas`.
-3. Contenido L1 de m, p, s, l — con el campo `sonido` para el fonema.
-4. SVG de trazo de esas consonantes.
+**Fase 2 (L1) — HECHO (2026-08-09)**
+
+- Motor `silabas` + registro en `MisionRenderer`, `LetrasHub`, Dashboard y Bóveda.
+- 4 SVG de trazo (M, P, S, L), verificados renderizados.
+- Contenido L1: 5 actividades / 11 misiones (`L1-01` … `L1-05`) + lote.
+- `_valida.js`: validador del contenido contra lo que esperan los motores.
+- El fonema por fin importa: M/S/L llevan `sonido` (`mmm`, `sss`, `lll`). La **P no lo
+  lleva a propósito** — es oclusiva, no hay sonido que sostener, así que la palabra clave
+  ("P de papá") hace el trabajo. Mismo criterio para las que vienen: t, d, k…
+
+**Siguiente (L2)**
+
+1. Probar L1 con la niña. La pregunta clave: ¿entiende que M + a = ma?
+2. Resto de consonantes frecuentes (t, n, d, r, c) reusando los motores que ya hay.
+3. Motores `arma-la-palabra` y `lee-y-elige` — ahí ya lee palabras completas.
 
 **Después**
 

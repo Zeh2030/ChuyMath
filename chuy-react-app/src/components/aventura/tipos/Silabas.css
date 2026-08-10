@@ -1,0 +1,107 @@
+.sil {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 8px;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  text-align: center;
+}
+
+.sil-escenario {
+  width: 100%;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #fff7e6;
+  border-radius: 24px;
+  padding: 18px;
+  margin-bottom: 22px;
+}
+
+.sil-ecuacion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.sil-parte {
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #2c3e50;
+}
+.sil-signo {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #b08968;
+}
+.sil-resultado {
+  font-size: 4.2rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #e67e22;
+  animation: sil-pop 0.5s ease;
+}
+
+.sil-palabra {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+.sil-palabra-emoji { font-size: 2.2rem; }
+.sil-vacio { font-size: 1.25rem; color: #b08968; font-weight: 600; }
+
+.sil-vocales { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.sil-vocal {
+  width: 92px;
+  height: 92px;
+  border-radius: 22px;
+  border: none;
+  background: #f8f9fa;
+  font-family: inherit;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #2c3e50;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.15s;
+}
+.sil-vocal:hover { transform: translateY(-3px) scale(1.04); }
+.sil-vocal:active { transform: scale(0.95); }
+.sil-vocal.activa {
+  background: #fdf2e0;
+  color: #e67e22;
+  box-shadow: 0 0 0 5px #e67e22, 0 6px 16px rgba(230, 126, 34, 0.4);
+}
+
+@keyframes sil-pop { 0% { transform: scale(0.7); opacity: 0; } 60% { transform: scale(1.15); opacity: 1; } 100% { transform: scale(1); } }
+
+.sil-btn {
+  margin-top: 26px;
+  padding: 14px 34px;
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #e67e22, #f1c40f);
+  color: white;
+  font-size: 1.15rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+@media (max-width: 420px) {
+  .sil-vocal { width: 62px; height: 62px; font-size: 2rem; }
+  .sil-parte { font-size: 2.4rem; }
+  .sil-resultado { font-size: 3.2rem; }
+  .sil-signo { font-size: 1.6rem; }
+}

@@ -24,6 +24,7 @@ const claveDe = (mision) =>
 
 const SUBSECCIONES = [
   { clave: 'abecedario', titulo: 'Conoce las letras', emoji: '🔤', color: '#ffd6a5' },
+  { clave: 'silabas', titulo: 'Silabas', emoji: '🧩', color: '#a0e8af' },
   { clave: 'letra-quiz:primera-letra', titulo: 'Con que empieza?', emoji: '🔎', color: '#bde0fe' },
   { clave: 'letra-quiz:reconoce-letra', titulo: 'Toca la letra', emoji: '👂', color: '#b8e0d2' },
   { clave: 'letra-quiz:mayus-minus', titulo: 'Grande y chiquita', emoji: '🔠', color: '#c3b1e1' },
@@ -49,6 +50,8 @@ const NATIVAS = [
     mision: { id: 'letras-reconoce', tipo: 'letra-quiz', modo: 'reconoce-letra' } },
   { id: 'letras-mayus-minus', titulo: 'Grande y chiquita', emoji: '🔠',
     mision: { id: 'letras-mayus-minus', tipo: 'letra-quiz', modo: 'mayus-minus' } },
+  { id: 'letras-silabas-m', titulo: 'Silabas con M', emoji: '🧩',
+    mision: { id: 'letras-silabas-m', tipo: 'silabas' } },
   ...TRAZOS_NATIVOS.map((t) => ({
     id: `letras-traza-${t.letra}`,
     titulo: `La ${t.letra}`,

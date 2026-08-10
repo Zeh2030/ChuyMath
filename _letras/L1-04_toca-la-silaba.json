@@ -1,0 +1,27 @@
+{
+  "id": "L1-04_toca-la-silaba",
+  "titulo": "Toca la silaba",
+  "descripcion": "Escucha una silaba y tocala entre las opciones (juego de oido)",
+  "tipo": "letra-quiz",
+  "materia": "letras",
+  "nivel": "L1-04",
+  "tema": "silabas",
+  "misiones": [
+    {
+      "id": "let-reconoce-silaba",
+      "tipo": "letra-quiz",
+      "modo": "reconoce-letra",
+      "titulo": "Toca la silaba",
+      "emoji": "👂",
+      "instruccion": "Escucha bien y toca la silaba que oiste. Toca la oreja para repetir.",
+      "retos": [
+        { "respuesta": "ma", "opciones": ["me", "ma", "mi"] },
+        { "respuesta": "pi", "opciones": ["pi", "pa", "pu"] },
+        { "respuesta": "so", "opciones": ["se", "su", "so"] },
+        { "respuesta": "lu", "opciones": ["lu", "la", "lo"] },
+        { "respuesta": "me", "opciones": ["pe", "me", "se"] },
+        { "respuesta": "la", "opciones": ["ma", "sa", "la"] }
+      ]
+    }
+  ]
+}

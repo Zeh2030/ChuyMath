@@ -178,6 +178,7 @@ const Dashboard = () => {
     // Letras
     { id: 'letras-abecedario', emoji: '🔤', nombre: 'Conoce las Letras', filtro: 'letras-abecedario', disponible: true, materia: 'letras' },
     { id: 'letras-quiz', emoji: '🔎', nombre: 'Juegos de Letras', filtro: 'letras-quiz', disponible: true, materia: 'letras' },
+    { id: 'letras-silabas', emoji: '🧩', nombre: 'Silabas', filtro: 'letras-silabas', disponible: true, materia: 'letras' },
     { id: 'letras-trazo', emoji: '✏️', nombre: 'Traza Letras', filtro: 'letras-trazo', disponible: true, materia: 'letras' },
   ];
 

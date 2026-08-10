@@ -1,0 +1,468 @@
+[
+  {
+    "id": "L1-01_conoce-las-consonantes",
+    "titulo": "Conoce la M, la P, la S y la L",
+    "descripcion": "Toca cada consonante y escucha su sonido, con su palabra y su dibujo",
+    "tipo": "abecedario",
+    "materia": "letras",
+    "nivel": "L1-01",
+    "tema": "consonantes",
+    "misiones": [
+      {
+        "id": "let-abc-mpsl",
+        "tipo": "abecedario",
+        "titulo": "M, P, S y L",
+        "emoji": "🔤",
+        "instruccion": "Toca una letra para escuchar su sonido.",
+        "letras": [
+          {
+            "mayus": "M",
+            "minus": "m",
+            "palabra": "mamá",
+            "emoji": "👩",
+            "sonido": "mmm"
+          },
+          {
+            "mayus": "P",
+            "minus": "p",
+            "palabra": "papá",
+            "emoji": "👨"
+          },
+          {
+            "mayus": "S",
+            "minus": "s",
+            "palabra": "sol",
+            "emoji": "☀️",
+            "sonido": "sss"
+          },
+          {
+            "mayus": "L",
+            "minus": "l",
+            "palabra": "luna",
+            "emoji": "🌙",
+            "sonido": "lll"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "L1-02_silabas",
+    "titulo": "Junta las letras",
+    "descripcion": "Une una consonante con cada vocal y forma silabas: ma me mi mo mu",
+    "tipo": "silabas",
+    "materia": "letras",
+    "nivel": "L1-02",
+    "tema": "silabas",
+    "misiones": [
+      {
+        "id": "let-silabas-m",
+        "tipo": "silabas",
+        "titulo": "Silabas con M",
+        "emoji": "🧩",
+        "instruccion": "Toca una vocal y mira que silaba se forma.",
+        "consonante": "M",
+        "consonante_minus": "m",
+        "sonido": "mmm",
+        "silabas": [
+          {
+            "silaba": "ma",
+            "vocal": "a",
+            "palabra": "mamá",
+            "emoji": "👩"
+          },
+          {
+            "silaba": "me",
+            "vocal": "e",
+            "palabra": "melón",
+            "emoji": "🍈"
+          },
+          {
+            "silaba": "mi",
+            "vocal": "i",
+            "palabra": "miel",
+            "emoji": "🍯"
+          },
+          {
+            "silaba": "mo",
+            "vocal": "o",
+            "palabra": "moto",
+            "emoji": "🏍️"
+          },
+          {
+            "silaba": "mu",
+            "vocal": "u",
+            "palabra": "música",
+            "emoji": "🎶"
+          }
+        ]
+      },
+      {
+        "id": "let-silabas-p",
+        "tipo": "silabas",
+        "titulo": "Silabas con P",
+        "emoji": "🧩",
+        "instruccion": "Toca una vocal y mira que silaba se forma.",
+        "consonante": "P",
+        "consonante_minus": "p",
+        "silabas": [
+          {
+            "silaba": "pa",
+            "vocal": "a",
+            "palabra": "papá",
+            "emoji": "👨"
+          },
+          {
+            "silaba": "pe",
+            "vocal": "e",
+            "palabra": "perro",
+            "emoji": "🐕"
+          },
+          {
+            "silaba": "pi",
+            "vocal": "i",
+            "palabra": "piña",
+            "emoji": "🍍"
+          },
+          {
+            "silaba": "po",
+            "vocal": "o",
+            "palabra": "pollo",
+            "emoji": "🐔"
+          },
+          {
+            "silaba": "pu",
+            "vocal": "u",
+            "palabra": "puerta",
+            "emoji": "🚪"
+          }
+        ]
+      },
+      {
+        "id": "let-silabas-s",
+        "tipo": "silabas",
+        "titulo": "Silabas con S",
+        "emoji": "🧩",
+        "instruccion": "Toca una vocal y mira que silaba se forma.",
+        "consonante": "S",
+        "consonante_minus": "s",
+        "sonido": "sss",
+        "silabas": [
+          {
+            "silaba": "sa",
+            "vocal": "a",
+            "palabra": "sapo",
+            "emoji": "🐸"
+          },
+          {
+            "silaba": "se",
+            "vocal": "e",
+            "palabra": "serpiente",
+            "emoji": "🐍"
+          },
+          {
+            "silaba": "si",
+            "vocal": "i",
+            "palabra": "silla",
+            "emoji": "🪑"
+          },
+          {
+            "silaba": "so",
+            "vocal": "o",
+            "palabra": "sol",
+            "emoji": "☀️"
+          },
+          {
+            "silaba": "su",
+            "vocal": "u",
+            "palabra": "suéter",
+            "emoji": "🧥"
+          }
+        ]
+      },
+      {
+        "id": "let-silabas-l",
+        "tipo": "silabas",
+        "titulo": "Silabas con L",
+        "emoji": "🧩",
+        "instruccion": "Toca una vocal y mira que silaba se forma.",
+        "consonante": "L",
+        "consonante_minus": "l",
+        "sonido": "lll",
+        "silabas": [
+          {
+            "silaba": "la",
+            "vocal": "a",
+            "palabra": "lápiz",
+            "emoji": "✏️"
+          },
+          {
+            "silaba": "le",
+            "vocal": "e",
+            "palabra": "león",
+            "emoji": "🦁"
+          },
+          {
+            "silaba": "li",
+            "vocal": "i",
+            "palabra": "libro",
+            "emoji": "📖"
+          },
+          {
+            "silaba": "lo",
+            "vocal": "o",
+            "palabra": "lobo",
+            "emoji": "🐺"
+          },
+          {
+            "silaba": "lu",
+            "vocal": "u",
+            "palabra": "luna",
+            "emoji": "🌙"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "L1-03_con-que-silaba-empieza",
+    "titulo": "Con que silaba empieza?",
+    "descripcion": "Mira el dibujo y elige la silaba con la que empieza su nombre",
+    "tipo": "letra-quiz",
+    "materia": "letras",
+    "nivel": "L1-03",
+    "tema": "silabas",
+    "misiones": [
+      {
+        "id": "let-primera-silaba",
+        "tipo": "letra-quiz",
+        "modo": "primera-letra",
+        "titulo": "Con que silaba empieza?",
+        "emoji": "🔎",
+        "instruccion": "Escucha la palabra y toca la silaba con la que empieza.",
+        "retos": [
+          {
+            "emoji": "👩",
+            "palabra": "mamá",
+            "respuesta": "ma",
+            "opciones": [
+              "ma",
+              "pa",
+              "sa"
+            ]
+          },
+          {
+            "emoji": "👨",
+            "palabra": "papá",
+            "respuesta": "pa",
+            "opciones": [
+              "la",
+              "pa",
+              "ma"
+            ]
+          },
+          {
+            "emoji": "☀️",
+            "palabra": "sol",
+            "respuesta": "so",
+            "opciones": [
+              "so",
+              "lo",
+              "mo"
+            ]
+          },
+          {
+            "emoji": "🌙",
+            "palabra": "luna",
+            "respuesta": "lu",
+            "opciones": [
+              "mu",
+              "lu",
+              "pu"
+            ]
+          },
+          {
+            "emoji": "🍯",
+            "palabra": "miel",
+            "respuesta": "mi",
+            "opciones": [
+              "si",
+              "pi",
+              "mi"
+            ]
+          },
+          {
+            "emoji": "🐸",
+            "palabra": "sapo",
+            "respuesta": "sa",
+            "opciones": [
+              "sa",
+              "ma",
+              "la"
+            ]
+          },
+          {
+            "emoji": "🦁",
+            "palabra": "león",
+            "respuesta": "le",
+            "opciones": [
+              "pe",
+              "le",
+              "se"
+            ]
+          },
+          {
+            "emoji": "🐕",
+            "palabra": "perro",
+            "respuesta": "pe",
+            "opciones": [
+              "pe",
+              "me",
+              "le"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "L1-04_toca-la-silaba",
+    "titulo": "Toca la silaba",
+    "descripcion": "Escucha una silaba y tocala entre las opciones (juego de oido)",
+    "tipo": "letra-quiz",
+    "materia": "letras",
+    "nivel": "L1-04",
+    "tema": "silabas",
+    "misiones": [
+      {
+        "id": "let-reconoce-silaba",
+        "tipo": "letra-quiz",
+        "modo": "reconoce-letra",
+        "titulo": "Toca la silaba",
+        "emoji": "👂",
+        "instruccion": "Escucha bien y toca la silaba que oiste. Toca la oreja para repetir.",
+        "retos": [
+          {
+            "respuesta": "ma",
+            "opciones": [
+              "me",
+              "ma",
+              "mi"
+            ]
+          },
+          {
+            "respuesta": "pi",
+            "opciones": [
+              "pi",
+              "pa",
+              "pu"
+            ]
+          },
+          {
+            "respuesta": "so",
+            "opciones": [
+              "se",
+              "su",
+              "so"
+            ]
+          },
+          {
+            "respuesta": "lu",
+            "opciones": [
+              "lu",
+              "la",
+              "lo"
+            ]
+          },
+          {
+            "respuesta": "me",
+            "opciones": [
+              "pe",
+              "me",
+              "se"
+            ]
+          },
+          {
+            "respuesta": "la",
+            "opciones": [
+              "ma",
+              "sa",
+              "la"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "L1-05_traza-las-consonantes",
+    "titulo": "Traza la M, P, S y L",
+    "descripcion": "Sigue los puntitos con el dedo para escribir cada consonante, grande y chiquita",
+    "tipo": "colorear",
+    "materia": "letras",
+    "nivel": "L1-05",
+    "tema": "consonantes",
+    "misiones": [
+      {
+        "id": "let-traza-m",
+        "tipo": "colorear",
+        "titulo": "La M",
+        "emoji": "👩",
+        "instruccion": "Sube, baja, sube y baja, sin levantar el dedo. M de mama!",
+        "imagen_contorno_url": "/letras/trazos/L1-M_consonante-m.svg",
+        "colores_sugeridos": [
+          "#e74c3c",
+          "#3498db",
+          "#2ecc71",
+          "#9b59b6"
+        ],
+        "dificultad": "facil"
+      },
+      {
+        "id": "let-traza-p",
+        "tipo": "colorear",
+        "titulo": "La P",
+        "emoji": "👨",
+        "instruccion": "Primero el palito de arriba a abajo, luego la panza. P de papa!",
+        "imagen_contorno_url": "/letras/trazos/L1-P_consonante-p.svg",
+        "colores_sugeridos": [
+          "#e74c3c",
+          "#3498db",
+          "#2ecc71",
+          "#9b59b6"
+        ],
+        "dificultad": "facil"
+      },
+      {
+        "id": "let-traza-s",
+        "tipo": "colorear",
+        "titulo": "La S",
+        "emoji": "☀️",
+        "instruccion": "Una culebrita: empieza arriba, ve a la izquierda y baja dando vueltas. S de sol!",
+        "imagen_contorno_url": "/letras/trazos/L1-S_consonante-s.svg",
+        "colores_sugeridos": [
+          "#e74c3c",
+          "#3498db",
+          "#2ecc71",
+          "#9b59b6"
+        ],
+        "dificultad": "media"
+      },
+      {
+        "id": "let-traza-l",
+        "tipo": "colorear",
+        "titulo": "La L",
+        "emoji": "🌙",
+        "instruccion": "Baja derechito y al final gira a la derecha. L de luna!",
+        "imagen_contorno_url": "/letras/trazos/L1-L_consonante-l.svg",
+        "colores_sugeridos": [
+          "#e74c3c",
+          "#3498db",
+          "#2ecc71",
+          "#9b59b6"
+        ],
+        "dificultad": "facil"
+      }
+    ]
+  }
+]

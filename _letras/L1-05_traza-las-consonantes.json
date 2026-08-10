@@ -1,0 +1,51 @@
+{
+  "id": "L1-05_traza-las-consonantes",
+  "titulo": "Traza la M, P, S y L",
+  "descripcion": "Sigue los puntitos con el dedo para escribir cada consonante, grande y chiquita",
+  "tipo": "colorear",
+  "materia": "letras",
+  "nivel": "L1-05",
+  "tema": "consonantes",
+  "misiones": [
+    {
+      "id": "let-traza-m",
+      "tipo": "colorear",
+      "titulo": "La M",
+      "emoji": "👩",
+      "instruccion": "Sube, baja, sube y baja, sin levantar el dedo. M de mama!",
+      "imagen_contorno_url": "/letras/trazos/L1-M_consonante-m.svg",
+      "colores_sugeridos": ["#e74c3c", "#3498db", "#2ecc71", "#9b59b6"],
+      "dificultad": "facil"
+    },
+    {
+      "id": "let-traza-p",
+      "tipo": "colorear",
+      "titulo": "La P",
+      "emoji": "👨",
+      "instruccion": "Primero el palito de arriba a abajo, luego la panza. P de papa!",
+      "imagen_contorno_url": "/letras/trazos/L1-P_consonante-p.svg",
+      "colores_sugeridos": ["#e74c3c", "#3498db", "#2ecc71", "#9b59b6"],
+      "dificultad": "facil"
+    },
+    {
+      "id": "let-traza-s",
+      "tipo": "colorear",
+      "titulo": "La S",
+      "emoji": "☀️",
+      "instruccion": "Una culebrita: empieza arriba, ve a la izquierda y baja dando vueltas. S de sol!",
+      "imagen_contorno_url": "/letras/trazos/L1-S_consonante-s.svg",
+      "colores_sugeridos": ["#e74c3c", "#3498db", "#2ecc71", "#9b59b6"],
+      "dificultad": "media"
+    },
+    {
+      "id": "let-traza-l",
+      "tipo": "colorear",
+      "titulo": "La L",
+      "emoji": "🌙",
+      "instruccion": "Baja derechito y al final gira a la derecha. L de luna!",
+      "imagen_contorno_url": "/letras/trazos/L1-L_consonante-l.svg",
+      "colores_sugeridos": ["#e74c3c", "#3498db", "#2ecc71", "#9b59b6"],
+      "dificultad": "facil"
+    }
+  ]
+}

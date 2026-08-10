@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <rect width="800" height="800" fill="#ffffff"/>
+  <!-- Renglon: linea superior, media (punteada) y base -->
+  <g stroke="#dfe6e9" stroke-width="4" fill="none">
+    <path d="M 60 200 H 760"/>
+    <path d="M 60 600 H 760"/>
+  </g>
+  <g stroke="#dfe6e9" stroke-width="3" stroke-dasharray="10 14" fill="none">
+    <path d="M 60 400 H 760"/>
+  </g>
+  <!-- M mayuscula: un solo trazo, de abajo-izquierda hacia arriba y en zigzag -->
+  <!-- m minuscula: palito + dos arcos -->
+  <g fill="none" stroke="#5a9bd5" stroke-width="14" stroke-dasharray="20 26" stroke-linecap="round">
+    <path d="M 110 600 L 110 200 L 220 430 L 330 200 L 330 600"/>
+    <path d="M 490 600 L 490 460 A 55 60 0 0 1 600 460 L 600 600"/>
+    <path d="M 600 460 A 55 60 0 0 1 710 460 L 710 600"/>
+  </g>
+  <!-- Flechas de direccion -->
+  <g fill="#5a9bd5">
+    <polygon points="-16,-15 -16,15 16,0" transform="translate(110,400) rotate(270)"/>
+    <polygon points="-16,-15 -16,15 16,0" transform="translate(165,315) rotate(65)"/>
+    <polygon points="-16,-15 -16,15 16,0" transform="translate(275,315) rotate(295)"/>
+    <polygon points="-16,-15 -16,15 16,0" transform="translate(330,420) rotate(90)"/>
+    <polygon points="-16,-15 -16,15 16,0" transform="translate(490,530) rotate(270)"/>
+    <polygon points="-16,-15 -16,15 16,0" transform="translate(545,402) rotate(0)"/>
+    <polygon points="-16,-15 -16,15 16,0" transform="translate(655,402) rotate(0)"/>
+  </g>
+  <!-- Fin de cada trazo -->
+  <g fill="#e74c3c">
+    <circle cx="330" cy="600" r="16"/>
+    <circle cx="600" cy="600" r="16"/>
+    <circle cx="710" cy="600" r="16"/>
+  </g>
+  <!-- Inicio de cada trazo (se pinta al final para que quede encima) -->
+  <g fill="#2ecc71">
+    <circle cx="110" cy="600" r="16"/>
+    <circle cx="490" cy="600" r="16"/>
+    <circle cx="600" cy="460" r="16"/>
+  </g>
+</svg>

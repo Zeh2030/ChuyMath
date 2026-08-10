@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <rect width="800" height="800" fill="#ffffff"/>
+  <!-- Renglon: linea superior, media (punteada) y base -->
+  <g stroke="#dfe6e9" stroke-width="4" fill="none">
+    <path d="M 60 200 H 760"/>
+    <path d="M 60 600 H 760"/>
+  </g>
+  <g stroke="#dfe6e9" stroke-width="3" stroke-dasharray="10 14" fill="none">
+    <path d="M 60 400 H 760"/>
+  </g>
+  <!-- S mayuscula y s minuscula: una sola culebrita, empezando arriba a la derecha -->
+  <g fill="none" stroke="#5a9bd5" stroke-width="14" stroke-dasharray="20 26" stroke-linecap="round">
+    <path d="M 300 265 C 300 200 140 195 140 290 C 140 370 300 385 300 480 C 300 585 150 590 140 520"/>
+    <path d="M 660 445 C 660 405 520 400 520 450 C 520 495 660 505 660 555 C 660 605 525 610 518 570"/>
+  </g>
+  <!-- Flechas de direccion (arranca hacia la izquierda) -->
+  <g fill="#5a9bd5">
+    <polygon points="-16,-15 -16,15 16,0" transform="translate(225,212) rotate(185)"/>
+    <polygon points="-16,-15 -16,15 16,0" transform="translate(220,565) rotate(185)"/>
+    <polygon points="-16,-15 -16,15 16,0" transform="translate(592,412) rotate(185)"/>
+    <polygon points="-16,-15 -16,15 16,0" transform="translate(590,592) rotate(185)"/>
+  </g>
+  <!-- Fin de cada trazo -->
+  <g fill="#e74c3c">
+    <circle cx="140" cy="520" r="16"/>
+    <circle cx="518" cy="570" r="16"/>
+  </g>
+  <!-- Inicio de cada trazo (se pinta al final para que quede encima) -->
+  <g fill="#2ecc71">
+    <circle cx="300" cy="265" r="16"/>
+    <circle cx="660" cy="445" r="16"/>
+  </g>
+</svg>

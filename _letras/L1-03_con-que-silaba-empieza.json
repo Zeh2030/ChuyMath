@@ -1,0 +1,29 @@
+{
+  "id": "L1-03_con-que-silaba-empieza",
+  "titulo": "Con que silaba empieza?",
+  "descripcion": "Mira el dibujo y elige la silaba con la que empieza su nombre",
+  "tipo": "letra-quiz",
+  "materia": "letras",
+  "nivel": "L1-03",
+  "tema": "silabas",
+  "misiones": [
+    {
+      "id": "let-primera-silaba",
+      "tipo": "letra-quiz",
+      "modo": "primera-letra",
+      "titulo": "Con que silaba empieza?",
+      "emoji": "🔎",
+      "instruccion": "Escucha la palabra y toca la silaba con la que empieza.",
+      "retos": [
+        { "emoji": "👩", "palabra": "mamá", "respuesta": "ma", "opciones": ["ma", "pa", "sa"] },
+        { "emoji": "👨", "palabra": "papá", "respuesta": "pa", "opciones": ["la", "pa", "ma"] },
+        { "emoji": "☀️", "palabra": "sol", "respuesta": "so", "opciones": ["so", "lo", "mo"] },
+        { "emoji": "🌙", "palabra": "luna", "respuesta": "lu", "opciones": ["mu", "lu", "pu"] },
+        { "emoji": "🍯", "palabra": "miel", "respuesta": "mi", "opciones": ["si", "pi", "mi"] },
+        { "emoji": "🐸", "palabra": "sapo", "respuesta": "sa", "opciones": ["sa", "ma", "la"] },
+        { "emoji": "🦁", "palabra": "león", "respuesta": "le", "opciones": ["pe", "le", "se"] },
+        { "emoji": "🐕", "palabra": "perro", "respuesta": "pe", "opciones": ["pe", "me", "le"] }
+      ]
+    }
+  ]
+}
