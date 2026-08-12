@@ -113,6 +113,20 @@ Juego para ordenar letras.
 ```
 
 ### C. Desarrollo de Cubos (Visión Espacial)
+
+> ⚠️ **Trampa del formato antiguo ("¿cuál de estos cubos se forma?").**
+> Un dibujo isométrico de un cubo suelto se puede **girar**. Si dos símbolos están
+> en caras vecinas, SIEMPRE existe un giro que los deja como en el dibujo — así que
+> esa opción es válida, aunque no fuera la que pensabas. Para que un distractor sea
+> imposible tiene que mostrar dos caras **opuestas** a la vez.
+>
+> Con solo 2-3 símbolos casi nunca hay suficientes pares opuestos, y el ejercicio
+> acaba teniendo varias respuestas correctas. Le pasó a 3 de los 4 ejercicios
+> originales; se reescribieron con `datos_cubo` (2026-08).
+>
+> **Usa `datos_cubo` con preguntas de cara opuesta.** No se puede ambiguar: cada
+> cara tiene exactamente una opuesta, sin importar cómo gires el cubo.
+
 Soporta múltiples ejercicios secuenciales.
 
 ```json
@@ -137,6 +151,44 @@ Soporta múltiples ejercicios secuenciales.
   ]
 }
 ```
+
+**Formato recomendado (`datos_cubo`)** — describe el plano como una rejilla de
+caras en vez de dibujar SVGs a mano. La pregunta es sobre el plano mismo
+("¿quién queda opuesto al perro?") y se responde tocando una cara:
+
+```json
+{
+  "id": "cubo-1",
+  "tipo": "desarrollo-cubos",
+  "pregunta": "Si doblas este cubo, ¿quién queda FRENTE al Perro 🐶?",
+  "datos_cubo": {
+    "caras": [
+      { "id": "gato",   "fila": 0, "columna": 1, "color": "#FFD700", "contenido": "🐱" },
+      { "id": "perro",  "fila": 1, "columna": 1, "color": "#FF6B6B", "contenido": "🐶" },
+      { "id": "raton",  "fila": 2, "columna": 1, "color": "#4ECDC4", "contenido": "🐭" },
+      { "id": "conejo", "fila": 3, "columna": 1, "color": "#45B7D1", "contenido": "🐰" },
+      { "id": "izq",    "fila": 1, "columna": 0, "color": "#96CEB4", "contenido": "⬅️" },
+      { "id": "der",    "fila": 1, "columna": 2, "color": "#FFEEAD", "contenido": "➡️" }
+    ]
+  },
+  "respuesta": "conejo",
+  "explicacion_correcta": "...",
+  "explicacion_incorrecta": "..."
+}
+```
+
+#### Comprobación en 3D
+
+Al responder aparece un panel con el **cubo en 3D**: el plano se dobla de verdad
+con una animación y el niño puede girarlo con el dedo para comprobar su respuesta.
+Se genera solo a partir de la rejilla de caras — no hay que dibujar nada.
+
+- Funciona con los dos formatos. Con `plano_svg` el plano se lee del SVG, así que
+  el contenido antiguo también lo tiene sin cambiarle nada.
+- Sale **después** de contestar: doblarlo antes regalaría la respuesta. Para
+  misiones de pura exploración, añade `"permitir_doblar_antes": true` a la misión.
+- three.js se descarga solo al abrir una misión de cubos (~130 KB), no afecta al
+  resto de la app.
 
 ### D. Criptoaritmética (Descifrar valores)
 Suma donde figuras ocultan números.

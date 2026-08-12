@@ -4,48 +4,62 @@
   "titulo": "Aventura de Lógica y Espacio",
   "misiones": [
     {
-      "id": "mision-cubo-1",
+      "id": "mision-cubo-opuestos-1",
       "tipo": "desarrollo-cubos",
-      "titulo": "El Taller de Cubos 3D",
-      "instruccion": "Observa con atención el plano del cubo. ¿Cuál de los tres cubos de la derecha se puede armar con él? ¡Solo uno es el correcto!",
-      "ejercicios": [
-        {
-          "id": "ejercicio-cubo-1",
-          "plano_svg": "<svg width='160' height='120' viewBox='-2 -2 164 124'><defs><style>.cara{stroke:#34495e;stroke-width:2;fill:white;} .simbolo{font-size: 24px; font-family: sans-serif; text-anchor: middle; dominant-baseline: central;}</style></defs><rect class='cara' x='40' y='0' width='40' height='40'/><text x='60' y='20' class='simbolo'>●</text><rect class='cara' x='0' y='40' width='40' height='40'/><rect class='cara' x='40' y='40' width='40' height='40'/><text x='60' y='60' class='simbolo'>■</text><rect class='cara' x='80' y='40' width='40' height='40'/><rect class='cara' x='120' y='40' width='40' height='40'/><rect class='cara' x='40' y='80' width='40' height='40'/><text x='60' y='100' class='simbolo'>▲</text></svg>",
-          "opciones_svg": [
-            "<svg width='80' height='80' viewBox='0 0 100 100'><path d='M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z' fill='#f0f0f0' stroke='#7f8c8d' stroke-width='2'/><path d='M50 10 L50 90' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M10 30 L50 50 L90 30' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M50 50 L10 70' fill='none' stroke='#7f8c8d' stroke-width='1'/><text x='50' y='32' style='font-size:18px;'>●</text><text x='30' y='60' style='font-size:18px;'></text><text x='70' y='60' style='font-size:18px;'>■</text></svg>",
-            "<svg width='80' height='80' viewBox='0 0 100 100'><path d='M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z' fill='#f0f0f0' stroke='#7f8c8d' stroke-width='2'/><path d='M50 10 L50 90' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M10 30 L50 50 L90 30' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M50 50 L10 70' fill='none' stroke='#7f8c8d' stroke-width='1'/><text x='50' y='32' style='font-size:18px;'>▲</text><text x='30' y='60' style='font-size:18px;'></text><text x='70' y='60' style='font-size:18px;'>■</text></svg>",
-            "<svg width='80' height='80' viewBox='0 0 100 100'><path d='M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z' fill='#f0f0f0' stroke='#7f8c8d' stroke-width='2'/><path d='M50 10 L50 90' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M10 30 L50 50 L90 30' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M50 50 L10 70' fill='none' stroke='#7f8c8d' stroke-width='1'/><text x='50' y='32' style='font-size:18px;'>■</text><text x='30' y='60' style='font-size:18px;'>▲</text><text x='70' y='60' style='font-size:18px;'>●</text></svg>"
-          ],
-          "respuesta": 0,
-          "explicacion_correcta": "¡Correcto! Si imaginas que doblas el plano con el cuadrado (■) al frente, el círculo (●) queda arriba. ¡Perfecta visión espacial!",
-          "explicacion_incorrecta": "¡Estuviste cerca! Un truco es imaginar que doblas el papel. Si pones el cuadrado (■) al frente, ¿qué figura quedaría arriba? ¡El círculo (●)! La opción que elegiste muestra una figura diferente en esa posición."
-        },
-        {
-          "id": "ejercicio-cubo-2",
-          "plano_svg": "<svg width='160' height='120' viewBox='-2 -2 164 124'><defs><style>.cara{stroke:#34495e;stroke-width:2;fill:white;} .simbolo{font-size: 24px; font-family: sans-serif; text-anchor: middle; dominant-baseline: central;}</style></defs><rect class='cara' x='0' y='0' width='40' height='40'/><rect class='cara' x='40' y='0' width='40' height='40'/><text x='60' y='20' class='simbolo'>★</text><rect class='cara' x='40' y='40' width='40' height='40'/><rect class='cara' x='80' y='40' width='40' height='40'/><text x='100' y='60' class='simbolo'>+</text><rect class='cara' x='80' y='80' width='40' height='40'/><rect class='cara' x='120' y='80' width='40' height='40'/></svg>",
-          "opciones_svg": [
-            "<svg width='80' height='80' viewBox='0 0 100 100'><path d='M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z' fill='#f0f0f0' stroke='#7f8c8d' stroke-width='2'/><path d='M50 10 L50 90' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M10 30 L50 50 L90 30' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M50 50 L10 70' fill='none' stroke='#7f8c8d' stroke-width='1'/><text x='50' y='32' style='font-size:18px;'>★</text><text x='70' y='60' style='font-size:18px;'>+</text></svg>",
-            "<svg width='80' height='80' viewBox='0 0 100 100'><path d='M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z' fill='#f0f0f0' stroke='#7f8c8d' stroke-width='2'/><path d='M50 10 L50 90' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M10 30 L50 50 L90 30' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M50 50 L10 70' fill='none' stroke='#7f8c8d' stroke-width='1'/><text x='30' y='60' style='font-size:18px;'>★</text><text x='70' y='60' style='font-size:18px;'>+</text></svg>",
-            "<svg width='80' height='80' viewBox='0 0 100 100'><path d='M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z' fill='#f0f0f0' stroke='#7f8c8d' stroke-width='2'/><path d='M50 10 L50 90' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M10 30 L50 50 L90 30' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M50 50 L10 70' fill='none' stroke='#7f8c8d' stroke-width='1'/><text x='50' y='32' style='font-size:18px;'>+</text><text x='30' y='60' style='font-size:18px;'>★</text></svg>"
-          ],
-          "respuesta": 0,
-          "explicacion_correcta": "¡Muy bien! Si imaginas que la cara con la estrella (★) es el 'techo' del cubo, la cara con el signo más (+) queda en la 'pared' de la derecha. ¡Coincide perfectamente!",
-          "explicacion_incorrecta": "¡Casi lo tienes! Un buen truco: imagina que la cara con la estrella (★) es el 'techo' del cubo. Si haces eso, ¿en qué 'pared' quedaría el signo más (+)? ¡Quedaría en la pared de la derecha! Busca el cubo que se vea así."
-        },
-        {
-          "id": "ejercicio-cubo-3",
-          "plano_svg": "<svg width='160' height='40' viewBox='-2 -2 164 44'><defs><style>.cara{stroke:#34495e;stroke-width:2;fill:white;} .simbolo{font-size: 24px; font-family: sans-serif; text-anchor: middle; dominant-baseline: central;}</style></defs><rect class='cara' x='0' y='0' width='40' height='40'/><text x='20' y='20' class='simbolo'>A</text><rect class='cara' x='40' y='0' width='40' height='40'/><text x='60' y='20' class='simbolo'>B</text><rect class='cara' x='80' y='0' width='40' height='40'/><text x='100' y='20' class='simbolo'>C</text><rect class='cara' x='120' y='0' width='40' height='40'/><text x='140' y='20' class='simbolo'>D</text></svg>",
-          "opciones_svg": [
-            "<svg width='80' height='80' viewBox='0 0 100 100'><path d='M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z' fill='#f0f0f0' stroke='#7f8c8d' stroke-width='2'/><path d='M50 10 L50 90' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M10 30 L50 50 L90 30' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M50 50 L10 70' fill='none' stroke='#7f8c8d' stroke-width='1'/><text x='50' y='32' style='font-size:18px;'>A</text><text x='70' y='60' style='font-size:18px;'>C</text></svg>",
-            "<svg width='80' height='80' viewBox='0 0 100 100'><path d='M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z' fill='#f0f0f0' stroke='#7f8c8d' stroke-width='2'/><path d='M50 10 L50 90' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M10 30 L50 50 L90 30' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M50 50 L10 70' fill='none' stroke='#7f8c8d' stroke-width='1'/><text x='50' y='32' style='font-size:18px;'>A</text><text x='70' y='60' style='font-size:18px;'>B</text></svg>",
-            "<svg width='80' height='80' viewBox='0 0 100 100'><path d='M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z' fill='#f0f0f0' stroke='#7f8c8d' stroke-width='2'/><path d='M50 10 L50 90' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M10 30 L50 50 L90 30' fill='none' stroke='#7f8c8d' stroke-width='1'/><path d='M50 50 L10 70' fill='none' stroke='#7f8c8d' stroke-width='1'/><text x='50' y='32' style='font-size:18px;'>B</text><text x='70' y='60' style='font-size:18px;'>D</text></svg>"
-          ],
-          "respuesta": 1,
-          "explicacion_correcta": "¡Exacto! Al doblar la tira, las caras A y B quedan juntas.",
-          "explicacion_incorrecta": "En una tira de 4, las caras A y C son opuestas, al igual que B y D. Nunca se pueden ver al mismo tiempo."
-        }
-      ]
+      "titulo": "Las Caras que Nunca se Ven",
+      "instruccion": "Toca en el plano la cara que creas correcta. Después podrás doblar el cubo en 3D para comprobarlo.",
+      "pregunta": "Si doblas este plano, ¿qué cara queda JUSTO ENFRENTE del Sol 🌞? (la cara opuesta: las dos nunca se pueden ver a la vez)",
+      "datos_cubo": {
+        "caras": [
+          { "id": "sol", "fila": 0, "columna": 1, "color": "#FFD93D", "contenido": "🌞" },
+          { "id": "rana", "fila": 1, "columna": 0, "color": "#7ED957", "contenido": "🐸" },
+          { "id": "estrella", "fila": 1, "columna": 1, "color": "#FF9F40", "contenido": "⭐" },
+          { "id": "pez", "fila": 1, "columna": 2, "color": "#45B7D1", "contenido": "🐟" },
+          { "id": "luna", "fila": 1, "columna": 3, "color": "#C7A2FF", "contenido": "🌙" },
+          { "id": "manzana", "fila": 2, "columna": 1, "color": "#FF6B6B", "contenido": "🍎" }
+        ]
+      },
+      "respuesta": "manzana",
+      "explicacion_correcta": "¡Exacto! Mira la columna de arriba a abajo: 🌞 ⭐ 🍎. Cuando tres caras están en línea, las dos de las puntas quedan opuestas. El Sol arriba y la Manzana abajo. Dobla el cubo y compruébalo.",
+      "explicacion_incorrecta": "Pista: busca la línea de tres caras que pasa por el Sol (🌞 ⭐ 🍎) y sáltate la del medio. Las caras que se tocan en el plano NUNCA pueden ser opuestas: al doblar quedan pegadas por una arista."
+    },
+    {
+      "id": "mision-cubo-opuestos-2",
+      "tipo": "desarrollo-cubos",
+      "titulo": "El Plano Escalera",
+      "instruccion": "Toca en el plano la cara que creas correcta. Después podrás doblar el cubo en 3D para comprobarlo.",
+      "pregunta": "Este plano tiene forma de escalera. Si lo doblas, ¿qué cara queda JUSTO ENFRENTE del Plátano 🍌?",
+      "datos_cubo": {
+        "caras": [
+          { "id": "fresa", "fila": 0, "columna": 0, "color": "#FF6B6B", "contenido": "🍓" },
+          { "id": "platano", "fila": 0, "columna": 1, "color": "#FFD93D", "contenido": "🍌" },
+          { "id": "uva", "fila": 1, "columna": 1, "color": "#9B59B6", "contenido": "🍇" },
+          { "id": "naranja", "fila": 1, "columna": 2, "color": "#FF9F40", "contenido": "🍊" },
+          { "id": "kiwi", "fila": 2, "columna": 2, "color": "#7ED957", "contenido": "🥝" },
+          { "id": "durazno", "fila": 2, "columna": 3, "color": "#FFB3A7", "contenido": "🍑" }
+        ]
+      },
+      "respuesta": "kiwi",
+      "explicacion_correcta": "¡Muy bien! En una escalera no sirve el truco de saltarse una cara en línea recta, hay que doblarla de verdad. El Plátano acaba al frente y el Kiwi justo detrás, espalda con espalda. Dobla el cubo y míralo.",
+      "explicacion_incorrecta": "Pista: la Fresa, la Uva y la Naranja tocan al Plátano en el plano, así que ninguna puede ser su opuesta. Solo quedan dos candidatas. Dobla el cubo en 3D y sal de dudas."
+    },
+    {
+      "id": "mision-cubo-tira",
+      "tipo": "desarrollo-cubos",
+      "titulo": "¿Alcanza para un Cubo?",
+      "instruccion": "Antes de doblar nada, cuenta las caras. Un cubo necesita 6 y esta tira solo tiene 4: le faltan la tapa y el fondo, así que al enrollarla sale un TUBO, no un cubo. Aun así, las caras quedan enfrentadas de dos en dos.",
+      "pregunta": "Si enrollas esta tira, ¿qué cara queda JUSTO ENFRENTE de la A?",
+      "datos_cubo": {
+        "caras": [
+          { "id": "a", "fila": 0, "columna": 0, "color": "#FFD93D", "contenido": "A" },
+          { "id": "b", "fila": 0, "columna": 1, "color": "#FF6B6B", "contenido": "B" },
+          { "id": "c", "fila": 0, "columna": 2, "color": "#4ECDC4", "contenido": "C" },
+          { "id": "d", "fila": 0, "columna": 3, "color": "#45B7D1", "contenido": "D" }
+        ]
+      },
+      "respuesta": "c",
+      "explicacion_correcta": "¡Exacto! Al enrollar una tira de 4, cada cara queda enfrente de la que está a DOS lugares: A con C, y B con D. Dóblalo en 3D y fíjate en algo importante: queda un tubo abierto por arriba y por abajo. Faltan 2 caras para que sea un cubo. ¡Contar las caras siempre es el primer paso!",
+      "explicacion_incorrecta": "Pista: las caras que se tocan en la tira (A y B) quedan pegadas por una arista al enrollarla, así que nunca pueden estar enfrentadas. Salta DOS lugares desde la A. Y no olvides lo importante: con 4 caras no sale un cubo, sale un tubo."
     },
     {
       "id": "mision-balanza-1",
