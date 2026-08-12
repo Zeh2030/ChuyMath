@@ -72,6 +72,50 @@
   max-height: 75vh;
 }
 
+/* === Globo (proyeccion ortografica) === */
+/* El oceano deja de ser el fondo del SVG: ahora es la esfera dibujada. */
+.em-wrapper-globo {
+  background: radial-gradient(circle at 50% 40%, #2b3a67 0%, #131a33 70%, #0b1022 100%);
+  border-color: #3a4a7a;
+}
+
+.em-mapa.em-globo {
+  background: none;
+  touch-action: none; /* el arrastre gira el globo, no hace scroll */
+  cursor: grab;
+}
+
+.em-mapa.em-globo:active {
+  cursor: grabbing;
+}
+
+.em-oceano-path {
+  fill: url(#em-oceano);
+  stroke: rgba(255, 255, 255, 0.5);
+  stroke-width: 1.5;
+}
+
+.em-graticula {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.28);
+  stroke-width: 0.6;
+  pointer-events: none;
+}
+
+.em-pista-giro {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.85);
+  color: #2c3e50;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 12px;
+  pointer-events: none;
+}
+
 .em-pais {
   fill: #95c98a; /* fallback if no inline color */
   stroke: #ffffff;

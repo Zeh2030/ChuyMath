@@ -1,0 +1,22 @@
+{
+  "id": "G0-01b_planeta-azul-globo",
+  "titulo": "Nuestro Planeta Azul",
+  "descripcion": "Gira la Tierra y descubre que casi todo es agua",
+  "tipo": "explorador-mapa",
+  "materia": "geografia",
+  "tema": "tierra-agua",
+  "nivel": "G0-01",
+  "misiones": [
+    {
+      "id": "mision-globo-planeta-azul",
+      "tipo": "explorador-mapa",
+      "mapa": "globo",
+      "modo": "explorar",
+      "estilo": "tierra",
+      "rotacion_inicial": [-30, 10],
+      "titulo": "La Tierra desde el Espacio",
+      "instruccion": "Asi se ve nuestro planeta desde el espacio. Lo AZUL es agua y lo VERDE es tierra. Girala con el dedo: ¿hay mas agua o mas tierra?",
+      "retos": []
+    }
+  ]
+}

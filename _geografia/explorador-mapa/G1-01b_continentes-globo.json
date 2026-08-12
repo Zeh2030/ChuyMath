@@ -1,0 +1,57 @@
+{
+  "id": "G1-01b_continentes-globo",
+  "titulo": "Da la Vuelta al Mundo",
+  "descripcion": "Gira la Tierra con el dedo y encuentra un pais de cada continente",
+  "tipo": "explorador-mapa",
+  "materia": "geografia",
+  "tema": "continentes",
+  "nivel": "G1-01",
+  "misiones": [
+    {
+      "id": "mision-globo-continentes",
+      "tipo": "explorador-mapa",
+      "mapa": "globo",
+      "modo": "quiz",
+      "rotacion_inicial": [-80, 15],
+      "titulo": "La Tierra es Redonda",
+      "instruccion": "La Tierra es una pelota, no una hoja. Arrastra con el dedo para girarla: si no ves un pais, es que esta del otro lado. ¡Gira hasta encontrarlo!",
+      "retos": [
+        {
+          "id": "484",
+          "nombre": "Mexico",
+          "pregunta": "Empecemos por casa: ¿donde esta Mexico? (America del Norte)"
+        },
+        {
+          "id": "076",
+          "nombre": "Brasil",
+          "pregunta": "¿Donde esta Brasil? (el pais mas grande de America del Sur, baja un poco)"
+        },
+        {
+          "id": "710",
+          "nombre": "Sudafrica",
+          "pregunta": "¿Donde esta Sudafrica? (hasta abajo de Africa — gira hacia la derecha)"
+        },
+        {
+          "id": "724",
+          "nombre": "España",
+          "pregunta": "¿Donde esta España? (en Europa, arriba de Africa)"
+        },
+        {
+          "id": "156",
+          "nombre": "China",
+          "pregunta": "¿Donde esta China? (Asia, sigue girando hacia el otro lado del mundo)"
+        },
+        {
+          "id": "036",
+          "nombre": "Australia",
+          "pregunta": "¿Donde esta Australia? (Oceania, abajo a la derecha — es una isla enorme)"
+        },
+        {
+          "id": "010",
+          "nombre": "Antartida",
+          "pregunta": "¿Y la Antartida? (el continente de hielo — arrastra hacia arriba para ver el polo sur)"
+        }
+      ]
+    }
+  ]
+}

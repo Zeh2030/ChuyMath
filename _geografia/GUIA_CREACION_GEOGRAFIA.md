@@ -326,6 +326,43 @@ Sigue el patron de las biografias de piano (`_piano/mini-story/P1-T08_mozart-nin
 }
 ```
 
+**Valores de `mapa`:** `globo`, `world`, `americas`, `america-latina`, `europa`,
+`asia`, `africa`, `mexico-estados`, `usa-estados`.
+
+#### El globo (`"mapa": "globo"`)
+
+Proyeccion ortografica: la Tierra como esfera de verdad, que se gira arrastrando
+con el dedo. La mitad de atras no se dibuja, asi que **buscar un pais girando el
+globo es parte del ejercicio**. Al responder, el globo gira solo hasta centrar el
+pais — que es el momento en que conviene que lo vea bien.
+
+Usalo cuando la leccion sea sobre el planeta o sobre continentes lejanos entre si.
+Un mapa plano miente con los tamaños (Groenlandia parece Africa siendo 14 veces
+mas chica) y esconde que el planeta es redondo.
+
+Opciones extra, solo para `globo`:
+
+| Campo | Valor | Para que |
+|-------|-------|----------|
+| `rotacion_inicial` | `[lon, lat]` | Por donde empieza mirando. Por defecto `[-80, 15]` (America). |
+| `estilo` | `"tierra"` | Pinta toda la tierra de un mismo verde, en vez de un color por pais. Para la leccion tierra/agua de G0. |
+
+```json
+{
+  "tipo": "explorador-mapa",
+  "mapa": "globo",
+  "modo": "quiz",
+  "rotacion_inicial": [-80, 15],
+  "instruccion": "Arrastra con el dedo para girar la Tierra.",
+  "retos": [
+    { "id": "036", "nombre": "Australia", "pregunta": "¿Donde esta Australia?" }
+  ]
+}
+```
+
+Ejemplos ya hechos: `G1-01b_continentes-globo.json` (quiz) y
+`G0-01b_planeta-azul-globo.json` (exploracion libre con `estilo: "tierra"`).
+
 ---
 
 ## Convenciones de naming
