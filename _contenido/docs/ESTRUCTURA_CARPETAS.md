@@ -1,40 +1,69 @@
-﻿#  Estructura de Carpetas - Contenido
+# Estructura de Carpetas — Contenido de Matemáticas
 
-##  Organización por Tipo
+> Actualizado 2026-08 (se corrigió la lista de carpetas y unos caracteres rotos
+> por encoding).
 
-Los archivos JSON están organizados en carpetas según su tipo de contenido:
+## Lo primero, para no perder tiempo
 
-### Carpetas Disponibles:
+**Estas carpetas son organización local, no colecciones de Firestore.**
+Da igual en cuál escribas el JSON: al migrarlo eliges **`aventuras`** (si tiene
+`misiones`) o **`simulacros`** (si tiene `problemas`). No existe una colección
+`desarrollo-cubos` ni `kakooma` ni ninguna otra por tipo de ejercicio.
 
-- **venturas/** - Aventuras diarias con múltiples misiones
-- **simulacros/** - Exámenes completos (variados o de un solo tipo)
-- **secuencias/** - Ejercicios de secuencias y patrones
-- **operaciones/** - Ejercicios de operaciones matemáticas
-- **criptoaritmetica/** - Problemas de criptoaritmética
-- **alanza-logica/** - Ejercicios de balanza lógica
-- **desarrollo-cubos/** - Problemas de desarrollo de cubos
-- **palabra-del-dia/** - Ejercicios de vocabulario
-- **docs/** - Documentación y guías
+Ver [ARQUITECTURA_COLECCIONES.md](ARQUITECTURA_COLECCIONES.md).
 
-##  Convención de Nombres
+---
 
-### Para Aventuras y Tipos Específicos:
-- **Solo fecha:** 2025-11-10.json, 2025-11-15.json
-- La fecha indica el **orden de dificultad** (cronológico = progresión)
-- El sistema automáticamente ordena por fecha (más antigua = más fácil)
+## Carpetas
 
-### Para Simulacros:
-- **Nombre descriptivo:** simulador-desafio-integral-1.json
-- Pueden tener cualquier nombre, pero deben tener 	ipo en el JSON
+| Carpeta | Contenido |
+|---------|-----------|
+| `aventuras/` | Aventuras diarias con varias misiones mezcladas |
+| `simulacros/` | Exámenes completos (variados o de un solo tipo) |
+| `angulo-explorer/` | Ángulos |
+| `area-constructor/` | Área y perímetro |
+| `conteo-figuras/` | Conteo de figuras |
+| `criptoaritmetica/` | Criptoaritmética |
+| `desarrollo-cubos/` | Desarrollo de cubos (visión espacial) |
+| `fraccion-explorer/` | Fracciones — exploración |
+| `fraccion-operaciones/` | Fracciones — operaciones |
+| `kakooma/` | Kakooma |
+| `numberblocks-constructor/` | Numberblocks |
+| `operaciones/` | Operaciones |
+| `secuencias/` | Secuencias y patrones |
+| `tablas-doble-entrada/` | Tablas de doble entrada (lógica) |
+| `docs/` | Documentación y guías |
 
-##  Importante
+Las demás materias viven fuera de `_contenido/`: `_content/` (inglés),
+`_ciencias/`, `_dibujo/`, `_geografia/`, `_letras/`, `_piano/`, `_peques/`.
 
-- **El ID del documento en Firestore** debe coincidir con el nombre del archivo (sin extensión)
-- **No duplicar IDs** - Si subes un archivo con el mismo ID, se sobrescribe
-- **La fecha en el nombre** es para organización local, no necesariamente la fecha de publicación
+---
 
-##  Flujo de Trabajo
+## Convención de nombres
 
-1. Crear archivo JSON en la carpeta correspondiente
-2. Usar AdminMigracion para subirlo a Firestore
-3. El sistema automáticamente lo clasifica según el campo 	ipo en el JSON
+**Aventuras y tipos específicos:** solo la fecha — `2025-11-10.json`.
+La fecha marca el **orden de dificultad** (cronológico = progresión), y el
+sistema ordena por ella: la más antigua es la más fácil.
+
+**Simulacros:** nombre descriptivo — `simulador-desafio-integral-1.json`.
+Cualquier nombre vale, pero el JSON debe traer su campo `tipo`.
+
+---
+
+## Importante
+
+- **El `id` dentro del JSON es el id del documento en Firestore**, no el nombre
+  del archivo. Procura que coincidan para no volverte loco.
+- **No dupliques ids:** migrar un JSON con un id existente lo sobrescribe.
+- La fecha del nombre es organización local, no la fecha de publicación.
+
+---
+
+## Flujo de trabajo
+
+1. Crear el JSON en la carpeta que le corresponda por tipo.
+2. Ir a `/admin/migracion`, elegir **aventuras** o **simulacros**, pegar y migrar.
+3. Abrirlo en `/aventura/<id>` o `/simulacro/<id>` para comprobarlo.
+
+El campo `tipo` del JSON no decide la colección: decide **qué componente lo
+dibuja** (ver `MisionRenderer.jsx`).

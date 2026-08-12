@@ -1,255 +1,82 @@
-# 🏗️ Arquitectura de Colecciones - Firestore
+# Arquitectura de Colecciones — Firestore
 
-## 🎯 Decisión: Colecciones Separadas por Tipo
-
-Se implementó una arquitectura de **colecciones independientes por tipo de contenido**.
+> Actualizado 2026-08. Este documento describe cómo funciona **hoy**.
+> La versión anterior describía una colección por tipo de ejercicio
+> (`conteo-figuras/`, `secuencias/`, `desarrollo-cubos/`…). Esa arquitectura
+> se abandonó: se agrupa **por materia**, no por tipo de ejercicio.
 
 ---
 
-## 📦 Estructura de Colecciones
+## La idea en una línea
+
+**Las carpetas de `_contenido/` son organización local. En Firestore todo se
+agrupa por materia.**
+
+Un archivo que vive en `_contenido/desarrollo-cubos/` NO se sube a una colección
+`desarrollo-cubos`: se sube a `aventuras`, igual que uno de
+`_contenido/kakooma/`. La carpeta solo te ayuda a encontrarlo al escribirlo.
+
+---
+
+## Colecciones que existen
+
+| Colección | Qué guarda | Quién la lee |
+|-----------|-----------|--------------|
+| `aventuras` | Aventuras de matemáticas (todos los tipos de misión) | Dashboard, Bóveda, Aventura |
+| `simulacros` | Exámenes de práctica | Bóveda, Simulacro |
+| `ingles` | Módulo de inglés | Dashboard, Bóveda, Aventura |
+| `piano` | Módulo de piano | Dashboard, Bóveda, Aventura |
+| `ciencias` | Experimentos | Dashboard, Bóveda, Aventura |
+| `dibujo` | Arte y dibujo | Dashboard, Bóveda, Aventura |
+| `geografia` | Geografía | Dashboard, Bóveda, Aventura |
+| `letras` | Letras y lectura | Dashboard, Bóveda, Aventura |
+| `peques` | Modo Peques (2-5 años) | Peques |
+| `profiles` | Perfil, racha, progreso | Toda la app |
+| `accounts` | Cuenta (multi-perfil) | Auth |
+| `whitelist` | Autorización de acceso | Login |
+
+Son exactamente las mismas nueve que ofrece `AdminMigracion`, más las tres de
+usuario. **No hay colecciones por tipo de ejercicio.**
+
+---
+
+## Cómo se carga un documento
+
+`Aventura.jsx` recibe un id por la URL (`/aventura/:id`) y busca **en cadena por
+materia**, en este orden:
 
 ```
-firestore/
-│
-├── aventuras/               (Aventuras diarias - solo fechas YYYY-MM-DD)
-│   ├── 2025-09-26          (múltiples misiones)
-│   ├── 2025-09-27          (múltiples misiones)
-│   └── ...
-│
-├── conteo-figuras/          (Conteo de figuras geométricas)
-│   ├── 2025-09-27          {"titulo": "El Desafío Geométrico", "misiones": [...]}
-│   └── ...
-│
-├── secuencias/              (Patrones y secuencias)
-│   ├── 2025-11-10          {"titulo": "El Secreto de las Secuencias", "misiones": [...]}
-│   ├── simulador-secuencias-1
-│   └── ...
-│
-├── operaciones/             (Operaciones matemáticas)
-│   ├── 2025-XX-XX          (próximamente)
-│   └── ...
-│
-├── criptoaritmetica/        (Criptoaritmética)
-│   ├── 2025-XX-XX          (próximamente)
-│   └── ...
-│
-├── balanza-logica/          (Balanza lógica)
-│   ├── 2025-XX-XX          (próximamente)
-│   └── ...
-│
-├── desarrollo-cubos/        (Desarrollo de cubos)
-│   ├── 2025-XX-XX          (próximamente)
-│   └── ...
-│
-├── palabra-del-dia/         (Vocabulario)
-│   ├── 2025-XX-XX          (próximamente)
-│   └── ...
-│
-├── simulacros/              (Simulacros genéricos - variados)
-│   ├── simulador-matematicas-1
-│   ├── simulador-desafio-integral-1
-│   └── ...
-│
-├── profiles/                (Perfil del usuario - datos personales)
-│   ├── uid1                 {"nombre": "Capitán Gato", "racha": 5, ...}
-│   └── ...
-│
-└── whitelist/               (Autorización de acceso)
-    ├── usuario@gmail.com    {"nombreNino": "Capitán Gato"}
-    └── ...
+aventuras → ingles → piano → ciencias → dibujo → geografia → letras
 ```
 
----
+`Simulacro.jsx` busca solo en `simulacros`.
+`Boveda.jsx` lee las ocho colecciones de contenido y filtra por materia con el
+`MateriaToggle`.
 
-## ✅ Ventajas de Esta Arquitectura
-
-| Aspecto | Ventaja |
-|---------|---------|
-| **Organización** | Cada tipo tiene su colección clara |
-| **Filtrado** | En Bóveda filtra por colección específica |
-| **Permisos** | Reglas Firestore específicas por colección |
-| **Escalabilidad** | Fácil agregar nuevos tipos |
-| **Mantenimiento** | Admin sabe exactamente dónde buscar |
-| **Rendimiento** | Queries más eficientes y rápidas |
-| **Lógica App** | Boveda.jsx carga de colecciones distintas |
+Esto significa que **un documento en cualquier otra colección es inalcanzable**:
+no hay pantalla que lo lea. Si migras algo a una colección que no está en esa
+lista, no vas a poder abrirlo.
 
 ---
 
-## 🔄 Flujo de Migración Actualizado
+## Dónde migrar cada cosa
 
-### Admin selecciona tipo en AdminMigracion:
+| Si escribiste... | Migra a la colección |
+|------------------|----------------------|
+| Cualquier JSON de `_contenido/<lo-que-sea>/` con `misiones` | **aventuras** |
+| Cualquier JSON de `_contenido/simulacros/` con `problemas` | **simulacros** |
+| `_content/` (inglés) | **ingles** |
+| `_ciencias/`, `_dibujo/`, `_geografia/`, `_letras/`, `_piano/`, `_peques/` | la de su materia |
 
-```
-┌──────────────────────────────────┐
-│ AdminMigracion.jsx               │
-│                                  │
-│ ¿Qué tipo?                       │
-│ ┌─ Aventura → aventuras/         │
-│ ├─ Conteo Figuras → conteo-figuras/
-│ ├─ Secuencias → secuencias/      │
-│ ├─ Operaciones → operaciones/    │
-│ ├─ Criptoaritmética → criptoaritmetica/
-│ ├─ Balanza Lógica → balanza-logica/
-│ ├─ Desarrollo Cubos → desarrollo-cubos/
-│ ├─ Palabra del Día → palabra-del-dia/
-│ └─ Simulacro → simulacros/       │
-└──────────────────────────────────┘
-         │
-         ↓
-┌──────────────────────────────────┐
-│ migrarSimulacro()                │
-│ - Determina colección correcta   │
-│ - Migra al doc.id correspondiente│
-│ - Añade campo "tipo" si es       │
-│   específico                     │
-└──────────────────────────────────┘
-         │
-         ↓
-┌──────────────────────────────────┐
-│ Firebase Firestore               │
-│ ✅ Guardado en colección correcta│
-└──────────────────────────────────┘
-```
+El campo `tipo` del JSON no decide la colección: decide qué componente lo
+renderiza (ver `MisionRenderer.jsx`). La colección la eliges tú en
+`/admin/migracion`.
 
 ---
 
-## 📋 Convención de IDs
+## Reglas de Firestore
 
-### Para Aventuras y Tipos Específicos:
-```
-SOLO FECHA: 2025-11-10.json
-Razón: Orden cronológico = Dificultad progresiva
-```
-
-### Para Simulacros Genéricos:
-```
-NOMBRE DESCRIPTIVO: simulador-desafio-integral-1.json
-Razón: Pueden ser variados, no siguen cronología específica
-```
-
----
-
-## 🔍 Cómo Boveda.jsx Carga Contenido
-
-```javascript
-// En Boveda.jsx useEffect:
-
-// Carga Aventuras
-getDocs(collection(db, 'aventuras'))
-
-// Carga Conteo de Figuras
-getDocs(collection(db, 'conteo-figuras'))
-
-// Carga Secuencias
-getDocs(collection(db, 'secuencias'))
-
-// Carga Simulacros
-getDocs(collection(db, 'simulacros'))
-
-// Cada uno se carga de su colección específica
-// Luego se unifican en estado único
-```
-
----
-
-## 🎯 Filtrado en Mi Bóveda
-
-Cuando el usuario hace click en "Conteo de Figuras":
-
-```javascript
-// Filtro se establece a 'conteo-figuras'
-setFiltro('conteo-figuras');
-
-// En contenidoMostrar():
-if (filtro === 'conteo-figuras') {
-  return conteoFiguras;  // Array cargado de colección conteo-figuras
-}
-```
-
----
-
-## 📝 Actualización de AdminMigracion
-
-La función `migrarSimulacro()` ahora:
-
-1. **Determina colección correcta:**
-   ```javascript
-   if (tipoJuego === 'conteo-figuras') coleccion = 'conteo-figuras';
-   if (tipoJuego === 'secuencia') coleccion = 'secuencias';
-   // ... etc
-   ```
-
-2. **Migra a colección correcta:**
-   ```javascript
-   const ref = doc(db, coleccion, id);
-   ```
-
-3. **Añade campo tipo si es específico:**
-   ```javascript
-   if (tipoJuego !== 'simulacro') {
-     datosAMigrar.tipo = tipoJuego;
-   }
-   ```
-
----
-
-## ✅ Verificación
-
-Después de la actualización:
-
-1. **Sube un JSON de Conteo:**
-   - AdminMigracion
-   - Selecciona "🔍 Conteo de Figuras"
-   - Sube el JSON
-   - ✅ Va a colección `conteo-figuras`
-
-2. **En Firebase Console:**
-   - Verifica que aparezca en `conteo-figuras` collection
-   - NO en `simulacros`
-
-3. **En Bóveda:**
-   - Debería aparecer filtrado correctamente
-   - Sin la colección "simulacros" contaminada
-
----
-
-## 🚀 Próximos Tipos
-
-Para agregar nuevo tipo:
-
-1. Crear carpeta en `_contenido/nuevo-tipo/`
-2. Crear colección en Firestore manualmente (o auto-create)
-3. Actualizar `AdminMigracion.jsx` con mapeo:
-   ```javascript
-   } else if (tipoJuego === 'nuevo-tipo') {
-     coleccion = 'nuevo-tipo';
-   ```
-4. Agregar en `FIRESTORE_REGLAS_ACTUALIZADAS.md`
-5. Actualizar reglas en Firebase Console
-6. Agregar en `Boveda.jsx` para cargar la colección
-
----
-
-## 📊 Comparativa: Colecciones vs Todo en Simulacros
-
-| Aspecto | Colecciones Separadas | Todo en Simulacros |
-|---------|----------------------|-------------------|
-| Organización | ✅ Clara | ❌ Confusa |
-| Queries | ✅ Rápidas | ❌ Complejas |
-| Filtros | ✅ Simples | ❌ Complejas |
-| Permisos | ✅ Granulares | ❌ Generales |
-| Escalabilidad | ✅ Fácil | ❌ Difícil |
-| Mantenimiento | ✅ Limpio | ❌ Sucio |
-| Admin UX | ✅ Intuitivo | ❌ Confuso |
-
----
-
-## 📌 Conclusión
-
-**Colecciones separadas** es la mejor arquitectura para:
-- ✅ Organización clara
-- ✅ Escalabilidad futura
-- ✅ Permisos específicos
-- ✅ Mejor experiencia del usuario final
-- ✅ Facilita mantenimiento
-
+Las reglas siguen contemplando colecciones antiguas que ya nadie usa
+(`conteo-figuras`, `secuencias`, `desarrollo-cubos`…). No estorban —solo son
+reglas para colecciones vacías— pero se pueden limpiar cuando toque tocar las
+reglas. Ver `FIRESTORE_REGLAS_ACTUALIZADAS.md`.
