@@ -215,13 +215,14 @@ const DesarrolloCubos = ({
         <div className="cubos-antiguo-format">
           {/* Mostrar el plano del cubo */}
           <div className="plano-container">
-            <h4>Observa el plano:</h4>
+            <h4>{mision.titulo_plano || 'Observa el plano:'}</h4>
             <div dangerouslySetInnerHTML={{ __html: ejercicio.plano_svg }} />
           </div>
 
           {/* Mostrar opciones como SVGs */}
           <div className="opciones-container">
-            <h4>¿Cuál de estos cubos se forma?</h4>
+            {/* Configurable para poder invertir la pregunta ("¿cual NO se forma?") */}
+            <h4>{mision.titulo_opciones || '¿Cuál de estos cubos se forma?'}</h4>
             <div className="opciones-grid">
               {ejercicio.opciones_svg?.map((optionSvg, idx) => {
                 const isSelected = seleccion === idx.toString();

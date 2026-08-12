@@ -123,9 +123,44 @@ Juego para ordenar letras.
 > Con solo 2-3 símbolos casi nunca hay suficientes pares opuestos, y el ejercicio
 > acaba teniendo varias respuestas correctas. Le pasó a 3 de los 4 ejercicios
 > originales; se reescribieron con `datos_cubo` (2026-08).
->
-> **Usa `datos_cubo` con preguntas de cara opuesta.** No se puede ambiguar: cada
-> cara tiene exactamente una opuesta, sin importar cómo gires el cubo.
+
+#### Cómo escribir bien un "¿cuál cubo se forma?"
+
+Sí se puede — es el ejercicio de olimpiada de verdad — pero hay que cumplir tres
+reglas. Ver `2026-08-11_maestro-de-cubos.json` como ejemplo.
+
+1. **Símbolo en las 6 caras.** Con caras en blanco no hay suficientes pares
+   opuestos para construir distractores imposibles.
+2. **Cada opción muestra 3 caras** (arriba, izquierda, derecha del hexágono
+   isométrico), no 2. Con 2 símbolos casi todo es posible.
+3. **Los distractores solo pueden ser de dos tipos:**
+   - **Par opuesto:** dos de las tres caras son opuestas → imposible, nunca se
+     ven a la vez. Es el distractor fácil.
+   - **Espejo:** las tres caras correctas pero con dos intercambiadas de sitio →
+     imposible. Tres caras que se juntan en una esquina tienen una *quiralidad*
+     fija; girar el cubo no la cambia, solo un espejo. Es el distractor duro, y
+     el que de verdad entrena visión espacial.
+
+**No dibujes los cubos a mano.** Un cubo tiene 24 vistas isométricas y a ojo es
+facilísimo dibujar una que resulta válida sin querer. La forma segura es plegar
+el plano, enumerar las 24 vistas y comprobar que solo una de las opciones está
+en esa lista. Pídeselo a Claude: hay scripts que ya hacen exactamente eso.
+
+**Encabezados configurables** (nivel misión, ambos opcionales):
+
+| Campo | Por defecto |
+|-------|-------------|
+| `titulo_plano` | `"Observa el plano:"` |
+| `titulo_opciones` | `"¿Cuál de estos cubos se forma?"` |
+
+Con `titulo_opciones` se puede invertir el ejercicio: *"¿Cuál de estos cubos NO
+se puede formar?"* con dos opciones válidas y una imposible.
+
+---
+
+Para el resto, **usa `datos_cubo` con preguntas de cara opuesta.** No se puede
+ambiguar: cada cara tiene exactamente una opuesta, sin importar cómo gires el
+cubo.
 
 Soporta múltiples ejercicios secuenciales.
 
