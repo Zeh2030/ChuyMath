@@ -1,4 +1,5 @@
 import React from 'react';
+import ErrorBoundary from '../layout/ErrorBoundary';
 import OpcionMultiple from './tipos/OpcionMultiple';
 import Secuencia from './tipos/Secuencia';
 import NavegacionMapa from './tipos/NavegacionMapa';
@@ -535,7 +536,10 @@ const MisionRenderer = ({
       {mision.instruccion && (
         <p className="mision-instruccion">{mision.instruccion}</p>
       )}
-      {renderizarMision()}
+      {/* Un fallo en una mision no debe dejar toda la app en blanco */}
+      <ErrorBoundary key={mision.id}>
+        {renderizarMision()}
+      </ErrorBoundary>
     </div>
   );
 };

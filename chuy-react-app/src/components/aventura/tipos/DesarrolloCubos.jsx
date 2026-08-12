@@ -114,9 +114,9 @@ const DesarrolloCubos = ({
       }))
     : (mision.datos_cubo?.caras || []);
 
-  const pregunta = usarFormatoAntiguo
-    ? (mision.instruccion || 'Observa y selecciona')
-    : mision.pregunta;
+  // MisionRenderer ya pinta `mision.instruccion` justo encima, asi que usarla
+  // tambien de pregunta la mostraba dos veces. Solo se pinta si hay `pregunta`.
+  const pregunta = mision.pregunta;
 
   const respuestaCorrecta = usarFormatoAntiguo
     ? (ejercicio?.respuesta !== undefined ? ejercicio.respuesta.toString() : '')
@@ -208,7 +208,7 @@ const DesarrolloCubos = ({
 
   return (
     <div className="cubos-container">
-      <h3 className="cubos-pregunta">{pregunta}</h3>
+      {pregunta && <h3 className="cubos-pregunta">{pregunta}</h3>}
 
       {/* Formato antiguo: mostrar plano + opciones SVG */}
       {usarFormatoAntiguo && ejercicio ? (
