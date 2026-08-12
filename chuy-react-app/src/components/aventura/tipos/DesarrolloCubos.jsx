@@ -1,13 +1,83 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import './DesarrolloCubos.css';
 
-const DesarrolloCubos = ({ 
-  mision, 
-  onCompletar, 
-  modoSimulacro = false, 
-  respuestaGuardada = '', 
-  onRespuesta = null, 
-  mostrarResultado: mostrarResultadoExterno = false 
+// three.js solo se descarga cuando el nino llega a una mision de cubos.
+const Cubo3D = React.lazy(() => import('./Cubo3D'));
+
+// Colores para planos que no traen color propio (formato antiguo, SVG a mano).
+const PALETA_PLANO = [
+  '#FFD93D', '#FF6B6B', '#4ECDC4', '#45B7D1',
+  '#96CEB4', '#C7A2FF', '#FFAF7B', '#A8E063',
+];
+
+const leerAtributo = (etiqueta, nombre) => {
+  const m = etiqueta.match(new RegExp(`(?:^|\\s)${nombre}\\s*=\\s*['"]([^'"]*)['"]`));
+  return m ? m[1] : null;
+};
+
+/**
+ * Convierte el `plano_svg` del formato antiguo en una rejilla de caras.
+ *
+ * Los planos son SVG escritos a mano pero con una forma muy regular: `<rect>`
+ * en una cuadricula y un `<text>` dentro de algunas celdas. Parseandolos aqui,
+ * el contenido antiguo gana el cubo 3D sin tener que reescribir ningun JSON.
+ * Si el SVG no encaja con ese patron devolvemos null y no se muestra el 3D.
+ */
+const parsearPlanoSvg = (svg) => {
+  if (!svg || typeof svg !== 'string') return null;
+  try {
+    const celdas = [...svg.matchAll(/<rect\b[^>]*>/g)]
+      .map((m) => {
+        const t = m[0];
+        return {
+          x: parseFloat(leerAtributo(t, 'x')),
+          y: parseFloat(leerAtributo(t, 'y')),
+          ancho: parseFloat(leerAtributo(t, 'width')),
+          alto: parseFloat(leerAtributo(t, 'height')),
+        };
+      })
+      .filter((c) => [c.x, c.y, c.ancho, c.alto].every(Number.isFinite) && c.ancho > 0 && c.alto > 0);
+
+    if (celdas.length < 2) return null;
+
+    const textos = [...svg.matchAll(/<text\b([^>]*)>([\s\S]*?)<\/text>/g)]
+      .map((m) => ({
+        x: parseFloat(leerAtributo(m[1], 'x')),
+        y: parseFloat(leerAtributo(m[1], 'y')),
+        contenido: m[2].trim(),
+      }))
+      .filter((t) => Number.isFinite(t.x) && Number.isFinite(t.y) && t.contenido);
+
+    const lado = Math.min(...celdas.map((c) => Math.min(c.ancho, c.alto)));
+    const minX = Math.min(...celdas.map((c) => c.x));
+    const minY = Math.min(...celdas.map((c) => c.y));
+
+    return celdas.map((celda, idx) => {
+      // El texto de la celda es el que cae dentro de sus limites.
+      const dentro = textos.find(
+        (t) => t.x >= celda.x && t.x <= celda.x + celda.ancho &&
+               t.y >= celda.y && t.y <= celda.y + celda.alto
+      );
+      return {
+        id: `c${idx}`,
+        fila: Math.round((celda.y - minY) / lado),
+        columna: Math.round((celda.x - minX) / lado),
+        contenido: dentro ? dentro.contenido : '',
+        color: PALETA_PLANO[idx % PALETA_PLANO.length],
+      };
+    });
+  } catch {
+    return null;
+  }
+};
+
+const DesarrolloCubos = ({
+  mision,
+  onCompletar,
+  modoSimulacro = false,
+  respuestaGuardada = '',
+  onRespuesta = null,
+  mostrarResultado: mostrarResultadoExterno = false
 }) => {
   const [seleccion, setSeleccion] = useState(respuestaGuardada || '');
   const [esCorrecto, setEsCorrecto] = useState(false);
@@ -19,7 +89,7 @@ const DesarrolloCubos = ({
       setSeleccion(respuestaGuardada);
     }
   }, [respuestaGuardada, modoSimulacro]);
-  
+
   // Reiniciar índice al cambiar de misión
   useEffect(() => {
     setIndiceEjercicioActual(0);
@@ -32,9 +102,9 @@ const DesarrolloCubos = ({
   const usarFormatoAntiguo = !mision.datos_cubo && mision.ejercicios;
   const ejercicios = usarFormatoAntiguo ? (mision.ejercicios || []) : [];
   const ejercicio = usarFormatoAntiguo && ejercicios.length > 0 ? ejercicios[indiceEjercicioActual] : null;
-  
+
   // En formato antiguo, usar el índice como respuesta
-  const caras = usarFormatoAntiguo 
+  const caras = usarFormatoAntiguo
     ? (ejercicio?.opciones_svg || []).map((svg, idx) => ({
         id: idx.toString(),
         contenido: 'Opción ' + (idx + 1),
@@ -43,19 +113,19 @@ const DesarrolloCubos = ({
         columna: idx % 2
       }))
     : (mision.datos_cubo?.caras || []);
-  
-  const pregunta = usarFormatoAntiguo 
+
+  const pregunta = usarFormatoAntiguo
     ? (mision.instruccion || 'Observa y selecciona')
     : mision.pregunta;
-  
-  const respuestaCorrecta = usarFormatoAntiguo 
+
+  const respuestaCorrecta = usarFormatoAntiguo
     ? (ejercicio?.respuesta !== undefined ? ejercicio.respuesta.toString() : '')
     : (mision.respuesta !== undefined ? mision.respuesta.toString() : '');
-  
+
   const explicacionCorrecta = usarFormatoAntiguo
     ? ejercicio?.explicacion_correcta
     : mision.explicacion_correcta;
-    
+
   const explicacionIncorrecta = usarFormatoAntiguo
     ? ejercicio?.explicacion_incorrecta
     : mision.explicacion_incorrecta;
@@ -63,7 +133,7 @@ const DesarrolloCubos = ({
   // Tamaño de la celda en el SVG
   const CELL_SIZE = 80;
   const PADDING = 10;
-  
+
   // Calcular dimensiones del SVG dinámicamente
   const maxFil = Math.max(...caras.map(c => c.fila)) + 1;
   const maxCol = Math.max(...caras.map(c => c.columna)) + 1;
@@ -84,7 +154,7 @@ const DesarrolloCubos = ({
     const correcto = seleccion.toString() === respuestaCorrecta.toString();
     setEsCorrecto(correcto);
     setMostrarFeedback(true);
-    
+
     // Si es correcto, esperamos a que el usuario presione Continuar
   };
 
@@ -108,11 +178,33 @@ const DesarrolloCubos = ({
   };
 
   const debeMostrarResultado = mostrarFeedback || (modoSimulacro && mostrarResultadoExterno);
-  
+
   // En simulacro, verificar contra la respuesta guardada
-  const esCorrectoCalculado = modoSimulacro 
+  const esCorrectoCalculado = modoSimulacro
     ? (seleccion === respuestaCorrecta)
     : esCorrecto;
+
+  // === Cubo 3D ===
+  // El plano que se dobla: en el formato nuevo son las mismas caras del quiz;
+  // en el antiguo se saca del SVG dibujado a mano.
+  const carasPlano = useMemo(() => {
+    if (!usarFormatoAntiguo) return caras;
+    return parsearPlanoSvg(ejercicio?.plano_svg);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [usarFormatoAntiguo, mision.datos_cubo, ejercicio?.plano_svg]);
+
+  // Tras responder, se marca la cara correcta (y la elegida si fallo).
+  const resaltar = useMemo(() => {
+    if (usarFormatoAntiguo || !debeMostrarResultado) return null;
+    const marcas = { [respuestaCorrecta]: '#2ecc71' };
+    if (!esCorrectoCalculado && seleccion) marcas[seleccion] = '#e74c3c';
+    return marcas;
+  }, [usarFormatoAntiguo, debeMostrarResultado, respuestaCorrecta, esCorrectoCalculado, seleccion]);
+
+  // El cubo se dobla despues de responder: doblarlo antes regalaria la respuesta.
+  // `permitir_doblar_antes` en el JSON lo abre para misiones de pura exploracion.
+  const puedeDoblar = Boolean(carasPlano?.length) &&
+    (debeMostrarResultado || mision.permitir_doblar_antes === true);
 
   return (
     <div className="cubos-container">
@@ -137,7 +229,7 @@ const DesarrolloCubos = ({
                 const isWrong = debeMostrarResultado && isSelected && !esCorrectoCalculado;
 
                 return (
-                  <div 
+                  <div
                     key={idx}
                     className={`opcion-svg ${isSelected ? 'selected' : ''} ${isCorrect ? 'correct' : ''} ${isWrong ? 'wrong' : ''}`}
                     onClick={() => !debeMostrarResultado && handleSeleccion(idx.toString())}
@@ -153,9 +245,9 @@ const DesarrolloCubos = ({
       ) : (
         /* Formato nuevo: renderizar con estructura de caras */
         <div className="svg-wrapper">
-          <svg 
-            width="100%" 
-            viewBox={`0 0 ${width} ${height}`} 
+          <svg
+            width="100%"
+            viewBox={`0 0 ${width} ${height}`}
             className="cubo-svg"
           >
             <defs>
@@ -183,7 +275,7 @@ const DesarrolloCubos = ({
               // Estilo dinámico según estado
               let strokeColor = "white";
               let strokeWidth = "3";
-              
+
               if (isSelected) {
                 strokeColor = "#3498db"; // Azul selección
                 strokeWidth = "6";
@@ -198,8 +290,8 @@ const DesarrolloCubos = ({
               }
 
               return (
-                <g 
-                  key={cara.id} 
+                <g
+                  key={cara.id}
                   onClick={() => handleSeleccion(cara.id)}
                   style={{ cursor: debeMostrarResultado ? 'default' : 'pointer' }}
                   className="cara-grupo"
@@ -223,11 +315,11 @@ const DesarrolloCubos = ({
                     textAnchor="middle"
                     fontSize="40"
                     className="cara-icono"
-                    style={{ pointerEvents: 'none', userSelect: 'none' }} 
+                    style={{ pointerEvents: 'none', userSelect: 'none' }}
                   >
                     {cara.contenido}
                   </text>
-                  
+
                   {/* Indicador de selección (Check pequeño visual) */}
                   {isSelected && !debeMostrarResultado && (
                     <circle cx={x + CELL_SIZE - 12} cy={y + 12} r="8" fill="#3498db" stroke="white" strokeWidth="2" />
@@ -236,6 +328,21 @@ const DesarrolloCubos = ({
               );
             })}
           </svg>
+        </div>
+      )}
+
+      {/* Comprobacion en 3D: el plano se dobla de verdad y se puede girar */}
+      {puedeDoblar && (
+        <div className="cubos-3d-panel">
+          <h4>Compruébalo en 3D</h4>
+          <React.Suspense fallback={<div className="cubos-3d-cargando">Cargando el cubo…</div>}>
+            <Cubo3D
+              key={`${mision.id}-${indiceEjercicioActual}`}
+              caras={carasPlano}
+              resaltar={resaltar}
+              etiqueta={usarFormatoAntiguo ? '🎲 Ver cómo se dobla' : null}
+            />
+          </React.Suspense>
         </div>
       )}
 
@@ -252,8 +359,8 @@ const DesarrolloCubos = ({
       {!modoSimulacro && (
         <div className="acciones-container">
           {!mostrarFeedback ? (
-            <button 
-              className="boton-enviar" 
+            <button
+              className="boton-enviar"
               onClick={comprobarRespuesta}
               disabled={!seleccion}
             >

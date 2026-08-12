@@ -1,0 +1,83 @@
+.cubo3d {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.cubo3d-lienzo {
+  width: 100%;
+  height: 280px;
+  border-radius: 20px;
+  background: linear-gradient(160deg, #eef4fb 0%, #e3ecf6 100%);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  touch-action: none; /* el arrastre gira el cubo, no hace scroll */
+  cursor: grab;
+}
+
+.cubo3d-lienzo:active {
+  cursor: grabbing;
+}
+
+/* Red de seguridad: el canvas nunca debe desbordar su caja */
+.cubo3d-lienzo canvas {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.cubo3d-controles {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cubo3d-btn {
+  background: linear-gradient(135deg, #9b59b6, #8e44ad);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cubo3d-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(155, 89, 182, 0.4);
+}
+
+.cubo3d-btn-secundario {
+  background: #ecf0f1;
+  color: #5d6d7e;
+}
+
+.cubo3d-btn-secundario:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cubo3d-pista {
+  font-size: 0.85rem;
+  color: #7f8c8d;
+  font-weight: bold;
+}
+
+.cubo3d-fallback {
+  padding: 20px;
+  text-align: center;
+  color: #7f8c8d;
+  background: #f8f9fa;
+  border-radius: 12px;
+}
+
+@media (max-width: 480px) {
+  .cubo3d-lienzo {
+    height: 230px;
+  }
+}

@@ -44,6 +44,35 @@
   transform-origin: center;
 }
 
+/* Panel de comprobación 3D (se muestra al responder) */
+.cubos-3d-panel {
+  width: 100%;
+  margin: 0.5rem 0 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  animation: cubos-3d-aparecer 0.35s ease;
+}
+
+.cubos-3d-panel h4 {
+  margin: 0 0 0.75rem;
+  text-align: center;
+  font-size: 1.05rem;
+  color: var(--color-texto);
+}
+
+.cubos-3d-cargando {
+  text-align: center;
+  padding: 40px 0;
+  color: #7f8c8d;
+}
+
+@keyframes cubos-3d-aparecer {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 .instruccion-seleccion {
   min-height: 60px;
   text-align: center;
