@@ -1,24 +1,29 @@
+/* La barra se ajusta al contenido y baja de renglon si no cabe. Con max-width
+   fijo y botones estirados a partes iguales, cada materia nueva estrujaba a las
+   demas hasta que el texto se salia del boton y chocaba con el emoji siguiente. */
 .materia-toggle {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 4px;
-  margin-bottom: 16px;
+  margin: 0 auto 16px;
   background: rgba(255, 255, 255, 0.6);
   border-radius: 16px;
   padding: 4px;
-  max-width: 520px;
-  margin-left: auto;
-  margin-right: auto;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: fit-content;
+  max-width: 100%;
 }
 
 .materia-btn {
-  flex: 1 1 0;
-  min-width: 0;
+  /* Ancho natural: puede encoger, pero nunca por debajo de su contenido. */
+  flex: 0 1 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px 20px;
+  padding: 10px 16px;
   border: none;
   border-radius: 12px;
   font-size: 1rem;
@@ -27,6 +32,8 @@
   transition: all 0.25s ease;
   background: transparent;
   color: #888;
+  white-space: nowrap;
+  overflow: hidden; /* red de seguridad: nada se sale del boton */
 }
 
 .materia-btn:hover {
@@ -68,6 +75,8 @@
 
 .materia-emoji {
   font-size: 1.2rem;
+  line-height: 1;
+  flex-shrink: 0;
 }
 
 .materia-imagen {
@@ -77,10 +86,22 @@
   border-radius: 2px;
   display: block;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
 }
 
 .materia-label {
   font-size: 0.95rem;
+}
+
+/* Tablet: se aprieta un poco antes de partir en dos renglones */
+@media (max-width: 900px) {
+  .materia-btn {
+    gap: 6px;
+    padding: 10px 12px;
+  }
+  .materia-label {
+    font-size: 0.9rem;
+  }
 }
 
 @media (max-width: 600px) {
@@ -92,13 +113,11 @@
   .materia-btn {
     flex-direction: column;
     gap: 2px;
-    padding: 8px 4px;
+    padding: 8px 6px;
     border-radius: 10px;
-    overflow: hidden;
   }
   .materia-emoji {
     font-size: 1.15rem;
-    line-height: 1;
   }
   .materia-imagen {
     width: 20px;
@@ -107,9 +126,5 @@
   .materia-label {
     font-size: 0.7rem;
     line-height: 1.1;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
   }
 }
