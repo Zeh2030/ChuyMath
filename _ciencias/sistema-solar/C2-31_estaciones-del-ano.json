@@ -1,0 +1,61 @@
+{
+  "id": "C2-31_estaciones-del-ano",
+  "titulo": "Las Estaciones del Año",
+  "descripcion": "Recorre el año en 3D y descubre el verdadero secreto del verano y el invierno",
+  "tipo": "sistema-solar",
+  "materia": "ciencias",
+  "nivel": "C2-31",
+  "tema": "astronomia",
+  "misiones": [
+    {
+      "id": "astro-estaciones-01",
+      "tipo": "sistema-solar",
+      "escena": "estaciones",
+      "modo": "completo",
+      "titulo": "¿Por qué hay verano e invierno?",
+      "emoji": "🍂",
+      "instruccion": "Mueve el deslizador para recorrer el año completo. Fíjate en la varilla del eje de la Tierra (la puntita ROJA es el polo norte): mientras la Tierra viaja, el eje SIEMPRE apunta al mismo lado. Y mira el recuadro: ahí se ve a qué mitad del mundo le pega la luz de frente.",
+      "leccion": "Mucha gente cree que hay verano cuando la Tierra está más cerca del Sol… ¡y es FALSO! La Tierra está igual de lejos todo el año. El secreto es que viaja INCLINADA: cuando nuestra mitad del mundo se inclina hacia el Sol, la luz nos pega de frente y hace calor. Cuando se inclina al lado contrario, la luz llega de refilón y hace frío.",
+      "datos": {
+        "sol": "El Sol ilumina igual todo el año. Lo que cambia es CÓMO le llega su luz a cada mitad de la Tierra: de frente (calorcito) o de refilón (frío).",
+        "tierra": "La Tierra viaja inclinada 23.5 grados, como un trompo chueco. Esa inclinación nunca cambia de dirección… ¡y por eso existen las estaciones!"
+      },
+      "retos": [
+        {
+          "tipo": "estacion",
+          "pregunta": "Pon la Tierra donde sea VERANO aquí en México.",
+          "respuesta": "verano",
+          "pista": "Busca que la puntita roja del eje (el polo norte) se incline HACIA el Sol."
+        },
+        {
+          "tipo": "estacion",
+          "pregunta": "Ahora ponla donde sea INVIERNO en México.",
+          "respuesta": "invierno",
+          "pista": "Justo del otro lado de la órbita: el polo norte inclinado LEJOS del Sol."
+        },
+        {
+          "tipo": "estacion",
+          "pregunta": "Truco final: haz que sea VERANO en Argentina (que está en la mitad SUR del mundo).",
+          "respuesta": "verano-sur",
+          "pista": "Cuando el sur se inclina hacia el Sol… ¿qué estación es aquí en el norte? ¡Exacto: la misma posición que nuestro invierno!"
+        }
+      ],
+      "dato_curioso": "En diciembre, cuando aquí hace frío, en Argentina y Australia la gente celebra la Navidad en la playa y con calor. ¡Mismo planeta, mismo día, estaciones opuestas! Y otro secreto: la Tierra está un poquito MÁS CERCA del Sol en enero… en pleno invierno nuestro. Prueba definitiva de que la distancia no es el motivo."
+    },
+    {
+      "id": "astro-om-estaciones-repaso",
+      "tipo": "opcion-multiple",
+      "titulo": "El Verdadero Secreto",
+      "instruccion": "Piensa en lo que viste en el 3D.",
+      "pregunta": "🌍 ¿Por qué hay VERANO en una parte del mundo?",
+      "opciones": [
+        "Porque la Tierra se acerca más al Sol",
+        "Porque esa mitad del mundo se inclina hacia el Sol y la luz le pega de frente",
+        "Porque el Sol calienta más fuerte en junio"
+      ],
+      "respuesta": "1",
+      "explicacion_correcta": "¡Exacto! Es por la INCLINACIÓN, no por la distancia. Cuando tu mitad del mundo se inclina hacia el Sol, la luz llega de frente y calienta más. ¡Hasta hay veranos donde la Tierra está más lejos del Sol!",
+      "explicacion_incorrecta": "Es por la INCLINACIÓN de la Tierra, no por la distancia. De hecho la Tierra está un poquito más cerca del Sol en enero, ¡cuando aquí es invierno! Lo que importa es si la luz te pega de frente o de refilón."
+    }
+  ]
+}

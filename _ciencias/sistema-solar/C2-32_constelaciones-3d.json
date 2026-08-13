@@ -1,0 +1,67 @@
+{
+  "id": "C2-32_constelaciones-3d",
+  "titulo": "Constelaciones en 3D",
+  "descripcion": "Los dibujos de estrellas solo existen desde la Tierra: gira la vista y míralos deshacerse",
+  "tipo": "sistema-solar",
+  "materia": "ciencias",
+  "nivel": "C2-32",
+  "tema": "astronomia",
+  "misiones": [
+    {
+      "id": "astro-constelaciones-01",
+      "tipo": "sistema-solar",
+      "escena": "constelaciones",
+      "modo": "completo",
+      "titulo": "El Secreto de las Constelaciones",
+      "emoji": "✨",
+      "instruccion": "El puntito azul es la Tierra. A su alrededor hay estrellas de verdad, cada una a SU distancia. Arrastra para girar la vista: casi siempre verás puntos regados sin sentido… pero desde UN lugar exacto, las líneas forman un dibujo. Ese lugar es el punto de vista de la Tierra.",
+      "leccion": "Las estrellas de una constelación NO son amigas ni están juntas: unas están cerca y otras lejísimos, a miles de años luz de diferencia. El dibujo solo existe visto desde la Tierra, como cuando alineas un árbol cercano con una montaña lejana y parece que se tocan.",
+      "datos": {
+        "tierra": "Desde aquí miramos el cielo. Si vivieras en un planeta de OTRA estrella, verías dibujos completamente diferentes… ¡y nuestro Sol sería una estrellita más de sus constelaciones!",
+        "osa-mayor": "El famoso cucharón. Sus 7 estrellas parecen vecinas, pero Dubhe está mucho más lejos que las demás: en 3D el cucharón se rompe.",
+        "orion": "El cazador del cielo. Betelgeuse (la naranja) es una supergigante a punto de explotar, y Rigel (la azul) brilla como 120,000 soles. Entre las estrellas de su cinturón hay cientos de años luz."
+      },
+      "retos": [
+        {
+          "tipo": "vista",
+          "pregunta": "Gira la vista hasta que encaje el CUCHARÓN (la Osa Mayor).",
+          "respuesta": "osa-mayor",
+          "pista": "Muévete despacio. Cuando las líneas se pongan DORADAS, la encontraste."
+        },
+        {
+          "tipo": "vista",
+          "pregunta": "Ahora encuentra al CAZADOR (Orión) con su cinturón de 3 estrellas.",
+          "respuesta": "orion",
+          "pista": "Está hacia el otro lado del cielo. Busca las 3 estrellas en fila del cinturón."
+        }
+      ],
+      "dato_curioso": "Las constelaciones también se están deshaciendo solitas: cada estrella viaja por su lado, y dentro de 100,000 años el cucharón de la Osa Mayor estará todo chueco. Los dinosaurios vieron un cielo con dibujos diferentes a los tuyos."
+    },
+    {
+      "id": "astro-tof-constelaciones-3d",
+      "tipo": "true-or-false",
+      "titulo": "¿Verdadero o Falso?",
+      "instruccion": "Después de lo que viste en 3D, decide.",
+      "retos": [
+        {
+          "oracion": "Las estrellas de una constelación están todas juntas y cerquita unas de otras.",
+          "correcto": false,
+          "correccion": "Solo se VEN juntas desde la Tierra. En realidad unas están cerca y otras lejísimos.",
+          "explicacion": "¡Falso! Lo comprobaste al girar la vista: el dibujo se deshace porque cada estrella está a su propia distancia."
+        },
+        {
+          "oracion": "Si vivieras en un planeta de otra estrella, verías constelaciones diferentes.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "¡Verdadero! Los dibujos dependen del punto de vista. Desde otro lugar de la galaxia, el cielo tiene otros dibujos… y nuestro Sol saldría en ellos."
+        },
+        {
+          "oracion": "Las constelaciones se quedarán igualitas para siempre.",
+          "correcto": false,
+          "correccion": "Cada estrella viaja por su lado: en miles de años los dibujos se deforman.",
+          "explicacion": "¡Falso! El cielo cambia lentísimo, pero cambia. Los dinosaurios vieron dibujos distintos a los nuestros."
+        }
+      ]
+    }
+  ]
+}

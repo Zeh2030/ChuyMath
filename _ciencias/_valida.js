@@ -12,13 +12,22 @@ const TIPOS_OK = new Set([
 ]);
 
 // Cuerpos validos del motor sistema-solar (Espacio3D), por escena.
-const CUERPOS_PLANETAS = new Set(['sol', 'mercurio', 'venus', 'tierra', 'marte', 'jupiter', 'saturno', 'urano', 'neptuno']);
-const CUERPOS_TIERRA_LUNA = new Set(['sol', 'tierra', 'luna']);
+const CUERPOS_POR_ESCENA = {
+  planetas: new Set(['sol', 'mercurio', 'venus', 'tierra', 'marte', 'jupiter', 'saturno', 'urano', 'neptuno']),
+  'tierra-luna': new Set(['sol', 'tierra', 'luna']),
+  estaciones: new Set(['sol', 'tierra']),
+  constelaciones: new Set(['tierra', 'osa-mayor', 'orion']),
+};
 const FASES_OK = new Set([
   'nueva', 'creciente', 'cuarto-creciente', 'gibosa-creciente',
   'llena', 'gibosa-menguante', 'cuarto-menguante', 'menguante',
   'eclipse-sol', 'eclipse-luna',
 ]);
+const ESTACIONES_OK = new Set([
+  'verano', 'otono', 'invierno', 'primavera',
+  'verano-sur', 'otono-sur', 'invierno-sur', 'primavera-sur',
+]);
+const CONSTELACIONES_OK = new Set(['osa-mayor', 'orion']);
 const MODOS_OK = new Set(['explorar', 'reto', 'completo']);
 
 const errores = [];
@@ -73,12 +82,12 @@ for (const ruta of buscarJsons(DIR).sort()) {
 
 function validarSistemaSolar(m, et) {
   const escena = m.escena || 'planetas';
-  if (escena !== 'planetas' && escena !== 'tierra-luna') {
+  const cuerpos = CUERPOS_POR_ESCENA[escena];
+  if (!cuerpos) {
     errores.push(`${et}: escena desconocida "${m.escena}"`);
     return;
   }
   if (m.modo && !MODOS_OK.has(m.modo)) errores.push(`${et}: modo desconocido "${m.modo}"`);
-  const cuerpos = escena === 'planetas' ? CUERPOS_PLANETAS : CUERPOS_TIERRA_LUNA;
 
   for (const id of Object.keys(m.datos || {})) {
     if (!cuerpos.has(id)) errores.push(`${et}: datos["${id}"] no es un cuerpo de la escena ${escena}`);
@@ -90,11 +99,17 @@ function validarSistemaSolar(m, et) {
     } else if (r.tipo === 'fase') {
       if (escena !== 'tierra-luna') errores.push(`${et} reto ${i}: los retos de fase solo van en la escena tierra-luna`);
       if (!FASES_OK.has(r.respuesta)) errores.push(`${et} reto ${i}: fase desconocida "${r.respuesta}"`);
+    } else if (r.tipo === 'estacion') {
+      if (escena !== 'estaciones') errores.push(`${et} reto ${i}: los retos de estacion solo van en la escena estaciones`);
+      if (!ESTACIONES_OK.has(r.respuesta)) errores.push(`${et} reto ${i}: estacion desconocida "${r.respuesta}"`);
+    } else if (r.tipo === 'vista') {
+      if (escena !== 'constelaciones') errores.push(`${et} reto ${i}: los retos de vista solo van en la escena constelaciones`);
+      if (!CONSTELACIONES_OK.has(r.respuesta)) errores.push(`${et} reto ${i}: constelacion desconocida "${r.respuesta}"`);
     } else {
       errores.push(`${et} reto ${i}: tipo de reto desconocido "${r.tipo}"`);
     }
   }
-  if ((m.modo === 'reto' || !m.modo || m.modo === 'completo') && !(m.retos || []).length && m.modo === 'reto') {
+  if (m.modo === 'reto' && !(m.retos || []).length) {
     errores.push(`${et}: modo "reto" sin retos`);
   }
 }

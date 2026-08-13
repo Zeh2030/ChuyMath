@@ -31,11 +31,13 @@ export const PLANETAS = [
   { id: 'neptuno', nombre: 'Neptuno', radio: 1.45, radioReal: 3.88, dist: 38, vel: 0.18, color: '#3f66d4', tex: 'neptuno' },
 ];
 
-// Cuerpos de la escena tierra-luna (ids que puede devolver onSeleccion alli).
+// Nombres de todo lo tocable en cualquier escena (onSeleccion devuelve estos ids).
 export const NOMBRES = {
   sol: 'el Sol',
   tierra: 'la Tierra',
   luna: 'la Luna',
+  'osa-mayor': 'la Osa Mayor',
+  orion: 'Orión',
   ...Object.fromEntries(PLANETAS.map((p) => [p.id, p.nombre])),
 };
 
@@ -69,3 +71,75 @@ export const faseInfoDe = (angulo) => {
   const eclipseLuna = Math.abs(a - 180) < VENTANA_ECLIPSE;
   return { angulo: a, fase: fase.id, nombre: fase.nombre, emoji: fase.emoji, eclipseSol, eclipseLuna };
 };
+
+/* ============================ ESTACIONES DEL AÑO ============================ */
+
+// Convencion de la escena `estaciones`: angulo 0 = solsticio de JUNIO (el polo
+// norte inclinado hacia el Sol). La orbita avanza junio → septiembre → diciembre.
+export const ESTACIONES = [
+  { id: 'verano', nombre: 'Verano', emoji: '☀️', mes: 'junio' },
+  { id: 'otono', nombre: 'Otoño', emoji: '🍂', mes: 'septiembre' },
+  { id: 'invierno', nombre: 'Invierno', emoji: '❄️', mes: 'diciembre' },
+  { id: 'primavera', nombre: 'Primavera', emoji: '🌸', mes: 'marzo' },
+];
+
+// Estacion en el hemisferio NORTE (Mexico) con la Tierra a `angulo` grados de su
+// orbita. En el sur siempre es la contraria — esa es la mitad de la leccion.
+export const estacionInfoDe = (angulo) => {
+  const a = ((angulo % 360) + 360) % 360;
+  const sector = Math.round(a / 90) % 4;
+  const e = ESTACIONES[sector];
+  const sur = ESTACIONES[(sector + 2) % 4];
+  return {
+    angulo: a,
+    estacion: e.id,
+    nombre: e.nombre,
+    emoji: e.emoji,
+    mes: e.mes,
+    estacionSur: sur.id,
+    nombreSur: sur.nombre,
+    emojiSur: sur.emoji,
+  };
+};
+
+/* ============================ CONSTELACIONES 3D ============================ */
+
+// Cada estrella: figura 2D vista desde la Tierra (u = derecha, v = arriba) +
+// distancia DIDACTICA en unidades de escena (conserva el ORDEN real de
+// distancias, exagerado para que el dibujo se deshaga al girar). `brillo`
+// escala el tamano; `color` opcional (Betelgeuse roja, Rigel azul).
+// `dir` = direccion Tierra → constelacion en el mundo (se normaliza en el motor).
+export const CONSTELACIONES = [
+  {
+    id: 'osa-mayor',
+    nombre: 'la Osa Mayor',
+    dir: [0.4, -0.42, -0.82],
+    escalaAngular: 0.13,
+    estrellas: [
+      { nombre: 'Alkaid', u: -3.1, v: 0.4, dist: 27, brillo: 1.0 },
+      { nombre: 'Mizar', u: -2.2, v: 0.75, dist: 21, brillo: 0.95 },
+      { nombre: 'Alioth', u: -1.4, v: 0.9, dist: 20, brillo: 1.05 },
+      { nombre: 'Megrez', u: -0.6, v: 1.0, dist: 19, brillo: 0.75 },
+      { nombre: 'Phecda', u: -0.5, v: 0.15, dist: 20, brillo: 0.9 },
+      { nombre: 'Merak', u: 0.9, v: 0.15, dist: 18, brillo: 0.95 },
+      { nombre: 'Dubhe', u: 1.0, v: 1.05, dist: 32, brillo: 1.1 },
+    ],
+    lineas: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 3]],
+  },
+  {
+    id: 'orion',
+    nombre: 'Orión',
+    dir: [-0.78, 0.36, 0.51],
+    escalaAngular: 0.13,
+    estrellas: [
+      { nombre: 'Betelgeuse', u: 0.9, v: 1.5, dist: 22, brillo: 1.25, color: '#ff9a5c' },
+      { nombre: 'Bellatrix', u: -0.9, v: 1.4, dist: 18, brillo: 0.95 },
+      { nombre: 'Alnitak', u: 0.45, v: 0, dist: 34, brillo: 1.0 },
+      { nombre: 'Alnilam', u: 0, v: 0.1, dist: 40, brillo: 1.05 },
+      { nombre: 'Mintaka', u: -0.45, v: 0.2, dist: 33, brillo: 0.9 },
+      { nombre: 'Saiph', u: 0.75, v: -1.4, dist: 25, brillo: 0.9 },
+      { nombre: 'Rigel', u: -0.85, v: -1.5, dist: 28, brillo: 1.3, color: '#bcd4ff' },
+    ],
+    lineas: [[0, 1], [0, 2], [1, 4], [2, 3], [3, 4], [2, 5], [4, 6]],
+  },
+];

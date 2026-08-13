@@ -388,6 +388,14 @@ el flujo de MezcladorColores (intro → explorar → retos → fin).
 - **Escena `tierra-luna`**: deslizador que pasea la Luna por su orbita; recuadro
   "asi se ve desde la Tierra" (segunda camara); los eclipses son sombras REALES
   (shadow map) — alinear los cuerpos los produce solos.
+- **Escena `estaciones`** (2026-08-13): la Tierra orbita el Sol con el eje inclinado
+  23.5° SIEMPRE hacia el mismo lado (varilla + puntita roja en el polo norte);
+  deslizador = recorrer el ano; recuadro "asi pega la luz del Sol". Mata el mito
+  "verano = mas cerca del Sol". Retos tipo `estacion` (verano, invierno, verano-sur...).
+- **Escena `constelaciones`** (2026-08-13): estrellas de la Osa Mayor y Orion a sus
+  distancias (exageradas) reales; el dibujo solo encaja desde el punto de vista de la
+  Tierra — al girar se deshace; al alinearse, las lineas se ponen doradas y el reto
+  tipo `vista` acierta solo.
 
 Campos de la mision:
 
@@ -425,6 +433,8 @@ saturno, urano, neptuno. Tierra-luna: sol, tierra, luna.
 | `experimento-guia/C2-28_eclipses.json` | Eclipses | experimento-guia + sistema-solar (reto eclipse) |
 | `mini-story/C2-29_via-lactea.json` | La Via Lactea | mini-story |
 | `opcion-multiple/C2-30_marte.json` | Marte y sus exploradores | opcion-multiple |
+| `sistema-solar/C2-31_estaciones-del-ano.json` | Las estaciones del ano | sistema-solar (estaciones) + opcion-multiple |
+| `sistema-solar/C2-32_constelaciones-3d.json` | Constelaciones en 3D | sistema-solar (constelaciones) + true-or-false |
 
 **Fotos**: URLs `https://commons.wikimedia.org/wiki/Special:FilePath/<archivo>?width=320`
 (redirect estable de Wikimedia Commons, sin rutas con hash; todas verificadas con curl).
@@ -443,10 +453,16 @@ el tile propio `sistema-solar`. `detectMateria` reconoce `ciencias-*`.
 - La Luna se aleja de la Tierra ~3.8 cm cada año
 - Hay mas estrellas en el universo que granos de arena en TODAS las playas de la Tierra
 
-### Ideas futuras (no construidas)
+### Ideas futuras (aprobadas, no construidas)
 
-- Expediciones espaciales estilo `expedicion-galactica.json` (Sistema Solar, Luna, Marte, Constelaciones)
-- Mas escenas del motor 3D: cinturon de asteroides, cometas con cola, estaciones del año (inclinacion de la Tierra)
+- **El Cometa (C2-33)**: orbita eliptica con el Sol en un foco; la cola apunta SIEMPRE
+  anti-sol (cuando se aleja, viaja con la cola por delante). Reto: "ponlo donde la
+  cola sea mas larga" (perihelio).
+- **Lanza un Satelite (C3-21, canon de Newton)**: slider de velocidad + gravedad
+  simulada; desenlaces caer / orbitar / escapar. Enlaza con C2-27 (flotar = caer
+  alrededor de la Tierra). La mas laboriosa.
+- Expediciones espaciales estilo `expedicion-galactica.json` (Sistema Solar, Luna, Marte)
+- Cinturon de asteroides
 
 ---
 

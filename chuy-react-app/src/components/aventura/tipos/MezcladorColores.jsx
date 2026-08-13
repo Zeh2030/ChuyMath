@@ -85,11 +85,11 @@ const MezcladorColores = ({ mision, onCompletar }) => {
 
 /* ============================ PORTADA ============================ */
 
+// OJO: MisionRenderer ya pinta mision.titulo y mision.instruccion arriba de toda
+// mision — repetirlos aqui los mostraba dos veces (mismo error que en cubos).
 const Portada = ({ mision, base, onComenzar }) => (
   <div className="mezcla-portada">
     <div className="mezcla-emoji-grande">{mision.emoji || '🎨'}</div>
-    <h2 className="mezcla-titulo">{mision.titulo}</h2>
-    {mision.instruccion && <p className="mezcla-instruccion">{mision.instruccion}</p>}
     {mision.leccion && (
       <div className="mezcla-leccion">
         <span className="mezcla-leccion-icono">💡</span>

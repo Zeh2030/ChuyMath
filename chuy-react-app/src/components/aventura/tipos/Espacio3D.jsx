@@ -1,7 +1,7 @@
 import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { soportaWebGL } from '../../../utils/webgl';
-import { PLANETAS, SOL, faseInfoDe } from './espacioDatos';
+import { PLANETAS, SOL, CONSTELACIONES, faseInfoDe, estacionInfoDe } from './espacioDatos';
 import './Espacio3D.css';
 
 /**
@@ -66,10 +66,17 @@ const crearTexturaCuerpo = ({ tex, color, semilla = 7 }) => {
     });
   };
 
+  // Casquete polar con borde irregular: franja fina + fila de elipses con
+  // jitter. El rect duro se veia como calcomania pegada en el polo.
   const casquetes = (c, alto) => {
     ctx.fillStyle = c;
-    ctx.fillRect(0, 0, W, H * alto);
-    ctx.fillRect(0, H * (1 - alto), W, H * alto);
+    ctx.fillRect(0, 0, W, H * alto * 0.55);
+    ctx.fillRect(0, H * (1 - alto * 0.55), W, H * alto * 0.55);
+    for (let x = 0; x < W; x += 9) {
+      const r = 5 + rng() * 8;
+      mancha(x + rng() * 8, H * alto * 0.55, r, r * (0.4 + rng() * 0.3), c);
+      mancha(x + rng() * 8, H * (1 - alto * 0.55), r, r * (0.4 + rng() * 0.3), c);
+    }
   };
 
   switch (tex) {
@@ -93,20 +100,38 @@ const crearTexturaCuerpo = ({ tex, color, semilla = 7 }) => {
         mancha(rng() * W, y + 6, 30 + rng() * 50, 3 + rng() * 5, 'rgba(160,110,30,0.15)');
       }
       break;
-    case 'tierra':
-      for (let i = 0; i < 9; i++) {
-        const x = rng() * W;
-        const y = H * 0.18 + rng() * H * 0.64;
+    case 'tierra': {
+      // Algo de profundidad en el oceano
+      for (let i = 0; i < 6; i++) mancha(rng() * W, rng() * H, 30 + rng() * 50, 12 + rng() * 18, '#275ec4', 0.45);
+      // Grupos de continentes REPARTIDOS por longitud (al azar puro salian
+      // apilados en columna) con varios verdes e islitas alrededor.
+      const verdes = ['#3c8a3f', '#4c9e46', '#5fae52'];
+      const G = 7;
+      for (let g = 0; g < G; g++) {
+        const cx = ((g + 0.15 + rng() * 0.7) / G) * W;
+        const cy = H * (0.24 + rng() * 0.52);
+        const verde = verdes[g % verdes.length];
+        const n = 4 + Math.floor(rng() * 3);
+        for (let j = 0; j < n; j++) {
+          mancha(cx + (rng() - 0.5) * 44, cy + (rng() - 0.5) * 26, 6 + rng() * 12, 5 + rng() * 8, verde);
+        }
         for (let j = 0; j < 3; j++) {
-          mancha(x + (rng() - 0.5) * 30, y + (rng() - 0.5) * 16, 8 + rng() * 16, 6 + rng() * 10, '#4c9e46');
+          mancha(cx + (rng() - 0.5) * 90, cy + (rng() - 0.5) * 52, 1.5 + rng() * 2.5, 1.2 + rng() * 2, verdes[(g + 1) % 3]);
         }
       }
-      casquetes('#f4f8ff', 0.09);
-      for (let i = 0; i < 8; i++) mancha(rng() * W, rng() * H, 22 + rng() * 30, 3 + rng() * 4, 'rgba(255,255,255,0.35)');
+      casquetes('#f4f8ff', 0.1);
+      // Nubes alargadas, en dos capas translucidas
+      for (let i = 0; i < 10; i++) {
+        const y = rng() * H;
+        mancha(rng() * W, y, 24 + rng() * 34, 3 + rng() * 4, 'rgba(255,255,255,0.30)');
+        mancha(rng() * W, y + 4, 16 + rng() * 24, 2.5 + rng() * 3, 'rgba(255,255,255,0.20)');
+      }
       break;
+    }
     case 'marte':
       for (let i = 0; i < 18; i++) mancha(rng() * W, rng() * H, 6 + rng() * 16, 4 + rng() * 9, 'rgba(90,30,10,0.25)');
-      casquetes('#fdf6ec', 0.07);
+      // Casquetes blanco hueso (hielo de agua + hielo seco)
+      casquetes('#ece4d4', 0.08);
       break;
     case 'bandas':
       bandas(['#e8d3ab', '#c98d4e', '#e2b57e', '#a96a38', '#e8d3ab', '#b87c44', '#d9a768', '#c98d4e']);
@@ -173,16 +198,25 @@ const TL = {
   radioSol: 2.6,
 };
 
+// Escena estaciones: el Sol en el centro, la Tierra orbitando con eje inclinado.
+const EST = {
+  radioTierra: 1.35,
+  radioSol: 3,
+  orbita: 14,
+  inclinacion: 0.41, // 23.5 grados
+};
+
 /* ============================ componente ============================ */
 
 const Espacio3D = forwardRef(function Espacio3D(
   {
     escena = 'planetas',
-    enfocado = null,      // id de cuerpo al que acercar la camara (planetas)
+    enfocado = null,      // id de cuerpo al que acercar la camara
     comparar = false,     // modo "tamano real" en fila (planetas)
     seleccionable = true, // si tocar un cuerpo dispara onSeleccion
     onSeleccion = null,   // (idCuerpo) => {}
-    onFase = null,        // (faseInfo) => {} en cada cambio del deslizador (tierra-luna)
+    onFase = null,        // (info) => {} con cada cambio del deslizador (tierra-luna y estaciones)
+    onVista = null,       // (idConstelacion) => {} cuando la figura "encaja" (constelaciones)
   },
   ref
 ) {
@@ -190,9 +224,10 @@ const Espacio3D = forwardRef(function Espacio3D(
   const apiRef = useRef(null);
   const soportado = soportaWebGL();
 
-  // Posicion de la Luna en su orbita (grados desde la direccion del Sol).
-  // Arranca en cuarto creciente para que se vea una fase "interesante".
-  const [angulo, setAngulo] = useState(90);
+  // Deslizador: posicion de la Luna en su orbita (tierra-luna, arranca en cuarto
+  // creciente para ver una fase "interesante") o posicion de la Tierra en el ano
+  // (estaciones, arranca en el solsticio de junio = verano aqui).
+  const [angulo, setAngulo] = useState(() => (escena === 'estaciones' ? 0 : 90));
 
   // El bucle lee las props cada frame sin reconstruir la escena.
   const estadoRef = useRef({ enfocado, comparar, seleccionable, angulo });
@@ -202,14 +237,17 @@ const Espacio3D = forwardRef(function Espacio3D(
 
   const onSeleccionRef = useRef(onSeleccion);
   const onFaseRef = useRef(onFase);
+  const onVistaRef = useRef(onVista);
   useEffect(() => {
     onSeleccionRef.current = onSeleccion;
     onFaseRef.current = onFase;
-  }, [onSeleccion, onFase]);
+    onVistaRef.current = onVista;
+  }, [onSeleccion, onFase, onVista]);
 
-  // Avisar la fase visible al entrar y en cada movimiento del deslizador.
+  // Avisar la fase/estacion visible al entrar y en cada movimiento del deslizador.
   useEffect(() => {
     if (escena === 'tierra-luna') onFaseRef.current?.(faseInfoDe(angulo));
+    if (escena === 'estaciones') onFaseRef.current?.(estacionInfoDe(angulo));
   }, [escena, angulo]);
 
   useImperativeHandle(ref, () => ({
@@ -307,6 +345,8 @@ const Espacio3D = forwardRef(function Espacio3D(
     let metricaComparar = null;
     let glowSol = null;
     let tl = null;             // escena tierra-luna
+    let escEst = null;         // escena estaciones
+    const constels = [];       // escena constelaciones
 
     if (escena === 'planetas') {
       escena3.add(new THREE.AmbientLight(0xbfd0ff, 0.55));
@@ -405,16 +445,117 @@ const Espacio3D = forwardRef(function Espacio3D(
       tl = { tierra, luna, camFase };
     }
 
+    if (escena === 'estaciones') {
+      // Sol en el centro y UNA Tierra orbitando con el eje inclinado 23.5°
+      // SIEMPRE hacia el mismo lado del espacio: esa es toda la leccion.
+      escena3.add(new THREE.AmbientLight(0xbfd0ff, 0.5));
+      escena3.add(new THREE.PointLight(0xfff3d0, 2.4, 0, 0));
+
+      const sol = crearCuerpo({ id: 'sol', radio: EST.radioSol, tex: 'sol', color: SOL.color, semilla: 3, lambert: false });
+      escena3.add(sol);
+      const glow = crearGlow(EST.radioSol * 4.2);
+      escena3.add(glow);
+
+      const { linea } = crearLineaOrbita(EST.orbita);
+      escena3.add(linea);
+
+      // grupoTierra solo se TRASLADA por la orbita (nunca se rota): asi el eje
+      // inclinado del grupo interior conserva su direccion en el espacio.
+      const grupoTierra = new THREE.Group();
+      const eje = new THREE.Group();
+      eje.rotation.z = EST.inclinacion;
+      grupoTierra.add(eje);
+      escena3.add(grupoTierra);
+
+      const tierra = crearCuerpo({ id: 'tierra', radio: EST.radioTierra, tex: 'tierra', color: '#2f6fd0', semilla: 13 });
+      eje.add(tierra);
+
+      // Varilla del eje + puntita ROJA en el polo norte para seguirlo con la vista.
+      const geoVarilla = registrar(new THREE.CylinderGeometry(0.05, 0.05, EST.radioTierra * 3.4, 8));
+      const matVarilla = registrar(new THREE.MeshBasicMaterial({ color: 0xd9e2f5, transparent: true, opacity: 0.8 }));
+      eje.add(new THREE.Mesh(geoVarilla, matVarilla));
+      const geoNorte = registrar(new THREE.SphereGeometry(0.14, 12, 8));
+      const matNorte = registrar(new THREE.MeshBasicMaterial({ color: 0xe74c3c }));
+      const puntaNorte = new THREE.Mesh(geoNorte, matNorte);
+      puntaNorte.position.y = EST.radioTierra * 1.7;
+      eje.add(puntaNorte);
+
+      // Recuadro: la Tierra vista desde el lado del Sol — se VE que hemisferio
+      // recibe la luz de frente y cual de refilon.
+      const camEst = new THREE.PerspectiveCamera(34, 1, 0.1, 200);
+
+      escEst = { grupoTierra, tierra, camEst };
+    }
+
+    if (escena === 'constelaciones') {
+      // Estrellas a distancias (exageradas) REALES: el dibujo solo existe desde
+      // el punto de vista de la Tierra; girar la vista lo deshace.
+      escena3.add(new THREE.AmbientLight(0xffffff, 1));
+
+      // La Tierra es un puntito azul en el origen.
+      const tierra = crearCuerpo({ id: 'tierra', radio: 0.5, tex: 'tierra', color: '#2f6fd0', semilla: 13, lambert: false });
+      escena3.add(tierra);
+
+      const geoEstrella = registrar(new THREE.SphereGeometry(1, 16, 12));
+      const vDir = new THREE.Vector3();
+      const MENOS_Z = new THREE.Vector3(0, 0, -1);
+
+      CONSTELACIONES.forEach((c) => {
+        const grupo = new THREE.Group();
+        const dirVista = new THREE.Vector3(...c.dir).normalize();
+        grupo.quaternion.setFromUnitVectors(MENOS_Z, dirVista);
+        escena3.add(grupo);
+
+        const puntos3d = c.estrellas.map((e) => {
+          // Direccion local desde la Tierra (figura 2D) por su distancia real.
+          vDir.set(e.u * c.escalaAngular, e.v * c.escalaAngular, -1).normalize();
+          return vDir.clone().multiplyScalar(e.dist);
+        });
+
+        c.estrellas.forEach((e, i) => {
+          const mat = registrar(new THREE.MeshBasicMaterial({ color: e.color || '#f5f6ff' }));
+          const estrella = new THREE.Mesh(geoEstrella, mat);
+          estrella.scale.setScalar(0.5 * e.brillo);
+          estrella.position.copy(puntos3d[i]);
+          grupo.add(estrella);
+          mallas.push(estrella);
+          porMalla.set(estrella, c.id); // tocar cualquier estrella abre la constelacion
+        });
+
+        const paresLinea = [];
+        c.lineas.forEach(([a, b]) => {
+          paresLinea.push(puntos3d[a], puntos3d[b]);
+        });
+        const geoLineas = registrar(new THREE.BufferGeometry().setFromPoints(paresLinea));
+        const matLineas = registrar(new THREE.LineBasicMaterial({ color: 0x5a6a92, transparent: true, opacity: 0.75 }));
+        grupo.add(new THREE.LineSegments(geoLineas, matLineas));
+
+        constels.push({ id: c.id, dirVista, matLineas, alineada: false });
+      });
+    }
+
     /* --- camara orbital del usuario --- */
-    const YAW0 = escena === 'planetas' ? 0.6 : 0.35;
-    const PITCH0 = escena === 'planetas' ? 0.9 : 0.45;
-    const DIST_BASE = escena === 'planetas' ? 60 : 24;
+    const CAMARAS = {
+      planetas: { yaw: 0.6, pitch: 0.9, dist: 60 },
+      'tierra-luna': { yaw: 0.35, pitch: 0.45, dist: 24 },
+      estaciones: { yaw: 0.5, pitch: 0.85, dist: 34 },
+      constelaciones: { yaw: 0.15, pitch: -0.35, dist: 60 },
+    };
+    const YAW0 = CAMARAS[escena].yaw;
+    const PITCH0 = CAMARAS[escena].pitch;
+    const DIST_BASE = CAMARAS[escena].dist;
+    // En constelaciones la camara puede bajar del plano: las figuras estan en
+    // cualquier direccion y hay que poder alinearse con ellas.
+    const PITCH_MIN = escena === 'constelaciones' ? -1.45 : 0.08;
     let yaw = YAW0;
     let pitch = PITCH0;
     let zoomUsuario = 1;
     let aspecto = 1;
     let distSuave = DIST_BASE;
     const objetivoCam = new THREE.Vector3();
+    const vTmp = new THREE.Vector3();
+    const COL_ORO = new THREE.Color(0xf1c40f);
+    const COL_LINEA_CONST = new THREE.Color(0x5a6a92);
 
     const recentrar = () => {
       yaw = YAW0;
@@ -460,7 +601,7 @@ const Espacio3D = forwardRef(function Espacio3D(
       }
       yaw -= (e.clientX - (gesto.ultimoX ?? gesto.x)) * 0.008;
       pitch += (e.clientY - (gesto.ultimoY ?? gesto.y)) * 0.008;
-      pitch = Math.min(1.45, Math.max(0.08, pitch));
+      pitch = Math.min(1.45, Math.max(PITCH_MIN, pitch));
       gesto.ultimoX = e.clientX;
       gesto.ultimoY = e.clientY;
     };
@@ -565,11 +706,36 @@ const Espacio3D = forwardRef(function Espacio3D(
             distDeseada = c.mesh.scale.x * 5 + 1.5;
           }
         }
-      } else {
+      } else if (escena === 'tierra-luna') {
         const a = (est.angulo * Math.PI) / 180;
         tl.luna.position.set(-Math.cos(a) * TL.orbitaLuna, 0, Math.sin(a) * TL.orbitaLuna);
         tl.luna.rotation.y = -a; // siempre da la misma cara a la Tierra
         tl.tierra.rotation.y += dt * 0.25;
+      } else if (escena === 'estaciones') {
+        const a = (est.angulo * Math.PI) / 180;
+        // El grupo solo se TRASLADA: el eje inclinado nunca cambia de direccion.
+        escEst.grupoTierra.position.set(Math.cos(a) * EST.orbita, 0, -Math.sin(a) * EST.orbita);
+        escEst.tierra.rotation.y += dt * 1.1;
+        if (est.enfocado === 'tierra') {
+          objetivoX = escEst.grupoTierra.position.x;
+          objetivoZ = escEst.grupoTierra.position.z;
+          distDeseada = 7;
+        }
+      } else if (escena === 'constelaciones') {
+        // ¿Desde donde mira el usuario? Si su direccion de vista coincide con la
+        // direccion Tierra→constelacion, la figura "encaja": lineas doradas y aviso.
+        vTmp.copy(objetivoCam).sub(camara.position).normalize();
+        constels.forEach((k) => {
+          const ang = vTmp.angleTo(k.dirVista);
+          if (!k.alineada && ang < 0.14) {
+            k.alineada = true;
+            onVistaRef.current?.(k.id);
+          } else if (k.alineada && ang > 0.22) {
+            k.alineada = false;
+          }
+          k.matLineas.color.lerp(k.alineada ? COL_ORO : COL_LINEA_CONST, Math.min(1, dt * 6));
+          k.matLineas.opacity += ((k.alineada ? 1 : 0.75) - k.matLineas.opacity) * Math.min(1, dt * 6);
+        });
       }
 
       distDeseada *= zoomUsuario;
@@ -587,14 +753,26 @@ const Espacio3D = forwardRef(function Espacio3D(
 
       renderer.render(escena3, camara);
 
-      if (escena === 'tierra-luna') {
-        // Recuadro "asi se ve desde la Tierra" en la esquina inferior derecha.
+      if (escena === 'tierra-luna' || escena === 'estaciones') {
+        // Recuadro de la esquina inferior derecha.
         const w = lienzo.clientWidth;
-        tl.camFase.lookAt(tl.luna.position);
+        let camRecuadro;
+        if (escena === 'tierra-luna') {
+          // "Asi se ve desde la Tierra": camara dentro de la Tierra mirando la Luna.
+          tl.camFase.lookAt(tl.luna.position);
+          camRecuadro = tl.camFase;
+        } else {
+          // "Asi pega la luz": la Tierra vista desde el lado del Sol.
+          const posT = escEst.grupoTierra.position;
+          vTmp.copy(posT).normalize();
+          escEst.camEst.position.copy(posT).addScaledVector(vTmp, -5.2);
+          escEst.camEst.lookAt(posT);
+          camRecuadro = escEst.camEst;
+        }
         renderer.setScissorTest(true);
         renderer.setViewport(w - INSET - 10, 10, INSET, INSET);
         renderer.setScissor(w - INSET - 10, 10, INSET, INSET);
-        renderer.render(escena3, tl.camFase);
+        renderer.render(escena3, camRecuadro);
         renderer.setScissorTest(false);
         renderer.setViewport(0, 0, w, lienzo.clientHeight);
       }
@@ -624,23 +802,39 @@ const Espacio3D = forwardRef(function Espacio3D(
     );
   }
 
-  const info = escena === 'tierra-luna' ? faseInfoDe(angulo) : null;
+  const conSlider = escena === 'tierra-luna' || escena === 'estaciones';
+  const info = escena === 'tierra-luna'
+    ? faseInfoDe(angulo)
+    : escena === 'estaciones'
+      ? estacionInfoDe(angulo)
+      : null;
+
+  const PISTAS = {
+    planetas: '👆 Toca un planeta · arrastra para girar la vista',
+    'tierra-luna': '👆 Mueve el deslizador para llevar la Luna por su órbita · arrastra para girar',
+    estaciones: '👆 Mueve el deslizador para recorrer el año · fíjate hacia dónde apunta el eje rojo',
+    constelaciones: '👆 Arrastra la vista hasta que un dibujo de estrellas ENCAJE · toca una estrella para saber más',
+  };
 
   return (
     <div className="espacio3d">
       <div className="espacio3d-vista">
         <div className="espacio3d-lienzo" ref={contenedorRef} />
-        {escena === 'tierra-luna' && (
+        {conSlider && (
           <div className="espacio3d-inset-marco" style={{ width: INSET, height: INSET }}>
-            <span className="espacio3d-inset-titulo">Así se ve desde la Tierra</span>
+            <span className="espacio3d-inset-titulo">
+              {escena === 'tierra-luna' ? 'Así se ve desde la Tierra' : 'Así pega la luz del Sol'}
+            </span>
           </div>
         )}
       </div>
 
-      {escena === 'tierra-luna' && (
+      {conSlider && (
         <>
           <div className="espacio3d-barra">
-            <span className="espacio3d-extremo" title="La Luna cerca del Sol">🌞</span>
+            <span className="espacio3d-extremo" title={escena === 'tierra-luna' ? 'La Luna cerca del Sol' : 'Junio'}>
+              {escena === 'tierra-luna' ? '🌞' : '☀️'}
+            </span>
             <input
               type="range"
               className="espacio3d-slider"
@@ -649,25 +843,29 @@ const Espacio3D = forwardRef(function Espacio3D(
               step={1}
               value={angulo}
               onChange={(e) => setAngulo(Number(e.target.value))}
-              aria-label="Mover la Luna en su órbita"
+              aria-label={escena === 'tierra-luna' ? 'Mover la Luna en su órbita' : 'Recorrer el año'}
             />
-            <span className="espacio3d-extremo" title="La Luna lejos del Sol">🌙</span>
+            <span className="espacio3d-extremo" title={escena === 'tierra-luna' ? 'La Luna lejos del Sol' : 'Junio otra vez'}>
+              {escena === 'tierra-luna' ? '🌙' : '☀️'}
+            </span>
           </div>
-          <div className={`espacio3d-fase ${info.eclipseSol || info.eclipseLuna ? 'eclipse' : ''}`}>
-            {info.eclipseSol
-              ? '🌑✨ ¡ECLIPSE DE SOL!'
-              : info.eclipseLuna
-                ? '🔴🌕 ¡ECLIPSE DE LUNA!'
-                : `${info.emoji} ${info.nombre}`}
-          </div>
+          {escena === 'tierra-luna' ? (
+            <div className={`espacio3d-fase ${info.eclipseSol || info.eclipseLuna ? 'eclipse' : ''}`}>
+              {info.eclipseSol
+                ? '🌑✨ ¡ECLIPSE DE SOL!'
+                : info.eclipseLuna
+                  ? '🔴🌕 ¡ECLIPSE DE LUNA!'
+                  : `${info.emoji} ${info.nombre}`}
+            </div>
+          ) : (
+            <div className="espacio3d-fase">
+              {`${info.emoji} ${info.nombre} aquí (${info.mes}) · en el sur: ${info.emojiSur} ${info.nombreSur}`}
+            </div>
+          )}
         </>
       )}
 
-      <span className="espacio3d-pista">
-        {escena === 'planetas'
-          ? '👆 Toca un planeta · arrastra para girar la vista'
-          : '👆 Mueve el deslizador para llevar la Luna por su órbita · arrastra para girar'}
-      </span>
+      <span className="espacio3d-pista">{PISTAS[escena]}</span>
     </div>
   );
 });

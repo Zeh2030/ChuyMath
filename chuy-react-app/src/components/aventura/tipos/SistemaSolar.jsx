@@ -15,17 +15,20 @@ const Espacio3D = React.lazy(() => import('./Espacio3D'));
  *   'completo' : intro → explorar → reto → fin  [default]
  *
  * Campos de la mision:
- *   escena       : 'planetas' (default) | 'tierra-luna'
+ *   escena       : 'planetas' (default) | 'tierra-luna' | 'estaciones' | 'constelaciones'
  *   modo         : 'explorar' | 'reto' | 'completo'
- *   instruccion  : texto de la portada
  *   leccion      : texto introductorio opcional (portada)
  *   datos        : { idCuerpo: "dato wow" } — tarjeta al tocar un cuerpo
  *   retos        : [{ tipo:'toca', pregunta, respuesta:idCuerpo, pista? },
- *                   { tipo:'fase', pregunta, respuesta:idFase|'eclipse-sol'|'eclipse-luna', pista? }]
+ *                   { tipo:'fase', pregunta, respuesta:idFase|'eclipse-sol'|'eclipse-luna', pista? },
+ *                   { tipo:'estacion', pregunta, respuesta:'verano'|'invierno-sur'|..., pista? },
+ *                   { tipo:'vista', pregunta, respuesta:idConstelacion, pista? }]
  *   dato_curioso : texto del final
  */
+const ESCENAS = ['planetas', 'tierra-luna', 'estaciones', 'constelaciones'];
+
 const SistemaSolar = ({ mision, onCompletar }) => {
-  const escena = mision.escena === 'tierra-luna' ? 'tierra-luna' : 'planetas';
+  const escena = ESCENAS.includes(mision.escena) ? mision.escena : 'planetas';
   const modo = mision.modo || 'completo';
   const datos = useMemo(() => mision.datos || {}, [mision.datos]);
   const retos = useMemo(
@@ -64,11 +67,13 @@ const SistemaSolar = ({ mision, onCompletar }) => {
 
 /* ============================ PORTADA ============================ */
 
+// OJO: MisionRenderer ya pinta mision.titulo y mision.instruccion arriba de toda
+// mision — repetirlos aqui los mostraba dos veces (mismo error que en cubos).
+const EMOJI_ESCENA = { 'tierra-luna': '🌗', estaciones: '🍂', constelaciones: '✨' };
+
 const Portada = ({ mision, escena, onComenzar }) => (
   <div className="sisol-portada">
-    <div className="sisol-emoji-grande">{mision.emoji || (escena === 'tierra-luna' ? '🌗' : '🪐')}</div>
-    <h2 className="sisol-titulo">{mision.titulo}</h2>
-    {mision.instruccion && <p className="sisol-instruccion">{mision.instruccion}</p>}
+    <div className="sisol-emoji-grande">{mision.emoji || EMOJI_ESCENA[escena] || '🪐'}</div>
     {mision.leccion && (
       <div className="sisol-leccion">
         <span className="sisol-leccion-icono">💡</span>
@@ -126,6 +131,7 @@ const Explorar = ({ escena, datos, haySiguiente, onContinuar }) => {
             comparar={comparar}
             seleccionable
             onSeleccion={elegir}
+            onVista={elegir}
           />
         </React.Suspense>
 
@@ -188,13 +194,28 @@ const Retos = ({ escena, retos, onTerminar }) => {
     else setFeedback({ intento: id });
   };
 
-  const comprobarFase = () => {
+  // Constelaciones: el acierto llega solo, cuando la figura encaja.
+  const alVista = (id) => {
+    if (resuelto || reto.tipo !== 'vista') return;
+    if (id === reto.respuesta) acierto();
+    else setFeedback({ intento: id });
+  };
+
+  // Retos de posicion (fase lunar o estacion del ano): boton "¡Así está bien!".
+  const comprobarPosicion = () => {
     if (resuelto || !faseActual) return;
-    const ok = reto.respuesta === 'eclipse-sol'
-      ? faseActual.eclipseSol
-      : reto.respuesta === 'eclipse-luna'
-        ? faseActual.eclipseLuna
-        : faseActual.fase === reto.respuesta && !faseActual.eclipseSol && !faseActual.eclipseLuna;
+    let ok = false;
+    if (reto.tipo === 'fase') {
+      ok = reto.respuesta === 'eclipse-sol'
+        ? faseActual.eclipseSol
+        : reto.respuesta === 'eclipse-luna'
+          ? faseActual.eclipseLuna
+          : faseActual.fase === reto.respuesta && !faseActual.eclipseSol && !faseActual.eclipseLuna;
+    } else if (reto.tipo === 'estacion') {
+      ok = reto.respuesta.endsWith('-sur')
+        ? faseActual.estacionSur === reto.respuesta.slice(0, -4)
+        : faseActual.estacion === reto.respuesta;
+    }
     if (ok) acierto();
     else setFeedback({ intento: null });
   };
@@ -224,6 +245,7 @@ const Retos = ({ escena, retos, onTerminar }) => {
             escena={escena}
             seleccionable={reto.tipo === 'toca' && !resuelto}
             onSeleccion={alTocar}
+            onVista={alVista}
             onFase={setFaseActual}
           />
         </React.Suspense>
@@ -232,21 +254,27 @@ const Retos = ({ escena, retos, onTerminar }) => {
       {feedback === 'correcto' && (
         <div className="sisol-feedback correcto">
           ✅ ¡Correcto!{' '}
-          {reto.tipo === 'toca' ? `Ese es ${nombreBonito(reto.respuesta)}.` : '¡Lo lograste!'}
+          {reto.tipo === 'toca'
+            ? `Ese es ${nombreBonito(reto.respuesta)}.`
+            : reto.tipo === 'vista'
+              ? `¡Encajó ${nombreBonito(reto.respuesta)}!`
+              : '¡Lo lograste!'}
         </div>
       )}
       {feedback && feedback !== 'correcto' && (
         <div className="sisol-feedback incorrecto">
-          {reto.tipo === 'toca' && feedback.intento
+          {(reto.tipo === 'toca' || reto.tipo === 'vista') && feedback.intento
             ? `Ese es ${nombreBonito(feedback.intento)}. ¡Sigue buscando!`
-            : 'Todavía no. ¡Mueve el deslizador y fíjate en el recuadro!'}
+            : reto.tipo === 'estacion'
+              ? 'Todavía no. Fíjate hacia dónde apunta el eje rojo: ¿le da el sol de frente a nuestra mitad del mundo?'
+              : 'Todavía no. ¡Mueve el deslizador y fíjate en el recuadro!'}
           {reto.pista && <span className="sisol-pista">💡 {reto.pista}</span>}
         </div>
       )}
 
       <div className="sisol-acciones">
-        {reto.tipo === 'fase' && !resuelto && (
-          <button className="sisol-btn-principal" onClick={comprobarFase}>
+        {(reto.tipo === 'fase' || reto.tipo === 'estacion') && !resuelto && (
+          <button className="sisol-btn-principal" onClick={comprobarPosicion}>
             ¡Así está bien! ✅
           </button>
         )}
