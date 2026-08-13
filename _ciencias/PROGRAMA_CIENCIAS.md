@@ -197,14 +197,17 @@ C3  → Cientifico Jr.  (9-11 años) ← Meta a largo plazo
 
 ## Nomenclatura de archivos
 
+Los archivos viven en subcarpetas POR TIPO de juego (desde 2026-08-13, como en
+`_geografia/`): `experimento-guia/`, `mezclador-colores/`, `sistema-solar/`,
+`image-picker/`, `mini-story/`, `tap-the-pairs/`, `opcion-multiple/`.
+
 ```
-{nivel}-{numero}_{tema-corto}.json
+{tipo}/{nivel}-{numero}_{tema-corto}.json
 
 Ejemplos:
-  C0-01_magia-de-colores.json
-  C1-01_volcan-de-vinagre.json
-  C2-11_indicador-col-morada.json
-  C3-01_mi-primer-circuito.json
+  experimento-guia/C1-01_volcan-de-vinagre.json
+  mezclador-colores/C1-21_retos-de-color.json
+  sistema-solar/C2-21_sistema-solar-3d.json
 ```
 
 ## Campos del JSON

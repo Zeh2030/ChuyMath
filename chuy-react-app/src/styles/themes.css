@@ -872,6 +872,11 @@
    ============================================ */
 [data-theme="espacial"] .ip-card span,
 [data-theme="pizarron"] .ip-card span {
+  color: #2c3e50;
+}
+
+[data-theme="espacial"] .ip-card .ip-label,
+[data-theme="pizarron"] .ip-card .ip-label {
   color: #2e7d32;
 }
 

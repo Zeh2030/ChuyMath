@@ -125,10 +125,14 @@ const ImagePicker = ({ mision, onCompletar }) => {
             >
               {opcion.imagen ? (
                 <img className="ip-imagen" src={opcion.imagen} alt={opcion.label || ''} loading="lazy" />
-              ) : (
+              ) : opcion.emoji ? (
                 <span className="ip-emoji">{opcion.emoji}</span>
+              ) : (
+                // Opcion de solo texto (banderas de geografia, formato viejo):
+                // el label ES la opcion, no un secreto que revelar al acertar.
+                <span className="ip-opcion-texto">{opcion.label}</span>
               )}
-              {estado === 'correcto' && opcion.originalIndex === reto.respuesta && (
+              {(opcion.imagen || opcion.emoji) && estado === 'correcto' && opcion.originalIndex === reto.respuesta && (
                 <span className="ip-label">{opcion.label}</span>
               )}
             </button>
