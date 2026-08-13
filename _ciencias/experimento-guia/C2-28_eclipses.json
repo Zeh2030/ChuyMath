@@ -1,0 +1,98 @@
+{
+  "id": "C2-28_eclipses",
+  "titulo": "Eclipses: Sombras Gigantes",
+  "descripcion": "Fabrica un eclipse en tu cuarto y luego provoca uno de verdad en 3D",
+  "tipo": "experimento-guia",
+  "materia": "ciencias",
+  "nivel": "C2-28",
+  "tema": "astronomia",
+  "misiones": [
+    {
+      "id": "astro-exp-eclipse-01",
+      "tipo": "experimento-guia",
+      "titulo": "Eclipse en tu Cuarto",
+      "emoji": "🌘",
+      "instruccion": "Un eclipse es una sombra gigante en el espacio. Vamos a fabricar uno chiquito con una linterna y dos pelotas.",
+      "tema": "astronomia",
+      "materiales": [
+        "Una linterna (o la lámpara del celular)",
+        "Una pelota mediana (será la Tierra)",
+        "Una pelota chica o canica (será la Luna)",
+        "Un cuarto oscuro"
+      ],
+      "materiales_emoji": ["🔦", "🌍", "⚪", "🌑"],
+      "prediccion": {
+        "pregunta": "Si pasas la pelota chica (Luna) entre la linterna (Sol) y la pelota grande (Tierra), ¿qué crees que pase?",
+        "opciones": [
+          "No pasa nada",
+          "Se ve una sombra redonda sobre la Tierra",
+          "La pelota chica brilla más",
+          "La linterna se apaga"
+        ]
+      },
+      "pasos": [
+        { "instruccion": "Apaga la luz del cuarto y prende la linterna. Ponla en una mesa: será el SOL.", "emoji": "🔦" },
+        { "instruccion": "Pon la pelota grande (la TIERRA) frente a la linterna, a unos 2 pasos.", "emoji": "🌍" },
+        { "instruccion": "Con la mano, pasa DESPACIO la pelota chica (la LUNA) entre la linterna y la Tierra.", "emoji": "⚪" },
+        { "instruccion": "Busca la sombra redonda que aparece sobre la Tierra. ¡Eso es un ECLIPSE DE SOL!", "emoji": "🌑" },
+        { "instruccion": "Ahora al revés: pasa la Luna por DETRÁS de la Tierra, para que la Tierra le tape la luz. ¡Eclipse de LUNA!", "emoji": "🌘" }
+      ],
+      "observacion": {
+        "pregunta": "¿Qué viste sobre la pelota grande cuando la Luna pasó por en medio?",
+        "opciones": [
+          "Una sombra redonda que se movía",
+          "Un arcoíris",
+          "Nada, se veía igual"
+        ]
+      },
+      "explicacion": "¡Hiciste un eclipse! Cuando la Luna se pone EXACTAMENTE entre el Sol y la Tierra, su sombra cae sobre la Tierra: eso es un eclipse de Sol, y en esa zona el día se oscurece por unos minutos. Cuando la Tierra queda en medio, su sombra tapa la Luna: eclipse de Luna, y la Luna se ve oscura o rojiza. No hay eclipse cada mes porque la órbita de la Luna está un poquito inclinada: casi siempre la sombra pasa por arriba o por abajo.",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "En un eclipse de SOL, ¿quién está en medio?",
+          "opciones": ["La Tierra", "La Luna", "El Sol"],
+          "respuesta": "La Luna"
+        },
+        {
+          "tipo": "true-or-false",
+          "pregunta": "En un eclipse de Luna, la sombra de la Tierra tapa la Luna.",
+          "respuesta": true
+        },
+        {
+          "tipo": "true-or-false",
+          "pregunta": "Hay un eclipse de Sol cada mes, en cada Luna nueva.",
+          "respuesta": false
+        }
+      ]
+    },
+    {
+      "id": "astro-eclipse-3d",
+      "tipo": "sistema-solar",
+      "escena": "tierra-luna",
+      "modo": "reto",
+      "titulo": "Provoca un Eclipse en 3D",
+      "emoji": "🌑",
+      "instruccion": "Ahora hazlo en el espacio de verdad: mueve la Luna por su órbita hasta alinearla EXACTAMENTE. Fíjate en las sombras: son reales.",
+      "datos": {
+        "sol": "La luz que ves viene de aquí. Las sombras de los eclipses son SU luz tapada.",
+        "tierra": "Cuando la sombra de la Luna cae sobre la Tierra, ahí es de noche por unos minutos en pleno día.",
+        "luna": "La Luna tapa al Sol casi exacto porque, desde la Tierra, los dos se ven del mismo tamaño. ¡Es una casualidad cósmica!"
+      },
+      "retos": [
+        {
+          "tipo": "fase",
+          "pregunta": "Provoca un ECLIPSE DE SOL: pon la Luna exactamente entre el Sol y la Tierra.",
+          "respuesta": "eclipse-sol",
+          "pista": "Muy cerca de la posición de Luna nueva… pero tiene que quedar PERFECTA. Mira el recuadro: verás cómo la Luna tapa al Sol."
+        },
+        {
+          "tipo": "fase",
+          "pregunta": "Ahora un ECLIPSE DE LUNA: mete la Luna en la sombra de la Tierra.",
+          "respuesta": "eclipse-luna",
+          "pista": "Del lado contrario al Sol, donde sería Luna llena… pero alineada exacta. Verás que la Luna se oscurece."
+        }
+      ],
+      "dato_curioso": "Durante un eclipse de Luna, la Luna se ve ROJIZA. Es porque le llega la luz de todos los amaneceres y atardeceres de la Tierra al mismo tiempo, doblada por nuestro aire. Le dicen 'Luna de sangre'."
+    }
+  ]
+}

@@ -81,16 +81,25 @@ const ImagePicker = ({ mision, onCompletar }) => {
         ))}
       </div>
 
-      {/* Question */}
+      {/* Question. Sin palabra_en (geografia/ciencias) la pregunta va directo
+          en espanol, sin la etiqueta inglesa ni el boton de audio. */}
       <div className="ip-question">
-        <p className="ip-question-label">Which one is...</p>
-        <div className="ip-word">
-          <span className="ip-word-text">{reto.palabra_en}</span>
-          <button className="ip-sound-btn" onClick={speakWord} title="Listen">
-            🔊
-          </button>
-        </div>
-        {reto.palabra_es && <p className="ip-hint">({reto.palabra_es})</p>}
+        {reto.palabra_en ? (
+          <>
+            <p className="ip-question-label">Which one is...</p>
+            <div className="ip-word">
+              <span className="ip-word-text">{reto.palabra_en}</span>
+              <button className="ip-sound-btn" onClick={speakWord} title="Listen">
+                🔊
+              </button>
+            </div>
+            {reto.palabra_es && <p className="ip-hint">({reto.palabra_es})</p>}
+          </>
+        ) : (
+          <div className="ip-word">
+            <span className="ip-word-text ip-word-es">{reto.palabra_es}</span>
+          </div>
+        )}
       </div>
 
       {/* Image grid */}
@@ -110,7 +119,11 @@ const ImagePicker = ({ mision, onCompletar }) => {
               onClick={() => handleSelect(opcion)}
               disabled={estado === 'correcto'}
             >
-              <span className="ip-emoji">{opcion.emoji}</span>
+              {opcion.imagen ? (
+                <img className="ip-imagen" src={opcion.imagen} alt={opcion.label || ''} loading="lazy" />
+              ) : (
+                <span className="ip-emoji">{opcion.emoji}</span>
+              )}
               {estado === 'correcto' && opcion.originalIndex === reto.respuesta && (
                 <span className="ip-label">{opcion.label}</span>
               )}

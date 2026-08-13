@@ -1,0 +1,72 @@
+{
+  "id": "C2-26_constelaciones",
+  "titulo": "Estrellas y Constelaciones",
+  "descripcion": "Los dibujos que la gente ve en las estrellas desde hace miles de anos",
+  "tipo": "tap-the-pairs",
+  "materia": "ciencias",
+  "nivel": "C2-26",
+  "tema": "astronomia",
+  "misiones": [
+    {
+      "id": "astro-ttp-constelaciones",
+      "tipo": "tap-the-pairs",
+      "titulo": "Empareja cada Constelación",
+      "instruccion": "Una constelación es un dibujo imaginario que une estrellas con líneas, como unir puntos. Toca una constelación y luego su descripción.",
+      "retos": [
+        {
+          "pares": [
+            { "es": "🐻 Osa Mayor", "en": "Parece un cucharón gigante" },
+            { "es": "🏹 Orión, el cazador", "en": "Tiene un cinturón de 3 estrellas" },
+            { "es": "⭐ Estrella Polar", "en": "Siempre señala el NORTE" }
+          ]
+        },
+        {
+          "pares": [
+            { "es": "✝️ Cruz del Sur", "en": "Se ve desde el sur del mundo" },
+            { "es": "🦂 Escorpión", "en": "Tiene forma de cola curvada" },
+            { "es": "🐕 Can Mayor", "en": "Tiene a Sirio, la estrella más brillante" }
+          ]
+        },
+        {
+          "pares": [
+            { "es": "🌌 Constelación", "en": "Dibujo imaginario que une estrellas" },
+            { "es": "🧭 Los navegantes antiguos", "en": "Usaban las estrellas como mapa" },
+            { "es": "🔭 Telescopio", "en": "Instrumento para ver el cielo de cerca" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "astro-tof-estrellas",
+      "tipo": "true-or-false",
+      "titulo": "¿Verdadero o Falso?",
+      "instruccion": "Lee cada frase sobre las estrellas y decide.",
+      "retos": [
+        {
+          "oracion": "Las estrellas de una constelación están unidas por líneas de verdad.",
+          "correcto": false,
+          "correccion": "Las líneas son imaginarias: las dibujamos nosotros para recordar las figuras.",
+          "explicacion": "¡Falso! Cada estrella está lejísimos de las otras. El dibujo solo existe visto desde la Tierra."
+        },
+        {
+          "oracion": "La Estrella Polar sirve para saber dónde está el norte.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "¡Verdadero! Por eso los marineros la usaban de brújula. Está casi fija sobre el Polo Norte."
+        },
+        {
+          "oracion": "Las estrellas se ven chiquitas porque son más pequeñas que la Luna.",
+          "correcto": false,
+          "correccion": "Se ven chiquitas porque están lejísimos. Muchas son MÁS GRANDES que el Sol.",
+          "explicacion": "¡Falso! Hay estrellas gigantes al lado de las cuales el Sol parece una canica. Están tan lejos que son puntitos."
+        },
+        {
+          "oracion": "Las estrellas también están ahí de día, solo que la luz del Sol no nos deja verlas.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "¡Verdadero! El cielo de día está lleno de estrellas escondidas por el brillo del Sol."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "id": "C2-27_cohetes-y-astronautas",
+  "titulo": "Cohetes y Astronautas",
+  "descripcion": "Como despega un cohete, como viven los astronautas y quien fue el primero en el espacio",
+  "tipo": "mini-story",
+  "materia": "ciencias",
+  "nivel": "C2-27",
+  "tema": "astronomia",
+  "misiones": [
+    {
+      "id": "astro-story-cohetes",
+      "tipo": "mini-story",
+      "titulo": "Viajeros del Espacio",
+      "instruccion": "Lee cada parte y responde la pregunta.",
+      "parrafos": [
+        {
+          "texto": "Un cohete despega empujando gas hacia ABAJO con muchísima fuerza, y ese empujón lo lanza hacia ARRIBA. Es la misma idea que un globo inflado cuando lo sueltas: el aire sale por un lado y el globo vuela para el otro. ¿Te acuerdas del experimento del carrito de globo? ¡Es lo mismo!",
+          "emoji": "🚀",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Un cohete sube porque empuja gas hacia ___ con mucha fuerza.",
+              "opciones": ["arriba", "abajo", "un lado", "adentro"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "El primer ser humano en viajar al espacio fue Yuri Gagarin, en 1961. Dio una vuelta completa a la Tierra en 108 minutos y dijo: 'La Tierra es azul'. Antes que él viajó una perrita llamada Laika, y también viajaron monos y hasta tortugas.",
+          "emoji": "🧑‍🚀",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "El primer humano en el espacio fue Yuri ___.",
+              "opciones": ["Armstrong", "Gagarin", "Aldrin", "Newton"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "En la Estación Espacial Internacional los astronautas FLOTAN todo el tiempo. Duermen en sacos amarrados a la pared para no irse volando, y su comida viene en bolsitas: si sueltas una gota de agua, ¡se queda flotando como una burbuja de cristal!",
+          "emoji": "🫧",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "En la estación espacial, los astronautas duermen amarrados para no salir flotando.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Los astronautas hacen ejercicio 2 horas CADA DÍA en el espacio. Como flotan, sus músculos y huesos casi no trabajan, y se irían debilitando. Al volver a la Tierra, algunos hasta miden 5 centímetros más: ¡su columna se estira al no cargar peso!",
+          "emoji": "💪",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "En el espacio, los astronautas hacen ejercicio ___ horas cada día.",
+              "opciones": ["0", "2", "10", "24"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "Hoy los cohetes nuevos, como los de SpaceX, pueden ATERRIZAR de regreso y volverse a usar, como un avión. Antes cada cohete se usaba una sola vez y se perdía en el mar. La próxima gran meta: volver a la Luna... y después, llevar gente a Marte.",
+          "emoji": "🔁",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Algunos cohetes modernos pueden aterrizar y volverse a usar.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "astro-om-cohetes-repaso",
+      "tipo": "opcion-multiple",
+      "titulo": "Repaso Espacial",
+      "instruccion": "Elige la respuesta correcta.",
+      "pregunta": "🚀 ¿Por qué los astronautas flotan dentro de la estación espacial?",
+      "opciones": [
+        "Porque no hay aire adentro",
+        "Porque están cayendo alrededor de la Tierra todo el tiempo",
+        "Porque llevan zapatos voladores"
+      ],
+      "respuesta": "1",
+      "explicacion_correcta": "¡Exacto! La estación está cayendo alrededor de la Tierra sin parar, y todo lo que va adentro cae con ella. Por eso flotan: es como una caída infinita.",
+      "explicacion_incorrecta": "Aire sí hay (respiran normal). Flotan porque la estación está en caída constante alrededor de la Tierra, y todo cae junto con ella."
+    }
+  ]
+}

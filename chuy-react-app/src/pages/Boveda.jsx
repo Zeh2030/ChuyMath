@@ -30,12 +30,13 @@ const Boveda = () => {
     // Subject-specific ids (piano-*, geografia-*) take priority over generic types
     if (f.startsWith('piano-') || f === 'identifica-nota') return 'piano';
     if (f.startsWith('geografia-') || f === 'explorador-mapa') return 'geografia';
+    if (f.startsWith('ciencias-') || f === 'sistema-solar') return 'ciencias';
     if (f.startsWith('letras-') || f === 'abecedario' || f === 'letra-quiz' || f === 'silabas') return 'letras';
     const englishTypes = ['word-bank', 'verb-conjugator', 'true-or-false', 'fill-the-gap',
       'tap-the-pairs', 'sentence-transform', 'image-picker', 'word-scramble',
       'listen-and-type', 'expediciones-en', 'mini-story'];
     const pianoTypes = ['piano-prompter', 'identifica-nota'];
-    const cienciasTypes = ['experimento-guia'];
+    const cienciasTypes = ['experimento-guia', 'sistema-solar'];
     const dibujoTypes = ['colorear', 'dibujo-guiado', 'dibujo-libre', 'mezclador-colores'];
     const geografiaTypes = ['explorador-mapa'];
     if (englishTypes.includes(f)) return 'ingles';
@@ -90,6 +91,12 @@ const Boveda = () => {
     { id: 'piano-mini-story', emoji: '📖', nombre: 'Compositores', tipo: 'mini-story', descripcion: 'Historias de grandes compositores', materia: 'piano' },
     // Ciencias
     { id: 'experimento-guia', emoji: '🧪', nombre: 'Experimentos', tipo: 'experimento-guia', descripcion: 'Experimentos caseros paso a paso', materia: 'ciencias' },
+    { id: 'sistema-solar', emoji: '🪐', nombre: 'Sistema Solar 3D', tipo: 'sistema-solar', descripcion: 'Explora los planetas, la Luna y los eclipses en 3D', materia: 'ciencias' },
+    { id: 'ciencias-image-picker', emoji: '🔭', nombre: 'Fotos del Espacio', tipo: 'image-picker', descripcion: 'Identifica planetas y lugares del cosmos en fotos reales', materia: 'ciencias' },
+    { id: 'ciencias-tap-the-pairs', emoji: '🔗', nombre: 'Empareja el Espacio', tipo: 'tap-the-pairs', descripcion: 'Empareja astros, constelaciones y sus secretos', materia: 'ciencias' },
+    { id: 'ciencias-mini-story', emoji: '📖', nombre: 'Historias del Cosmos', tipo: 'mini-story', descripcion: 'Historias del Sol, la Luna y los astronautas', materia: 'ciencias' },
+    { id: 'ciencias-opcion-multiple', emoji: '❓', nombre: 'Preguntas del Espacio', tipo: 'opcion-multiple', descripcion: 'Preguntas sobre el universo', materia: 'ciencias' },
+    { id: 'ciencias-true-or-false', emoji: '✅', nombre: 'Verdadero o Falso', tipo: 'true-or-false', descripcion: 'Datos del espacio: ¿verdad o mentira?', materia: 'ciencias' },
     // Dibujo
     { id: 'colorear', emoji: '🖍️', nombre: 'Colorear', tipo: 'colorear', descripcion: 'Colorea figuras con tu paleta', materia: 'dibujo' },
     { id: 'dibujo-guiado', emoji: '✏️', nombre: 'Dibujo Guiado', tipo: 'dibujo-guiado', descripcion: 'Aprende a dibujar paso a paso', materia: 'dibujo' },

@@ -1,0 +1,79 @@
+{
+  "id": "C2-23_el-sol",
+  "titulo": "El Sol: Nuestra Estrella",
+  "descripcion": "La estrella que nos da luz, calor y vida — y esta mucho mas cerca que todas las demas",
+  "tipo": "mini-story",
+  "materia": "ciencias",
+  "nivel": "C2-23",
+  "tema": "astronomia",
+  "misiones": [
+    {
+      "id": "astro-story-sol",
+      "tipo": "mini-story",
+      "titulo": "La Estrella de Nuestro Vecindario",
+      "instruccion": "Lee cada parte y responde la pregunta.",
+      "parrafos": [
+        {
+          "texto": "El Sol NO es un planeta: es una ESTRELLA, igual que las que ves de noche. La diferencia es que está muchísimo más cerca. Por eso lo vemos grande y brillante, y a las demás estrellas las vemos como puntitos.",
+          "emoji": "☀️",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "El Sol es una ___ que está muy cerca de nosotros.",
+              "opciones": ["estrella", "planeta", "luna", "nube"],
+              "respuesta": 0
+            }
+          ]
+        },
+        {
+          "texto": "El Sol es GIGANTE: dentro de él cabrían 1,300,000 planetas Tierra. Si el Sol fuera una sandía, la Tierra sería una semillita de amapola. Lo vemos chiquito porque está a 150 millones de kilómetros.",
+          "emoji": "🍉",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "El Sol es más pequeño que la Tierra, por eso se ve chiquito en el cielo.",
+              "correcto": false,
+              "correccion": "¡Es al revés! El Sol es enorme: cabrían más de un millón de Tierras dentro. Se ve chiquito porque está lejísimos."
+            }
+          ]
+        },
+        {
+          "texto": "La luz del Sol viaja rapidísimo, pero el Sol está tan lejos que su luz tarda 8 MINUTOS en llegar a la Tierra. O sea que cuando ves el Sol... ¡estás viendo cómo era hace 8 minutos! Es como recibir una carta del pasado.",
+          "emoji": "💌",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "La luz del Sol tarda ___ minutos en llegar a la Tierra.",
+              "opciones": ["2", "8", "60", "1000"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "Sin el Sol no habría vida: las plantas usan su luz para fabricar su comida, y de las plantas comen los animales... y nosotros. El Sol también mueve el clima: calienta el aire y el mar, hace el viento y las nubes.",
+          "emoji": "🌱",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Las plantas usan la luz del Sol para fabricar su comida.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "MUY IMPORTANTE: nunca mires el Sol directamente, ni con lentes oscuros normales. Su luz es tan fuerte que puede lastimar tus ojos para siempre. Los astrónomos usan filtros especiales para estudiarlo.",
+          "emoji": "🕶️",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Mirar el Sol directamente es peligroso para los ojos.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

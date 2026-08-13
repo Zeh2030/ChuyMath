@@ -1,0 +1,112 @@
+/* Espacio3D — lienzo del motor de astronomia */
+
+.espacio3d {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.espacio3d-vista {
+  position: relative;
+  width: 100%;
+}
+
+.espacio3d-lienzo {
+  width: 100%;
+  height: 340px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #070b1a;
+  touch-action: none;
+  cursor: grab;
+}
+
+.espacio3d-lienzo:active {
+  cursor: grabbing;
+}
+
+.espacio3d-lienzo canvas {
+  display: block;
+}
+
+@media (min-width: 700px) {
+  .espacio3d-lienzo {
+    height: 430px;
+  }
+}
+
+/* Recuadro "asi se ve desde la Tierra" (el viewport lo pinta three en la misma esquina) */
+.espacio3d-inset-marco {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.55);
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.espacio3d-inset-titulo {
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  transform: translateX(-50%);
+  margin-bottom: 4px;
+  white-space: nowrap;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #e8ecff;
+  background: rgba(10, 15, 40, 0.75);
+  padding: 2px 8px;
+  border-radius: 8px;
+}
+
+/* Deslizador de la orbita lunar */
+.espacio3d-barra {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 420px;
+}
+
+.espacio3d-slider {
+  flex: 1;
+  accent-color: #f39c12;
+  cursor: pointer;
+}
+
+.espacio3d-extremo {
+  font-size: 1.2rem;
+}
+
+.espacio3d-fase {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--color-texto, #2c3e50);
+}
+
+.espacio3d-fase.eclipse {
+  color: #e67e22;
+  animation: espacio3d-latido 0.9s ease-in-out infinite;
+}
+
+@keyframes espacio3d-latido {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+.espacio3d-pista {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  text-align: center;
+}
+
+.espacio3d-fallback {
+  padding: 30px;
+  text-align: center;
+  background: #f8f9fa;
+  border-radius: 12px;
+  color: #7f8c8d;
+}

@@ -1,0 +1,74 @@
+{
+  "id": "C2-25_la-tierra-desde-el-espacio",
+  "titulo": "La Tierra desde el Espacio",
+  "descripcion": "Fotos historicas reales: nuestro planeta visto por astronautas y naves espaciales",
+  "tipo": "image-picker",
+  "materia": "ciencias",
+  "nivel": "C2-25",
+  "tema": "astronomia",
+  "misiones": [
+    {
+      "id": "astro-ip-tierra-espacio",
+      "tipo": "image-picker",
+      "titulo": "Fotos Históricas del Espacio",
+      "instruccion": "Todas estas fotos son reales y famosas. Toca la que se describe.",
+      "retos": [
+        {
+          "palabra_es": "'La canica azul': la Tierra COMPLETA, fotografiada por astronautas camino a la Luna",
+          "opciones": [
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/The%20Earth%20seen%20from%20Apollo%2017.jpg?width=320", "label": "La canica azul (Apollo 17)" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/FullMoon2010.jpg?width=320", "label": "La Luna llena" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/OSIRIS%20Mars%20true%20color.jpg?width=320", "label": "Marte" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Venus-real%20color.jpg?width=320", "label": "Venus" }
+          ],
+          "respuesta": 0,
+          "explicacion": "La tomaron los astronautas del Apollo 17 en 1972. Es una de las fotos más famosas de la historia."
+        },
+        {
+          "palabra_es": "'Amanecer de Tierra': nuestro planeta saliendo detrás de la Luna",
+          "opciones": [
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/FullMoon2010.jpg?width=320", "label": "La Luna llena" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/NASA-Apollo8-Dec24-Earthrise.jpg?width=320", "label": "Amanecer de Tierra (Apollo 8)" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/The%20Earth%20seen%20from%20Apollo%2017.jpg?width=320", "label": "La canica azul" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Neptune%20Full.jpg?width=320", "label": "Neptuno" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Los astronautas del Apollo 8 dieron la vuelta a la Luna en 1968 y vieron a la Tierra 'salir', como nosotros vemos salir el Sol."
+        },
+        {
+          "palabra_es": "La Estación Espacial Internacional, la casa espacial donde viven astronautas AHORA MISMO",
+          "opciones": [
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/NASA-Apollo8-Dec24-Earthrise.jpg?width=320", "label": "Amanecer de Tierra" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Mercury%20in%20true%20color.jpg?width=320", "label": "Mercurio" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/International%20Space%20Station%20after%20undocking%20of%20STS-132.jpg?width=320", "label": "La Estación Espacial (ISS)" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/The%20Earth%20seen%20from%20Apollo%2017.jpg?width=320", "label": "La canica azul" }
+          ],
+          "respuesta": 2,
+          "explicacion": "La ISS da una vuelta a la Tierra cada 90 minutos. Sus astronautas ven 16 amaneceres cada día. ¡A veces se ve de noche como una estrella que se mueve!"
+        },
+        {
+          "palabra_es": "Nuestra Luna, fotografiada con todos sus cráteres y mares grises",
+          "opciones": [
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Mercury%20in%20true%20color.jpg?width=320", "label": "Mercurio" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/FullMoon2010.jpg?width=320", "label": "La Luna llena" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Uranus2.jpg?width=320", "label": "Urano" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Venus-real%20color.jpg?width=320", "label": "Venus" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Las manchas oscuras se llaman 'mares', pero no tienen agua: son llanuras de lava que se enfrió hace millones de años."
+        },
+        {
+          "palabra_es": "El Sol de cerca, fotografiado por un telescopio espacial con filtros especiales",
+          "opciones": [
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/The%20Sun%20by%20the%20Atmospheric%20Imaging%20Assembly%20of%20NASA%27s%20Solar%20Dynamics%20Observatory%20-%2020100819.jpg?width=320", "label": "El Sol (observatorio SDO)" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Jupiter%20and%20its%20shrunken%20Great%20Red%20Spot.jpg?width=320", "label": "Júpiter" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/OSIRIS%20Mars%20true%20color.jpg?width=320", "label": "Marte" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/FullMoon2010.jpg?width=320", "label": "La Luna" }
+          ],
+          "respuesta": 0,
+          "explicacion": "El observatorio espacial SDO vigila el Sol todo el día. Con sus filtros podemos ver sus explosiones y tormentas sin dañarnos los ojos."
+        }
+      ]
+    }
+  ]
+}

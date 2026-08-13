@@ -160,6 +160,12 @@ const Dashboard = () => {
     { id: 'piano-mini-story', emoji: '📖', nombre: 'Compositores', filtro: 'piano-mini-story', disponible: true, materia: 'piano' },
     // Ciencias
     { id: 'experimento-guia', emoji: '🧪', nombre: 'Experimentos', filtro: 'experimento-guia', disponible: true, materia: 'ciencias' },
+    { id: 'sistema-solar', emoji: '🪐', nombre: 'Sistema Solar 3D', filtro: 'sistema-solar', disponible: true, materia: 'ciencias' },
+    { id: 'ciencias-image-picker', emoji: '🔭', nombre: 'Fotos del Espacio', filtro: 'ciencias-image-picker', disponible: true, materia: 'ciencias' },
+    { id: 'ciencias-tap-the-pairs', emoji: '🔗', nombre: 'Empareja el Espacio', filtro: 'ciencias-tap-the-pairs', disponible: true, materia: 'ciencias' },
+    { id: 'ciencias-mini-story', emoji: '📖', nombre: 'Historias del Cosmos', filtro: 'ciencias-mini-story', disponible: true, materia: 'ciencias' },
+    { id: 'ciencias-opcion-multiple', emoji: '❓', nombre: 'Preguntas del Espacio', filtro: 'ciencias-opcion-multiple', disponible: true, materia: 'ciencias' },
+    { id: 'ciencias-true-or-false', emoji: '✅', nombre: 'Verdadero o Falso', filtro: 'ciencias-true-or-false', disponible: true, materia: 'ciencias' },
     // Dibujo
     { id: 'colorear', emoji: '🖍️', nombre: 'Colorear', filtro: 'colorear', disponible: true, materia: 'dibujo' },
     { id: 'dibujo-guiado', emoji: '✏️', nombre: 'Dibujo Guiado', filtro: 'dibujo-guiado', disponible: true, materia: 'dibujo' },

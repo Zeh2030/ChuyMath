@@ -28,6 +28,7 @@ import WordScramble from './tipos/WordScramble';
 import ListenAndType from './tipos/ListenAndType';
 import MiniStory from './tipos/MiniStory';
 import ExperimentoGuia from './tipos/ExperimentoGuia';
+import SistemaSolar from './tipos/SistemaSolar';
 import Colorear from './tipos/Colorear';
 import DibujoGuiado from './tipos/DibujoGuiado';
 import DibujoLibre from './tipos/DibujoLibre';
@@ -363,6 +364,15 @@ const MisionRenderer = ({
       case 'experimento-guia':
         return (
           <ExperimentoGuia
+            key={mision.id}
+            mision={mision}
+            onCompletar={onCompletar}
+          />
+        );
+
+      case 'sistema-solar':
+        return (
+          <SistemaSolar
             key={mision.id}
             mision={mision}
             onCompletar={onCompletar}

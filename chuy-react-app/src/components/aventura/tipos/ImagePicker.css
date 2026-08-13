@@ -109,6 +109,21 @@
   font-size: 3.5rem;
 }
 
+/* Foto real (campo `imagen` en la opcion) en vez de emoji */
+.ip-imagen {
+  width: 100%;
+  max-width: 140px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Pregunta directa en espanol (retos sin palabra_en) */
+.ip-word-es {
+  font-size: 1.1rem;
+  line-height: 1.35;
+}
+
 .ip-label {
   font-size: 0.85rem;
   font-weight: 700;

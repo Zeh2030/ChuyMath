@@ -1,0 +1,103 @@
+{
+  "id": "C2-24_fases-de-la-luna",
+  "titulo": "Las Fases de la Luna",
+  "descripcion": "Mueve la Luna por su órbita y descubre por qué cada noche se ve diferente",
+  "tipo": "sistema-solar",
+  "materia": "ciencias",
+  "nivel": "C2-24",
+  "tema": "astronomia",
+  "misiones": [
+    {
+      "id": "astro-fases-luna-01",
+      "tipo": "sistema-solar",
+      "escena": "tierra-luna",
+      "modo": "completo",
+      "titulo": "¿Por qué cambia la Luna?",
+      "emoji": "🌗",
+      "instruccion": "La Luna no cambia de forma: lo que cambia es CUÁNTA de su parte iluminada vemos desde la Tierra. Mueve el deslizador para llevar la Luna por su órbita y mira el recuadro: así se vería esa noche desde tu ventana.",
+      "leccion": "El Sol siempre ilumina la mitad de la Luna. Cuando la Luna está del lado del Sol, su mitad iluminada mira hacia otro lado y casi no la vemos (Luna nueva). Cuando está del lado contrario, la vemos completa (Luna llena).",
+      "datos": {
+        "sol": "El Sol ilumina siempre la mitad de la Luna y la mitad de la Tierra. ¡Nunca se apaga!",
+        "tierra": "La Tierra gira sobre sí misma una vez al día. Por eso hay día y noche.",
+        "luna": "La Luna tarda unos 28 días en dar la vuelta a la Tierra, y siempre nos muestra la misma cara. Cada año se aleja de nosotros casi 4 centímetros."
+      },
+      "retos": [
+        {
+          "tipo": "fase",
+          "pregunta": "Coloca la Luna donde se vea LLENA, completita y redonda.",
+          "respuesta": "llena",
+          "pista": "Para verla toda iluminada, la Luna debe estar del lado CONTRARIO al Sol."
+        },
+        {
+          "tipo": "fase",
+          "pregunta": "Ahora ponla en Luna NUEVA, cuando casi no se ve nada.",
+          "respuesta": "nueva",
+          "pista": "Su parte iluminada mira hacia el Sol... y su parte oscura hacia nosotros."
+        },
+        {
+          "tipo": "fase",
+          "pregunta": "Coloca la Luna en CUARTO CRECIENTE: se ve justo la mitad.",
+          "respuesta": "cuarto-creciente",
+          "pista": "Está a un cuarto del camino, entre la Luna nueva y la llena."
+        }
+      ],
+      "dato_curioso": "La palabra 'mes' viene de la Luna: los primeros calendarios contaban los días de Luna llena a Luna llena. ¡Casi 30 días!"
+    },
+    {
+      "id": "astro-apollo-11",
+      "tipo": "mini-story",
+      "titulo": "Apollo 11: Llegamos a la Luna",
+      "instruccion": "Lee cada parte de esta historia REAL y responde la pregunta.",
+      "parrafos": [
+        {
+          "texto": "En julio de 1969 pasó algo increíble: por primera vez, seres humanos pisaron la Luna. Viajaron en una nave llamada Apollo 11. Eran tres astronautas: Neil Armstrong, Buzz Aldrin y Michael Collins.",
+          "emoji": "🚀",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "La nave que llevó a los primeros humanos a la Luna se llamaba Apollo ___.",
+              "opciones": ["7", "11", "13", "20"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "El viaje duró 4 días. Cuando llegaron, Armstrong bajó por la escalerilla y dijo una frase famosa: 'Es un pequeño paso para un hombre, pero un gran salto para la humanidad'. Sus huellas siguen allá arriba: en la Luna no hay viento que las borre.",
+          "emoji": "👣",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Las huellas de los astronautas siguen en la Luna, porque allá no hay viento que las borre.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Michael Collins no pisó la Luna: se quedó pilotando la nave que daba vueltas alrededor, esperando a sus compañeros para regresar a casa. Sin él, Armstrong y Aldrin no habrían podido volver. ¡Los tres eran igual de importantes!",
+          "emoji": "🧑‍🚀",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "El astronauta que se quedó pilotando la nave alrededor de la Luna fue ___.",
+              "opciones": ["Armstrong", "Aldrin", "Collins", "Gagarin"],
+              "respuesta": 2
+            }
+          ]
+        },
+        {
+          "texto": "En la Luna todo pesa 6 veces menos que en la Tierra. Los astronautas caminaban dando brincos, como canguros en cámara lenta. Si allá saltas, ¡llegas 6 veces más alto que aquí!",
+          "emoji": "🦘",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "En la Luna pesas MÁS que en la Tierra, por eso es difícil caminar.",
+              "correcto": false,
+              "correccion": "Es al revés: en la Luna pesas 6 veces MENOS. Por eso los astronautas brincaban."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

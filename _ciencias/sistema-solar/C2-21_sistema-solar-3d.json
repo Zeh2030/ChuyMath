@@ -1,0 +1,77 @@
+{
+  "id": "C2-21_sistema-solar-3d",
+  "titulo": "El Sistema Solar en 3D",
+  "descripcion": "Explora el Sol y los 8 planetas girando de verdad, y descubre el secreto de cada uno",
+  "tipo": "sistema-solar",
+  "materia": "ciencias",
+  "nivel": "C2-21",
+  "tema": "astronomia",
+  "misiones": [
+    {
+      "id": "astro-sistema-solar-01",
+      "tipo": "sistema-solar",
+      "escena": "planetas",
+      "modo": "completo",
+      "titulo": "El Sistema Solar en 3D",
+      "emoji": "🪐",
+      "instruccion": "Este es nuestro vecindario en el espacio: el Sol en el centro y 8 planetas dando vueltas a su alrededor. Toca cada uno para conocer su secreto, gira la vista arrastrando, y prueba el botón de tamaño real.",
+      "leccion": "Los planetas no están quietos: todos viajan alrededor del Sol en caminos llamados ÓRBITAS. Los que están cerca del Sol tardan poco en dar la vuelta; los lejanos tardan muchísimo.",
+      "datos": {
+        "sol": "El Sol es una ESTRELLA, no un planeta. Es tan grande que dentro cabrían 1,300,000 Tierras. ¡Un millón trescientas mil!",
+        "mercurio": "Es el más cercano al Sol y el más rápido: da la vuelta al Sol en solo 88 días. Está lleno de cráteres, como la Luna.",
+        "venus": "El más CALIENTE de todos, ¡más que Mercurio! Sus nubes atrapan el calor y llueve ácido. Un día en Venus dura más que su año.",
+        "tierra": "Nuestra casa. Es el único planeta que conocemos con agua líquida y vida. Por eso desde el espacio se ve azul.",
+        "marte": "El planeta rojo. Tiene el volcán más alto del sistema solar: el monte Olimpo, ¡3 veces más alto que el Everest!",
+        "jupiter": "El planeta más GRANDE. Su mancha roja es una tormenta gigante más grande que la Tierra entera, y lleva siglos girando.",
+        "saturno": "El de los anillos, hechos de millones de trozos de hielo y roca. Es tan ligero que flotaría en una alberca gigante.",
+        "urano": "Un gigante de hielo color turquesa. Está tan inclinado que rueda de lado, ¡como una pelota rodando por su órbita!",
+        "neptuno": "El más lejano del Sol. Sus vientos son los más veloces del sistema solar, y su año dura 165 años de la Tierra."
+      },
+      "retos": [
+        {
+          "tipo": "toca",
+          "pregunta": "Toca el planeta MÁS GRANDE del sistema solar.",
+          "respuesta": "jupiter",
+          "pista": "Tiene una mancha roja gigante."
+        },
+        {
+          "tipo": "toca",
+          "pregunta": "Toca el planeta ROJO.",
+          "respuesta": "marte",
+          "pista": "Tiene el volcán más alto de todos."
+        },
+        {
+          "tipo": "toca",
+          "pregunta": "Toca el planeta de los ANILLOS.",
+          "respuesta": "saturno",
+          "pista": "Sus anillos son de hielo y roca."
+        },
+        {
+          "tipo": "toca",
+          "pregunta": "Toca el planeta donde VIVIMOS.",
+          "respuesta": "tierra",
+          "pista": "Se ve azul por sus océanos."
+        },
+        {
+          "tipo": "toca",
+          "pregunta": "Toca el planeta MÁS CERCANO al Sol. Cuenta las órbitas desde el centro.",
+          "respuesta": "mercurio",
+          "pista": "Es el de la órbita más pequeña, y el más veloz."
+        },
+        {
+          "tipo": "toca",
+          "pregunta": "Toca el planeta MÁS CALIENTE. ¡Cuidado: no es el más cercano al Sol!",
+          "respuesta": "venus",
+          "pista": "Sus nubes atrapan el calor como un invernadero."
+        },
+        {
+          "tipo": "toca",
+          "pregunta": "Toca el planeta MÁS LEJANO del Sol.",
+          "respuesta": "neptuno",
+          "pista": "Es azul y su órbita es la más grande de todas."
+        }
+      ],
+      "dato_curioso": "En el universo hay más estrellas que granos de arena en TODAS las playas de la Tierra juntas. Y muchas de esas estrellas tienen sus propios planetas."
+    }
+  ]
+}

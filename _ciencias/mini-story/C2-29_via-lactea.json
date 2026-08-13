@@ -1,0 +1,79 @@
+{
+  "id": "C2-29_via-lactea",
+  "titulo": "La Via Lactea: Nuestra Galaxia",
+  "descripcion": "Donde vivimos en el universo: una ciudad gigante de estrellas",
+  "tipo": "mini-story",
+  "materia": "ciencias",
+  "nivel": "C2-29",
+  "tema": "astronomia",
+  "misiones": [
+    {
+      "id": "astro-story-via-lactea",
+      "tipo": "mini-story",
+      "titulo": "Nuestra Dirección en el Universo",
+      "instruccion": "Lee cada parte y responde la pregunta.",
+      "parrafos": [
+        {
+          "texto": "Una GALAXIA es una ciudad gigante de estrellas. La nuestra se llama VÍA LÁCTEA y tiene más de 100,000 MILLONES de estrellas. El Sol es solo una de ellas, y ni siquiera de las más grandes.",
+          "emoji": "🌌",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Nuestra galaxia se llama Vía ___.",
+              "opciones": ["Espacial", "Láctea", "Solar", "Estelar"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "La Vía Láctea tiene forma de espiral, como un remolino gigante con brazos. Nosotros vivimos en uno de esos brazos, lejos del centro. Si la galaxia fuera una ciudad, nuestro sistema solar sería una casita en las orillas, en un barrio tranquilo.",
+          "emoji": "🌀",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Vivimos en el centro exacto de la Vía Láctea.",
+              "correcto": false,
+              "correccion": "Vivimos en uno de los brazos de la espiral, lejos del centro."
+            }
+          ]
+        },
+        {
+          "texto": "¿Y sabes qué es lo mejor? ¡Puedes VER la Vía Láctea! En una noche muy oscura, lejos de las luces de la ciudad, se ve como un camino de nubecitas blancas cruzando el cielo. Ese resplandor son millones de estrellas juntas, tan lejanas que sus luces se mezclan.",
+          "emoji": "✨",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Para ver la Vía Láctea hay que alejarse de las ___ de la ciudad.",
+              "opciones": ["casas", "luces", "calles", "tiendas"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "Las distancias en el espacio son tan enormes que se miden en AÑOS LUZ: lo que la luz viaja en un año entero. La estrella más cercana al Sol está a 4 años luz. Si le mandáramos un saludo con una super linterna, la respuesta más rápida posible tardaría 8 años en volver.",
+          "emoji": "📏",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Un año luz mide TIEMPO, como un reloj.",
+              "correcto": false,
+              "correccion": "Un año luz mide DISTANCIA: lo que la luz recorre en un año."
+            }
+          ]
+        },
+        {
+          "texto": "Y la Vía Láctea no está sola: el universo tiene MILES DE MILLONES de galaxias, cada una con sus propios millones de estrellas. Por eso los científicos se preguntan: con tantísimas estrellas y planetas... ¿habrá vida en algún otro lugar? Nadie lo sabe todavía. ¡Quizá tu generación lo descubra!",
+          "emoji": "👽",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "En el universo hay miles de millones de ___.",
+              "opciones": ["soles apagados", "galaxias", "lunas", "cohetes"],
+              "respuesta": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

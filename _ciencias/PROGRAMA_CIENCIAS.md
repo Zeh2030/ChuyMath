@@ -312,6 +312,7 @@ Se crean 10 experimentos por solicitud, en orden de nivel.
 | `C0-10_bichos-del-jardin.json` | C0-10 | ✅ Creado |
 | `C0-11_laboratorio-de-colores.json` | C0-11 | ✅ Creado (tipo `mezclador-colores`, modo explorar — hija) |
 | `C1-21_retos-de-color.json` | C1-21 | ✅ Creado (tipo `mezclador-colores`, modo completo — hijo) |
+| C2-21 a C2-30 (Astronomia) | C2 | ✅ Creado 2026-08-13 (ver seccion Astronomia; en subcarpetas por tipo) |
 | C2-01 a C2-10 | C2 | Pendiente (Lote 4) |
 
 ---
@@ -368,43 +369,81 @@ _ciencias/
 
 ---
 
-## Astronomia (NUEVA SECCION C2/C3)
+## Astronomia ✅ CONSTRUIDA (2026-08-13)
 
 Espacio, planetas, estrellas, sistema solar — pertenecen a CIENCIAS (no geografia, aunque a veces se llame "geografia universal" en escuela).
 
-### Temas planeados — Astronomia (C2-21 a C2-30)
+### Motor 3D propio: tipo `sistema-solar`
 
-| # | Tema | Tipo de juego sugerido | Notas |
-|---|------|------------------------|-------|
-| C2-21 | El Sistema Solar | tap-the-pairs (planeta ↔ caracteristica) | 8 planetas, su orden |
-| C2-22 | Los 8 planetas | image-picker | Fotos reales NASA de cada planeta |
-| C2-23 | El Sol | mini-story | Estrella mas cercana, da vida |
-| C2-24 | La Luna | mini-story + true-or-false | Fases lunares, Apollo 11, Neil Armstrong |
-| C2-25 | La Tierra desde el espacio | image-picker | Fotos satelitales, ISS |
-| C2-26 | Estrellas y constelaciones | tap-the-pairs | Osa Mayor, Orion, Cruz del Sur |
-| C2-27 | Cohetes y astronautas | mini-story + opcion-multiple | NASA, SpaceX, primer hombre en la luna |
-| C2-28 | Eclipses | experimento-guia | Linterna+pelota+pelota chica para simular |
-| C2-29 | Galaxia Via Lactea | mini-story | Donde estamos, miles de millones de estrellas |
-| C2-30 | Marte y exploracion | opcion-multiple + image-picker | Rovers, posible vida, futuras misiones |
+Three.js con el patron de Cubo3D (geometria procedural, texturas canvas, lazy) +
+el flujo de MezcladorColores (intro → explorar → retos → fin).
 
-### Datos "wow" para captar interes (4-7 años)
+- **Componentes**: `SistemaSolar.jsx` (wrapper, flujo de mision) + `Espacio3D.jsx`
+  (motor three.js, chunk lazy) + `espacioDatos.js` (constantes compartidas SIN three).
+- **Escena `planetas`**: Sol + 8 planetas orbitando; tocar un cuerpo = tarjeta con dato
+  wow; boton "¿Y en tamano real?" forma a todos en fila a escala real (momento wow).
+- **Escena `tierra-luna`**: deslizador que pasea la Luna por su orbita; recuadro
+  "asi se ve desde la Tierra" (segunda camara); los eclipses son sombras REALES
+  (shadow map) — alinear los cuerpos los produce solos.
+
+Campos de la mision:
+
+```json
+{
+  "tipo": "sistema-solar",
+  "escena": "planetas | tierra-luna",
+  "modo": "explorar | reto | completo",
+  "instruccion": "...", "leccion": "...",
+  "datos": { "jupiter": "dato wow que sale al tocarlo" },
+  "retos": [
+    { "tipo": "toca", "pregunta": "...", "respuesta": "jupiter", "pista": "..." },
+    { "tipo": "fase", "pregunta": "...", "respuesta": "llena | nueva | cuarto-creciente | ... | eclipse-sol | eclipse-luna" }
+  ],
+  "dato_curioso": "..."
+}
+```
+
+Ids de cuerpo validos — planetas: sol, mercurio, venus, tierra, marte, jupiter,
+saturno, urano, neptuno. Tierra-luna: sol, tierra, luna.
+
+**Validador**: `node _ciencias/_valida.js` (recorre subcarpetas, valida todos los tipos).
+
+### Contenido creado — Astronomia (C2-21 a C2-30)
+
+| Archivo | Tema | Tipos |
+|---------|------|-------|
+| `sistema-solar/C2-21_sistema-solar-3d.json` | El Sistema Solar | sistema-solar (planetas, completo) |
+| `image-picker/C2-22_los-8-planetas.json` | Los 8 planetas | image-picker (fotos reales por opcion) |
+| `mini-story/C2-23_el-sol.json` | El Sol | mini-story |
+| `sistema-solar/C2-24_fases-de-la-luna.json` | Fases de la Luna + Apollo 11 | sistema-solar (tierra-luna) + mini-story |
+| `image-picker/C2-25_la-tierra-desde-el-espacio.json` | La Tierra desde el espacio | image-picker (fotos historicas) |
+| `tap-the-pairs/C2-26_constelaciones.json` | Constelaciones | tap-the-pairs + true-or-false |
+| `mini-story/C2-27_cohetes-y-astronautas.json` | Cohetes y astronautas | mini-story + opcion-multiple |
+| `experimento-guia/C2-28_eclipses.json` | Eclipses | experimento-guia + sistema-solar (reto eclipse) |
+| `mini-story/C2-29_via-lactea.json` | La Via Lactea | mini-story |
+| `opcion-multiple/C2-30_marte.json` | Marte y sus exploradores | opcion-multiple |
+
+**Fotos**: URLs `https://commons.wikimedia.org/wiki/Special:FilePath/<archivo>?width=320`
+(redirect estable de Wikimedia Commons, sin rutas con hash; todas verificadas con curl).
+
+**Tiles**: en Boveda y Dashboard la materia ciencias tiene tiles nuevos con id prefijado
+(`ciencias-image-picker`, `ciencias-mini-story`, ...) al estilo de geografia/piano, mas
+el tile propio `sistema-solar`. `detectMateria` reconoce `ciencias-*`.
+
+### Datos "wow" (usados en el contenido)
 
 - El Sol es tan grande que dentro caben 1.3 MILLONES de Tierras
 - Jupiter tiene una tormenta GIGANTE (la Mancha Roja) mas grande que la Tierra
 - Saturno flotaria en agua si hubiera un oceano gigante (es muy ligero)
-- Marte tiene el volcan mas alto del sistema solar (Olympus Mons, 3 veces el Everest)
+- Marte tiene el volcan mas alto del sistema solar (Olympus Mons, ~3 veces el Everest)
 - En Venus llueve acido y un dia dura mas que un año
 - La Luna se aleja de la Tierra ~3.8 cm cada año
 - Hay mas estrellas en el universo que granos de arena en TODAS las playas de la Tierra
 
-### Espacio como expedicion
+### Ideas futuras (no construidas)
 
-Tambien podemos crear expediciones espaciales (similar al formato de `expedicion-galactica.json` que ya existe en `_contenido/aventuras/`):
-
-- 🚀 Expedicion al Sistema Solar (recorrido por los 8 planetas)
-- 🌙 Expedicion a la Luna (mision Apollo 11)
-- 🔴 Expedicion a Marte (rovers y futuras misiones)
-- ⭐ Expedicion por las Constelaciones
+- Expediciones espaciales estilo `expedicion-galactica.json` (Sistema Solar, Luna, Marte, Constelaciones)
+- Mas escenas del motor 3D: cinturon de asteroides, cometas con cola, estaciones del año (inclinacion de la Tierra)
 
 ---
 

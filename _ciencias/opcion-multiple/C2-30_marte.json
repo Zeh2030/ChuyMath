@@ -1,0 +1,101 @@
+{
+  "id": "C2-30_marte",
+  "titulo": "Marte y sus Exploradores",
+  "descripcion": "El planeta rojo: sus records, sus robots exploradores y los planes para visitarlo",
+  "tipo": "opcion-multiple",
+  "materia": "ciencias",
+  "nivel": "C2-30",
+  "tema": "astronomia",
+  "misiones": [
+    {
+      "id": "astro-om-marte-color",
+      "tipo": "opcion-multiple",
+      "titulo": "El Planeta Rojo",
+      "instruccion": "Elige la respuesta correcta.",
+      "pregunta": "🔴 ¿Por qué Marte es de color rojo?",
+      "opciones": [
+        "Porque está muy caliente, casi ardiendo",
+        "Porque su suelo tiene hierro oxidado, como un clavo viejo",
+        "Porque está cubierto de lava"
+      ],
+      "respuesta": "1",
+      "explicacion_correcta": "¡Exacto! El polvo de Marte tiene mucho hierro oxidado. Es literalmente un planeta oxidado. Y de caliente nada: hace más frío que en un congelador.",
+      "explicacion_incorrecta": "Marte es rojo por el ÓXIDO de hierro en su polvo, como un clavo viejo. Y no está caliente: ¡hace muchísimo frío!"
+    },
+    {
+      "id": "astro-om-marte-volcan",
+      "tipo": "opcion-multiple",
+      "titulo": "El Récord de Marte",
+      "instruccion": "Elige la respuesta correcta.",
+      "pregunta": "🌋 En Marte está el monte Olimpo, el volcán MÁS ALTO del sistema solar. ¿Cómo es de alto comparado con el Everest?",
+      "opciones": [
+        "La mitad del Everest",
+        "Igual que el Everest",
+        "Como 3 Everest apilados"
+      ],
+      "respuesta": "2",
+      "explicacion_correcta": "¡Sí! Mide unos 25 kilómetros: casi 3 veces el Everest. Es tan ancho que si estuvieras arriba, no verías dónde termina.",
+      "explicacion_incorrecta": "El monte Olimpo mide unos 25 km de alto: como apilar 3 montes Everest. Es el volcán más grande que conocemos."
+    },
+    {
+      "id": "astro-om-marte-rovers",
+      "tipo": "opcion-multiple",
+      "titulo": "Los Robots Exploradores",
+      "instruccion": "Elige la respuesta correcta.",
+      "pregunta": "🤖 ¿Quién explora Marte AHORA MISMO?",
+      "opciones": [
+        "Astronautas que viven en una base",
+        "Robots con ruedas llamados rovers",
+        "Nadie, es imposible llegar"
+      ],
+      "respuesta": "1",
+      "explicacion_correcta": "¡Correcto! Robots como Curiosity y Perseverance recorren Marte, sacan fotos, taladran rocas y buscan pistas de vida. Todavía ningún humano ha ido.",
+      "explicacion_incorrecta": "Aún no ha ido ningún humano. Quienes exploran Marte son ROVERS: robots con ruedas como Curiosity y Perseverance."
+    },
+    {
+      "id": "astro-om-marte-helicoptero",
+      "tipo": "opcion-multiple",
+      "titulo": "Un Récord Increíble",
+      "instruccion": "Elige la respuesta correcta.",
+      "pregunta": "🚁 En 2021 pasó algo histórico en Marte. ¿Qué fue?",
+      "opciones": [
+        "Un helicóptero robot llamado Ingenuity voló por primera vez en otro planeta",
+        "Llegó el primer astronauta",
+        "Encontraron una ciudad marciana"
+      ],
+      "respuesta": "0",
+      "explicacion_correcta": "¡Así es! Ingenuity fue el primer aparato en VOLAR en otro planeta. Era dificilísimo porque el aire de Marte es muy delgadito. Voló más de 70 veces.",
+      "explicacion_incorrecta": "Fue el helicóptero robot Ingenuity: el primer aparato que logró volar en otro planeta. Astronautas todavía no han ido... ¡y ciudades marcianas no hay!"
+    },
+    {
+      "id": "astro-om-marte-lunas",
+      "tipo": "opcion-multiple",
+      "titulo": "Las Lunas de Marte",
+      "instruccion": "Elige la respuesta correcta.",
+      "pregunta": "🥔 Marte tiene 2 lunas chiquitas, Fobos y Deimos. ¿Qué forma tienen?",
+      "opciones": [
+        "Redondas y lisas como la nuestra",
+        "De papa: chuecas y llenas de cráteres",
+        "De anillo, como Saturno"
+      ],
+      "respuesta": "1",
+      "explicacion_correcta": "¡Sí! Son tan pequeñas que su gravedad no alcanza para hacerlas redondas. Parecen dos papas espaciales de unos 20 kilómetros.",
+      "explicacion_incorrecta": "Fobos y Deimos parecen PAPAS: son pequeñas, chuecas y con cráteres. Solo las lunas grandes logran hacerse redondas."
+    },
+    {
+      "id": "astro-om-marte-viaje",
+      "tipo": "opcion-multiple",
+      "titulo": "El Gran Plan",
+      "instruccion": "Elige la respuesta correcta.",
+      "pregunta": "🚀 ¿Cuánto tardaría un viaje de la Tierra a Marte con los cohetes de hoy?",
+      "opciones": [
+        "Unas 3 horas, como ir a otra ciudad",
+        "Unos 7 meses de viaje",
+        "Unos 40 años, toda una vida"
+      ],
+      "respuesta": "1",
+      "explicacion_correcta": "¡Correcto! Unos 7 meses de ida... y hay que esperar en Marte a que los planetas se acomoden para volver. Por eso es la misión más difícil jamás planeada.",
+      "explicacion_incorrecta": "Serían unos 7 MESES de viaje espacial. Lejos, pero no imposible: por eso la NASA y SpaceX ya están construyendo los cohetes para intentarlo."
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "id": "C2-22_los-8-planetas",
+  "titulo": "Los 8 Planetas en Fotos Reales",
+  "descripcion": "Fotos verdaderas de la NASA: aprende a reconocer cada planeta como un astronomo",
+  "tipo": "image-picker",
+  "materia": "ciencias",
+  "nivel": "C2-22",
+  "tema": "astronomia",
+  "misiones": [
+    {
+      "id": "astro-ip-planetas",
+      "tipo": "image-picker",
+      "titulo": "¿Cuál planeta es?",
+      "instruccion": "Estas fotos son REALES, tomadas por naves espaciales y telescopios. Toca el planeta que se describe.",
+      "retos": [
+        {
+          "palabra_es": "Nuestro planeta: el único azul, con océanos y nubes blancas",
+          "opciones": [
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/The%20Earth%20seen%20from%20Apollo%2017.jpg?width=320", "label": "La Tierra" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/OSIRIS%20Mars%20true%20color.jpg?width=320", "label": "Marte" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Venus-real%20color.jpg?width=320", "label": "Venus" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Neptune%20Full.jpg?width=320", "label": "Neptuno" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Esta foto famosa se llama 'La canica azul'. La tomaron los astronautas del Apollo 17 en 1972."
+        },
+        {
+          "palabra_es": "El planeta ROJO, cubierto de polvo color óxido",
+          "opciones": [
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Mercury%20in%20true%20color.jpg?width=320", "label": "Mercurio" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/OSIRIS%20Mars%20true%20color.jpg?width=320", "label": "Marte" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Jupiter%20and%20its%20shrunken%20Great%20Red%20Spot.jpg?width=320", "label": "Júpiter" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/The%20Earth%20seen%20from%20Apollo%2017.jpg?width=320", "label": "La Tierra" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Marte es rojo porque su suelo tiene mucho hierro oxidado. ¡Es un planeta oxidado!"
+        },
+        {
+          "palabra_es": "El planeta MÁS GRANDE, con bandas de nubes y una mancha roja gigante",
+          "opciones": [
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Jupiter%20and%20its%20shrunken%20Great%20Red%20Spot.jpg?width=320", "label": "Júpiter" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Saturn%20during%20Equinox.jpg?width=320", "label": "Saturno" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Uranus2.jpg?width=320", "label": "Urano" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Venus-real%20color.jpg?width=320", "label": "Venus" }
+          ],
+          "respuesta": 0,
+          "explicacion": "La Gran Mancha Roja de Júpiter es una tormenta más grande que la Tierra. ¡Lleva más de 300 años girando!"
+        },
+        {
+          "palabra_es": "El planeta de los ANILLOS espectaculares",
+          "opciones": [
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Uranus2.jpg?width=320", "label": "Urano" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Neptune%20Full.jpg?width=320", "label": "Neptuno" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Saturn%20during%20Equinox.jpg?width=320", "label": "Saturno" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Jupiter%20and%20its%20shrunken%20Great%20Red%20Spot.jpg?width=320", "label": "Júpiter" }
+          ],
+          "respuesta": 2,
+          "explicacion": "Esta foto la tomó la nave Cassini. Los anillos son millones de pedacitos de hielo y roca girando juntos."
+        },
+        {
+          "palabra_es": "El más cercano al Sol: chiquito, gris y lleno de cráteres",
+          "opciones": [
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Mercury%20in%20true%20color.jpg?width=320", "label": "Mercurio" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/FullMoon2010.jpg?width=320", "label": "La Luna" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/OSIRIS%20Mars%20true%20color.jpg?width=320", "label": "Marte" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Venus-real%20color.jpg?width=320", "label": "Venus" }
+          ],
+          "respuesta": 0,
+          "explicacion": "¡Ojo! Mercurio se parece mucho a la Luna, pero es un planeta. Los cráteres son golpes de meteoritos."
+        },
+        {
+          "palabra_es": "El más CALIENTE, tapado por nubes amarillas que atrapan el calor",
+          "opciones": [
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/OSIRIS%20Mars%20true%20color.jpg?width=320", "label": "Marte" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Venus-real%20color.jpg?width=320", "label": "Venus" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Mercury%20in%20true%20color.jpg?width=320", "label": "Mercurio" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Neptune%20Full.jpg?width=320", "label": "Neptuno" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Venus está tan tapado por nubes que nunca vemos su suelo. Esas nubes atrapan el calor: ¡hace 460 grados!"
+        },
+        {
+          "palabra_es": "El gigante turquesa que rueda DE LADO por su órbita",
+          "opciones": [
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Neptune%20Full.jpg?width=320", "label": "Neptuno" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Saturn%20during%20Equinox.jpg?width=320", "label": "Saturno" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Uranus2.jpg?width=320", "label": "Urano" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/The%20Earth%20seen%20from%20Apollo%2017.jpg?width=320", "label": "La Tierra" }
+          ],
+          "respuesta": 2,
+          "explicacion": "Urano está inclinado casi 90 grados: gira acostado. Esta foto la tomó la nave Voyager 2."
+        },
+        {
+          "palabra_es": "El azul profundo, el MÁS LEJANO del Sol, con los vientos más veloces",
+          "opciones": [
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Uranus2.jpg?width=320", "label": "Urano" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Neptune%20Full.jpg?width=320", "label": "Neptuno" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/The%20Earth%20seen%20from%20Apollo%2017.jpg?width=320", "label": "La Tierra" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Jupiter%20and%20its%20shrunken%20Great%20Red%20Spot.jpg?width=320", "label": "Júpiter" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Neptuno está tan lejos que la luz del Sol tarda 4 horas en llegarle. Sus vientos van a 2,000 km por hora."
+        }
+      ]
+    }
+  ]
+}
