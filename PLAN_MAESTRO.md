@@ -1,248 +1,157 @@
-# Plan Maestro ChuyMath - Actualizado 2026-03-22
+# Plan Maestro ChuyMath - Actualizado 2026-08-13
+
+Estado real de cada módulo y pendientes vivos. Los programas detallados viven en el
+doc de cada materia (`_ciencias/PROGRAMA_CIENCIAS.md`, `_piano/PROGRAMA_PIANO.md`, etc.).
 
 ---
 
-## 1. TEMAS VISUALES ✅ COMPLETADO
+## 1. MATERIAS ✅ 7 ACTIVAS
 
-9 temas implementados:
+MateriaToggle (`src/components/layout/MateriaToggle.jsx`):
 
-| # | Tema | Animación | Estado |
-|---|------|-----------|--------|
-| 1 | `aventurero` | ☁️ Nubes flotantes | ✅ |
-| 2 | `princesa` | ✨ Destellos dorados | ✅ |
-| 3 | `espacial` | 🌟 Estrellas + planeta (dark mode) | ✅ |
-| 4 | `oceano` | 🫧 14 burbujas (12-45px) | ✅ |
-| 5 | `explorador` | 🍃 Hojas cayendo | ✅ |
-| 6 | `selva` | 🦋 Mariposas | ✅ |
-| 7 | `arcoiris` | 🌈 Burbujas de colores + fondo arcoíris | ✅ |
-| 8 | `elegante` | ✨ Motas de polvo dorado | ✅ |
-| 9 | `pizarron` | 📝 Símbolos de tiza (π,√,∞) + textura (dark mode) | ✅ |
+| Materia | Colección Firebase | Contenido en disco | Estado |
+|---------|-------------------|--------------------|--------|
+| Matemáticas 🔢 | aventuras + simulacros + expediciones | `_contenido/` (71 JSONs) | ✅ |
+| English 🇬🇧 | ingles | `_content/` (118 JSONs, A0 completo + A1-12) | ✅ |
+| Piano 🎹 | piano | `_piano/` (33 JSONs) | ✅ |
+| Ciencias 🔬 | ciencias | `_ciencias/` (32 JSONs: C0 y C1 completos) | ✅ |
+| Arte 🎨 | dibujo | `_dibujo/` (73 JSONs, 4 tipos) | ✅ |
+| Geo 🌍 | geografia | `_geografia/` (48 JSONs, 9 tipos) | ✅ |
+| Letras 📖 | letras | `_letras/` (12 JSONs, L0+L1) | ✅ |
 
----
+Además: **Modo Peques** (lanzador kid-safe con flag `esPeque`, colección `peques`,
+motores tap-and-celebrate / cual-es-diferente / memoria / formas / etc.).
 
-## 2. TOGGLE DE MATERIAS ✅ COMPLETADO (expandible)
+Alta de materia nueva: MateriaToggle + colección Firebase + reglas Firestore +
+Dashboard accesos rápidos + Bóveda (loader, `detectMateria`, tiles) + AdminMigracion +
+fallback en Aventura.jsx.
 
-MateriaToggle dinámico. Actualmente 4 botones: 🔢 Mates | 🇬🇧 English | 🎹 Piano | 🔬 Ciencias
-
-| Materia | Colección Firebase | Estado |
-|---------|-------------------|--------|
-| Matemáticas 🔢 | aventuras + simulacros | ✅ |
-| English 🇬🇧 | ingles | ✅ |
-| Piano 🎹 | piano | ✅ |
-| Ciencias 🔬 | ciencias | ✅ |
-| Geografía 🌍 | geografia | Planeado |
-
-Agregar nueva materia requiere: MateriaToggle entry, colección Firebase, reglas Firestore, Dashboard acceso rápido, Bóveda loader, AdminMigracion radio button, Aventura.jsx fallback.
+Alta de sub-sección dentro de una materia (ej. teoría de piano, astronomía en ciencias):
+solo tiles con id prefijado en Bóveda/Dashboard (`piano-mini-story`, `ciencias-*`) —
+misma colección, cero cambios de infraestructura.
 
 ---
 
-## 3. PIANO — CURSO INTEGRAL
+## 2. TEMAS VISUALES ✅ (9 temas)
 
-### Completado ✅
-- `abcjs` instalado y lazy-loaded (React.lazy + Suspense)
-- MusicPrompter.jsx: ABC→SVG, scroll con rAF, playhead rojo al 25%
-- Audio sintetizado (abcjs synth + FluidR3 SoundFont piano)
-- Sincronización audio↔scroll usando `synth.duration` como fuente de verdad
-- BPM reactivo, controles Play/Pause/Reset, sonido, fullscreen
-- Multi-voz (grand staff): clave de Sol + Fa con `%%staves {1 2}`
-- Integrado: Dashboard, Bóveda, MateriaToggle, AdminMigracion, Aventura.jsx
-- Notas verificadas: twinkle-twinkle ✅, zapatillas-rojas ✅
-
-### Programa completo: `_piano/PROGRAMA_PIANO.md`
-
-| Nivel | Nombre | Canciones | Teoría | Estado |
-|-------|--------|-----------|--------|--------|
-| P1 | Primeras Notas | 10 | 10 | 1/10 canciones creada |
-| P2 | Dos Manos | 10 | 10 | Planeado |
-| P3 | Coordinación | 10 | 10 | Planeado |
-| P4 | Piezas Completas | 10 | 10 | 1/10 creada (Zapatillas Rojas) |
-| P5 | Intermedio | 10 | 10 | Futuro |
-
-### Tipos de actividad
-
-| Tipo | Estado | Descripción |
-|------|--------|-------------|
-| `piano-prompter` | ✅ Existe | Teleprompter con scroll, audio, BPM ajustable |
-| `identifica-nota` | Pendiente | Nota en pentagrama → elegir nombre (lectura musical) |
-| `identifica-acorde` | Pendiente | Acorde en pentagrama → elegir nombre |
-| Tipos existentes reutilizados | Pendiente (solo contenido) | opcion-multiple, true-or-false, tap-the-pairs, fill-the-gap, mini-story, image-picker |
-
-### Pendiente — Features
-
-1. **Selector de manos**: antes de reproducir, elegir Sol (derecha), Fa (izquierda), o Ambas. Solo para piezas multi-voz.
-2. **Componente identifica-nota**: juego de lectura de notas en pentagrama (usa abcjs para renderizar 1 nota)
-3. **Componente identifica-acorde**: igual pero con acordes (reutiliza 90% de identifica-nota)
-
-### Pendiente — Contenido
-
-- Canciones P1-02 a P1-10 (mano derecha, melodías conocidas)
-- Teoría P1-T01 a P1-T10 (partes del piano, notas, duraciones, Mozart)
-- Canciones P4-02 a P4-10 (nivel actual del alumno)
-- Biografías: Mozart, Beethoven, Bach, Chopin, Tchaikovsky, Clara Schumann
-- Guía de extracción desde foto incluida en PROGRAMA_PIANO.md
+aventurero, princesa, espacial, océano, explorador, selva, arcoíris, elegante, pizarrón.
+Fix reciente: texto blanco sobre caja blanca en temas oscuros (commit 767da4a).
 
 ---
 
-## 4. INGLÉS
+## 3. MULTI-PERFIL ✅ EN MASTER
 
-### Completado ✅
-- 11 tipos de juego implementados
-- 118 JSONs de contenido (A0-01 a A1-12)
-- Colección Firebase `ingles` separada
-- Filtros por nivel (A0/A1 + subniveles) y búsqueda en Bóveda
-- Programa documentado (PROGRAMA_INGLES_GLOBAL.md, A1.md, GUIA_CREACION_INGLES.md)
-- Plan detallado A0 en `PLAN_INGLES_A0.md`
+Una cuenta Google → varios perfiles de hijo (estilo Netflix). Commit 94847b0.
+`accounts/{uid}` + `profiles/{profileId}` con `ownerUid`; `activeProfileId` en
+localStorage; ProfileSelector "¿Quién va a jugar?"; alta/edición self-service.
 
-### Pendiente - Contenido A1
-- A1-13 a A1-40 (gradual, según avance del estudiante)
-- Temas pendientes: Present Continuous, Can/Can't, There is/are, Prepositions, etc.
+**Pendiente operativo** (usuario, Firebase Console): desplegar `chuy-react-app/firestore.rules`
+y correr el botón de migración una vez — sin eso la app no carga perfiles.
+Fase 3 pendiente: PIN opcional de adulto.
 
 ---
 
-## 5. CIENCIAS APLICADAS ✅ COMPONENTE LISTO
+## 4. MATEMÁTICAS — CUBOS 3D ✅
 
-### Completado ✅
-- `ExperimentoGuia.jsx` — wizard paso a paso (Portada → Predicción → Pasos → Observación → Explicación → Quiz → Fin)
-- Registrado como `case 'experimento-guia'` en MisionRenderer
-- Integrado en: MateriaToggle, Dashboard, Bóveda, AdminMigración, Aventura.jsx
-- Colección Firebase: `ciencias`
-- Programa completo: `_ciencias/PROGRAMA_CIENCIAS.md` (4 niveles, 70 experimentos)
-
-### Niveles
-
-| Nivel | Nombre | Edad | Experimentos | Estado |
-|-------|--------|------|--------------|--------|
-| C0 | Mis Sentidos | 3-5 años (hija) | 10 | ✅ **Completo** (10/10) |
-| C1 | Explorador | 5-7 años (hijo, inicio) | 20 | ✅ **Completo** (20/20) |
-| C2 | Investigador | 7-9 años | 20 | Planeado |
-| C3 | Científico Jr. | 9-11 años | 20 | Planeado |
-
-### Contenido creado
-
-| Archivo | Nivel | Tema |
-|---------|-------|------|
-| `C1-01_volcan-de-vinagre.json` | C1-01 | Reacciones químicas |
-| `C1-02_torre-de-liquidos.json` | C1-02 | Densidad |
-| `C1-03_que-atrae-un-iman.json` | C1-03 | Magnetismo |
-| `C1-04_flota-o-se-hunde.json` | C1-04 | Flotabilidad |
-| `C1-05_hielo-agua-vapor.json` | C1-05 | Estados de materia |
-| `C1-06_separando-mezclas.json` | C1-06 | Mezclas |
-| `C1-07_el-aire-ocupa-espacio.json` | C1-07 | Aire |
-| `C1-08_arcoiris-casero.json` | C1-08 | Luz y color |
-| `C1-09_telefono-de-vasos.json` | C1-09 | Sonido |
-| `C1-10_semilla-en-algodon.json` | C1-10 | Plantas |
-
-| `C1-11_globo-magico.json` | C1-11 | Electricidad estatica |
-| `C1-12_carrito-de-globo.json` | C1-12 | Fuerza (accion-reaccion) |
-| `C1-13_carrera-de-caidas.json` | C1-13 | Gravedad |
-| `C1-14_que-absorbe-mas.json` | C1-14 | Absorcion |
-| `C1-15_leche-magica.json` | C1-15 | Quimica de cocina |
-| `C1-16_huevo-en-botella.json` | C1-16 | Presion de aire |
-| `C1-17_flores-que-cambian-de-color.json` | C1-17 | Capilaridad |
-| `C1-18_barcos-de-papel-aluminio.json` | C1-18 | Superficie y flotacion |
-| `C1-19_derretir-hielo-rapido.json` | C1-19 | Temperatura |
-| `C1-20_mini-terrario.json` | C1-20 | Ecosistema |
-
-### Pendiente - Contenido
-- C1 completo (20/20) ✅
-- Siguiente: Lote 3 — C0-01 a C0-10 (Mis Sentidos, para hija) o Lote 4 — C2-01 a C2-10
-- Producción en lotes de 10, ritmo 1 experimento/semana
-- Ver `_ciencias/PROGRAMA_CIENCIAS.md` para programa completo
+- `Cubo3D.jsx`: three.js **procedural + lazy** — el plano se dobla solapa a solapa
+  (tocándolas o con deslizador) y el cubo se gira libre por cuaternión.
+- 5 aventuras de desarrollo-cubos (fácil → experto → vista desde la esquina) con
+  tipos: caras opuestas, ¿cuál plano SÍ forma un cubo?, orientación alrededor del vértice.
+- Regla de uso de three.js (dónde sí / dónde no): memoria del proyecto
+  `three_js_donde_si_donde_no`. Geografía NO usa three (globo con `geoOrthographic` de d3-geo).
 
 ---
 
-## 6. GEOGRAFÍA
+## 5. PIANO
 
-### Objetivo
-Aprender países, capitales, cultura, ríos, montañas y datos curiosos de forma visual e interactiva.
+### Hecho ✅
+- Teleprompter con motor "Enfoque 4" (mapa tiempo→posición vía `setTiming` + reloj
+  AudioContext), validado al oído a 1 y 2 manos. Historial: `_piano/HISTORIAL_TELEPROMPTER.md`.
+- Selector de manos (derecha / izquierda / ambas) en piezas multi-voz.
+- `identifica-nota`: 13 lecciones (P1→P4, sostenidos/bemoles, graves, agudas, rango amplio).
+- Teoría con tipos reutilizados: mini-story compositores (7), tap-the-pairs, fill-the-gap,
+  opcion-multiple, true-or-false, image-picker.
 
-### Formato: Juegos existentes + componente de exploración de mapa
-
-#### Juegos que ya sirven (solo contenido nuevo):
-- `image-picker`: ¿De qué país es esta bandera? (URLs de imágenes de banderas)
-- `tap-the-pairs`: País↔Capital, País↔Continente
-- `fill-the-gap`: "La capital de Japón es ___"
-- `true-or-false`: "Brasil está en Europa" → Falso
-- `word-scramble`: Nombres de países/capitales
-
-#### Componente nuevo: `ExploradorMapa.jsx`
-- Mapa SVG interactivo (por continente)
-- Click en un país → muestra tarjeta con:
-  - Bandera (imagen URL)
-  - Capital
-  - Idioma
-  - Datos curiosos (comida típica, animal emblemático, monumento)
-  - Ríos y montañas principales
-- Quiz integrado al explorar
-
-### Imágenes
-- **Banderas**: URLs públicas (ej: flagcdn.com o similar)
-- **Fotos de cultura/monumentos**: URLs o Firebase Storage si es necesario
-- Los juegos tipo `image-picker` ya soportan `imagen_url` en los retos
-
-### Colección Firebase: `geografia`
-
-### Temas propuestos
-
-| Nivel | Tema | Contenido |
-|-------|------|-----------|
-| G1-01 | Mi país (México) | Estados, comida, cultura |
-| G1-02 | América del Norte | México, USA, Canadá |
-| G1-03 | América del Sur | Brasil, Argentina, Perú, Colombia |
-| G1-04 | Europa | España, Francia, Italia, Alemania, UK |
-| G1-05 | Asia | Japón, China, India |
-| G1-06 | Continentes y océanos | Vista global |
-| G1-07 | Ríos del mundo | Nilo, Amazonas, Misisipi |
-| G1-08 | Montañas del mundo | Everest, Andes, Alpes |
-
-### Esfuerzo estimado
-- 1-2 sesiones: ExploradorMapa + integración
-- 2-3 sesiones: contenido (mapas SVG + datos de países + quizzes)
-- Mapas SVG: usar librerías open source o simplificados
+### Pendiente
+1. **Transcribir canciones del libro Yamaha 4** donde va el hijo (el usuario manda fotos).
+2. Acordes de mano izquierda de Zapatillas Rojas (el usuario los dicta).
+3. Validar al oído el selector de manos por separado.
+4. `identifica-acorde` (reutiliza ~90% de identifica-nota).
 
 ---
 
-## 7. BÓVEDA ✅ MEJORADA
+## 6. INGLÉS
 
-### Completado
-- Filtros por nivel (chips A0/A1 + subniveles expandibles)
-- Búsqueda por título, tema, nivel o descripción
-- Filtros combinables (tipo + nivel + búsqueda)
-
----
-
-## 8. ORDEN DE IMPLEMENTACIÓN GLOBAL
-
-| Prioridad | Tarea | Esfuerzo | Estado |
-|-----------|-------|----------|--------|
-| ~~1~~ | ~~Temas visuales (9 temas)~~ | — | ✅ |
-| ~~2~~ | ~~Toggle materias (3)~~ | — | ✅ |
-| ~~3~~ | ~~Piano teleprompter~~ | — | ✅ |
-| ~~4~~ | ~~Contenido inglés A0-A1 (118 JSONs)~~ | — | ✅ |
-| ~~5~~ | ~~Filtros Bóveda (nivel + búsqueda)~~ | — | ✅ |
-| **6** | Contenido piano (10-15 canciones) | 1-2 sesiones | Pendiente |
-| ~~7~~ | ~~Ciencias: ExperimentoGuia + integración~~ | — | ✅ |
-| ~~8~~ | ~~Ciencias: contenido C1-01 a C1-10 (Lote 1)~~ | — | ✅ |
-| **9** | Geografía: ExploradorMapa + integración | 1-2 sesiones | Pendiente |
-| **10** | Geografía: contenido (mapas + datos) | 2-3 sesiones | Pendiente |
-| **11** | Piano: clave de Fa (mano izquierda) | 1 sesión | Pendiente |
-| **12** | Contenido A1-13 a A1-40 | Gradual | Pendiente |
-| **13** | Logotipo app (favicon, PWA, splash) | 1 sesión | Pendiente |
-| **Futuro** | SaaS (pagos, registro, tenant isolation) | Por definir | Futuro |
+Hecho ✅: 11 tipos de juego, 118 JSONs (A0 completo + A1 hasta 12), filtros Bóveda.
+Pendiente: A1-13 a A1-40 gradual según avance (Present Continuous, Can/Can't,
+There is/are, Prepositions...). Alumno actualmente en Present Simple negativo (A1-10).
 
 ---
 
-## Apéndice: Notación ABC (Piano)
+## 7. CIENCIAS
 
-| Símbolo | Significado |
-|---------|-------------|
-| C D E F G A B | Notas centrales (Do Re Mi Fa Sol La Si) |
-| c d e f g a b | Octava arriba |
-| C2 | Blanca (2 beats) |
-| C4 | Redonda (4 beats) |
-| C/2 | Corchea (medio beat) |
-| z | Silencio (1 beat) |
-| \| | Separador de compás |
-| \|] | Fin de canción |
-| ^F | Fa sostenido |
-| _B | Si bemol |
+Componente `ExperimentoGuia.jsx` (wizard Portada → Predicción → Pasos → Observación →
+Explicación → Quiz) + `mezclador-colores` como motor interactivo con retos.
+
+| Nivel | Edad | Estado |
+|-------|------|--------|
+| C0 Mis Sentidos | 3-5 (hija) | ✅ Completo (10 + laboratorio de colores) |
+| C1 Explorador | 5-7 (hijo) | ✅ Completo (20 + retos de color) |
+| C2 Investigador | 7-9 | Pendiente (Lotes 4-5) — **siguiente para el hijo** |
+| C3 Científico Jr. | 9-11 | Pendiente (Lotes 6-7) |
+
+### 🔭 Astronomía (C2-21 a C2-30) — EN CONSTRUCCIÓN
+Ramal con motor 3D propio (three.js, patrón Cubo3D + MezcladorColores):
+- Tipo nuevo `sistema-solar`: escena `planetas` (Sol + 8 planetas procedurales,
+  explorar + retos "toca el planeta...") y escena `tierra-luna` (fases lunares y
+  eclipses con deslizador).
+- Resto del lote con tipos existentes: image-picker (fotos reales por URL),
+  mini-story, tap-the-pairs, opcion-multiple, experimento-guia (eclipse casero).
+- Detalle completo en `_ciencias/PROGRAMA_CIENCIAS.md` §Astronomía.
+
+---
+
+## 8. GEOGRAFÍA ✅ CONSTRUIDA
+
+- `ExploradorMapa.jsx` con mapas por continente + **globo terráqueo girable**
+  (`geoOrthographic`, d3-geo, sin three.js).
+- 48 JSONs en 9 tipos (explorador-mapa, expediciones, image-picker con banderas
+  flagcdn, tap-the-pairs, mini-story, opcion-multiple, true-or-false, fill-the-gap,
+  word-scramble). Niveles G0-G2 en marcha; G3 pendiente.
+- Programa: `_geografia/PROGRAMA_GEOGRAFIA.md`.
+
+---
+
+## 9. ARTE / DIBUJO ✅ · PEQUES ✅ · LETRAS ✅
+
+- **Dibujo**: SVG-first (SVGs propios, sin descargas), 73 JSONs en colorear /
+  dibujo-guiado / dibujo-libre / mezclador-colores. Galería en `public/dibujo/galeria.html`.
+- **Peques** (2-5 años): lanzador kid-safe, bundle Gimnasia Cerebral.
+- **Letras** (hija ~4): motores `abecedario`, `letra-quiz` (un motor, campo `modo`),
+  `silabas`; trazo = `colorear` con SVG punteado. L0 aprobado con la niña; **L1 (m,p,s,l)
+  pendiente de probar con ella** → luego L2 + motores `arma-la-palabra` / `lee-y-elige`.
+  Validador: `node _letras/_valida.js`. OJO: `_letras/` lleva acentos (se habla por TTS).
+
+---
+
+## 10. ORDEN DE PENDIENTES
+
+| Prioridad | Tarea | Estado |
+|-----------|-------|--------|
+| **1** | Astronomía 3D (motor + lote C2-21..30) | 🔨 En construcción |
+| **2** | Ciencias C2-01 a C2-10 (experimentos — destraba al hijo) | Pendiente |
+| **3** | Piano: canciones Yamaha 4 (esperando fotos del usuario) | Bloqueado por usuario |
+| **4** | Letras: probar L1 con la niña → L2 | Bloqueado por prueba |
+| **5** | Inglés A1-13+ | Gradual |
+| **6** | Multi-perfil: desplegar reglas + migración (Firebase Console) | Bloqueado por usuario |
+| **7** | Logotipo app (favicon, PWA, splash) | Pendiente |
+| **Futuro** | SaaS (pagos, registro, tenant isolation) | Futuro |
+
+---
+
+## Notas operativas
+
+- Branch local `master` → push **`master:main`** (el remoto principal es main).
+- Netlify: no usar comando `ignore` (canceló todos los deploys dos veces).
+- Sospechar del traductor de Chrome ante bugs visuales raros (rompió Letras).
+- three.js: solo geometría procedural + lazy import, nunca .glb ni texturas externas.
