@@ -109,6 +109,15 @@
   animation: espacio3d-latido 0.9s ease-in-out infinite;
 }
 
+/* Segunda linea informativa (distancia al Sol en estaciones) */
+.espacio3d-subfase {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-texto, #2c3e50);
+  opacity: 0.8;
+  text-align: center;
+}
+
 @keyframes espacio3d-latido {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.08); }

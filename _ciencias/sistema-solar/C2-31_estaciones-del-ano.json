@@ -14,8 +14,8 @@
       "modo": "completo",
       "titulo": "¿Por qué hay verano e invierno?",
       "emoji": "🍂",
-      "instruccion": "Mueve el deslizador para recorrer el año completo. Fíjate en la varilla del eje de la Tierra (la puntita ROJA es el polo norte): mientras la Tierra viaja, el eje SIEMPRE apunta al mismo lado. Y mira el recuadro: ahí se ve a qué mitad del mundo le pega la luz de frente.",
-      "leccion": "Mucha gente cree que hay verano cuando la Tierra está más cerca del Sol… ¡y es FALSO! La Tierra está igual de lejos todo el año. El secreto es que viaja INCLINADA: cuando nuestra mitad del mundo se inclina hacia el Sol, la luz nos pega de frente y hace calor. Cuando se inclina al lado contrario, la luz llega de refilón y hace frío.",
+      "instruccion": "Mueve el deslizador para recorrer el año completo. Fíjate en la varilla del eje de la Tierra (la puntita ROJA es el polo norte): mientras la Tierra viaja, el eje SIEMPRE apunta al mismo lado. Mira el recuadro para ver a qué mitad del mundo le pega la luz de frente… y vigila el número de la DISTANCIA al Sol mientras recorres el año. ¿Cambia mucho?",
+      "leccion": "Mucha gente cree que hay verano cuando la Tierra está más cerca del Sol… ¡y es FALSO! La órbita es casi un CÍRCULO perfecto (aunque en los libros la pinten ovalada): la distancia casi no cambia en todo el año — compruébalo con el número de abajo. El secreto es que la Tierra viaja INCLINADA: cuando nuestra mitad del mundo se inclina hacia el Sol, la luz nos pega de frente y hace calor. Cuando se inclina al lado contrario, la luz llega de refilón y hace frío.",
       "datos": {
         "sol": "El Sol ilumina igual todo el año. Lo que cambia es CÓMO le llega su luz a cada mitad de la Tierra: de frente (calorcito) o de refilón (frío).",
         "tierra": "La Tierra viaja inclinada 23.5 grados, como un trompo chueco. Esa inclinación nunca cambia de dirección… ¡y por eso existen las estaciones!"

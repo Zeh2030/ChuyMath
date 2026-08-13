@@ -84,6 +84,15 @@ export const ESTACIONES = [
   { id: 'primavera', nombre: 'Primavera', emoji: '🌸', mes: 'marzo' },
 ];
 
+// Distancia Tierra-Sol REAL: la orbita es casi un circulo perfecto
+// (excentricidad 0.0167 — los ovalos exagerados de los libros son justo lo que
+// alimenta el mito de "verano = mas cerca"). El perihelio cae a inicios de
+// ENERO: estamos MAS CERCA del Sol en pleno invierno nuestro — la prueba
+// definitiva de que la distancia no causa las estaciones.
+const UA_MILLONES_KM = 149.6;
+const EXCENTRICIDAD = 0.0167;
+const ANGULO_PERIHELIO = 194; // solsticio de diciembre = 180; el 3 de enero ≈ +14
+
 // Estacion en el hemisferio NORTE (Mexico) con la Tierra a `angulo` grados de su
 // orbita. En el sur siempre es la contraria — esa es la mitad de la leccion.
 export const estacionInfoDe = (angulo) => {
@@ -91,6 +100,8 @@ export const estacionInfoDe = (angulo) => {
   const sector = Math.round(a / 90) % 4;
   const e = ESTACIONES[sector];
   const sur = ESTACIONES[(sector + 2) % 4];
+  const desdePerihelio = ((a - ANGULO_PERIHELIO) * Math.PI) / 180;
+  const distancia = UA_MILLONES_KM * (1 - EXCENTRICIDAD * Math.cos(desdePerihelio));
   return {
     angulo: a,
     estacion: e.id,
@@ -100,6 +111,8 @@ export const estacionInfoDe = (angulo) => {
     estacionSur: sur.id,
     nombreSur: sur.nombre,
     emojiSur: sur.emoji,
+    distancia: Math.round(distancia * 10) / 10,
+    masCerca: Math.cos(desdePerihelio) > 0.85, // a ±~32 grados del perihelio (enero)
   };
 };
 

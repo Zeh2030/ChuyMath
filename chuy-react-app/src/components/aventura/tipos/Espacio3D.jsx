@@ -495,7 +495,15 @@ const Espacio3D = forwardRef(function Espacio3D(
       // recibe la luz de frente y cual de refilon.
       const camEst = new THREE.PerspectiveCamera(34, 1, 0.1, 200);
 
-      escEst = { grupoTierra, tierra, camEst };
+      // "Regla" Sol→Tierra: acompana al numero de la distancia que se muestra
+      // abajo — y se ve que casi no cambia en todo el ano.
+      const posRegla = new Float32Array(6);
+      const geoRegla = registrar(new THREE.BufferGeometry());
+      geoRegla.setAttribute('position', new THREE.BufferAttribute(posRegla, 3));
+      const matRegla = registrar(new THREE.LineBasicMaterial({ color: 0x8090b8, transparent: true, opacity: 0.55 }));
+      escena3.add(new THREE.Line(geoRegla, matRegla));
+
+      escEst = { grupoTierra, tierra, camEst, geoRegla, posRegla };
     }
 
     if (escena === 'constelaciones') {
@@ -839,6 +847,9 @@ const Espacio3D = forwardRef(function Espacio3D(
         // El grupo solo se TRASLADA: el eje inclinado nunca cambia de direccion.
         escEst.grupoTierra.position.set(Math.cos(a) * EST.orbita, 0, -Math.sin(a) * EST.orbita);
         escEst.tierra.rotation.y += dt * 1.1;
+        escEst.posRegla[3] = escEst.grupoTierra.position.x;
+        escEst.posRegla[5] = escEst.grupoTierra.position.z;
+        escEst.geoRegla.attributes.position.needsUpdate = true;
         if (est.enfocado === 'tierra') {
           objetivoX = escEst.grupoTierra.position.x;
           objetivoZ = escEst.grupoTierra.position.z;
@@ -1047,9 +1058,17 @@ const Espacio3D = forwardRef(function Espacio3D(
   } else if (escena === 'estaciones') {
     const info = estacionInfoDe(angulo);
     etiqueta = (
-      <div className="espacio3d-fase">
-        {`${info.emoji} ${info.nombre} aquí (${info.mes}) · en el sur: ${info.emojiSur} ${info.nombreSur}`}
-      </div>
+      <>
+        <div className="espacio3d-fase">
+          {`${info.emoji} ${info.nombre} aquí (${info.mes}) · en el sur: ${info.emojiSur} ${info.nombreSur}`}
+        </div>
+        <div className="espacio3d-subfase">
+          {`📏 Distancia al Sol: ${info.distancia.toFixed(1)} millones de km`}
+          {info.masCerca
+            ? ' — ¡lo MÁS cerca del año… en pleno invierno nuestro!'
+            : ' (casi igual todo el año)'}
+        </div>
+      </>
     );
   } else if (escena === 'cometa') {
     const info = cometaInfoDe(angulo);
