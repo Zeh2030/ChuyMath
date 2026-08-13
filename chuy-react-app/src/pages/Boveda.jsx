@@ -255,10 +255,14 @@ const Boveda = () => {
     }
 
     const dias = Math.floor((Date.now() - fecha.getTime()) / (1000*60*60*24));
+    // La fecha del ID marca el ORDEN del temario, no cuando se publico, asi que
+    // el contenido preparado por delante tiene fecha futura. Sin este caso
+    // salia "Hace -19 dias".
+    if (dias < 0) return fecha.toLocaleDateString('es-ES', { day: 'numeric', month: 'long' });
     if (dias === 0) return 'Hoy';
     if (dias === 1) return 'Ayer';
     if (dias < 7) return `Hace ${dias} días`;
-    
+
     return fecha.toLocaleDateString('es-ES', { day: 'numeric', month: 'long' });
   };
 
