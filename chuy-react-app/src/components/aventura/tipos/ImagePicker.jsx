@@ -1,31 +1,28 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useMemo } from 'react';
 import './ImagePicker.css';
+
+const shuffle = (arr) => {
+  const s = [...arr];
+  for (let i = s.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [s[i], s[j]] = [s[j], s[i]];
+  }
+  return s;
+};
 
 const ImagePicker = ({ mision, onCompletar }) => {
   const retos = mision.retos || [];
   const [retoActual, setRetoActual] = useState(0);
   const [seleccion, setSeleccion] = useState(null);
   const [estado, setEstado] = useState('jugando');
-  const [opciones, setOpciones] = useState([]);
   const [completado, setCompletado] = useState(false);
 
   const reto = retos[retoActual];
 
-  const shuffle = useCallback((arr) => {
-    const s = [...arr];
-    for (let i = s.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [s[i], s[j]] = [s[j], s[i]];
-    }
-    return s;
-  }, []);
-
-  useEffect(() => {
-    if (!reto) return;
-    setOpciones(shuffle(reto.opciones.map((op, i) => ({ ...op, originalIndex: i }))));
-    setSeleccion(null);
-    setEstado('jugando');
-  }, [retoActual, reto, shuffle]);
+  const opciones = useMemo(
+    () => (reto ? shuffle(reto.opciones.map((op, i) => ({ ...op, originalIndex: i }))) : []),
+    [reto]
+  );
 
   if (completado) {
     return (
@@ -58,6 +55,8 @@ const ImagePicker = ({ mision, onCompletar }) => {
   const handleSiguiente = () => {
     if (retoActual < retos.length - 1) {
       setRetoActual(prev => prev + 1);
+      setSeleccion(null);
+      setEstado('jugando');
     } else {
       setCompletado(true);
     }
@@ -84,6 +83,11 @@ const ImagePicker = ({ mision, onCompletar }) => {
       {/* Question. Sin palabra_en (geografia/ciencias) la pregunta va directo
           en espanol, sin la etiqueta inglesa ni el boton de audio. */}
       <div className="ip-question">
+        {/* Foto-estimulo del reto (banderas de geografia, fotos NASA):
+            se pregunta SOBRE esta imagen y las opciones son texto. */}
+        {reto.imagen_url && (
+          <img className="ip-imagen-reto" src={reto.imagen_url} alt="" loading="lazy" />
+        )}
         {reto.palabra_en ? (
           <>
             <p className="ip-question-label">Which one is...</p>

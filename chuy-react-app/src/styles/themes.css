@@ -863,3 +863,21 @@
 [data-theme="espacial"] div[style*="color: rgb(85, 85, 85)"] {
   color: #ccc !important;
 }
+
+/* ============================================
+   IMAGE PICKER en temas oscuros — las tarjetas de opcion son BLANCAS,
+   asi que el override global de span (#ccc) dejaba texto claro sobre
+   caja blanca (mismo bug que 767da4a). Se fuerza texto oscuro dentro
+   de las cajas claras del juego.
+   ============================================ */
+[data-theme="espacial"] .ip-card span,
+[data-theme="pizarron"] .ip-card span {
+  color: #2e7d32;
+}
+
+[data-theme="espacial"] .ip-explanation,
+[data-theme="pizarron"] .ip-explanation,
+[data-theme="espacial"] .ip-explanation span,
+[data-theme="pizarron"] .ip-explanation span {
+  color: #00695c;
+}

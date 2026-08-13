@@ -118,6 +118,18 @@
   border-radius: 10px;
 }
 
+/* Foto-estimulo del reto (campo `imagen_url` a nivel reto: banderas, fotos NASA).
+   object-fit contain para no recortar banderas. */
+.ip-imagen-reto {
+  display: block;
+  margin: 0 auto 14px;
+  max-width: min(280px, 90%);
+  max-height: 170px;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+}
+
 /* Pregunta directa en espanol (retos sin palabra_en) */
 .ip-word-es {
   font-size: 1.1rem;
