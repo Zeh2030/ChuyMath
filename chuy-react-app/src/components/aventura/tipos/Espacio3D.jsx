@@ -180,11 +180,39 @@ const crearTexturaGlow = () => {
   return textura;
 };
 
+// Halo suave y blanco para las estrellas de las constelaciones: las hace
+// bonitas Y grandes de tocar sin convertirlas en pelotas.
+const crearTexturaHalo = () => {
+  const S = 128;
+  const canvas = document.createElement('canvas');
+  canvas.width = S;
+  canvas.height = S;
+  const ctx = canvas.getContext('2d');
+  const g = ctx.createRadialGradient(S / 2, S / 2, 0, S / 2, S / 2, S / 2);
+  g.addColorStop(0, 'rgba(255,255,255,0.95)');
+  g.addColorStop(0.22, 'rgba(255,255,255,0.38)');
+  g.addColorStop(1, 'rgba(255,255,255,0)');
+  ctx.fillStyle = g;
+  ctx.fillRect(0, 0, S, S);
+  const textura = new THREE.CanvasTexture(canvas);
+  textura.colorSpace = THREE.SRGBColorSpace;
+  return textura;
+};
+
 /* ============================ constantes ============================ */
 
 const FOV = 45;
 const UMBRAL_TOQUE = 6;   // px; por debajo es un toque, no un arrastre
 const INSET = 140;        // px del recuadro "asi se ve desde la Tierra"
+
+// Escena constelaciones: tamanos en RADIANES aparentes (el bucle multiplica por
+// la distancia a la camara). Asi una estrella se ve —y se toca— igual de grande
+// este a 20 o a 100 unidades. El blanco de toque es invisible pero ancho: con
+// esferas del tamano visible, tocar una estrella en tablet era casi imposible.
+const K_ESTRELLA = 0.016; // nucleo ~14 px
+const K_HALO = 0.05;      // resplandor ~48 px
+const K_TOQUE = 0.032;    // blanco del dedo ~28-35 px (el maximo antes de que
+                          // las 3 estrellas del cinturon de Orion se pisen)
 const VEL_ORBITAL = 0.22; // rad/s de la Tierra (los demas van a su velocidad relativa)
 
 // Escena tierra-luna. Tamanos exagerados a proposito (la Luna real esta a 60
@@ -236,6 +264,10 @@ const Espacio3D = forwardRef(function Espacio3D(
 
   // Desenlace del ultimo lanzamiento (solo escena satelite): lo escribe el bucle.
   const [resultado, setResultado] = useState(null);
+
+  // Constelaciones: pista caliente/frio y nombre de la ultima estrella tocada.
+  const [pistaConst, setPistaConst] = useState('frio');
+  const [estrellaTocada, setEstrellaTocada] = useState(null);
 
   // El bucle lee las props cada frame sin reconstruir la escena.
   const estadoRef = useRef({ enfocado, comparar, seleccionable, angulo });
@@ -356,6 +388,8 @@ const Espacio3D = forwardRef(function Espacio3D(
     let tl = null;             // escena tierra-luna
     let escEst = null;         // escena estaciones
     const constels = [];       // escena constelaciones
+    const escalables = [];     // { obj, k, pos } — tamano aparente constante en pantalla
+    const nombreEstrella = new Map(); // malla -> nombre de la estrella
     let escCometa = null;      // escena cometa
     let escSat = null;         // escena satelite (canon de Newton)
 
@@ -512,12 +546,25 @@ const Espacio3D = forwardRef(function Espacio3D(
       escena3.add(new THREE.AmbientLight(0xffffff, 1));
 
       // La Tierra es un puntito azul en el origen.
-      const tierra = crearCuerpo({ id: 'tierra', radio: 0.5, tex: 'tierra', color: '#2f6fd0', semilla: 13, lambert: false });
+      const tierra = crearCuerpo({ id: 'tierra', radio: 0.7, tex: 'tierra', color: '#2f6fd0', semilla: 13, lambert: false });
       escena3.add(tierra);
 
       const geoEstrella = registrar(new THREE.SphereGeometry(1, 16, 12));
+      const texHalo = registrar(crearTexturaHalo());
+      // Material invisible pero SI tocable: agranda el blanco del dedo sin
+      // engordar la estrella (con visible=false el raycast no lo veria).
+      const matToque = registrar(new THREE.MeshBasicMaterial({
+        transparent: true, opacity: 0, depthWrite: false,
+      }));
       const vDir = new THREE.Vector3();
       const MENOS_Z = new THREE.Vector3(0, 0, -1);
+
+      // Un blanco de toque generoso tambien para la Tierra (es 1 de los 3 datos).
+      const toqueTierra = new THREE.Mesh(geoEstrella, matToque);
+      escena3.add(toqueTierra);
+      mallas.push(toqueTierra);
+      porMalla.set(toqueTierra, 'tierra');
+      escalables.push({ obj: toqueTierra, k: K_TOQUE, pos: new THREE.Vector3() });
 
       CONSTELACIONES.forEach((c) => {
         const grupo = new THREE.Group();
@@ -531,14 +578,31 @@ const Espacio3D = forwardRef(function Espacio3D(
           return vDir.clone().multiplyScalar(e.dist);
         });
 
+        const halos = [];
         c.estrellas.forEach((e, i) => {
           const mat = registrar(new THREE.MeshBasicMaterial({ color: e.color || '#f5f6ff' }));
           const estrella = new THREE.Mesh(geoEstrella, mat);
-          estrella.scale.setScalar(0.5 * e.brillo);
           estrella.position.copy(puntos3d[i]);
           grupo.add(estrella);
-          mallas.push(estrella);
-          porMalla.set(estrella, c.id); // tocar cualquier estrella abre la constelacion
+          escalables.push({ obj: estrella, k: K_ESTRELLA * e.brillo, pos: new THREE.Vector3() });
+
+          const matHalo = registrar(new THREE.SpriteMaterial({
+            map: texHalo, color: e.color || '#dce6ff',
+            transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+          }));
+          const halo = new THREE.Sprite(matHalo);
+          halo.position.copy(puntos3d[i]);
+          grupo.add(halo);
+          halos.push(matHalo);
+          escalables.push({ obj: halo, k: K_HALO * e.brillo, pos: new THREE.Vector3() });
+
+          const toque = new THREE.Mesh(geoEstrella, matToque);
+          toque.position.copy(puntos3d[i]);
+          grupo.add(toque);
+          mallas.push(toque);
+          porMalla.set(toque, c.id); // tocar cualquier estrella abre la constelacion
+          nombreEstrella.set(toque, e.nombre);
+          escalables.push({ obj: toque, k: K_TOQUE, pos: new THREE.Vector3() });
         });
 
         const paresLinea = [];
@@ -549,8 +613,25 @@ const Espacio3D = forwardRef(function Espacio3D(
         const matLineas = registrar(new THREE.LineBasicMaterial({ color: 0x5a6a92, transparent: true, opacity: 0.75 }));
         grupo.add(new THREE.LineSegments(geoLineas, matLineas));
 
-        constels.push({ id: c.id, dirVista, matLineas, alineada: false });
+        // Lineas de VISION Tierra→estrella: aqui se ve el porque. Cada estrella
+        // esta a su propia distancia; solo desde la Tierra se alinean en dibujo.
+        const paresVision = [];
+        puntos3d.forEach((p) => {
+          paresVision.push(new THREE.Vector3(0, 0, 0), p);
+        });
+        const geoVision = registrar(new THREE.BufferGeometry().setFromPoints(paresVision));
+        const matVision = registrar(new THREE.LineBasicMaterial({
+          color: 0x4d5f8a, transparent: true, opacity: 0.18,
+        }));
+        grupo.add(new THREE.LineSegments(geoVision, matVision));
+
+        constels.push({ id: c.id, dirVista, matLineas, matVision, halos, alineada: false });
       });
+
+      // Las estrellas nunca se mueven: se guarda su posicion de mundo una vez
+      // y el bucle solo mide la distancia a la camara.
+      escena3.updateMatrixWorld(true);
+      escalables.forEach((s) => s.obj.getWorldPosition(s.pos));
     }
 
     if (escena === 'cometa') {
@@ -691,6 +772,8 @@ const Espacio3D = forwardRef(function Espacio3D(
     const V_ARRIBA = new THREE.Vector3(0, 1, 0);
     const COL_ORO = new THREE.Color(0xf1c40f);
     const COL_LINEA_CONST = new THREE.Color(0x5a6a92);
+    const colTmp = new THREE.Color();
+    let cajonPrevio = null; // ultimo "caliente/frio" avisado a React
 
     const recentrar = () => {
       yaw = YAW0;
@@ -724,6 +807,8 @@ const Espacio3D = forwardRef(function Espacio3D(
     const lienzo = renderer.domElement;
     let gesto = null;
 
+    // Devuelve la MALLA tocada (no el id): quien llama decide si quiere el id
+    // del cuerpo o el nombre de la estrella.
     const cuerpoEn = (e) => {
       const r = lienzo.getBoundingClientRect();
       if (!r.width || !r.height) return null;
@@ -731,7 +816,7 @@ const Espacio3D = forwardRef(function Espacio3D(
       ndc.y = -((e.clientY - r.top) / r.height) * 2 + 1;
       rayo.setFromCamera(ndc, camara);
       const impactos = rayo.intersectObjects(mallas, false);
-      return impactos.length ? porMalla.get(impactos[0].object) ?? null : null;
+      return impactos.length ? impactos[0].object : null;
     };
 
     const alBajar = (e) => {
@@ -769,7 +854,10 @@ const Espacio3D = forwardRef(function Espacio3D(
         return;
       }
       if (!estadoRef.current.seleccionable) return;
-      const id = cuerpoEn(e);
+      const malla = cuerpoEn(e);
+      if (!malla) return;
+      if (nombreEstrella.has(malla)) setEstrellaTocada(nombreEstrella.get(malla));
+      const id = porMalla.get(malla);
       if (id) onSeleccionRef.current?.(id);
     };
 
@@ -879,9 +967,17 @@ const Espacio3D = forwardRef(function Espacio3D(
           distDeseada = 7;
         }
       } else if (escena === 'constelaciones') {
+        // Tamano aparente constante: la estrella se ve (y se toca) igual de
+        // grande sin importar a que distancia de la camara haya quedado.
+        escalables.forEach((s) => {
+          s.obj.scale.setScalar(s.k * camara.position.distanceTo(s.pos));
+        });
+
         // ¿Desde donde mira el usuario? Si su direccion de vista coincide con la
-        // direccion Tierra→constelacion, la figura "encaja": lineas doradas y aviso.
+        // direccion Tierra→constelacion, la figura "encaja". Y mientras tanto,
+        // caliente/frio: las lineas se van dorando conforme uno se acerca.
         vTmp.copy(objetivoCam).sub(camara.position).normalize();
+        let mejor = 0;
         constels.forEach((k) => {
           const ang = vTmp.angleTo(k.dirVista);
           if (!k.alineada && ang < 0.14) {
@@ -890,9 +986,23 @@ const Espacio3D = forwardRef(function Espacio3D(
           } else if (k.alineada && ang > 0.22) {
             k.alineada = false;
           }
-          k.matLineas.color.lerp(k.alineada ? COL_ORO : COL_LINEA_CONST, Math.min(1, dt * 6));
-          k.matLineas.opacity += ((k.alineada ? 1 : 0.75) - k.matLineas.opacity) * Math.min(1, dt * 6);
+          // 1 = encajada, 0 = a mas de ~50 grados de distancia.
+          const calor = Math.max(0, Math.min(1, 1 - ang / 0.9));
+          mejor = Math.max(mejor, calor);
+          colTmp.copy(COL_LINEA_CONST).lerp(COL_ORO, calor);
+          k.matLineas.color.lerp(colTmp, Math.min(1, dt * 6));
+          k.matLineas.opacity += ((0.5 + 0.5 * calor) - k.matLineas.opacity) * Math.min(1, dt * 6);
+          k.matVision.opacity += ((0.12 + 0.4 * calor) - k.matVision.opacity) * Math.min(1, dt * 6);
+          k.halos.forEach((h) => {
+            h.opacity += ((0.55 + 0.45 * calor) - h.opacity) * Math.min(1, dt * 6);
+          });
         });
+        // Solo se avisa a React cuando cambia el "cajon", no cada frame.
+        const cajon = mejor > 0.84 ? 'encaja' : mejor > 0.6 ? 'caliente' : mejor > 0.35 ? 'tibio' : 'frio';
+        if (cajon !== cajonPrevio) {
+          cajonPrevio = cajon;
+          setPistaConst(cajon);
+        }
       } else if (escena === 'cometa') {
         const t = (est.angulo * Math.PI) / 180;
         const x2 = COMETA.a * Math.cos(t) - escCometa.foco;
@@ -1129,6 +1239,21 @@ const Espacio3D = forwardRef(function Espacio3D(
         </div>
       </>
     );
+  } else if (escena === 'constelaciones') {
+    const TEXTOS = {
+      frio: '❄️ Frío… sigue girando la vista',
+      tibio: '🌡️ Tibio: vas por buen camino',
+      caliente: '🔥 ¡Caliente! Ya casi encaja',
+      encaja: '✨ ¡ENCAJÓ! Este es el punto de vista de la Tierra',
+    };
+    etiqueta = (
+      <>
+        <div className={`espacio3d-fase ${pistaConst === 'encaja' ? 'eclipse' : ''}`}>
+          {TEXTOS[pistaConst]}
+        </div>
+        {estrellaTocada && <div className="espacio3d-subfase">⭐ {estrellaTocada}</div>}
+      </>
+    );
   } else if (escena === 'satelite') {
     const TEXTOS = {
       volando: '🛰️ Volando…',
@@ -1157,7 +1282,6 @@ const Espacio3D = forwardRef(function Espacio3D(
       </div>
 
       {conSlider && (
-        <>
           <div className="espacio3d-barra">
             <span className="espacio3d-extremo">{EXTREMOS[escena][0]}</span>
             <input
@@ -1181,9 +1305,9 @@ const Espacio3D = forwardRef(function Espacio3D(
               </button>
             )}
           </div>
-          {etiqueta}
-        </>
       )}
+
+      {etiqueta}
 
       <span className="espacio3d-pista">{PISTAS[escena]}</span>
     </div>
