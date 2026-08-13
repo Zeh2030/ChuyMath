@@ -2,7 +2,7 @@
   base = "chuy-react-app"
   publish = "dist"
   command = "npm run build"
-  # NO volver a poner un comando `ignore` aqui sin una razon medida.
+  # NO volver a poner un comando `ignore` aqui sin probarlo antes en una rama.
   #
   # Historia (2026-08-09): se agrego un `ignore` con git diff para "ahorrar
   # minutos de build" y el resultado fue que TODOS los deploys se cancelaron
@@ -10,11 +10,22 @@
   # comando devolvia 0 siempre. El sintoma en el log es "Building: Complete"
   # seguido de "Deploying: Skipped".
   #
-  # Y el ahorro que buscaba no existia: en el plan gratuito hay 300 creditos/mes
-  # y el consumo real del sitio es 0,1 (las "Implementaciones de produccion"
-  # aparecen como 0 creditos). Era una optimizacion prematura que costo un mes
-  # de trabajo sin desplegar. Si algun dia los creditos SI aprietan, medir
-  # primero y probar el comando en un deploy de rama antes de meterlo a produccion.
+  # CORRECCION (2026-08-12): este comentario decia ademas que "el consumo real
+  # es 0,1 creditos y las implementaciones de produccion aparecen como 0". Eso
+  # ya NO es cierto y conviene no fiarse de ello. Medido en el panel:
+  #
+  #     225 creditos / 15 deploys  =  15 creditos por deploy
+  #     300 creditos gratis al mes =  20 deploys al mes, y se acabo
+  #
+  # O sea que los deploys SI son el gasto dominante (225 de 225,5 creditos;
+  # ancho de banda y peticiones son ruido). Con 20 al mes conviene agrupar
+  # varios commits en un solo push.
+  #
+  # Lo que de verdad ahorra sin tocar esta config: el contenido de las materias
+  # NO forma parte del build. Los JSON de _contenido/, _content/, _geografia/,
+  # etc. viven en Firestore y se suben desde /admin/migracion, asi que anadir o
+  # corregir contenido no necesita desplegar nada. Solo los cambios en
+  # chuy-react-app/ requieren un deploy.
 
 [[redirects]]
   from = "/*"

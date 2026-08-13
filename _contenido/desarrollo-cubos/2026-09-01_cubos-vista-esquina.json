@@ -1,0 +1,232 @@
+{
+  "id": "2026-09-01",
+  "tipo": "desarrollo-cubos",
+  "titulo": "Cubos: Vista desde la Esquina",
+  "descripcion": "Ya no basta con las caras opuestas: ahora importa el orden alrededor del vertice",
+  "misiones": [
+    {
+      "id": "mision-vis-autobus",
+      "tipo": "desarrollo-cubos",
+      "titulo": "El Cubo de los Vehiculos",
+      "instruccion": "Aqui no basta con saber que caras son vecinas: hay que saber en que ORDEN se colocan alrededor de la esquina. Toca en el plano tu respuesta y luego doblalo en 3D y giralo hasta ponerlo como dice la pregunta.",
+      "pregunta": "Dobla el cubo y ponlo con 🚌 AL FRENTE y 🚒 ARRIBA. ¿Qué cara queda a la DERECHA?",
+      "datos_cubo": {
+        "caras": [
+          {
+            "id": "bombero",
+            "fila": 0,
+            "columna": 1,
+            "color": "#FFD93D",
+            "contenido": "🚒"
+          },
+          {
+            "id": "taxi",
+            "fila": 1,
+            "columna": 0,
+            "color": "#FF6B6B",
+            "contenido": "🚕"
+          },
+          {
+            "id": "autobus",
+            "fila": 1,
+            "columna": 1,
+            "color": "#4ECDC4",
+            "contenido": "🚌"
+          },
+          {
+            "id": "ambulancia",
+            "fila": 2,
+            "columna": 1,
+            "color": "#45B7D1",
+            "contenido": "🚑"
+          },
+          {
+            "id": "tractor",
+            "fila": 3,
+            "columna": 1,
+            "color": "#96CEB4",
+            "contenido": "🚜"
+          },
+          {
+            "id": "moto",
+            "fila": 2,
+            "columna": 2,
+            "color": "#C7A2FF",
+            "contenido": "🛵"
+          }
+        ]
+      },
+      "respuesta": "moto",
+      "explicacion_correcta": "¡Eso es visualizacion de verdad! Con dos caras fijadas, el cubo ya no se puede girar mas: todo lo demas queda decidido. Doblalo en 3D y giralo hasta poner 🚌 AL FRENTE: veras 🛵 a la DERECHA.",
+      "explicacion_incorrecta": "Ojo: la cara opuesta a 🚌 no puede ser, porque queda detras y no se ve. Y la opuesta a 🚒 tampoco. Quedan pocas candidatas: dobla el cubo en 3D, giralo hasta poner 🚌 AL FRENTE y 🚒 ARRIBA, y mira."
+    },
+    {
+      "id": "mision-vis-verduras",
+      "tipo": "desarrollo-cubos",
+      "titulo": "El Cubo de la Huerta",
+      "instruccion": "Aqui no basta con saber que caras son vecinas: hay que saber en que ORDEN se colocan alrededor de la esquina. Toca en el plano tu respuesta y luego doblalo en 3D y giralo hasta ponerlo como dice la pregunta.",
+      "pregunta": "Dobla el cubo y ponlo con 🥦 AL FRENTE y 🍅 ARRIBA. ¿Qué cara queda a la IZQUIERDA?",
+      "datos_cubo": {
+        "caras": [
+          {
+            "id": "zanahoria",
+            "fila": 0,
+            "columna": 3,
+            "color": "#FFD93D",
+            "contenido": "🥕"
+          },
+          {
+            "id": "tomate",
+            "fila": 0,
+            "columna": 2,
+            "color": "#FF6B6B",
+            "contenido": "🍅"
+          },
+          {
+            "id": "brocoli",
+            "fila": 1,
+            "columna": 2,
+            "color": "#4ECDC4",
+            "contenido": "🥦"
+          },
+          {
+            "id": "maiz",
+            "fila": 1,
+            "columna": 1,
+            "color": "#45B7D1",
+            "contenido": "🌽"
+          },
+          {
+            "id": "berenjena",
+            "fila": 2,
+            "columna": 1,
+            "color": "#96CEB4",
+            "contenido": "🍆"
+          },
+          {
+            "id": "papa",
+            "fila": 2,
+            "columna": 0,
+            "color": "#C7A2FF",
+            "contenido": "🥔"
+          }
+        ]
+      },
+      "respuesta": "maiz",
+      "explicacion_correcta": "¡Eso es visualizacion de verdad! Izquierda y derecha son las que mas cuestan, porque se confunden en cuanto giras el cubo. Doblalo en 3D y giralo hasta poner 🥦 AL FRENTE: veras 🌽 a la IZQUIERDA.",
+      "explicacion_incorrecta": "Ojo: la cara opuesta a 🥦 no puede ser, porque queda detras y no se ve. Y la opuesta a 🍅 tampoco. Quedan pocas candidatas: dobla el cubo en 3D, giralo hasta poner 🥦 AL FRENTE y 🍅 ARRIBA, y mira."
+    },
+    {
+      "id": "mision-vis-utiles",
+      "tipo": "desarrollo-cubos",
+      "titulo": "El Cubo del Estuche",
+      "instruccion": "Aqui no basta con saber que caras son vecinas: hay que saber en que ORDEN se colocan alrededor de la esquina. Toca en el plano tu respuesta y luego doblalo en 3D y giralo hasta ponerlo como dice la pregunta.",
+      "pregunta": "Dobla el cubo y ponlo con ✏️ AL FRENTE y ✂️ a la DERECHA. ¿Qué cara queda ARRIBA?",
+      "datos_cubo": {
+        "caras": [
+          {
+            "id": "pintura",
+            "fila": 0,
+            "columna": 0,
+            "color": "#FFD93D",
+            "contenido": "🎨"
+          },
+          {
+            "id": "lapiz",
+            "fila": 1,
+            "columna": 0,
+            "color": "#FF6B6B",
+            "contenido": "✏️"
+          },
+          {
+            "id": "libro",
+            "fila": 2,
+            "columna": 0,
+            "color": "#4ECDC4",
+            "contenido": "📕"
+          },
+          {
+            "id": "tijeras",
+            "fila": 1,
+            "columna": 1,
+            "color": "#45B7D1",
+            "contenido": "✂️"
+          },
+          {
+            "id": "escuadra",
+            "fila": 1,
+            "columna": 2,
+            "color": "#96CEB4",
+            "contenido": "📐"
+          },
+          {
+            "id": "crayon",
+            "fila": 1,
+            "columna": 3,
+            "color": "#C7A2FF",
+            "contenido": "🖍️"
+          }
+        ]
+      },
+      "respuesta": "pintura",
+      "explicacion_correcta": "¡Eso es visualizacion de verdad! Aqui te daban el frente y la derecha, y tocaba deducir la de arriba. Es el mismo razonamiento al reves. Doblalo en 3D y giralo hasta poner ✏️ AL FRENTE: veras 🎨 ARRIBA.",
+      "explicacion_incorrecta": "Ojo: la cara opuesta a ✏️ no puede ser, porque queda detras y no se ve. Y la opuesta a ✂️ tampoco. Quedan pocas candidatas: dobla el cubo en 3D, giralo hasta poner ✏️ AL FRENTE y ✂️ a la DERECHA, y mira."
+    },
+    {
+      "id": "mision-vis-granja",
+      "tipo": "desarrollo-cubos",
+      "titulo": "El Cubo de la Granja",
+      "instruccion": "Aqui no basta con saber que caras son vecinas: hay que saber en que ORDEN se colocan alrededor de la esquina. Toca en el plano tu respuesta y luego doblalo en 3D y giralo hasta ponerlo como dice la pregunta.",
+      "pregunta": "Dobla el cubo y ponlo con 🐮 AL FRENTE y 🐷 a la IZQUIERDA. ¿Qué cara queda ARRIBA?",
+      "datos_cubo": {
+        "caras": [
+          {
+            "id": "gallina",
+            "fila": 0,
+            "columna": 3,
+            "color": "#FFD93D",
+            "contenido": "🐔"
+          },
+          {
+            "id": "cerdo",
+            "fila": 1,
+            "columna": 0,
+            "color": "#FF6B6B",
+            "contenido": "🐷"
+          },
+          {
+            "id": "vaca",
+            "fila": 1,
+            "columna": 1,
+            "color": "#4ECDC4",
+            "contenido": "🐮"
+          },
+          {
+            "id": "oveja",
+            "fila": 1,
+            "columna": 2,
+            "color": "#45B7D1",
+            "contenido": "🐑"
+          },
+          {
+            "id": "cabra",
+            "fila": 1,
+            "columna": 3,
+            "color": "#96CEB4",
+            "contenido": "🐐"
+          },
+          {
+            "id": "pato",
+            "fila": 2,
+            "columna": 0,
+            "color": "#C7A2FF",
+            "contenido": "🦆"
+          }
+        ]
+      },
+      "respuesta": "gallina",
+      "explicacion_correcta": "¡Eso es visualizacion de verdad! Este plano es el reflejo de uno que ya viste: la forma engaña, pero el metodo es el mismo. Doblalo en 3D y giralo hasta poner 🐮 AL FRENTE: veras 🐔 ARRIBA.",
+      "explicacion_incorrecta": "Ojo: la cara opuesta a 🐮 no puede ser, porque queda detras y no se ve. Y la opuesta a 🐷 tampoco. Quedan pocas candidatas: dobla el cubo en 3D, giralo hasta poner 🐮 AL FRENTE y 🐷 a la IZQUIERDA, y mira."
+    }
+  ]
+}
