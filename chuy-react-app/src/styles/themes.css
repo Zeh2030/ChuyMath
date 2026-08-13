@@ -422,6 +422,18 @@
   box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
 }
 
+/* Cajas con fondo claro propio del componente.
+   Los temas oscuros recolorean TODO el texto (h1-h3 a blanco, p/span a gris
+   claro), asi que cualquier caja que traiga su propio degradado claro se queda
+   con texto blanco sobre fondo blanco. Estas tres comparten el mismo degradado
+   `#f5f7fa -> #c3cfe2` y hay que oscurecerlas igual que .widget y compañia. */
+[data-theme="pizarron"] .pregunta-container,
+[data-theme="pizarron"] .secuencia-elementos,
+[data-theme="pizarron"] .tabla-doble-entrada-container {
+  background: rgba(26, 53, 40, 0.85);
+  border: 2px dashed rgba(255, 255, 255, 0.12);
+}
+
 [data-theme="pizarron"] .aventura-header,
 [data-theme="pizarron"] .aventura-navegacion {
   background: rgba(30, 58, 42, 0.9);
@@ -621,6 +633,14 @@
 [data-theme="espacial"] .aventura-navegacion {
   background: rgba(27, 40, 56, 0.9);
   color: #e0e0e0;
+}
+
+/* Mismo caso que en pizarron: cajas con degradado claro propio del componente */
+[data-theme="espacial"] .pregunta-container,
+[data-theme="espacial"] .secuencia-elementos,
+[data-theme="espacial"] .tabla-doble-entrada-container {
+  background: rgba(27, 40, 56, 0.9);
+  border: 1px solid rgba(92, 107, 192, 0.3);
 }
 
 [data-theme="espacial"] .dashboard-header,
