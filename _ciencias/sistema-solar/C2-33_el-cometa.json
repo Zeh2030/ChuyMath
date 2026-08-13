@@ -1,0 +1,71 @@
+{
+  "id": "C2-33_el-cometa",
+  "titulo": "El Cometa y su Cola",
+  "descripcion": "Viaja con un cometa por su órbita alargada y descubre el secreto de su cola",
+  "tipo": "sistema-solar",
+  "materia": "ciencias",
+  "nivel": "C2-33",
+  "tema": "astronomia",
+  "misiones": [
+    {
+      "id": "astro-cometa-01",
+      "tipo": "sistema-solar",
+      "escena": "cometa",
+      "modo": "completo",
+      "titulo": "El Viaje del Cometa",
+      "emoji": "☄️",
+      "instruccion": "Los planetas dan vueltas casi en círculo, pero los cometas viajan en una elipse ALARGADA: a veces pasan pegaditos al Sol y a veces se van lejísimos. Mueve el deslizador para viajar con él, y no le quites el ojo a la cola.",
+      "leccion": "La cola del cometa NO es humo que va quedando atrás. Es hielo y polvo que el viento del Sol EMPUJA hacia afuera. Por eso la cola siempre apunta EN CONTRA del Sol… ¡aunque el cometa vaya de salida!",
+      "datos": {
+        "sol": "El Sol lanza un 'viento' de partículas invisibles. Ese viento es el que empuja la cola del cometa, como una secadora de pelo gigante.",
+        "tierra": "Cuando la Tierra cruza el polvo que dejó un cometa, vemos LLUVIA DE ESTRELLAS: son los granitos quemándose en nuestro aire.",
+        "cometa": "Es una bola de nieve sucia: hielo, polvo y rocas. Cerca del Sol el hielo se evapora y se forma la cola, que puede medir millones de kilómetros."
+      },
+      "retos": [
+        {
+          "tipo": "cometa",
+          "pregunta": "Lleva el cometa a donde su cola sea MÁS GRANDE Y BRILLANTE.",
+          "respuesta": "perihelio",
+          "pista": "La cola crece donde el calor del Sol evapora más hielo… o sea, lo más CERCA posible."
+        },
+        {
+          "tipo": "cometa",
+          "pregunta": "Ahora llévalo a donde está MÁS LEJOS del Sol, dormido y casi sin cola.",
+          "respuesta": "afelio",
+          "pista": "El punto de la elipse más alejado del Sol: ahí el cometa es solo una bola de hielo congelada."
+        }
+      ],
+      "dato_curioso": "El cometa Halley pasa cerca de la Tierra cada 76 años. La última vez fue en 1986 y volverá en 2061... ¡tú podrás verlo! Tus papás eran niños (o ni nacían) la última vez que pasó."
+    },
+    {
+      "id": "astro-om-cometa-cola",
+      "tipo": "opcion-multiple",
+      "titulo": "El Gran Secreto de la Cola",
+      "instruccion": "Piensa en lo que viste al mover el deslizador.",
+      "pregunta": "☄️ Cuando el cometa se ALEJA del Sol, ¿hacia dónde va su cola?",
+      "opciones": [
+        "Atrás, como el humo de un cohete",
+        "Adelante: ¡el cometa viaja con la cola por delante!",
+        "No tiene cola cuando se aleja"
+      ],
+      "respuesta": "1",
+      "explicacion_correcta": "¡Exacto! La cola siempre apunta EN CONTRA del Sol, porque el viento solar la empuja. Así que de salida, el cometa lleva su cola por DELANTE. ¡Lo viste en el 3D!",
+      "explicacion_incorrecta": "¡Es al revés de lo que parece! La cola no es humo que queda atrás: el viento del Sol la empuja siempre hacia afuera. Cuando el cometa se aleja, viaja con la cola por DELANTE."
+    },
+    {
+      "id": "astro-om-cometa-hecho",
+      "tipo": "opcion-multiple",
+      "titulo": "¿De qué está hecho?",
+      "instruccion": "Elige la respuesta correcta.",
+      "pregunta": "🧊 ¿De qué está hecho un cometa?",
+      "opciones": [
+        "De fuego, por eso brilla",
+        "De hielo, polvo y rocas: una bola de nieve sucia",
+        "De metal, como un satélite"
+      ],
+      "respuesta": "1",
+      "explicacion_correcta": "¡Correcto! Los científicos les dicen 'bolas de nieve sucias'. Brillan porque el Sol evapora su hielo y esa nube de gas y polvo refleja la luz — no porque estén ardiendo.",
+      "explicacion_incorrecta": "Aunque parezca una bola de fuego, un cometa es HIELO con polvo y rocas: una bola de nieve sucia. Su brillo es luz del Sol reflejada en el gas que se evapora."
+    }
+  ]
+}

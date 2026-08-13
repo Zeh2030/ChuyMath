@@ -1,0 +1,60 @@
+{
+  "id": "C3-21_lanza-un-satelite",
+  "titulo": "Lanza un Satélite",
+  "descripcion": "El cañón de Newton: descubre lanzando qué es de verdad una órbita",
+  "tipo": "sistema-solar",
+  "materia": "ciencias",
+  "nivel": "C3-21",
+  "tema": "astronomia",
+  "misiones": [
+    {
+      "id": "astro-satelite-01",
+      "tipo": "sistema-solar",
+      "escena": "satelite",
+      "modo": "completo",
+      "titulo": "El Cañón de Newton",
+      "emoji": "🛰️",
+      "instruccion": "Hace 300 años, Newton imaginó esto mismo: un cañón en una montaña altísima. Si lanzas despacio, la bala cae. Más fuerte, cae más lejos. Y si lanzas EXACTO… cae y cae alrededor de la Tierra sin tocarla nunca: ¡eso es una órbita! Elige velocidad con el deslizador y aprieta Lanzar.",
+      "leccion": "Un satélite no flota: se está CAYENDO todo el tiempo. Pero va tan rápido hacia adelante que la Tierra se curva debajo de él y nunca la alcanza. Por eso los astronautas flotan: van en caída infinita junto con su nave.",
+      "datos": {
+        "tierra": "La gravedad de la Tierra jala TODO hacia su centro, hasta la Luna. Un satélite en órbita no escapa de la gravedad: la usa para dar vueltas."
+      },
+      "retos": [
+        {
+          "tipo": "lanzamiento",
+          "pregunta": "Primero lo fácil: lanza el satélite de modo que CAIGA a la Tierra.",
+          "respuesta": "choca",
+          "pista": "Poca velocidad: la gravedad gana rápido."
+        },
+        {
+          "tipo": "lanzamiento",
+          "pregunta": "Ahora el gran reto: ¡logra una ÓRBITA completa!",
+          "respuesta": "orbita",
+          "pista": "Ni muy despacio (se cae) ni muy fuerte (se escapa). Busca el punto justo, como Ricitos de Oro."
+        },
+        {
+          "tipo": "lanzamiento",
+          "pregunta": "Último: lánzalo TAN fuerte que escape de la Tierra para siempre.",
+          "respuesta": "escapa",
+          "pista": "Velocidad al máximo: ni la gravedad de la Tierra lo puede detener."
+        }
+      ],
+      "dato_curioso": "La velocidad real para orbitar la Tierra es de unos 28,000 km/h: de México a España en 20 minutos. Y la de escape, 40,000 km/h. Newton lo calculó todo con pluma y papel… ¡300 años antes del primer cohete!"
+    },
+    {
+      "id": "astro-om-satelite-flotar",
+      "tipo": "opcion-multiple",
+      "titulo": "El Secreto de Flotar",
+      "instruccion": "Esto ya lo viste en la historia de los astronautas… y ahora lo comprobaste lanzando.",
+      "pregunta": "🧑‍🚀 ¿Por qué flotan los astronautas en la estación espacial?",
+      "opciones": [
+        "Porque en el espacio no hay gravedad",
+        "Porque están cayendo alrededor de la Tierra todo el tiempo, junto con su nave",
+        "Porque llevan trajes flotadores"
+      ],
+      "respuesta": "1",
+      "explicacion_correcta": "¡Exacto! Allá arriba SÍ hay gravedad (casi la misma que aquí). Flotan porque ellos y su nave van en caída infinita alrededor de la Tierra: igual que tu satélite cuando lograste la órbita.",
+      "explicacion_incorrecta": "Gravedad sí hay: es la que mantiene a la estación dando vueltas. Flotan porque están en CAÍDA constante alrededor de la Tierra, igual que tu satélite en órbita."
+    }
+  ]
+}

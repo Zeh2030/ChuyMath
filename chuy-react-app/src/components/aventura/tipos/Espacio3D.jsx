@@ -1,7 +1,7 @@
 import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { soportaWebGL } from '../../../utils/webgl';
-import { PLANETAS, SOL, CONSTELACIONES, faseInfoDe, estacionInfoDe } from './espacioDatos';
+import { PLANETAS, SOL, CONSTELACIONES, COMETA, faseInfoDe, estacionInfoDe, cometaInfoDe } from './espacioDatos';
 import './Espacio3D.css';
 
 /**
@@ -224,10 +224,18 @@ const Espacio3D = forwardRef(function Espacio3D(
   const apiRef = useRef(null);
   const soportado = soportaWebGL();
 
-  // Deslizador: posicion de la Luna en su orbita (tierra-luna, arranca en cuarto
-  // creciente para ver una fase "interesante") o posicion de la Tierra en el ano
-  // (estaciones, arranca en el solsticio de junio = verano aqui).
-  const [angulo, setAngulo] = useState(() => (escena === 'estaciones' ? 0 : 90));
+  // Deslizador. Que significa depende de la escena: posicion de la Luna en su
+  // orbita (tierra-luna), de la Tierra en el ano (estaciones), del cometa en su
+  // elipse (cometa) o VELOCIDAD de lanzamiento en % (satelite).
+  const [angulo, setAngulo] = useState(() => {
+    if (escena === 'estaciones') return 0;   // solsticio de junio
+    if (escena === 'cometa') return 60;      // de viaje, alejandose
+    if (escena === 'satelite') return 55;    // velocidad media
+    return 90;                               // cuarto creciente
+  });
+
+  // Desenlace del ultimo lanzamiento (solo escena satelite): lo escribe el bucle.
+  const [resultado, setResultado] = useState(null);
 
   // El bucle lee las props cada frame sin reconstruir la escena.
   const estadoRef = useRef({ enfocado, comparar, seleccionable, angulo });
@@ -244,10 +252,11 @@ const Espacio3D = forwardRef(function Espacio3D(
     onVistaRef.current = onVista;
   }, [onSeleccion, onFase, onVista]);
 
-  // Avisar la fase/estacion visible al entrar y en cada movimiento del deslizador.
+  // Avisar la fase/estacion/zona visible al entrar y con cada movimiento del deslizador.
   useEffect(() => {
     if (escena === 'tierra-luna') onFaseRef.current?.(faseInfoDe(angulo));
     if (escena === 'estaciones') onFaseRef.current?.(estacionInfoDe(angulo));
+    if (escena === 'cometa') onFaseRef.current?.(cometaInfoDe(angulo));
   }, [escena, angulo]);
 
   useImperativeHandle(ref, () => ({
@@ -347,6 +356,8 @@ const Espacio3D = forwardRef(function Espacio3D(
     let tl = null;             // escena tierra-luna
     let escEst = null;         // escena estaciones
     const constels = [];       // escena constelaciones
+    let escCometa = null;      // escena cometa
+    let escSat = null;         // escena satelite (canon de Newton)
 
     if (escena === 'planetas') {
       escena3.add(new THREE.AmbientLight(0xbfd0ff, 0.55));
@@ -534,12 +545,103 @@ const Espacio3D = forwardRef(function Espacio3D(
       });
     }
 
+    if (escena === 'cometa') {
+      // Orbita ELIPTICA con el Sol en un foco: a veces pegadito, a veces lejisimo.
+      // La cola no es "humo que deja atras": es el viento solar empujando el gas,
+      // asi que SIEMPRE apunta en contra del Sol.
+      escena3.add(new THREE.AmbientLight(0xbfd0ff, 0.5));
+      escena3.add(new THREE.PointLight(0xfff3d0, 2.4, 0, 0));
+
+      const sol = crearCuerpo({ id: 'sol', radio: 2.6, tex: 'sol', color: SOL.color, semilla: 3, lambert: false });
+      escena3.add(sol);
+      escena3.add(crearGlow(11));
+
+      // La Tierra de referencia, en su orbita circular chiquita.
+      const tierra = crearCuerpo({ id: 'tierra', radio: 0.8, tex: 'tierra', color: '#2f6fd0', semilla: 13 });
+      escena3.add(tierra);
+      const orbTierra = crearLineaOrbita(6);
+      escena3.add(orbTierra.linea);
+
+      // Elipse del cometa (centro desplazado para que el Sol quede en el foco).
+      const semiB = COMETA.a * Math.sqrt(1 - COMETA.e * COMETA.e);
+      const foco = COMETA.a * COMETA.e;
+      const curva = new THREE.EllipseCurve(-foco, 0, COMETA.a, semiB);
+      const geoElipse = registrar(new THREE.BufferGeometry().setFromPoints(curva.getPoints(128)));
+      const matElipse = registrar(new THREE.LineBasicMaterial({ color: 0x5a6a92, transparent: true, opacity: 0.5 }));
+      const elipse = new THREE.LineLoop(geoElipse, matElipse);
+      elipse.rotation.x = -Math.PI / 2;
+      escena3.add(elipse);
+
+      const cometa = crearCuerpo({ id: 'cometa', radio: 0.55, tex: 'craterizado', color: '#bcd0d8', semilla: 31 });
+      escena3.add(cometa);
+      const brilloCometa = crearGlow(1.8);
+      escena3.add(brilloCometa);
+
+      // Cola: cono con la punta EN el cometa y la parte ancha lejos del Sol.
+      const geoCola = registrar(new THREE.ConeGeometry(0.45, 1, 12, 1, true));
+      const matCola = registrar(new THREE.MeshBasicMaterial({
+        color: 0x9fd8ff, transparent: true, opacity: 0.5, depthWrite: false, side: THREE.DoubleSide,
+      }));
+      const cola = new THREE.Mesh(geoCola, matCola);
+      escena3.add(cola);
+
+      escCometa = { tierra, cometa, brilloCometa, cola, matCola, semiB, foco, angTierra: 0 };
+    }
+
+    if (escena === 'satelite') {
+      // El canon de Newton: desde una montana altisima, lanza cada vez mas
+      // fuerte. Orbitar = caer alrededor de la Tierra sin parar de caer.
+      escena3.add(new THREE.AmbientLight(0xbfd0ff, 0.75));
+      const luz = new THREE.DirectionalLight(0xfff3d0, 1.6);
+      luz.position.set(30, 35, 15);
+      escena3.add(luz);
+
+      const SAT = { R: 3, r0: 3.9, GM: 40, escape: 60, vMax: 900 };
+      const tierra = crearCuerpo({ id: 'tierra', radio: SAT.R, tex: 'tierra', semilla: 13, color: '#2f6fd0' });
+      escena3.add(tierra);
+
+      // La montana de lanzamiento (exageradisima a proposito).
+      const geoMonte = registrar(new THREE.ConeGeometry(0.34, 1.1, 10));
+      const matMonte = registrar(new THREE.MeshLambertMaterial({ color: 0x8d6e63 }));
+      const monte = new THREE.Mesh(geoMonte, matMonte);
+      monte.position.set(0, 0, SAT.R + 0.35);
+      monte.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), new THREE.Vector3(0, 0, 1));
+      escena3.add(monte);
+
+      const geoSat = registrar(new THREE.SphereGeometry(0.16, 12, 8));
+      const matSat = registrar(new THREE.MeshBasicMaterial({ color: 0xf5f6ff }));
+      const sat = new THREE.Mesh(geoSat, matSat);
+      sat.visible = false;
+      escena3.add(sat);
+
+      // Estela: buffer preasignado que se va llenando durante el vuelo.
+      const MAX_ESTELA = SAT.vMax;
+      const posEstela = new Float32Array(MAX_ESTELA * 3);
+      const geoEstela = registrar(new THREE.BufferGeometry());
+      geoEstela.setAttribute('position', new THREE.BufferAttribute(posEstela, 3));
+      geoEstela.setDrawRange(0, 0);
+      const matEstela = registrar(new THREE.LineBasicMaterial({ color: 0x9fd8ff, transparent: true, opacity: 0.8 }));
+      escena3.add(new THREE.Line(geoEstela, matEstela));
+
+      escSat = {
+        SAT,
+        tierra,
+        sat,
+        geoEstela,
+        posEstela,
+        vCirc: Math.sqrt(SAT.GM / SAT.r0),
+        sim: null, // { pos, vel, angPrev, angAcum, orbito, puntos }
+      };
+    }
+
     /* --- camara orbital del usuario --- */
     const CAMARAS = {
       planetas: { yaw: 0.6, pitch: 0.9, dist: 60 },
       'tierra-luna': { yaw: 0.35, pitch: 0.45, dist: 24 },
       estaciones: { yaw: 0.5, pitch: 0.85, dist: 34 },
       constelaciones: { yaw: 0.15, pitch: -0.35, dist: 60 },
+      cometa: { yaw: 0.5, pitch: 0.95, dist: 52 },
+      satelite: { yaw: 0, pitch: 1.3, dist: 24 },
     };
     const YAW0 = CAMARAS[escena].yaw;
     const PITCH0 = CAMARAS[escena].pitch;
@@ -554,6 +656,8 @@ const Espacio3D = forwardRef(function Espacio3D(
     let distSuave = DIST_BASE;
     const objetivoCam = new THREE.Vector3();
     const vTmp = new THREE.Vector3();
+    const vTmp2 = new THREE.Vector3();
+    const V_ARRIBA = new THREE.Vector3(0, 1, 0);
     const COL_ORO = new THREE.Color(0xf1c40f);
     const COL_LINEA_CONST = new THREE.Color(0x5a6a92);
 
@@ -562,7 +666,26 @@ const Espacio3D = forwardRef(function Espacio3D(
       pitch = PITCH0;
       zoomUsuario = 1;
     };
-    apiRef.current = { recentrar };
+
+    // Escena satelite: dispara un lanzamiento con la velocidad del deslizador.
+    const lanzar = () => {
+      if (!escSat) return;
+      const factor = 0.4 + (estadoRef.current.angulo / 100) * 1.2; // 0.4x a 1.6x de la velocidad circular
+      escSat.sim = {
+        pos: new THREE.Vector3(0, 0, escSat.SAT.r0),
+        vel: new THREE.Vector3(escSat.vCirc * factor, 0, 0),
+        angPrev: null,
+        angAcum: 0,
+        orbito: false,
+        activo: true,
+        puntos: 0,
+      };
+      escSat.geoEstela.setDrawRange(0, 0);
+      escSat.sat.visible = true;
+      setResultado('volando');
+    };
+
+    apiRef.current = { recentrar, lanzar };
 
     /* --- punteros: toque selecciona, arrastre gira, rueda acerca --- */
     const rayo = new THREE.Raycaster();
@@ -736,6 +859,94 @@ const Espacio3D = forwardRef(function Espacio3D(
           k.matLineas.color.lerp(k.alineada ? COL_ORO : COL_LINEA_CONST, Math.min(1, dt * 6));
           k.matLineas.opacity += ((k.alineada ? 1 : 0.75) - k.matLineas.opacity) * Math.min(1, dt * 6);
         });
+      } else if (escena === 'cometa') {
+        const t = (est.angulo * Math.PI) / 180;
+        const x2 = COMETA.a * Math.cos(t) - escCometa.foco;
+        const y2 = escCometa.semiB * Math.sin(t);
+        escCometa.cometa.position.set(x2, 0, -y2);
+        escCometa.cometa.rotation.y += dt * 0.6;
+        escCometa.brilloCometa.position.copy(escCometa.cometa.position);
+
+        escCometa.angTierra += dt * 0.35;
+        escCometa.tierra.position.set(Math.cos(escCometa.angTierra) * 6, 0, -Math.sin(escCometa.angTierra) * 6);
+        escCometa.tierra.rotation.y += dt * 0.6;
+
+        // Cola anti-sol: la punta EN el cometa, lo ancho lejos del Sol. Cerca
+        // del Sol crece y brilla; lejos casi desaparece.
+        const d = escCometa.cometa.position.length();
+        vTmp.copy(escCometa.cometa.position).normalize();
+        const L = Math.min(13, Math.max(1.2, 85 / d));
+        escCometa.cola.scale.set(0.35 + L * 0.12, L, 0.35 + L * 0.12);
+        escCometa.cola.position.copy(escCometa.cometa.position).addScaledVector(vTmp, L / 2);
+        vTmp2.copy(vTmp).negate();
+        escCometa.cola.quaternion.setFromUnitVectors(V_ARRIBA, vTmp2);
+        escCometa.matCola.opacity = Math.min(0.7, Math.max(0.12, 4.5 / d));
+
+        if (est.enfocado === 'cometa') {
+          objetivoX = escCometa.cometa.position.x;
+          objetivoZ = escCometa.cometa.position.z;
+          distDeseada = 8;
+        } else if (est.enfocado === 'tierra') {
+          objetivoX = escCometa.tierra.position.x;
+          objetivoZ = escCometa.tierra.position.z;
+          distDeseada = 5;
+        }
+      } else if (escena === 'satelite') {
+        escSat.tierra.rotation.y += dt * 0.15;
+        const sim = escSat.sim;
+        if (sim && sim.activo) {
+          const { SAT } = escSat;
+          // Gravedad de Newton integrada en pasitos chicos (estable y barata).
+          const n = Math.min(8, Math.max(2, Math.ceil(dt / 0.006)));
+          const h = dt / n;
+          for (let i = 0; i < n && sim.activo; i++) {
+            const r = sim.pos.length();
+            vTmp.copy(sim.pos).multiplyScalar(-SAT.GM / (r * r * r));
+            sim.vel.addScaledVector(vTmp, h);
+            sim.pos.addScaledVector(sim.vel, h);
+
+            const ang = Math.atan2(sim.pos.x, sim.pos.z);
+            if (sim.angPrev !== null) {
+              let delta = ang - sim.angPrev;
+              if (delta > Math.PI) delta -= Math.PI * 2;
+              if (delta < -Math.PI) delta += Math.PI * 2;
+              sim.angAcum += Math.abs(delta);
+            }
+            sim.angPrev = ang;
+
+            const rNuevo = sim.pos.length();
+            // Escapa si su energia orbital es positiva (el criterio exacto de
+            // Newton): asi no hay que esperar a que se aleje kilometros, y las
+            // elipses muy alargadas no se confunden con escapes.
+            const escapo = rNuevo > 12 &&
+              sim.vel.lengthSq() / 2 - SAT.GM / rNuevo >= 0;
+            if (rNuevo < SAT.R) {
+              sim.activo = false;
+              sim.pos.setLength(SAT.R + 0.05);
+              setResultado('choca');
+              onFaseRef.current?.({ resultado: 'choca' });
+            } else if (escapo || rNuevo > SAT.escape) {
+              sim.activo = false;
+              setResultado('escapa');
+              onFaseRef.current?.({ resultado: 'escapa' });
+            } else if (!sim.orbito && sim.angAcum >= Math.PI * 2) {
+              // ¡Vuelta completa sin caer ni escapar! Sigue volando: eso ES orbitar.
+              sim.orbito = true;
+              setResultado('orbita');
+              onFaseRef.current?.({ resultado: 'orbita' });
+            }
+          }
+          if (sim.puntos < escSat.posEstela.length / 3) {
+            const k = sim.puntos * 3;
+            escSat.posEstela[k] = sim.pos.x;
+            escSat.posEstela[k + 1] = sim.pos.y;
+            escSat.posEstela[k + 2] = sim.pos.z;
+            sim.puntos++;
+            escSat.geoEstela.setDrawRange(0, sim.puntos);
+            escSat.geoEstela.attributes.position.needsUpdate = true;
+          }
+        }
+        if (sim) escSat.sat.position.copy(sim.pos);
       }
 
       distDeseada *= zoomUsuario;
@@ -802,25 +1013,76 @@ const Espacio3D = forwardRef(function Espacio3D(
     );
   }
 
-  const conSlider = escena === 'tierra-luna' || escena === 'estaciones';
-  const info = escena === 'tierra-luna'
-    ? faseInfoDe(angulo)
-    : escena === 'estaciones'
-      ? estacionInfoDe(angulo)
-      : null;
+  const conSlider = ['tierra-luna', 'estaciones', 'cometa', 'satelite'].includes(escena);
+  const conRecuadro = escena === 'tierra-luna' || escena === 'estaciones';
 
   const PISTAS = {
     planetas: '👆 Toca un planeta · arrastra para girar la vista',
     'tierra-luna': '👆 Mueve el deslizador para llevar la Luna por su órbita · arrastra para girar',
     estaciones: '👆 Mueve el deslizador para recorrer el año · fíjate hacia dónde apunta el eje rojo',
     constelaciones: '👆 Arrastra la vista hasta que un dibujo de estrellas ENCAJE · toca una estrella para saber más',
+    cometa: '👆 Mueve el deslizador para viajar con el cometa · mira hacia dónde apunta la cola',
+    satelite: '👆 Elige la velocidad y ¡lanza! · arrastra para girar la vista',
   };
+
+  const EXTREMOS = {
+    'tierra-luna': ['🌞', '🌙'],
+    estaciones: ['☀️', '☀️'],
+    cometa: ['🔥', '🔥'],
+    satelite: ['🐢', '🚀'],
+  };
+
+  let etiqueta = null;
+  if (escena === 'tierra-luna') {
+    const info = faseInfoDe(angulo);
+    etiqueta = (
+      <div className={`espacio3d-fase ${info.eclipseSol || info.eclipseLuna ? 'eclipse' : ''}`}>
+        {info.eclipseSol
+          ? '🌑✨ ¡ECLIPSE DE SOL!'
+          : info.eclipseLuna
+            ? '🔴🌕 ¡ECLIPSE DE LUNA!'
+            : `${info.emoji} ${info.nombre}`}
+      </div>
+    );
+  } else if (escena === 'estaciones') {
+    const info = estacionInfoDe(angulo);
+    etiqueta = (
+      <div className="espacio3d-fase">
+        {`${info.emoji} ${info.nombre} aquí (${info.mes}) · en el sur: ${info.emojiSur} ${info.nombreSur}`}
+      </div>
+    );
+  } else if (escena === 'cometa') {
+    const info = cometaInfoDe(angulo);
+    etiqueta = (
+      <div className="espacio3d-fase">
+        {info.zona === 'perihelio'
+          ? '🔥 ¡Pegadito al Sol: cola gigante!'
+          : info.zona === 'afelio'
+            ? '🥶 Lejísimos del Sol: dormido, casi sin cola'
+            : info.alejandose
+              ? '🚀 Alejándose… ¡fíjate: viaja con la cola por DELANTE!'
+              : '☄️ Acercándose al Sol: la cola crece'}
+      </div>
+    );
+  } else if (escena === 'satelite') {
+    const TEXTOS = {
+      volando: '🛰️ Volando…',
+      choca: '💥 ¡Se cayó! Prueba con más velocidad',
+      orbita: '🛰️ ¡ÓRBITA LOGRADA! Está cayendo alrededor de la Tierra sin parar',
+      escapa: '👋 ¡Escapó de la Tierra! Eso fue demasiada velocidad',
+    };
+    etiqueta = (
+      <div className={`espacio3d-fase ${resultado === 'orbita' ? 'eclipse' : ''}`}>
+        {TEXTOS[resultado] || `Velocidad: ${angulo}% · elige y ¡lanza!`}
+      </div>
+    );
+  }
 
   return (
     <div className="espacio3d">
       <div className="espacio3d-vista">
         <div className="espacio3d-lienzo" ref={contenedorRef} />
-        {conSlider && (
+        {conRecuadro && (
           <div className="espacio3d-inset-marco" style={{ width: INSET, height: INSET }}>
             <span className="espacio3d-inset-titulo">
               {escena === 'tierra-luna' ? 'Así se ve desde la Tierra' : 'Así pega la luz del Sol'}
@@ -832,36 +1094,29 @@ const Espacio3D = forwardRef(function Espacio3D(
       {conSlider && (
         <>
           <div className="espacio3d-barra">
-            <span className="espacio3d-extremo" title={escena === 'tierra-luna' ? 'La Luna cerca del Sol' : 'Junio'}>
-              {escena === 'tierra-luna' ? '🌞' : '☀️'}
-            </span>
+            <span className="espacio3d-extremo">{EXTREMOS[escena][0]}</span>
             <input
               type="range"
               className="espacio3d-slider"
               min={0}
-              max={360}
+              max={escena === 'satelite' ? 100 : 360}
               step={1}
               value={angulo}
               onChange={(e) => setAngulo(Number(e.target.value))}
-              aria-label={escena === 'tierra-luna' ? 'Mover la Luna en su órbita' : 'Recorrer el año'}
+              aria-label={escena === 'satelite' ? 'Velocidad de lanzamiento' : 'Mover con el deslizador'}
             />
-            <span className="espacio3d-extremo" title={escena === 'tierra-luna' ? 'La Luna lejos del Sol' : 'Junio otra vez'}>
-              {escena === 'tierra-luna' ? '🌙' : '☀️'}
-            </span>
+            <span className="espacio3d-extremo">{EXTREMOS[escena][1]}</span>
+            {escena === 'satelite' && (
+              <button
+                type="button"
+                className="espacio3d-btn-lanzar"
+                onClick={() => apiRef.current?.lanzar?.()}
+              >
+                🚀 ¡Lanzar!
+              </button>
+            )}
           </div>
-          {escena === 'tierra-luna' ? (
-            <div className={`espacio3d-fase ${info.eclipseSol || info.eclipseLuna ? 'eclipse' : ''}`}>
-              {info.eclipseSol
-                ? '🌑✨ ¡ECLIPSE DE SOL!'
-                : info.eclipseLuna
-                  ? '🔴🌕 ¡ECLIPSE DE LUNA!'
-                  : `${info.emoji} ${info.nombre}`}
-            </div>
-          ) : (
-            <div className="espacio3d-fase">
-              {`${info.emoji} ${info.nombre} aquí (${info.mes}) · en el sur: ${info.emojiSur} ${info.nombreSur}`}
-            </div>
-          )}
+          {etiqueta}
         </>
       )}
 

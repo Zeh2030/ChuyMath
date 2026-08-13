@@ -22,10 +22,12 @@ const Espacio3D = React.lazy(() => import('./Espacio3D'));
  *   retos        : [{ tipo:'toca', pregunta, respuesta:idCuerpo, pista? },
  *                   { tipo:'fase', pregunta, respuesta:idFase|'eclipse-sol'|'eclipse-luna', pista? },
  *                   { tipo:'estacion', pregunta, respuesta:'verano'|'invierno-sur'|..., pista? },
- *                   { tipo:'vista', pregunta, respuesta:idConstelacion, pista? }]
+ *                   { tipo:'vista', pregunta, respuesta:idConstelacion, pista? },
+ *                   { tipo:'cometa', pregunta, respuesta:'perihelio'|'afelio', pista? },
+ *                   { tipo:'lanzamiento', pregunta, respuesta:'choca'|'orbita'|'escapa', pista? }]
  *   dato_curioso : texto del final
  */
-const ESCENAS = ['planetas', 'tierra-luna', 'estaciones', 'constelaciones'];
+const ESCENAS = ['planetas', 'tierra-luna', 'estaciones', 'constelaciones', 'cometa', 'satelite'];
 
 const SistemaSolar = ({ mision, onCompletar }) => {
   const escena = ESCENAS.includes(mision.escena) ? mision.escena : 'planetas';
@@ -69,7 +71,7 @@ const SistemaSolar = ({ mision, onCompletar }) => {
 
 // OJO: MisionRenderer ya pinta mision.titulo y mision.instruccion arriba de toda
 // mision — repetirlos aqui los mostraba dos veces (mismo error que en cubos).
-const EMOJI_ESCENA = { 'tierra-luna': '🌗', estaciones: '🍂', constelaciones: '✨' };
+const EMOJI_ESCENA = { 'tierra-luna': '🌗', estaciones: '🍂', constelaciones: '✨', cometa: '☄️', satelite: '🛰️' };
 
 const Portada = ({ mision, escena, onComenzar }) => (
   <div className="sisol-portada">
@@ -173,6 +175,12 @@ const Explorar = ({ escena, datos, haySiguiente, onContinuar }) => {
 
 /* ============================ RETOS ============================ */
 
+const MENSAJES_LANZAMIENTO = {
+  choca: '💥 Se estrelló contra la Tierra. ¡Dale más velocidad!',
+  orbita: '🛰️ ¡Quedó en órbita! Pero el reto pedía otra cosa: cambia la velocidad.',
+  escapa: '👋 Se escapó al espacio profundo. ¡Un poquito menos de velocidad!',
+};
+
 const Retos = ({ escena, retos, onTerminar }) => {
   const [idx, setIdx] = useState(0);
   const [feedback, setFeedback] = useState(null); // null | 'correcto' | { intento }
@@ -201,7 +209,7 @@ const Retos = ({ escena, retos, onTerminar }) => {
     else setFeedback({ intento: id });
   };
 
-  // Retos de posicion (fase lunar o estacion del ano): boton "¡Así está bien!".
+  // Retos de posicion (fase lunar, estacion o zona del cometa): boton "¡Así está bien!".
   const comprobarPosicion = () => {
     if (resuelto || !faseActual) return;
     let ok = false;
@@ -215,9 +223,20 @@ const Retos = ({ escena, retos, onTerminar }) => {
       ok = reto.respuesta.endsWith('-sur')
         ? faseActual.estacionSur === reto.respuesta.slice(0, -4)
         : faseActual.estacion === reto.respuesta;
+    } else if (reto.tipo === 'cometa') {
+      ok = faseActual.zona === reto.respuesta;
     }
     if (ok) acierto();
     else setFeedback({ intento: null });
+  };
+
+  // Satelite: el desenlace del lanzamiento llega solo desde el motor.
+  const alFase = (info) => {
+    setFaseActual(info);
+    if (reto.tipo === 'lanzamiento' && info?.resultado && !resuelto) {
+      if (info.resultado === reto.respuesta) acierto();
+      else setFeedback({ intento: info.resultado });
+    }
   };
 
   const siguiente = () => {
@@ -246,7 +265,7 @@ const Retos = ({ escena, retos, onTerminar }) => {
             seleccionable={reto.tipo === 'toca' && !resuelto}
             onSeleccion={alTocar}
             onVista={alVista}
-            onFase={setFaseActual}
+            onFase={alFase}
           />
         </React.Suspense>
       </div>
@@ -265,15 +284,19 @@ const Retos = ({ escena, retos, onTerminar }) => {
         <div className="sisol-feedback incorrecto">
           {(reto.tipo === 'toca' || reto.tipo === 'vista') && feedback.intento
             ? `Ese es ${nombreBonito(feedback.intento)}. ¡Sigue buscando!`
-            : reto.tipo === 'estacion'
-              ? 'Todavía no. Fíjate hacia dónde apunta el eje rojo: ¿le da el sol de frente a nuestra mitad del mundo?'
-              : 'Todavía no. ¡Mueve el deslizador y fíjate en el recuadro!'}
+            : reto.tipo === 'lanzamiento' && feedback.intento
+              ? MENSAJES_LANZAMIENTO[feedback.intento] || '¡Prueba con otra velocidad!'
+              : reto.tipo === 'estacion'
+                ? 'Todavía no. Fíjate hacia dónde apunta el eje rojo: ¿le da el sol de frente a nuestra mitad del mundo?'
+                : reto.tipo === 'cometa'
+                  ? 'Todavía no. La pista está en la cola: mira dónde crece y dónde casi desaparece.'
+                  : 'Todavía no. ¡Mueve el deslizador y fíjate en el recuadro!'}
           {reto.pista && <span className="sisol-pista">💡 {reto.pista}</span>}
         </div>
       )}
 
       <div className="sisol-acciones">
-        {(reto.tipo === 'fase' || reto.tipo === 'estacion') && !resuelto && (
+        {(reto.tipo === 'fase' || reto.tipo === 'estacion' || reto.tipo === 'cometa') && !resuelto && (
           <button className="sisol-btn-principal" onClick={comprobarPosicion}>
             ¡Así está bien! ✅
           </button>

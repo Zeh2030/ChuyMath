@@ -17,6 +17,8 @@ const CUERPOS_POR_ESCENA = {
   'tierra-luna': new Set(['sol', 'tierra', 'luna']),
   estaciones: new Set(['sol', 'tierra']),
   constelaciones: new Set(['tierra', 'osa-mayor', 'orion']),
+  cometa: new Set(['sol', 'tierra', 'cometa']),
+  satelite: new Set(['tierra']),
 };
 const FASES_OK = new Set([
   'nueva', 'creciente', 'cuarto-creciente', 'gibosa-creciente',
@@ -28,6 +30,8 @@ const ESTACIONES_OK = new Set([
   'verano-sur', 'otono-sur', 'invierno-sur', 'primavera-sur',
 ]);
 const CONSTELACIONES_OK = new Set(['osa-mayor', 'orion']);
+const ZONAS_COMETA_OK = new Set(['perihelio', 'afelio']);
+const LANZAMIENTOS_OK = new Set(['choca', 'orbita', 'escapa']);
 const MODOS_OK = new Set(['explorar', 'reto', 'completo']);
 
 const errores = [];
@@ -105,6 +109,12 @@ function validarSistemaSolar(m, et) {
     } else if (r.tipo === 'vista') {
       if (escena !== 'constelaciones') errores.push(`${et} reto ${i}: los retos de vista solo van en la escena constelaciones`);
       if (!CONSTELACIONES_OK.has(r.respuesta)) errores.push(`${et} reto ${i}: constelacion desconocida "${r.respuesta}"`);
+    } else if (r.tipo === 'cometa') {
+      if (escena !== 'cometa') errores.push(`${et} reto ${i}: los retos de cometa solo van en la escena cometa`);
+      if (!ZONAS_COMETA_OK.has(r.respuesta)) errores.push(`${et} reto ${i}: zona desconocida "${r.respuesta}"`);
+    } else if (r.tipo === 'lanzamiento') {
+      if (escena !== 'satelite') errores.push(`${et} reto ${i}: los retos de lanzamiento solo van en la escena satelite`);
+      if (!LANZAMIENTOS_OK.has(r.respuesta)) errores.push(`${et} reto ${i}: desenlace desconocido "${r.respuesta}"`);
     } else {
       errores.push(`${et} reto ${i}: tipo de reto desconocido "${r.tipo}"`);
     }

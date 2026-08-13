@@ -38,6 +38,7 @@ export const NOMBRES = {
   luna: 'la Luna',
   'osa-mayor': 'la Osa Mayor',
   orion: 'Orión',
+  cometa: 'el cometa',
   ...Object.fromEntries(PLANETAS.map((p) => [p.id, p.nombre])),
 };
 
@@ -100,6 +101,27 @@ export const estacionInfoDe = (angulo) => {
     nombreSur: sur.nombre,
     emojiSur: sur.emoji,
   };
+};
+
+/* ============================ EL COMETA ============================ */
+
+// Orbita eliptica con el Sol en un FOCO (por eso a veces esta pegadito y a veces
+// lejisimo). a = semieje mayor, e = excentricidad. El deslizador recorre el
+// parametro de la elipse: 0 = perihelio (lo mas cerca), 180 = afelio (lo mas lejos).
+export const COMETA = { a: 20, e: 0.75 };
+
+export const cometaInfoDe = (angulo) => {
+  const a = ((angulo % 360) + 360) % 360;
+  const t = (a * Math.PI) / 180;
+  const semiB = COMETA.a * Math.sqrt(1 - COMETA.e * COMETA.e);
+  const foco = COMETA.a * COMETA.e;
+  const x = COMETA.a * Math.cos(t) - foco;
+  const z = semiB * Math.sin(t);
+  const dist = Math.sqrt(x * x + z * z);
+  const zona = a < 30 || a > 330 ? 'perihelio' : Math.abs(a - 180) < 30 ? 'afelio' : 'viaje';
+  // El deslizador avanza como el cometa: de 0 a 180 se esta ALEJANDO del Sol.
+  const alejandose = a > 0 && a < 180;
+  return { angulo: a, dist, zona, alejandose };
 };
 
 /* ============================ CONSTELACIONES 3D ============================ */

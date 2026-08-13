@@ -81,6 +81,23 @@
   font-size: 1.2rem;
 }
 
+.espacio3d-btn-lanzar {
+  background: linear-gradient(135deg, #e67e22, #c0392b);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.15s ease;
+}
+
+.espacio3d-btn-lanzar:hover {
+  transform: scale(1.06);
+}
+
 .espacio3d-fase {
   font-weight: 700;
   font-size: 1.05rem;
