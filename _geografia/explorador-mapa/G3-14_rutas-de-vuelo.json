@@ -1,0 +1,115 @@
+{
+  "id": "G3-14_rutas-de-vuelo",
+  "titulo": "Por Que los Aviones Van por el Norte",
+  "descripcion": "El camino mas corto entre dos ciudades no es el que parece en un mapa plano",
+  "tipo": "explorador-mapa",
+  "materia": "geografia",
+  "tema": "rutas-geodesicas",
+  "nivel": "G3-14",
+  "misiones": [
+    {
+      "id": "mision-em-rutas",
+      "tipo": "explorador-mapa",
+      "mapa": "globo",
+      "modo": "quiz",
+      "titulo": "La Ruta Mas Corta",
+      "instruccion": "Sobre una esfera, el camino mas corto entre dos puntos se curva hacia los polos. En un mapa plano parece un rodeo absurdo; en el globo se ve que es lo mas corto. Responde y luego gira el globo para comparar las dos lineas.",
+      "rotacion_inicial": [
+        -40,
+        45
+      ],
+      "retos": [
+        {
+          "id": "643",
+          "nombre": "Rusia",
+          "bandera": "ru",
+          "pregunta": "Un avion va de Nueva York a Tokio por el camino MAS CORTO. ¿Sobre que pais pasa?",
+          "dato": "La linea roja es la ruta real: 10.849 km, subiendo hasta la latitud 70°. La linea blanca es el camino \"recto\" del mapa plano: 12.792 km, ¡1943 km mas! Por eso los aviones parece que dan un rodeo por el norte.",
+          "marcar": [
+            {
+              "lon": -74,
+              "lat": 40.7,
+              "color": "#ff5252"
+            },
+            {
+              "lon": 139.7,
+              "lat": 35.7,
+              "color": "#ffd93d"
+            }
+          ],
+          "ruta": {
+            "desde": [
+              -74,
+              40.7
+            ],
+            "hasta": [
+              139.7,
+              35.7
+            ],
+            "mostrar_plano": true
+          }
+        },
+        {
+          "id": "643",
+          "nombre": "Rusia",
+          "bandera": "ru",
+          "pregunta": "Un avion va de Madrid a Tokio por el camino MAS CORTO. ¿Sobre que pais pasa?",
+          "dato": "La linea roja es la ruta real: 10.763 km, subiendo hasta la latitud 68°. La linea blanca es el camino \"recto\" del mapa plano: 12.564 km, ¡1801 km mas! Por eso los aviones parece que dan un rodeo por el norte.",
+          "marcar": [
+            {
+              "lon": -3.7,
+              "lat": 40.4,
+              "color": "#ff5252"
+            },
+            {
+              "lon": 139.7,
+              "lat": 35.7,
+              "color": "#ffd93d"
+            }
+          ],
+          "ruta": {
+            "desde": [
+              -3.7,
+              40.4
+            ],
+            "hasta": [
+              139.7,
+              35.7
+            ],
+            "mostrar_plano": true
+          }
+        },
+        {
+          "id": "124",
+          "nombre": "Canada",
+          "bandera": "ca",
+          "pregunta": "Un avion va de Ciudad de Mexico a Paris por el camino MAS CORTO. ¿Sobre que pais pasa?",
+          "dato": "La linea roja es la ruta real: 9195 km, subiendo hasta la latitud 52°. La linea blanca es el camino \"recto\" del mapa plano: 9803 km, ¡609 km mas! Por eso los aviones parece que dan un rodeo por el norte.",
+          "marcar": [
+            {
+              "lon": -99.1,
+              "lat": 19.4,
+              "color": "#ff5252"
+            },
+            {
+              "lon": 2.35,
+              "lat": 48.9,
+              "color": "#ffd93d"
+            }
+          ],
+          "ruta": {
+            "desde": [
+              -99.1,
+              19.4
+            ],
+            "hasta": [
+              2.35,
+              48.9
+            ],
+            "mostrar_plano": true
+          }
+        }
+      ]
+    }
+  ]
+}

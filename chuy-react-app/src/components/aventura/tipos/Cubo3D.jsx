@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState, useMemo, useCallback } from 'react';
 import * as THREE from 'three';
+import { soportaWebGL } from '../../../utils/webgl';
 import './Cubo3D.css';
 
 /**
@@ -130,22 +131,6 @@ const COL_HOVER = new THREE.Color(0x3498db);
 const VELOCIDAD = 0.03;      // avance por frame: ~0,55 s por pliegue
 const UMBRAL_TOQUE = 6;      // px; por debajo de esto es un toque, no un arrastre
 const PISTA_MS = 15000;      // el latido se apaga solo, para no gastar bateria
-
-// Se comprueba una sola vez por sesion, fuera de React.
-let cacheWebGL = null;
-const soportaWebGL = () => {
-  if (cacheWebGL !== null) return cacheWebGL;
-  try {
-    const c = document.createElement('canvas');
-    const ctx = c.getContext('webgl2') || c.getContext('webgl');
-    cacheWebGL = Boolean(ctx);
-    // El navegador solo permite un puñado de contextos vivos: soltar el de prueba.
-    ctx?.getExtension('WEBGL_lose_context')?.loseContext();
-  } catch {
-    cacheWebGL = false;
-  }
-  return cacheWebGL;
-};
 
 const Cubo3D = ({ caras = [], resaltar = null, autoDoblar = false, etiqueta = null }) => {
   const contenedorRef = useRef(null);

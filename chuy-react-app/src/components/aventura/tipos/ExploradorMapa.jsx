@@ -30,9 +30,22 @@ import './ExploradorMapa.css';
  * "globo" usa proyeccion ortografica: la Tierra como esfera, girable con el dedo.
  * Un mapa plano miente sobre los tamaños (Groenlandia parece Africa) y esconde
  * que el planeta es redondo — para los niveles G0/G1 el globo enseña mejor.
- * Opciones extra del globo:
+ * Opciones extra del globo, a nivel de MISION:
  *   "rotacion_inicial": [lon, lat]   — por donde empieza mirando (por defecto America)
  *   "estilo": "tierra"               — pinta toda la tierra de un color (leccion tierra/agua)
+ *   "resaltar_ecuador": true         — dibuja el Ecuador marcado sobre la graticula
+ *
+ * Y a nivel de RETO:
+ *   "bandera": "jp"                  — codigo ISO alfa-2; sale al acertar, como premio
+ *   "dato": "..."                    — dato curioso que acompaña a la bandera
+ *   "marcar": [{ lon, lat, color }]  — puntos fijos del enunciado ("estas aqui")
+ *   "ruta": { desde:[lon,lat], hasta:[lon,lat], mostrar_plano:true }
+ *                                    — al responder dibuja el arco de circulo
+ *                                      maximo, y opcionalmente el camino "recto
+ *                                      en el mapa plano" para comparar
+ *
+ * Con bandera, dato o ruta el reto NO auto-avanza: aparece un boton "Siguiente",
+ * porque hay algo que leer y mirar.
  */
 
 // Paises por region (ISO 3166-1 numerico). Para filtrar el mapa por continente.
@@ -142,6 +155,32 @@ const lerpAngulo = (a, b, t) => {
   return a + d * t;
 };
 
+// El Ecuador como linea propia, para el juego de latitud y clima.
+const ECUADOR = {
+  type: 'LineString',
+  coordinates: Array.from({ length: 181 }, (_, i) => [-180 + i * 2, 0]),
+};
+
+/**
+ * El camino "recto en el mapa plano": interpolar longitud y latitud linealmente.
+ * Es lo que un niño dibujaria con una regla sobre un mapa, y sirve para
+ * comparar con el arco real. geoPath NO lo curva porque los puntos ya vienen
+ * dados uno a uno; en cambio un LineString de solo dos puntos si lo dibuja
+ * siguiendo el circulo maximo, que es justo lo que queremos ensenar.
+ */
+const caminoPlano = (desde, hasta, pasos = 64) => {
+  let dLon = hasta[0] - desde[0];
+  if (dLon > 180) dLon -= 360;
+  if (dLon < -180) dLon += 360;
+  return {
+    type: 'LineString',
+    coordinates: Array.from({ length: pasos + 1 }, (_, i) => [
+      desde[0] + (dLon * i) / pasos,
+      desde[1] + ((hasta[1] - desde[1]) * i) / pasos,
+    ]),
+  };
+};
+
 const ExploradorMapa = ({ mision, onCompletar }) => {
   const {
     mapa = 'world',
@@ -150,6 +189,7 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
     instruccion,
     rotacion_inicial: rotacionInicial,
     estilo,
+    resaltar_ecuador: resaltarEcuador,
   } = mision;
 
   const [retoIdx, setRetoIdx] = useState(0);
@@ -383,6 +423,16 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
     if (rafAnimRef.current != null) cancelAnimationFrame(rafAnimRef.current);
   }, []);
 
+  const siguienteReto = () => {
+    if (retoIdx + 1 >= total) {
+      if (onCompletar) onCompletar();
+    } else {
+      setRetoIdx(prev => prev + 1);
+      setSeleccionado(null);
+      setFeedback(null);
+    }
+  };
+
   const handleClick = (countryId) => {
     // Si venia de girar el globo, no cuenta como respuesta.
     if (huboArrastreRef.current) {
@@ -412,15 +462,12 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
       }
     }
 
-    setTimeout(() => {
-      if (retoIdx + 1 >= total) {
-        if (onCompletar) onCompletar();
-      } else {
-        setRetoIdx(prev => prev + 1);
-        setSeleccionado(null);
-        setFeedback(null);
-      }
-    }, espera);
+    // Si el reto trae recompensa (bandera, dato o el arco de la ruta), hay algo
+    // que leer y mirar: manda el niño con un boton en vez de avanzar solo a los
+    // 2 segundos. Sin recompensa, se mantiene el auto-avance de siempre.
+    if (reto.bandera || reto.dato || reto.ruta) return;
+
+    setTimeout(siguienteReto, espera);
   };
 
   // Buscar nombre de pais/estado por ID
@@ -476,6 +523,9 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
               </defs>
               <path d={pathGenerator({ type: 'Sphere' })} className="em-oceano-path" />
               <path d={pathGenerator(GRATICULA)} className="em-graticula" />
+              {resaltarEcuador && (
+                <path d={pathGenerator(ECUADOR)} className="em-ecuador" />
+              )}
             </>
           )}
 
@@ -516,6 +566,35 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
               />
             );
           })}
+
+          {/* La ruta se revela al responder: es el momento del "ajá".
+              Un LineString de dos puntos lo dibuja geoPath siguiendo el circulo
+              maximo; el camino "recto en el mapa" hay que construirlo a mano. */}
+          {esGlobo && feedback && reto?.ruta && (
+            <>
+              {reto.ruta.mostrar_plano && (
+                <path
+                  d={pathGenerator(caminoPlano(reto.ruta.desde, reto.ruta.hasta))}
+                  className="em-ruta-plana"
+                />
+              )}
+              <path
+                d={pathGenerator({ type: 'LineString', coordinates: [reto.ruta.desde, reto.ruta.hasta] })}
+                className="em-ruta"
+              />
+            </>
+          )}
+
+          {/* Marcadores: forman parte del enunciado, se ven siempre. El recorte
+              de la cara oculta ya lo hace geoPath. */}
+          {esGlobo && reto?.marcar?.map((m, i) => (
+            <path
+              key={`marca-${i}`}
+              d={pathGenerator.pointRadius(m.radio || 6)({ type: 'Point', coordinates: [m.lon, m.lat] })}
+              className="em-marca"
+              style={m.color ? { fill: m.color } : undefined}
+            />
+          ))}
         </svg>
 
         {hovered && (
@@ -529,9 +608,31 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
 
       {feedback && (
         <div className={`em-feedback em-${feedback}`}>
-          {feedback === 'correcto'
-            ? `¡Correcto! 🎉 Es ${reto.nombre}`
-            : `Era ${reto.nombre}`}
+          <div className="em-feedback-linea">
+            {/* La bandera es RECOMPENSA, no pregunta: preguntar por ella enseña
+                banderas, no geografia. flagcdn ya se usa en MateriaToggle. */}
+            {reto.bandera && (
+              <img
+                className="em-bandera"
+                src={`https://flagcdn.com/w80/${reto.bandera}.png`}
+                alt={`Bandera de ${reto.nombre}`}
+                loading="lazy"
+              />
+            )}
+            <span>
+              {feedback === 'correcto'
+                ? `¡Correcto! 🎉 Es ${reto.nombre}`
+                : `Era ${reto.nombre}`}
+            </span>
+          </div>
+
+          {reto.dato && <p className="em-dato">💡 {reto.dato}</p>}
+
+          {(reto.bandera || reto.dato || reto.ruta) && (
+            <button type="button" className="em-siguiente" onClick={siguienteReto}>
+              {retoIdx + 1 >= total ? 'Terminar ➜' : 'Siguiente ➜'}
+            </button>
+          )}
         </div>
       )}
 

@@ -360,6 +360,48 @@ Opciones extra, solo para `globo`:
 }
 ```
 
+Opciones extra a nivel de **reto**, todas opcionales:
+
+| Campo | Valor | Para que |
+|-------|-------|----------|
+| `bandera` | `"jp"` | Codigo ISO **alfa-2**. Sale al responder, como PREMIO. |
+| `dato` | texto | Dato curioso que acompaña a la bandera. |
+| `marcar` | `[{lon, lat, color}]` | Puntos fijos del enunciado ("estas aqui"). Se ven siempre. |
+| `ruta` | `{desde, hasta, mostrar_plano}` | Al responder dibuja el arco real; con `mostrar_plano` añade la "linea recta del mapa" para comparar. |
+
+Y a nivel de **mision**: `resaltar_ecuador: true` marca el Ecuador sobre la
+grátícula.
+
+> **Las banderas son recompensa, no pregunta.** Preguntar "¿de quien es esta
+> bandera?" enseña banderas, no geografia: la bandera es solo otro nombre del
+> pais. Puesta como premio al acertar, se aprende igual y no compite con la
+> leccion.
+
+**Con `bandera`, `dato` o `ruta` el reto NO auto-avanza**: aparece un boton
+"Siguiente ➜" porque hay algo que leer. Sin ellos sigue avanzando solo a los
+2 segundos, como siempre.
+
+#### Que preguntar en el globo (y que no)
+
+Si la pregunta funciona igual en un mapa plano, **no** aproveches el globo.
+Estas cinco si lo necesitan, y estan hechas:
+
+| Aventura | Idea |
+|----------|------|
+| `G1-09b_ecuador-y-polos` | El Ecuador y por que ahi hace calor |
+| `G2-14_vecinos-del-mundo` | Seguir fronteras girando la Tierra |
+| `G3-09b_los-mapas-mienten` | Groenlandia vs Australia: el mapa plano estira los polos |
+| `G3-13_antipodas` | Cavar un hoyo hasta el otro lado — **imposible en un mapa plano** |
+| `G3-14_rutas-de-vuelo` | Por que los aviones suben al Artico |
+
+> ⚠️ **Verifica los datos, no los supongas.** Al preparar estas aventuras casi
+> escribo "desde Mexico sales en Nueva Zelanda": la antipoda real de Mexico cae
+> en **medio del oceano Indico**. Casi toda la tierra tiene agua enfrente, asi
+> que los pares validos hay que buscarlos. Lo mismo con las fronteras (Mexico y
+> Canada NO son vecinos) y con los tamaños. Pideselo a Claude: hay scripts que
+> lo comprueban con `geoContains`, `geoArea` y `geoInterpolate` sobre el
+> TopoJSON real.
+
 Ejemplos ya hechos: `G1-01b_continentes-globo.json` (quiz) y
 `G0-01b_planeta-azul-globo.json` (exploracion libre con `estilo: "tierra"`).
 

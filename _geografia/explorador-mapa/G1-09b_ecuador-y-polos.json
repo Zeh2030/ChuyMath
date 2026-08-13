@@ -1,0 +1,61 @@
+{
+  "id": "G1-09b_ecuador-y-polos",
+  "titulo": "La Linea del Calor",
+  "descripcion": "Encuentra los paises por donde pasa el Ecuador y descubre por que ahi nunca nieva",
+  "tipo": "explorador-mapa",
+  "materia": "geografia",
+  "tema": "ecuador-clima",
+  "nivel": "G1-09",
+  "misiones": [
+    {
+      "id": "mision-em-ecuador",
+      "tipo": "explorador-mapa",
+      "mapa": "globo",
+      "modo": "quiz",
+      "titulo": "Por Donde Pasa el Ecuador",
+      "instruccion": "La linea amarilla es el ECUADOR: parte la Tierra por la mitad, entre el polo norte y el polo sur. Los paises que toca reciben el sol mas de frente, por eso ahi hace calor todo el año. Gira el globo para seguirla.",
+      "resaltar_ecuador": true,
+      "rotacion_inicial": [
+        -60,
+        0
+      ],
+      "retos": [
+        {
+          "id": "218",
+          "nombre": "Ecuador",
+          "bandera": "ec",
+          "dato": "A este pais le pusieron el nombre de la linea imaginaria que lo cruza. En su capital, Quito, hay un monumento justo encima.",
+          "pregunta": "Sigue la linea amarilla: ¿donde esta Ecuador?"
+        },
+        {
+          "id": "170",
+          "nombre": "Colombia",
+          "bandera": "co",
+          "dato": "El Ecuador cruza el sur de Colombia. Alli el dia y la noche duran casi 12 horas, todo el año.",
+          "pregunta": "Sigue la linea amarilla: ¿donde esta Colombia?"
+        },
+        {
+          "id": "404",
+          "nombre": "Kenia",
+          "bandera": "ke",
+          "dato": "En Kenia puedes estar en el Ecuador y aun asi pasar frio: hay montañas con nieve casi encima de la linea.",
+          "pregunta": "Sigue la linea amarilla: ¿donde esta Kenia?"
+        },
+        {
+          "id": "360",
+          "nombre": "Indonesia",
+          "bandera": "id",
+          "dato": "Indonesia tiene mas de 17.000 islas y el Ecuador pasa justo por en medio.",
+          "pregunta": "Sigue la linea amarilla: ¿donde esta Indonesia?"
+        },
+        {
+          "id": "076",
+          "nombre": "Brasil",
+          "bandera": "br",
+          "dato": "El Ecuador entra por la selva del Amazonas, en el norte de Brasil.",
+          "pregunta": "Sigue la linea amarilla: ¿donde esta Brasil?"
+        }
+      ]
+    }
+  ]
+}

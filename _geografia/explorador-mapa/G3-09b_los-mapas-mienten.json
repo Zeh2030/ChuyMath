@@ -1,0 +1,53 @@
+{
+  "id": "G3-09b_los-mapas-mienten",
+  "titulo": "Los Mapas Mienten",
+  "descripcion": "En un mapa plano los paises del norte se ven enormes. En el globo se ve la verdad",
+  "tipo": "explorador-mapa",
+  "materia": "geografia",
+  "tema": "proyecciones",
+  "nivel": "G3-09",
+  "misiones": [
+    {
+      "id": "mision-em-tamanos",
+      "tipo": "explorador-mapa",
+      "mapa": "globo",
+      "modo": "quiz",
+      "titulo": "¿Cual es DE VERDAD Mas Grande?",
+      "instruccion": "Los mapas planos estiran lo que esta cerca de los polos: por eso Groenlandia parece un continente. Sobre la esfera no hay trampa. Gira el globo y compara con tus propios ojos antes de responder.",
+      "rotacion_inicial": [
+        10,
+        25
+      ],
+      "retos": [
+        {
+          "id": "036",
+          "nombre": "Australia",
+          "bandera": "au",
+          "dato": "En un mapa plano Groenlandia parece igual de grande. En realidad Australia es 3,5 veces mayor: el mapa estira lo que esta cerca de los polos. (7.7 millones de km² frente a 2.2).",
+          "pregunta": "Toca el que es DE VERDAD mas grande: ¿Australia o Greenland?"
+        },
+        {
+          "id": "360",
+          "nombre": "Indonesia",
+          "bandera": "id",
+          "dato": "Suecia se ve enorme en los mapas por estar tan al norte, pero Indonesia es mas de 4 veces mas grande. (1.9 millones de km² frente a 0.5).",
+          "pregunta": "Toca el que es DE VERDAD mas grande: ¿Indonesia o Sweden?"
+        },
+        {
+          "id": "404",
+          "nombre": "Kenia",
+          "bandera": "ke",
+          "dato": "Noruega parece gigante estirada hacia arriba; Kenia, pegada al Ecuador, es mas grande de verdad. (0.6 millones de km² frente a 0.4).",
+          "pregunta": "Toca el que es DE VERDAD mas grande: ¿Kenia o Norway?"
+        },
+        {
+          "id": "450",
+          "nombre": "Madagascar",
+          "bandera": "mg",
+          "dato": "Finlandia y Madagascar parecen del mismo tamaño en el mapa. Madagascar es casi el doble. (0.6 millones de km² frente a 0.3).",
+          "pregunta": "Toca el que es DE VERDAD mas grande: ¿Madagascar o Finland?"
+        }
+      ]
+    }
+  ]
+}

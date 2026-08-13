@@ -1,0 +1,95 @@
+{
+  "id": "G2-14_vecinos-del-mundo",
+  "titulo": "Vecinos de Frontera",
+  "descripcion": "Gira el globo y sigue las fronteras para encontrar quien vive al lado",
+  "tipo": "explorador-mapa",
+  "materia": "geografia",
+  "tema": "fronteras",
+  "nivel": "G2-14",
+  "misiones": [
+    {
+      "id": "mision-em-vecinos",
+      "tipo": "explorador-mapa",
+      "mapa": "globo",
+      "modo": "quiz",
+      "titulo": "¿Quien Vive al Lado?",
+      "instruccion": "Los paises no estan sueltos: se tocan. En el globo las fronteras son continuas y puedes seguirlas con el dedo girando la Tierra. El punto rojo te marca desde donde buscar.",
+      "rotacion_inicial": [
+        -40,
+        20
+      ],
+      "retos": [
+        {
+          "id": "840",
+          "nombre": "Estados Unidos",
+          "bandera": "us",
+          "dato": "La frontera entre Mexico y Estados Unidos mide mas de 3.000 km: es de las mas largas del mundo.",
+          "pregunta": "El punto rojo es Mexico. ¿Cual de sus vecinos es Estados Unidos?",
+          "marcar": [
+            {
+              "lon": -102.22312784904646,
+              "lat": 23.913416451541593,
+              "color": "#ff5252"
+            }
+          ]
+        },
+        {
+          "id": "620",
+          "nombre": "Portugal",
+          "bandera": "pt",
+          "dato": "España y Portugal comparten la peninsula Iberica. Su frontera es la mas antigua de Europa: casi no ha cambiado en 800 años.",
+          "pregunta": "El punto rojo es Spain. ¿Cual de sus vecinos es Portugal?",
+          "marcar": [
+            {
+              "lon": -3.6242334452591187,
+              "lat": 40.32070054853027,
+              "color": "#ff5252"
+            }
+          ]
+        },
+        {
+          "id": "496",
+          "nombre": "Mongolia",
+          "bandera": "mn",
+          "dato": "Mongolia solo tiene dos vecinos, China y Rusia, y ambos son gigantes.",
+          "pregunta": "El punto rojo es China. ¿Cual de sus vecinos es Mongolia?",
+          "marcar": [
+            {
+              "lon": 103.45254772896584,
+              "lat": 36.683402772207494,
+              "color": "#ff5252"
+            }
+          ]
+        },
+        {
+          "id": "032",
+          "nombre": "Argentina",
+          "bandera": "ar",
+          "dato": "Brasil es tan grande que hace frontera con 10 paises: casi toda Sudamerica.",
+          "pregunta": "El punto rojo es Brazil. ¿Cual de sus vecinos es Argentina?",
+          "marcar": [
+            {
+              "lon": -53.172527779720134,
+              "lat": -10.6554749187722,
+              "color": "#ff5252"
+            }
+          ]
+        },
+        {
+          "id": "434",
+          "nombre": "Libia",
+          "bandera": "ly",
+          "dato": "La frontera entre Egipto y Libia es una linea recta trazada en el desierto: no sigue ningun rio ni montaña.",
+          "pregunta": "El punto rojo es Egypt. ¿Cual de sus vecinos es Libia?",
+          "marcar": [
+            {
+              "lon": 29.860980187510144,
+              "lat": 26.47492982089098,
+              "color": "#ff5252"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
