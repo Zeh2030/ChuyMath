@@ -12,14 +12,20 @@
   #
   # CORRECCION (2026-08-12): este comentario decia ademas que "el consumo real
   # es 0,1 creditos y las implementaciones de produccion aparecen como 0". Eso
-  # ya NO es cierto y conviene no fiarse de ello. Medido en el panel:
+  # ya NO es cierto y conviene no fiarse de ello. Los deploys SI son el gasto
+  # dominante (ancho de banda y peticiones son ruido).
   #
-  #     225 creditos / 15 deploys  =  15 creditos por deploy
-  #     300 creditos gratis al mes =  20 deploys al mes, y se acabo
+  # CORRECCION (2026-08-13): habia DOS proyectos de Netlify colgados de este
+  # mismo repo -- `chuymaths` (el que se usa) y `chuymath` (abandonado). Cada
+  # push construia LOS DOS, asi que todo costaba el doble. Medido en el panel:
   #
-  # O sea que los deploys SI son el gasto dominante (225 de 225,5 creditos;
-  # ancho de banda y peticiones son ruido). Con 20 al mes conviene agrupar
-  # varios commits en un solo push.
+  #     225,5 creditos / 12 pushes x 2 sitios = ~10 creditos por deploy
+  #     300 creditos gratis al mes            = ~30 deploys, o ~15 pushes
+  #                                             mientras existan los 2 sitios
+  #
+  # Antes de dar por buena una cuenta de creditos, revisar cuantos proyectos
+  # despliegan desde el repo (panel de Netlify), no solo cuantos pushes se han
+  # hecho. Aun asi conviene agrupar varios commits en un solo push.
   #
   # Lo que de verdad ahorra sin tocar esta config: el contenido de las materias
   # NO forma parte del build. Los JSON de _contenido/, _content/, _geografia/,
