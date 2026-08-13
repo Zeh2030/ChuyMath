@@ -593,7 +593,30 @@ const Espacio3D = forwardRef(function Espacio3D(
       const cola = new THREE.Mesh(geoCola, matCola);
       escena3.add(cola);
 
-      escCometa = { tierra, cometa, brilloCometa, cola, matCola, semiB, foco, angTierra: 0 };
+      // Viento solar VISIBLE: chispitas que salen del Sol en todas direcciones.
+      // Es el porque de la cola: se ve que algo sopla desde el Sol hacia afuera.
+      const N_VIENTO = 70;
+      const rngViento = crearRng(77);
+      const dirViento = [];
+      const radioViento = new Float32Array(N_VIENTO);
+      const posViento = new Float32Array(N_VIENTO * 3);
+      for (let i = 0; i < N_VIENTO; i++) {
+        const ang = rngViento() * Math.PI * 2;
+        dirViento.push(new THREE.Vector3(Math.cos(ang), (rngViento() - 0.5) * 0.35, Math.sin(ang)).normalize());
+        radioViento[i] = 3.5 + rngViento() * 26;
+      }
+      const geoViento = registrar(new THREE.BufferGeometry());
+      geoViento.setAttribute('position', new THREE.BufferAttribute(posViento, 3));
+      const matViento = registrar(new THREE.PointsMaterial({
+        color: 0xffd9a0, size: 2, sizeAttenuation: false,
+        transparent: true, opacity: 0.4, depthWrite: false,
+      }));
+      escena3.add(new THREE.Points(geoViento, matViento));
+
+      escCometa = {
+        tierra, cometa, brilloCometa, cola, matCola, semiB, foco, angTierra: 0,
+        geoViento, posViento, dirViento, radioViento,
+      };
     }
 
     if (escena === 'satelite') {
@@ -893,6 +916,18 @@ const Espacio3D = forwardRef(function Espacio3D(
         escCometa.cola.quaternion.setFromUnitVectors(V_ARRIBA, vTmp2);
         escCometa.matCola.opacity = Math.min(0.7, Math.max(0.12, 4.5 / d));
 
+        // Las chispitas del viento solar viajan hacia afuera y se reciclan.
+        for (let i = 0; i < escCometa.dirViento.length; i++) {
+          escCometa.radioViento[i] += dt * 6;
+          if (escCometa.radioViento[i] > 30) escCometa.radioViento[i] = 3.5;
+          const dv = escCometa.dirViento[i];
+          const rv = escCometa.radioViento[i];
+          escCometa.posViento[i * 3] = dv.x * rv;
+          escCometa.posViento[i * 3 + 1] = dv.y * rv;
+          escCometa.posViento[i * 3 + 2] = dv.z * rv;
+        }
+        escCometa.geoViento.attributes.position.needsUpdate = true;
+
         if (est.enfocado === 'cometa') {
           objetivoX = escCometa.cometa.position.x;
           objetivoZ = escCometa.cometa.position.z;
@@ -1073,15 +1108,26 @@ const Espacio3D = forwardRef(function Espacio3D(
   } else if (escena === 'cometa') {
     const info = cometaInfoDe(angulo);
     etiqueta = (
-      <div className="espacio3d-fase">
-        {info.zona === 'perihelio'
-          ? '🔥 ¡Pegadito al Sol: cola gigante!'
-          : info.zona === 'afelio'
-            ? '🥶 Lejísimos del Sol: dormido, casi sin cola'
-            : info.alejandose
-              ? '🚀 Alejándose… ¡fíjate: viaja con la cola por DELANTE!'
-              : '☄️ Acercándose al Sol: la cola crece'}
-      </div>
+      <>
+        <div className="espacio3d-fase">
+          {info.zona === 'perihelio'
+            ? '🔥 ¡Pegadito al Sol: cola gigante!'
+            : info.zona === 'afelio'
+              ? '🥶 Lejísimos del Sol: dormido, casi sin cola'
+              : info.alejandose
+                ? '🚀 Alejándose… ¡fíjate: viaja con la cola por DELANTE!'
+                : '☄️ Acercándose al Sol: la cola crece'}
+        </div>
+        <div className="espacio3d-subfase">
+          {info.zona === 'perihelio'
+            ? 'El calor evapora su hielo, y las chispitas del viento solar lo soplan hacia afuera.'
+            : info.zona === 'afelio'
+              ? 'Tan lejos no hay calor que evapore el hielo: no hay casi nada que soplar.'
+              : info.alejandose
+                ? 'El viento del Sol siempre sopla DESDE el Sol: por eso la cola nunca va "atrás".'
+                : 'Entre más se acerca, más hielo se evapora… y más cola tiene el viento para soplar.'}
+        </div>
+      </>
     );
   } else if (escena === 'satelite') {
     const TEXTOS = {
