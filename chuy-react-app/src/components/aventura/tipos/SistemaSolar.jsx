@@ -99,6 +99,7 @@ const Cargando = () => (
 const Explorar = ({ escena, datos, haySiguiente, onContinuar }) => {
   const [seleccion, setSeleccion] = useState(null); // id del cuerpo tocado
   const [comparar, setComparar] = useState(false);
+  const [ocultarSol, setOcultarSol] = useState(false); // solo relevante con comparar=true
   const [visitados, setVisitados] = useState([]);
   const motorRef = useRef(null);
 
@@ -109,7 +110,13 @@ const Explorar = ({ escena, datos, haySiguiente, onContinuar }) => {
 
   const alternarComparar = () => {
     setSeleccion(null);
-    setComparar((v) => !v);
+    setComparar((v) => {
+      const next = !v;
+      // Al salir de comparar se reinicia: si vuelve a entrar mas tarde no se
+      // encuentra el Sol ya oculto sin haber tocado nada.
+      if (!next) setOcultarSol(false);
+      return next;
+    });
   };
 
   const conDatos = Object.keys(datos).length;
@@ -131,6 +138,7 @@ const Explorar = ({ escena, datos, haySiguiente, onContinuar }) => {
             escena={escena}
             enfocado={comparar ? null : seleccion}
             comparar={comparar}
+            ocultarSol={ocultarSol}
             seleccionable
             onSeleccion={elegir}
             onVista={elegir}
@@ -152,6 +160,11 @@ const Explorar = ({ escena, datos, haySiguiente, onContinuar }) => {
         {escena === 'planetas' && (
           <button className="sisol-btn-secundario" onClick={alternarComparar}>
             {comparar ? '🪐 Volver a las órbitas' : '🤯 ¿Y en tamaño real?'}
+          </button>
+        )}
+        {escena === 'planetas' && comparar && (
+          <button className="sisol-btn-secundario" onClick={() => setOcultarSol((v) => !v)}>
+            {ocultarSol ? '☀️ Mostrar el Sol' : '🙈 Ocultar el Sol'}
           </button>
         )}
         <button className="sisol-btn-secundario" onClick={() => motorRef.current?.recentrar()}>
