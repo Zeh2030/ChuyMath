@@ -264,9 +264,13 @@ const Espacio3D = forwardRef(function Espacio3D(
   const apiRef = useRef(null);
   const soportado = soportaWebGL();
 
-  // Pantalla completa: el ResizeObserver que ya redimensiona el lienzo three.js
-  // (mas abajo) se encarga solo del canvas al entrar/salir; aqui solo se
-  // alterna la clase CSS + la Fullscreen API real cuando esta disponible.
+  // Pantalla completa: el ResizeObserver que redimensiona el lienzo three.js
+  // (mas abajo) se encarga del canvas al entrar/salir, pero la transicion de
+  // la Fullscreen API real tarda uno o dos frames en asentarse — si se lee el
+  // tamaño demasiado pronto, la escena se queda con el encuadre "de en medio"
+  // (se ve menos de lo que cabe) y nadie lo vuelve a corregir. Por eso, ademas
+  // del observer, se fuerza una remedicion explicita un par de frames despues
+  // de cada cambio (ver el efecto de abajo).
   const [fullscreen, setFullscreen] = useState(false);
   const toggleFullscreen = useCallback(() => {
     setFullscreen((prev) => {
@@ -296,6 +300,23 @@ const Espacio3D = forwardRef(function Espacio3D(
       document.removeEventListener('webkitfullscreenchange', onChange);
     };
   }, []);
+
+  // Remedicion forzada tras el cambio de pantalla completa (entrar Y salir):
+  // dos requestAnimationFrame para asegurar que el layout ya se asento antes
+  // de leer el tamaño real del lienzo.
+  useEffect(() => {
+    let id1 = 0;
+    let id2 = 0;
+    id1 = requestAnimationFrame(() => {
+      id2 = requestAnimationFrame(() => {
+        apiRef.current?.redimensionar?.();
+      });
+    });
+    return () => {
+      cancelAnimationFrame(id1);
+      cancelAnimationFrame(id2);
+    };
+  }, [fullscreen]);
 
   // Deslizador. Que significa depende de la escena: posicion de la Luna en su
   // orbita (tierra-luna), de la Tierra en el ano (estaciones), del cometa en su
@@ -958,6 +979,10 @@ const Espacio3D = forwardRef(function Espacio3D(
     redimensionar();
     const observador = new ResizeObserver(redimensionar);
     observador.observe(contenedor);
+    // Expuesto para forzar una remedicion desde fuera (ver el toggle de
+    // pantalla completa: la transicion de la Fullscreen API puede tardar un
+    // frame en asentarse y el ResizeObserver a veces lee el tamaño de en medio).
+    apiRef.current.redimensionar = redimensionar;
 
     /* --- bucle --- */
     // Los planetas siempre se mueven, asi que se renderiza cada frame mientras
