@@ -60,14 +60,21 @@ import './MisionRenderer.css';
  * @param {*} respuestaGuardada - Respuesta guardada del usuario (para modo simulacro)
  * @param {Function} onRespuesta - Callback para guardar respuesta en modo simulacro
  * @param {Boolean} mostrarResultado - Si debe mostrar el resultado (modo simulacro calificado)
+ * @param {String} materia - Materia de la aventura ('ingles', 'ciencias', 'geografia'...).
+ *   Solo la usan los tipos compartidos con el modulo de ingles (TrueOrFalse,
+ *   FillTheGap, TapThePairs, ImagePicker, WordScramble, MiniStory) para saber
+ *   si el texto/audio que reciben es ingles de verdad o contenido en español
+ *   reutilizando el mismo componente. Sin ella, asumen español (mas seguro:
+ *   la mayoria del contenido de la app es en español).
  */
-const MisionRenderer = ({ 
-  mision, 
-  onCompletar, 
+const MisionRenderer = ({
+  mision,
+  onCompletar,
   modoSimulacro = false,
   respuestaGuardada = null,
   onRespuesta = null,
-  mostrarResultado = false
+  mostrarResultado = false,
+  materia = null
 }) => {
   if (!mision) {
     return <div>No hay misión disponible</div>;
@@ -294,6 +301,7 @@ const MisionRenderer = ({
             key={mision.id}
             mision={mision}
             onCompletar={onCompletar}
+            materia={materia}
           />
         );
 
@@ -303,6 +311,7 @@ const MisionRenderer = ({
             key={mision.id}
             mision={mision}
             onCompletar={onCompletar}
+            materia={materia}
           />
         );
 
@@ -312,6 +321,7 @@ const MisionRenderer = ({
             key={mision.id}
             mision={mision}
             onCompletar={onCompletar}
+            materia={materia}
           />
         );
 
@@ -330,6 +340,7 @@ const MisionRenderer = ({
             key={mision.id}
             mision={mision}
             onCompletar={onCompletar}
+            materia={materia}
           />
         );
 
@@ -339,6 +350,7 @@ const MisionRenderer = ({
             key={mision.id}
             mision={mision}
             onCompletar={onCompletar}
+            materia={materia}
           />
         );
 
@@ -357,6 +369,7 @@ const MisionRenderer = ({
             key={mision.id}
             mision={mision}
             onCompletar={onCompletar}
+            materia={materia}
           />
         );
 

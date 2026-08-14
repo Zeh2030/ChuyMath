@@ -10,7 +10,13 @@ const shuffle = (arr) => {
   return s;
 };
 
-const ImagePicker = ({ mision, onCompletar }) => {
+// Este componente lo comparten ingles, ciencias, geografia y piano (banderas,
+// fotos de la NASA, simbolos musicales...). El boton de audio y el rotulo
+// "Which one is..." solo tienen sentido cuando el reto trae `palabra_en`
+// (contenido de ingles de verdad); el resto del texto de interfaz usa
+// `esIngles` para no dejar "Continue"/"Next" sueltos en medio de español.
+const ImagePicker = ({ mision, onCompletar, materia = null }) => {
+  const esIngles = materia === 'ingles';
   const retos = mision.retos || [];
   const [retoActual, setRetoActual] = useState(0);
   const [seleccion, setSeleccion] = useState(null);
@@ -28,14 +34,20 @@ const ImagePicker = ({ mision, onCompletar }) => {
     return (
       <div className="ip-container ip-complete">
         <div className="ip-complete-icon">🎉</div>
-        <h3>Great eye!</h3>
-        <p>You picked all {retos.length} images correctly!</p>
-        <button className="ip-btn ip-btn-next" onClick={onCompletar}>Continue</button>
+        <h3>{esIngles ? 'Great eye!' : '¡Muy buen ojo!'}</h3>
+        <p>
+          {esIngles
+            ? `You picked all ${retos.length} images correctly!`
+            : `¡Acertaste las ${retos.length} imágenes!`}
+        </p>
+        <button className="ip-btn ip-btn-next" onClick={onCompletar}>
+          {esIngles ? 'Continue' : 'Continuar'}
+        </button>
       </div>
     );
   }
 
-  if (!reto) return <div>Loading...</div>;
+  if (!reto) return <div>Cargando…</div>;
 
   const handleSelect = (opcion) => {
     if (estado === 'correcto') return;
@@ -149,7 +161,9 @@ const ImagePicker = ({ mision, onCompletar }) => {
             </div>
           )}
           <button className="ip-btn ip-btn-next" onClick={handleSiguiente}>
-            {retoActual < retos.length - 1 ? 'Next →' : 'Finish!'}
+            {retoActual < retos.length - 1
+              ? (esIngles ? 'Next →' : 'Siguiente →')
+              : (esIngles ? 'Finish!' : '¡Terminar!')}
           </button>
         </div>
       )}

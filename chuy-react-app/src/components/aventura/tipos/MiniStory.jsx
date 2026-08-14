@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { hablar } from '../../../utils/sonido';
 import './MiniStory.css';
 
-const MiniStory = ({ mision, onCompletar }) => {
+// Compartido entre ingles (parrafo.texto = ingles, parrafo.traduccion =
+// español) y ciencias/geografia/piano (parrafo.texto ya es español, sin
+// traduccion). `esIngles` decide el idioma del boton de audio y de toda la
+// interfaz alrededor — sin esto, el 🔊 leia español con voz/acento ingles.
+const MiniStory = ({ mision, onCompletar, materia = null }) => {
+  const esIngles = materia === 'ingles';
   const parrafos = mision.parrafos || [];
   const [parrafoActual, setParrafoActual] = useState(0);
   const [fase, setFase] = useState('leer'); // 'leer', 'preguntar', 'completado'
@@ -23,12 +29,16 @@ const MiniStory = ({ mision, onCompletar }) => {
   }, [parrafoActual]);
 
   const speak = (text) => {
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'en-US';
-      utterance.rate = 0.75;
-      window.speechSynthesis.speak(utterance);
+    if (esIngles) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.75;
+        window.speechSynthesis.speak(utterance);
+      }
+    } else {
+      hablar(text, { rate: 0.85 });
     }
   };
 
@@ -36,7 +46,7 @@ const MiniStory = ({ mision, onCompletar }) => {
     return (
       <div className="ms-container ms-complete">
         <div className="ms-complete-icon">🎉</div>
-        <h3>Story Complete!</h3>
+        <h3>{esIngles ? 'Story Complete!' : '¡Historia completa!'}</h3>
         <div className="ms-summary">
           {parrafos.map((p, i) => (
             <p key={i} className="ms-summary-text">
@@ -45,12 +55,14 @@ const MiniStory = ({ mision, onCompletar }) => {
             </p>
           ))}
         </div>
-        <button className="ms-btn ms-btn-next" onClick={onCompletar}>Continue</button>
+        <button className="ms-btn ms-btn-next" onClick={onCompletar}>
+          {esIngles ? 'Continue' : 'Continuar'}
+        </button>
       </div>
     );
   }
 
-  if (!parrafo) return <div>Loading...</div>;
+  if (!parrafo) return <div>Cargando…</div>;
 
   const handleContinueToQuestions = () => {
     if (parrafo.preguntas && parrafo.preguntas.length > 0) {
@@ -116,7 +128,7 @@ const MiniStory = ({ mision, onCompletar }) => {
       const partes = pregunta.oracion.split('___');
       return (
         <div className="ms-question">
-          <p className="ms-question-label">Complete the sentence:</p>
+          <p className="ms-question-label">{esIngles ? 'Complete the sentence:' : 'Completa la oración:'}</p>
           <div className="ms-gap-sentence">
             <span>{partes[0]}</span>
             <span className={`ms-gap ${estadoPregunta === 'correcto' ? 'filled' : ''}`}>
@@ -142,16 +154,22 @@ const MiniStory = ({ mision, onCompletar }) => {
     if (pregunta.tipo === 'true-or-false') {
       return (
         <div className="ms-question">
-          <p className="ms-question-label">Is this correct?</p>
+          <p className="ms-question-label">{esIngles ? 'Is this correct?' : '¿Es correcto?'}</p>
           <div className="ms-tof-sentence">{pregunta.oracion}</div>
           {estadoPregunta !== 'correcto' && (
             <div className="ms-tof-buttons">
-              <button className="ms-tof-btn ms-tof-correct" onClick={() => handleTofSelect(true)}>✓ Yes</button>
-              <button className="ms-tof-btn ms-tof-incorrect" onClick={() => handleTofSelect(false)}>✗ No</button>
+              <button className="ms-tof-btn ms-tof-correct" onClick={() => handleTofSelect(true)}>
+                {esIngles ? '✓ Yes' : '✓ Sí'}
+              </button>
+              <button className="ms-tof-btn ms-tof-incorrect" onClick={() => handleTofSelect(false)}>
+                ✗ No
+              </button>
             </div>
           )}
           {estadoPregunta === 'correcto' && !pregunta.correcto && pregunta.correccion && (
-            <div className="ms-correction">Correct: {pregunta.correccion}</div>
+            <div className="ms-correction">
+              {esIngles ? 'Correct: ' : 'Correcto: '}{pregunta.correccion}
+            </div>
           )}
         </div>
       );
@@ -175,10 +193,11 @@ const MiniStory = ({ mision, onCompletar }) => {
 
         <div className="ms-text-area">
           <p className="ms-text">{parrafo.texto}</p>
-          <button className="ms-speak-btn" onClick={() => speak(parrafo.texto)} title="Listen">🔊</button>
+          <button className="ms-speak-btn" onClick={() => speak(parrafo.texto)} title={esIngles ? 'Listen' : 'Escuchar'}>🔊</button>
         </div>
 
-        {/* Translation toggle */}
+        {/* Translation toggle: solo aparece si el contenido trae traduccion
+            (por diseño, unicamente el material de ingles la usa). */}
         {parrafo.traduccion && (
           <div className="ms-translation-area">
             <button className="ms-translate-toggle" onClick={() => setMostrarTraduccion(!mostrarTraduccion)}>
@@ -192,7 +211,7 @@ const MiniStory = ({ mision, onCompletar }) => {
       {/* Phase: Reading → Continue to questions */}
       {fase === 'leer' && (
         <button className="ms-btn ms-btn-continue" onClick={handleContinueToQuestions}>
-          I read it! Next →
+          {esIngles ? 'I read it! Next →' : '¡Ya lo leí! Siguiente →'}
         </button>
       )}
 
@@ -202,9 +221,13 @@ const MiniStory = ({ mision, onCompletar }) => {
           {renderPregunta()}
           {estadoPregunta === 'correcto' && (
             <button className="ms-btn ms-btn-next" onClick={advancePregunta}>
-              {preguntaActual < parrafo.preguntas.length - 1 ? 'Next question →'
-                : parrafoActual < parrafos.length - 1 ? 'Continue reading →'
-                : 'Finish story!'}
+              {esIngles
+                ? (preguntaActual < parrafo.preguntas.length - 1 ? 'Next question →'
+                  : parrafoActual < parrafos.length - 1 ? 'Continue reading →'
+                  : 'Finish story!')
+                : (preguntaActual < parrafo.preguntas.length - 1 ? 'Siguiente pregunta →'
+                  : parrafoActual < parrafos.length - 1 ? 'Seguir leyendo →'
+                  : '¡Terminar historia!')}
             </button>
           )}
         </div>

@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './FillTheGap.css';
 
-const FillTheGap = ({ mision, onCompletar }) => {
+// Compartido entre ingles y geografia/piano. `esIngles` decide el idioma de
+// la interfaz alrededor de la oracion (que ya viene en el idioma correcto
+// desde el contenido).
+const FillTheGap = ({ mision, onCompletar, materia = null }) => {
+  const esIngles = materia === 'ingles';
   const retos = mision.retos || [];
   const [retoActual, setRetoActual] = useState(0);
   const [seleccion, setSeleccion] = useState(null);
@@ -19,14 +23,20 @@ const FillTheGap = ({ mision, onCompletar }) => {
     return (
       <div className="ftg-container ftg-complete">
         <div className="ftg-complete-icon">🎉</div>
-        <h3>Amazing!</h3>
-        <p>You filled all {retos.length} gaps correctly!</p>
-        <button className="ftg-btn ftg-btn-next" onClick={onCompletar}>Continue</button>
+        <h3>{esIngles ? 'Amazing!' : '¡Increíble!'}</h3>
+        <p>
+          {esIngles
+            ? `You filled all ${retos.length} gaps correctly!`
+            : `¡Completaste los ${retos.length} espacios correctamente!`}
+        </p>
+        <button className="ftg-btn ftg-btn-next" onClick={onCompletar}>
+          {esIngles ? 'Continue' : 'Continuar'}
+        </button>
       </div>
     );
   }
 
-  if (!reto) return <div>Loading...</div>;
+  if (!reto) return <div>Cargando…</div>;
 
   // Build sentence parts around the gap
   const partes = reto.oracion.split('___');
@@ -113,7 +123,9 @@ const FillTheGap = ({ mision, onCompletar }) => {
             </div>
           )}
           <button className="ftg-btn ftg-btn-next" onClick={handleSiguiente}>
-            {retoActual < retos.length - 1 ? 'Next →' : 'Finish!'}
+            {esIngles
+              ? (retoActual < retos.length - 1 ? 'Next →' : 'Finish!')
+              : (retoActual < retos.length - 1 ? 'Siguiente →' : '¡Terminar!')}
           </button>
         </div>
       )}

@@ -1,7 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { hablar } from '../../../utils/sonido';
 import './WordScramble.css';
 
-const WordScramble = ({ mision, onCompletar }) => {
+// Compartido entre ingles (reto.respuesta = palabra en ingles) y geografia
+// (reto.respuesta = nombre en español, p.ej. una capital). `esIngles` decide
+// el idioma del boton de audio y de la interfaz.
+const WordScramble = ({ mision, onCompletar, materia = null }) => {
+  const esIngles = materia === 'ingles';
   const retos = mision.retos || [];
   const [retoActual, setRetoActual] = useState(0);
   const [letrasSeleccionadas, setLetrasSeleccionadas] = useState([]);
@@ -34,21 +39,31 @@ const WordScramble = ({ mision, onCompletar }) => {
     return (
       <div className="ws-container ws-complete">
         <div className="ws-complete-icon">🎉</div>
-        <h3>Word Master!</h3>
-        <p>You unscrambled all {retos.length} words!</p>
-        <button className="ws-btn ws-btn-next" onClick={onCompletar}>Continue</button>
+        <h3>{esIngles ? 'Word Master!' : '¡Maestro de las palabras!'}</h3>
+        <p>
+          {esIngles
+            ? `You unscrambled all ${retos.length} words!`
+            : `¡Ordenaste las ${retos.length} palabras!`}
+        </p>
+        <button className="ws-btn ws-btn-next" onClick={onCompletar}>
+          {esIngles ? 'Continue' : 'Continuar'}
+        </button>
       </div>
     );
   }
 
-  if (!reto) return <div>Loading...</div>;
+  if (!reto) return <div>Cargando…</div>;
 
   const speakWord = () => {
-    if ('speechSynthesis' in window) {
-      const utterance = new SpeechSynthesisUtterance(reto.respuesta);
-      utterance.lang = 'en-US';
-      utterance.rate = 0.75;
-      window.speechSynthesis.speak(utterance);
+    if (esIngles) {
+      if ('speechSynthesis' in window) {
+        const utterance = new SpeechSynthesisUtterance(reto.respuesta);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.75;
+        window.speechSynthesis.speak(utterance);
+      }
+    } else {
+      hablar(reto.respuesta, { rate: 0.85 });
     }
   };
 
@@ -102,10 +117,10 @@ const WordScramble = ({ mision, onCompletar }) => {
 
       {/* Hint */}
       <div className="ws-hint">
-        <p className="ws-hint-label">Unscramble the word:</p>
+        <p className="ws-hint-label">{esIngles ? 'Unscramble the word:' : 'Ordena las letras:'}</p>
         {reto.pista_es && <p className="ws-hint-text">{reto.pista_es}</p>}
         {reto.pista_emoji && <span className="ws-hint-emoji">{reto.pista_emoji}</span>}
-        <button className="ws-sound-btn" onClick={speakWord} title="Listen to the word">🔊</button>
+        <button className="ws-sound-btn" onClick={speakWord} title={esIngles ? 'Listen to the word' : 'Escuchar la palabra'}>🔊</button>
       </div>
 
       {/* Built word */}
@@ -137,7 +152,9 @@ const WordScramble = ({ mision, onCompletar }) => {
 
       {/* Message */}
       {estado === 'incorrecto' && (
-        <div className="ws-message error">Not quite! Try again.</div>
+        <div className="ws-message error">
+          {esIngles ? 'Not quite! Try again.' : '¡Casi! Intenta de nuevo.'}
+        </div>
       )}
 
       {estado === 'correcto' && (
@@ -153,7 +170,9 @@ const WordScramble = ({ mision, onCompletar }) => {
       <div className="ws-actions">
         {estado === 'correcto' ? (
           <button className="ws-btn ws-btn-next" onClick={handleSiguiente}>
-            {retoActual < retos.length - 1 ? 'Next →' : 'Finish!'}
+            {esIngles
+              ? (retoActual < retos.length - 1 ? 'Next →' : 'Finish!')
+              : (retoActual < retos.length - 1 ? 'Siguiente →' : '¡Terminar!')}
           </button>
         ) : (
           <button
@@ -161,7 +180,7 @@ const WordScramble = ({ mision, onCompletar }) => {
             onClick={handleVerificar}
             disabled={letrasSeleccionadas.length < reto.respuesta.length}
           >
-            Check ✓
+            {esIngles ? 'Check ✓' : 'Comprobar ✓'}
           </button>
         )}
       </div>

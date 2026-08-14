@@ -1,7 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import './TapThePairs.css';
 
-const TapThePairs = ({ mision, onCompletar }) => {
+// Compartido entre ingles (par.en = ingles) y ciencias/geografia/piano (ambas
+// columnas en español, pese al nombre del campo). `esIngles` solo afecta el
+// texto de interfaz — los datos de cada `par` se muestran tal cual vienen.
+const TapThePairs = ({ mision, onCompletar, materia = null }) => {
+  const esIngles = materia === 'ingles';
   const retos = mision.retos || [];
   const [retoActual, setRetoActual] = useState(0);
   const [seleccionIzq, setSeleccionIzq] = useState(null);
@@ -37,14 +41,20 @@ const TapThePairs = ({ mision, onCompletar }) => {
     return (
       <div className="ttp-container ttp-complete">
         <div className="ttp-complete-icon">🎉</div>
-        <h3>Perfect Matching!</h3>
-        <p>You matched all pairs in {retos.length} rounds!</p>
-        <button className="ttp-btn ttp-btn-next" onClick={onCompletar}>Continue</button>
+        <h3>{esIngles ? 'Perfect Matching!' : '¡Emparejamiento perfecto!'}</h3>
+        <p>
+          {esIngles
+            ? `You matched all pairs in ${retos.length} rounds!`
+            : `¡Encontraste todos los pares en ${retos.length} rondas!`}
+        </p>
+        <button className="ttp-btn ttp-btn-next" onClick={onCompletar}>
+          {esIngles ? 'Continue' : 'Continuar'}
+        </button>
       </div>
     );
   }
 
-  if (!reto) return <div>Loading...</div>;
+  if (!reto) return <div>Cargando…</div>;
 
   const handleSelectIzq = (index) => {
     if (paresEncontrados.includes(index)) return;
@@ -86,7 +96,7 @@ const TapThePairs = ({ mision, onCompletar }) => {
         }, 1200);
       }
     } else {
-      setMensaje('Try again!');
+      setMensaje(esIngles ? 'Try again!' : '¡Intenta de nuevo!');
       setTimeout(() => {
         setSeleccionIzq(null);
         setSeleccionDer(null);
@@ -103,12 +113,14 @@ const TapThePairs = ({ mision, onCompletar }) => {
         ))}
       </div>
 
-      <p className="ttp-instruction">Tap one from each column to match!</p>
+      <p className="ttp-instruction">
+        {esIngles ? 'Tap one from each column to match!' : '¡Toca uno de cada columna para emparejar!'}
+      </p>
 
       {mensaje && <div className="ttp-message">{mensaje}</div>}
 
       <div className="ttp-score">
-        {paresEncontrados.length} / {reto.pares.length} pairs
+        {paresEncontrados.length} / {reto.pares.length} {esIngles ? 'pairs' : 'pares'}
       </div>
 
       <div className="ttp-columns">

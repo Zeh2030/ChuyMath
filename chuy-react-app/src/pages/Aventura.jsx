@@ -337,9 +337,10 @@ const Aventura = () => {
         {/* Renderizar la Misión Actual */}
         {mision && (
           <div className="mision-container">
-            <MisionRenderer 
-              mision={mision} 
+            <MisionRenderer
+              mision={mision}
               onCompletar={siguienteMision}
+              materia={aventura.materia}
             />
           </div>
         )}
