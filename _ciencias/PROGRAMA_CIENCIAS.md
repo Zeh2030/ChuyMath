@@ -384,7 +384,9 @@ el flujo de MezcladorColores (intro → explorar → retos → fin).
 - **Componentes**: `SistemaSolar.jsx` (wrapper, flujo de mision) + `Espacio3D.jsx`
   (motor three.js, chunk lazy) + `espacioDatos.js` (constantes compartidas SIN three).
 - **Escena `planetas`**: Sol + 8 planetas orbitando; tocar un cuerpo = tarjeta con dato
-  wow; boton "¿Y en tamano real?" forma a todos en fila a escala real (momento wow).
+  wow; boton "¿Y en tamano real?" forma a todos en fila a escala real (momento wow),
+  con etiquetas flotantes "×Tierra" por cuerpo y boton "Ocultar el Sol" para
+  comparar solo los planetas entre si a mayor escala (2026-08-13).
 - **Escena `tierra-luna`**: deslizador que pasea la Luna por su orbita; recuadro
   "asi se ve desde la Tierra" (segunda camara); los eclipses son sombras REALES
   (shadow map) — alinear los cuerpos los produce solos.
@@ -444,6 +446,7 @@ saturno, urano, neptuno. Tierra-luna: sol, tierra, luna.
 | `sistema-solar/C2-32_constelaciones-3d.json` | Constelaciones en 3D | sistema-solar (constelaciones) + true-or-false |
 | `sistema-solar/C2-33_el-cometa.json` | El cometa y su cola | sistema-solar (cometa) + opcion-multiple |
 | `sistema-solar/C3-21_lanza-un-satelite.json` | Lanza un satelite (canon de Newton) | sistema-solar (satelite) + opcion-multiple |
+| `opcion-multiple/C2-34_comparando-planetas.json` | Tamanos, temperaturas y familias de planetas | opcion-multiple + tap-the-pairs |
 
 **Fotos**: URLs `https://commons.wikimedia.org/wiki/Special:FilePath/<archivo>?width=320`
 (redirect estable de Wikimedia Commons, sin rutas con hash; todas verificadas con curl).

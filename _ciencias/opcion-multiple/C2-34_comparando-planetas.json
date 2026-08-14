@@ -1,0 +1,101 @@
+{
+  "id": "C2-34_comparando-planetas",
+  "titulo": "Comparando los Planetas",
+  "descripcion": "Tamaños, temperaturas y de qué están hechos los planetas: un repaso a fondo del sistema solar",
+  "tipo": "opcion-multiple",
+  "materia": "ciencias",
+  "nivel": "C2-34",
+  "tema": "astronomia",
+  "misiones": [
+    {
+      "id": "astro-om-comp-sol",
+      "tipo": "opcion-multiple",
+      "titulo": "El Gigante del Centro",
+      "instruccion": "Elige la respuesta correcta.",
+      "pregunta": "☀️ El Sol es tan grande que hace ver a los planetas como canicas. Si la Tierra mide 1×, ¿cuánto mide el Sol comparado con ella?",
+      "opciones": ["Como 4 Tierras (4×)", "Como 30 Tierras (30×)", "Como 109 Tierras (109×)"],
+      "respuesta": "2",
+      "explicacion_correcta": "¡Así es! El Sol mide 109×Tierra: si la Tierra fuera una canica, el Sol sería casi tan grande como una pelota de playa. Por eso hay que alejar tanto la cámara para verlos juntos.",
+      "explicacion_incorrecta": "El Sol mide 109×Tierra: 109 veces el tamaño de nuestro planeta. Es tan grande que dentro caben más de un millón de Tierras."
+    },
+    {
+      "id": "astro-om-comp-mayor",
+      "tipo": "opcion-multiple",
+      "titulo": "El Planeta Más Grande",
+      "instruccion": "Elige la respuesta correcta.",
+      "pregunta": "🏆 De los 8 planetas, ¿cuál es el MÁS GRANDE?",
+      "opciones": ["Saturno (9.45×Tierra)", "Júpiter (11×Tierra)", "Neptuno (3.9×Tierra)"],
+      "respuesta": "1",
+      "explicacion_correcta": "¡Correcto! Júpiter mide 11×Tierra: es el planeta más grande, tan grande que podría tragarse a todos los demás juntos.",
+      "explicacion_incorrecta": "El más grande es Júpiter, con 11×Tierra. Saturno es el segundo (9.45×), pero le falta un poquito para alcanzarlo."
+    },
+    {
+      "id": "astro-om-comp-menor",
+      "tipo": "opcion-multiple",
+      "titulo": "El Planeta Más Chiquito",
+      "instruccion": "Elige la respuesta correcta.",
+      "pregunta": "🔎 ¿Cuál es el planeta MÁS CHIQUITO de los 8?",
+      "opciones": ["Mercurio (0.4×Tierra)", "Marte (0.5×Tierra)", "Venus (1×Tierra)"],
+      "respuesta": "0",
+      "explicacion_correcta": "¡Sí! Mercurio mide apenas 0.4×Tierra: menos de la mitad de nuestro tamaño. Es tan chiquito que casi es del tamaño de la Luna.",
+      "explicacion_incorrecta": "El más chiquito es Mercurio, con 0.4×Tierra. Marte (0.5×) es más grande que él, aunque también es bastante pequeño."
+    },
+    {
+      "id": "astro-om-comp-calor",
+      "tipo": "opcion-multiple",
+      "titulo": "El Planeta Más Caliente",
+      "instruccion": "Elige la respuesta correcta.",
+      "pregunta": "🌡️ Mercurio está MUCHO más cerca del Sol que Venus. Aun así, ¿cuál de los dos es el planeta MÁS CALIENTE?",
+      "opciones": ["Mercurio, por estar más cerca del Sol", "Venus, aunque está más lejos", "Los dos tienen la misma temperatura"],
+      "respuesta": "1",
+      "explicacion_correcta": "¡Sorpresa! Venus llega a unos 464°C, más caliente que Mercurio (unos 167°C en promedio). Su atmósfera espesa atrapa el calor como una cobija gigante: es el efecto invernadero.",
+      "explicacion_incorrecta": "El más caliente es VENUS (unos 464°C), no Mercurio. Su atmósfera espesa atrapa el calor del Sol como una cobija, aunque esté más lejos."
+    },
+    {
+      "id": "astro-om-comp-frio",
+      "tipo": "opcion-multiple",
+      "titulo": "El Planeta Más Frío",
+      "instruccion": "Elige la respuesta correcta.",
+      "pregunta": "🥶 ¿Cuál de estos planetas es el MÁS FRÍO?",
+      "opciones": ["Marte", "Saturno", "Neptuno"],
+      "respuesta": "2",
+      "explicacion_correcta": "¡Exacto! Neptuno anda por unos -200°C: es el planeta más lejano del Sol y casi no recibe su calor. Ahí hasta el aire se congelaría.",
+      "explicacion_incorrecta": "El más frío es Neptuno, con unos -200°C. Está tan lejos del Sol que apenas recibe un poquito de su calor."
+    },
+    {
+      "id": "astro-om-comp-rocosos",
+      "tipo": "opcion-multiple",
+      "titulo": "Los Vecinos del Sol",
+      "instruccion": "Elige la respuesta correcta.",
+      "pregunta": "🪨 Mercurio, Venus, la Tierra y Marte son los 4 planetas más cercanos al Sol. ¿De qué están hechos por dentro?",
+      "opciones": ["Roca sólida, como una piedra gigante", "Gas, como un globo lleno de aire", "Hielo, como un cubo congelado"],
+      "respuesta": "0",
+      "explicacion_correcta": "¡Correcto! Por eso se llaman planetas ROCOSOS: tienen superficie sólida donde, en teoría, podrías pararte. Los 4 gigantes de más allá son distintos: gas y hielo.",
+      "explicacion_incorrecta": "Son planetas ROCOSOS: están hechos de roca sólida, como una piedra gigante. Tienen superficie donde podrías pararte, a diferencia de los gigantes de gas y hielo."
+    },
+    {
+      "id": "astro-ttp-comp-familias",
+      "tipo": "tap-the-pairs",
+      "titulo": "Familias de Planetas",
+      "instruccion": "Cada planeta pertenece a una 'familia' según de qué está hecho: rocoso, gigante gaseoso o gigante de hielo. Toca un planeta y luego su familia.",
+      "retos": [
+        {
+          "pares": [
+            { "es": "☿️ Mercurio", "en": "Rocoso: el más pequeño y el más cercano al Sol" },
+            { "es": "♀️ Venus", "en": "Rocoso: el planeta más caliente de todos" },
+            { "es": "🌍 Tierra", "en": "Rocoso: nuestro hogar, con agua líquida" },
+            { "es": "🔴 Marte", "en": "Rocoso: el planeta rojo por su óxido de hierro" }
+          ]
+        },
+        {
+          "pares": [
+            { "es": "🪐 Júpiter", "en": "Gigante gaseoso: el planeta más grande de todos" },
+            { "es": "💫 Saturno", "en": "Gigante gaseoso: el de los anillos enormes" },
+            { "es": "🌀 Urano", "en": "Gigante de hielo: gira acostado de lado" },
+            { "es": "🔵 Neptuno", "en": "Gigante de hielo: el más ventoso y lejano" }
+          ]
+        }
+      ]
+    }
+  ]
+}
