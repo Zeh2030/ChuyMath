@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
+import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { soportaWebGL } from '../../../utils/webgl';
 import { PLANETAS, SOL, CONSTELACIONES, COMETA, faseInfoDe, estacionInfoDe, cometaInfoDe } from './espacioDatos';
@@ -128,11 +128,21 @@ const crearTexturaCuerpo = ({ tex, color, semilla = 7 }) => {
       }
       break;
     }
-    case 'marte':
+    case 'marte': {
       for (let i = 0; i < 18; i++) mancha(rng() * W, rng() * H, 6 + rng() * 16, 4 + rng() * 9, 'rgba(90,30,10,0.25)');
+      // El monte Olimpo: el volcan mas alto del sistema solar (C2-30). Un
+      // escudo tan ancho que desde arriba casi no se notaria el relieve, asi
+      // que se representa con un halo mas claro (la caida de sus laderas) y
+      // una caldera oscura en el centro (el crater de la cima).
+      const ox = W * 0.22;
+      const oy = H * 0.42;
+      mancha(ox, oy, 15, 10, 'rgba(220,150,110,0.35)');
+      mancha(ox, oy, 9, 6, 'rgba(235,175,135,0.4)');
+      mancha(ox, oy, 3.2, 2.2, 'rgba(80,25,10,0.55)');
       // Casquetes blanco hueso (hielo de agua + hielo seco)
       casquetes('#ece4d4', 0.08);
       break;
+    }
     case 'bandas':
       bandas(['#e8d3ab', '#c98d4e', '#e2b57e', '#a96a38', '#e8d3ab', '#b87c44', '#d9a768', '#c98d4e']);
       // La Gran Mancha Roja
@@ -249,8 +259,42 @@ const Espacio3D = forwardRef(function Espacio3D(
   ref
 ) {
   const contenedorRef = useRef(null);
+  const rootRef = useRef(null);
   const apiRef = useRef(null);
   const soportado = soportaWebGL();
+
+  // Pantalla completa: el ResizeObserver que ya redimensiona el lienzo three.js
+  // (mas abajo) se encarga solo del canvas al entrar/salir; aqui solo se
+  // alterna la clase CSS + la Fullscreen API real cuando esta disponible.
+  const [fullscreen, setFullscreen] = useState(false);
+  const toggleFullscreen = useCallback(() => {
+    setFullscreen((prev) => {
+      const next = !prev;
+      try {
+        if (next) {
+          const el = rootRef.current || document.documentElement;
+          (el.requestFullscreen || el.webkitRequestFullscreen)?.call(el);
+        } else if (document.fullscreenElement || document.webkitFullscreenElement) {
+          (document.exitFullscreen || document.webkitExitFullscreen)?.call(document);
+        }
+      } catch {
+        /* sin Fullscreen API: el overlay CSS igual maximiza */
+      }
+      return next;
+    });
+  }, []);
+  useEffect(() => {
+    const onChange = () => {
+      const activo = !!(document.fullscreenElement || document.webkitFullscreenElement);
+      if (!activo) setFullscreen(false);
+    };
+    document.addEventListener('fullscreenchange', onChange);
+    document.addEventListener('webkitfullscreenchange', onChange);
+    return () => {
+      document.removeEventListener('fullscreenchange', onChange);
+      document.removeEventListener('webkitfullscreenchange', onChange);
+    };
+  }, []);
 
   // Deslizador. Que significa depende de la escena: posicion de la Luna en su
   // orbita (tierra-luna), de la Tierra en el ano (estaciones), del cometa en su
@@ -1269,9 +1313,18 @@ const Espacio3D = forwardRef(function Espacio3D(
   }
 
   return (
-    <div className="espacio3d">
+    <div className={`espacio3d ${fullscreen ? 'espacio3d-fullscreen' : ''}`} ref={rootRef}>
       <div className="espacio3d-vista">
         <div className="espacio3d-lienzo" ref={contenedorRef} />
+        <button
+          type="button"
+          className="espacio3d-btn-fs"
+          onClick={toggleFullscreen}
+          title={fullscreen ? 'Salir de pantalla completa' : 'Pantalla completa'}
+          aria-label={fullscreen ? 'Salir de pantalla completa' : 'Pantalla completa'}
+        >
+          {fullscreen ? '✕' : '⛶'}
+        </button>
         {conRecuadro && (
           <div className="espacio3d-inset-marco" style={{ width: INSET, height: INSET }}>
             <span className="espacio3d-inset-titulo">
