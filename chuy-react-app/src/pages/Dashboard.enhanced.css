@@ -96,42 +96,6 @@ button {
   box-shadow: 0 8px 0 rgba(0, 0, 0, 0.25);
 }
 
-/* Header personalizado */
-.aventura-header-personalizado {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin-bottom: 25px;
-}
-
-.aventura-header-personalizado h2 {
-  font-size: 1.8rem;
-  margin: 15px 0 5px 0;
-  color: white;
-}
-
-.aventura-header-personalizado .subtitulo-aventura {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.9);
-  margin: 10px 0 20px 0;
-}
-
-/* Avatar dinámico */
-.avatar-grande {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: 3px solid white;
-  object-fit: cover;
-  animation: avatar-spin 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-@keyframes avatar-spin {
-  0% { transform: scale(0) rotate(-180deg); }
-  100% { transform: scale(1) rotate(0deg); }
-}
-
 /* Color dinámico por día */
 :root {
   --color-tema-lunes: #3498db;
@@ -358,88 +322,6 @@ button {
 }
 
 /* ============================================
-   MEJORA 7: TABS MÓVIL (OPCIONAL)
-   ============================================ */
-
-/* Tabs Navigation */
-.dashboard-tabs {
-  display: none; /* Solo en móvil */
-  flex-direction: row;
-  justify-content: space-around;
-  gap: 5px;
-  margin-bottom: 25px;
-  background: linear-gradient(90deg, #f8f9fa, #e9ecef);
-  padding: 8px;
-  border-radius: 15px;
-}
-
-@media (max-width: 600px) {
-  .dashboard-tabs {
-    display: flex;
-  }
-  
-  .main-column,
-  .sidebar-column {
-    display: none;
-  }
-  
-  /* Mostrar sección activa */
-  .dashboard-section {
-    display: none;
-  }
-  
-  .dashboard-section.active {
-    display: block;
-  }
-}
-
-.dashboard-tab {
-  flex: 1;
-  padding: 12px;
-  border: 2px solid transparent;
-  border-radius: 10px;
-  background: transparent;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 600;
-  transition: all 0.3s;
-  color: #7f8c8d;
-  min-height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.dashboard-tab.active {
-  background: white;
-  border-color: var(--c-primary);
-  color: var(--c-primary);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transform: scale(1.05);
-}
-
-.dashboard-tab:hover:not(.active) {
-  color: #34495e;
-  transform: translateY(-2px);
-}
-
-/* Desktop: ocultar tabs, mostrar columnas */
-@media (min-width: 600px) {
-  .dashboard-tabs {
-    display: none;
-  }
-  
-  .main-column,
-  .sidebar-column {
-    display: block;
-  }
-  
-  .dashboard-section {
-    display: block;
-  }
-}
-
-/* ============================================
    UTILITY CLASSES
    ============================================ */
 
@@ -455,12 +337,7 @@ button {
   .aventura-widget {
     padding: 25px 20px;
   }
-  
-  .avatar-grande {
-    width: 50px;
-    height: 50px;
-  }
-  
+
   .categoria-card {
     min-height: 50px;
     padding: 15px 10px;

@@ -1,194 +1,62 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, Navigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useSearchParams, Navigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth.jsx';
 import { useProfile } from '../hooks/useProfile.jsx';
-import { useAventuraDelDia } from '../hooks/useAventuraDelDia.jsx';
 import PageWrapper from '../components/layout/PageWrapper';
 import Header from '../components/layout/Header';
 import MateriaToggle from '../components/layout/MateriaToggle';
-import './Dashboard.css';
-import './Dashboard.enhanced.css';
+import TabBar from '../components/layout/TabBar';
+import HoyTab from '../components/dashboard/HoyTab';
+import ExplorarTab from '../components/dashboard/ExplorarTab';
+import { resolveActiveTab } from '../utils/dashboardTabs';
+import './Dashboard.shell.css';
+
+// Detecta la materia a partir de un filtro de tipo de juego (ej. "identifica-nota" → piano),
+// para sembrar el toggle de materia cuando se llega con un ?filtro= en la URL.
+const detectMateria = (f) => {
+  if (!f || f === 'todos') return 'matematicas';
+  // Subject-specific ids (piano-*, geografia-*) take priority over generic types
+  if (f.startsWith('piano-') || f === 'identifica-nota') return 'piano';
+  if (f.startsWith('geografia-') || f === 'explorador-mapa') return 'geografia';
+  if (f.startsWith('ciencias-') || f === 'sistema-solar') return 'ciencias';
+  if (f.startsWith('letras-') || f === 'abecedario' || f === 'letra-quiz' || f === 'silabas') return 'letras';
+  const englishTypes = ['word-bank', 'verb-conjugator', 'true-or-false', 'fill-the-gap',
+    'tap-the-pairs', 'sentence-transform', 'image-picker', 'word-scramble',
+    'listen-and-type', 'expediciones-en', 'mini-story'];
+  const pianoTypes = ['piano-prompter', 'identifica-nota'];
+  const cienciasTypes = ['experimento-guia', 'sistema-solar'];
+  const dibujoTypes = ['colorear', 'dibujo-guiado', 'dibujo-libre', 'mezclador-colores'];
+  const geografiaTypes = ['explorador-mapa'];
+  if (englishTypes.includes(f)) return 'ingles';
+  if (pianoTypes.includes(f)) return 'piano';
+  if (cienciasTypes.includes(f)) return 'ciencias';
+  if (dibujoTypes.includes(f)) return 'dibujo';
+  if (geografiaTypes.includes(f)) return 'geografia';
+  return 'matematicas';
+};
 
 const Dashboard = () => {
   const { currentUser, logout, activeProfileId, activeProfile } = useAuth();
   const { profile, loading: profileLoading } = useProfile(activeProfileId);
-  const { aventura, loading: aventuraLoading } = useAventuraDelDia(activeProfileId);
-  const navigate = useNavigate();
-  const [tabActivo, setTabActivo] = useState('inicio');
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
-  const [mostrarModalTrofeos, setMostrarModalTrofeos] = useState(false);
-  const [materia, setMateria] = useState('matematicas');
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  // Detectar si es móvil
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 600);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  const activeTab = resolveActiveTab(searchParams);
+  const filtroParam = searchParams.get('filtro');
+
+  const [materia, setMateria] = useState(() => detectMateria(filtroParam));
+  // Explorar se monta perezosamente la primera vez que se activa, y ya no se
+  // desmonta: evita repetir el fetch de las 7 colecciones en cada visita.
+  // Ajustado durante el render (no en un efecto): la condición se apaga sola
+  // en cuanto explorarVisitado pasa a true, así que no puede hacer loop.
+  const [explorarVisitado, setExplorarVisitado] = useState(activeTab === 'explorar');
+  if (activeTab === 'explorar' && !explorarVisitado) {
+    setExplorarVisitado(true);
+  }
 
   // Los perfiles de niño pequeño arrancan directo en Modo Peques.
   if (activeProfile?.esPeque) {
     return <Navigate to="/peques" replace />;
   }
-
-  // Obtener color del día
-  const getColorDelDia = () => {
-    const dia = new Date().getDay();
-    const colores = [
-      'var(--color-tema-domingo)',
-      'var(--color-tema-lunes)',
-      'var(--color-tema-martes)',
-      'var(--color-tema-miercoles)',
-      'var(--color-tema-jueves)',
-      'var(--color-tema-viernes)',
-      'var(--color-tema-sabado)'
-    ];
-    return colores[dia];
-  };
-
-  // Función auxiliar para obtener el icono según el tipo de misión
-  const getIconoTema = (tipo) => {
-    const iconos = {
-      'operaciones': '🔢',
-      'secuencia': '🔍',
-      'conteo-figuras': '💠',
-      'opcion-multiple': '🌍',
-      'numberblocks-dibujo': '🎨',
-      'criptoaritmetica': '🍇',
-      'geometria': '🧮',
-      'balanza': '⚖️',
-      'desarrollo-cubos': '🧊',
-      'navegacion-mapa': '🗺️',
-      'tablas-doble-entrada': '📊',
-    };
-    return iconos[tipo] || '⭐';
-  };
-
-  // Calcular el progreso basado en aventuras completadas
-  const aventurasProgreso = profile?.aventurasProgreso || {};
-  const aventurasCompletadas = Object.values(aventurasProgreso).filter(p => p.status === 'completado').length;
-  const misionesCompletadas = aventurasCompletadas;
-  const totalMisiones = Math.max(misionesCompletadas, 10); // placeholder seguro
-  const porcentajeProgreso = totalMisiones > 0 
-    ? Math.min((misionesCompletadas / totalMisiones) * 100, 100) 
-    : 0;
-
-  // Obtener últimos simulacros
-  const ultimosSimulacros = profile?.simulacros 
-    ? [...profile.simulacros].sort((a, b) => b.fecha?.seconds - a.fecha?.seconds).slice(0, 3)
-    : [];
-
-  // Obtener solo trofeos (100%)
-  const trofeos = profile?.simulacros 
-    ? [...profile.simulacros]
-        .filter(sim => sim.porcentaje === 100)
-        .sort((a, b) => b.fecha?.seconds - a.fecha?.seconds)
-    : [];
-
-  // Trofeo destacado (el más reciente)
-  const trofeoDestacado = trofeos.length > 0 ? trofeos[0] : null;
-
-  // Formatear fecha relativa
-  const formatearFechaRelativa = (fechaSeconds) => {
-    if (!fechaSeconds) return '';
-    const fecha = new Date(fechaSeconds * 1000);
-    const hoy = new Date();
-    const diferenciaDias = Math.floor((hoy - fecha) / (1000 * 60 * 60 * 24));
-    
-    if (diferenciaDias === 0) return 'Hoy';
-    if (diferenciaDias === 1) return 'Ayer';
-    if (diferenciaDias < 7) return `Hace ${diferenciaDias} días`;
-    return fecha.toLocaleDateString('es-ES', { day: 'numeric', month: 'long' });
-  };
-
-  // Obtener medalla según posición
-  const obtenerMedalla = (index) => {
-    if (index === 0) return '🥇';
-    if (index === 1) return '🥈';
-    return '🥉';
-  };
-
-  // Mensaje de progreso motivacional
-  const getMensajeProgreso = () => {
-    if (porcentajeProgreso === 100) return " 🎉 ¡Completadas todas!";
-    if (porcentajeProgreso >= 75) return " 🔥 ¡Casi ahí!";
-    if (porcentajeProgreso >= 50) return " 💪 ¡A mitad de camino!";
-    return "";
-  };
-
-  // Tipos de juegos para accesos rápidos
-  const tiposDeJuego = [
-    // Matemáticas
-    { id: 'aventuras', emoji: '🎯', nombre: 'Aventuras', filtro: 'aventuras', disponible: true, materia: 'matematicas' },
-    { id: 'expediciones', emoji: '🚀', nombre: 'Expediciones', filtro: 'expediciones', disponible: true, materia: 'matematicas' },
-    { id: 'simulacros', emoji: '🏆', nombre: 'Simulacros', filtro: 'simulacros', disponible: true, materia: 'matematicas' },
-    { id: 'numberblocks', emoji: '🧱', nombre: 'Numberblocks', filtro: 'numberblocks-constructor', disponible: true, materia: 'matematicas' },
-    { id: 'kakooma', emoji: '🧠', nombre: 'Kakooma', filtro: 'kakooma', disponible: true, materia: 'matematicas' },
-    { id: 'conteo', emoji: '💠', nombre: 'Conteo', filtro: 'conteo-figuras', disponible: true, materia: 'matematicas' },
-    { id: 'area', emoji: '📐', nombre: 'Área', filtro: 'area-constructor', disponible: true, materia: 'matematicas' },
-    { id: 'fracciones', emoji: '🍕', nombre: 'Fracciones', filtro: 'fraccion-explorer', disponible: true, materia: 'matematicas' },
-    { id: 'angulos', emoji: '📏', nombre: 'Ángulos', filtro: 'angulo-explorer', disponible: true, materia: 'matematicas' },
-    { id: 'frac-operaciones', emoji: '🧮', nombre: 'Op. Fracciones', filtro: 'fraccion-operaciones', disponible: true, materia: 'matematicas' },
-    { id: 'secuencias', emoji: '🔢', nombre: 'Secuencias', filtro: 'secuencias', disponible: true, materia: 'matematicas' },
-    { id: 'detectives', emoji: '🔎', nombre: 'Detectives', filtro: 'tabla-doble-entrada', disponible: true, materia: 'matematicas' },
-    { id: 'operaciones', emoji: '➕', nombre: 'Operaciones', filtro: 'operaciones', disponible: true, materia: 'matematicas' },
-    { id: 'cripto', emoji: '🍇', nombre: 'Cripto', filtro: 'criptoaritmetica', disponible: true, materia: 'matematicas' },
-    { id: 'balanza', emoji: '⚖️', nombre: 'Balanza', filtro: 'balanza-logica', disponible: true, materia: 'matematicas' },
-    { id: 'cubos', emoji: '🧊', nombre: 'Cubos', filtro: 'desarrollo-cubos', disponible: true, materia: 'matematicas' },
-    // English
-    { id: 'word-bank', emoji: '📝', nombre: 'Word Bank', filtro: 'word-bank', disponible: true, materia: 'ingles' },
-    { id: 'verb-conjugator', emoji: '🔤', nombre: 'Conjugation', filtro: 'verb-conjugator', disponible: true, materia: 'ingles' },
-    { id: 'true-or-false', emoji: '✅', nombre: 'True or False', filtro: 'true-or-false', disponible: true, materia: 'ingles' },
-    { id: 'fill-the-gap', emoji: '🔲', nombre: 'Fill the Gap', filtro: 'fill-the-gap', disponible: true, materia: 'ingles' },
-    { id: 'tap-the-pairs', emoji: '🔗', nombre: 'Tap the Pairs', filtro: 'tap-the-pairs', disponible: true, materia: 'ingles' },
-    { id: 'sentence-transform', emoji: '🔄', nombre: 'Transform', filtro: 'sentence-transform', disponible: true, materia: 'ingles' },
-    { id: 'image-picker', emoji: '🖼️', nombre: 'Image Picker', filtro: 'image-picker', disponible: true, materia: 'ingles' },
-    { id: 'word-scramble', emoji: '🔠', nombre: 'Scramble', filtro: 'word-scramble', disponible: true, materia: 'ingles' },
-    { id: 'listen-and-type', emoji: '👂', nombre: 'Listen & Type', filtro: 'listen-and-type', disponible: true, materia: 'ingles' },
-    { id: 'expediciones-en', emoji: '🗺️', nombre: 'Expeditions', filtro: 'expediciones-en', disponible: true, materia: 'ingles' },
-    { id: 'mini-story', emoji: '📖', nombre: 'Mini Stories', filtro: 'mini-story', disponible: true, materia: 'ingles' },
-    // Piano
-    { id: 'piano-prompter', emoji: '🎹', nombre: 'Teleprompter', filtro: 'piano-prompter', disponible: true, materia: 'piano' },
-    { id: 'identifica-nota', emoji: '🎼', nombre: 'Identifica la Nota', filtro: 'identifica-nota', disponible: true, materia: 'piano' },
-    { id: 'piano-opcion-multiple', emoji: '❓', nombre: 'Teoria Musical', filtro: 'piano-opcion-multiple', disponible: true, materia: 'piano' },
-    { id: 'piano-tap-the-pairs', emoji: '🔗', nombre: 'Empareja', filtro: 'piano-tap-the-pairs', disponible: true, materia: 'piano' },
-    { id: 'piano-image-picker', emoji: '🎵', nombre: 'Simbolos Musicales', filtro: 'piano-image-picker', disponible: true, materia: 'piano' },
-    { id: 'piano-true-or-false', emoji: '✅', nombre: 'Verdadero o Falso', filtro: 'piano-true-or-false', disponible: true, materia: 'piano' },
-    { id: 'piano-fill-the-gap', emoji: '🔲', nombre: 'Completa la Frase', filtro: 'piano-fill-the-gap', disponible: true, materia: 'piano' },
-    { id: 'piano-mini-story', emoji: '📖', nombre: 'Compositores', filtro: 'piano-mini-story', disponible: true, materia: 'piano' },
-    // Ciencias
-    { id: 'experimento-guia', emoji: '🧪', nombre: 'Experimentos', filtro: 'experimento-guia', disponible: true, materia: 'ciencias' },
-    { id: 'sistema-solar', emoji: '🪐', nombre: 'Sistema Solar 3D', filtro: 'sistema-solar', disponible: true, materia: 'ciencias' },
-    { id: 'ciencias-image-picker', emoji: '🔭', nombre: 'Fotos del Espacio', filtro: 'ciencias-image-picker', disponible: true, materia: 'ciencias' },
-    { id: 'ciencias-tap-the-pairs', emoji: '🔗', nombre: 'Empareja el Espacio', filtro: 'ciencias-tap-the-pairs', disponible: true, materia: 'ciencias' },
-    { id: 'ciencias-mini-story', emoji: '📖', nombre: 'Historias del Cosmos', filtro: 'ciencias-mini-story', disponible: true, materia: 'ciencias' },
-    { id: 'ciencias-opcion-multiple', emoji: '❓', nombre: 'Preguntas del Espacio', filtro: 'ciencias-opcion-multiple', disponible: true, materia: 'ciencias' },
-    { id: 'ciencias-true-or-false', emoji: '✅', nombre: 'Verdadero o Falso', filtro: 'ciencias-true-or-false', disponible: true, materia: 'ciencias' },
-    // Dibujo
-    { id: 'colorear', emoji: '🖍️', nombre: 'Colorear', filtro: 'colorear', disponible: true, materia: 'dibujo' },
-    { id: 'dibujo-guiado', emoji: '✏️', nombre: 'Dibujo Guiado', filtro: 'dibujo-guiado', disponible: true, materia: 'dibujo' },
-    { id: 'dibujo-libre', emoji: '🎨', nombre: 'Dibujo Libre', filtro: 'dibujo-libre', disponible: true, materia: 'dibujo' },
-    { id: 'mezclador-colores', emoji: '🌈', nombre: 'Teoría del Color', filtro: 'mezclador-colores', disponible: true, materia: 'dibujo' },
-    // Geografia
-    { id: 'explorador-mapa', emoji: '🗺️', nombre: 'Explora el Mapa', filtro: 'explorador-mapa', disponible: true, materia: 'geografia' },
-    { id: 'geografia-image-picker', emoji: '🏞️', nombre: 'Banderas y Mapas', filtro: 'geografia-image-picker', disponible: true, materia: 'geografia' },
-    { id: 'geografia-tap-the-pairs', emoji: '🔗', nombre: 'Empareja Pais-Capital', filtro: 'geografia-tap-the-pairs', disponible: true, materia: 'geografia' },
-    { id: 'geografia-fill-the-gap', emoji: '🔲', nombre: 'Completa Capitales', filtro: 'geografia-fill-the-gap', disponible: true, materia: 'geografia' },
-    { id: 'geografia-true-or-false', emoji: '✅', nombre: 'Datos Verdadero/Falso', filtro: 'geografia-true-or-false', disponible: true, materia: 'geografia' },
-    { id: 'geografia-opcion-multiple', emoji: '❓', nombre: 'Preguntas del Mundo', filtro: 'geografia-opcion-multiple', disponible: true, materia: 'geografia' },
-    { id: 'geografia-word-scramble', emoji: '🔠', nombre: 'Adivina el Pais', filtro: 'geografia-word-scramble', disponible: true, materia: 'geografia' },
-    { id: 'geografia-mini-story', emoji: '📖', nombre: 'Historias del Mundo', filtro: 'geografia-mini-story', disponible: true, materia: 'geografia' },
-    { id: 'geografia-expediciones', emoji: '🚀', nombre: 'Expediciones Geo', filtro: 'geografia-expediciones', disponible: true, materia: 'geografia' },
-    // Letras
-    { id: 'letras-abecedario', emoji: '🔤', nombre: 'Conoce las Letras', filtro: 'letras-abecedario', disponible: true, materia: 'letras' },
-    { id: 'letras-quiz', emoji: '🔎', nombre: 'Juegos de Letras', filtro: 'letras-quiz', disponible: true, materia: 'letras' },
-    { id: 'letras-silabas', emoji: '🧩', nombre: 'Silabas', filtro: 'letras-silabas', disponible: true, materia: 'letras' },
-    { id: 'letras-trazo', emoji: '✏️', nombre: 'Traza Letras', filtro: 'letras-trazo', disponible: true, materia: 'letras' },
-  ];
-
-  const tiposDeJuegoFiltrados = tiposDeJuego.filter(t => t.materia === materia);
 
   if (profileLoading) {
     return (
@@ -205,10 +73,10 @@ const Dashboard = () => {
     return (
       <PageWrapper>
         <Header />
-        <div style={{ 
-          textAlign: 'center', 
-          padding: '40px', 
-          maxWidth: '600px', 
+        <div style={{
+          textAlign: 'center',
+          padding: '40px',
+          maxWidth: '600px',
           margin: '0 auto',
           background: 'white',
           borderRadius: '20px',
@@ -224,10 +92,10 @@ const Dashboard = () => {
               Para jugar, pide a <strong>jesuscarrillog@gmail.com</strong> que te registre en la lista de acceso.
             </p>
           </div>
-          <button 
+          <button
             className="boton-secundario"
             style={{ margin: '0 auto', justifyContent: 'center' }}
-            onClick={() => logout()} 
+            onClick={() => logout()}
           >
             Cerrar Sesión
           </button>
@@ -236,260 +104,69 @@ const Dashboard = () => {
     );
   }
 
+  const handleTabChange = (tab) => {
+    const next = new URLSearchParams(searchParams);
+    next.set('tab', tab);
+    setSearchParams(next, { replace: true });
+  };
+
+  // Cambia a la pestaña Explorar desde dentro de Hoy (CTAs), sin navegación completa.
+  const goToExplorar = (filtro) => {
+    const next = new URLSearchParams(searchParams);
+    next.set('tab', 'explorar');
+    if (filtro) {
+      next.set('filtro', filtro);
+    } else {
+      next.delete('filtro');
+    }
+    setSearchParams(next, { replace: true });
+  };
+
   return (
     <PageWrapper>
       <Header title={profile?.nombre ? `Centro de Mando de ${profile.nombre}` : 'Centro de Mando de Chuy'} subtitle={`¡Bienvenido de nuevo, ${profile?.nombre || 'súper explorador'}!`} />
 
-      {/* Materia toggle */}
-      <MateriaToggle materia={materia} onChange={setMateria} />
-
-      {/* Tabs móvil */}
-      {isMobile && (
-        <div className="dashboard-tabs">
-          <button 
-            className={`dashboard-tab ${tabActivo === 'inicio' ? 'active' : ''}`}
-            onClick={() => setTabActivo('inicio')}
-          >
-            🏠 Inicio
-          </button>
-          <button 
-            className={`dashboard-tab ${tabActivo === 'logros' ? 'active' : ''}`}
-            onClick={() => setTabActivo('logros')}
-          >
-            🏆 Logros
-          </button>
-          <button 
-            className={`dashboard-tab ${tabActivo === 'explorar' ? 'active' : ''}`}
-            onClick={() => setTabActivo('explorar')}
-          >
-            🔍 Explorar
-          </button>
+      {profile && (
+        <div className="boveda-header-personalizado">
+          <div className="boveda-avatar">{profile.avatar || '😁'}</div>
+          <div className="boveda-info">
+            <h1>{profile.nombre}</h1>
+            <p>Explora y domina todos los tipos de desafíos</p>
+          </div>
         </div>
       )}
 
-      <div className={`dashboard-grid ${isMobile ? 'dashboard-mobile' : ''}`}>
-        {/* Columna Principal: Próxima Aventura (Progresión Cronológica) */}
-        <main className={`main-column dashboard-section ${!isMobile || tabActivo === 'inicio' ? 'active' : ''}`}>
-          {materia === 'ingles' ? (
-            <section className="widget aventura-widget" style={{ borderTopColor: '#00897b' }}>
-              <h2 className="widget-title">🇬🇧 English Corner</h2>
-              <div className="aventura-content">
-                <p style={{ textAlign: 'center', fontSize: '1.1rem', color: '#00695c' }}>
-                  Practice your English with fun games!
-                </p>
-                <p style={{ textAlign: 'center', color: '#888', fontSize: '0.9rem', marginTop: '10px' }}>
-                  Tap a game type below to get started.
-                </p>
-              </div>
-              <button className="boton-principal" style={{ background: 'linear-gradient(135deg, #00897b, #00695c)' }} onClick={() => navigate('/boveda?filtro=word-bank')}>
-                Explore English Games
-              </button>
-            </section>
-          ) : (
-          <section className="widget aventura-widget" style={{ borderTopColor: getColorDelDia() }}>
-            {/* Header personalizado */}
-            {profile?.nombre && (
-              <div className="aventura-header-personalizado">
-                {profile?.avatar ? (
-                  <div className="avatar-grande" style={{ 
-                    background: 'linear-gradient(135deg, #667eea, #764ba2)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: '3rem'
-                  }}>
-                    {profile.avatar}
-                  </div>
-                ) : (
-                  <div className="avatar-grande" style={{ 
-                    background: 'linear-gradient(135deg, #667eea, #764ba2)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: '2rem'
-                  }}>
-                    {profile.nombre.charAt(0).toUpperCase()}
-                  </div>
-                )}
-                <h2>¡Hola, {profile.nombre}! 👋</h2>
-                <p className="subtitulo-aventura">Tu próximo desafío:</p>
-              </div>
-            )}
-            <h2 className="widget-title">
-              {aventura ? `🌟 ${aventura.titulo}` : '🌟 ¡Tu próximo desafío te espera!'}
-            </h2>
-            
-            {aventuraLoading ? (
-              <div className="aventura-content">
-                <p style={{ textAlign: 'center', color: '#7f8c8d', fontSize: '1.1rem' }}>
-                  Cargando aventura...
-                </p>
-              </div>
-            ) : aventura ? (
-              <>
-                <ul className="lista-retos">
-                  {aventura.misiones?.map((mision) => (
-                    <li key={mision.id}>
-                      <span className="icono-reto">{getIconoTema(mision.tipo)}</span>
-                      <div className="detalles-reto">
-                        <span className="titulo-reto">{mision.titulo}</span>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-                <button 
-                  className="boton-principal"
-                  onClick={() => navigate(`/aventura/${aventura.id}`)}
-                >
-                  ¡Empezar Aventura!
-                </button>
-              </>
-            ) : (
-              <>
-                <div className="aventura-content">
-                  <p style={{ textAlign: 'center', color: '#7f8c8d', fontSize: '1.1rem' }}>
-                    No hay aventura disponible para hoy
-                  </p>
-                  <p style={{ textAlign: 'center', color: '#95a5a6', fontSize: '0.9rem', marginTop: '10px' }}>
-                    ¡Perfecto momento para explorar la Bóveda o jugar con el Constructor!
-                  </p>
-                </div>
-                <button className="boton-principal" disabled>
-                  ¡Empezar Aventura!
-                </button>
-              </>
-            )}
-          </section>
-          )}
-        </main>
+      <MateriaToggle materia={materia} onChange={setMateria} />
 
-        {/* Columna Secundaria: Progreso y Portales */}
-        <aside className={`sidebar-column dashboard-section ${!isMobile || tabActivo === 'logros' || tabActivo === 'explorar' ? 'active' : ''}`}>
-          {/* Widget de Progreso - Visible en inicio y logros */}
-          <section className={`widget trofeos-widget ${isMobile && tabActivo !== 'inicio' && tabActivo !== 'logros' ? 'hidden' : ''}`}>
-            <h2 className="widget-title">🏆 Mi Rincón de Trofeos</h2>
-            
-            <div className="contador-racha">
-              <div className="icono-racha">✨</div>
-              <div className="texto-racha">
-                <div className="numero-racha">{profile?.racha || 0}</div>
-                <span>días de aventura seguidos</span>
-              </div>
-            </div>
+      <TabBar
+        tabs={[
+          { id: 'hoy', label: '🏠 Hoy' },
+          { id: 'explorar', label: '🔍 Explorar' },
+        ]}
+        active={activeTab}
+        onChange={handleTabChange}
+      />
 
-            <div className="progreso-tesoro">
-              <p>Progreso para el próximo tesoro:</p>
-              <div className="barra-progreso">
-                <div 
-                  className="barra-progreso-fill" 
-                  style={{ width: `${porcentajeProgreso}%` }}
-                ></div>
-              </div>
-              <div className="progreso-texto">
-                {misionesCompletadas} / {totalMisiones} aventuras{getMensajeProgreso()}
-              </div>
-            </div>
-          </section>
-
-          {/* Widget de Trofeos - Visible en logros */}
-          <section className={`widget trofeos-widget-nuevo ${isMobile && tabActivo !== 'logros' ? 'hidden' : ''}`}>
-            <h2 className="widget-title">🏆 Mis Logros</h2>
-            
-            {trofeoDestacado ? (
-              <>
-                <div className="trofeo-destacado">
-                  <div className="trofeo-medalla-grande">🥇</div>
-                  <div className="trofeo-badge-100">100% COMPLETADO</div>
-                  <h3 className="trofeo-titulo">{trofeoDestacado.titulo}</h3>
-                  <p className="trofeo-fecha">{formatearFechaRelativa(trofeoDestacado.fecha?.seconds)}</p>
-                  <div className="trofeo-estrellas">⭐⭐⭐⭐⭐</div>
-                </div>
-                {trofeos.length > 1 && (
-                  <button 
-                    className="boton-ver-todos-trofeos"
-                    onClick={() => setMostrarModalTrofeos(true)}
-                  >
-                    Ver todos los Trofeos ({trofeos.length}) →
-                  </button>
-                )}
-              </>
-            ) : (
-              <div className="sin-trofeos">
-                <div className="sin-trofeos-icono">🏆</div>
-                <p>¡Aún no tienes trofeos!</p>
-                <p className="sin-trofeos-subtitulo">Completa un simulacro al 100% para ganar tu primer trofeo</p>
-                <button 
-                  className="boton-secundario" 
-                  style={{ marginTop: '15px', width: '100%', justifyContent: 'center' }}
-                  onClick={() => navigate('/boveda')}
-                >
-                  Ir a practicar 🚀
-                </button>
-              </div>
-            )}
-          </section>
-
-          {/* Modal de Trofeos */}
-          {mostrarModalTrofeos && (
-            <div className="modal-overlay" onClick={() => setMostrarModalTrofeos(false)}>
-              <div className="modal-trofeos" onClick={(e) => e.stopPropagation()}>
-                <div className="modal-header">
-                  <h2>🏆 Mis Trofeos ({trofeos.length})</h2>
-                  <button 
-                    className="modal-cerrar"
-                    onClick={() => setMostrarModalTrofeos(false)}
-                  >
-                    ✕
-                  </button>
-                </div>
-                <div className="modal-trofeos-grid">
-                  {trofeos.map((trofeo, index) => (
-                    <div key={index} className="trofeo-card-modal">
-                      <div className="trofeo-medalla-modal">{obtenerMedalla(index)}</div>
-                      <div className="trofeo-badge-modal">100%</div>
-                      <h4 className="trofeo-titulo-modal">{trofeo.titulo}</h4>
-                      <p className="trofeo-fecha-modal">{formatearFechaRelativa(trofeo.fecha?.seconds)}</p>
-                      <div className="trofeo-estrellas-modal">⭐⭐⭐⭐⭐</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Widget de Exploración - Accesos Rápidos a Tipos de Juegos */}
-          <section className={`widget exploracion-widget ${isMobile && tabActivo !== 'explorar' ? 'hidden' : ''}`}>
-            <h2 className="widget-title">⚡ Accesos Rápidos</h2>
-            <div className="accesos-rapidos-mini-grid">
-              <button
-                className="acceso-rapido-mini"
-                onClick={() => navigate('/peques')}
-                title="Juegos rápidos para divertirse"
-              >
-                <span className="acceso-emoji">🧸</span>
-                <span className="acceso-nombre">Juegos</span>
-              </button>
-              {tiposDeJuegoFiltrados.map((tipo) => (
-                <button 
-                  key={tipo.id}
-                  className={`acceso-rapido-mini ${!tipo.disponible ? 'disabled' : ''}`}
-                  onClick={() => tipo.disponible && navigate(`/boveda?filtro=${tipo.filtro}`)}
-                  disabled={!tipo.disponible}
-                  title={tipo.disponible ? `Ver ${tipo.nombre.toLowerCase()}` : 'Próximamente disponible'}
-                >
-                  <span className="acceso-emoji">{tipo.emoji}</span>
-                  <span className="acceso-nombre">{tipo.nombre}</span>
-                  {!tipo.disponible && <span className="acceso-candado">🔒</span>}
-                </button>
-              ))}
-            </div>
-          </section>
-
-        </aside>
+      <div style={{ display: activeTab === 'hoy' ? 'block' : 'none' }}>
+        <HoyTab
+          profile={profile}
+          materia={materia}
+          activeProfileId={activeProfileId}
+          onGoToExplorar={goToExplorar}
+        />
       </div>
+
+      {explorarVisitado && (
+        <div style={{ display: activeTab === 'explorar' ? 'block' : 'none' }}>
+          <ExplorarTab
+            profile={profile}
+            materia={materia}
+            initialFiltro={filtroParam}
+          />
+        </div>
+      )}
     </PageWrapper>
   );
 };
 
 export default Dashboard;
-

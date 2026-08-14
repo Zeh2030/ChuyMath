@@ -1,0 +1,67 @@
+/* Banner de avatar + nombre, elevado una sola vez por encima de las
+   pestañas Hoy/Explorar (antes vivía duplicado: uno chico dentro del
+   widget de aventura de Dashboard, y otro dentro de Boveda). */
+.boveda-header-personalizado {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+  background: linear-gradient(135deg, var(--theme-grad-1), var(--theme-grad-2));
+  padding: 25px;
+  border-radius: 20px;
+  color: white;
+  box-shadow: 0 8px 20px rgba(var(--theme-primary-rgb), 0.3);
+}
+
+.boveda-avatar {
+  font-size: 3.5rem;
+  min-width: 70px;
+  text-align: center;
+}
+
+.boveda-info h1 {
+  font-size: 1.8rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+.boveda-info p {
+  margin: 5px 0 0 0;
+  font-size: 1rem;
+  opacity: 0.95;
+}
+
+@media (max-width: 900px) {
+  .boveda-header-personalizado {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .boveda-avatar {
+    font-size: 3rem;
+  }
+
+  .boveda-info h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .boveda-header-personalizado {
+    padding: 20px;
+  }
+
+  .boveda-avatar {
+    font-size: 2.5rem;
+    min-width: 50px;
+  }
+
+  .boveda-info h1 {
+    font-size: 1.3rem;
+  }
+
+  .boveda-info p {
+    font-size: 0.9rem;
+  }
+}

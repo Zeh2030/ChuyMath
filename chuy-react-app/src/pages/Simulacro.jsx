@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { doc, getDoc, updateDoc, arrayUnion, Timestamp } from 'firebase/firestore';
 import { db } from '../services/firebase';
 import { useAuth } from '../hooks/useAuth';
@@ -13,6 +13,10 @@ const Simulacro = () => {
   const { id } = useParams(); // Obtener el ID del simulacro
   const { activeProfileId } = useAuth();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  // Tipo de juego específico (ej. "simulacros") desde el que se llegó vía Mi Bóveda,
+  // para que "Volver" regrese exactamente ahí en vez de a Explorar sin filtrar.
+  const from = searchParams.get('from');
   const [simulacro, setSimulacro] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -230,9 +234,17 @@ const Simulacro = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Volver al dashboard
+  // Volver: si se llegó desde un tipo de juego específico en Mi Bóveda (?from=),
+  // regresa exactamente ahí. Si no, usa el historial del navegador, y como
+  // último recurso va al Dashboard.
   const volverAlDashboard = () => {
-    navigate('/dashboard');
+    if (from) {
+      navigate(`/dashboard?tab=explorar&filtro=${encodeURIComponent(from)}`);
+    } else if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate('/dashboard');
+    }
   };
 
   if (loading) {

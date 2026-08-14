@@ -454,12 +454,6 @@
   color: #fff;
 }
 
-[data-theme="pizarron"] .acceso-rapido-mini {
-  background: rgba(26, 53, 40, 0.7);
-  border: 2px dashed rgba(255, 255, 255, 0.12);
-  color: #e0e0e0;
-}
-
 [data-theme="pizarron"] .tab-btn {
   background: rgba(30, 58, 42, 0.8);
   color: #e0e0e0;
@@ -598,7 +592,7 @@
   color: #aaa;
 }
 
-[data-theme="pizarron"] .boveda-tabs .tab-btn.active {
+[data-theme="pizarron"] .tab-bar .tab-btn.active {
   background: linear-gradient(135deg, var(--theme-grad-1), var(--theme-grad-2));
 }
 
@@ -661,14 +655,8 @@
   background: linear-gradient(135deg, #1A237E, #3F51B5);
 }
 
-[data-theme="espacial"] .acceso-rapido-mini,
 [data-theme="espacial"] .mi-boveda-section {
   color: #e0e0e0;
-}
-
-[data-theme="espacial"] .acceso-rapido-mini {
-  background: rgba(27, 40, 56, 0.8);
-  border-color: rgba(92, 107, 192, 0.3);
 }
 
 [data-theme="espacial"] .tab-btn {
@@ -749,7 +737,7 @@
 }
 
 /* Theme selector buttons - text visible on dark bg */
-[data-theme="espacial"] .boveda-tabs .tab-btn.active {
+[data-theme="espacial"] .tab-bar .tab-btn.active {
   background: linear-gradient(135deg, var(--theme-grad-1), var(--theme-grad-2));
 }
 

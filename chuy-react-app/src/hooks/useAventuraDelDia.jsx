@@ -1,15 +1,21 @@
 import { useState, useEffect } from 'react';
 import { doc, getDoc, collection, getDocs } from 'firebase/firestore';
 import { db } from '../services/firebase';
+import { MATERIA_COLECCIONES, matchesMateria } from '../utils/materiaContent';
 
 /**
- * Hook personalizado para obtener la próxima aventura según progresión cronológica
- * Lógica: Muestra la aventura más antigua SIN completar (progresión garantizada)
- * Si hay múltiples con misma fecha → selecciona aleatoriamente
+ * Hook personalizado para obtener la próxima aventura según progresión, para
+ * cualquier materia (no solo matemáticas).
+ * Lógica: Muestra la más antigua SIN completar de esa materia (progresión garantizada).
+ * El orden se da por `nivel` (o `misiones[0].nivel` si no hay nivel a nivel raíz,
+ * caso de las canciones de piano) y si no hay ninguno, por el id del documento
+ * (las aventuras de matemáticas usan una fecha como id). Si hay múltiples con la
+ * misma clave de orden → selecciona aleatoriamente.
  * @param {string} userId - El UID del usuario para verificar aventuras completadas
+ * @param {string} materia - La materia activa (matematicas, ingles, piano, ciencias, dibujo, geografia, letras)
  * @returns {object} - El objeto de la aventura, estado de carga y error
  */
-export const useAventuraDelDia = (userId) => {
+export const useAventuraDelDia = (userId, materia) => {
   const [aventura, setAventura] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -20,8 +26,12 @@ export const useAventuraDelDia = (userId) => {
         setLoading(true);
         setError(null);
 
-        // 1. Obtener todas las aventuras disponibles
-        const aventurasRef = collection(db, 'aventuras');
+        // 0. Resolver la colección de la materia activa (con fallback defensivo)
+        const materiaResuelta = MATERIA_COLECCIONES[materia] ? materia : 'matematicas';
+        const coleccion = MATERIA_COLECCIONES[materiaResuelta];
+
+        // 1. Obtener todas las aventuras disponibles de esa materia
+        const aventurasRef = collection(db, coleccion);
         const querySnapshot = await getDocs(aventurasRef);
         
         if (querySnapshot.empty) {
@@ -52,9 +62,9 @@ export const useAventuraDelDia = (userId) => {
           }
         }
 
-        // 4. Filtrar aventuras NO completadas (solo matemáticas)
+        // 4. Filtrar aventuras de la materia activa que NO estén completadas
         const aventurasSinCompletar = todasLasAventuras
-          .filter(av => !av.materia || av.materia === 'matematicas')
+          .filter(av => matchesMateria(av, materiaResuelta))
           .filter(av => !aventurasCompletadasIds.includes(av.id));
 
         if (aventurasSinCompletar.length === 0) {
@@ -65,26 +75,27 @@ export const useAventuraDelDia = (userId) => {
           return;
         }
 
-        // 5. Ordenar por fecha (ID) de forma ASCENDENTE (más antigua primero)
-        aventurasSinCompletar.sort((a, b) => a.id.localeCompare(b.id));
+        // 5. Ordenar por nivel (o id si no hay nivel) de forma ASCENDENTE (más antigua/temprana primero)
+        const obtenerClaveOrden = (item) => item.nivel || item?.misiones?.[0]?.nivel || item.id;
+        aventurasSinCompletar.sort((a, b) => obtenerClaveOrden(a).localeCompare(obtenerClaveOrden(b)));
 
-        // 6. Encontrar la fecha más antigua
-        const fechaMasAntigua = aventurasSinCompletar[0].id;
+        // 6. Encontrar la clave más antigua/temprana
+        const claveMasAntigua = obtenerClaveOrden(aventurasSinCompletar[0]);
 
-        // 7. Filtrar aventuras con esa fecha
+        // 7. Filtrar aventuras con esa misma clave
         const aventurasMismaFecha = aventurasSinCompletar.filter(
-          av => av.id === fechaMasAntigua
+          av => obtenerClaveOrden(av) === claveMasAntigua
         );
 
-        // 8. Si hay múltiples con misma fecha, elegir aleatoriamente
+        // 8. Si hay múltiples con la misma clave, elegir aleatoriamente
         let aventuraSeleccionada;
         if (aventurasMismaFecha.length === 1) {
           aventuraSeleccionada = aventurasMismaFecha[0];
         } else {
-          // Selección aleatoria entre las de la misma fecha
+          // Selección aleatoria entre las de la misma clave
           const indiceAleatorio = Math.floor(Math.random() * aventurasMismaFecha.length);
           aventuraSeleccionada = aventurasMismaFecha[indiceAleatorio];
-          console.log(`Múltiples aventuras con fecha ${fechaMasAntigua}, seleccionada aleatoriamente:`, aventuraSeleccionada.id);
+          console.log(`Múltiples aventuras con clave ${claveMasAntigua}, seleccionada aleatoriamente:`, aventuraSeleccionada.id);
         }
 
         setAventura(aventuraSeleccionada);
@@ -98,7 +109,7 @@ export const useAventuraDelDia = (userId) => {
     };
 
     cargarProximaAventura();
-  }, [userId]); // Se ejecuta cuando cambia el userId
+  }, [userId, materia]); // Se ejecuta cuando cambia el userId o la materia activa
 
   return { aventura, loading, error };
 };

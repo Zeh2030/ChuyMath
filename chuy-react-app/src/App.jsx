@@ -8,7 +8,6 @@ import AdminMigracion from './pages/AdminMigracion';
 import AdminUsuarios from './pages/AdminUsuarios';
 import Aventura from './pages/Aventura';
 import Simulacro from './pages/Simulacro';
-import Boveda from './pages/Boveda';
 import Perfil from './pages/Perfil';
 import ProfileSelector from './pages/ProfileSelector';
 import Peques from './pages/Peques';
@@ -96,16 +95,6 @@ function App() {
             <ProtectedRoute>
               <ProfileRequired>
                 <Simulacro />
-              </ProfileRequired>
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/boveda"
-          element={
-            <ProtectedRoute>
-              <ProfileRequired>
-                <Boveda />
               </ProfileRequired>
             </ProtectedRoute>
           }

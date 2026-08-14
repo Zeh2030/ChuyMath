@@ -1,14 +1,18 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth.jsx';
 import LogoutButton from '../ui/LogoutButton';
+import { resolveActiveTab } from '../../utils/dashboardTabs';
 import './Header.css';
 
 const Header = ({ title, subtitle }) => {
   const { currentUser, activeProfile } = useAuth();
   const location = useLocation();
-  const esDashboard = location.pathname === '/dashboard';
-  const esBoveda = location.pathname === '/boveda';
+  const [searchParams] = useSearchParams();
+  const enDashboard = location.pathname === '/dashboard';
+  const activeTab = resolveActiveTab(searchParams);
+  const esHoy = enDashboard && activeTab === 'hoy';
+  const esExplorar = enDashboard && activeTab === 'explorar';
   const esPerfil = location.pathname === '/perfil';
 
   return (
@@ -35,15 +39,15 @@ const Header = ({ title, subtitle }) => {
             </Link>
           )}
 
-          {!esDashboard && (
-            <Link to="/dashboard" className="nav-btn dashboard-btn">
-              🏠 Dashboard
+          {!esHoy && (
+            <Link to="/dashboard?tab=hoy" className="nav-btn dashboard-btn">
+              🏠 Hoy
             </Link>
           )}
-          
-          {!esBoveda && (
-            <Link to="/boveda" className="nav-btn boveda-btn">
-              📚 Bóveda
+
+          {!esExplorar && (
+            <Link to="/dashboard?tab=explorar" className="nav-btn boveda-btn">
+              🔍 Explorar
             </Link>
           )}
 
