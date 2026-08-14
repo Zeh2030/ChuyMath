@@ -14,43 +14,51 @@
       "instruccion": "Las letras estan desordenadas. ¿Que capital es?",
       "retos": [
         {
-          "palabra": "TOKIO",
-          "pista": "Capital de Japon, ciudad de los Pokemon y el sushi",
+          "respuesta": "TOKIO",
+          "pista_es": "Capital de Japon, ciudad de los Pokemon y el sushi",
+          "pista_emoji": "🗼",
           "explicacion": "Tokio es la capital de Japon. Es una de las ciudades mas pobladas del mundo (38 millones)."
         },
         {
-          "palabra": "PEKIN",
-          "pista": "Capital de China, cerca de la Gran Muralla",
+          "respuesta": "PEKIN",
+          "pista_es": "Capital de China, cerca de la Gran Muralla",
+          "pista_emoji": "🏯",
           "explicacion": "Pekin (o Beijing) es la capital de China. Tiene la Ciudad Prohibida, palacio antiguo de los emperadores."
         },
         {
-          "palabra": "SEUL",
-          "pista": "Capital de Corea del Sur, hogar del K-pop y BTS",
+          "respuesta": "SEUL",
+          "pista_es": "Capital de Corea del Sur, hogar del K-pop y BTS",
+          "pista_emoji": "🎤",
           "explicacion": "Seul es la capital de Corea del Sur. Es famosa por su tecnologia, K-pop y Squid Game."
         },
         {
-          "palabra": "BANGKOK",
-          "pista": "Capital de Tailandia, llena de templos dorados",
+          "respuesta": "BANGKOK",
+          "pista_es": "Capital de Tailandia, llena de templos dorados",
+          "pista_emoji": "🛕",
           "explicacion": "Bangkok es la capital de Tailandia. Tiene mas de 400 templos budistas y mercados flotantes en canales."
         },
         {
-          "palabra": "MANILA",
-          "pista": "Capital de Filipinas, archipielago con 7,000 islas",
+          "respuesta": "MANILA",
+          "pista_es": "Capital de Filipinas, archipielago con 7,000 islas",
+          "pista_emoji": "🏝️",
           "explicacion": "Manila es la capital de Filipinas. Filipinas es un grupo de mas de 7,000 islas en el oceano Pacifico."
         },
         {
-          "palabra": "HANOI",
-          "pista": "Capital de Vietnam, en el sureste de Asia",
+          "respuesta": "HANOI",
+          "pista_es": "Capital de Vietnam, en el sureste de Asia",
+          "pista_emoji": "🍜",
           "explicacion": "Hanoi es la capital de Vietnam. Es famosa por su comida (pho, banh mi) y sus calles llenas de motos."
         },
         {
-          "palabra": "JAKARTA",
-          "pista": "Capital de Indonesia, pais con mas islas del mundo",
+          "respuesta": "JAKARTA",
+          "pista_es": "Capital de Indonesia, pais con mas islas del mundo",
+          "pista_emoji": "🌋",
           "explicacion": "Jakarta es la capital de Indonesia. Indonesia tiene 17,508 islas, mas que cualquier otro pais."
         },
         {
-          "palabra": "TEHERAN",
-          "pista": "Capital de Iran, en el medio oriente",
+          "respuesta": "TEHERAN",
+          "pista_es": "Capital de Iran, en el medio oriente",
+          "pista_emoji": "⛰️",
           "explicacion": "Teheran es la capital de Iran (antes llamado Persia). Esta rodeada de montañas y tiene 9 millones de habitantes."
         }
       ]
