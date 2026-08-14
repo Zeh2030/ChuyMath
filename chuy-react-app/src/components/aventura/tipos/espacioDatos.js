@@ -18,17 +18,18 @@ export const SOL = {
   radioReal: 109,
   color: '#ffcf3f',
   tex: 'sol',
+  emoji: '☀️',
 };
 
 export const PLANETAS = [
-  { id: 'mercurio', nombre: 'Mercurio', radio: 0.55, radioReal: 0.38, dist: 7.5, vel: 1.6, color: '#b8a89a', tex: 'craterizado' },
-  { id: 'venus', nombre: 'Venus', radio: 0.85, radioReal: 0.95, dist: 10, vel: 1.18, color: '#e8c46a', tex: 'nubes' },
-  { id: 'tierra', nombre: 'la Tierra', radio: 0.9, radioReal: 1, dist: 13, vel: 1, color: '#2f6fd0', tex: 'tierra' },
-  { id: 'marte', nombre: 'Marte', radio: 0.7, radioReal: 0.53, dist: 16, vel: 0.81, color: '#d1603d', tex: 'marte' },
-  { id: 'jupiter', nombre: 'Júpiter', radio: 2.6, radioReal: 11.2, dist: 21.5, vel: 0.44, color: '#d8a56a', tex: 'bandas' },
-  { id: 'saturno', nombre: 'Saturno', radio: 2.3, radioReal: 9.45, dist: 27.5, vel: 0.33, color: '#e3c98f', tex: 'bandas-suaves', anillos: true },
-  { id: 'urano', nombre: 'Urano', radio: 1.5, radioReal: 4.0, dist: 33, vel: 0.23, color: '#9fd8dd', tex: 'liso' },
-  { id: 'neptuno', nombre: 'Neptuno', radio: 1.45, radioReal: 3.88, dist: 38, vel: 0.18, color: '#3f66d4', tex: 'neptuno' },
+  { id: 'mercurio', nombre: 'Mercurio', radio: 0.55, radioReal: 0.38, dist: 7.5, vel: 1.6, color: '#b8a89a', tex: 'craterizado', emoji: '☿️' },
+  { id: 'venus', nombre: 'Venus', radio: 0.85, radioReal: 0.95, dist: 10, vel: 1.18, color: '#e8c46a', tex: 'nubes', emoji: '♀️' },
+  { id: 'tierra', nombre: 'la Tierra', radio: 0.9, radioReal: 1, dist: 13, vel: 1, color: '#2f6fd0', tex: 'tierra', emoji: '🌍' },
+  { id: 'marte', nombre: 'Marte', radio: 0.7, radioReal: 0.53, dist: 16, vel: 0.81, color: '#d1603d', tex: 'marte', emoji: '🔴' },
+  { id: 'jupiter', nombre: 'Júpiter', radio: 2.6, radioReal: 11.2, dist: 21.5, vel: 0.44, color: '#d8a56a', tex: 'bandas', emoji: '🪐' },
+  { id: 'saturno', nombre: 'Saturno', radio: 2.3, radioReal: 9.45, dist: 27.5, vel: 0.33, color: '#e3c98f', tex: 'bandas-suaves', anillos: true, emoji: '💫' },
+  { id: 'urano', nombre: 'Urano', radio: 1.5, radioReal: 4.0, dist: 33, vel: 0.23, color: '#9fd8dd', tex: 'liso', emoji: '🌀' },
+  { id: 'neptuno', nombre: 'Neptuno', radio: 1.45, radioReal: 3.88, dist: 38, vel: 0.18, color: '#3f66d4', tex: 'neptuno', emoji: '🔵' },
 ];
 
 // Nombres de todo lo tocable en cualquier escena (onSeleccion devuelve estos ids).
@@ -41,6 +42,23 @@ export const NOMBRES = {
   cometa: 'el cometa',
   ...Object.fromEntries(PLANETAS.map((p) => [p.id, p.nombre])),
 };
+
+/* ============================ MODO COMPARAR (tamano real) ============================ */
+
+// Bajo 10x muestra un decimal (distingue el 3.9x de Neptuno del 4x de
+// Urano); de 10x para arriba redondea a entero (nadie necesita "109.0x").
+export const formatMultiplo = (radioReal) => {
+  const redondeado = radioReal < 10 ? Math.round(radioReal * 10) / 10 : Math.round(radioReal);
+  const texto = Number.isInteger(redondeado) ? String(redondeado) : redondeado.toFixed(1);
+  return `${texto}×`;
+};
+
+// "🪐 Júpiter · 11×" — etiqueta flotante del modo comparar para un cuerpo
+// (Sol o planeta). El multiplo es sobre el tamaño de la Tierra: mas facil de
+// comparar para un niño que los kilometros.
+export const etiquetaComparar = (cuerpo) => (
+  `${cuerpo.emoji} ${cuerpo.nombre.replace(/^(el|la) /, '')} · ${formatMultiplo(cuerpo.radioReal)}`
+);
 
 /* ============================ FASES DE LA LUNA ============================ */
 

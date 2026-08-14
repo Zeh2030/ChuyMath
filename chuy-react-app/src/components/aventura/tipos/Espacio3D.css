@@ -14,6 +14,7 @@
 }
 
 .espacio3d-lienzo {
+  position: relative; /* ancla la capa de etiquetas del modo comparar */
   width: 100%;
   height: 340px;
   border-radius: 16px;
@@ -21,6 +22,31 @@
   background: #070b1a;
   touch-action: none;
   cursor: grab;
+}
+
+/* Etiquetas "×Tierra" del modo comparar (escena planetas). Texto DOM, no
+   sprites, para que quede nitido a cualquier zoom. La posicion se escribe
+   cada frame sin transicion (seguiria con retraso); solo la opacidad anima. */
+.espacio3d-etiquetas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.espacio3d-etiqueta {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #f2f5ff;
+  background: rgba(10, 15, 40, 0.65);
+  padding: 2px 7px;
+  border-radius: 999px;
+  opacity: 0;
+  transition: opacity 0.15s ease;
 }
 
 .espacio3d-lienzo:active {

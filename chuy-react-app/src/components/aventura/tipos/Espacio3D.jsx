@@ -1,7 +1,7 @@
 import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { soportaWebGL } from '../../../utils/webgl';
-import { PLANETAS, SOL, CONSTELACIONES, COMETA, faseInfoDe, estacionInfoDe, cometaInfoDe } from './espacioDatos';
+import { PLANETAS, SOL, CONSTELACIONES, COMETA, faseInfoDe, estacionInfoDe, cometaInfoDe, etiquetaComparar } from './espacioDatos';
 import './Espacio3D.css';
 
 /**
@@ -251,6 +251,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     escena = 'planetas',
     enfocado = null,      // id de cuerpo al que acercar la camara
     comparar = false,     // modo "tamano real" en fila (planetas)
+    ocultarSol = false,   // oculta el Sol en modo comparar (planetas)
     seleccionable = true, // si tocar un cuerpo dispara onSeleccion
     onSeleccion = null,   // (idCuerpo) => {}
     onFase = null,        // (info) => {} con cada cambio del deslizador (tierra-luna y estaciones)
@@ -314,10 +315,10 @@ const Espacio3D = forwardRef(function Espacio3D(
   const [estrellaTocada, setEstrellaTocada] = useState(null);
 
   // El bucle lee las props cada frame sin reconstruir la escena.
-  const estadoRef = useRef({ enfocado, comparar, seleccionable, angulo });
+  const estadoRef = useRef({ enfocado, comparar, ocultarSol, seleccionable, angulo });
   useEffect(() => {
-    estadoRef.current = { enfocado, comparar, seleccionable, angulo };
-  }, [enfocado, comparar, seleccionable, angulo]);
+    estadoRef.current = { enfocado, comparar, ocultarSol, seleccionable, angulo };
+  }, [enfocado, comparar, ocultarSol, seleccionable, angulo]);
 
   const onSeleccionRef = useRef(onSeleccion);
   const onFaseRef = useRef(onFase);
@@ -428,6 +429,8 @@ const Espacio3D = forwardRef(function Espacio3D(
     const cuerpos = [];        // escena planetas
     const lineasOrbita = [];
     let metricaComparar = null;
+    let metricaCompararSinSol = null;
+    let capaEtiquetas = null;  // escena planetas: capa DOM de etiquetas "×Tierra"
     let glowSol = null;
     let tl = null;             // escena tierra-luna
     let escEst = null;         // escena estaciones
@@ -442,9 +445,24 @@ const Espacio3D = forwardRef(function Espacio3D(
       // Luz en el origen: los planetas se iluminan por el lado que mira al Sol.
       escena3.add(new THREE.PointLight(0xfff3d0, 2.4, 0, 0));
 
+      // Capa DOM para las etiquetas "×Tierra" del modo comparar: un <span>
+      // por cuerpo, posicionado cada frame proyectando su posicion 3D a
+      // pantalla. Vive fuera del canvas para que el texto salga nitido a
+      // cualquier zoom (un sprite con textura se veria pixelado).
+      capaEtiquetas = document.createElement('div');
+      capaEtiquetas.className = 'espacio3d-etiquetas';
+      contenedor.appendChild(capaEtiquetas);
+      const crearEtiqueta = (cuerpo) => {
+        const el = document.createElement('span');
+        el.className = 'espacio3d-etiqueta';
+        el.textContent = etiquetaComparar(cuerpo);
+        capaEtiquetas.appendChild(el);
+        return el;
+      };
+
       const meshSol = crearCuerpo({ id: 'sol', radio: SOL.radio, tex: SOL.tex, color: SOL.color, semilla: 3, lambert: false });
       escena3.add(meshSol);
-      cuerpos.push({ id: 'sol', mesh: meshSol, radio: SOL.radio, radioReal: SOL.radioReal, dist: 0, vel: 0, anguloOrbita: 0 });
+      cuerpos.push({ ...SOL, mesh: meshSol, dist: 0, vel: 0, anguloOrbita: 0, etiquetaEl: crearEtiqueta(SOL) });
 
       glowSol = crearGlow(SOL.radio * 4.6);
       escena3.add(glowSol);
@@ -462,32 +480,39 @@ const Espacio3D = forwardRef(function Espacio3D(
           anillo.rotation.x = -Math.PI / 2 + 0.35; // tumbado y con inclinacion
           mesh.add(anillo); // hereda la escala del planeta (tambien en tamano real)
         }
-        cuerpos.push({ ...p, mesh, anguloOrbita: rngAng() * Math.PI * 2 });
+        cuerpos.push({ ...p, mesh, anguloOrbita: rngAng() * Math.PI * 2, etiquetaEl: crearEtiqueta(p) });
 
         const { linea, mat } = crearLineaOrbita(p.dist);
         escena3.add(linea);
         lineasOrbita.push(mat);
       });
 
-      // Fila del modo comparar: Sol + planetas en orden, a radio REAL.
-      const escalaReal = 0.9; // la Tierra didactica mide 0.9, asi que 1 radioReal = 0.9
-      const HUECO = 3;
-      let x = 0;
-      let rPrevio = 0;
-      const medias = new Map();
-      let maxR = 0;
-      cuerpos.forEach((c, i) => {
-        const r = Math.max(c.radioReal * escalaReal, 0.12);
-        if (i > 0) x += rPrevio + HUECO + r;
-        medias.set(c.id, { x, r });
-        rPrevio = r;
-        maxR = Math.max(maxR, r);
-      });
-      const izquierda = medias.get(cuerpos[0].id).x - medias.get(cuerpos[0].id).r;
-      const derecha = x + rPrevio;
-      const centro = (izquierda + derecha) / 2;
-      medias.forEach((m) => { m.x -= centro; });
-      metricaComparar = { medias, halfW: (derecha - izquierda) / 2, maxR };
+      // Fila del modo comparar: cada cuerpo a su radio REAL, centrada en x=0.
+      // Se calcula dos veces (con y sin Sol) para el boton "Ocultar el Sol":
+      // sin el, la fila se puede encuadrar mucho mas cerca (109x vs ~11x de
+      // rango) y se nota mucho mejor la diferencia entre planetas.
+      const calcularFilaComparar = (lista) => {
+        const escalaReal = 0.9; // la Tierra didactica mide 0.9, asi que 1 radioReal = 0.9
+        const HUECO = 3;
+        let x = 0;
+        let rPrevio = 0;
+        const medias = new Map();
+        let maxR = 0;
+        lista.forEach((c, i) => {
+          const r = Math.max(c.radioReal * escalaReal, 0.12);
+          if (i > 0) x += rPrevio + HUECO + r;
+          medias.set(c.id, { x, r });
+          rPrevio = r;
+          maxR = Math.max(maxR, r);
+        });
+        const izquierda = medias.get(lista[0].id).x - medias.get(lista[0].id).r;
+        const derecha = x + rPrevio;
+        const centro = (izquierda + derecha) / 2;
+        medias.forEach((m) => { m.x -= centro; });
+        return { medias, halfW: (derecha - izquierda) / 2, maxR };
+      };
+      metricaComparar = calcularFilaComparar([SOL, ...PLANETAS]);
+      metricaCompararSinSol = calcularFilaComparar(PLANETAS);
     }
 
     if (escena === 'tierra-luna') {
@@ -813,6 +838,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     const objetivoCam = new THREE.Vector3();
     const vTmp = new THREE.Vector3();
     const vTmp2 = new THREE.Vector3();
+    const vProy = new THREE.Vector3(); // reutilizado para proyectar cuerpo → pantalla (etiquetas)
     const V_ARRIBA = new THREE.Vector3(0, 1, 0);
     const COL_ORO = new THREE.Color(0xf1c40f);
     const COL_LINEA_CONST = new THREE.Color(0x5a6a92);
@@ -859,7 +885,10 @@ const Espacio3D = forwardRef(function Espacio3D(
       ndc.x = ((e.clientX - r.left) / r.width) * 2 - 1;
       ndc.y = -((e.clientY - r.top) / r.height) * 2 + 1;
       rayo.setFromCamera(ndc, camara);
-      const impactos = rayo.intersectObjects(mallas, false);
+      // three.js NO excluye objetos con visible=false del raycast por si solo
+      // (Mesh.raycast()/Raycaster no chequean .visible) — hay que filtrarlos
+      // nosotros. Importa para el Sol oculto en modo comparar.
+      const impactos = rayo.intersectObjects(mallas.filter((m) => m.visible), false);
       return impactos.length ? impactos[0].object : null;
     };
 
@@ -956,18 +985,51 @@ const Espacio3D = forwardRef(function Espacio3D(
         mezcla += (haciaComparar - mezcla) * Math.min(1, dt * 4);
         if (Math.abs(haciaComparar - mezcla) < 0.002) mezcla = haciaComparar;
 
+        // Sin el Sol, la fila se calcula con SOLO los planetas: se puede
+        // encuadrar mucho mas cerca y las diferencias entre ellos se notan.
+        const metricaActiva = est.ocultarSol ? metricaCompararSinSol : metricaComparar;
+        const wCanvas = lienzo.clientWidth;
+        const hCanvas = lienzo.clientHeight;
+
         cuerpos.forEach((c) => {
           if (c.vel) c.anguloOrbita += c.vel * VEL_ORBITAL * dt;
-          const m = metricaComparar.medias.get(c.id);
+          const solOculto = c.id === 'sol' && est.ocultarSol;
+          const m = solOculto ? null : metricaActiva.medias.get(c.id);
           const ox = Math.cos(c.anguloOrbita) * c.dist;
           const oz = -Math.sin(c.anguloOrbita) * c.dist;
-          c.mesh.position.set(ox + (m.x - ox) * mezcla, 0, oz * (1 - mezcla));
-          c.mesh.scale.setScalar(c.radio + (m.r - c.radio) * mezcla);
+          if (m) {
+            c.mesh.position.set(ox + (m.x - ox) * mezcla, 0, oz * (1 - mezcla));
+            c.mesh.scale.setScalar(c.radio + (m.r - c.radio) * mezcla);
+          } else {
+            // Sol oculto: sigue orbitando fuera de cuadro, no importa porque
+            // queda invisible (y fuera del raycast, ver cuerpoEn).
+            c.mesh.position.set(ox, 0, oz);
+          }
           c.mesh.rotation.y += dt * 0.4;
+          c.mesh.visible = !solOculto;
+
+          // Etiqueta flotante "×Tierra": solo visible con algo de mezcla y
+          // con el cuerpo delante de la camara; se apaga si es el Sol oculto.
+          if (!solOculto && mezcla > 0.02 && wCanvas && hCanvas) {
+            vProy.copy(c.mesh.position);
+            vProy.y += c.mesh.scale.x * 1.3; // un poco arriba del cuerpo
+            vProy.project(camara);
+            if (vProy.z < 1) {
+              const px = (vProy.x * 0.5 + 0.5) * wCanvas;
+              const py = (1 - (vProy.y * 0.5 + 0.5)) * hCanvas;
+              c.etiquetaEl.style.transform = `translate(${px}px, ${py}px) translate(-50%, -100%)`;
+              c.etiquetaEl.style.opacity = mezcla;
+            } else {
+              c.etiquetaEl.style.opacity = 0;
+            }
+          } else {
+            c.etiquetaEl.style.opacity = 0;
+          }
         });
         lineasOrbita.forEach((mat) => { mat.opacity = 0.45 * (1 - mezcla); });
 
         const sol = cuerpos[0];
+        glowSol.visible = !est.ocultarSol;
         glowSol.position.copy(sol.mesh.position);
         glowSol.scale.setScalar(sol.mesh.scale.x * 4.6);
 
@@ -979,8 +1041,8 @@ const Espacio3D = forwardRef(function Espacio3D(
             yaw += (0 - yaw) * Math.min(1, dt * 3);
           }
           const ajuste = Math.max(
-            metricaComparar.halfW / (tanFov * aspecto),
-            (metricaComparar.maxR * 1.2) / tanFov
+            metricaActiva.halfW / (tanFov * aspecto),
+            (metricaActiva.maxR * 1.2) / tanFov
           ) * 1.15;
           distDeseada = DIST_BASE + (ajuste - DIST_BASE) * mezcla;
         } else if (est.enfocado) {
@@ -1201,6 +1263,7 @@ const Espacio3D = forwardRef(function Espacio3D(
       desechables.forEach((x) => x.dispose());
       renderer.dispose();
       if (lienzo.parentNode) lienzo.parentNode.removeChild(lienzo);
+      if (capaEtiquetas?.parentNode) capaEtiquetas.parentNode.removeChild(capaEtiquetas);
       apiRef.current = null;
     };
   }, [escena]);
