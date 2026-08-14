@@ -1,5 +1,6 @@
 import React, { useMemo, useRef, useState } from 'react';
 import { NOMBRES } from './espacioDatos';
+import { useFullscreenToggle } from '../../../hooks/useFullscreenToggle';
 import './SistemaSolar.css';
 
 // three.js solo se descarga cuando el nino llega a una mision de astronomia.
@@ -102,6 +103,10 @@ const Explorar = ({ escena, datos, haySiguiente, onContinuar }) => {
   const [ocultarSol, setOcultarSol] = useState(false); // solo relevante con comparar=true
   const [visitados, setVisitados] = useState([]);
   const motorRef = useRef(null);
+  // La pantalla completa vive AQUI (no en Espacio3D): tiene que incluir
+  // tambien la tarjeta y los botones, que son hermanos del motor 3D.
+  const rootRef = useRef(null);
+  const { fullscreen, toggleFullscreen } = useFullscreenToggle(rootRef);
 
   const elegir = (id) => {
     setSeleccion(id);
@@ -122,7 +127,7 @@ const Explorar = ({ escena, datos, haySiguiente, onContinuar }) => {
   const conDatos = Object.keys(datos).length;
 
   return (
-    <div className="sisol-fase">
+    <div className={`sisol-fase ${fullscreen ? 'sisol-fullscreen' : ''}`} ref={rootRef}>
       {conDatos > 0 && (
         <div className="sisol-progreso-texto">
           {visitados.filter((id) => datos[id]).length >= conDatos
@@ -139,11 +144,22 @@ const Explorar = ({ escena, datos, haySiguiente, onContinuar }) => {
             enfocado={comparar ? null : seleccion}
             comparar={comparar}
             ocultarSol={ocultarSol}
+            fullscreen={fullscreen}
             seleccionable
             onSeleccion={elegir}
             onVista={elegir}
           />
         </React.Suspense>
+
+        <button
+          type="button"
+          className="sisol-btn-fs"
+          onClick={toggleFullscreen}
+          title={fullscreen ? 'Salir de pantalla completa' : 'Pantalla completa'}
+          aria-label={fullscreen ? 'Salir de pantalla completa' : 'Pantalla completa'}
+        >
+          {fullscreen ? '✕' : '⛶'}
+        </button>
 
         {seleccion && !comparar && (
           <div className="sisol-tarjeta">
@@ -200,6 +216,8 @@ const Retos = ({ escena, retos, onTerminar }) => {
   const [aciertos, setAciertos] = useState(0);
   const [faseActual, setFaseActual] = useState(null); // info de onFase (tierra-luna)
   const motorRef = useRef(null);
+  const rootRef = useRef(null);
+  const { fullscreen, toggleFullscreen } = useFullscreenToggle(rootRef);
 
   const reto = retos[idx];
   const resuelto = feedback === 'correcto';
@@ -262,7 +280,7 @@ const Retos = ({ escena, retos, onTerminar }) => {
   };
 
   return (
-    <div className="sisol-fase">
+    <div className={`sisol-fase ${fullscreen ? 'sisol-fullscreen' : ''}`} ref={rootRef}>
       <div className="sisol-progreso-texto">Reto {idx + 1} de {retos.length}</div>
 
       <div className="sisol-reto-pregunta">
@@ -276,11 +294,22 @@ const Retos = ({ escena, retos, onTerminar }) => {
             ref={motorRef}
             escena={escena}
             seleccionable={reto.tipo === 'toca' && !resuelto}
+            fullscreen={fullscreen}
             onSeleccion={alTocar}
             onVista={alVista}
             onFase={alFase}
           />
         </React.Suspense>
+
+        <button
+          type="button"
+          className="sisol-btn-fs"
+          onClick={toggleFullscreen}
+          title={fullscreen ? 'Salir de pantalla completa' : 'Pantalla completa'}
+          aria-label={fullscreen ? 'Salir de pantalla completa' : 'Pantalla completa'}
+        >
+          {fullscreen ? '✕' : '⛶'}
+        </button>
       </div>
 
       {feedback === 'correcto' && (

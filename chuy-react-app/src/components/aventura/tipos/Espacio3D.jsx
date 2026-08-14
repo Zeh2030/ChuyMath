@@ -1,4 +1,4 @@
-import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
+import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { soportaWebGL } from '../../../utils/webgl';
 import { PLANETAS, SOL, CONSTELACIONES, COMETA, faseInfoDe, estacionInfoDe, cometaInfoDe, etiquetaComparar } from './espacioDatos';
@@ -253,6 +253,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     comparar = false,     // modo "tamano real" en fila (planetas)
     ocultarSol = false,   // oculta el Sol en modo comparar (planetas)
     seleccionable = true, // si tocar un cuerpo dispara onSeleccion
+    fullscreen = false,   // el ANCESTRO (SistemaSolar.jsx) esta en pantalla completa
     onSeleccion = null,   // (idCuerpo) => {}
     onFase = null,        // (info) => {} con cada cambio del deslizador (tierra-luna y estaciones)
     onVista = null,       // (idConstelacion) => {} cuando la figura "encaja" (constelaciones)
@@ -260,50 +261,17 @@ const Espacio3D = forwardRef(function Espacio3D(
   ref
 ) {
   const contenedorRef = useRef(null);
-  const rootRef = useRef(null);
   const apiRef = useRef(null);
   const soportado = soportaWebGL();
 
-  // Pantalla completa: el ResizeObserver que redimensiona el lienzo three.js
-  // (mas abajo) se encarga del canvas al entrar/salir, pero la transicion de
-  // la Fullscreen API real tarda uno o dos frames en asentarse — si se lee el
-  // tamaño demasiado pronto, la escena se queda con el encuadre "de en medio"
-  // (se ve menos de lo que cabe) y nadie lo vuelve a corregir. Por eso, ademas
-  // del observer, se fuerza una remedicion explicita un par de frames despues
-  // de cada cambio (ver el efecto de abajo).
-  const [fullscreen, setFullscreen] = useState(false);
-  const toggleFullscreen = useCallback(() => {
-    setFullscreen((prev) => {
-      const next = !prev;
-      try {
-        if (next) {
-          const el = rootRef.current || document.documentElement;
-          (el.requestFullscreen || el.webkitRequestFullscreen)?.call(el);
-        } else if (document.fullscreenElement || document.webkitFullscreenElement) {
-          (document.exitFullscreen || document.webkitExitFullscreen)?.call(document);
-        }
-      } catch {
-        /* sin Fullscreen API: el overlay CSS igual maximiza */
-      }
-      return next;
-    });
-  }, []);
-  useEffect(() => {
-    const onChange = () => {
-      const activo = !!(document.fullscreenElement || document.webkitFullscreenElement);
-      if (!activo) setFullscreen(false);
-    };
-    document.addEventListener('fullscreenchange', onChange);
-    document.addEventListener('webkitfullscreenchange', onChange);
-    return () => {
-      document.removeEventListener('fullscreenchange', onChange);
-      document.removeEventListener('webkitfullscreenchange', onChange);
-    };
-  }, []);
-
-  // Remedicion forzada tras el cambio de pantalla completa (entrar Y salir):
-  // dos requestAnimationFrame para asegurar que el layout ya se asento antes
-  // de leer el tamaño real del lienzo.
+  // La pantalla completa la controla el WRAPPER (SistemaSolar.jsx), no este
+  // componente: el elemento que se fullscreenea tiene que ser ancestro de la
+  // tarjeta y los botones tambien, que viven fuera de Espacio3D. Aqui solo
+  // se reacciona al cambio (prop `fullscreen`) para: (a) aplicar la clase que
+  // hace crecer el lienzo, y (b) forzar una remedicion — la transicion real
+  // de la Fullscreen API tarda uno o dos frames en asentarse, y si el
+  // ResizeObserver de mas abajo lee el tamaño demasiado pronto, la escena se
+  // queda con el encuadre "de en medio" (se ve menos de lo que cabe).
   useEffect(() => {
     let id1 = 0;
     let id2 = 0;
@@ -1401,18 +1369,9 @@ const Espacio3D = forwardRef(function Espacio3D(
   }
 
   return (
-    <div className={`espacio3d ${fullscreen ? 'espacio3d-fullscreen' : ''}`} ref={rootRef}>
+    <div className={`espacio3d ${fullscreen ? 'espacio3d-fullscreen' : ''}`}>
       <div className="espacio3d-vista">
         <div className="espacio3d-lienzo" ref={contenedorRef} />
-        <button
-          type="button"
-          className="espacio3d-btn-fs"
-          onClick={toggleFullscreen}
-          title={fullscreen ? 'Salir de pantalla completa' : 'Pantalla completa'}
-          aria-label={fullscreen ? 'Salir de pantalla completa' : 'Pantalla completa'}
-        >
-          {fullscreen ? '✕' : '⛶'}
-        </button>
         {conRecuadro && (
           <div className="espacio3d-inset-marco" style={{ width: INSET, height: INSET }}>
             <span className="espacio3d-inset-titulo">

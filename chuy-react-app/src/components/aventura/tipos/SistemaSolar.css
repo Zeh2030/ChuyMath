@@ -78,6 +78,68 @@
   width: 100%;
 }
 
+/* Boton de pantalla completa, esquina superior derecha del lienzo */
+.sisol-btn-fs {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(10, 15, 40, 0.6);
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, transform 0.15s ease;
+  z-index: 5; /* por encima del lienzo y de la tarjeta */
+}
+
+.sisol-btn-fs:hover {
+  background: rgba(10, 15, 40, 0.85);
+  transform: scale(1.06);
+}
+
+/* === PANTALLA COMPLETA (Explorar y Retos) ===
+   El ancestro que se fullscreenea es .sisol-fase completo, no solo el
+   lienzo: asi la tarjeta y los botones (que son hermanos de Espacio3D en el
+   arbol de React) siguen visibles. Espacio3D solo recibe la prop
+   `fullscreen` para saber que debe crecer (ver Espacio3D.css). */
+.sisol-fase.sisol-fullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  padding: 12px;
+  background: #05070f;
+  justify-content: flex-start;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.sisol-fullscreen .sisol-vista {
+  flex: 1;
+  min-height: 260px;
+}
+
+/* Le pide a Espacio3D (componente aparte) que aproveche todo el alto */
+.sisol-fullscreen .sisol-vista .espacio3d,
+.sisol-fullscreen .sisol-vista .espacio3d-vista,
+.sisol-fullscreen .sisol-vista .espacio3d-lienzo {
+  height: 100%;
+}
+
+.sisol-fullscreen .sisol-btn-fs {
+  width: 46px;
+  height: 46px;
+  font-size: 1.3rem;
+}
+
 .sisol-cargando {
   display: flex;
   align-items: center;

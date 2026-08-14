@@ -63,53 +63,18 @@
   }
 }
 
-/* Boton de pantalla completa, esquina superior derecha (el recuadro va abajo) */
-.espacio3d-btn-fs {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 38px;
-  height: 38px;
-  border: none;
-  border-radius: 50%;
-  background: rgba(10, 15, 40, 0.6);
-  color: #fff;
-  font-size: 1.1rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.15s ease, transform 0.15s ease;
-}
-
-.espacio3d-btn-fs:hover {
-  background: rgba(10, 15, 40, 0.85);
-  transform: scale(1.06);
-}
-
-/* === PANTALLA COMPLETA === */
+/* === PANTALLA COMPLETA ===
+   Espacio3D YA NO se fullscreenea a si mismo: el dueño de la Fullscreen API
+   es el wrapper (SistemaSolar.jsx), porque tiene que incluir tambien la
+   tarjeta y los botones que viven fuera de este componente. Aqui solo se
+   reacciona a la prop `fullscreen` haciendo que el lienzo aproveche todo el
+   alto que el ancestro le da (ver SistemaSolar.css .sisol-fullscreen). */
 .espacio3d.espacio3d-fullscreen {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 12px;
-  background: #05070f;
-  justify-content: center;
-  box-sizing: border-box;
-  overflow-y: auto;
+  height: 100%;
 }
 
 .espacio3d-fullscreen .espacio3d-vista { flex: 1; min-height: 0; }
-.espacio3d-fullscreen .espacio3d-lienzo { height: 100%; min-height: 260px; }
-
-.espacio3d-fullscreen .espacio3d-btn-fs {
-  width: 46px;
-  height: 46px;
-  font-size: 1.3rem;
-}
+.espacio3d-fullscreen .espacio3d-lienzo { height: 100%; min-height: 200px; }
 
 /* Recuadro "asi se ve desde la Tierra" (el viewport lo pinta three en la misma esquina) */
 .espacio3d-inset-marco {
