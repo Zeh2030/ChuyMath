@@ -874,3 +874,33 @@
 [data-theme="pizarron"] .ip-explanation span {
   color: #00695c;
 }
+
+/* ============================================
+   SISTEMA SOLAR en temas oscuros — SistemaSolar.css y Espacio3D.css pintan
+   texto con var(--color-texto, #2c3e50), pero la variable no existe en
+   ningun tema: siempre cae al fallback azul-oscuro, ilegible sobre fondo
+   oscuro ("Reto 1 de 2", la pregunta del reto, las etiquetas del slider).
+   Se define la variable SOLO dentro del juego (scoped a .sisol-container):
+   DesarrolloCubos tambien la usa pero sobre panel blanco, y ahi el fallback
+   oscuro es el correcto.
+   ============================================ */
+[data-theme="espacial"] .sisol-container,
+[data-theme="pizarron"] .sisol-container {
+  --color-texto: #e8eaf0;
+}
+
+/* Colores fijos que la variable no cubre, pensados para fondo claro */
+[data-theme="espacial"] .sisol-reto-pregunta,
+[data-theme="pizarron"] .sisol-reto-pregunta {
+  background: rgba(243, 156, 18, 0.22);
+}
+
+[data-theme="espacial"] .sisol-feedback.correcto,
+[data-theme="pizarron"] .sisol-feedback.correcto {
+  color: #58d68d;
+}
+
+[data-theme="espacial"] .sisol-feedback.incorrecto,
+[data-theme="pizarron"] .sisol-feedback.incorrecto {
+  color: #ff8a80;
+}
