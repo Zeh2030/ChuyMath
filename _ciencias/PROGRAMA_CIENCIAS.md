@@ -405,6 +405,16 @@ el flujo de MezcladorColores (intro → explorar → retos → fin).
   boton Lanzar; gravedad newtoniana simulada con estela; desenlaces choca / orbita
   (vuelta completa sin caer) / escapa. Retos tipo `lanzamiento` que aciertan solos
   al lograr el desenlace pedido.
+- **Escena `estrellas`** (2026-08-14, la Escalera de las Estrellas): comparacion
+  de estrellas reales por PASOS con re-normalizacion (cada escalon re-escala todo
+  y el Sol se encoge a la vista, de 109x la Tierra a un puntito). Radios reales
+  en radios solares (Proxima 0.15 → Stephenson 2-18 ~2,150), colores por
+  temperatura (azul=caliente, rojo=fria) y orbitas de los planetas dibujadas
+  DENTRO de las supergigantes. Retos tipo `toca`.
+- **Constelaciones 2.0** (2026-08-14): foco por atencion (la figura que no se
+  mira casi desaparece), nombre de estrella flotante al tocarla, nombre dorado
+  al encajar, y 3 figuras nuevas: Can Mayor (Sirio casi vecina), Escorpion
+  (Antares roja) y Casiopea (la W). 5 constelaciones en total.
 
 Campos de la mision:
 
@@ -447,6 +457,9 @@ saturno, urano, neptuno. Tierra-luna: sol, tierra, luna.
 | `sistema-solar/C2-33_el-cometa.json` | El cometa y su cola | sistema-solar (cometa) + opcion-multiple |
 | `sistema-solar/C3-21_lanza-un-satelite.json` | Lanza un satelite (canon de Newton) | sistema-solar (satelite) + opcion-multiple |
 | `opcion-multiple/C2-34_comparando-planetas.json` | Tamanos, temperaturas y familias de planetas | opcion-multiple + tap-the-pairs |
+| `sistema-solar/C2-35_gigantes-del-universo.json` | La escalera de las estrellas | sistema-solar (estrellas) + opcion-multiple |
+| `mini-story/C2-36_los-robots-viajeros.json` | Sondas espaciales (Voyager, disco de oro, Pluton, Parker) | mini-story + image-picker + tap-the-pairs + opcion-multiple |
+| `sistema-solar/C2-37_cazadores-de-constelaciones.json` | 3 constelaciones nuevas (Can Mayor, Escorpion, Casiopea) | sistema-solar (constelaciones) + true-or-false |
 
 **Fotos**: URLs `https://commons.wikimedia.org/wiki/Special:FilePath/<archivo>?width=320`
 (redirect estable de Wikimedia Commons, sin rutas con hash; todas verificadas con curl).
