@@ -1,0 +1,168 @@
+{
+  "id": "C3-22_agujeros-negros",
+  "titulo": "Agujeros Negros",
+  "descripcion": "Fabrica un agujero negro apretando la Tierra y descubre por qué NO aspiran",
+  "tipo": "sistema-solar",
+  "materia": "ciencias",
+  "nivel": "C3-22",
+  "tema": "astronomia",
+  "misiones": [
+    {
+      "id": "astro-agujero-01",
+      "tipo": "sistema-solar",
+      "escena": "agujero-negro",
+      "modo": "completo",
+      "titulo": "La Fábrica de Agujeros Negros",
+      "emoji": "🕳️",
+      "instruccion": "Con el cañón de Newton aprendiste que escapar de la Tierra cuesta velocidad. Ahora al revés: APRIETA la Tierra con el deslizador (su peso NO cambia, solo se hace más chica) y usa el botón para probar si un RAYO DE LUZ todavía puede escapar. La luz es lo más rápido que existe… ¿habrá algo que ni ella pueda?",
+      "leccion": "ANTES de jugar, apuesta como un científico: si la Tierra se vuelve agujero negro (mismo peso, apretadísima), ¿qué le pasa a la Luna que le da vueltas? ¿Sale volando? ¿Se la traga? ¿Sigue igual? Piensa tu respuesta… y compruébala tú mismo vigilando la Luna. Hace 240 años, John Michell se hizo esta pregunta con lápiz y papel y predijo las 'estrellas oscuras': tan apretadas que ni la luz escapa.",
+      "datos": {
+        "tierra": "Su peso NUNCA cambia en este juego: solo la aprietas. Mismo peso en menos espacio = más gravedad en la superficie, y escapar cuesta más. Si la apretaras hasta el tamaño de una canica… ¡sería un agujero negro de verdad!",
+        "luna": "¡Vigílala todo el tiempo! Su órbita no cambia NUNCA, ni cuando la Tierra se vuelve agujero negro. La gravedad depende del PESO, y el peso no cambió: los agujeros negros NO aspiran."
+      },
+      "retos": [
+        {
+          "tipo": "luz",
+          "pregunta": "Fabrica un agujero negro: aprieta la Tierra hasta que un rayo de luz quede ATRAPADO.",
+          "respuesta": "atrapado",
+          "pista": "Aprieta casi hasta el final. Cuando el escape pase del 100% de la velocidad de la luz, ni la luz sale."
+        },
+        {
+          "tipo": "luz",
+          "pregunta": "Ahora libérala: descomprime la Tierra hasta que un rayo de luz vuelva a ESCAPAR.",
+          "respuesta": "escapa",
+          "pista": "Regresa el deslizador hacia la Tierra normal: cuando el escape baje del 100%, la luz vuelve a ganar."
+        }
+      ],
+      "dato_curioso": "La Tierra apretada al tamaño de una canica sería un agujero negro. El Sol, apretado al tamaño de un pueblito de 3 km, también. Tranquilo: nada puede apretarlos así. Los agujeros negros reales nacen cuando muere una estrella MUCHO más pesada que el Sol — el nuestro es demasiado pequeño para volverse uno."
+    },
+    {
+      "id": "astro-story-estrella-oscura",
+      "tipo": "mini-story",
+      "titulo": "La Estrella Oscura",
+      "instruccion": "Lee cada parte y responde la pregunta.",
+      "parrafos": [
+        {
+          "texto": "Hace más de 200 años, mucho antes de los cohetes y las computadoras, un señor llamado John Michell se hizo una pregunta loca usando solo las matemáticas de Newton: '¿Y si existiera una estrella con TANTA gravedad que ni la luz pudiera escapar?' Nadie podría verla jamás: sería una ESTRELLA OSCURA. Casi nadie le hizo caso… pero tenía razón.",
+          "emoji": "🕯️",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Michell necesitó una supercomputadora para predecir las estrellas oscuras.",
+              "correcto": false,
+              "correccion": "Lo hizo en 1783 con lápiz, papel y las matemáticas de Newton. ¡Igual que tú acabas de descubrirlo apretando la Tierra!"
+            }
+          ]
+        },
+        {
+          "texto": "En 1915, Einstein descubrió algo más profundo: la gravedad no es un jalón misterioso — el peso DEFORMA el espacio, como una pelota pesada hunde una cama elástica. Sus ecuaciones decían que las estrellas oscuras podían existir de verdad. Hoy las llamamos agujeros negros, y su borde sin retorno se llama HORIZONTE: lo que lo cruza ya no puede volver, ni siquiera la luz.",
+          "emoji": "🧠",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "El borde sin retorno de un agujero negro se llama ___.",
+              "opciones": ["horizonte", "frontera", "muralla", "puerta"],
+              "respuesta": 0
+            }
+          ]
+        },
+        {
+          "texto": "¿Y cómo fotografías algo NEGRO en el espacio negro? Los científicos apuntaron 8 telescopios de todo el mundo al mismo punto A LA VEZ, trabajando como un solo telescopio del tamaño de la Tierra. En 2019 mostraron la primera foto de un agujero negro: M87*, un monstruo que pesa 6,500 MILLONES de soles. Lo negro del centro es el agujero; el anillo brillante es gas calientísimo dando vueltas a su alrededor.",
+          "emoji": "📸",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Para la primera foto usaron ___ telescopios trabajando como uno solo.",
+              "opciones": ["2", "8", "100", "1000"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "¿Y sabes qué? NUESTRA galaxia tiene su propio agujero negro gigante en el centro: se llama Sagitario A* y pesa como 4 MILLONES de soles. ¿Hay que preocuparse? Para nada: está lejísimos (26,000 años luz) y, como comprobaste con la Luna, los agujeros negros no aspiran. Millones de estrellas simplemente lo orbitan, igual que los planetas orbitan al Sol.",
+          "emoji": "🌌",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "El agujero negro del centro de nuestra galaxia se está tragando la Tierra poco a poco.",
+              "correcto": false,
+              "correccion": "Está a 26,000 años luz y no aspira: la Tierra orbita tranquilamente al Sol. Los agujeros negros solo son peligrosos si te acercas MUCHÍSIMO."
+            }
+          ]
+        },
+        {
+          "texto": "Eso sí: si te acercaras demasiado a uno, la gravedad jalaría tus pies mucho más fuerte que tu cabeza… y te estirarías como un fideo largo. Los científicos lo llaman EN SERIO 'espaguetización'. Es el nombre científico más chistoso que existe — y una razón excelente para explorar los agujeros negros solo con telescopios.",
+          "emoji": "🍝",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Acercarse demasiado a un agujero negro te estiraría como un ___.",
+              "opciones": ["globo", "espagueti", "chicle", "resorte"],
+              "respuesta": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "astro-ip-agujeros",
+      "tipo": "image-picker",
+      "titulo": "Las Fotos Imposibles",
+      "instruccion": "Estas fotos son reales. Toca la que se describe… ¡ojo, hay trampas que se parecen!",
+      "retos": [
+        {
+          "palabra_es": "La PRIMERA foto de un agujero negro de la historia: M87*, año 2019",
+          "opciones": [
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Solar%20eclipse%201999%204%20NR.jpg?width=320", "label": "Eclipse total de Sol" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Black%20hole%20-%20Messier%2087%20crop%20max%20res.jpg?width=320", "label": "El agujero negro M87*" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/FullMoon2010.jpg?width=320", "label": "La Luna llena" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/M57%20The%20Ring%20Nebula.JPG?width=320", "label": "La nebulosa del Anillo" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Es M87*: lo negro es el agujero (¡más grande que todo nuestro sistema solar!) y el anillo naranja es gas caliente girando. El eclipse de Sol se le parece mucho, ¿verdad? Por eso esta foto fue tan difícil de lograr."
+        },
+        {
+          "palabra_es": "El agujero negro del centro de NUESTRA galaxia: Sagitario A*, fotografiado en 2022",
+          "opciones": [
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Andromeda%20Galaxy%20(with%20h-alpha).jpg?width=320", "label": "La galaxia Andrómeda" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/FullMoon2010.jpg?width=320", "label": "La Luna llena" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/EHT%20Saggitarius%20A%20black%20hole.tif?width=320", "label": "Sagitario A*" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Solar%20eclipse%201999%204%20NR.jpg?width=320", "label": "Eclipse total de Sol" }
+          ],
+          "respuesta": 2,
+          "explicacion": "Es Sagitario A*, en el corazón de la Vía Láctea, a 26,000 años luz. Fotografiarlo fue como fotografiar una dona puesta en la Luna… desde la Tierra."
+        }
+      ]
+    },
+    {
+      "id": "astro-om-aspiradora",
+      "tipo": "opcion-multiple",
+      "titulo": "El Mito de la Aspiradora",
+      "instruccion": "Esto lo comprobaste tú mismo vigilando a la Luna.",
+      "pregunta": "🌙 Si el Sol se volviera un agujero negro del MISMO peso (tranquilo: no puede pasar), ¿qué haría la Tierra?",
+      "opciones": [
+        "Sería tragada de inmediato",
+        "Saldría disparada al espacio",
+        "Seguiría orbitando igualito… pero a oscuras"
+      ],
+      "respuesta": "2",
+      "explicacion_correcta": "¡Exacto! Lo viste con la Luna: la gravedad depende del PESO, y el peso no cambió. Los agujeros negros no aspiran — solo son peligrosos si te acercas muchísimo más que antes.",
+      "explicacion_incorrecta": "Recuerda a la Luna del juego: cuando la Tierra se volvió agujero negro, su órbita no cambió NADA. Mismo peso = misma gravedad. Solo nos quedaríamos sin luz y con mucho frío."
+    },
+    {
+      "id": "astro-om-canica",
+      "tipo": "opcion-multiple",
+      "titulo": "¿Qué Tan Apretada?",
+      "instruccion": "Piensa en lo que costó fabricar tu agujero negro con el deslizador.",
+      "pregunta": "🌍 ¿Qué tan apretada tendría que quedar la Tierra ENTERA para volverse un agujero negro?",
+      "opciones": [
+        "Del tamaño de una canica",
+        "Del tamaño de México",
+        "Del tamaño de la Luna"
+      ],
+      "respuesta": "0",
+      "explicacion_correcta": "¡Sí! Toda la Tierra —montañas, océanos y tú incluido— apretada en menos de 2 centímetros. Por eso no hay peligro: nada en el universo puede apretarla así. Los agujeros negros reales nacen cuando muere una estrella gigantesca.",
+      "explicacion_incorrecta": "Es mucho más extremo: ¡del tamaño de una CANICA! Menos de 2 centímetros con todo el peso del planeta. Por eso no hay peligro: nada puede apretar tanto a la Tierra."
+    }
+  ]
+}

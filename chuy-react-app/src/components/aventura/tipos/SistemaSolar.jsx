@@ -28,7 +28,7 @@ const Espacio3D = React.lazy(() => import('./Espacio3D'));
  *                   { tipo:'lanzamiento', pregunta, respuesta:'choca'|'orbita'|'escapa', pista? }]
  *   dato_curioso : texto del final
  */
-const ESCENAS = ['planetas', 'tierra-luna', 'estaciones', 'constelaciones', 'cometa', 'satelite', 'estrellas'];
+const ESCENAS = ['planetas', 'tierra-luna', 'estaciones', 'constelaciones', 'cometa', 'satelite', 'estrellas', 'agujero-negro'];
 
 const SistemaSolar = ({ mision, onCompletar }) => {
   const escena = ESCENAS.includes(mision.escena) ? mision.escena : 'planetas';
@@ -72,7 +72,7 @@ const SistemaSolar = ({ mision, onCompletar }) => {
 
 // OJO: MisionRenderer ya pinta mision.titulo y mision.instruccion arriba de toda
 // mision — repetirlos aqui los mostraba dos veces (mismo error que en cubos).
-const EMOJI_ESCENA = { 'tierra-luna': '🌗', estaciones: '🍂', constelaciones: '✨', cometa: '☄️', satelite: '🛰️', estrellas: '⭐' };
+const EMOJI_ESCENA = { 'tierra-luna': '🌗', estaciones: '🍂', constelaciones: '✨', cometa: '☄️', satelite: '🛰️', estrellas: '⭐', 'agujero-negro': '🕳️' };
 
 const Portada = ({ mision, escena, onComenzar }) => (
   <div className="sisol-portada">
@@ -210,6 +210,11 @@ const MENSAJES_LANZAMIENTO = {
   escapa: '👋 Se escapó al espacio profundo. ¡Un poquito menos de velocidad!',
 };
 
+const MENSAJES_LUZ = {
+  escapa: '✨ El rayo escapó: todavía no es agujero negro. ¡Aprieta más y vuelve a lanzar!',
+  atrapado: '🕳️ Sigue siendo agujero negro. ¡Descomprime más y vuelve a lanzar!',
+};
+
 const Retos = ({ escena, retos, onTerminar }) => {
   const [idx, setIdx] = useState(0);
   const [feedback, setFeedback] = useState(null); // null | 'correcto' | { intento }
@@ -261,10 +266,11 @@ const Retos = ({ escena, retos, onTerminar }) => {
     else setFeedback({ intento: null });
   };
 
-  // Satelite: el desenlace del lanzamiento llega solo desde el motor.
+  // Satelite y agujero-negro: el desenlace (lanzamiento / rayo de luz) llega
+  // solo desde el motor.
   const alFase = (info) => {
     setFaseActual(info);
-    if (reto.tipo === 'lanzamiento' && info?.resultado && !resuelto) {
+    if ((reto.tipo === 'lanzamiento' || reto.tipo === 'luz') && info?.resultado && !resuelto) {
       if (info.resultado === reto.respuesta) acierto();
       else setFeedback({ intento: info.resultado });
     }
@@ -328,7 +334,9 @@ const Retos = ({ escena, retos, onTerminar }) => {
             ? `Ese es ${nombreBonito(feedback.intento)}. ¡Sigue buscando!`
             : reto.tipo === 'lanzamiento' && feedback.intento
               ? MENSAJES_LANZAMIENTO[feedback.intento] || '¡Prueba con otra velocidad!'
-              : reto.tipo === 'estacion'
+              : reto.tipo === 'luz' && feedback.intento
+                ? MENSAJES_LUZ[feedback.intento] || '¡Prueba apretando distinto!'
+                : reto.tipo === 'estacion'
                 ? 'Todavía no. Fíjate hacia dónde apunta el eje rojo: ¿le da el sol de frente a nuestra mitad del mundo?'
                 : reto.tipo === 'cometa'
                   ? 'Todavía no. La pista está en la cola: mira dónde crece y dónde casi desaparece.'

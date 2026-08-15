@@ -415,6 +415,15 @@ el flujo de MezcladorColores (intro → explorar → retos → fin).
   mira casi desaparece), nombre de estrella flotante al tocarla, nombre dorado
   al encajar, y 3 figuras nuevas: Can Mayor (Sirio casi vecina), Escorpion
   (Antares roja) y Casiopea (la W). 5 constelaciones en total.
+- **Escena `agujero-negro`** (2026-08-15, la estrella oscura de Michell):
+  deslizador = APRETAR la Tierra (mismo peso, radio de 3 a 0.2, interpolacion
+  logaritmica) + boton "Rayo de luz" que lanza luz desde la superficie a c
+  simulada. La etiqueta muestra el % real v_esc/c; al cruzar R_s = 2GM/c²
+  (~85 del deslizador) la Tierra se vuelve esfera negra de radio FIJO con
+  anillo de horizonte (apretar mas ya no cambia nada visible: el horizonte
+  solo depende del peso). Una LUNA orbita todo el tiempo y su orbita nunca
+  cambia — mata el mito de la aspiradora. Retos tipo `luz` (atrapado / escapa)
+  que aciertan solos, como los de `lanzamiento`.
 
 Campos de la mision:
 
@@ -460,6 +469,7 @@ saturno, urano, neptuno. Tierra-luna: sol, tierra, luna.
 | `sistema-solar/C2-35_gigantes-del-universo.json` | La escalera de las estrellas | sistema-solar (estrellas) + opcion-multiple |
 | `mini-story/C2-36_los-robots-viajeros.json` | Sondas espaciales (Voyager, disco de oro, Pluton, Parker) | mini-story + image-picker + tap-the-pairs + opcion-multiple |
 | `sistema-solar/C2-37_cazadores-de-constelaciones.json` | 3 constelaciones nuevas (Can Mayor, Escorpion, Casiopea) | sistema-solar (constelaciones) + true-or-false |
+| `sistema-solar/C3-22_agujeros-negros.json` | Agujeros negros (Michell, no aspiran, fotos EHT) | sistema-solar (agujero-negro) + mini-story + image-picker + opcion-multiple |
 
 **Fotos**: URLs `https://commons.wikimedia.org/wiki/Special:FilePath/<archivo>?width=320`
 (redirect estable de Wikimedia Commons, sin rutas con hash; todas verificadas con curl).
@@ -480,6 +490,10 @@ el tile propio `sistema-solar`. `detectMateria` reconoce `ciencias-*`.
 
 ### Ideas futuras (no construidas)
 
+- C3-23 Relatividad para ninos (storytelling + experimentos mentales de Einstein:
+  el rayo de luz perseguido, el gemelo viajero, GPS como prueba diaria; agujeros
+  de gusano como leccion "hecho cientifico vs idea matematica aun no confirmada")
+- Cama elastica 3D (malla deformable: visualizar como el peso curva el espacio)
 - Expediciones espaciales estilo `expedicion-galactica.json` (Sistema Solar, Luna, Marte)
 - Cinturon de asteroides
 

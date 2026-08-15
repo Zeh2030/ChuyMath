@@ -20,6 +20,7 @@ const CUERPOS_POR_ESCENA = {
   cometa: new Set(['sol', 'tierra', 'cometa']),
   satelite: new Set(['tierra']),
   estrellas: new Set(['tierra', 'sol', 'proxima', 'sirio', 'arcturus', 'aldebaran', 'rigel', 'betelgeuse', 'stephenson']),
+  'agujero-negro': new Set(['tierra', 'luna']),
 };
 const FASES_OK = new Set([
   'nueva', 'creciente', 'cuarto-creciente', 'gibosa-creciente',
@@ -33,6 +34,7 @@ const ESTACIONES_OK = new Set([
 const CONSTELACIONES_OK = new Set(['osa-mayor', 'orion', 'can-mayor', 'escorpion', 'casiopea']);
 const ZONAS_COMETA_OK = new Set(['perihelio', 'afelio']);
 const LANZAMIENTOS_OK = new Set(['choca', 'orbita', 'escapa']);
+const LUZ_OK = new Set(['atrapado', 'escapa']);
 const MODOS_OK = new Set(['explorar', 'reto', 'completo']);
 
 const errores = [];
@@ -116,6 +118,9 @@ function validarSistemaSolar(m, et) {
     } else if (r.tipo === 'lanzamiento') {
       if (escena !== 'satelite') errores.push(`${et} reto ${i}: los retos de lanzamiento solo van en la escena satelite`);
       if (!LANZAMIENTOS_OK.has(r.respuesta)) errores.push(`${et} reto ${i}: desenlace desconocido "${r.respuesta}"`);
+    } else if (r.tipo === 'luz') {
+      if (escena !== 'agujero-negro') errores.push(`${et} reto ${i}: los retos de luz solo van en la escena agujero-negro`);
+      if (!LUZ_OK.has(r.respuesta)) errores.push(`${et} reto ${i}: desenlace desconocido "${r.respuesta}"`);
     } else {
       errores.push(`${et} reto ${i}: tipo de reto desconocido "${r.tipo}"`);
     }

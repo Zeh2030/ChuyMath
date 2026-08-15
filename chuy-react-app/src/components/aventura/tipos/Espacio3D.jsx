@@ -254,6 +254,29 @@ const EST = {
   inclinacion: 0.41, // 23.5 grados
 };
 
+// Escena agujero-negro: la Tierra se comprime a PESO CONSTANTE (GM fijo — esa
+// es la leccion). Con esta velocidad de la luz de juguete, el horizonte queda
+// en R_s = 2·GM/c² = 0.3, y el deslizador lo cruza a ~85% del recorrido
+// (tension dramatica al final). Es la "estrella oscura" de Michell (1783):
+// pura mecanica de Newton, la ruta honesta para un nino.
+const AN = {
+  GM: 40,
+  radioMax: 3,          // la "Tierra" sin apretar
+  radioMin: 0.2,
+  cLuz: 16.33,          // velocidad de la luz de la simulacion
+  radioHorizonte: 0.3,  // 2*GM/cLuz²
+  orbitaLuna: 8,
+  radioLuna: 0.45,
+};
+
+// Radio de la Tierra comprimida segun el deslizador (interpolacion
+// logaritmica: los primeros apretones se notan, el final es dramatico).
+const radioAN = (t) => AN.radioMax * Math.pow(AN.radioMin / AN.radioMax, Math.min(100, Math.max(0, t)) / 100);
+
+// Velocidad de escape en la superficie como % de la velocidad de la luz —
+// numero REAL de la simulacion, para la etiqueta.
+const pctEscapeAN = (t) => Math.round((Math.sqrt(2 * AN.GM / radioAN(t)) / AN.cLuz) * 100);
+
 /* ============================ componente ============================ */
 
 const Espacio3D = forwardRef(function Espacio3D(
@@ -441,6 +464,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     let escCometa = null;      // escena cometa
     let escSat = null;         // escena satelite (canon de Newton)
     let escEstrellas = null;   // escena estrellas (escalera de gigantes)
+    let escAN = null;          // escena agujero-negro (la Tierra comprimida)
     let etiquetaEstrellaEl = null; // constelaciones: nombre flotante de la estrella tocada
     let nombreFlotante = null;     // constelaciones: { pos, hasta } del nombre flotante
 
@@ -915,6 +939,59 @@ const Espacio3D = forwardRef(function Espacio3D(
       escEstrellas = { estrellas, metricasPaso, RADIO_FILA, pasoPrevio: 0, solChico: false };
     }
 
+    if (escena === 'agujero-negro') {
+      // La Tierra comprimible a peso constante + una luna TESTIGO cuya orbita
+      // no cambia nunca (la gravedad depende del peso, no de ser negro: los
+      // agujeros negros NO aspiran) + rayos de luz para probar el escape.
+      escena3.add(new THREE.AmbientLight(0xbfd0ff, 0.75));
+      const luz = new THREE.DirectionalLight(0xfff3d0, 1.6);
+      luz.position.set(30, 35, 15);
+      escena3.add(luz);
+
+      const tierra = crearCuerpo({ id: 'tierra', radio: 1, tex: 'tierra', color: '#2f6fd0', semilla: 13 });
+      escena3.add(tierra);
+
+      // El horizonte: esfera negra de radio FIJO (solo depende del peso; por
+      // mas que aprietas, no crece ni encoge) + aro que lo marca.
+      const geoNegro = registrar(new THREE.SphereGeometry(1, 32, 16));
+      const matNegro = registrar(new THREE.MeshBasicMaterial({ color: 0x000000 }));
+      const horizonte = new THREE.Mesh(geoNegro, matNegro);
+      horizonte.scale.setScalar(AN.radioHorizonte);
+      horizonte.visible = false;
+      escena3.add(horizonte);
+      mallas.push(horizonte);
+      porMalla.set(horizonte, 'tierra'); // colapsada sigue siendo "la tierra"
+      const aroH = crearLineaOrbita(AN.radioHorizonte * 1.6);
+      aroH.mat.color.set(0x9db8ff);
+      aroH.mat.opacity = 0.8;
+      aroH.linea.visible = false;
+      escena3.add(aroH.linea);
+
+      const luna = crearCuerpo({ id: 'luna', radio: AN.radioLuna, tex: 'craterizado', color: '#c9c4bc', semilla: 21 });
+      escena3.add(luna);
+      const orbLuna = crearLineaOrbita(AN.orbitaLuna);
+      escena3.add(orbLuna.linea);
+
+      // El rayo de luz: proyectil brillante + estela (patron del satelite).
+      const geoRayo = registrar(new THREE.SphereGeometry(0.12, 10, 6));
+      const matRayo = registrar(new THREE.MeshBasicMaterial({ color: 0xfff7c0 }));
+      const rayo = new THREE.Mesh(geoRayo, matRayo);
+      rayo.visible = false;
+      escena3.add(rayo);
+      const brilloRayo = crearGlow(0.9, '#fff2a0');
+      brilloRayo.visible = false;
+      escena3.add(brilloRayo);
+      const MAX_ESTELA = 700;
+      const posEstela = new Float32Array(MAX_ESTELA * 3);
+      const geoEstela = registrar(new THREE.BufferGeometry());
+      geoEstela.setAttribute('position', new THREE.BufferAttribute(posEstela, 3));
+      geoEstela.setDrawRange(0, 0);
+      const matEstela = registrar(new THREE.LineBasicMaterial({ color: 0xfff2a0, transparent: true, opacity: 0.85 }));
+      escena3.add(new THREE.Line(geoEstela, matEstela));
+
+      escAN = { tierra, horizonte, aroH, luna, rayo, brilloRayo, geoEstela, posEstela, sim: null, angLuna: 0 };
+    }
+
     /* --- camara orbital del usuario --- */
     const CAMARAS = {
       planetas: { yaw: 0.6, pitch: 0.9, dist: 60 },
@@ -924,6 +1001,7 @@ const Espacio3D = forwardRef(function Espacio3D(
       cometa: { yaw: 0.5, pitch: 0.95, dist: 52 },
       satelite: { yaw: 0, pitch: 1.3, dist: 24 },
       estrellas: { yaw: 0, pitch: 0.18, dist: 26 },
+      'agujero-negro': { yaw: 0, pitch: 1.1, dist: 26 },
     };
     const YAW0 = CAMARAS[escena].yaw;
     const PITCH0 = CAMARAS[escena].pitch;
@@ -952,22 +1030,41 @@ const Espacio3D = forwardRef(function Espacio3D(
       zoomUsuario = 1;
     };
 
-    // Escena satelite: dispara un lanzamiento con la velocidad del deslizador.
+    // Boton de lanzar, por escena: satelite dispara con la velocidad del
+    // deslizador; agujero-negro dispara un RAYO DE LUZ (velocidad fija cLuz)
+    // desde la superficie actual de la Tierra comprimida — el lanzador se
+    // hunde con la compresion, y por eso el escape se endurece solo.
     const lanzar = () => {
-      if (!escSat) return;
-      const factor = 0.4 + (estadoRef.current.angulo / 100) * 1.2; // 0.4x a 1.6x de la velocidad circular
-      escSat.sim = {
-        pos: new THREE.Vector3(0, 0, escSat.SAT.r0),
-        vel: new THREE.Vector3(escSat.vCirc * factor, 0, 0),
-        angPrev: null,
-        angAcum: 0,
-        orbito: false,
-        activo: true,
-        puntos: 0,
-      };
-      escSat.geoEstela.setDrawRange(0, 0);
-      escSat.sat.visible = true;
-      setResultado('volando');
+      if (escSat) {
+        const factor = 0.4 + (estadoRef.current.angulo / 100) * 1.2; // 0.4x a 1.6x de la velocidad circular
+        escSat.sim = {
+          pos: new THREE.Vector3(0, 0, escSat.SAT.r0),
+          vel: new THREE.Vector3(escSat.vCirc * factor, 0, 0),
+          angPrev: null,
+          angAcum: 0,
+          orbito: false,
+          activo: true,
+          puntos: 0,
+        };
+        escSat.geoEstela.setDrawRange(0, 0);
+        escSat.sat.visible = true;
+        setResultado('volando');
+        return;
+      }
+      if (escAN) {
+        escAN.sim = {
+          pos: new THREE.Vector3(0, 0, radioAN(estadoRef.current.angulo)),
+          vel: new THREE.Vector3(AN.cLuz, 0, 0),
+          activo: true,
+          reportado: false,
+          apogeo: false,
+          puntos: 0,
+        };
+        escAN.geoEstela.setDrawRange(0, 0);
+        escAN.rayo.visible = true;
+        escAN.brilloRayo.visible = true;
+        setResultado('volando');
+      }
     };
 
     apiRef.current = { recentrar, lanzar };
@@ -1434,6 +1531,76 @@ const Espacio3D = forwardRef(function Espacio3D(
           (met.halfW + 3) / (tanFov * aspecto),
           (escEstrellas.RADIO_FILA * 1.35) / tanFov
         ) * 1.1;
+      } else if (escena === 'agujero-negro') {
+        const R = radioAN(est.angulo);
+        const esAgujero = R < AN.radioHorizonte;
+        escAN.tierra.visible = !esAgujero;
+        escAN.horizonte.visible = esAgujero;
+        escAN.aroH.linea.visible = esAgujero;
+        if (!esAgujero) {
+          escAN.tierra.scale.setScalar(R);
+          escAN.tierra.rotation.y += dt * 0.3;
+        }
+
+        // La luna testigo: su orbita depende SOLO del peso (GM), que nunca
+        // cambia — por eso no se inmuta cuando la Tierra colapsa.
+        escAN.angLuna += dt * Math.sqrt(AN.GM / Math.pow(AN.orbitaLuna, 3));
+        escAN.luna.position.set(
+          Math.cos(escAN.angLuna) * AN.orbitaLuna,
+          0,
+          -Math.sin(escAN.angLuna) * AN.orbitaLuna
+        );
+        escAN.luna.rotation.y += dt * 0.3;
+
+        const sim = escAN.sim;
+        if (sim && sim.activo) {
+          const n = Math.min(8, Math.max(2, Math.ceil(dt / 0.006)));
+          const h = dt / n;
+          for (let i = 0; i < n && sim.activo; i++) {
+            const r = sim.pos.length();
+            vTmp.copy(sim.pos).multiplyScalar(-AN.GM / (r * r * r));
+            sim.vel.addScaledVector(vTmp, h);
+            sim.pos.addScaledVector(sim.vel, h);
+            const rN = sim.pos.length();
+            const E = sim.vel.lengthSq() / 2 - AN.GM / rN;
+            if (E >= 0) {
+              // Con energia positiva el rayo se va: se anuncia pronto y se le
+              // deja volar un poco mas antes de esconderlo.
+              if (!sim.reportado && rN > 10) {
+                sim.reportado = true;
+                setResultado('escapa');
+                onFaseRef.current?.({ resultado: 'escapa' });
+              }
+              if (rN > 25) {
+                sim.activo = false;
+                escAN.rayo.visible = false;
+                escAN.brilloRayo.visible = false;
+              }
+            } else {
+              // Ligado: el rayo sube, se curva y regresa (la elipse de la
+              // "estrella oscura" de Michell); al re-entrar, el negro se lo traga.
+              if (rN < r) sim.apogeo = true;
+              if (sim.apogeo && rN < Math.max(radioAN(est.angulo), AN.radioHorizonte) * 1.15) {
+                sim.activo = false;
+                escAN.rayo.visible = false;
+                escAN.brilloRayo.visible = false;
+                setResultado('atrapado');
+                onFaseRef.current?.({ resultado: 'atrapado' });
+              }
+            }
+          }
+          if (sim.activo && sim.puntos < escAN.posEstela.length / 3) {
+            const k = sim.puntos * 3;
+            escAN.posEstela[k] = sim.pos.x;
+            escAN.posEstela[k + 1] = sim.pos.y;
+            escAN.posEstela[k + 2] = sim.pos.z;
+            sim.puntos++;
+            escAN.geoEstela.setDrawRange(0, sim.puntos);
+            escAN.geoEstela.attributes.position.needsUpdate = true;
+          }
+          escAN.rayo.position.copy(sim.pos);
+          escAN.brilloRayo.position.copy(sim.pos);
+        }
       }
 
       distDeseada *= zoomUsuario;
@@ -1501,7 +1668,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     );
   }
 
-  const conSlider = ['tierra-luna', 'estaciones', 'cometa', 'satelite', 'estrellas'].includes(escena);
+  const conSlider = ['tierra-luna', 'estaciones', 'cometa', 'satelite', 'estrellas', 'agujero-negro'].includes(escena);
   const conRecuadro = escena === 'tierra-luna' || escena === 'estaciones';
 
   const PISTAS = {
@@ -1512,6 +1679,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     cometa: '👆 Mueve el deslizador para viajar con el cometa · mira hacia dónde apunta la cola',
     satelite: '👆 Elige la velocidad y ¡lanza! · arrastra para girar la vista',
     estrellas: '👆 Sube la escalera con el deslizador · toca una estrella para saber más',
+    'agujero-negro': '👆 Aprieta la Tierra con el deslizador y lanza rayos de luz para ver si escapan',
   };
 
   const EXTREMOS = {
@@ -1520,6 +1688,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     cometa: ['🔥', '🔥'],
     satelite: ['🐢', '🚀'],
     estrellas: ['🌍', '👑'],
+    'agujero-negro': ['🌍', '🕳️'],
   };
 
   let etiqueta = null;
@@ -1600,6 +1769,29 @@ const Espacio3D = forwardRef(function Espacio3D(
         {TEXTOS[resultado] || `Velocidad: ${angulo}% · elige y ¡lanza!`}
       </div>
     );
+  } else if (escena === 'agujero-negro') {
+    const pct = pctEscapeAN(angulo);
+    const TEXTOS = {
+      volando: '💡 El rayo va volando…',
+      escapa: '✨ ¡El rayo ESCAPÓ! Todavía no es agujero negro',
+      atrapado: '🕳️ ¡ATRAPADO! Ni la luz pudo salir: es un AGUJERO NEGRO',
+    };
+    etiqueta = (
+      <>
+        <div className={`espacio3d-fase ${resultado === 'atrapado' ? 'eclipse' : ''}`}>
+          {TEXTOS[resultado] || (pct >= 100
+            ? `🕳️ ¡AGUJERO NEGRO! Para escapar habría que ir al ${pct}% de la luz`
+            : pct >= 60
+              ? `😰 A la luz ya le cuesta… (escape: ${pct}% de la velocidad de la luz)`
+              : `☄️ La luz escapa fácil (escape: ${pct}% de la velocidad de la luz)`)}
+        </div>
+        <div className="espacio3d-subfase">
+          {pct >= 100
+            ? 'Por más que aprietes, el horizonte no crece ni encoge: solo depende del PESO. Y mira la luna: sigue igual.'
+            : 'Mismo peso, más apretada → más gravedad en la superficie. ¡Lanza un rayo para probar!'}
+        </div>
+      </>
+    );
   } else if (escena === 'estrellas') {
     const TEXTOS_PASO = {
       1: '🌍☀️ Nuestro rincón: el Sol ya es 109 veces la Tierra',
@@ -1640,26 +1832,33 @@ const Espacio3D = forwardRef(function Espacio3D(
               type="range"
               className="espacio3d-slider"
               min={escena === 'estrellas' ? 1 : 0}
-              max={escena === 'satelite' ? 100 : escena === 'estrellas' ? PASOS_ESTRELLAS : 360}
+              max={escena === 'satelite' || escena === 'agujero-negro' ? 100 : escena === 'estrellas' ? PASOS_ESTRELLAS : 360}
               step={1}
               value={angulo}
-              onChange={(e) => setAngulo(Number(e.target.value))}
+              onChange={(e) => {
+                setAngulo(Number(e.target.value));
+                // Al recomprimir/descomprimir, el veredicto del rayo anterior
+                // ya no aplica: vuelve a mostrarse el % de escape.
+                if (escena === 'agujero-negro') setResultado(null);
+              }}
               aria-label={
                 escena === 'satelite'
                   ? 'Velocidad de lanzamiento'
                   : escena === 'estrellas'
                     ? 'Subir la escalera de estrellas'
-                    : 'Mover con el deslizador'
+                    : escena === 'agujero-negro'
+                      ? 'Apretar la Tierra'
+                      : 'Mover con el deslizador'
               }
             />
             <span className="espacio3d-extremo">{EXTREMOS[escena][1]}</span>
-            {escena === 'satelite' && (
+            {(escena === 'satelite' || escena === 'agujero-negro') && (
               <button
                 type="button"
                 className="espacio3d-btn-lanzar"
                 onClick={() => apiRef.current?.lanzar?.()}
               >
-                🚀 ¡Lanzar!
+                {escena === 'satelite' ? '🚀 ¡Lanzar!' : '💡 ¡Rayo de luz!'}
               </button>
             )}
           </div>
