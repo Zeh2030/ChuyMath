@@ -1,0 +1,83 @@
+{
+  "id": "C2-35_gigantes-del-universo",
+  "titulo": "Gigantes del Universo",
+  "descripcion": "Sube la escalera de las estrellas y descubre lo chiquito que es nuestro Sol",
+  "tipo": "sistema-solar",
+  "materia": "ciencias",
+  "nivel": "C2-35",
+  "tema": "astronomia",
+  "misiones": [
+    {
+      "id": "astro-estrellas-01",
+      "tipo": "sistema-solar",
+      "escena": "estrellas",
+      "modo": "completo",
+      "titulo": "La Escalera de las Estrellas",
+      "emoji": "⭐",
+      "instruccion": "Ya sabes que el Sol es 109 veces la Tierra… pues agárrate: el Sol es un puntito al lado de las estrellas de verdad. Sube la escalera con el deslizador — en cada escalón entra una estrella más grande y TODO se vuelve a encoger. No pierdas de vista al Sol.",
+      "leccion": "Los colores de las estrellas dicen su temperatura, pero AL REVÉS que las llaves del agua: las AZULES son las más calientes y las ROJAS las más frías. Y ojo: ser grande no es lo mismo que ser caliente — las gigantes rojas son enormes pero fresquitas.",
+      "datos": {
+        "tierra": "Nuestra casa, de referencia. En el primer escalón se ve como un puntito junto al Sol… y en los últimos ya ni se ve.",
+        "sol": "Nuestra estrella. Aquí parece gigante, pero es de tamaño NORMAL. ¡Y qué bueno!: las estrellas normalitas viven miles de millones de años, con calma para que haya vida.",
+        "proxima": "Próxima Centauri, la estrella más CERCANA al Sol (4.2 años luz)… y es más chica que él. Es tan tenue que no se ve a simple vista.",
+        "sirio": "Sirio, la estrella más BRILLANTE del cielo nocturno. Blanca-azulada y muy caliente: casi el doble del Sol.",
+        "arcturus": "Arcturus, una gigante naranja: 25 soles de ancho, pero más FRÍA que el Sol. Grande no significa caliente.",
+        "aldebaran": "Aldebarán, el ojo del Toro: 44 soles. Los antiguos la veían brillar naranja en la constelación de Tauro.",
+        "rigel": "Rigel, ¡la azul de Orión que ya conoces! La más CALIENTE de esta escalera: unos 11,800 °C. Brilla como decenas de miles de soles.",
+        "betelgeuse": "Betelgeuse, ¡la naranja de Orión! 760 soles de ancho: puesta en el lugar del Sol se tragaría a Mercurio, Venus, la Tierra y Marte. Un día no muy lejano (en tiempo de estrellas) va a explotar como supernova.",
+        "stephenson": "Stephenson 2-18, la estrella más grande que hemos encontrado: unos 2,150 soles. En el lugar del Sol se tragaría hasta Saturno. Medir estrellas tan lejanas es dificilísimo, así que el récord puede cambiar."
+      },
+      "retos": [
+        {
+          "tipo": "toca",
+          "pregunta": "Toca la estrella más CALIENTE de la escalera. Pista: NO es la más grande.",
+          "respuesta": "rigel",
+          "pista": "Primero sube la escalera hasta verlas todas. Luego recuerda: 🔵 azul = caliente."
+        },
+        {
+          "tipo": "toca",
+          "pregunta": "Toca una estrella MÁS CHICA que el Sol.",
+          "respuesta": "proxima",
+          "pista": "Está en el segundo escalón, es rojiza… y es nuestra vecina más cercana."
+        },
+        {
+          "tipo": "toca",
+          "pregunta": "Toca a Betelgeuse, la que ya conoces de Orión.",
+          "respuesta": "betelgeuse",
+          "pista": "Es la roja ENORME con anillos adentro: son las órbitas de los planetas que se tragaría."
+        }
+      ],
+      "dato_curioso": "Cuando Betelgeuse explote como supernova, brillará tanto que se verá DE DÍA durante semanas. Puede pasar mañana o en 100,000 años — para una estrella, eso es 'ya mero'. Y no te preocupes: está lejísimos, no nos hará nada."
+    },
+    {
+      "id": "astro-om-estrellas-color",
+      "tipo": "opcion-multiple",
+      "titulo": "El Secreto de los Colores",
+      "instruccion": "Piensa en lo que viste en la escalera.",
+      "pregunta": "🎨 ¿De qué color son las estrellas MÁS CALIENTES?",
+      "opciones": [
+        "Rojas, como el fuego",
+        "Azules, aunque suene raro",
+        "Todas son del mismo color"
+      ],
+      "respuesta": "1",
+      "explicacion_correcta": "¡Exacto! Es al revés que las llaves del agua: en las estrellas el AZUL es lo más caliente y el rojo lo más frío. Rigel (azul) está a 11,800 °C y Betelgeuse (roja) a solo 3,300 °C.",
+      "explicacion_incorrecta": "¡Es al revés que las llaves del agua! Las estrellas AZULES son las más calientes y las rojas las más frías. Una fogata también lo enseña: la parte azul de la flama quema más que la naranja."
+    },
+    {
+      "id": "astro-om-estrellas-sol",
+      "tipo": "opcion-multiple",
+      "titulo": "¿Y Nuestro Sol Qué?",
+      "instruccion": "Después de ver la escalera completa…",
+      "pregunta": "☀️ Comparado con las demás estrellas, ¿el Sol es de las gigantes?",
+      "opciones": [
+        "Sí, es de las más grandes del universo",
+        "No: es una estrella de tamaño normal, y eso es buena noticia",
+        "Es la más pequeña que existe"
+      ],
+      "respuesta": "1",
+      "explicacion_correcta": "¡Correcto! El Sol es normalito, y por suerte: las estrellas normales viven MILES de millones de años, tiempo de sobra para que en la Tierra apareciera la vida. Las supergigantes viven poco y explotan.",
+      "explicacion_incorrecta": "El Sol es de tamaño NORMAL: hay estrellas más chicas (como Próxima) y muchísimo más grandes (como Betelgeuse, 760 veces más ancha). Y ser normalito es buena noticia: esas estrellas viven miles de millones de años."
+    }
+  ]
+}

@@ -19,6 +19,7 @@ const CUERPOS_POR_ESCENA = {
   constelaciones: new Set(['tierra', 'osa-mayor', 'orion']),
   cometa: new Set(['sol', 'tierra', 'cometa']),
   satelite: new Set(['tierra']),
+  estrellas: new Set(['tierra', 'sol', 'proxima', 'sirio', 'arcturus', 'aldebaran', 'rigel', 'betelgeuse', 'stephenson']),
 };
 const FASES_OK = new Set([
   'nueva', 'creciente', 'cuarto-creciente', 'gibosa-creciente',

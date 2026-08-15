@@ -40,6 +40,13 @@ export const NOMBRES = {
   'osa-mayor': 'la Osa Mayor',
   orion: 'Orión',
   cometa: 'el cometa',
+  proxima: 'Próxima Centauri',
+  sirio: 'Sirio',
+  arcturus: 'Arcturus',
+  aldebaran: 'Aldebarán',
+  rigel: 'Rigel',
+  betelgeuse: 'Betelgeuse',
+  stephenson: 'Stephenson 2-18',
   ...Object.fromEntries(PLANETAS.map((p) => [p.id, p.nombre])),
 };
 
@@ -59,6 +66,53 @@ export const formatMultiplo = (radioReal) => {
 export const etiquetaComparar = (cuerpo) => (
   `${cuerpo.emoji} ${cuerpo.nombre.replace(/^(el|la) /, '')} · ${formatMultiplo(cuerpo.radioReal)}`
 );
+
+/* ============================ LA ESCALERA DE LAS ESTRELLAS ============================ */
+
+// Radios en RADIOS SOLARES (reales, redondeados para niños; el orden es lo
+// que importa). `paso` = escalon de la escalera en que aparece cada estrella:
+// la re-normalizacion por pasos ES la leccion — en cada escalon todo se
+// re-escala y el Sol se va encogiendo a la vista.
+// Color por temperatura (ley de Wien): AZUL = mas caliente, ROJO = mas fria
+// — al reves que las llaves del agua, y ese es el gancho.
+export const PASOS_ESTRELLAS = 5;
+
+export const ESTRELLAS_COMPARAR = [
+  { id: 'tierra', nombre: 'la Tierra', radioSol: 1 / 109, tempC: null, color: '#2f6fd0', emoji: '🌍', tex: 'tierra', paso: 1 },
+  { id: 'proxima', nombre: 'Próxima Centauri', radioSol: 0.15, tempC: 2800, color: '#ff6b4a', emoji: '🔴', tex: 'estrella', paso: 2 },
+  { id: 'sol', nombre: 'el Sol', radioSol: 1, tempC: 5500, color: '#ffcf3f', emoji: '☀️', tex: 'estrella', paso: 1 },
+  { id: 'sirio', nombre: 'Sirio', radioSol: 1.7, tempC: 9700, color: '#cfe4ff', emoji: '💎', tex: 'estrella', paso: 2 },
+  { id: 'arcturus', nombre: 'Arcturus', radioSol: 25, tempC: 4000, color: '#ffb46b', emoji: '🟠', tex: 'estrella', paso: 3 },
+  { id: 'aldebaran', nombre: 'Aldebarán', radioSol: 44, tempC: 3600, color: '#ff9f50', emoji: '👁️', tex: 'estrella', paso: 3 },
+  { id: 'rigel', nombre: 'Rigel', radioSol: 78, tempC: 11800, color: '#9db8ff', emoji: '🔵', tex: 'estrella', paso: 4 },
+  { id: 'betelgeuse', nombre: 'Betelgeuse', radioSol: 760, tempC: 3300, color: '#ff7a45', emoji: '🟥', tex: 'estrella', paso: 4 },
+  { id: 'stephenson', nombre: 'Stephenson 2-18', radioSol: 2150, tempC: 3000, color: '#e84f2f', emoji: '👑', tex: 'estrella', paso: 5 },
+];
+
+// "760 soles" es mas facil de imaginar que "760×". La Tierra y el Sol llevan
+// texto propio (son las referencias, no comparaciones).
+export const etiquetaEstrella = (e) => {
+  if (e.id === 'tierra') return '🌍 la Tierra';
+  if (e.id === 'sol') return '☀️ el Sol · ¡aquí estamos!';
+  const n = e.radioSol < 1
+    ? String(e.radioSol)
+    : e.radioSol < 10
+      ? (Math.round(e.radioSol * 10) / 10).toString()
+      : String(Math.round(e.radioSol));
+  return `${e.emoji} ${e.nombre} · ${n} soles`;
+};
+
+// Orbitas de los planetas (en UA) para dibujarlas DENTRO de las supergigantes:
+// el visual mas impactante del tema. 1 radio solar = 0.00465 UA.
+export const UA_POR_RADIO_SOL = 0.00465;
+export const ORBITAS_UA = [
+  { id: 'mercurio', ua: 0.39 },
+  { id: 'venus', ua: 0.72 },
+  { id: 'tierra', ua: 1 },
+  { id: 'marte', ua: 1.52 },
+  { id: 'jupiter', ua: 5.2 },
+  { id: 'saturno', ua: 9.58 },
+];
 
 /* ============================ FASES DE LA LUNA ============================ */
 

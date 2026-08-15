@@ -28,7 +28,7 @@ const Espacio3D = React.lazy(() => import('./Espacio3D'));
  *                   { tipo:'lanzamiento', pregunta, respuesta:'choca'|'orbita'|'escapa', pista? }]
  *   dato_curioso : texto del final
  */
-const ESCENAS = ['planetas', 'tierra-luna', 'estaciones', 'constelaciones', 'cometa', 'satelite'];
+const ESCENAS = ['planetas', 'tierra-luna', 'estaciones', 'constelaciones', 'cometa', 'satelite', 'estrellas'];
 
 const SistemaSolar = ({ mision, onCompletar }) => {
   const escena = ESCENAS.includes(mision.escena) ? mision.escena : 'planetas';
@@ -72,7 +72,7 @@ const SistemaSolar = ({ mision, onCompletar }) => {
 
 // OJO: MisionRenderer ya pinta mision.titulo y mision.instruccion arriba de toda
 // mision — repetirlos aqui los mostraba dos veces (mismo error que en cubos).
-const EMOJI_ESCENA = { 'tierra-luna': '🌗', estaciones: '🍂', constelaciones: '✨', cometa: '☄️', satelite: '🛰️' };
+const EMOJI_ESCENA = { 'tierra-luna': '🌗', estaciones: '🍂', constelaciones: '✨', cometa: '☄️', satelite: '🛰️', estrellas: '⭐' };
 
 const Portada = ({ mision, escena, onComenzar }) => (
   <div className="sisol-portada">

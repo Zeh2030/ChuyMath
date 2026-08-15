@@ -1,7 +1,11 @@
 import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { soportaWebGL } from '../../../utils/webgl';
-import { PLANETAS, SOL, CONSTELACIONES, COMETA, faseInfoDe, estacionInfoDe, cometaInfoDe, etiquetaComparar } from './espacioDatos';
+import {
+  PLANETAS, SOL, CONSTELACIONES, COMETA,
+  ESTRELLAS_COMPARAR, PASOS_ESTRELLAS, ORBITAS_UA, UA_POR_RADIO_SOL,
+  faseInfoDe, estacionInfoDe, cometaInfoDe, etiquetaComparar, etiquetaEstrella,
+} from './espacioDatos';
 import './Espacio3D.css';
 
 /**
@@ -83,6 +87,12 @@ const crearTexturaCuerpo = ({ tex, color, semilla = 7 }) => {
     case 'sol':
       for (let i = 0; i < 50; i++) mancha(rng() * W, rng() * H, 6 + rng() * 14, 4 + rng() * 8, '#ffb020', 0.4);
       for (let i = 0; i < 18; i++) mancha(rng() * W, rng() * H, 3 + rng() * 8, 2 + rng() * 5, '#fff3a0', 0.5);
+      break;
+    case 'estrella':
+      // Granulacion neutra (blanco/negro translucido) que funciona sobre
+      // CUALQUIER color base — sirve para toda la escalera de estrellas.
+      for (let i = 0; i < 40; i++) mancha(rng() * W, rng() * H, 6 + rng() * 14, 4 + rng() * 8, 'rgba(255,255,255,0.14)');
+      for (let i = 0; i < 22; i++) mancha(rng() * W, rng() * H, 4 + rng() * 10, 3 + rng() * 6, 'rgba(0,0,0,0.10)');
       break;
     case 'craterizado':
       for (let i = 0; i < 26; i++) {
@@ -293,6 +303,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     if (escena === 'estaciones') return 0;   // solsticio de junio
     if (escena === 'cometa') return 60;      // de viaje, alejandose
     if (escena === 'satelite') return 55;    // velocidad media
+    if (escena === 'estrellas') return 1;    // primer escalon de la escalera
     return 90;                               // cuarto creciente
   });
 
@@ -396,11 +407,12 @@ const Espacio3D = forwardRef(function Espacio3D(
       return mesh;
     };
 
-    const crearGlow = (escala) => {
+    const crearGlow = (escala, color = null) => {
       const texGlow = registrar(crearTexturaGlow());
       const matGlow = registrar(new THREE.SpriteMaterial({
         map: texGlow, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
       }));
+      if (color) matGlow.color.set(color); // tinta el resplandor (escalera de estrellas)
       const glow = new THREE.Sprite(matGlow);
       glow.scale.setScalar(escala);
       return glow;
@@ -419,7 +431,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     const lineasOrbita = [];
     let metricaComparar = null;
     let metricaCompararSinSol = null;
-    let capaEtiquetas = null;  // escena planetas: capa DOM de etiquetas "×Tierra"
+    let capaEtiquetas = null;  // capa DOM de etiquetas flotantes (planetas y estrellas)
     let glowSol = null;
     let tl = null;             // escena tierra-luna
     let escEst = null;         // escena estaciones
@@ -428,30 +440,35 @@ const Espacio3D = forwardRef(function Espacio3D(
     const nombreEstrella = new Map(); // malla -> nombre de la estrella
     let escCometa = null;      // escena cometa
     let escSat = null;         // escena satelite (canon de Newton)
+    let escEstrellas = null;   // escena estrellas (escalera de gigantes)
+
+    // Capa DOM para etiquetas flotantes: un <span> por cuerpo, posicionado
+    // cada frame proyectando su posicion 3D a pantalla. Vive fuera del canvas
+    // para que el texto salga nitido a cualquier zoom (un sprite con textura
+    // se veria pixelado). La usan el modo comparar (planetas) y la escalera
+    // de estrellas.
+    let crearEtiqueta = null;
+    if (escena === 'planetas' || escena === 'estrellas') {
+      capaEtiquetas = document.createElement('div');
+      capaEtiquetas.className = 'espacio3d-etiquetas';
+      contenedor.appendChild(capaEtiquetas);
+      crearEtiqueta = (texto) => {
+        const el = document.createElement('span');
+        el.className = 'espacio3d-etiqueta';
+        el.textContent = texto;
+        capaEtiquetas.appendChild(el);
+        return el;
+      };
+    }
 
     if (escena === 'planetas') {
       escena3.add(new THREE.AmbientLight(0xbfd0ff, 0.55));
       // Luz en el origen: los planetas se iluminan por el lado que mira al Sol.
       escena3.add(new THREE.PointLight(0xfff3d0, 2.4, 0, 0));
 
-      // Capa DOM para las etiquetas "×Tierra" del modo comparar: un <span>
-      // por cuerpo, posicionado cada frame proyectando su posicion 3D a
-      // pantalla. Vive fuera del canvas para que el texto salga nitido a
-      // cualquier zoom (un sprite con textura se veria pixelado).
-      capaEtiquetas = document.createElement('div');
-      capaEtiquetas.className = 'espacio3d-etiquetas';
-      contenedor.appendChild(capaEtiquetas);
-      const crearEtiqueta = (cuerpo) => {
-        const el = document.createElement('span');
-        el.className = 'espacio3d-etiqueta';
-        el.textContent = etiquetaComparar(cuerpo);
-        capaEtiquetas.appendChild(el);
-        return el;
-      };
-
       const meshSol = crearCuerpo({ id: 'sol', radio: SOL.radio, tex: SOL.tex, color: SOL.color, semilla: 3, lambert: false });
       escena3.add(meshSol);
-      cuerpos.push({ ...SOL, mesh: meshSol, dist: 0, vel: 0, anguloOrbita: 0, etiquetaEl: crearEtiqueta(SOL) });
+      cuerpos.push({ ...SOL, mesh: meshSol, dist: 0, vel: 0, anguloOrbita: 0, etiquetaEl: crearEtiqueta(etiquetaComparar(SOL)) });
 
       glowSol = crearGlow(SOL.radio * 4.6);
       escena3.add(glowSol);
@@ -469,7 +486,7 @@ const Espacio3D = forwardRef(function Espacio3D(
           anillo.rotation.x = -Math.PI / 2 + 0.35; // tumbado y con inclinacion
           mesh.add(anillo); // hereda la escala del planeta (tambien en tamano real)
         }
-        cuerpos.push({ ...p, mesh, anguloOrbita: rngAng() * Math.PI * 2, etiquetaEl: crearEtiqueta(p) });
+        cuerpos.push({ ...p, mesh, anguloOrbita: rngAng() * Math.PI * 2, etiquetaEl: crearEtiqueta(etiquetaComparar(p)) });
 
         const { linea, mat } = crearLineaOrbita(p.dist);
         escena3.add(linea);
@@ -804,6 +821,84 @@ const Espacio3D = forwardRef(function Espacio3D(
       };
     }
 
+    if (escena === 'estrellas') {
+      // La Escalera de las Estrellas: comparacion por PASOS. En cada escalon
+      // entra una estrella mas grande y TODO se re-escala (la mayor del paso
+      // siempre mide ~RADIO_FILA unidades). Esa re-normalizacion es la
+      // leccion: el Sol se va encogiendo a la vista, escalon a escalon.
+      escena3.add(new THREE.AmbientLight(0xffffff, 1)); // brillan solas (MeshBasic)
+
+      const RADIO_FILA = 9;
+      const HUECO_FILA = 2.2;
+
+      const ordenadas = [...ESTRELLAS_COMPARAR].sort((a, b) => a.radioSol - b.radioSol);
+      const geoToque = registrar(new THREE.SphereGeometry(1, 12, 8));
+      const matToqueEst = registrar(new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false }));
+      const matAnilloInterno = registrar(new THREE.LineBasicMaterial({
+        color: 0xdfe8ff, transparent: true, opacity: 0.55, depthTest: false,
+      }));
+
+      const estrellas = ordenadas.map((e) => {
+        const mesh = crearCuerpo({ id: e.id, radio: 1, tex: e.tex, color: e.color, semilla: 101 + e.paso, lambert: false });
+        mesh.visible = false;
+        escena3.add(mesh);
+        const glow = e.id === 'tierra' ? null : crearGlow(1, e.color);
+        if (glow) {
+          glow.visible = false;
+          escena3.add(glow);
+        }
+        // Blanco de toque invisible con piso de tamano aparente: las chicas
+        // quedan subpixel en los pasos altos y aun asi deben poderse tocar.
+        const toque = new THREE.Mesh(geoToque, matToqueEst);
+        toque.visible = false;
+        escena3.add(toque);
+        mallas.push(toque);
+        porMalla.set(toque, e.id);
+
+        // Orbitas de los planetas DENTRO de las supergigantes, a escala real
+        // (esfera unidad: radio local = UA de la orbita / UA del radio de la
+        // estrella). En el plano de pantalla y sin depthTest, como el
+        // infografico clasico: se ven ENCIMA del disco de la estrella.
+        if (e.radioSol >= 500) {
+          const radioUA = e.radioSol * UA_POR_RADIO_SOL;
+          ORBITAS_UA.forEach((o) => {
+            if (o.ua >= radioUA * 0.97) return; // solo las que quedan adentro
+            const geoAro = registrar(new THREE.BufferGeometry().setFromPoints(
+              new THREE.EllipseCurve(0, 0, o.ua / radioUA, o.ua / radioUA).getPoints(64)
+            ));
+            const aro = new THREE.LineLoop(geoAro, matAnilloInterno);
+            aro.renderOrder = 5;
+            mesh.add(aro); // hereda posicion y escala
+          });
+        }
+
+        return { ...e, mesh, glow, toque, etiquetaEl: crearEtiqueta(etiquetaEstrella(e)) };
+      });
+
+      // Metrica de la fila por paso: radios normalizados AL MAYOR DEL PASO.
+      const metricasPaso = [];
+      for (let p = 1; p <= PASOS_ESTRELLAS; p++) {
+        const visibles = ordenadas.filter((e) => e.paso <= p);
+        const mayor = Math.max(...visibles.map((e) => e.radioSol));
+        let x = 0;
+        let rPrev = 0;
+        const medidas = new Map();
+        visibles.forEach((e, i) => {
+          const r = Math.max((e.radioSol / mayor) * RADIO_FILA, 0.04);
+          if (i > 0) x += rPrev + HUECO_FILA + r;
+          medidas.set(e.id, { x, r });
+          rPrev = r;
+        });
+        const izquierda = medidas.get(visibles[0].id).x - medidas.get(visibles[0].id).r;
+        const derecha = x + rPrev;
+        const centro = (izquierda + derecha) / 2;
+        medidas.forEach((m) => { m.x -= centro; });
+        metricasPaso.push({ medidas, halfW: (derecha - izquierda) / 2 });
+      }
+
+      escEstrellas = { estrellas, metricasPaso, RADIO_FILA, pasoPrevio: 0, solChico: false };
+    }
+
     /* --- camara orbital del usuario --- */
     const CAMARAS = {
       planetas: { yaw: 0.6, pitch: 0.9, dist: 60 },
@@ -812,6 +907,7 @@ const Espacio3D = forwardRef(function Espacio3D(
       constelaciones: { yaw: 0.15, pitch: -0.35, dist: 60 },
       cometa: { yaw: 0.5, pitch: 0.95, dist: 52 },
       satelite: { yaw: 0, pitch: 1.3, dist: 24 },
+      estrellas: { yaw: 0, pitch: 0.18, dist: 26 },
     };
     const YAW0 = CAMARAS[escena].yaw;
     const PITCH0 = CAMARAS[escena].pitch;
@@ -1202,6 +1298,84 @@ const Espacio3D = forwardRef(function Espacio3D(
           }
         }
         if (sim) escSat.sat.position.copy(sim.pos);
+      } else if (escena === 'estrellas') {
+        const paso = Math.min(PASOS_ESTRELLAS, Math.max(1, Math.round(est.angulo)));
+        const met = escEstrellas.metricasPaso[paso - 1];
+        if (paso !== escEstrellas.pasoPrevio) {
+          // Estrella recien revelada: nace chiquita en su lugar y crece.
+          escEstrellas.estrellas.forEach((e) => {
+            if (e.paso === paso && !e.mesh.visible) {
+              e.mesh.position.set(met.medidas.get(e.id).x, 0, 0);
+              e.mesh.scale.setScalar(0.001);
+            }
+          });
+          escEstrellas.pasoPrevio = paso;
+        }
+
+        const wCanvas = lienzo.clientWidth;
+        const hCanvas = lienzo.clientHeight;
+        const k = Math.min(1, dt * 4);
+
+        escEstrellas.estrellas.forEach((e) => {
+          const visible = e.paso <= paso;
+          e.mesh.visible = visible;
+          if (e.glow) e.glow.visible = visible;
+          e.toque.visible = visible; // tambien lo saca del raycast (cuerpoEn filtra por .visible)
+          if (!visible) {
+            e.etiquetaEl.style.opacity = 0;
+            return;
+          }
+          const m = met.medidas.get(e.id);
+          e.mesh.position.x += (m.x - e.mesh.position.x) * k;
+          e.mesh.position.z += (0 - e.mesh.position.z) * k;
+          e.mesh.scale.setScalar(e.mesh.scale.x + (m.r - e.mesh.scale.x) * k);
+          e.mesh.rotation.y += dt * 0.12;
+          if (e.glow) {
+            e.glow.position.copy(e.mesh.position);
+            e.glow.scale.setScalar(e.mesh.scale.x * 3.4);
+          }
+
+          const dCam = camara.position.distanceTo(e.mesh.position);
+          e.toque.position.copy(e.mesh.position);
+          e.toque.scale.setScalar(Math.max(e.mesh.scale.x, K_TOQUE * dCam));
+
+          // Radio en pantalla (px): decide si la etiqueta cabe sin amontonarse
+          // y si el Sol "ya casi no se ve".
+          const pxRadio = hCanvas ? (e.mesh.scale.x / (dCam * tanFov)) * (hCanvas / 2) : 0;
+          if (e.id === 'sol') {
+            const chico = pxRadio < 3;
+            if (chico !== escEstrellas.solChico) {
+              escEstrellas.solChico = chico;
+              e.etiquetaEl.textContent = chico ? '☀️ el Sol: ¡ya casi no se ve! 😱' : etiquetaEstrella(e);
+            }
+          }
+          const conEtiqueta = e.id === 'sol' || pxRadio > 1.2;
+          if (conEtiqueta && wCanvas && hCanvas) {
+            vProy.copy(e.mesh.position);
+            vProy.y += Math.max(e.mesh.scale.x * 1.25, 0.8);
+            vProy.project(camara);
+            if (vProy.z < 1) {
+              const px = (vProy.x * 0.5 + 0.5) * wCanvas;
+              const py = (1 - (vProy.y * 0.5 + 0.5)) * hCanvas;
+              e.etiquetaEl.style.transform = `translate(${px}px, ${py}px) translate(-50%, -100%)`;
+              e.etiquetaEl.style.opacity = 1;
+            } else {
+              e.etiquetaEl.style.opacity = 0;
+            }
+          } else {
+            e.etiquetaEl.style.opacity = 0;
+          }
+        });
+
+        // Encuadre de la fila del paso, vista casi de frente (como comparar).
+        if (!gesto?.capturado) {
+          pitch += (0.18 - pitch) * Math.min(1, dt * 3);
+          yaw += (0 - yaw) * Math.min(1, dt * 3);
+        }
+        distDeseada = Math.max(
+          (met.halfW + 3) / (tanFov * aspecto),
+          (escEstrellas.RADIO_FILA * 1.35) / tanFov
+        ) * 1.1;
       }
 
       distDeseada *= zoomUsuario;
@@ -1269,7 +1443,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     );
   }
 
-  const conSlider = ['tierra-luna', 'estaciones', 'cometa', 'satelite'].includes(escena);
+  const conSlider = ['tierra-luna', 'estaciones', 'cometa', 'satelite', 'estrellas'].includes(escena);
   const conRecuadro = escena === 'tierra-luna' || escena === 'estaciones';
 
   const PISTAS = {
@@ -1279,6 +1453,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     constelaciones: '👆 Arrastra la vista hasta que un dibujo de estrellas ENCAJE · toca una estrella para saber más',
     cometa: '👆 Mueve el deslizador para viajar con el cometa · mira hacia dónde apunta la cola',
     satelite: '👆 Elige la velocidad y ¡lanza! · arrastra para girar la vista',
+    estrellas: '👆 Sube la escalera con el deslizador · toca una estrella para saber más',
   };
 
   const EXTREMOS = {
@@ -1286,6 +1461,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     estaciones: ['☀️', '☀️'],
     cometa: ['🔥', '🔥'],
     satelite: ['🐢', '🚀'],
+    estrellas: ['🌍', '👑'],
   };
 
   let etiqueta = null;
@@ -1366,6 +1542,24 @@ const Espacio3D = forwardRef(function Espacio3D(
         {TEXTOS[resultado] || `Velocidad: ${angulo}% · elige y ¡lanza!`}
       </div>
     );
+  } else if (escena === 'estrellas') {
+    const TEXTOS_PASO = {
+      1: '🌍☀️ Nuestro rincón: el Sol ya es 109 veces la Tierra',
+      2: 'El Sol es… ¡normalito! Hay más chicas (Próxima) y más brillantes (Sirio)',
+      3: 'Las gigantes naranjas: Arcturus y Aldebarán',
+      4: '¡Las de Orión! Rigel 🔵 y Betelgeuse 🔴, que se tragaría hasta Marte',
+      5: 'Stephenson 2-18, la más grande conocida: se tragaría hasta Saturno',
+    };
+    etiqueta = (
+      <>
+        <div className="espacio3d-fase">{TEXTOS_PASO[angulo] || TEXTOS_PASO[1]}</div>
+        <div className="espacio3d-subfase">
+          {angulo >= 4
+            ? '⭕ Los anillos dentro de la gigante son las órbitas de los planetas: ¡quedarían ADENTRO!'
+            : '🔵 azules = más calientes · 🔴 rojas = más frías (¡al revés que las llaves del agua!)'}
+        </div>
+      </>
+    );
   }
 
   return (
@@ -1387,12 +1581,18 @@ const Espacio3D = forwardRef(function Espacio3D(
             <input
               type="range"
               className="espacio3d-slider"
-              min={0}
-              max={escena === 'satelite' ? 100 : 360}
+              min={escena === 'estrellas' ? 1 : 0}
+              max={escena === 'satelite' ? 100 : escena === 'estrellas' ? PASOS_ESTRELLAS : 360}
               step={1}
               value={angulo}
               onChange={(e) => setAngulo(Number(e.target.value))}
-              aria-label={escena === 'satelite' ? 'Velocidad de lanzamiento' : 'Mover con el deslizador'}
+              aria-label={
+                escena === 'satelite'
+                  ? 'Velocidad de lanzamiento'
+                  : escena === 'estrellas'
+                    ? 'Subir la escalera de estrellas'
+                    : 'Mover con el deslizador'
+              }
             />
             <span className="espacio3d-extremo">{EXTREMOS[escena][1]}</span>
             {escena === 'satelite' && (
