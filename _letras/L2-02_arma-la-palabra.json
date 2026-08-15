@@ -1,0 +1,28 @@
+{
+  "id": "L2-02_arma-la-palabra",
+  "titulo": "Arma la palabra",
+  "descripcion": "Toca las sílabas en orden para formar la palabra del dibujo",
+  "tipo": "arma-la-palabra",
+  "materia": "letras",
+  "nivel": "L2-02",
+  "tema": "palabras",
+  "misiones": [
+    {
+      "id": "let-arma-silabas",
+      "tipo": "arma-la-palabra",
+      "titulo": "Arma la palabra",
+      "emoji": "🧱",
+      "instruccion": "Toca las sílabas en orden para armar la palabra.",
+      "retos": [
+        { "emoji": "🗺️", "palabra": "mapa", "piezas": ["ma", "pa"], "distractores": ["so"] },
+        { "emoji": "🍲", "palabra": "sopa", "piezas": ["so", "pa"], "distractores": ["me"] },
+        { "emoji": "🪑", "palabra": "mesa", "piezas": ["me", "sa"], "distractores": ["pi"] },
+        { "emoji": "🐸", "palabra": "sapo", "piezas": ["sa", "po"], "distractores": ["lu"] },
+        { "emoji": "🔍", "palabra": "lupa", "piezas": ["lu", "pa"], "distractores": ["ma"] },
+        { "emoji": "🔋", "palabra": "pila", "piezas": ["pi", "la"], "distractores": ["so"] },
+        { "emoji": "👩", "palabra": "mamá", "piezas": ["ma", "má"], "distractores": ["pa"] },
+        { "emoji": "👨", "palabra": "papá", "piezas": ["pa", "pá"], "distractores": ["ma"] }
+      ]
+    }
+  ]
+}

@@ -19,7 +19,8 @@ const detectMateria = (f) => {
   if (f.startsWith('piano-') || f === 'identifica-nota') return 'piano';
   if (f.startsWith('geografia-') || f === 'explorador-mapa') return 'geografia';
   if (f.startsWith('ciencias-') || f === 'sistema-solar') return 'ciencias';
-  if (f.startsWith('letras-') || f === 'abecedario' || f === 'letra-quiz' || f === 'silabas') return 'letras';
+  if (f.startsWith('letras-') || f === 'abecedario' || f === 'letra-quiz' || f === 'silabas'
+      || f === 'rimas' || f === 'arma-la-palabra') return 'letras';
   const englishTypes = ['word-bank', 'verb-conjugator', 'true-or-false', 'fill-the-gap',
     'tap-the-pairs', 'sentence-transform', 'image-picker', 'word-scramble',
     'listen-and-type', 'expediciones-en', 'mini-story'];

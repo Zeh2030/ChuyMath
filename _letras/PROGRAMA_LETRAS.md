@@ -20,10 +20,17 @@ Es el primer módulo pensado para que el objetivo final sea **leer**, no solo re
 
 | Nivel | Edad | Meta |
 |-------|------|------|
+| **LF — Sonidos** | 3-6 | Oír rimas y contar sílabas. **Transversal, no secuencial** |
 | **L0 — Vocales** | 3-5 | Reconocer, oír y trazar A E I O U (mayúscula y minúscula) |
 | **L1 — Primeras consonantes** | 4-6 | m, p, s, l, t, n, d + sus sílabas (ma-me-mi-mo-mu) |
-| **L2 — Palabras** | 5-7 | Resto del abecedario + leer palabras de 2 sílabas |
+| **L2 — Palabras** | 5-7 | Leer y armar palabras de 2 sílabas |
 | **L3 — Frases** | 6-8 | Leer y entender frases cortas |
+
+**LF (conciencia fonológica) va aparte a propósito.** No es un paso del camino: es la
+habilidad de oír que las palabras están hechas de pedacitos de sonido, y es **el predictor
+más fuerte** de que un niño aprenda a leer bien. Se juega **sin saber ninguna letra**, así
+que sirve desde antes de L0 y en paralelo a todo lo demás — también para el hermano de 2-3.
+Por eso lleva prefijo `LF` y no un número.
 
 Se produce por lotes, igual que ciencias: se termina y se prueba un nivel antes de
 escribir el siguiente. **No escribir las 27 letras de golpe.**
@@ -83,11 +90,15 @@ Los dos números a mover si el tono no convence están en `VOZ_LETRAS` (`src/uti
 3. Elegir emojis cuyo nombre en español empiece de verdad con la letra que se enseña.
 4. Máximo **6-8 retos** por actividad. Sesiones cortas por diseño; sin cronómetro,
    sin puntaje, sin "perdiste".
-5. **Correr `node _letras/_valida.js` antes de subir nada.** Comprueba lo que los motores
-   dan por hecho y es fácil de romper a mano: que la `respuesta` esté entre las `opciones`,
-   que la palabra clave de verdad empiece con su letra o sílaba (ignorando acentos), que
-   cada sílaba sea consonante + vocal, que los SVG referenciados existan y que no haya ids
-   duplicados.
+5. **Correr `node _letras/_valida.js` antes de subir nada**, y `node _letras/_lotes.js`
+   para regenerar los lotes. El validador comprueba lo que los motores dan por hecho y es
+   fácil de romper a mano: que la `respuesta` esté entre las `opciones`, que la palabra
+   clave de verdad empiece con su letra o sílaba (ignorando acentos), que cada sílaba sea
+   consonante + vocal, que los SVG existan, que no haya ids duplicados, que el silabeo
+   forme la palabra y cuadre con el número de pedacitos, que las piezas de
+   `arma-la-palabra` formen la palabra y ningún distractor sea también una pieza, y —lo
+   más fácil de equivocar— **que las rimas rimen de verdad y que ningún distractor rime
+   también**, porque eso daría dos respuestas correctas.
 6. **Los SVG de trazo se revisan renderizados, nunca leyendo el código.** En L0 el código
    parecía correcto y la `e` salía casi cerrada (parecía una `o` con raya) y el puntito de
    la `i`, un anillo roto. Basta con `chrome --headless --screenshot` sobre un HTML que
@@ -103,7 +114,9 @@ Los dos números a mover si el tono no convence están en `VOZ_LETRAS` (`src/uti
 |------|-----------|----------|
 | `abecedario` | `tipos/Abecedario.jsx` | Teclado sonoro: toca una letra y la oyes con su palabra clave. Exploración pura, sin respuestas correctas. |
 | `letra-quiz` | `tipos/LetraQuiz.jsx` | Estímulo + 3 opciones. Tres modos (abajo). |
-| `silabas` | `tipos/Silabas.jsx` | "M + a = ma": toca una vocal y la voz hace la mezcla (*"mmm… a… ma. ma de mamá"*). Exploración, sin puntaje. |
+| `silabas` | `tipos/Silabas.jsx` | "m + a = ma": toca una vocal y se arma la sílaba. Exploración, sin puntaje. |
+| `rimas` | `tipos/Rimas.jsx` | "¿cuál rima con sol?" → caracol. Opciones con dibujo + palabra; todo de oído. |
+| `arma-la-palabra` | `tipos/ArmaLaPalabra.jsx` | Tocar piezas en orden para construir una palabra. |
 | `colorear` | `tipos/Colorear.jsx` (reusado) | Trazar la letra sobre una guía punteada. Sin código nuevo. |
 
 `letra-quiz` **no distingue entre letras y sílabas**: sus tres modos funcionan igual con
@@ -116,16 +129,34 @@ como ya pasa con Contar/Formas/Tamaños/MásMenos:
 
 | `modo` | Se ve | Se oye | Opciones |
 |--------|-------|--------|----------|
-| `primera-letra` | dibujo + palabra | "manzana. ¿Con qué empieza?" | letras |
-| `reconoce-letra` | nada (juego de oído) | "Toca la M" | letras |
+| `primera-letra` | dibujo + palabra | "manzana. ¿Con qué empieza?" | letras o sílabas |
+| `reconoce-letra` | nada (juego de oído) | "Toca la M" | letras o sílabas |
 | `mayus-minus` | la mayúscula grande | "¿Cuál es la m chiquita?" | minúsculas |
+| `cuenta-silabas` | dibujo + palabra | "ma, ri, po, sa. ¿Cuántos pedacitos?" | números |
+| `lee-palabra` | **la palabra escrita** | "¿Qué dice aquí?" — *nunca la palabra* | dibujos |
 
-### Pendientes (L2 en adelante)
+En `lee-palabra` la consigna **no dice la palabra**: si la dijera, la niña no estaría
+leyendo, estaría oyendo. Solo se pronuncia al acertar. El `silabeo` que se muestra debajo
+("ma-pa") es el andamio para leer por golpes.
+
+En `cuenta-silabas` la palabra se muestra **sin guiones**: los golpes se cuentan con el
+oído, no con los ojos.
+
+### "Arma tu nombre" sale gratis
+
+`arma-la-palabra` no distingue entre sílabas y letras — son piezas. Por eso *armar tu
+nombre* no necesita motor propio: `"usar_nombre_perfil": true` y las piezas se generan de
+`activeProfile.nombre` en tiempo de ejecución. A los 4 años la propia palabra es la más
+motivadora que existe, y el perfil ya traía el nombre.
+
+### Pendientes (L3 en adelante)
 
 | Tipo | Qué hace | Nivel |
 |------|----------|-------|
-| `arma-la-palabra` | ordenar 2-3 sílabas para formar una palabra | L2 |
-| `lee-y-elige` | se lee una palabra → elegir entre 3 dibujos | L2 |
+| `lee-frase` | leer una frase corta y elegir la escena | L3 |
+| `dictado` | oír una palabra y escribirla con un teclado de letras grandes | L3 |
+
+Escribir al dictado va **después** de leer con soltura, no antes.
 
 Nota: `memoria` (ya existe, de Peques) sirve tal cual para parejas A↔a si algún día
 se quiere otra variante de `mayus-minus`.
@@ -258,11 +289,25 @@ L0 probado con la niña y aprobado, sin ajustes.
 - **Todo el texto se acentuó.** Al pasar a hablarse la `instruccion`, los acentos dejaron
   de ser cosmética: "silaba" se oía *si-LA-ba*.
 
-**Siguiente (L2)**
+**Fase 3 (LF + L2) — HECHO (2026-08-15)**
 
-1. Probar L1 con la niña. La pregunta clave: ¿entiende que m + a = ma?
-2. Resto de consonantes frecuentes (t, n, d, r, c) reusando los motores que ya hay.
-3. Motores `arma-la-palabra` y `lee-y-elige` — ahí ya lee palabras completas.
+- Motores `rimas` y `arma-la-palabra`; modos `cuenta-silabas` y `lee-palabra` en `letra-quiz`.
+- `LF-01` rimas, `LF-02` pedacitos (conciencia fonológica).
+- `L1-06` mayúscula/minúscula de M, P, S, L (solo contenido, cero código).
+- `L2-01` ¡Ya leo!, `L2-02` arma la palabra, `L2-03` mi nombre.
+- `_lotes.js` para regenerar los lotes; `_valida.js` ampliado (ver abajo).
+
+**Decisión: NO se agregaron más consonantes todavía.** Es la tentación obvia y el error
+clásico — acumular letras en vez de usarlas. Con vocales + m, p, s, l ya salen ~20 palabras
+reales (sol, sopa, mesa, sapo, mapa, lupa, oso, mamá, papá, pila, pala, masa, paso, piso…),
+que es justo lo que L2 explota. **t, n, d, r, c entran cuando lea esas con soltura**, y
+entonces es contenido puro, cero motores.
+
+**Siguiente**
+
+1. Probar LF y L2 con la niña. Las preguntas: ¿oye las rimas? ¿lee "sol" sin ayuda?
+2. Si L2 fluye → resto de consonantes frecuentes (t, n, d, r, c), solo contenido.
+3. Si no fluye → más palabras con las mismas 4 consonantes antes de avanzar.
 
 **Después**
 

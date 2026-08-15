@@ -1,0 +1,19 @@
+{
+  "id": "L2-03_mi-nombre",
+  "titulo": "Mi nombre",
+  "descripcion": "Arma tu propio nombre, letra por letra. Se genera solo con el nombre del perfil",
+  "tipo": "arma-la-palabra",
+  "materia": "letras",
+  "nivel": "L2-03",
+  "tema": "mi-nombre",
+  "misiones": [
+    {
+      "id": "let-mi-nombre",
+      "tipo": "arma-la-palabra",
+      "titulo": "Mi nombre",
+      "emoji": "⭐",
+      "instruccion": "Toca las letras en orden para escribir tu nombre.",
+      "usar_nombre_perfil": true
+    }
+  ]
+}

@@ -69,4 +69,6 @@ export const tiposJuegos = [
   { id: 'letras-quiz', emoji: '🔎', nombre: 'Juegos de Letras', tipo: 'letra-quiz', descripcion: 'Con que empieza, toca la letra, grande y chiquita', materia: 'letras' },
   { id: 'letras-silabas', emoji: '🧩', nombre: 'Silabas', tipo: 'silabas', descripcion: 'Junta una consonante con cada vocal: ma me mi mo mu', materia: 'letras' },
   { id: 'letras-trazo', emoji: '✏️', nombre: 'Traza Letras', tipo: 'colorear', descripcion: 'Sigue los puntitos y escribe cada letra', materia: 'letras' },
+  { id: 'letras-rimas', emoji: '🎵', nombre: 'Rimas', tipo: 'rimas', descripcion: 'Oir que dos palabras terminan igual (conciencia fonologica)', materia: 'letras' },
+  { id: 'letras-arma', emoji: '🧱', nombre: 'Arma Palabras', tipo: 'arma-la-palabra', descripcion: 'Toca las silabas en orden para formar la palabra', materia: 'letras' },
 ];

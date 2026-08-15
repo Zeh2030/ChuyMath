@@ -38,6 +38,13 @@
 .lq-estimulo-emoji { font-size: 5rem; line-height: 1; }
 .lq-estimulo-palabra { font-size: 1.4rem; font-weight: 600; color: #2c3e50; }
 .lq-estimulo-letra { font-size: 6rem; font-weight: 700; line-height: 1; color: #e67e22; }
+/* La palabra escrita de lee-palabra: grande pero no tanto como una letra sola. */
+.lq-estimulo-texto {
+  font-size: 3.8rem; font-weight: 700; line-height: 1.1; color: #e67e22; letter-spacing: 3px;
+}
+.lq-estimulo-silabeo { font-size: 1.5rem; font-weight: 600; color: #b08968; letter-spacing: 2px; }
+/* Las opciones de lee-palabra son dibujos, no letras: van más grandes. */
+.lq-opcion-dibujo { font-size: 3.8rem; }
 .lq-estimulo-oido { cursor: pointer; transition: transform 0.15s; }
 .lq-estimulo-oido:active { transform: scale(0.95); }
 

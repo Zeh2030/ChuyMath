@@ -4,14 +4,15 @@ const path = require('path');
 
 const DIR = __dirname;
 const PUBLIC = path.join(__dirname, '..', 'chuy-react-app', 'public');
-const TIPOS_OK = new Set(['abecedario', 'letra-quiz', 'silabas', 'colorear']);
-const MODOS_OK = new Set(['primera-letra', 'reconoce-letra', 'mayus-minus']);
+const TIPOS_OK = new Set(['abecedario', 'letra-quiz', 'silabas', 'colorear', 'rimas', 'arma-la-palabra']);
+const MODOS_OK = new Set(['primera-letra', 'reconoce-letra', 'mayus-minus', 'cuenta-silabas', 'lee-palabra']);
 
 const errores = [];
 const ids = new Map();
 let docs = 0, misiones = 0;
 
-const files = fs.readdirSync(DIR).filter((f) => /^L\d-\d\d_.*\.json$/.test(f)).sort();
+// L0/L1/L2… y LF (conciencia fonologica, que va fuera de la progresion numerada).
+const files = fs.readdirSync(DIR).filter((f) => /^L[\dF]-\d\d_.*\.json$/.test(f)).sort();
 
 for (const f of files) {
   let d;
@@ -53,6 +54,24 @@ for (const f of files) {
             errores.push(`${et} reto ${i}: "${r.letra}" y "${r.respuesta}" no son la misma letra`);
           }
         }
+        if (m.modo === 'cuenta-silabas') {
+          // La respuesta tiene que ser el numero de golpes que marca el silabeo.
+          const golpes = String((r.silabeo || r.palabra || '').split('-').length);
+          if (golpes !== String(r.respuesta)) {
+            errores.push(`${et} reto ${i}: "${r.silabeo}" son ${golpes} pedacitos, no ${r.respuesta}`);
+          }
+          if (quitaAcentos(r.silabeo || '').replace(/-/g, '') !== quitaAcentos(r.palabra || '')) {
+            errores.push(`${et} reto ${i}: el silabeo "${r.silabeo}" no forma "${r.palabra}"`);
+          }
+        }
+        if (m.modo === 'lee-palabra') {
+          if (!r.palabra) errores.push(`${et} reto ${i}: falta la palabra a leer`);
+          // Aqui las opciones son dibujos; la respuesta debe ser uno de ellos (ya validado
+          // arriba) y NO debe haber emojis repetidos, o habria dos respuestas validas.
+          if (r.silabeo && quitaAcentos(r.silabeo).replace(/-/g, '') !== quitaAcentos(r.palabra)) {
+            errores.push(`${et} reto ${i}: el silabeo "${r.silabeo}" no forma "${r.palabra}"`);
+          }
+        }
       }
     }
 
@@ -72,6 +91,46 @@ for (const f of files) {
         const esperada = (m.consonante_minus || m.consonante.toLowerCase()) + s.vocal;
         if (s.silaba !== esperada) errores.push(`${et}: la silaba "${s.silaba}" no es "${esperada}"`);
         if (!quitaAcentos(s.palabra).startsWith(s.silaba)) errores.push(`${et}: "${s.palabra}" no empieza con "${s.silaba}"`);
+      }
+    }
+
+    if (m.tipo === 'rimas') {
+      for (const [i, r] of (m.retos || []).entries()) {
+        const palabras = (r.opciones || []).map((o) => o.palabra);
+        if (!palabras.includes(r.respuesta)) {
+          errores.push(`${et} reto ${i}: la respuesta "${r.respuesta}" no esta entre las opciones`);
+        }
+        if (new Set(palabras).size !== palabras.length) errores.push(`${et} reto ${i}: opciones repetidas`);
+        if ((r.opciones || []).some((o) => !o.palabra || !o.emoji)) {
+          errores.push(`${et} reto ${i}: alguna opcion no tiene palabra o emoji`);
+        }
+        if (r.respuesta === r.palabra) errores.push(`${et} reto ${i}: la respuesta es la misma palabra`);
+        // Rimar de verdad = terminar igual. Se exigen 2 letras finales iguales, que es
+        // lo minimo que un oido de 4 anos distingue (gato/pato, sol/caracol).
+        const fin = (s) => quitaAcentos(s).slice(-2);
+        if (fin(r.respuesta) !== fin(r.palabra)) {
+          errores.push(`${et} reto ${i}: "${r.respuesta}" no rima con "${r.palabra}"`);
+        }
+        // Y los distractores NO deben rimar, o habria dos respuestas correctas.
+        for (const o of r.opciones || []) {
+          if (o.palabra !== r.respuesta && fin(o.palabra) === fin(r.palabra)) {
+            errores.push(`${et} reto ${i}: el distractor "${o.palabra}" tambien rima con "${r.palabra}"`);
+          }
+        }
+      }
+    }
+
+    if (m.tipo === 'arma-la-palabra') {
+      if (m.usar_nombre_perfil) continue; // el reto se genera del perfil, no hay que validarlo
+      for (const [i, r] of (m.retos || []).entries()) {
+        if (!r.palabra || !r.piezas?.length) { errores.push(`${et} reto ${i}: falta palabra o piezas`); continue; }
+        if (quitaAcentos(r.piezas.join('')) !== quitaAcentos(r.palabra)) {
+          errores.push(`${et} reto ${i}: las piezas ${JSON.stringify(r.piezas)} no forman "${r.palabra}"`);
+        }
+        // Un distractor que coincida con una pieza haria imposible saber cual tocar.
+        for (const d of r.distractores || []) {
+          if (r.piezas.includes(d)) errores.push(`${et} reto ${i}: el distractor "${d}" tambien es una pieza`);
+        }
       }
     }
 

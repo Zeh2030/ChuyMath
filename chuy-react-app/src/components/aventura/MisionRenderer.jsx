@@ -45,6 +45,8 @@ import Formas from './tipos/Formas';
 import Abecedario from './tipos/Abecedario';
 import LetraQuiz from './tipos/LetraQuiz';
 import Silabas from './tipos/Silabas';
+import Rimas from './tipos/Rimas';
+import ArmaLaPalabra from './tipos/ArmaLaPalabra';
 const PianoPrompter = React.lazy(() => import('./tipos/PianoPrompter'));
 import IdentificaNota from './tipos/IdentificaNota';
 const ExploradorMapa = React.lazy(() => import('./tipos/ExploradorMapa'));
@@ -506,6 +508,16 @@ const MisionRenderer = ({
       case 'silabas':
         return (
           <Silabas key={mision.id} mision={mision} onCompletar={onCompletar} />
+        );
+
+      case 'rimas':
+        return (
+          <Rimas key={mision.id} mision={mision} onCompletar={onCompletar} />
+        );
+
+      case 'arma-la-palabra':
+        return (
+          <ArmaLaPalabra key={mision.id} mision={mision} onCompletar={onCompletar} />
         );
 
       // === Piano ===

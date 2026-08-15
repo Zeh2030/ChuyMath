@@ -458,5 +458,80 @@
         "dificultad": "facil"
       }
     ]
+  },
+  {
+    "id": "L1-06_grande-y-chiquita-consonantes",
+    "titulo": "Grande y chiquita: M, P, S, L",
+    "descripcion": "Empareja cada consonante mayúscula con su minúscula",
+    "tipo": "letra-quiz",
+    "materia": "letras",
+    "nivel": "L1-06",
+    "tema": "consonantes",
+    "misiones": [
+      {
+        "id": "let-mayus-minus-consonantes",
+        "tipo": "letra-quiz",
+        "modo": "mayus-minus",
+        "titulo": "Grande y chiquita",
+        "emoji": "🔠",
+        "instruccion": "Mira la letra grande y busca la misma letra, pero chiquita.",
+        "retos": [
+          {
+            "letra": "M",
+            "respuesta": "m",
+            "opciones": [
+              "m",
+              "p",
+              "s"
+            ]
+          },
+          {
+            "letra": "P",
+            "respuesta": "p",
+            "opciones": [
+              "l",
+              "p",
+              "m"
+            ]
+          },
+          {
+            "letra": "S",
+            "respuesta": "s",
+            "opciones": [
+              "m",
+              "l",
+              "s"
+            ]
+          },
+          {
+            "letra": "L",
+            "respuesta": "l",
+            "opciones": [
+              "l",
+              "s",
+              "p"
+            ]
+          },
+          {
+            "letra": "M",
+            "respuesta": "m",
+            "opciones": [
+              "l",
+              "m",
+              "p"
+            ]
+          },
+          {
+            "letra": "S",
+            "respuesta": "s",
+            "opciones": [
+              "s",
+              "p",
+              "l"
+            ]
+          }
+        ]
+      }
+    ]
   }
 ]

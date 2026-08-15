@@ -22,12 +22,18 @@ import './Peques.css';
 const claveDe = (mision) =>
   mision?.tipo === 'letra-quiz' ? `letra-quiz:${mision.modo || 'primera-letra'}` : mision?.tipo;
 
+// El orden es el del camino lector: primero el oído (rimas, pedacitos), luego las
+// letras, luego juntarlas, y al final leer y escribir palabras.
 const SUBSECCIONES = [
+  { clave: 'rimas', titulo: 'Rimas', emoji: '🎵', color: '#ffc8dd' },
+  { clave: 'letra-quiz:cuenta-silabas', titulo: 'Pedacitos', emoji: '👏', color: '#ffd6a5' },
   { clave: 'abecedario', titulo: 'Conoce las letras', emoji: '🔤', color: '#ffd6a5' },
   { clave: 'silabas', titulo: 'Silabas', emoji: '🧩', color: '#a0e8af' },
   { clave: 'letra-quiz:primera-letra', titulo: 'Con que empieza?', emoji: '🔎', color: '#bde0fe' },
   { clave: 'letra-quiz:reconoce-letra', titulo: 'Toca la letra', emoji: '👂', color: '#b8e0d2' },
   { clave: 'letra-quiz:mayus-minus', titulo: 'Grande y chiquita', emoji: '🔠', color: '#c3b1e1' },
+  { clave: 'letra-quiz:lee-palabra', titulo: 'Ya leo!', emoji: '📖', color: '#ffe08a' },
+  { clave: 'arma-la-palabra', titulo: 'Arma palabras', emoji: '🧱', color: '#a2d2ff' },
   { clave: 'colorear', titulo: 'Traza', emoji: '✏️', color: '#ffb3c1' },
 ];
 
@@ -52,6 +58,16 @@ const NATIVAS = [
     mision: { id: 'letras-mayus-minus', tipo: 'letra-quiz', modo: 'mayus-minus' } },
   { id: 'letras-silabas-m', titulo: 'Silabas con M', emoji: '🧩',
     mision: { id: 'letras-silabas-m', tipo: 'silabas' } },
+  { id: 'letras-rimas', titulo: 'Rimas', emoji: '🎵',
+    mision: { id: 'letras-rimas', tipo: 'rimas' } },
+  { id: 'letras-pedacitos', titulo: 'Pedacitos', emoji: '👏',
+    mision: { id: 'letras-pedacitos', tipo: 'letra-quiz', modo: 'cuenta-silabas' } },
+  { id: 'letras-lee', titulo: 'Ya leo!', emoji: '📖',
+    mision: { id: 'letras-lee', tipo: 'letra-quiz', modo: 'lee-palabra' } },
+  { id: 'letras-arma', titulo: 'Arma palabras', emoji: '🧱',
+    mision: { id: 'letras-arma', tipo: 'arma-la-palabra' } },
+  { id: 'letras-mi-nombre', titulo: 'Mi nombre', emoji: '⭐',
+    mision: { id: 'letras-mi-nombre', tipo: 'arma-la-palabra', usar_nombre_perfil: true } },
   ...TRAZOS_NATIVOS.map((t) => ({
     id: `letras-traza-${t.letra}`,
     titulo: `La ${t.letra}`,

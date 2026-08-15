@@ -1,0 +1,230 @@
+[
+  {
+    "id": "L2-01_ya-leo",
+    "titulo": "¡Ya leo!",
+    "descripcion": "Lee la palabra y toca el dibujo que le toca. Solo con las letras que ya sabes",
+    "tipo": "letra-quiz",
+    "materia": "letras",
+    "nivel": "L2-01",
+    "tema": "palabras",
+    "misiones": [
+      {
+        "id": "let-lee-palabra",
+        "tipo": "letra-quiz",
+        "modo": "lee-palabra",
+        "titulo": "¿Qué dice aquí?",
+        "emoji": "📖",
+        "instruccion": "Lee la palabra por pedacitos y toca el dibujo. ¡Esta vez la voz no te la dice!",
+        "retos": [
+          {
+            "palabra": "sol",
+            "silabeo": "sol",
+            "respuesta": "☀️",
+            "opciones": [
+              "☀️",
+              "🐱",
+              "🍐"
+            ]
+          },
+          {
+            "palabra": "oso",
+            "silabeo": "o-so",
+            "respuesta": "🐻",
+            "opciones": [
+              "🐸",
+              "🐻",
+              "🗺️"
+            ]
+          },
+          {
+            "palabra": "mesa",
+            "silabeo": "me-sa",
+            "respuesta": "🪑",
+            "opciones": [
+              "🐸",
+              "🪑",
+              "🍲"
+            ]
+          },
+          {
+            "palabra": "sapo",
+            "silabeo": "sa-po",
+            "respuesta": "🐸",
+            "opciones": [
+              "🐸",
+              "🗺️",
+              "🔍"
+            ]
+          },
+          {
+            "palabra": "sopa",
+            "silabeo": "so-pa",
+            "respuesta": "🍲",
+            "opciones": [
+              "🔍",
+              "🍲",
+              "🐻"
+            ]
+          },
+          {
+            "palabra": "mapa",
+            "silabeo": "ma-pa",
+            "respuesta": "🗺️",
+            "opciones": [
+              "🪑",
+              "🗺️",
+              "☀️"
+            ]
+          },
+          {
+            "palabra": "lupa",
+            "silabeo": "lu-pa",
+            "respuesta": "🔍",
+            "opciones": [
+              "🍲",
+              "🐻",
+              "🔍"
+            ]
+          },
+          {
+            "palabra": "mamá",
+            "silabeo": "ma-má",
+            "respuesta": "👩",
+            "opciones": [
+              "👨",
+              "👩",
+              "🐸"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "L2-02_arma-la-palabra",
+    "titulo": "Arma la palabra",
+    "descripcion": "Toca las sílabas en orden para formar la palabra del dibujo",
+    "tipo": "arma-la-palabra",
+    "materia": "letras",
+    "nivel": "L2-02",
+    "tema": "palabras",
+    "misiones": [
+      {
+        "id": "let-arma-silabas",
+        "tipo": "arma-la-palabra",
+        "titulo": "Arma la palabra",
+        "emoji": "🧱",
+        "instruccion": "Toca las sílabas en orden para armar la palabra.",
+        "retos": [
+          {
+            "emoji": "🗺️",
+            "palabra": "mapa",
+            "piezas": [
+              "ma",
+              "pa"
+            ],
+            "distractores": [
+              "so"
+            ]
+          },
+          {
+            "emoji": "🍲",
+            "palabra": "sopa",
+            "piezas": [
+              "so",
+              "pa"
+            ],
+            "distractores": [
+              "me"
+            ]
+          },
+          {
+            "emoji": "🪑",
+            "palabra": "mesa",
+            "piezas": [
+              "me",
+              "sa"
+            ],
+            "distractores": [
+              "pi"
+            ]
+          },
+          {
+            "emoji": "🐸",
+            "palabra": "sapo",
+            "piezas": [
+              "sa",
+              "po"
+            ],
+            "distractores": [
+              "lu"
+            ]
+          },
+          {
+            "emoji": "🔍",
+            "palabra": "lupa",
+            "piezas": [
+              "lu",
+              "pa"
+            ],
+            "distractores": [
+              "ma"
+            ]
+          },
+          {
+            "emoji": "🔋",
+            "palabra": "pila",
+            "piezas": [
+              "pi",
+              "la"
+            ],
+            "distractores": [
+              "so"
+            ]
+          },
+          {
+            "emoji": "👩",
+            "palabra": "mamá",
+            "piezas": [
+              "ma",
+              "má"
+            ],
+            "distractores": [
+              "pa"
+            ]
+          },
+          {
+            "emoji": "👨",
+            "palabra": "papá",
+            "piezas": [
+              "pa",
+              "pá"
+            ],
+            "distractores": [
+              "ma"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "L2-03_mi-nombre",
+    "titulo": "Mi nombre",
+    "descripcion": "Arma tu propio nombre, letra por letra. Se genera solo con el nombre del perfil",
+    "tipo": "arma-la-palabra",
+    "materia": "letras",
+    "nivel": "L2-03",
+    "tema": "mi-nombre",
+    "misiones": [
+      {
+        "id": "let-mi-nombre",
+        "tipo": "arma-la-palabra",
+        "titulo": "Mi nombre",
+        "emoji": "⭐",
+        "instruccion": "Toca las letras en orden para escribir tu nombre.",
+        "usar_nombre_perfil": true
+      }
+    ]
+  }
+]

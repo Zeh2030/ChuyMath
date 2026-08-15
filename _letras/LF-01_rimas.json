@@ -1,0 +1,100 @@
+{
+  "id": "LF-01_rimas",
+  "titulo": "¿Cuál rima?",
+  "descripcion": "Escucha dos palabras y descubre cuáles terminan igual",
+  "tipo": "rimas",
+  "materia": "letras",
+  "nivel": "LF-01",
+  "tema": "conciencia-fonologica",
+  "misiones": [
+    {
+      "id": "let-rimas-1",
+      "tipo": "rimas",
+      "titulo": "¿Cuál rima?",
+      "emoji": "🎵",
+      "instruccion": "Escucha bien y toca la palabra que suena parecido al final.",
+      "retos": [
+        {
+          "emoji": "🐱",
+          "palabra": "gato",
+          "respuesta": "pato",
+          "opciones": [
+            { "palabra": "pato", "emoji": "🦆" },
+            { "palabra": "sol", "emoji": "☀️" },
+            { "palabra": "flor", "emoji": "🌸" }
+          ]
+        },
+        {
+          "emoji": "☀️",
+          "palabra": "sol",
+          "respuesta": "caracol",
+          "opciones": [
+            { "palabra": "gato", "emoji": "🐱" },
+            { "palabra": "caracol", "emoji": "🐌" },
+            { "palabra": "pera", "emoji": "🍐" }
+          ]
+        },
+        {
+          "emoji": "🐭",
+          "palabra": "ratón",
+          "respuesta": "limón",
+          "opciones": [
+            { "palabra": "limón", "emoji": "🍋" },
+            { "palabra": "pato", "emoji": "🦆" },
+            { "palabra": "luna", "emoji": "🌙" }
+          ]
+        },
+        {
+          "emoji": "🌸",
+          "palabra": "flor",
+          "respuesta": "tambor",
+          "opciones": [
+            { "palabra": "pez", "emoji": "🐟" },
+            { "palabra": "tambor", "emoji": "🥁" },
+            { "palabra": "casa", "emoji": "🏠" }
+          ]
+        },
+        {
+          "emoji": "⚽",
+          "palabra": "pelota",
+          "respuesta": "bota",
+          "opciones": [
+            { "palabra": "perro", "emoji": "🐕" },
+            { "palabra": "bota", "emoji": "👢" },
+            { "palabra": "luna", "emoji": "🌙" }
+          ]
+        },
+        {
+          "emoji": "🐰",
+          "palabra": "conejo",
+          "respuesta": "espejo",
+          "opciones": [
+            { "palabra": "espejo", "emoji": "🪞" },
+            { "palabra": "gato", "emoji": "🐱" },
+            { "palabra": "sol", "emoji": "☀️" }
+          ]
+        },
+        {
+          "emoji": "🐋",
+          "palabra": "ballena",
+          "respuesta": "arena",
+          "opciones": [
+            { "palabra": "limón", "emoji": "🍋" },
+            { "palabra": "flor", "emoji": "🌸" },
+            { "palabra": "arena", "emoji": "🏖️" }
+          ]
+        },
+        {
+          "emoji": "🚚",
+          "palabra": "camión",
+          "respuesta": "corazón",
+          "opciones": [
+            { "palabra": "corazón", "emoji": "❤️" },
+            { "palabra": "pato", "emoji": "🦆" },
+            { "palabra": "casa", "emoji": "🏠" }
+          ]
+        }
+      ]
+    }
+  ]
+}

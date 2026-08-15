@@ -1,0 +1,29 @@
+{
+  "id": "L2-01_ya-leo",
+  "titulo": "¡Ya leo!",
+  "descripcion": "Lee la palabra y toca el dibujo que le toca. Solo con las letras que ya sabes",
+  "tipo": "letra-quiz",
+  "materia": "letras",
+  "nivel": "L2-01",
+  "tema": "palabras",
+  "misiones": [
+    {
+      "id": "let-lee-palabra",
+      "tipo": "letra-quiz",
+      "modo": "lee-palabra",
+      "titulo": "¿Qué dice aquí?",
+      "emoji": "📖",
+      "instruccion": "Lee la palabra por pedacitos y toca el dibujo. ¡Esta vez la voz no te la dice!",
+      "retos": [
+        { "palabra": "sol", "silabeo": "sol", "respuesta": "☀️", "opciones": ["☀️", "🐱", "🍐"] },
+        { "palabra": "oso", "silabeo": "o-so", "respuesta": "🐻", "opciones": ["🐸", "🐻", "🗺️"] },
+        { "palabra": "mesa", "silabeo": "me-sa", "respuesta": "🪑", "opciones": ["🐸", "🪑", "🍲"] },
+        { "palabra": "sapo", "silabeo": "sa-po", "respuesta": "🐸", "opciones": ["🐸", "🗺️", "🔍"] },
+        { "palabra": "sopa", "silabeo": "so-pa", "respuesta": "🍲", "opciones": ["🔍", "🍲", "🐻"] },
+        { "palabra": "mapa", "silabeo": "ma-pa", "respuesta": "🗺️", "opciones": ["🪑", "🗺️", "☀️"] },
+        { "palabra": "lupa", "silabeo": "lu-pa", "respuesta": "🔍", "opciones": ["🍲", "🐻", "🔍"] },
+        { "palabra": "mamá", "silabeo": "ma-má", "respuesta": "👩", "opciones": ["👨", "👩", "🐸"] }
+      ]
+    }
+  ]
+}

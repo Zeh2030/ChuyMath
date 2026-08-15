@@ -1,0 +1,283 @@
+[
+  {
+    "id": "LF-01_rimas",
+    "titulo": "¿Cuál rima?",
+    "descripcion": "Escucha dos palabras y descubre cuáles terminan igual",
+    "tipo": "rimas",
+    "materia": "letras",
+    "nivel": "LF-01",
+    "tema": "conciencia-fonologica",
+    "misiones": [
+      {
+        "id": "let-rimas-1",
+        "tipo": "rimas",
+        "titulo": "¿Cuál rima?",
+        "emoji": "🎵",
+        "instruccion": "Escucha bien y toca la palabra que suena parecido al final.",
+        "retos": [
+          {
+            "emoji": "🐱",
+            "palabra": "gato",
+            "respuesta": "pato",
+            "opciones": [
+              {
+                "palabra": "pato",
+                "emoji": "🦆"
+              },
+              {
+                "palabra": "sol",
+                "emoji": "☀️"
+              },
+              {
+                "palabra": "flor",
+                "emoji": "🌸"
+              }
+            ]
+          },
+          {
+            "emoji": "☀️",
+            "palabra": "sol",
+            "respuesta": "caracol",
+            "opciones": [
+              {
+                "palabra": "gato",
+                "emoji": "🐱"
+              },
+              {
+                "palabra": "caracol",
+                "emoji": "🐌"
+              },
+              {
+                "palabra": "pera",
+                "emoji": "🍐"
+              }
+            ]
+          },
+          {
+            "emoji": "🐭",
+            "palabra": "ratón",
+            "respuesta": "limón",
+            "opciones": [
+              {
+                "palabra": "limón",
+                "emoji": "🍋"
+              },
+              {
+                "palabra": "pato",
+                "emoji": "🦆"
+              },
+              {
+                "palabra": "luna",
+                "emoji": "🌙"
+              }
+            ]
+          },
+          {
+            "emoji": "🌸",
+            "palabra": "flor",
+            "respuesta": "tambor",
+            "opciones": [
+              {
+                "palabra": "pez",
+                "emoji": "🐟"
+              },
+              {
+                "palabra": "tambor",
+                "emoji": "🥁"
+              },
+              {
+                "palabra": "casa",
+                "emoji": "🏠"
+              }
+            ]
+          },
+          {
+            "emoji": "⚽",
+            "palabra": "pelota",
+            "respuesta": "bota",
+            "opciones": [
+              {
+                "palabra": "perro",
+                "emoji": "🐕"
+              },
+              {
+                "palabra": "bota",
+                "emoji": "👢"
+              },
+              {
+                "palabra": "luna",
+                "emoji": "🌙"
+              }
+            ]
+          },
+          {
+            "emoji": "🐰",
+            "palabra": "conejo",
+            "respuesta": "espejo",
+            "opciones": [
+              {
+                "palabra": "espejo",
+                "emoji": "🪞"
+              },
+              {
+                "palabra": "gato",
+                "emoji": "🐱"
+              },
+              {
+                "palabra": "sol",
+                "emoji": "☀️"
+              }
+            ]
+          },
+          {
+            "emoji": "🐋",
+            "palabra": "ballena",
+            "respuesta": "arena",
+            "opciones": [
+              {
+                "palabra": "limón",
+                "emoji": "🍋"
+              },
+              {
+                "palabra": "flor",
+                "emoji": "🌸"
+              },
+              {
+                "palabra": "arena",
+                "emoji": "🏖️"
+              }
+            ]
+          },
+          {
+            "emoji": "🚚",
+            "palabra": "camión",
+            "respuesta": "corazón",
+            "opciones": [
+              {
+                "palabra": "corazón",
+                "emoji": "❤️"
+              },
+              {
+                "palabra": "pato",
+                "emoji": "🦆"
+              },
+              {
+                "palabra": "casa",
+                "emoji": "🏠"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "LF-02_pedacitos",
+    "titulo": "¿Cuántos pedacitos?",
+    "descripcion": "Escucha una palabra por golpes y cuenta sus sílabas",
+    "tipo": "letra-quiz",
+    "materia": "letras",
+    "nivel": "LF-02",
+    "tema": "conciencia-fonologica",
+    "misiones": [
+      {
+        "id": "let-cuenta-silabas",
+        "tipo": "letra-quiz",
+        "modo": "cuenta-silabas",
+        "titulo": "¿Cuántos pedacitos?",
+        "emoji": "👏",
+        "instruccion": "Escucha la palabra en pedacitos y toca cuántos son. Puedes dar palmadas.",
+        "retos": [
+          {
+            "emoji": "☀️",
+            "palabra": "sol",
+            "silabeo": "sol",
+            "respuesta": "1",
+            "opciones": [
+              "1",
+              "2",
+              "3"
+            ]
+          },
+          {
+            "emoji": "🌙",
+            "palabra": "luna",
+            "silabeo": "lu-na",
+            "respuesta": "2",
+            "opciones": [
+              "2",
+              "1",
+              "3"
+            ]
+          },
+          {
+            "emoji": "🍞",
+            "palabra": "pan",
+            "silabeo": "pan",
+            "respuesta": "1",
+            "opciones": [
+              "2",
+              "1",
+              "3"
+            ]
+          },
+          {
+            "emoji": "🐱",
+            "palabra": "gato",
+            "silabeo": "ga-to",
+            "respuesta": "2",
+            "opciones": [
+              "3",
+              "2",
+              "1"
+            ]
+          },
+          {
+            "emoji": "⚽",
+            "palabra": "pelota",
+            "silabeo": "pe-lo-ta",
+            "respuesta": "3",
+            "opciones": [
+              "2",
+              "3",
+              "4"
+            ]
+          },
+          {
+            "emoji": "🐌",
+            "palabra": "caracol",
+            "silabeo": "ca-ra-col",
+            "respuesta": "3",
+            "opciones": [
+              "3",
+              "4",
+              "2"
+            ]
+          },
+          {
+            "emoji": "🦋",
+            "palabra": "mariposa",
+            "silabeo": "ma-ri-po-sa",
+            "respuesta": "4",
+            "opciones": [
+              "3",
+              "4",
+              "5"
+            ]
+          },
+          {
+            "emoji": "🐘",
+            "palabra": "elefante",
+            "silabeo": "e-le-fan-te",
+            "respuesta": "4",
+            "opciones": [
+              "4",
+              "2",
+              "3"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
