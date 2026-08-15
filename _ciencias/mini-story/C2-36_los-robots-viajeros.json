@@ -1,0 +1,184 @@
+{
+  "id": "C2-36_los-robots-viajeros",
+  "titulo": "Los Robots Viajeros",
+  "descripcion": "Las sondas espaciales: robots que llevan décadas explorando donde ningún humano ha llegado",
+  "tipo": "mini-story",
+  "materia": "ciencias",
+  "nivel": "C2-36",
+  "tema": "astronomia",
+  "misiones": [
+    {
+      "id": "astro-story-sondas",
+      "tipo": "mini-story",
+      "titulo": "Los Robots Viajeros",
+      "instruccion": "Lee cada parte y responde la pregunta.",
+      "parrafos": [
+        {
+          "texto": "Los humanos solo hemos llegado hasta la Luna… pero nuestros ROBOTS han ido muchísimo más lejos. Se llaman sondas espaciales: naves sin tripulantes que viajan durante años, sacan fotos y nos las mandan por radio. Son los grandes exploradores de nuestra época.",
+          "emoji": "🛰️",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Las sondas espaciales llevan astronautas adentro.",
+              "correcto": false,
+              "correccion": "Las sondas son ROBOTS: viajan solas, sin nadie adentro. Por eso pueden ir a lugares donde un humano no sobreviviría."
+            }
+          ]
+        },
+        {
+          "texto": "Las campeonas son las Voyager 1 y 2, lanzadas en 1977 — ¡cuando tus abuelos eran jóvenes! Visitaron a Júpiter, Saturno, Urano y Neptuno, y siguieron de largo. La Voyager 1 es hoy la cosa humana MÁS LEJANA: está a más de 25,000 millones de kilómetros, fuera del sistema solar… y todavía nos manda mensajes.",
+          "emoji": "🚀",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "La Voyager 1 es la cosa humana más ___ que existe.",
+              "opciones": ["rápida", "lejana", "grande", "nueva"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "Su señal de radio viaja a la velocidad de la luz, lo más rápido que existe… y aun así tarda 22 HORAS en llegar a la Tierra. Si le preguntáramos algo hoy, la respuesta llegaría pasado mañana. Así de lejos está.",
+          "emoji": "📻",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "La señal de la Voyager tarda ___ horas en llegar a la Tierra.",
+              "opciones": ["2", "22", "5", "100"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "Cada Voyager lleva un DISCO DE ORO con saludos en 55 idiomas, sonidos de la Tierra (lluvia, pájaros, un beso) y música. ¿Para qué? Por si algún día, dentro de millones de años, alguien las encuentra… que sepa cómo éramos. Es nuestra botella al mar cósmico.",
+          "emoji": "💿",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Las Voyager llevan un disco de oro con saludos y música de la Tierra.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Otras sondas famosas: New Horizons viajó 9 AÑOS para fotografiar a Plutón (¡y le descubrió un corazón gigante de hielo!). Cassini vivió 13 años dando vueltas a Saturno. Y la Parker Solar Probe es el objeto humano MÁS RÁPIDO de la historia: va a unos 690,000 km/h y se acerca tanto al Sol que 'toca' su atmósfera.",
+          "emoji": "❤️",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "New Horizons descubrió que Plutón tiene un ___ gigante de hielo.",
+              "opciones": ["corazón", "océano", "volcán", "anillo"],
+              "respuesta": 0
+            }
+          ]
+        },
+        {
+          "texto": "Y no olvides a los que ya conoces: los rovers Curiosity y Perseverance ruedan por Marte ahora mismo, y el helicóptero Ingenuity fue el primero en volar en otro planeta. Cada robot viajero nos cuenta un pedazo del universo… hasta que algún día vayamos nosotros.",
+          "emoji": "🤖",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Los robots exploradores nos mandan fotos y descubrimientos por radio.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "astro-ip-sondas",
+      "tipo": "image-picker",
+      "titulo": "Fotos de la Expedición Robot",
+      "instruccion": "Fotos reales de las sondas y sus descubrimientos. Responde qué estás viendo.",
+      "retos": [
+        {
+          "imagen_url": "https://commons.wikimedia.org/wiki/Special:FilePath/The%20Sounds%20of%20Earth%20Record%20Cover%20-%20GPN-2000-001978.jpg?width=640",
+          "palabra_es": "Este disco dorado viaja en las Voyager. ¿Qué lleva grabado?",
+          "opciones": [
+            { "label": "Mapas del tesoro" },
+            { "label": "Saludos, sonidos y música de la Tierra" },
+            { "label": "Juegos para el viaje" },
+            { "label": "Nada, es solo un adorno" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Es el Disco de Oro: saludos en 55 idiomas, sonidos de la Tierra y música. Un mensaje para quien lo encuentre algún día, con instrucciones dibujadas para poder escucharlo."
+        },
+        {
+          "imagen_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Pluto%20in%20True%20Color%20-%20High-Res.jpg?width=640",
+          "palabra_es": "New Horizons viajó 9 años para tomar esta foto. ¿Qué mundo es?",
+          "opciones": [
+            { "label": "La Luna" },
+            { "label": "Mercurio" },
+            { "label": "Plutón, con su corazón de hielo" },
+            { "label": "Marte" }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Es Plutón! ¿Ves la mancha clara con forma de corazón? Es una llanura gigante de hielo de nitrógeno. Nadie sabía que existía hasta esta foto de 2015."
+        },
+        {
+          "imagen_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Voyager%20spacecraft.jpg?width=640",
+          "palabra_es": "Esta nave lleva casi 50 años viajando. ¿Cuál es?",
+          "opciones": [
+            { "label": "La Voyager, la máquina más lejana" },
+            { "label": "La Estación Espacial" },
+            { "label": "El telescopio Hubble" },
+            { "label": "Un satélite de televisión" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Es la Voyager. Su antena de plato le sirve para hablar con la Tierra desde 25,000 millones de kilómetros. Funciona con una pila nuclear que poco a poco se apaga."
+        },
+        {
+          "imagen_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Saturn%20during%20Equinox.jpg?width=640",
+          "palabra_es": "Una sonda vivió 13 años dando vueltas a este planeta y tomó esta foto. ¿Qué sonda fue?",
+          "opciones": [
+            { "label": "Cassini, la exploradora de Saturno" },
+            { "label": "La Voyager" },
+            { "label": "Un rover de Marte" },
+            { "label": "El Apollo 11" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Cassini estudió Saturno de 2004 a 2017: descubrió mares en la luna Titán y géiseres de agua en la luna Encélado. Al final se lanzó dentro de Saturno para no contaminar sus lunas."
+        }
+      ]
+    },
+    {
+      "id": "astro-ttp-sondas",
+      "tipo": "tap-the-pairs",
+      "titulo": "Cada Robot con su Hazaña",
+      "instruccion": "Toca una sonda y luego su logro famoso.",
+      "retos": [
+        {
+          "pares": [
+            { "es": "🚀 Voyager 1", "en": "La máquina más LEJANA de la historia" },
+            { "es": "❤️ New Horizons", "en": "Nos mostró el corazón de Plutón" },
+            { "es": "🔥 Parker Solar Probe", "en": "La más RÁPIDA: roza la atmósfera del Sol" }
+          ]
+        },
+        {
+          "pares": [
+            { "es": "🪐 Cassini", "en": "Vivió 13 años estudiando Saturno" },
+            { "es": "🚁 Ingenuity", "en": "Primer helicóptero en volar en otro planeta" },
+            { "es": "🧑‍🚀 Apollo 11", "en": "La única que llevó HUMANOS a otro mundo" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "astro-om-sondas-senal",
+      "tipo": "opcion-multiple",
+      "titulo": "Una Llamada Muy Larga",
+      "instruccion": "La señal de radio viaja a la velocidad de la luz, lo más rápido que existe.",
+      "pregunta": "📻 ¿Cuánto tarda un mensaje de la Voyager 1 en llegar a la Tierra?",
+      "opciones": [
+        "Un segundo, como un WhatsApp",
+        "Unas 22 horas, casi un día entero",
+        "Un año completo"
+      ],
+      "respuesta": "1",
+      "explicacion_correcta": "¡Correcto! Aunque la señal viaja a la velocidad de la luz, la Voyager está TAN lejos que tarda ~22 horas. Pregunta hoy, respuesta pasado mañana.",
+      "explicacion_incorrecta": "Tarda unas 22 HORAS, aunque la señal viaja a la velocidad de la luz (300,000 km por segundo). Así de lejos está la Voyager: ninguna cosa humana ha ido más lejos."
+    }
+  ]
+}
