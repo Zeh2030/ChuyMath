@@ -277,6 +277,38 @@ const radioAN = (t) => AN.radioMax * Math.pow(AN.radioMin / AN.radioMax, Math.mi
 // numero REAL de la simulacion, para la etiqueta.
 const pctEscapeAN = (t) => Math.round((Math.sqrt(2 * AN.GM / radioAN(t)) / AN.cLuz) * 100);
 
+// Escena cama-elastica: la sabana del espacio. El deslizador es el PESO de la
+// bola central; la rejilla se hunde y la canica rueda por el hueco. La canica
+// se mueve con el MISMO integrador de Newton de las otras escenas: la gracia
+// pedagogica es que la imagen de Einstein (espacio hundido) produce las
+// mismas curvas que ya conoce de Newton.
+// Los numeros estan elegidos (simulando el integrador) para que el deslizador
+// recorra los cuatro desenlaces en bandas anchas y con vuelos cortos:
+// 0-9 recta · 10-23 curva · 24-74 orbita · 75-100 cae.
+const CE = {
+  lado: 30,
+  divisiones: 24,
+  sigma: 3.2,        // ancho del embudo
+  profMax: 7,        // hundimiento en el centro con peso maximo
+  GMmax: 875,
+  r0: 9,             // desde donde se suelta la canica
+  v0: 5.25,          // velocidad de lanzamiento (fija: lo que cambia es el peso)
+  radioCanica: 0.24,
+  bolaMin: 0.35,
+  bolaMax: 2.75,
+  borde: 14,         // se salio del tapete (el tapete llega a 15)
+  desviacionMin: 0.35, // ~20 grados: menos que esto, el camino fue "derechito"
+};
+
+const pesoCE = (t) => Math.min(100, Math.max(0, t)) / 100;
+const profCE = (t) => CE.profMax * pesoCE(t);
+const gmCE = (t) => CE.GMmax * pesoCE(t);
+const radioBolaCE = (t) => CE.bolaMin + (CE.bolaMax - CE.bolaMin) * pesoCE(t);
+
+// Altura de la sabana a distancia r del centro. Es la forma del potencial de
+// Newton (-1/r) suavizada en el centro: el embudo clasico de la cama elastica.
+const alturaCE = (r, prof) => -prof * (CE.sigma / (r + CE.sigma));
+
 /* ============================ componente ============================ */
 
 const Espacio3D = forwardRef(function Espacio3D(
@@ -327,6 +359,8 @@ const Espacio3D = forwardRef(function Espacio3D(
     if (escena === 'cometa') return 60;      // de viaje, alejandose
     if (escena === 'satelite') return 55;    // velocidad media
     if (escena === 'estrellas') return 1;    // primer escalon de la escalera
+    if (escena === 'agujero-negro') return 0; // la Tierra sin apretar todavia
+    if (escena === 'cama-elastica') return 0; // espacio plano: sin peso al centro
     return 90;                               // cuarto creciente
   });
 
@@ -465,6 +499,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     let escSat = null;         // escena satelite (canon de Newton)
     let escEstrellas = null;   // escena estrellas (escalera de gigantes)
     let escAN = null;          // escena agujero-negro (la Tierra comprimida)
+    let escCE = null;          // escena cama-elastica (la sabana del espacio)
     let etiquetaEstrellaEl = null; // constelaciones: nombre flotante de la estrella tocada
     let nombreFlotante = null;     // constelaciones: { pos, hasta } del nombre flotante
 
@@ -992,6 +1027,67 @@ const Espacio3D = forwardRef(function Espacio3D(
       escAN = { tierra, horizonte, aroH, luna, rayo, brilloRayo, geoEstela, posEstela, sim: null, angLuna: 0 };
     }
 
+    if (escena === 'cama-elastica') {
+      // La sabana del espacio: una rejilla que se hunde con el peso de la bola
+      // central. La canica no la "jala" nadie — sigue el camino que le deja el
+      // hueco. Es la imagen de Einstein para la gravedad de Newton.
+      escena3.add(new THREE.AmbientLight(0xc8d4ff, 0.85));
+      const luzCE = new THREE.DirectionalLight(0xfff3d0, 1.4);
+      luzCE.position.set(18, 30, 20);
+      escena3.add(luzCE);
+
+      // Rejilla como segmentos sueltos: se deforma escribiendo la Y de cada
+      // vertice (solo al mover el deslizador, no cada frame).
+      const N = CE.divisiones;
+      const paso = CE.lado / N;
+      const mitad = CE.lado / 2;
+      const verts = [];
+      for (let j = 0; j <= N; j++) {
+        for (let i = 0; i < N; i++) {
+          const a = -mitad + i * paso;
+          const b = -mitad + (i + 1) * paso;
+          const c = -mitad + j * paso;
+          verts.push(a, 0, c, b, 0, c); // linea a lo largo de X
+          verts.push(c, 0, a, c, 0, b); // linea a lo largo de Z
+        }
+      }
+      const posRejilla = new Float32Array(verts);
+      const geoRejilla = registrar(new THREE.BufferGeometry());
+      geoRejilla.setAttribute('position', new THREE.BufferAttribute(posRejilla, 3));
+      const matRejilla = registrar(new THREE.LineBasicMaterial({
+        color: 0x6f8ae0, transparent: true, opacity: 0.55,
+      }));
+      escena3.add(new THREE.LineSegments(geoRejilla, matRejilla));
+
+      const bola = crearCuerpo({ id: 'bola', radio: CE.bolaMin, tex: 'craterizado', color: '#8e7cc3', semilla: 33 });
+      escena3.add(bola);
+
+      const canica = crearCuerpo({ id: 'canica', radio: CE.radioCanica, tex: 'liso', color: '#ffd479', lambert: false });
+      canica.visible = false;
+      escena3.add(canica);
+
+      // Alcanza para la orbita mas lenta (~16 s a 60 fps).
+      const MAX_ESTELA = 1200;
+      const posEstela = new Float32Array(MAX_ESTELA * 3);
+      const geoEstela = registrar(new THREE.BufferGeometry());
+      geoEstela.setAttribute('position', new THREE.BufferAttribute(posEstela, 3));
+      geoEstela.setDrawRange(0, 0);
+      const matEstela = registrar(new THREE.LineBasicMaterial({ color: 0xffd479, transparent: true, opacity: 0.85 }));
+      escena3.add(new THREE.Line(geoEstela, matEstela));
+
+      // Hunde la rejilla al peso dado (solo cuando el deslizador cambia).
+      const deformar = (prof) => {
+        for (let k = 0; k < posRejilla.length; k += 3) {
+          const x = posRejilla[k];
+          const z = posRejilla[k + 2];
+          posRejilla[k + 1] = alturaCE(Math.hypot(x, z), prof);
+        }
+        geoRejilla.attributes.position.needsUpdate = true;
+      };
+
+      escCE = { bola, canica, geoEstela, posEstela, deformar, pesoPrevio: null, sim: null };
+    }
+
     /* --- camara orbital del usuario --- */
     const CAMARAS = {
       planetas: { yaw: 0.6, pitch: 0.9, dist: 60 },
@@ -1002,6 +1098,8 @@ const Espacio3D = forwardRef(function Espacio3D(
       satelite: { yaw: 0, pitch: 1.3, dist: 24 },
       estrellas: { yaw: 0, pitch: 0.18, dist: 26 },
       'agujero-negro': { yaw: 0, pitch: 1.1, dist: 26 },
+      // Vista de 3/4: de frente no se veria el hundimiento de la sabana.
+      'cama-elastica': { yaw: 0.3, pitch: 0.42, dist: 30 },
     };
     const YAW0 = CAMARAS[escena].yaw;
     const PITCH0 = CAMARAS[escena].pitch;
@@ -1063,6 +1161,24 @@ const Espacio3D = forwardRef(function Espacio3D(
         escAN.geoEstela.setDrawRange(0, 0);
         escAN.rayo.visible = true;
         escAN.brilloRayo.visible = true;
+        setResultado('volando');
+        return;
+      }
+      if (escCE) {
+        // Siempre el mismo empujon: lo unico que cambia entre tiro y tiro es
+        // cuanto pesa la bola, o sea cuanto se hunde el espacio.
+        escCE.sim = {
+          pos: new THREE.Vector3(0, 0, CE.r0),
+          vel: new THREE.Vector3(CE.v0, 0, 0),
+          velIni: new THREE.Vector3(CE.v0, 0, 0).normalize(),
+          angPrev: null,
+          angAcum: 0,
+          orbito: false,
+          activo: true,
+          puntos: 0,
+        };
+        escCE.geoEstela.setDrawRange(0, 0);
+        escCE.canica.visible = true;
         setResultado('volando');
       }
     };
@@ -1601,6 +1717,83 @@ const Espacio3D = forwardRef(function Espacio3D(
           escAN.rayo.position.copy(sim.pos);
           escAN.brilloRayo.position.copy(sim.pos);
         }
+      } else if (escena === 'cama-elastica') {
+        const prof = profCE(est.angulo);
+        const rBola = radioBolaCE(est.angulo);
+        // La sabana solo se recalcula cuando el deslizador cambia.
+        if (est.angulo !== escCE.pesoPrevio) {
+          escCE.pesoPrevio = est.angulo;
+          escCE.deformar(prof);
+          escCE.bola.scale.setScalar(rBola);
+          escCE.bola.position.y = alturaCE(0, prof) + rBola;
+        }
+        escCE.bola.rotation.y += dt * 0.1;
+
+        const sim = escCE.sim;
+        if (sim && sim.activo) {
+          const GM = gmCE(est.angulo);
+          const n = Math.min(8, Math.max(2, Math.ceil(dt / 0.006)));
+          const h = dt / n;
+          for (let i = 0; i < n && sim.activo; i++) {
+            const r = sim.pos.length();
+            // Con peso 0 no hay hueco: GM=0 y la canica se va derechita.
+            if (GM > 0) {
+              vTmp.copy(sim.pos).multiplyScalar(-GM / (r * r * r));
+              sim.vel.addScaledVector(vTmp, h);
+            }
+            sim.pos.addScaledVector(sim.vel, h);
+
+            const ang = Math.atan2(sim.pos.x, sim.pos.z);
+            if (sim.angPrev !== null) {
+              let delta = ang - sim.angPrev;
+              if (delta > Math.PI) delta -= Math.PI * 2;
+              if (delta < -Math.PI) delta += Math.PI * 2;
+              sim.angAcum += Math.abs(delta);
+            }
+            sim.angPrev = ang;
+
+            const rN = sim.pos.length();
+            if (rN < rBola) {
+              // Cayo al fondo del pozo.
+              sim.activo = false;
+              escCE.canica.visible = false;
+              setResultado('cae');
+              onFaseRef.current?.({ resultado: 'cae' });
+            } else if (!sim.orbito && sim.angAcum >= Math.PI * 2) {
+              // Vuelta completa sin caer: eso ES orbitar. Y sigue rodando,
+              // que es justo lo que hay que ver.
+              sim.orbito = true;
+              setResultado('orbita');
+              onFaseRef.current?.({ resultado: 'orbita' });
+            } else if (rN > CE.borde) {
+              // Se fue del tapete: ¿se torcio su camino o no? Se mide cuanto
+              // cambio la DIRECCION del movimiento — el barrido angular visto
+              // desde el centro no sirve: una recta que pasa de largo tambien
+              // barre angulo sin haberse torcido.
+              sim.activo = false;
+              escCE.canica.visible = false;
+              vTmp2.copy(sim.vel).normalize();
+              const desviacion = sim.velIni.angleTo(vTmp2);
+              const res = desviacion > CE.desviacionMin ? 'curva' : 'recta';
+              setResultado(res);
+              onFaseRef.current?.({ resultado: res });
+            }
+          }
+        }
+        if (sim) {
+          // La canica RUEDA sobre la sabana: su altura es la del hueco.
+          const alt = alturaCE(sim.pos.length(), prof) + CE.radioCanica;
+          escCE.canica.position.set(sim.pos.x, alt, sim.pos.z);
+          if (sim.activo && sim.puntos < escCE.posEstela.length / 3) {
+            const k = sim.puntos * 3;
+            escCE.posEstela[k] = sim.pos.x;
+            escCE.posEstela[k + 1] = alt;
+            escCE.posEstela[k + 2] = sim.pos.z;
+            sim.puntos++;
+            escCE.geoEstela.setDrawRange(0, sim.puntos);
+            escCE.geoEstela.attributes.position.needsUpdate = true;
+          }
+        }
       }
 
       distDeseada *= zoomUsuario;
@@ -1668,7 +1861,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     );
   }
 
-  const conSlider = ['tierra-luna', 'estaciones', 'cometa', 'satelite', 'estrellas', 'agujero-negro'].includes(escena);
+  const conSlider = ['tierra-luna', 'estaciones', 'cometa', 'satelite', 'estrellas', 'agujero-negro', 'cama-elastica'].includes(escena);
   const conRecuadro = escena === 'tierra-luna' || escena === 'estaciones';
 
   const PISTAS = {
@@ -1680,6 +1873,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     satelite: '👆 Elige la velocidad y ¡lanza! · arrastra para girar la vista',
     estrellas: '👆 Sube la escalera con el deslizador · toca una estrella para saber más',
     'agujero-negro': '👆 Aprieta la Tierra con el deslizador y lanza rayos de luz para ver si escapan',
+    'cama-elastica': '👆 Ponle peso a la bola con el deslizador y rueda la canica · arrastra para girar',
   };
 
   const EXTREMOS = {
@@ -1689,6 +1883,30 @@ const Espacio3D = forwardRef(function Espacio3D(
     satelite: ['🐢', '🚀'],
     estrellas: ['🌍', '👑'],
     'agujero-negro': ['🌍', '🕳️'],
+    'cama-elastica': ['🪶', '🐘'],
+  };
+
+  // El deslizador no siempre recorre una orbita: en algunas escenas es un
+  // porcentaje (velocidad, apreton, peso) o un escalon de la escalera.
+  const SLIDER_MAX = {
+    satelite: 100,
+    'agujero-negro': 100,
+    'cama-elastica': 100,
+    estrellas: PASOS_ESTRELLAS,
+  };
+
+  const SLIDER_ETIQUETA = {
+    satelite: 'Velocidad de lanzamiento',
+    estrellas: 'Subir la escalera de estrellas',
+    'agujero-negro': 'Apretar la Tierra',
+    'cama-elastica': 'Peso de la bola',
+  };
+
+  // Escenas con boton de disparo (y el texto del boton).
+  const BOTON_LANZAR = {
+    satelite: '🚀 ¡Lanzar!',
+    'agujero-negro': '💡 ¡Rayo de luz!',
+    'cama-elastica': '🎱 ¡Rueda la canica!',
   };
 
   let etiqueta = null;
@@ -1792,6 +2010,32 @@ const Espacio3D = forwardRef(function Espacio3D(
         </div>
       </>
     );
+  } else if (escena === 'cama-elastica') {
+    const TEXTOS = {
+      volando: '🎱 La canica va rodando…',
+      recta: '➡️ Se fue DERECHITA: sin peso, el espacio está plano',
+      curva: '🌀 ¡Se torció su camino! El hueco la desvió sin tocarla',
+      orbita: '🔄 ¡VUELTA COMPLETA! Está orbitando: eso hace la Tierra con el Sol',
+      cae: '⬇️ ¡Se cayó al fondo del pozo! Demasiado hundido',
+    };
+    etiqueta = (
+      <>
+        <div className={`espacio3d-fase ${resultado === 'orbita' ? 'eclipse' : ''}`}>
+          {TEXTOS[resultado] || (angulo === 0
+            ? '➖ Espacio PLANO: no hay peso que lo hunda'
+            : angulo < 24
+              ? `🌀 El espacio se hunde un poquito (peso: ${angulo}%)`
+              : angulo < 75
+                ? `🕳️ Hueco hondo (peso: ${angulo}%)`
+                : `⚫ Pozo profundísimo (peso: ${angulo}%)`)}
+        </div>
+        <div className="espacio3d-subfase">
+          {angulo === 0
+            ? 'Sin hundimiento, la canica va derechita. ¡Ruédala y compruébalo!'
+            : 'Nadie jala la canica: solo sigue el hueco que hizo el peso. Eso descubrió Einstein.'}
+        </div>
+      </>
+    );
   } else if (escena === 'estrellas') {
     const TEXTOS_PASO = {
       1: '🌍☀️ Nuestro rincón: el Sol ya es 109 veces la Tierra',
@@ -1832,33 +2076,26 @@ const Espacio3D = forwardRef(function Espacio3D(
               type="range"
               className="espacio3d-slider"
               min={escena === 'estrellas' ? 1 : 0}
-              max={escena === 'satelite' || escena === 'agujero-negro' ? 100 : escena === 'estrellas' ? PASOS_ESTRELLAS : 360}
+              max={SLIDER_MAX[escena] ?? 360}
               step={1}
               value={angulo}
               onChange={(e) => {
                 setAngulo(Number(e.target.value));
-                // Al recomprimir/descomprimir, el veredicto del rayo anterior
-                // ya no aplica: vuelve a mostrarse el % de escape.
-                if (escena === 'agujero-negro') setResultado(null);
+                // Aqui el deslizador cambia las REGLAS del tiro (que tan
+                // apretada esta la Tierra, cuanto pesa la bola): el desenlace
+                // anterior ya no aplica y la etiqueta vuelve a informar.
+                if (escena === 'agujero-negro' || escena === 'cama-elastica') setResultado(null);
               }}
-              aria-label={
-                escena === 'satelite'
-                  ? 'Velocidad de lanzamiento'
-                  : escena === 'estrellas'
-                    ? 'Subir la escalera de estrellas'
-                    : escena === 'agujero-negro'
-                      ? 'Apretar la Tierra'
-                      : 'Mover con el deslizador'
-              }
+              aria-label={SLIDER_ETIQUETA[escena] || 'Mover con el deslizador'}
             />
             <span className="espacio3d-extremo">{EXTREMOS[escena][1]}</span>
-            {(escena === 'satelite' || escena === 'agujero-negro') && (
+            {BOTON_LANZAR[escena] && (
               <button
                 type="button"
                 className="espacio3d-btn-lanzar"
                 onClick={() => apiRef.current?.lanzar?.()}
               >
-                {escena === 'satelite' ? '🚀 ¡Lanzar!' : '💡 ¡Rayo de luz!'}
+                {BOTON_LANZAR[escena]}
               </button>
             )}
           </div>

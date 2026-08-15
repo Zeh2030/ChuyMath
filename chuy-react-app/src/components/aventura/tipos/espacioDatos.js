@@ -50,6 +50,8 @@ export const NOMBRES = {
   rigel: 'Rigel',
   betelgeuse: 'Betelgeuse',
   stephenson: 'Stephenson 2-18',
+  bola: 'la bola pesada',
+  canica: 'la canica',
   ...Object.fromEntries(PLANETAS.map((p) => [p.id, p.nombre])),
 };
 

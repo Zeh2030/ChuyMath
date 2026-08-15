@@ -1,0 +1,242 @@
+{
+  "id": "C3-23_relatividad",
+  "titulo": "Relatividad: las Ideas de Einstein",
+  "descripcion": "Experimentos que solo se hacen con la imaginación, el espacio que se hunde y el tiempo que se estira",
+  "tipo": "sistema-solar",
+  "materia": "ciencias",
+  "nivel": "C3-23",
+  "tema": "astronomia",
+  "misiones": [
+    {
+      "id": "astro-exp-rayo-perseguido",
+      "tipo": "experimento-guia",
+      "titulo": "Persigue un Rayo de Luz",
+      "emoji": "🏃💡",
+      "instruccion": "Este experimento no necesita NADA: solo tu cabeza. Se llama experimento mental, y así fue como Einstein descubrió sus ideas más grandes… ¡empezó a los 16 años con esta misma pregunta!",
+      "tema": "astronomia",
+      "prediccion": {
+        "pregunta": "Imagina que corres TAN rápido como la luz, justo al lado de un rayo. ¿Cómo lo verías?",
+        "opciones": [
+          "Quieto a mi lado, congelado, como cuando corres junto a un amigo",
+          "Alejándose a toda velocidad, igual que si yo estuviera parado"
+        ]
+      },
+      "pasos": [
+        { "instruccion": "Imagina que vas en un coche a 100 km/h y a tu lado va otro coche a 100 km/h. Míralo: para ti va QUIETO, ¿verdad? Puedes saludar a quien va dentro.", "emoji": "🚗" },
+        { "instruccion": "Ahora imagina que corres al lado de un rayo de luz, a su misma velocidad. Si funcionara igual que los coches, verías la luz QUIETA a tu lado: una ola de luz congelada en el aire.", "emoji": "💡" },
+        { "instruccion": "Aquí está la trampa que descubrió Einstein: la luz congelada NO puede existir. Todos los experimentos dicen lo mismo — la luz siempre se aleja de ti a la misma velocidad, corras lo que corras.", "emoji": "🤯" },
+        { "instruccion": "Piensa qué significa eso. Velocidad es distancia dividida entre TIEMPO. Si la velocidad de la luz nunca cambia por más rápido que vayas… entonces lo que tiene que cambiar es el tiempo.", "emoji": "⏱️" },
+        { "instruccion": "Esa es la idea: cuando vas muy rápido, tu tiempo pasa MÁS LENTO. No es magia ni cuento: es lo único que hace que las cuentas salgan.", "emoji": "🧠" }
+      ],
+      "observacion": {
+        "pregunta": "Después de imaginarlo todo, ¿cómo verías el rayo de luz corriendo a su lado?",
+        "opciones": [
+          "Quieto a mi lado, congelado, como cuando corres junto a un amigo",
+          "Alejándose a toda velocidad, igual que si yo estuviera parado"
+        ]
+      },
+      "explicacion": "Einstein no tenía laboratorio ni telescopio cuando pensó esto: tenía 16 años y trabajaba en una oficina de patentes. Su laboratorio era su imaginación. A esto se le llama experimento mental, y es una herramienta científica de verdad: imaginas una situación imposible de armar, la sigues con lógica hasta el final, y ves qué tiene que ser cierto. Su conclusión fue que la velocidad de la luz es igual para todos, y que el tiempo NO es igual para todos: pasa más lento para quien va muy rápido. Suena a cuento… pero ya se comprobó muchísimas veces.",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "¿Qué es un experimento mental?",
+          "opciones": [
+            "Un experimento que se imagina y se sigue con lógica, sin materiales",
+            "Un experimento que sale mal",
+            "Adivinar sin pensar"
+          ],
+          "respuesta": "Un experimento que se imagina y se sigue con lógica, sin materiales"
+        },
+        {
+          "tipo": "true-or-false",
+          "pregunta": "Si corres muy rápido, la luz se aleja de ti más despacio.",
+          "respuesta": false
+        }
+      ]
+    },
+    {
+      "id": "astro-cama-elastica-01",
+      "tipo": "sistema-solar",
+      "escena": "cama-elastica",
+      "modo": "completo",
+      "titulo": "La Cama Elástica del Espacio",
+      "emoji": "🛏️",
+      "instruccion": "Einstein dijo algo rarísimo: la gravedad NO es un jalón. El peso HUNDE el espacio, como una bola pesada hunde una cama elástica, y las cosas simplemente ruedan por el hueco. Ponle peso a la bola con el deslizador y rueda la canica para verlo.",
+      "leccion": "Apuesta antes de jugar: si el centro está muy hundido, ¿qué hará la canica? ¿Se irá derechita, se torcerá, dará vueltas, o caerá al fondo? Fíjate bien en una cosa: NADIE jala la canica. Solo sigue el camino que le dejó el hueco.",
+      "datos": {
+        "bola": "Entre más pesa, más hunde el espacio a su alrededor. El Sol hunde tantísimo que la Tierra lleva 4,500 millones de años rodando por su hueco sin escaparse.",
+        "canica": "No la jala ningún hilo ni ninguna mano: va derechita… por un espacio que está chueco. Eso es la gravedad según Einstein."
+      },
+      "retos": [
+        {
+          "tipo": "canica",
+          "pregunta": "Primero sin peso: haz que la canica se vaya DERECHITA.",
+          "respuesta": "recta",
+          "pista": "Deslizador en el mínimo: sin peso no hay hueco, y sin hueco el camino es recto."
+        },
+        {
+          "tipo": "canica",
+          "pregunta": "Ahora el gran reto: ponle el peso justo para que la canica dé una VUELTA COMPLETA.",
+          "respuesta": "orbita",
+          "pista": "Ni poquito peso (se va de largo) ni muchísimo (se cae al fondo). Busca el punto medio, como Ricitos de Oro."
+        },
+        {
+          "tipo": "canica",
+          "pregunta": "Último: pon tanto peso que la canica CAIGA al fondo del pozo.",
+          "respuesta": "cae",
+          "pista": "Deslizador casi al máximo: el hueco se vuelve tan profundo que ya no hay escapatoria."
+        }
+      ],
+      "dato_curioso": "La Luna no está atada a la Tierra con ningún hilo: rueda por el hueco que la Tierra hace en el espacio, igual que tu canica. Y sí se puede comprobar: en 1919 midieron la luz de unas estrellas durante un eclipse y vieron que pasaba TORCIDA cerca del Sol. La luz no pesa… pero el espacio por el que viaja estaba hundido."
+    },
+    {
+      "id": "astro-story-gemelo-viajero",
+      "tipo": "mini-story",
+      "titulo": "El Gemelo Viajero",
+      "instruccion": "Lee cada parte y responde la pregunta.",
+      "parrafos": [
+        {
+          "texto": "Imagina dos hermanos gemelos de 7 años, Ana y Beto. Beto se sube a una nave que viaja casi a la velocidad de la luz y se va de paseo por el espacio. Ana se queda en casa. Cuando Beto regresa, se llevan la sorpresa de su vida: Ana ya tiene 20 años… y Beto sigue teniendo 8.",
+          "emoji": "👧🧒",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "El gemelo que viajó rapidísimo regresó más ___ que su hermana.",
+              "opciones": ["joven", "viejo", "alto", "cansado"],
+              "respuesta": 0
+            }
+          ]
+        },
+        {
+          "texto": "¿Es un cuento? No. Es exactamente lo que sale de la idea que tú mismo seguiste con Einstein: si la luz siempre va igual de rápido para todos, entonces el tiempo tiene que ir más lento para quien viaja muy rápido. Para Beto pasó un año. Para Ana pasaron trece. Los dos tienen razón: no hay un reloj 'verdadero' para todo el universo.",
+          "emoji": "⏳",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Existe un reloj gigante en el universo que marca la hora verdadera para todos.",
+              "correcto": false,
+              "correccion": "No existe. Cada quien lleva su propio tiempo, y va más lento si viaja muy rápido. A eso se le llama relatividad: depende de quién mida."
+            }
+          ]
+        },
+        {
+          "texto": "¿Y cómo saben que es cierto, si nadie ha viajado a esa velocidad? Con relojes. En 1971 unos científicos hicieron algo genial: tomaron relojes atómicos —los relojes más exactos del mundo, que se atrasan menos de un segundo en un millón de años— y subieron unos a aviones dando la vuelta al planeta, dejando otros en tierra. Al aterrizar, los compararon: marcaban distinto. Poquito, unas millonésimas de segundo… pero exactamente lo que había calculado Einstein.",
+          "emoji": "⏱️",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Para comprobarlo subieron relojes ___ a unos aviones.",
+              "opciones": ["de arena", "atómicos", "de pared", "de pulsera"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "Y ahora lo mejor: tú usas esto TODOS los días. El GPS del teléfono funciona con satélites que llevan relojes precisísimos. Como van rapidísimo y además están lejos del hueco que hace la Tierra en el espacio, sus relojes se desajustan unas millonésimas de segundo cada día. Suena a nada, ¿verdad? Pues si no lo corrigieran con las cuentas de Einstein, tu mapa se equivocaría como 10 kilómetros… ¡cada día!",
+          "emoji": "📱",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "El GPS del teléfono necesita las cuentas de Einstein para no equivocarse.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Así que las ideas de Einstein no son cosas raras de científicos: están en tu bolsillo. Un señor imaginando que corría junto a un rayo de luz terminó haciendo posible que tu teléfono sepa en qué esquina estás parado.",
+          "emoji": "🌍",
+          "preguntas": []
+        }
+      ]
+    },
+    {
+      "id": "astro-tof-hecho-o-idea",
+      "tipo": "true-or-false",
+      "titulo": "¿Hecho o Idea?",
+      "instruccion": "Un buen científico distingue lo que YA se comprobó de lo que solo es una idea bonita. Decide cuál es cuál.",
+      "retos": [
+        {
+          "oracion": "Los agujeros negros existen de verdad: ya les tomamos fotos.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Comprobado. La primera foto es de 2019 (M87*) y la de nuestra galaxia, de 2022."
+        },
+        {
+          "oracion": "El tiempo pasa más lento si viajas muy rápido.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "Comprobado con relojes atómicos en aviones, y lo corrige tu GPS todos los días."
+        },
+        {
+          "oracion": "Los agujeros de gusano existen: son túneles para viajar lejísimos en un ratito.",
+          "correcto": false,
+          "correccion": "Nadie ha visto uno JAMÁS. Salen de las ecuaciones de Einstein, o sea que las matemáticas los permiten… pero eso no significa que existan. Un científico honesto dice: 'todavía no lo sabemos'. Es una idea preciosa, no un hecho.",
+          "explicacion": "Idea, no hecho. Que las matemáticas permitan algo no basta: hay que encontrarlo de verdad."
+        },
+        {
+          "oracion": "Ya hay personas que han viajado al pasado.",
+          "correcto": false,
+          "correccion": "Nadie ha viajado al pasado nunca. Al futuro sí, poquito: los astronautas que pasan meses en la estación espacial regresan unas milésimas de segundo 'más jóvenes'. Pero al pasado, nada.",
+          "explicacion": "Al futuro, un poquito y comprobado. Al pasado, nunca."
+        }
+      ]
+    },
+    {
+      "id": "astro-ip-pruebas-einstein",
+      "tipo": "image-picker",
+      "titulo": "Las Pruebas de Einstein",
+      "instruccion": "Estas fotos son reales. Toca la que se describe.",
+      "retos": [
+        {
+          "palabra_es": "El señor que imaginó todo esto: Albert Einstein",
+          "opciones": [
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Albert%20Einstein%20Head.jpg?width=320", "label": "Albert Einstein" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Solvay%20conference%201927.jpg?width=320", "label": "Reunión de científicos de 1927" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Nist-f1.jpg?width=320", "label": "Un reloj atómico" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/GPS-IIRM.jpg?width=320", "label": "Un satélite de GPS" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Albert Einstein. Cuando tuvo su idea del rayo de luz era un joven que trabajaba revisando papeles en una oficina."
+        },
+        {
+          "palabra_es": "La foto del eclipse de 1919 con la que comprobaron que el Sol TUERCE la luz de las estrellas",
+          "opciones": [
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/FullMoon2010.jpg?width=320", "label": "La Luna llena" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/1919%20eclipse%20positive.jpg?width=320", "label": "El eclipse de 1919" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Black%20hole%20-%20Messier%2087%20crop%20max%20res.jpg?width=320", "label": "El agujero negro M87*" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Albert%20Einstein%20Head.jpg?width=320", "label": "Albert Einstein" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Tuvieron que esperar un eclipse total para tapar al Sol y poder ver las estrellitas de atrás. Estaban corridas de su lugar: la luz venía torcida, tal como Einstein había calculado."
+        },
+        {
+          "palabra_es": "Un reloj atómico: el reloj más exacto del mundo, el que comprobó que el tiempo se estira",
+          "opciones": [
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/GPS-IIRM.jpg?width=320", "label": "Un satélite de GPS (dibujo)" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Solvay%20conference%201927.jpg?width=320", "label": "Reunión de científicos de 1927" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/Nist-f1.jpg?width=320", "label": "Un reloj atómico" },
+            { "imagen": "https://commons.wikimedia.org/wiki/Special:FilePath/1919%20eclipse%20positive.jpg?width=320", "label": "El eclipse de 1919" }
+          ],
+          "respuesta": 2,
+          "explicacion": "No se parece nada a un reloj de pared, ¿verdad? Se atrasa menos de un segundo en un millón de años. Por eso puede medir diferencias tan chiquititas."
+        }
+      ]
+    },
+    {
+      "id": "astro-om-gps-einstein",
+      "tipo": "opcion-multiple",
+      "titulo": "Einstein en tu Bolsillo",
+      "instruccion": "Cierra los ojos y piensa cuándo fue la última vez.",
+      "pregunta": "📱 ¿Cuándo usaste por última vez las matemáticas de Einstein?",
+      "opciones": [
+        "Nunca: eso solo lo usan los científicos",
+        "La última vez que un mapa o un teléfono te dijo dónde estabas",
+        "Solo si viajas en cohete"
+      ],
+      "respuesta": "1",
+      "explicacion_correcta": "¡Exacto! Cada vez que el GPS te ubica, unos satélites están corrigiendo sus relojes con las cuentas de Einstein. Sin eso, el mapa se equivocaría kilómetros cada día.",
+      "explicacion_incorrecta": "Más cerca de lo que crees: cada vez que un mapa te dice dónde estás. El GPS corrige sus relojes con las cuentas de Einstein, si no, se equivocaría como 10 km al día."
+    }
+  ]
+}

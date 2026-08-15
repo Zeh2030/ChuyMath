@@ -28,7 +28,7 @@ const Espacio3D = React.lazy(() => import('./Espacio3D'));
  *                   { tipo:'lanzamiento', pregunta, respuesta:'choca'|'orbita'|'escapa', pista? }]
  *   dato_curioso : texto del final
  */
-const ESCENAS = ['planetas', 'tierra-luna', 'estaciones', 'constelaciones', 'cometa', 'satelite', 'estrellas', 'agujero-negro'];
+const ESCENAS = ['planetas', 'tierra-luna', 'estaciones', 'constelaciones', 'cometa', 'satelite', 'estrellas', 'agujero-negro', 'cama-elastica'];
 
 const SistemaSolar = ({ mision, onCompletar }) => {
   const escena = ESCENAS.includes(mision.escena) ? mision.escena : 'planetas';
@@ -72,7 +72,7 @@ const SistemaSolar = ({ mision, onCompletar }) => {
 
 // OJO: MisionRenderer ya pinta mision.titulo y mision.instruccion arriba de toda
 // mision — repetirlos aqui los mostraba dos veces (mismo error que en cubos).
-const EMOJI_ESCENA = { 'tierra-luna': '🌗', estaciones: '🍂', constelaciones: '✨', cometa: '☄️', satelite: '🛰️', estrellas: '⭐', 'agujero-negro': '🕳️' };
+const EMOJI_ESCENA = { 'tierra-luna': '🌗', estaciones: '🍂', constelaciones: '✨', cometa: '☄️', satelite: '🛰️', estrellas: '⭐', 'agujero-negro': '🕳️', 'cama-elastica': '🛏️' };
 
 const Portada = ({ mision, escena, onComenzar }) => (
   <div className="sisol-portada">
@@ -215,6 +215,13 @@ const MENSAJES_LUZ = {
   atrapado: '🕳️ Sigue siendo agujero negro. ¡Descomprime más y vuelve a lanzar!',
 };
 
+const MENSAJES_CANICA = {
+  recta: '➡️ Se fue derechita: el espacio está plano. ¡Ponle peso a la bola!',
+  curva: '🌀 Se torció, pero se escapó. Prueba con otro peso.',
+  orbita: '🔄 ¡Dio la vuelta completa! Pero el reto pedía otra cosa: cambia el peso.',
+  cae: '⬇️ Se cayó al fondo: demasiado peso. ¡Quítale un poco!',
+};
+
 const Retos = ({ escena, retos, onTerminar }) => {
   const [idx, setIdx] = useState(0);
   const [feedback, setFeedback] = useState(null); // null | 'correcto' | { intento }
@@ -266,11 +273,12 @@ const Retos = ({ escena, retos, onTerminar }) => {
     else setFeedback({ intento: null });
   };
 
-  // Satelite y agujero-negro: el desenlace (lanzamiento / rayo de luz) llega
-  // solo desde el motor.
+  // Satelite, agujero-negro y cama-elastica: el desenlace (lanzamiento, rayo
+  // de luz o canica) llega solo desde el motor.
+  const RETOS_CON_DESENLACE = ['lanzamiento', 'luz', 'canica'];
   const alFase = (info) => {
     setFaseActual(info);
-    if ((reto.tipo === 'lanzamiento' || reto.tipo === 'luz') && info?.resultado && !resuelto) {
+    if (RETOS_CON_DESENLACE.includes(reto.tipo) && info?.resultado && !resuelto) {
       if (info.resultado === reto.respuesta) acierto();
       else setFeedback({ intento: info.resultado });
     }
@@ -336,11 +344,13 @@ const Retos = ({ escena, retos, onTerminar }) => {
               ? MENSAJES_LANZAMIENTO[feedback.intento] || '¡Prueba con otra velocidad!'
               : reto.tipo === 'luz' && feedback.intento
                 ? MENSAJES_LUZ[feedback.intento] || '¡Prueba apretando distinto!'
-                : reto.tipo === 'estacion'
-                ? 'Todavía no. Fíjate hacia dónde apunta el eje rojo: ¿le da el sol de frente a nuestra mitad del mundo?'
-                : reto.tipo === 'cometa'
-                  ? 'Todavía no. La pista está en la cola: mira dónde crece y dónde casi desaparece.'
-                  : 'Todavía no. ¡Mueve el deslizador y fíjate en el recuadro!'}
+                : reto.tipo === 'canica' && feedback.intento
+                  ? MENSAJES_CANICA[feedback.intento] || '¡Prueba con otro peso!'
+                  : reto.tipo === 'estacion'
+                    ? 'Todavía no. Fíjate hacia dónde apunta el eje rojo: ¿le da el sol de frente a nuestra mitad del mundo?'
+                    : reto.tipo === 'cometa'
+                      ? 'Todavía no. La pista está en la cola: mira dónde crece y dónde casi desaparece.'
+                      : 'Todavía no. ¡Mueve el deslizador y fíjate en el recuadro!'}
           {reto.pista && <span className="sisol-pista">💡 {reto.pista}</span>}
         </div>
       )}

@@ -424,6 +424,16 @@ el flujo de MezcladorColores (intro → explorar → retos → fin).
   solo depende del peso). Una LUNA orbita todo el tiempo y su orbita nunca
   cambia — mata el mito de la aspiradora. Retos tipo `luz` (atrapado / escapa)
   que aciertan solos, como los de `lanzamiento`.
+- **Escena `cama-elastica`** (2026-08-15, el espacio que se hunde): deslizador
+  = PESO de la bola central (0-100); la rejilla del espacio se hunde con la
+  forma del potencial de Newton y la bola crece. Boton "Rueda la canica":
+  siempre el mismo empujon — lo unico que cambia es cuanto se hundio el
+  espacio. La canica rueda SOBRE la sabana (su altura es la del hueco) con el
+  mismo integrador newtoniano de las otras escenas: la imagen de Einstein
+  produce las curvas de Newton. Bandas del deslizador (simuladas): 0-9 recta,
+  10-23 curva, 24-74 orbita, 75-100 cae. `recta` vs `curva` se decide por la
+  DESVIACION del camino (angulo entre velocidad inicial y final), no por el
+  barrido angular. Retos tipo `canica` (recta / curva / orbita / cae).
 
 Campos de la mision:
 
@@ -470,6 +480,7 @@ saturno, urano, neptuno. Tierra-luna: sol, tierra, luna.
 | `mini-story/C2-36_los-robots-viajeros.json` | Sondas espaciales (Voyager, disco de oro, Pluton, Parker) | mini-story + image-picker + tap-the-pairs + opcion-multiple |
 | `sistema-solar/C2-37_cazadores-de-constelaciones.json` | 3 constelaciones nuevas (Can Mayor, Escorpion, Casiopea) | sistema-solar (constelaciones) + true-or-false |
 | `sistema-solar/C3-22_agujeros-negros.json` | Agujeros negros (Michell, no aspiran, fotos EHT) | sistema-solar (agujero-negro) + mini-story + image-picker + opcion-multiple |
+| `sistema-solar/C3-23_relatividad.json` | Relatividad (experimento mental, cama elastica, gemelo viajero, GPS) | experimento-guia + sistema-solar (cama-elastica) + mini-story + true-or-false + image-picker + opcion-multiple |
 
 **Fotos**: URLs `https://commons.wikimedia.org/wiki/Special:FilePath/<archivo>?width=320`
 (redirect estable de Wikimedia Commons, sin rutas con hash; todas verificadas con curl).
@@ -490,10 +501,6 @@ el tile propio `sistema-solar`. `detectMateria` reconoce `ciencias-*`.
 
 ### Ideas futuras (no construidas)
 
-- C3-23 Relatividad para ninos (storytelling + experimentos mentales de Einstein:
-  el rayo de luz perseguido, el gemelo viajero, GPS como prueba diaria; agujeros
-  de gusano como leccion "hecho cientifico vs idea matematica aun no confirmada")
-- Cama elastica 3D (malla deformable: visualizar como el peso curva el espacio)
 - Expediciones espaciales estilo `expedicion-galactica.json` (Sistema Solar, Luna, Marte)
 - Cinturon de asteroides
 
