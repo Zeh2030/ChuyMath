@@ -441,14 +441,16 @@ const Espacio3D = forwardRef(function Espacio3D(
     let escCometa = null;      // escena cometa
     let escSat = null;         // escena satelite (canon de Newton)
     let escEstrellas = null;   // escena estrellas (escalera de gigantes)
+    let etiquetaEstrellaEl = null; // constelaciones: nombre flotante de la estrella tocada
+    let nombreFlotante = null;     // constelaciones: { pos, hasta } del nombre flotante
 
     // Capa DOM para etiquetas flotantes: un <span> por cuerpo, posicionado
     // cada frame proyectando su posicion 3D a pantalla. Vive fuera del canvas
     // para que el texto salga nitido a cualquier zoom (un sprite con textura
-    // se veria pixelado). La usan el modo comparar (planetas) y la escalera
-    // de estrellas.
+    // se veria pixelado). La usan el modo comparar (planetas), la escalera
+    // de estrellas y constelaciones (nombres de estrellas y de figuras).
     let crearEtiqueta = null;
-    if (escena === 'planetas' || escena === 'estrellas') {
+    if (escena === 'planetas' || escena === 'estrellas' || escena === 'constelaciones') {
       capaEtiquetas = document.createElement('div');
       capaEtiquetas.className = 'espacio3d-etiquetas';
       contenedor.appendChild(capaEtiquetas);
@@ -700,8 +702,22 @@ const Espacio3D = forwardRef(function Espacio3D(
         }));
         grupo.add(new THREE.LineSegments(geoVision, matVision));
 
-        constels.push({ id: c.id, dirVista, matLineas, matVision, halos, alineada: false });
+        // Centro de la figura en el mundo (el grupo solo rota, no se traslada)
+        // para colocarle su nombre dorado cuando encaja.
+        const centro = puntos3d
+          .reduce((acc, p) => acc.add(p), new THREE.Vector3())
+          .divideScalar(puntos3d.length)
+          .applyQuaternion(grupo.quaternion);
+        const etiquetaNombreEl = crearEtiqueta(`✨ ${c.nombre}`);
+        etiquetaNombreEl.classList.add('dorada');
+
+        constels.push({ id: c.id, dirVista, matLineas, matVision, halos, alineada: false, centro, etiquetaNombreEl });
       });
+
+      // Nombre flotante de la estrella tocada, junto a la estrella (ademas de
+      // la linea de abajo, que queda lejos del dedo).
+      etiquetaEstrellaEl = crearEtiqueta('');
+      nombreFlotante = { pos: new THREE.Vector3(), hasta: 0 };
 
       // Las estrellas nunca se mueven: se guarda su posicion de mundo una vez
       // y el bucle solo mide la distancia a la camara.
@@ -1014,7 +1030,15 @@ const Espacio3D = forwardRef(function Espacio3D(
       if (!estadoRef.current.seleccionable) return;
       const malla = cuerpoEn(e);
       if (!malla) return;
-      if (nombreEstrella.has(malla)) setEstrellaTocada(nombreEstrella.get(malla));
+      if (nombreEstrella.has(malla)) {
+        setEstrellaTocada(nombreEstrella.get(malla));
+        // Nombre flotante junto a la estrella durante un par de segundos.
+        if (nombreFlotante) {
+          malla.getWorldPosition(nombreFlotante.pos);
+          nombreFlotante.hasta = performance.now() + 2600;
+          etiquetaEstrellaEl.textContent = `⭐ ${nombreEstrella.get(malla)}`;
+        }
+      }
       const id = porMalla.get(malla);
       if (id) onSeleccionRef.current?.(id);
     };
@@ -1172,6 +1196,8 @@ const Espacio3D = forwardRef(function Espacio3D(
         // direccion Tierra→constelacion, la figura "encaja". Y mientras tanto,
         // caliente/frio: las lineas se van dorando conforme uno se acerca.
         vTmp.copy(objetivoCam).sub(camara.position).normalize();
+        const wConst = lienzo.clientWidth;
+        const hConst = lienzo.clientHeight;
         let mejor = 0;
         constels.forEach((k) => {
           const ang = vTmp.angleTo(k.dirVista);
@@ -1186,12 +1212,44 @@ const Espacio3D = forwardRef(function Espacio3D(
           mejor = Math.max(mejor, calor);
           colTmp.copy(COL_LINEA_CONST).lerp(COL_ORO, calor);
           k.matLineas.color.lerp(colTmp, Math.min(1, dt * 6));
-          k.matLineas.opacity += ((0.5 + 0.5 * calor) - k.matLineas.opacity) * Math.min(1, dt * 6);
-          k.matVision.opacity += ((0.12 + 0.4 * calor) - k.matVision.opacity) * Math.min(1, dt * 6);
+          // Foco por atencion: la figura que NO se esta mirando casi
+          // desaparece — con 5 constelaciones, sin esto la pantalla se enreda.
+          k.matLineas.opacity += ((0.06 + 0.94 * calor) - k.matLineas.opacity) * Math.min(1, dt * 6);
+          k.matVision.opacity += ((0.02 + 0.48 * calor) - k.matVision.opacity) * Math.min(1, dt * 6);
           k.halos.forEach((h) => {
-            h.opacity += ((0.55 + 0.45 * calor) - h.opacity) * Math.min(1, dt * 6);
+            h.opacity += ((0.15 + 0.85 * calor) - h.opacity) * Math.min(1, dt * 6);
           });
+          // Nombre dorado flotando sobre la figura mientras esta encajada.
+          if (k.alineada && wConst && hConst) {
+            vProy.copy(k.centro).project(camara);
+            if (vProy.z < 1) {
+              const px = (vProy.x * 0.5 + 0.5) * wConst;
+              const py = (1 - (vProy.y * 0.5 + 0.5)) * hConst;
+              k.etiquetaNombreEl.style.transform = `translate(${px}px, ${py}px) translate(-50%, -100%)`;
+              k.etiquetaNombreEl.style.opacity = 1;
+            } else {
+              k.etiquetaNombreEl.style.opacity = 0;
+            }
+          } else {
+            k.etiquetaNombreEl.style.opacity = 0;
+          }
         });
+        // Nombre flotante de la estrella tocada (caduca solo).
+        if (nombreFlotante && wConst && hConst) {
+          if (performance.now() < nombreFlotante.hasta) {
+            vProy.copy(nombreFlotante.pos).project(camara);
+            if (vProy.z < 1) {
+              const px = (vProy.x * 0.5 + 0.5) * wConst;
+              const py = (1 - (vProy.y * 0.5 + 0.5)) * hConst;
+              etiquetaEstrellaEl.style.transform = `translate(${px}px, ${py}px) translate(-50%, -140%)`;
+              etiquetaEstrellaEl.style.opacity = 1;
+            } else {
+              etiquetaEstrellaEl.style.opacity = 0;
+            }
+          } else {
+            etiquetaEstrellaEl.style.opacity = 0;
+          }
+        }
         // Solo se avisa a React cuando cambia el "cajon", no cada frame.
         const cajon = mejor > 0.84 ? 'encaja' : mejor > 0.6 ? 'caliente' : mejor > 0.35 ? 'tibio' : 'frio';
         if (cajon !== cajonPrevio) {

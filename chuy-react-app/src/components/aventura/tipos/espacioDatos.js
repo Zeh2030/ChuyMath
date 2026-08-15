@@ -39,6 +39,9 @@ export const NOMBRES = {
   luna: 'la Luna',
   'osa-mayor': 'la Osa Mayor',
   orion: 'Orión',
+  'can-mayor': 'el Can Mayor',
+  escorpion: 'el Escorpión',
+  casiopea: 'Casiopea',
   cometa: 'el cometa',
   proxima: 'Próxima Centauri',
   sirio: 'Sirio',
@@ -248,5 +251,52 @@ export const CONSTELACIONES = [
       { nombre: 'Rigel', u: -0.85, v: -1.5, dist: 28, brillo: 1.3, color: '#bcd4ff' },
     ],
     lineas: [[0, 1], [0, 2], [1, 4], [2, 3], [3, 4], [2, 5], [4, 6]],
+  },
+  {
+    id: 'can-mayor',
+    nombre: 'el Can Mayor',
+    dir: [0.15, 0.62, 0.77],
+    escalaAngular: 0.13,
+    // Sirio a 8.6 años luz (casi vecina) y las demas a cientos: la
+    // profundidad 3D mas dramatica de todas las figuras.
+    estrellas: [
+      { nombre: 'Sirio', u: 0, v: 1.2, dist: 14, brillo: 1.35, color: '#cfe4ff' },
+      { nombre: 'Mirzam', u: -0.9, v: 0.9, dist: 26, brillo: 0.9 },
+      { nombre: 'Wezen', u: 0.1, v: -0.9, dist: 34, brillo: 0.95 },
+      { nombre: 'Adhara', u: -0.35, v: -1.4, dist: 25, brillo: 1.0 },
+      { nombre: 'Aludra', u: 0.55, v: -1.3, dist: 38, brillo: 0.85 },
+    ],
+    lineas: [[0, 1], [0, 2], [2, 3], [2, 4]],
+  },
+  {
+    id: 'escorpion',
+    nombre: 'el Escorpión',
+    dir: [0.85, -0.2, 0.49],
+    escalaAngular: 0.13,
+    // Antares, "la rival de Marte": otra supergigante ROJA como Betelgeuse.
+    estrellas: [
+      { nombre: 'Acrab', u: -0.5, v: 1.5, dist: 27, brillo: 0.9 },
+      { nombre: 'Dschubba', u: -0.8, v: 1.1, dist: 27, brillo: 0.9 },
+      { nombre: 'Antares', u: -0.5, v: 0.4, dist: 30, brillo: 1.3, color: '#ff5a3c' },
+      { nombre: 'Epsilon Scorpii', u: -0.35, v: -0.35, dist: 17, brillo: 0.85 },
+      { nombre: 'Sargas', u: 0.1, v: -1.1, dist: 24, brillo: 0.9 },
+      { nombre: 'Shaula', u: 0.8, v: -1.0, dist: 34, brillo: 1.0 },
+    ],
+    lineas: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5]],
+  },
+  {
+    id: 'casiopea',
+    nombre: 'Casiopea',
+    dir: [-0.45, -0.75, -0.48],
+    escalaAngular: 0.13,
+    // La W: la mas facil de encontrar de verdad en el cielo del norte.
+    estrellas: [
+      { nombre: 'Caph', u: -1.6, v: 0.55, dist: 16, brillo: 0.95 },
+      { nombre: 'Schedar', u: -0.8, v: -0.3, dist: 26, brillo: 1.0 },
+      { nombre: 'Navi', u: 0, v: 0.35, dist: 36, brillo: 1.05 },
+      { nombre: 'Ruchbah', u: 0.8, v: -0.35, dist: 19, brillo: 0.9 },
+      { nombre: 'Segin', u: 1.6, v: 0.45, dist: 32, brillo: 0.8 },
+    ],
+    lineas: [[0, 1], [1, 2], [2, 3], [3, 4]],
   },
 ];

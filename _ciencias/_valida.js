@@ -16,7 +16,7 @@ const CUERPOS_POR_ESCENA = {
   planetas: new Set(['sol', 'mercurio', 'venus', 'tierra', 'marte', 'jupiter', 'saturno', 'urano', 'neptuno']),
   'tierra-luna': new Set(['sol', 'tierra', 'luna']),
   estaciones: new Set(['sol', 'tierra']),
-  constelaciones: new Set(['tierra', 'osa-mayor', 'orion']),
+  constelaciones: new Set(['tierra', 'osa-mayor', 'orion', 'can-mayor', 'escorpion', 'casiopea']),
   cometa: new Set(['sol', 'tierra', 'cometa']),
   satelite: new Set(['tierra']),
   estrellas: new Set(['tierra', 'sol', 'proxima', 'sirio', 'arcturus', 'aldebaran', 'rigel', 'betelgeuse', 'stephenson']),
@@ -30,7 +30,7 @@ const ESTACIONES_OK = new Set([
   'verano', 'otono', 'invierno', 'primavera',
   'verano-sur', 'otono-sur', 'invierno-sur', 'primavera-sur',
 ]);
-const CONSTELACIONES_OK = new Set(['osa-mayor', 'orion']);
+const CONSTELACIONES_OK = new Set(['osa-mayor', 'orion', 'can-mayor', 'escorpion', 'casiopea']);
 const ZONAS_COMETA_OK = new Set(['perihelio', 'afelio']);
 const LANZAMIENTOS_OK = new Set(['choca', 'orbita', 'escapa']);
 const MODOS_OK = new Set(['explorar', 'reto', 'completo']);

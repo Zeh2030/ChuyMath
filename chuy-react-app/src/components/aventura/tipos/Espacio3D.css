@@ -49,6 +49,13 @@
   transition: opacity 0.15s ease;
 }
 
+/* Nombre de una constelacion encajada */
+.espacio3d-etiqueta.dorada {
+  color: #f1c40f;
+  font-size: 0.85rem;
+  background: rgba(10, 15, 40, 0.8);
+}
+
 .espacio3d-lienzo:active {
   cursor: grabbing;
 }

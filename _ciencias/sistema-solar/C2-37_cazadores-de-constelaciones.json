@@ -1,0 +1,82 @@
+{
+  "id": "C2-37_cazadores-de-constelaciones",
+  "titulo": "Cazadores de Constelaciones",
+  "descripcion": "El cielo creció: encuentra al perro de Sirio, al escorpión de Antares y la W de Casiopea",
+  "tipo": "sistema-solar",
+  "materia": "ciencias",
+  "nivel": "C2-37",
+  "tema": "astronomia",
+  "misiones": [
+    {
+      "id": "astro-constelaciones-02",
+      "tipo": "sistema-solar",
+      "escena": "constelaciones",
+      "modo": "completo",
+      "titulo": "Cazadores de Constelaciones",
+      "emoji": "🔭",
+      "instruccion": "El cielo creció: ahora hay CINCO dibujos escondidos alrededor de la Tierra (los dos que ya conoces y tres nuevos). Gira la vista despacio: la figura que vas mirando se enciende, las demás casi desaparecen. Cuando encaje, su nombre aparece en dorado.",
+      "leccion": "Cada constelación esconde una lección: en el Can Mayor, Sirio está casi al lado de la Tierra y sus compañeras lejísimos. En el Escorpión brilla Antares, 'la rival de Marte', otra supergigante ROJA (o sea, fría) como Betelgeuse. Y Casiopea es la W: la más fácil de encontrar en el cielo de verdad.",
+      "datos": {
+        "tierra": "Nuestro mirador. Recuerda: los dibujos solo existen vistos desde aquí.",
+        "osa-mayor": "El cucharón de siempre: tu viejo conocido. ¿Todavía lo encuentras?",
+        "orion": "El cazador, con Betelgeuse (roja) y Rigel (azul) — las mismas que viste en la Escalera de las Estrellas.",
+        "can-mayor": "El perro que acompaña a Orión. Sirio, su estrella más brillante, está a solo 8.6 años luz: casi vecina nuestra. Las demás del perro están CIENTOS de veces más lejos.",
+        "escorpion": "El alacrán del cielo, con su cola curvada. Su corazón es Antares, una supergigante roja cuyo nombre significa 'la rival de Marte' — de tan roja, los antiguos las confundían.",
+        "casiopea": "La reina del cielo del norte, con forma de W. Es la más fácil de encontrar de verdad: búscala una noche despejada con tu papá, se ve todo el año desde México."
+      },
+      "retos": [
+        {
+          "tipo": "vista",
+          "pregunta": "Encuentra al PERRO (el Can Mayor), con Sirio brillando en su cabeza.",
+          "respuesta": "can-mayor",
+          "pista": "Gira despacio y sigue el calentito: las líneas se doran cuando te acercas."
+        },
+        {
+          "tipo": "vista",
+          "pregunta": "Ahora encuentra al ESCORPIÓN, con su cola curvada y su corazón rojo.",
+          "respuesta": "escorpion",
+          "pista": "Busca el puntito ROJO brillante: es Antares, su corazón."
+        },
+        {
+          "tipo": "vista",
+          "pregunta": "Última cacería: encuentra la W de CASIOPEA.",
+          "respuesta": "casiopea",
+          "pista": "Cinco estrellas en zigzag, como una W (o una M, según cómo la mires)."
+        }
+      ],
+      "dato_curioso": "Sirio es la estrella más brillante de nuestro cielo… pero NO es enorme ni la que más brilla del universo: se ve tan fuerte porque está cerquita (8.6 años luz). Es como una linterna en tu cuarto contra un faro en la otra punta de la ciudad."
+    },
+    {
+      "id": "astro-tof-constelaciones-02",
+      "tipo": "true-or-false",
+      "titulo": "¿Verdadero o Falso?",
+      "instruccion": "Después de cazar las 5 constelaciones, decide.",
+      "retos": [
+        {
+          "oracion": "Sirio se ve tan brillante porque es la estrella más grande del universo.",
+          "correcto": false,
+          "correccion": "Sirio brilla tanto porque está CERCA (8.6 años luz), no porque sea enorme.",
+          "explicacion": "¡Falso! Es como una linterna cercana contra un faro lejano: la cercana deslumbra más aunque sea más chica."
+        },
+        {
+          "oracion": "Antares y Betelgeuse son rojas porque son de las estrellas más FRÍAS.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "¡Verdadero! En las estrellas el rojo es frío y el azul caliente — al revés que las llaves del agua. 'Frías' es un decir: aun así queman a más de 3,000 °C."
+        },
+        {
+          "oracion": "Casiopea se puede ver desde México durante todo el año.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "¡Verdadero! Está tan cerca del norte del cielo que nunca se esconde del todo. Búscala en forma de W una noche despejada."
+        },
+        {
+          "oracion": "Las estrellas de un mismo dibujo son vecinas entre sí.",
+          "correcto": false,
+          "correccion": "Solo se VEN juntas desde la Tierra: en el Can Mayor, Sirio está 100 veces más cerca que sus 'compañeras'.",
+          "explicacion": "¡Falso! Lo viste al girar: cada estrella cuelga a su propia distancia y el dibujo se deshace desde cualquier otro lugar."
+        }
+      ]
+    }
+  ]
+}
