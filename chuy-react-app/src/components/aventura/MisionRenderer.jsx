@@ -50,6 +50,8 @@ import ArmaLaPalabra from './tipos/ArmaLaPalabra';
 const PianoPrompter = React.lazy(() => import('./tipos/PianoPrompter'));
 import IdentificaNota from './tipos/IdentificaNota';
 const ExploradorMapa = React.lazy(() => import('./tipos/ExploradorMapa'));
+import { TIPOS_SILENCIO } from '../../data/musicaFondo';
+import { suprimir, liberar } from '../../utils/musicaFondo';
 import './MisionRenderer.css';
 
 /**
@@ -78,6 +80,17 @@ const MisionRenderer = ({
   mostrarResultado = false,
   materia = null
 }) => {
+  // Pausa la música de fondo mientras dure una misión donde el audio ES el
+  // ejercicio (piano, dictado de inglés, fonética de letras) y la reanuda al
+  // salir. Va ANTES del return temprano de abajo: los hooks no pueden quedar
+  // después de un return condicional.
+  const tipoMision = mision?.tipo;
+  React.useEffect(() => {
+    if (!TIPOS_SILENCIO.has(tipoMision)) return;
+    const token = suprimir();
+    return () => liberar(token);
+  }, [tipoMision]);
+
   if (!mision) {
     return <div>No hay misión disponible</div>;
   }

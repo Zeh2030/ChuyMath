@@ -11,6 +11,7 @@ import Simulacro from './pages/Simulacro';
 import Perfil from './pages/Perfil';
 import ProfileSelector from './pages/ProfileSelector';
 import Peques from './pages/Peques';
+import MusicaFondo from './components/audio/MusicaFondo';
 
 const ProtectedRoute = ({ children }) => {
   const { currentUser, loading } = useAuth();
@@ -44,6 +45,8 @@ const ProfileRequired = ({ children }) => {
 function App() {
   return (
     <Router>
+      {/* Fuera de <Routes>: debe sobrevivir los cambios de ruta sin remontarse. */}
+      <MusicaFondo />
       <Routes>
         <Route path="/login" element={<Login />} />
 
