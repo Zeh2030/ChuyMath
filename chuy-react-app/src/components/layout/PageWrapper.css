@@ -351,3 +351,9 @@
   z-index: 1;
 }
 
+@media (max-width: 600px) {
+  .main-container {
+    padding: 16px;
+  }
+}
+

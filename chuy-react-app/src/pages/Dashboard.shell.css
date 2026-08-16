@@ -49,19 +49,6 @@
 
 @media (max-width: 600px) {
   .boveda-header-personalizado {
-    padding: 20px;
-  }
-
-  .boveda-avatar {
-    font-size: 2.5rem;
-    min-width: 50px;
-  }
-
-  .boveda-info h1 {
-    font-size: 1.3rem;
-  }
-
-  .boveda-info p {
-    font-size: 0.9rem;
+    display: none;
   }
 }

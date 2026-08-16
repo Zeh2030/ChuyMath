@@ -49,13 +49,17 @@ button {
     grid-template-columns: 1fr;
     gap: 25px;
   }
-  
+
   .main-column {
     order: 1;
   }
-  
+
   .sidebar-column {
     order: 2;
+  }
+
+  .aventura-widget {
+    padding: 28px;
   }
 }
 

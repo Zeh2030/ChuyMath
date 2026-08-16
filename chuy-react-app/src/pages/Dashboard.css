@@ -314,15 +314,27 @@
   .dashboard-grid {
     grid-template-columns: 1fr;
   }
-}
 
-@media (max-width: 500px) {
   .widget {
     padding: 20px;
   }
-  
-  .dashboard-header h1 {
-    font-size: 1.8rem;
+
+  .widget-title {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .dashboard-grid {
+    gap: 18px;
+  }
+
+  .widget {
+    padding: 16px;
+  }
+
+  .widget-title {
+    font-size: 1.25rem;
   }
 }
 
@@ -572,6 +584,7 @@
   text-align: center;
   transition: all 0.3s ease;
   cursor: pointer;
+  min-width: 0;
 }
 
 .trofeo-card-modal:hover {
@@ -633,6 +646,11 @@
 
   .trofeo-titulo-modal {
     font-size: 1rem;
+  }
+
+  .trofeo-estrellas-modal {
+    font-size: 1rem;
+    letter-spacing: 1px;
   }
 
   .modal-header h2 {
