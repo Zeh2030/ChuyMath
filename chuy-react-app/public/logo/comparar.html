@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>ChuyMath — comparar logos</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 0; padding: 28px; background: #f4f6f9; color: #24303d; }
+  h1 { font-size: 1.4rem; margin: 0 0 4px; }
+  .nota { color: #64748b; font-size: .9rem; margin: 0 0 26px; max-width: 60ch; line-height: 1.5; }
+  .fila { background: #fff; border-radius: 14px; padding: 18px 20px; margin-bottom: 18px; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+  .fila h2 { font-size: 1.05rem; margin: 0 0 14px; }
+  .tira { display: flex; align-items: flex-end; gap: 22px; flex-wrap: wrap; }
+  .celda { text-align: center; }
+  .celda span { display: block; font-size: .72rem; color: #94a3b8; margin-top: 6px; }
+  /* El favicon real se ve a 16-32px: es LA prueba que importa */
+  .p16 { width: 16px; height: 16px; }
+  .p32 { width: 32px; height: 32px; }
+  .p64 { width: 64px; height: 64px; }
+  .p128 { width: 128px; height: 128px; }
+  .p180 { width: 180px; height: 180px; }
+  /* iOS recorta el icono con esquinas redondeadas */
+  .ios { border-radius: 22%; }
+  .fondos { display: flex; gap: 14px; margin-top: 16px; }
+  .fondo { flex: 1; padding: 14px; border-radius: 10px; display: flex; align-items: center; gap: 12px; font-size: .8rem; }
+  .claro { background: #ffffff; border: 1px solid #e2e8f0; color: #64748b; }
+  .oscuro { background: #16202b; color: #94a3b8; }
+  .pizarron { background: #1A3528; color: #cfe3d6; }
+  /* Simulación de pestaña de navegador */
+  .tabs { display: flex; gap: 8px; margin-top: 16px; }
+  .tab { display: flex; align-items: center; gap: 7px; background: #fff; border: 1px solid #dbe3ec;
+         border-bottom: none; border-radius: 9px 9px 0 0; padding: 7px 14px 9px; font-size: .8rem; color: #475569; }
+</style>
+</head>
+<body>
+<h1>ChuyMath — tres opciones de logo</h1>
+<p class="nota">
+  Lo que importa es la columna de <strong>16px y 32px</strong>: ese es el tamaño real del favicon
+  en la pestaña. Si a 16px no se distingue, no sirve, por bonito que se vea grande.
+  Los tamaños grandes son para el icono de app en la pantalla de inicio.
+</p>
+
+<div class="fila">
+  <h2>A · Cohete-lápiz</h2>
+  <div class="tira">
+    <div class="celda"><img class="p16" src="A-cohete-lapiz.svg"><span>16 px</span></div>
+    <div class="celda"><img class="p32" src="A-cohete-lapiz.svg"><span>32 px</span></div>
+    <div class="celda"><img class="p64" src="A-cohete-lapiz.svg"><span>64 px</span></div>
+    <div class="celda"><img class="p128" src="A-cohete-lapiz.svg"><span>128 px</span></div>
+    <div class="celda"><img class="p180 ios" src="A-cohete-lapiz.svg"><span>180 px · iOS</span></div>
+  </div>
+  <div class="fondos">
+    <div class="fondo claro"><img class="p32" src="A-cohete-lapiz.svg"> fondo claro</div>
+    <div class="fondo oscuro"><img class="p32" src="A-cohete-lapiz.svg"> tema espacial</div>
+    <div class="fondo pizarron"><img class="p32" src="A-cohete-lapiz.svg"> tema pizarrón</div>
+  </div>
+  <div class="tabs"><div class="tab"><img class="p16" src="A-cohete-lapiz.svg"> ChuyMath</div></div>
+</div>
+
+<div class="fila">
+  <h2>B · Cohete con estela de notas</h2>
+  <div class="tira">
+    <div class="celda"><img class="p16" src="B-cohete-notas.svg"><span>16 px</span></div>
+    <div class="celda"><img class="p32" src="B-cohete-notas.svg"><span>32 px</span></div>
+    <div class="celda"><img class="p64" src="B-cohete-notas.svg"><span>64 px</span></div>
+    <div class="celda"><img class="p128" src="B-cohete-notas.svg"><span>128 px</span></div>
+    <div class="celda"><img class="p180 ios" src="B-cohete-notas.svg"><span>180 px · iOS</span></div>
+  </div>
+  <div class="fondos">
+    <div class="fondo claro"><img class="p32" src="B-cohete-notas.svg"> fondo claro</div>
+    <div class="fondo oscuro"><img class="p32" src="B-cohete-notas.svg"> tema espacial</div>
+    <div class="fondo pizarron"><img class="p32" src="B-cohete-notas.svg"> tema pizarrón</div>
+  </div>
+  <div class="tabs"><div class="tab"><img class="p16" src="B-cohete-notas.svg"> ChuyMath</div></div>
+</div>
+
+<div class="fila">
+  <h2>C · Cohete-lápiz con estela de notas (ambas)</h2>
+  <div class="tira">
+    <div class="celda"><img class="p16" src="C-cohete-lapiz-notas.svg"><span>16 px</span></div>
+    <div class="celda"><img class="p32" src="C-cohete-lapiz-notas.svg"><span>32 px</span></div>
+    <div class="celda"><img class="p64" src="C-cohete-lapiz-notas.svg"><span>64 px</span></div>
+    <div class="celda"><img class="p128" src="C-cohete-lapiz-notas.svg"><span>128 px</span></div>
+    <div class="celda"><img class="p180 ios" src="C-cohete-lapiz-notas.svg"><span>180 px · iOS</span></div>
+  </div>
+  <div class="fondos">
+    <div class="fondo claro"><img class="p32" src="C-cohete-lapiz-notas.svg"> fondo claro</div>
+    <div class="fondo oscuro"><img class="p32" src="C-cohete-lapiz-notas.svg"> tema espacial</div>
+    <div class="fondo pizarron"><img class="p32" src="C-cohete-lapiz-notas.svg"> tema pizarrón</div>
+  </div>
+  <div class="tabs"><div class="tab"><img class="p16" src="C-cohete-lapiz-notas.svg"> ChuyMath</div></div>
+</div>
+</body>
+</html>

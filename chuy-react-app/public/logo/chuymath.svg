@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Cohete lápiz con estela de notas">
+  <rect width="64" height="64" rx="14" fill="#232c66"/>
+  <circle cx="13" cy="11" r="1.3" fill="#ffffff" opacity=".55"/>
+  <circle cx="52" cy="15" r="1" fill="#ffffff" opacity=".4"/>
+  <circle cx="48" cy="8" r=".8" fill="#ffffff" opacity=".3"/>
+
+  <!-- Estela: nota + llamita -->
+  <g fill="#ffd447">
+    <ellipse cx="25.5" cy="54" rx="2.9" ry="2.2" transform="rotate(-20 25.5 54)"/>
+    <rect x="27.7" y="46.5" width="1.4" height="7" rx=".7"/>
+    <path d="M29.1 46.5 q3.7 1.1 2.4 4.3 q-.4-2.4-2.4-2.7 Z"/>
+  </g>
+  <g fill="#7fd4a8">
+    <ellipse cx="39.5" cy="56" rx="2.2" ry="1.7" transform="rotate(-20 39.5 56)"/>
+    <rect x="41.2" y="50.5" width="1.1" height="5.3" rx=".55"/>
+  </g>
+  <path d="M31 45 Q33.2 52.5 35.2 45 Z" fill="#ff9c33"/>
+
+  <!-- Aletas -->
+  <path d="M27 37 L20.5 46.5 L27 44 Z" fill="#e6503c"/>
+  <path d="M37 37 L43.5 46.5 L37 44 Z" fill="#e6503c"/>
+
+  <!-- Cuerpo = lápiz -->
+  <rect x="27" y="22.5" width="10" height="22.5" fill="#f5c33b"/>
+  <rect x="27" y="22.5" width="3" height="22.5" fill="#ffffff" opacity=".22"/>
+
+  <!-- Punta de lápiz -->
+  <path d="M29.4 13.6 L34.6 13.6 L37 22.5 L27 22.5 Z" fill="#e8a24f"/>
+  <path d="M32 6.5 L29.4 13.6 L34.6 13.6 Z" fill="#4b4b58"/>
+
+  <!-- Ventanilla -->
+  <circle cx="32" cy="30" r="3.4" fill="#8fdcf7"/>
+  <circle cx="32" cy="30" r="3.4" fill="none" stroke="#2b3a7a" stroke-width="1.3"/>
+</svg>

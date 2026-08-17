@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Cohete lápiz">
+  <!-- Fondo propio: garantiza legibilidad sobre pestañas claras y oscuras -->
+  <rect width="64" height="64" rx="14" fill="#232c66"/>
+  <circle cx="14" cy="13" r="1.3" fill="#ffffff" opacity=".55"/>
+  <circle cx="51" cy="17" r="1" fill="#ffffff" opacity=".4"/>
+  <circle cx="47" cy="9" r=".8" fill="#ffffff" opacity=".3"/>
+
+  <!-- Llama -->
+  <path d="M28.4 45 Q32 60 35.6 45 Z" fill="#ff9c33"/>
+  <path d="M30.2 45 Q32 54 33.8 45 Z" fill="#ffe066"/>
+
+  <!-- Aletas -->
+  <path d="M27 37 L20.5 46.5 L27 44 Z" fill="#e6503c"/>
+  <path d="M37 37 L43.5 46.5 L37 44 Z" fill="#e6503c"/>
+
+  <!-- Cuerpo = lápiz -->
+  <rect x="27" y="22.5" width="10" height="22.5" fill="#f5c33b"/>
+  <rect x="27" y="22.5" width="3" height="22.5" fill="#ffffff" opacity=".22"/>
+
+  <!-- Punta de lápiz: madera + grafito -->
+  <path d="M29.4 13.6 L34.6 13.6 L37 22.5 L27 22.5 Z" fill="#e8a24f"/>
+  <path d="M32 6.5 L29.4 13.6 L34.6 13.6 Z" fill="#4b4b58"/>
+
+  <!-- Ventanilla: es lo que lo vuelve cohete y no solo lápiz -->
+  <circle cx="32" cy="30" r="3.4" fill="#8fdcf7"/>
+  <circle cx="32" cy="30" r="3.4" fill="none" stroke="#2b3a7a" stroke-width="1.3"/>
+</svg>

@@ -1,0 +1,16 @@
+{
+  "name": "ChuyMath",
+  "short_name": "ChuyMath",
+  "description": "Aventuras de matemáticas, inglés, ciencias, piano, arte, geografía y letras",
+  "lang": "es",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#232c66",
+  "theme_color": "#232c66",
+  "icons": [
+    { "src": "/logo/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/logo/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/logo/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

@@ -5,7 +5,14 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/logo/chuymath.svg" />
+    <!-- PNG de respaldo: navegadores viejos ignoran el favicon en SVG -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/logo/icon-32.png" />
+    <!-- iOS no lee el manifest para el icono de pantalla de inicio: usa este -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/logo/icon-180.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#232c66" />
+    <meta name="apple-mobile-web-app-title" content="ChuyMath" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ChuyMath</title>
   </head>
