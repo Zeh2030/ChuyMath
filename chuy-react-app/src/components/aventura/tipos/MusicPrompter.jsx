@@ -35,14 +35,39 @@ const fmtTiempo = (ms) => {
 };
 
 /**
- * Ancho del pentagrama PROPORCIONAL al contenido (px por compás constante),
- * para que piezas largas no se compriman. Tope de seguridad para no generar
- * SVGs absurdamente anchos (~120k px CSS a scale 2).
+ * Cuenta las notas de la voz más densa (un acorde cuenta como una).
+ * Sirve para dar más ancho a piezas con muchas notas por compás (6/8, 9/8,
+ * pasajes de semicorcheas), donde contar compases se queda corto.
+ */
+const contarNotas = (abc) => {
+  const porVoz = {};
+  let voz = '1';
+  for (const raw of abc.split('\n')) {
+    const line = raw.trim();
+    if (!line || line.startsWith('%')) continue;
+    const vm = line.match(/^V:\s*(\d+)/);
+    if (vm) { voz = vm[1]; continue; }
+    if (/^[A-Z]:/.test(line)) continue;
+    const limpia = line
+      .replace(/"[^"]*"/g, '')       // anotaciones de texto
+      .replace(/![^!]*!/g, '')       // decoraciones (!mp!, !fermata!)
+      .replace(/\[[^\]]*\]/g, 'C');  // acordes: una sola posición
+    porVoz[voz] = (porVoz[voz] || 0) + (limpia.match(/[A-Ga-gz]/g) || []).length;
+  }
+  const valores = Object.values(porVoz);
+  return valores.length ? Math.max(...valores) : 1;
+};
+
+/**
+ * Ancho del pentagrama PROPORCIONAL al contenido, para que piezas largas no se
+ * compriman. Toma el mayor entre "por compás" y "por nota": así nunca queda más
+ * estrecho que antes y los compases densos (9/8, semicorcheas) reciben más aire.
+ * Tope de seguridad para no generar SVGs absurdamente anchos.
  */
 const calcStaffwidth = (abc, multiVoice) => {
-  const compases = estimarCompases(abc);
-  const porCompas = multiVoice ? 1100 : 500;
-  return Math.min(Math.max(1500, compases * porCompas), 60000);
+  const porCompas = (multiVoice ? 1100 : 500) * estimarCompases(abc);
+  const porNota = (multiVoice ? 150 : 130) * contarNotas(abc);
+  return Math.min(Math.max(1500, porCompas, porNota), 60000);
 };
 
 /**

@@ -44,7 +44,10 @@ const PianoPrompter = ({ mision, onCompletar }) => {
     notas = '',
   } = mision;
 
-  const { compas = '4/4', tonalidad = 'C', clave = 'treble' } = configuracion;
+  // `unidad` = L: de ABC (duración por defecto de una nota sin número).
+  // 1/4 sirve para 4/4 y 3/4; en compases de corchea (6/8, 9/8) conviene 1/8
+  // para no tener que escribir "/2" en cada nota.
+  const { compas = '4/4', tonalidad = 'C', clave = 'treble', unidad = '1/4' } = configuracion;
 
   // Detectar si es multi-voz (contiene V: o %%staves)
   const isMultiVoice = notas.includes('V:') || notas.includes('%%staves');
@@ -71,7 +74,7 @@ const PianoPrompter = ({ mision, onCompletar }) => {
         }
       }
       const processedNotas = processed.join('\n');
-      const header = ['X:1', `T:${titulo}`, `M:${compas}`, 'L:1/4'].join('\n');
+      const header = ['X:1', `T:${titulo}`, `M:${compas}`, `L:${unidad}`].join('\n');
       const notasWithKey = processedNotas.includes('K:')
         ? processedNotas
         : processedNotas.replace(/(V:1)/, `K:${tonalidad}\n$1`);
@@ -81,7 +84,7 @@ const PianoPrompter = ({ mision, onCompletar }) => {
       'X:1',
       `T:${titulo}`,
       `M:${compas}`,
-      'L:1/4',
+      `L:${unidad}`,
       `K:${tonalidad} clef=${claveStr}`,
       notasStr,
     ].join('\n');
