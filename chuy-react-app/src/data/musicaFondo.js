@@ -14,8 +14,8 @@ export const PISTAS = [
     id: 'clair-de-lune',
     titulo: 'Clair de Lune',
     compositor: 'Claude Debussy',
-    url: '', // ← pegar la URL de descarga de Firebase Storage
-    licencia: 'Dominio público — pendiente anotar intérprete y fuente',
+    url: 'https://firebasestorage.googleapis.com/v0/b/chuy-react-app.firebasestorage.app/o/M%C3%BAsica%2FSuite%20Bergamasque%20-%20III.%20Claire%20de%20Lune%20%281%29.mp3?alt=media&token=1c87d146-2ea5-4600-9635-e89ca1d03d6f',
+    licencia: 'CC BY-NC — Simone Renzi (Musopen)',
   },
 ];
 
