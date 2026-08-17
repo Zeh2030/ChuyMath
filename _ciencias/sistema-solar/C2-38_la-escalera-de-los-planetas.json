@@ -1,0 +1,103 @@
+{
+  "id": "C2-38_la-escalera-de-los-planetas",
+  "titulo": "La Escalera de los Planetas",
+  "descripcion": "Sube desde Marte hasta el planeta más grande conocido… y descubre por qué no hay más grandes",
+  "tipo": "sistema-solar",
+  "materia": "ciencias",
+  "nivel": "C2-38",
+  "tema": "astronomia",
+  "misiones": [
+    {
+      "id": "astro-exoplanetas-01",
+      "tipo": "sistema-solar",
+      "escena": "exoplanetas",
+      "modo": "completo",
+      "titulo": "La Escalera de los Planetas",
+      "emoji": "🔭",
+      "instruccion": "Ya subiste la escalera de las estrellas… ahora toca la de los PLANETAS: los nuestros y los de otras estrellas (se llaman exoplanetas). Sube con el deslizador y fíjate en algo raro: cerca del final, los escalones casi no crecen. Hay un secreto ahí.",
+      "leccion": "¿Cómo sabemos el tamaño de un planeta que ni con telescopio se ve? ¡Por su SOMBRA! Cuando pasa frente a su estrella, la tapa un poquito y la estrella parpadea. Qué tanto la tapa nos dice qué tan grande es. Los tamaños de esta escalera son MEDIDOS de verdad; los colores casi todos son imaginados por artistas… menos uno. Te toca descubrir cuál.",
+      "datos": {
+        "marte": "Marte, nuestro vecino: la mitad de la Tierra. Es el piso de la escalera y ya lo conoces bien.",
+        "tierra": "Nuestra casa, la vara de medir de toda la escalera. No la pierdas de vista: escalón a escalón se va a ir encogiendo.",
+        "trappist-1e": "TRAPPIST-1e, casi gemelo de la Tierra en tamaño. Da la vuelta a su estrella (una enana roja chiquita) ¡en solo 6 días! Es de una familia de 7 planetas hermanos.",
+        "kepler-452b": "Kepler-452b, 'el primo de la Tierra': su estrella es como nuestro Sol y su año dura 385 días, casi como el nuestro. Cómo se ve por fuera nadie lo sabe: este dibujo es imaginado. 🎨",
+        "neptuno": "Neptuno, nuestro gigante azul: 4 Tierras de ancho. De aquí para arriba ya nada es de roca: todo es gas.",
+        "kepler-51d": "Kepler-51d, ¡el planeta de algodón de azúcar! 🍭 Es casi tan grande como Saturno pero pesa poquísimo: es puro esponjado. Los científicos los llaman 'super-puff' (superesponjados).",
+        "saturno": "Saturno: casi igual de grande que Kepler-51d, pero pesa MUCHO más que él… y aun así es tan ligero que flotaría en una alberca gigante. El tamaño no dice cuánto pesa algo.",
+        "jupiter": "Júpiter, el rey de NUESTRO sistema: 11 Tierras de ancho. Durante siglos creímos que no había nada más grande…",
+        "hd-189733b": "HD 189733b: aquí llueve VIDRIO derretido, de lado, con vientos de 7,000 km/h. Y ojo: su color azul es de los poquitos MEDIDOS de verdad (lo midió el telescopio Hubble). 📏",
+        "kelt-9b": "KELT-9b, el planeta más CALIENTE conocido: 4,300 °C en su lado de día — más caliente que muchas estrellas. Ahí el fierro no es sólido ni líquido: ¡es vapor en el cielo!",
+        "hat-p-67b": "HAT-P-67 b, el planeta más ANCHO jamás medido: 2 Júpiteres. Y es menos denso que el corcho: está inflado como un globo por el calor de su estrella. Más grande que esto, no se ha encontrado nada.",
+        "sol": "El Sol: 109 Tierras. Hasta el planeta récord se queda chiquito a su lado. ¿Te acuerdas de la Escalera de las Estrellas? Empieza exactamente aquí."
+      },
+      "retos": [
+        {
+          "tipo": "toca",
+          "pregunta": "Toca el planeta de algodón de azúcar: grande como Saturno pero ligerito, ligerito.",
+          "respuesta": "kepler-51d",
+          "pista": "Está en el tercer escalón, es rosita y esponjado. Su nombre empieza con Kepler."
+        },
+        {
+          "tipo": "toca",
+          "pregunta": "Toca el planeta azul donde llueve vidrio de lado.",
+          "respuesta": "hd-189733b",
+          "pista": "Cuidado: hay dos azules en la escalera. El que buscas es MÁS GRANDE que Júpiter."
+        },
+        {
+          "tipo": "toca",
+          "pregunta": "Toca el planeta más grande que se ha encontrado en todo el universo.",
+          "respuesta": "hat-p-67b",
+          "pista": "Sube hasta arriba. Es el del globo 🎈: dos Júpiteres de ancho y ni uno más."
+        }
+      ],
+      "dato_curioso": "El planeta más CERCANO de otra estrella se llama Próxima b, a solo 4.2 años luz… y no está en la escalera. ¿Por qué? Porque nunca pasa frente a su estrella y sin sombra no hay medida: sabemos que existe, pero no qué tan grande es. Un científico honesto no pone en la lista lo que no ha medido."
+    },
+    {
+      "id": "astro-om-exo-techo",
+      "tipo": "opcion-multiple",
+      "titulo": "El Techo de los Planetas",
+      "instruccion": "Piensa en los últimos escalones de la escalera.",
+      "pregunta": "🎈 ¿Por qué no existen planetas 10 veces más anchos que Júpiter?",
+      "opciones": [
+        "Porque no hemos buscado bien todavía",
+        "Porque con más gas, la gravedad los aprieta en vez de agrandarlos",
+        "Porque el universo no tiene suficiente gas"
+      ],
+      "respuesta": "1",
+      "explicacion_correcta": "¡Exacto! Si le echas más gas a un planeta gigante, su propia gravedad lo APRIETA y se queda casi del mismo tamaño. Y si le echas muchísimo más, se prende y se convierte en estrella. Por eso el récord es apenas 2 Júpiteres: los planetas tienen techo.",
+      "explicacion_incorrecta": "Hemos encontrado miles de exoplanetas y ninguno pasa de ~2 Júpiteres de ancho. No es mala suerte: con más gas, la gravedad del planeta lo APRIETA en vez de agrandarlo, y con muchísimo más gas… se enciende como estrella. Los planetas tienen techo."
+    },
+    {
+      "id": "astro-tf-exo-hechos",
+      "tipo": "true-or-false",
+      "titulo": "¿Medido o Inventado?",
+      "instruccion": "Después de subir la escalera, di si cada frase es verdadera o falsa.",
+      "retos": [
+        {
+          "oracion": "Los tamaños de los exoplanetas de la escalera son medidos de verdad.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "¡Verdadero! Cuando el planeta pasa frente a su estrella, la tapa un poquito. Esa sombra delata su tamaño. Se llama método del tránsito."
+        },
+        {
+          "oracion": "El color azul de HD 189733b se lo inventó un artista.",
+          "correcto": false,
+          "correccion": "¡Ese es justo el color MEDIDO de verdad! Lo midió el telescopio Hubble.",
+          "explicacion": "¡Falso! De casi todos los exoplanetas sabemos el tamaño pero NO el color (esos sí son dibujos imaginados). El azul de HD 189733b es de los poquitos medidos."
+        },
+        {
+          "oracion": "Kepler-51d es grande como Saturno pero pesa poquísimo, como algodón de azúcar.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "¡Verdadero! Ser grande no es lo mismo que ser pesado: Kepler-51d es puro esponjado, y Saturno pesa muchísimo más midiendo casi lo mismo."
+        },
+        {
+          "oracion": "Se conocen planetas 10 veces más anchos que Júpiter.",
+          "correcto": false,
+          "correccion": "El récord (HAT-P-67 b) mide solo 2 Júpiteres de ancho.",
+          "explicacion": "¡Falso! Más grande no se puede: con más gas la gravedad aprieta al planeta, y con muchísimo más gas… se enciende y se convierte en estrella."
+        }
+      ]
+    }
+  ]
+}

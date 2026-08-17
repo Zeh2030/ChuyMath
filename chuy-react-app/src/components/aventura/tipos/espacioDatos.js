@@ -52,6 +52,12 @@ export const NOMBRES = {
   stephenson: 'Stephenson 2-18',
   bola: 'la bola pesada',
   canica: 'la canica',
+  'trappist-1e': 'TRAPPIST-1e',
+  'kepler-452b': 'Kepler-452b',
+  'kepler-51d': 'Kepler-51d',
+  'hd-189733b': 'HD 189733b',
+  'kelt-9b': 'KELT-9b',
+  'hat-p-67b': 'HAT-P-67 b',
   ...Object.fromEntries(PLANETAS.map((p) => [p.id, p.nombre])),
 };
 
@@ -118,6 +124,42 @@ export const ORBITAS_UA = [
   { id: 'jupiter', ua: 5.2 },
   { id: 'saturno', ua: 9.58 },
 ];
+
+/* ============================ LA ESCALERA DE LOS PLANETAS ============================ */
+
+// Radios en RADIOS TERRESTRES (medidos por transito: la sombra del planeta al
+// pasar frente a su estrella delata su tamano — por eso solo hay exoplanetas
+// CON transito aqui; Proxima b, sin transito, no tiene tamano medido).
+// La sorpresa de esta escalera es el TECHO: el planeta mas ancho conocido
+// (HAT-P-67 b) mide apenas ~2 Jupiteres — con mas gas, la gravedad lo aprieta
+// en vez de agrandarlo, y con muchisimo mas se enciende como estrella. El Sol
+// entra al ultimo escalon para rematarlo: 5 veces mas ancho que el record.
+// `glow` marca los que brillan o parecen inflados (visual, no fisica).
+export const PASOS_EXOPLANETAS = 6;
+
+export const PLANETAS_ESCALERA = [
+  { id: 'marte', nombre: 'Marte', radioTierra: 0.53, color: '#d1603d', tex: 'marte', emoji: '🔴', paso: 1 },
+  { id: 'tierra', nombre: 'la Tierra', radioTierra: 1, color: '#2f6fd0', tex: 'tierra', emoji: '🌍', paso: 1 },
+  { id: 'trappist-1e', nombre: 'TRAPPIST-1e', radioTierra: 0.92, color: '#b5836a', tex: 'craterizado', emoji: '🪨', paso: 2 },
+  { id: 'kepler-452b', nombre: 'Kepler-452b', radioTierra: 1.63, color: '#79a06f', tex: 'nubes', emoji: '🌎', paso: 2 },
+  { id: 'neptuno', nombre: 'Neptuno', radioTierra: 3.88, color: '#3f66d4', tex: 'neptuno', emoji: '🔵', paso: 3 },
+  { id: 'kepler-51d', nombre: 'Kepler-51d', radioTierra: 9.3, color: '#f2b8cf', tex: 'liso', emoji: '🍭', paso: 3, glow: true },
+  { id: 'saturno', nombre: 'Saturno', radioTierra: 9.44, color: '#e3c98f', tex: 'bandas-suaves', emoji: '💫', paso: 3, anillos: true },
+  { id: 'jupiter', nombre: 'Júpiter', radioTierra: 11.2, color: '#d8a56a', tex: 'bandas', emoji: '🪐', paso: 4 },
+  { id: 'hd-189733b', nombre: 'HD 189733b', radioTierra: 12.7, color: '#2b4fd6', tex: 'liso', emoji: '💙', paso: 4 },
+  { id: 'kelt-9b', nombre: 'KELT-9b', radioTierra: 21.2, color: '#ffd9a0', tex: 'estrella', emoji: '🔥', paso: 5, glow: true },
+  { id: 'hat-p-67b', nombre: 'HAT-P-67 b', radioTierra: 23.3, color: '#ecd7a4', tex: 'nubes', emoji: '🎈', paso: 5, glow: true },
+  { id: 'sol', nombre: 'el Sol', radioTierra: 109, color: '#ffcf3f', tex: 'sol', emoji: '☀️', paso: 6, glow: true },
+];
+
+// "13 Tierras" se imagina mejor que "13×". La Tierra lleva texto propio (es la
+// referencia) y el Sol tambien (no compite: cierra la leccion).
+export const etiquetaExoplaneta = (p) => {
+  if (p.id === 'tierra') return '🌍 la Tierra · ¡aquí vivimos!';
+  if (p.id === 'sol') return '☀️ el Sol · ¡ni el récord se le acerca!';
+  const n = formatMultiplo(p.radioTierra).slice(0, -1); // sin el simbolo ×
+  return `${p.emoji} ${p.nombre} · ${n} Tierras`;
+};
 
 /* ============================ FASES DE LA LUNA ============================ */
 

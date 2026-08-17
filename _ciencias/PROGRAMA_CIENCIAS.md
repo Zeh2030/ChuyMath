@@ -424,6 +424,15 @@ el flujo de MezcladorColores (intro → explorar → retos → fin).
   solo depende del peso). Una LUNA orbita todo el tiempo y su orbita nunca
   cambia — mata el mito de la aspiradora. Retos tipo `luz` (atrapado / escapa)
   que aciertan solos, como los de `lanzamiento`.
+- **Escena `exoplanetas`** (2026-08-16, la Escalera de los Planetas): mismo
+  motor de escalera por PASOS que `estrellas`, con dataset propio — Marte y la
+  Tierra, exoplanetas famosos con radio MEDIDO por transito (TRAPPIST-1e,
+  Kepler-452b, Kepler-51d "algodon de azucar", HD 189733b azul medido,
+  KELT-9b el mas caliente) y el TECHO: HAT-P-67 b (~2 Jupiteres, el mas ancho
+  conocido). Ultimo escalon: entra el Sol (109x) y remata — un planeta no
+  puede crecer sin limite (mas gas → la gravedad aprieta → estrella). Saturno
+  conserva sus anillos; solo exoplanetas CON transito (Proxima b fuera, con
+  honestidad explicita). Retos tipo `toca`.
 - **Escena `cama-elastica`** (2026-08-15, el espacio que se hunde): deslizador
   = PESO de la bola central (0-100); la rejilla del espacio se hunde con la
   forma del potencial de Newton y la bola crece. Boton "Rueda la canica":
@@ -481,6 +490,7 @@ saturno, urano, neptuno. Tierra-luna: sol, tierra, luna.
 | `sistema-solar/C2-37_cazadores-de-constelaciones.json` | 3 constelaciones nuevas (Can Mayor, Escorpion, Casiopea) | sistema-solar (constelaciones) + true-or-false |
 | `sistema-solar/C3-22_agujeros-negros.json` | Agujeros negros (Michell, no aspiran, fotos EHT) | sistema-solar (agujero-negro) + mini-story + image-picker + opcion-multiple |
 | `sistema-solar/C3-23_relatividad.json` | Relatividad (experimento mental, cama elastica, gemelo viajero, GPS) | experimento-guia + sistema-solar (cama-elastica) + mini-story + true-or-false + image-picker + opcion-multiple |
+| `sistema-solar/C2-38_la-escalera-de-los-planetas.json` | La escalera de los planetas (exoplanetas, el techo de ~2 Jupiteres) | sistema-solar (exoplanetas) + opcion-multiple + true-or-false |
 
 **Fotos**: URLs `https://commons.wikimedia.org/wiki/Special:FilePath/<archivo>?width=320`
 (redirect estable de Wikimedia Commons, sin rutas con hash; todas verificadas con curl).
