@@ -144,6 +144,29 @@
   transform: scale(1.06);
 }
 
+/* Fila propia para cuando una escena tiene DOS botones (big-bang): dentro de
+   la barra del slider no cabian y se encimaban, con o sin pantalla completa.
+   Aqui se centran, respiran y en pantallas chicas se apilan solos. */
+.espacio3d-botones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 460px;
+}
+
+.espacio3d-botones .espacio3d-btn-lanzar {
+  padding: 8px 14px;
+  font-size: 0.88rem;
+}
+
+/* El boton alterno es un INTERRUPTOR de modo (mito ↔ real), no una accion:
+   color propio para que no compita con el de mudarse. */
+.espacio3d-btn-alterno {
+  background: linear-gradient(135deg, #6d5bd0, #4636a8);
+}
+
 .espacio3d-fase {
   font-weight: 700;
   font-size: 1.05rem;

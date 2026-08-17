@@ -2854,7 +2854,7 @@ const Espacio3D = forwardRef(function Espacio3D(
               aria-label={SLIDER_ETIQUETA[escena] || 'Mover con el deslizador'}
             />
             <span className="espacio3d-extremo">{EXTREMOS[escena][1]}</span>
-            {BOTON_LANZAR[escena] && (
+            {BOTON_LANZAR[escena] && !BOTON_ALTERNO[escena] && (
               <button
                 type="button"
                 className="espacio3d-btn-lanzar"
@@ -2863,16 +2863,28 @@ const Espacio3D = forwardRef(function Espacio3D(
                 {BOTON_LANZAR[escena]}
               </button>
             )}
-            {BOTON_ALTERNO[escena] && (
-              <button
-                type="button"
-                className="espacio3d-btn-lanzar"
-                onClick={() => setAlterno((v) => !v)}
-              >
-                {BOTON_ALTERNO[escena]}
-              </button>
-            )}
           </div>
+      )}
+
+      {BOTON_ALTERNO[escena] && (
+        <div className="espacio3d-botones">
+          {BOTON_LANZAR[escena] && (
+            <button
+              type="button"
+              className="espacio3d-btn-lanzar"
+              onClick={() => apiRef.current?.lanzar?.()}
+            >
+              {BOTON_LANZAR[escena]}
+            </button>
+          )}
+          <button
+            type="button"
+            className="espacio3d-btn-lanzar espacio3d-btn-alterno"
+            onClick={() => setAlterno((v) => !v)}
+          >
+            {BOTON_ALTERNO[escena]}
+          </button>
+        </div>
       )}
 
       {etiqueta}
