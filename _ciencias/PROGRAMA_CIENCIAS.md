@@ -433,6 +433,17 @@ el flujo de MezcladorColores (intro → explorar → retos → fin).
   puede crecer sin limite (mas gas → la gravedad aprieta → estrella). Saturno
   conserva sus anillos; solo exoplanetas CON transito (Proxima b fuera, con
   honestidad explicita). Retos tipo `toca`.
+- **Escena `asteroides`** (2026-08-16, la Escalera de los Asteroides): tercer
+  dataset del motor de escalera. Cheliabinsk (ballena azul) → Tunguska (avion
+  jumbo / Piramide del Sol) → Apophis (Torre Eiffel, pasa en 2029 y NO pega)
+  → Bennu (5 canchas; OSIRIS-REx trajo piedritas) → Chicxulub (mas alto que
+  el Everest, Yucatan) → Vesta (CDMX→Guadalajara) → Ceres (CDMX→Monterrey).
+  Todos con **forma de papa** (ruido determinista por semilla) MENOS Ceres:
+  que solo los muy grandes se hagan bolita por su gravedad ES leccion. La
+  Luna entra de invitada al ultimo paso: ni todo el cinturon junto arma el
+  5% de ella. Campo `ancla` en el dataset = comparacion corta en la etiqueta
+  flotante (anclas elegidas por el usuario: animales, tiempos de caminata,
+  Mexico y mundo famoso). Retos tipo `toca`.
 - **Escena `cama-elastica`** (2026-08-15, el espacio que se hunde): deslizador
   = PESO de la bola central (0-100); la rejilla del espacio se hunde con la
   forma del potencial de Newton y la bola crece. Boton "Rueda la canica":
@@ -491,6 +502,7 @@ saturno, urano, neptuno. Tierra-luna: sol, tierra, luna.
 | `sistema-solar/C3-22_agujeros-negros.json` | Agujeros negros (Michell, no aspiran, fotos EHT) | sistema-solar (agujero-negro) + mini-story + image-picker + opcion-multiple |
 | `sistema-solar/C3-23_relatividad.json` | Relatividad (experimento mental, cama elastica, gemelo viajero, GPS) | experimento-guia + sistema-solar (cama-elastica) + mini-story + true-or-false + image-picker + opcion-multiple |
 | `sistema-solar/C2-38_la-escalera-de-los-planetas.json` | La escalera de los planetas (exoplanetas, el techo de ~2 Jupiteres) | sistema-solar (exoplanetas) + opcion-multiple + true-or-false |
+| `sistema-solar/C2-39_rocas-del-espacio.json` | Asteroides (escalera con anclas), vocabulario meteoro/meteorito y Perseidas | sistema-solar (asteroides) + tap-the-pairs + mini-story + true-or-false |
 
 **Fotos**: URLs `https://commons.wikimedia.org/wiki/Special:FilePath/<archivo>?width=320`
 (redirect estable de Wikimedia Commons, sin rutas con hash; todas verificadas con curl).
@@ -512,7 +524,12 @@ el tile propio `sistema-solar`. `detectMateria` reconoce `ciencias-*`.
 ### Ideas futuras (no construidas)
 
 - Expediciones espaciales estilo `expedicion-galactica.json` (Sistema Solar, Luna, Marte)
-- Cinturon de asteroides
+- **C3-24 impactos y defensa planetaria** (aprobado en concepto): escena
+  `impacto` — deslizador de tamano de la roca, desenlaces con umbrales de
+  expertos (se desintegra / explota en el aire / crater / catastrofe),
+  mini-story Chicxulub con los cenotes de Yucatan marcando el borde del
+  crater, y remate esperanzador con DART (2022: la NASA movio la orbita de
+  Dimorphos a proposito — ya practicamos como desviarlos)
 
 ---
 

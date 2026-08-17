@@ -21,6 +21,7 @@ const CUERPOS_POR_ESCENA = {
   satelite: new Set(['tierra']),
   estrellas: new Set(['tierra', 'sol', 'proxima', 'sirio', 'arcturus', 'aldebaran', 'rigel', 'betelgeuse', 'stephenson']),
   exoplanetas: new Set(['marte', 'tierra', 'trappist-1e', 'kepler-452b', 'neptuno', 'kepler-51d', 'saturno', 'jupiter', 'hd-189733b', 'kelt-9b', 'hat-p-67b', 'sol']),
+  asteroides: new Set(['chelyabinsk', 'tunguska', 'apophis', 'bennu', 'chicxulub', 'vesta', 'ceres', 'luna']),
   'agujero-negro': new Set(['tierra', 'luna']),
   'cama-elastica': new Set(['bola', 'canica']),
 };

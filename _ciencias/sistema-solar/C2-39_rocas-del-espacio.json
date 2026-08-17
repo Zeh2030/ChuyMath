@@ -1,0 +1,162 @@
+{
+  "id": "C2-39_rocas-del-espacio",
+  "titulo": "Rocas del Espacio",
+  "descripcion": "Asteroides de todos los tamaños, la piedra que cambia de nombre y la lluvia de estrellas de agosto",
+  "tipo": "sistema-solar",
+  "materia": "ciencias",
+  "nivel": "C2-39",
+  "tema": "astronomia",
+  "misiones": [
+    {
+      "id": "astro-asteroides-01",
+      "tipo": "sistema-solar",
+      "escena": "asteroides",
+      "modo": "completo",
+      "titulo": "La Escalera de los Asteroides",
+      "emoji": "🪨",
+      "instruccion": "Los asteroides son rocas que dan vueltas alrededor del Sol, casi todas en el CINTURÓN, un vecindario entre Marte y Júpiter. Sube la escalera con el deslizador: van desde el tamaño de una ballena hasta el de un viaje en coche de 9 horas.",
+      "leccion": "Fíjate en las formas: los asteroides NO son bolitas, son PAPAS espaciales. Para hacerse bolita, un mundo necesita tener tanta gravedad que se aplasta a sí mismo hasta quedar redondo — y para eso hay que ser MUY grande. En toda la escalera solo uno lo ha logrado. Encuéntralo.",
+      "datos": {
+        "chelyabinsk": "Del tamaño de una BALLENA AZUL. En 2013 una roca así llegó de sorpresa a Rusia (venía del lado del Sol y nadie la vio). Explotó en el aire con un chispazo más brillante que el Sol y su tronido rompió miles de ventanas.",
+        "tunguska": "Como un avión jumbo, o la Pirámide del Sol de Teotihuacán. En 1908 explotó en el aire sobre Siberia y aplastó un bosque ENTERO… sin dejar cráter, porque nunca tocó el suelo.",
+        "apophis": "Alto como la TORRE EIFFEL. El 13 de abril de 2029 pasará más cerca que los satélites de la tele… y NO nos pega: los astrónomos ya hicieron las cuentas con años de anticipación. Se va a ver a simple vista, como una estrellita moviéndose.",
+        "bennu": "Como 5 canchas de fútbol; caminarlo de punta a punta tomaría unos 6 minutos. La nave OSIRIS-REx viajó hasta él, agarró piedritas y las trajo a la Tierra en 2023. ¡Fuimos de visita a un asteroide!",
+        "chicxulub": "MÁS ALTO QUE EL EVEREST: con la panza en el mar, su punta pasaría por ARRIBA de la ventanilla de un avión. Una roca así cayó en Yucatán, México, hace 66 millones de años — los dinosaurios la vieron llegar. Esa historia completa viene en otra misión.",
+        "vesta": "Tan ancho como un viaje CDMX→Guadalajara. Es enorme… y aun así sigue siendo PAPA: todavía no tiene gravedad suficiente para hacerse bolita.",
+        "ceres": "El REY del cinturón: como de CDMX a Monterrey; caminarlo tomaría ¡8 días sin dormir! Y es el único que YA es bolita — tiene tanta gravedad que se aplastó a sí mismo hasta quedar redondo. Por eso lo llaman planeta enano.",
+        "luna": "Ojo: la Luna NO es un asteroide — entra de invitada para el final. Hasta Ceres, el rey del cinturón, se ve chiquito junto a ella. Y ni juntando TODOS los asteroides del cinturón armarías el 5% de una Luna."
+      },
+      "retos": [
+        {
+          "tipo": "toca",
+          "pregunta": "Toca el asteroide al que una nave fue a recoger piedritas.",
+          "respuesta": "bennu",
+          "pista": "Está en el segundo escalón y mide como 5 canchas de fútbol. La nave se llamaba OSIRIS-REx."
+        },
+        {
+          "tipo": "toca",
+          "pregunta": "Toca la roca que acabó con los dinosaurios.",
+          "respuesta": "chicxulub",
+          "pista": "Es más alta que el Everest y cayó en Yucatán, México. 🦖"
+        },
+        {
+          "tipo": "toca",
+          "pregunta": "Toca el único ASTEROIDE de la escalera que ya es bolita.",
+          "respuesta": "ceres",
+          "pista": "Cuidado: la Luna también es bolita, pero NO es asteroide. Busca al rey del cinturón."
+        }
+      ],
+      "dato_curioso": "Cada día caen a la Tierra como 100 TONELADAS de polvo y piedritas del espacio… y casi nada llega al suelo: la atmósfera las quema en el aire. Ese es el escudo de la Tierra funcionando — y cada rayita de luz que ves en la noche es el escudo haciendo su trabajo."
+    },
+    {
+      "id": "astro-ttp-nombres-roca",
+      "tipo": "tap-the-pairs",
+      "titulo": "La Piedra que Cambia de Nombre",
+      "instruccion": "La MISMA piedra espacial cambia de nombre según dónde está — como el agua, que se llama hielo o vapor según cómo esté. Empareja cada nombre con lo que significa.",
+      "retos": [
+        {
+          "pares": [
+            { "es": "🪨 Asteroide", "en": "Roca GRANDE que da vueltas al Sol" },
+            { "es": "☄️ Cometa", "en": "Bola de hielo y polvo que saca cola" },
+            { "es": "🌠 Meteoroide", "en": "Piedrita viajando por el espacio" }
+          ]
+        },
+        {
+          "pares": [
+            { "es": "✨ Estrella fugaz (meteoro)", "en": "La RAYA DE LUZ de la piedrita quemándose en el aire" },
+            { "es": "🪨 Meteorito", "en": "El pedazo que sí llega al suelo" },
+            { "es": "🥔 Cinturón de asteroides", "en": "El vecindario de rocas entre Marte y Júpiter" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "astro-story-perseidas",
+      "tipo": "mini-story",
+      "titulo": "La Noche de las Perseidas",
+      "instruccion": "Lee cada parte y responde la pregunta.",
+      "parrafos": [
+        {
+          "texto": "Cada vez que el cometa Swift-Tuttle pasa cerca del Sol, el calor le derrite el hielo y va soltando MIGAJAS: un caminito de piedritas que se queda flotando en el espacio, como las migas de pan de un cuento.",
+          "emoji": "☄️",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "El cometa va soltando un caminito de ___ en el espacio.",
+              "opciones": ["estrellas", "migajas", "nubes", "chispas"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "Y aquí viene lo bueno: la Tierra, en su vuelta al Sol, CRUZA ese caminito cada año en agosto. Al cruzarlo, miles de migajas entran al aire a toda velocidad y se queman. Cada una pinta una raya de luz en el cielo: una estrella fugaz. Como son muchas, se llama LLUVIA de estrellas: las Perseidas.",
+          "emoji": "🌠",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "La Tierra cruza el caminito del cometa cada año en el mes de ___.",
+              "opciones": ["diciembre", "abril", "agosto", "enero"],
+              "respuesta": 2
+            }
+          ]
+        },
+        {
+          "texto": "¿Y sabes de qué tamaño es cada 'estrella' fugaz? ¡Como un GRANITO DE ARROZ! Brilla tanto porque entra rapidísimo — a unos 59 kilómetros por SEGUNDO — y al frenar contra el aire se pone al rojo vivo, como cuando te frotas las manos muy fuerte y calientan.",
+          "emoji": "🍚",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Una estrella fugaz es una estrella de verdad que se cae del cielo.",
+              "correcto": false,
+              "correccion": "Es una piedrita chiquita (¡como un grano de arroz!) quemándose en el aire. Las estrellas de verdad son soles gigantes y están lejísimos."
+            }
+          ]
+        },
+        {
+          "texto": "Para verlas no necesitas telescopio: se cazan a puro OJO. La receta: una noche despejada de mediados de agosto, un lugar oscuro lejos de las luces, acostarse mirando al cielo… y paciencia. En una buena noche puedes ver una por minuto. Puedes pedir un deseo — y de paso susurrar: 'gracias, Swift-Tuttle'.",
+          "emoji": "🌌",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Para ver las Perseidas necesitas un lugar oscuro y ___.",
+              "opciones": ["un telescopio gigante", "paciencia", "lentes especiales", "un cohete"],
+              "respuesta": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "astro-tof-rocas",
+      "tipo": "true-or-false",
+      "titulo": "¿Verdadero o Falso?",
+      "instruccion": "Después de la escalera y las Perseidas, decide.",
+      "retos": [
+        {
+          "oracion": "Los asteroides son redondos como pelotas.",
+          "correcto": false,
+          "correccion": "Casi todos son PAPAS espaciales. Solo los muy grandes (como Ceres) tienen gravedad suficiente para hacerse bolita.",
+          "explicacion": "¡Falso! Para quedar redondo, un mundo necesita aplastarse a sí mismo con su propia gravedad — y eso solo lo logran los gigantes."
+        },
+        {
+          "oracion": "Un meteorito es la piedra espacial que sí llega al suelo.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "¡Verdadero! En el espacio es meteoroide, la raya de luz es el meteoro (estrella fugaz), y si un pedazo aterriza… ese es el meteorito. La misma piedra, tres nombres."
+        },
+        {
+          "oracion": "La atmósfera de la Tierra nos protege quemando las piedritas del espacio.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "¡Verdadero! Cada día caen como 100 toneladas de polvo y piedritas, y casi todo se quema en el aire. Cada estrella fugaz es el escudo funcionando."
+        },
+        {
+          "oracion": "Apophis nos va a pegar en 2029.",
+          "correcto": false,
+          "correccion": "NO nos pega: pasará cerquita (más cerca que los satélites de la tele), pero los astrónomos ya hicieron las cuentas hace años. Solo será un espectáculo para verlo pasar.",
+          "explicacion": "¡Falso! Los astrónomos vigilan el cielo y calculan los caminos de estas rocas con muchísima anticipación. Por eso sabemos que Apophis solo viene a saludar."
+        }
+      ]
+    }
+  ]
+}
