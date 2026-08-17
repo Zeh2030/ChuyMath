@@ -169,6 +169,7 @@ const PianoPrompter = ({ mision, onCompletar }) => {
       autor={autor}
       onTerminar={handleTerminar}
       multiVoice={multi}
+      mano={mano || 'ambas'}
     />
   );
 };

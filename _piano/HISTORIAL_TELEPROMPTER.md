@@ -214,8 +214,53 @@ escuchar la pieza, luego bajito para practicar guiado.
 synth (velocity, abc_midi_sequencer.js). Lo que NO existe en abcjs es pedal.
 
 **Validacion pendiente (al oido, por el usuario):**
-- [ ] Las 3 piezas existentes siguen sincronizadas (el espaciado visual cambia
-      un poco al volver las barras)
-- [ ] test-larga.json (72 compases, dos manos): legibilidad y rendimiento del
-      SVG ancho (~120k px CSS)
-- [ ] Boton de volumen: normal / bajito / mudo
+- [x] Las 3 piezas siguen sincronizadas con las barras restauradas (2026-08)
+- [x] test-larga.json (72 compases, dos manos): se reproduce bien, sincronizado
+- [ ] Boton de volumen: normal / bajito / mudo (el bug de "bajito mudo" se
+      arreglo: era synth descartado sin re-preparar en handlePlay)
+
+---
+
+## Teclado iluminado (2026-08-17)
+
+Inspirado en el visor de MuseScore, con dos mejoras: **un color por mano**
+(derecha azul #3498db, izquierda naranja #e67e22 — misma convencion que el
+selector de manos) y **rango auto-ajustado** a las notas de la pieza (teclas
+grandes, no 88 diminutas).
+
+**Arquitectura:**
+- `src/components/piano/Teclado.jsx` — componente autonomo reutilizable
+  (lo usara la variante "Nota → Tecla" de identifica-nota). API imperativa
+  `setActivas(der, izq)` / `limpiar()`: alterna clases en el DOM, cero estado
+  de React por frame. React.memo + iluminacion via ::after con opacity
+  (composicion GPU, no repinta).
+- `src/utils/musica.js` — utilidades puras (esNegra, nombreDeMidi,
+  rangoTeclado, midiAFrecuencia).
+- La linea de tiempo de notas sale de **`visualObj.setUpAudio({qpm})`**, NO de
+  noteTimings: en abcjs 6.6.2 setTiming no rellena midiPitches (linea comentada
+  en el fuente) y noteTimings fusiona voces que coinciden en el tiempo.
+  setUpAudio es puro (sin audio) y entrega tracks POR VOZ con pitch MIDI,
+  inicio y duracion en redondas (ms = redondas / getBeatLength() * 60000/qpm).
+- En animate(): actualizarTeclado(elapsed) corre DESPUES de applyTransform
+  (el scroll se compromete primero), con cursor monotonico + compactacion
+  in-place, y try/catch que lo AUTODESACTIVA si algo falla — el teclado jamas
+  puede tirar el bucle de animacion ni el reloj.
+- Saltos hacia atras (barra de avance): se detectan comparando elapsed con el
+  ultimo visto → re-sembrado desde cero.
+- Prop `mano` en MusicPrompter: al practicar una sola mano (selector), las
+  notas se pintan del color de ESA mano (el ABC filtrado ya no trae la voz).
+- Boton 🎹 muestra/oculta (preferencia en localStorage `chuy_teclado_visible`);
+  oculto = desmontado = coste cero.
+
+**Regla dura heredada:** el teclado solo LEE el tiempo. No toca clockNow, ni
+puntosRef, ni applyTransform, ni llama setTiming. Es write-only al DOM (nunca
+getBoundingClientRect en el camino caliente).
+
+**Validacion pendiente (usuario):**
+- [ ] Twinkle (una voz): teclas al ritmo, un solo color
+- [ ] Zapatillas (dos manos): derecha azul, izquierda naranja; acordes de la
+      izquierda encienden 2-3 teclas a la vez
+- [ ] Selector en "izquierda": teclas naranjas
+- [ ] Barra de avance hacia atras: el teclado se re-sincroniza al soltar
+- [ ] test-larga: sin perdida de fluidez con el teclado visible
+- [ ] Boton 🎹 oculta/muestra sin saltos en la partitura

@@ -42,6 +42,9 @@ Juego para aprender a leer notas en el pentagrama.
   - **Nota → Nombre**: se muestra nota en pentagrama, elegir nombre
   - **Nombre → Nota**: se muestra nombre, elegir posicion en pentagrama
   - **Nota → Tecla**: se muestra nota, senalar tecla en teclado visual
+    (el teclado visual YA EXISTE como componente reutilizable:
+    `src/components/piano/Teclado.jsx`, construido 2026-08-17 para el
+    teleprompter; esta variante solo necesita hacerlo interactivo)
 - Progresion: empieza con 3 notas (Do, Re, Mi), va agregando
 - Clave de Sol primero, luego Fa, luego mixto
 

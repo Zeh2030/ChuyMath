@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import abcjs from 'abcjs';
 import './MusicPrompter.css';
+import Teclado from '../../piano/Teclado';
+import { rangoTeclado } from '../../../utils/musica';
 
 /**
  * Estima el número de compases contando barras `|` en las líneas de notas.
@@ -83,7 +85,7 @@ const calcStaffwidth = (abc, multiVoice) => {
  * El reloj es el del AudioContext (el mismo que usa el sintetizador), así que no
  * hay deriva entre audio y animación.
  */
-const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice = false }) => {
+const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice = false, mano = 'ambas' }) => {
   const [estado, setEstado] = useState('parado');
   const [bpmActual, setBpmActual] = useState(bpm || 80);
   // Volumen del synth: normal (escuchar la pieza), bajito (guía suave para
@@ -91,6 +93,11 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
   const [volumen, setVolumen] = useState(VOL_NORMAL);
   const [progreso, setProgreso] = useState(0);   // 0..1
   const [duracionMs, setDuracionMs] = useState(0);
+  // Teclado iluminado: visible por default; preferencia persistida.
+  const [conTeclado, setConTeclado] = useState(() => {
+    try { return localStorage.getItem('chuy_teclado_visible') !== 'no'; } catch { return true; }
+  });
+  const [rangoT, setRangoT] = useState(null);    // {min, max} MIDI de la pieza
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [cargando, setCargando] = useState(false);
 
@@ -113,6 +120,14 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
   const ultimoProgresoRef = useRef(0);
   const barraRef = useRef(null);
   const arrastrandoRef = useRef(false);
+
+  // Teclado iluminado (todo en refs: cero estado de React en el camino caliente)
+  const tecladoRef = useRef(null);
+  const notasTecladoRef = useRef([]);   // [{t, fin, midi, mano}] ordenado por t
+  const notaIdxRef = useRef(0);         // primera nota que aún no empieza
+  const activasTecladoRef = useRef([]); // notas sonando (se compacta in-place)
+  const tecladoElapsedRef = useRef(-1); // último elapsed visto (detecta saltos atrás)
+  const tecladoRotoRef = useRef(false); // autodesactivación si algo falla
 
   const synthRef = useRef(null);
   const visualObjRef = useRef(null);
@@ -139,6 +154,13 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     if (abcTargetRef.current) {
       abcTargetRef.current.style.transform = `translateX(${offset}px)`;
     }
+  }, []);
+
+  const reiniciarTeclado = useCallback(() => {
+    notaIdxRef.current = 0;
+    activasTecladoRef.current = [];
+    tecladoElapsedRef.current = -1;
+    tecladoRef.current?.limpiar();
   }, []);
 
   // ─── Medir la partitura y construir el mapa tiempo→posición ───
@@ -206,7 +228,42 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     finMsRef.current = finMs;
     segIdxRef.current = 0;
     setDuracionMs(finMs);
-  }, []);
+
+    // ─── Línea de tiempo del TECLADO (cálculo aparte; el mapa de arriba no se toca) ───
+    // setUpAudio entrega las voces YA separadas (track 0 = derecha, 1 = izquierda)
+    // con pitch MIDI y tiempos en redondas. Es transformación pura, sin audio.
+    // (noteTimings no sirve aquí: en abcjs 6.6.2 no trae midiPitches en nuestro
+    // orden de llamadas, y fusiona las voces que coinciden en el tiempo.)
+    try {
+      const audio = visualObj.setUpAudio({ qpm });
+      const beatLen = visualObj.getBeatLength() || 0.25;
+      const factorMs = 60000 / qpm / beatLen; // redondas → ms
+      const tracks = (audio && audio.tracks) || [];
+      const nVoces = Math.min(multiVoice ? 2 : 1, tracks.length);
+      const linea = [];
+      const midis = [];
+      for (let v = 0; v < nVoces; v++) {
+        const manoVoz = mano !== 'ambas' ? mano : (v === 0 ? 'derecha' : 'izquierda');
+        for (const item of tracks[v]) {
+          if (item.cmd !== 'note' || typeof item.pitch !== 'number') continue;
+          const t = item.start * factorMs;
+          const dur = item.duration * factorMs;
+          // fin un poco antes del valor real para que las notas repetidas
+          // parpadeen; suelo de 60ms para que las semicorcheas se alcancen a ver.
+          linea.push({ t, fin: t + Math.max(60, dur - 40), midi: item.pitch, mano: manoVoz });
+          midis.push(item.pitch);
+        }
+      }
+      linea.sort((a, b) => a.t - b.t);
+      notasTecladoRef.current = linea;
+      setRangoT(midis.length ? rangoTeclado(midis) : null);
+    } catch (e) {
+      console.warn('No se pudo armar la línea del teclado:', e);
+      notasTecladoRef.current = [];
+      setRangoT(null);
+    }
+    reiniciarTeclado();
+  }, [multiVoice, mano, reiniciarTeclado]);
 
   // x(t): posición del scroll para un tiempo dado, interpolando en el mapa.
   // Pura salvo por segIdxRef (cursor monotónico que acelera el caso común).
@@ -310,6 +367,58 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     setCargando(false);
   };
 
+  // ─── Teclado: enciende/apaga teclas según la línea de tiempo ───
+  // Solo LEE el tiempo; todo su estado vive en refs (identidad estable, no
+  // perturba el rAF). Escritura pura al DOM: jamás lee layout. Si algo falla,
+  // se autodesactiva para siempre — nunca puede tirar el bucle de animación.
+  const actualizarTeclado = useCallback((elapsed) => {
+    if (tecladoRotoRef.current || !tecladoRef.current) return;
+    try {
+      const notas = notasTecladoRef.current;
+      if (!notas.length) return;
+      const activas = activasTecladoRef.current;
+      let cambio = false;
+
+      // Salto hacia atrás (barra de avance / replay): re-sembrar desde cero.
+      if (elapsed < tecladoElapsedRef.current) {
+        notaIdxRef.current = 0;
+        activas.length = 0;
+        cambio = true;
+      }
+      tecladoElapsedRef.current = elapsed;
+
+      // Encender: cursor monotónico sobre los inicios de nota.
+      let i = notaIdxRef.current;
+      while (i < notas.length && notas[i].t <= elapsed) {
+        if (notas[i].fin > elapsed) { activas.push(notas[i]); cambio = true; }
+        i++;
+      }
+      notaIdxRef.current = i;
+
+      // Apagar: compactación in-place (sin allocations por frame).
+      let w = 0;
+      for (let k = 0; k < activas.length; k++) {
+        if (activas[k].fin > elapsed) activas[w++] = activas[k];
+      }
+      if (w !== activas.length) { activas.length = w; cambio = true; }
+
+      if (!cambio) return;
+      const der = [];
+      const izq = [];
+      for (const n of activas) (n.mano === 'izquierda' ? izq : der).push(n.midi);
+      tecladoRef.current.setActivas(der, izq);
+    } catch {
+      tecladoRotoRef.current = true;
+      try { tecladoRef.current?.limpiar(); } catch { /* nada */ }
+    }
+  }, []);
+
+  // Al re-mostrar el teclado, forzar un re-sembrado en el siguiente frame para
+  // que las notas ya sonando se pinten sin esperar al próximo cambio.
+  useEffect(() => {
+    if (conTeclado) tecladoElapsedRef.current = Infinity;
+  }, [conTeclado]);
+
   // ─── Animación: x(t) por interpolación sobre el mapa ───
   const animate = useCallback(() => {
     if (!puntosRef.current.length) return;
@@ -318,6 +427,9 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
 
     translateXRef.current = posEn(elapsed);
     applyTransform();
+
+    // El teclado va DESPUÉS del scroll: la partitura se compromete primero.
+    actualizarTeclado(elapsed);
 
     // Barra de avance: se actualiza ~10 veces por segundo, no cada frame.
     const fin = finMsRef.current || 1;
@@ -335,7 +447,7 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
       return;
     }
     rafIdRef.current = requestAnimationFrame(animate);
-  }, [applyTransform, clockNow, onTerminar, posEn]);
+  }, [applyTransform, clockNow, onTerminar, posEn, actualizarTeclado]);
 
   // ─── Ir a un punto de la pieza (barra de avance) ───
   // conAudio=false mientras se arrastra (solo mueve la partitura); al soltar se
@@ -351,13 +463,15 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     translateXRef.current = posEn(target);
     applyTransform();
     setProgreso(fin ? target / fin : 0);
+    // También el teclado (con el rAF detenido nadie más lo llamaría en pausa).
+    actualizarTeclado(target);
 
     if (conAudio && synthRef.current) {
       // seek en segundos: si está sonando reengancha el audio ahí; si está
       // parado/pausado deja la posición lista para el siguiente start().
       try { synthRef.current.seek(target / 1000, 'seconds'); } catch { /* sin audio */ }
     }
-  }, [applyTransform, clockNow, posEn]);
+  }, [applyTransform, clockNow, posEn, actualizarTeclado]);
 
   const msDesdeEvento = (e) => {
     const el = barraRef.current;
@@ -476,6 +590,7 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     }
     translateXRef.current = posEn(desdeMs);
     applyTransform();
+    actualizarTeclado(desdeMs);
 
     // Ancla el reloj justo al arrancar/reanudar el audio.
     clockStartRef.current = clockNow();
@@ -495,9 +610,16 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     elapsedPrevRef.current = 0;
     ultimoProgresoRef.current = 0;
     applyTransform();
+    reiniciarTeclado();
     setProgreso(0);
     setEstado('parado');
     synthRef.current = null;
+  };
+
+  const toggleTeclado = () => {
+    const nuevo = !conTeclado;
+    try { localStorage.setItem('chuy_teclado_visible', nuevo ? 'si' : 'no'); } catch { /* sin storage */ }
+    setConTeclado(nuevo);
   };
 
   const handleBpmUp = () => setBpmActual(prev => Math.min(200, prev + 5));
@@ -524,8 +646,10 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
   const bpmOriginal = bpm || 80;
   const esTempoOriginal = bpmActual === bpmOriginal;
 
+  const tecladoVisible = conTeclado && rangoT !== null;
+
   return (
-    <div className={`mp-container ${isFullscreen ? 'mp-fullscreen' : ''}`}>
+    <div className={`mp-container ${isFullscreen ? 'mp-fullscreen' : ''} ${tecladoVisible ? 'mp-con-teclado' : ''}`}>
       <div className="mp-header">
         <h3>🎹 {titulo}</h3>
         {autor && <p className="mp-autor">{autor}</p>}
@@ -540,6 +664,14 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
         <div className="mp-playhead"></div>
         <div className="mp-sheet" ref={abcTargetRef}></div>
       </div>
+
+      {/* Teclado iluminado: HERMANO del viewport (capa aparte — encender teclas
+          jamás repinta la partitura). Oculto = desmontado = coste cero. */}
+      {tecladoVisible && (
+        <div className="mp-teclado">
+          <Teclado ref={tecladoRef} midiMin={rangoT.min} midiMax={rangoT.max} />
+        </div>
+      )}
 
       {/* Barra de avance: muestra cuánto falta y permite ir a cualquier punto */}
       <div className="mp-progreso">
@@ -585,6 +717,15 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
           title={volumen === VOL_NORMAL ? 'Volumen normal (toca para bajarlo)' : volumen > 0 ? 'Volumen bajito: solo guía (toca para silenciar)' : 'Sin sonido (toca para volumen normal)'}
         >
           {volumen === VOL_NORMAL ? '🔊' : volumen > 0 ? '🔉' : '🔇'}
+        </button>
+
+        <button
+          className={`mp-btn ${conTeclado ? 'mp-btn-sound-on' : 'mp-btn-sound-off'}`}
+          onClick={toggleTeclado}
+          aria-pressed={conTeclado}
+          title={conTeclado ? 'Ocultar teclado' : 'Mostrar teclado'}
+        >
+          🎹
         </button>
 
         {isFullscreen && (

@@ -1,0 +1,66 @@
+/* Teclado de piano visual. La iluminación va en un ::after con opacity:
+   se compone en GPU y encender/apagar teclas no repinta nada más. */
+
+.tcl {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: var(--tcl-alto, 84px);
+  user-select: none;
+  pointer-events: none;
+}
+
+.tcl-tecla {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.tcl-tecla::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.07s linear;
+  pointer-events: none;
+}
+
+.tcl-blanca {
+  height: 100%;
+  background: #fff;
+  border: 1px solid #b8c2cc;
+  border-radius: 0 0 5px 5px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 3px;
+}
+
+.tcl-negra {
+  position: absolute;
+  top: 0;
+  height: 60%;
+  background: #2c3e50;
+  border-radius: 0 0 4px 4px;
+  z-index: 2;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.35);
+}
+
+/* Iluminación: derecha azul, izquierda naranja (convención del módulo piano) */
+.tcl-der::after { background: #3498db; opacity: 0.92; }
+.tcl-izq::after { background: #e67e22; opacity: 0.92; }
+.tcl-ambas::after {
+  background: linear-gradient(135deg, #3498db 49%, #e67e22 51%);
+  opacity: 0.92;
+}
+.tcl-negra.tcl-der::after { background: #5dade2; }
+.tcl-negra.tcl-izq::after { background: #f0a35e; }
+
+.tcl-nombre {
+  position: relative;
+  z-index: 3;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #95a5a6;
+  pointer-events: none;
+}

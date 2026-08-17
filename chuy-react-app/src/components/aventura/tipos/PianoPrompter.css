@@ -57,8 +57,10 @@
 .pp-mano-titulo { font-size: 1.1rem; font-weight: 700; color: #2c3e50; }
 .pp-mano-sub { font-size: 0.85rem; color: #95a5a6; }
 
+/* Mismo código de color que el teclado iluminado: derecha azul, izquierda
+   naranja — una sola regla que el niño aprende para todo el módulo. */
 .pp-mano-der:hover { border-color: #3498db; }
-.pp-mano-izq:hover { border-color: #8e44ad; }
+.pp-mano-izq:hover { border-color: #e67e22; }
 .pp-mano-ambas:hover { border-color: #27ae60; }
 
 @media (max-width: 520px) {

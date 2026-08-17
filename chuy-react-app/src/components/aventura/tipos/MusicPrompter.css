@@ -108,6 +108,25 @@
   border-top: 10px solid #e74c3c;
 }
 
+/* Teclado iluminado (hermano del viewport: capa aparte, no repinta la partitura) */
+.mp-teclado {
+  --tcl-alto: 84px;
+  flex: 0 0 auto;
+  margin: -8px 0 12px;
+  overflow: hidden;
+}
+
+/* Con teclado visible, el TOPE del viewport le hace lugar. Solo cambia el
+   máximo: si la partitura cabe (--mp-alto menor), no se encoge ni un píxel. */
+.mp-con-teclado .mp-viewport {
+  height: min(var(--mp-alto, 280px), calc(74vh - 110px));
+}
+
+.mp-fullscreen .mp-teclado {
+  --tcl-alto: 108px;
+  margin: 0 0 10px;
+}
+
 /* Barra de avance (estilo reproductor) */
 .mp-progreso {
   display: flex;
@@ -438,6 +457,7 @@
 @media (max-width: 600px) {
   .mp-container { padding: 10px; }
   .mp-viewport { height: min(var(--mp-alto, 220px), 68vh); }
+  .mp-teclado { --tcl-alto: 62px; }
   .mp-btn { padding: 8px 16px; font-size: 0.9rem; }
   .mp-bpm-control { margin-left: 0; margin-top: 8px; }
   .mp-controls { gap: 8px; }
