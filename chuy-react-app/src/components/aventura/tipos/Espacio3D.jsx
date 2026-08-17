@@ -5,7 +5,7 @@ import {
   PLANETAS, SOL, CONSTELACIONES, COMETA,
   ESTRELLAS_COMPARAR, PASOS_ESTRELLAS, ORBITAS_UA, UA_POR_RADIO_SOL,
   PLANETAS_ESCALERA, PASOS_EXOPLANETAS, ASTEROIDES_ESCALERA, PASOS_ASTEROIDES,
-  faseInfoDe, estacionInfoDe, cometaInfoDe,
+  faseInfoDe, estacionInfoDe, cometaInfoDe, impactoInfoDe,
   etiquetaComparar, etiquetaEstrella, etiquetaExoplaneta, etiquetaAsteroide,
 } from './espacioDatos';
 
@@ -364,6 +364,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     if (escena === 'cometa') return 60;      // de viaje, alejandose
     if (escena === 'satelite') return 55;    // velocidad media
     if (ESCALERAS.includes(escena)) return 1; // primer escalon de la escalera
+    if (escena === 'impacto') return 25;     // ~una ballena: banda vistosa
     if (escena === 'agujero-negro') return 0; // la Tierra sin apretar todavia
     if (escena === 'cama-elastica') return 0; // espacio plano: sin peso al centro
     return 90;                               // cuarto creciente
@@ -489,6 +490,32 @@ const Espacio3D = forwardRef(function Espacio3D(
       return { linea, mat };
     };
 
+    // Papa espacial: esfera con ruido radial suave y determinista (senos de
+    // baja frecuencia con fases de la semilla) + achatado leve. Es funcion
+    // pura de la posicion, asi que los vertices duplicados de la costura UV
+    // se desplazan igual (sin grietas). MeshBasic no usa normales y la
+    // escala uniforme tampoco se entera de la forma. La usan la escalera de
+    // asteroides y la roca de la escena impacto.
+    const crearGeoPapa = (semilla) => {
+      const g = registrar(new THREE.SphereGeometry(1, 24, 16));
+      const rngP = crearRng(semilla);
+      const f = [2 + rngP() * 1.5, 2.5 + rngP() * 1.5, 3 + rngP() * 1.5];
+      const fase = [rngP() * 6.28, rngP() * 6.28, rngP() * 6.28];
+      const aplasta = 0.78 + rngP() * 0.12;
+      const pos = g.attributes.position;
+      const v = new THREE.Vector3();
+      for (let i = 0; i < pos.count; i++) {
+        v.fromBufferAttribute(pos, i);
+        const d = 1
+          + 0.12 * Math.sin(f[0] * v.x + fase[0])
+          + 0.12 * Math.sin(f[1] * v.y + fase[1])
+          + 0.10 * Math.sin(f[2] * v.z + fase[2]);
+        pos.setXYZ(i, v.x * d, v.y * d * aplasta, v.z * d);
+      }
+      pos.needsUpdate = true;
+      return g;
+    };
+
     const cuerpos = [];        // escena planetas
     const lineasOrbita = [];
     let metricaComparar = null;
@@ -505,6 +532,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     let escEstrellas = null;   // escena estrellas (escalera de gigantes)
     let escAN = null;          // escena agujero-negro (la Tierra comprimida)
     let escCE = null;          // escena cama-elastica (la sabana del espacio)
+    let escImp = null;         // escena impacto (que pasa segun el tamano de la roca)
     let etiquetaEstrellaEl = null; // constelaciones: nombre flotante de la estrella tocada
     let nombreFlotante = null;     // constelaciones: { pos, hasta } del nombre flotante
 
@@ -943,31 +971,6 @@ const Espacio3D = forwardRef(function Espacio3D(
       const RADIO_FILA = 9;
       const HUECO_FILA = 2.2;
 
-      // Papa espacial: esfera con ruido radial suave y determinista (senos de
-      // baja frecuencia con fases de la semilla) + achatado leve. Es funcion
-      // pura de la posicion, asi que los vertices duplicados de la costura UV
-      // se desplazan igual (sin grietas). MeshBasic no usa normales y la
-      // escala uniforme del loop tampoco se entera de la forma.
-      const crearGeoPapa = (semilla) => {
-        const g = registrar(new THREE.SphereGeometry(1, 24, 16));
-        const rngP = crearRng(semilla);
-        const f = [2 + rngP() * 1.5, 2.5 + rngP() * 1.5, 3 + rngP() * 1.5];
-        const fase = [rngP() * 6.28, rngP() * 6.28, rngP() * 6.28];
-        const aplasta = 0.78 + rngP() * 0.12;
-        const pos = g.attributes.position;
-        const v = new THREE.Vector3();
-        for (let i = 0; i < pos.count; i++) {
-          v.fromBufferAttribute(pos, i);
-          const d = 1
-            + 0.12 * Math.sin(f[0] * v.x + fase[0])
-            + 0.12 * Math.sin(f[1] * v.y + fase[1])
-            + 0.10 * Math.sin(f[2] * v.z + fase[2]);
-          pos.setXYZ(i, v.x * d, v.y * d * aplasta, v.z * d);
-        }
-        pos.needsUpdate = true;
-        return g;
-      };
-
       const ordenadas = [...cfg.lista].sort((a, b) => cfg.radioDe(a) - cfg.radioDe(b));
       const geoToque = registrar(new THREE.SphereGeometry(1, 12, 8));
       const matToqueEst = registrar(new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false }));
@@ -1173,6 +1176,76 @@ const Espacio3D = forwardRef(function Espacio3D(
       escCE = { bola, canica, geoEstela, posEstela, deformar, pesoPrevio: null, sim: null };
     }
 
+    if (escena === 'impacto') {
+      // ¿Que pasa segun el TAMANO? La Tierra con su atmosfera VISIBLE (el
+      // escudo) y una roca que cae sobre el polo norte (el polo no se mueve
+      // con la rotacion en Y, asi el crater se queda donde cayo). Los
+      // umbrales de banda viven en impactoInfoDe (espacioDatos).
+      escena3.add(new THREE.AmbientLight(0xbfd0ff, 0.7));
+      const luzImp = new THREE.DirectionalLight(0xfff3d0, 1.5);
+      luzImp.position.set(30, 25, 18);
+      escena3.add(luzImp);
+
+      const IMP = { radioTierra: 6, radioAtm: 7.6, alturaSalida: 20 };
+      const tierra = crearCuerpo({ id: 'tierra', radio: IMP.radioTierra, tex: 'tierra', color: '#2f6fd0', semilla: 17 });
+      escena3.add(tierra);
+
+      // La cascara del escudo: sutil pero visible.
+      const geoAtm = registrar(new THREE.SphereGeometry(IMP.radioAtm, 48, 24));
+      const matAtm = registrar(new THREE.MeshBasicMaterial({
+        color: 0x8fc4ff, transparent: true, opacity: 0.12, depthWrite: false,
+      }));
+      escena3.add(new THREE.Mesh(geoAtm, matAtm));
+
+      const roca = crearCuerpo({
+        id: 'roca', radio: 1, tex: 'craterizado', color: '#8a7a68', semilla: 41,
+        lambert: false, geo: crearGeoPapa(97),
+      });
+      roca.visible = false;
+      escena3.add(roca);
+      const brilloRoca = crearGlow(1, '#ffb057'); // se enciende al entrar al aire
+      brilloRoca.visible = false;
+      escena3.add(brilloRoca);
+
+      const destello = crearGlow(1, '#fff2a0'); // el BUM (su material se anima)
+      destello.visible = false;
+      escena3.add(destello);
+
+      // Crater persistente + onda de catastrofe, tumbados sobre el polo.
+      const geoCrater = registrar(new THREE.RingGeometry(0.5, 1, 40));
+      const matCrater = registrar(new THREE.MeshBasicMaterial({
+        color: 0x6b4a2f, side: THREE.DoubleSide, transparent: true, opacity: 0.9,
+      }));
+      const crater = new THREE.Mesh(geoCrater, matCrater);
+      crater.rotation.x = -Math.PI / 2;
+      crater.position.y = IMP.radioTierra + 0.03;
+      crater.visible = false;
+      escena3.add(crater);
+
+      const geoOnda = registrar(new THREE.RingGeometry(0.88, 1, 48));
+      const matOnda = registrar(new THREE.MeshBasicMaterial({
+        color: 0xff8c42, side: THREE.DoubleSide, transparent: true, opacity: 0.85, depthWrite: false,
+      }));
+      const onda = new THREE.Mesh(geoOnda, matOnda);
+      onda.rotation.x = -Math.PI / 2;
+      onda.position.y = IMP.radioTierra + 0.05;
+      onda.visible = false;
+      escena3.add(onda);
+
+      const MAX_ESTELA = 500;
+      const posEstela = new Float32Array(MAX_ESTELA * 3);
+      const geoEstela = registrar(new THREE.BufferGeometry());
+      geoEstela.setAttribute('position', new THREE.BufferAttribute(posEstela, 3));
+      geoEstela.setDrawRange(0, 0);
+      const matEstela = registrar(new THREE.LineBasicMaterial({ color: 0xffd9a0, transparent: true, opacity: 0.85 }));
+      escena3.add(new THREE.Line(geoEstela, matEstela));
+
+      escImp = {
+        IMP, tierra, roca, brilloRoca, destello, matDestello: destello.material,
+        crater, onda, matOnda, geoEstela, posEstela, luz: luzImp, sim: null,
+      };
+    }
+
     /* --- camara orbital del usuario --- */
     const CAMARAS = {
       planetas: { yaw: 0.6, pitch: 0.9, dist: 60 },
@@ -1184,6 +1257,7 @@ const Espacio3D = forwardRef(function Espacio3D(
       estrellas: { yaw: 0, pitch: 0.18, dist: 26 },
       exoplanetas: { yaw: 0, pitch: 0.18, dist: 26 },
       asteroides: { yaw: 0, pitch: 0.18, dist: 26 },
+      impacto: { yaw: 0.3, pitch: 0.5, dist: 30 },
       'agujero-negro': { yaw: 0, pitch: 1.1, dist: 26 },
       // Vista de 3/4: de frente no se veria el hundimiento de la sabana.
       'cama-elastica': { yaw: 0.3, pitch: 0.42, dist: 30 },
@@ -1267,6 +1341,29 @@ const Espacio3D = forwardRef(function Espacio3D(
         escCE.geoEstela.setDrawRange(0, 0);
         escCE.canica.visible = true;
         setResultado('volando');
+      }
+      if (escImp) {
+        const info = impactoInfoDe(estadoRef.current.angulo);
+        // Tamano visual: logaritmico (1 m → 0.15, 15 km → 1.2). A escala real
+        // ni la de 15 km se veria junto a la Tierra didactica.
+        const escala = 0.15 + (Math.log10(info.metros) / Math.log10(15000)) * 1.05;
+        escImp.sim = {
+          banda: info.banda,
+          y: escImp.IMP.alturaSalida,
+          vel: 5,
+          escala,
+          fase: 'cayendo',
+          t: 0,
+          puntos: 0,
+          reportado: false,
+        };
+        escImp.geoEstela.setDrawRange(0, 0);
+        escImp.crater.visible = false;
+        escImp.onda.visible = false;
+        escImp.destello.visible = false;
+        escImp.roca.visible = true;
+        escImp.roca.scale.setScalar(escala);
+        setResultado('cayendo');
       }
     };
 
@@ -1881,6 +1978,95 @@ const Espacio3D = forwardRef(function Espacio3D(
             escCE.geoEstela.attributes.position.needsUpdate = true;
           }
         }
+      } else if (escena === 'impacto') {
+        escImp.tierra.rotation.y += dt * 0.08;
+        const sim = escImp.sim;
+        if (sim && sim.fase === 'cayendo') {
+          const enAire = sim.y < escImp.IMP.radioAtm;
+          // Afuera acelera (gravedad); adentro el AIRE la frena en seco —
+          // ver el frenon ES ver el escudo trabajando.
+          if (enAire) sim.vel = Math.max(1.8, sim.vel - dt * 40);
+          else sim.vel += dt * 4;
+          sim.y -= sim.vel * dt;
+          const altura = sim.y - escImp.IMP.radioTierra;
+
+          // La chiquita se consume mientras cruza el aire.
+          if (sim.banda === 'desintegra' && enAire) {
+            sim.escala = Math.max(0.02, sim.escala - dt * 1.0);
+          }
+
+          escImp.roca.position.set(0, sim.y, 0);
+          escImp.roca.rotation.x += dt * 1.7;
+          escImp.roca.rotation.z += dt * 1.1;
+          escImp.roca.scale.setScalar(sim.escala);
+          escImp.brilloRoca.visible = enAire;
+          if (enAire) {
+            escImp.brilloRoca.position.set(0, sim.y, 0);
+            escImp.brilloRoca.scale.setScalar(sim.escala * 3.2 + 0.5);
+            if (sim.puntos < escImp.posEstela.length / 3) {
+              const k = sim.puntos * 3;
+              escImp.posEstela[k] = 0;
+              escImp.posEstela[k + 1] = sim.y;
+              escImp.posEstela[k + 2] = 0;
+              sim.puntos++;
+              escImp.geoEstela.setDrawRange(0, sim.puntos);
+              escImp.geoEstela.attributes.position.needsUpdate = true;
+            }
+          }
+
+          // Desenlace: destello (+ crater persistente, + onda si es gorda).
+          const bum = (tam, resultado) => {
+            sim.fase = 'boom';
+            sim.t = 0;
+            sim.tamBoom = tam;
+            sim.resultado = resultado;
+            escImp.roca.visible = false;
+            escImp.brilloRoca.visible = false;
+            escImp.destello.visible = true;
+            escImp.destello.position.set(0, Math.max(sim.y, escImp.IMP.radioTierra + 0.15), 0);
+            escImp.destello.scale.setScalar(tam * 0.4);
+            escImp.matDestello.opacity = 1;
+            if (resultado === 'crater' || resultado === 'catastrofe') {
+              escImp.crater.visible = true;
+              escImp.crater.scale.setScalar(resultado === 'catastrofe' ? 2.6 : 0.6 + sim.escala);
+            }
+            if (resultado === 'catastrofe') {
+              escImp.onda.visible = true;
+              escImp.onda.scale.setScalar(1);
+              escImp.matOnda.opacity = 0.85;
+            }
+            setResultado(resultado);
+            onFaseRef.current?.({ resultado });
+          };
+
+          if (sim.banda === 'desintegra' && (sim.escala <= 0.03 || altura <= 0.7)) {
+            bum(1.2, 'desintegra');
+          } else if (sim.banda === 'explota-aire' && altura <= 0.55) {
+            bum(3.2, 'explota-aire');
+          } else if (altura <= sim.escala * 0.55) {
+            bum(sim.banda === 'catastrofe' ? 6 : 3.6, sim.banda);
+          }
+        } else if (sim && sim.fase === 'boom') {
+          sim.t += dt;
+          escImp.destello.scale.setScalar(sim.tamBoom * (0.4 + sim.t * 2.2));
+          escImp.matDestello.opacity = Math.max(0, 1 - sim.t * 0.9);
+          if (sim.resultado === 'catastrofe') {
+            escImp.onda.scale.setScalar(1 + sim.t * 2.6);
+            escImp.matOnda.opacity = Math.max(0, 0.85 - sim.t * 0.35);
+          }
+          if (sim.t > 2.6) {
+            sim.fase = 'fin';
+            escImp.destello.visible = false;
+            escImp.onda.visible = false;
+          }
+        } else if (sim && sim.fase === 'fin') {
+          sim.t += dt; // sigue contando para que "amanezca" despues del polvo
+        }
+
+        // Tras la catastrofe el polvo tapa el Sol un ratito… y luego amanece.
+        const aOscuras = sim && sim.resultado === 'catastrofe' && sim.fase !== 'cayendo' && sim.t < 4.5;
+        const luzMeta = aOscuras ? 0.4 : 1.5;
+        escImp.luz.intensity += (luzMeta - escImp.luz.intensity) * Math.min(1, dt * 2);
       }
 
       distDeseada *= zoomUsuario;
@@ -1948,7 +2134,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     );
   }
 
-  const conSlider = ['tierra-luna', 'estaciones', 'cometa', 'satelite', ...ESCALERAS, 'agujero-negro', 'cama-elastica'].includes(escena);
+  const conSlider = ['tierra-luna', 'estaciones', 'cometa', 'satelite', ...ESCALERAS, 'impacto', 'agujero-negro', 'cama-elastica'].includes(escena);
   const conRecuadro = escena === 'tierra-luna' || escena === 'estaciones';
 
   const PISTAS = {
@@ -1961,6 +2147,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     estrellas: '👆 Sube la escalera con el deslizador · toca una estrella para saber más',
     exoplanetas: '👆 Sube la escalera con el deslizador · toca un planeta para saber más',
     asteroides: '👆 Sube la escalera con el deslizador · toca una roca para saber más',
+    impacto: '👆 Elige el tamaño de la roca, apuesta qué pasará… ¡y suéltala!',
     'agujero-negro': '👆 Aprieta la Tierra con el deslizador y lanza rayos de luz para ver si escapan',
     'cama-elastica': '👆 Ponle peso a la bola con el deslizador y rueda la canica · arrastra para girar',
   };
@@ -1973,6 +2160,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     estrellas: ['🌍', '👑'],
     exoplanetas: ['🔴', '🎈'],
     asteroides: ['💥', '🌕'],
+    impacto: ['🍚', '🏔️'],
     'agujero-negro': ['🌍', '🕳️'],
     'cama-elastica': ['🪶', '🐘'],
   };
@@ -1981,6 +2169,7 @@ const Espacio3D = forwardRef(function Espacio3D(
   // porcentaje (velocidad, apreton, peso) o un escalon de la escalera.
   const SLIDER_MAX = {
     satelite: 100,
+    impacto: 100,
     'agujero-negro': 100,
     'cama-elastica': 100,
     estrellas: PASOS_ESTRELLAS,
@@ -1993,6 +2182,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     estrellas: 'Subir la escalera de estrellas',
     exoplanetas: 'Subir la escalera de planetas',
     asteroides: 'Subir la escalera de asteroides',
+    impacto: 'Tamaño de la roca',
     'agujero-negro': 'Apretar la Tierra',
     'cama-elastica': 'Peso de la bola',
   };
@@ -2000,6 +2190,7 @@ const Espacio3D = forwardRef(function Espacio3D(
   // Escenas con boton de disparo (y el texto del boton).
   const BOTON_LANZAR = {
     satelite: '🚀 ¡Lanzar!',
+    impacto: '☄️ ¡Que caiga!',
     'agujero-negro': '💡 ¡Rayo de luz!',
     'cama-elastica': '🎱 ¡Rueda la canica!',
   };
@@ -2186,6 +2377,29 @@ const Espacio3D = forwardRef(function Espacio3D(
         </div>
       </>
     );
+  } else if (escena === 'impacto') {
+    const info = impactoInfoDe(angulo);
+    const TEXTOS = {
+      cayendo: '☄️ ¡Ahí va! Mírala entrar…',
+      desintegra: '✨ ¡Se quemó en el aire! El escudo de la Tierra funcionó',
+      'explota-aire': '💥 ¡BUM! Explotó en el aire, como la de Cheliábinsk',
+      crater: '🕳️ Llegó al suelo y abrió un cráter',
+      catastrofe: '🌑 Catástrofe: el polvo tapó el Sol…',
+    };
+    etiqueta = (
+      <>
+        <div className="espacio3d-fase">
+          {TEXTOS[resultado] || `🪨 Roca de ${info.tamano} (${info.ancla})`}
+        </div>
+        <div className="espacio3d-subfase">
+          {resultado === 'catastrofe'
+            ? 'Tranquilo: una así cae cada ~100 MILLONES de años, y los astrónomos vigilan el cielo todos los días.'
+            : resultado && resultado !== 'cayendo'
+              ? '¿Y con otro tamaño? Mueve el deslizador y suelta otra.'
+              : '🤔 ¿Se quemará, explotará en el aire o llegará al suelo? Haz tu apuesta antes de soltarla.'}
+        </div>
+      </>
+    );
   }
 
   return (
@@ -2214,9 +2428,10 @@ const Espacio3D = forwardRef(function Espacio3D(
               onChange={(e) => {
                 setAngulo(Number(e.target.value));
                 // Aqui el deslizador cambia las REGLAS del tiro (que tan
-                // apretada esta la Tierra, cuanto pesa la bola): el desenlace
-                // anterior ya no aplica y la etiqueta vuelve a informar.
-                if (escena === 'agujero-negro' || escena === 'cama-elastica') setResultado(null);
+                // apretada esta la Tierra, cuanto pesa la bola, que tan grande
+                // es la roca): el desenlace anterior ya no aplica y la
+                // etiqueta vuelve a informar.
+                if (escena === 'agujero-negro' || escena === 'cama-elastica' || escena === 'impacto') setResultado(null);
               }}
               aria-label={SLIDER_ETIQUETA[escena] || 'Mover con el deslizador'}
             />

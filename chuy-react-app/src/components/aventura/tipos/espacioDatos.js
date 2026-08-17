@@ -58,6 +58,7 @@ export const NOMBRES = {
   'hd-189733b': 'HD 189733b',
   'kelt-9b': 'KELT-9b',
   'hat-p-67b': 'HAT-P-67 b',
+  roca: 'la roca espacial',
   chelyabinsk: 'Cheliábinsk',
   tunguska: 'Tunguska',
   apophis: 'Apophis',
@@ -193,6 +194,36 @@ export const ASTEROIDES_ESCALERA = [
 export const etiquetaAsteroide = (a) => {
   if (a.id === 'luna') return '🌕 la Luna · ni todos juntos le llegan';
   return `${a.emoji} ${a.nombre} · ${a.ancla}`;
+};
+
+/* ============================ EL IMPACTO ============================ */
+
+// Deslizador 0-100 → tamano de la roca en metros, exponencial de 1 m a 15 km.
+// Bandas de desenlace con umbrales de libro — casos historicos + modelos de
+// expertos (tipo "Impact Earth!" de Collins/Melosh), para roca de piedra:
+//   < ~15 m       se quema/fragmenta arriba (lo que pasa a diario)
+//   ~15 – 70 m    bolido que estalla en el aire (Cheliabinsk ~20 m, Tunguska ~60 m)
+//   ~70 m – 2 km  llega al suelo y abre crater (el Meteor Crater lo hizo una
+//                 roca de ~50 m… pero de FIERRO: el material tambien cuenta)
+//   > ~2 km       desastre regional/global (Chicxulub ~10 km)
+export const impactoInfoDe = (t) => {
+  const tt = Math.min(100, Math.max(0, t));
+  const metros = Math.pow(15000, tt / 100);
+  const banda = metros < 15 ? 'desintegra' : metros < 70 ? 'explota-aire' : metros < 2000 ? 'crater' : 'catastrofe';
+  const ancla = metros < 3 ? 'como una pelota'
+    : metros < 12 ? 'como un coche'
+      : metros < 35 ? 'como una ballena azul'
+        : metros < 120 ? 'como un avión jumbo'
+          : metros < 600 ? 'como la Torre Eiffel'
+            : metros < 2500 ? 'como un cerro'
+              : metros < 7000 ? 'como una montaña'
+                : 'más alta que el Everest';
+  const tamano = metros < 100
+    ? `${Math.round(metros)} m`
+    : metros < 1000
+      ? `${Math.round(metros / 10) * 10} m`
+      : `${metros < 10000 ? (Math.round(metros / 100) / 10).toFixed(1) : Math.round(metros / 1000)} km`;
+  return { metros, banda, ancla, tamano };
 };
 
 /* ============================ FASES DE LA LUNA ============================ */

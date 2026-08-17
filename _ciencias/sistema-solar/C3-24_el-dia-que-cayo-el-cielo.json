@@ -1,0 +1,200 @@
+{
+  "id": "C3-24_el-dia-que-cayo-el-cielo",
+  "titulo": "El Día que Cayó el Cielo",
+  "descripcion": "¿Qué pasa según el tamaño de la roca? El meteorito de los dinosaurios y cómo hoy defendemos la Tierra",
+  "tipo": "sistema-solar",
+  "materia": "ciencias",
+  "nivel": "C3-24",
+  "tema": "astronomia",
+  "misiones": [
+    {
+      "id": "astro-impacto-01",
+      "tipo": "sistema-solar",
+      "escena": "impacto",
+      "modo": "completo",
+      "titulo": "¿Qué Pasa si Cae?",
+      "emoji": "☄️",
+      "instruccion": "Elige el tamaño de la roca con el deslizador y suéltala sobre la Tierra. Lo que va a pasar NO es invento: son los cálculos que hacen los científicos de verdad, comprobados con las rocas que ya han caído.",
+      "leccion": "Antes de soltar nada, haz tu apuesta: una roca del tamaño de una BALLENA, ¿llega al suelo o no? Piénsalo… y luego compruébalo. Pista: la Tierra tiene un escudo invisible que vas a ver funcionar — fíjate cómo la roca FRENA de golpe al tocar el aire.",
+      "datos": {
+        "tierra": "Nuestro escudo es el AIRE: cada día le caen como 100 toneladas de piedritas del espacio y casi todas se queman antes de tocar el suelo. Cada estrella fugaz que ves es el escudo trabajando.",
+        "roca": "La roca cambia todo según su tamaño: chiquita se quema, mediana explota en el aire, grande abre un cráter… y gigante es otra historia. Muévele al deslizador y verás."
+      },
+      "retos": [
+        {
+          "tipo": "impacto",
+          "pregunta": "Suelta una roca que se QUEME completita en el aire, sin tocar el suelo.",
+          "respuesta": "desintegra",
+          "pista": "Tiene que ser chiquita: del tamaño de una pelota o un coche. El aire se encarga del resto."
+        },
+        {
+          "tipo": "impacto",
+          "pregunta": "Ahora logra que una roca llegue al suelo y abra un CRÁTER.",
+          "respuesta": "crater",
+          "pista": "Ni tan chica que se queme, ni tan mediana que explote en el aire: prueba del tamaño de la Torre Eiffel para arriba."
+        },
+        {
+          "tipo": "impacto",
+          "pregunta": "Suelta la GIGANTE, para que veas por qué los astrónomos vigilan el cielo.",
+          "respuesta": "catastrofe",
+          "pista": "Deslizador casi hasta arriba: una montaña voladora, como la de los dinosaurios."
+        }
+      ],
+      "dato_curioso": "El material también cuenta: el famoso Meteor Crater de Arizona lo abrió una roca de solo ~40 metros… pero era de FIERRO macizo, y el fierro aguanta el viaje por el aire mucho mejor que la piedra. Por eso llegó al suelo en vez de explotar arriba."
+    },
+    {
+      "id": "astro-story-chicxulub",
+      "tipo": "mini-story",
+      "titulo": "El Día que Cayó el Cielo",
+      "instruccion": "Lee cada parte y responde la pregunta.",
+      "parrafos": [
+        {
+          "texto": "Hace 66 millones de años, los dinosaurios levantaron la vista y vieron una luz nueva en el cielo. Era una roca MÁS ALTA QUE EL EVEREST viajando rapidísimo. Cayó en el mar, justo donde hoy está Yucatán, en México. El golpe abrió un cráter de unos 180 kilómetros — se llama Chicxulub, por un pueblito que está en el centro.",
+          "emoji": "🦖",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "La roca de los dinosaurios cayó en ___, México.",
+              "opciones": ["Chihuahua", "Yucatán", "Jalisco", "Sonora"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "Lo peor no fue el golpe: fue el POLVO. Subió tanto polvo y humo al cielo que tapó el Sol durante meses y meses. Sin sol, las plantas dejaron de crecer; sin plantas, los herbívoros no tenían qué comer; y sin herbívoros… los carnívoros tampoco. Se hizo un invierno largo y oscuro en todo el planeta.",
+          "emoji": "🌑",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Lo que más daño hizo fue el polvo que tapó el Sol durante meses.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Los dinosaurios grandes no aguantaron ese invierno. Pero unos animalitos chiquitos, de pelo, que vivían en madrigueras y comían de todo, SÍ sobrevivieron: los mamíferos. Con los gigantes fuera del camino, crecieron, se multiplicaron y cambiaron durante millones de años… hasta llegar a nosotros. Sin ese meteorito, quizás no habría humanos.",
+          "emoji": "🐭",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Los que sobrevivieron al invierno fueron los ___.",
+              "opciones": ["dinosaurios grandes", "mamíferos chiquitos", "tiburones gigantes", "pterodáctilos"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "¿Y dónde está ese cráter gigante? ¡Enterrado! En 66 millones de años se cubrió de roca y selva. Pero dejó una pista preciosa: alrededor del borde enterrado, el agua se abrió paso y formó un ANILLO de cenotes — esos pozos de agua cristalina de Yucatán. Si los marcas en un mapa, dibujan medio círculo: es la orilla del cráter saludando desde abajo.",
+          "emoji": "💧",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Los cenotes de Yucatán forman un anillo que marca el borde del cráter enterrado.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Los dinosaurios no tenían telescopios: nunca supieron qué venía. Nosotros SÍ los tenemos — y esa es toda la diferencia. Hoy hay astrónomos que se dedican a buscar y fichar cada roca grande del cielo, noche tras noche. A los gigantes como el de Chicxulub ya casi los tienen contados a todos… y ninguno viene hacia acá.",
+          "emoji": "🔭",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "La gran diferencia entre nosotros y los dinosaurios es que tenemos ___.",
+              "opciones": ["más dientes", "telescopios", "cuevas", "suerte"],
+              "respuesta": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "astro-ip-huellas",
+      "tipo": "image-picker",
+      "titulo": "Las Huellas Reales",
+      "instruccion": "Estas fotos son REALES: huellas y protagonistas de las rocas del espacio. Mira bien y elige qué es cada una.",
+      "retos": [
+        {
+          "imagen_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Meteor_Crater_-_Arizona.jpg?width=640",
+          "palabra_es": "Un hoyo de 1 kilómetro en el desierto",
+          "opciones": [
+            { "label": "Un volcán apagado" },
+            { "label": "El Meteor Crater: lo abrió una roca de fierro" },
+            { "label": "Una mina gigante" },
+            { "label": "El cráter de Chicxulub" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Es el Meteor Crater de Arizona: hace ~50,000 años una roca de FIERRO de unos 40 metros llegó hasta el suelo y abrió este hoyo de 1.2 km. El de Chicxulub no se ve así: está enterrado bajo Yucatán."
+        },
+        {
+          "imagen_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Chelyabinsk_meteor_trace_15-02-2013.jpg?width=640",
+          "palabra_es": "Una raya de humo sobre una ciudad rusa (2013)",
+          "opciones": [
+            { "label": "Un avión supersónico" },
+            { "label": "Un cohete despegando" },
+            { "label": "La estela del bólido de Cheliábinsk" },
+            { "label": "Un rayo en el cielo" }
+          ],
+          "respuesta": 2,
+          "explicacion": "Es la estela que dejó la roca de Cheliábinsk al explotar en el aire, fotografiada por la gente de la ciudad. Del tamaño de una ballena azul, nadie la vio venir porque llegó del lado del Sol."
+        },
+        {
+          "imagen_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Bennu_mosaic_OSIRIS-REx_(square).png?width=640",
+          "palabra_es": "Una papa espacial fotografiada de cerquita",
+          "opciones": [
+            { "label": "La Luna" },
+            { "label": "El asteroide Bennu, visitado por OSIRIS-REx" },
+            { "label": "Un cometa con cola" },
+            { "label": "Marte" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Es Bennu, retratado por la nave OSIRIS-REx — la misma que le recogió piedritas y las trajo a la Tierra en 2023. Fíjate: no es bolita, es una papa con forma de trompo."
+        },
+        {
+          "imagen_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Dimorphos_from_DART_aprox._3_sec_before_impact.jpg?width=640",
+          "palabra_es": "La última foto de una nave kamikaze (2022)",
+          "opciones": [
+            { "label": "Dimorphos, 3 segundos antes de que DART le pegara" },
+            { "label": "Un planeta nuevo" },
+            { "label": "Una foto de la Luna de cerca" },
+            { "label": "El asteroide de los dinosaurios" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Es el asteroide Dimorphos visto por la nave DART ¡3 segundos antes de estrellarse contra él A PROPÓSITO! Fue la primera práctica de la humanidad para desviar asteroides. Y funcionó."
+        }
+      ]
+    },
+    {
+      "id": "astro-om-dart",
+      "tipo": "opcion-multiple",
+      "titulo": "Los Guardianes del Cielo",
+      "instruccion": "La misión DART, en 2022.",
+      "pregunta": "🛡️ ¿Qué hizo la NASA para practicar cómo defender la Tierra?",
+      "opciones": [
+        "Destruyó un asteroide con explosivos",
+        "Estrelló una nave contra el asteroide Dimorphos y le movió su órbita",
+        "Construyó un muro en el espacio"
+      ],
+      "respuesta": "1",
+      "explicacion_correcta": "¡Exacto! La nave DART se estrelló a propósito contra Dimorphos y le movió la órbita unos 32 minutos. No hay que destruir el asteroide: basta con EMPUJARLO tantito, con tiempo, para que pase de largo. Fue la primera práctica de defensa planetaria… y funcionó.",
+      "explicacion_incorrecta": "No hace falta destruir nada: la nave DART se estrelló a propósito contra el asteroide Dimorphos y le movió la órbita unos 32 minutos. Empujar tantito, con tiempo de sobra, es suficiente para que una roca pase de largo. Fue la primera práctica de defensa planetaria y funcionó."
+    },
+    {
+      "id": "astro-om-miedo",
+      "tipo": "opcion-multiple",
+      "titulo": "¿Hay que Tener Miedo?",
+      "instruccion": "Con todo lo que ya sabes, contesta con calma y con ciencia.",
+      "pregunta": "🌎 ¿Deberíamos vivir con miedo de las rocas del espacio?",
+      "opciones": [
+        "Sí, puede caer una en cualquier momento",
+        "No: las gigantes son rarísimas, los astrónomos las vigilan y ya sabemos desviarlas",
+        "Sí, porque nadie está mirando el cielo"
+      ],
+      "respuesta": "1",
+      "explicacion_correcta": "¡Así es! Las chiquitas se queman solas en nuestro escudo de aire todos los días. Las gigantes caen cada ~100 MILLONES de años, los astrónomos ya las tienen casi todas fichadas y ninguna viene hacia acá. Y si algún día una viniera, ya practicamos cómo empujarla. Los dinosaurios no tenían telescopios — nosotros sí.",
+      "explicacion_incorrecta": "La respuesta con ciencia es NO: las rocas chiquitas se queman solas en el aire, las gigantes son rarísimas (una cada ~100 millones de años), los astrónomos vigilan el cielo cada noche y con DART ya practicamos cómo desviarlas. Los dinosaurios no tenían telescopios — nosotros sí."
+    }
+  ]
+}

@@ -28,7 +28,7 @@ const Espacio3D = React.lazy(() => import('./Espacio3D'));
  *                   { tipo:'lanzamiento', pregunta, respuesta:'choca'|'orbita'|'escapa', pista? }]
  *   dato_curioso : texto del final
  */
-const ESCENAS = ['planetas', 'tierra-luna', 'estaciones', 'constelaciones', 'cometa', 'satelite', 'estrellas', 'exoplanetas', 'asteroides', 'agujero-negro', 'cama-elastica'];
+const ESCENAS = ['planetas', 'tierra-luna', 'estaciones', 'constelaciones', 'cometa', 'satelite', 'estrellas', 'exoplanetas', 'asteroides', 'impacto', 'agujero-negro', 'cama-elastica'];
 
 const SistemaSolar = ({ mision, onCompletar }) => {
   const escena = ESCENAS.includes(mision.escena) ? mision.escena : 'planetas';
@@ -72,7 +72,7 @@ const SistemaSolar = ({ mision, onCompletar }) => {
 
 // OJO: MisionRenderer ya pinta mision.titulo y mision.instruccion arriba de toda
 // mision — repetirlos aqui los mostraba dos veces (mismo error que en cubos).
-const EMOJI_ESCENA = { 'tierra-luna': '🌗', estaciones: '🍂', constelaciones: '✨', cometa: '☄️', satelite: '🛰️', estrellas: '⭐', exoplanetas: '🔭', asteroides: '🪨', 'agujero-negro': '🕳️', 'cama-elastica': '🛏️' };
+const EMOJI_ESCENA = { 'tierra-luna': '🌗', estaciones: '🍂', constelaciones: '✨', cometa: '☄️', satelite: '🛰️', estrellas: '⭐', exoplanetas: '🔭', asteroides: '🪨', impacto: '☄️', 'agujero-negro': '🕳️', 'cama-elastica': '🛏️' };
 
 const Portada = ({ mision, escena, onComenzar }) => (
   <div className="sisol-portada">
@@ -222,6 +222,13 @@ const MENSAJES_CANICA = {
   cae: '⬇️ Se cayó al fondo: demasiado peso. ¡Quítale un poco!',
 };
 
+const MENSAJES_IMPACTO = {
+  desintegra: '✨ Se quemó en el aire. El reto pedía otra cosa: prueba una roca más grande.',
+  'explota-aire': '💥 Explotó en el aire sin llegar al suelo. Cambia el tamaño y vuelve a soltarla.',
+  crater: '🕳️ Hizo un cráter. El reto pedía otra cosa: cambia el tamaño.',
+  catastrofe: '🌑 Esa fue una catástrofe completa. El reto pedía otra cosa: prueba más chica.',
+};
+
 const Retos = ({ escena, retos, onTerminar }) => {
   const [idx, setIdx] = useState(0);
   const [feedback, setFeedback] = useState(null); // null | 'correcto' | { intento }
@@ -273,9 +280,9 @@ const Retos = ({ escena, retos, onTerminar }) => {
     else setFeedback({ intento: null });
   };
 
-  // Satelite, agujero-negro y cama-elastica: el desenlace (lanzamiento, rayo
-  // de luz o canica) llega solo desde el motor.
-  const RETOS_CON_DESENLACE = ['lanzamiento', 'luz', 'canica'];
+  // Satelite, agujero-negro, cama-elastica e impacto: el desenlace
+  // (lanzamiento, rayo de luz, canica o caida) llega solo desde el motor.
+  const RETOS_CON_DESENLACE = ['lanzamiento', 'luz', 'canica', 'impacto'];
   const alFase = (info) => {
     setFaseActual(info);
     if (RETOS_CON_DESENLACE.includes(reto.tipo) && info?.resultado && !resuelto) {
@@ -346,7 +353,9 @@ const Retos = ({ escena, retos, onTerminar }) => {
                 ? MENSAJES_LUZ[feedback.intento] || '¡Prueba apretando distinto!'
                 : reto.tipo === 'canica' && feedback.intento
                   ? MENSAJES_CANICA[feedback.intento] || '¡Prueba con otro peso!'
-                  : reto.tipo === 'estacion'
+                  : reto.tipo === 'impacto' && feedback.intento
+                    ? MENSAJES_IMPACTO[feedback.intento] || '¡Prueba con otro tamaño!'
+                    : reto.tipo === 'estacion'
                     ? 'Todavía no. Fíjate hacia dónde apunta el eje rojo: ¿le da el sol de frente a nuestra mitad del mundo?'
                     : reto.tipo === 'cometa'
                       ? 'Todavía no. La pista está en la cola: mira dónde crece y dónde casi desaparece.'

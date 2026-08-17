@@ -444,6 +444,17 @@ el flujo de MezcladorColores (intro → explorar → retos → fin).
   5% de ella. Campo `ancla` en el dataset = comparacion corta en la etiqueta
   flotante (anclas elegidas por el usuario: animales, tiempos de caminata,
   Mexico y mundo famoso). Retos tipo `toca`.
+- **Escena `impacto`** (2026-08-16, ¿que pasa si cae?): deslizador = TAMANO de
+  la roca (exponencial 1 m → 15 km, `impactoInfoDe` en espacioDatos con ancla
+  tipo "como una ballena azul") + boton "Que caiga". La Tierra con su
+  atmosfera VISIBLE; la roca (geoPapa compartida) FRENA en seco al tocar el
+  aire — ver el frenon es ver el escudo. Bandas con umbrales de expertos
+  (historicos + modelos tipo Impact Earth de Collins/Melosh): <15 m
+  `desintegra`, 15-70 m `explota-aire` (Cheliabinsk/Tunguska), 70 m-2 km
+  `crater` (persistente en el polo, la Tierra rota en Y y el polo no se
+  mueve), >2 km `catastrofe` (onda + la luz se atenua unos segundos y luego
+  "amanece"). Retos tipo `impacto` que aciertan solos. La etiqueta invita a
+  APOSTAR antes de soltar (no revela la banda: prediccion primero).
 - **Escena `cama-elastica`** (2026-08-15, el espacio que se hunde): deslizador
   = PESO de la bola central (0-100); la rejilla del espacio se hunde con la
   forma del potencial de Newton y la bola crece. Boton "Rueda la canica":
@@ -503,6 +514,7 @@ saturno, urano, neptuno. Tierra-luna: sol, tierra, luna.
 | `sistema-solar/C3-23_relatividad.json` | Relatividad (experimento mental, cama elastica, gemelo viajero, GPS) | experimento-guia + sistema-solar (cama-elastica) + mini-story + true-or-false + image-picker + opcion-multiple |
 | `sistema-solar/C2-38_la-escalera-de-los-planetas.json` | La escalera de los planetas (exoplanetas, el techo de ~2 Jupiteres) | sistema-solar (exoplanetas) + opcion-multiple + true-or-false |
 | `sistema-solar/C2-39_rocas-del-espacio.json` | Asteroides (escalera con anclas), vocabulario meteoro/meteorito y Perseidas | sistema-solar (asteroides) + tap-the-pairs + mini-story + true-or-false |
+| `sistema-solar/C3-24_el-dia-que-cayo-el-cielo.json` | Impactos por tamano, Chicxulub/cenotes y defensa planetaria (DART) | sistema-solar (impacto) + mini-story + image-picker + opcion-multiple |
 
 **Fotos**: URLs `https://commons.wikimedia.org/wiki/Special:FilePath/<archivo>?width=320`
 (redirect estable de Wikimedia Commons, sin rutas con hash; todas verificadas con curl).
@@ -524,12 +536,6 @@ el tile propio `sistema-solar`. `detectMateria` reconoce `ciencias-*`.
 ### Ideas futuras (no construidas)
 
 - Expediciones espaciales estilo `expedicion-galactica.json` (Sistema Solar, Luna, Marte)
-- **C3-24 impactos y defensa planetaria** (aprobado en concepto): escena
-  `impacto` — deslizador de tamano de la roca, desenlaces con umbrales de
-  expertos (se desintegra / explota en el aire / crater / catastrofe),
-  mini-story Chicxulub con los cenotes de Yucatan marcando el borde del
-  crater, y remate esperanzador con DART (2022: la NASA movio la orbita de
-  Dimorphos a proposito — ya practicamos como desviarlos)
 
 ---
 
