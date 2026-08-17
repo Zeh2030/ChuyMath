@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react';
 
 let audio = null;
 let encendida = false; // intención del usuario
+let pistaActual = null; // id de la pista elegida
 const motivos = new Set(); // supresiones temporales activas (piano, dictado, letras)
 const oyentes = new Set();
 let siguienteToken = 1;
@@ -70,19 +71,22 @@ const sincronizar = () => {
   else audio.pause();
 };
 
-// Enciende la música. El elemento de audio se crea aquí y no antes: mientras
-// esté apagada no se descarga ni un byte del mp3 (pesa varios MB).
-export function encender(url) {
-  if (!url) return;
+// Enciende la música con la pista dada ({ id, url }). El elemento de audio se
+// crea aquí y no antes: mientras esté apagada no se descarga ni un byte del
+// mp3 (pesan varios MB). Llamarla con otra pista cambia de canción al vuelo.
+export function encender(pista) {
+  if (!pista?.url) return;
 
   if (!audio) {
-    audio = new Audio(url);
+    audio = new Audio(pista.url);
     audio.loop = true;
     audio.volume = VOLUMEN;
-  } else if (audio.src !== url) {
-    audio.src = url;
+  } else if (pistaActual !== pista.id) {
+    // Cambio de pista: reemplazar la fuente arranca la nueva desde el inicio.
+    audio.src = pista.url;
   }
 
+  pistaActual = pista.id;
   encendida = true;
   sincronizar();
   avisar();
@@ -113,16 +117,21 @@ export function estaEncendida() {
   return encendida;
 }
 
+export function pistaEncendida() {
+  return encendida ? pistaActual : null;
+}
+
 export function suscribir(cb) {
   oyentes.add(cb);
   return () => oyentes.delete(cb);
 }
 
 // Hook para que la UI (el botón del Header) refleje el estado real.
+// Devuelve el id de la pista sonando, o null si está apagada.
 export function useMusicaFondo() {
-  const [activa, setActiva] = useState(estaEncendida());
+  const [pista, setPista] = useState(pistaEncendida());
 
-  useEffect(() => suscribir(() => setActiva(estaEncendida())), []);
+  useEffect(() => suscribir(() => setPista(pistaEncendida())), []);
 
-  return activa;
+  return pista;
 }

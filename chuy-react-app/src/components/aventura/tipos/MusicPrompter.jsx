@@ -3,21 +3,37 @@ import abcjs from 'abcjs';
 import './MusicPrompter.css';
 
 /**
- * Strip internal barlines from ABC for more uniform note spacing.
- * Preserves |] (final), |: and :| (repeats).
+ * Estima el número de compases contando barras `|` en las líneas de notas.
+ * En multi-voz cuenta solo la voz 1 (las voces tienen los mismos compases).
+ * Nota: las barras YA NO se eliminan del ABC — eso era necesario con el motor
+ * viejo de velocidad constante; el mapa tiempo→posición absorbe su espacio.
  */
-const stripBarlines = (abc) => {
-  return abc.split('\n').map(line => {
-    if (line.match(/^[A-Z]:/) || line.startsWith('%%') || line.trim() === '') return line;
-    return line
-      .replace(/\|\]/g, '\x00E\x00')
-      .replace(/\|:/g, '\x00S\x00')
-      .replace(/:\|/g, '\x00R\x00')
-      .replace(/\|/g, ' ')
-      .split('\x00E\x00').join('|]')
-      .split('\x00S\x00').join('|:')
-      .split('\x00R\x00').join(':|');
-  }).join('\n');
+const estimarCompases = (abc) => {
+  const lines = abc.split('\n');
+  let voz = null;
+  let compases = 0;
+  for (const rawLine of lines) {
+    const line = rawLine.trim();
+    if (!line || line.startsWith('%%')) continue;
+    const vm = line.match(/^V:\s*(\d+)/);
+    if (vm) { voz = vm[1]; continue; }
+    if (/^[A-Z]:/.test(line)) continue; // encabezados X:/T:/M:/L:/K:
+    if (voz === null || voz === '1') {
+      compases += (line.match(/\|/g) || []).length;
+    }
+  }
+  return Math.max(1, compases);
+};
+
+/**
+ * Ancho del pentagrama PROPORCIONAL al contenido (px por compás constante),
+ * para que piezas largas no se compriman. Tope de seguridad para no generar
+ * SVGs absurdamente anchos (~120k px CSS a scale 2).
+ */
+const calcStaffwidth = (abc, multiVoice) => {
+  const compases = estimarCompases(abc);
+  const porCompas = multiVoice ? 1100 : 500;
+  return Math.min(Math.max(1500, compases * porCompas), 60000);
 };
 
 /**
@@ -36,7 +52,9 @@ const stripBarlines = (abc) => {
 const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice = false }) => {
   const [estado, setEstado] = useState('parado');
   const [bpmActual, setBpmActual] = useState(bpm || 80);
-  const [sonidoOn, setSonidoOn] = useState(true);
+  // Volumen del synth: 1 = normal (escuchar la pieza), 0.2 = guía apenas
+  // audible (el niño toca y el synth solo lo orienta), 0 = mudo.
+  const [volumen, setVolumen] = useState(1);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [cargando, setCargando] = useState(false);
 
@@ -104,6 +122,14 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
       musicWidthRef.current = svgRect.width;
     }
 
+    // Altura adaptativa: el viewport crece con la partitura real (líneas
+    // adicionales, grand staff). Vía variable CSS para que el modo fullscreen
+    // (flex) siga mandando sobre esta medida.
+    if (containerRef.current && svgRect.height > 0) {
+      const alto = Math.max(240, Math.ceil(svgRect.height) + 30);
+      containerRef.current.style.setProperty('--mp-alto', `${alto}px`);
+    }
+
     const puntos = [];
     let finMs = 0;
     try {
@@ -147,10 +173,9 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     if (!abcTargetRef.current || !abcNotation) return;
 
     abcTargetRef.current.innerHTML = '';
-    const strippedAbc = stripBarlines(abcNotation);
 
-    const visualObj = abcjs.renderAbc(abcTargetRef.current, strippedAbc, {
-      staffwidth: multiVoice ? 10000 : 6000,
+    const visualObj = abcjs.renderAbc(abcTargetRef.current, abcNotation, {
+      staffwidth: calcStaffwidth(abcNotation, multiVoice),
       scale: 2,
       wrap: null,
       add_classes: true,
@@ -202,6 +227,7 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
           qpm: qpm,
           soundFontUrl: 'https://paulrosen.github.io/midi-js-soundfonts/FluidR3_GM/',
           program: 0,
+          soundFontVolumeMultiplier: volumen,
         },
       });
       await synth.prime();
@@ -283,9 +309,8 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
 
     // Re-render
     abcTargetRef.current.innerHTML = '';
-    const strippedAbc = stripBarlines(abcNotation);
-    const visualObj = abcjs.renderAbc(abcTargetRef.current, strippedAbc, {
-      staffwidth: multiVoice ? 10000 : 6000, scale: 2, wrap: null, add_classes: true,
+    const visualObj = abcjs.renderAbc(abcTargetRef.current, abcNotation, {
+      staffwidth: calcStaffwidth(abcNotation, multiVoice), scale: 2, wrap: null, add_classes: true,
       selectTypes: false, paddingtop: 0, paddingbottom: 0, paddingleft: 20,
     });
     visualObjRef.current = visualObj[0];
@@ -343,12 +368,12 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     }
 
     if (estado === 'pausado') {
-      if (sonidoOn && synthRef.current) { try { synthRef.current.resume(); } catch { /* sin audio */ } }
+      if (volumen > 0 && synthRef.current) { try { synthRef.current.resume(); } catch { /* sin audio */ } }
     } else {
       translateXRef.current = 0;
       segIdxRef.current = 0;
       elapsedPrevRef.current = 0;
-      if (sonidoOn && synthRef.current) { try { synthRef.current.start(); } catch { /* sin audio */ } }
+      if (volumen > 0 && synthRef.current) { try { synthRef.current.start(); } catch { /* sin audio */ } }
     }
 
     // Ancla el reloj justo al arrancar/reanudar el audio.
@@ -375,9 +400,16 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
   const handleBpmUp = () => setBpmActual(prev => Math.min(200, prev + 5));
   const handleBpmDown = () => setBpmActual(prev => Math.max(20, prev - 5));
 
-  const toggleSonido = () => {
-    if (sonidoOn && synthRef.current && estado === 'tocando') { try { synthRef.current.stop(); } catch { /* ya parado */ } }
-    setSonidoOn(prev => !prev);
+  // Cicla 🔊 normal → 🔉 bajito (guía) → 🔇 mudo. El multiplicador de volumen
+  // se fija al crear el synth, así que se descarta el actual: el nuevo volumen
+  // aplica al siguiente Play (si estaba sonando, el audio se detiene y el
+  // scroll sigue — igual que hacía el mute de antes).
+  const cambiarVolumen = () => {
+    if (synthRef.current) {
+      try { synthRef.current.stop(); } catch { /* ya parado */ }
+      synthRef.current = null;
+    }
+    setVolumen(v => (v === 1 ? 0.2 : v === 0.2 ? 0 : 1));
   };
 
   const bpmOriginal = bpm || 80;
@@ -416,11 +448,11 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
         </button>
 
         <button
-          className={`mp-btn ${sonidoOn ? 'mp-btn-sound-on' : 'mp-btn-sound-off'}`}
-          onClick={toggleSonido}
-          title={sonidoOn ? 'Silenciar' : 'Activar sonido'}
+          className={`mp-btn ${volumen > 0 ? 'mp-btn-sound-on' : 'mp-btn-sound-off'}`}
+          onClick={cambiarVolumen}
+          title={volumen === 1 ? 'Volumen normal (toca para bajarlo)' : volumen > 0 ? 'Volumen bajito: solo guía (toca para silenciar)' : 'Sin sonido (toca para volumen normal)'}
         >
-          {sonidoOn ? '🔊' : '🔇'}
+          {volumen === 1 ? '🔊' : volumen > 0 ? '🔉' : '🔇'}
         </button>
 
         {isFullscreen && (

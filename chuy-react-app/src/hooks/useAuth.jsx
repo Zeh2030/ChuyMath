@@ -21,6 +21,7 @@ const perfilPorDefecto = (ownerUid, datos = {}) => ({
   esPeque: datos.esPeque || false,
   edad: datos.edad || null,
   musicaFondo: false,
+  musicaFondoPista: null,
   racha: 0,
   ultimaVisita: null,
   habilidades: {},

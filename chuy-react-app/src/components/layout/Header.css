@@ -60,18 +60,6 @@
   background: linear-gradient(135deg, var(--theme-header-btn-1), var(--theme-header-btn-2));
 }
 
-/* Es un <button>, no un <Link>: hay que igualar lo que el navegador no hereda. */
-.musica-btn {
-  background: linear-gradient(135deg, #16a085, #0e6655);
-  border: none;
-  cursor: pointer;
-  font-size: 0.9rem;
-}
-
-.musica-btn[aria-pressed='false'] {
-  background: linear-gradient(135deg, #7f8c8d, #5d6d7e);
-}
-
 @media (min-width: 768px) {
   .header-content {
     flex-direction: row;

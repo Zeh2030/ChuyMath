@@ -4,9 +4,13 @@ import { soportaWebGL } from '../../../utils/webgl';
 import {
   PLANETAS, SOL, CONSTELACIONES, COMETA,
   ESTRELLAS_COMPARAR, PASOS_ESTRELLAS, ORBITAS_UA, UA_POR_RADIO_SOL,
-  PLANETAS_ESCALERA, PASOS_EXOPLANETAS,
-  faseInfoDe, estacionInfoDe, cometaInfoDe, etiquetaComparar, etiquetaEstrella, etiquetaExoplaneta,
+  PLANETAS_ESCALERA, PASOS_EXOPLANETAS, ASTEROIDES_ESCALERA, PASOS_ASTEROIDES,
+  faseInfoDe, estacionInfoDe, cometaInfoDe,
+  etiquetaComparar, etiquetaEstrella, etiquetaExoplaneta, etiquetaAsteroide,
 } from './espacioDatos';
+
+// Las tres escenas que comparten el motor de escalera por pasos.
+const ESCALERAS = ['estrellas', 'exoplanetas', 'asteroides'];
 import './Espacio3D.css';
 
 /**
@@ -359,7 +363,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     if (escena === 'estaciones') return 0;   // solsticio de junio
     if (escena === 'cometa') return 60;      // de viaje, alejandose
     if (escena === 'satelite') return 55;    // velocidad media
-    if (escena === 'estrellas' || escena === 'exoplanetas') return 1; // primer escalon
+    if (ESCALERAS.includes(escena)) return 1; // primer escalon de la escalera
     if (escena === 'agujero-negro') return 0; // la Tierra sin apretar todavia
     if (escena === 'cama-elastica') return 0; // espacio plano: sin peso al centro
     return 90;                               // cuarto creciente
@@ -449,12 +453,12 @@ const Espacio3D = forwardRef(function Espacio3D(
     const mallas = [];
     const porMalla = new Map();
 
-    const crearCuerpo = ({ id, radio, tex, color, semilla, lambert = true, sombras = false }) => {
+    const crearCuerpo = ({ id, radio, tex, color, semilla, lambert = true, sombras = false, geo = geoEsfera }) => {
       const mapa = registrar(crearTexturaCuerpo({ tex, color, semilla }));
       const mat = registrar(lambert
         ? new THREE.MeshLambertMaterial({ map: mapa })
         : new THREE.MeshBasicMaterial({ map: mapa }));
-      const mesh = new THREE.Mesh(geoEsfera, mat);
+      const mesh = new THREE.Mesh(geo, mat);
       mesh.scale.setScalar(radio);
       if (sombras) {
         mesh.castShadow = true;
@@ -510,7 +514,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     // se veria pixelado). La usan el modo comparar (planetas), la escalera
     // de estrellas y constelaciones (nombres de estrellas y de figuras).
     let crearEtiqueta = null;
-    if (escena === 'planetas' || escena === 'estrellas' || escena === 'exoplanetas' || escena === 'constelaciones') {
+    if (escena === 'planetas' || escena === 'constelaciones' || ESCALERAS.includes(escena)) {
       capaEtiquetas = document.createElement('div');
       capaEtiquetas.className = 'espacio3d-etiquetas';
       contenedor.appendChild(capaEtiquetas);
@@ -897,12 +901,12 @@ const Espacio3D = forwardRef(function Espacio3D(
       };
     }
 
-    if (escena === 'estrellas' || escena === 'exoplanetas') {
-      // La Escalera (de estrellas o de planetas): comparacion por PASOS. En
-      // cada escalon entra un cuerpo mas grande y TODO se re-escala (el mayor
-      // del paso siempre mide ~RADIO_FILA unidades). Esa re-normalizacion es
-      // la leccion: la referencia (el Sol / la Tierra) se va encogiendo a la
-      // vista, escalon a escalon. Mismo motor, dos datasets.
+    if (ESCALERAS.includes(escena)) {
+      // La Escalera (de estrellas, planetas o asteroides): comparacion por
+      // PASOS. En cada escalon entra un cuerpo mas grande y TODO se re-escala
+      // (el mayor del paso siempre mide ~RADIO_FILA unidades). Esa
+      // re-normalizacion es la leccion: la referencia se va encogiendo a la
+      // vista, escalon a escalon. Mismo motor, tres datasets.
       escena3.add(new THREE.AmbientLight(0xffffff, 1)); // brillan solos (MeshBasic)
 
       const esDeEstrellas = escena === 'estrellas';
@@ -916,18 +920,53 @@ const Espacio3D = forwardRef(function Espacio3D(
           idRef: 'sol',
           textoRefChico: '☀️ el Sol: ¡ya casi no se ve! 😱',
         }
-        : {
-          lista: PLANETAS_ESCALERA,
-          radioDe: (e) => e.radioTierra,
-          pasos: PASOS_EXOPLANETAS,
-          etiquetaDe: etiquetaExoplaneta,
-          conGlow: (e) => !!e.glow,
-          idRef: 'tierra',
-          textoRefChico: '🌍 la Tierra: ¡ya casi no se ve! 😱',
-        };
+        : escena === 'exoplanetas'
+          ? {
+            lista: PLANETAS_ESCALERA,
+            radioDe: (e) => e.radioTierra,
+            pasos: PASOS_EXOPLANETAS,
+            etiquetaDe: etiquetaExoplaneta,
+            conGlow: (e) => !!e.glow,
+            idRef: 'tierra',
+            textoRefChico: '🌍 la Tierra: ¡ya casi no se ve! 😱',
+          }
+          : {
+            lista: ASTEROIDES_ESCALERA,
+            radioDe: (e) => e.radioKm,
+            pasos: PASOS_ASTEROIDES,
+            etiquetaDe: etiquetaAsteroide,
+            conGlow: () => false,
+            idRef: 'chelyabinsk',
+            textoRefChico: '💥 Cheliábinsk: ¡ya casi no se ve!',
+          };
 
       const RADIO_FILA = 9;
       const HUECO_FILA = 2.2;
+
+      // Papa espacial: esfera con ruido radial suave y determinista (senos de
+      // baja frecuencia con fases de la semilla) + achatado leve. Es funcion
+      // pura de la posicion, asi que los vertices duplicados de la costura UV
+      // se desplazan igual (sin grietas). MeshBasic no usa normales y la
+      // escala uniforme del loop tampoco se entera de la forma.
+      const crearGeoPapa = (semilla) => {
+        const g = registrar(new THREE.SphereGeometry(1, 24, 16));
+        const rngP = crearRng(semilla);
+        const f = [2 + rngP() * 1.5, 2.5 + rngP() * 1.5, 3 + rngP() * 1.5];
+        const fase = [rngP() * 6.28, rngP() * 6.28, rngP() * 6.28];
+        const aplasta = 0.78 + rngP() * 0.12;
+        const pos = g.attributes.position;
+        const v = new THREE.Vector3();
+        for (let i = 0; i < pos.count; i++) {
+          v.fromBufferAttribute(pos, i);
+          const d = 1
+            + 0.12 * Math.sin(f[0] * v.x + fase[0])
+            + 0.12 * Math.sin(f[1] * v.y + fase[1])
+            + 0.10 * Math.sin(f[2] * v.z + fase[2]);
+          pos.setXYZ(i, v.x * d, v.y * d * aplasta, v.z * d);
+        }
+        pos.needsUpdate = true;
+        return g;
+      };
 
       const ordenadas = [...cfg.lista].sort((a, b) => cfg.radioDe(a) - cfg.radioDe(b));
       const geoToque = registrar(new THREE.SphereGeometry(1, 12, 8));
@@ -936,8 +975,16 @@ const Espacio3D = forwardRef(function Espacio3D(
         color: 0xdfe8ff, transparent: true, opacity: 0.55, depthTest: false,
       }));
 
-      const estrellas = ordenadas.map((e) => {
-        const mesh = crearCuerpo({ id: e.id, radio: 1, tex: e.tex, color: e.color, semilla: 101 + e.paso, lambert: false });
+      const estrellas = ordenadas.map((e, i) => {
+        const mesh = crearCuerpo({
+          id: e.id,
+          radio: 1,
+          tex: e.tex,
+          color: e.color,
+          semilla: 101 + e.paso + i * 13, // craterizados distintos entre vecinos
+          lambert: false,
+          geo: e.forma === 'papa' ? crearGeoPapa(211 + i * 7) : undefined,
+        });
         mesh.visible = false;
         escena3.add(mesh);
         const glow = cfg.conGlow(e) ? crearGlow(1, e.color) : null;
@@ -1136,6 +1183,7 @@ const Espacio3D = forwardRef(function Espacio3D(
       satelite: { yaw: 0, pitch: 1.3, dist: 24 },
       estrellas: { yaw: 0, pitch: 0.18, dist: 26 },
       exoplanetas: { yaw: 0, pitch: 0.18, dist: 26 },
+      asteroides: { yaw: 0, pitch: 0.18, dist: 26 },
       'agujero-negro': { yaw: 0, pitch: 1.1, dist: 26 },
       // Vista de 3/4: de frente no se veria el hundimiento de la sabana.
       'cama-elastica': { yaw: 0.3, pitch: 0.42, dist: 30 },
@@ -1608,7 +1656,7 @@ const Espacio3D = forwardRef(function Espacio3D(
           }
         }
         if (sim) escSat.sat.position.copy(sim.pos);
-      } else if (escena === 'estrellas' || escena === 'exoplanetas') {
+      } else if (ESCALERAS.includes(escena)) {
         const paso = Math.min(escEstrellas.pasos, Math.max(1, Math.round(est.angulo)));
         const met = escEstrellas.metricasPaso[paso - 1];
         if (paso !== escEstrellas.pasoPrevio) {
@@ -1900,7 +1948,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     );
   }
 
-  const conSlider = ['tierra-luna', 'estaciones', 'cometa', 'satelite', 'estrellas', 'exoplanetas', 'agujero-negro', 'cama-elastica'].includes(escena);
+  const conSlider = ['tierra-luna', 'estaciones', 'cometa', 'satelite', ...ESCALERAS, 'agujero-negro', 'cama-elastica'].includes(escena);
   const conRecuadro = escena === 'tierra-luna' || escena === 'estaciones';
 
   const PISTAS = {
@@ -1912,6 +1960,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     satelite: '👆 Elige la velocidad y ¡lanza! · arrastra para girar la vista',
     estrellas: '👆 Sube la escalera con el deslizador · toca una estrella para saber más',
     exoplanetas: '👆 Sube la escalera con el deslizador · toca un planeta para saber más',
+    asteroides: '👆 Sube la escalera con el deslizador · toca una roca para saber más',
     'agujero-negro': '👆 Aprieta la Tierra con el deslizador y lanza rayos de luz para ver si escapan',
     'cama-elastica': '👆 Ponle peso a la bola con el deslizador y rueda la canica · arrastra para girar',
   };
@@ -1923,6 +1972,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     satelite: ['🐢', '🚀'],
     estrellas: ['🌍', '👑'],
     exoplanetas: ['🔴', '🎈'],
+    asteroides: ['💥', '🌕'],
     'agujero-negro': ['🌍', '🕳️'],
     'cama-elastica': ['🪶', '🐘'],
   };
@@ -1935,12 +1985,14 @@ const Espacio3D = forwardRef(function Espacio3D(
     'cama-elastica': 100,
     estrellas: PASOS_ESTRELLAS,
     exoplanetas: PASOS_EXOPLANETAS,
+    asteroides: PASOS_ASTEROIDES,
   };
 
   const SLIDER_ETIQUETA = {
     satelite: 'Velocidad de lanzamiento',
     estrellas: 'Subir la escalera de estrellas',
     exoplanetas: 'Subir la escalera de planetas',
+    asteroides: 'Subir la escalera de asteroides',
     'agujero-negro': 'Apretar la Tierra',
     'cama-elastica': 'Peso de la bola',
   };
@@ -2116,6 +2168,24 @@ const Espacio3D = forwardRef(function Espacio3D(
         </div>
       </>
     );
+  } else if (escena === 'asteroides') {
+    const TEXTOS_PASO = {
+      1: '💥 Las que nos han visitado: Cheliábinsk y Tunguska',
+      2: '🗼 Apophis y Bennu: rocas como edificios… y las estamos vigilando',
+      3: '🦖 Chicxulub, la montaña voladora que acabó con los dinosaurios',
+      4: '👑 Vesta y Ceres, los reyes del cinturón de asteroides',
+      5: '🌕 …y la Luna los deja a todos chiquitos',
+    };
+    etiqueta = (
+      <>
+        <div className="espacio3d-fase">{TEXTOS_PASO[angulo] || TEXTOS_PASO[1]}</div>
+        <div className="espacio3d-subfase">
+          {angulo >= PASOS_ASTEROIDES
+            ? 'Ni juntando TODOS los asteroides del cinturón armas ni el 5% de la Luna. Por eso ahí nunca se formó un planeta.'
+            : '🥔 Los asteroides son papas espaciales: solo los MUY grandes tienen gravedad para hacerse bolita (Ceres ya lo logró).'}
+        </div>
+      </>
+    );
   }
 
   return (
@@ -2137,7 +2207,7 @@ const Espacio3D = forwardRef(function Espacio3D(
             <input
               type="range"
               className="espacio3d-slider"
-              min={escena === 'estrellas' || escena === 'exoplanetas' ? 1 : 0}
+              min={ESCALERAS.includes(escena) ? 1 : 0}
               max={SLIDER_MAX[escena] ?? 360}
               step={1}
               value={angulo}

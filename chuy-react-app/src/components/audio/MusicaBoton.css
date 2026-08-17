@@ -1,0 +1,103 @@
+/* El menú se ancla al botón, por eso el wrapper es el que posiciona. */
+.musica-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+/* Es un <button>, no un <Link>: hay que igualar lo que el navegador no hereda. */
+.musica-btn {
+  background: linear-gradient(135deg, #16a085, #0e6655);
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.musica-btn[data-sonando='no'] {
+  background: linear-gradient(135deg, #7f8c8d, #5d6d7e);
+}
+
+.musica-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 900; /* por encima del contenido, por debajo de modales (1000) */
+  min-width: 230px;
+  padding: 6px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.musica-opcion {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  color: #2c3e50;
+}
+
+.musica-opcion:hover:not(:disabled) {
+  background: #f0f4f8;
+}
+
+.musica-opcion.activa {
+  background: #e8f6f3;
+}
+
+.musica-opcion:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Ancho fijo para que los títulos queden alineados con y sin el 🎵 */
+.musica-check {
+  width: 18px;
+  flex-shrink: 0;
+  font-size: 0.95rem;
+}
+
+.musica-textos {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.musica-titulo {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.musica-compositor {
+  font-size: 0.8rem;
+  color: #7f8c8d;
+}
+
+.musica-apagar {
+  margin-top: 2px;
+  border-top: 1px solid #ecf0f1;
+  border-radius: 0 0 10px 10px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #c0392b;
+}
+
+/* En móvil el Header envuelve los botones en varias filas: anclado a la
+   derecha el menú se saldría de pantalla según dónde caiga el botón. */
+@media (max-width: 500px) {
+  .musica-menu {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 210px;
+  }
+}

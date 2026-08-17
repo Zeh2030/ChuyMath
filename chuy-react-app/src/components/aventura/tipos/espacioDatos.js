@@ -58,6 +58,13 @@ export const NOMBRES = {
   'hd-189733b': 'HD 189733b',
   'kelt-9b': 'KELT-9b',
   'hat-p-67b': 'HAT-P-67 b',
+  chelyabinsk: 'Cheliábinsk',
+  tunguska: 'Tunguska',
+  apophis: 'Apophis',
+  bennu: 'Bennu',
+  chicxulub: 'Chicxulub',
+  vesta: 'Vesta',
+  ceres: 'Ceres',
   ...Object.fromEntries(PLANETAS.map((p) => [p.id, p.nombre])),
 };
 
@@ -159,6 +166,33 @@ export const etiquetaExoplaneta = (p) => {
   if (p.id === 'sol') return '☀️ el Sol · ¡ni el récord se le acerca!';
   const n = formatMultiplo(p.radioTierra).slice(0, -1); // sin el simbolo ×
   return `${p.emoji} ${p.nombre} · ${n} Tierras`;
+};
+
+/* ============================ LA ESCALERA DE LOS ASTEROIDES ============================ */
+
+// Tamanos en km (diametro aproximado "popular" de cada objeto; el ORDEN es lo
+// que ensena). `ancla` = comparacion corta con algo que un nino ubica — va en
+// la etiqueta flotante; el cuento completo vive en los `datos` del JSON.
+// `forma: 'papa'` = cuerpo irregular (ruido con semilla en el motor): que solo
+// los MUY grandes sean bolita ES leccion — la gravedad propia los redondea
+// (Ceres si; Vesta todavia no). La Luna remata: ni juntando todo el cinturon
+// se arma el 5% de ella — por eso ahi nunca se formo un planeta.
+export const PASOS_ASTEROIDES = 5;
+
+export const ASTEROIDES_ESCALERA = [
+  { id: 'chelyabinsk', nombre: 'Cheliábinsk', radioKm: 0.02, ancla: 'una ballena azul', color: '#9a8a7a', tex: 'craterizado', emoji: '💥', paso: 1, forma: 'papa' },
+  { id: 'tunguska', nombre: 'Tunguska', radioKm: 0.06, ancla: 'un avión jumbo', color: '#8a7a68', tex: 'craterizado', emoji: '🌲', paso: 1, forma: 'papa' },
+  { id: 'apophis', nombre: 'Apophis', radioKm: 0.34, ancla: 'la Torre Eiffel', color: '#a09080', tex: 'craterizado', emoji: '🗼', paso: 2, forma: 'papa' },
+  { id: 'bennu', nombre: 'Bennu', radioKm: 0.49, ancla: '5 canchas de fútbol', color: '#6f6a66', tex: 'craterizado', emoji: '🛰️', paso: 2, forma: 'papa' },
+  { id: 'chicxulub', nombre: 'Chicxulub', radioKm: 12, ancla: 'más alto que el Everest', color: '#7d6b58', tex: 'craterizado', emoji: '🦖', paso: 3, forma: 'papa' },
+  { id: 'vesta', nombre: 'Vesta', radioKm: 525, ancla: 'CDMX→Guadalajara', color: '#b0a494', tex: 'craterizado', emoji: '🥔', paso: 4, forma: 'papa' },
+  { id: 'ceres', nombre: 'Ceres', radioKm: 940, ancla: 'CDMX→Monterrey', color: '#9d9689', tex: 'craterizado', emoji: '👑', paso: 4 },
+  { id: 'luna', nombre: 'la Luna', radioKm: 3474, ancla: '¡la Luna!', color: '#c9c4bc', tex: 'craterizado', emoji: '🌕', paso: 5 },
+];
+
+export const etiquetaAsteroide = (a) => {
+  if (a.id === 'luna') return '🌕 la Luna · ni todos juntos le llegan';
+  return `${a.emoji} ${a.nombre} · ${a.ancla}`;
 };
 
 /* ============================ FASES DE LA LUNA ============================ */
