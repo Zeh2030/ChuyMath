@@ -1,0 +1,23 @@
+{
+  "id": "piano-clair-de-lune",
+  "titulo": "Clair de Lune (fácil)",
+  "misiones": [
+    {
+      "id": "clair-de-lune-01",
+      "tipo": "piano-prompter",
+      "titulo": "Clair de Lune (versión fácil)",
+      "instruccion": "La pieza favorita de papá, en versión sencilla. Largo, muy suave (p). Versión de práctica a una voz por mano.",
+      "autor": "Claude Debussy (arr. fácil)",
+      "bpm": 69,
+      "dificultad": "avanzado",
+      "nivel": "P5-01",
+      "configuracion": {
+        "compas": "9/8",
+        "tonalidad": "C",
+        "clave": "treble",
+        "unidad": "1/8"
+      },
+      "notas": "%%staves {1 2}\nV:1 clef=treble\n!p!z z [eg]- [eg]3 [ce]3- | [ce] [Bd] [ce] [Bd]6- | [Bd] [Ac] [Bd] c3/2 e3/2- e3/2 c3/2- | [Ac] [GB] [Ac] [GB]6- | F6 F3 | D6 D3 | C6- C3 | A,6 G,3 | z z G [eg]3 [ce]3- | [ce] d e d6- | d c d [cg]3 [ce]3- | [ce] d e d3 c3 | z C D [CEA]3 [CE]3 | z F G [FAc]3 [FA]3 | z A B [GBe]3 [FG]3 | [eg]6- [eg]3 | [eg]6 z2 z |]\nV:2 clef=treble\nz [EG]2- [EG]6 | [F_A]6- [F_A]3 | [EG]6- [EG]3 | [DF]6- [DF]3 | [CD]6 [B,D]3 | [A,C]6 [_A,B,]3 | [K:clef=bass] [G,A,]6 [F,A,]3 | [E,G,]6 [G,,F,]3 | C,3- C,6 | [F,A,]6- [F,A,]3 | [E,G,]6- [E,G,]3 | [F,A,]6- [F,A,]3 | [E,G,]6- [E,G,]3 | [D,F,]6- [D,F,]3 | [G,,D,F,]6 G,,3 | C,,2 G,, C,3 G,3 | C6 z2 z |]"
+    }
+  ]
+}
