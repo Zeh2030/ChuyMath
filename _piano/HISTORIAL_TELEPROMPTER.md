@@ -179,3 +179,43 @@ Un scroll a velocidad constante (px/seg) se desincroniza porque los pixeles no c
 validacion de tiempos por compas → migrar. Ojo con la leccion aprendida en
 zapatillas: los puntos BAJO la cabeza son staccato (`.C`), NO puntillos (`C3/2`)
 — confundirlos infla los compases a 5-6 tiempos.
+
+---
+
+## Piezas largas (2026-07-15): Fases A+B para partituras avanzadas
+
+Motivadas por querer tocar piezas largas (ej. Clair de Lune ~72 compases).
+
+**Fase A — ancho proporcional + altura adaptativa:**
+- `calcStaffwidth()`: staffwidth = compases × (500 una voz / 1100 grand staff),
+  tope 60000 unidades (~120k px CSS a scale 2). Antes era fijo 6000/10000 y las
+  piezas largas se comprimian hasta ser ilegibles.
+- `estimarCompases()`: cuenta barras `|` de la voz 1 en el ABC.
+- Altura del viewport adaptativa: el motor mide el alto real del SVG y fija la
+  variable CSS `--mp-alto` (lineas adicionales / grand staff ya no se recortan).
+  El fullscreen (flex) sigue mandando por especificidad; tope 74vh (68vh movil).
+
+**Fase B — barras de compas RESTAURADAS (stripBarlines eliminado):**
+- stripBarlines era legado del motor viejo de velocidad constante (espaciado
+  uniforme). Con el mapa tiempo→posicion (Enfoque 4) las barras solo agregan
+  pixeles que el mapa absorbe.
+- Beneficios: las alteraciones vuelven a valer por compas (critico para
+  tonalidades con muchos bemoles/sostenidos), `|1`/`|2`, `||` y casillas de
+  repeticion funcionan, y la autoria de contenido es ABC estandar.
+- El CSS muerto de los overlays de barras (.mp-barlines) se elimino.
+
+**Volumen del synth (idea del usuario):** boton cicla 🔊 normal (1.0) → 🔉
+bajito (0.2, guia apenas audible para tocar encima) → 🔇 mudo. Implementado con
+`soundFontVolumeMultiplier` de abcjs (se fija al crear el synth; el cambio
+aplica al siguiente Play). Uso pedagogico: primera pasada a volumen normal para
+escuchar la pieza, luego bajito para practicar guiado.
+
+**Dato verificado:** las dinamicas `!pp!`..`!ffff!` SI se interpretan en el
+synth (velocity, abc_midi_sequencer.js). Lo que NO existe en abcjs es pedal.
+
+**Validacion pendiente (al oido, por el usuario):**
+- [ ] Las 3 piezas existentes siguen sincronizadas (el espaciado visual cambia
+      un poco al volver las barras)
+- [ ] test-larga.json (72 compases, dos manos): legibilidad y rendimiento del
+      SVG ancho (~120k px CSS)
+- [ ] Boton de volumen: normal / bajito / mudo

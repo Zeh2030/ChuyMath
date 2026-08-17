@@ -1,0 +1,22 @@
+{
+    "id":  "piano-test-larga",
+    "titulo":  "TEST Pieza Larga",
+    "misiones":  [
+                     {
+                         "id":  "test-larga-01",
+                         "tipo":  "piano-prompter",
+                         "titulo":  "TEST: Pieza larga (72 compases)",
+                         "instruccion":  "Pieza sintetica para probar legibilidad y rendimiento con partituras largas.",
+                         "autor":  "Prueba tecnica",
+                         "bpm":  100,
+                         "dificultad":  "intermedio",
+                         "nivel":  "P9-TEST",
+                         "configuracion":  {
+                                               "compas":  "4/4",
+                                               "tonalidad":  "C",
+                                               "clave":  "treble"
+                                           },
+                         "notas":  "%%staves {1 2}\nV:1\nC D E F | G2 A2 | B c B A | G F E D | C/2D/2E/2F/2 G A | B2 c2 | A G F E | D4 | C D E F | G2 A2 | B c B A | G F E D | C/2D/2E/2F/2 G A | B2 c2 | A G F E | D4 | C D E F | G2 A2 | B c B A | G F E D | C/2D/2E/2F/2 G A | B2 c2 | A G F E | D4 | C D E F | G2 A2 | B c B A | G F E D | C/2D/2E/2F/2 G A | B2 c2 | A G F E | D4 | C D E F | G2 A2 | B c B A | G F E D | C/2D/2E/2F/2 G A | B2 c2 | A G F E | D4 | C D E F | G2 A2 | B c B A | G F E D | C/2D/2E/2F/2 G A | B2 c2 | A G F E | D4 | C D E F | G2 A2 | B c B A | G F E D | C/2D/2E/2F/2 G A | B2 c2 | A G F E | D4 | C D E F | G2 A2 | B c B A | G F E D | C/2D/2E/2F/2 G A | B2 c2 | A G F E | D4 | C D E F | G2 A2 | B c B A | G F E D | C/2D/2E/2F/2 G A | B2 c2 | A G F E | D4 |]\nV:2 clef=bass\n[C,E,G,]2 [C,E,G,]2 | C, G, C G | [F,A,C]4 | z4 | C,2 E,2 | G,2 [B,,D,]2 | C, E, G, E, | C,4 | [C,E,G,]2 [C,E,G,]2 | C, G, C G | [F,A,C]4 | z4 | C,2 E,2 | G,2 [B,,D,]2 | C, E, G, E, | C,4 | [C,E,G,]2 [C,E,G,]2 | C, G, C G | [F,A,C]4 | z4 | C,2 E,2 | G,2 [B,,D,]2 | C, E, G, E, | C,4 | [C,E,G,]2 [C,E,G,]2 | C, G, C G | [F,A,C]4 | z4 | C,2 E,2 | G,2 [B,,D,]2 | C, E, G, E, | C,4 | [C,E,G,]2 [C,E,G,]2 | C, G, C G | [F,A,C]4 | z4 | C,2 E,2 | G,2 [B,,D,]2 | C, E, G, E, | C,4 | [C,E,G,]2 [C,E,G,]2 | C, G, C G | [F,A,C]4 | z4 | C,2 E,2 | G,2 [B,,D,]2 | C, E, G, E, | C,4 | [C,E,G,]2 [C,E,G,]2 | C, G, C G | [F,A,C]4 | z4 | C,2 E,2 | G,2 [B,,D,]2 | C, E, G, E, | C,4 | [C,E,G,]2 [C,E,G,]2 | C, G, C G | [F,A,C]4 | z4 | C,2 E,2 | G,2 [B,,D,]2 | C, E, G, E, | C,4 | [C,E,G,]2 [C,E,G,]2 | C, G, C G | [F,A,C]4 | z4 | C,2 E,2 | G,2 [B,,D,]2 | C, E, G, E, | C,4 |]"
+                     }
+                 ]
+}
