@@ -29,8 +29,8 @@ export const PISTAS = [
     id: 'claro-de-luna',
     titulo: 'Claro de Luna (1er mov.)',
     compositor: 'Ludwig van Beethoven',
-    url: '', // ← pegar URL de Storage
-    licencia: '', // ← anotar intérprete y fuente
+    url: 'https://firebasestorage.googleapis.com/v0/b/chuy-react-app.firebasestorage.app/o/M%C3%BAsica%2FPaul%20Pitman%20-%20Moonlight%20Sonata%2C%20Op.%2027%20No.%202%20-%20I.%20Adagio%20sostenuto.mp3?alt=media&token=9d075d62-1078-412e-ab41-9dfa7e23fe94',
+    licencia: 'Dominio público — Paul Pitman (Musopen)'
   },
   {
     id: 'preludio-1-bach',
