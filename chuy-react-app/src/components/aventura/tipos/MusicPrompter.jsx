@@ -25,6 +25,15 @@ const estimarCompases = (abc) => {
   return Math.max(1, compases);
 };
 
+// Niveles de volumen del synth (multiplicador del soundfont).
+const VOL_NORMAL = 1;
+const VOL_BAJITO = 0.4;
+
+const fmtTiempo = (ms) => {
+  const s = Math.max(0, Math.round((ms || 0) / 1000));
+  return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+};
+
 /**
  * Ancho del pentagrama PROPORCIONAL al contenido (px por compás constante),
  * para que piezas largas no se compriman. Tope de seguridad para no generar
@@ -52,9 +61,11 @@ const calcStaffwidth = (abc, multiVoice) => {
 const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice = false }) => {
   const [estado, setEstado] = useState('parado');
   const [bpmActual, setBpmActual] = useState(bpm || 80);
-  // Volumen del synth: 1 = normal (escuchar la pieza), 0.2 = guía apenas
-  // audible (el niño toca y el synth solo lo orienta), 0 = mudo.
-  const [volumen, setVolumen] = useState(1);
+  // Volumen del synth: normal (escuchar la pieza), bajito (guía suave para
+  // tocar encima) y mudo. Son multiplicadores del soundfont.
+  const [volumen, setVolumen] = useState(VOL_NORMAL);
+  const [progreso, setProgreso] = useState(0);   // 0..1
+  const [duracionMs, setDuracionMs] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [cargando, setCargando] = useState(false);
 
@@ -74,6 +85,9 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
   const segIdxRef = useRef(0);       // segmento actual del mapa (avanza monotónico)
   const clockStartRef = useRef(0);   // ancla del reloj al iniciar/reanudar (ms)
   const elapsedPrevRef = useRef(0);  // ms acumulados antes de la última pausa
+  const ultimoProgresoRef = useRef(0);
+  const barraRef = useRef(null);
+  const arrastrandoRef = useRef(false);
 
   const synthRef = useRef(null);
   const visualObjRef = useRef(null);
@@ -166,6 +180,27 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     puntosRef.current = puntos;
     finMsRef.current = finMs;
     segIdxRef.current = 0;
+    setDuracionMs(finMs);
+  }, []);
+
+  // x(t): posición del scroll para un tiempo dado, interpolando en el mapa.
+  // Pura salvo por segIdxRef (cursor monotónico que acelera el caso común).
+  const posEn = useCallback((elapsed) => {
+    const puntos = puntosRef.current;
+    if (!puntos.length) return 0;
+    let i = segIdxRef.current;
+    if (i >= puntos.length || puntos[i].t > elapsed) i = 0; // tras un salto atrás
+    while (i < puntos.length - 1 && elapsed >= puntos[i + 1].t) i++;
+    segIdxRef.current = i;
+
+    const a = puntos[i];
+    const b = puntos[Math.min(i + 1, puntos.length - 1)];
+    if (b.t <= a.t) return b.x;
+    // Repetición (|: :|): la música salta hacia atrás. Mantener posición y
+    // saltar de golpe al cambiar de segmento, no interpolar en reversa.
+    if (b.x < a.x) return a.x;
+    const f = Math.max(0, Math.min(1, (elapsed - a.t) / (b.t - a.t)));
+    return a.x + (b.x - a.x) * f;
   }, []);
 
   // ─── Render ABC → SVG + mapa ───
@@ -242,6 +277,7 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
         const finReal = Math.max(realMs, penultimo.t + 1);
         puntos[puntos.length - 1].t = finReal;
         finMsRef.current = finReal;
+        setDuracionMs(finReal);
       }
     } catch (err) {
       console.warn('Error preparando audio:', err);
@@ -251,34 +287,22 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
 
   // ─── Animación: x(t) por interpolación sobre el mapa ───
   const animate = useCallback(() => {
-    const puntos = puntosRef.current;
-    if (!puntos.length) return;
+    if (!puntosRef.current.length) return;
 
     const elapsed = elapsedPrevRef.current + (clockNow() - clockStartRef.current);
 
-    // Avanza el cursor de segmento (monotónico, O(1) amortizado por frame).
-    let i = segIdxRef.current;
-    while (i < puntos.length - 1 && elapsed >= puntos[i + 1].t) i++;
-    segIdxRef.current = i;
-
-    const a = puntos[i];
-    const b = puntos[Math.min(i + 1, puntos.length - 1)];
-    let x;
-    if (b.t <= a.t) {
-      x = b.x;
-    } else if (b.x < a.x) {
-      // Repetición (|: :|): la música salta hacia atrás. Mantener posición y
-      // saltar de golpe al cambiar de segmento, no interpolar en reversa.
-      x = a.x;
-    } else {
-      const f = Math.max(0, Math.min(1, (elapsed - a.t) / (b.t - a.t)));
-      x = a.x + (b.x - a.x) * f;
-    }
-
-    translateXRef.current = x;
+    translateXRef.current = posEn(elapsed);
     applyTransform();
 
+    // Barra de avance: se actualiza ~10 veces por segundo, no cada frame.
+    const fin = finMsRef.current || 1;
+    if (Math.abs(elapsed - ultimoProgresoRef.current) > 100) {
+      ultimoProgresoRef.current = elapsed;
+      setProgreso(Math.max(0, Math.min(1, elapsed / fin)));
+    }
+
     if (elapsed >= finMsRef.current) {
+      setProgreso(1);
       if (estadoRef.current === 'tocando') {
         setEstado('parado');
         if (onTerminar) onTerminar();
@@ -286,7 +310,53 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
       return;
     }
     rafIdRef.current = requestAnimationFrame(animate);
-  }, [applyTransform, clockNow, onTerminar]);
+  }, [applyTransform, clockNow, onTerminar, posEn]);
+
+  // ─── Ir a un punto de la pieza (barra de avance) ───
+  // conAudio=false mientras se arrastra (solo mueve la partitura); al soltar se
+  // salta el audio, así no se corta en cada micro-movimiento.
+  const irA = useCallback((ms, conAudio = true) => {
+    const fin = finMsRef.current || 0;
+    const target = Math.max(0, Math.min(ms, fin));
+
+    elapsedPrevRef.current = target;
+    clockStartRef.current = clockNow();
+    ultimoProgresoRef.current = target;
+
+    translateXRef.current = posEn(target);
+    applyTransform();
+    setProgreso(fin ? target / fin : 0);
+
+    if (conAudio && synthRef.current) {
+      // seek en segundos: si está sonando reengancha el audio ahí; si está
+      // parado/pausado deja la posición lista para el siguiente start().
+      try { synthRef.current.seek(target / 1000, 'seconds'); } catch { /* sin audio */ }
+    }
+  }, [applyTransform, clockNow, posEn]);
+
+  const msDesdeEvento = (e) => {
+    const el = barraRef.current;
+    if (!el || !finMsRef.current) return 0;
+    const rect = el.getBoundingClientRect();
+    const f = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    return f * finMsRef.current;
+  };
+
+  const onBarraDown = (e) => {
+    if (!finMsRef.current) return;
+    arrastrandoRef.current = true;
+    try { e.currentTarget.setPointerCapture(e.pointerId); } catch { /* sin capture */ }
+    irA(msDesdeEvento(e), false);
+  };
+  const onBarraMove = (e) => {
+    if (arrastrandoRef.current) irA(msDesdeEvento(e), false);
+  };
+  const onBarraUp = (e) => {
+    if (!arrastrandoRef.current) return;
+    arrastrandoRef.current = false;
+    try { e.currentTarget.releasePointerCapture(e.pointerId); } catch { /* sin capture */ }
+    irA(msDesdeEvento(e), true);
+  };
 
   // ─── Animation state control ───
   useEffect(() => {
@@ -357,24 +427,30 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
           applyTransform();
         } catch { /* fullscreen no disponible */ }
       }
-      // Prepare synth on first play
-      if (!synthRef.current) {
-        await prepareSynth(bpmActual);
-      }
+    }
+
+    // El synth se prepara SIEMPRE que falte, incluso al reanudar: cambiar el
+    // volumen lo descarta (el multiplicador se fija al crearlo), y sin esto
+    // reanudar tras cambiarlo se quedaba mudo.
+    if (volumen > 0 && !synthRef.current) {
+      await prepareSynth(bpmActual);
     }
 
     if (audioContextRef.current?.state === 'suspended') {
       await audioContextRef.current.resume();
     }
 
-    if (estado === 'pausado') {
-      if (volumen > 0 && synthRef.current) { try { synthRef.current.resume(); } catch { /* sin audio */ } }
-    } else {
-      translateXRef.current = 0;
-      segIdxRef.current = 0;
-      elapsedPrevRef.current = 0;
-      if (volumen > 0 && synthRef.current) { try { synthRef.current.start(); } catch { /* sin audio */ } }
+    // Arranca desde donde esté el cursor: 0 tras Reset, o el punto elegido en
+    // la barra de avance. Reanudar tras pausa usa el mismo camino.
+    const desdeMs = elapsedPrevRef.current;
+    if (volumen > 0 && synthRef.current) {
+      try {
+        synthRef.current.seek(desdeMs / 1000, 'seconds');
+        synthRef.current.start();
+      } catch { /* sin audio */ }
     }
+    translateXRef.current = posEn(desdeMs);
+    applyTransform();
 
     // Ancla el reloj justo al arrancar/reanudar el audio.
     clockStartRef.current = clockNow();
@@ -392,7 +468,9 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     translateXRef.current = 0;
     segIdxRef.current = 0;
     elapsedPrevRef.current = 0;
+    ultimoProgresoRef.current = 0;
     applyTransform();
+    setProgreso(0);
     setEstado('parado');
     synthRef.current = null;
   };
@@ -409,7 +487,13 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
       try { synthRef.current.stop(); } catch { /* ya parado */ }
       synthRef.current = null;
     }
-    setVolumen(v => (v === 1 ? 0.2 : v === 0.2 ? 0 : 1));
+    // Si estaba sonando, se detiene el audio: pausamos también el scroll para
+    // que no siga corriendo en silencio (Play lo retoma con el nuevo volumen).
+    if (estadoRef.current === 'tocando') {
+      elapsedPrevRef.current += clockNow() - clockStartRef.current;
+      setEstado('pausado');
+    }
+    setVolumen(v => (v === VOL_NORMAL ? VOL_BAJITO : v === VOL_BAJITO ? 0 : VOL_NORMAL));
   };
 
   const bpmOriginal = bpm || 80;
@@ -432,6 +516,29 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
         <div className="mp-sheet" ref={abcTargetRef}></div>
       </div>
 
+      {/* Barra de avance: muestra cuánto falta y permite ir a cualquier punto */}
+      <div className="mp-progreso">
+        <span className="mp-tiempo">{fmtTiempo(progreso * duracionMs)}</span>
+        <div
+          className="mp-barra"
+          ref={barraRef}
+          onPointerDown={onBarraDown}
+          onPointerMove={onBarraMove}
+          onPointerUp={onBarraUp}
+          onPointerCancel={onBarraUp}
+          role="slider"
+          tabIndex={0}
+          aria-label="Avance de la canción"
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuenow={Math.round(progreso * 100)}
+        >
+          <div className="mp-barra-fill" style={{ width: `${progreso * 100}%` }} />
+          <div className="mp-barra-thumb" style={{ left: `${progreso * 100}%` }} />
+        </div>
+        <span className="mp-tiempo">{fmtTiempo(duracionMs)}</span>
+      </div>
+
       <div className="mp-controls">
         {estado !== 'tocando' ? (
           <button className="mp-btn mp-btn-play" onClick={handlePlay} disabled={cargando}>
@@ -450,9 +557,9 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
         <button
           className={`mp-btn ${volumen > 0 ? 'mp-btn-sound-on' : 'mp-btn-sound-off'}`}
           onClick={cambiarVolumen}
-          title={volumen === 1 ? 'Volumen normal (toca para bajarlo)' : volumen > 0 ? 'Volumen bajito: solo guía (toca para silenciar)' : 'Sin sonido (toca para volumen normal)'}
+          title={volumen === VOL_NORMAL ? 'Volumen normal (toca para bajarlo)' : volumen > 0 ? 'Volumen bajito: solo guía (toca para silenciar)' : 'Sin sonido (toca para volumen normal)'}
         >
-          {volumen === 1 ? '🔊' : volumen > 0 ? '🔉' : '🔇'}
+          {volumen === VOL_NORMAL ? '🔊' : volumen > 0 ? '🔉' : '🔇'}
         </button>
 
         {isFullscreen && (

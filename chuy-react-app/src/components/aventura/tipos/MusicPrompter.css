@@ -108,6 +108,69 @@
   border-top: 10px solid #e74c3c;
 }
 
+/* Barra de avance (estilo reproductor) */
+.mp-progreso {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: -8px 0 14px;
+}
+
+.mp-tiempo {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #7f8c8d;
+  min-width: 42px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.mp-barra {
+  position: relative;
+  flex: 1;
+  height: 22px;            /* área táctil generosa */
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  touch-action: none;      /* el arrastre no hace scroll de la página */
+}
+
+.mp-barra::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 6px;
+  border-radius: 3px;
+  background: #dfe6ec;
+}
+
+.mp-barra-fill {
+  position: absolute;
+  left: 0;
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #e74c3c, #f39c12);
+  pointer-events: none;
+}
+
+.mp-barra-thumb {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #e74c3c;
+  border: 3px solid #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.mp-fullscreen .mp-progreso { margin: 0 0 10px; }
+.mp-fullscreen .mp-tiempo { color: #aaa; }
+.mp-fullscreen .mp-barra::before { background: rgba(255, 255, 255, 0.18); }
+.mp-fullscreen .mp-barra-thumb { border-color: #1a1a2e; }
+
 /* Controls */
 .mp-controls {
   display: flex;
