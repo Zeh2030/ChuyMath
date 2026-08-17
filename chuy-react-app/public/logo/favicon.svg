@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="ChuyMath">
+  <!-- Version de ACERCAMIENTO para 16-32px: mismo cohete-lapiz, pero mucho mas
+       grande y sin estrellas ni notas. A ese tamano el detalle no se ve y solo
+       ensucia; lo que hace que un favicon resalte es una forma gruesa que
+       llene el cuadro. -->
+  <rect width="64" height="64" rx="14" fill="#232c66"/>
+
+  <!-- Llama -->
+  <path d="M25.5 47 Q32 63 38.5 47 Z" fill="#ff9c33"/>
+  <path d="M28.5 47 Q32 57 35.5 47 Z" fill="#ffe066"/>
+
+  <!-- Aletas -->
+  <path d="M24 39 L13.5 55 L24 50.5 Z" fill="#e6503c"/>
+  <path d="M40 39 L50.5 55 L40 50.5 Z" fill="#e6503c"/>
+
+  <!-- Cuerpo = lapiz -->
+  <rect x="24" y="23" width="16" height="25" fill="#f5c33b"/>
+  <rect x="24" y="23" width="4.5" height="25" fill="#ffffff" opacity=".22"/>
+
+  <!-- Punta: madera + grafito -->
+  <path d="M27.2 12.5 L36.8 12.5 L40 23 L24 23 Z" fill="#e8a24f"/>
+  <path d="M32 3 L27.2 12.5 L36.8 12.5 Z" fill="#4b4b58"/>
+
+  <!-- Ventanilla -->
+  <circle cx="32" cy="32.5" r="5.2" fill="#8fdcf7"/>
+  <circle cx="32" cy="32.5" r="5.2" fill="none" stroke="#2b3a7a" stroke-width="1.8"/>
+</svg>
