@@ -59,6 +59,7 @@ export const NOMBRES = {
   'kelt-9b': 'KELT-9b',
   'hat-p-67b': 'HAT-P-67 b',
   roca: 'la roca espacial',
+  planeta: 'un planeta bebé',
   chelyabinsk: 'Cheliábinsk',
   tunguska: 'Tunguska',
   apophis: 'Apophis',
@@ -194,6 +195,58 @@ export const ASTEROIDES_ESCALERA = [
 export const etiquetaAsteroide = (a) => {
   if (a.id === 'luna') return '🌕 la Luna · ni todos juntos le llegan';
   return `${a.emoji} ${a.nombre} · ${a.ancla}`;
+};
+
+/* ============================ EL BIG BANG ============================ */
+
+// Deslizador 0-100 = tiempo (log). Hitos reales: la niebla se despeja a los
+// 380,000 anos (esa primera luz libre ES el fondo cosmico de microondas, la
+// "foto bebe" del universo); las primeras estrellas ~200 millones de anos;
+// hoy 13,800 millones. OJO conceptual (fuentes: Caltech/NED, SciAm,
+// Strassler): NO es una explosion EN el espacio — es el espacio estirandose,
+// en todas partes a la vez, sin centro ni orilla. `a` = factor de escala
+// para el motor; `grumos` = cuanto han crecido las arruguitas; `niebla` =
+// cuanto queda de la niebla caliente opaca.
+export const bigBangInfoDe = (t) => {
+  const tt = Math.min(100, Math.max(0, t));
+  const fase = tt < 14 ? 'niebla' : tt < 18 ? 'despeje' : tt < 50 ? 'grumos' : 'galaxias';
+  let edad;
+  if (tt < 4) edad = '¡el primer segundo!';
+  else if (tt < 9) edad = 'los primeros minutos';
+  else if (tt < 14) edad = 'miles de años';
+  else {
+    // De 380,000 anos (t=14) a 13,800 millones (t=100), interpolado en log.
+    const anios = 380000 * Math.pow(13800000000 / 380000, (tt - 14) / 86);
+    edad = anios < 1e6
+      ? `${Math.round(anios / 10000) * 10} mil años`
+      : anios < 1e9
+        ? `${Math.round(anios / 1e6)} millones de años`
+        : `${(Math.round(anios / 1e8) / 10).toLocaleString('es-MX')} mil millones de años`;
+  }
+  return {
+    edad,
+    fase,
+    a: 0.08 + Math.pow(tt / 100, 1.6) * 0.92,
+    grumos: Math.min(1, Math.max(0, (tt - 18) / 50)),
+    niebla: Math.min(1, Math.max(0, (18 - tt) / 8)),
+  };
+};
+
+/* ============================ NACE UN SOL ============================ */
+
+// Deslizador 0-100 = tiempo de formacion de un sistema solar: nube de polvo
+// (cenizas de estrellas viejas) → colapsa y gira → disco plano → el centro
+// se enciende → las semillas de planeta barren carriles y dejan SURCOS,
+// como los del disco REAL de HL Tauri fotografiado por ALMA.
+export const naceSolInfoDe = (t) => {
+  const tt = Math.min(100, Math.max(0, t));
+  const fase = tt < 25 ? 'nube' : tt < 55 ? 'disco' : tt < 75 ? 'enciende' : 'planetas';
+  return {
+    fase,
+    aplanado: Math.min(1, Math.max(0, (tt - 20) / 35)),
+    brillo: Math.min(1, Math.max(0, (tt - 55) / 20)),
+    barrido: Math.min(1, Math.max(0, (tt - 75) / 25)),
+  };
 };
 
 /* ============================ EL IMPACTO ============================ */

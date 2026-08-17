@@ -1,0 +1,196 @@
+{
+  "id": "C3-25_el-principio-de-todo",
+  "titulo": "El Principio de Todo",
+  "descripcion": "Rebobina el universo hasta el Big Bang, derrota el mito de la explosión y mira nacer un sistema solar",
+  "tipo": "sistema-solar",
+  "materia": "ciencias",
+  "nivel": "C3-25",
+  "tema": "astronomia",
+  "misiones": [
+    {
+      "id": "astro-bigbang-01",
+      "tipo": "sistema-solar",
+      "escena": "big-bang",
+      "modo": "explorar",
+      "titulo": "Rebobina el Universo",
+      "emoji": "🌌",
+      "instruccion": "Cada puntito es una GALAXIA y el punto dorado eres tú. Rebobina el tiempo con el deslizador hasta el principio de todo… y luego haz el experimento del detective: múdate a otra galaxia y busca el centro del universo. Cuando creas saber la respuesta, aprieta el botón del MITO y compara.",
+      "leccion": "Antes de empezar, haz tu apuesta: si rebobinas la película del universo 13,800 millones de años, ¿qué encuentras al principio? ¿Una explosión? Ojo con esta idea: el Big Bang NO fue una bomba explotando en el espacio. Fue el ESPACIO MISMO estirándose, en todas partes a la vez — como un pan con pasas creciendo en el horno: cada pasa ve a las demás alejarse, y ninguna es el centro.",
+      "dato_curioso": "El nombre 'Big Bang' (Gran Explosión) se lo puso el científico Fred Hoyle en la radio en 1949… ¡BURLÁNDOSE de la teoría, porque a él no le gustaba! El nombre chistoso se quedó para siempre, aunque describe mal lo que pasó. Hasta los nombres tienen historia."
+    },
+    {
+      "id": "astro-tof-estiron",
+      "tipo": "true-or-false",
+      "titulo": "¿Explosión o Estirón?",
+      "instruccion": "Después de rebobinar el universo y buscar el centro, decide.",
+      "retos": [
+        {
+          "oracion": "El Big Bang fue una explosión que pasó en UN punto del espacio.",
+          "correcto": false,
+          "correccion": "Fue el espacio MISMO estirándose, en todas partes a la vez. No pasó 'en un lugar': pasó en todos.",
+          "explicacion": "¡Falso! Una explosión avienta cosas DESDE un punto HACIA el espacio de alrededor. Pero no había 'alrededor': el espacio es justo lo que se estaba estirando."
+        },
+        {
+          "oracion": "El universo tiene un centro del que todo se aleja.",
+          "correcto": false,
+          "correccion": "No hay centro. Te mudes a la galaxia que te mudes, ves lo mismo: todas las demás alejándose de TI.",
+          "explicacion": "¡Falso! Lo comprobaste con el botón de mudarte: cada galaxia cree ser el centro, así que ninguna lo es. Como las pasas del pan."
+        },
+        {
+          "oracion": "Todo lo que vemos hoy estuvo alguna vez muy junto y muy caliente.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "¡Verdadero! Y tenemos la prueba: la FOTO BEBÉ del universo — la primera luz que quedó libre cuando se despejó la niebla, a los 380,000 años. Todavía la podemos fotografiar, llega de TODAS las direcciones."
+        },
+        {
+          "oracion": "El universo ya dejó de estirarse.",
+          "correcto": false,
+          "correccion": "¡Se sigue estirando AHORITA! Los astrónomos lo miden: casi todas las galaxias se están alejando de nosotros, y las más lejanas más rápido.",
+          "explicacion": "¡Falso! El estirón sigue hoy mismo. Eso fue lo que descubrió Edwin Hubble en 1929, y por eso el telescopio espacial lleva su nombre."
+        }
+      ]
+    },
+    {
+      "id": "astro-nacesol-01",
+      "tipo": "sistema-solar",
+      "escena": "nace-un-sol",
+      "modo": "explorar",
+      "titulo": "La Fábrica de Planetas",
+      "emoji": "🌞",
+      "instruccion": "Los planetas NO salieron del Big Bang: nacieron muchísimo después, en fábricas como esta. Avanza el tiempo con el deslizador y mira nacer un sol con sus planetas, paso a paso.",
+      "leccion": "Apuesta primero: una nube gigante de polvo que empieza a caer sobre sí misma y a girar… ¿en qué forma termina? ¿Bola? ¿Nube? ¿Tortilla? Avanza el tiempo y compruébalo. Pista: es la misma razón por la que la masa de pizza se hace PLANA cuando el pizzero la gira en el aire.",
+      "datos": {
+        "sol": "El centro de la nube junta tanto material que se aprieta y se calienta hasta ENCENDERSE. Así nació nuestro Sol hace 4,600 millones de años.",
+        "planeta": "Una semilla de planeta: va barriendo el polvo de su carril como una aspiradora que da vueltas, y con lo que junta… crece. El surco que deja es su huella."
+      },
+      "dato_curioso": "Esto no es un dibujo inventado: el telescopio ALMA fotografió un disco REAL con surcos (el de la estrella bebé HL Tauri) y se ve igualito. La foto viene en la siguiente misión. Los sistemas solares se siguen fabricando AHORITA, por todo el universo."
+    },
+    {
+      "id": "astro-story-polvo",
+      "tipo": "mini-story",
+      "titulo": "Somos Polvo de Estrellas",
+      "instruccion": "Lee cada parte y responde la pregunta.",
+      "parrafos": [
+        {
+          "texto": "Del Big Bang salieron solo los ingredientes más simples: hidrógeno y helio, los gases más ligeritos. Nada de fierro, ni oro, ni calcio, ni oxígeno. ¿Entonces de dónde salió todo lo demás? Esa es una de las historias más bonitas de la ciencia.",
+          "emoji": "🎈",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Del Big Bang salieron solo los ingredientes más ___.",
+              "opciones": ["pesados", "simples", "brillantes", "fríos"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "Las estrellas son COCINAS. En su centro, con un calor de millones de grados, van pegando ingredientes chiquitos para hacer grandes: del hidrógeno hacen helio, del helio carbono, y así hasta el fierro. Cada estrella pasa su vida entera cocinando elementos nuevos.",
+          "emoji": "👩‍🍳",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Las estrellas fabrican ingredientes nuevos en su centro, como una cocina.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Y cuando una estrella grande se muere, EXPLOTA como supernova y riega todo lo que cocinó por el espacio. Ese polvo viaja, se junta en nubes… y de esas nubes nacen estrellas NUEVAS con sus planetas. Nuestro Sol es de esas: una estrella hecha de material reciclado.",
+          "emoji": "💥",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Cuando una estrella grande muere, riega sus ingredientes en una explosión llamada ___.",
+              "opciones": ["supernova", "eclipse", "cometa", "aurora"],
+              "respuesta": 0
+            }
+          ]
+        },
+        {
+          "texto": "Y aquí viene lo increíble: el FIERRO de tu sangre, el CALCIO de tus huesos y el OXÍGENO que respiras se cocinaron DENTRO de estrellas que ya no existen. No es poesía: es química comprobada. Como decía el astrónomo Carl Sagan: somos polvo de estrellas.",
+          "emoji": "🧑‍🚀",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "El calcio de tus huesos se fabricó dentro de una estrella.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "astro-ip-fotos-viejas",
+      "tipo": "image-picker",
+      "titulo": "Las Fotos Más Viejas",
+      "instruccion": "Estas fotos son REALES, tomadas por telescopios de verdad. Algunas son las más importantes de la historia. ¿Qué es cada una?",
+      "retos": [
+        {
+          "imagen_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Ilc_9yr_moll4096.png?width=640",
+          "palabra_es": "Un óvalo con manchitas de colores",
+          "opciones": [
+            { "label": "Un huevo de dinosaurio" },
+            { "label": "La FOTO BEBÉ del universo: su primera luz" },
+            { "label": "Un mapa del fondo del mar" },
+            { "label": "Una galaxia de lado" }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Es la foto bebé del universo! Es la primera luz que quedó libre cuando se despejó la niebla, a los 380,000 años de edad. El óvalo es TODO el cielo desplegado, y las manchitas son las arruguitas que luego crecieron hasta ser galaxias. La tomó el satélite WMAP de la NASA."
+        },
+        {
+          "imagen_url": "https://commons.wikimedia.org/wiki/Special:FilePath/NASA-HS201427a-HubbleUltraDeepField2014-20140603.jpg?width=640",
+          "palabra_es": "Miles de lucecitas de colores",
+          "opciones": [
+            { "label": "Estrellas de nuestra galaxia" },
+            { "label": "Ciudades vistas de noche" },
+            { "label": "Miles de GALAXIAS en un puntito de cielo" },
+            { "label": "Fuegos artificiales" }
+          ],
+          "respuesta": 2,
+          "explicacion": "El telescopio Hubble apuntó DÍAS enteros a un pedacito de cielo del tamaño de un grano de arena sostenido con el brazo estirado… y encontró MILES de galaxias, cada una con miles de millones de estrellas. El universo está llenísimo."
+        },
+        {
+          "imagen_url": "https://commons.wikimedia.org/wiki/Special:FilePath/HL_Tau_protoplanetary_disk.jpg?width=640",
+          "palabra_es": "Un disco anaranjado con surcos",
+          "opciones": [
+            { "label": "Un disco de música gigante" },
+            { "label": "El planeta Saturno" },
+            { "label": "Una fábrica de planetas REAL: el disco de HL Tauri" },
+            { "label": "Un remolino en el mar" }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Es una fábrica de planetas de verdad, fotografiada por el telescopio ALMA! La estrella bebé HL Tauri con su disco de polvo — y los surcos son los carriles que van barriendo sus planetas recién nacidos. Igualito a tu simulación… porque la simulación copia la realidad."
+        },
+        {
+          "imagen_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Andromeda_Galaxy_(with_h-alpha).jpg?width=640",
+          "palabra_es": "Un remolino gigante de estrellas",
+          "opciones": [
+            { "label": "Andrómeda, la galaxia vecina" },
+            { "label": "Nuestro sistema solar" },
+            { "label": "Un huracán visto desde el espacio" },
+            { "label": "El Sol de cerca" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Es Andrómeda, la galaxia grande más cercana a la nuestra: un remolino de UN BILLÓN de estrellas. En noches muy oscuras se alcanza a ver a simple vista, como una manchita — es la cosa más lejana que puedes ver con tus propios ojos: su luz viajó 2.5 millones de años para llegar a ti."
+        }
+      ]
+    },
+    {
+      "id": "astro-om-edad",
+      "tipo": "opcion-multiple",
+      "titulo": "La Pregunta Final",
+      "instruccion": "La gran pregunta del principio de todo.",
+      "pregunta": "🎂 ¿Cuántos años tiene el universo?",
+      "opciones": [
+        "6,000 años",
+        "4,600 millones de años",
+        "13,800 millones de años"
+      ],
+      "respuesta": "2",
+      "explicacion_correcta": "¡Exacto! 13,800 millones de años. ¿Y cómo lo sabemos? Midiendo qué tan rápido se estira el espacio y rebobinando la película — igual que hiciste tú con el deslizador. Los 4,600 millones son la edad del SOL y la Tierra: nuestro sistema solar es jovencito comparado con el universo.",
+      "explicacion_incorrecta": "El universo tiene 13,800 millones de años — se sabe midiendo qué tan rápido se estira el espacio y rebobinando la película, como hiciste con el deslizador. (Los 4,600 millones son la edad del Sol y la Tierra: llegamos cuando ya había pasado dos tercios de la película.)"
+    }
+  ]
+}

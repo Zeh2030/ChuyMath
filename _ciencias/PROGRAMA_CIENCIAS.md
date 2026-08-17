@@ -455,6 +455,26 @@ el flujo de MezcladorColores (intro → explorar → retos → fin).
   mueve), >2 km `catastrofe` (onda + la luz se atenua unos segundos y luego
   "amanece"). Retos tipo `impacto` que aciertan solos. La etiqueta invita a
   APOSTAR antes de soltar (no revela la banda: prediccion primero).
+- **Escena `big-bang`** (2026-08-17, rebobina el universo): deslizador =
+  TIEMPO (log, arranca en HOY para invitar a rebobinar; `bigBangInfoDe`).
+  ~4,000 galaxias-particula en coordenadas COMOVILES dentro de un grupo que
+  se escala con a(t) y se re-centra en la galaxia ancla → ley de Hubble
+  exacta gratis (mas lejos = se aleja mas rapido). Boton "Mudate a otra
+  galaxia" (re-ancla; en el modo real se ve IGUAL desde todas → no hay
+  centro). Niebla caliente que se despeja a los 380,000 anos (la foto bebe/
+  CMB); grumos: lerp uniforme→telarana (25 semillas de cumulo) + sprites de
+  galaxia espiral que se encienden. **Modo mito** (boton alterno): la bola
+  compacta que explota, CON orilla y centro — mudarse a la orilla ensena
+  medio cielo vacio; el mito se muestra para DERROTARLO con esa prueba
+  (elicit-confront-resolve), no para lucirlo. Fog de distancia = horizonte
+  honesto (en el real nunca ves orilla). Sin retos de motor (explorar).
+- **Escena `nace-un-sol`** (2026-08-17, la fabrica de planetas): deslizador
+  = tiempo de formacion (`naceSolInfoDe`): nube de polvo (cenizas de
+  estrellas viejas) → colapsa y gira → disco plano kepleriano → el centro
+  se ENCIENDE (PointLight que ilumina a los planetas lambert) → 3 semillas
+  de planeta barren carriles y dejan SURCOS (alpha por vertice sobre fondo
+  negro), como el disco REAL de HL Tauri (ALMA) que sale en el
+  image-picker. Sin retos de motor (explorar).
 - **Escena `cama-elastica`** (2026-08-15, el espacio que se hunde): deslizador
   = PESO de la bola central (0-100); la rejilla del espacio se hunde con la
   forma del potencial de Newton y la bola crece. Boton "Rueda la canica":
@@ -515,6 +535,7 @@ saturno, urano, neptuno. Tierra-luna: sol, tierra, luna.
 | `sistema-solar/C2-38_la-escalera-de-los-planetas.json` | La escalera de los planetas (exoplanetas, el techo de ~2 Jupiteres) | sistema-solar (exoplanetas) + opcion-multiple + true-or-false |
 | `sistema-solar/C2-39_rocas-del-espacio.json` | Asteroides (escalera con anclas), vocabulario meteoro/meteorito y Perseidas | sistema-solar (asteroides) + tap-the-pairs + mini-story + true-or-false |
 | `sistema-solar/C3-24_el-dia-que-cayo-el-cielo.json` | Impactos por tamano, Chicxulub/cenotes y defensa planetaria (DART) | sistema-solar (impacto) + mini-story + image-picker + opcion-multiple |
+| `sistema-solar/C3-25_el-principio-de-todo.json` | Big Bang honesto (estiron, no explosion; modo mito derrotable), nace un sol, polvo de estrellas | sistema-solar (big-bang, nace-un-sol) + true-or-false + mini-story + image-picker + opcion-multiple |
 
 **Fotos**: URLs `https://commons.wikimedia.org/wiki/Special:FilePath/<archivo>?width=320`
 (redirect estable de Wikimedia Commons, sin rutas con hash; todas verificadas con curl).

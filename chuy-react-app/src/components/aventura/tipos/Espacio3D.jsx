@@ -5,7 +5,7 @@ import {
   PLANETAS, SOL, CONSTELACIONES, COMETA,
   ESTRELLAS_COMPARAR, PASOS_ESTRELLAS, ORBITAS_UA, UA_POR_RADIO_SOL,
   PLANETAS_ESCALERA, PASOS_EXOPLANETAS, ASTEROIDES_ESCALERA, PASOS_ASTEROIDES,
-  faseInfoDe, estacionInfoDe, cometaInfoDe, impactoInfoDe,
+  faseInfoDe, estacionInfoDe, cometaInfoDe, impactoInfoDe, bigBangInfoDe, naceSolInfoDe,
   etiquetaComparar, etiquetaEstrella, etiquetaExoplaneta, etiquetaAsteroide,
 } from './espacioDatos';
 
@@ -205,6 +205,44 @@ const crearTexturaGlow = () => {
   return textura;
 };
 
+// Galaxia espiral de bolsillo: nucleo brillante + dos brazos de puntitos
+// sobre una espiral. Para los sprites que "se encienden" en los cumulos de
+// la escena big-bang.
+const crearTexturaGalaxia = (semilla = 5) => {
+  const S = 128;
+  const canvas = document.createElement('canvas');
+  canvas.width = S;
+  canvas.height = S;
+  const ctx = canvas.getContext('2d');
+  const rng = crearRng(semilla);
+  const g = ctx.createRadialGradient(S / 2, S / 2, 2, S / 2, S / 2, S * 0.45);
+  g.addColorStop(0, 'rgba(255,244,214,1)');
+  g.addColorStop(0.25, 'rgba(255,236,190,0.5)');
+  g.addColorStop(1, 'rgba(140,170,255,0)');
+  ctx.fillStyle = g;
+  ctx.fillRect(0, 0, S, S);
+  for (const fase0 of [0, Math.PI]) {
+    for (let i = 0; i < 90; i++) {
+      const t = i / 90;
+      const ang = fase0 + t * 3.6;
+      const r = 6 + t * 50;
+      ctx.globalAlpha = 0.5 * (1 - t) + 0.08;
+      ctx.fillStyle = '#cfe0ff';
+      ctx.beginPath();
+      ctx.arc(
+        S / 2 + Math.cos(ang) * r + (rng() - 0.5) * 4,
+        S / 2 + Math.sin(ang) * r * 0.62 + (rng() - 0.5) * 4,
+        1.4 + rng() * 1.8, 0, Math.PI * 2
+      );
+      ctx.fill();
+    }
+  }
+  ctx.globalAlpha = 1;
+  const textura = new THREE.CanvasTexture(canvas);
+  textura.colorSpace = THREE.SRGBColorSpace;
+  return textura;
+};
+
 // Halo suave y blanco para las estrellas de las constelaciones: las hace
 // bonitas Y grandes de tocar sin convertirlas en pelotas.
 const crearTexturaHalo = () => {
@@ -365,23 +403,28 @@ const Espacio3D = forwardRef(function Espacio3D(
     if (escena === 'satelite') return 55;    // velocidad media
     if (ESCALERAS.includes(escena)) return 1; // primer escalon de la escalera
     if (escena === 'impacto') return 25;     // ~una ballena: banda vistosa
+    if (escena === 'big-bang') return 100;   // HOY: el gesto natural es REBOBINAR
+    if (escena === 'nace-un-sol') return 0;  // la nube de polvo, antes de todo
     if (escena === 'agujero-negro') return 0; // la Tierra sin apretar todavia
     if (escena === 'cama-elastica') return 0; // espacio plano: sin peso al centro
     return 90;                               // cuarto creciente
   });
 
-  // Desenlace del ultimo lanzamiento (solo escena satelite): lo escribe el bucle.
+  // Desenlace del ultimo lanzamiento (satelite y parientes): lo escribe el bucle.
   const [resultado, setResultado] = useState(null);
+
+  // Big-bang: modo mito (la bola que explota) activado por su boton alterno.
+  const [alterno, setAlterno] = useState(false);
 
   // Constelaciones: pista caliente/frio y nombre de la ultima estrella tocada.
   const [pistaConst, setPistaConst] = useState('frio');
   const [estrellaTocada, setEstrellaTocada] = useState(null);
 
   // El bucle lee las props cada frame sin reconstruir la escena.
-  const estadoRef = useRef({ enfocado, comparar, ocultarSol, seleccionable, angulo });
+  const estadoRef = useRef({ enfocado, comparar, ocultarSol, seleccionable, angulo, alterno });
   useEffect(() => {
-    estadoRef.current = { enfocado, comparar, ocultarSol, seleccionable, angulo };
-  }, [enfocado, comparar, ocultarSol, seleccionable, angulo]);
+    estadoRef.current = { enfocado, comparar, ocultarSol, seleccionable, angulo, alterno };
+  }, [enfocado, comparar, ocultarSol, seleccionable, angulo, alterno]);
 
   const onSeleccionRef = useRef(onSeleccion);
   const onFaseRef = useRef(onFase);
@@ -533,6 +576,8 @@ const Espacio3D = forwardRef(function Espacio3D(
     let escAN = null;          // escena agujero-negro (la Tierra comprimida)
     let escCE = null;          // escena cama-elastica (la sabana del espacio)
     let escImp = null;         // escena impacto (que pasa segun el tamano de la roca)
+    let escBB = null;          // escena big-bang (el espacio que se estira)
+    let escSol = null;         // escena nace-un-sol (la fabrica de planetas)
     let etiquetaEstrellaEl = null; // constelaciones: nombre flotante de la estrella tocada
     let nombreFlotante = null;     // constelaciones: { pos, hasta } del nombre flotante
 
@@ -1246,6 +1291,215 @@ const Espacio3D = forwardRef(function Espacio3D(
       };
     }
 
+    if (escena === 'big-bang') {
+      // El espacio que se estira. Truco central: las galaxias-particula viven
+      // en coordenadas COMOVILES fijas dentro de un grupo; cada frame el grupo
+      // se escala con a(t) y se re-centra en la galaxia ancla → desde el ancla
+      // TODAS se alejan, y las lejanas mas rapido (ley de Hubble exacta,
+      // gratis). La niebla de distancia (fog) hace el resto de la honestidad:
+      // en el modo real NUNCA ves una orilla (solo ves hasta donde alcanza la
+      // vista, como en el universo); en el modo mito la bola es compacta y su
+      // orilla y su centro quedan a la vista — esa es la prueba del detective.
+      escena3.add(new THREE.AmbientLight(0xffffff, 1));
+      escena3.fog = new THREE.Fog(0x070b1a, 24, 55);
+
+      const N = 4000;
+      const RADIO_COM = 60;   // radio comovil del universo "real" (la orilla queda tras la niebla)
+      const RADIO_MITO = 16;  // bola del mito: compacta, con orilla visible
+      const rngU = crearRng(777);
+      const puntoEsfera = (radio) => {
+        let x = 0;
+        let y = 0;
+        let z = 0;
+        do {
+          x = rngU() * 2 - 1;
+          y = rngU() * 2 - 1;
+          z = rngU() * 2 - 1;
+        } while (x * x + y * y + z * z > 1 || x * x + y * y + z * z < 1e-4);
+        return [x * radio, y * radio, z * radio];
+      };
+
+      // Semillas de cumulo para la telarana.
+      const semillas = [];
+      for (let s = 0; s < 25; s++) semillas.push(puntoEsfera(RADIO_COM * 0.8));
+
+      const comUnif = new Float32Array(N * 3);
+      const comTela = new Float32Array(N * 3);
+      const comMito = new Float32Array(N * 3);
+      const idxCerca = [];   // candidatos de mudanza (modo real): vecindario poblado
+      const idxOrilla = []; // candidatos de mudanza (modo mito): la ORILLA de la bola
+      let idxCentro = 0;
+      let mejorCentro = Infinity;
+      for (let i = 0; i < N; i++) {
+        const [x, y, z] = puntoEsfera(RADIO_COM);
+        comUnif[i * 3] = x;
+        comUnif[i * 3 + 1] = y;
+        comUnif[i * 3 + 2] = z;
+        const d = Math.sqrt(x * x + y * y + z * z);
+        if (d < RADIO_COM * 0.45) idxCerca.push(i);
+
+        // Telarana: cada particula se corre hacia su semilla mas cercana.
+        let sx = 0;
+        let sy = 0;
+        let sz = 0;
+        let mejor = Infinity;
+        for (const [ax, ay, az] of semillas) {
+          const dd = (x - ax) ** 2 + (y - ay) ** 2 + (z - az) ** 2;
+          if (dd < mejor) {
+            mejor = dd;
+            sx = ax;
+            sy = ay;
+            sz = az;
+          }
+        }
+        comTela[i * 3] = x + (sx - x) * 0.78 + (rngU() - 0.5) * 3;
+        comTela[i * 3 + 1] = y + (sy - y) * 0.78 + (rngU() - 0.5) * 3;
+        comTela[i * 3 + 2] = z + (sz - z) * 0.78 + (rngU() - 0.5) * 3;
+
+        // El mito: bola uniforme compacta.
+        const [mx, my, mz] = puntoEsfera(1);
+        const norma = Math.sqrt(mx * mx + my * my + mz * mz) || 1;
+        const v = Math.cbrt(rngU());
+        comMito[i * 3] = (mx / norma) * v * RADIO_MITO;
+        comMito[i * 3 + 1] = (my / norma) * v * RADIO_MITO;
+        comMito[i * 3 + 2] = (mz / norma) * v * RADIO_MITO;
+        if (v > 0.93) idxOrilla.push(i);
+        if (v < mejorCentro) {
+          mejorCentro = v;
+          idxCentro = i;
+        }
+      }
+
+      const posU = new Float32Array(N * 3);
+      posU.set(comUnif);
+      const geoU = registrar(new THREE.BufferGeometry());
+      geoU.setAttribute('position', new THREE.BufferAttribute(posU, 3));
+      const matU = registrar(new THREE.PointsMaterial({
+        color: 0xdfe8ff, size: 0.55, map: registrar(crearTexturaGlow()),
+        transparent: true, depthWrite: false, opacity: 0.9,
+      }));
+      const univ = new THREE.Group();
+      univ.add(new THREE.Points(geoU, matU));
+      escena3.add(univ);
+
+      // Galaxias espirales que se "encienden" en los cumulos (solo modo real).
+      const texGal = registrar(crearTexturaGalaxia(5));
+      const texGal2 = registrar(crearTexturaGalaxia(11));
+      const sprites = semillas.map(([x, y, z], s) => {
+        const mat = registrar(new THREE.SpriteMaterial({
+          map: s % 2 ? texGal : texGal2, transparent: true, depthWrite: false, opacity: 0,
+        }));
+        const sp = new THREE.Sprite(mat);
+        sp.position.set(x, y, z);
+        sp.scale.setScalar(3.5 + (s % 5));
+        univ.add(sp);
+        return sp;
+      });
+
+      // "Tu estas aqui": marca dorada clavada en el origen (el ancla).
+      const marca = crearGlow(2.4, '#ffd700');
+      escena3.add(marca);
+
+      // La niebla caliente del principio: envolvente naranja + resplandor.
+      const geoNiebla = registrar(new THREE.SphereGeometry(30, 32, 16));
+      const matNiebla = registrar(new THREE.MeshBasicMaterial({
+        color: 0xff9a40, transparent: true, opacity: 0, side: THREE.BackSide,
+        depthWrite: false, fog: false,
+      }));
+      const niebla = new THREE.Mesh(geoNiebla, matNiebla);
+      escena3.add(niebla);
+      const glowNiebla = crearGlow(34, '#ffb057');
+      glowNiebla.material.opacity = 0;
+      escena3.add(glowNiebla);
+
+      const anclaInicial = new THREE.Vector3().fromArray(comUnif, idxCerca[0] * 3);
+      escBB = {
+        univ, geoU, posU, matU, comUnif, comTela, comMito, sprites,
+        idxCerca, idxOrilla, idxCentro,
+        anclaActual: anclaInicial.clone(), anclaMeta: anclaInicial.clone(),
+        marca, matNiebla, nieblaMesh: niebla, glowNiebla,
+        mudanza: false, tPrevio: null, mitoPrevio: false, rng: crearRng(31),
+      };
+    }
+
+    if (escena === 'nace-un-sol') {
+      // La fabrica de planetas: nube de polvo (cenizas de estrellas viejas)
+      // que colapsa a un DISCO girando (rotacion kepleriana), el centro se
+      // enciende y las semillas de planeta barren carriles dejando surcos —
+      // como los del disco real de HL Tauri (ALMA).
+      escena3.add(new THREE.AmbientLight(0xffffff, 0.5));
+      const luzSol = new THREE.PointLight(0xfff3d0, 0, 0, 0);
+      escena3.add(luzSol);
+
+      const N = 3000;
+      const rngD = crearRng(555);
+      const nube = new Float32Array(N * 3);
+      const rDisco = new Float32Array(N);
+      const hDisco = new Float32Array(N);
+      const angD = new Float32Array(N);
+      const colorBase = new Float32Array(N * 3);
+      for (let i = 0; i < N; i++) {
+        let x = 0;
+        let y = 0;
+        let z = 0;
+        do {
+          x = rngD() * 2 - 1;
+          y = rngD() * 2 - 1;
+          z = rngD() * 2 - 1;
+        } while (x * x + y * y + z * z > 1 || x * x + y * y + z * z < 1e-4);
+        const n = Math.sqrt(x * x + y * y + z * z);
+        const rN = 13 * Math.pow(rngD(), 0.6);
+        nube[i * 3] = (x / n) * rN;
+        nube[i * 3 + 1] = (y / n) * rN;
+        nube[i * 3 + 2] = (z / n) * rN;
+        rDisco[i] = 2.2 + 11.8 * Math.sqrt(rngD());
+        hDisco[i] = (rngD() - 0.5) * 0.5;
+        angD[i] = rngD() * Math.PI * 2;
+        const brillo = 0.72 + rngD() * 0.38;
+        colorBase[i * 3] = brillo;
+        colorBase[i * 3 + 1] = brillo * 0.86;
+        colorBase[i * 3 + 2] = brillo * 0.64;
+      }
+      const posD = new Float32Array(N * 3);
+      posD.set(nube);
+      const colD = new Float32Array(N * 3);
+      colD.set(colorBase);
+      const geoD = registrar(new THREE.BufferGeometry());
+      geoD.setAttribute('position', new THREE.BufferAttribute(posD, 3));
+      geoD.setAttribute('color', new THREE.BufferAttribute(colD, 3));
+      const matD = registrar(new THREE.PointsMaterial({
+        size: 0.34, map: registrar(crearTexturaGlow()), vertexColors: true,
+        transparent: true, depthWrite: false, opacity: 0.95,
+      }));
+      escena3.add(new THREE.Points(geoD, matD));
+
+      const sol = crearCuerpo({ id: 'sol', radio: 1, tex: 'sol', color: '#ffcf3f', semilla: 3, lambert: false });
+      sol.scale.setScalar(0.25);
+      escena3.add(sol);
+      const glowSol = crearGlow(1, '#ffdf80');
+      glowSol.material.opacity = 0.15;
+      escena3.add(glowSol);
+
+      // Semillas de planeta: barren su carril y crecen con lo que juntan.
+      const anillos = [6, 9, 12];
+      const defPlan = [
+        { radioFin: 0.38, color: '#b8a89a', tex: 'craterizado' },
+        { radioFin: 0.55, color: '#d8a56a', tex: 'nubes' },
+        { radioFin: 0.45, color: '#3f66d4', tex: 'liso' },
+      ];
+      const planetas = defPlan.map((p, j) => {
+        const mesh = crearCuerpo({ id: 'planeta', radio: 1, tex: p.tex, color: p.color, semilla: 61 + j });
+        mesh.visible = false;
+        escena3.add(mesh);
+        return { mesh, radioFin: p.radioFin, R: anillos[j], ang: (j * Math.PI * 2) / 3 };
+      });
+
+      escSol = {
+        geoD, posD, colD, nube, rDisco, hDisco, angD, colorBase,
+        sol, glowSol, luzSol, planetas, anillos, tPrevio: null,
+      };
+    }
+
     /* --- camara orbital del usuario --- */
     const CAMARAS = {
       planetas: { yaw: 0.6, pitch: 0.9, dist: 60 },
@@ -1258,6 +1512,8 @@ const Espacio3D = forwardRef(function Espacio3D(
       exoplanetas: { yaw: 0, pitch: 0.18, dist: 26 },
       asteroides: { yaw: 0, pitch: 0.18, dist: 26 },
       impacto: { yaw: 0.3, pitch: 0.5, dist: 30 },
+      'big-bang': { yaw: 0.2, pitch: 0.35, dist: 40 },
+      'nace-un-sol': { yaw: 0.4, pitch: 0.7, dist: 26 },
       'agujero-negro': { yaw: 0, pitch: 1.1, dist: 26 },
       // Vista de 3/4: de frente no se veria el hundimiento de la sabana.
       'cama-elastica': { yaw: 0.3, pitch: 0.42, dist: 30 },
@@ -1364,6 +1620,11 @@ const Espacio3D = forwardRef(function Espacio3D(
         escImp.roca.visible = true;
         escImp.roca.scale.setScalar(escala);
         setResultado('cayendo');
+      }
+      if (escBB) {
+        // "Mudate a otra galaxia": el bucle elige el destino segun el modo
+        // (real: cualquier vecindario poblado; mito: la ORILLA de la bola).
+        escBB.mudanza = true;
       }
     };
 
@@ -2067,6 +2328,109 @@ const Espacio3D = forwardRef(function Espacio3D(
         const aOscuras = sim && sim.resultado === 'catastrofe' && sim.fase !== 'cayendo' && sim.t < 4.5;
         const luzMeta = aOscuras ? 0.4 : 1.5;
         escImp.luz.intensity += (luzMeta - escImp.luz.intensity) * Math.min(1, dt * 2);
+      } else if (escena === 'big-bang') {
+        const info = bigBangInfoDe(est.angulo);
+        const mito = !!est.alterno;
+
+        // Mudanza: elegir nuevo ancla segun el modo.
+        if (escBB.mudanza) {
+          escBB.mudanza = false;
+          const lista = mito ? escBB.idxOrilla : escBB.idxCerca;
+          const idx = lista[Math.floor(escBB.rng() * lista.length)];
+          escBB.anclaMeta.fromArray(mito ? escBB.comMito : escBB.comUnif, idx * 3);
+        }
+
+        // Posiciones comoviles: solo se recalculan si cambia slider o modo.
+        if (est.angulo !== escBB.tPrevio || mito !== escBB.mitoPrevio) {
+          escBB.tPrevio = est.angulo;
+          if (mito !== escBB.mitoPrevio) {
+            escBB.mitoPrevio = mito;
+            // Al entrar al mito arrancas en su CENTRO (la explosion clasica
+            // se ve convincente…); al volver, a un vecindario del universo.
+            escBB.anclaMeta.fromArray(
+              mito ? escBB.comMito : escBB.comUnif,
+              (mito ? escBB.idxCentro : escBB.idxCerca[0]) * 3
+            );
+          }
+          const g = info.grumos;
+          for (let k = 0; k < escBB.posU.length; k++) {
+            escBB.posU[k] = mito
+              ? escBB.comMito[k]
+              : escBB.comUnif[k] + (escBB.comTela[k] - escBB.comUnif[k]) * g;
+          }
+          escBB.geoU.attributes.position.needsUpdate = true;
+          const opSprite = mito || info.fase === 'niebla' ? 0 : Math.min(1, g * 1.6);
+          escBB.sprites.forEach((sp) => { sp.material.opacity = opSprite; });
+        }
+
+        // Escala del espacio + anclaje: el grupo entero se re-centra para que
+        // la galaxia ancla quede clavada en el origen (donde esta la camara).
+        escBB.anclaActual.lerp(escBB.anclaMeta, Math.min(1, dt * 2.5));
+        escBB.univ.scale.setScalar(info.a);
+        escBB.univ.position.copy(escBB.anclaActual).multiplyScalar(-info.a);
+
+        // La niebla caliente del principio (y las particulas dentro de ella).
+        escBB.matNiebla.opacity = info.niebla * 0.8;
+        escBB.nieblaMesh.visible = info.niebla > 0.01;
+        escBB.glowNiebla.material.opacity = info.niebla * 0.9;
+        escBB.glowNiebla.visible = info.niebla > 0.01;
+        escBB.matU.opacity = 0.9 * (1 - info.niebla * 0.85);
+        escBB.marca.material.opacity = 0.9 * (1 - info.niebla);
+      } else if (escena === 'nace-un-sol') {
+        const info = naceSolInfoDe(est.angulo);
+        const ap = info.aplanado;
+
+        // Giro kepleriano + lerp nube→disco, por frame (3,000 puntos: barato).
+        for (let i = 0; i < escSol.rDisco.length; i++) {
+          const r = escSol.rDisco[i];
+          escSol.angD[i] += dt * ap * (15 / Math.pow(r, 1.5));
+          const dx = Math.cos(escSol.angD[i]) * r;
+          const dz = Math.sin(escSol.angD[i]) * r;
+          const k = i * 3;
+          escSol.posD[k] = escSol.nube[k] * (1 - ap) + dx * ap;
+          escSol.posD[k + 1] = escSol.nube[k + 1] * (1 - ap) + escSol.hDisco[i] * ap;
+          escSol.posD[k + 2] = escSol.nube[k + 2] * (1 - ap) + dz * ap;
+        }
+        escSol.geoD.attributes.position.needsUpdate = true;
+
+        // Surcos: el polvo cerca del carril de cada planeta se apaga
+        // (bajarle el color sobre fondo negro = desvanecerlo). Solo al mover
+        // el deslizador.
+        if (est.angulo !== escSol.tPrevio) {
+          escSol.tPrevio = est.angulo;
+          for (let i = 0; i < escSol.rDisco.length; i++) {
+            let factor = 1;
+            if (info.barrido > 0) {
+              for (const R of escSol.anillos) {
+                const d = Math.abs(escSol.rDisco[i] - R);
+                if (d < 1.1) factor = Math.min(factor, 1 - info.barrido * (1 - d / 1.1));
+              }
+            }
+            const k = i * 3;
+            escSol.colD[k] = escSol.colorBase[k] * factor;
+            escSol.colD[k + 1] = escSol.colorBase[k + 1] * factor;
+            escSol.colD[k + 2] = escSol.colorBase[k + 2] * factor;
+          }
+          escSol.geoD.attributes.color.needsUpdate = true;
+        }
+
+        // El sol se enciende (y de paso ilumina a los planetas: son lambert).
+        const s = 0.25 + info.brillo * 1.15;
+        escSol.sol.scale.setScalar(s);
+        escSol.sol.rotation.y += dt * 0.4;
+        escSol.glowSol.position.copy(escSol.sol.position);
+        escSol.glowSol.scale.setScalar(s * 4.2);
+        escSol.glowSol.material.opacity = 0.15 + info.brillo * 0.85;
+        escSol.luzSol.intensity = info.brillo * 2.2;
+
+        escSol.planetas.forEach((p) => {
+          p.mesh.visible = info.barrido > 0.05;
+          if (!p.mesh.visible) return;
+          p.ang += dt * (15 / Math.pow(p.R, 1.5));
+          p.mesh.position.set(Math.cos(p.ang) * p.R, 0, Math.sin(p.ang) * p.R);
+          p.mesh.scale.setScalar(p.radioFin * Math.min(1, 0.25 + info.barrido));
+          p.mesh.rotation.y += dt * 0.8;
+        });
       }
 
       distDeseada *= zoomUsuario;
@@ -2134,7 +2498,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     );
   }
 
-  const conSlider = ['tierra-luna', 'estaciones', 'cometa', 'satelite', ...ESCALERAS, 'impacto', 'agujero-negro', 'cama-elastica'].includes(escena);
+  const conSlider = ['tierra-luna', 'estaciones', 'cometa', 'satelite', ...ESCALERAS, 'impacto', 'big-bang', 'nace-un-sol', 'agujero-negro', 'cama-elastica'].includes(escena);
   const conRecuadro = escena === 'tierra-luna' || escena === 'estaciones';
 
   const PISTAS = {
@@ -2148,6 +2512,8 @@ const Espacio3D = forwardRef(function Espacio3D(
     exoplanetas: '👆 Sube la escalera con el deslizador · toca un planeta para saber más',
     asteroides: '👆 Sube la escalera con el deslizador · toca una roca para saber más',
     impacto: '👆 Elige el tamaño de la roca, apuesta qué pasará… ¡y suéltala!',
+    'big-bang': '👆 Rebobina el universo con el deslizador · múdate de galaxia para buscar el centro',
+    'nace-un-sol': '👆 Avanza el tiempo con el deslizador y mira nacer un sistema solar',
     'agujero-negro': '👆 Aprieta la Tierra con el deslizador y lanza rayos de luz para ver si escapan',
     'cama-elastica': '👆 Ponle peso a la bola con el deslizador y rueda la canica · arrastra para girar',
   };
@@ -2161,6 +2527,8 @@ const Espacio3D = forwardRef(function Espacio3D(
     exoplanetas: ['🔴', '🎈'],
     asteroides: ['💥', '🌕'],
     impacto: ['🍚', '🏔️'],
+    'big-bang': ['🔥', '🌌'],
+    'nace-un-sol': ['☁️', '🪐'],
     'agujero-negro': ['🌍', '🕳️'],
     'cama-elastica': ['🪶', '🐘'],
   };
@@ -2170,6 +2538,8 @@ const Espacio3D = forwardRef(function Espacio3D(
   const SLIDER_MAX = {
     satelite: 100,
     impacto: 100,
+    'big-bang': 100,
+    'nace-un-sol': 100,
     'agujero-negro': 100,
     'cama-elastica': 100,
     estrellas: PASOS_ESTRELLAS,
@@ -2183,6 +2553,8 @@ const Espacio3D = forwardRef(function Espacio3D(
     exoplanetas: 'Subir la escalera de planetas',
     asteroides: 'Subir la escalera de asteroides',
     impacto: 'Tamaño de la roca',
+    'big-bang': 'Viajar en el tiempo',
+    'nace-un-sol': 'Tiempo de formación',
     'agujero-negro': 'Apretar la Tierra',
     'cama-elastica': 'Peso de la bola',
   };
@@ -2191,8 +2563,16 @@ const Espacio3D = forwardRef(function Espacio3D(
   const BOTON_LANZAR = {
     satelite: '🚀 ¡Lanzar!',
     impacto: '☄️ ¡Que caiga!',
+    'big-bang': '🚀 ¡Múdate a otra galaxia!',
     'agujero-negro': '💡 ¡Rayo de luz!',
     'cama-elastica': '🎱 ¡Rueda la canica!',
+  };
+
+  // Boton alterno (solo big-bang): entra y sale del MITO de la explosion.
+  // El mito no se muestra para lucirlo sino para derrotarlo: en la bola hay
+  // orilla y centro; en el universo real, te mudes a donde te mudes, no.
+  const BOTON_ALTERNO = {
+    'big-bang': alterno ? '🌌 Volver al universo real' : '🎭 ¿Y si fuera una explosión?',
   };
 
   let etiqueta = null;
@@ -2400,6 +2780,44 @@ const Espacio3D = forwardRef(function Espacio3D(
         </div>
       </>
     );
+  } else if (escena === 'big-bang') {
+    const info = bigBangInfoDe(angulo);
+    const TXT_FASE = {
+      niebla: `🔥 ${info.edad}: TODO el universo es una niebla caliente y brillante`,
+      despeje: `✨ ${info.edad}: ¡se despeja la niebla! Esa primera luz es la FOTO BEBÉ del universo`,
+      grumos: `🕸️ ${info.edad}: la gravedad hace crecer las arruguitas y se forman grumos`,
+      galaxias: `🌌 ${info.edad}: los grumos ya son galaxias… y el espacio se sigue estirando HOY`,
+    };
+    etiqueta = (
+      <>
+        <div className="espacio3d-fase">
+          {alterno ? `🎭 EL MITO: una bola explotando (${info.edad})` : TXT_FASE[info.fase]}
+        </div>
+        <div className="espacio3d-subfase">
+          {alterno
+            ? 'Si fuera así, habría un CENTRO y una ORILLA. Múdate de galaxia y búscalas… En el universo real nadie las ha encontrado jamás.'
+            : '📍 El punto dorado eres TÚ. No es una explosión EN el espacio: es el espacio ESTIRÁNDOSE, como pan con pasas en el horno.'}
+        </div>
+      </>
+    );
+  } else if (escena === 'nace-un-sol') {
+    const info = naceSolInfoDe(angulo);
+    const TXT_FASE = {
+      nube: '☁️ Una nube de polvo y gas flota en el espacio: son CENIZAS de estrellas viejas',
+      disco: '🌀 La nube cae sobre sí misma y al girar se APLANA: nace un disco',
+      enciende: '🌞 El centro junta tanto material que se aprieta, se calienta y… ¡SE ENCIENDE!',
+      planetas: '🪐 Las semillas de planeta barren sus carriles y dejan SURCOS en el disco',
+    };
+    etiqueta = (
+      <>
+        <div className="espacio3d-fase">{TXT_FASE[info.fase]}</div>
+        <div className="espacio3d-subfase">
+          {info.fase === 'planetas'
+            ? '📸 Estos surcos no son un invento: el telescopio ALMA fotografió un disco REAL así (HL Tauri). Está pasando ahorita.'
+            : '⭐ Así nacieron el Sol y la Tierra hace 4,600 millones de años — de polvo reciclado de otras estrellas.'}
+        </div>
+      </>
+    );
   }
 
   return (
@@ -2443,6 +2861,15 @@ const Espacio3D = forwardRef(function Espacio3D(
                 onClick={() => apiRef.current?.lanzar?.()}
               >
                 {BOTON_LANZAR[escena]}
+              </button>
+            )}
+            {BOTON_ALTERNO[escena] && (
+              <button
+                type="button"
+                className="espacio3d-btn-lanzar"
+                onClick={() => setAlterno((v) => !v)}
+              >
+                {BOTON_ALTERNO[escena]}
               </button>
             )}
           </div>
