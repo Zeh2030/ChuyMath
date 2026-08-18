@@ -475,6 +475,23 @@ el flujo de MezcladorColores (intro → explorar → retos → fin).
   de planeta barren carriles y dejan SURCOS (alpha por vertice sobre fondo
   negro), como el disco REAL de HL Tauri (ALMA) que sale en el
   image-picker. Sin retos de motor (explorar).
+- **Escena `dia-noche`** (2026-08-17, la Tierra que gira): deslizador = la
+  HORA en tu casa (0-24, `diaNocheInfoDe`); el Sol FIJO y el grupo de la
+  Tierra rotando (a las 12 el pin dorado de Mexico mira al Sol; pin
+  plateado en Japon, +15 h — cuando desayunas, alla cenan). Recuadro "Asi
+  se ve desde tu casa": camara parada en el pin mirando el horizonte hacia
+  el Sol, con CIELO por clearColor del pase inset (azul de dia, naranja al
+  ras, oscuro de noche con estrellas y a veces la Luna, que avanza solo
+  ~13° en el dia — honesto). Mata el mito "el Sol se mueve por el cielo".
+  Retos tipo `hora` (amanecer/mediodia/atardecer/medianoche/dia/noche) con
+  boton "¡Asi esta bien!".
+- **Escena `carrera`** (2026-08-17, la carrera de los planetas): la escena
+  planetas pero con velocidades REALES (`CARRERA_ANIOS`: Mercurio 0.24 →
+  Neptuno 165 anos) y los 8 alineados en la salida (+X, linea de meta
+  dorada). Boton "¡Arranquen!" (reinicia y corre), deslizador = velocidad
+  del tiempo (0.1-2 anos/s), cronometro flotante de anos y etiqueta de
+  VUELTAS por planeta (patron cajon). "Mas lejos = mas lento" emerge solo
+  (Kepler). Retos tipo `toca`.
 - **Escena `cama-elastica`** (2026-08-15, el espacio que se hunde): deslizador
   = PESO de la bola central (0-100); la rejilla del espacio se hunde con la
   forma del potencial de Newton y la bola crece. Boton "Rueda la canica":
@@ -536,6 +553,8 @@ saturno, urano, neptuno. Tierra-luna: sol, tierra, luna.
 | `sistema-solar/C2-39_rocas-del-espacio.json` | Asteroides (escalera con anclas), vocabulario meteoro/meteorito y Perseidas | sistema-solar (asteroides) + tap-the-pairs + mini-story + true-or-false |
 | `sistema-solar/C3-24_el-dia-que-cayo-el-cielo.json` | Impactos por tamano, Chicxulub/cenotes y defensa planetaria (DART) | sistema-solar (impacto) + mini-story + image-picker + opcion-multiple |
 | `sistema-solar/C3-25_el-principio-de-todo.json` | Big Bang honesto (estiron, no explosion; modo mito derrotable), nace un sol, polvo de estrellas | sistema-solar (big-bang, nace-un-sol) + true-or-false + mini-story + image-picker + opcion-multiple |
+| `sistema-solar/C2-40_el-dia-y-la-noche.json` | Por que amanece: la Tierra gira (recuadro desde tu casa, Japon +15 h) | sistema-solar (dia-noche) + opcion-multiple + true-or-false |
+| `sistema-solar/C2-41_la-carrera-de-los-planetas.json` | Velocidades reales: mas lejos = mas lento (Kepler) | sistema-solar (carrera) + opcion-multiple + tap-the-pairs |
 
 **Fotos**: URLs `https://commons.wikimedia.org/wiki/Special:FilePath/<archivo>?width=320`
 (redirect estable de Wikimedia Commons, sin rutas con hash; todas verificadas con curl).

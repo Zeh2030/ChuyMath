@@ -6,6 +6,7 @@ import {
   ESTRELLAS_COMPARAR, PASOS_ESTRELLAS, ORBITAS_UA, UA_POR_RADIO_SOL,
   PLANETAS_ESCALERA, PASOS_EXOPLANETAS, ASTEROIDES_ESCALERA, PASOS_ASTEROIDES,
   faseInfoDe, estacionInfoDe, cometaInfoDe, impactoInfoDe, bigBangInfoDe, naceSolInfoDe,
+  diaNocheInfoDe, MOMENTOS, CARRERA_ANIOS,
   etiquetaComparar, etiquetaEstrella, etiquetaExoplaneta, etiquetaAsteroide,
 } from './espacioDatos';
 
@@ -403,6 +404,8 @@ const Espacio3D = forwardRef(function Espacio3D(
     if (escena === 'satelite') return 55;    // velocidad media
     if (ESCALERAS.includes(escena)) return 1; // primer escalon de la escalera
     if (escena === 'impacto') return 25;     // ~una ballena: banda vistosa
+    if (escena === 'dia-noche') return 12;   // mediodia en tu casa
+    if (escena === 'carrera') return 40;     // velocidad media del tiempo
     if (escena === 'big-bang') return 100;   // HOY: el gesto natural es REBOBINAR
     if (escena === 'nace-un-sol') return 0;  // la nube de polvo, antes de todo
     if (escena === 'agujero-negro') return 0; // la Tierra sin apretar todavia
@@ -435,11 +438,12 @@ const Espacio3D = forwardRef(function Espacio3D(
     onVistaRef.current = onVista;
   }, [onSeleccion, onFase, onVista]);
 
-  // Avisar la fase/estacion/zona visible al entrar y con cada movimiento del deslizador.
+  // Avisar la fase/estacion/zona/hora visible al entrar y con cada movimiento del deslizador.
   useEffect(() => {
     if (escena === 'tierra-luna') onFaseRef.current?.(faseInfoDe(angulo));
     if (escena === 'estaciones') onFaseRef.current?.(estacionInfoDe(angulo));
     if (escena === 'cometa') onFaseRef.current?.(cometaInfoDe(angulo));
+    if (escena === 'dia-noche') onFaseRef.current?.(diaNocheInfoDe(angulo));
   }, [escena, angulo]);
 
   useImperativeHandle(ref, () => ({
@@ -578,6 +582,8 @@ const Espacio3D = forwardRef(function Espacio3D(
     let escImp = null;         // escena impacto (que pasa segun el tamano de la roca)
     let escBB = null;          // escena big-bang (el espacio que se estira)
     let escSol = null;         // escena nace-un-sol (la fabrica de planetas)
+    let escDN = null;          // escena dia-noche (la Tierra que gira)
+    let escCar = null;         // escena carrera (velocidades reales de los planetas)
     let etiquetaEstrellaEl = null; // constelaciones: nombre flotante de la estrella tocada
     let nombreFlotante = null;     // constelaciones: { pos, hasta } del nombre flotante
 
@@ -587,7 +593,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     // se veria pixelado). La usan el modo comparar (planetas), la escalera
     // de estrellas y constelaciones (nombres de estrellas y de figuras).
     let crearEtiqueta = null;
-    if (escena === 'planetas' || escena === 'constelaciones' || ESCALERAS.includes(escena)) {
+    if (escena === 'planetas' || escena === 'constelaciones' || escena === 'carrera' || ESCALERAS.includes(escena)) {
       capaEtiquetas = document.createElement('div');
       capaEtiquetas.className = 'espacio3d-etiquetas';
       contenedor.appendChild(capaEtiquetas);
@@ -1500,6 +1506,129 @@ const Espacio3D = forwardRef(function Espacio3D(
       };
     }
 
+    if (escena === 'dia-noche') {
+      // La Tierra que gira: el Sol esta FIJO y el deslizador es la hora en tu
+      // casa. Los pines (Mexico y Japon) viven en un GRUPO sin escalar que
+      // rota — asi sus tamanos no heredan el x3 de la malla de la Tierra.
+      // Calibracion: el pin de Mexico esta en el eje +X local, y a las 12 el
+      // grupo rota para dejarlo de frente al Sol (que esta en +X del mundo).
+      escena3.add(new THREE.AmbientLight(0x8fa8ff, 0.35));
+      const luzDN = new THREE.PointLight(0xfff3d0, 2.6, 0, 0);
+      const DN = { radioTierra: 3, distSol: 40, orbitaLuna: 9 };
+      luzDN.position.set(DN.distSol, 0, 0);
+      escena3.add(luzDN);
+
+      const meshSol = crearCuerpo({ id: 'sol', radio: 2.6, tex: 'sol', color: '#ffcf3f', semilla: 3, lambert: false });
+      meshSol.position.set(DN.distSol, 0, 0);
+      escena3.add(meshSol);
+      const glowSol = crearGlow(11, '#ffcf3f');
+      glowSol.position.copy(meshSol.position);
+      escena3.add(glowSol);
+
+      const grupoTierra = new THREE.Group();
+      escena3.add(grupoTierra);
+      const tierra = crearCuerpo({ id: 'tierra', radio: DN.radioTierra, tex: 'tierra', color: '#2f6fd0', semilla: 13 });
+      grupoTierra.add(tierra);
+
+      // Pines: cono apuntando hacia AFUERA + blanco de toque invisible.
+      const crearPin = (id, latGrados, lonGrados, color) => {
+        const lat = (latGrados * Math.PI) / 180;
+        const lon = (lonGrados * Math.PI) / 180;
+        const dir = new THREE.Vector3(
+          Math.cos(lat) * Math.cos(lon),
+          Math.sin(lat),
+          -Math.cos(lat) * Math.sin(lon)
+        );
+        const geoPin = registrar(new THREE.ConeGeometry(0.14, 0.42, 10));
+        const matPin = registrar(new THREE.MeshBasicMaterial({ color }));
+        const pin = new THREE.Mesh(geoPin, matPin);
+        pin.position.copy(dir).multiplyScalar(DN.radioTierra + 0.18);
+        pin.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir);
+        grupoTierra.add(pin);
+        const toque = new THREE.Mesh(
+          registrar(new THREE.SphereGeometry(0.5, 10, 6)),
+          registrar(new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false }))
+        );
+        toque.position.copy(pin.position);
+        grupoTierra.add(toque);
+        mallas.push(toque);
+        porMalla.set(toque, id);
+        return { dir };
+      };
+      // Mexico lon local 0 (la calibracion de las 12 la hace la rotacion del
+      // grupo); Japon a ~239 grados al este (casi del otro lado del mundo).
+      const casa = crearPin('casa', 19, 0, 0xffd700);
+      crearPin('japon', 36, 238.8, 0xd7dbe8);
+
+      const luna = crearCuerpo({ id: 'luna', radio: 0.55, tex: 'craterizado', color: '#c9c4bc', semilla: 21 });
+      escena3.add(luna);
+
+      // Camara del recuadro: parada en tu casa, mirando al horizonte.
+      const camDN = new THREE.PerspectiveCamera(60, 1, 0.05, 400);
+
+      escDN = {
+        DN,
+        grupoTierra,
+        tierra,
+        luna,
+        casaLocal: casa.dir.clone().multiplyScalar(DN.radioTierra),
+        camDN,
+        vSol: new THREE.Vector3(),
+        colCielo: new THREE.Color(),
+        colDia: new THREE.Color('#6fb0ff'),
+        colTarde: new THREE.Color('#ff9a56'),
+        colNoche: new THREE.Color('#0a0f26'),
+      };
+    }
+
+    if (escena === 'carrera') {
+      // La carrera de los planetas: la escena planetas pero con las
+      // velocidades REALES (CARRERA_ANIOS) y todos alineados en la salida.
+      // "Mas lejos = mas lento" emerge solo. El boton re-alinea y arranca.
+      escena3.add(new THREE.AmbientLight(0xbfd0ff, 0.55));
+      escena3.add(new THREE.PointLight(0xfff3d0, 2.4, 0, 0));
+
+      const meshSol = crearCuerpo({ id: 'sol', radio: SOL.radio, tex: SOL.tex, color: SOL.color, semilla: 3, lambert: false });
+      escena3.add(meshSol);
+      escena3.add(crearGlow(SOL.radio * 4.6));
+
+      const cuerposCar = PLANETAS.map((p, i) => {
+        const mesh = crearCuerpo({ id: p.id, radio: p.radio, tex: p.tex, color: p.color, semilla: 11 + i });
+        mesh.position.set(p.dist, 0, 0);
+        escena3.add(mesh);
+        if (p.anillos) {
+          const geoAnillo = registrar(new THREE.RingGeometry(1.45, 2.35, 64));
+          const matAnillo = registrar(new THREE.MeshBasicMaterial({
+            color: 0xd9c08a, side: THREE.DoubleSide, transparent: true, opacity: 0.75,
+          }));
+          const anillo = new THREE.Mesh(geoAnillo, matAnillo);
+          anillo.rotation.x = -Math.PI / 2 + 0.35;
+          mesh.add(anillo);
+        }
+        escena3.add(crearLineaOrbita(p.dist).linea);
+        const etiquetaEl = crearEtiqueta(`${p.emoji} ${p.nombre.replace(/^(el|la) /, '')} · en la salida`);
+        return { ...p, mesh, etiquetaEl, vueltasPrev: null };
+      });
+
+      // Marcador de la linea de salida (una linea radial tenue en +X).
+      const geoMeta = registrar(new THREE.BufferGeometry().setFromPoints([
+        new THREE.Vector3(SOL.radio + 1, 0, 0),
+        new THREE.Vector3(PLANETAS[PLANETAS.length - 1].dist + 2, 0, 0),
+      ]));
+      const matMeta = registrar(new THREE.LineBasicMaterial({ color: 0xf1c40f, transparent: true, opacity: 0.5 }));
+      escena3.add(new THREE.Line(geoMeta, matMeta));
+
+      // Cronometro flotante, fijo arriba al centro del lienzo.
+      const etiquetaAnios = crearEtiqueta('⏱️ 0 años');
+      etiquetaAnios.style.left = '50%';
+      etiquetaAnios.style.top = '10px';
+      etiquetaAnios.style.transform = 'translateX(-50%)';
+      etiquetaAnios.style.opacity = 1;
+      etiquetaAnios.style.fontSize = '0.9rem';
+
+      escCar = { cuerpos: cuerposCar, anios: 0, corriendo: false, etiquetaAnios, deciPrev: 0 };
+    }
+
     /* --- camara orbital del usuario --- */
     const CAMARAS = {
       planetas: { yaw: 0.6, pitch: 0.9, dist: 60 },
@@ -1512,6 +1641,8 @@ const Espacio3D = forwardRef(function Espacio3D(
       exoplanetas: { yaw: 0, pitch: 0.18, dist: 26 },
       asteroides: { yaw: 0, pitch: 0.18, dist: 26 },
       impacto: { yaw: 0.3, pitch: 0.5, dist: 30 },
+      'dia-noche': { yaw: 0.55, pitch: 0.5, dist: 22 },
+      carrera: { yaw: 0.2, pitch: 1.15, dist: 60 },
       'big-bang': { yaw: 0.2, pitch: 0.35, dist: 40 },
       'nace-un-sol': { yaw: 0.4, pitch: 0.7, dist: 26 },
       'agujero-negro': { yaw: 0, pitch: 1.1, dist: 26 },
@@ -1625,6 +1756,15 @@ const Espacio3D = forwardRef(function Espacio3D(
         // "Mudate a otra galaxia": el bucle elige el destino segun el modo
         // (real: cualquier vecindario poblado; mito: la ORILLA de la bola).
         escBB.mudanza = true;
+      }
+      if (escCar) {
+        // "¡Arranquen!": re-alinea a todos en la salida y echa a andar el
+        // tiempo. Volver a apretar reinicia la carrera.
+        escCar.anios = 0;
+        escCar.deciPrev = -1;
+        escCar.corriendo = true;
+        escCar.cuerpos.forEach((c) => { c.vueltasPrev = null; });
+        setResultado('corriendo');
       }
     };
 
@@ -2431,6 +2571,56 @@ const Espacio3D = forwardRef(function Espacio3D(
           p.mesh.scale.setScalar(p.radioFin * Math.min(1, 0.25 + info.barrido));
           p.mesh.rotation.y += dt * 0.8;
         });
+      } else if (escena === 'dia-noche') {
+        // El Sol quieto; la Tierra (y sus pines) giran con la hora. A las 12
+        // el pin de Mexico (+X local) queda de frente al Sol (+X del mundo).
+        escDN.grupoTierra.rotation.y = ((est.angulo - 12) / 24) * Math.PI * 2;
+        // La Luna casi ni se mueve en un dia (~13° de su orbita): honesto, y
+        // de paso a veces se deja ver de dia en el recuadro.
+        const angL = 2.2 + (est.angulo / 24) * 0.23;
+        escDN.luna.position.set(
+          Math.cos(angL) * escDN.DN.orbitaLuna,
+          1.2,
+          -Math.sin(angL) * escDN.DN.orbitaLuna
+        );
+        escDN.luna.rotation.y += dt * 0.1;
+      } else if (escena === 'carrera') {
+        if (escCar.corriendo) {
+          escCar.anios += dt * (0.1 + (est.angulo / 100) * 1.9); // años/segundo
+        }
+        const wc = lienzo.clientWidth;
+        const hc = lienzo.clientHeight;
+        const deci = Math.floor(escCar.anios * 10);
+        if (deci !== escCar.deciPrev) {
+          escCar.deciPrev = deci;
+          escCar.etiquetaAnios.textContent = `⏱️ ${(deci / 10).toFixed(1)} años terrestres`;
+        }
+        escCar.cuerpos.forEach((c) => {
+          const ang = (escCar.anios / CARRERA_ANIOS[c.id]) * Math.PI * 2;
+          c.mesh.position.set(Math.cos(ang) * c.dist, 0, -Math.sin(ang) * c.dist);
+          c.mesh.rotation.y += dt * 0.4;
+          const vueltas = Math.floor(escCar.anios / CARRERA_ANIOS[c.id]);
+          if (vueltas !== c.vueltasPrev) {
+            c.vueltasPrev = vueltas;
+            const nombre = c.nombre.replace(/^(el|la) /, '');
+            c.etiquetaEl.textContent = escCar.anios > 0
+              ? `${c.emoji} ${nombre} · ${vueltas} ${vueltas === 1 ? 'vuelta' : 'vueltas'}`
+              : `${c.emoji} ${nombre} · en la salida`;
+          }
+          if (wc && hc) {
+            vProy.copy(c.mesh.position);
+            vProy.y += c.radio * 1.3 + 0.6;
+            vProy.project(camara);
+            if (vProy.z < 1) {
+              const px = (vProy.x * 0.5 + 0.5) * wc;
+              const py = (1 - (vProy.y * 0.5 + 0.5)) * hc;
+              c.etiquetaEl.style.transform = `translate(${px}px, ${py}px) translate(-50%, -100%)`;
+              c.etiquetaEl.style.opacity = 1;
+            } else {
+              c.etiquetaEl.style.opacity = 0;
+            }
+          }
+        });
       }
 
       distDeseada *= zoomUsuario;
@@ -2448,28 +2638,56 @@ const Espacio3D = forwardRef(function Espacio3D(
 
       renderer.render(escena3, camara);
 
-      if (escena === 'tierra-luna' || escena === 'estaciones') {
+      if (escena === 'tierra-luna' || escena === 'estaciones' || escena === 'dia-noche') {
         // Recuadro de la esquina inferior derecha.
         const w = lienzo.clientWidth;
         let camRecuadro;
+        let cieloInset = null;
         if (escena === 'tierra-luna') {
           // "Asi se ve desde la Tierra": camara dentro de la Tierra mirando la Luna.
           tl.camFase.lookAt(tl.luna.position);
           camRecuadro = tl.camFase;
-        } else {
+        } else if (escena === 'estaciones') {
           // "Asi pega la luz": la Tierra vista desde el lado del Sol.
           const posT = escEst.grupoTierra.position;
           vTmp.copy(posT).normalize();
           escEst.camEst.position.copy(posT).addScaledVector(vTmp, -5.2);
           escEst.camEst.lookAt(posT);
           camRecuadro = escEst.camEst;
+        } else {
+          // "Asi se ve desde tu casa": parado en el pin, mirando el horizonte
+          // hacia el lado del Sol. El suelo es la propia Tierra texturizada.
+          const cam = escDN.camDN;
+          vTmp.copy(escDN.casaLocal).applyAxisAngle(V_ARRIBA, escDN.grupoTierra.rotation.y);
+          vTmp2.copy(vTmp).normalize(); // arriba local = radial
+          cam.up.copy(vTmp2);
+          cam.position.copy(vTmp).addScaledVector(vTmp2, 0.22);
+          escDN.vSol.set(escDN.DN.distSol, 0, 0).sub(cam.position).normalize();
+          const elev = escDN.vSol.dot(vTmp2); // seno de la altura del Sol
+          // componente horizontal de la direccion al Sol (azimut)
+          escDN.vSol.addScaledVector(vTmp2, -elev);
+          if (escDN.vSol.lengthSq() < 1e-6) escDN.vSol.set(0, 0, 1); // Sol en el cenit
+          escDN.vSol.normalize();
+          vTmp.copy(cam.position).addScaledVector(escDN.vSol, 10).addScaledVector(vTmp2, 3);
+          cam.lookAt(vTmp);
+          // Cielo segun la altura del Sol: azul de dia, naranja al ras, oscuro
+          // de noche (y entonces se ven las estrellas del fondo).
+          const c = escDN.colCielo;
+          if (elev > 0.28) c.copy(escDN.colDia);
+          else if (elev > 0.02) c.copy(escDN.colTarde).lerp(escDN.colDia, (elev - 0.02) / 0.26);
+          else if (elev > -0.12) c.copy(escDN.colNoche).lerp(escDN.colTarde, (elev + 0.12) / 0.14);
+          else c.copy(escDN.colNoche);
+          camRecuadro = cam;
+          cieloInset = c;
         }
+        if (cieloInset) renderer.setClearColor(cieloInset, 1);
         renderer.setScissorTest(true);
         renderer.setViewport(w - INSET - 10, 10, INSET, INSET);
         renderer.setScissor(w - INSET - 10, 10, INSET, INSET);
         renderer.render(escena3, camRecuadro);
         renderer.setScissorTest(false);
         renderer.setViewport(0, 0, w, lienzo.clientHeight);
+        if (cieloInset) renderer.setClearColor('#070b1a', 1);
       }
     };
     animar();
@@ -2498,8 +2716,8 @@ const Espacio3D = forwardRef(function Espacio3D(
     );
   }
 
-  const conSlider = ['tierra-luna', 'estaciones', 'cometa', 'satelite', ...ESCALERAS, 'impacto', 'big-bang', 'nace-un-sol', 'agujero-negro', 'cama-elastica'].includes(escena);
-  const conRecuadro = escena === 'tierra-luna' || escena === 'estaciones';
+  const conSlider = ['tierra-luna', 'estaciones', 'cometa', 'satelite', ...ESCALERAS, 'impacto', 'dia-noche', 'carrera', 'big-bang', 'nace-un-sol', 'agujero-negro', 'cama-elastica'].includes(escena);
+  const conRecuadro = escena === 'tierra-luna' || escena === 'estaciones' || escena === 'dia-noche';
 
   const PISTAS = {
     planetas: '👆 Toca un planeta · arrastra para girar la vista',
@@ -2512,6 +2730,8 @@ const Espacio3D = forwardRef(function Espacio3D(
     exoplanetas: '👆 Sube la escalera con el deslizador · toca un planeta para saber más',
     asteroides: '👆 Sube la escalera con el deslizador · toca una roca para saber más',
     impacto: '👆 Elige el tamaño de la roca, apuesta qué pasará… ¡y suéltala!',
+    'dia-noche': '👆 Mueve la hora con el deslizador y mira el recuadro: así se ve desde tu casa',
+    carrera: '👆 ¡Arranca la carrera! · acelera el tiempo con el deslizador · toca un planeta para saber más',
     'big-bang': '👆 Rebobina el universo con el deslizador · múdate de galaxia para buscar el centro',
     'nace-un-sol': '👆 Avanza el tiempo con el deslizador y mira nacer un sistema solar',
     'agujero-negro': '👆 Aprieta la Tierra con el deslizador y lanza rayos de luz para ver si escapan',
@@ -2527,6 +2747,8 @@ const Espacio3D = forwardRef(function Espacio3D(
     exoplanetas: ['🔴', '🎈'],
     asteroides: ['💥', '🌕'],
     impacto: ['🍚', '🏔️'],
+    'dia-noche': ['🌅', '🌃'],
+    carrera: ['🐢', '⏩'],
     'big-bang': ['🔥', '🌌'],
     'nace-un-sol': ['☁️', '🪐'],
     'agujero-negro': ['🌍', '🕳️'],
@@ -2538,6 +2760,8 @@ const Espacio3D = forwardRef(function Espacio3D(
   const SLIDER_MAX = {
     satelite: 100,
     impacto: 100,
+    'dia-noche': 24,
+    carrera: 100,
     'big-bang': 100,
     'nace-un-sol': 100,
     'agujero-negro': 100,
@@ -2553,6 +2777,8 @@ const Espacio3D = forwardRef(function Espacio3D(
     exoplanetas: 'Subir la escalera de planetas',
     asteroides: 'Subir la escalera de asteroides',
     impacto: 'Tamaño de la roca',
+    'dia-noche': 'La hora del día',
+    carrera: 'Velocidad del tiempo',
     'big-bang': 'Viajar en el tiempo',
     'nace-un-sol': 'Tiempo de formación',
     'agujero-negro': 'Apretar la Tierra',
@@ -2563,6 +2789,7 @@ const Espacio3D = forwardRef(function Espacio3D(
   const BOTON_LANZAR = {
     satelite: '🚀 ¡Lanzar!',
     impacto: '☄️ ¡Que caiga!',
+    carrera: '🏁 ¡Arranquen!',
     'big-bang': '🚀 ¡Múdate a otra galaxia!',
     'agujero-negro': '💡 ¡Rayo de luz!',
     'cama-elastica': '🎱 ¡Rueda la canica!',
@@ -2780,6 +3007,33 @@ const Espacio3D = forwardRef(function Espacio3D(
         </div>
       </>
     );
+  } else if (escena === 'dia-noche') {
+    const info = diaNocheInfoDe(angulo);
+    const m = MOMENTOS[info.momento];
+    const mJ = MOMENTOS[info.momentoJapon];
+    etiqueta = (
+      <>
+        <div className="espacio3d-fase">
+          {`🕐 Las ${info.hora}:00 en tu casa (${m.emoji} ${m.nombre}) · en Japón: las ${info.horaJapon}:00 (${mJ.emoji} ${mJ.nombre})`}
+        </div>
+        <div className="espacio3d-subfase">
+          El Sol no se mueve: ¡es el PISO el que gira! La Tierra da una vuelta completa cada 24 horas.
+        </div>
+      </>
+    );
+  } else if (escena === 'carrera') {
+    etiqueta = (
+      <>
+        <div className="espacio3d-fase">
+          {resultado === 'corriendo' ? '🏁 ¡La carrera está en marcha!' : '🏁 Todos en la línea de salida'}
+        </div>
+        <div className="espacio3d-subfase">
+          {resultado === 'corriendo'
+            ? 'Más CERCA del Sol = más rápido. Neptuno tardará 165 años en dar UNA sola vuelta.'
+            : '¿Quién dará más vueltas? Haz tu apuesta… ¡y arranca! (Con el deslizador aceleras el tiempo.)'}
+        </div>
+      </>
+    );
   } else if (escena === 'big-bang') {
     const info = bigBangInfoDe(angulo);
     const TXT_FASE = {
@@ -2827,7 +3081,11 @@ const Espacio3D = forwardRef(function Espacio3D(
         {conRecuadro && (
           <div className="espacio3d-inset-marco" style={{ width: INSET, height: INSET }}>
             <span className="espacio3d-inset-titulo">
-              {escena === 'tierra-luna' ? 'Así se ve desde la Tierra' : 'Así pega la luz del Sol'}
+              {escena === 'tierra-luna'
+                ? 'Así se ve desde la Tierra'
+                : escena === 'dia-noche'
+                  ? 'Así se ve desde tu casa'
+                  : 'Así pega la luz del Sol'}
             </span>
           </div>
         )}

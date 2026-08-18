@@ -23,6 +23,8 @@ const CUERPOS_POR_ESCENA = {
   exoplanetas: new Set(['marte', 'tierra', 'trappist-1e', 'kepler-452b', 'neptuno', 'kepler-51d', 'saturno', 'jupiter', 'hd-189733b', 'kelt-9b', 'hat-p-67b', 'sol']),
   asteroides: new Set(['chelyabinsk', 'tunguska', 'apophis', 'bennu', 'chicxulub', 'vesta', 'ceres', 'luna']),
   impacto: new Set(['tierra', 'roca']),
+  'dia-noche': new Set(['sol', 'tierra', 'luna', 'casa', 'japon']),
+  carrera: new Set(['sol', 'mercurio', 'venus', 'tierra', 'marte', 'jupiter', 'saturno', 'urano', 'neptuno']),
   'big-bang': new Set(),
   'nace-un-sol': new Set(['sol', 'planeta']),
   'agujero-negro': new Set(['tierra', 'luna']),
@@ -43,6 +45,7 @@ const LANZAMIENTOS_OK = new Set(['choca', 'orbita', 'escapa']);
 const LUZ_OK = new Set(['atrapado', 'escapa']);
 const CANICA_OK = new Set(['recta', 'curva', 'orbita', 'cae']);
 const IMPACTO_OK = new Set(['desintegra', 'explota-aire', 'crater', 'catastrofe']);
+const HORAS_OK = new Set(['amanecer', 'mediodia', 'atardecer', 'medianoche', 'dia', 'noche']);
 const MODOS_OK = new Set(['explorar', 'reto', 'completo']);
 
 const errores = [];
@@ -135,6 +138,9 @@ function validarSistemaSolar(m, et) {
     } else if (r.tipo === 'impacto') {
       if (escena !== 'impacto') errores.push(`${et} reto ${i}: los retos de impacto solo van en la escena impacto`);
       if (!IMPACTO_OK.has(r.respuesta)) errores.push(`${et} reto ${i}: desenlace desconocido "${r.respuesta}"`);
+    } else if (r.tipo === 'hora') {
+      if (escena !== 'dia-noche') errores.push(`${et} reto ${i}: los retos de hora solo van en la escena dia-noche`);
+      if (!HORAS_OK.has(r.respuesta)) errores.push(`${et} reto ${i}: momento desconocido "${r.respuesta}"`);
     } else {
       errores.push(`${et} reto ${i}: tipo de reto desconocido "${r.tipo}"`);
     }

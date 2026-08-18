@@ -60,6 +60,8 @@ export const NOMBRES = {
   'hat-p-67b': 'HAT-P-67 b',
   roca: 'la roca espacial',
   planeta: 'un planeta bebé',
+  casa: 'tu casa',
+  japon: 'la casa de un niño en Japón',
   chelyabinsk: 'Cheliábinsk',
   tunguska: 'Tunguska',
   apophis: 'Apophis',
@@ -195,6 +197,58 @@ export const ASTEROIDES_ESCALERA = [
 export const etiquetaAsteroide = (a) => {
   if (a.id === 'luna') return '🌕 la Luna · ni todos juntos le llegan';
   return `${a.emoji} ${a.nombre} · ${a.ancla}`;
+};
+
+/* ============================ EL DIA Y LA NOCHE ============================ */
+
+// Deslizador 0-24 = la hora en TU casa (Mexico). La leccion: el Sol no se
+// mueve — es la Tierra la que gira sobre si misma, una vuelta cada 24 h.
+// Japon va +15 horas (CDMX UTC-6, Tokio UTC+9): cuando aqui es mediodia,
+// alla es plena madrugada. (La posicion real de Tokio son ~+16 h de sol;
+// +15 es el huso oficial — suficiente para la leccion.)
+export const MOMENTOS = {
+  amanecer: { nombre: 'amanecer', emoji: '🌅' },
+  mediodia: { nombre: 'mediodía', emoji: '🌞' },
+  dia: { nombre: 'pleno día', emoji: '☀️' },
+  atardecer: { nombre: 'atardecer', emoji: '🌇' },
+  medianoche: { nombre: 'medianoche', emoji: '🌌' },
+  noche: { nombre: 'noche', emoji: '🌃' },
+};
+
+export const diaNocheInfoDe = (hora) => {
+  const h = ((Math.round(hora) % 24) + 24) % 24;
+  const momentoDe = (x) => (
+    x >= 5 && x < 7 ? 'amanecer'
+      : x >= 11 && x < 13 ? 'mediodia'
+        : x >= 17 && x < 19 ? 'atardecer'
+          : x >= 23 || x < 1 ? 'medianoche'
+            : x >= 7 && x < 17 ? 'dia' : 'noche'
+  );
+  const horaJapon = (h + 15) % 24;
+  return {
+    hora: h,
+    momento: momentoDe(h),
+    esDia: h >= 6 && h < 18,
+    horaJapon,
+    momentoJapon: momentoDe(horaJapon),
+  };
+};
+
+/* ============================ LA CARRERA DE LOS PLANETAS ============================ */
+
+// Anos terrestres REALES por vuelta al Sol. La escena carrera reusa PLANETAS
+// (radios, texturas, distancias didacticas) pero con ESTAS velocidades: todos
+// arrancan alineados y "mas lejos = mas lento" emerge solo. Neptuno,
+// descubierto en 1846, completo su primera vuelta desde entonces en 2011.
+export const CARRERA_ANIOS = {
+  mercurio: 0.24,
+  venus: 0.62,
+  tierra: 1,
+  marte: 1.88,
+  jupiter: 11.9,
+  saturno: 29.5,
+  urano: 84,
+  neptuno: 165,
 };
 
 /* ============================ EL BIG BANG ============================ */

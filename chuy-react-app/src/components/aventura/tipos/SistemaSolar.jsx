@@ -28,7 +28,7 @@ const Espacio3D = React.lazy(() => import('./Espacio3D'));
  *                   { tipo:'lanzamiento', pregunta, respuesta:'choca'|'orbita'|'escapa', pista? }]
  *   dato_curioso : texto del final
  */
-const ESCENAS = ['planetas', 'tierra-luna', 'estaciones', 'constelaciones', 'cometa', 'satelite', 'estrellas', 'exoplanetas', 'asteroides', 'impacto', 'big-bang', 'nace-un-sol', 'agujero-negro', 'cama-elastica'];
+const ESCENAS = ['planetas', 'tierra-luna', 'estaciones', 'constelaciones', 'cometa', 'satelite', 'estrellas', 'exoplanetas', 'asteroides', 'impacto', 'dia-noche', 'carrera', 'big-bang', 'nace-un-sol', 'agujero-negro', 'cama-elastica'];
 
 const SistemaSolar = ({ mision, onCompletar }) => {
   const escena = ESCENAS.includes(mision.escena) ? mision.escena : 'planetas';
@@ -72,7 +72,7 @@ const SistemaSolar = ({ mision, onCompletar }) => {
 
 // OJO: MisionRenderer ya pinta mision.titulo y mision.instruccion arriba de toda
 // mision — repetirlos aqui los mostraba dos veces (mismo error que en cubos).
-const EMOJI_ESCENA = { 'tierra-luna': '🌗', estaciones: '🍂', constelaciones: '✨', cometa: '☄️', satelite: '🛰️', estrellas: '⭐', exoplanetas: '🔭', asteroides: '🪨', impacto: '☄️', 'big-bang': '🌌', 'nace-un-sol': '🌞', 'agujero-negro': '🕳️', 'cama-elastica': '🛏️' };
+const EMOJI_ESCENA = { 'tierra-luna': '🌗', estaciones: '🍂', constelaciones: '✨', cometa: '☄️', satelite: '🛰️', estrellas: '⭐', exoplanetas: '🔭', asteroides: '🪨', impacto: '☄️', 'dia-noche': '🌅', carrera: '🏁', 'big-bang': '🌌', 'nace-un-sol': '🌞', 'agujero-negro': '🕳️', 'cama-elastica': '🛏️' };
 
 const Portada = ({ mision, escena, onComenzar }) => (
   <div className="sisol-portada">
@@ -275,6 +275,14 @@ const Retos = ({ escena, retos, onTerminar }) => {
         : faseActual.estacion === reto.respuesta;
     } else if (reto.tipo === 'cometa') {
       ok = faseActual.zona === reto.respuesta;
+    } else if (reto.tipo === 'hora') {
+      // 'dia'/'noche' genericos aceptan cualquier hora del lado correcto;
+      // los momentos exactos (amanecer, mediodia...) comparan directo.
+      ok = reto.respuesta === 'dia'
+        ? faseActual.esDia
+        : reto.respuesta === 'noche'
+          ? !faseActual.esDia
+          : faseActual.momento === reto.respuesta;
     }
     if (ok) acierto();
     else setFeedback({ intento: null });
@@ -359,13 +367,15 @@ const Retos = ({ escena, retos, onTerminar }) => {
                     ? 'Todavía no. Fíjate hacia dónde apunta el eje rojo: ¿le da el sol de frente a nuestra mitad del mundo?'
                     : reto.tipo === 'cometa'
                       ? 'Todavía no. La pista está en la cola: mira dónde crece y dónde casi desaparece.'
-                      : 'Todavía no. ¡Mueve el deslizador y fíjate en el recuadro!'}
+                      : reto.tipo === 'hora'
+                        ? 'Todavía no. Fíjate en el recuadro: ¿dónde anda el Sol ahorita en tu casa?'
+                        : 'Todavía no. ¡Mueve el deslizador y fíjate en el recuadro!'}
           {reto.pista && <span className="sisol-pista">💡 {reto.pista}</span>}
         </div>
       )}
 
       <div className="sisol-acciones">
-        {(reto.tipo === 'fase' || reto.tipo === 'estacion' || reto.tipo === 'cometa') && !resuelto && (
+        {(reto.tipo === 'fase' || reto.tipo === 'estacion' || reto.tipo === 'cometa' || reto.tipo === 'hora') && !resuelto && (
           <button className="sisol-btn-principal" onClick={comprobarPosicion}>
             ¡Así está bien! ✅
           </button>

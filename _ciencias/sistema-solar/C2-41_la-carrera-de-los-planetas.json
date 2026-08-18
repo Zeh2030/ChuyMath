@@ -1,0 +1,90 @@
+{
+  "id": "C2-41_la-carrera-de-los-planetas",
+  "titulo": "La Carrera de los Planetas",
+  "descripcion": "Todos arrancan alineados: descubre quién vuela y quién se arrastra — y por qué",
+  "tipo": "sistema-solar",
+  "materia": "ciencias",
+  "nivel": "C2-41",
+  "tema": "astronomia",
+  "misiones": [
+    {
+      "id": "astro-carrera-01",
+      "tipo": "sistema-solar",
+      "escena": "carrera",
+      "modo": "completo",
+      "titulo": "¡En sus Marcas!",
+      "emoji": "🏁",
+      "instruccion": "Los 8 planetas están alineados en la línea de salida (cosa que casi nunca pasa de verdad). Aprieta ¡Arranquen! y mira el cronómetro y las vueltas de cada quien. Con el deslizador aceleras el tiempo. Puedes tocar cualquier planeta para conocer su año.",
+      "leccion": "Haz tu apuesta antes de arrancar: si todos salen de la misma línea, después de 10 años… ¿quién habrá dado más vueltas, el más cercano al Sol o el más lejano? Estas son las velocidades REALES de los planetas — lo que vas a descubrir lo descubrió Kepler hace 400 años.",
+      "datos": {
+        "sol": "El juez de la carrera. Su gravedad jala más fuerte a los corredores CERCANOS — por eso los de adentro vuelan y los de afuera se arrastran.",
+        "mercurio": "El campeón: su año dura solo 88 días. Si vivieras ahí, ¡cumplirías años cada 3 meses!",
+        "venus": "Su vuelta al Sol tarda 225 días. Pero tiene algo más raro: gira TAN lento sobre sí mismo que su día dura más que su año.",
+        "tierra": "Nuestra vuelta completa = 365 días = 1 año. Cada cumpleaños tuyo es una vuelta más al Sol. ¡Ya llevas varias!",
+        "marte": "Su año dura casi 2 de los nuestros (687 días). Los robots que mandamos allá cumplen años marcianos.",
+        "jupiter": "El rey tarda 12 años en una vuelta. Cuando la Tierra da 12, él apenas da 1.",
+        "saturno": "29 años y medio por vuelta. Tus papás apenas habrán visto UNA vuelta completa de Saturno en su vida.",
+        "urano": "84 años por vuelta: la vida entera de una persona. Nadie cumple 2 años uranianos.",
+        "neptuno": "El más lento: 165 AÑOS por vuelta. Lo descubrimos en 1846… y completó su primera vuelta desde entonces apenas en 2011. Nadie que lo vio descubrirse lo vio terminarla."
+      },
+      "retos": [
+        {
+          "tipo": "toca",
+          "pregunta": "Deja correr la carrera un rato y toca al planeta que va GANANDO en vueltas.",
+          "respuesta": "mercurio",
+          "pista": "Es el más pegado al Sol: el carril de adentro siempre gana."
+        },
+        {
+          "tipo": "toca",
+          "pregunta": "Toca al que casi NO se ha movido de la línea de salida.",
+          "respuesta": "neptuno",
+          "pista": "El del carril de hasta afuera: tarda 165 años en dar una sola vuelta."
+        },
+        {
+          "tipo": "toca",
+          "pregunta": "Toca al planeta que tarda 12 años en dar su vuelta.",
+          "respuesta": "jupiter",
+          "pista": "Es el más grandote, con bandas y una mancha roja."
+        }
+      ],
+      "dato_curioso": "El niño que descubrió esto se llamaba Johannes Kepler (bueno, ya era grande) y lo hizo hace 400 años SIN telescopio, con puras tablas de números. Y tu conexión: si vivieras en Mercurio ya tendrías más de 29 'años mercurianos' — la edad no es más que contar vueltas al Sol."
+    },
+    {
+      "id": "astro-om-lejos-lento",
+      "tipo": "opcion-multiple",
+      "titulo": "La Regla de la Carrera",
+      "instruccion": "Piensa en lo que viste al correr la carrera.",
+      "pregunta": "🏎️ ¿Cuál es la regla? Mientras más LEJOS del Sol está un planeta…",
+      "opciones": [
+        "…más rápido va, porque tiene más espacio",
+        "…más lento va, y además su pista es más larga",
+        "…da igual: todos van a la misma velocidad"
+      ],
+      "respuesta": "1",
+      "explicacion_correcta": "¡Exacto! Doble castigo para los lejanos: el Sol los jala más despacito (van más lento) Y su pista es más larga. Por eso Mercurio vuela y Neptuno se arrastra. ¿Te suena? Es lo mismo que viste al lanzar satélites: la gravedad jala más fuerte de cerquita.",
+      "explicacion_incorrecta": "Es al revés: más LEJOS = más LENTO. Doble castigo: el Sol jala más despacito a los lejanos Y su pista es más larga. Por eso Mercurio da 4 vueltas mientras la Tierra da 1, y Neptuno casi ni se mueve."
+    },
+    {
+      "id": "astro-ttp-anios",
+      "tipo": "tap-the-pairs",
+      "titulo": "¿Cuánto Dura su Año?",
+      "instruccion": "El año de un planeta es UNA vuelta completa al Sol. Empareja cada planeta con lo que tarda.",
+      "retos": [
+        {
+          "pares": [
+            { "es": "☿️ Mercurio", "en": "88 días — el rayo" },
+            { "es": "🌍 La Tierra", "en": "365 días — tu año de siempre" },
+            { "es": "🪐 Júpiter", "en": "12 años — paciencia" }
+          ]
+        },
+        {
+          "pares": [
+            { "es": "🔵 Neptuno", "en": "165 años — nadie lo ha visto dar 1 vuelta entera" },
+            { "es": "💫 Saturno", "en": "29 años — casi la edad de tus papás" },
+            { "es": "🔴 Marte", "en": "687 días — casi 2 años nuestros" }
+          ]
+        }
+      ]
+    }
+  ]
+}

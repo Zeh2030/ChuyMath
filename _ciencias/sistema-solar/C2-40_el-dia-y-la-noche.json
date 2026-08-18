@@ -1,0 +1,96 @@
+{
+  "id": "C2-40_el-dia-y-la-noche",
+  "titulo": "El Día y la Noche",
+  "descripcion": "Por qué amanece y anochece: el Sol no se mueve, ¡es el piso el que gira!",
+  "tipo": "sistema-solar",
+  "materia": "ciencias",
+  "nivel": "C2-40",
+  "tema": "astronomia",
+  "misiones": [
+    {
+      "id": "astro-dianoche-01",
+      "tipo": "sistema-solar",
+      "escena": "dia-noche",
+      "modo": "completo",
+      "titulo": "La Tierra que Gira",
+      "emoji": "🌅",
+      "instruccion": "El pin dorado es TU CASA. Mueve la hora con el deslizador y mira el recuadro: así se vería el cielo desde tu ventana a esa hora. Fíjate también en el pin plateado: es la casa de un niño en Japón, casi del otro lado del mundo.",
+      "leccion": "Antes de mover nada, haz tu apuesta: cuando el Sol 'se mete' en la tarde… ¿quién se movió, el Sol o TÚ? Míralo desde el espacio y descubre la respuesta que a la humanidad le costó siglos aceptar.",
+      "datos": {
+        "sol": "Fíjate bien mientras mueves la hora: el Sol NO se mueve ni tantito. Lo que cambia es hacia dónde mira tu pedazo de Tierra.",
+        "tierra": "Gira sobre sí misma como un trompo, una vuelta completa cada 24 horas. Por eso existe el día y la noche: es un asador gigante dándole vuelta pareja a todo el planeta.",
+        "luna": "¿Sorpresa? La Luna también anda ahí de DÍA. En un día completo casi no avanza en su órbita (tarda un mes en darla), así que a veces le toca estar del lado del cielo diurno: búscala una mañana despejada.",
+        "casa": "Tu casa, en México. Cuando tu lado de la Tierra mira al Sol, es de día; cuando tu lado mira al espacio, es de noche. Así de simple… y nadie lo nota porque el planeta gira SUAVECITO.",
+        "japon": "La casa de un niño en Japón, casi del otro lado del mundo. Su reloj va 15 horas adelante del tuyo: cuando tú desayunas, él ya va a dormir."
+      },
+      "retos": [
+        {
+          "tipo": "hora",
+          "pregunta": "Pon tu casa al AMANECER: que el Sol apenas vaya saliendo en el recuadro.",
+          "respuesta": "amanecer",
+          "pista": "El cielo del recuadro se pone naranja. Anda entre las 5 y las 7 de la mañana."
+        },
+        {
+          "tipo": "hora",
+          "pregunta": "Ahora ponla a MEDIANOCHE: tu casa mirando al espacio, con estrellas en el recuadro.",
+          "respuesta": "medianoche",
+          "pista": "Tu pin tiene que quedar exactamente del lado contrario al Sol. Cerca de las 12 de la noche."
+        },
+        {
+          "tipo": "hora",
+          "pregunta": "Y para acabar, el ATARDECER: el Sol despidiéndose en el horizonte.",
+          "respuesta": "atardecer",
+          "pista": "Otra vez cielo naranja, pero del final del día: entre las 5 y las 7 de la tarde."
+        }
+      ],
+      "dato_curioso": "La Tierra gira tan rápido que en el ecuador vas a ~1,670 km por hora — ¡más veloz que un avión! ¿Y por qué no lo sientes? Porque TODO gira contigo: el suelo, el aire, las nubes y tu vaso de leche. Solo se nota mirando al cielo… o desde el espacio, como acabas de hacer."
+    },
+    {
+      "id": "astro-om-quien-gira",
+      "tipo": "opcion-multiple",
+      "titulo": "¿Quién se Mueve?",
+      "instruccion": "La pregunta que confundió a la humanidad durante siglos.",
+      "pregunta": "🌞 Vemos al Sol cruzar el cielo cada día. ¿Eso significa que el Sol da vueltas alrededor de la Tierra?",
+      "opciones": [
+        "Sí, por eso lo vemos moverse",
+        "No: es la Tierra la que gira sobre sí misma, y por eso PARECE que el Sol se mueve",
+        "El Sol y la Tierra están quietos los dos"
+      ],
+      "respuesta": "1",
+      "explicacion_correcta": "¡Exacto! Es como ir en un carro: los árboles PARECEN correr hacia atrás, pero los que se mueven son ustedes. Tú vas montado en una Tierra que gira, y por eso el Sol parece cruzar el cielo. A la humanidad le costó SIGLOS aceptarlo — tú ya lo viste desde el espacio.",
+      "explicacion_incorrecta": "Es al revés, y es normal confundirse: ¡la humanidad entera se confundió durante siglos! La Tierra gira sobre sí misma y por eso el Sol PARECE moverse — como los árboles que 'corren' hacia atrás cuando vas en el carro: los que se mueven son ustedes."
+    },
+    {
+      "id": "astro-tof-dianoche",
+      "tipo": "true-or-false",
+      "titulo": "¿Verdadero o Falso?",
+      "instruccion": "Después de darle la vuelta al día completo, decide.",
+      "retos": [
+        {
+          "oracion": "Cuando tú estás desayunando, un niño en Japón ya está por irse a dormir.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "¡Verdadero! Japón está casi del otro lado del mundo: su reloj va 15 horas adelante. Tu amanecer es su noche. La Tierra es redonda y el Sol solo puede alumbrar un lado a la vez."
+        },
+        {
+          "oracion": "De noche, el Sol se apaga.",
+          "correcto": false,
+          "correccion": "El Sol sigue brillando igual TODA la noche: el que se volteó para otro lado fuiste tú, con todo y tu pedazo de planeta.",
+          "explicacion": "¡Falso! Mientras tú duermes, tu lado de la Tierra mira al espacio — pero del otro lado del mundo es pleno día con el MISMO Sol de siempre."
+        },
+        {
+          "oracion": "La Luna solo se puede ver de noche.",
+          "correcto": false,
+          "correccion": "¡La Luna también se ve de DÍA muchas veces! Búscala una mañana despejada: una lunita pálida en el cielo azul.",
+          "explicacion": "¡Falso! La Luna tarda un mes en darle la vuelta a la Tierra, así que a veces le toca estar del lado del cielo de día. Lo viste en el recuadro."
+        },
+        {
+          "oracion": "La Tierra tarda 24 horas en dar una vuelta sobre sí misma.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "¡Verdadero! Y de ahí viene tu día completo: 24 horas = una vuelta del trompo gigante en el que vives."
+        }
+      ]
+    }
+  ]
+}
