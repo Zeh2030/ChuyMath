@@ -15,7 +15,7 @@ const Login = () => {
 
   return (
     <div style={styles.container}>
-      <h1 style={styles.title}>🌟 El Mundo de Chuy 🌟</h1>
+      <h1 style={styles.title}>🌟 Chuy &amp; Lucy&apos;s World 🌟</h1>
       <p style={styles.subtitle}>Inicia sesión para comenzar tu aventura</p>
       <button onClick={signInWithGoogle} style={styles.button}>
         Iniciar Sesión con Google

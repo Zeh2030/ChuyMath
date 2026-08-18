@@ -20,7 +20,7 @@ const Header = ({ title, subtitle }) => {
     <header className="dashboard-header">
       <div className="header-content">
         <div className="header-text">
-          <h1>{title || 'Centro de Mando de Chuy'}</h1>
+          <h1>{title || 'Centro de Mando'}</h1>
           <p>
             {subtitle || (currentUser 
               ? `¡Bienvenido de nuevo, ${currentUser.displayName || 'súper explorador'}!`

@@ -125,7 +125,7 @@ const Dashboard = () => {
 
   return (
     <PageWrapper>
-      <Header title={profile?.nombre ? `Centro de Mando de ${profile.nombre}` : 'Centro de Mando de Chuy'} subtitle={`¡Bienvenido de nuevo, ${profile?.nombre || 'súper explorador'}!`} />
+      <Header title={profile?.nombre ? `Centro de Mando de ${profile.nombre}` : 'Centro de Mando'} subtitle={`¡Bienvenido de nuevo, ${profile?.nombre || 'súper explorador'}!`} />
 
       {profile && (
         <div className="boveda-header-personalizado">
