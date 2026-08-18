@@ -455,6 +455,16 @@ el flujo de MezcladorColores (intro → explorar → retos → fin).
   mueve), >2 km `catastrofe` (onda + la luz se atenua unos segundos y luego
   "amanece"). Retos tipo `impacto` que aciertan solos. La etiqueta invita a
   APOSTAR antes de soltar (no revela la banda: prediccion primero).
+  **Mar o tierra** (2026-08-17, boton alterno): el 71% del planeta es agua,
+  asi que el blanco se elige. La MISMA roca da desenlace distinto segun
+  donde cae: banda crater → `salpicon` en el mar, banda catastrofe →
+  `tsunami`. Honestidad: las olas de un impacto mediano se deshacen rapido
+  (longitud de onda corta; Melosh: "peligro sobrevalorado"), pero
+  Chicxulub si levanto >300 m en el Golfo (Range et al. 2022, NOAA/AGU).
+  Visuales: crater de verdad (hoyo + borde) pegado a la superficie dentro
+  de un grupo que gira con el planeta, nube de particulas (polvo cafe o
+  espuma blanca) y olas dibujadas SOBRE la esfera que se abren desde el
+  impacto (el tsunami le da la vuelta al mundo).
 - **Escena `big-bang`** (2026-08-17, rebobina el universo): deslizador =
   TIEMPO (log, arranca en HOY para invitar a rebobinar; `bigBangInfoDe`).
   ~4,000 galaxias-particula en coordenadas COMOVILES dentro de un grupo que

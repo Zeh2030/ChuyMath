@@ -14,10 +14,10 @@
       "modo": "completo",
       "titulo": "¿Qué Pasa si Cae?",
       "emoji": "☄️",
-      "instruccion": "Elige el tamaño de la roca con el deslizador y suéltala sobre la Tierra. Lo que va a pasar NO es invento: son los cálculos que hacen los científicos de verdad, comprobados con las rocas que ya han caído.",
+      "instruccion": "Elige el tamaño de la roca con el deslizador y suéltala sobre la Tierra. Y decide algo más: ¿que caiga en TIERRA firme o en el MAR? (Ojo: el 71% de la Tierra es agua, así que caer en el mar es lo normal.) Lo que va a pasar NO es invento: son los cálculos que hacen los científicos de verdad, comprobados con las rocas que ya han caído.",
       "leccion": "Antes de soltar nada, haz tu apuesta: una roca del tamaño de una BALLENA, ¿llega al suelo o no? Piénsalo… y luego compruébalo. Pista: la Tierra tiene un escudo invisible que vas a ver funcionar — fíjate cómo la roca FRENA de golpe al tocar el aire.",
       "datos": {
-        "tierra": "Nuestro escudo es el AIRE: cada día le caen como 100 toneladas de piedritas del espacio y casi todas se queman antes de tocar el suelo. Cada estrella fugaz que ves es el escudo trabajando.",
+        "tierra": "Nuestro escudo es el AIRE: cada día le caen como 100 toneladas de piedritas del espacio y casi todas se queman antes de tocar el suelo. Y de lo que sí llega, la mayoría cae al MAR: casi tres cuartas partes del planeta son océano.",
         "roca": "La roca cambia todo según su tamaño: chiquita se quema, mediana explota en el aire, grande abre un cráter… y gigante es otra historia. Muévele al deslizador y verás."
       },
       "retos": [
@@ -38,9 +38,41 @@
           "pregunta": "Suelta la GIGANTE, para que veas por qué los astrónomos vigilan el cielo.",
           "respuesta": "catastrofe",
           "pista": "Deslizador casi hasta arriba: una montaña voladora, como la de los dinosaurios."
+        },
+        {
+          "tipo": "impacto",
+          "pregunta": "Cámbiale el blanco al MAR 🌊 y suelta la roca más grande: provoca un mega-tsunami.",
+          "respuesta": "tsunami",
+          "pista": "Aprieta el botón del mar y sube el deslizador hasta arriba. Así fue Chicxulub: cayó en agua."
         }
       ],
       "dato_curioso": "El material también cuenta: el famoso Meteor Crater de Arizona lo abrió una roca de solo ~40 metros… pero era de FIERRO macizo, y el fierro aguanta el viaje por el aire mucho mejor que la piedra. Por eso llegó al suelo en vez de explotar arriba."
+    },
+    {
+      "id": "astro-tof-mar",
+      "tipo": "true-or-false",
+      "titulo": "¿Y si Cae en el Mar?",
+      "instruccion": "Después de probar los dos blancos (tierra y mar), decide.",
+      "retos": [
+        {
+          "oracion": "Como casi toda la Tierra es agua, lo más probable es que una roca del espacio caiga en el mar.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "¡Verdadero! El 71% del planeta es océano. Por eso la mayoría de los impactos caen al agua y ni nos enteramos."
+        },
+        {
+          "oracion": "Una roca mediana que cae al mar hace olas gigantes que arrasan las playas de todo el mundo, como en las películas.",
+          "correcto": false,
+          "correccion": "Las olas de un impacto se deshacen rápido: son cortitas y se desarman antes de llegar lejos. Los científicos dicen que ese peligro está SOBREVALORADO.",
+          "explicacion": "¡Falso! No son como las olas de un terremoto, que viajan larguísimo. Las de un impacto pierden fuerza rapidísimo. ¡Las películas exageran!"
+        },
+        {
+          "oracion": "La roca de los dinosaurios sí provocó un tsunami gigante en todo el planeta.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "¡Verdadero! Esa sí era gigante (más alta que el Everest) y cayó en el mar: los científicos calcularon olas de más de 300 metros en el Golfo de México. Una roca mediana no hace eso; una montaña voladora sí."
+        }
+      ]
     },
     {
       "id": "astro-story-chicxulub",
@@ -55,7 +87,12 @@
             {
               "tipo": "fill-the-gap",
               "oracion": "La roca de los dinosaurios cayó en ___, México.",
-              "opciones": ["Chihuahua", "Yucatán", "Jalisco", "Sonora"],
+              "opciones": [
+                "Chihuahua",
+                "Yucatán",
+                "Jalisco",
+                "Sonora"
+              ],
               "respuesta": 1
             }
           ]
@@ -79,7 +116,12 @@
             {
               "tipo": "fill-the-gap",
               "oracion": "Los que sobrevivieron al invierno fueron los ___.",
-              "opciones": ["dinosaurios grandes", "mamíferos chiquitos", "tiburones gigantes", "pterodáctilos"],
+              "opciones": [
+                "dinosaurios grandes",
+                "mamíferos chiquitos",
+                "tiburones gigantes",
+                "pterodáctilos"
+              ],
               "respuesta": 1
             }
           ]
@@ -103,7 +145,12 @@
             {
               "tipo": "fill-the-gap",
               "oracion": "La gran diferencia entre nosotros y los dinosaurios es que tenemos ___.",
-              "opciones": ["más dientes", "telescopios", "cuevas", "suerte"],
+              "opciones": [
+                "más dientes",
+                "telescopios",
+                "cuevas",
+                "suerte"
+              ],
               "respuesta": 1
             }
           ]
@@ -120,10 +167,18 @@
           "imagen_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Meteor_Crater_-_Arizona.jpg?width=640",
           "palabra_es": "Un hoyo de 1 kilómetro en el desierto",
           "opciones": [
-            { "label": "Un volcán apagado" },
-            { "label": "El Meteor Crater: lo abrió una roca de fierro" },
-            { "label": "Una mina gigante" },
-            { "label": "El cráter de Chicxulub" }
+            {
+              "label": "Un volcán apagado"
+            },
+            {
+              "label": "El Meteor Crater: lo abrió una roca de fierro"
+            },
+            {
+              "label": "Una mina gigante"
+            },
+            {
+              "label": "El cráter de Chicxulub"
+            }
           ],
           "respuesta": 1,
           "explicacion": "Es el Meteor Crater de Arizona: hace ~50,000 años una roca de FIERRO de unos 40 metros llegó hasta el suelo y abrió este hoyo de 1.2 km. El de Chicxulub no se ve así: está enterrado bajo Yucatán."
@@ -132,10 +187,18 @@
           "imagen_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Chelyabinsk_meteor_trace_15-02-2013.jpg?width=640",
           "palabra_es": "Una raya de humo sobre una ciudad rusa (2013)",
           "opciones": [
-            { "label": "Un avión supersónico" },
-            { "label": "Un cohete despegando" },
-            { "label": "La estela del bólido de Cheliábinsk" },
-            { "label": "Un rayo en el cielo" }
+            {
+              "label": "Un avión supersónico"
+            },
+            {
+              "label": "Un cohete despegando"
+            },
+            {
+              "label": "La estela del bólido de Cheliábinsk"
+            },
+            {
+              "label": "Un rayo en el cielo"
+            }
           ],
           "respuesta": 2,
           "explicacion": "Es la estela que dejó la roca de Cheliábinsk al explotar en el aire, fotografiada por la gente de la ciudad. Del tamaño de una ballena azul, nadie la vio venir porque llegó del lado del Sol."
@@ -144,10 +207,18 @@
           "imagen_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Bennu_mosaic_OSIRIS-REx_(square).png?width=640",
           "palabra_es": "Una papa espacial fotografiada de cerquita",
           "opciones": [
-            { "label": "La Luna" },
-            { "label": "El asteroide Bennu, visitado por OSIRIS-REx" },
-            { "label": "Un cometa con cola" },
-            { "label": "Marte" }
+            {
+              "label": "La Luna"
+            },
+            {
+              "label": "El asteroide Bennu, visitado por OSIRIS-REx"
+            },
+            {
+              "label": "Un cometa con cola"
+            },
+            {
+              "label": "Marte"
+            }
           ],
           "respuesta": 1,
           "explicacion": "Es Bennu, retratado por la nave OSIRIS-REx — la misma que le recogió piedritas y las trajo a la Tierra en 2023. Fíjate: no es bolita, es una papa con forma de trompo."
@@ -156,10 +227,18 @@
           "imagen_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Dimorphos_from_DART_aprox._3_sec_before_impact.jpg?width=640",
           "palabra_es": "La última foto de una nave kamikaze (2022)",
           "opciones": [
-            { "label": "Dimorphos, 3 segundos antes de que DART le pegara" },
-            { "label": "Un planeta nuevo" },
-            { "label": "Una foto de la Luna de cerca" },
-            { "label": "El asteroide de los dinosaurios" }
+            {
+              "label": "Dimorphos, 3 segundos antes de que DART le pegara"
+            },
+            {
+              "label": "Un planeta nuevo"
+            },
+            {
+              "label": "Una foto de la Luna de cerca"
+            },
+            {
+              "label": "El asteroide de los dinosaurios"
+            }
           ],
           "respuesta": 0,
           "explicacion": "Es el asteroide Dimorphos visto por la nave DART ¡3 segundos antes de estrellarse contra él A PROPÓSITO! Fue la primera práctica de la humanidad para desviar asteroides. Y funcionó."

@@ -254,6 +254,8 @@ const MENSAJES_IMPACTO = {
   'explota-aire': '💥 Explotó en el aire sin llegar al suelo. Cambia el tamaño y vuelve a soltarla.',
   crater: '🕳️ Hizo un cráter. El reto pedía otra cosa: cambia el tamaño.',
   catastrofe: '🌑 Esa fue una catástrofe completa. El reto pedía otra cosa: prueba más chica.',
+  salpicon: '🌊 Cayó al mar e hizo un splash enorme. El reto pedía otra cosa: cambia el tamaño o el blanco.',
+  tsunami: '🌊 ¡Provocaste un mega-tsunami! Pero el reto pedía otra cosa: cambia el tamaño o el blanco.',
 };
 
 const Retos = ({ escena, retos, onTerminar }) => {

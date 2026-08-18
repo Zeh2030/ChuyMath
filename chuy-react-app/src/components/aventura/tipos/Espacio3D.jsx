@@ -1289,26 +1289,91 @@ const Espacio3D = forwardRef(function Espacio3D(
       destello.visible = false;
       escena3.add(destello);
 
-      // Crater persistente + onda de catastrofe, tumbados sobre el polo.
-      const geoCrater = registrar(new THREE.RingGeometry(0.5, 1, 40));
-      const matCrater = registrar(new THREE.MeshBasicMaterial({
-        color: 0x6b4a2f, side: THREE.DoubleSide, transparent: true, opacity: 0.9,
-      }));
-      const crater = new THREE.Mesh(geoCrater, matCrater);
-      crater.rotation.x = -Math.PI / 2;
-      crater.position.y = IMP.radioTierra + 0.03;
-      crater.visible = false;
-      escena3.add(crater);
+      // Punto de impacto: una direccion fija, bien visible desde la camara.
+      // Todo lo que queda pegado al suelo (mira, parche, crater, olas) vive
+      // dentro de `grupoImp`, que copia la rotacion de la Tierra — asi gira
+      // CON el planeta en vez de quedarse flotando en un punto del espacio
+      // (antes el crater era un aro plano clavado en el polo: parecia sombrero).
+      const DIR_IMP = new THREE.Vector3(0.42, 0.62, 0.66).normalize();
+      const grupoImp = new THREE.Group();
+      escena3.add(grupoImp);
+      const marca = new THREE.Group();
+      marca.position.copy(DIR_IMP).multiplyScalar(IMP.radioTierra);
+      marca.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), DIR_IMP);
+      grupoImp.add(marca);
 
-      const geoOnda = registrar(new THREE.RingGeometry(0.88, 1, 48));
-      const matOnda = registrar(new THREE.MeshBasicMaterial({
-        color: 0xff8c42, side: THREE.DoubleSide, transparent: true, opacity: 0.85, depthWrite: false,
+      // Parche de tierra firme: solo se ve en modo TIERRA, para que se entienda
+      // a que le estas apuntando (el resto del planeta es oceano — como en la
+      // Tierra de verdad, donde el 71% es agua).
+      const geoParche = registrar(new THREE.CircleGeometry(1.6, 40));
+      const matParche = registrar(new THREE.MeshBasicMaterial({
+        color: 0x6f8f4a, transparent: true, opacity: 0.9,
       }));
-      const onda = new THREE.Mesh(geoOnda, matOnda);
-      onda.rotation.x = -Math.PI / 2;
-      onda.position.y = IMP.radioTierra + 0.05;
-      onda.visible = false;
-      escena3.add(onda);
+      const parche = new THREE.Mesh(geoParche, matParche);
+      parche.rotation.x = -Math.PI / 2;
+      parche.position.y = 0.02;
+      marca.add(parche);
+
+      const geoMira = registrar(new THREE.RingGeometry(0.5, 0.62, 32));
+      const matMira = registrar(new THREE.MeshBasicMaterial({
+        color: 0xffe08a, side: THREE.DoubleSide, transparent: true, opacity: 0.85,
+      }));
+      const mira = new THREE.Mesh(geoMira, matMira);
+      mira.rotation.x = -Math.PI / 2;
+      mira.position.y = 0.06;
+      marca.add(mira);
+
+      // El crater de verdad: hoyo oscuro + borde levantado, tumbados sobre la
+      // superficie (el +Y local de `marca` ES la vertical de ese lugar).
+      const crater = new THREE.Group();
+      crater.position.y = 0.03;
+      crater.visible = false;
+      marca.add(crater);
+      const geoHoyo = registrar(new THREE.CircleGeometry(1, 32));
+      const matHoyo = registrar(new THREE.MeshBasicMaterial({ color: 0x2b1d12 }));
+      const hoyo = new THREE.Mesh(geoHoyo, matHoyo);
+      hoyo.rotation.x = -Math.PI / 2;
+      crater.add(hoyo);
+      const geoBorde = registrar(new THREE.RingGeometry(1, 1.4, 40));
+      const matBorde = registrar(new THREE.MeshBasicMaterial({ color: 0x8a6440, side: THREE.DoubleSide }));
+      const borde = new THREE.Mesh(geoBorde, matBorde);
+      borde.rotation.x = -Math.PI / 2;
+      borde.position.y = 0.02;
+      crater.add(borde);
+
+      // Nube de polvo (o de espuma, si cae en el mar): particulas que salen
+      // disparadas del golpe, se abren y se apagan.
+      const N_POLVO = 170;
+      const posPolvo = new Float32Array(N_POLVO * 3);
+      const velPolvo = new Float32Array(N_POLVO * 3);
+      const geoPolvo = registrar(new THREE.BufferGeometry());
+      geoPolvo.setAttribute('position', new THREE.BufferAttribute(posPolvo, 3));
+      const matPolvo = registrar(new THREE.PointsMaterial({
+        size: 0.85, map: registrar(crearTexturaGlow()), color: 0xbcaa92,
+        transparent: true, depthWrite: false, opacity: 0,
+      }));
+      const polvo = new THREE.Points(geoPolvo, matPolvo);
+      polvo.visible = false;
+      escena3.add(polvo);
+
+      // Olas / onda de choque que ABRAZAN el planeta: circulos dibujados sobre
+      // la esfera que se abren desde el punto de impacto. Un tsunami de verdad
+      // se ve asi — recorriendo la superficie, no como un aro plano.
+      const N_OLA = 72;
+      const olaU = new THREE.Vector3(0, 1, 0).cross(DIR_IMP).normalize();
+      const olaV = new THREE.Vector3().crossVectors(DIR_IMP, olaU).normalize();
+      const olas = [0, 1, 2].map(() => {
+        const arr = new Float32Array(N_OLA * 3);
+        const g = registrar(new THREE.BufferGeometry());
+        g.setAttribute('position', new THREE.BufferAttribute(arr, 3));
+        const m = registrar(new THREE.LineBasicMaterial({
+          color: 0x9fe8ff, transparent: true, opacity: 0, depthWrite: false,
+        }));
+        const linea = new THREE.LineLoop(g, m);
+        linea.visible = false;
+        grupoImp.add(linea);
+        return { arr, geo: g, mat: m, linea };
+      });
 
       const MAX_ESTELA = 500;
       const posEstela = new Float32Array(MAX_ESTELA * 3);
@@ -1320,7 +1385,10 @@ const Espacio3D = forwardRef(function Espacio3D(
 
       escImp = {
         IMP, tierra, roca, brilloRoca, destello, matDestello: destello.material,
-        crater, onda, matOnda, geoEstela, posEstela, luz: luzImp, sim: null,
+        DIR_IMP, grupoImp, marca, parche, mira, matMira, crater,
+        polvo, matPolvo, geoPolvo, posPolvo, velPolvo,
+        olas, olaU, olaV, N_OLA,
+        geoEstela, posEstela, matEstela, luz: luzImp, sim: null, rng: crearRng(83),
       };
     }
 
@@ -1833,8 +1901,10 @@ const Espacio3D = forwardRef(function Espacio3D(
         };
         escImp.geoEstela.setDrawRange(0, 0);
         escImp.crater.visible = false;
-        escImp.onda.visible = false;
         escImp.destello.visible = false;
+        escImp.polvo.visible = false;
+        escImp.matPolvo.opacity = 0;
+        escImp.olas.forEach((o) => { o.linea.visible = false; });
         escImp.roca.visible = true;
         escImp.roca.scale.setScalar(escala);
         setResultado('cayendo');
@@ -2499,8 +2569,20 @@ const Espacio3D = forwardRef(function Espacio3D(
           }
         }
       } else if (escena === 'impacto') {
-        escImp.tierra.rotation.y += dt * 0.08;
+        // El 71% de la Tierra es agua, asi que caer en el mar es lo NORMAL:
+        // el boton alterno cambia el blanco entre oceano y tierra firme.
+        const enMar = !!est.alterno;
+        escImp.tierra.rotation.y += dt * 0.05;
+        escImp.grupoImp.rotation.y = escImp.tierra.rotation.y;
+        escImp.parche.visible = !enMar;
+        escImp.matMira.color.set(enMar ? 0x9fe8ff : 0xffe08a);
+        // Direccion actual del blanco (la marca gira con el planeta): la roca
+        // le apunta cada frame, asi que siempre pega justo en la mira.
+        const dirImp = vTmp.copy(escImp.DIR_IMP).applyAxisAngle(V_ARRIBA, escImp.grupoImp.rotation.y);
+
         const sim = escImp.sim;
+        escImp.mira.visible = !sim || sim.fase === 'cayendo';
+
         if (sim && sim.fase === 'cayendo') {
           const enAire = sim.y < escImp.IMP.radioAtm;
           // Afuera acelera (gravedad); adentro el AIRE la frena en seco —
@@ -2515,26 +2597,26 @@ const Espacio3D = forwardRef(function Espacio3D(
             sim.escala = Math.max(0.02, sim.escala - dt * 1.0);
           }
 
-          escImp.roca.position.set(0, sim.y, 0);
+          escImp.roca.position.copy(dirImp).multiplyScalar(sim.y);
           escImp.roca.rotation.x += dt * 1.7;
           escImp.roca.rotation.z += dt * 1.1;
           escImp.roca.scale.setScalar(sim.escala);
           escImp.brilloRoca.visible = enAire;
           if (enAire) {
-            escImp.brilloRoca.position.set(0, sim.y, 0);
+            escImp.brilloRoca.position.copy(escImp.roca.position);
             escImp.brilloRoca.scale.setScalar(sim.escala * 3.2 + 0.5);
             if (sim.puntos < escImp.posEstela.length / 3) {
               const k = sim.puntos * 3;
-              escImp.posEstela[k] = 0;
-              escImp.posEstela[k + 1] = sim.y;
-              escImp.posEstela[k + 2] = 0;
+              escImp.posEstela[k] = escImp.roca.position.x;
+              escImp.posEstela[k + 1] = escImp.roca.position.y;
+              escImp.posEstela[k + 2] = escImp.roca.position.z;
               sim.puntos++;
               escImp.geoEstela.setDrawRange(0, sim.puntos);
               escImp.geoEstela.attributes.position.needsUpdate = true;
             }
           }
 
-          // Desenlace: destello (+ crater persistente, + onda si es gorda).
+          // Desenlace: destello + nube + (crater en tierra / olas en el mar).
           const bum = (tam, resultado) => {
             sim.fase = 'boom';
             sim.t = 0;
@@ -2542,49 +2624,145 @@ const Espacio3D = forwardRef(function Espacio3D(
             sim.resultado = resultado;
             escImp.roca.visible = false;
             escImp.brilloRoca.visible = false;
+            escImp.geoEstela.setDrawRange(0, 0); // la estela ya no pinta nada
+            const alturaBum = Math.max(sim.y, escImp.IMP.radioTierra + 0.12);
             escImp.destello.visible = true;
-            escImp.destello.position.set(0, Math.max(sim.y, escImp.IMP.radioTierra + 0.15), 0);
+            escImp.destello.position.copy(dirImp).multiplyScalar(alturaBum);
             escImp.destello.scale.setScalar(tam * 0.4);
             escImp.matDestello.opacity = 1;
-            if (resultado === 'crater' || resultado === 'catastrofe') {
+
+            // Nube: polvo cafe si cae en tierra, espuma blanca si cae al mar.
+            const espuma = resultado === 'salpicon' || resultado === 'tsunami';
+            escImp.matPolvo.color.set(espuma ? 0xdff2ff : 0xbcaa92);
+            escImp.matPolvo.size = 0.5 + tam * 0.14;
+            escImp.polvo.visible = true;
+            sim.polvoLento = resultado === 'catastrofe' || resultado === 'tsunami';
+            const nrm = vTmp2.copy(dirImp);
+            const pu = new THREE.Vector3(0, 1, 0).cross(nrm).normalize();
+            const pv = new THREE.Vector3().crossVectors(nrm, pu);
+            const fuerza = tam * 0.75;
+            for (let i = 0; i < escImp.posPolvo.length; i += 3) {
+              escImp.posPolvo[i] = nrm.x * alturaBum;
+              escImp.posPolvo[i + 1] = nrm.y * alturaBum;
+              escImp.posPolvo[i + 2] = nrm.z * alturaBum;
+              // Hemisferio hacia afuera, sesgado a la vertical del lugar.
+              const cosT = 0.15 + 0.85 * escImp.rng();
+              const sinT = Math.sqrt(Math.max(0, 1 - cosT * cosT));
+              const phi = escImp.rng() * Math.PI * 2;
+              const rap = fuerza * (0.35 + escImp.rng());
+              escImp.velPolvo[i] = (nrm.x * cosT + (pu.x * Math.cos(phi) + pv.x * Math.sin(phi)) * sinT) * rap;
+              escImp.velPolvo[i + 1] = (nrm.y * cosT + (pu.y * Math.cos(phi) + pv.y * Math.sin(phi)) * sinT) * rap;
+              escImp.velPolvo[i + 2] = (nrm.z * cosT + (pu.z * Math.cos(phi) + pv.z * Math.sin(phi)) * sinT) * rap;
+            }
+            escImp.geoPolvo.attributes.position.needsUpdate = true;
+
+            if (resultado === 'crater') {
               escImp.crater.visible = true;
-              escImp.crater.scale.setScalar(resultado === 'catastrofe' ? 2.6 : 0.6 + sim.escala);
+              escImp.crater.scale.setScalar(0.5 + sim.escala * 0.9);
+            } else if (resultado === 'catastrofe') {
+              escImp.crater.visible = true;
+              escImp.crater.scale.setScalar(2.2);
+            } else {
+              escImp.crater.visible = false;
             }
-            if (resultado === 'catastrofe') {
-              escImp.onda.visible = true;
-              escImp.onda.scale.setScalar(1);
-              escImp.matOnda.opacity = 0.85;
-            }
+
+            // Olas: alcance y color segun el desenlace. Un salpicon se apaga
+            // cerquita (las olas de un impacto se deshacen rapido, no son como
+            // las de un terremoto); un tsunami tipo Chicxulub da la vuelta al
+            // mundo.
+            sim.alcanceOla = resultado === 'tsunami' ? Math.PI * 0.98
+              : resultado === 'salpicon' ? 0.55
+                : resultado === 'catastrofe' ? 1.25 : 0;
+            sim.velOla = resultado === 'tsunami' ? 0.42 : resultado === 'catastrofe' ? 0.7 : 0.5;
+            const colorOla = resultado === 'catastrofe' ? 0xff8c42 : 0x9fe8ff;
+            escImp.olas.forEach((o) => {
+              o.mat.color.set(colorOla);
+              o.linea.visible = false;
+            });
+
             setResultado(resultado);
             onFaseRef.current?.({ resultado });
           };
 
+          // La MISMA roca da un desenlace distinto segun donde cae: ese
+          // contraste es el experimento.
+          const enSuelo = enMar
+            ? (sim.banda === 'crater' ? 'salpicon' : sim.banda === 'catastrofe' ? 'tsunami' : sim.banda)
+            : sim.banda;
           if (sim.banda === 'desintegra' && (sim.escala <= 0.03 || altura <= 0.7)) {
             bum(1.2, 'desintegra');
           } else if (sim.banda === 'explota-aire' && altura <= 0.55) {
             bum(3.2, 'explota-aire');
           } else if (altura <= sim.escala * 0.55) {
-            bum(sim.banda === 'catastrofe' ? 6 : 3.6, sim.banda);
+            bum(sim.banda === 'catastrofe' ? 6 : 3.6, enSuelo);
           }
         } else if (sim && sim.fase === 'boom') {
           sim.t += dt;
           escImp.destello.scale.setScalar(sim.tamBoom * (0.4 + sim.t * 2.2));
           escImp.matDestello.opacity = Math.max(0, 1 - sim.t * 0.9);
-          if (sim.resultado === 'catastrofe') {
-            escImp.onda.scale.setScalar(1 + sim.t * 2.6);
-            escImp.matOnda.opacity = Math.max(0, 0.85 - sim.t * 0.35);
-          }
-          if (sim.t > 2.6) {
-            sim.fase = 'fin';
-            escImp.destello.visible = false;
-            escImp.onda.visible = false;
-          }
+          if (sim.t > 1.4) escImp.destello.visible = false;
+          if (sim.t > (sim.polvoLento ? 7 : 4)) sim.fase = 'fin';
         } else if (sim && sim.fase === 'fin') {
           sim.t += dt; // sigue contando para que "amanezca" despues del polvo
         }
 
-        // Tras la catastrofe el polvo tapa el Sol un ratito… y luego amanece.
-        const aOscuras = sim && sim.resultado === 'catastrofe' && sim.fase !== 'cayendo' && sim.t < 4.5;
+        // La nube vive despues del destello: sale disparada, se abre y se apaga.
+        if (sim && sim.fase !== 'cayendo' && escImp.polvo.visible) {
+          const rTierra = escImp.IMP.radioTierra;
+          for (let i = 0; i < escImp.posPolvo.length; i += 3) {
+            escImp.posPolvo[i] += escImp.velPolvo[i] * dt;
+            escImp.posPolvo[i + 1] += escImp.velPolvo[i + 1] * dt;
+            escImp.posPolvo[i + 2] += escImp.velPolvo[i + 2] * dt;
+            const fr = 1 - Math.min(0.9, dt * 1.1);
+            escImp.velPolvo[i] *= fr;
+            escImp.velPolvo[i + 1] *= fr;
+            escImp.velPolvo[i + 2] *= fr;
+            // Que no se hunda en el planeta: el polvo se queda encima.
+            const d = Math.hypot(escImp.posPolvo[i], escImp.posPolvo[i + 1], escImp.posPolvo[i + 2]);
+            if (d < rTierra + 0.05 && d > 0.001) {
+              const k = (rTierra + 0.05) / d;
+              escImp.posPolvo[i] *= k;
+              escImp.posPolvo[i + 1] *= k;
+              escImp.posPolvo[i + 2] *= k;
+            }
+          }
+          escImp.geoPolvo.attributes.position.needsUpdate = true;
+          const dur = sim.polvoLento ? 7 : 3.4;
+          const op = Math.max(0, 0.95 * (1 - sim.t / dur));
+          escImp.matPolvo.opacity = op;
+          if (op <= 0.001) escImp.polvo.visible = false;
+        }
+
+        // Las olas: circulos dibujados sobre la esfera que se abren desde el
+        // punto de impacto (asi viaja un tsunami de verdad).
+        if (sim && sim.alcanceOla > 0 && sim.fase !== 'cayendo') {
+          const R = escImp.IMP.radioTierra + 0.05;
+          escImp.olas.forEach((o, idx) => {
+            const th = (sim.t - idx * 0.5) * sim.velOla;
+            if (th <= 0.02 || th > sim.alcanceOla) {
+              o.linea.visible = false;
+              return;
+            }
+            o.linea.visible = true;
+            const ct = Math.cos(th);
+            const st = Math.sin(th);
+            for (let k = 0; k < escImp.N_OLA; k++) {
+              const ph = (k / escImp.N_OLA) * Math.PI * 2;
+              const cp = Math.cos(ph);
+              const sp = Math.sin(ph);
+              o.arr[k * 3] = (escImp.DIR_IMP.x * ct + (escImp.olaU.x * cp + escImp.olaV.x * sp) * st) * R;
+              o.arr[k * 3 + 1] = (escImp.DIR_IMP.y * ct + (escImp.olaU.y * cp + escImp.olaV.y * sp) * st) * R;
+              o.arr[k * 3 + 2] = (escImp.DIR_IMP.z * ct + (escImp.olaU.z * cp + escImp.olaV.z * sp) * st) * R;
+            }
+            o.geo.attributes.position.needsUpdate = true;
+            o.mat.opacity = Math.max(0, 1 - th / sim.alcanceOla) * 0.95;
+          });
+        }
+
+        // Tras la catastrofe (o el mega-tsunami) el polvo tapa el Sol un
+        // ratito… y luego amanece.
+        const gorda = sim && (sim.resultado === 'catastrofe' || sim.resultado === 'tsunami');
+        const aOscuras = gorda && sim.fase !== 'cayendo' && sim.t < 5.5;
         const luzMeta = aOscuras ? 0.4 : 1.5;
         escImp.luz.intensity += (luzMeta - escImp.luz.intensity) * Math.min(1, dt * 2);
       } else if (escena === 'big-bang') {
@@ -2948,6 +3126,7 @@ const Espacio3D = forwardRef(function Espacio3D(
   // orilla y centro; en el universo real, te mudes a donde te mudes, no.
   const BOTON_ALTERNO = {
     'big-bang': alterno ? '🌌 Volver al universo real' : '🎭 ¿Y si fuera una explosión?',
+    impacto: alterno ? '🏜️ Que caiga en tierra' : '🌊 Que caiga en el mar',
   };
 
   let etiqueta = null;
@@ -3140,6 +3319,13 @@ const Espacio3D = forwardRef(function Espacio3D(
       'explota-aire': '💥 ¡BUM! Explotó en el aire, como la de Cheliábinsk',
       crater: '🕳️ Llegó al suelo y abrió un cráter',
       catastrofe: '🌑 Catástrofe: el polvo tapó el Sol…',
+      salpicon: '🌊 ¡SPLASH gigante! Olas grandes… que se apagan antes de llegar lejos',
+      tsunami: '🌊 ¡MEGA-TSUNAMI! Olas gigantes dándole la vuelta al mundo',
+    };
+    const SUB = {
+      catastrofe: 'Tranquilo: una así cae cada ~100 MILLONES de años, y los astrónomos vigilan el cielo todos los días.',
+      tsunami: 'Así fue Chicxulub: cayó en el mar y levantó olas de más de 300 metros. Pasa cada ~100 millones de años.',
+      salpicon: 'Dato honesto: las olas de un impacto se deshacen rápido, no son como las de un terremoto. ¡Las películas exageran!',
     };
     etiqueta = (
       <>
@@ -3147,11 +3333,10 @@ const Espacio3D = forwardRef(function Espacio3D(
           {TEXTOS[resultado] || `🪨 Roca de ${info.tamano} (${info.ancla})`}
         </div>
         <div className="espacio3d-subfase">
-          {resultado === 'catastrofe'
-            ? 'Tranquilo: una así cae cada ~100 MILLONES de años, y los astrónomos vigilan el cielo todos los días.'
-            : resultado && resultado !== 'cayendo'
-              ? '¿Y con otro tamaño? Mueve el deslizador y suelta otra.'
-              : '🤔 ¿Se quemará, explotará en el aire o llegará al suelo? Haz tu apuesta antes de soltarla.'}
+          {SUB[resultado]
+            || (resultado && resultado !== 'cayendo'
+              ? '¿Y si cae en otro lado, o con otro tamaño? Cambia y suelta otra.'
+              : `🎯 Apuntando ${alterno ? 'al MAR 🌊' : 'a TIERRA firme 🏜️'} · ¿se quemará, explotará en el aire o llegará al suelo? Haz tu apuesta.`)}
         </div>
       </>
     );
@@ -3297,7 +3482,10 @@ const Espacio3D = forwardRef(function Espacio3D(
           <button
             type="button"
             className="espacio3d-btn-lanzar espacio3d-btn-alterno"
-            onClick={() => setAlterno((v) => !v)}
+            onClick={() => {
+              setAlterno((v) => !v);
+              if (escena === 'impacto') setResultado(null);
+            }}
           >
             {BOTON_ALTERNO[escena]}
           </button>

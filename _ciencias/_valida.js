@@ -45,7 +45,7 @@ const ZONAS_COMETA_OK = new Set(['perihelio', 'afelio']);
 const LANZAMIENTOS_OK = new Set(['choca', 'orbita', 'escapa']);
 const LUZ_OK = new Set(['atrapado', 'escapa']);
 const CANICA_OK = new Set(['recta', 'curva', 'orbita', 'cae']);
-const IMPACTO_OK = new Set(['desintegra', 'explota-aire', 'crater', 'catastrofe']);
+const IMPACTO_OK = new Set(['desintegra', 'explota-aire', 'crater', 'catastrofe', 'salpicon', 'tsunami']);
 const HORAS_OK = new Set(['amanecer', 'mediodia', 'atardecer', 'medianoche', 'dia', 'noche']);
 const MODOS_OK = new Set(['explorar', 'reto', 'completo']);
 
