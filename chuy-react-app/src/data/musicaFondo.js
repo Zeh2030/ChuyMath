@@ -22,8 +22,8 @@ export const PISTAS = [
     id: 'gymnopedie-1',
     titulo: 'Gymnopédie No. 1',
     compositor: 'Erik Satie',
-    url: '', // ← pegar URL de Storage
-    licencia: '', // ← anotar intérprete y fuente
+    url: 'https://firebasestorage.googleapis.com/v0/b/chuy-react-app.firebasestorage.app/o/M%C3%BAsica%2FGymnop%C3%A9die%20no.%201.mp3?alt=media&token=c8d7e489-1637-49c6-ad29-936b405a279a',
+    licencia: 'Dominio público — Edward Rosser (Musopen)'
   },
   {
     id: 'claro-de-luna',
@@ -36,8 +36,8 @@ export const PISTAS = [
     id: 'preludio-1-bach',
     titulo: 'Preludio No. 1 en Do mayor',
     compositor: 'J. S. Bach',
-    url: '', // ← pegar URL de Storage
-    licencia: '', // ← anotar intérprete y fuente
+    url: 'https://firebasestorage.googleapis.com/v0/b/chuy-react-app.firebasestorage.app/o/M%C3%BAsica%2FThe%20Well%20Tempered%20Clavier%2C%20Book%20I%2C%20BWV%20846-869%20-%20Prelude%20in%20Fugue%20No.1%20in%20C%20major.mp3?alt=media&token=e99b9c9f-4cd6-4a08-9fdd-e51c2f950246',
+    licencia: 'Dominio público — European Archive (Musopen)'
   },
 ];
 
