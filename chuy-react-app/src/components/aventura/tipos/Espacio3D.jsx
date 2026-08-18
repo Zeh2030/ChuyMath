@@ -6,7 +6,7 @@ import {
   ESTRELLAS_COMPARAR, PASOS_ESTRELLAS, ORBITAS_UA, UA_POR_RADIO_SOL,
   PLANETAS_ESCALERA, PASOS_EXOPLANETAS, ASTEROIDES_ESCALERA, PASOS_ASTEROIDES,
   faseInfoDe, estacionInfoDe, cometaInfoDe, impactoInfoDe, bigBangInfoDe, naceSolInfoDe,
-  diaNocheInfoDe, MOMENTOS, CARRERA_ANIOS,
+  diaNocheInfoDe, MOMENTOS, CARRERA_ANIOS, DISTANCIAS_REALES, EJES,
   etiquetaComparar, etiquetaEstrella, etiquetaExoplaneta, etiquetaAsteroide,
 } from './espacioDatos';
 
@@ -360,6 +360,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     escena = 'planetas',
     enfocado = null,      // id de cuerpo al que acercar la camara
     comparar = false,     // modo "tamano real" en fila (planetas)
+    distReal = false,     // modo "distancias reales" en orbita (planetas)
     ocultarSol = false,   // oculta el Sol en modo comparar (planetas)
     seleccionable = true, // si tocar un cuerpo dispara onSeleccion
     fullscreen = false,   // el ANCESTRO (SistemaSolar.jsx) esta en pantalla completa
@@ -406,6 +407,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     if (escena === 'impacto') return 25;     // ~una ballena: banda vistosa
     if (escena === 'dia-noche') return 12;   // mediodia en tu casa
     if (escena === 'carrera') return 40;     // velocidad media del tiempo
+    if (escena === 'trompos') return 35;     // se nota el giro sin marear
     if (escena === 'big-bang') return 100;   // HOY: el gesto natural es REBOBINAR
     if (escena === 'nace-un-sol') return 0;  // la nube de polvo, antes de todo
     if (escena === 'agujero-negro') return 0; // la Tierra sin apretar todavia
@@ -424,10 +426,10 @@ const Espacio3D = forwardRef(function Espacio3D(
   const [estrellaTocada, setEstrellaTocada] = useState(null);
 
   // El bucle lee las props cada frame sin reconstruir la escena.
-  const estadoRef = useRef({ enfocado, comparar, ocultarSol, seleccionable, angulo, alterno });
+  const estadoRef = useRef({ enfocado, comparar, distReal, ocultarSol, seleccionable, angulo, alterno });
   useEffect(() => {
-    estadoRef.current = { enfocado, comparar, ocultarSol, seleccionable, angulo, alterno };
-  }, [enfocado, comparar, ocultarSol, seleccionable, angulo, alterno]);
+    estadoRef.current = { enfocado, comparar, distReal, ocultarSol, seleccionable, angulo, alterno };
+  }, [enfocado, comparar, distReal, ocultarSol, seleccionable, angulo, alterno]);
 
   const onSeleccionRef = useRef(onSeleccion);
   const onFaseRef = useRef(onFase);
@@ -565,6 +567,7 @@ const Espacio3D = forwardRef(function Espacio3D(
 
     const cuerpos = [];        // escena planetas
     const lineasOrbita = [];
+    const lineasOrbitaReal = []; // orbitas a escala real (modo distReal)
     let metricaComparar = null;
     let metricaCompararSinSol = null;
     let capaEtiquetas = null;  // capa DOM de etiquetas flotantes (planetas y estrellas)
@@ -584,6 +587,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     let escSol = null;         // escena nace-un-sol (la fabrica de planetas)
     let escDN = null;          // escena dia-noche (la Tierra que gira)
     let escCar = null;         // escena carrera (velocidades reales de los planetas)
+    let escTrompos = null;     // escena trompos (ejes de giro reales)
     let etiquetaEstrellaEl = null; // constelaciones: nombre flotante de la estrella tocada
     let nombreFlotante = null;     // constelaciones: { pos, hasta } del nombre flotante
 
@@ -593,7 +597,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     // se veria pixelado). La usan el modo comparar (planetas), la escalera
     // de estrellas y constelaciones (nombres de estrellas y de figuras).
     let crearEtiqueta = null;
-    if (escena === 'planetas' || escena === 'constelaciones' || escena === 'carrera' || ESCALERAS.includes(escena)) {
+    if (escena === 'planetas' || escena === 'constelaciones' || escena === 'carrera' || escena === 'trompos' || ESCALERAS.includes(escena)) {
       capaEtiquetas = document.createElement('div');
       capaEtiquetas.className = 'espacio3d-etiquetas';
       contenedor.appendChild(capaEtiquetas);
@@ -631,11 +635,34 @@ const Espacio3D = forwardRef(function Espacio3D(
           anillo.rotation.x = -Math.PI / 2 + 0.35; // tumbado y con inclinacion
           mesh.add(anillo); // hereda la escala del planeta (tambien en tamano real)
         }
-        cuerpos.push({ ...p, mesh, anguloOrbita: rngAng() * Math.PI * 2, etiquetaEl: crearEtiqueta(etiquetaComparar(p)) });
+        // Distancia REAL en unidades de escena: Neptuno conserva el borde
+        // exterior didactico (38) y todos los demas se re-escalan con su UA.
+        // Mercurio se pega al Sol (0.49) — asi se ve el VACIO de verdad.
+        const real = DISTANCIAS_REALES[p.id];
+        const distRealU = real.ua * (38 / DISTANCIAS_REALES.neptuno.ua);
+        cuerpos.push({
+          ...p,
+          mesh,
+          anguloOrbita: rngAng() * Math.PI * 2,
+          etiquetaEl: crearEtiqueta(etiquetaComparar(p)),
+          distRealU,
+          inclOrb: (real.inclOrb * Math.PI) / 180,
+          textoLuz: `${p.emoji} ${p.nombre.replace(/^(el|la) /, '')} · luz: ${real.luz}`,
+          modoLuz: false,
+        });
 
         const { linea, mat } = crearLineaOrbita(p.dist);
         escena3.add(linea);
         lineasOrbita.push(mat);
+
+        // Segundo juego de orbitas: a escala real y con su inclinacion real
+        // (todas comparten la linea de nodos en X — simplificacion didactica).
+        // Casi no se ladean… y ESA es la leccion: el sistema solar es plano.
+        const orbReal = crearLineaOrbita(distRealU);
+        orbReal.linea.rotateOnWorldAxis(new THREE.Vector3(1, 0, 0), (real.inclOrb * Math.PI) / 180);
+        orbReal.mat.opacity = 0;
+        escena3.add(orbReal.linea);
+        lineasOrbitaReal.push(orbReal.mat);
       });
 
       // Fila del modo comparar: cada cuerpo a su radio REAL, centrada en x=0.
@@ -1629,6 +1656,64 @@ const Espacio3D = forwardRef(function Espacio3D(
       escCar = { cuerpos: cuerposCar, anios: 0, corriendo: false, etiquetaAnios, deciPrev: 0 };
     }
 
+    if (escena === 'trompos') {
+      // Los 8 planetas en fila, cada uno girando como el trompo que es: con
+      // su inclinacion de eje y su velocidad de rotacion REALES (EJES).
+      // Venus (177°) queda de cabeza y por eso su giro se ve al reves; Urano
+      // (98°) rueda acostado como llanta. El eje rojo lo hace legible.
+      escena3.add(new THREE.AmbientLight(0xffffff, 0.9));
+      const luzT = new THREE.DirectionalLight(0xfff3d0, 1.5);
+      luzT.position.set(6, 10, 22);
+      escena3.add(luzT);
+
+      const HUECO_T = 1.4;
+      const matEje = registrar(new THREE.LineBasicMaterial({ color: 0xe74c3c, transparent: true, opacity: 0.9 }));
+      let xT = 0;
+      let rPrevT = 0;
+      const trompos = PLANETAS.map((p, i) => {
+        if (i > 0) xT += rPrevT + HUECO_T + p.radio;
+        rPrevT = p.radio;
+        const eje = EJES[p.id];
+        const grupo = new THREE.Group();
+        grupo.position.x = xT;
+        grupo.rotation.z = -(eje.incl * Math.PI) / 180; // el eje se ladea a la vista
+        escena3.add(grupo);
+
+        const mesh = crearCuerpo({ id: p.id, radio: p.radio, tex: p.tex, color: p.color, semilla: 11 + i });
+        grupo.add(mesh);
+        if (p.anillos) {
+          const geoAnillo = registrar(new THREE.RingGeometry(1.45, 2.35, 64));
+          const matAnillo = registrar(new THREE.MeshBasicMaterial({
+            color: 0xd9c08a, side: THREE.DoubleSide, transparent: true, opacity: 0.75,
+          }));
+          const anillo = new THREE.Mesh(geoAnillo, matAnillo);
+          anillo.rotation.x = -Math.PI / 2;
+          mesh.add(anillo); // los anillos se ladean con el planeta: asi es de verdad
+        }
+
+        const largo = p.radio * 1.9;
+        const geoEje = registrar(new THREE.BufferGeometry().setFromPoints([
+          new THREE.Vector3(0, -largo, 0), new THREE.Vector3(0, largo, 0),
+        ]));
+        grupo.add(new THREE.Line(geoEje, matEje));
+
+        const nombre = p.nombre.replace(/^(el|la) /, '');
+        return { ...p, grupo, mesh, giroRel: eje.giroRel, etiquetaEl: crearEtiqueta(`${p.emoji} ${nombre} · día: ${eje.dia}`) };
+      });
+
+      // Centrar la fila y dibujar el piso: sin una horizontal de referencia
+      // no se "lee" que tan chueco esta cada eje.
+      const centroT = xT / 2;
+      trompos.forEach((t) => { t.grupo.position.x -= centroT; });
+      const geoPiso = registrar(new THREE.BufferGeometry().setFromPoints([
+        new THREE.Vector3(-centroT - 3, -3.4, 0), new THREE.Vector3(centroT + 3, -3.4, 0),
+      ]));
+      const matPiso = registrar(new THREE.LineBasicMaterial({ color: 0x5a6a92, transparent: true, opacity: 0.5 }));
+      escena3.add(new THREE.Line(geoPiso, matPiso));
+
+      escTrompos = { trompos, halfW: centroT + 3 };
+    }
+
     /* --- camara orbital del usuario --- */
     const CAMARAS = {
       planetas: { yaw: 0.6, pitch: 0.9, dist: 60 },
@@ -1643,6 +1728,7 @@ const Espacio3D = forwardRef(function Espacio3D(
       impacto: { yaw: 0.3, pitch: 0.5, dist: 30 },
       'dia-noche': { yaw: 0.55, pitch: 0.5, dist: 22 },
       carrera: { yaw: 0.2, pitch: 1.15, dist: 60 },
+      trompos: { yaw: 0, pitch: 0.12, dist: 34 },
       'big-bang': { yaw: 0.2, pitch: 0.35, dist: 40 },
       'nace-un-sol': { yaw: 0.4, pitch: 0.7, dist: 26 },
       'agujero-negro': { yaw: 0, pitch: 1.1, dist: 26 },
@@ -1665,6 +1751,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     const vTmp2 = new THREE.Vector3();
     const vProy = new THREE.Vector3(); // reutilizado para proyectar cuerpo → pantalla (etiquetas)
     const V_ARRIBA = new THREE.Vector3(0, 1, 0);
+    const EJE_X = new THREE.Vector3(1, 0, 0); // linea de nodos del modo distancias reales
     const COL_ORO = new THREE.Color(0xf1c40f);
     const COL_LINEA_CONST = new THREE.Color(0x5a6a92);
     const colTmp = new THREE.Color();
@@ -1877,6 +1964,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     let raf;
     let previo = performance.now();
     let mezcla = 0; // 0 = orbitas, 1 = fila a tamano real
+    let mezclaReal = 0; // 0 = orbitas didacticas, 1 = distancias reales
     const tanFov = Math.tan((FOV * Math.PI) / 180 / 2);
 
     const animar = () => {
@@ -1895,6 +1983,11 @@ const Espacio3D = forwardRef(function Espacio3D(
         const haciaComparar = est.comparar ? 1 : 0;
         mezcla += (haciaComparar - mezcla) * Math.min(1, dt * 4);
         if (Math.abs(haciaComparar - mezcla) < 0.002) mezcla = haciaComparar;
+        // Los dos modos son excluyentes (lo garantiza el wrapper); aun asi,
+        // comparar manda: si alguien pide los dos, gana la fila.
+        const haciaReal = est.distReal && !est.comparar ? 1 : 0;
+        mezclaReal += (haciaReal - mezclaReal) * Math.min(1, dt * 3);
+        if (Math.abs(haciaReal - mezclaReal) < 0.002) mezclaReal = haciaReal;
 
         // Sin el Sol, la fila se calcula con SOLO los planetas: se puede
         // encuadrar mucho mas cerca y las diferencias entre ellos se notan.
@@ -1906,30 +1999,49 @@ const Espacio3D = forwardRef(function Espacio3D(
           if (c.vel) c.anguloOrbita += c.vel * VEL_ORBITAL * dt;
           const solOculto = c.id === 'sol' && est.ocultarSol;
           const m = solOculto ? null : metricaActiva.medias.get(c.id);
-          const ox = Math.cos(c.anguloOrbita) * c.dist;
-          const oz = -Math.sin(c.anguloOrbita) * c.dist;
+          // En distancias reales la orbita se estira a su radio de verdad y
+          // se ladea su inclinacion real; el Sol se queda en el centro pero
+          // se encoge (si no, se traga la orbita de Mercurio).
+          const distVisual = c.distRealU ? c.dist + (c.distRealU - c.dist) * mezclaReal : c.dist;
+          const ox = Math.cos(c.anguloOrbita) * distVisual;
+          const oz = -Math.sin(c.anguloOrbita) * distVisual;
+          const radioVisual = c.id === 'sol'
+            ? c.radio + (0.5 - c.radio) * mezclaReal
+            : c.radio + (0.35 - c.radio) * mezclaReal;
           if (m) {
             c.mesh.position.set(ox + (m.x - ox) * mezcla, 0, oz * (1 - mezcla));
-            c.mesh.scale.setScalar(c.radio + (m.r - c.radio) * mezcla);
+            c.mesh.scale.setScalar(radioVisual + (m.r - radioVisual) * mezcla);
           } else {
             // Sol oculto: sigue orbitando fuera de cuadro, no importa porque
             // queda invisible (y fuera del raycast, ver cuerpoEn).
             c.mesh.position.set(ox, 0, oz);
           }
+          if (c.inclOrb && mezclaReal > 0.001) {
+            c.mesh.position.applyAxisAngle(EJE_X, c.inclOrb * mezclaReal);
+          }
           c.mesh.rotation.y += dt * 0.4;
           c.mesh.visible = !solOculto;
 
-          // Etiqueta flotante "×Tierra": solo visible con algo de mezcla y
-          // con el cuerpo delante de la camara; se apaga si es el Sol oculto.
-          if (!solOculto && mezcla > 0.02 && wCanvas && hCanvas) {
+          // La etiqueta sirve a los dos modos: "×Tierra" en tamano real y el
+          // tiempo que tarda la LUZ en distancias reales (cajon: el
+          // textContent solo se toca al cruzar el umbral).
+          if (c.textoLuz) {
+            const quiereLuz = mezclaReal > 0.5;
+            if (quiereLuz !== c.modoLuz) {
+              c.modoLuz = quiereLuz;
+              c.etiquetaEl.textContent = quiereLuz ? c.textoLuz : etiquetaComparar(c);
+            }
+          }
+          const visibilidad = Math.max(mezcla, mezclaReal);
+          if (!solOculto && visibilidad > 0.02 && wCanvas && hCanvas) {
             vProy.copy(c.mesh.position);
-            vProy.y += c.mesh.scale.x * 1.3; // un poco arriba del cuerpo
+            vProy.y += c.mesh.scale.x * 1.3 + mezclaReal * 0.9; // un poco arriba del cuerpo
             vProy.project(camara);
             if (vProy.z < 1) {
               const px = (vProy.x * 0.5 + 0.5) * wCanvas;
               const py = (1 - (vProy.y * 0.5 + 0.5)) * hCanvas;
               c.etiquetaEl.style.transform = `translate(${px}px, ${py}px) translate(-50%, -100%)`;
-              c.etiquetaEl.style.opacity = mezcla;
+              c.etiquetaEl.style.opacity = visibilidad;
             } else {
               c.etiquetaEl.style.opacity = 0;
             }
@@ -1937,14 +2049,21 @@ const Espacio3D = forwardRef(function Espacio3D(
             c.etiquetaEl.style.opacity = 0;
           }
         });
-        lineasOrbita.forEach((mat) => { mat.opacity = 0.45 * (1 - mezcla); });
+        lineasOrbita.forEach((mat) => { mat.opacity = 0.45 * (1 - mezcla) * (1 - mezclaReal); });
+        lineasOrbitaReal.forEach((mat) => { mat.opacity = 0.45 * mezclaReal * (1 - mezcla); });
 
         const sol = cuerpos[0];
         glowSol.visible = !est.ocultarSol;
         glowSol.position.copy(sol.mesh.position);
         glowSol.scale.setScalar(sol.mesh.scale.x * 4.6);
 
-        if (mezcla > 0.05) {
+        if (mezclaReal > 0.05 && mezcla < 0.05) {
+          // Vista cenital y lejana: solo desde arriba se lee el vacio.
+          if (!gesto?.capturado) {
+            pitch += (1.15 - pitch) * Math.min(1, dt * 3);
+          }
+          distDeseada = DIST_BASE + (96 - DIST_BASE) * mezclaReal;
+        } else if (mezcla > 0.05) {
           // En la fila conviene una vista casi de frente; se suaviza hacia ella
           // mientras el usuario no este arrastrando.
           if (!gesto?.capturado) {
@@ -2621,6 +2740,31 @@ const Espacio3D = forwardRef(function Espacio3D(
             }
           }
         });
+      } else if (escena === 'trompos') {
+        // Velocidad exponencial: de 0.2x a 12x. A 1x, Venus (243 dias por
+        // vuelta) practicamente no se mueve — honesto, y su etiqueta lo dice.
+        const vel = 0.2 * Math.pow(60, est.angulo / 100);
+        const wt = lienzo.clientWidth;
+        const ht = lienzo.clientHeight;
+        escTrompos.trompos.forEach((t) => {
+          t.mesh.rotation.y += dt * 0.9 * t.giroRel * vel;
+          if (!wt || !ht) return;
+          vProy.copy(t.grupo.position);
+          vProy.y += t.radio * 2.1 + 0.5;
+          vProy.project(camara);
+          if (vProy.z < 1) {
+            const px = (vProy.x * 0.5 + 0.5) * wt;
+            const py = (1 - (vProy.y * 0.5 + 0.5)) * ht;
+            t.etiquetaEl.style.transform = `translate(${px}px, ${py}px) translate(-50%, -100%)`;
+            t.etiquetaEl.style.opacity = 1;
+          } else {
+            t.etiquetaEl.style.opacity = 0;
+          }
+        });
+        distDeseada = Math.max(
+          (escTrompos.halfW + 1) / (tanFov * aspecto),
+          9 / tanFov
+        ) * 1.05;
       }
 
       distDeseada *= zoomUsuario;
@@ -2716,7 +2860,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     );
   }
 
-  const conSlider = ['tierra-luna', 'estaciones', 'cometa', 'satelite', ...ESCALERAS, 'impacto', 'dia-noche', 'carrera', 'big-bang', 'nace-un-sol', 'agujero-negro', 'cama-elastica'].includes(escena);
+  const conSlider = ['tierra-luna', 'estaciones', 'cometa', 'satelite', ...ESCALERAS, 'impacto', 'dia-noche', 'carrera', 'trompos', 'big-bang', 'nace-un-sol', 'agujero-negro', 'cama-elastica'].includes(escena);
   const conRecuadro = escena === 'tierra-luna' || escena === 'estaciones' || escena === 'dia-noche';
 
   const PISTAS = {
@@ -2732,6 +2876,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     impacto: '👆 Elige el tamaño de la roca, apuesta qué pasará… ¡y suéltala!',
     'dia-noche': '👆 Mueve la hora con el deslizador y mira el recuadro: así se ve desde tu casa',
     carrera: '👆 ¡Arranca la carrera! · acelera el tiempo con el deslizador · toca un planeta para saber más',
+    trompos: '👆 Mira cada trompo: su inclinación y su giro son los REALES · toca uno para saber más',
     'big-bang': '👆 Rebobina el universo con el deslizador · múdate de galaxia para buscar el centro',
     'nace-un-sol': '👆 Avanza el tiempo con el deslizador y mira nacer un sistema solar',
     'agujero-negro': '👆 Aprieta la Tierra con el deslizador y lanza rayos de luz para ver si escapan',
@@ -2749,6 +2894,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     impacto: ['🍚', '🏔️'],
     'dia-noche': ['🌅', '🌃'],
     carrera: ['🐢', '⏩'],
+    trompos: ['🐢', '⏩'],
     'big-bang': ['🔥', '🌌'],
     'nace-un-sol': ['☁️', '🪐'],
     'agujero-negro': ['🌍', '🕳️'],
@@ -2762,6 +2908,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     impacto: 100,
     'dia-noche': 24,
     carrera: 100,
+    trompos: 100,
     'big-bang': 100,
     'nace-un-sol': 100,
     'agujero-negro': 100,
@@ -2779,6 +2926,7 @@ const Espacio3D = forwardRef(function Espacio3D(
     impacto: 'Tamaño de la roca',
     'dia-noche': 'La hora del día',
     carrera: 'Velocidad del tiempo',
+    trompos: 'Velocidad del tiempo',
     'big-bang': 'Viajar en el tiempo',
     'nace-un-sol': 'Tiempo de formación',
     'agujero-negro': 'Apretar la Tierra',
@@ -3031,6 +3179,17 @@ const Espacio3D = forwardRef(function Espacio3D(
           {resultado === 'corriendo'
             ? 'Más CERCA del Sol = más rápido. Neptuno tardará 165 años en dar UNA sola vuelta.'
             : '¿Quién dará más vueltas? Haz tu apuesta… ¡y arranca! (Con el deslizador aceleras el tiempo.)'}
+        </div>
+      </>
+    );
+  } else if (escena === 'trompos') {
+    etiqueta = (
+      <>
+        <div className="espacio3d-fase">
+          🌀 Cada planeta es un trompo: su eje chueco y su velocidad son los REALES
+        </div>
+        <div className="espacio3d-subfase">
+          Busca al que gira DE CABEZA (por eso parece girar al revés) y al que rueda ACOSTADO como llanta.
         </div>
       </>
     );

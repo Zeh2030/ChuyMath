@@ -199,6 +199,47 @@ export const etiquetaAsteroide = (a) => {
   return `${a.emoji} ${a.nombre} · ${a.ancla}`;
 };
 
+/* ============================ EL SISTEMA SOLAR DE VERDAD ============================ */
+
+// Fuente: NASA NSSDC Planetary Fact Sheet
+// (nssdc.gsfc.nasa.gov/planetary/factsheet/). OJO: circulan tablas por
+// internet con las filas de Marte y Jupiter intercambiadas; estos numeros
+// se tomaron de la tabla oficial.
+//
+// `ua` = distancia media al Sol en unidades astronomicas (1 UA = Tierra-Sol).
+// `inclOrb` = inclinacion de su orbita respecto a la de la Tierra, en grados.
+//   La SORPRESA didactica: son casi cero — el sistema solar es PLANO porque
+//   nacio de un disco (el mismo que se ve en la escena nace-un-sol).
+// `luz` = cuanto tarda la luz del Sol en llegarle. El vacio, en tiempo.
+export const DISTANCIAS_REALES = {
+  mercurio: { ua: 0.39, inclOrb: 7.0, luz: '3.2 min' },
+  venus: { ua: 0.72, inclOrb: 3.4, luz: '6 min' },
+  tierra: { ua: 1, inclOrb: 0, luz: '8.3 min' },
+  marte: { ua: 1.52, inclOrb: 1.9, luz: '12.7 min' },
+  jupiter: { ua: 5.2, inclOrb: 1.3, luz: '43 min' },
+  saturno: { ua: 9.58, inclOrb: 2.5, luz: '1.3 horas' },
+  urano: { ua: 19.2, inclOrb: 0.8, luz: '2.7 horas' },
+  neptuno: { ua: 30.05, inclOrb: 1.8, luz: '4.2 horas' },
+};
+
+// Ejes de giro (trompos). `incl` = oblicuidad en grados; `dia` = cuanto dura
+// una vuelta sobre si mismo; `giroRel` = vueltas por dia terrestre (24 / horas
+// de su dia), SIEMPRE POSITIVO a proposito: el giro "al reves" de Venus y
+// Urano no se pinta con signo negativo sino que EMERGE de su oblicuidad mayor
+// a 90 grados — el trompo esta de cabeza (Venus 177) o acostado (Urano 98), y
+// visto desde arriba eso ya se ve girando al reves. Duplicar el signo lo
+// cancelaria y ademas ensenaria mal por que pasa.
+export const EJES = {
+  mercurio: { incl: 0.03, giroRel: 0.017, dia: '59 días' },
+  venus: { incl: 177.4, giroRel: 0.0041, dia: '243 días' },
+  tierra: { incl: 23.4, giroRel: 1, dia: '24 horas' },
+  marte: { incl: 25.2, giroRel: 0.976, dia: '24.6 horas' },
+  jupiter: { incl: 3.1, giroRel: 2.42, dia: '9.9 horas' },
+  saturno: { incl: 26.7, giroRel: 2.24, dia: '10.7 horas' },
+  urano: { incl: 97.8, giroRel: 1.4, dia: '17.2 horas' },
+  neptuno: { incl: 28.3, giroRel: 1.49, dia: '16.1 horas' },
+};
+
 /* ============================ EL DIA Y LA NOCHE ============================ */
 
 // Deslizador 0-24 = la hora en TU casa (Mexico). La leccion: el Sol no se

@@ -475,6 +475,22 @@ el flujo de MezcladorColores (intro → explorar → retos → fin).
   de planeta barren carriles y dejan SURCOS (alpha por vertice sobre fondo
   negro), como el disco REAL de HL Tauri (ALMA) que sale en el
   image-picker. Sin retos de motor (explorar).
+- **Modo `distReal`** (2026-08-17, dentro de la escena `planetas`): tercer
+  modo junto a comparar/ocultarSol, con boton propio "🔭 ¿Y a distancias
+  reales?" (EXCLUYENTE con tamano real: son dos verdades que no caben
+  juntas). Las orbitas se estiran a UA reales (Neptuno ancla el borde 38,
+  Mercurio queda pegado al Sol, que se encoge a 0.5) y se ladean su
+  inclinacion orbital REAL — que es casi cero, y esa es la leccion: el
+  sistema solar es PLANO porque nacio de un disco. Las etiquetas cambian a
+  tiempo de LUZ ("luz: 4.2 horas"). Camara cenital y lejana. Datos:
+  `DISTANCIAS_REALES` (NASA NSSDC).
+- **Escena `trompos`** (2026-08-17, los ejes de giro reales): los 8 en fila,
+  cada uno en un Group ladeado su oblicuidad REAL (`EJES`, NASA NSSDC) con
+  eje rojo dibujado y linea de piso de referencia. Giro con velocidad real
+  relativa (giroRel = 24/horas de su dia, SIEMPRE positivo: el giro "al
+  reves" de Venus y Urano EMERGE de su oblicuidad >90°, no se pinta con
+  signo). Deslizador = velocidad del tiempo (exponencial 0.2x-12x). Venus
+  de cabeza (177°) y Urano acostado (97.8°) son el wow. Retos tipo `toca`.
 - **Escena `dia-noche`** (2026-08-17, la Tierra que gira): deslizador = la
   HORA en tu casa (0-24, `diaNocheInfoDe`); el Sol FIJO y el grupo de la
   Tierra rotando (a las 12 el pin dorado de Mexico mira al Sol; pin
@@ -555,6 +571,7 @@ saturno, urano, neptuno. Tierra-luna: sol, tierra, luna.
 | `sistema-solar/C3-25_el-principio-de-todo.json` | Big Bang honesto (estiron, no explosion; modo mito derrotable), nace un sol, polvo de estrellas | sistema-solar (big-bang, nace-un-sol) + true-or-false + mini-story + image-picker + opcion-multiple |
 | `sistema-solar/C2-40_el-dia-y-la-noche.json` | Por que amanece: la Tierra gira (recuadro desde tu casa, Japon +15 h) | sistema-solar (dia-noche) + opcion-multiple + true-or-false |
 | `sistema-solar/C2-41_la-carrera-de-los-planetas.json` | Velocidades reales: mas lejos = mas lento (Kepler) | sistema-solar (carrera) + opcion-multiple + tap-the-pairs |
+| `sistema-solar/C2-42_el-sistema-solar-de-verdad.json` | Distancias reales (el vacio + tiempos-luz), orbitas casi planas y ejes de giro reales | sistema-solar (planetas modo distReal, trompos) + true-or-false + tap-the-pairs |
 
 **Fotos**: URLs `https://commons.wikimedia.org/wiki/Special:FilePath/<archivo>?width=320`
 (redirect estable de Wikimedia Commons, sin rutas con hash; todas verificadas con curl).

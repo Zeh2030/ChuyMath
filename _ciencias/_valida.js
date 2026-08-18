@@ -25,6 +25,7 @@ const CUERPOS_POR_ESCENA = {
   impacto: new Set(['tierra', 'roca']),
   'dia-noche': new Set(['sol', 'tierra', 'luna', 'casa', 'japon']),
   carrera: new Set(['sol', 'mercurio', 'venus', 'tierra', 'marte', 'jupiter', 'saturno', 'urano', 'neptuno']),
+  trompos: new Set(['mercurio', 'venus', 'tierra', 'marte', 'jupiter', 'saturno', 'urano', 'neptuno']),
   'big-bang': new Set(),
   'nace-un-sol': new Set(['sol', 'planeta']),
   'agujero-negro': new Set(['tierra', 'luna']),

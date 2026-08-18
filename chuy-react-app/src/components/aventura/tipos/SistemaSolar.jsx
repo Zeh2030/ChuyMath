@@ -16,7 +16,8 @@ const Espacio3D = React.lazy(() => import('./Espacio3D'));
  *   'completo' : intro → explorar → reto → fin  [default]
  *
  * Campos de la mision:
- *   escena       : 'planetas' (default) | 'tierra-luna' | 'estaciones' | 'constelaciones'
+ *   escena       : 'planetas' (default) | 'tierra-luna' | 'estaciones' | 'constelaciones' | ...
+ *                  (la lista viva es ESCENAS, aqui abajo)
  *   modo         : 'explorar' | 'reto' | 'completo'
  *   leccion      : texto introductorio opcional (portada)
  *   datos        : { idCuerpo: "dato wow" } — tarjeta al tocar un cuerpo
@@ -28,7 +29,7 @@ const Espacio3D = React.lazy(() => import('./Espacio3D'));
  *                   { tipo:'lanzamiento', pregunta, respuesta:'choca'|'orbita'|'escapa', pista? }]
  *   dato_curioso : texto del final
  */
-const ESCENAS = ['planetas', 'tierra-luna', 'estaciones', 'constelaciones', 'cometa', 'satelite', 'estrellas', 'exoplanetas', 'asteroides', 'impacto', 'dia-noche', 'carrera', 'big-bang', 'nace-un-sol', 'agujero-negro', 'cama-elastica'];
+const ESCENAS = ['planetas', 'tierra-luna', 'estaciones', 'constelaciones', 'cometa', 'satelite', 'estrellas', 'exoplanetas', 'asteroides', 'impacto', 'dia-noche', 'carrera', 'trompos', 'big-bang', 'nace-un-sol', 'agujero-negro', 'cama-elastica'];
 
 const SistemaSolar = ({ mision, onCompletar }) => {
   const escena = ESCENAS.includes(mision.escena) ? mision.escena : 'planetas';
@@ -72,7 +73,7 @@ const SistemaSolar = ({ mision, onCompletar }) => {
 
 // OJO: MisionRenderer ya pinta mision.titulo y mision.instruccion arriba de toda
 // mision — repetirlos aqui los mostraba dos veces (mismo error que en cubos).
-const EMOJI_ESCENA = { 'tierra-luna': '🌗', estaciones: '🍂', constelaciones: '✨', cometa: '☄️', satelite: '🛰️', estrellas: '⭐', exoplanetas: '🔭', asteroides: '🪨', impacto: '☄️', 'dia-noche': '🌅', carrera: '🏁', 'big-bang': '🌌', 'nace-un-sol': '🌞', 'agujero-negro': '🕳️', 'cama-elastica': '🛏️' };
+const EMOJI_ESCENA = { 'tierra-luna': '🌗', estaciones: '🍂', constelaciones: '✨', cometa: '☄️', satelite: '🛰️', estrellas: '⭐', exoplanetas: '🔭', asteroides: '🪨', impacto: '☄️', 'dia-noche': '🌅', carrera: '🏁', trompos: '🌀', 'big-bang': '🌌', 'nace-un-sol': '🌞', 'agujero-negro': '🕳️', 'cama-elastica': '🛏️' };
 
 const Portada = ({ mision, escena, onComenzar }) => (
   <div className="sisol-portada">
@@ -100,6 +101,7 @@ const Cargando = () => (
 const Explorar = ({ escena, datos, haySiguiente, onContinuar }) => {
   const [seleccion, setSeleccion] = useState(null); // id del cuerpo tocado
   const [comparar, setComparar] = useState(false);
+  const [distReal, setDistReal] = useState(false); // modo distancias reales (excluyente con comparar)
   const [ocultarSol, setOcultarSol] = useState(false); // solo relevante con comparar=true
   const [visitados, setVisitados] = useState([]);
   const motorRef = useRef(null);
@@ -113,8 +115,12 @@ const Explorar = ({ escena, datos, haySiguiente, onContinuar }) => {
     setVisitados((prev) => (prev.includes(id) ? prev : [...prev, id]));
   };
 
+  // Tamano real y distancias reales son excluyentes: son dos verdades que no
+  // caben juntas en una pantalla (a tamano Y distancia reales, los planetas
+  // serian puntos invisibles). Encender uno apaga el otro.
   const alternarComparar = () => {
     setSeleccion(null);
+    setDistReal(false);
     setComparar((v) => {
       const next = !v;
       // Al salir de comparar se reinicia: si vuelve a entrar mas tarde no se
@@ -122,6 +128,13 @@ const Explorar = ({ escena, datos, haySiguiente, onContinuar }) => {
       if (!next) setOcultarSol(false);
       return next;
     });
+  };
+
+  const alternarDistReal = () => {
+    setSeleccion(null);
+    setComparar(false);
+    setOcultarSol(false);
+    setDistReal((v) => !v);
   };
 
   const conDatos = Object.keys(datos).length;
@@ -141,8 +154,9 @@ const Explorar = ({ escena, datos, haySiguiente, onContinuar }) => {
           <Espacio3D
             ref={motorRef}
             escena={escena}
-            enfocado={comparar ? null : seleccion}
+            enfocado={comparar || distReal ? null : seleccion}
             comparar={comparar}
+            distReal={distReal}
             ocultarSol={ocultarSol}
             fullscreen={fullscreen}
             seleccionable
@@ -161,7 +175,7 @@ const Explorar = ({ escena, datos, haySiguiente, onContinuar }) => {
           {fullscreen ? '✕' : '⛶'}
         </button>
 
-        {seleccion && !comparar && (
+        {seleccion && !comparar && !distReal && (
           <div className="sisol-tarjeta">
             <button className="sisol-tarjeta-cerrar" onClick={() => setSeleccion(null)} aria-label="Cerrar">
               ✕
@@ -178,6 +192,11 @@ const Explorar = ({ escena, datos, haySiguiente, onContinuar }) => {
             {comparar ? '🪐 Volver a las órbitas' : '🤯 ¿Y en tamaño real?'}
           </button>
         )}
+        {escena === 'planetas' && (
+          <button className="sisol-btn-secundario" onClick={alternarDistReal}>
+            {distReal ? '🧸 Distancias de juguete' : '🔭 ¿Y a distancias reales?'}
+          </button>
+        )}
         {escena === 'planetas' && comparar && (
           <button className="sisol-btn-secundario" onClick={() => setOcultarSol((v) => !v)}>
             {ocultarSol ? '☀️ Mostrar el Sol' : '🙈 Ocultar el Sol'}
@@ -192,6 +211,14 @@ const Explorar = ({ escena, datos, haySiguiente, onContinuar }) => {
         <p className="sisol-nota-comparar">
           Así de grandes son de verdad, uno junto a otro. ¡Busca la Tierra! 🔎
           (Las distancias reales son todavía más locas: no cabrían ni en cien pantallas.)
+        </p>
+      )}
+
+      {distReal && (
+        <p className="sisol-nota-comparar">
+          Las DISTANCIAS y las inclinaciones de las órbitas son las de verdad: fíjate cuánto VACÍO hay. 🕳️
+          Los tamaños sí son mentira piadosa (a escala real serían puntitos invisibles).
+          ¿Y ves que las órbitas casi no se ladearon? El sistema solar es PLANO porque nació de un disco.
         </p>
       )}
 

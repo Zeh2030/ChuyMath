@@ -1,0 +1,128 @@
+{
+  "id": "C2-42_el-sistema-solar-de-verdad",
+  "titulo": "El Sistema Solar de Verdad",
+  "descripcion": "Las distancias reales (puro vacío), las órbitas casi planas y los ejes chuecos de cada planeta",
+  "tipo": "sistema-solar",
+  "materia": "ciencias",
+  "nivel": "C2-42",
+  "tema": "astronomia",
+  "misiones": [
+    {
+      "id": "astro-vacio-01",
+      "tipo": "sistema-solar",
+      "escena": "planetas",
+      "modo": "explorar",
+      "titulo": "El Gran Vacío",
+      "emoji": "🔭",
+      "instruccion": "Los dibujos de los libros MIENTEN un poquito: ponen a los planetas pegaditos para que quepan en la hoja. Aprieta el botón 🔭 «¿Y a distancias reales?» y agárrate. Toca cada planeta para saber cuánto tarda la luz del Sol en llegarle.",
+      "leccion": "Haz tu apuesta antes de apretar el botón: si el Sol y la Tierra caben en tu pantalla, ¿dónde crees que quedaría Neptuno? ¿En la orilla? ¿Fuera de la pantalla? Y una segunda apuesta más difícil: ¿crees que cada planeta orbita en su propio plano inclinado, como bolas locas… o casi todos en el mismo?",
+      "datos": {
+        "sol": "Desde aquí sale toda la luz. Tarda 8 minutos y 20 segundos en llegar a la Tierra: cuando ves el Sol, en realidad lo estás viendo como era hace 8 minutos.",
+        "mercurio": "A 0.39 UA (la UA es la distancia Tierra-Sol). La luz le llega en 3 minutos: es el vecino de junto.",
+        "venus": "A 0.72 UA. La luz tarda 6 minutos. Es el planeta que más se nos acerca de todos.",
+        "tierra": "A 1 UA, o sea 150 millones de km. Esa distancia es la regla con la que medimos todo lo demás.",
+        "marte": "A 1.52 UA: la luz tarda casi 13 minutos. Por eso los robots de Marte no se manejan con control remoto — el mensaje tardaría demasiado.",
+        "jupiter": "A 5.2 UA. La luz tarda 43 minutos en llegarle. Fíjate en el hueco entre Marte y Júpiter: ahí vive el cinturón de asteroides.",
+        "saturno": "A 9.58 UA: la luz tarda 1 hora y media. La nave Cassini tardó 7 AÑOS en llegar hasta él.",
+        "urano": "A 19.2 UA: la luz tarda casi 3 horas. Ya casi nadie lo visita: solo la Voyager 2 pasó por ahí.",
+        "neptuno": "A 30 UA, el último. La luz del Sol tarda MÁS DE 4 HORAS en llegarle. Desde ahí, el Sol se ve como una estrella brillante más."
+      },
+      "dato_curioso": "Imagínate el sistema solar encogido para que la Tierra estuviera a 1 milímetro del Sol: Neptuno quedaría a 3 centímetros… ¡y la estrella más cercana a 80 METROS de distancia! El espacio se llama 'espacio' porque casi todo él está vacío."
+    },
+    {
+      "id": "astro-trompos-01",
+      "tipo": "sistema-solar",
+      "escena": "trompos",
+      "modo": "completo",
+      "titulo": "Los Trompos del Sistema Solar",
+      "emoji": "🌀",
+      "instruccion": "Cada planeta gira como un trompo, pero NINGUNO gira igual que otro. La línea roja es su eje y la inclinación es la de verdad; la velocidad de giro también. Con el deslizador aceleras el tiempo. Toca cualquiera para conocer su día.",
+      "leccion": "Aquí no hay nada inventado: estos son los ejes y las velocidades REALES, medidos por la NASA. Antes de acelerar el tiempo, busca con los ojos: hay un trompo que está casi DE CABEZA y otro que se cayó de lado y rueda como llanta. ¿Los encuentras?",
+      "datos": {
+        "mercurio": "Su eje está derechito (0.03°, el más parejo de todos), pero gira lentísimo: su día dura 59 días terrestres.",
+        "venus": "El más raro de todos: está de CABEZA (177°), así que gira al revés que los demás — ahí el Sol sale por el oeste. Y gira tan lento que su DÍA (243 días) dura más que su AÑO (225 días).",
+        "tierra": "Nuestro eje está chueco 23.4°… y ese chueco es exactamente lo que causa las estaciones que ya conoces. Una vuelta: 24 horas.",
+        "marte": "Casi nuestro gemelo: eje de 25.2° (también tiene estaciones) y su día dura 24.6 horas. Un marciano y tú dormirían casi igual.",
+        "jupiter": "El más veloz de todos: siendo el más GRANDE, da una vuelta completa en solo 9.9 horas. Por eso está achatado en los polos, como una pelota apretada.",
+        "saturno": "Eje de 26.7° y día de 10.7 horas. Como está ladeado, a veces vemos sus anillos abiertos de par en par y a veces de canto, como una rayita.",
+        "urano": "El que rueda ACOSTADO: su eje está a 97.8°, casi tumbado del todo. Seguro le pegó un golpe gigante hace muchísimo. Sus polos miran al Sol por turnos, ¡42 años cada uno!",
+        "neptuno": "Eje de 28.3°, parecido al nuestro, y día de 16 horas. Ahí soplan los vientos más rápidos de todo el sistema solar."
+      },
+      "retos": [
+        {
+          "tipo": "toca",
+          "pregunta": "Toca el planeta que está de CABEZA y por eso gira al revés que los demás.",
+          "respuesta": "venus",
+          "pista": "Es el segundo desde el Sol, el de las nubes amarillas. Su eje está casi volteado del todo (177°)."
+        },
+        {
+          "tipo": "toca",
+          "pregunta": "Toca el que rueda ACOSTADO, como una llanta.",
+          "respuesta": "urano",
+          "pista": "Es el azul verdoso, casi al final de la fila: su eje está tumbado casi 90°."
+        },
+        {
+          "tipo": "toca",
+          "pregunta": "Toca el del día MÁS CORTO: da una vuelta entera en menos de 10 horas.",
+          "respuesta": "jupiter",
+          "pista": "Sorpresa: es el más GRANDE de todos. Grandote y a la vez el más veloz girando."
+        }
+      ],
+      "dato_curioso": "El eje chueco de la Tierra (23.4°) es la razón EXACTA de que existan el verano y el invierno, tal como lo viste en la misión de las estaciones. Si nuestro eje estuviera derechito como el de Mercurio, no habría estaciones… y si estuviera acostado como el de Urano, los veranos durarían décadas."
+    },
+    {
+      "id": "astro-tof-de-verdad",
+      "tipo": "true-or-false",
+      "titulo": "¿Verdadero o Falso?",
+      "instruccion": "Después de ver las distancias reales y los trompos, decide.",
+      "retos": [
+        {
+          "oracion": "El sistema solar es casi PLANO: todos los planetas orbitan casi en el mismo plano.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "¡Verdadero! Sus órbitas se ladean apenas unos gradititos. ¿Por qué? Porque todo nació de un DISCO de polvo girando — el mismo que viste en la fábrica de planetas."
+        },
+        {
+          "oracion": "En Venus, tu día duraría más que tu año.",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "¡Verdadero y bien raro! Venus tarda 243 días en girar sobre sí mismo, pero solo 225 en darle la vuelta al Sol. Ahí cumplirías años antes de terminar de desayunar."
+        },
+        {
+          "oracion": "La luz del Sol llega a Neptuno en unos segundos.",
+          "correcto": false,
+          "correccion": "Tarda MÁS DE 4 HORAS. A la Tierra le llega en 8 minutos, y Neptuno está 30 veces más lejos.",
+          "explicacion": "¡Falso! Aunque la luz es lo más rápido que existe, el sistema solar es tan grande que hasta ella tarda horas en cruzarlo."
+        },
+        {
+          "oracion": "Los planetas van pegaditos unos de otros, como en los dibujos de los libros.",
+          "correcto": false,
+          "correccion": "Están LEJÍSIMOS: entre uno y otro hay muchísimo vacío. En los libros los juntan para que quepan en la hoja.",
+          "explicacion": "¡Falso! Lo acabas de ver con el botón del telescopio: a distancias reales los planetas casi ni se ven. El espacio es, sobre todo, espacio vacío."
+        }
+      ]
+    },
+    {
+      "id": "astro-ttp-dias",
+      "tipo": "tap-the-pairs",
+      "titulo": "¿Cuánto Dura su Día?",
+      "instruccion": "El día de un planeta es UNA vuelta sobre sí mismo. Empareja cada planeta con lo que tarda.",
+      "retos": [
+        {
+          "pares": [
+            { "es": "🪐 Júpiter", "en": "9.9 horas — el día más corto" },
+            { "es": "🌍 La Tierra", "en": "24 horas — tu día de siempre" },
+            { "es": "♀️ Venus", "en": "243 días — ¡más que su año!" }
+          ]
+        },
+        {
+          "pares": [
+            { "es": "🌀 Urano", "en": "17 horas… girando acostado" },
+            { "es": "☿️ Mercurio", "en": "59 días — lentísimo" },
+            { "es": "🔴 Marte", "en": "24.6 horas — casi igual al nuestro" }
+          ]
+        }
+      ]
+    }
+  ]
+}
