@@ -1302,17 +1302,31 @@ const Espacio3D = forwardRef(function Espacio3D(
       marca.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), DIR_IMP);
       grupoImp.add(marca);
 
-      // Parche de tierra firme: solo se ve en modo TIERRA, para que se entienda
-      // a que le estas apuntando (el resto del planeta es oceano — como en la
-      // Tierra de verdad, donde el 71% es agua).
-      const geoParche = registrar(new THREE.CircleGeometry(1.6, 40));
-      const matParche = registrar(new THREE.MeshBasicMaterial({
-        color: 0x6f8f4a, transparent: true, opacity: 0.9,
-      }));
-      const parche = new THREE.Mesh(geoParche, matParche);
-      parche.rotation.x = -Math.PI / 2;
-      parche.position.y = 0.02;
-      marca.add(parche);
+      // Todo lo que se pinta sobre el suelo son CASQUETES: trozos de esfera del
+      // mismo radio que el planeta, no discos planos. Un disco plano grande se
+      // despega en las orillas y parece calcomania flotando (el "sombrero" que
+      // tenia el crater antes).
+      const crearCasquete = ({ angulo, alto, color, opacidad = 1, banda = 0 }) => {
+        const geo = registrar(banda
+          ? new THREE.SphereGeometry(IMP.radioTierra + alto, 44, 10, 0, Math.PI * 2, angulo, banda)
+          : new THREE.SphereGeometry(IMP.radioTierra + alto, 44, 22, 0, Math.PI * 2, 0, angulo));
+        const mat = registrar(new THREE.MeshLambertMaterial({
+          color, transparent: opacidad < 1, opacity: opacidad, depthWrite: false,
+        }));
+        const m = new THREE.Mesh(geo, mat);
+        m.quaternion.copy(marca.quaternion); // el +Y del casquete mira al blanco
+        grupoImp.add(m);
+        return m;
+      };
+
+      // El blanco: isla verde (modo TIERRA) o mar abierto (modo MAR). Se pintan
+      // encima de la textura para que no haya duda de donde va a pegar — la
+      // textura del planeta tiene continentes al azar y antes el punto podia
+      // caer justo sobre uno estando en "modo mar".
+      const isla = crearCasquete({ angulo: 0.26, alto: 0.03, color: 0x5f8f45 });
+      const islaOrilla = crearCasquete({ angulo: 0.26, alto: 0.02, color: 0x7fa85e, opacidad: 0.55, banda: 0.1 });
+      const mar = crearCasquete({ angulo: 0.34, alto: 0.02, color: 0x2c66cc });
+      const marOrilla = crearCasquete({ angulo: 0.34, alto: 0.015, color: 0x3f7ad8, opacidad: 0.5, banda: 0.12 });
 
       const geoMira = registrar(new THREE.RingGeometry(0.5, 0.62, 32));
       const matMira = registrar(new THREE.MeshBasicMaterial({
@@ -1323,23 +1337,17 @@ const Espacio3D = forwardRef(function Espacio3D(
       mira.position.y = 0.06;
       marca.add(mira);
 
-      // El crater de verdad: hoyo oscuro + borde levantado, tumbados sobre la
-      // superficie (el +Y local de `marca` ES la vertical de ese lugar).
-      const crater = new THREE.Group();
-      crater.position.y = 0.03;
-      crater.visible = false;
-      marca.add(crater);
-      const geoHoyo = registrar(new THREE.CircleGeometry(1, 32));
-      const matHoyo = registrar(new THREE.MeshBasicMaterial({ color: 0x2b1d12 }));
-      const hoyo = new THREE.Mesh(geoHoyo, matHoyo);
-      hoyo.rotation.x = -Math.PI / 2;
-      crater.add(hoyo);
-      const geoBorde = registrar(new THREE.RingGeometry(1, 1.4, 40));
-      const matBorde = registrar(new THREE.MeshBasicMaterial({ color: 0x8a6440, side: THREE.DoubleSide }));
-      const borde = new THREE.Mesh(geoBorde, matBorde);
-      borde.rotation.x = -Math.PI / 2;
-      borde.position.y = 0.02;
-      crater.add(borde);
+      // El crater: hoyo oscuro + borde levantado, tambien de casquete. Dos
+      // tamanos (no se puede escalar un casquete sin despegarlo de la esfera).
+      const craterChico = [
+        crearCasquete({ angulo: 0.14, alto: 0.05, color: 0x2b1d12 }),
+        crearCasquete({ angulo: 0.14, alto: 0.07, color: 0x8a6440, banda: 0.05 }),
+      ];
+      const craterGrande = [
+        crearCasquete({ angulo: 0.32, alto: 0.05, color: 0x2b1d12 }),
+        crearCasquete({ angulo: 0.32, alto: 0.07, color: 0x8a6440, banda: 0.08 }),
+      ];
+      [...craterChico, ...craterGrande].forEach((m) => { m.visible = false; });
 
       // Nube de polvo (o de espuma, si cae en el mar): particulas que salen
       // disparadas del golpe, se abren y se apagan.
@@ -1385,7 +1393,8 @@ const Espacio3D = forwardRef(function Espacio3D(
 
       escImp = {
         IMP, tierra, roca, brilloRoca, destello, matDestello: destello.material,
-        DIR_IMP, grupoImp, marca, parche, mira, matMira, crater,
+        DIR_IMP, grupoImp, marca, isla, islaOrilla, mar, marOrilla,
+        mira, matMira, craterChico, craterGrande,
         polvo, matPolvo, geoPolvo, posPolvo, velPolvo,
         olas, olaU, olaV, N_OLA,
         geoEstela, posEstela, matEstela, luz: luzImp, sim: null, rng: crearRng(83),
@@ -1900,7 +1909,8 @@ const Espacio3D = forwardRef(function Espacio3D(
           reportado: false,
         };
         escImp.geoEstela.setDrawRange(0, 0);
-        escImp.crater.visible = false;
+        escImp.craterChico.forEach((m) => { m.visible = false; });
+        escImp.craterGrande.forEach((m) => { m.visible = false; });
         escImp.destello.visible = false;
         escImp.polvo.visible = false;
         escImp.matPolvo.opacity = 0;
@@ -2574,7 +2584,10 @@ const Espacio3D = forwardRef(function Espacio3D(
         const enMar = !!est.alterno;
         escImp.tierra.rotation.y += dt * 0.05;
         escImp.grupoImp.rotation.y = escImp.tierra.rotation.y;
-        escImp.parche.visible = !enMar;
+        escImp.isla.visible = !enMar;
+        escImp.islaOrilla.visible = !enMar;
+        escImp.mar.visible = enMar;
+        escImp.marOrilla.visible = enMar;
         escImp.matMira.color.set(enMar ? 0x9fe8ff : 0xffe08a);
         // Direccion actual del blanco (la marca gira con el planeta): la roca
         // le apunta cada frame, asi que siempre pega justo en la mira.
@@ -2604,7 +2617,7 @@ const Espacio3D = forwardRef(function Espacio3D(
           escImp.brilloRoca.visible = enAire;
           if (enAire) {
             escImp.brilloRoca.position.copy(escImp.roca.position);
-            escImp.brilloRoca.scale.setScalar(sim.escala * 3.2 + 0.5);
+            escImp.brilloRoca.scale.setScalar(sim.escala * 2.1 + 0.35);
             if (sim.puntos < escImp.posEstela.length / 3) {
               const k = sim.puntos * 3;
               escImp.posEstela[k] = escImp.roca.position.x;
@@ -2656,15 +2669,8 @@ const Espacio3D = forwardRef(function Espacio3D(
             }
             escImp.geoPolvo.attributes.position.needsUpdate = true;
 
-            if (resultado === 'crater') {
-              escImp.crater.visible = true;
-              escImp.crater.scale.setScalar(0.5 + sim.escala * 0.9);
-            } else if (resultado === 'catastrofe') {
-              escImp.crater.visible = true;
-              escImp.crater.scale.setScalar(2.2);
-            } else {
-              escImp.crater.visible = false;
-            }
+            escImp.craterChico.forEach((m) => { m.visible = resultado === 'crater'; });
+            escImp.craterGrande.forEach((m) => { m.visible = resultado === 'catastrofe'; });
 
             // Olas: alcance y color segun el desenlace. Un salpicon se apaga
             // cerquita (las olas de un impacto se deshacen rapido, no son como
