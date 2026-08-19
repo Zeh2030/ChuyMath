@@ -393,6 +393,165 @@
   --theme-btn-trofeos-2: #2E7D32;
 }
 
+/* ============================================
+   PIANO - Marfil / ébano / latón
+   Alto contraste a proposito: es lo que lo separa de "elegante",
+   que ocupa los cafes suaves sobre marfil.
+   ============================================ */
+[data-theme="piano"] {
+  --theme-grad-1: #2B2B2B;
+  --theme-grad-2: #0F0F0F;
+  --theme-primary: #1C1C1C;
+  --theme-primary-dark: #000000;
+  --theme-primary-rgb: 28, 28, 28;
+  /* Fieltro rojo, no laton: --theme-active es fondo con texto blanco (chips)
+     Y color de texto sobre blanco (.btn-abrir, .loading-text). El laton
+     #C9A227 da 2.4:1 y reprueba en ambos sentidos. */
+  --theme-active: #A63D40;
+  --theme-active-rgb: 166, 61, 64;
+  /* Laton oscurecido: --theme-accent pinta .boton-reintentar con texto blanco */
+  --theme-accent: #8A6A12;
+  --theme-accent-dark: #6E5410;
+  --theme-bg: #F4F1EA;
+  --theme-card-hover: linear-gradient(135deg, #FFFFFF, #F4F1EA);
+  --theme-btn-hero-1: #A63D40;
+  --theme-btn-hero-2: #C75B5E;
+  --theme-btn-hero-shadow: #6E2426;
+  --theme-nav-1: #2B2B2B;
+  --theme-nav-2: #0F0F0F;
+  /* El laton brillante vive aqui: progress-1 es relleno de barra, sin texto.
+     progress-2 si lleva texto blanco (.boton-calificar), asi que va oscuro. */
+  --theme-progress-1: #C9A227;
+  --theme-progress-2: #8A6A12;
+  --theme-spinner: #C9A227;
+  --theme-acceso-hover-1: #2B2B2B;
+  --theme-acceso-hover-2: #0F0F0F;
+  --theme-acceso-border: #C9A227;
+  --theme-boveda-header-1: #1C1C1C;
+  --theme-boveda-header-2: #3A3A3A;
+  --theme-header-btn-1: #2B2B2B;
+  --theme-header-btn-2: #0F0F0F;
+  --theme-trophy-1: #C9A227;
+  --theme-trophy-2: #9C7A18;
+  --theme-btn-trofeos-1: #2B2B2B;
+  --theme-btn-trofeos-2: #0F0F0F;
+}
+
+/* ============================================
+   VINILO - Funda de disco mid-century
+   Crema, naranja quemado, teal, mostaza, negro tinta.
+   ============================================ */
+[data-theme="vinilo"] {
+  --theme-grad-1: #B04E1A;
+  --theme-grad-2: #8F3D12;
+  --theme-primary: #B04E1A;
+  --theme-primary-dark: #8F3D12;
+  --theme-primary-rgb: 176, 78, 26;
+  --theme-active: #1F7A78;
+  --theme-active-rgb: 31, 122, 120;
+  --theme-accent: #1F7A78;
+  --theme-accent-dark: #14514F;
+  --theme-bg: #F5EBDC;
+  --theme-card-hover: linear-gradient(135deg, #FFFBF4, #F5EBDC);
+  --theme-btn-hero-1: #E0A22C;
+  --theme-btn-hero-2: #C1571F;
+  --theme-btn-hero-shadow: #7A3A0E;
+  --theme-nav-1: #1F7A78;
+  --theme-nav-2: #14514F;
+  --theme-progress-1: #E0A22C;
+  --theme-progress-2: #1F7A78;
+  --theme-spinner: #B04E1A;
+  --theme-acceso-hover-1: #B04E1A;
+  --theme-acceso-hover-2: #8F3D12;
+  --theme-acceso-border: #1F7A78;
+  --theme-boveda-header-1: #221F1C;
+  --theme-boveda-header-2: #3D3733;
+  --theme-header-btn-1: #1F7A78;
+  --theme-header-btn-2: #14514F;
+  --theme-trophy-1: #E0A22C;
+  --theme-trophy-2: #C1571F;
+  --theme-btn-trofeos-1: #B04E1A;
+  --theme-btn-trofeos-2: #8F3D12;
+}
+
+/* ============================================
+   CUADERNO - Papel rayado
+   Tinta indigo, grafito, linea de margen roja.
+   ============================================ */
+[data-theme="cuaderno"] {
+  --theme-grad-1: #2A4B8D;
+  --theme-grad-2: #1C3566;
+  --theme-primary: #2A4B8D;
+  --theme-primary-dark: #1C3566;
+  --theme-primary-rgb: 42, 75, 141;
+  /* Rojo de boligrafo un punto mas oscuro que el de la linea de margen:
+     #D64545 da 4.38:1 y se queda corto para texto blanco en los chips. */
+  --theme-active: #BE3B3B;
+  --theme-active-rgb: 190, 59, 59;
+  --theme-accent: #BE3B3B;
+  --theme-accent-dark: #A32F2F;
+  --theme-bg: #F8F8F4;
+  --theme-card-hover: linear-gradient(135deg, #FFFFFF, #F1F1EA);
+  --theme-btn-hero-1: #2A4B8D;
+  --theme-btn-hero-2: #3E68B8;
+  --theme-btn-hero-shadow: #14264A;
+  --theme-nav-1: #4A4F58;
+  --theme-nav-2: #23262B;
+  --theme-progress-1: #2A4B8D;
+  /* #6C8FD4 daba 3.2:1 bajo el texto blanco de .boton-calificar */
+  --theme-progress-2: #3E68B8;
+  --theme-spinner: #2A4B8D;
+  --theme-acceso-hover-1: #2A4B8D;
+  --theme-acceso-hover-2: #1C3566;
+  --theme-acceso-border: #D64545;
+  --theme-boveda-header-1: #23262B;
+  --theme-boveda-header-2: #3C4048;
+  --theme-header-btn-1: #4A4F58;
+  --theme-header-btn-2: #23262B;
+  --theme-trophy-1: #D9A441;
+  --theme-trophy-2: #B5842B;
+  --theme-btn-trofeos-1: #2A4B8D;
+  --theme-btn-trofeos-2: #1C3566;
+}
+
+/* ============================================
+   BAUHAUS - Blanco hueso + primarios planos + negro
+   grad-1 y grad-2 casi iguales a proposito: el estilo es bloque
+   de color plano, no degradado.
+   ============================================ */
+[data-theme="bauhaus"] {
+  --theme-grad-1: #21409A;
+  --theme-grad-2: #1B3580;
+  --theme-primary: #21409A;
+  --theme-primary-dark: #162C6B;
+  --theme-primary-rgb: 33, 64, 154;
+  --theme-active: #D62828;
+  --theme-active-rgb: 214, 40, 40;
+  --theme-accent: #D62828;
+  --theme-accent-dark: #A31D1D;
+  --theme-bg: #F2F0EB;
+  --theme-card-hover: linear-gradient(135deg, #FFFFFF, #EAE7E0);
+  --theme-btn-hero-1: #D62828;
+  --theme-btn-hero-2: #F2B705;
+  --theme-btn-hero-shadow: #8F1616;
+  --theme-nav-1: #111111;
+  --theme-nav-2: #000000;
+  --theme-progress-1: #F2B705;
+  --theme-progress-2: #D62828;
+  --theme-spinner: #21409A;
+  --theme-acceso-hover-1: #21409A;
+  --theme-acceso-hover-2: #162C6B;
+  --theme-acceso-border: #D62828;
+  --theme-boveda-header-1: #111111;
+  --theme-boveda-header-2: #2E2E2E;
+  --theme-header-btn-1: #21409A;
+  --theme-header-btn-2: #1B3580;
+  --theme-trophy-1: #F2B705;
+  --theme-trophy-2: #D99500;
+  --theme-btn-trofeos-1: #111111;
+  --theme-btn-trofeos-2: #000000;
+}
+
 /* Pizarrón dark mode overrides */
 [data-theme="pizarron"] h1,
 [data-theme="pizarron"] h2,

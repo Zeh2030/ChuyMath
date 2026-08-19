@@ -32,10 +32,37 @@ misma colección, cero cambios de infraestructura.
 
 ---
 
-## 2. TEMAS VISUALES ✅ (9 temas)
+## 2. TEMAS VISUALES ✅ (13 temas)
 
-aventurero, princesa, espacial, océano, explorador, selva, arcoíris, elegante, pizarrón.
+**Para niños (9)**: aventurero, princesa, espacial, océano, explorador, selva,
+arcoíris, elegante, pizarrón.
+**Sobrios / adultos (4)**: piano (marfil-ébano-latón, fondo con pentagrama),
+vinilo (crema-naranja-teal), cuaderno (papel rayado, tinta índigo),
+bauhaus (hueso + primarios planos).
+
 Fix reciente: texto blanco sobre caja blanca en temas oscuros (commit 767da4a).
+
+**Alta de un tema = 4 puntos de registro** (no uno):
+1. `src/styles/themes.css` — bloque `[data-theme="<id>"]` con los 30 tokens.
+2. `src/components/layout/PageWrapper.css` — `.bg-<id>`, que es el **fondo real**
+   de la página. OJO: `--theme-bg` está definido en los 13 temas y **no lo consume
+   nadie**; es código muerto. Los patrones de fondo van aquí.
+3. `src/pages/Perfil.jsx` — array del selector. Campo opcional `swatch` (un
+   `background` CSS completo) para temas que no se explican con dos colores;
+   si no, `color1`/`color2`.
+4. `src/components/layout/PageWrapper.jsx` — cadena de ternarios de escenografía.
+   **El `else` son 3 nubes**: un tema nuevo las hereda si no se le contempla.
+   Los 4 sobrios se saltan con el set `SIN_ESCENOGRAFIA`.
+
+Solo 16 de los 30 tokens se consumen. Los dominantes son `--theme-grad-1/-2`
+(widgets grandes del dashboard, pestaña activa, header de Bóveda) y
+`--theme-active` (chips de filtro y spinner).
+
+**Costo**: un tema **claro** es ~30 líneas y cero overrides (los 11 claros no
+tienen ninguno). Un tema **oscuro** cuesta ~45-48 reglas de override cada uno
+(espacial y pizarrón lo pagaron), porque la app tiene ~102 `background: white` y
+~127 declaraciones de texto oscuro hardcodeados. Antes de otro tema oscuro,
+conviene sanear esos inline styles.
 
 ---
 

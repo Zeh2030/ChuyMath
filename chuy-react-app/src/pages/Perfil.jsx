@@ -161,9 +161,17 @@ const Perfil = () => {
                 { id: 'oceano', label: 'Océano', color1: '#00BCD4', color2: '#0097A7' },
                 { id: 'explorador', label: 'Explorador', color1: '#4CAF50', color2: '#2E7D32' },
                 { id: 'selva', label: 'Selva', color1: '#1B5E20', color2: '#2E7D32' },
-                { id: 'arcoiris', label: 'Arcoíris', color1: '#FF6B6B', color2: '#FFD93D', rainbow: true },
+                { id: 'arcoiris', label: 'Arcoíris',
+                  swatch: 'linear-gradient(135deg, #FF6B6B, #FFD93D, #00B894, #6C5CE7, #A29BFE)' },
                 { id: 'elegante', label: 'Elegante', color1: '#8D6E63', color2: '#D4A574' },
                 { id: 'pizarron', label: 'Pizarrón', color1: '#2D4A3E', color2: '#1E3A2A' },
+                { id: 'piano', label: 'Piano', color1: '#1C1C1C', color2: '#C9A227' },
+                { id: 'vinilo', label: 'Vinilo', color1: '#B04E1A', color2: '#1F7A78' },
+                { id: 'cuaderno', label: 'Cuaderno', color1: '#2A4B8D', color2: '#D64545' },
+                // Bauhaus lleva swatch propio: un degradado azul no comunica nada,
+                // los tres primarios en franjas duras si.
+                { id: 'bauhaus', label: 'Bauhaus',
+                  swatch: 'linear-gradient(135deg, #D62828 33%, #F2B705 33% 66%, #21409A 66%)' },
               ].map((tema) => (
                 <button
                   key={tema.id}
@@ -172,9 +180,8 @@ const Perfil = () => {
                   className="perfil-theme-btn"
                   style={{
                     ...styles.themeButton,
-                    background: tema.rainbow
-                      ? 'linear-gradient(135deg, #FF6B6B, #FFD93D, #00B894, #6C5CE7, #A29BFE)'
-                      : `linear-gradient(135deg, ${tema.color1}, ${tema.color2})`,
+                    background: tema.swatch
+                      || `linear-gradient(135deg, ${tema.color1}, ${tema.color2})`,
                     ...(temaSeleccionado === tema.id ? styles.themeSelected : {}),
                   }}
                 >

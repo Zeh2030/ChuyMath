@@ -3,6 +3,13 @@ import { useAuth } from '../../hooks/useAuth';
 import { useProfile } from '../../hooks/useProfile';
 import './PageWrapper.css';
 
+// Los temas sobrios no llevan escenografia animada (ni el fallback de nubes):
+// el fondo estatico es justo lo que los distingue de los 9 temas de ninos.
+// OJO: el tema 'piano' NO tiene nada que ver con la materia 'piano'. Son campos
+// distintos del perfil (profile.tema vs materia) y clases distintas
+// (.bg-piano vs .materia-piano); coinciden solo en el nombre.
+const SIN_ESCENOGRAFIA = new Set(['piano', 'vinilo', 'cuaderno', 'bauhaus']);
+
 const PageWrapper = ({ children }) => {
   const { activeProfileId } = useAuth();
   const { profile } = useProfile(activeProfileId);
@@ -12,7 +19,7 @@ const PageWrapper = ({ children }) => {
     <div data-theme={tema}>
       {/* Fondo animado */}
       <div className={`background-sky bg-${tema}`}>
-        {tema === 'explorador' ? (
+        {SIN_ESCENOGRAFIA.has(tema) ? null : tema === 'explorador' ? (
           <>
             <div className="leaf l1">🍃</div>
             <div className="leaf l2">🍂</div>

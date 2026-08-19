@@ -342,6 +342,63 @@
   100% { transform: translateY(-110vh) scale(0.5); opacity: 0; }
 }
 
+/* ============================================
+   TEMAS SOBRIOS (piano, vinilo, cuaderno, bauhaus)
+   A diferencia de los otros 9, NO llevan escenografia animada:
+   el fondo es estatico y eso es justo lo que los distingue.
+   Ver SIN_ESCENOGRAFIA en PageWrapper.jsx.
+   ============================================ */
+
+/* ===== Piano theme background ===== */
+.bg-piano {
+  background:
+    /* Pentagrama: 5 lineas juntas y luego aire. Periodo 220px */
+    repeating-linear-gradient(to bottom,
+      transparent 0 96px,
+      rgba(28, 28, 28, 0.10) 96px 97px,
+      transparent 97px 106px,
+      rgba(28, 28, 28, 0.10) 106px 107px,
+      transparent 107px 116px,
+      rgba(28, 28, 28, 0.10) 116px 117px,
+      transparent 117px 126px,
+      rgba(28, 28, 28, 0.10) 126px 127px,
+      transparent 127px 136px,
+      rgba(28, 28, 28, 0.10) 136px 137px,
+      transparent 137px 220px),
+    linear-gradient(to bottom, #FBF9F3, #F4F1EA 45%, #EDE8DC 100%);
+}
+
+/* ===== Vinilo theme background ===== */
+/* Sin surcos finos a proposito: un repeating-radial-gradient de periodo
+   corto genera moire en pantallas HiDPI. Dos manchas suaves en su lugar. */
+.bg-vinilo {
+  background:
+    radial-gradient(circle at 78% 18%, rgba(31, 122, 120, 0.10) 0%, transparent 42%),
+    radial-gradient(circle at 12% 88%, rgba(193, 87, 31, 0.09) 0%, transparent 45%),
+    linear-gradient(to bottom, #FAF3E7, #F5EBDC 45%, #EFE2CE 100%);
+}
+
+/* ===== Cuaderno theme background ===== */
+/* Sin linea de margen vertical: el contenido va centrado con max-width en
+   .main-container, asi que una linea a offset fijo caeria en cualquier lado. */
+.bg-cuaderno {
+  background:
+    repeating-linear-gradient(to bottom,
+      rgba(122, 154, 201, 0) 0 27px,
+      rgba(122, 154, 201, 0.42) 27px 28px),
+    linear-gradient(to bottom, #FCFCFA, #F8F8F4 50%, #F1F1EA 100%);
+}
+
+/* ===== Bauhaus theme background ===== */
+/* Hard stops (0 180px, transparent 180px) = discos planos, no degradados:
+   es justo el punto del estilo. */
+.bg-bauhaus {
+  background:
+    radial-gradient(circle at 85% 12%, rgba(214, 40, 40, 0.10) 0 180px, transparent 180px),
+    radial-gradient(circle at 10% 82%, rgba(33, 64, 154, 0.09) 0 220px, transparent 220px),
+    linear-gradient(to bottom, #F7F5F1, #F2F0EB 100%);
+}
+
 /* Contenedor Principal */
 .main-container {
   max-width: 1100px;

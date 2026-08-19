@@ -52,8 +52,11 @@
   box-shadow: 0 6px 15px rgba(0,0,0,0.15);
 }
 
+/* Usa los tokens de navegacion, no los de header-btn: asi no queda identico a
+   su vecino .boveda-btn, y en aventurero da el mismo #3498db/#2980b9 que tenia
+   hardcodeado (o sea, el tema por defecto no cambia en nada). */
 .dashboard-btn {
-  background: linear-gradient(135deg, #3498db, #2980b9);
+  background: linear-gradient(135deg, var(--theme-nav-1), var(--theme-nav-2));
 }
 
 .boveda-btn {
