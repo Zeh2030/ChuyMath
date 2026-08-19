@@ -77,7 +77,11 @@ const Perfil = () => {
     '😮', '🤐', '😯', '😪', '😫', '😴', '😌', '😛', '😜', '😝',
     '🤤', '😒', '😓', '😔', '😕', '🙃', '🤑', '😲', '☹️', '🙁',
     // Objetos
-    '🚀', '⭐', '🌈', '⚽', '🏀', '🎮', '🎨', '🎹', '🎸', '🥁'
+    '🚀', '⭐', '🌈', '⚽', '🏀', '🎮', '🎨', '🎹', '🎸', '🥁',
+    // Para adultos: instrumentos, oficios y aficiones
+    '🎻', '🎷', '🎺', '🪕', '🎧', '🎼', '🎤', '📻', '💿', '🪗',
+    '🧑‍💻', '👨‍🏫', '👩‍🏫', '🧑‍🎨', '🧑‍🔬', '🧑‍🍳', '🧑‍⚕️', '🧑‍🌾', '🧑‍🔧', '🧑‍✈️',
+    '📚', '✍️', '📐', '🔭', '♟️', '🎯', '🏔️', '🚴', '🏃', '☕'
   ];
 
   if (profileLoading) {
@@ -273,7 +277,9 @@ const styles = {
   },
   avatarGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(5, minmax(0, 1fr))',
+    // auto-fill en vez de 5 columnas fijas: con 5 fijas, una tablet de 820px
+    // daba 32 filas de scroll para 190 avatares. Ahora se adapta al ancho real.
+    gridTemplateColumns: 'repeat(auto-fill, minmax(72px, 1fr))',
     gap: '15px',
     marginTop: '15px',
   },
@@ -298,7 +304,10 @@ const styles = {
   },
   themeGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+    // Igual que avatarGrid: 2 columnas fijas dejaban botones de ~300px de ancho
+    // para decir "Piano", y 13 temas en 7 filas. Tambien evita el hueco
+    // huerfano que dejaba un numero impar de temas en 2 columnas.
+    gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
     gap: '12px',
     marginTop: '15px',
   },

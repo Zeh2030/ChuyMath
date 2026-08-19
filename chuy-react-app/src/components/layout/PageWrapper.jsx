@@ -5,10 +5,13 @@ import './PageWrapper.css';
 
 // Los temas sobrios no llevan escenografia animada (ni el fallback de nubes):
 // el fondo estatico es justo lo que los distingue de los 9 temas de ninos.
+// Piano es la excepcion parcial: lleva notas sobre el pentagrama, pero QUIETAS
+// (ver .nota-piano en PageWrapper.css). Es el tema que vas a tener abierto
+// mientras practicas, y algo moviendose en la periferia estorba al leer.
 // OJO: el tema 'piano' NO tiene nada que ver con la materia 'piano'. Son campos
 // distintos del perfil (profile.tema vs materia) y clases distintas
 // (.bg-piano vs .materia-piano); coinciden solo en el nombre.
-const SIN_ESCENOGRAFIA = new Set(['piano', 'vinilo', 'cuaderno', 'bauhaus']);
+const SIN_ESCENOGRAFIA = new Set(['vinilo', 'cuaderno', 'bauhaus']);
 
 const PageWrapper = ({ children }) => {
   const { activeProfileId } = useAuth();
@@ -19,7 +22,20 @@ const PageWrapper = ({ children }) => {
     <div data-theme={tema}>
       {/* Fondo animado */}
       <div className={`background-sky bg-${tema}`}>
-        {SIN_ESCENOGRAFIA.has(tema) ? null : tema === 'explorador' ? (
+        {tema === 'piano' ? (
+          <>
+            <div className="nota-piano np1">♩</div>
+            <div className="nota-piano np2">♫</div>
+            <div className="nota-piano np3">♪</div>
+            <div className="nota-piano np4">♬</div>
+            <div className="nota-piano np5">♩</div>
+            <div className="nota-piano np6">♪</div>
+            <div className="nota-piano np7">♫</div>
+            <div className="nota-piano np8">♩</div>
+            <div className="nota-piano np9">♬</div>
+            <div className="nota-piano np10">♪</div>
+          </>
+        ) : SIN_ESCENOGRAFIA.has(tema) ? null : tema === 'explorador' ? (
           <>
             <div className="leaf l1">🍃</div>
             <div className="leaf l2">🍂</div>

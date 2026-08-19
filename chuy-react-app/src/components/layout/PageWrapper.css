@@ -368,11 +368,56 @@
     linear-gradient(to bottom, #FBF9F3, #F4F1EA 45%, #EDE8DC 100%);
 }
 
+/* Notas sobre el pentagrama. QUIETAS a proposito (sin animation): este es el
+   tema para practicar, y algo moviendose en la periferia estorba al leer el
+   teleprompter. Los `top` caen sobre las bandas del pentagrama, que se repite
+   cada 220px desde arriba del viewport (96-137, 316-357, 536-577, 756-797). */
+.nota-piano {
+  position: absolute;
+  color: rgba(28, 28, 28, 0.16);
+  font-size: 2rem;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.nota-piano.np1  { top: 100px; left: 2%;  }
+.nota-piano.np2  { top: 116px; left: 5.5%; font-size: 1.6rem; }
+.nota-piano.np3  { top: 320px; left: 3%;  font-size: 1.7rem; }
+.nota-piano.np4  { top: 540px; left: 1.6%; }
+.nota-piano.np5  { top: 762px; left: 4%;  font-size: 1.7rem; }
+.nota-piano.np6  { top: 108px; right: 2.4%; font-size: 1.7rem; }
+.nota-piano.np7  { top: 326px; right: 5%; }
+.nota-piano.np8  { top: 546px; right: 2%;  font-size: 1.6rem; }
+.nota-piano.np9  { top: 560px; right: 6%; font-size: 1.5rem; }
+.nota-piano.np10 { top: 768px; right: 3.2%; }
+
+/* Por debajo de ~700px ya no hay margen libre: las notas caerian detras de las
+   tarjetas, donde no se ven y solo ensucian. */
+@media (max-width: 700px) {
+  .nota-piano { display: none; }
+}
+
 /* ===== Vinilo theme background ===== */
 /* Sin surcos finos a proposito: un repeating-radial-gradient de periodo
    corto genera moire en pantallas HiDPI. Dos manchas suaves en su lugar. */
 .bg-vinilo {
   background:
+    /* Brillo del disco bajo la luz: banda ancha y diagonal */
+    linear-gradient(101deg,
+      rgba(255, 255, 255, 0) 34%,
+      rgba(255, 255, 255, 0.45) 47%,
+      rgba(255, 255, 255, 0) 60%),
+    /* Surcos. El centro va FUERA de la pantalla (116% -10%): asi se ven arcos
+       barriendo la pagina y no una diana en medio. Rampas suaves en vez de
+       stops duros y periodo de 16px => no hace moire a DPR 1.25 / 1.5, que es
+       lo que rompe la version ingenua (circulo al centro, 4px, stops duros).
+       Ademas .background-sky es position:fixed, asi que esta capa se rasteriza
+       una vez y nunca repinta al hacer scroll. */
+    repeating-radial-gradient(circle at 116% -10%,
+      rgba(34, 31, 28, 0.07) 0px,
+      rgba(34, 31, 28, 0)    8px,
+      rgba(34, 31, 28, 0.07) 16px),
     radial-gradient(circle at 78% 18%, rgba(31, 122, 120, 0.10) 0%, transparent 42%),
     radial-gradient(circle at 12% 88%, rgba(193, 87, 31, 0.09) 0%, transparent 45%),
     linear-gradient(to bottom, #FAF3E7, #F5EBDC 45%, #EFE2CE 100%);
