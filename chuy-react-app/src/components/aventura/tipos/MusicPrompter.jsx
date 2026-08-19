@@ -728,11 +728,13 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
           🎹
         </button>
 
-        {isFullscreen && (
-          <button className="mp-btn mp-btn-fullscreen" onClick={toggleFullscreen} title="Salir de pantalla completa">
-            ✕
-          </button>
-        )}
+        <button
+          className="mp-btn mp-btn-fullscreen"
+          onClick={toggleFullscreen}
+          title={isFullscreen ? 'Salir de pantalla completa' : 'Pantalla completa'}
+        >
+          {isFullscreen ? '✕' : '⛶'}
+        </button>
 
         <div className="mp-bpm-control">
           <span className="mp-bpm-label">BPM</span>
