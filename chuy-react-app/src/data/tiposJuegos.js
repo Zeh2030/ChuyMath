@@ -33,7 +33,7 @@ export const tiposJuegos = [
   { id: 'expediciones-en', emoji: '🗺️', nombre: 'Expeditions', tipo: 'expedicion-ingles', descripcion: 'Themed English journeys', materia: 'ingles' },
   { id: 'mini-story', emoji: '📖', nombre: 'Mini Stories', tipo: 'mini-story', descripcion: 'Read stories and answer questions', materia: 'ingles' },
   // Piano
-  { id: 'piano-prompter', emoji: '🎹', nombre: 'Teleprompter', tipo: 'piano-prompter', descripcion: 'Practica lectura de partituras', materia: 'piano' },
+  { id: 'piano-prompter', emoji: '🎹', nombre: 'PianoPrompter', tipo: 'piano-prompter', descripcion: 'Practica lectura de partituras', materia: 'piano' },
   { id: 'identifica-nota', emoji: '🎼', nombre: 'Identifica la Nota', tipo: 'identifica-nota', descripcion: 'Aprende a leer notas en el pentagrama', materia: 'piano' },
   { id: 'piano-opcion-multiple', emoji: '❓', nombre: 'Teoria Musical', tipo: 'opcion-multiple', descripcion: 'Preguntas sobre teoria musical', materia: 'piano' },
   { id: 'piano-tap-the-pairs', emoji: '🔗', nombre: 'Empareja', tipo: 'tap-the-pairs', descripcion: 'Empareja conceptos musicales', materia: 'piano' },
