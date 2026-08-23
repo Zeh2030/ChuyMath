@@ -280,6 +280,33 @@ Todo en **PianoPrompter.jsx** (no toca MusicPrompter ni el motor):
 
 ---
 
+## Feature: Digitacion (numeros de dedo) — PENDIENTE, bloqueado por datos
+
+> Anotado 2026-08-23. NO construir todavia: el cuello de botella no es tecnico,
+> es la FUENTE de los numeros. Dictarlos a mano es demasiado tedioso (probado
+> con el usuario). **Disparador para construirlo:** encontrar una fuente que ya
+> traiga la digitacion en datos — p.ej. un MusicXML con etiquetas `<fingering>`
+> (el de Clair de Lune de checker.by trae CERO; los numeritos que se ven en
+> MuseScore eran del arreglo oficial de Keveren, no descargable).
+
+### Diseño acordado (2 fases)
+
+- **Fase 1 — digitacion en la PARTITURA:** ABC tiene decoraciones `!1!`..`!5!`
+  que abcjs dibuja como numeros sobre las notas (igual que el libro) y se
+  deslizan con el PianoPrompter. Es solo contenido: el conversor de MusicXML
+  (scratchpad `convert-cdl.mjs`, o el pipeline que se arme) mapearia
+  `<fingering>N</fingering>` → `!N!` antes de la nota. Cero cambios de motor.
+- **Fase 2 — numero sobre la tecla iluminada:** requiere enlazar dedo↔nota en
+  la linea de tiempo del teclado (correlacion por startChar o canal paralelo
+  en el JSON). Solo si la Fase 1 demuestra ser util.
+
+### Regla de diseño
+La digitacion la pone un humano (maestra/usuario) o viene en los datos; la app
+solo la muestra. Una digitacion auto-generada seria mediocre (la buena
+digitacion es planeacion posicional).
+
+---
+
 ## Feature: Componente `identifica-nota` (NUEVO)
 
 ### Descripcion
