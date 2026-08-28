@@ -38,6 +38,11 @@ const METRO_LOOKAHEAD_MS = 250;
 const METRO_ACENTO_HZ = 1600;   // primer tiempo del compás
 const METRO_NORMAL_HZ = 1100;
 
+// Escalera de tempo: porcentajes del tempo original de la pieza. Practicar
+// lento y subir escalón a escalón es LA mecánica de estudio; con ±5 BPM había
+// que apretar ocho veces para bajar al 70%.
+const ESCALONES = [50, 60, 70, 80, 90, 100];
+
 const fmtTiempo = (ms) => {
   const s = Math.max(0, Math.round((ms || 0) / 1000));
   return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
@@ -639,25 +644,35 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
   useEffect(() => {
     if (!visualObjRef.current || !abcTargetRef.current) return;
 
+    // Posición ANTES de tirar el motor. Si estaba sonando hay que leer el reloj:
+    // elapsedPrev solo se actualiza al pausar y estaría viejo.
+    const posPrev = estadoRef.current === 'tocando'
+      ? elapsedPrevRef.current + (clockNow() - clockStartRef.current)
+      : elapsedPrevRef.current;
+
     cleanup();
     cancelarCuenta();
     synthRef.current = null;
-    translateXRef.current = 0;
     segIdxRef.current = 0;
-    elapsedPrevRef.current = 0;
     metroUltimoRef.current = -1;
-    setEstado('parado');
 
-    // Los puntos A-B viven en milisegundos, pero marcan COMPASES. Al cambiar el
-    // tempo la misma música cae en otro instante, así que se reescalan: marcas
-    // el tramo difícil una vez y lo bajas de velocidad sin volver a marcarlo.
+    // Los tiempos viven en milisegundos, pero marcan COMPASES. Al cambiar el
+    // tempo la misma música cae en otro instante, así que todo se reescala por
+    // el mismo factor: la posición actual y los dos puntos del bucle. Marcas el
+    // tramo difícil una vez y subes la escalera sin volver a marcarlo ni perder
+    // tu lugar (antes esto reiniciaba la pieza desde el compás 1).
     const prevBpm = bpmPrevRef.current;
-    if (prevBpm && prevBpm !== bpmActual) {
-      const f = prevBpm / bpmActual;
+    const f = prevBpm && prevBpm !== bpmActual ? prevBpm / bpmActual : 1;
+    if (f !== 1) {
       setLoopA(v => (v == null ? v : v * f));
       setLoopB(v => (v == null ? v : v * f));
     }
     bpmPrevRef.current = bpmActual;
+
+    // No se reanuda solo: quedar en pausa deja entrar con la cuenta del
+    // metrónomo, que es justo lo que quieres al cambiar de escalón.
+    const posNueva = posPrev * f;
+    setEstado(posNueva > 0 ? 'pausado' : 'parado');
 
     // Re-render
     abcTargetRef.current.innerHTML = '';
@@ -669,8 +684,20 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
 
     requestAnimationFrame(() => {
       measureViewport();
-      medirYMapear(bpmActual);
+      medirYMapear(bpmActual);   // reconstruye el mapa y reinicia el teclado
+
+      // Recolocarse en la misma música al nuevo tempo.
+      const fin = finMsRef.current || 0;
+      const destino = Math.max(0, Math.min(posNueva, fin));
+      elapsedPrevRef.current = destino;
+      ultimoProgresoRef.current = destino;
+      clockStartRef.current = clockNow();
+      segIdxRef.current = 0;
+      translateXRef.current = posEn(destino);
       applyTransform();
+      actualizarTeclado(destino);
+      metroUltimoRef.current = Math.ceil(destino / (beatMsRef.current || 1)) - 1;
+      setProgreso(fin ? destino / fin : 0);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bpmActual]);
@@ -901,6 +928,20 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
   const esTempoOriginal = bpmActual === bpmOriginal;
   const bucleActivo = loopA != null && loopB != null;
 
+  // ─── Escalera de tempo ───
+  const bpmDeEscalon = (pct) => Math.max(20, Math.min(200, Math.round((bpmOriginal * pct) / 100)));
+  // Solo se ilumina un escalón si el BPM cae exacto en él (con ± se sale de la escalera).
+  const escalonActual = ESCALONES.find((p) => bpmDeEscalon(p) === bpmActual) ?? null;
+  const subirEscalon = () => {
+    const i = escalonActual != null ? ESCALONES.indexOf(escalonActual) : -1;
+    // Fuera de la escalera (se usó ±5): subir al primer escalón por encima.
+    const siguiente = i >= 0
+      ? ESCALONES[i + 1]
+      : ESCALONES.find((p) => bpmDeEscalon(p) > bpmActual);
+    if (siguiente) setBpmActual(bpmDeEscalon(siguiente));
+  };
+  const puedeSubir = escalonActual !== 100 && bpmActual < bpmDeEscalon(100);
+
   const tecladoVisible = conTeclado && rangoT !== null;
 
   return (
@@ -1058,6 +1099,31 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
             </button>
           )}
         </div>
+
+        {/* Escalera de tempo: % del tempo original. Al cambiar de escalón NO se
+            pierde el lugar en la pieza ni el bucle marcado. */}
+        <div className="mp-escalera">
+          <span className="mp-escalera-label" title="Escalera de tempo: practica lento y ve subiendo">🪜</span>
+          {ESCALONES.map((p) => (
+            <button
+              key={p}
+              className={`mp-escalon ${escalonActual === p ? 'mp-escalon-on' : ''}`}
+              onClick={() => setBpmActual(bpmDeEscalon(p))}
+              aria-pressed={escalonActual === p}
+              title={`${p}% del tempo original — ${bpmDeEscalon(p)} BPM`}
+            >
+              {p}
+            </button>
+          ))}
+          <button
+            className="mp-escalon mp-escalon-subir"
+            onClick={subirEscalon}
+            disabled={!puedeSubir}
+            title="Subir un escalón"
+          >
+            ⏫
+          </button>
+        </div>
       </div>
 
       <p className="mp-instruction">
@@ -1072,10 +1138,10 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
           </span>
         )}
         {bucleActivo
-          ? ' Repitiendo ese tramo — cambia el BPM y el bucle se mantiene'
+          ? ' Repitiendo ese tramo — sube la escalera 🪜 y el bucle se mantiene'
           : esTempoOriginal
             ? 'Presiona Play y sigue las notas cuando pasen por la línea roja'
-            : ' — Al cambiar BPM se reinicia la canción'}
+            : ' — Al cambiar de tempo no pierdes tu lugar en la pieza'}
       </p>
     </div>
   );

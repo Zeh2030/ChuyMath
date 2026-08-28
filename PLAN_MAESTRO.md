@@ -1,4 +1,4 @@
-# Plan Maestro ChuyMath - Actualizado 2026-08-13
+# Plan Maestro ChuyMath - Actualizado 2026-08-28
 
 Estado real de cada módulo y pendientes vivos. Los programas detallados viven en el
 doc de cada materia (`_ciencias/PROGRAMA_CIENCIAS.md`, `_piano/PROGRAMA_PIANO.md`, etc.).
@@ -98,12 +98,44 @@ Fase 3 pendiente: PIN opcional de adulto.
 - `identifica-nota`: 13 lecciones (P1→P4, sostenidos/bemoles, graves, agudas, rango amplio).
 - Teoría con tipos reutilizados: mini-story compositores (7), tap-the-pairs, fill-the-gap,
   opcion-multiple, true-or-false, image-picker.
+- **Herramientas de práctica (2026-08-27/28)**: metrónomo con acento y cuenta de
+  entrada, y bucle A-B que se reescala al cambiar el BPM. Probadas por el usuario.
+  Todo en `MusicPrompter.jsx`; contenido y `PianoPrompter` sin tocar.
+  Escalera de tempo (50-100% del original) construida, pendiente de probar.
+  Detalle y decisiones en `_piano/PROGRAMA_PIANO.md` §Herramientas de práctica.
+
+### Track ADULTO (`PA1`..`PA4`) — decidido 2026-08-28
+El papá aprende piano en la misma plataforma. **No es "básico vs avanzado"**: un
+adulto principiante es principiante; cambia el ritmo, la secuencia y el tono.
+Separación por prefijo de nivel (`PA` no colisiona con `P1..P5` en el filtro de
+Bóveda). **Sin menú previo** — le cobraría un clic al hijo para servir al papá;
+el perfil activo ya es el mecanismo. Programa completo en `_piano/PROGRAMA_PIANO.md`.
+
+Hallazgo que manda en el diseño: los adultos abandonan por falta de **estructura
+de práctica** y por **culpa**, no por dificultad → el perfil adulto no lleva
+rachas ni estrellas, y las herramientas de práctica son la función de retención.
 
 ### Pendiente
-1. **Transcribir canciones del libro Yamaha 4** donde va el hijo (el usuario manda fotos).
-2. Acordes de mano izquierda de Zapatillas Rojas (el usuario los dicta).
-3. Validar al oído el selector de manos por separado.
-4. `identifica-acorde` (reutiliza ~90% de identifica-nota).
+1. **Digitación Fase 1** — ✅ **DESBLOQUEADA 2026-08-28**. Era el único bloqueo
+   de datos del módulo: [musetrainer/library](https://github.com/musetrainer/library)
+   (rama `master`) trae `Fur_Elise_fingered.mxl` con **219 etiquetas `<fingering>`**,
+   verificadas descargando el archivo. Mapea a `!1!`..`!5!` de ABC: puro contenido,
+   cero motor. Ojo con la licencia antes de commitear (ver PROGRAMA_PIANO).
+2. **Modo espera (entrada del alumno)** — el hueco real: la app nunca oye. Ya NO
+   requiere hardware MIDI (corrección: los apps líderes usan micrófono; verificar
+   contra notas esperadas es mucho más fácil que transcribir).
+3. Diario de práctica **sin rachas** (minutos y tempo alcanzado).
+4. **Transcribir canciones del libro Yamaha 4** donde va el hijo (el usuario manda fotos).
+5. Acordes de mano izquierda de Zapatillas Rojas (el usuario los dicta).
+6. Validar al oído el selector de manos por separado.
+7. `identifica-acorde` (reutiliza ~90% de identifica-nota).
+
+### Fuentes de repertorio (dominio público)
+- [musetrainer/library](https://github.com/musetrainer/library) — 79 MusicXML, 2 con
+  digitación. Trae Satie (Gymnopédie, Gnossienne), repertorio de adulto.
+- [Mutopia](https://www.mutopiaproject.org/) — 2124 piezas, >⅓ piano. **Ojo: LilyPond
+  + PDF + MIDI, NO MusicXML** — el camino sería MIDI→ABC, no MusicXML→ABC.
+- ⚠️ Einaudi y Yann Tiersen están en derechos. El repo es público.
 
 ---
 
@@ -168,6 +200,7 @@ Ramal con motor 3D propio (three.js, patrón Cubo3D + MezcladorColores):
 | **1** | Astronomía 3D (motor + lote C2-21..30) | 🔨 En construcción |
 | **2** | Ciencias C2-01 a C2-10 (experimentos — destraba al hijo) | Pendiente |
 | **3** | Piano: canciones Yamaha 4 (esperando fotos del usuario) | Bloqueado por usuario |
+| **3b** | Piano: digitación Fase 1 (fuente hallada) + lote `PA1` del track adulto | Listo para construir |
 | **4** | Letras: probar L1 con la niña → L2 | Bloqueado por prueba |
 | **5** | Inglés A1-13+ | Gradual |
 | **6** | Multi-perfil: desplegar reglas + migración (Firebase Console) | Bloqueado por usuario |

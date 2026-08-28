@@ -27,6 +27,69 @@ P5  → Intermedio        (Post-Yamaha)     — Futuro
 
 ---
 
+## Track ADULTO (`PA1`..`PA4`) — decidido 2026-08-28
+
+El papa quiere aprender piano en la misma plataforma. **NO es "piano avanzado"
+contra "piano basico"**: un adulto principiante es principiante. Lo que cambia
+es el RITMO, la SECUENCIA y el TONO, no la dificultad.
+
+### Por que un track aparte y no reusar P1..P4
+
+Investigacion sobre abandono en adultos (fuentes al final de esta seccion):
+
+- *"Adults quit when they spend months stuck on childish-sounding beginner
+  pieces. Adults want to feel like musicians."* → el repertorio de nino no sirve.
+- *"They quit because nobody ever taught them how to practice."* → el abandono
+  es por falta de ESTRUCTURA, no de talento. Por eso las herramientas de
+  practica (metronomo, bucle A-B, escalera de tempo) son la funcion de
+  retencion, no un extra.
+- Los adultos abandonan por **culpa** ("no practique, perdon") mas que por
+  dificultad. → **el perfil adulto NO debe llevar rachas ni estrellas**: una
+  racha rota es un amplificador de culpa. Registro neutro de minutos, si;
+  contador que regana, no.
+- *"Adults like to understand the reasons behind what they're learning."* →
+  cargar teoria y armonia AL FRENTE.
+
+### Diferencias con el track de nino
+
+| | Nino (P1..P4) | Adulto (PA1..PA4) |
+|---|---|---|
+| Teoria | Goteada, 1 concepto/semana | Al frente y comprimida (P1-T01..T10 = 2 sesiones) |
+| Armonia | Primer acorde en P2-T06 (~mes 8) | Triadas y I-IV-V-I desde PA1 |
+| Tecnica | No existe en el programa | Escalas, arpegios, Hanon 1-5 como piezas de prompter |
+| Repertorio | Twinkle, Mary Had a Little Lamb | Satie, Bach BWV 846, Chopin Op.28 No.7, blues de 12 compases |
+| Motivacion | Estrellas, historias "wow" | Diario de practica (minutos y tempo alcanzado) |
+
+### Como se separa en la app (cero infraestructura)
+
+Prefijo de nivel `PA1`..`PA4`. Verificado en `ExplorarTab.jsx`: el grupo sale de
+quitarle el sufijo al nivel (`n.replace(/-T?\d+$/, '')`) y el filtro usa
+`startsWith`, asi que `PA1` **no se cruza con `P1`**. Sigue el patron de
+PLAN_MAESTRO §1 (sub-seccion = solo tiles con id prefijado).
+
+Progresion acordada, en tres tiempos:
+1. **Hoy:** solo el prefijo `PA`. La Boveda ya lo agrupa sola.
+2. **Cuando haya contenido:** dos tiles — "Piano · Curso Yamaha" y "Piano · Adulto".
+3. **Si el tono estorba:** flag `esAdulto` en el perfil, espejo de `esPeque`.
+
+**NO se hace un menu previo**: le cobraria un clic al usuario principal (el
+hijo) para servir al secundario. El perfil activo ya es el mecanismo correcto.
+
+### Repertorio inicial sugerido (todo dominio publico)
+
+Satie *Gymnopedie No.1*, Bach *Preludio en Do* (BWV 846), Chopin *Preludio
+Op.28 No.7* (16 compases, Chopin real, tocable en 3 semanas), *Fur Elise*
+intro, blues de 12 compases en Do.
+
+⚠️ **Einaudi y Yann Tiersen** (los ganchos obvios para adulto) estan EN
+DERECHOS. El repo es publico. Solo dominio publico se commitea.
+
+Fuentes: [por que abandonan los adultos](https://www.angelesacademyofmusic.com/news/piano-practice-build-piano-skills-as-an-adult-teenager) ·
+[adultos vs ninos](https://www.tymmi.com/piano-lessons-adults-vs-children-teaching-methods/) ·
+[apps para adultos](https://www.pianostartguide.com/flowkey-vs-simply-piano/)
+
+---
+
 ## Tipos de actividad
 
 ### 1. `piano-prompter` (ya existe)
@@ -201,6 +264,93 @@ Estos componentes ya existen y se reutilizan con contenido de piano:
 
 ---
 
+## Feature: Herramientas de practica — ✅ CONSTRUIDAS 2026-08-27/28
+
+Todo vive en `MusicPrompter.jsx`; `PianoPrompter` y los JSON de contenido NO
+cambian. Sirven igual al nino y al adulto, pero para el adulto (que no tiene
+maestra) son la funcion de retencion, no un extra.
+
+### Metronomo 🥁 + cuenta de entrada — ✅ probado
+
+- Click sintetizado por nosotros (oscilador + envolvente), **NO** por el synth
+  de abcjs, para que suene **aunque la pieza este en mudo** — practicar con
+  click y sin guia es el caso normal.
+- Agendado con lookahead de 250 ms contra el reloj del AudioContext. El rAF solo
+  decide QUE agendar, nunca CUANDO suena: el pulso no tiembla aunque un frame
+  llegue tarde.
+- **`floor` y no `ceil`** al elegir el proximo tiempo: el primer frame llega
+  ~16 ms tarde y con `ceil` el tiempo 0 quedaba "pasado" y se perdia el click
+  del downbeat. Quien impide repetir un tiempo es el cursor `metroUltimo`.
+- Acento (1600 Hz) en el primer tiempo del compas; el resto a 1100 Hz.
+- **Compas compuesto: correcto sin trabajo extra.** Verificado con
+  `abcjs.parseOnly`: `getBeatLength()` devuelve negra con puntillo (0.375) en
+  6/8 y 9/8, asi que marca los pulsos que se sienten, no las corcheas:
+
+  | 4/4 | 3/4 | 2/4 | 6/8 | 9/8 |
+  |-----|-----|-----|-----|-----|
+  | 4   | 3   | 2   | 2   | 3   |
+
+- **Cuenta de entrada** atada al metronomo (si hay click, hay cuenta) para no
+  meter otro boton. El synth arranca DESPUES y el reloj se ancla en ese
+  instante: la garantia de cero deriva del Enfoque 4 queda intacta.
+
+### Bucle A-B 🔁 — ✅ probado
+
+- A y B se marcan al vuelo desde la posicion real de reproduccion. Al marcar B
+  el bucle arranca **de inmediato** (marcas el final del pasaje y ya se repite).
+- Al pasar B se vuelve a A por `irA()`, el mismo camino que la barra de avance
+  (reancla reloj, audio, teclado y metronomo). Va ANTES del corte de fin de
+  pieza para que un bucle en el ultimo compas siga dando vueltas.
+- **Al cambiar el BPM los puntos se reescalan**: marcan COMPASES, no
+  milisegundos. Marcas el tramo dificil una vez y lo bajas de velocidad.
+- `irA()` se movio arriba de `animate()`: el bucle lo necesita en su lista de
+  dependencias, que se evalua en tiempo de definicion.
+
+### Escalera de tempo 🪜 — construida 2026-08-28, PENDIENTE DE PROBAR
+
+- Escalones fijos al **50/60/70/80/90/100 % del tempo original** de la pieza.
+  Con ±5 BPM habia que apretar ocho veces para llegar al 70%.
+- Boton ⏫ para subir un escalon. Si el BPM quedo fuera de la escalera (se uso
+  ±5), sube al primer escalon por encima.
+- **Cambiar de tempo ya NO reinicia la pieza.** Antes se volvia al compas 1, lo
+  que hacia la escalera inutil trabajando un pasaje. Ahora la posicion se
+  reescala por el mismo factor que el bucle y **queda en pausa** (no se reanuda
+  sola): asi entras con la cuenta del metronomo, que es justo lo que quieres al
+  cambiar de escalon. Se corrigio tambien el texto de ayuda, que prometia lo
+  contrario.
+- La escalera + el bucle A-B juntos son la mecanica de estudio completa: marcas
+  el tramo dificil una vez, y subes escalones sin volver a marcarlo.
+- **Deliberadamente NO hay escalera automatica** ("sube solo al tocarlo bien"):
+  sin entrada del alumno no se puede saber si estuvo bien, y subir a ciegas cada
+  N vueltas seria arbitrario. Se construye cuando exista el modo espera.
+
+---
+
+## Feature: Entrada del alumno (modo espera) — PENDIENTE
+
+**Es el hueco real de la plataforma**: la app muestra y toca, pero **nunca oye**.
+Para el nino con maestra eso basta; para un adulto autodidacta no hay ciclo de
+retroalimentacion. "Wait mode" (el scroll no avanza hasta que aciertas) es
+funcion con nombre propio en Flowkey y es lo que sostiene a un autodidacta.
+
+**Correccion importante (2026-08-28):** en un analisis previo se descarto el
+microfono por "no funciona con polifonia". **Fue demasiado tajante.** Simply
+Piano, Skoove, Flowkey y Yousician usan microfono y funcionan con pianos
+acusticos. El matiz que si sobrevive: la transcripcion polifonica GENERAL es
+dificil, pero **verificar contra notas esperadas es mucho mas facil** — y ese es
+el unico problema que tenemos, porque siempre sabemos que deberia sonar.
+
+→ **El modo espera NO requiere comprar hardware MIDI.** MIDI (Web MIDI API,
+nativo en Chrome, sin libreria) sigue siendo mas confiable y mas barato de
+programar, y `Teclado.jsx` ya tiene la API imperativa `setActivas` lista para
+iluminar lo que el alumno presiona. Pero ya no es prerrequisito.
+
+Valor progresivo: (1) eco en el teclado de pantalla, (2) quizzes que se
+contestan TOCANDO la tecla en vez de hacer clic (la variante "Nota → Tecla" ya
+esta disenada arriba), (3) modo espera en el prompter, (4) puntuacion.
+
+---
+
 ## Feature: Selector de manos (MEJORA al teleprompter)
 
 > ✅ **IMPLEMENTADO 2026-07-14** en PianoPrompter.jsx + PianoPrompter.css.
@@ -280,14 +430,42 @@ Todo en **PianoPrompter.jsx** (no toca MusicPrompter ni el motor):
 
 ---
 
-## Feature: Digitacion (numeros de dedo) — PENDIENTE, bloqueado por datos
+## Feature: Digitacion (numeros de dedo) — ✅ DESBLOQUEADO 2026-08-28
 
-> Anotado 2026-08-23. NO construir todavia: el cuello de botella no es tecnico,
-> es la FUENTE de los numeros. Dictarlos a mano es demasiado tedioso (probado
-> con el usuario). **Disparador para construirlo:** encontrar una fuente que ya
-> traiga la digitacion en datos — p.ej. un MusicXML con etiquetas `<fingering>`
-> (el de Clair de Lune de checker.by trae CERO; los numeritos que se ven en
-> MuseScore eran del arreglo oficial de Keveren, no descargable).
+> **Historia:** anotado 2026-08-23 como bloqueado. El cuello de botella nunca fue
+> tecnico sino la FUENTE de los numeros: dictarlos a mano resulto demasiado
+> tedioso (probado con el usuario), y el MusicXML de Clair de Lune de checker.by
+> trae CERO etiquetas (los numeritos que se ven en MuseScore eran del arreglo
+> oficial de Keveren, no descargable). El disparador acordado era "encontrar una
+> fuente que ya traiga la digitacion en datos".
+
+**Fuente encontrada y VERIFICADA** (descargada e inspeccionada, no solo citada):
+
+| Fuente | Que trae | Nota |
+|--------|----------|------|
+| [musetrainer/library](https://github.com/musetrainer/library) | 79 MusicXML de dominio publico. `scores/Fur_Elise_fingered.mxl` = **219 etiquetas `<fingering>`**; `WA_Mozart_Marche_Turque_..._fingered.mxl` | Rama `master`, no `main`. Tambien trae Gymnopedie No.1 y Gnossienne No.1 de Satie (repertorio de adulto) |
+| [ThumbSet](https://explore.openaire.eu/search/result?pid=10.5281%2Fzenodo.6433702) | 2523 partituras de MuseScore con digitacion | Ruidosa; si dos piezas no bastan |
+| [PIG dataset](https://arxiv.org/pdf/1904.10237) | 150 piezas anotadas por pianistas reales | Uso academico |
+
+Estructura confirmada en el archivo real — es el estandar de MusicXML:
+
+```xml
+<note>
+  <pitch><step>E</step><octave>5</octave></pitch>
+  <staff>1</staff>
+  <notations>
+    <technical><fingering>4</fingering></technical>
+  </notations>
+</note>
+```
+
+Mapea directo a las decoraciones `!1!`..`!5!` de ABC. **La Fase 1 es puro
+contenido: cero cambios de motor.**
+
+> ⚠️ **Cautela de licencia antes de commitear al repo publico:** musetrainer
+> dice "public domain", pero los archivos vienen de subidas de MuseScore. La
+> OBRA es dominio publico; una digitacion editorial concreta es zona gris.
+> Para uso personal no hay problema.
 
 ### Diseño acordado (2 fases)
 
