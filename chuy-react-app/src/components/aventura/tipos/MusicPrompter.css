@@ -466,3 +466,166 @@
   .mp-fullscreen .mp-btn { padding: 10px 18px; font-size: 1rem; }
   .mp-fullscreen .mp-header h3 { font-size: 1.3rem; }
 }
+
+/* ─────────────────────────────────────────────────────────────
+   Metrónomo, cuenta de entrada y bucle A-B (herramientas de práctica)
+   ───────────────────────────────────────────────────────────── */
+
+.mp-btn-metro-on {
+  background: linear-gradient(135deg, #16a085, #0e806a);
+  color: white;
+  box-shadow: 0 3px 0 #0a6252;
+  font-size: 1.2rem;
+  padding: 10px 16px;
+}
+
+/* Cuenta de entrada: número grande encima de la partitura */
+.mp-cuenta {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(20, 26, 38, 0.55);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.mp-cuenta-num {
+  font-size: clamp(4rem, 18vh, 9rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+  animation: mp-cuenta-pop 0.25s ease-out;
+}
+
+@keyframes mp-cuenta-pop {
+  from { transform: scale(1.4); opacity: 0.3; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mp-cuenta-num { animation: none; }
+}
+
+/* Tramo del bucle sobre la barra de avance */
+.mp-loop-zona {
+  position: absolute;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(22, 160, 133, 0.45);
+  box-shadow: inset 0 0 0 1px rgba(22, 160, 133, 0.8);
+  pointer-events: none;
+}
+
+.mp-loop-marca {
+  position: absolute;
+  top: -1px;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  background: #16a085;
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 800;
+  line-height: 16px;
+  text-align: center;
+  pointer-events: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+/* Control A-B, con la misma caja que el control de BPM */
+.mp-loop-control {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #f0f4f8;
+  padding: 6px 12px;
+  border-radius: 12px;
+}
+
+.mp-loop-label { font-size: 1rem; }
+
+.mp-loop-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #16a085;
+  background: white;
+  color: #16a085;
+  font-weight: 800;
+  cursor: pointer;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  line-height: 1;
+}
+
+.mp-loop-btn:hover:not(:disabled) { background: #16a085; color: white; }
+
+.mp-loop-btn.mp-loop-on {
+  background: #16a085;
+  color: white;
+  box-shadow: 0 0 0 3px rgba(22, 160, 133, 0.22);
+}
+
+.mp-loop-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.mp-loop-clear {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #e74c3c;
+  background: white;
+  color: #e74c3c;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.mp-loop-clear:hover { background: #e74c3c; color: white; }
+
+.mp-loop-badge {
+  display: inline-block;
+  background: #e8f8f5;
+  color: #0e806a;
+  border-radius: 8px;
+  padding: 2px 8px;
+  font-weight: 700;
+  margin-right: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Fullscreen: mismos ajustes que recibe el control de BPM */
+.mp-fullscreen .mp-loop-control {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 14px;
+}
+
+.mp-fullscreen .mp-loop-btn {
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  color: #1abc9c;
+  border-color: #1abc9c;
+}
+
+.mp-fullscreen .mp-loop-btn:hover:not(:disabled),
+.mp-fullscreen .mp-loop-btn.mp-loop-on { background: #16a085; color: white; }
+
+.mp-fullscreen .mp-loop-clear { background: transparent; }
+.mp-fullscreen .mp-loop-clear:hover { background: #e74c3c; }
+
+.mp-fullscreen .mp-loop-badge { background: rgba(26, 188, 156, 0.18); color: #1abc9c; }
+
+@media (max-width: 600px) {
+  .mp-loop-control { margin-top: 8px; }
+}

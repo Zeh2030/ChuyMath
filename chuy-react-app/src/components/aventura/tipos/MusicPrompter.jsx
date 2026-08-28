@@ -31,6 +31,13 @@ const estimarCompases = (abc) => {
 const VOL_NORMAL = 1;
 const VOL_BAJITO = 0.4;
 
+// Metrónomo: cuánto se agenda por delante. El Web Audio necesita lookahead
+// (agendar en el futuro con `currentTime` exacto); rAF solo decide QUÉ agendar,
+// nunca CUÁNDO suena — por eso el click no tiembla aunque el frame llegue tarde.
+const METRO_LOOKAHEAD_MS = 250;
+const METRO_ACENTO_HZ = 1600;   // primer tiempo del compás
+const METRO_NORMAL_HZ = 1100;
+
 const fmtTiempo = (ms) => {
   const s = Math.max(0, Math.round((ms || 0) / 1000));
   return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
@@ -100,6 +107,14 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
   const [rangoT, setRangoT] = useState(null);    // {min, max} MIDI de la pieza
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [cargando, setCargando] = useState(false);
+  // Metrónomo: preferencia persistida. Encendido implica cuenta de entrada al Play.
+  const [metronomo, setMetronomo] = useState(() => {
+    try { return localStorage.getItem('chuy_metronomo') === 'si'; } catch { return false; }
+  });
+  const [cuenta, setCuenta] = useState(0);       // tiempos que faltan de la cuenta de entrada
+  // Bucle A-B, en ms de la pieza. null = sin marcar.
+  const [loopA, setLoopA] = useState(null);
+  const [loopB, setLoopB] = useState(null);
 
   const containerRef = useRef(null);
   const abcTargetRef = useRef(null);
@@ -129,17 +144,105 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
   const tecladoElapsedRef = useRef(-1); // último elapsed visto (detecta saltos atrás)
   const tecladoRotoRef = useRef(false); // autodesactivación si algo falla
 
+  // Metrónomo y bucle: todo en refs porque los lee el bucle de animación.
+  const beatMsRef = useRef(0);          // duración de UN tiempo (60000/qpm)
+  const beatsCompasRef = useRef(4);     // tiempos por compás (para el acento)
+  const metroUltimoRef = useRef(-1);    // último índice de tiempo ya agendado
+  const metroFuentesRef = useRef([]);   // osciladores agendados (para poder cancelarlos)
+  const metronomoRef = useRef(metronomo);
+  const loopRef = useRef({ a: null, b: null });
+  const cuentaRafRef = useRef(null);
+  const cuentaCanceladaRef = useRef(false);
+  const cuentaUltimaRef = useRef(-1);
+  const bpmPrevRef = useRef(bpm || 80);
+
   const synthRef = useRef(null);
   const visualObjRef = useRef(null);
   const audioContextRef = useRef(null);
   const estadoRef = useRef('parado');
 
   useEffect(() => { estadoRef.current = estado; }, [estado]);
+  useEffect(() => { metronomoRef.current = metronomo; }, [metronomo]);
+  useEffect(() => { loopRef.current = { a: loopA, b: loopB }; }, [loopA, loopB]);
 
   // Mismo reloj que el sintetizador; respaldo a performance.now() si no hay audio.
   const clockNow = useCallback(() => (
     audioContextRef.current ? audioContextRef.current.currentTime * 1000 : performance.now()
   ), []);
+
+  const asegurarAudioContext = useCallback(() => {
+    if (!audioContextRef.current) {
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (AC) audioContextRef.current = new AC();
+    }
+    return audioContextRef.current;
+  }, []);
+
+  // ─── Metrónomo ───
+  // Click sintetizado por nosotros (no por el synth de abcjs) para que suene
+  // aunque la pieza esté muda: practicar con click y sin guía es lo normal.
+  const clickMetronomo = useCallback((tSeg, acento) => {
+    const ctx = audioContextRef.current;
+    if (!ctx) return;
+    try {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'square';
+      osc.frequency.value = acento ? METRO_ACENTO_HZ : METRO_NORMAL_HZ;
+      // Envolvente corta y percusiva; exponencial no admite 0, de ahí el 0.0001.
+      gain.gain.setValueAtTime(0.0001, tSeg);
+      gain.gain.exponentialRampToValueAtTime(acento ? 0.3 : 0.17, tSeg + 0.002);
+      gain.gain.exponentialRampToValueAtTime(0.0001, tSeg + 0.045);
+      osc.connect(gain).connect(ctx.destination);
+      osc.start(tSeg);
+      osc.stop(tSeg + 0.06);
+      metroFuentesRef.current.push(osc);
+      osc.onended = () => {
+        const arr = metroFuentesRef.current;
+        const i = arr.indexOf(osc);
+        if (i >= 0) arr.splice(i, 1);
+      };
+    } catch { /* sin audio */ }
+  }, []);
+
+  // Cancela los clicks ya agendados que todavía no sonaron (pausa, seek, bucle).
+  const limpiarMetronomo = useCallback(() => {
+    const fuentes = metroFuentesRef.current;
+    metroFuentesRef.current = [];
+    for (const osc of fuentes) { try { osc.stop(); } catch { /* ya paró */ } }
+  }, []);
+
+  // Agenda los clicks que caen dentro de la ventana de lookahead.
+  // `elapsed` (ms de la pieza) → tiempo del AudioContext: es el mismo reloj,
+  // así que la conversión es exacta y el click no deriva del audio.
+  const programarMetronomo = useCallback((elapsed) => {
+    if (!metronomoRef.current) return;
+    const beatMs = beatMsRef.current;
+    if (!audioContextRef.current || !beatMs) return;
+
+    const fin = finMsRef.current || 0;
+    const porCompas = beatsCompasRef.current || 4;
+    const limite = elapsed + METRO_LOOKAHEAD_MS;
+    // `floor`, no `ceil`: el primer frame llega ~16ms tarde y con `ceil` el
+    // tiempo 0 quedaba ya "pasado" y se perdía el click del primer tiempo.
+    // Quien impide repetir un tiempo es el cursor `metroUltimo`, no el redondeo.
+    let n = Math.max(metroUltimoRef.current + 1, Math.floor(elapsed / beatMs));
+    while (n * beatMs < limite) {
+      const t = n * beatMs;
+      if (fin && t > fin) break;
+      const seg = (clockStartRef.current + (t - elapsedPrevRef.current)) / 1000;
+      clickMetronomo(seg, n % porCompas === 0);
+      metroUltimoRef.current = n;
+      n++;
+    }
+  }, [clickMetronomo]);
+
+  // Recoloca el cursor del metrónomo tras un salto (barra de avance, bucle, Play).
+  const recolocarMetronomo = useCallback((ms) => {
+    const beatMs = beatMsRef.current || 1;
+    metroUltimoRef.current = Math.ceil(ms / beatMs) - 1;
+    limpiarMetronomo();
+  }, [limpiarMetronomo]);
 
   const measureViewport = useCallback(() => {
     if (containerRef.current) {
@@ -190,6 +293,20 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
       const alto = Math.max(240, Math.ceil(svgRect.height) + 30);
       containerRef.current.style.setProperty('--mp-alto', `${alto}px`);
     }
+
+    // ─── Pulso para el metrónomo ───
+    // `qpm` cuenta tiempos-de-getBeatLength por minuto, así que UN tiempo dura
+    // siempre 60000/qpm ms sea cual sea el compás. Los tiempos por compás salen
+    // del numerador/denominador contra esa unidad (4/4 → 4; 3/4 → 3).
+    beatMsRef.current = 60000 / (qpm || 80);
+    try {
+      const beatLen = visualObj.getBeatLength() || 0.25;
+      const m = visualObj.getMeter?.()?.value?.[0];
+      const num = parseInt(m?.num, 10);
+      const den = parseInt(m?.den, 10);
+      const bc = num && den ? Math.round(num / (den * beatLen)) : 4;
+      beatsCompasRef.current = bc > 0 && bc <= 24 ? bc : 4;
+    } catch { beatsCompasRef.current = 4; }
 
     const puntos = [];
     let finMs = 0;
@@ -318,6 +435,9 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
   const cleanup = () => {
     if (rafIdRef.current) { cancelAnimationFrame(rafIdRef.current); rafIdRef.current = null; }
     if (synthRef.current) { try { synthRef.current.stop(); } catch { /* ya parado */ } }
+    const fuentes = metroFuentesRef.current;
+    metroFuentesRef.current = [];
+    for (const osc of fuentes) { try { osc.stop(); } catch { /* ya paró */ } }
   };
 
   // ─── Prepare synth (called on Play — requires user gesture) ───
@@ -328,10 +448,7 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     try {
       if (!visualObjRef.current) return;
 
-      if (!audioContextRef.current) {
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        audioContextRef.current = new AudioContext();
-      }
+      asegurarAudioContext();
       if (audioContextRef.current.state === 'suspended') {
         await audioContextRef.current.resume();
       }
@@ -419,17 +536,54 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     if (conTeclado) tecladoElapsedRef.current = Infinity;
   }, [conTeclado]);
 
+  // ─── Ir a un punto de la pieza (barra de avance, bucle A-B) ───
+  // conAudio=false mientras se arrastra (solo mueve la partitura); al soltar se
+  // salta el audio, así no se corta en cada micro-movimiento.
+  const irA = useCallback((ms, conAudio = true) => {
+    const fin = finMsRef.current || 0;
+    const target = Math.max(0, Math.min(ms, fin));
+
+    elapsedPrevRef.current = target;
+    clockStartRef.current = clockNow();
+    ultimoProgresoRef.current = target;
+
+    translateXRef.current = posEn(target);
+    applyTransform();
+    setProgreso(fin ? target / fin : 0);
+    // También el teclado (con el rAF detenido nadie más lo llamaría en pausa).
+    actualizarTeclado(target);
+    // El metrónomo se reancla al nuevo punto y suelta lo que tenía agendado.
+    recolocarMetronomo(target);
+
+    if (conAudio && synthRef.current) {
+      // seek en segundos: si está sonando reengancha el audio ahí; si está
+      // parado/pausado deja la posición lista para el siguiente start().
+      try { synthRef.current.seek(target / 1000, 'seconds'); } catch { /* sin audio */ }
+    }
+  }, [applyTransform, clockNow, posEn, actualizarTeclado, recolocarMetronomo]);
+
   // ─── Animación: x(t) por interpolación sobre el mapa ───
   const animate = useCallback(() => {
     if (!puntosRef.current.length) return;
 
     const elapsed = elapsedPrevRef.current + (clockNow() - clockStartRef.current);
 
+    // Bucle A-B: al pasar B se regresa a A por el mismo camino que la barra de
+    // avance (reancla reloj, audio, teclado y metrónomo). Va ANTES del final de
+    // pieza para que un bucle que termina en el último compás siga dando vueltas.
+    const { a, b } = loopRef.current;
+    if (a != null && b != null && elapsed >= b) {
+      irA(a, true);
+      rafIdRef.current = requestAnimationFrame(animate);
+      return;
+    }
+
     translateXRef.current = posEn(elapsed);
     applyTransform();
 
     // El teclado va DESPUÉS del scroll: la partitura se compromete primero.
     actualizarTeclado(elapsed);
+    programarMetronomo(elapsed);
 
     // Barra de avance: se actualiza ~10 veces por segundo, no cada frame.
     const fin = finMsRef.current || 1;
@@ -447,31 +601,7 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
       return;
     }
     rafIdRef.current = requestAnimationFrame(animate);
-  }, [applyTransform, clockNow, onTerminar, posEn, actualizarTeclado]);
-
-  // ─── Ir a un punto de la pieza (barra de avance) ───
-  // conAudio=false mientras se arrastra (solo mueve la partitura); al soltar se
-  // salta el audio, así no se corta en cada micro-movimiento.
-  const irA = useCallback((ms, conAudio = true) => {
-    const fin = finMsRef.current || 0;
-    const target = Math.max(0, Math.min(ms, fin));
-
-    elapsedPrevRef.current = target;
-    clockStartRef.current = clockNow();
-    ultimoProgresoRef.current = target;
-
-    translateXRef.current = posEn(target);
-    applyTransform();
-    setProgreso(fin ? target / fin : 0);
-    // También el teclado (con el rAF detenido nadie más lo llamaría en pausa).
-    actualizarTeclado(target);
-
-    if (conAudio && synthRef.current) {
-      // seek en segundos: si está sonando reengancha el audio ahí; si está
-      // parado/pausado deja la posición lista para el siguiente start().
-      try { synthRef.current.seek(target / 1000, 'seconds'); } catch { /* sin audio */ }
-    }
-  }, [applyTransform, clockNow, posEn, actualizarTeclado]);
+  }, [applyTransform, clockNow, onTerminar, posEn, actualizarTeclado, programarMetronomo, irA]);
 
   const msDesdeEvento = (e) => {
     const el = barraRef.current;
@@ -510,11 +640,24 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     if (!visualObjRef.current || !abcTargetRef.current) return;
 
     cleanup();
+    cancelarCuenta();
     synthRef.current = null;
     translateXRef.current = 0;
     segIdxRef.current = 0;
     elapsedPrevRef.current = 0;
+    metroUltimoRef.current = -1;
     setEstado('parado');
+
+    // Los puntos A-B viven en milisegundos, pero marcan COMPASES. Al cambiar el
+    // tempo la misma música cae en otro instante, así que se reescalan: marcas
+    // el tramo difícil una vez y lo bajas de velocidad sin volver a marcarlo.
+    const prevBpm = bpmPrevRef.current;
+    if (prevBpm && prevBpm !== bpmActual) {
+      const f = prevBpm / bpmActual;
+      setLoopA(v => (v == null ? v : v * f));
+      setLoopB(v => (v == null ? v : v * f));
+    }
+    bpmPrevRef.current = bpmActual;
 
     // Re-render
     abcTargetRef.current.innerHTML = '';
@@ -554,6 +697,51 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     } catch { /* fullscreen no disponible */ }
   };
 
+  // ─── Cuenta de entrada ───
+  // Un compás de clicks antes de arrancar, para entrar a tiempo. Se resuelve
+  // cuando el reloj de audio pasa el último tiempo; el synth NO se agenda aquí:
+  // arranca después, y el reloj se ancla en ese instante, así que la garantía
+  // de cero deriva del motor se mantiene intacta.
+  const correrCuentaEntrada = useCallback(() => new Promise((resolve) => {
+    const ctx = audioContextRef.current;
+    const beatMs = beatMsRef.current;
+    const porCompas = beatsCompasRef.current || 4;
+    if (!ctx || !beatMs) { resolve(); return; }
+
+    const t0 = ctx.currentTime + 0.12;  // margen para agendar sin cortar el 1er click
+    for (let i = 0; i < porCompas; i++) clickMetronomo(t0 + (i * beatMs) / 1000, i === 0);
+    const finSeg = t0 + (porCompas * beatMs) / 1000;
+
+    cuentaUltimaRef.current = -1;
+    const tick = () => {
+      if (cuentaCanceladaRef.current) {
+        cuentaRafRef.current = null;
+        setCuenta(0);
+        resolve();
+        return;
+      }
+      const restan = Math.ceil((finSeg - ctx.currentTime) / (beatMs / 1000));
+      if (restan <= 0) {
+        cuentaRafRef.current = null;
+        cuentaUltimaRef.current = -1;
+        setCuenta(0);
+        resolve();
+        return;
+      }
+      // Solo re-renderiza cuando el número cambia (4 veces, no 120).
+      if (restan !== cuentaUltimaRef.current) { cuentaUltimaRef.current = restan; setCuenta(restan); }
+      cuentaRafRef.current = requestAnimationFrame(tick);
+    };
+    tick();
+  }), [clickMetronomo]);
+
+  const cancelarCuenta = () => {
+    cuentaCanceladaRef.current = true;
+    if (cuentaRafRef.current) { cancelAnimationFrame(cuentaRafRef.current); cuentaRafRef.current = null; }
+    limpiarMetronomo();
+    setCuenta(0);
+  };
+
   // ─── Handlers ───
   const handlePlay = async () => {
     if (estado !== 'pausado') {
@@ -575,13 +763,33 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
       await prepareSynth(bpmActual);
     }
 
+    // Con metrónomo encendido hace falta contexto de audio aunque la pieza esté muda.
+    if (metronomoRef.current) asegurarAudioContext();
+
     if (audioContextRef.current?.state === 'suspended') {
       await audioContextRef.current.resume();
     }
 
     // Arranca desde donde esté el cursor: 0 tras Reset, o el punto elegido en
     // la barra de avance. Reanudar tras pausa usa el mismo camino.
-    const desdeMs = elapsedPrevRef.current;
+    let desdeMs = elapsedPrevRef.current;
+    // Con bucle activo, Play siempre entra DENTRO del tramo marcado.
+    const { a: lA, b: lB } = loopRef.current;
+    if (lA != null && lB != null && (desdeMs >= lB || desdeMs < lA)) desdeMs = lA;
+
+    // Cuenta de entrada: va atada al metrónomo (si hay click, hay cuenta).
+    if (metronomoRef.current && audioContextRef.current) {
+      cuentaCanceladaRef.current = false;
+      setEstado('cuenta');
+      await correrCuentaEntrada();
+      if (cuentaCanceladaRef.current) {
+        setEstado(desdeMs > 0 ? 'pausado' : 'parado');
+        return;
+      }
+    }
+
+    elapsedPrevRef.current = desdeMs;
+    recolocarMetronomo(desdeMs);
     if (volumen > 0 && synthRef.current) {
       try {
         synthRef.current.seek(desdeMs / 1000, 'seconds');
@@ -600,21 +808,67 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
   const handlePause = () => {
     elapsedPrevRef.current += clockNow() - clockStartRef.current;
     if (synthRef.current) { try { synthRef.current.pause(); } catch { /* sin audio */ } }
+    limpiarMetronomo();
     setEstado('pausado');
   };
 
   const handleReset = () => {
     cleanup();
+    cancelarCuenta();
     translateXRef.current = 0;
     segIdxRef.current = 0;
     elapsedPrevRef.current = 0;
     ultimoProgresoRef.current = 0;
+    metroUltimoRef.current = -1;
     applyTransform();
     reiniciarTeclado();
     setProgreso(0);
     setEstado('parado');
     synthRef.current = null;
   };
+
+  // ─── Metrónomo y bucle A-B ───
+  const toggleMetronomo = () => {
+    const nuevo = !metronomo;
+    if (nuevo) {
+      // Crear el AudioContext cambia la FUENTE del reloj (performance.now →
+      // AudioContext). Si ya se estaba tocando hay que reanclar, o el tiempo
+      // transcurrido daría un salto enorme.
+      const habia = !!audioContextRef.current;
+      const ctx = asegurarAudioContext();
+      if (ctx && !habia && estadoRef.current === 'tocando') {
+        elapsedPrevRef.current += performance.now() - clockStartRef.current;
+        clockStartRef.current = clockNow();
+      }
+      try { ctx?.resume?.(); } catch { /* sin audio */ }
+      metroUltimoRef.current = -1;
+    } else {
+      limpiarMetronomo();
+    }
+    try { localStorage.setItem('chuy_metronomo', nuevo ? 'si' : 'no'); } catch { /* sin storage */ }
+    setMetronomo(nuevo);
+  };
+
+  // Posición actual en ms, exacta aunque `progreso` solo se refresque 10 veces/s.
+  const elapsedActual = () => (
+    estadoRef.current === 'tocando'
+      ? elapsedPrevRef.current + (clockNow() - clockStartRef.current)
+      : elapsedPrevRef.current
+  );
+
+  const marcarA = () => {
+    const t = Math.max(0, Math.min(elapsedActual(), finMsRef.current || 0));
+    setLoopA(t);
+    if (loopB != null && loopB <= t + 500) setLoopB(null); // B dejó de tener sentido
+  };
+
+  const marcarB = () => {
+    const t = Math.max(0, Math.min(elapsedActual(), finMsRef.current || 0));
+    if (loopA == null || t <= loopA + 500) return; // tramo demasiado corto: se ignora
+    setLoopB(t);
+  };
+
+  const limpiarBucle = () => { setLoopA(null); setLoopB(null); };
 
   const toggleTeclado = () => {
     const nuevo = !conTeclado;
@@ -645,6 +899,7 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
 
   const bpmOriginal = bpm || 80;
   const esTempoOriginal = bpmActual === bpmOriginal;
+  const bucleActivo = loopA != null && loopB != null;
 
   const tecladoVisible = conTeclado && rangoT !== null;
 
@@ -663,6 +918,11 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
         )}
         <div className="mp-playhead"></div>
         <div className="mp-sheet" ref={abcTargetRef}></div>
+        {cuenta > 0 && (
+          <div className="mp-cuenta" aria-live="polite">
+            <span className="mp-cuenta-num">{cuenta}</span>
+          </div>
+        )}
       </div>
 
       {/* Teclado iluminado: HERMANO del viewport (capa aparte — encender teclas
@@ -691,13 +951,29 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
           aria-valuenow={Math.round(progreso * 100)}
         >
           <div className="mp-barra-fill" style={{ width: `${progreso * 100}%` }} />
+          {duracionMs > 0 && loopA != null && loopB != null && (
+            <div
+              className="mp-loop-zona"
+              style={{ left: `${(loopA / duracionMs) * 100}%`, width: `${((loopB - loopA) / duracionMs) * 100}%` }}
+            />
+          )}
+          {duracionMs > 0 && loopA != null && (
+            <div className="mp-loop-marca mp-loop-marca-a" style={{ left: `${(loopA / duracionMs) * 100}%` }}>A</div>
+          )}
+          {duracionMs > 0 && loopB != null && (
+            <div className="mp-loop-marca mp-loop-marca-b" style={{ left: `${(loopB / duracionMs) * 100}%` }}>B</div>
+          )}
           <div className="mp-barra-thumb" style={{ left: `${progreso * 100}%` }} />
         </div>
         <span className="mp-tiempo">{fmtTiempo(duracionMs)}</span>
       </div>
 
       <div className="mp-controls">
-        {estado !== 'tocando' ? (
+        {estado === 'cuenta' ? (
+          <button className="mp-btn mp-btn-pause" onClick={cancelarCuenta}>
+            ✕ Cancelar
+          </button>
+        ) : estado !== 'tocando' ? (
           <button className="mp-btn mp-btn-play" onClick={handlePlay} disabled={cargando}>
             ▶ {cargando ? 'Cargando...' : estado === 'pausado' ? 'Continuar' : 'Play'}
           </button>
@@ -729,12 +1005,47 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
         </button>
 
         <button
+          className={`mp-btn ${metronomo ? 'mp-btn-metro-on' : 'mp-btn-sound-off'}`}
+          onClick={toggleMetronomo}
+          aria-pressed={metronomo}
+          title={metronomo
+            ? 'Metrónomo encendido — el Play empieza con un compás de cuenta'
+            : 'Encender metrónomo (suena aunque bajes el volumen de la pieza)'}
+        >
+          🥁
+        </button>
+
+        <button
           className="mp-btn mp-btn-fullscreen"
           onClick={toggleFullscreen}
           title={isFullscreen ? 'Salir de pantalla completa' : 'Pantalla completa'}
         >
           {isFullscreen ? '✕' : '⛶'}
         </button>
+
+        {/* Bucle A-B: marca un tramo y se repite solo. Los puntos se toman de
+            donde vaya la reproducción, así que se marcan al vuelo. */}
+        <div className="mp-loop-control">
+          <span className="mp-loop-label">🔁</span>
+          <button
+            className={`mp-loop-btn ${loopA != null ? 'mp-loop-on' : ''}`}
+            onClick={marcarA}
+            title="Marcar aquí el INICIO del tramo a repetir"
+          >
+            A
+          </button>
+          <button
+            className={`mp-loop-btn ${loopB != null ? 'mp-loop-on' : ''}`}
+            onClick={marcarB}
+            disabled={loopA == null}
+            title={loopA == null ? 'Primero marca A' : 'Marcar aquí el FINAL del tramo a repetir'}
+          >
+            B
+          </button>
+          {(loopA != null || loopB != null) && (
+            <button className="mp-loop-clear" onClick={limpiarBucle} title="Quitar el bucle">✕</button>
+          )}
+        </div>
 
         <div className="mp-bpm-control">
           <span className="mp-bpm-label">BPM</span>
@@ -755,9 +1066,16 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
             {bpmActual < bpmOriginal ? '🐢 Lento' : '🐇 Rápido'} ({bpmActual}/{bpmOriginal})
           </span>
         )}
-        {esTempoOriginal
-          ? 'Presiona Play y sigue las notas cuando pasen por la línea roja'
-          : ' — Al cambiar BPM se reinicia la canción'}
+        {bucleActivo && (
+          <span className="mp-loop-badge">
+            🔁 {fmtTiempo(loopA)} – {fmtTiempo(loopB)}
+          </span>
+        )}
+        {bucleActivo
+          ? ' Repitiendo ese tramo — cambia el BPM y el bucle se mantiene'
+          : esTempoOriginal
+            ? 'Presiona Play y sigue las notas cuando pasen por la línea roja'
+            : ' — Al cambiar BPM se reinicia la canción'}
       </p>
     </div>
   );
