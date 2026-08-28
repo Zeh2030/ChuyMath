@@ -290,6 +290,10 @@ maestra) son la funcion de retencion, no un extra.
   |-----|-----|-----|-----|-----|
   | 4   | 3   | 2   | 2   | 3   |
 
+  **Validado al oido** por el usuario (2026-08-28): Clair de Lune (9/8) suena a
+  3 por compas y Twinkle (4/4) a 4, con el acento en el primero. Se temia tener
+  que corregir a mano el compas compuesto; no hizo falta.
+
 - **Cuenta de entrada** atada al metronomo (si hay click, hay cuenta) para no
   meter otro boton. El synth arranca DESPUES y el reloj se ancla en ese
   instante: la garantia de cero deriva del Enfoque 4 queda intacta.

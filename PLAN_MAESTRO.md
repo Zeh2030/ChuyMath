@@ -99,7 +99,8 @@ Fase 3 pendiente: PIN opcional de adulto.
 - Teoría con tipos reutilizados: mini-story compositores (7), tap-the-pairs, fill-the-gap,
   opcion-multiple, true-or-false, image-picker.
 - **Herramientas de práctica (2026-08-27/28)**: metrónomo con acento y cuenta de
-  entrada, y bucle A-B que se reescala al cambiar el BPM. Probadas por el usuario.
+  entrada, y bucle A-B que se reescala al cambiar el BPM. Validadas al oído por
+  el usuario, compás compuesto incluido (Clair de Lune 9/8 marca 3, Twinkle 4).
   Todo en `MusicPrompter.jsx`; contenido y `PianoPrompter` sin tocar.
   Escalera de tempo (50-100% del original) construida, pendiente de probar.
   Detalle y decisiones en `_piano/PROGRAMA_PIANO.md` §Herramientas de práctica.
