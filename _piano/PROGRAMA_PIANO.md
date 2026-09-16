@@ -81,8 +81,11 @@ Satie *Gymnopedie No.1*, Bach *Preludio en Do* (BWV 846), Chopin *Preludio
 Op.28 No.7* (16 compases, Chopin real, tocable en 3 semanas), *Fur Elise*
 intro, blues de 12 compases en Do.
 
-⚠️ **Einaudi y Yann Tiersen** (los ganchos obvios para adulto) estan EN
-DERECHOS. El repo es publico. Solo dominio publico se commitea.
+**Construidas (2026-09-16):** `PA1-01` Für Elise · El tema y `PA1-02` Für Elise ·
+Seccion A completa, con digitacion (ver §Digitacion → Piezas construidas).
+
+Einaudi y Yann Tiersen estan en derechos. Con el uso actual (personal + amigos)
+no es impedimento — ver la decision de licencias en §Digitacion.
 
 Fuentes: [por que abandonan los adultos](https://www.angelesacademyofmusic.com/news/piano-practice-build-piano-skills-as-an-adult-teenager) ·
 [adultos vs ninos](https://www.tymmi.com/piano-lessons-adults-vs-children-teaching-methods/) ·
@@ -278,10 +281,37 @@ maestra) son la funcion de retencion, no un extra.
 - Agendado con lookahead de 250 ms contra el reloj del AudioContext. El rAF solo
   decide QUE agendar, nunca CUANDO suena: el pulso no tiembla aunque un frame
   llegue tarde.
-- **`floor` y no `ceil`** al elegir el proximo tiempo: el primer frame llega
-  ~16 ms tarde y con `ceil` el tiempo 0 quedaba "pasado" y se perdia el click
-  del downbeat. Quien impide repetir un tiempo es el cursor `metroUltimo`.
+- El primer frame llega ~16 ms tarde: ese click aun se toca (con `ceil` sobre
+  una rejilla se perdia el del primer tiempo). Uno muy atrasado (pestaña
+  congelada, > 80 ms) se salta.
 - Acento (1600 Hz) en el primer tiempo del compas; el resto a 1100 Hz.
+
+- **Anacrusa — BUG corregido 2026-09-16.** El metronomo original contaba una
+  rejilla desde 0, asi que en una pieza con anacrusa el acento caia en el tiempo
+  equivocado de TODOS los compases. Lo destapo Für Elise (empieza con dos
+  semicorcheas), pero **Zapatillas Rojas tambien tiene anacrusa** (`.A |`) y
+  sufria el mismo error. Ahora los clicks salen de los inicios de compas REALES
+  que marca abcjs (`measureStart` en `noteTimings`), con dos funciones puras en
+  `utils/musica.js`:
+  - `pulsosMetronomo`: compas completo → clicks desde su inicio con acento;
+    compas incompleto a media pieza (anacrusa, o la anacrusa que vuelve tras una
+    1a casilla) → clicks contados hacia atras desde el tiempo fuerte, sin acento.
+  - `cuentaDeEntrada`: la cuenta CONTINUA la rejilla de la pieza y dura al menos
+    un compas. Desde un tiempo fuerte es un compas, como siempre; con anacrusa
+    cuenta "1 2 3 | 1 2" y la anacrusa entra en el 3; desde medio compas (bucle o
+    pausa) entra en su tiempo exacto.
+  - OJO: el `measureStart` se lee ANTES de descartar eventos sin elemento: abcjs
+    marca asi el inicio de compas cuando una ligadura cruza la barra.
+- **3/8 subdividido.** abcjs cuenta 3/8 como UN pulso por compas: un click por
+  compas no da nada que contar (a 50 % seria uno cada ~3 s). Si un compas tiene
+  un solo pulso, se subdivide en las figuras del numerador (3 corcheas). 6/8 y
+  9/8 no cambian.
+- **Verificado de punta a punta en Chrome (headless)**, dibujando cada pieza como
+  la app y con el codigo real del repo: Twinkle y Clair de Lune dan **exactamente
+  los mismos clicks** que el metronomo validado al oido (regresion); Für Elise
+  acentua el inicio exacto de sus 44 compases completos; Zapatillas acentua el
+  primer tiempo real. Desvio maximo entre clicks: 0.7 ms (abcjs redondea sus
+  milisegundos; inaudible).
 - **Compas compuesto: correcto sin trabajo extra.** Verificado con
   `abcjs.parseOnly`: `getBeatLength()` devuelve negra con puntillo (0.375) en
   6/8 y 9/8, asi que marca los pulsos que se sienten, no las corcheas:
@@ -297,6 +327,15 @@ maestra) son la funcion de retencion, no un extra.
 - **Cuenta de entrada** atada al metronomo (si hay click, hay cuenta) para no
   meter otro boton. El synth arranca DESPUES y el reloj se ancla en ese
   instante: la garantia de cero deriva del Enfoque 4 queda intacta.
+
+### Bug de tonalidad en PianoPrompter — corregido 2026-09-16
+
+`construirAbc` decidia si insertar el `K:` del encabezado con
+`notas.includes('K:')`. Un cambio de clave en linea (`[K:clef=treble]`) contiene
+"K:", asi que dejaba de insertar la tonalidad: en Do no se nota, pero en una pieza
+en Sol se perdia el Fa# de la armadura **en silencio**. Ahora solo cuenta un `K:`
+en su propia linea (`/^K:/m`). Verificado: con y sin cambios de clave, la
+partitura completa y cada mano sola suenan identicas.
 
 ### Bucle A-B 🔁 — ✅ probado
 
@@ -434,7 +473,7 @@ Todo en **PianoPrompter.jsx** (no toca MusicPrompter ni el motor):
 
 ---
 
-## Feature: Digitacion (numeros de dedo) — ✅ DESBLOQUEADO 2026-08-28
+## Feature: Digitacion (numeros de dedo) — ✅ FASE 1 CONSTRUIDA 2026-09-16
 
 > **Historia:** anotado 2026-08-23 como bloqueado. El cuello de botella nunca fue
 > tecnico sino la FUENTE de los numeros: dictarlos a mano resulto demasiado
@@ -463,24 +502,94 @@ Estructura confirmada en el archivo real — es el estandar de MusicXML:
 </note>
 ```
 
-Mapea directo a las decoraciones `!1!`..`!5!` de ABC. **La Fase 1 es puro
-contenido: cero cambios de motor.**
+Mapea directo a las decoraciones `!1!`..`!5!` de ABC (abcjs las maneja
+explicitamente: `write/creation/decoration.js`, casos "0".."5").
 
-> ⚠️ **Cautela de licencia antes de commitear al repo publico:** musetrainer
-> dice "public domain", pero los archivos vienen de subidas de MuseScore. La
-> OBRA es dominio publico; una digitacion editorial concreta es zona gris.
-> Para uso personal no hay problema.
+> **Licencias — decision del usuario (2026-09-16):** el proyecto es de uso
+> personal y, a lo mas, se comparte con amigos; no hay planes de venderlo. Con
+> eso, usar estas partituras y su digitacion esta bien. **Si algun dia se piensa
+> en vender, se revisa entonces que se puede y que no.** No volver a frenar
+> contenido por licencias mientras ese sea el uso.
 
 ### Diseño acordado (2 fases)
 
-- **Fase 1 — digitacion en la PARTITURA:** ABC tiene decoraciones `!1!`..`!5!`
-  que abcjs dibuja como numeros sobre las notas (igual que el libro) y se
-  deslizan con el PianoPrompter. Es solo contenido: el conversor de MusicXML
-  (scratchpad `convert-cdl.mjs`, o el pipeline que se arme) mapearia
-  `<fingering>N</fingering>` → `!N!` antes de la nota. Cero cambios de motor.
+- **Fase 1 — digitacion en la PARTITURA:** ✅ construida (ver abajo). Los numeros
+  se deslizan con el PianoPrompter porque son parte del pentagrama.
 - **Fase 2 — numero sobre la tecla iluminada:** requiere enlazar dedo↔nota en
   la linea de tiempo del teclado (correlacion por startChar o canal paralelo
   en el JSON). Solo si la Fase 1 demuestra ser util.
+
+### Conversor `_piano/_mxl-a-abc.js` (Fase 1)
+
+El conversor anterior vivio en un scratchpad y se perdio; este va en el repo.
+Sin dependencias propias (descomprime el `.mxl` leyendo el ZIP con zlib; abcjs lo
+toma de `chuy-react-app/node_modules`).
+
+```
+node _piano/_mxl-a-abc.js <archivo.mxl> --compases 0-24          # despliega repeticiones solo
+node _piano/_mxl-a-abc.js <archivo.mxl> --forma "0-8,0-7,9-23,10-22,8" --salida ...json
+node _piano/_genera-pa1.js                                        # regenera las piezas PA1
+```
+
+**Que traduce:** notas, acordes, silencios, ligaduras, anacrusa (por
+`implicit="yes"`, no adivinando), alteraciones (simula la regla "valen por octava
+hasta la barra", verificada igual en abcjs), cambios de clave a media pieza
+(`[K:clef=...]`, que conserva la armadura), repeticiones y casillas.
+
+**Decisiones:**
+- **Repeticiones DESPLEGADAS**, no con signos: un teleprompter se lee de corrido.
+  Semantica de MuseScore (un `:|` sin `|:` vuelve al inicio, anacrusa incluida).
+  En cada salto del orden se dibuja doble barra `||` como pista visual.
+- `--forma` para extractos que cierran en la tonica (el despliegue literal de la
+  seccion A de Für Elise termina en el compas 24, que lleva a la seccion B).
+- **Digitacion ARRIBA en ambas manos** (la izquierda queda entre pentagramas).
+  Se probo `%%ornament below`: abcjs pega los numeros a cabezas y plicas y se
+  vuelven ilegibles (comparado con capturas de Chrome). En acordes se apilan de
+  grave a agudo.
+- Emite `K:` explicito en las notas multi-voz (ver bug de PianoPrompter abajo).
+- La `unidad` (`L:`) es la figura mas grande que divide todas las duraciones.
+
+**Falla RUIDOSAMENTE** ante lo que no sabe traducir, con el compas exacto:
+notas de adorno, tresillos, notas guia, `<forward>`, varias voces en una mano,
+cambios de compas/armadura a media pieza, compases que no suman. Pero solo si el
+compas problematico **entra en lo pedido**: un adorno en el compas 25 no impide
+convertir 0-24.
+
+**Verificacion integrada — no escribe el JSON si falla:**
+1. Toca el ABC generado con el abcjs de la app y compara nota por nota
+   (altura + instante) contra el MusicXML **releido con un lector aparte**, sin
+   compartir nada con el lector principal. (Una primera version comparaba contra
+   el propio modelo y una prueba de mutacion demostro que no detectaba notas
+   perdidas: por eso el lector independiente.)
+2. Cuenta las digitaciones en el XML crudo contra las del ABC.
+3. Si despliega repeticiones solo: genera tambien la version ESCRITA con signos
+   de repeticion, deja que abcjs la despliegue por su cuenta y exige que suene
+   identica a su despliegue.
+
+**Prueba de mutacion (2026-09-16): 10/10 errores inyectados detectados** —
+accidentes perdidos, octavas corridas (con y sin crash), duraciones al doble,
+casillas que no avanzan, repeticion al compas equivocado, nota de acorde perdida
+(incluso conservando su dedo para esquivar el conteo), dedo descartado, mano
+izquierda desfasada.
+
+**Pendiente (cuando una pieza lo pida):** notas de adorno y tresillos (abcjs los
+soporta: `{g}A`, `(3abc`); con eso sale Für Elise completa (adornos en 25-36,
+tresillos en 79-83).
+
+### Piezas construidas (track adulto)
+
+| Archivo | Forma | Compases | Notas verificadas | Dedos |
+|---------|-------|----------|-------------------|-------|
+| `prompter/PA1-01_fur-elise-tema.json` | `0-8` | 9 | 53 | 24 |
+| `prompter/PA1-02_fur-elise-seccion-a.json` | `0-8,0-7,9-23,10-22,8` | 46 | 294 | 101 |
+
+- 3/8 a **bpm 42**: abcjs cuenta el pulso en negras con puntillo → corchea = 126.
+  La escalera al 50 % da corchea = 63.
+- PA1-02 es la seccion A tal como esta escrita, pero **cierra con el compas 8**
+  (La) en lugar del 24, que lleva a la seccion B. Esta dicho en su descripcion.
+- En PA1-02 la izquierda pasa a clave de Sol en los compases 13-16 (en ambas
+  pasadas) y regresa a Fa: verificado en capturas.
+- Para cargarlas: `/admin/migracion` → coleccion Piano → subir cada archivo.
 
 ### Regla de diseño
 La digitacion la pone un humano (maestra/usuario) o viene en los datos; la app

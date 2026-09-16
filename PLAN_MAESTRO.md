@@ -1,4 +1,4 @@
-# Plan Maestro ChuyMath - Actualizado 2026-08-28
+# Plan Maestro ChuyMath - Actualizado 2026-09-16
 
 Estado real de cada módulo y pendientes vivos. Los programas detallados viven en el
 doc de cada materia (`_ciencias/PROGRAMA_CIENCIAS.md`, `_piano/PROGRAMA_PIANO.md`, etc.).
@@ -104,6 +104,18 @@ Fase 3 pendiente: PIN opcional de adulto.
   Todo en `MusicPrompter.jsx`; contenido y `PianoPrompter` sin tocar.
   Escalera de tempo (50-100% del original) construida, pendiente de probar.
   Detalle y decisiones en `_piano/PROGRAMA_PIANO.md` §Herramientas de práctica.
+- **Digitación Fase 1 (2026-09-16)**: conversor `_piano/_mxl-a-abc.js` (MusicXML →
+  ABC con `<fingering>` → `!N!`, repeticiones desplegadas, cambios de clave) con
+  verificación nota por nota integrada contra un lector independiente del XML y
+  prueba de mutación 10/10. Piezas `PA1-01` Für Elise · El tema y `PA1-02` Sección
+  A completa; se regeneran con `node _piano/_genera-pa1.js`. Faltan adornos y
+  tresillos (Für Elise completa).
+- **Metrónomo con anacrusa (2026-09-16)**: el acento caía en el tiempo equivocado
+  en piezas con anacrusa — incluida **Zapatillas Rojas**. Ahora sigue los compases
+  reales de abcjs; 3/8 se subdivide en corcheas; la cuenta de entrada continúa la
+  rejilla. Regresión exacta en Twinkle y Clair de Lune (Chrome headless).
+- **Bug de tonalidad en PianoPrompter** (2026-09-16): un cambio de clave en línea
+  impedía insertar la armadura; en una pieza en Sol se perdía el Fa#.
 
 ### Track ADULTO (`PA1`..`PA4`) — decidido 2026-08-28
 El papá aprende piano en la misma plataforma. **No es "básico vs avanzado"**: un
@@ -117,11 +129,10 @@ de práctica** y por **culpa**, no por dificultad → el perfil adulto no lleva
 rachas ni estrellas, y las herramientas de práctica son la función de retención.
 
 ### Pendiente
-1. **Digitación Fase 1** — ✅ **DESBLOQUEADA 2026-08-28**. Era el único bloqueo
-   de datos del módulo: [musetrainer/library](https://github.com/musetrainer/library)
-   (rama `master`) trae `Fur_Elise_fingered.mxl` con **219 etiquetas `<fingering>`**,
-   verificadas descargando el archivo. Mapea a `!1!`..`!5!` de ABC: puro contenido,
-   cero motor. Ojo con la licencia antes de commitear (ver PROGRAMA_PIANO).
+1. **Probar en el piano**: PA1-01/02 (cargar con `/admin/migracion` → Piano),
+   metrónomo con anacrusa (Für Elise y Zapatillas), escalera de tempo.
+   Licencias: uso personal + amigos, sin venta → no es impedimento; se revisa solo
+   si algún día se vende (decisión del usuario 2026-09-16).
 2. **Modo espera (entrada del alumno)** — el hueco real: la app nunca oye. Ya NO
    requiere hardware MIDI (corrección: los apps líderes usan micrófono; verificar
    contra notas esperadas es mucho más fácil que transcribir).
@@ -201,7 +212,7 @@ Ramal con motor 3D propio (three.js, patrón Cubo3D + MezcladorColores):
 | **1** | Astronomía 3D (motor + lote C2-21..30) | 🔨 En construcción |
 | **2** | Ciencias C2-01 a C2-10 (experimentos — destraba al hijo) | Pendiente |
 | **3** | Piano: canciones Yamaha 4 (esperando fotos del usuario) | Bloqueado por usuario |
-| **3b** | Piano: digitación Fase 1 (fuente hallada) + lote `PA1` del track adulto | Listo para construir |
+| **3b** | Piano: probar PA1-01/02 con digitación + metrónomo con anacrusa | Bloqueado por prueba del usuario |
 | **4** | Letras: probar L1 con la niña → L2 | Bloqueado por prueba |
 | **5** | Inglés A1-13+ | Gradual |
 | **6** | Multi-perfil: desplegar reglas + migración (Firebase Console) | Bloqueado por usuario |

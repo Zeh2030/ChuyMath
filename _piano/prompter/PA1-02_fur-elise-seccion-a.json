@@ -1,0 +1,33 @@
+{
+  "id": "PA1-02_fur-elise-seccion-a",
+  "titulo": "Für Elise · Sección A completa",
+  "descripcion": "Toda la sección A con sus repeticiones, desplegadas para leerse de corrido. Versión de estudio: en lugar de pasar a la sección B, cierra en La.",
+  "tipo": "piano-prompter",
+  "materia": "piano",
+  "nivel": "PA1-02",
+  "fuente": {
+    "archivo": "Fur_Elise_fingered.mxl",
+    "url": "https://github.com/musetrainer/library/blob/master/scores/Fur_Elise_fingered.mxl",
+    "forma": "0-8,0-7,9-23,10-22,8",
+    "convertido": "2026-09-16"
+  },
+  "misiones": [
+    {
+      "id": "PA1-02_fur-elise-seccion-a-01",
+      "tipo": "piano-prompter",
+      "titulo": "Für Elise · Sección A completa",
+      "instruccion": "Tocas el tema dos veces, luego la parte que sube —la mano izquierda cambia a clave de Sol para alcanzar las notas agudas— y vuelves al tema. La doble barra marca dónde empieza cada repetición. Domina primero «El tema» antes de venir aquí.",
+      "autor": "Ludwig van Beethoven",
+      "bpm": 42,
+      "dificultad": "principiante",
+      "nivel": "PA1-02",
+      "configuracion": {
+        "compas": "3/8",
+        "tonalidad": "C",
+        "clave": "treble",
+        "unidad": "1/16"
+      },
+      "notas": "%%staves {1 2}\nK:C\nV:1 clef=treble\n!4!e ^d | e ^d e !1!B !4!=d c | A2 z !1!C !2!E !4!A | B2 z !1!E !2!^G !4!B | c2 z !1!E !5!e !3!^d | !4!e !3!^d e !1!B !4!=d c | A2 z C E A | B2 z !1!E !5!c B | A4 z2 || !4!e ^d | e ^d e !1!B !4!=d c | A2 z !1!C !2!E !4!A | B2 z !1!E !2!^G !4!B | c2 z !1!E !5!e !3!^d | !4!e !3!^d e !1!B !4!=d c | A2 z C E A | B2 z !1!E !5!c B || A2 z !1!B c d | e3 !1!G !5!f e | d3 !1!F !5!e d | c3 !1!E !5!d c | B2 z !1!E !5!e z | z !1!e !5!e' z z !2!^d | !3!e z z !3!^d e d | e ^d e B !4!=d c | A2 z C E A | B2 z E ^G B | c2 z E e ^d | e ^d e B !4!=d c | A2 z C E A | B2 z E c B | A2 z B c d || e3 !1!G !5!f e | d3 !1!F !5!e d | c3 !1!E !5!d c | B2 z !1!E !5!e z | z !1!e !5!e' z z !2!^d | !3!e z z !3!^d e d | e ^d e B !4!=d c | A2 z C E A | B2 z E ^G B | c2 z E e ^d | e ^d e B !4!=d c | A2 z C E A | B2 z E c B || A4 z2 |]\nV:2 clef=bass\nz2 | z6 | !5!A,, !2!E, !1!A, z z2 | !5!E,, !1!E, !2!^G, z z2 | A,, E, A, z z2 | z6 | A,, E, A, z z2 | E,, E, ^G, z z2 | A,, E, A, z z2 || z2 | z6 | !5!A,, !2!E, !1!A, z z2 | !5!E,, !1!E, !2!^G, z z2 | A,, E, A, z z2 | z6 | A,, E, A, z z2 | E,, E, ^G, z z2 || A,, E, A, z z2 | C, G, C z z2 | !5!G,, !1!G, !2!B, z z2 | A,, E, A, z z2 | !5!E,, !1!E, !2!E z z [K:clef=treble] !5!E | !1!e z z !3!^d !2!e z | z !3!^d e z z2 | z6 | [K:clef=bass] A,, E, A, z z2 | E,, E, ^G, z z2 | A,, E, A, z z2 | z6 | A,, E, A, z z2 | E,, E, ^G, z z2 | A,, E, A, z z2 || C, G, C z z2 | !5!G,, !1!G, !2!B, z z2 | A,, E, A, z z2 | !5!E,, !1!E, !2!E z z [K:clef=treble] !5!E | !1!e z z !3!^d !2!e z | z !3!^d e z z2 | z6 | [K:clef=bass] A,, E, A, z z2 | E,, E, ^G, z z2 | A,, E, A, z z2 | z6 | A,, E, A, z z2 | E,, E, ^G, z z2 || A,, E, A, z z2 |]"
+    }
+  ]
+}

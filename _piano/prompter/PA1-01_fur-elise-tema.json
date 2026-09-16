@@ -1,0 +1,33 @@
+{
+  "id": "PA1-01_fur-elise-tema",
+  "titulo": "Für Elise · El tema",
+  "descripcion": "Los primeros compases de Für Elise con la digitación de un pianista: la frase que todo el mundo reconoce.",
+  "tipo": "piano-prompter",
+  "materia": "piano",
+  "nivel": "PA1-01",
+  "fuente": {
+    "archivo": "Fur_Elise_fingered.mxl",
+    "url": "https://github.com/musetrainer/library/blob/master/scores/Fur_Elise_fingered.mxl",
+    "forma": "0-8",
+    "convertido": "2026-09-16"
+  },
+  "misiones": [
+    {
+      "id": "PA1-01_fur-elise-tema-01",
+      "tipo": "piano-prompter",
+      "titulo": "Für Elise · El tema",
+      "instruccion": "Los números son dedos: 1 pulgar, 2 índice, 3 medio, 4 anular, 5 meñique. Los de la mano derecha van arriba de su pentagrama; los de la izquierda, entre los dos pentagramas. Empieza en la escalera al 50 % y usa el bucle A-B en los compases que se te atoren.",
+      "autor": "Ludwig van Beethoven",
+      "bpm": 42,
+      "dificultad": "principiante",
+      "nivel": "PA1-01",
+      "configuracion": {
+        "compas": "3/8",
+        "tonalidad": "C",
+        "clave": "treble",
+        "unidad": "1/16"
+      },
+      "notas": "%%staves {1 2}\nK:C\nV:1 clef=treble\n!4!e ^d | e ^d e !1!B !4!=d c | A2 z !1!C !2!E !4!A | B2 z !1!E !2!^G !4!B | c2 z !1!E !5!e !3!^d | !4!e !3!^d e !1!B !4!=d c | A2 z C E A | B2 z !1!E !5!c B | A4 z2 |]\nV:2 clef=bass\nz2 | z6 | !5!A,, !2!E, !1!A, z z2 | !5!E,, !1!E, !2!^G, z z2 | A,, E, A, z z2 | z6 | A,, E, A, z z2 | E,, E, ^G, z z2 | A,, E, A, z z2 |]"
+    }
+  ]
+}
