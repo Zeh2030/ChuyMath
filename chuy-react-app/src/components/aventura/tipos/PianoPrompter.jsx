@@ -75,7 +75,10 @@ const PianoPrompter = ({ mision, onCompletar }) => {
       }
       const processedNotas = processed.join('\n');
       const header = ['X:1', `T:${titulo}`, `M:${compas}`, `L:${unidad}`].join('\n');
-      const notasWithKey = processedNotas.includes('K:')
+      // Solo cuenta un campo K: en su propia línea. Un cambio de clave en línea
+      // (`[K:clef=treble]`) también contiene "K:", y con `includes` se dejaba de
+      // insertar la tonalidad: en una pieza en Sol se perdía el Fa# de la armadura.
+      const notasWithKey = /^K:/m.test(processedNotas)
         ? processedNotas
         : processedNotas.replace(/(V:1)/, `K:${tonalidad}\n$1`);
       return header + '\n' + notasWithKey;

@@ -26,3 +26,83 @@ export const rangoTeclado = (midis, margen = 0) => {
   max = Math.ceil((max + 1) / 12) * 12 - 1; // sube al Si de su octava
   return { min: Math.max(21, min), max: Math.min(108, max) };
 };
+
+// ─── Metrónomo ───
+// Tolerancia en ms: los instantes de abcjs son flotantes.
+const TOL_MS = 1;
+
+/**
+ * Clicks del metrónomo alineados a los compases REALES de la pieza, no a una
+ * rejilla que arranca en 0. Con rejilla fija, una pieza con anacrusa (Für Elise
+ * empieza con dos semicorcheas) ponía el acento en el tiempo equivocado de TODOS
+ * los compases, y una repetición que vuelve a la anacrusa lo volvía a correr.
+ *
+ * - Compás completo: clicks desde su inicio; acento en el primero.
+ * - Compás incompleto a mitad de pieza (anacrusa, o la anacrusa que se repite
+ *   tras una 1a casilla): sus clicks se cuentan HACIA ATRÁS desde el compás
+ *   siguiente, donde cae el tiempo fuerte, y no llevan acento.
+ * - Compás incompleto al final: arranca en tiempo fuerte, cuenta hacia adelante.
+ *
+ * @param {number[]} inicios   ms donde empieza cada compás (0 se agrega si falta)
+ * @param {number}   finMs     fin de la pieza
+ * @param {number}   pulsoMs   separación entre clicks
+ * @param {number}   porCompas clicks en un compás completo
+ * @returns {{t: number, acento: boolean}[]} ordenados por t
+ */
+export const pulsosMetronomo = (inicios, finMs, pulsoMs, porCompas) => {
+  if (!(pulsoMs > 0) || !(porCompas > 0) || !(finMs > 0)) return [];
+  const compasMs = pulsoMs * porCompas;
+  const bordes = [0];
+  for (const t of [...inicios].sort((a, b) => a - b)) {
+    if (t > bordes[bordes.length - 1] + TOL_MS && t < finMs - TOL_MS) bordes.push(t);
+  }
+
+  const pulsos = [];
+  for (let i = 0; i < bordes.length; i++) {
+    const ini = bordes[i];
+    const fin = i + 1 < bordes.length ? bordes[i + 1] : finMs;
+    const incompleto = fin - ini < compasMs - TOL_MS;
+    const esUltimo = i === bordes.length - 1;
+
+    if (incompleto && !esUltimo) {
+      const atras = [];
+      for (let t = fin - pulsoMs; t >= ini - TOL_MS; t -= pulsoMs) atras.push({ t: Math.max(t, ini), acento: false });
+      pulsos.push(...atras.reverse());
+    } else {
+      for (let k = 0; ini + k * pulsoMs < fin - TOL_MS; k++) {
+        pulsos.push({ t: ini + k * pulsoMs, acento: k % porCompas === 0 });
+      }
+    }
+  }
+  return pulsos;
+};
+
+/**
+ * Cuenta de entrada que CONTINÚA la rejilla de la pieza: sus clicks caen donde
+ * caerían si la música ya viniera sonando, así el pulso no da un brinco al
+ * entrar. Dura al menos un compás completo, y termina justo en `desdeMs`.
+ *
+ * - Desde un tiempo fuerte: un compás ("1 2 3 4") — lo de siempre.
+ * - Desde una anacrusa: "1 2 3 | 1 2" y la anacrusa entra en el 3.
+ * - Desde medio compás (bucle o pausa): se cuenta desde el compás anterior.
+ *
+ * @param {number} desdeMs  donde va a empezar a sonar la pieza
+ * @param {{t: number, acento: boolean}[]} pulsos  los de pulsosMetronomo
+ * @returns {{pulsos: {t: number, acento: boolean}[], inicioMs: number}}
+ *   `t` en ms de la pieza (pueden ser negativos); la cuenta arranca en inicioMs.
+ */
+export const cuentaDeEntrada = (desdeMs, pulsos, pulsoMs, porCompas) => {
+  if (!(pulsoMs > 0) || !(porCompas > 0)) return { pulsos: [], inicioMs: desdeMs };
+  const compasMs = pulsoMs * porCompas;
+  // Primer tiempo fuerte en o después del arranque; sin él (final de la pieza),
+  // se cuenta un compás que termina donde empieza a sonar.
+  const fuerte = pulsos.find((p) => p.acento && p.t >= desdeMs - TOL_MS);
+  let inicioMs = (fuerte ? fuerte.t : desdeMs) - compasMs;
+  while (desdeMs - inicioMs < compasMs - TOL_MS) inicioMs -= compasMs;
+
+  const cuenta = [];
+  for (let k = 0; inicioMs + k * pulsoMs < desdeMs - TOL_MS; k++) {
+    cuenta.push({ t: inicioMs + k * pulsoMs, acento: k % porCompas === 0 });
+  }
+  return { pulsos: cuenta, inicioMs };
+};

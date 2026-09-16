@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import abcjs from 'abcjs';
 import './MusicPrompter.css';
 import Teclado from '../../piano/Teclado';
-import { rangoTeclado } from '../../../utils/musica';
+import { rangoTeclado, pulsosMetronomo, cuentaDeEntrada } from '../../../utils/musica';
 
 /**
  * Estima el número de compases contando barras `|` en las líneas de notas.
@@ -37,6 +37,8 @@ const VOL_BAJITO = 0.4;
 const METRO_LOOKAHEAD_MS = 250;
 const METRO_ACENTO_HZ = 1600;   // primer tiempo del compás
 const METRO_NORMAL_HZ = 1100;
+// Un click que el bucle de animación encuentra más atrasado que esto se salta.
+const METRO_TARDE_MS = 80;
 
 // Escalera de tempo: porcentajes del tempo original de la pieza. Practicar
 // lento y subir escalón a escalón es LA mecánica de estudio; con ±5 BPM había
@@ -150,9 +152,10 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
   const tecladoRotoRef = useRef(false); // autodesactivación si algo falla
 
   // Metrónomo y bucle: todo en refs porque los lee el bucle de animación.
-  const beatMsRef = useRef(0);          // duración de UN tiempo (60000/qpm)
-  const beatsCompasRef = useRef(4);     // tiempos por compás (para el acento)
-  const metroUltimoRef = useRef(-1);    // último índice de tiempo ya agendado
+  const pulsoMsRef = useRef(0);         // separación entre clicks
+  const pulsosPorCompasRef = useRef(4); // clicks en un compás completo
+  const pulsosRef = useRef([]);         // [{t, acento}] sobre los compases reales
+  const metroIdxRef = useRef(0);        // próximo click por agendar
   const metroFuentesRef = useRef([]);   // osciladores agendados (para poder cancelarlos)
   const metronomoRef = useRef(metronomo);
   const loopRef = useRef({ a: null, b: null });
@@ -220,32 +223,32 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
   // Agenda los clicks que caen dentro de la ventana de lookahead.
   // `elapsed` (ms de la pieza) → tiempo del AudioContext: es el mismo reloj,
   // así que la conversión es exacta y el click no deriva del audio.
+  // Los clicks salen de `pulsosRef` (alineados a los compases reales, ver
+  // pulsosMetronomo), no de una rejilla desde 0: así el acento cae bien aunque
+  // la pieza empiece con anacrusa.
   const programarMetronomo = useCallback((elapsed) => {
-    if (!metronomoRef.current) return;
-    const beatMs = beatMsRef.current;
-    if (!audioContextRef.current || !beatMs) return;
-
-    const fin = finMsRef.current || 0;
-    const porCompas = beatsCompasRef.current || 4;
+    if (!metronomoRef.current || !audioContextRef.current) return;
+    const pulsos = pulsosRef.current;
     const limite = elapsed + METRO_LOOKAHEAD_MS;
-    // `floor`, no `ceil`: el primer frame llega ~16ms tarde y con `ceil` el
-    // tiempo 0 quedaba ya "pasado" y se perdía el click del primer tiempo.
-    // Quien impide repetir un tiempo es el cursor `metroUltimo`, no el redondeo.
-    let n = Math.max(metroUltimoRef.current + 1, Math.floor(elapsed / beatMs));
-    while (n * beatMs < limite) {
-      const t = n * beatMs;
-      if (fin && t > fin) break;
-      const seg = (clockStartRef.current + (t - elapsedPrevRef.current)) / 1000;
-      clickMetronomo(seg, n % porCompas === 0);
-      metroUltimoRef.current = n;
-      n++;
+    let i = metroIdxRef.current;
+    while (i < pulsos.length && pulsos[i].t < limite) {
+      const p = pulsos[i];
+      // El primer frame llega ~16 ms tarde: ese click aún se toca (sonaría apenas
+      // tarde). Uno muy atrasado (pestaña congelada) se salta: sonaría fuera de lugar.
+      if (p.t >= elapsed - METRO_TARDE_MS) {
+        clickMetronomo((clockStartRef.current + (p.t - elapsedPrevRef.current)) / 1000, p.acento);
+      }
+      i++;
     }
+    metroIdxRef.current = i;
   }, [clickMetronomo]);
 
   // Recoloca el cursor del metrónomo tras un salto (barra de avance, bucle, Play).
   const recolocarMetronomo = useCallback((ms) => {
-    const beatMs = beatMsRef.current || 1;
-    metroUltimoRef.current = Math.ceil(ms / beatMs) - 1;
+    const pulsos = pulsosRef.current;
+    let i = 0;
+    while (i < pulsos.length && pulsos[i].t < ms - 1) i++;
+    metroIdxRef.current = i;
     limpiarMetronomo();
   }, [limpiarMetronomo]);
 
@@ -302,18 +305,31 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     // ─── Pulso para el metrónomo ───
     // `qpm` cuenta tiempos-de-getBeatLength por minuto, así que UN tiempo dura
     // siempre 60000/qpm ms sea cual sea el compás. Los tiempos por compás salen
-    // del numerador/denominador contra esa unidad (4/4 → 4; 3/4 → 3).
-    beatMsRef.current = 60000 / (qpm || 80);
+    // del numerador/denominador contra esa unidad (4/4 → 4; 3/4 → 3; 6/8 → 2;
+    // 9/8 → 3, verificado al oído).
+    const beatMs = 60000 / (qpm || 80);
+    let porCompas = 4;
+    let pulsoMs = beatMs;
     try {
       const beatLen = visualObj.getBeatLength() || 0.25;
       const m = visualObj.getMeter?.()?.value?.[0];
       const num = parseInt(m?.num, 10);
       const den = parseInt(m?.den, 10);
       const bc = num && den ? Math.round(num / (den * beatLen)) : 4;
-      beatsCompasRef.current = bc > 0 && bc <= 24 ? bc : 4;
-    } catch { beatsCompasRef.current = 4; }
+      porCompas = bc > 0 && bc <= 24 ? bc : 4;
+      // abcjs cuenta 3/8 como UN pulso por compás (negra con puntillo): un click
+      // cada compás no da nada que contar, y a tempo lento sería uno cada ~3 s.
+      // Con un solo pulso se subdivide en las figuras del numerador (3 corcheas).
+      if (porCompas === 1 && num > 1) {
+        pulsoMs = beatMs / num;
+        porCompas = num;
+      }
+    } catch { porCompas = 4; pulsoMs = beatMs; }
+    pulsoMsRef.current = pulsoMs;
+    pulsosPorCompasRef.current = porCompas;
 
     const puntos = [];
+    const iniciosCompas = [];
     let finMs = 0;
     try {
       visualObj.setTiming(qpm, 0);
@@ -323,6 +339,9 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
           return;
         }
         if (ev.type !== 'event') return;
+        // Antes de descartar eventos sin elemento: abcjs marca así el inicio de
+        // un compás cuando una ligadura cruza la barra.
+        if (ev.measureStart) iniciosCompas.push(ev.milliseconds || 0);
         const el = ev.elements?.[0]?.[0];
         if (!el) return;
         const x = el.getBoundingClientRect().left - svgRect.left - firstNoteOffsetRef.current;
@@ -350,6 +369,10 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     finMsRef.current = finMs;
     segIdxRef.current = 0;
     setDuracionMs(finMs);
+
+    // Clicks del metrónomo sobre los compases reales (anacrusa incluida).
+    pulsosRef.current = pulsosMetronomo(iniciosCompas, finMs, pulsoMs, porCompas);
+    metroIdxRef.current = 0;
 
     // ─── Línea de tiempo del TECLADO (cálculo aparte; el mapa de arriba no se toca) ───
     // setUpAudio entrega las voces YA separadas (track 0 = derecha, 1 = izquierda)
@@ -654,7 +677,7 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     cancelarCuenta();
     synthRef.current = null;
     segIdxRef.current = 0;
-    metroUltimoRef.current = -1;
+    metroIdxRef.current = 0;
 
     // Los tiempos viven en milisegundos, pero marcan COMPASES. Al cambiar el
     // tempo la misma música cae en otro instante, así que todo se reescala por
@@ -696,7 +719,7 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
       translateXRef.current = posEn(destino);
       applyTransform();
       actualizarTeclado(destino);
-      metroUltimoRef.current = Math.ceil(destino / (beatMsRef.current || 1)) - 1;
+      recolocarMetronomo(destino);
       setProgreso(fin ? destino / fin : 0);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -725,19 +748,23 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
   };
 
   // ─── Cuenta de entrada ───
-  // Un compás de clicks antes de arrancar, para entrar a tiempo. Se resuelve
-  // cuando el reloj de audio pasa el último tiempo; el synth NO se agenda aquí:
-  // arranca después, y el reloj se ancla en ese instante, así que la garantía
-  // de cero deriva del motor se mantiene intacta.
-  const correrCuentaEntrada = useCallback(() => new Promise((resolve) => {
+  // Clicks antes de arrancar, para entrar a tiempo. Continúan la rejilla de la
+  // pieza (ver cuentaDeEntrada): desde un tiempo fuerte es un compás, como
+  // siempre; con anacrusa cuenta "1 2 3 | 1 2" y la anacrusa entra en el 3.
+  // Se resuelve cuando el reloj de audio llega al punto de arranque; el synth NO
+  // se agenda aquí: arranca después y el reloj se ancla en ese instante, así que
+  // la garantía de cero deriva del motor se mantiene intacta.
+  const correrCuentaEntrada = useCallback((desdeMs) => new Promise((resolve) => {
     const ctx = audioContextRef.current;
-    const beatMs = beatMsRef.current;
-    const porCompas = beatsCompasRef.current || 4;
-    if (!ctx || !beatMs) { resolve(); return; }
+    const { pulsos, inicioMs } = cuentaDeEntrada(
+      desdeMs, pulsosRef.current, pulsoMsRef.current, pulsosPorCompasRef.current,
+    );
+    if (!ctx || !pulsos.length) { resolve(); return; }
 
     const t0 = ctx.currentTime + 0.12;  // margen para agendar sin cortar el 1er click
-    for (let i = 0; i < porCompas; i++) clickMetronomo(t0 + (i * beatMs) / 1000, i === 0);
-    const finSeg = t0 + (porCompas * beatMs) / 1000;
+    const aSeg = (ms) => t0 + (ms - inicioMs) / 1000;
+    for (const p of pulsos) clickMetronomo(aSeg(p.t), p.acento);
+    const finSeg = aSeg(desdeMs);
 
     cuentaUltimaRef.current = -1;
     const tick = () => {
@@ -747,15 +774,19 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
         resolve();
         return;
       }
-      const restan = Math.ceil((finSeg - ctx.currentTime) / (beatMs / 1000));
-      if (restan <= 0) {
+      const ahora = ctx.currentTime;
+      if (ahora >= finSeg) {
         cuentaRafRef.current = null;
         cuentaUltimaRef.current = -1;
         setCuenta(0);
         resolve();
         return;
       }
-      // Solo re-renderiza cuando el número cambia (4 veces, no 120).
+      // Cuenta regresiva de clicks: el número del click que está sonando.
+      let sonados = 0;
+      while (sonados < pulsos.length && aSeg(pulsos[sonados].t) <= ahora) sonados++;
+      const restan = pulsos.length - Math.max(0, sonados - 1);
+      // Solo re-renderiza cuando el número cambia (unas cuantas veces, no 120).
       if (restan !== cuentaUltimaRef.current) { cuentaUltimaRef.current = restan; setCuenta(restan); }
       cuentaRafRef.current = requestAnimationFrame(tick);
     };
@@ -808,7 +839,7 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     if (metronomoRef.current && audioContextRef.current) {
       cuentaCanceladaRef.current = false;
       setEstado('cuenta');
-      await correrCuentaEntrada();
+      await correrCuentaEntrada(desdeMs);
       if (cuentaCanceladaRef.current) {
         setEstado(desdeMs > 0 ? 'pausado' : 'parado');
         return;
@@ -846,7 +877,7 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     segIdxRef.current = 0;
     elapsedPrevRef.current = 0;
     ultimoProgresoRef.current = 0;
-    metroUltimoRef.current = -1;
+    metroIdxRef.current = 0;
     applyTransform();
     reiniciarTeclado();
     setProgreso(0);
@@ -868,7 +899,7 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
         clockStartRef.current = clockNow();
       }
       try { ctx?.resume?.(); } catch { /* sin audio */ }
-      metroUltimoRef.current = -1;
+      recolocarMetronomo(elapsedActual());
     } else {
       limpiarMetronomo();
     }
