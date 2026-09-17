@@ -40,6 +40,10 @@ const METRO_NORMAL_HZ = 1100;
 // Un click que el bucle de animación encuentra más atrasado que esto se salta.
 const METRO_TARDE_MS = 80;
 
+// Ajuste vertical de la partitura (ver medirContenido / ajustarVertical).
+const MARGEN_PARTITURA = 14;       // px libres arriba y abajo de las notas
+const ESCALA_MIN_PARTITURA = 0.5;  // no achicar más que esto aunque no quepa
+
 // Escalera de tempo: porcentajes del tempo original de la pieza. Practicar
 // lento y subir escalón a escalón es LA mecánica de estudio; con ±5 BPM había
 // que apretar ocho veces para bajar al 70%.
@@ -131,6 +135,11 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
   const playheadOffsetRef = useRef(150);
   const firstNoteOffsetRef = useRef(0);
   const musicWidthRef = useRef(0);
+  // Ajuste vertical: dónde están las notas dentro del SVG (a escala 1, relativo
+  // a su borde superior) y la escala CSS aplicada para que quepan en el viewport.
+  const cajaContenidoRef = useRef(null); // { top, alto } relativo al borde superior del viewport
+  const escalaRef = useRef(1);
+  const ajusteRef = useRef({ k: 1, ty: 0 }); // lo compone applyTransform con el scroll
 
   // Mapa tiempo→posición: [{t: ms, x: px desde la primera nota}], ordenado por t.
   // El último punto es el final de la pieza (recalibrado con synth.duration).
@@ -260,12 +269,63 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
   }, []);
 
   // ─── Apply CSS transform ───
+  // El scroll horizontal y el ajuste vertical van juntos en el CONTENEDOR (.mp-sheet).
+  // Nunca en el <svg>: abcjs implementa su propia escala (scale: 2) con un
+  // transform sobre el svg, y escribir ahí la borraba (partitura a la mitad).
+  // translate va antes que scale: el desplazamiento queda en px de pantalla.
   const applyTransform = useCallback(() => {
     const offset = playheadOffsetRef.current - firstNoteOffsetRef.current - translateXRef.current;
     if (abcTargetRef.current) {
-      abcTargetRef.current.style.transform = `translateX(${offset}px)`;
+      const { k, ty } = ajusteRef.current;
+      abcTargetRef.current.style.transformOrigin = '0 0';
+      abcTargetRef.current.style.transform = `translate(${offset}px, ${ty}px) scale(${k})`;
     }
   }, []);
+
+  // ─── Ajuste vertical de la partitura ───
+  // abcjs dibuja un SVG ~2.5 veces más alto que las notas: arriba la fila del
+  // título (centrado sobre miles de px de pentagrama, así que ni se ve) y abajo
+  // espacio vacío. Pegado arriba, en pantallas bajas —o con los controles en
+  // dos renglones— la mano izquierda quedaba cortada. Se mide dónde están las
+  // notas de verdad (grupos `.abcjs-staff-wrapper`, ~0 ms) y se centran; si no
+  // caben, se reducen. Es transform CSS: no se vuelve a dibujar ni toca el audio.
+  const medirContenido = useCallback(() => {
+    const svg = abcTargetRef.current?.querySelector('svg');
+    const vp = containerRef.current;
+    if (!svg || !vp) return;
+    // Medir sin ajuste (escala 1, sin desplazamiento vertical).
+    ajusteRef.current = { k: 1, ty: 0 };
+    applyTransform();
+    // El contenedor está en top:0 del viewport, así que la escala (origen
+    // arriba-izquierda) se mide desde el borde interior superior del viewport.
+    const origen = vp.getBoundingClientRect().top + vp.clientTop;
+    let arriba = Infinity;
+    let abajo = -Infinity;
+    svg.querySelectorAll('.abcjs-staff-wrapper').forEach((g) => {
+      const c = g.getBoundingClientRect();
+      if (c.height > 0) { arriba = Math.min(arriba, c.top); abajo = Math.max(abajo, c.bottom); }
+    });
+    if (!Number.isFinite(arriba)) {
+      const rr = svg.getBoundingClientRect();
+      arriba = rr.top;
+      abajo = rr.bottom;
+    }
+    cajaContenidoRef.current = { top: arriba - origen, alto: abajo - arriba };
+  }, [applyTransform]);
+
+  // Escala y centra las notas en el viewport. Devuelve la escala aplicada.
+  const ajustarVertical = useCallback(() => {
+    const vp = containerRef.current;
+    const caja = cajaContenidoRef.current;
+    if (!vp || !caja || caja.alto <= 0) return escalaRef.current;
+    const alto = vp.clientHeight;
+    const k = Math.max(ESCALA_MIN_PARTITURA, Math.min(1, (alto - 2 * MARGEN_PARTITURA) / caja.alto));
+    // Centro de las notas = centro del viewport.
+    const ty = (alto - caja.alto * k) / 2 - caja.top * k;
+    ajusteRef.current = { k, ty };
+    applyTransform();
+    return k;
+  }, [applyTransform]);
 
   const reiniciarTeclado = useCallback(() => {
     notaIdxRef.current = 0;
@@ -282,6 +342,19 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     const visualObj = visualObjRef.current;
     if (!svg || !visualObj) return;
 
+    // Primero el alto y la escala; recién después se miden las x, así todas las
+    // posiciones quedan en px de pantalla con la escala aplicada. El viewport se
+    // dimensiona por las NOTAS, no por el SVG (que trae título y vacío); en
+    // pantalla completa manda el flex y la escala hace que quepan.
+    medirContenido();
+    if (containerRef.current && cajaContenidoRef.current) {
+      // + bordes del viewport: si no, cabía 4 px justo y la escala quedaba en 0.99.
+      const bordes = containerRef.current.offsetHeight - containerRef.current.clientHeight;
+      const alto = Math.max(200, Math.ceil(cajaContenidoRef.current.alto + 2 * MARGEN_PARTITURA + bordes));
+      containerRef.current.style.setProperty('--mp-alto', `${alto}px`);
+    }
+    escalaRef.current = ajustarVertical();
+
     const svgRect = svg.getBoundingClientRect();
     const allNotes = svg.querySelectorAll('.abcjs-note, .abcjs-rest');
     if (allNotes.length > 0) {
@@ -292,14 +365,6 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     } else {
       firstNoteOffsetRef.current = 0;
       musicWidthRef.current = svgRect.width;
-    }
-
-    // Altura adaptativa: el viewport crece con la partitura real (líneas
-    // adicionales, grand staff). Vía variable CSS para que el modo fullscreen
-    // (flex) siga mandando sobre esta medida.
-    if (containerRef.current && svgRect.height > 0) {
-      const alto = Math.max(240, Math.ceil(svgRect.height) + 30);
-      containerRef.current.style.setProperty('--mp-alto', `${alto}px`);
     }
 
     // ─── Pulso para el metrónomo ───
@@ -342,9 +407,15 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
         // Antes de descartar eventos sin elemento: abcjs marca así el inicio de
         // un compás cuando una ligadura cruza la barra.
         if (ev.measureStart) iniciosCompas.push(ev.milliseconds || 0);
-        const el = ev.elements?.[0]?.[0];
-        if (!el) return;
-        const x = el.getBoundingClientRect().left - svgRect.left - firstNoteOffsetRef.current;
+        // Columna de tiempo: con dos manos `elements` trae una entrada por voz. Se
+        // toma la MÁS A LA IZQUIERDA. Antes era siempre la primera voz, y un
+        // silencio de compás completo se dibuja centrado: en la intro del Canon
+        // (derecha callada, izquierda tocando) cada inicio de compás quedaba media
+        // barra adelantado y la partitura se detenía y saltaba hacia atrás.
+        const primeros = (ev.elements || []).map((e) => e?.[0]).filter(Boolean);
+        if (!primeros.length) return;
+        const izquierda = Math.min(...primeros.map((e) => e.getBoundingClientRect().left));
+        const x = izquierda - svgRect.left - firstNoteOffsetRef.current;
         const t = ev.milliseconds || 0;
         const prev = puntos[puntos.length - 1];
         if (prev && Math.abs(prev.t - t) < 1) {
@@ -408,7 +479,7 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
       setRangoT(null);
     }
     reiniciarTeclado();
-  }, [multiVoice, mano, reiniciarTeclado]);
+  }, [multiVoice, mano, reiniciarTeclado, medirContenido, ajustarVertical]);
 
   // x(t): posición del scroll para un tiempo dado, interpolando en el mapa.
   // Pura salvo por segIdxRef (cursor monotónico que acelera el caso común).
@@ -739,6 +810,42 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
       document.removeEventListener('webkitfullscreenchange', onFsChange);
     };
   }, [measureViewport, applyTransform]);
+
+  // ─── Reajuste al cambiar el tamaño del viewport ───
+  // Pantalla completa, ventana, controles que bajan de renglón… Se re-escala SIN
+  // volver a dibujar ni tocar el audio: con origen a la izquierda, todas las x
+  // medidas escalan en la misma proporción, así que el mapa tiempo→posición se
+  // corrige multiplicando. Luego se recoloca la partitura en el instante actual.
+  const reajustarVertical = useCallback(() => {
+    if (!cajaContenidoRef.current || !puntosRef.current.length) return;
+    const kAntes = escalaRef.current;
+    measureViewport();
+    const k = ajustarVertical();
+    if (Math.abs(k - kAntes) > 0.0005) {
+      const r = k / kAntes;
+      puntosRef.current.forEach((p) => { p.x *= r; });
+      firstNoteOffsetRef.current *= r;
+      musicWidthRef.current *= r;
+      escalaRef.current = k;
+    }
+    const elapsed = estadoRef.current === 'tocando'
+      ? elapsedPrevRef.current + (clockNow() - clockStartRef.current)
+      : elapsedPrevRef.current;
+    translateXRef.current = posEn(elapsed);
+    applyTransform();
+  }, [measureViewport, ajustarVertical, clockNow, posEn, applyTransform]);
+
+  useEffect(() => {
+    const vp = containerRef.current;
+    if (!vp || typeof ResizeObserver === 'undefined') return undefined;
+    let raf = null;
+    const ro = new ResizeObserver(() => {
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => { raf = null; reajustarVertical(); });
+    });
+    ro.observe(vp);
+    return () => { ro.disconnect(); if (raf) cancelAnimationFrame(raf); };
+  }, [reajustarVertical]);
 
   const toggleFullscreen = async () => {
     try {
@@ -1122,13 +1229,23 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
         <div className="mp-bpm-control">
           <span className="mp-bpm-label">BPM</span>
           <button className="mp-bpm-btn" onClick={handleBpmDown}>−</button>
-          <span className="mp-bpm-value">{bpmActual}</span>
-          <button className="mp-bpm-btn" onClick={handleBpmUp}>+</button>
-          {!esTempoOriginal && (
-            <button className="mp-bpm-reset" onClick={() => setBpmActual(bpmOriginal)} title={`Tempo original: ${bpmOriginal}`}>
-              ↺
+          {/* El número no cambia de ancho y el "↺ original" va debajo, con su
+              lugar siempre reservado: al mover el tempo la fila ya no crece ni
+              manda la escalera a otro renglón (idea del usuario). */}
+          <div className="mp-bpm-centro">
+            <span className="mp-bpm-value">{bpmActual}</span>
+            <button
+              className={`mp-bpm-original ${esTempoOriginal ? 'mp-bpm-original-oculto' : ''}`}
+              onClick={() => setBpmActual(bpmOriginal)}
+              disabled={esTempoOriginal}
+              tabIndex={esTempoOriginal ? -1 : 0}
+              aria-hidden={esTempoOriginal}
+              title={`Volver al tempo original: ${bpmOriginal}`}
+            >
+              ↺ {bpmOriginal}
             </button>
-          )}
+          </div>
+          <button className="mp-bpm-btn" onClick={handleBpmUp}>+</button>
         </div>
 
         {/* Escalera de tempo: % del tempo original. Al cambiar de escalón NO se

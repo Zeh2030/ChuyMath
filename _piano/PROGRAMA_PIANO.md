@@ -357,6 +357,50 @@ maestra) son la funcion de retencion, no un extra.
   meter otro boton. El synth arranca DESPUES y el reloj se ancla en ese
   instante: la garantia de cero deriva del Enfoque 4 queda intacta.
 
+### Layout en pantalla completa — corregido 2026-09-16
+
+Reporte del usuario: al bajar el BPM aparecia el boton ↺, la fila de controles
+ya no cabia, la escalera bajaba a un segundo renglon, la partitura se encogia y
+**el pentagrama de la mano izquierda quedaba cortado** contra el teclado.
+
+Causa de fondo: la partitura iba pegada al borde superior del viewport. abcjs
+dibuja un SVG ~2.5 veces mas alto que las notas (arriba la fila del titulo,
+centrada sobre miles de px y por eso invisible; abajo vacio), asi que cualquier
+px que le robaran los controles se lo comia la mano izquierda.
+
+Arreglo (`MusicPrompter.jsx`, sin tocar audio ni el mapa de tiempo):
+- **Ajuste vertical**: se mide donde estan las notas de verdad (grupos
+  `.abcjs-staff-wrapper`, ~0 ms) y se **centran** en el viewport; si no caben se
+  reducen (hasta 0.5). Es un transform CSS sobre el contenedor `.mp-sheet`,
+  compuesto con el scroll horizontal. OJO: **nunca sobre el `<svg>`** — abcjs
+  implementa su `scale: 2` con un transform ahi y escribirlo lo borra (la
+  partitura sale a la mitad).
+- **Se reajusta al cambiar el tamaño** del viewport (`ResizeObserver`: pantalla
+  completa, ventana, controles que bajan de renglon). Con origen a la izquierda
+  las x escalan en proporcion, asi que el mapa tiempo→posicion se corrige
+  multiplicando; luego se recoloca al instante actual. Verificado: la misma nota
+  queda bajo la linea roja (±1.5 px) a escala 1 y a 0.5 y de vuelta.
+- El viewport normal se dimensiona por las notas, no por el SVG.
+- **BPM** (idea del usuario): el numero no cambia de ancho y el "↺ 69" va
+  **debajo**, chico, con su lugar siempre reservado (`visibility`, no `display`).
+  El control mide lo mismo con o sin el: la fila no se reacomoda.
+- Controles compactos en pantalla completa; en pantallas bajas (≤ 820 px) se
+  esconden autor e instruccion y encogen los botones. `.mp-instruction` con alto
+  fijo (la etiqueta "Lento" era mas alta que el texto).
+
+Bug de scroll que salio de paso: la columna de tiempo tomaba siempre la
+**primera voz**. Un silencio de compas completo se dibuja **centrado**, asi que en
+la intro del Canon (derecha callada 4 compases) cada inicio quedaba media barra
+adelantado y la partitura **se detenia y saltaba hacia atras** 4 veces (hasta
+147 px). Ahora se toma la voz mas a la izquierda. Prueba de monotonia (61 pasos
+por la barra, la x nunca retrocede) en Canon, Für Elise, Zapatillas y Clair.
+
+Verificacion: Chrome en tiempo real por protocolo de depuracion (headless con
+tiempo virtual NO entrega ResizeObserver ni rAF: ahi la prueba mentia). Matriz
+de 5 piezas × 6 tamaños (1280×720 … 1920×1080, iPad vertical) bajando el BPM 3
+veces: 32/32 con notas completas, centradas (±2 px), controles sin cambiar de
+renglon ni de tamaño.
+
 ### Bug de tonalidad en PianoPrompter — corregido 2026-09-16
 
 `construirAbc` decidia si insertar el `K:` del encabezado con
