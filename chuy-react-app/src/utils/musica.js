@@ -106,3 +106,53 @@ export const cuentaDeEntrada = (desdeMs, pulsos, pulsoMs, porCompas) => {
   }
   return { pulsos: cuenta, inicioMs };
 };
+
+// ─── Digitación en el teclado (Fase 2) ───
+
+/**
+ * Qué dedo toca cada nota que SUENA, para pintarlo sobre la tecla iluminada.
+ *
+ * `tune` es la partitura interpretada por abcjs: sus elementos traen las
+ * decoraciones `!0!`..`!5!`. `pistas` son las voces de `setUpAudio`: cada nota
+ * trae el `startChar` de su elemento (abcjs lo pone para resaltar al tocar), así
+ * que se enlazan sin adivinar por tiempo ni altura.
+ *
+ * En acordes los dedos se asignan de grave a agudo —así los escribe
+ * `_piano/_mxl-a-abc.js`— y SOLO si hay exactamente un dedo por nota: con menos
+ * dedos que notas no hay forma honesta de saber cuál es cuál, y se omiten.
+ *
+ * @returns {Map<object, string>} nota de la pista → dedo
+ */
+export const dedosPorNota = (tune, pistas) => {
+  const porElemento = new Map(); // startChar → ['1', '5']
+  for (const linea of tune?.lines || []) {
+    for (const staff of linea.staff || []) {
+      for (const voz of staff.voices || []) {
+        for (const el of voz) {
+          if (el.el_type !== 'note' || !Array.isArray(el.decoration)) continue;
+          const dedos = el.decoration.filter((d) => /^[0-5]$/.test(d));
+          if (dedos.length) porElemento.set(el.startChar, dedos);
+        }
+      }
+    }
+  }
+  const resultado = new Map();
+  if (!porElemento.size) return resultado;
+
+  for (const pista of pistas || []) {
+    const grupos = new Map(); // mismo elemento y mismo instante = mismo acorde
+    for (const nota of pista) {
+      if (nota.cmd !== 'note' || typeof nota.pitch !== 'number' || nota.startChar == null) continue;
+      const clave = `${nota.startChar}|${nota.start}`;
+      if (!grupos.has(clave)) grupos.set(clave, []);
+      grupos.get(clave).push(nota);
+    }
+    for (const notas of grupos.values()) {
+      const dedos = porElemento.get(notas[0].startChar);
+      if (!dedos || dedos.length !== notas.length) continue;
+      [...notas].sort((a, b) => a.pitch - b.pitch).forEach((n, i) => resultado.set(n, dedos[i]));
+    }
+  }
+  return resultado;
+};
+

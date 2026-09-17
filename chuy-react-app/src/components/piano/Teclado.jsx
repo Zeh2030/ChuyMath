@@ -8,7 +8,8 @@ import { esNegra, nombreDeMidi } from '../../utils/musica';
  * "Nota → Tecla" de identifica-nota (PROGRAMA_PIANO).
  *
  * API imperativa (via ref):
- *   setActivas(derecha, izquierda)  — colecciones de números MIDI
+ *   setActivas(derecha, izquierda, dedos?)  — colecciones de números MIDI y,
+ *     opcional, Map midi → dedo ('1'..'5') para pintarlo sobre la tecla
  *   limpiar()
  *
  * Alterna clases directamente en el DOM (sin estado de React): el bucle de
@@ -18,6 +19,7 @@ import { esNegra, nombreDeMidi } from '../../utils/musica';
 const Teclado = ({ midiMin = 60, midiMax = 83, mostrarNombres = false, ref }) => {
   const teclasRef = useRef(new Map());     // midi → elemento DOM
   const encendidasRef = useRef(new Map()); // midi → 'der' | 'izq' | 'ambas'
+  const dedosRef = useRef(new Map());      // midi → dedo pintado (data-dedo)
 
   const { blancas, negras, nBlancas } = useMemo(() => {
     const b = [];
@@ -47,7 +49,7 @@ const Teclado = ({ midiMin = 60, midiMax = 83, mostrarNombres = false, ref }) =>
     return {
       // Solo se llama cuando el conjunto activo CAMBIA (no cada frame), así que
       // puede permitirse construir el diff con un Map pequeño.
-      setActivas(derecha, izquierda) {
+      setActivas(derecha, izquierda, dedos) {
         const nuevas = new Map();
         if (derecha) derecha.forEach((m) => nuevas.set(m, 'der'));
         if (izquierda) izquierda.forEach((m) => nuevas.set(m, nuevas.has(m) ? 'ambas' : 'izq'));
@@ -63,10 +65,23 @@ const Teclado = ({ midiMin = 60, midiMax = 83, mostrarNombres = false, ref }) =>
           }
         });
         encendidasRef.current = nuevas;
+
+        // Digitación (Fase 2): el número va en data-dedo y lo dibuja el CSS.
+        // Solo se tocan las teclas cuyo dedo cambió.
+        const nuevosDedos = dedos || new Map();
+        dedosRef.current.forEach((d, m) => {
+          if (nuevosDedos.get(m) !== d) teclasRef.current.get(m)?.removeAttribute('data-dedo');
+        });
+        nuevosDedos.forEach((d, m) => {
+          if (dedosRef.current.get(m) !== d) teclasRef.current.get(m)?.setAttribute('data-dedo', d);
+        });
+        dedosRef.current = nuevosDedos;
       },
       limpiar() {
         encendidasRef.current.forEach((mano, m) => apagar(m));
         encendidasRef.current = new Map();
+        dedosRef.current.forEach((d, m) => teclasRef.current.get(m)?.removeAttribute('data-dedo'));
+        dedosRef.current = new Map();
       },
     };
   }, []);

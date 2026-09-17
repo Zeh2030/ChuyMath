@@ -429,11 +429,18 @@ partitura completa y cada mano sola suenan identicas.
 - Boton ⏫ para subir un escalon. Si el BPM quedo fuera de la escalera (se uso
   ±5), sube al primer escalon por encima.
 - **Cambiar de tempo ya NO reinicia la pieza.** Antes se volvia al compas 1, lo
-  que hacia la escalera inutil trabajando un pasaje. Ahora la posicion se
-  reescala por el mismo factor que el bucle y **queda en pausa** (no se reanuda
-  sola): asi entras con la cuenta del metronomo, que es justo lo que quieres al
-  cambiar de escalon. Se corrigio tambien el texto de ayuda, que prometia lo
-  contrario.
+  que hacia la escalera inutil trabajando un pasaje. La posicion se reescala por
+  el mismo factor que el bucle.
+- **Tocando, cambiar el tempo NO pausa** (pedido del usuario, 2026-09-17): la
+  musica sigue desde la misma nota al tempo nuevo. abcjs fija el tempo al
+  preparar el audio, asi que hay un silencio breve (~0.3 s medido con sonido
+  real). Estado interno `cambiando-tempo`: se sigue viendo "Pausa"; un cambio
+  encima de otro, Pausa o Reset cancelan la reanudacion pendiente (turno en
+  `cambioTempoRef`). **En pausa** se queda en pausa, en el mismo lugar.
+- Cambiar el tempo **ya no vuelve a dibujar la partitura** (no depende del tempo):
+  solo se rehace el mapa tiempo→posicion con `setTiming`. Mas rapido, sin
+  parpadeo. Verificado: en pausa la misma nota queda a la misma distancia de la
+  linea roja (al decimal) con −5 BPM ×4 y con el escalon 50 %.
 - La escalera + el bucle A-B juntos son la mecanica de estudio completa: marcas
   el tramo dificil una vez, y subes escalones sin volver a marcarlo.
 - **Deliberadamente NO hay escalera automatica** ("sube solo al tocarlo bien"):
@@ -588,9 +595,28 @@ explicitamente: `write/creation/decoration.js`, casos "0".."5").
 
 - **Fase 1 — digitacion en la PARTITURA:** ✅ construida (ver abajo). Los numeros
   se deslizan con el PianoPrompter porque son parte del pentagrama.
-- **Fase 2 — numero sobre la tecla iluminada:** requiere enlazar dedo↔nota en
-  la linea de tiempo del teclado (correlacion por startChar o canal paralelo
-  en el JSON). Solo si la Fase 1 demuestra ser util.
+- **Fase 2 — numero sobre la tecla iluminada:** ✅ construida 2026-09-17 (pedida
+  por el usuario). Ver abajo.
+
+### Fase 2: el dedo sobre la tecla iluminada
+
+- **Enlace sin adivinar**: cada nota que suena (`setUpAudio`) trae el `startChar`
+  de su elemento — abcjs lo pone para resaltar al tocar (`abc_midi_flattener.js`).
+  La partitura interpretada tiene, por `startChar`, las decoraciones `!0!`..`!5!`.
+  Funcion pura `dedosPorNota` en `utils/musica.js`.
+- **Acordes**: dedos de grave a agudo (asi los escribe el conversor), y SOLO si
+  hay exactamente un dedo por nota. Con menos dedos que notas no se adivina y no
+  se pinta numero. Limite de abcjs: aunque se escriba `[!4!DF]`, guarda el dedo
+  para el acorde entero, no por nota. Hoy ninguna pieza tiene ese caso.
+- **Dibujo**: `Teclado.setActivas(der, izq, dedos)` pone `data-dedo` en la tecla
+  y el CSS lo pinta con `::before` (blanco con sombra, legible sobre azul y
+  naranja). Abajo en las blancas, para no encimarse con las negras. Sin estados
+  de React: el teclado corre a 60 fps. Misma tecla con dos dedos (dos manos):
+  "2·4".
+- **Verificado**: contra el TEXTO ABC (cada dedo asignado esta escrito en su
+  nota): Für Elise tema 24/24, seccion A 101/101, Canon 71/71. En Chrome real:
+  la tecla encendida en cada instante trae el dedo de la nota que suena
+  (blancas y negras; p. ej. el Re# con dedo 3 del compas 4 de Für Elise).
 
 ### Conversor `_piano/_mxl-a-abc.js` (Fase 1)
 

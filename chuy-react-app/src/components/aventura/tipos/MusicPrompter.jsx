@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import abcjs from 'abcjs';
 import './MusicPrompter.css';
 import Teclado from '../../piano/Teclado';
-import { rangoTeclado, pulsosMetronomo, cuentaDeEntrada } from '../../../utils/musica';
+import { rangoTeclado, pulsosMetronomo, cuentaDeEntrada, dedosPorNota } from '../../../utils/musica';
 
 /**
  * Estima el número de compases contando barras `|` en las líneas de notas.
@@ -172,6 +172,9 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
   const cuentaCanceladaRef = useRef(false);
   const cuentaUltimaRef = useRef(-1);
   const bpmPrevRef = useRef(bpm || 80);
+  // Turno del cambio de tempo en curso: un cambio nuevo, Pausa o Reset invalidan
+  // la reanudación pendiente del anterior.
+  const cambioTempoRef = useRef(0);
 
   const synthRef = useRef(null);
   const visualObjRef = useRef(null);
@@ -456,6 +459,8 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
       const factorMs = 60000 / qpm / beatLen; // redondas → ms
       const tracks = (audio && audio.tracks) || [];
       const nVoces = Math.min(multiVoice ? 2 : 1, tracks.length);
+      // Digitación (Fase 2): dedo de cada nota que suena, si la partitura lo trae.
+      const dedos = dedosPorNota(visualObj, tracks);
       const linea = [];
       const midis = [];
       for (let v = 0; v < nVoces; v++) {
@@ -466,7 +471,7 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
           const dur = item.duration * factorMs;
           // fin un poco antes del valor real para que las notas repetidas
           // parpadeen; suelo de 60ms para que las semicorcheas se alcancen a ver.
-          linea.push({ t, fin: t + Math.max(60, dur - 40), midi: item.pitch, mano: manoVoz });
+          linea.push({ t, fin: t + Math.max(60, dur - 40), midi: item.pitch, mano: manoVoz, dedo: dedos.get(item) || null });
           midis.push(item.pitch);
         }
       }
@@ -621,8 +626,16 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
       if (!cambio) return;
       const der = [];
       const izq = [];
-      for (const n of activas) (n.mano === 'izquierda' ? izq : der).push(n.midi);
-      tecladoRef.current.setActivas(der, izq);
+      const dedos = new Map();
+      for (const n of activas) {
+        (n.mano === 'izquierda' ? izq : der).push(n.midi);
+        if (n.dedo) {
+          // La misma tecla con dos dedos distintos (dos manos): se muestran ambos.
+          const previo = dedos.get(n.midi);
+          dedos.set(n.midi, previo && previo !== n.dedo ? `${previo}·${n.dedo}` : n.dedo);
+        }
+      }
+      tecladoRef.current.setActivas(der, izq, dedos);
     } catch {
       tecladoRotoRef.current = true;
       try { tecladoRef.current?.limpiar(); } catch { /* nada */ }
@@ -734,15 +747,19 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     return () => { if (rafIdRef.current) { cancelAnimationFrame(rafIdRef.current); rafIdRef.current = null; } };
   }, [estado, animate]);
 
-  // ─── BPM change: re-render + reconstruir mapa ───
+  // ─── Cambio de BPM: rehacer el mapa y, si se estaba tocando, SEGUIR tocando ───
   useEffect(() => {
     if (!visualObjRef.current || !abcTargetRef.current) return;
 
     // Posición ANTES de tirar el motor. Si estaba sonando hay que leer el reloj:
     // elapsedPrev solo se actualiza al pausar y estaría viejo.
-    const posPrev = estadoRef.current === 'tocando'
+    const estabaTocando = estadoRef.current === 'tocando';
+    // Un cambio encima de otro que aún no reanudaba también sigue tocando.
+    const seguirTocando = estabaTocando || estadoRef.current === 'cambiando-tempo';
+    const posPrev = estabaTocando
       ? elapsedPrevRef.current + (clockNow() - clockStartRef.current)
       : elapsedPrevRef.current;
+    const turno = ++cambioTempoRef.current;
 
     cleanup();
     cancelarCuenta();
@@ -754,7 +771,7 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     // tempo la misma música cae en otro instante, así que todo se reescala por
     // el mismo factor: la posición actual y los dos puntos del bucle. Marcas el
     // tramo difícil una vez y subes la escalera sin volver a marcarlo ni perder
-    // tu lugar (antes esto reiniciaba la pieza desde el compás 1).
+    // tu lugar.
     const prevBpm = bpmPrevRef.current;
     const f = prevBpm && prevBpm !== bpmActual ? prevBpm / bpmActual : 1;
     if (f !== 1) {
@@ -763,20 +780,19 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     }
     bpmPrevRef.current = bpmActual;
 
-    // No se reanuda solo: quedar en pausa deja entrar con la cuenta del
-    // metrónomo, que es justo lo que quieres al cambiar de escalón.
+    // Tocando: se sigue tocando al tempo nuevo desde la misma música (pedido del
+    // usuario; antes quedaba en pausa). abcjs fija el tempo al preparar el audio,
+    // así que hay un silencio breve mientras se prepara de nuevo. En pausa se
+    // queda en pausa, en el mismo lugar.
     const posNueva = posPrev * f;
-    setEstado(posNueva > 0 ? 'pausado' : 'parado');
+    const siguiente = seguirTocando ? 'cambiando-tempo' : (posNueva > 0 ? 'pausado' : 'parado');
+    estadoRef.current = siguiente;
+    setEstado(siguiente);
 
-    // Re-render
-    abcTargetRef.current.innerHTML = '';
-    const visualObj = abcjs.renderAbc(abcTargetRef.current, abcNotation, {
-      staffwidth: calcStaffwidth(abcNotation, multiVoice), scale: 2, wrap: null, add_classes: true,
-      selectTypes: false, paddingtop: 0, paddingbottom: 0, paddingleft: 20,
-    });
-    visualObjRef.current = visualObj[0];
-
-    requestAnimationFrame(() => {
+    // Sin volver a dibujar: la partitura no depende del tempo. Basta rehacer el
+    // mapa tiempo→posición (setTiming con el qpm nuevo) sobre el mismo SVG.
+    requestAnimationFrame(async () => {
+      if (turno !== cambioTempoRef.current) return;
       measureViewport();
       medirYMapear(bpmActual);   // reconstruye el mapa y reinicia el teclado
 
@@ -792,6 +808,22 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
       actualizarTeclado(destino);
       recolocarMetronomo(destino);
       setProgreso(fin ? destino / fin : 0);
+
+      if (!seguirTocando) return;
+      if (volumen > 0) await prepareSynth(bpmActual);
+      // Otro cambio de tempo, Pausa o Reset mientras se preparaba: nada que reanudar.
+      if (turno !== cambioTempoRef.current || estadoRef.current !== 'cambiando-tempo') return;
+      if (volumen > 0 && synthRef.current) {
+        try {
+          synthRef.current.seek(destino / 1000, 'seconds');
+          synthRef.current.start();
+        } catch { /* sin audio */ }
+      }
+      recolocarMetronomo(destino);
+      // Ancla el reloj justo al arrancar el audio, como handlePlay.
+      clockStartRef.current = clockNow();
+      estadoRef.current = 'tocando';
+      setEstado('tocando');
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bpmActual]);
@@ -971,6 +1003,14 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
   };
 
   const handlePause = () => {
+    if (estadoRef.current === 'cambiando-tempo') {
+      // Se estaba preparando el audio al tempo nuevo: la posición ya está fija
+      // y el reloj no corría. Solo se cancela la reanudación pendiente.
+      cambioTempoRef.current++;
+      estadoRef.current = 'pausado';
+      setEstado('pausado');
+      return;
+    }
     elapsedPrevRef.current += clockNow() - clockStartRef.current;
     if (synthRef.current) { try { synthRef.current.pause(); } catch { /* sin audio */ } }
     limpiarMetronomo();
@@ -978,6 +1018,7 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
   };
 
   const handleReset = () => {
+    cambioTempoRef.current++; // cancela una reanudación de cambio de tempo pendiente
     cleanup();
     cancelarCuenta();
     translateXRef.current = 0;
@@ -1049,6 +1090,11 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
   // aplica al siguiente Play (si estaba sonando, el audio se detiene y el
   // scroll sigue — igual que hacía el mute de antes).
   const cambiarVolumen = () => {
+    if (estadoRef.current === 'cambiando-tempo') {
+      cambioTempoRef.current++;
+      estadoRef.current = 'pausado';
+      setEstado('pausado');
+    }
     if (synthRef.current) {
       try { synthRef.current.stop(); } catch { /* ya parado */ }
       synthRef.current = null;
@@ -1152,7 +1198,7 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
           <button className="mp-btn mp-btn-pause" onClick={cancelarCuenta}>
             ✕ Cancelar
           </button>
-        ) : estado !== 'tocando' ? (
+        ) : estado !== 'tocando' && estado !== 'cambiando-tempo' ? (
           <button className="mp-btn mp-btn-play" onClick={handlePlay} disabled={cargando}>
             ▶ {cargando ? 'Cargando...' : estado === 'pausado' ? 'Continuar' : 'Play'}
           </button>

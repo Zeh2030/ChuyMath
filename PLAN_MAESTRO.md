@@ -118,6 +118,12 @@ Fase 3 pendiente: PIN opcional de adulto.
   rejilla. Regresión exacta en Twinkle y Clair de Lune (Chrome headless).
 - **Bug de tonalidad en PianoPrompter** (2026-09-16): un cambio de clave en línea
   impedía insertar la armadura; en una pieza en Sol se perdía el Fa#.
+- **Layout y scroll (2026-09-16)**: la partitura se centra y escala al espacio
+  disponible (la mano izquierda ya no se corta); BPM con "↺ original" debajo;
+  arreglado el salto hacia atrás en intros con silencio de compás completo
+  (Canon, Lago de los cisnes).
+- **Digitación Fase 2 (2026-09-17)**: el número del dedo sobre la tecla iluminada
+  (enlace por `startChar`, sin adivinar). **Cambiar el tempo tocando ya no pausa.**
 - **Pistas Niños / Adultos (2026-09-16)**: casilla "Es un adulto" en el perfil
   (`esAdulto`) + selector `🧒 Niños | 🎼 Adultos` en Piano. Nada se bloquea. PA →
   adultos; lectura de notas → ambas; compositores y teoría → niños; Clair de Lune
