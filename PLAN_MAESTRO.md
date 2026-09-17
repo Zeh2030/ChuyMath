@@ -102,14 +102,16 @@ Fase 3 pendiente: PIN opcional de adulto.
   entrada, y bucle A-B que se reescala al cambiar el BPM. Validadas al oído por
   el usuario, compás compuesto incluido (Clair de Lune 9/8 marca 3, Twinkle 4).
   Todo en `MusicPrompter.jsx`; contenido y `PianoPrompter` sin tocar.
-  Escalera de tempo (50-100% del original) construida, pendiente de probar.
+  Escalera de tempo (50-100% del original): validada 2026-09-16.
   Detalle y decisiones en `_piano/PROGRAMA_PIANO.md` §Herramientas de práctica.
 - **Digitación Fase 1 (2026-09-16)**: conversor `_piano/_mxl-a-abc.js` (MusicXML →
   ABC con `<fingering>` → `!N!`, repeticiones desplegadas, cambios de clave) con
   verificación nota por nota integrada contra un lector independiente del XML y
   prueba de mutación 10/10. Piezas `PA1-01` Für Elise · El tema y `PA1-02` Sección
-  A completa; se regeneran con `node _piano/_genera-pa1.js`. Faltan adornos y
-  tresillos (Für Elise completa).
+  A completa. **Lote 2**: PA1-03 Canon en Re, PA1-04 El lago de los cisnes, PA1-05
+  Minueto en Sol (A) y P4-02 Twinkle de Mozart (hijo). Todas se regeneran con
+  `node _piano/_genera-piezas.js`. Faltan adornos, tresillos y varias voces por mano
+  (catalogo de 69 partituras diagnosticado en PROGRAMA_PIANO).
 - **Metrónomo con anacrusa (2026-09-16)**: el acento caía en el tiempo equivocado
   en piezas con anacrusa — incluida **Zapatillas Rojas**. Ahora sigue los compases
   reales de abcjs; 3/8 se subdivide en corcheas; la cuenta de entrada continúa la
@@ -129,8 +131,9 @@ de práctica** y por **culpa**, no por dificultad → el perfil adulto no lleva
 rachas ni estrellas, y las herramientas de práctica son la función de retención.
 
 ### Pendiente
-1. **Probar en el piano**: PA1-01/02 (cargar con `/admin/migracion` → Piano),
-   metrónomo con anacrusa (Für Elise y Zapatillas), escalera de tempo.
+1. **Probar en el piano**: ✅ Für Elise (PA1-01/02) y escalera de tempo validadas
+   (2026-09-16). Falta: metrónomo nuevo en Zapatillas Rojas (anacrusa) y Twinkle;
+   y el lote 2 (Canon, Cisnes, Minueto A, Twinkle de Mozart).
    Licencias: uso personal + amigos, sin venta → no es impedimento; se revisa solo
    si algún día se vende (decisión del usuario 2026-09-16).
 2. **Modo espera (entrada del alumno)** — el hueco real: la app nunca oye. Ya NO

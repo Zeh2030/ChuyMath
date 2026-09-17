@@ -1,0 +1,33 @@
+{
+  "id": "PA1-04_lago-de-los-cisnes",
+  "titulo": "El lago de los cisnes",
+  "descripcion": "El tema del cisne, del ballet de 1877. La izquierda acompaña con acordes quebrados de Si menor mientras la derecha canta la melodía.",
+  "tipo": "piano-prompter",
+  "materia": "piano",
+  "nivel": "PA1-04",
+  "fuente": {
+    "archivo": "Swan_Lake.mxl",
+    "url": "https://github.com/musetrainer/library/blob/master/scores/Swan_Lake.mxl",
+    "forma": "1-27",
+    "convertido": "2026-09-16"
+  },
+  "misiones": [
+    {
+      "id": "PA1-04_lago-de-los-cisnes-01",
+      "tipo": "piano-prompter",
+      "titulo": "El lago de los cisnes",
+      "instruccion": "Aquí casi siempre suena una sola nota en cada mano: lo difícil no son los dedos, sino que la melodía cante por encima del acompañamiento. Toca la izquierda más suave que la derecha.",
+      "autor": "Piotr Ilich Tchaikovsky",
+      "bpm": 100,
+      "dificultad": "principiante",
+      "nivel": "PA1-04",
+      "configuracion": {
+        "compas": "4/4",
+        "tonalidad": "Bm",
+        "clave": "treble",
+        "unidad": "1/8"
+      },
+      "notas": "%%staves {1 2}\nK:Bm\nV:1 clef=treble\nz4 z4 | z8 | f4 B c d e | f3 d f3 d | f3 B d B F d | B4 z e d c | f4 B c d e | f3 d f3 d | f3 B d B F d | B2 z2 z2 B2 | c2 d2 e2 f g | a3 g f2 g a | b3 a g2 a b | c'3 b f d c B | c2 d2 e2 f g | a3 g f2 g a | b3 a g2 a b | =c'3 g e2 g c' | c'3 ^g c'3 f | f4 B c d e | f3 d f3 d | f3 B d B F d | B4 z e d c | f4 B c d e | f3 d f3 d | f3 B d B F d | B4 z4 |]\nV:2 clef=bass\nB, D F D B, D F D | B, D F D B, D F D | B, D F D B, E G E | B, D F D B, D F D | B, D F D G, B, F, ^A, | B, D F D B, E G E | B, D F D B, E G E | B, D F D B, D F D | B, D F D G, B, F, ^A, | B, D F D B,2 z2 | A, C E C G, C E C | F, A, C A, F, A, C A, | E, G, B, G, E, G, B, G, | C, =F, ^G, F, ^F, ^A, C A, | A, C E C G, C E C | F, A, C A, F, A, C A, | E, G, B, G, E, G, B, G, | =C, E, G, E, C, E, G, E, | C, =F, ^G, F, ^F, ^A, C A, | B, D F D B, E G E | B, D F D B, D F D | B, D F D G, B, F, ^A, | B, D F D B, E G E | B, D F D B, E G E | B, D F D B, D F D | B, D F D G, B, F, ^A, | B, D F D B,4 |]"
+    }
+  ]
+}

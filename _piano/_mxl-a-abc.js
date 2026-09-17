@@ -817,6 +817,13 @@ function main() {
   console.error(`✓ escrito: ${salida}`);
 }
 
+// Fecha LOCAL (AAAA-MM-DD). `toISOString` da la de UTC: en la noche de Mexico ya
+// es "mañana" y la pieza quedaba fechada un dia despues.
+function fechaLocal(d = new Date()) {
+  const dos = (n) => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${dos(d.getMonth() + 1)}-${dos(d.getDate())}`;
+}
+
 /**
  * Documento de Firebase (coleccion `piano`) con la misma forma que el resto del
  * contenido de piano: `id` = nombre del archivo y `nivel` a nivel documento, que
@@ -836,7 +843,7 @@ function armarDocumento(r, datos) {
       archivo: datos.archivo,
       ...(datos.url ? { url: datos.url } : {}),
       forma: r.forma,
-      convertido: new Date().toISOString().slice(0, 10),
+      convertido: fechaLocal(),
     },
     misiones: [{
       id: `${datos.id}-01`,

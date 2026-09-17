@@ -82,7 +82,9 @@ Op.28 No.7* (16 compases, Chopin real, tocable en 3 semanas), *Fur Elise*
 intro, blues de 12 compases en Do.
 
 **Construidas (2026-09-16):** `PA1-01` Für Elise · El tema y `PA1-02` Für Elise ·
-Seccion A completa, con digitacion (ver §Digitacion → Piezas construidas).
+Seccion A completa (con digitacion); `PA1-03` Canon en Re (con digitacion),
+`PA1-04` El lago de los cisnes, `PA1-05` Minueto en Sol · Seccion A. Ver
+§Digitacion → Piezas construidas.
 
 Einaudi y Yann Tiersen estan en derechos. Con el uso actual (personal + amigos)
 no es impedimento — ver la decision de licencias en §Digitacion.
@@ -240,15 +242,19 @@ Estos componentes ya existen y se reutilizan con contenido de piano:
 | # | Titulo | Caracteristica | Tonalidad | BPM |
 |---|--------|---------------|-----------|-----|
 | P4-01 | Las Zapatillas Rojas | Diabelli, staccato + legato | F | 80 | ✅ Creado |
-| P4-02 | Sonatina Op.36 No.2 | Clementi, 1er movimiento | G | 95 |
-| P4-03 | Invention No.1 | Bach, contrapunto 2 voces | C | 75 |
-| P4-04 | Fur Elise (completa) | Beethoven | Am | 70 |
-| P4-05 | Rondo Alla Turca (completo) | Mozart | Am | 100 |
-| P4-06 | Gymnopedia No.1 | Satie, expresividad | D | 55 |
-| P4-07 | Maple Leaf Rag (simplificado) | Joplin, ritmo sincopado | Ab | 75 |
-| P4-08 | El Entretenedor | Joplin, ragtime | C | 80 |
-| P4-09 | Vals en La menor | Chopin | Am | 65 |
-| P4-10 | Arabesque No.1 (tema) | Debussy, impresionismo | E | 60 |
+| P4-02 | Twinkle de Mozart (tema de K.265) | Mozart, la melodia de P1-01 con mano izquierda | C | 120 | ✅ Creado 2026-09-16 (MusicXML) |
+| P4-03 | Sonatina Op.36 No.2 | Clementi, 1er movimiento | G | 95 |
+| P4-04 | Invention No.1 | Bach, contrapunto 2 voces | C | 75 |
+| P4-05 | Fur Elise (completa) | Beethoven | Am | 70 |
+| P4-06 | Rondo Alla Turca (completo) | Mozart | Am | 100 |
+| P4-07 | Gymnopedia No.1 | Satie, expresividad | D | 55 |
+| P4-08 | Maple Leaf Rag (simplificado) | Joplin, ritmo sincopado | Ab | 75 |
+| P4-09 | El Entretenedor | Joplin, ragtime | C | 80 |
+| P4-10 | Vals en La menor | Chopin | Am | 65 |
+| P4-11 | Arabesque No.1 (tema) | Debussy, impresionismo | E | 60 |
+
+> Las filas sin ✅ son un plan: su numero se recorrio el 2026-09-16 al crear
+> P4-02. Solo las creadas tienen archivo.
 
 #### Teoria P4
 
@@ -349,7 +355,7 @@ partitura completa y cada mano sola suenan identicas.
 - `irA()` se movio arriba de `animate()`: el bucle lo necesita en su lista de
   dependencias, que se evalua en tiempo de definicion.
 
-### Escalera de tempo 🪜 — construida 2026-08-28, PENDIENTE DE PROBAR
+### Escalera de tempo 🪜 — ✅ validada por el usuario 2026-09-16
 
 - Escalones fijos al **50/60/70/80/90/100 % del tempo original** de la pieza.
   Con ±5 BPM habia que apretar ocho veces para llegar al 70%.
@@ -528,7 +534,7 @@ toma de `chuy-react-app/node_modules`).
 ```
 node _piano/_mxl-a-abc.js <archivo.mxl> --compases 0-24          # despliega repeticiones solo
 node _piano/_mxl-a-abc.js <archivo.mxl> --forma "0-8,0-7,9-23,10-22,8" --salida ...json
-node _piano/_genera-pa1.js                                        # regenera las piezas PA1
+node _piano/_genera-piezas.js                                     # regenera todas las piezas convertidas
 ```
 
 **Que traduce:** notas, acordes, silencios, ligaduras, anacrusa (por
@@ -576,12 +582,64 @@ izquierda desfasada.
 soporta: `{g}A`, `(3abc`); con eso sale Für Elise completa (adornos en 25-36,
 tresillos en 79-83).
 
+### Catalogo musetrainer/library — diagnostico con el conversor (2026-09-16)
+
+Se pasaron las **69 partituras** del repo por el conversor real. **9 convierten
+completas** tal cual; el resto se detiene por (una pieza puede tener varios):
+varias voces en una mano **38**, adornos **32**, tresillos **29**, `<forward>` **22**,
+cambio de armadura 14, cambio de compas 10, otros 18. "Voces" es el bloqueo
+dominante, pero sola destraba solo +5 piezas completas; voces + adornos +
+tresillos destraba **+14**.
+
+| Pieza (archivo) | Estado | Notas |
+|---|---|---|
+| Canon in D easy (Pachelbel) | ✅ **construida PA1-03** | **67 digitaciones**; Re mayor; `\|:45 48:\|` |
+| Canon in D (arr. lemontart) | ✅ completa, 102 c. | semicorcheas, acordes de 4 — meta larga |
+| Swan Lake (Tchaikovsky) | ✅ **construida PA1-04** (1-27) | una nota por mano a la vez; K Re → nombrar Bm |
+| Passacaglia (Händel-Halvorsen) | ✅ completa, 74 c. | 13.9 notas/compas; `Passacaglia2` es duplicado |
+| Ode to Joy easy variation | ✅ completa, 17 c. | Sol mayor, con izquierda (acordes de 3) |
+| Happy Birthday C Major | ✅ completa, 8 c. | |
+| Carol of the Bells easy piano | ✅ completa, 40 c. | |
+| 12 Variations Twinkle (Mozart K.265) | ✅ **tema construido P4-02**; limpio 1-40 | tema = 1-24 (`\|:1 8:\| \|:9 24:\|`); voces desde 41 |
+| Minuet in G BWV Anh. 114 (Petzold) | ✅ **seccion A construida PA1-05**; limpio 1-24 | seccion A (1-16) sale hoy; voces desde 25 |
+| Hungarian Dance No. 5 (Brahms) | limpio 1-34 | voces desde 35 |
+| Mozart K.545 Allegro | limpio 1-17 | compas 18 con `<alter>9</alter>`: **archivo corrupto** |
+| Gymnopedie No.1 (Satie) | limpio 1-4 | voces desde 5 (ambos archivos) |
+| Greensleeves easy | bloqueada | anacrusa sin `implicit` + tresillos; 14 dedos |
+| Danse villageoise No.2 (Beethoven) | bloqueada | SOLO anacrusa sin `implicit` |
+| Happy Birthday Piano | limpio 0-18 | SOLO compas final corto sin `implicit` |
+| Carol of the Bells (Ross) | bloqueada | **bug**: ligadura que cruza un salto de repeticion (59→61) |
+| The Entertainer (Joplin) | bloqueada | 2 `<part>` (una por mano); 96 dedos |
+
 ### Piezas construidas (track adulto)
 
 | Archivo | Forma | Compases | Notas verificadas | Dedos |
 |---------|-------|----------|-------------------|-------|
 | `prompter/PA1-01_fur-elise-tema.json` | `0-8` | 9 | 53 | 24 |
 | `prompter/PA1-02_fur-elise-seccion-a.json` | `0-8,0-7,9-23,10-22,8` | 46 | 294 | 101 |
+| `prompter/PA1-03_canon-en-re.json` | `1-48,45-49` (despliegue automatico) | 53 | 471 | 71 |
+| `prompter/PA1-04_lago-de-los-cisnes.json` | `1-27` | 27 | 326 | — |
+| `prompter/PA1-05_minueto-en-sol-a.json` | `1-16` | 16 | 102 | — |
+| `prompter/P4-02_twinkle-de-mozart.json` (hijo) | `1-24` | 24 | 96 | — |
+
+**Lote 2 (2026-09-16)** — todas con verificacion nota por nota, revision visual y
+prueba de punta a punta en Chrome (0 warnings; metronomo con 4/3/2 clicks por
+compas y un acento por compas; cada mano sola suena igual que en la partitura):
+- **Canon en Re** (easy): la izquierda es el bajo de Pachelbel arpegiado (Re La
+  Si- Fa#- Sol Re Sol La); la derecha entra en el compas 5. Metronomo del
+  arreglo: blanca = 50 → bpm 100.
+- **El lago de los cisnes**: la armadura (2 #) dice Re, pero la pieza esta en
+  **Si menor** → `tonalidad: Bm`. Los compases **28-32 del archivo estan vacios**
+  en ambas manos: se corta en el 27, que cierra en Si.
+- **Minueto en Sol, seccion A** (1-16, una vez; el original la repite). Sin
+  metronomo marcado: "Allegro" y reproduccion a 126. Autor: Christian Petzold
+  (atribuido antes a Bach).
+- **Twinkle de Mozart** (P4-02, para el hijo): tema de las 12 Variaciones K.265,
+  compases 1-24 una vez. La derecha suena una octava arriba de su Twinkle P1-01.
+
+**Validadas por el usuario en la app (2026-09-16):** digitacion, cambios de clave,
+repeticiones y metronomo con anacrusa en Für Elise. Falta que pruebe el metronomo
+nuevo en Zapatillas Rojas (anacrusa) y Twinkle (regresion).
 
 - 3/8 a **bpm 42**: abcjs cuenta el pulso en negras con puntillo → corchea = 126.
   La escalera al 50 % da corchea = 63.

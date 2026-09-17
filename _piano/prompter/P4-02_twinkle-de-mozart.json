@@ -1,0 +1,33 @@
+{
+  "id": "P4-02_twinkle-de-mozart",
+  "titulo": "Twinkle de Mozart",
+  "descripcion": "¡La melodía de Twinkle que ya tocas, en la versión de Mozart! Él le puso mano izquierda e inventó 12 variaciones sobre ella.",
+  "tipo": "piano-prompter",
+  "materia": "piano",
+  "nivel": "P4-02",
+  "fuente": {
+    "archivo": "12_Variations_of_Twinkle_Twinkle_Little_Star.mxl",
+    "url": "https://github.com/musetrainer/library/blob/master/scores/12_Variations_of_Twinkle_Twinkle_Little_Star.mxl",
+    "forma": "1-24",
+    "convertido": "2026-09-16"
+  },
+  "misiones": [
+    {
+      "id": "P4-02_twinkle-de-mozart-01",
+      "tipo": "piano-prompter",
+      "titulo": "Twinkle de Mozart",
+      "instruccion": "La derecha toca la melodía que ya conoces, una octava más arriba. La izquierda hace el bajo. Prueba primero cada mano por separado y después júntalas.",
+      "autor": "Wolfgang Amadeus Mozart",
+      "bpm": 120,
+      "dificultad": "intermedio",
+      "nivel": "P4-02",
+      "configuracion": {
+        "compas": "2/4",
+        "tonalidad": "C",
+        "clave": "treble",
+        "unidad": "1/16"
+      },
+      "notas": "%%staves {1 2}\nK:C\nV:1 clef=treble\nc4 c4 | g4 g4 | a4 a4 | g4 g4 | f4 f4 | e4 e4 | d4 d3 e | c4 z4 | g4 g4 | f4 f4 | e4 e4 | d4 d4 | g4 g4 | f4 f4 | e4 e3 f | e4 d4 | c4 c4 | g4 g4 | a4 a4 | g4 g4 | f4 f4 | e4 e4 | d4 d3 e | c4 z4 |]\nV:2 clef=bass\nC,4 C4 | E4 C4 | F4 C4 | E4 C4 | D4 B,4 | C4 A,4 | F,4 G,4 | C,4 z4 | E4 G,4 | D4 G,4 | C4 G,4 | B,4 G,4 | E4 G,4 | D4 G,4 | C4 C3 D | C4 B,4 | C,4 C4 | E4 C4 | F4 C4 | E4 C4 | D4 B,4 | C4 A,4 | F,4 G,4 | C,4 z4 |]"
+    }
+  ]
+}
