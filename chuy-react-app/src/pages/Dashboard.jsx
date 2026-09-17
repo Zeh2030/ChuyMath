@@ -9,6 +9,7 @@ import TabBar from '../components/layout/TabBar';
 import HoyTab from '../components/dashboard/HoyTab';
 import ExplorarTab from '../components/dashboard/ExplorarTab';
 import { resolveActiveTab } from '../utils/dashboardTabs';
+import { pistaInicialPiano, PISTA_NINOS, PISTA_ADULTOS } from '../utils/materiaContent';
 import './Dashboard.shell.css';
 
 // Detecta la materia a partir de un filtro de tipo de juego (ej. "identifica-nota" → piano),
@@ -45,6 +46,10 @@ const Dashboard = () => {
   const filtroParam = searchParams.get('filtro');
 
   const [materia, setMateria] = useState(() => detectMateria(filtroParam));
+  // Piano tiene dos pistas (niños / adultos). Abre con la del perfil (`esAdulto`);
+  // el selector la cambia para esta visita. Nada se bloquea: es solo qué se ve.
+  const [pistaElegida, setPistaElegida] = useState(null);
+  const pistaPiano = pistaElegida || pistaInicialPiano(profile);
   // Explorar se monta perezosamente la primera vez que se activa, y ya no se
   // desmonta: evita repetir el fetch de las 7 colecciones en cada visita.
   // Ajustado durante el render (no en un efecto): la condición se apaga sola
@@ -139,6 +144,22 @@ const Dashboard = () => {
 
       <MateriaToggle materia={materia} onChange={setMateria} />
 
+      {materia === 'piano' && (
+        <div className="pista-piano" role="group" aria-label="Contenido de piano">
+          {[[PISTA_NINOS, '🧒 Niños'], [PISTA_ADULTOS, '🎼 Adultos']].map(([id, etiqueta]) => (
+            <button
+              key={id}
+              type="button"
+              className={`pista-piano-btn ${pistaPiano === id ? 'active' : ''}`}
+              aria-pressed={pistaPiano === id}
+              onClick={() => setPistaElegida(id)}
+            >
+              {etiqueta}
+            </button>
+          ))}
+        </div>
+      )}
+
       <TabBar
         tabs={[
           { id: 'hoy', label: '🏠 Hoy' },
@@ -154,6 +175,7 @@ const Dashboard = () => {
           materia={materia}
           activeProfileId={activeProfileId}
           onGoToExplorar={goToExplorar}
+          pistaPiano={pistaPiano}
         />
       </div>
 
@@ -163,6 +185,7 @@ const Dashboard = () => {
             profile={profile}
             materia={materia}
             initialFiltro={filtroParam}
+            pistaPiano={materia === 'piano' ? pistaPiano : null}
           />
         </div>
       )}

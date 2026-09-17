@@ -60,20 +60,43 @@ Investigacion sobre abandono en adultos (fuentes al final de esta seccion):
 | Repertorio | Twinkle, Mary Had a Little Lamb | Satie, Bach BWV 846, Chopin Op.28 No.7, blues de 12 compases |
 | Motivacion | Estrellas, historias "wow" | Diario de practica (minutos y tempo alcanzado) |
 
-### Como se separa en la app (cero infraestructura)
+### Como se separa en la app — ✅ pistas Niños / Adultos (2026-09-16)
 
-Prefijo de nivel `PA1`..`PA4`. Verificado en `ExplorarTab.jsx`: el grupo sale de
-quitarle el sufijo al nivel (`n.replace(/-T?\d+$/, '')`) y el filtro usa
-`startsWith`, asi que `PA1` **no se cruza con `P1`**. Sigue el patron de
-PLAN_MAESTRO §1 (sub-seccion = solo tiles con id prefijado).
+Una sola coleccion `piano`, **dos pistas**. Nada se bloquea: la pista solo decide
+que se ve.
 
-Progresion acordada, en tres tiempos:
-1. **Hoy:** solo el prefijo `PA`. La Boveda ya lo agrupa sola.
-2. **Cuando haya contenido:** dos tiles — "Piano · Curso Yamaha" y "Piano · Adulto".
-3. **Si el tono estorba:** flag `esAdulto` en el perfil, espejo de `esPeque`.
+- **Perfil**: casilla "Es un adulto" (`esAdulto`, espejo de `esPeque`, excluyentes
+  entre si) en Perfil y en el alta de perfil. Hoy **solo** decide con que pista
+  abre Piano; el resto de la app se ve igual. Es el paso 1 del "modo papas".
+- **Selector** `🧒 Niños | 🎼 Adultos` en el Dashboard, bajo la barra de materias,
+  solo en Piano. Cambia la pista de esa visita en Hoy y en Explorar. El nino
+  puede ver lo de adultos y el adulto lo de ninos.
+- **Regla** (`utils/materiaContent.js` → `pistaPiano`, compartida por la Boveda
+  y la aventura del dia):
 
-**NO se hace un menu previo**: le cobraria un clic al usuario principal (el
-hijo) para servir al secundario. El perfil activo ya es el mecanismo correcto.
+  | Contenido | Pista |
+  |---|---|
+  | nivel `PA…` | Adultos |
+  | `identifica-nota` (lectura de notas) | **Ambas** — decision del usuario |
+  | niveles de prueba (`TEST`, `P9-TEST`) | Adultos, y **nunca** aventura del dia |
+  | todo lo demas (`P1-01`, teoria `P?-T??`, **compositores**) | Ninos |
+
+- **Aventura del dia**: filtra por la pista del perfil (a un nino no se le propone
+  una pieza de adulto). Para adultos, el repertorio PA va antes que la lectura de
+  notas compartida (si no, P1-T04 "Do Re Mi" ordenaba antes que PA1-01).
+- **Boveda**: conteos, chips de nivel y listas respetan la pista. En Adultos se
+  ocultan los tipos sin contenido (compositores, teoria): no estan "bloqueados",
+  son de la otra pista. Al cambiar de pista se suelta el chip de nivel.
+- **Clair de Lune → PA3-01** (antes P5-01), decision del usuario.
+- Se agrego `nivel` a nivel documento en las 5 canciones viejas del prompter
+  (Twinkle, Zapatillas, Clair de Lune y las 2 de prueba): sin el, la Boveda no
+  las mostraba al filtrar por nivel. Hay que re-migrarlas.
+- Prueba: la regla se corrio contra los 41 JSON de `_piano` (20 ninos, 8
+  adultos, 13 ambas).
+
+**Descartado** (con el usuario): modulo aparte en la barra de materias (el nino
+veria un boton ajeno y dar de alta una materia toca ~7 puntos) y preguntar al
+entrar (le cobraria un clic al nino cada vez).
 
 ### Repertorio inicial sugerido (todo dominio publico)
 

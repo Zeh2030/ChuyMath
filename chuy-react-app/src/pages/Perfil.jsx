@@ -17,6 +17,7 @@ const Perfil = () => {
   const [avatarSeleccionado, setAvatarSeleccionado] = useState('');
   const [temaSeleccionado, setTemaSeleccionado] = useState('aventurero');
   const [esPequeEditado, setEsPequeEditado] = useState(false);
+  const [esAdultoEditado, setEsAdultoEditado] = useState(false);
   const [guardando, setGuardando] = useState(false);
   const [mensaje, setMensaje] = useState('');
 
@@ -27,6 +28,7 @@ const Perfil = () => {
       setAvatarSeleccionado(profile.avatar || '');
       setTemaSeleccionado(profile.tema || 'aventurero');
       setEsPequeEditado(profile.esPeque || false);
+      setEsAdultoEditado(profile.esAdulto || false);
     }
   }, [profile, currentUser]);
 
@@ -45,6 +47,7 @@ const Perfil = () => {
         avatar: avatarSeleccionado,
         tema: temaSeleccionado,
         esPeque: esPequeEditado,
+        esAdulto: esAdultoEditado,
       });
 
       setMensaje('¡Perfil actualizado con éxito!');
@@ -147,10 +150,27 @@ const Perfil = () => {
                 <input
                   type="checkbox"
                   checked={esPequeEditado}
-                  onChange={(e) => setEsPequeEditado(e.target.checked)}
+                  onChange={(e) => {
+                    setEsPequeEditado(e.target.checked);
+                    if (e.target.checked) setEsAdultoEditado(false); // un perfil no puede ser ambos
+                  }}
                   style={{ width: '18px', height: '18px' }}
                 />
                 Es un niño pequeño (2-5 años) · Modo Peques 🧸
+              </label>
+            </div>
+            <div style={styles.inputGroup}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
+                <input
+                  type="checkbox"
+                  checked={esAdultoEditado}
+                  onChange={(e) => {
+                    setEsAdultoEditado(e.target.checked);
+                    if (e.target.checked) setEsPequeEditado(false);
+                  }}
+                  style={{ width: '18px', height: '18px' }}
+                />
+                Es un adulto · Piano abre en la pista de adultos 🎼
               </label>
             </div>
           </div>

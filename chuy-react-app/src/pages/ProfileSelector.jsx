@@ -22,6 +22,7 @@ const ProfileSelector = () => {
   const [nombre, setNombre] = useState('');
   const [avatar, setAvatar] = useState(AVATARES_RAPIDOS[0]);
   const [esPeque, setEsPeque] = useState(false);
+  const [esAdulto, setEsAdulto] = useState(false);
   const [creando, setCreando] = useState(false);
   const [porBorrar, setPorBorrar] = useState(null); // id pendiente de confirmar
 
@@ -40,7 +41,7 @@ const ProfileSelector = () => {
     if (!nombre.trim()) return;
     setCreando(true);
     try {
-      await crearPerfilHijo({ nombre, avatar, esPeque });
+      await crearPerfilHijo({ nombre, avatar, esPeque, esAdulto });
       navigate(esPeque ? '/peques' : '/dashboard');
     } catch (err) {
       console.error('Error al crear perfil:', err);
@@ -109,8 +110,20 @@ const ProfileSelector = () => {
               autoFocus
             />
             <label className="psel-check">
-              <input type="checkbox" checked={esPeque} onChange={(e) => setEsPeque(e.target.checked)} />
+              <input
+                type="checkbox"
+                checked={esPeque}
+                onChange={(e) => { setEsPeque(e.target.checked); if (e.target.checked) setEsAdulto(false); }}
+              />
               <span>Es un niño pequeño (2-5 años) · Modo Peques 🧸</span>
+            </label>
+            <label className="psel-check">
+              <input
+                type="checkbox"
+                checked={esAdulto}
+                onChange={(e) => { setEsAdulto(e.target.checked); if (e.target.checked) setEsPeque(false); }}
+              />
+              <span>Es un adulto · Piano abre en la pista de adultos 🎼</span>
             </label>
             <div className="psel-form-acciones">
               <button type="button" className="psel-btn-sec" onClick={() => setModo('ver')}>

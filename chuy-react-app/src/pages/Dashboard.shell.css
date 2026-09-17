@@ -52,3 +52,44 @@
     display: none;
   }
 }
+
+/* Selector de pista de piano (niños / adultos), bajo la barra de materias.
+   Mismo lenguaje visual que MateriaToggle, en tamaño secundario, y el morado
+   del boton de Piano para que se lea como parte de esa materia. */
+.pista-piano {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin: -8px auto 16px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 14px;
+  padding: 3px;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.pista-piano-btn {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 11px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  background: transparent;
+  color: #777;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.pista-piano-btn:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.pista-piano-btn.active {
+  color: #fff;
+  background: linear-gradient(135deg, #7e57c2, #5e35b1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}

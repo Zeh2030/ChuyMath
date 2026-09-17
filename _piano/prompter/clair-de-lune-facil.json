@@ -1,6 +1,7 @@
 {
   "id": "piano-clair-de-lune",
   "titulo": "Clair de Lune (fácil)",
+  "nivel": "PA3-01",
   "misiones": [
     {
       "id": "clair-de-lune-01",
@@ -10,7 +11,7 @@
       "autor": "Claude Debussy (arr. fácil)",
       "bpm": 69,
       "dificultad": "avanzado",
-      "nivel": "P5-01",
+      "nivel": "PA3-01",
       "configuracion": {
         "compas": "9/8",
         "tonalidad": "C",

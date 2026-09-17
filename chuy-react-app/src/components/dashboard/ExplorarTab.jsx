@@ -4,10 +4,10 @@ import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../services/firebase';
 import TabBar from '../layout/TabBar';
 import { tiposJuegos } from '../../data/tiposJuegos';
-import { matchesMateria } from '../../utils/materiaContent';
+import { matchesContenido, PISTA_ADULTOS } from '../../utils/materiaContent';
 import './ExplorarTab.css';
 
-const ExplorarTab = ({ profile, materia, initialFiltro }) => {
+const ExplorarTab = ({ profile, materia, initialFiltro, pistaPiano = null }) => {
   const [aventuras, setAventuras] = useState([]);
   const [simulacros, setSimulacros] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -30,6 +30,16 @@ const ExplorarTab = ({ profile, materia, initialFiltro }) => {
       prevMateriaRef.current = materia;
     }
   }, [materia]);
+
+  // Al cambiar de pista de piano (niños/adultos) un chip de nivel de la otra
+  // pista (p. ej. PA1) ya no significa nada: se suelta.
+  const prevPistaRef = useRef(pistaPiano);
+  useEffect(() => {
+    if (prevPistaRef.current !== pistaPiano) {
+      setFiltroNivel('todos');
+      prevPistaRef.current = pistaPiano;
+    }
+  }, [pistaPiano]);
 
   const tiposJuegosFiltrados = tiposJuegos.filter(t => t.materia === materia);
 
@@ -215,8 +225,10 @@ const ExplorarTab = ({ profile, materia, initialFiltro }) => {
     return Array.from(grados).sort((a, b) => a - b);
   }, [simulacros]);
 
-  // Filtrar por materia (compartido con useAventuraDelDia vía utils/materiaContent)
-  const filterMateria = (item) => matchesMateria(item, materia);
+  // Filtrar por materia —y en piano, por pista niños/adultos— (compartido con
+  // useAventuraDelDia vía utils/materiaContent). Todo lo de abajo (conteos,
+  // chips de nivel, listas) pasa por aquí, así que respeta la pista solo.
+  const filterMateria = (item) => matchesContenido(item, materia, pistaPiano);
 
   const nivelesDisponibles = React.useMemo(() => {
     const niveles = new Set();
@@ -231,7 +243,7 @@ const ExplorarTab = ({ profile, materia, initialFiltro }) => {
       if (a.nivel) niveles.add(a.nivel);
     });
     return Array.from(niveles).sort();
-  }, [aventuras, materia, filtro]);
+  }, [aventuras, materia, filtro, pistaPiano]);
 
   // Grupos de nivel (A0, A1, P1, etc.)
   const gruposNivel = React.useMemo(() => {
@@ -273,7 +285,7 @@ const ExplorarTab = ({ profile, materia, initialFiltro }) => {
     return Object.values(merged)
       .filter(t => t.items.length > 0)
       .sort((a, b) => a.nivel.localeCompare(b.nivel));
-  }, [aventuras, materia]);
+  }, [aventuras, materia, pistaPiano]);
 
   // Filtrar por nivel (soporta grupo como "A0" o específico como "A1-09")
   const matchNivel = (item) => {
@@ -369,7 +381,11 @@ const ExplorarTab = ({ profile, materia, initialFiltro }) => {
             <section className="accesos-rapidos-section">
               <h2 className="section-title">⚡ Accesos Rápidos</h2>
               <div className="tipos-juegos-grid">
-                {tiposJuegosFiltrados.map(tipo => {
+                {tiposJuegosFiltrados
+                  // En la pista de adultos, un tipo sin contenido no está "bloqueado":
+                  // es de la pista de niños (compositores, teoría). No se muestra.
+                  .filter(tipo => !(materia === 'piano' && pistaPiano === PISTA_ADULTOS && contarPorTipo(tipo.id) === 0))
+                  .map(tipo => {
                   const count = contarPorTipo(tipo.id);
                   return (
                     <button

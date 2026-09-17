@@ -1,6 +1,7 @@
 {
   "id": "piano-test-duraciones",
   "titulo": "Test de Duraciones",
+  "nivel": "TEST",
   "misiones": [
     {
       "id": "test-dur-01",

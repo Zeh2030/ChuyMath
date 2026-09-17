@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { doc, getDoc, collection, getDocs } from 'firebase/firestore';
 import { db } from '../services/firebase';
-import { MATERIA_COLECCIONES, matchesMateria } from '../utils/materiaContent';
+import { MATERIA_COLECCIONES, matchesContenido, esPruebaPiano, pistaPiano as pistaDe, PISTA_ADULTOS } from '../utils/materiaContent';
 
 /**
  * Hook personalizado para obtener la próxima aventura según progresión, para
@@ -13,9 +13,10 @@ import { MATERIA_COLECCIONES, matchesMateria } from '../utils/materiaContent';
  * misma clave de orden → selecciona aleatoriamente.
  * @param {string} userId - El UID del usuario para verificar aventuras completadas
  * @param {string} materia - La materia activa (matematicas, ingles, piano, ciencias, dibujo, geografia, letras)
+ * @param {string|null} pistaPiano - En piano: 'ninos' o 'adultos' (ver utils/materiaContent)
  * @returns {object} - El objeto de la aventura, estado de carga y error
  */
-export const useAventuraDelDia = (userId, materia) => {
+export const useAventuraDelDia = (userId, materia, pistaPiano = null) => {
   const [aventura, setAventura] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -62,9 +63,12 @@ export const useAventuraDelDia = (userId, materia) => {
           }
         }
 
-        // 4. Filtrar aventuras de la materia activa que NO estén completadas
+        // 4. Filtrar aventuras de la materia activa que NO estén completadas.
+        // En piano, además, solo la pista del perfil (a un niño no se le propone
+        // una pieza de adulto) y nunca las piezas de prueba del motor.
         const aventurasSinCompletar = todasLasAventuras
-          .filter(av => matchesMateria(av, materiaResuelta))
+          .filter(av => matchesContenido(av, materiaResuelta, pistaPiano))
+          .filter(av => !(materiaResuelta === 'piano' && esPruebaPiano(av)))
           .filter(av => !aventurasCompletadasIds.includes(av.id));
 
         if (aventurasSinCompletar.length === 0) {
@@ -77,14 +81,19 @@ export const useAventuraDelDia = (userId, materia) => {
 
         // 5. Ordenar por nivel (o id si no hay nivel) de forma ASCENDENTE (más antigua/temprana primero)
         const obtenerClaveOrden = (item) => item.nivel || item?.misiones?.[0]?.nivel || item.id;
-        aventurasSinCompletar.sort((a, b) => obtenerClaveOrden(a).localeCompare(obtenerClaveOrden(b)));
+        // Adulto en piano: su repertorio (PA…) va antes que la lectura de notas
+        // compartida, que ordenaría primero (P1-T04 < PA1-01) y le propondría
+        // "Do Re Mi" a quien ya toca Für Elise.
+        const rango = (item) => (materiaResuelta === 'piano' && pistaPiano === PISTA_ADULTOS && pistaDe(item) === 'ambas' ? 1 : 0);
+        aventurasSinCompletar.sort((a, b) => (rango(a) - rango(b))
+          || obtenerClaveOrden(a).localeCompare(obtenerClaveOrden(b)));
 
-        // 6. Encontrar la clave más antigua/temprana
+        // 6. Encontrar la clave más antigua/temprana (dentro del mismo rango)
         const claveMasAntigua = obtenerClaveOrden(aventurasSinCompletar[0]);
 
-        // 7. Filtrar aventuras con esa misma clave
+        // 7. Filtrar aventuras con esa misma clave (y mismo rango)
         const aventurasMismaFecha = aventurasSinCompletar.filter(
-          av => obtenerClaveOrden(av) === claveMasAntigua
+          av => obtenerClaveOrden(av) === claveMasAntigua && rango(av) === rango(aventurasSinCompletar[0])
         );
 
         // 8. Si hay múltiples con la misma clave, elegir aleatoriamente
@@ -109,7 +118,7 @@ export const useAventuraDelDia = (userId, materia) => {
     };
 
     cargarProximaAventura();
-  }, [userId, materia]); // Se ejecuta cuando cambia el userId o la materia activa
+  }, [userId, materia, pistaPiano]); // Se ejecuta cuando cambia el perfil, la materia o la pista de piano
 
   return { aventura, loading, error };
 };

@@ -56,8 +56,11 @@ const getMensajeProgreso = (porcentajeProgreso) => {
   return "";
 };
 
-const HoyTab = ({ profile, materia, activeProfileId, onGoToExplorar }) => {
-  const { aventura, loading: aventuraLoading } = useAventuraDelDia(activeProfileId, materia);
+const HoyTab = ({ profile, materia, activeProfileId, onGoToExplorar, pistaPiano = null }) => {
+  // La pista solo importa en piano; fuera de piano no debe provocar recargas.
+  const { aventura, loading: aventuraLoading } = useAventuraDelDia(
+    activeProfileId, materia, materia === 'piano' ? pistaPiano : null,
+  );
   const navigate = useNavigate();
   const [mostrarModalTrofeos, setMostrarModalTrofeos] = useState(false);
 

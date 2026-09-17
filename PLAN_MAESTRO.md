@@ -118,6 +118,11 @@ Fase 3 pendiente: PIN opcional de adulto.
   rejilla. Regresión exacta en Twinkle y Clair de Lune (Chrome headless).
 - **Bug de tonalidad en PianoPrompter** (2026-09-16): un cambio de clave en línea
   impedía insertar la armadura; en una pieza en Sol se perdía el Fa#.
+- **Pistas Niños / Adultos (2026-09-16)**: casilla "Es un adulto" en el perfil
+  (`esAdulto`) + selector `🧒 Niños | 🎼 Adultos` en Piano. Nada se bloquea. PA →
+  adultos; lectura de notas → ambas; compositores y teoría → niños; Clair de Lune
+  pasa a PA3-01. La aventura del día respeta la pista. Paso 1 del "modo papás":
+  hoy solo afecta Piano. Detalle en `_piano/PROGRAMA_PIANO.md` §Track ADULTO.
 
 ### Track ADULTO (`PA1`..`PA4`) — decidido 2026-08-28
 El papá aprende piano en la misma plataforma. **No es "básico vs avanzado"**: un
@@ -133,7 +138,9 @@ rachas ni estrellas, y las herramientas de práctica son la función de retenci�
 ### Pendiente
 1. **Probar en el piano**: ✅ Für Elise (PA1-01/02) y escalera de tempo validadas
    (2026-09-16). Falta: metrónomo nuevo en Zapatillas Rojas (anacrusa) y Twinkle;
-   y el lote 2 (Canon, Cisnes, Minueto A, Twinkle de Mozart).
+   el lote 2 (Canon, Cisnes, Minueto A, Twinkle de Mozart); y las pistas
+   Niños/Adultos (marcar "Es un adulto" en el perfil del papá, re-migrar Twinkle,
+   Zapatillas, Clair de Lune y las 2 de prueba).
    Licencias: uso personal + amigos, sin venta → no es impedimento; se revisa solo
    si algún día se vende (decisión del usuario 2026-09-16).
 2. **Modo espera (entrada del alumno)** — el hueco real: la app nunca oye. Ya NO

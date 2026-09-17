@@ -1,6 +1,7 @@
 {
   "id": "piano-zapatillas-rojas",
   "titulo": "Las Zapatillas Rojas",
+  "nivel": "P4-01",
   "misiones": [
     {
       "id": "zapatillas-01",

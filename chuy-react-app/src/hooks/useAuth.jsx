@@ -19,6 +19,8 @@ const perfilPorDefecto = (ownerUid, datos = {}) => ({
   avatar: datos.avatar || '🦸',
   tema: datos.tema || 'aventurero',
   esPeque: datos.esPeque || false,
+  // Perfil de adulto: hoy solo decide con que pista abre Piano (utils/materiaContent).
+  esAdulto: datos.esAdulto || false,
   edad: datos.edad || null,
   musicaFondo: false,
   musicaFondoPista: null,

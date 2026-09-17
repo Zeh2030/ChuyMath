@@ -1,6 +1,7 @@
 {
     "id":  "piano-test-larga",
     "titulo":  "TEST Pieza Larga",
+    "nivel":  "P9-TEST",
     "misiones":  [
                      {
                          "id":  "test-larga-01",
