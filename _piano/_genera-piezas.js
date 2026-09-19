@@ -108,6 +108,56 @@ const PIEZAS = [
     descripcion: 'Del Cuaderno de Ana Magdalena Bach (1725). Durante mucho tiempo se creyó de Bach; hoy se atribuye a Christian Petzold. Esta es la sección A, que cierra en Sol.',
     instruccion: 'La derecha lleva la melodía y la izquierda responde con notas largas. En 3/4 el primer tiempo de cada compás pesa un poco más. En el original esta sección se repite: repítela tú con el bucle A-B.',
   },
+  // El minueto entero: A y B, cada una con su repeticion (`|:1-16:| |:17-32:|`),
+  // desplegadas solas (sin `forma`, para que corra la verificacion cruzada con
+  // abcjs). En el compas 29 la izquierda toca DOS VOCES: un Re largo mientras
+  // entra un Fa# en el ultimo tiempo.
+  {
+    id: 'PA1-06_minueto-en-sol',
+    fuente: musetrainer('Bach_Minuet_in_G_Major_BWV_Anh._114.mxl'),
+    titulo: 'Minueto en Sol · Completo',
+    autor: 'Christian Petzold',
+    nivel: 'PA1-06',
+    bpm: 126,
+    dificultad: 'principiante',
+    descripcion: 'El minueto entero: la sección A que ya conoces y la sección B, que se va a Re mayor y regresa a Sol. Cada sección se repite.',
+    instruccion: 'Domina primero «Minueto en Sol · Sección A». La sección B empieza en el compás 17: ahí la melodía baja por escalas y la izquierda sube. La doble barra marca dónde empieza cada repetición.',
+  },
+
+  // Gymnopedie n.o 1 (1888), version de 78 compases escrita de corrido. De las dos
+  // del repositorio es la que acomoda las manos como se tocan: la melodia sola en
+  // la derecha y, en la izquierda, DOS VOCES: el bajo en el primer tiempo (plica
+  // abajo) y el acorde en el segundo (plica arriba). La otra version (47 compases
+  // con repeticiones) suena igual pero pone los acordes en la derecha.
+  // "Lent et douloureux", negra = 54 (la partitura baja a 46 y 34 al final;
+  // abcjs toca todo a un tempo).
+  {
+    id: 'PA2-01_gymnopedie-1',
+    fuente: musetrainer('Gymnopdie_No._1__Satie.mxl'),
+    titulo: 'Gymnopédie n.º 1',
+    autor: 'Erik Satie',
+    nivel: 'PA2-01',
+    bpm: 54,
+    dificultad: 'intermedio',
+    descripcion: 'Lenta y dolorosa, como pide Satie. La izquierda se mece entre un bajo profundo y un acorde; encima, la derecha canta una melodía que parece improvisada.',
+    instruccion: 'La mano izquierda lleva dos cosas a la vez: el bajo en el primer tiempo (plica hacia abajo) y el acorde en el segundo (plica hacia arriba). Aprende primero ese vaivén con la izquierda sola hasta que salga sin mirar; la derecha entra en el compás 5.',
+  },
+
+  // Preludio en Do, BWV 846 (El clave bien temperado, libro I). Cada compas es
+  // un acorde arpegiado que se repite: la izquierda en DOS VOCES (una blanca
+  // grave y, tras un silencio de semicorchea, una nota ligada) y la derecha el
+  // arpegio. "Adagio", negra = 72 (baja al final; abcjs toca todo a un tempo).
+  {
+    id: 'PA2-02_preludio-en-do',
+    fuente: musetrainer('Prelude_I_in_C_major_BWV_846_-_Well_Tempered_Clavier_First_Book.mxl'),
+    titulo: 'Preludio en Do',
+    autor: 'Johann Sebastian Bach',
+    nivel: 'PA2-02',
+    bpm: 72,
+    dificultad: 'intermedio',
+    descripcion: 'El primer preludio de El clave bien temperado (1722): cada compás es un acorde que se desgrana dos veces. Sobre él, Gounod escribió su Ave María.',
+    instruccion: 'Todo el preludio es el mismo dibujo de mano: la izquierda toca la nota grave y la mantiene, luego la segunda nota y la mantiene; la derecha completa el acorde con tres notas que se repiten. Aprende el dibujo en el compás 1 y después ve compás por compás: solo cambian las notas.',
+  },
 
   // ── Track de nino ─────────────────────────────────────────────────────────
 

@@ -108,6 +108,8 @@ intro, blues de 12 compases en Do.
 Seccion A completa (con digitacion); `PA1-03` Canon en Re (con digitacion),
 `PA1-04` El lago de los cisnes, `PA1-05` Minueto en Sol · Seccion A. Ver
 §Digitacion → Piezas construidas.
+**Con dos voces por mano (2026-09-18):** `PA1-06` Minueto en Sol · Completo,
+`PA2-01` Gymnopédie n.º 1 (Satie) y `PA2-02` Preludio en Do (Bach, BWV 846).
 
 Einaudi y Yann Tiersen estan en derechos. Con el uso actual (personal + amigos)
 no es impedimento — ver la decision de licencias en §Digitacion.
@@ -633,7 +635,8 @@ node _piano/_genera-piezas.js                                     # regenera tod
 **Que traduce:** notas, acordes, silencios, ligaduras, anacrusa (por
 `implicit="yes"`, no adivinando), alteraciones (simula la regla "valen por octava
 hasta la barra", verificada igual en abcjs), cambios de clave a media pieza
-(`[K:clef=...]`, que conserva la armadura), repeticiones y casillas.
+(`[K:clef=...]`, que conserva la armadura), repeticiones y casillas, y **hasta dos
+voces por mano** (ver §Dos voces por mano).
 
 **Decisiones:**
 - **Repeticiones DESPLEGADAS**, no con signos: un teleprompter se lee de corrido.
@@ -649,8 +652,9 @@ hasta la barra", verificada igual en abcjs), cambios de clave a media pieza
 - La `unidad` (`L:`) es la figura mas grande que divide todas las duraciones.
 
 **Falla RUIDOSAMENTE** ante lo que no sabe traducir, con el compas exacto:
-notas de adorno, tresillos, notas guia, `<forward>`, varias voces en una mano,
-cambios de compas/armadura a media pieza, compases que no suman. Pero solo si el
+notas de adorno, tresillos, notas guia, tres o mas voces en una mano, huecos en
+la voz principal de una mano, cambios de compas/armadura a media pieza, compases
+que no suman. Pero solo si el
 compas problematico **entra en lo pedido**: un adorno en el compas 25 no impide
 convertir 0-24.
 
@@ -669,11 +673,21 @@ convertir 0-24.
 accidentes perdidos, octavas corridas (con y sin crash), duraciones al doble,
 casillas que no avanzan, repeticion al compas equivocado, nota de acorde perdida
 (incluso conservando su dedo para esquivar el conteo), dedo descartado, mano
-izquierda desfasada.
+izquierda desfasada. **Con dos voces (2026-09-18): 17/17** — las 10 de antes
+mas: `<backup>` parcial que regresa al inicio (en un XML sintetico, en el Minueto
+y en la Gymnopédie de 47), segunda voz perdida, alteraciones llevadas por
+pentagrama en lugar de por voz, huecos sin rellenar con `x`, pistas de abcjs
+repartidas a la mano equivocada. Mas 5 controles sin mutar que pasan.
 
 **Pendiente (cuando una pieza lo pida):** notas de adorno y tresillos (abcjs los
 soporta: `{g}A`, `(3abc`); con eso sale Für Elise completa (adornos en 25-36,
-tresillos en 79-83).
+tresillos en 79-83). **Huecos en la voz principal** (7 partituras, entre ellas
+el *Clair de Lune* de Debussy, Moonlight 3er mov. y The Entertainer 1902):
+MuseScore exporta como `<forward>` los silencios borrados de la voz 1; se
+podrian rellenar con `x` como en la voz 2, a cambio de perder el chequeo "el
+compas cuadra" en esa voz. **Ligaduras dentro de acordes** (`[A,,,A,,-]`, solo
+una nota ligada): abcjs no las une al tocar y la nota vuelve a sonar; la
+verificacion lo detecta (Carol of the Bells de Ross, Flight of the Bumblebee).
 
 ### Catalogo musetrainer/library — diagnostico con el conversor (2026-09-16)
 
@@ -684,6 +698,10 @@ cambio de armadura 14, cambio de compas 10, otros 18. "Voces" es el bloqueo
 dominante, pero sola destraba solo +5 piezas completas; voces + adornos +
 tresillos destraba **+14**.
 
+**2026-09-18, con dos voces por mano: 14 convierten completas** (+5, justo las
+previstas): Minuet BWV Anh. 114, las dos Gymnopédie, Lacrimosa y el Preludio
+BWV 846.
+
 | Pieza (archivo) | Estado | Notas |
 |---|---|---|
 | Canon in D easy (Pachelbel) | ✅ **construida PA1-03** | **67 digitaciones**; Re mayor; `\|:45 48:\|` |
@@ -693,16 +711,68 @@ tresillos destraba **+14**.
 | Ode to Joy easy variation | ✅ completa, 17 c. | Sol mayor, con izquierda (acordes de 3) |
 | Happy Birthday C Major | ✅ completa, 8 c. | |
 | Carol of the Bells easy piano | ✅ completa, 40 c. | |
-| 12 Variations Twinkle (Mozart K.265) | ✅ **tema construido P4-02**; limpio 1-40 | tema = 1-24 (`\|:1 8:\| \|:9 24:\|`); voces desde 41 |
-| Minuet in G BWV Anh. 114 (Petzold) | ✅ **seccion A construida PA1-05**; limpio 1-24 | seccion A (1-16) sale hoy; voces desde 25 |
-| Hungarian Dance No. 5 (Brahms) | limpio 1-34 | voces desde 35 |
+| 12 Variations Twinkle (Mozart K.265) | ✅ **tema construido P4-02**; limpio 1-73 | tema = 1-24 (`\|:1 8:\| \|:9 24:\|`); tresillos desde 74 |
+| Minuet in G BWV Anh. 114 (Petzold) | ✅ **construido completo PA1-06** (y seccion A PA1-05) | 2 voces en la izquierda (c. 29) y en la derecha |
+| Gymnopédie No.1 (Satie), 78 c. | ✅ **construida PA2-01** | izquierda en 2 voces (bajo + acorde); escrita de corrido |
+| Gymnopedie No.1 (Satie), 47 c. | ✅ completa (78 al desplegar) | misma musica, pero pone los acordes en la derecha |
+| Prelude BWV 846 (Bach) | ✅ **construido PA2-02**, 34 c. | izquierda en 2 voces (blanca + nota ligada) |
+| Lacrimosa (Mozart) | ✅ completa, 32 c. | |
+| Hungarian Dance No. 5 (Brahms) | limpio 1-46 | adornos desde 47 |
 | Mozart K.545 Allegro | limpio 1-17 | compas 18 con `<alter>9</alter>`: **archivo corrupto** |
-| Gymnopedie No.1 (Satie) | limpio 1-4 | voces desde 5 (ambos archivos) |
 | Greensleeves easy | bloqueada | anacrusa sin `implicit` + tresillos; 14 dedos |
 | Danse villageoise No.2 (Beethoven) | bloqueada | SOLO anacrusa sin `implicit` |
 | Happy Birthday Piano | limpio 0-18 | SOLO compas final corto sin `implicit` |
-| Carol of the Bells (Ross) | bloqueada | **bug**: ligadura que cruza un salto de repeticion (59→61) |
+| Carol of the Bells (Ross) | bloqueada | ligadura dentro de un acorde (c. 39-40), ver Pendiente; antes se anoto tambien una ligadura que cruza un salto de repeticion (59→61) |
 | The Entertainer (Joplin) | bloqueada | 2 `<part>` (una por mano); 96 dedos |
+
+### Dos voces por mano (2026-09-18)
+
+Una mano puede llevar dos lineas con ritmos distintos: el bajo que se sostiene
+mientras la misma mano toca el acorde (Gymnopédie), la blanca grave bajo la nota
+ligada (Preludio de Bach). Era el bloqueo dominante del catalogo.
+
+**Formato ABC** (compatible con todo lo anterior): las voces se numeran corrido,
+derecha primero, y `%%staves` dice cuales comparten pentagrama. **La mano la
+decide el grupo, no el numero de voz.**
+
+```
+%%staves {1 2}            una voz por mano (todo el contenido anterior, identico)
+%%staves {(1 2) (3 4)}    dos y dos (Minueto completo, Gymnopédie)
+%%staves {1 (2 3)}        derecha sola, izquierda en dos voces (Preludio)
+V:2 clef=bass stem=down   con dos voces: la mas AGUDA en promedio plica arriba
+```
+
+Donde una voz calla o entra tarde va el silencio invisible `x` (tambien los
+silencios `print-object="no"` de MuseScore). Se escribe la segunda voz solo si
+toca algo en lo pedido: el Minueto 1-16 sigue saliendo con una voz por mano.
+
+**Conversor.** Sigue el reloj de MusicXML (`<backup>` regresa, `<forward>`
+adelanta) y guarda cada evento con su instante. Detalles que salieron al probar:
+- **Alteraciones por voz**, no por pentagrama: asi las aplica abcjs (un `^F` de
+  la voz de arriba no altera el `F` de la de abajo, al reves que la notacion).
+- **Plicas por altura**, no por numero de voz: en el Preludio de MuseScore la
+  voz 1 es el Do grave, con plica abajo.
+- La voz principal (numero menor) tiene que llenar el compas: es la que dice
+  cuanto mide. Las demas pueden tener huecos, pero no encimarse ni pasarse.
+
+**App.** `PianoPrompter.gruposPorMano` lee los grupos de `%%staves`;
+`extraerMano` saca una mano con sus una o dos voces (dos voces = un pentagrama con
+`%%staves (a b)`). En `MusicPrompter` el teclado reparte las pistas de audio
+(una por voz, en orden de pentagrama) segun cuantas voces tiene el primer
+pentagrama. Dos arreglos que pidio la multi-voz:
+- `estimarCompases` contaba solo `V:1`; la izquierda sola empieza en `V:2`/`V:3`.
+- **El fin del mapa de scroll** usaba el ULTIMO elemento del DOM. abcjs dibuja voz
+  por voz, y con dos voces ese es la ultima nota de la voz de abajo, que puede
+  estar a media pieza: al final la partitura saltaba hacia atras (1556 px en el
+  Minueto con la derecha sola). Ahora toma los extremos sobre todas las voces.
+
+**Probado** (todo con el codigo real): regresion de las 6 piezas anteriores (solo
+cambiaron 3 silencios que MuseScore tenia invisibles: `z2` → `x2` en PA1-01/02);
+cada mano sola suena identica a su parte en la completa, en las 14 piezas del
+repo; en Chrome real, 0 retrocesos del scroll en las 3 nuevas × 3 modos de mano
+y en 6 piezas anteriores; teclado con las dos voces de la izquierda en naranja.
+
+**Al migrar:** resubir PA1-01 y PA1-02 (el `x` de arriba) y subir las 3 nuevas.
 
 ### Piezas construidas (track adulto)
 
@@ -713,6 +783,9 @@ tresillos destraba **+14**.
 | `prompter/PA1-03_canon-en-re.json` | `1-48,45-49` (despliegue automatico) | 53 | 471 | 71 |
 | `prompter/PA1-04_lago-de-los-cisnes.json` | `1-27` | 27 | 326 | — |
 | `prompter/PA1-05_minueto-en-sol-a.json` | `1-16` | 16 | 102 | — |
+| `prompter/PA1-06_minueto-en-sol.json` | `1-16,1-32,17-32` (despliegue automatico) | 64 | 408 | — |
+| `prompter/PA2-01_gymnopedie-1.json` | `1-78` | 78 | 455 | — |
+| `prompter/PA2-02_preludio-en-do.json` | `1-34` | 34 | 533 | — |
 | `prompter/P4-02_twinkle-de-mozart.json` (hijo) | `1-24` | 24 | 96 | — |
 
 **Lote 2 (2026-09-16)** — todas con verificacion nota por nota, revision visual y
@@ -887,6 +960,9 @@ V:2 clef=bass
 ```
 - Ambas voces DEBEN tener el mismo numero de compases
 - Compases vacios en una mano → `z4 |` (silencios llenando el compas)
+- Una mano con dos voces: `%%staves {(1 2) 3}` y cada voz en su `V:` con
+  `stem=up`/`stem=down`; donde una voz calla, `x` (silencio invisible). Ver
+  §Dos voces por mano.
 
 #### Paso 5: Validar
 - Contar tiempos por compas — deben sumar lo indicado en el compas (4 para 4/4, 3 para 3/4)

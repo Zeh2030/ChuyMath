@@ -1,0 +1,33 @@
+{
+  "id": "PA2-01_gymnopedie-1",
+  "titulo": "Gymnopédie n.º 1",
+  "descripcion": "Lenta y dolorosa, como pide Satie. La izquierda se mece entre un bajo profundo y un acorde; encima, la derecha canta una melodía que parece improvisada.",
+  "tipo": "piano-prompter",
+  "materia": "piano",
+  "nivel": "PA2-01",
+  "fuente": {
+    "archivo": "Gymnopdie_No._1__Satie.mxl",
+    "url": "https://github.com/musetrainer/library/blob/master/scores/Gymnopdie_No._1__Satie.mxl",
+    "forma": "1-78",
+    "convertido": "2026-09-18"
+  },
+  "misiones": [
+    {
+      "id": "PA2-01_gymnopedie-1-01",
+      "tipo": "piano-prompter",
+      "titulo": "Gymnopédie n.º 1",
+      "instruccion": "La mano izquierda lleva dos cosas a la vez: el bajo en el primer tiempo (plica hacia abajo) y el acorde en el segundo (plica hacia arriba). Aprende primero ese vaivén con la izquierda sola hasta que salga sin mirar; la derecha entra en el compás 5.",
+      "autor": "Erik Satie",
+      "bpm": 54,
+      "dificultad": "intermedio",
+      "nivel": "PA2-01",
+      "configuracion": {
+        "compas": "3/4",
+        "tonalidad": "D",
+        "clave": "treble",
+        "unidad": "1/4"
+      },
+      "notas": "%%staves {(1 2) (3 4)}\nK:D\nV:1 clef=treble stem=up\nz3 | z3 | z3 | z3 | z f a | g f c | B c d | A3 | F3- | F3- | F3- | F3 | z f a | g f c | B c d | A3 | c3 | f3 | E3- | E3- | E3 | A B =c | e d B | d =c B | d3- | d2 d | e =f g | a =c d | e d B | d3- | d2 d | g3 | f3 | B A B | c d e | c d e | F3 | [=CEA=c]3 | [DFAd]3 | z3 | z3 | z3 | z3 | z f a | g f c | B c d | A3 | F3- | F3- | F3- | F3 | z f a | g f c | B c d | A3 | c3 | f3 | E3- | E3- | E3 | A B =c | e d B | d =c B | d3- | d2 d | e =f g | a =c d | e d B | d3- | d2 d | g3 | =f3 | B =c =f | e d =c | e d =c | =F3 | [=CEA=c]3 | [D=FAd]3 |]\nV:2 clef=treble stem=down\nx3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | z [A,D] [B,DG] | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 | z [A,D] [B,DG] | x3 | x3 |]\nV:3 clef=bass stem=up\nz [B,DF]2 | z [A,CF]2 | z [B,DF]2 | z [A,CF]2 | z [B,DF]2 | z [A,CF]2 | z [B,DF]2 | z [A,CF]2 | z [B,DF]2 | z [A,CF]2 | z [B,DF]2 | z [A,CF]2 | z [B,DF]2 | z [A,CF]2 | z [B,DF]2 | z [A,CF]2 | z [A,CF]2 | z [B,DF]2 | z [G,B,]2 | z [B,DG]2 | z [=F,A,D]2 | z [A,=CE]2 | z [G,B,E]2 | z [D,G,B,E]2 | z [=C,E,A,D]2 | z [=C,F,A,D]2 | z [A,=C=F]2 | z [A,=CE]2 | z [D,G,B,E]2 | z [=C,E,A,D]2 | z [=C,F,A,D]2 | z [B,EG]2 | z [A,CF]2 | z [B,DF]2 | z [CEA]2 | z [A,CFA]2 | z B,, E, | [A,,G,]3 | [D,,A,,D,]3 | z [B,DF]2 | z [A,CF]2 | z [B,DF]2 | z [A,CF]2 | z [B,DF]2 | z [A,CF]2 | z [B,DF]2 | z [A,CF]2 | z [B,DF]2 | z [A,CF]2 | z [B,DF]2 | z [A,CF]2 | z [B,DF]2 | z [A,CF]2 | z [B,DF]2 | z [A,CF]2 | z [A,CF]2 | z [B,DF]2 | z [G,B,]2 | z [B,DG]2 | z [=F,A,D]2 | z [A,=CE]2 | z [G,B,E]2 | z [D,G,B,E]2 | z [=C,E,A,D]2 | z [=C,F,A,D]2 | z [A,=C=F]2 | z [A,=CE]2 | z [D,G,B,E]2 | z [=C,E,A,D]2 | z [=C,F,A,D]2 | z [B,EG]2 | z [A,D=FA]2 | z [A,=C=F]2 | z [=CEA]2 | z [A,=C=FA]2 | z B,, E, | [A,,G,]3 | [D,,A,,D,]3 |]\nV:4 clef=bass stem=down\nG,,3 | D,,3 | G,,3 | D,,3 | G,,3 | D,,3 | G,,3 | D,,3 | G,,3 | D,,3 | G,,3 | D,,3 | G,,3 | D,,3 | G,,3 | D,,3 | F,,3 | B,,,3 | E,,3 | E,,3 | D,,3 | A,,,3 | D,,3 | D,,3 | D,,3 | D,,3 | D,,3 | D,,3 | D,,3 | D,,3 | D,,3 | E,,3 | F,,3 | B,,,3 | E,,3 | E,,3 | E,,3 | x3 | x3 | G,,3 | D,,3 | G,,3 | D,,3 | G,,3 | D,,3 | G,,3 | D,,3 | G,,3 | D,,3 | G,,3 | D,,3 | G,,3 | D,,3 | G,,3 | D,,3 | F,,3 | B,,,3 | E,,3 | E,,3 | D,,3 | A,,,3 | D,,3 | D,,3 | D,,3 | D,,3 | D,,3 | D,,3 | D,,3 | D,,3 | D,,3 | E,,3 | E,,3 | E,,3 | E,,3 | E,,3 | E,,3 | x3 | x3 |]"
+    }
+  ]
+}

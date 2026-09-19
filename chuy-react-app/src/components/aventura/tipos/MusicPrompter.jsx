@@ -6,21 +6,23 @@ import { rangoTeclado, pulsosMetronomo, cuentaDeEntrada, dedosPorNota } from '..
 
 /**
  * Estima el número de compases contando barras `|` en las líneas de notas.
- * En multi-voz cuenta solo la voz 1 (las voces tienen los mismos compases).
+ * En multi-voz cuenta solo la primera voz (las voces tienen los mismos compases;
+ * la mano izquierda sola empieza en V:2 o V:3).
  * Nota: las barras YA NO se eliminan del ABC — eso era necesario con el motor
  * viejo de velocidad constante; el mapa tiempo→posición absorbe su espacio.
  */
 const estimarCompases = (abc) => {
   const lines = abc.split('\n');
   let voz = null;
+  let primera = null;
   let compases = 0;
   for (const rawLine of lines) {
     const line = rawLine.trim();
     if (!line || line.startsWith('%%')) continue;
     const vm = line.match(/^V:\s*(\d+)/);
-    if (vm) { voz = vm[1]; continue; }
+    if (vm) { voz = vm[1]; primera = primera ?? voz; continue; }
     if (/^[A-Z]:/.test(line)) continue; // encabezados X:/T:/M:/L:/K:
-    if (voz === null || voz === '1') {
+    if (voz === null || voz === primera) {
       compases += (line.match(/\|/g) || []).length;
     }
   }
@@ -359,12 +361,18 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     escalaRef.current = ajustarVertical();
 
     const svgRect = svg.getBoundingClientRect();
-    const allNotes = svg.querySelectorAll('.abcjs-note, .abcjs-rest');
-    if (allNotes.length > 0) {
-      const firstRect = allNotes[0].getBoundingClientRect();
-      const lastRect = allNotes[allNotes.length - 1].getBoundingClientRect();
-      firstNoteOffsetRef.current = firstRect.left - svgRect.left;
-      musicWidthRef.current = (lastRect.right - firstRect.left) + 100;
+    // Extremos de la música sobre TODAS las voces. No sirven el primer y último
+    // elemento del DOM: abcjs dibuja voz por voz, y con dos voces en un pentagrama
+    // el último del DOM es la última nota de la voz de abajo, que puede estar a
+    // media pieza (el mapa terminaba antes y la partitura saltaba hacia atrás).
+    const rects = [...svg.querySelectorAll('.abcjs-note, .abcjs-rest')]
+      .map((el) => el.getBoundingClientRect())
+      .filter((r) => r.width > 0);
+    if (rects.length > 0) {
+      const izquierda = rects.reduce((m, r) => Math.min(m, r.left), Infinity);
+      const derecha = rects.reduce((m, r) => Math.max(m, r.right), -Infinity);
+      firstNoteOffsetRef.current = izquierda - svgRect.left;
+      musicWidthRef.current = (derecha - izquierda) + 100;
     } else {
       firstNoteOffsetRef.current = 0;
       musicWidthRef.current = svgRect.width;
@@ -449,8 +457,8 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     metroIdxRef.current = 0;
 
     // ─── Línea de tiempo del TECLADO (cálculo aparte; el mapa de arriba no se toca) ───
-    // setUpAudio entrega las voces YA separadas (track 0 = derecha, 1 = izquierda)
-    // con pitch MIDI y tiempos en redondas. Es transformación pura, sin audio.
+    // setUpAudio entrega una pista por VOZ, en orden de pentagrama, con pitch MIDI
+    // y tiempos en redondas. Es transformación pura, sin audio.
     // (noteTimings no sirve aquí: en abcjs 6.6.2 no trae midiPitches en nuestro
     // orden de llamadas, y fusiona las voces que coinciden en el tiempo.)
     try {
@@ -458,13 +466,15 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
       const beatLen = visualObj.getBeatLength() || 0.25;
       const factorMs = 60000 / qpm / beatLen; // redondas → ms
       const tracks = (audio && audio.tracks) || [];
-      const nVoces = Math.min(multiVoice ? 2 : 1, tracks.length);
+      // Cada pentagrama es una mano y puede traer una o dos voces (bajo sostenido
+      // + arpegio): las pistas del primer pentagrama son de la derecha.
+      const vocesDerecha = visualObj.lines?.find((l) => l.staff)?.staff?.[0]?.voices?.length || 1;
       // Digitación (Fase 2): dedo de cada nota que suena, si la partitura lo trae.
       const dedos = dedosPorNota(visualObj, tracks);
       const linea = [];
       const midis = [];
-      for (let v = 0; v < nVoces; v++) {
-        const manoVoz = mano !== 'ambas' ? mano : (v === 0 ? 'derecha' : 'izquierda');
+      for (let v = 0; v < tracks.length; v++) {
+        const manoVoz = mano !== 'ambas' ? mano : (v < vocesDerecha ? 'derecha' : 'izquierda');
         for (const item of tracks[v]) {
           if (item.cmd !== 'note' || typeof item.pitch !== 'number') continue;
           const t = item.start * factorMs;
@@ -484,7 +494,7 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
       setRangoT(null);
     }
     reiniciarTeclado();
-  }, [multiVoice, mano, reiniciarTeclado, medirContenido, ajustarVertical]);
+  }, [mano, reiniciarTeclado, medirContenido, ajustarVertical]);
 
   // x(t): posición del scroll para un tiempo dado, interpolando en el mapa.
   // Pura salvo por segIdxRef (cursor monotónico que acelera el caso común).

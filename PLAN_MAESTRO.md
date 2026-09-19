@@ -110,8 +110,16 @@ Fase 3 pendiente: PIN opcional de adulto.
   prueba de mutación 10/10. Piezas `PA1-01` Für Elise · El tema y `PA1-02` Sección
   A completa. **Lote 2**: PA1-03 Canon en Re, PA1-04 El lago de los cisnes, PA1-05
   Minueto en Sol (A) y P4-02 Twinkle de Mozart (hijo). Todas se regeneran con
-  `node _piano/_genera-piezas.js`. Faltan adornos, tresillos y varias voces por mano
+  `node _piano/_genera-piezas.js`. Faltan adornos y tresillos
   (catalogo de 69 partituras diagnosticado en PROGRAMA_PIANO).
+- **Dos voces por mano (2026-09-18)**: bajo sostenido + acorde en la misma mano.
+  Formato `%%staves {(1 2) (3 4)}` (la mano la decide el grupo; lo anterior sale
+  idéntico), `x` donde una voz calla, plicas por altura. Conversor con mutación
+  17/17; selector de manos y teclado por pentagrama. Arreglado de paso el salto
+  hacia atrás al final del scroll con dos voces. Piezas nuevas: **PA1-06** Minueto
+  completo, **PA2-01** Gymnopédie n.º 1, **PA2-02** Preludio en Do de Bach.
+  Catálogo: 9 → 14 partituras convertibles. Detalle en PROGRAMA_PIANO §Dos voces
+  por mano.
 - **Metrónomo con anacrusa (2026-09-16)**: el acento caía en el tiempo equivocado
   en piezas con anacrusa — incluida **Zapatillas Rojas**. Ahora sigue los compases
   reales de abcjs; 3/8 se subdivide en corcheas; la cuenta de entrada continúa la
@@ -146,7 +154,9 @@ rachas ni estrellas, y las herramientas de práctica son la función de retenci�
    (2026-09-16). Falta: metrónomo nuevo en Zapatillas Rojas (anacrusa) y Twinkle;
    el lote 2 (Canon, Cisnes, Minueto A, Twinkle de Mozart); y las pistas
    Niños/Adultos (marcar "Es un adulto" en el perfil del papá, re-migrar Twinkle,
-   Zapatillas, Clair de Lune y las 2 de prueba).
+   Zapatillas, Clair de Lune y las 2 de prueba). Dos voces por mano: subir PA1-06,
+   PA2-01 y PA2-02, y resubir PA1-01/02; probar cada mano sola en la Gymnopédie y
+   el Preludio.
    Licencias: uso personal + amigos, sin venta → no es impedimento; se revisa solo
    si algún día se vende (decisión del usuario 2026-09-16).
 2. **Modo espera (entrada del alumno)** — el hueco real: la app nunca oye. Ya NO
@@ -157,6 +167,8 @@ rachas ni estrellas, y las herramientas de práctica son la función de retenci�
 5. Acordes de mano izquierda de Zapatillas Rojas (el usuario los dicta).
 6. Validar al oído el selector de manos por separado.
 7. `identifica-acorde` (reutiliza ~90% de identifica-nota).
+8. Conversor: huecos en la voz principal (destrabaría el *Clair de Lune* de
+   Debussy y otras 6), adornos, tresillos, ligaduras dentro de acordes.
 
 ### Fuentes de repertorio (dominio público)
 - [musetrainer/library](https://github.com/musetrainer/library) — 79 MusicXML, 2 con

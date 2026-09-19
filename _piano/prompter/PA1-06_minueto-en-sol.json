@@ -1,0 +1,33 @@
+{
+  "id": "PA1-06_minueto-en-sol",
+  "titulo": "Minueto en Sol · Completo",
+  "descripcion": "El minueto entero: la sección A que ya conoces y la sección B, que se va a Re mayor y regresa a Sol. Cada sección se repite.",
+  "tipo": "piano-prompter",
+  "materia": "piano",
+  "nivel": "PA1-06",
+  "fuente": {
+    "archivo": "Bach_Minuet_in_G_Major_BWV_Anh._114.mxl",
+    "url": "https://github.com/musetrainer/library/blob/master/scores/Bach_Minuet_in_G_Major_BWV_Anh._114.mxl",
+    "forma": "1-16,1-32,17-32",
+    "convertido": "2026-09-18"
+  },
+  "misiones": [
+    {
+      "id": "PA1-06_minueto-en-sol-01",
+      "tipo": "piano-prompter",
+      "titulo": "Minueto en Sol · Completo",
+      "instruccion": "Domina primero «Minueto en Sol · Sección A». La sección B empieza en el compás 17: ahí la melodía baja por escalas y la izquierda sube. La doble barra marca dónde empieza cada repetición.",
+      "autor": "Christian Petzold",
+      "bpm": 126,
+      "dificultad": "principiante",
+      "nivel": "PA1-06",
+      "configuracion": {
+        "compas": "3/4",
+        "tonalidad": "G",
+        "clave": "treble",
+        "unidad": "1/8"
+      },
+      "notas": "%%staves {(1 2) (3 4)}\nK:G\nV:1 clef=treble stem=up\nd2 G A B c | d2 G2 G2 | e2 c d e f | g2 G2 G2 | c2 d c B A | B2 c B A G | F2 G A B G | B2 A4 | d2 G A B c | d2 G2 G2 | e2 c d e f | g2 G2 G2 | c2 d c B A | B2 c B A G | A2 B A G F | G6 || d2 G A B c | d2 G2 G2 | e2 c d e f | g2 G2 G2 | c2 d c B A | B2 c B A G | F2 G A B G | B2 A4 | d2 G A B c | d2 G2 G2 | e2 c d e f | g2 G2 G2 | c2 d c B A | B2 c B A G | A2 B A G F | G6 | b2 g a b g | a2 d e f d | g2 e f g d | ^c2 B c A2 | A B ^c d e f | g2 f2 e2 | f2 A2 ^c2 | d6 | x6 | x6 | d2 c2 B2 | A G F G A2 | D E F G A B | c2 B2 A2 | B d G2 F2 | [B,DG]6 || b2 g a b g | a2 d e f d | g2 e f g d | ^c2 B c A2 | A B ^c d e f | g2 f2 e2 | f2 A2 ^c2 | d6 | x6 | x6 | d2 c2 B2 | A G F G A2 | D E F G A B | c2 B2 A2 | B d G2 F2 | [B,DG]6 |]\nV:2 clef=treble stem=down\nx6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 || x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | d2 G F G2 | e2 G F G2 | x6 | x6 | x6 | x6 | x6 | x6 || x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | d2 G F G2 | e2 G F G2 | x6 | x6 | x6 | x6 | x6 | x6 |]\nV:3 clef=bass stem=down\n[G,B,D]4 A,2 | B,6 | C6 | B,6 | A,6 | G,6 | D2 B,2 G,2 | D2 D, C B, A, | B,4 A,2 | G,2 B,2 G,2 | C6 | B,2 C B, A, G, | A,4 F,2 | G,4 B,2 | C2 D2 D,2 | G,4 G,,2 || [G,B,D]4 A,2 | B,6 | C6 | B,6 | A,6 | G,6 | D2 B,2 G,2 | D2 D, C B, A, | B,4 A,2 | G,2 B,2 G,2 | C6 | B,2 C B, A, G, | A,4 F,2 | G,4 B,2 | C2 D2 D,2 | G,4 G,,2 | G,6 | F,6 | E,2 G,2 E,2 | A,4 A,,2 | A,6 | B,2 D2 ^C2 | D2 F,2 A,2 | D2 D,2 C2 | B,4 B,2 | C4 C2 | B,2 A,2 G,2 | D4 z2 | D,6 | E,2 G,2 F,2 | G,2 B,,2 D,2 | G,2 D,2 G,,2 || G,6 | F,6 | E,2 G,2 E,2 | A,4 A,,2 | A,6 | B,2 D2 ^C2 | D2 F,2 A,2 | D2 D,2 C2 | B,4 B,2 | C4 C2 | B,2 A,2 G,2 | D4 z2 | D,6 | E,2 G,2 F,2 | G,2 B,,2 D,2 | G,2 D,2 G,,2 |]\nV:4 clef=bass stem=up\nx6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 || x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | z2 D4 | z2 E4 | x6 | x6 | x4 F,2 | x6 | x6 | x6 || x6 | x6 | x6 | x6 | x6 | x6 | x6 | x6 | z2 D4 | z2 E4 | x6 | x6 | x4 F,2 | x6 | x6 | x6 |]"
+    }
+  ]
+}

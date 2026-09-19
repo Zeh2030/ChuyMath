@@ -3,14 +3,35 @@ import MusicPrompter from './MusicPrompter';
 import './PianoPrompter.css';
 
 /**
- * Extrae las líneas de notas de una voz (V:1 / V:2) de un ABC multi-voz.
- * Robusto a que una voz ocupe varias líneas o traiga la clef en su declaración.
- * Devuelve { notas, clave } para armar una pieza de UN solo pentagrama.
+ * Voces de cada mano, leídas de `%%staves`: cada grupo es un pentagrama (el
+ * primero, la derecha) y lo que va entre paréntesis comparte pentagrama.
+ *   `{1 2}` → [['1'], ['2']]   ·   `{(1 2) (3 4)}` → [['1','2'], ['3','4']]
+ * Sin `%%staves` pero con voces, cada V: es su propia mano (contenido antiguo).
+ * Sin voces: una sola mano.
  */
-const extraerVoz = (notas, vozNum) => {
+const gruposPorMano = (notas) => {
+  const staves = notas.match(/^%%staves\s+(.*)$/m);
+  if (staves) {
+    const grupos = [...staves[1].matchAll(/\(([^)]*)\)|(\d+)/g)]
+      .map((m) => (m[1] !== undefined ? m[1].trim().split(/\s+/).filter(Boolean) : [m[2]]))
+      .filter((g) => g.length);
+    if (grupos.length) return grupos;
+  }
+  const ids = [...new Set([...notas.matchAll(/^V:\s*(\d+)/gm)].map((m) => m[1]))];
+  return ids.length ? ids.map((id) => [id]) : [['1']];
+};
+
+/**
+ * Extrae una mano de un ABC a dos manos. Robusto a que una voz ocupe varias
+ * líneas o traiga atributos (clef=, stem=) en su declaración.
+ * - Mano de UNA voz: { notas, clave } para una pieza de un solo pentagrama.
+ * - Mano de DOS voces: las dos en un pentagrama (`%%staves (a b)` con sus V:),
+ *   y `conVoces` para que se arme como ABC con voces.
+ */
+const extraerMano = (notas, grupo) => {
   const lines = notas.split('\n').map(l => l.trim()).filter(Boolean);
   const buckets = {};
-  const claves = {};
+  const cabeceras = {};
   let current = null;
   for (const line of lines) {
     if (line.startsWith('%%')) continue; // %%staves y otras directivas globales
@@ -18,19 +39,30 @@ const extraerVoz = (notas, vozNum) => {
     if (vm) {
       current = vm[1];
       if (!buckets[current]) buckets[current] = [];
-      const clefMatch = vm[2].match(/clef=(\S+)/);
-      if (clefMatch) claves[current] = clefMatch[1];
-      // Notas en la misma línea después del "V:x clef=..." (raro, pero por si acaso)
-      const resto = vm[2].replace(/clef=\S+/, '').trim();
+      // Atributos (clef=bass stem=up) aparte; lo demás en la línea son notas (raro, pero por si acaso).
+      const tokens = vm[2].trim().split(/\s+/).filter(Boolean);
+      const atributos = tokens.filter((t) => /^\w+=/.test(t));
+      cabeceras[current] = atributos;
+      const resto = tokens.filter((t) => !/^\w+=/.test(t)).join(' ');
       if (resto) buckets[current].push(resto);
       continue;
     }
     if (current) buckets[current].push(line);
   }
-  return {
-    notas: (buckets[vozNum] || []).join(' '),
-    clave: claves[vozNum] || (vozNum === '2' ? 'bass' : 'treble'),
+  const claveDe = (id) => {
+    const c = (cabeceras[id] || []).find((a) => a.startsWith('clef='));
+    return c ? c.slice(5) : null;
   };
+  const clave = claveDe(grupo[0]) || (grupo[0] === '1' ? 'treble' : 'bass');
+
+  if (grupo.length === 1) {
+    return { notas: (buckets[grupo[0]] || []).join(' '), clave, conVoces: false };
+  }
+  const cuerpo = grupo.flatMap((id) => [
+    ['V:' + id, ...(cabeceras[id] || [])].join(' '),
+    (buckets[id] || []).join(' '),
+  ]);
+  return { notas: [`%%staves (${grupo.join(' ')})`, ...cuerpo].join('\n'), clave, conVoces: true };
 };
 
 const PianoPrompter = ({ mision, onCompletar }) => {
@@ -49,14 +81,18 @@ const PianoPrompter = ({ mision, onCompletar }) => {
   // para no tener que escribir "/2" en cada nota.
   const { compas = '4/4', tonalidad = 'C', clave = 'treble', unidad = '1/4' } = configuracion;
 
-  // Detectar si es multi-voz (contiene V: o %%staves)
-  const isMultiVoice = notas.includes('V:') || notas.includes('%%staves');
+  // ¿Trae voces (V:) y cuántas manos? Una mano puede tener dos voces (bajo
+  // sostenido + arpegio), así que "a dos manos" se decide por pentagramas.
+  const conVoces = /^V:/m.test(notas) || notas.includes('%%staves');
+  const grupos = gruposPorMano(notas);
+  const isMultiVoice = conVoces && grupos.length > 1;
 
-  // Mano a practicar. En piezas de una sola voz no hay selector (directo).
+  // Mano a practicar. En piezas de una sola mano no hay selector (directo).
   const [mano, setMano] = useState(isMultiVoice ? null : 'ambas');
   const [terminado, setTerminado] = useState(false);
 
-  // Construye el ABC final para una voz (single-staff) o el grand staff completo.
+  // Construye el ABC final: un pentagrama sin voces, o con voces (grand staff,
+  // o una mano de dos voces).
   const construirAbc = (notasStr, claveStr, multi) => {
     if (multi) {
       // Multi-voz: juntar líneas de notas dentro de cada voz para evitar que
@@ -78,9 +114,10 @@ const PianoPrompter = ({ mision, onCompletar }) => {
       // Solo cuenta un campo K: en su propia línea. Un cambio de clave en línea
       // (`[K:clef=treble]`) también contiene "K:", y con `includes` se dejaba de
       // insertar la tonalidad: en una pieza en Sol se perdía el Fa# de la armadura.
+      // El K: va antes de la PRIMERA voz: la mano izquierda sola empieza en V:2 (o V:3).
       const notasWithKey = /^K:/m.test(processedNotas)
         ? processedNotas
-        : processedNotas.replace(/(V:1)/, `K:${tonalidad}\n$1`);
+        : processedNotas.replace(/^V:/m, `K:${tonalidad}\nV:`);
       return header + '\n' + notasWithKey;
     }
     return [
@@ -93,13 +130,14 @@ const PianoPrompter = ({ mision, onCompletar }) => {
     ].join('\n');
   };
 
-  // Selecciona la voz según la mano elegida y arma el ABC.
+  // Selecciona la mano elegida y arma el ABC. `multi` = dos pentagramas (layout
+  // de grand staff); una mano sola es un pentagrama aunque traiga dos voces.
   const armarParaMano = () => {
     if (mano === 'ambas' || !isMultiVoice) {
-      return { abc: construirAbc(notas, clave, isMultiVoice), multi: isMultiVoice };
+      return { abc: construirAbc(notas, clave, conVoces), multi: isMultiVoice };
     }
-    const voz = mano === 'derecha' ? extraerVoz(notas, '1') : extraerVoz(notas, '2');
-    return { abc: construirAbc(voz.notas, voz.clave, false), multi: false };
+    const m = extraerMano(notas, grupos[mano === 'derecha' ? 0 : 1]);
+    return { abc: construirAbc(m.notas, m.clave, m.conVoces), multi: false };
   };
 
   const handleTerminar = () => setTerminado(true);
