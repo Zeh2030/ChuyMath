@@ -620,6 +620,37 @@ explicitamente: `write/creation/decoration.js`, casos "0".."5").
   la tecla encendida en cada instante trae el dedo de la nota que suena
   (blancas y negras; p. ej. el Re# con dedo 3 del compas 4 de Für Elise).
 
+### Teclado: brillante = tocar, tenue = sigue sonando (2026-09-18)
+
+Lo pidio la Gymnopédie: la izquierda encendia 4 teclas a la vez (bajo D2 +
+acorde A3 C#4 F#4) y parecia que habia que sostenerlas con una mano. No es asi:
+Satie escribe el bajo como blanca con puntillo porque **suena** todo el compas,
+pero la mano lo toca, se pisa el pedal y salta al acorde. El MusicXML no trae
+`<pedal>`; la tecnica quedo en la instruccion de PA2-01.
+
+**Regla** (constantes arriba de `MusicPrompter.jsx`, para afinar):
+- Una nota que suena `>= TECLA_SOSTEN_MIN_MS` (900 ms) brilla sus primeros
+  `TECLA_ATAQUE_MS` (450 ms) y luego queda **tenue** (clase `tcl-sostenida`,
+  opacidad 0.35) mientras siga sonando.
+- Las notas mas cortas nunca se atenuan (corcheas y semicorcheas no parpadean).
+- Si la misma tecla se vuelve a tocar mientras otra nota suya se sostiene,
+  manda la brillante.
+- El dedo se sigue mostrando en la tecla tenue: si la sostiene la mano, es el
+  mismo dedo.
+
+**Implementacion**: cada nota de la linea del teclado trae `sostenDesde`;
+`actualizarTeclado` solo re-pinta cuando una nota empieza, termina o cruza su
+`sostenDesde` (una comparacion por frame contra `proximoSostenRef`).
+`Teclado.setActivas(der, izq, dedos, tenues)`.
+
+**Verificado en Chrome real** (lecturas exactas por tiempo):
+- Gymnopédie: bajo brillante al tocarse → tenue con el acorde brillante →
+  todo tenue.
+- Preludio: Do y Mi tenues mientras la semicorchea de la derecha brilla; 0
+  teclas de la derecha tenues en 119 lecturas.
+- Minueto: solo se atenuan blancas reales (compases 8 y 16).
+- Scroll sin retrocesos (Canon, Gymnopédie).
+
 ### Conversor `_piano/_mxl-a-abc.js` (Fase 1)
 
 El conversor anterior vivio en un scratchpad y se perdio; este va en el repo.

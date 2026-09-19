@@ -140,7 +140,11 @@ const PIEZAS = [
     bpm: 54,
     dificultad: 'intermedio',
     descripcion: 'Lenta y dolorosa, como pide Satie. La izquierda se mece entre un bajo profundo y un acorde; encima, la derecha canta una melodía que parece improvisada.',
-    instruccion: 'La mano izquierda lleva dos cosas a la vez: el bajo en el primer tiempo (plica hacia abajo) y el acorde en el segundo (plica hacia arriba). Aprende primero ese vaivén con la izquierda sola hasta que salga sin mirar; la derecha entra en el compás 5.',
+    // El bajo esta escrito como blanca con puntillo (suena todo el compas) pero
+    // la mano NO lo sostiene: lo sostiene el pedal. El MusicXML no trae marcas
+    // de <pedal>, asi que la tecnica va aqui; el teclado lo muestra con el bajo
+    // brillante al tocarse y tenue mientras sigue sonando.
+    instruccion: 'La mano izquierda no sostiene el bajo: tócalo en el tiempo 1, pisa el pedal y salta al acorde del tiempo 2; el pedal mantiene sonando el bajo. Cambia el pedal al empezar cada compás (levántalo y vuelve a pisarlo justo después del bajo nuevo), o los acordes se mezclan. En el teclado, el bajo brilla al tocarlo y luego queda tenue: sigue sonando, pero tu mano ya está en el acorde. Aprende primero el vaivén con la izquierda sola; la derecha entra en el compás 5.',
   },
 
   // Preludio en Do, BWV 846 (El clave bien temperado, libro I). Cada compas es

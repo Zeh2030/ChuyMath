@@ -132,6 +132,10 @@ Fase 3 pendiente: PIN opcional de adulto.
   (Canon, Lago de los cisnes).
 - **Digitación Fase 2 (2026-09-17)**: el número del dedo sobre la tecla iluminada
   (enlace por `startChar`, sin adivinar). **Cambiar el tempo tocando ya no pausa.**
+- **Teclado brillante/tenue + pedal en la Gymnopédie (2026-09-18)**: una nota larga
+  brilla al tocarse (450 ms) y queda tenue mientras suena; las cortas nunca se
+  atenúan. Se ve el salto de la mano (bajo con pedal → acorde). La instrucción de
+  PA2-01 explica el pedal (el MusicXML no lo marca).
 - **Avance de pieza manual (2026-09-18)**: en piano, que la pieza termine de sonar
   ya NO la completa. El alumno marca 🔄 Practicando (automático al abrir) ·
   🟡 Casi la tengo · ✅ Ya la domino, en la pantalla de manos, debajo del prompter y
@@ -162,7 +166,9 @@ rachas ni estrellas, y las herramientas de práctica son la función de retenci�
    Niños/Adultos (marcar "Es un adulto" en el perfil del papá, re-migrar Twinkle,
    Zapatillas, Clair de Lune y las 2 de prueba). Dos voces por mano: subir PA1-06,
    PA2-01 y PA2-02, y resubir PA1-01/02; probar cada mano sola en la Gymnopédie y
-   el Preludio.
+   el Preludio. Re-migrar PA2-01 (instrucción del pedal) y ver en el piano si el
+   brillante/tenue del teclado (450 ms, opacidad 0.35) se siente bien, también en
+   una pieza rápida (Minueto a 126).
    Licencias: uso personal + amigos, sin venta → no es impedimento; se revisa solo
    si algún día se vende (decisión del usuario 2026-09-16).
 2. **Modo espera (entrada del alumno)** — el hueco real: la app nunca oye. Ya NO

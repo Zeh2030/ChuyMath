@@ -51,6 +51,13 @@ const ESCALA_MIN_PARTITURA = 0.5;  // no achicar más que esto aunque no quepa
 // que apretar ocho veces para bajar al 70%.
 const ESCALONES = [50, 60, 70, 80, 90, 100];
 
+// Teclado: brillante = "toca esta tecla ahora"; tenue = "sigue sonando, pero ya
+// no la estás tocando" (nota larga pasado su ataque, o el bajo de la Gymnopédie,
+// que sostiene el pedal mientras la mano salta al acorde). Las notas cortas nunca
+// se atenúan, para que corcheas y semicorcheas no parpadeen.
+const TECLA_ATAQUE_MS = 450;      // cuánto brilla una nota larga al tocarse
+const TECLA_SOSTEN_MIN_MS = 900;  // desde qué duración una nota se atenúa
+
 const fmtTiempo = (ms) => {
   const s = Math.max(0, Math.round((ms || 0) / 1000));
   return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
@@ -156,10 +163,11 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
 
   // Teclado iluminado (todo en refs: cero estado de React en el camino caliente)
   const tecladoRef = useRef(null);
-  const notasTecladoRef = useRef([]);   // [{t, fin, midi, mano}] ordenado por t
+  const notasTecladoRef = useRef([]);   // [{t, fin, midi, mano, dedo, sostenDesde}] ordenado por t
   const notaIdxRef = useRef(0);         // primera nota que aún no empieza
   const activasTecladoRef = useRef([]); // notas sonando (se compacta in-place)
   const tecladoElapsedRef = useRef(-1); // último elapsed visto (detecta saltos atrás)
+  const proximoSostenRef = useRef(Infinity); // próxima nota activa que pasa de brillante a tenue
   const tecladoRotoRef = useRef(false); // autodesactivación si algo falla
 
   // Metrónomo y bucle: todo en refs porque los lee el bucle de animación.
@@ -336,6 +344,7 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
     notaIdxRef.current = 0;
     activasTecladoRef.current = [];
     tecladoElapsedRef.current = -1;
+    proximoSostenRef.current = Infinity;
     tecladoRef.current?.limpiar();
   }, []);
 
@@ -481,7 +490,16 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
           const dur = item.duration * factorMs;
           // fin un poco antes del valor real para que las notas repetidas
           // parpadeen; suelo de 60ms para que las semicorcheas se alcancen a ver.
-          linea.push({ t, fin: t + Math.max(60, dur - 40), midi: item.pitch, mano: manoVoz, dedo: dedos.get(item) || null });
+          const fin = t + Math.max(60, dur - 40);
+          linea.push({
+            t,
+            fin,
+            midi: item.pitch,
+            mano: manoVoz,
+            dedo: dedos.get(item) || null,
+            // Nota larga: brillante solo en su ataque, luego tenue mientras suena.
+            sostenDesde: fin - t >= TECLA_SOSTEN_MIN_MS ? t + TECLA_ATAQUE_MS : null,
+          });
           midis.push(item.pitch);
         }
       }
@@ -633,10 +651,16 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
       }
       if (w !== activas.length) { activas.length = w; cambio = true; }
 
+      // Una nota larga pasó de su ataque (brillante) a sostenerse (tenue).
+      if (elapsed >= proximoSostenRef.current) cambio = true;
+
       if (!cambio) return;
       const der = [];
       const izq = [];
       const dedos = new Map();
+      const enAtaque = new Set();
+      const sostenidas = new Set();
+      let proximo = Infinity;
       for (const n of activas) {
         (n.mano === 'izquierda' ? izq : der).push(n.midi);
         if (n.dedo) {
@@ -644,8 +668,17 @@ const MusicPrompter = ({ abcNotation, bpm, titulo, autor, onTerminar, multiVoice
           const previo = dedos.get(n.midi);
           dedos.set(n.midi, previo && previo !== n.dedo ? `${previo}·${n.dedo}` : n.dedo);
         }
+        if (n.sostenDesde !== null && elapsed >= n.sostenDesde) {
+          sostenidas.add(n.midi);
+        } else {
+          enAtaque.add(n.midi);
+          if (n.sostenDesde !== null) proximo = Math.min(proximo, n.sostenDesde);
+        }
       }
-      tecladoRef.current.setActivas(der, izq, dedos);
+      proximoSostenRef.current = proximo;
+      // Tenue solo si NINGUNA nota de esa tecla está en ataque (tecla re-tocada: brillante).
+      const tenues = [...sostenidas].filter((m) => !enAtaque.has(m));
+      tecladoRef.current.setActivas(der, izq, dedos, tenues);
     } catch {
       tecladoRotoRef.current = true;
       try { tecladoRef.current?.limpiar(); } catch { /* nada */ }

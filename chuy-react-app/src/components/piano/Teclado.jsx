@@ -8,8 +8,10 @@ import { esNegra, nombreDeMidi } from '../../utils/musica';
  * "Nota → Tecla" de identifica-nota (PROGRAMA_PIANO).
  *
  * API imperativa (via ref):
- *   setActivas(derecha, izquierda, dedos?)  — colecciones de números MIDI y,
- *     opcional, Map midi → dedo ('1'..'5') para pintarlo sobre la tecla
+ *   setActivas(derecha, izquierda, dedos?, tenues?)  — colecciones de números
+ *     MIDI; opcional, Map midi → dedo ('1'..'5') para pintarlo sobre la tecla, y
+ *     colección de teclas TENUES: siguen sonando pero ya no se están tocando
+ *     (nota larga pasado su ataque, o el bajo que sostiene el pedal)
  *   limpiar()
  *
  * Alterna clases directamente en el DOM (sin estado de React): el bucle de
@@ -20,6 +22,7 @@ const Teclado = ({ midiMin = 60, midiMax = 83, mostrarNombres = false, ref }) =>
   const teclasRef = useRef(new Map());     // midi → elemento DOM
   const encendidasRef = useRef(new Map()); // midi → 'der' | 'izq' | 'ambas'
   const dedosRef = useRef(new Map());      // midi → dedo pintado (data-dedo)
+  const tenuesRef = useRef(new Set());     // midi con tcl-sostenida
 
   const { blancas, negras, nBlancas } = useMemo(() => {
     const b = [];
@@ -49,7 +52,7 @@ const Teclado = ({ midiMin = 60, midiMax = 83, mostrarNombres = false, ref }) =>
     return {
       // Solo se llama cuando el conjunto activo CAMBIA (no cada frame), así que
       // puede permitirse construir el diff con un Map pequeño.
-      setActivas(derecha, izquierda, dedos) {
+      setActivas(derecha, izquierda, dedos, tenues) {
         const nuevas = new Map();
         if (derecha) derecha.forEach((m) => nuevas.set(m, 'der'));
         if (izquierda) izquierda.forEach((m) => nuevas.set(m, nuevas.has(m) ? 'ambas' : 'izq'));
@@ -76,12 +79,24 @@ const Teclado = ({ midiMin = 60, midiMax = 83, mostrarNombres = false, ref }) =>
           if (dedosRef.current.get(m) !== d) teclasRef.current.get(m)?.setAttribute('data-dedo', d);
         });
         dedosRef.current = nuevosDedos;
+
+        // Tenue = suena pero ya no se toca. Igual: solo las teclas que cambian.
+        const nuevasTenues = new Set(tenues || []);
+        tenuesRef.current.forEach((m) => {
+          if (!nuevasTenues.has(m)) teclasRef.current.get(m)?.classList.remove('tcl-sostenida');
+        });
+        nuevasTenues.forEach((m) => {
+          if (!tenuesRef.current.has(m)) teclasRef.current.get(m)?.classList.add('tcl-sostenida');
+        });
+        tenuesRef.current = nuevasTenues;
       },
       limpiar() {
         encendidasRef.current.forEach((mano, m) => apagar(m));
         encendidasRef.current = new Map();
         dedosRef.current.forEach((d, m) => teclasRef.current.get(m)?.removeAttribute('data-dedo'));
         dedosRef.current = new Map();
+        tenuesRef.current.forEach((m) => teclasRef.current.get(m)?.classList.remove('tcl-sostenida'));
+        tenuesRef.current = new Set();
       },
     };
   }, []);

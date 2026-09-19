@@ -56,6 +56,14 @@
 .tcl-negra.tcl-der::after { background: #5dade2; }
 .tcl-negra.tcl-izq::after { background: #f0a35e; }
 
+/* Tenue: la nota sigue sonando pero ya no se está tocando (nota larga pasado
+   su ataque; el bajo que sostiene el pedal). Brillante = "toca ahora". Se
+   desvanece despacio para que se lea como "se queda", no como un parpadeo. */
+.tcl-tecla.tcl-sostenida::after {
+  opacity: 0.35;
+  transition: opacity 0.25s linear;
+}
+
 .tcl-nombre {
   position: relative;
   z-index: 3;
