@@ -78,7 +78,9 @@ const MisionRenderer = ({
   respuestaGuardada = null,
   onRespuesta = null,
   mostrarResultado = false,
-  materia = null
+  materia = null,
+  estadoPieza = null,     // piano: avance que marca el alumno
+  onEstadoPieza = null,
 }) => {
   // Pausa la música de fondo mientras dure una misión donde el audio ES el
   // ejercicio (piano, dictado de inglés, fonética de letras) y la reanuda al
@@ -550,6 +552,8 @@ const MisionRenderer = ({
               key={mision.id}
               mision={mision}
               onCompletar={onCompletar}
+              estadoPieza={estadoPieza}
+              onEstadoPieza={onEstadoPieza}
             />
           </React.Suspense>
         );

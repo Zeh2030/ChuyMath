@@ -63,6 +63,37 @@
 .pp-mano-izq:hover { border-color: #e67e22; }
 .pp-mano-ambas:hover { border-color: #27ae60; }
 
+/* Avance de la pieza (lo marca el alumno) */
+.pp-estado {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 12px;
+  margin: 18px auto;
+  max-width: 640px;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+}
+.pp-estado-pregunta { font-weight: 600; color: #34495e; }
+.pp-estado-opciones { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.pp-estado-btn {
+  padding: 8px 14px;
+  border: 2px solid #e0e0e0;
+  border-radius: 999px;
+  background: white;
+  color: #2c3e50;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+.pp-estado-btn:hover { border-color: #bdc3c7; }
+.pp-estado-iniciado.activo { border-color: #3498db; background: #eaf4fc; }
+.pp-estado-casi.activo { border-color: #f1c40f; background: #fef9e7; }
+.pp-estado-completado.activo { border-color: #27ae60; background: #eafaf1; }
+.pp-estado-festejo { color: #27ae60; font-weight: 700; margin: 0 0 16px; }
+
 @media (max-width: 520px) {
   .pp-selector-botones { flex-direction: column; align-items: stretch; }
   .pp-mano-btn { max-width: none; flex-direction: row; justify-content: center; gap: 12px; padding: 16px; }

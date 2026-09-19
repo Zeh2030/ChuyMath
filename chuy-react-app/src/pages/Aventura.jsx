@@ -21,6 +21,9 @@ const Aventura = () => {
   const [error, setError] = useState(null);
   const [misionActual, setMisionActual] = useState(0); // Índice de la misión actual
   const [aventuraCompletada, setAventuraCompletada] = useState(false);
+  // Piano: el avance lo marca el alumno ('iniciado' | 'casi' | 'completado'),
+  // no el hecho de que la pieza terminó de sonar.
+  const [estadoPieza, setEstadoPieza] = useState(null);
 
   // Cargar la aventura desde Firestore - SIMPLIFICADO: solo 'aventuras'
   React.useEffect(() => {
@@ -154,8 +157,9 @@ const Aventura = () => {
       const profileSnap = await getDoc(userRef);
       const progreso = profileSnap.data()?.aventurasProgreso || {};
       const actual = progreso[aventura.id];
+      setEstadoPieza(actual?.status || 'iniciado');
 
-      if (actual?.status === 'iniciado' || actual?.status === 'completado') return;
+      if (actual?.status) return; // ya iniciada, casi o completada: no se retrocede
 
       await updateDoc(userRef, {
         [`aventurasProgreso.${aventura.id}`]: {
@@ -205,6 +209,32 @@ const Aventura = () => {
       console.log(`Aventura completada. Nueva racha: ${nuevaRacha}`);
     } catch (error) {
       console.error('Error al guardar la aventura completada:', error);
+    }
+  };
+
+  // Piano: el alumno marca su avance a mano. "Dominada" es la completada de
+  // siempre (bitácora, racha, veces); "practicando" y "casi" solo cambian el
+  // estado, y la pieza sigue apareciendo en la aventura del día.
+  const cambiarEstadoPieza = async (nuevo) => {
+    if (!activeProfileId || !aventura || nuevo === estadoPieza) return;
+    const previo = estadoPieza;
+    setEstadoPieza(nuevo);
+    try {
+      if (nuevo === 'completado') {
+        await marcarAventuraCompletada();
+        return;
+      }
+      const userRef = doc(db, 'profiles', activeProfileId);
+      const actual = (await getDoc(userRef)).data()?.aventurasProgreso?.[aventura.id];
+      await updateDoc(userRef, {
+        [`aventurasProgreso.${aventura.id}`]: {
+          status: nuevo,
+          vecesCompletado: actual?.vecesCompletado || 0,
+        },
+      });
+    } catch (error) {
+      console.error('Error al guardar el avance de la pieza:', error);
+      setEstadoPieza(previo);
     }
   };
 
@@ -341,6 +371,8 @@ const Aventura = () => {
               mision={mision}
               onCompletar={siguienteMision}
               materia={aventura.materia}
+              estadoPieza={estadoPieza}
+              onEstadoPieza={cambiarEstadoPieza}
             />
           </div>
         )}

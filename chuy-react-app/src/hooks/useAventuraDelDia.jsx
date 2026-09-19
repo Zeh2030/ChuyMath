@@ -55,8 +55,18 @@ export const useAventuraDelDia = (userId, materia, pistaPiano = null) => {
             const profileRef = doc(db, 'profiles', userId);
             const profileSnap = await getDoc(profileRef);
             if (profileSnap.exists()) {
-              const misionesCompletadas = profileSnap.data().misionesCompletadas || [];
-              aventurasCompletadasIds = misionesCompletadas.map(m => m.aventuraId);
+              const datos = profileSnap.data();
+              const progreso = datos.aventurasProgreso || {};
+              // Manda el estado actual si existe: en piano el alumno puede bajar
+              // una pieza de "dominada" a "casi" y entonces debe volver a
+              // proponerse, aunque la bitácora conserve que alguna vez se completó.
+              // Sin estado (registros antiguos), la bitácora.
+              aventurasCompletadasIds = [...new Set([
+                ...(datos.misionesCompletadas || []).map(m => m.aventuraId),
+                ...Object.keys(progreso),
+              ])].filter(id => (progreso[id]?.status
+                ? progreso[id].status === 'completado'
+                : true));
             }
           } catch (profileError) {
             console.warn('Error al obtener perfil, continuando sin filtrar:', profileError);

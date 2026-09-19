@@ -132,6 +132,12 @@ Fase 3 pendiente: PIN opcional de adulto.
   (Canon, Lago de los cisnes).
 - **Digitación Fase 2 (2026-09-17)**: el número del dedo sobre la tecla iluminada
   (enlace por `startChar`, sin adivinar). **Cambiar el tempo tocando ya no pausa.**
+- **Avance de pieza manual (2026-09-18)**: en piano, que la pieza termine de sonar
+  ya NO la completa. El alumno marca 🔄 Practicando (automático al abrir) ·
+  🟡 Casi la tengo · ✅ Ya la domino, en la pantalla de manos, debajo del prompter y
+  al final. Todos los perfiles. "Ya la domino" = la completada de siempre
+  (bitácora, racha). `aventurasProgreso[id].status` admite `'casi'`; la aventura del
+  día usa ese estado, así una pieza que se baja de "dominada" vuelve a proponerse.
 - **Pistas Niños / Adultos (2026-09-16)**: casilla "Es un adulto" en el perfil
   (`esAdulto`) + selector `🧒 Niños | 🎼 Adultos` en Piano. Nada se bloquea. PA →
   adultos; lectura de notas → ambas; compositores y teoría → niños; Clair de Lune

@@ -555,7 +555,12 @@ const ExplorarTab = ({ profile, materia, initialFiltro, pistaPiano = null }) => 
                           {progreso && item.tipo !== 'simulacro' && (
                             <div className="tarjeta-progreso">
                               <span className={`badge-status ${progreso.status === 'completado' ? 'bien' : ''}`}>
-                                {progreso.status === 'completado' ? '✅ Completado' : '🔄 Iniciado'}
+                                {/* Piano: el avance lo marca el alumno (ver PianoPrompter). */}
+                                {progreso.status === 'completado'
+                                  ? (item.tipo === 'piano-prompter' ? '✅ Dominada' : '✅ Completado')
+                                  : progreso.status === 'casi'
+                                    ? '🟡 Casi la tengo'
+                                    : (item.tipo === 'piano-prompter' ? '🔄 Practicando' : '🔄 Iniciado')}
                               </span>
                               {progreso.vecesCompletado ? (
                                 <span className="score-badge">{progreso.vecesCompletado}x</span>

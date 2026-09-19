@@ -65,7 +65,37 @@ const extraerMano = (notas, grupo) => {
   return { notas: [`%%staves (${grupo.join(' ')})`, ...cuerpo].join('\n'), clave, conVoces: true };
 };
 
-const PianoPrompter = ({ mision, onCompletar }) => {
+/**
+ * Avance de la pieza. Lo marca el alumno: que la pieza haya terminado de sonar
+ * no dice nada de si ya la domina (puede haberla escuchado sin tocar, o
+ * practicado solo un compás con el bucle). "Ya la domino" es la completada.
+ */
+const ESTADOS_PIEZA = [
+  { id: 'iniciado', emoji: '🔄', texto: 'Practicando' },
+  { id: 'casi', emoji: '🟡', texto: 'Casi la tengo' },
+  { id: 'completado', emoji: '✅', texto: 'Ya la domino' },
+];
+
+const EstadoPieza = ({ estado, onCambiar, pregunta }) => (
+  <div className="pp-estado" role="group" aria-label={pregunta}>
+    <span className="pp-estado-pregunta">{pregunta}</span>
+    <div className="pp-estado-opciones">
+      {ESTADOS_PIEZA.map((e) => (
+        <button
+          key={e.id}
+          type="button"
+          className={`pp-estado-btn pp-estado-${e.id}${estado === e.id ? ' activo' : ''}`}
+          aria-pressed={estado === e.id}
+          onClick={() => onCambiar(e.id)}
+        >
+          <span aria-hidden="true">{e.emoji}</span> {e.texto}
+        </button>
+      ))}
+    </div>
+  </div>
+);
+
+const PianoPrompter = ({ mision, onCompletar, estadoPieza = null, onEstadoPieza = null }) => {
   // Extraer datos de la misión
   const {
     titulo = 'Sin título',
@@ -169,6 +199,9 @@ const PianoPrompter = ({ mision, onCompletar }) => {
             <span className="pp-mano-sub">juntas</span>
           </button>
         </div>
+        {onEstadoPieza && (
+          <EstadoPieza estado={estadoPieza} onCambiar={onEstadoPieza} pregunta="Mi avance en esta pieza" />
+        )}
       </div>
     );
   }
@@ -180,21 +213,40 @@ const PianoPrompter = ({ mision, onCompletar }) => {
     return (
       <div style={styles.completado}>
         <div style={styles.completadoEmoji}>🎶</div>
-        <h3 style={styles.completadoTitulo}>¡Canción completada!</h3>
+        <h3 style={styles.completadoTitulo}>
+          {onEstadoPieza ? '¡Llegaste al final!' : '¡Canción completada!'}
+        </h3>
         <p style={styles.completadoTexto}>
           ¡Muy bien practicando "{titulo}"{etiquetaMano ? ` con la ${etiquetaMano}` : ''}!
         </p>
         {dificultad && (
           <span style={styles.badge}>{dificultad}</span>
         )}
-        {isMultiVoice && (
-          <button onClick={volverAlSelector} style={styles.otraManoBtn}>
-            🔄 Practicar otra mano
-          </button>
+        {onEstadoPieza ? (
+          <>
+            <EstadoPieza estado={estadoPieza} onCambiar={onEstadoPieza} pregunta="¿Cómo vas con esta pieza?" />
+            {estadoPieza === 'completado' && <p className="pp-estado-festejo">🎉 ¡Pieza dominada!</p>}
+            <button onClick={() => setTerminado(false)} style={styles.otraManoBtn}>
+              🔁 Tocar otra vez
+            </button>
+            {isMultiVoice && (
+              <button onClick={volverAlSelector} style={styles.otraManoBtn}>
+                🔄 Practicar otra mano
+              </button>
+            )}
+          </>
+        ) : (
+          <>
+            {isMultiVoice && (
+              <button onClick={volverAlSelector} style={styles.otraManoBtn}>
+                🔄 Practicar otra mano
+              </button>
+            )}
+            <button onClick={onCompletar} style={styles.continuarBtn}>
+              Continuar
+            </button>
+          </>
         )}
-        <button onClick={onCompletar} style={styles.continuarBtn}>
-          Continuar
-        </button>
       </div>
     );
   }
@@ -202,16 +254,21 @@ const PianoPrompter = ({ mision, onCompletar }) => {
   // ─── Teleprompter ───
   const { abc, multi } = armarParaMano();
   return (
-    <MusicPrompter
-      key={mano}
-      abcNotation={abc}
-      bpm={bpm}
-      titulo={titulo}
-      autor={autor}
-      onTerminar={handleTerminar}
-      multiVoice={multi}
-      mano={mano || 'ambas'}
-    />
+    <>
+      <MusicPrompter
+        key={mano}
+        abcNotation={abc}
+        bpm={bpm}
+        titulo={titulo}
+        autor={autor}
+        onTerminar={handleTerminar}
+        multiVoice={multi}
+        mano={mano || 'ambas'}
+      />
+      {onEstadoPieza && (
+        <EstadoPieza estado={estadoPieza} onCambiar={onEstadoPieza} pregunta="Mi avance" />
+      )}
+    </>
   );
 };
 
