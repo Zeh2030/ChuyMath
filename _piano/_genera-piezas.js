@@ -144,7 +144,7 @@ const PIEZAS = [
     // la mano NO lo sostiene: lo sostiene el pedal. El MusicXML no trae marcas
     // de <pedal>, asi que la tecnica va aqui; el teclado lo muestra con el bajo
     // brillante al tocarse y tenue mientras sigue sonando.
-    instruccion: 'La mano izquierda no sostiene el bajo: tócalo en el tiempo 1, pisa el pedal y salta al acorde del tiempo 2; el pedal mantiene sonando el bajo. Cambia el pedal al empezar cada compás (levántalo y vuelve a pisarlo justo después del bajo nuevo), o los acordes se mezclan. En el teclado, el bajo brilla al tocarlo y luego queda tenue: sigue sonando, pero tu mano ya está en el acorde. Aprende primero el vaivén con la izquierda sola; la derecha entra en el compás 5.',
+    instruccion: 'La mano izquierda no sostiene el bajo: tócalo en el tiempo 1, pisa el pedal y salta al acorde del tiempo 2; el pedal mantiene sonando el bajo. Cambia el pedal al empezar cada compás (levántalo y vuelve a pisarlo justo después del bajo nuevo), o los acordes se mezclan. En el teclado, el bajo brilla al tocarlo y luego queda tenue: sigue sonando, pero tu mano ya está en el acorde. En los compases 24-26, 29-31, 63-65 y 68-70 el acorde abarca una novena: si no lo alcanzas, toma su nota de arriba con el pulgar de la derecha (ahí la derecha solo lleva la melodía, una octava más arriba) o arpegia el acorde de abajo hacia arriba. Aprende primero el vaivén con la izquierda sola; la derecha entra en el compás 5.',
   },
 
   // Preludio en Do, BWV 846 (El clave bien temperado, libro I). Cada compas es
