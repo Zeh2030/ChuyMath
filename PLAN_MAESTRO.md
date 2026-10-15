@@ -32,10 +32,12 @@ misma colección, cero cambios de infraestructura.
 
 ---
 
-## 2. TEMAS VISUALES ✅ (13 temas)
+## 2. TEMAS VISUALES ✅ (14 temas)
 
-**Para niños (9)**: aventurero, princesa, espacial, océano, explorador, selva,
-arcoíris, elegante, pizarrón.
+**Para niños (10)**: aventurero, princesa, espacial, océano, explorador, selva,
+arcoíris, elegante, pizarrón, **guerreras** (Guerreras K-pop, pedido de la hija:
+violeta/magenta/cian neón, silueta de Seúl en `public/temas/guerreras-ciudad.svg`,
+reflectores de concierto y destellos ✦).
 **Sobrios / adultos (4)**: piano (marfil-ébano-latón, fondo con pentagrama),
 vinilo (crema-naranja-teal), cuaderno (papel rayado, tinta índigo),
 bauhaus (hueso + primarios planos).
@@ -61,8 +63,14 @@ Solo 16 de los 30 tokens se consumen. Los dominantes son `--theme-grad-1/-2`
 **Costo**: un tema **claro** es ~30 líneas y cero overrides (los 11 claros no
 tienen ninguno). Un tema **oscuro** cuesta ~45-48 reglas de override cada uno
 (espacial y pizarrón lo pagaron), porque la app tiene ~102 `background: white` y
-~127 declaraciones de texto oscuro hardcodeados. Antes de otro tema oscuro,
-conviene sanear esos inline styles.
+~127 declaraciones de texto oscuro hardcodeados.
+
+**Atajo para temas oscuros (2026-10-14)**: los overrides de espacial se
+generalizaron a `:is([data-theme="espacial"], [data-theme="guerreras"])` con
+colores en 7 variables `--oscuro-*` (panel/hondo/borde en RGB, borde sólido, 3
+tonos de texto) definidas en el bloque de tokens de cada tema. Un tema oscuro
+nuevo = sus tokens + esas 7 variables + agregarlo a cada `:is()` y a los arreglos
+de image-picker / sistema-solar. Pizarrón sigue aparte (bordes punteados).
 
 ---
 

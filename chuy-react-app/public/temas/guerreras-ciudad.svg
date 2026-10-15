@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="220" viewBox="0 0 1200 220">
+  <!-- Silueta de Seul de noche para el tema Guerreras K-pop. Se repite en x
+       (background-repeat: repeat-x), asi que los dos bordes quedan a la misma
+       altura (140) para que la costura no se note. -->
+  <g fill="#170A30">
+    <rect x="0" y="140" width="50" height="80"/>
+    <rect x="55" y="100" width="40" height="120"/>
+    <rect x="100" y="125" width="60" height="95"/>
+    <rect x="165" y="80" width="35" height="140"/>
+    <rect x="178" y="62" width="9" height="20"/>
+    <rect x="205" y="115" width="55" height="105"/>
+    <rect x="265" y="150" width="70" height="70"/>
+    <rect x="340" y="95" width="45" height="125"/>
+    <rect x="390" y="130" width="50" height="90"/>
+    <rect x="445" y="70" width="30" height="150"/>
+    <rect x="480" y="120" width="65" height="100"/>
+    <rect x="550" y="145" width="60" height="75"/>
+    <rect x="615" y="105" width="40" height="115"/>
+    <rect x="660" y="135" width="55" height="85"/>
+    <rect x="720" y="90" width="38" height="130"/>
+    <rect x="763" y="150" width="60" height="70"/>
+    <!-- Cerro Namsan con la torre -->
+    <ellipse cx="930" cy="225" rx="150" ry="75"/>
+    <rect x="927" y="38" width="6" height="122"/>
+    <rect x="916" y="72" width="28" height="13" rx="5"/>
+    <rect x="921" y="86" width="18" height="6" rx="2"/>
+    <rect x="922" y="152" width="16" height="10"/>
+    <rect x="1080" y="110" width="45" height="110"/>
+    <rect x="1130" y="140" width="70" height="80"/>
+  </g>
+  <!-- Ventanas encendidas: pocas y tenues, que no compitan con las tarjetas -->
+  <g fill="#FF4FC8" opacity="0.45">
+    <rect x="65" y="112" width="5" height="7"/>
+    <rect x="80" y="140" width="5" height="7"/>
+    <rect x="175" y="96" width="5" height="7"/>
+    <rect x="352" y="110" width="5" height="7"/>
+    <rect x="497" y="138" width="5" height="7"/>
+    <rect x="732" y="104" width="5" height="7"/>
+    <rect x="1092" y="128" width="5" height="7"/>
+  </g>
+  <g fill="#3DE0FF" opacity="0.4">
+    <rect x="186" y="120" width="5" height="7"/>
+    <rect x="218" y="130" width="5" height="7"/>
+    <rect x="455" y="88" width="5" height="7"/>
+    <rect x="455" y="118" width="5" height="7"/>
+    <rect x="627" y="122" width="5" height="7"/>
+    <rect x="675" y="150" width="5" height="7"/>
+    <rect x="1108" y="160" width="5" height="7"/>
+  </g>
+  <!-- Foco rojo en la punta de la torre -->
+  <circle cx="930" cy="36" r="3" fill="#FF4F7A"/>
+</svg>

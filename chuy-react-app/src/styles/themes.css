@@ -162,6 +162,15 @@
 
   --theme-btn-trofeos-1: #3F51B5;
   --theme-btn-trofeos-2: #1A237E;
+
+  /* Overrides oscuros compartidos (ver "TEMAS OSCUROS" mas abajo) */
+  --oscuro-panel-rgb: 27, 40, 56;
+  --oscuro-hondo-rgb: 13, 27, 42;
+  --oscuro-borde-rgb: 92, 107, 192;
+  --oscuro-borde: #5C6BC0;
+  --oscuro-texto: #e0e0e0;
+  --oscuro-texto-suave: #ccc;
+  --oscuro-texto-tenue: #aaa;
 }
 
 /* ============================================
@@ -552,6 +561,57 @@
   --theme-btn-trofeos-2: #000000;
 }
 
+/* ============================================
+   GUERRERAS K-POP - Noche de concierto en Seul
+   Violeta de Rumi como base, magenta de Mira como acento, cian neon de
+   las espadas en lo que no lleva texto (barra de progreso, spinner).
+   Tema OSCURO: comparte los overrides de espacial via las --oscuro-*.
+   ============================================ */
+[data-theme="guerreras"] {
+  --theme-grad-1: #6A1FD1;
+  --theme-grad-2: #3B0F8C;
+  --theme-primary: #7B2FD0;
+  --theme-primary-dark: #4A148C;
+  --theme-primary-rgb: 123, 47, 208;
+  /* 5.5:1 con texto blanco (chips) */
+  --theme-active: #9B30D9;
+  --theme-active-rgb: 155, 48, 217;
+  /* Magenta: pinta .boton-reintentar con texto blanco, 5.4:1 */
+  --theme-accent: #C2189B;
+  --theme-accent-dark: #8E0F72;
+  --theme-bg: #120826;
+  --theme-card-hover: linear-gradient(135deg, #2A1650, #3A1C6B);
+  --theme-btn-hero-1: #E0399F;
+  --theme-btn-hero-2: #8A3FFF;
+  --theme-btn-hero-shadow: #4A0E6E;
+  --theme-nav-1: #5B1FB0;
+  --theme-nav-2: #33106B;
+  /* El cian neon vive en progress-1 (relleno sin texto); progress-2 lleva
+     texto blanco en .boton-calificar, asi que va violeta */
+  --theme-progress-1: #3DE0FF;
+  --theme-progress-2: #8E2DE2;
+  --theme-spinner: #3DE0FF;
+  --theme-acceso-hover-1: #7B2FD0;
+  --theme-acceso-hover-2: #4A148C;
+  --theme-acceso-border: #B366FF;
+  --theme-boveda-header-1: #3B0F8C;
+  --theme-boveda-header-2: #7B2FD0;
+  --theme-header-btn-1: #7B2FD0;
+  --theme-header-btn-2: #4A148C;
+  --theme-trophy-1: #FFD600;
+  --theme-trophy-2: #FFC107;
+  --theme-btn-trofeos-1: #7B2FD0;
+  --theme-btn-trofeos-2: #4A148C;
+
+  --oscuro-panel-rgb: 38, 20, 70;
+  --oscuro-hondo-rgb: 20, 10, 40;
+  --oscuro-borde-rgb: 179, 102, 255;
+  --oscuro-borde: #B366FF;
+  --oscuro-texto: #EDE6FF;
+  --oscuro-texto-suave: #D4C8F0;
+  --oscuro-texto-tenue: #A99BC9;
+}
+
 /* Pizarrón dark mode overrides */
 [data-theme="pizarron"] h1,
 [data-theme="pizarron"] h2,
@@ -771,244 +831,242 @@
   text-shadow: 0 0 10px rgba(255,255,255,0.08);
 }
 
-/* Espacial dark mode overrides */
-[data-theme="espacial"] .widget,
-[data-theme="espacial"] .mision-container,
-[data-theme="espacial"] .problema-card,
-[data-theme="espacial"] .tarjeta-contenido,
-[data-theme="espacial"] .tipo-juego-card {
-  background: rgba(27, 40, 56, 0.9);
-  color: #e0e0e0;
-  border-color: rgba(92, 107, 192, 0.3);
+/* ============================================
+   TEMAS OSCUROS (espacial, guerreras)
+   Las mismas reglas para los dos: cada tema pone sus colores en las
+   variables --oscuro-* de su bloque de tokens. Un tema oscuro nuevo entra
+   agregandolo a cada :is() y definiendo esas 7 variables.
+   Pizarron va aparte porque sus cajas llevan borde punteado de tiza.
+   ============================================ */
+:is([data-theme="espacial"], [data-theme="guerreras"]) .widget,
+:is([data-theme="espacial"], [data-theme="guerreras"]) .mision-container,
+:is([data-theme="espacial"], [data-theme="guerreras"]) .problema-card,
+:is([data-theme="espacial"], [data-theme="guerreras"]) .tarjeta-contenido,
+:is([data-theme="espacial"], [data-theme="guerreras"]) .tipo-juego-card {
+  background: rgba(var(--oscuro-panel-rgb), 0.9);
+  color: var(--oscuro-texto);
+  border-color: rgba(var(--oscuro-borde-rgb), 0.3);
 }
 
-[data-theme="espacial"] .aventura-header,
-[data-theme="espacial"] .aventura-navegacion {
-  background: rgba(27, 40, 56, 0.9);
-  color: #e0e0e0;
+:is([data-theme="espacial"], [data-theme="guerreras"]) .aventura-header,
+:is([data-theme="espacial"], [data-theme="guerreras"]) .aventura-navegacion {
+  background: rgba(var(--oscuro-panel-rgb), 0.9);
+  color: var(--oscuro-texto);
 }
 
 /* Mismo caso que en pizarron: cajas con degradado claro propio del componente */
-[data-theme="espacial"] .pregunta-container,
-[data-theme="espacial"] .secuencia-elementos,
-[data-theme="espacial"] .tabla-doble-entrada-container {
-  background: rgba(27, 40, 56, 0.9);
-  border: 1px solid rgba(92, 107, 192, 0.3);
+:is([data-theme="espacial"], [data-theme="guerreras"]) .pregunta-container,
+:is([data-theme="espacial"], [data-theme="guerreras"]) .secuencia-elementos,
+:is([data-theme="espacial"], [data-theme="guerreras"]) .tabla-doble-entrada-container {
+  background: rgba(var(--oscuro-panel-rgb), 0.9);
+  border: 1px solid rgba(var(--oscuro-borde-rgb), 0.3);
 }
 
-[data-theme="espacial"] .dashboard-header,
-[data-theme="espacial"] .header-text h1,
-[data-theme="espacial"] .header-text p {
-  color: #e0e0e0;
+:is([data-theme="espacial"], [data-theme="guerreras"]) .dashboard-header,
+:is([data-theme="espacial"], [data-theme="guerreras"]) .header-text h1,
+:is([data-theme="espacial"], [data-theme="guerreras"]) .header-text p {
+  color: var(--oscuro-texto);
 }
 
-[data-theme="espacial"] .aventura-titulo,
-[data-theme="espacial"] .widget-title,
-[data-theme="espacial"] .section-title,
-[data-theme="espacial"] .acceso-nombre,
-[data-theme="espacial"] .tarjeta-titulo {
+:is([data-theme="espacial"], [data-theme="guerreras"]) .aventura-titulo,
+:is([data-theme="espacial"], [data-theme="guerreras"]) .widget-title,
+:is([data-theme="espacial"], [data-theme="guerreras"]) .section-title,
+:is([data-theme="espacial"], [data-theme="guerreras"]) .acceso-nombre,
+:is([data-theme="espacial"], [data-theme="guerreras"]) .tarjeta-titulo {
   color: #fff;
 }
 
-[data-theme="espacial"] .boveda-header-personalizado {
-  background: linear-gradient(135deg, #1A237E, #3F51B5);
+:is([data-theme="espacial"], [data-theme="guerreras"]) .boveda-header-personalizado {
+  background: linear-gradient(135deg, var(--theme-boveda-header-1), var(--theme-boveda-header-2));
 }
 
-[data-theme="espacial"] .mi-boveda-section {
-  color: #e0e0e0;
+:is([data-theme="espacial"], [data-theme="guerreras"]) .mi-boveda-section {
+  color: var(--oscuro-texto);
 }
 
-[data-theme="espacial"] .tab-btn {
-  background: rgba(27, 40, 56, 0.8);
-  color: #e0e0e0;
-  border-color: rgba(92, 107, 192, 0.3);
+:is([data-theme="espacial"], [data-theme="guerreras"]) .tab-btn {
+  background: rgba(var(--oscuro-panel-rgb), 0.8);
+  color: var(--oscuro-texto);
+  border-color: rgba(var(--oscuro-borde-rgb), 0.3);
 }
 
-[data-theme="espacial"] .contador-racha {
-  background: rgba(27, 40, 56, 0.8);
+:is([data-theme="espacial"], [data-theme="guerreras"]) .contador-racha {
+  background: rgba(var(--oscuro-panel-rgb), 0.8);
 }
 
-[data-theme="espacial"] .numero-racha {
-  color: #FFD600;
+:is([data-theme="espacial"], [data-theme="guerreras"]) .numero-racha {
+  color: var(--theme-trophy-1);
 }
 
 /* Perfil page */
-[data-theme="espacial"] h1,
-[data-theme="espacial"] h2,
-[data-theme="espacial"] h3 {
+:is([data-theme="espacial"], [data-theme="guerreras"]) h1,
+:is([data-theme="espacial"], [data-theme="guerreras"]) h2,
+:is([data-theme="espacial"], [data-theme="guerreras"]) h3 {
   color: #fff;
 }
 
-[data-theme="espacial"] p,
-[data-theme="espacial"] label,
-[data-theme="espacial"] span {
-  color: #ccc;
+:is([data-theme="espacial"], [data-theme="guerreras"]) p,
+:is([data-theme="espacial"], [data-theme="guerreras"]) label,
+:is([data-theme="espacial"], [data-theme="guerreras"]) span {
+  color: var(--oscuro-texto-suave);
 }
 
 /* Cards in profile and general (!important needed to override inline styles) */
-[data-theme="espacial"] form > div,
-[data-theme="espacial"] .card {
-  background: rgba(27, 40, 56, 0.9) !important;
-  color: #e0e0e0 !important;
+:is([data-theme="espacial"], [data-theme="guerreras"]) form > div,
+:is([data-theme="espacial"], [data-theme="guerreras"]) .card {
+  background: rgba(var(--oscuro-panel-rgb), 0.9) !important;
+  color: var(--oscuro-texto) !important;
 }
 
-[data-theme="espacial"] form > div button {
-  background: rgba(13, 27, 42, 0.6) !important;
-  border-color: rgba(92, 107, 192, 0.3) !important;
-}
-
-/* Inputs */
-[data-theme="espacial"] input[type="text"],
-[data-theme="espacial"] input[type="email"] {
-  background: rgba(13, 27, 42, 0.8);
-  color: #fff;
-  border-color: rgba(92, 107, 192, 0.4);
+:is([data-theme="espacial"], [data-theme="guerreras"]) form > div button {
+  background: rgba(var(--oscuro-hondo-rgb), 0.6) !important;
+  border-color: rgba(var(--oscuro-borde-rgb), 0.3) !important;
 }
 
 /* Boveda filter chip text */
-[data-theme="espacial"] .boveda-filter-chip.all {
-  background: rgba(27, 40, 56, 0.8);
-  color: #e0e0e0;
+:is([data-theme="espacial"], [data-theme="guerreras"]) .boveda-filter-chip.all {
+  background: rgba(var(--oscuro-panel-rgb), 0.8);
+  color: var(--oscuro-texto);
 }
 
-[data-theme="espacial"] .boveda-filter-count {
-  color: #aaa;
+:is([data-theme="espacial"], [data-theme="guerreras"]) .boveda-filter-count {
+  color: var(--oscuro-texto-tenue);
 }
 
 /* MateriaToggle */
-[data-theme="espacial"] .materia-toggle {
-  background: rgba(27, 40, 56, 0.6);
+:is([data-theme="espacial"], [data-theme="guerreras"]) .materia-toggle {
+  background: rgba(var(--oscuro-panel-rgb), 0.6);
 }
 
-[data-theme="espacial"] .materia-btn {
-  color: #aaa;
+:is([data-theme="espacial"], [data-theme="guerreras"]) .materia-btn {
+  color: var(--oscuro-texto-tenue);
 }
 
 /* Tarjeta desc and fecha */
-[data-theme="espacial"] .tarjeta-desc,
-[data-theme="espacial"] .tarjeta-fecha,
-[data-theme="espacial"] .tarjeta-tipo {
-  color: #aaa;
+:is([data-theme="espacial"], [data-theme="guerreras"]) .tarjeta-desc,
+:is([data-theme="espacial"], [data-theme="guerreras"]) .tarjeta-fecha,
+:is([data-theme="espacial"], [data-theme="guerreras"]) .tarjeta-tipo {
+  color: var(--oscuro-texto-tenue);
 }
 
-[data-theme="espacial"] .tipo-nombre {
-  color: #ccc;
+:is([data-theme="espacial"], [data-theme="guerreras"]) .tipo-nombre {
+  color: var(--oscuro-texto-suave);
 }
 
 /* Theme selector buttons - text visible on dark bg */
-[data-theme="espacial"] .tab-bar .tab-btn.active {
+:is([data-theme="espacial"], [data-theme="guerreras"]) .tab-bar .tab-btn.active {
   background: linear-gradient(135deg, var(--theme-grad-1), var(--theme-grad-2));
 }
 
 /* Admin pages - override inline white backgrounds for dark theme */
-[data-theme="espacial"] div[style*="background: white"],
-[data-theme="espacial"] div[style*="background:white"],
-[data-theme="espacial"] div[style*="rgb(255, 255, 255)"] {
-  background: rgba(27, 40, 56, 0.9) !important;
-  color: #e0e0e0 !important;
+:is([data-theme="espacial"], [data-theme="guerreras"]) div[style*="background: white"],
+:is([data-theme="espacial"], [data-theme="guerreras"]) div[style*="background:white"],
+:is([data-theme="espacial"], [data-theme="guerreras"]) div[style*="rgb(255, 255, 255)"] {
+  background: rgba(var(--oscuro-panel-rgb), 0.9) !important;
+  color: var(--oscuro-texto) !important;
 }
 
-/* Admin pages - form inputs */
-[data-theme="espacial"] input[type="text"],
-[data-theme="espacial"] input[type="email"],
-[data-theme="espacial"] textarea,
-[data-theme="espacial"] select {
-  background: rgba(13, 27, 42, 0.8) !important;
+/* Inputs (perfil y admin) */
+:is([data-theme="espacial"], [data-theme="guerreras"]) input[type="text"],
+:is([data-theme="espacial"], [data-theme="guerreras"]) input[type="email"],
+:is([data-theme="espacial"], [data-theme="guerreras"]) textarea,
+:is([data-theme="espacial"], [data-theme="guerreras"]) select {
+  background: rgba(var(--oscuro-hondo-rgb), 0.8) !important;
   color: #fff !important;
-  border-color: rgba(92, 107, 192, 0.4) !important;
+  border-color: rgba(var(--oscuro-borde-rgb), 0.4) !important;
 }
 
 /* Admin pages - container text */
-[data-theme="espacial"] div[style*="color: rgb(51, 51, 51)"],
-[data-theme="espacial"] div[style*='color: "#333"'] {
-  color: #e0e0e0 !important;
+:is([data-theme="espacial"], [data-theme="guerreras"]) div[style*="color: rgb(51, 51, 51)"],
+:is([data-theme="espacial"], [data-theme="guerreras"]) div[style*='color: "#333"'] {
+  color: var(--oscuro-texto) !important;
 }
 
 /* Admin Migración - widget, instrucciones, nota */
-[data-theme="espacial"] .instrucciones {
-  background: rgba(27, 40, 56, 0.7) !important;
-  border-left-color: #5C6BC0 !important;
+:is([data-theme="espacial"], [data-theme="guerreras"]) .instrucciones {
+  background: rgba(var(--oscuro-panel-rgb), 0.7) !important;
+  border-left-color: var(--oscuro-borde) !important;
 }
 
-[data-theme="espacial"] .instrucciones p,
-[data-theme="espacial"] .instrucciones li {
-  color: #ccc !important;
+:is([data-theme="espacial"], [data-theme="guerreras"]) .instrucciones p,
+:is([data-theme="espacial"], [data-theme="guerreras"]) .instrucciones li {
+  color: var(--oscuro-texto-suave) !important;
 }
 
-[data-theme="espacial"] .json-textarea {
-  background: rgba(13, 27, 42, 0.8) !important;
-  color: #e0e0e0 !important;
-  border-color: rgba(92, 107, 192, 0.4) !important;
+:is([data-theme="espacial"], [data-theme="guerreras"]) .json-textarea {
+  background: rgba(var(--oscuro-hondo-rgb), 0.8) !important;
+  color: var(--oscuro-texto) !important;
+  border-color: rgba(var(--oscuro-borde-rgb), 0.4) !important;
 }
 
-[data-theme="espacial"] .file-upload-section {
-  background: rgba(27, 40, 56, 0.6) !important;
-  border-color: rgba(92, 107, 192, 0.3) !important;
+:is([data-theme="espacial"], [data-theme="guerreras"]) .file-upload-section {
+  background: rgba(var(--oscuro-panel-rgb), 0.6) !important;
+  border-color: rgba(var(--oscuro-borde-rgb), 0.3) !important;
 }
 
-[data-theme="espacial"] .file-label {
-  color: #ccc !important;
+:is([data-theme="espacial"], [data-theme="guerreras"]) .file-label {
+  color: var(--oscuro-texto-suave) !important;
 }
 
-[data-theme="espacial"] .nota-importante {
+:is([data-theme="espacial"], [data-theme="guerreras"]) .nota-importante {
   background: rgba(40, 35, 20, 0.8) !important;
   border-left-color: #FFD600 !important;
 }
 
-[data-theme="espacial"] .nota-importante p {
-  color: #ccc !important;
+:is([data-theme="espacial"], [data-theme="guerreras"]) .nota-importante p {
+  color: var(--oscuro-texto-suave) !important;
 }
 
-[data-theme="espacial"] .nota-importante code {
+:is([data-theme="espacial"], [data-theme="guerreras"]) .nota-importante code {
   background: rgba(255, 214, 0, 0.2) !important;
   color: #FFD600 !important;
 }
 
 /* Migración - colección selector container (inline bg override) */
-[data-theme="espacial"] .coleccion-selector,
-[data-theme="espacial"] div[style*="background: rgb(232, 246, 243)"],
-[data-theme="espacial"] div[style*="#e8f6f3"] {
-  background: rgba(27, 40, 56, 0.7) !important;
-  border-color: rgba(92, 107, 192, 0.4) !important;
+:is([data-theme="espacial"], [data-theme="guerreras"]) .coleccion-selector,
+:is([data-theme="espacial"], [data-theme="guerreras"]) div[style*="background: rgb(232, 246, 243)"],
+:is([data-theme="espacial"], [data-theme="guerreras"]) div[style*="#e8f6f3"] {
+  background: rgba(var(--oscuro-panel-rgb), 0.7) !important;
+  border-color: rgba(var(--oscuro-borde-rgb), 0.4) !important;
 }
 
-[data-theme="espacial"] .coleccion-selector label,
-[data-theme="espacial"] .coleccion-selector p {
-  color: #ccc !important;
+:is([data-theme="espacial"], [data-theme="guerreras"]) .coleccion-selector label,
+:is([data-theme="espacial"], [data-theme="guerreras"]) .coleccion-selector p {
+  color: var(--oscuro-texto-suave) !important;
 }
 
 /* Migración - radio button labels (inline styles override) */
-[data-theme="espacial"] label[style*="background"] {
-  background: rgba(13, 27, 42, 0.6) !important;
-  border-color: rgba(92, 107, 192, 0.3) !important;
-  color: #e0e0e0 !important;
+:is([data-theme="espacial"], [data-theme="guerreras"]) label[style*="background"] {
+  background: rgba(var(--oscuro-hondo-rgb), 0.6) !important;
+  border-color: rgba(var(--oscuro-borde-rgb), 0.3) !important;
+  color: var(--oscuro-texto) !important;
 }
 
 /* Selected radio label - brighter border */
-[data-theme="espacial"] label[style*="2px solid"] {
-  border-color: #5C6BC0 !important;
-  background: rgba(92, 107, 192, 0.15) !important;
+:is([data-theme="espacial"], [data-theme="guerreras"]) label[style*="2px solid"] {
+  border-color: var(--oscuro-borde) !important;
+  background: rgba(var(--oscuro-borde-rgb), 0.15) !important;
 }
 
 /* Description paragraph inside selector */
-[data-theme="espacial"] p[style*="background: rgb(248, 249, 250)"],
-[data-theme="espacial"] p[style*="#f8f9fa"] {
-  background: rgba(13, 27, 42, 0.5) !important;
-  color: #aaa !important;
+:is([data-theme="espacial"], [data-theme="guerreras"]) p[style*="background: rgb(248, 249, 250)"],
+:is([data-theme="espacial"], [data-theme="guerreras"]) p[style*="#f8f9fa"] {
+  background: rgba(var(--oscuro-hondo-rgb), 0.5) !important;
+  color: var(--oscuro-texto-tenue) !important;
 }
 
 /* Admin Usuarios - list items and small text */
-[data-theme="espacial"] small {
-  color: #aaa !important;
+:is([data-theme="espacial"], [data-theme="guerreras"]) small {
+  color: var(--oscuro-texto-tenue) !important;
 }
 
-[data-theme="espacial"] strong {
+:is([data-theme="espacial"], [data-theme="guerreras"]) strong {
   color: #fff !important;
 }
 
 /* Perfil subtitle */
-[data-theme="espacial"] div[style*="color: rgb(85, 85, 85)"] {
-  color: #ccc !important;
+:is([data-theme="espacial"], [data-theme="guerreras"]) div[style*="color: rgb(85, 85, 85)"] {
+  color: var(--oscuro-texto-suave) !important;
 }
 
 /* ============================================
@@ -1018,18 +1076,22 @@
    de las cajas claras del juego.
    ============================================ */
 [data-theme="espacial"] .ip-card span,
+[data-theme="guerreras"] .ip-card span,
 [data-theme="pizarron"] .ip-card span {
   color: #2c3e50;
 }
 
 [data-theme="espacial"] .ip-card .ip-label,
+[data-theme="guerreras"] .ip-card .ip-label,
 [data-theme="pizarron"] .ip-card .ip-label {
   color: #2e7d32;
 }
 
 [data-theme="espacial"] .ip-explanation,
+[data-theme="guerreras"] .ip-explanation,
 [data-theme="pizarron"] .ip-explanation,
 [data-theme="espacial"] .ip-explanation span,
+[data-theme="guerreras"] .ip-explanation span,
 [data-theme="pizarron"] .ip-explanation span {
   color: #00695c;
 }
@@ -1044,22 +1106,40 @@
    oscuro es el correcto.
    ============================================ */
 [data-theme="espacial"] .sisol-container,
+[data-theme="guerreras"] .sisol-container,
 [data-theme="pizarron"] .sisol-container {
   --color-texto: #e8eaf0;
 }
 
 /* Colores fijos que la variable no cubre, pensados para fondo claro */
 [data-theme="espacial"] .sisol-reto-pregunta,
+[data-theme="guerreras"] .sisol-reto-pregunta,
 [data-theme="pizarron"] .sisol-reto-pregunta {
   background: rgba(243, 156, 18, 0.22);
 }
 
 [data-theme="espacial"] .sisol-feedback.correcto,
+[data-theme="guerreras"] .sisol-feedback.correcto,
 [data-theme="pizarron"] .sisol-feedback.correcto {
   color: #58d68d;
 }
 
 [data-theme="espacial"] .sisol-feedback.incorrecto,
+[data-theme="guerreras"] .sisol-feedback.incorrecto,
 [data-theme="pizarron"] .sisol-feedback.incorrecto {
   color: #ff8a80;
+}
+
+/* ============================================
+   GUERRERAS K-POP - detalles propios
+   La raya bajo .widget-title sale de --c-primary (global, azul), que en este
+   tema desentona; va violeta. Los widgets de degradado (aventura,
+   calificaciones) ya la traen blanca translucida y se quedan asi.
+   ============================================ */
+[data-theme="guerreras"] .widget-title {
+  border-bottom-color: var(--oscuro-borde);
+}
+
+[data-theme="guerreras"] :is(.aventura-widget, .calificaciones-widget) .widget-title {
+  border-bottom-color: rgba(255, 255, 255, 0.3);
 }

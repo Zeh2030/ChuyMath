@@ -130,6 +130,19 @@ const PageWrapper = ({ children }) => {
             <div className="star st10"></div>
             <div className="planet"></div>
           </>
+        ) : tema === 'guerreras' ? (
+          <>
+            <div className="reflector r1"></div>
+            <div className="reflector r2"></div>
+            <div className="destello g1">✦</div>
+            <div className="destello g2">✦</div>
+            <div className="destello g3">✦</div>
+            <div className="destello g4">✦</div>
+            <div className="destello g5">✦</div>
+            <div className="destello g6">✦</div>
+            <div className="destello g7">✦</div>
+            <div className="destello g8">✦</div>
+          </>
         ) : (
           <>
             <div className="cloud c1"></div>

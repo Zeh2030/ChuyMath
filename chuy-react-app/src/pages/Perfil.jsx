@@ -182,6 +182,9 @@ const Perfil = () => {
                 { id: 'aventurero', label: 'Aventurero', color1: '#667eea', color2: '#764ba2' },
                 { id: 'princesa', label: 'Princesa', color1: '#E8899E', color2: '#C2627A' },
                 { id: 'espacial', label: 'Espacial', color1: '#1A237E', color2: '#0D47A1' },
+                // Violeta de Rumi -> magenta de Mira -> cian de las espadas
+                { id: 'guerreras', label: 'Guerreras K-pop',
+                  swatch: 'linear-gradient(135deg, #3B0F8C, #7B2FD0 45%, #E0399F 80%, #3DE0FF)' },
                 { id: 'oceano', label: 'Océano', color1: '#00BCD4', color2: '#0097A7' },
                 { id: 'explorador', label: 'Explorador', color1: '#4CAF50', color2: '#2E7D32' },
                 { id: 'selva', label: 'Selva', color1: '#1B5E20', color2: '#2E7D32' },

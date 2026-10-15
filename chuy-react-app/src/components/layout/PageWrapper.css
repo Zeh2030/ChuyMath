@@ -141,6 +141,67 @@
   50% { transform: translateY(20px); }
 }
 
+/* ===== Guerreras K-pop theme background ===== */
+/* Noche de concierto en Seul: cielo violeta que se enciende en magenta hacia
+   el horizonte, silueta de la ciudad con la torre Namsan (SVG propio en
+   public/temas) y dos manchas de luz neon. */
+.bg-guerreras {
+  background:
+    url('/temas/guerreras-ciudad.svg') repeat-x left bottom / 1200px 220px,
+    radial-gradient(ellipse at 50% 100%, rgba(255, 79, 200, 0.28) 0%, transparent 55%),
+    radial-gradient(circle at 85% 15%, rgba(61, 224, 255, 0.10) 0%, transparent 35%),
+    linear-gradient(to bottom, #12062B, #24104F 40%, #45166E 75%, #6B1D72 100%);
+}
+
+/* Reflectores de escenario: haces que barren despacio desde abajo */
+.reflector {
+  position: absolute;
+  bottom: -10%;
+  width: 140px;
+  height: 120vh;
+  transform-origin: 50% 100%;
+  pointer-events: none;
+  animation: reflector-barrido ease-in-out infinite alternate;
+}
+
+.reflector.r1 {
+  left: 12%;
+  background: linear-gradient(to top, rgba(179, 102, 255, 0.22), transparent 85%);
+  clip-path: polygon(42% 100%, 58% 100%, 100% 0, 0 0);
+  animation-duration: 9s;
+}
+
+.reflector.r2 {
+  right: 12%;
+  background: linear-gradient(to top, rgba(61, 224, 255, 0.16), transparent 85%);
+  clip-path: polygon(42% 100%, 58% 100%, 100% 0, 0 0);
+  animation-duration: 11s;
+  animation-direction: alternate-reverse;
+}
+
+@keyframes reflector-barrido {
+  from { transform: rotate(-18deg); }
+  to   { transform: rotate(18deg); }
+}
+
+/* Destellos neon: reusan el `twinkle` de princesa */
+.destello {
+  position: absolute;
+  opacity: 0;
+  line-height: 1;
+  pointer-events: none;
+  animation: twinkle ease-in-out infinite;
+}
+
+.destello.g1 { top: 8%;  left: 18%; font-size: 1.1rem; color: #FF7AD9; text-shadow: 0 0 10px #FF4FC8; animation-duration: 3s;   animation-delay: 0s;   }
+.destello.g2 { top: 14%; left: 62%; font-size: 0.8rem; color: #7FEBFF; text-shadow: 0 0 10px #3DE0FF; animation-duration: 2.6s; animation-delay: 1.1s; }
+.destello.g3 { top: 26%; left: 88%; font-size: 1.3rem; color: #D7A8FF; text-shadow: 0 0 12px #B366FF; animation-duration: 3.4s; animation-delay: 0.4s; }
+.destello.g4 { top: 38%; left: 6%;  font-size: 0.9rem; color: #7FEBFF; text-shadow: 0 0 10px #3DE0FF; animation-duration: 2.8s; animation-delay: 2s;   }
+.destello.g5 { top: 48%; left: 74%; font-size: 1rem;   color: #FF7AD9; text-shadow: 0 0 10px #FF4FC8; animation-duration: 3.2s; animation-delay: 1.6s; }
+.destello.g6 { top: 20%; left: 40%; font-size: 0.7rem; color: #D7A8FF; text-shadow: 0 0 8px #B366FF;  animation-duration: 2.4s; animation-delay: 2.6s; }
+.destello.g7 { top: 58%; left: 30%; font-size: 0.8rem; color: #FF7AD9; text-shadow: 0 0 10px #FF4FC8; animation-duration: 3.6s; animation-delay: 0.8s; }
+.destello.g8 { top: 6%;  left: 92%; font-size: 0.9rem; color: #7FEBFF; text-shadow: 0 0 10px #3DE0FF; animation-duration: 3s;   animation-delay: 1.4s; }
+
 /* ===== Explorador theme background ===== */
 .bg-explorador {
   background: linear-gradient(to bottom, #F1F8E9, #DCEDC8 50%, #C5E1A5 100%);
