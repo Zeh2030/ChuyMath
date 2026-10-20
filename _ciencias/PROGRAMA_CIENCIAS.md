@@ -606,6 +606,162 @@ el tile propio `sistema-solar`. `detectMateria` reconoce `ciencias-*`.
 
 ---
 
+## 🔭 Observatorio (telescopio real) — PLAN 2026-10-07, nada construido
+
+La familia tiene un telescopio. Esta seccion es para sacarle provecho: que cada
+salida al patio tenga un objetivo, se entienda lo que se ve y quede registro.
+Vive DENTRO de ciencias (misma coleccion, cero infraestructura de materia).
+
+### Equipo y sitio (de aqui salen todos los calculos)
+
+| Dato | Valor |
+|------|-------|
+| Telescopio | Sky-Watcher Heritage 150, reflector Dobson de mesa, sin motor |
+| Optica | 150 mm de apertura, 750 mm de focal, f/5 |
+| Oculares | 25 mm (30x) y 10 mm (75x) de serie; 6 mm gran angular (125x) por llegar |
+| Accesorios por llegar | adaptador de celular Celestron NexYZ, polarizador variable SV128 |
+| Pendiente de compra | herramienta de colimacion; manga para el tubo abierto (casera) |
+| Mesa | comprada; primera luz el 2026-10-18 con la Luna en cuarto creciente ("fue genial") |
+| Sitio | Jerez, Zacatecas: 22.649 N, 102.990 O, ~2,000 m, UTC-6 sin horario de verano |
+
+Consecuencias del equipo que el contenido debe respetar:
+- **Sin motor**: a 125x un planeta cruza el campo en ~2 minutos. Se empuja el tubo.
+  No es un defecto que esconder: es la rotacion de la Tierra vista en vivo (OB-05).
+- **Enfocador de rosca que gira**: con el celular montado, enfocar gira todo.
+  Enfocar a ojo primero y luego montar.
+- **Honestidad sobre lo que se ve**: planetas y Luna impresionan; galaxias y
+  nebulosas son manchas grises tenues, nunca como las fotos. Cada mision dice
+  antes que se va a ver de verdad, o el niño se decepciona.
+- **Seguridad**: NUNCA al Sol. El polarizador no es filtro solar. Va en OB-01 y
+  ninguna mision apunta al Sol ni cerca del Sol (Mercurio y Venus al atardecer
+  quedan fuera hasta nuevo aviso).
+
+### Fase 1 — Misiones de observacion (solo contenido, cero codigo)
+
+Tipo `experimento-guia`: el wizard ya es Prediccion → Pasos → Observacion →
+Explicacion → Quiz, que es exactamente una sesion de telescopio. Nivel con
+prefijo propio `OB-xx` para que el filtro de nivel las separe de los
+experimentos de cocina (mismo truco que `PA` en piano). Revisar que
+`_valida.js` acepte el prefijo antes de crear el primero.
+
+**Lote A — usable este mes (octubre-noviembre 2026)**
+
+| # | Mision | Cuando | Enlaza con |
+|---|--------|--------|------------|
+| OB-01 | Conoce tu telescopio (partes, por donde entra la luz, regla del Sol) | De dia | — |
+| OB-02 | Alinea el buscador con un objeto lejano (antena, cerro) | De dia | — |
+| OB-03 | Saturno: los anillos y Titan | Ya (ver abajo) | C2-21, C2-42 |
+| OB-04 | La Luna: crateres y la linea de sombra | Cerca del cuarto creciente | C2-24 |
+| OB-05 | Tres oculares, un objeto: que cambia a 30x, 75x y 125x; cronometrar cuanto tarda en salirse del campo | Con Saturno o la Luna | C2-40 (la Tierra gira) |
+| OB-06 | Albireo, la estrella doble de dos colores | Al anochecer, muy alta | C2-35 (color = temperatura) |
+| OB-07 | Andromeda: luz de hace 2.5 millones de años | Noches sin Luna | C2-29 |
+
+**Lote B — invierno (diciembre 2026 - febrero 2027)**
+
+| # | Mision | Cuando | Enlaza con |
+|---|--------|--------|------------|
+| OB-08 | Las Pleyades: contar a simple vista y luego con el de 25 mm | Dic-ene al anochecer | C2-26 |
+| OB-09 | La nebulosa de Orion: donde nacen estrellas | Ene-feb al anochecer | C3-25 (nace un sol) |
+| OB-10 | Jupiter y sus lunas: dibujarlas dos noches seguidas (el experimento de Galileo) | Ene-mar | C2-41 |
+| OB-11 | Tu primera foto de la Luna con el celular | Cuarto creciente | — |
+| OB-12 | Colimar el telescopio (mision del papa, con el niño de ayudante) | De dia | — |
+
+### El cielo de referencia (calculado 2026-10-07 para Jerez con astronomy-engine)
+
+- Noche astronomica: 19:47 a 05:31. Puesta de Sol 18:33.
+- **Saturno**: oposicion el 4 de octubre de 2026, o sea en su mejor momento.
+  A las 20:00 esta a 22° sobre el este; a las 22:00 a 48°; culmina a medianoche
+  a 68°. Anillos inclinados solo 7.3°: se ven DELGADOS (pasaron de canto en
+  2025). Avisarlo en OB-03. Neptuno anda a unos grados de el.
+- **Jupiter**: sale a las 02:50, no es objeto de niños todavia. Oposicion el
+  11 de febrero de 2027 → por eso OB-10 esta en el lote de invierno.
+- **Luna**: nueva el 10 de octubre, cuarto creciente el 18, llena el 25.
+  Semana oscura del 7 al 13 (Andromeda); crateres del 15 al 21.
+- Albireo a 79° a las 20:00; Andromeda a 54° a las 22:00; Pleyades apenas a
+  15° a las 22:00 (por eso es de invierno); Orion no sale antes de medianoche.
+
+### Fase 2 — Planificador "¿Que vemos hoy?" (codigo)
+
+Herramienta, no tipo de mision: pagina propia `/observatorio`, cargada lazy
+(la libreria de efemerides pesa ~116 KB minificada, se trata como three).
+**Sin IA y sin backend.** Verificado 2026-10-07:
+- `astronomy-engine` (npm, MIT): posiciones de Sol, Luna y planetas, salidas y
+  puestas, fases, oposiciones, inclinacion de los anillos. Objetos fijos
+  (estrellas, cumulos, galaxias) con `Horizon(fecha, sitio, ra, dec)`.
+- Open-Meteo (`api.open-meteo.com/v1/forecast`): nubosidad por hora en capas
+  baja/media/alta, humedad, punto de rocio y viento. Sin llave, CORS abierto.
+  Guardar la respuesta 1-2 horas en localStorage.
+
+Piezas:
+1. **Datos sin React** (`src/data/observatorio/`): `equipo.js` (telescopio y
+   oculares con su campo aparente), `sitio.js` (Jerez; editable despues) y
+   `catalogo.js`: ~30 objetos curados, cada uno con nombre para niños,
+   coordenadas, tipo, dificultad 1-3, mejor ocular, "que vas a ver de verdad",
+   y los ids de su mision OB y de su leccion 3D.
+2. **Calculo** (`src/utils/cielo.js`): ventana de la noche, Luna (fase y si
+   estorba), y para cada objeto su mejor hora dentro de la ventana familiar
+   Regla de puntaje: altura > 25°, objetos tenues penalizados con Luna
+   brillante arriba. **Ventana familiar (decidida 2026-10-07/20)**: entre semana
+   19:30-22:00; viernes y sabado la noche entera, pero lo que cae fuera de
+   19:30-22:00 solo se propone si es EXCEPCIONAL (un eclipse, una lluvia de
+   estrellas en su pico, un planeta en oposicion que no se ve antes) — vale
+   levantarse a las 3 am por eso, no por una galaxia mas. Configurable.
+3. **Pantalla**:
+   - *Esta noche*: semaforo del cielo (nubes), la Luna, y los 3 mejores
+     objetos con hora, ocular recomendado y hacia donde mirar en lenguaje de
+     niño ("al este, a dos puños de altura": un puño con el brazo estirado
+     son ~10°).
+   - *Esta semana*: tira de 7 noches con nubes y Luna, para elegir cual.
+   - *Proximamente*: oposiciones, cuartos de Luna, eclipses (los calcula la
+     libreria) y lluvias de estrellas (tabla fija).
+   - Boton de modo nocturno rojo, LOCAL a la pagina (no es un tema global).
+4. **Entrada**: acceso rapido en la materia Ciencias del Dashboard.
+5. **"Antes de salir"**: cada objeto de la noche enlaza a su leccion ya
+   construida como calentamiento (Saturno → C2-21 tamaño real y C2-42
+   distancias reales; Jupiter → C2-34). NO hace falta trivia nueva de escalas:
+   ese contenido ya existe, solo falta ponerlo en el momento justo.
+
+### Fase 3 — Bitacora y pasaporte del cielo
+
+- **3a, texto (cero infraestructura)**: cada observacion = fecha, objeto,
+  ocular, como estaba el cielo, quienes estuvieron y una nota. Observar es de
+  familia, asi que se guarda en `accounts/{uid}` (las reglas actuales ya lo
+  permiten), no en el perfil de un solo hijo.
+- **Pasaporte del cielo**: el catalogo como album de estampas; se llena solo
+  con lo registrado en la bitacora. Es la motivacion de largo plazo. Tres hojas:
+  - *Telescopio*: los ~30 objetos del catalogo.
+  - *Caza de crateres*: la Luna desglosada en ~12 blancos (Copernico, Tycho,
+    Platon, Clavius, los mares grandes, los Apeninos). La Luna es el objeto mas
+    repetible y el que mejor sale en foto, merece su propia hoja. Cada blanco
+    lleva su mejor fase (Copernico luce a los 9-10 dias; Tycho y sus rayos en
+    llena), y el planificador avisa "hoy la linea de sombra pasa por ...".
+  - *A simple vista*: constelaciones, sin telescopio. Arranca con las 5 que ya
+    estan en el motor 3D (Osa Mayor, Orion, Can Mayor, Escorpion, Casiopea):
+    verlas armarse en C2-32/C2-37 y luego encontrarlas en el cielo.
+- **Insignias de "primeras luces"**: hitos derivados de la bitacora, sin
+  captura extra — primer planeta, primera estrella doble, primera galaxia,
+  primera foto, primera noche de invierno, 5 crateres, 10 noches. Premian VER
+  y APRENDER, no usar un accesorio. Solo perfiles de niño (los adultos no
+  llevan gamificacion); se otorgan a quienes estuvieron esa noche. Ver si caben
+  en el widget "🏆 Mis Logros" de `HoyTab.jsx` antes de hacer pantalla nueva.
+- **3b, fotos del celular**: requiere el SDK de Firebase Storage (hoy la app
+  no lo usa) y reglas de Storage. Es la misma plomeria que la galeria "Mis
+  Dibujos" de Arte: construir una vez, usar en las dos. Comprimir en el
+  cliente antes de subir.
+
+### Orden y esfuerzo estimado
+
+1. Lote A de misiones (1 sesion) — da valor inmediato, Saturno esta ahora.
+2. Planificador: datos + calculo + "Esta noche" y "Esta semana" (2 sesiones).
+3. Bitacora de texto + pasaporte (1 sesion).
+4. Lote B de misiones, a tiempo para diciembre (1 sesion).
+5. Fotos (junto con la galeria de Arte).
+
+Fuera de alcance a proposito: mapa estelar interactivo (Stellarium ya existe y
+es mejor) y cualquier cosa que apunte al Sol.
+
+---
+
 ## Fuentes y referencias pedagogicas
 
 - Next Generation Science Standards (NGSS) - K-5 framework

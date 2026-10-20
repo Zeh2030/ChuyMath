@@ -1,7 +1,11 @@
-# Plan Maestro ChuyMath - Actualizado 2026-09-16
+# Plan Maestro ChuyMath - Actualizado 2026-10-07
 
 Estado real de cada módulo y pendientes vivos. Los programas detallados viven en el
 doc de cada materia (`_ciencias/PROGRAMA_CIENCIAS.md`, `_piano/PROGRAMA_PIANO.md`, etc.).
+
+**El estado vive aquí, no en los chats.** Un chat se puede perder; para retomar un
+frente se abre uno nuevo con "lee PLAN_MAESTRO §X y el PROGRAMA de la materia" y se
+cierra actualizando la sección de estado del doc. Mapa de frentes en §13.
 
 ---
 
@@ -13,11 +17,11 @@ MateriaToggle (`src/components/layout/MateriaToggle.jsx`):
 |---------|-------------------|--------------------|--------|
 | Matemáticas 🔢 | aventuras + simulacros + expediciones | `_contenido/` (71 JSONs) | ✅ |
 | English 🇬🇧 | ingles | `_content/` (118 JSONs, A0 completo + A1-12) | ✅ |
-| Piano 🎹 | piano | `_piano/` (33 JSONs) | ✅ |
-| Ciencias 🔬 | ciencias | `_ciencias/` (32 JSONs: C0 y C1 completos) | ✅ |
+| Piano 🎹 | piano | `_piano/` (44 JSONs) | ✅ |
+| Ciencias 🔬 | ciencias | `_ciencias/` (59 JSONs: C0 y C1 completos + 27 de astronomía) | ✅ |
 | Arte 🎨 | dibujo | `_dibujo/` (73 JSONs, 4 tipos) | ✅ |
-| Geo 🌍 | geografia | `_geografia/` (48 JSONs, 9 tipos) | ✅ |
-| Letras 📖 | letras | `_letras/` (12 JSONs, L0+L1) | ✅ |
+| Geo 🌍 | geografia | `_geografia/` (53 JSONs, 9 tipos) | ✅ |
+| Letras 📖 | letras | `_letras/` (16 actividades: L0, L1, LF y L2) | ✅ |
 
 Además: **Modo Peques** (lanzador kid-safe con flag `esPeque`, colección `peques`,
 motores tap-and-celebrate / cual-es-diferente / memoria / formas / etc.).
@@ -80,9 +84,16 @@ Una cuenta Google → varios perfiles de hijo (estilo Netflix). Commit 94847b0.
 `accounts/{uid}` + `profiles/{profileId}` con `ownerUid`; `activeProfileId` en
 localStorage; ProfileSelector "¿Quién va a jugar?"; alta/edición self-service.
 
-**Pendiente operativo** (usuario, Firebase Console): desplegar `chuy-react-app/firestore.rules`
-y correr el botón de migración una vez — sin eso la app no carga perfiles.
-Fase 3 pendiente: PIN opcional de adulto.
+**Reglas desplegadas ✅** (verificado 2026-10-07: lo publicado en Firebase Console
+coincide con `chuy-react-app/firestore.rules`). La migración del perfil legacy es
+automática al iniciar sesión (`useAuth.jsx` le pone `ownerUid`), no hay botón que correr.
+
+**2026-10-20: `whitelist` cerrada en el repo** — antes era de lectura pública (cualquiera
+listaba los correos autorizados); ahora cada quien lee solo su entrada y listar es de
+admin. **Falta publicarla en Firebase Console** (Firestore → Reglas → pegar el archivo).
+
+Pendiente: Fase 3, PIN opcional de adulto. Una materia nueva con colección propia
+(ej. `aleman`) necesita su bloque en las reglas **y volver a publicarlas** en la consola.
 
 ---
 
@@ -202,8 +213,11 @@ rachas ni estrellas, y las herramientas de práctica son la función de retenci�
 ## 6. INGLÉS
 
 Hecho ✅: 11 tipos de juego, 118 JSONs (A0 completo + A1 hasta 12), filtros Bóveda.
-Pendiente: A1-13 a A1-40 gradual según avance (Present Continuous, Can/Can't,
-There is/are, Prepositions...). Alumno actualmente en Present Simple negativo (A1-10).
+Pendiente: completar A1-10, A1-11 y A1-12 (hoy parciales: solo 2 tipos de juego cada
+una, contra 9 de A1-09); luego A1-13 a A1-40 gradual según avance (Daily Routines,
+Telling Time, Sports, Jobs, Present Continuous, Can/Can't...). El programa A1-2
+(`PROGRAMA_INGLES_A1-2.md`) no está escrito. Alumno actualmente en Present Simple
+negativo (A1-10). La conversación por voz (§12) también sirve a inglés.
 
 ---
 
@@ -216,17 +230,59 @@ Explicación → Quiz) + `mezclador-colores` como motor interactivo con retos.
 |-------|------|--------|
 | C0 Mis Sentidos | 3-5 (hija) | ✅ Completo (10 + laboratorio de colores) |
 | C1 Explorador | 5-7 (hijo) | ✅ Completo (20 + retos de color) |
-| C2 Investigador | 7-9 | Pendiente (Lotes 4-5) — **siguiente para el hijo** |
-| C3 Científico Jr. | 9-11 | Pendiente (Lotes 6-7) |
+| C2 Investigador | 7-9 | Experimentos C2-01..20 **pendientes (0 de 20)** — siguiente para el hijo |
+| C3 Científico Jr. | 9-11 | Experimentos C3-01..20 pendientes (Lotes 6-7) |
 
-### 🔭 Astronomía (C2-21 a C2-30) — EN CONSTRUCCIÓN
+Ojo para C2: tres experimentos duran días (C2-12 cristales, C2-16 fotosíntesis,
+C2-18 moho) y piden un paso "espera X días y vuelve" que el wizard no tiene.
+
+### 🔭 Astronomía ✅ CONSTRUIDA (C2-21..42 y C3-21..25, 27 unidades)
 Ramal con motor 3D propio (three.js, patrón Cubo3D + MezcladorColores):
-- Tipo nuevo `sistema-solar`: escena `planetas` (Sol + 8 planetas procedurales,
-  explorar + retos "toca el planeta...") y escena `tierra-luna` (fases lunares y
-  eclipses con deslizador).
-- Resto del lote con tipos existentes: image-picker (fotos reales por URL),
-  mini-story, tap-the-pairs, opcion-multiple, experimento-guia (eclipse casero).
+- Tipo `sistema-solar` con 18 escenas: planetas (con tamaño real y distancias
+  reales), tierra-luna, estaciones, constelaciones, cometa, satélite, estrellas,
+  agujero-negro, cama-elástica, exoplanetas, asteroides, impacto, big-bang,
+  nace-un-sol, trompos, día-noche y carrera.
+- El resto con tipos existentes: image-picker (fotos reales de Wikimedia),
+  mini-story, tap-the-pairs, opcion-multiple, experimento-guia.
 - Detalle completo en `_ciencias/PROGRAMA_CIENCIAS.md` §Astronomía.
+
+### 🔭 Observatorio (telescopio) — FRENTE NUEVO, decidido 2026-10-07
+La familia compró un **Sky-Watcher Heritage 150** (reflector Dobson de mesa; 150 mm
+de apertura, f/5, focal 750 mm). Oculares de serie: 25 mm (30×) y 10 mm (75×).
+Sitio de observación: Jerez, Zacatecas (~22.65° N, 103.0° O, ~2,000 m).
+
+Accesorios que el usuario va a pedir (2026-10-07): ocular SVBONY gran angular de
+6 mm (125×), adaptador de celular Celestron NexYZ y filtro polarizador variable
+SVBONY SV128. Consecuencias para el diseño: el planificador recomienda ocular por
+objeto con la lista real de oculares, y la bitácora guarda **fotos** tomadas con el
+celular (Firebase Storage — la misma plomería que la galería "Mis Dibujos" de §9).
+Regla de seguridad para todo el contenido: el polarizador NO es filtro solar;
+ninguna misión apunta al Sol.
+
+**Decisión: sección dentro de Ciencias, ni materia propia ni app aparte.** Una
+sub-sección solo cuesta tiles; el selector de materias ya tiene 7. Una app aparte
+solo tendría sentido si se compartiera con gente que no usa la app de los niños.
+
+Son dos piezas distintas:
+1. **Misiones de observación** — solo contenido, con `experimento-guia` (ya trae
+   Predicción → Pasos → Observación → Explicación). Luna y terminador, lunas de
+   Júpiter, anillos de Saturno, Pléyades, nebulosa de Orión, estrellas dobles.
+   Enlazan con las escenas 3D ("lo viste en el motor, ahora velo de verdad").
+   Primero van las de manejo: armar, colimar, apuntar con el buscador.
+2. **Planificador "¿qué vemos hoy?"** — página de herramienta, no tipo de misión.
+   Sin IA y sin backend: efemérides calculadas en el navegador (qué está arriba,
+   a qué hora, a qué altura, fase de la Luna), nubosidad por hora de un servicio
+   gratuito tipo Open-Meteo, y los datos del telescopio para filtrar qué objetos
+   alcanza y con qué aumento. Bitácora de observación por perfil en Firestore.
+
+**Plan completo por fases** (misiones OB-01..12, planificador, bitácora y pasaporte
+del cielo, con el cielo de referencia ya calculado) en
+`_ciencias/PROGRAMA_CIENCIAS.md` §Observatorio. Siguiente paso: Lote A de misiones.
+Pendientes de compra del usuario: herramienta de colimación y manga para el tubo.
+
+No reconstruir un planetario (Stellarium ya existe): lo propio es la misión de la
+noche para niños más la bitácora. El modo nocturno rojo va local a la página, no
+como tema global (un tema oscuro cuesta ~48 overrides, ver §2).
 
 ---
 
@@ -245,10 +301,17 @@ Ramal con motor 3D propio (three.js, patrón Cubo3D + MezcladorColores):
 
 - **Dibujo**: SVG-first (SVGs propios, sin descargas), 73 JSONs en colorear /
   dibujo-guiado / dibujo-libre / mezclador-colores. Galería en `public/dibujo/galeria.html`.
-- **Peques** (2-5 años): lanzador kid-safe, bundle Gimnasia Cerebral.
+  D0, D1 y D2 completos. Sin urgencias; lo que ameritaría chat propio:
+  (a) **galería "Mis Dibujos"** — hoy el dibujo vive en localStorage y se
+  sobrescribe; falta Firebase Storage + vista entre dispositivos; (b) **nivel D3**
+  completo (20 actividades, 9-11 años); (c) lienzo: opacidad, deshacer y zoom.
+  El siguiente lote de teoría del color (complementarios, cálido/frío) es solo contenido.
+- **Peques** (2-5 años): lanzador kid-safe, bundle Gimnasia Cerebral. Pendiente de
+  baja prioridad: motores `clasifica` y `laberinto`.
 - **Letras** (hija ~4): motores `abecedario`, `letra-quiz` (un motor, campo `modo`),
-  `silabas`; trazo = `colorear` con SVG punteado. L0 aprobado con la niña; **L1 (m,p,s,l)
-  pendiente de probar con ella** → luego L2 + motores `arma-la-palabra` / `lee-y-elige`.
+  `silabas`, `rimas` y `arma-la-palabra`; trazo = `colorear` con SVG punteado.
+  L0 aprobado con la niña; L1, LF y L2 construidos. **Pendiente: probar LF y L2 con
+  ella** → si fluye, consonantes t, n, d, r, c (solo contenido) y luego números.
   Validador: `node _letras/_valida.js`. OJO: `_letras/` lleva acentos (se habla por TTS).
 
 ---
@@ -257,15 +320,85 @@ Ramal con motor 3D propio (three.js, patrón Cubo3D + MezcladorColores):
 
 | Prioridad | Tarea | Estado |
 |-----------|-------|--------|
-| **1** | Astronomía 3D (motor + lote C2-21..30) | 🔨 En construcción |
-| **2** | Ciencias C2-01 a C2-10 (experimentos — destraba al hijo) | Pendiente |
-| **3** | Piano: canciones Yamaha 4 (esperando fotos del usuario) | Bloqueado por usuario |
-| **3b** | Piano: probar PA1-01/02 con digitación + metrónomo con anacrusa | Bloqueado por prueba del usuario |
-| **4** | Letras: probar L1 con la niña → L2 | Bloqueado por prueba |
-| **5** | Inglés A1-13+ | Gradual |
-| **6** | Multi-perfil: desplegar reglas + migración (Firebase Console) | Bloqueado por usuario |
-| **7** | Logotipo app (favicon, PWA, splash) | Pendiente |
+| **1** | Ciencias C2-01 a C2-10 (experimentos — destraba al hijo) | Pendiente |
+| **2** | Observatorio: misiones de observación + planificador (§7) | Nuevo, sin empezar |
+| **3** | Alemán para el papá: programa + piloto (§11) | Nuevo, esperando índice de los libros |
+| **4** | Conversación por voz, piloto en alemán adulto (§12) | Nuevo, sin empezar |
+| **5** | Inglés: completar A1-10..12, luego A1-13+ | Gradual |
+| **6** | Piano: probar lo construido en el piano; canciones Yamaha 4 (fotos del usuario) | Bloqueado por usuario |
+| **7** | Letras: probar LF y L2 con la niña → más consonantes | Bloqueado por prueba |
+| **8** | Dibujo: galería "Mis Dibujos" (Firebase Storage) | Cuando se quiera |
+| **9** | Multi-perfil Fase 3: PIN de adulto | Pendiente |
 | **Futuro** | SaaS (pagos, registro, tenant isolation) | Futuro |
+
+Cerrado desde la versión anterior: astronomía 3D (27 unidades), logotipo propio
+(favicon e icono de app; la app se llama "Chuy & Lucy's World"), reglas de
+Firestore de multi-perfil desplegadas.
+
+---
+
+## 11. ALEMÁN (adulto) — FRENTE NUEVO, decidido 2026-10-07
+
+**Para el papá, no para los niños.** Llegó a B2 y obtuvo el Zertifikat Deutsch hace
+más de 10 años; lleva 1 año en Duolingo y quiere retomar desde cero. Lo que siente
+flojo: **gramática y práctica**. Eso manda el diseño: no es un curso de vocabulario
+por temas como el inglés de los niños.
+
+- Es un falso principiante: avanzar rápido por A1-A2 con la gramática como
+  columna (casos, género, orden de la frase, verbos separables, Perfekt) y bajar
+  la velocidad donde falle, no recorrer 40 unidades al ritmo de un niño.
+- Fuente del programa: el **índice de sus libros de alemán** (el usuario manda
+  fotos de los tomos A1 y A2). Son libros de adulto, así que aplican directo.
+- Perfil adulto (`esAdulto`): sin rachas ni estrellas, igual que el track PA de piano.
+- Motores de inglés reutilizables tal cual: fill-the-gap, sentence-transform,
+  verb-conjugator, word-bank (ideal para el orden de la frase), listen-and-type,
+  mini-story. Lo que el inglés no tiene y habrá que resolver: **der/die/das y la
+  declinación por caso**, y ä/ö/ü/ß en los juegos de escribir. Voz TTS `de-DE`.
+- Infraestructura: alta de materia completa (ver §1) con colección propia, y
+  publicar las reglas de Firestore. **Decidido 2026-10-07: la materia se muestra
+  solo a perfiles adultos** (`esAdulto`); los niños no la ven en el selector.
+- En espera hasta que el usuario mande las fotos del índice de los libros.
+- La práctica oral es el frente de §12; este frente es el que le da el vocabulario
+  y la gramática de cada unidad.
+
+---
+
+## 12. CONVERSACIÓN POR VOZ (alemán e inglés) — FRENTE NUEVO, decidido 2026-10-07
+
+Conversar en voz alta con una IA dentro de la app. Factible con la Live API de
+Gemini (voz a voz en tiempo real, con interrupciones). Nada construido.
+
+- **Piloto: el papá en alemán.** Un adulto que calibra el sistema antes de dárselo
+  a los niños; además evita de entrada la duda de los términos de uso con menores.
+- **La llave de la API no puede ir en el cliente** (el repo es público y el sitio
+  es estático). Camino a verificar primero: Firebase AI Logic, que llama a Gemini
+  desde el SDK de Firebase sin backend propio — confirmar que soporta la Live API
+  en web. Plan B: una Netlify Function que emita tokens efímeros.
+- Verificar al construir: precios vigentes del audio y los términos de la API
+  respecto a menores de 18 antes de abrirlo a los niños.
+- Diseño: no es chat libre. Escenas cortas (3-5 min) atadas a la unidad en curso,
+  con su vocabulario y gramática en el prompt, corrección por reformulación y un
+  resumen al final (2-3 errores a trabajar). Para los niños, además, límite de
+  tiempo y transcripción visible para el papá.
+- Es la primera función de la app que usa micrófono; el modo espera de piano (§5)
+  será la segunda. Comparten el permiso y la captura, no el procesamiento.
+
+---
+
+## 13. MAPA DE FRENTES (un chat por frente)
+
+| Frente | Qué sigue | Leer al abrir |
+|--------|-----------|---------------|
+| Ciencias C2 | Experimentos C2-01..10 | §7 + `_ciencias/PROGRAMA_CIENCIAS.md` |
+| Observatorio | Lote A de misiones (OB-01..07); luego el planificador | §7 + `_ciencias/PROGRAMA_CIENCIAS.md` §Observatorio |
+| Alemán | Programa a partir del índice de los libros; piloto | §11 + `_content/docs/GUIA_CREACION_INGLES.md` (motores) |
+| Voz | Verificar Firebase AI Logic + Live API; piloto alemán | §12 |
+| Inglés | Completar A1-10..12; A1-13..16 | §6 + `_content/docs/PROGRAMA_INGLES_A1.md` |
+| Piano | Lista de §5 (chat vivo) | §5 + `_piano/PROGRAMA_PIANO.md` |
+| Letras | Resultado de la prueba de LF y L2 | §9 + `_letras/PROGRAMA_LETRAS.md` |
+| Dibujo | Galería, D3 o lienzo (ninguno urgente) | §9 + `_dibujo/PROGRAMA_DIBUJO.md` |
+| Plataforma | PIN de adulto, modo papás, temas | §2, §3 |
+| Geografía | Nada; G3 cuando aplique | §8 + `_geografia/PROGRAMA_GEOGRAFIA.md` |
 
 ---
 

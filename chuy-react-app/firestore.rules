@@ -23,12 +23,14 @@ service cloud.firestore {
     // COLECCIONES DE SISTEMA
     // ============================================
 
-    // WHITELIST: Usuarios autorizados
-    // Lectura: Pública (para validar acceso al login)
-    // Escritura: Solo Admin (desde panel de AdminUsuarios)
-    match /whitelist/{document=**} {
-      allow read: if true; 
-      allow write: if isAdmin();
+    // WHITELIST: Usuarios autorizados (id del doc = email en minúsculas)
+    // Lectura: cada quien solo SU entrada, ya con sesión (useAuth la pide tras el login).
+    //   Antes era pública: cualquiera podía listar todos los correos autorizados.
+    // Listar y escribir: solo Admin (panel de AdminUsuarios)
+    match /whitelist/{email} {
+      allow get: if isAdmin()
+        || (request.auth != null && request.auth.token.email.lower() == email);
+      allow list, write: if isAdmin();
     }
 
     // ADMINS: Lista de administradores
