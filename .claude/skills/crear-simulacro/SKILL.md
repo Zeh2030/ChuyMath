@@ -70,13 +70,16 @@ Genera un simulacro completo siguiendo estas reglas:
 }
 ```
 
+#### Otros tipos (olimpiada)
+El motor también soporta `balanza-logica`, `criptoaritmetica`, `desarrollo-cubos`, `operaciones`, `palabra-del-dia`, `conteo-figuras`, `secuencia` y `tabla-doble-entrada` (ver `chuy-react-app/src/pages/Simulacro.jsx`). Para usarlos, copia la estructura de un ejemplo real: `_contenido/simulacros/simulador-balanza-1.json`, `simulador-criptoaritmetica-1.json`, `simulador-cubos-1.json`.
+
 ### Reglas de generación
 
 1. **Campo `respuesta`**: Es un STRING con el ÍNDICE base 0 de la opción correcta en el array `opciones`. Ejemplo: si la respuesta correcta es la tercera opción, `"respuesta": "2"`.
 2. **Cantidad de problemas**: Genera entre 10 y 20 problemas por simulacro.
 3. **Variedad**: Mezcla diferentes tipos de problemas. Prioriza `opcion-multiple` pero incluye al menos 1 problema de otro tipo si es apropiado.
 4. **Opciones**: Cada problema debe tener exactamente 5 opciones (para opcion-multiple).
-5. **Explicaciones**: Incluye `explicacion_correcta` y `explicacion_incorrecta` en todos los problemas que puedas. El tono debe ser amigable y motivador (es para niños).
+5. **Explicaciones**: Incluye `explicacion_correcta` y `explicacion_incorrecta` en cada problema, con tono amigable y motivador (es para niños).
 6. **SVG**: Si usas imágenes SVG, deben ser inline, simples, y usar viewBox. No usar comillas dobles dentro del SVG (usar comillas simples).
 7. **ID del simulacro**: Formato `simulador-[tema]-[numero]`. Ejemplo: `simulador-fracciones-1`.
 8. **Nivel**: Adapta la dificultad al grado escolar indicado (primaria, 1ro-6to grado).
