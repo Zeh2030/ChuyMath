@@ -608,10 +608,9 @@ el tile propio `sistema-solar`. `detectMateria` reconoce `ciencias-*`.
 
 ## 🔭 Observatorio (telescopio real) — Lote A + planificador CONSTRUIDOS 2026-10-20
 
-**Estado**: Fase 1 Lote A (OB-01..07) creado y validado; Fase 2 (planificador
-`/observatorio`) construida. Falta: migrar los 7 JSON en AdminMigracion (sin eso
-los botones "Misión" del planificador no abren nada), Fase 3 (bitácora, pasaporte,
-insignias) y Lote B.
+**Estado**: Fase 1 Lote A (OB-01..07) creado, validado y migrado a Firestore;
+Fase 2 (planificador `/observatorio`) construida y en produccion. Falta: Fase 3
+(bitacora, pasaporte, insignias) y Lote B.
 
 La familia tiene un telescopio. Esta seccion es para sacarle provecho: que cada
 salida al patio tenga un objetivo, se entienda lo que se ve y quede registro.

@@ -90,7 +90,7 @@ automática al iniciar sesión (`useAuth.jsx` le pone `ownerUid`), no hay botón
 
 **2026-10-20: `whitelist` cerrada en el repo** — antes era de lectura pública (cualquiera
 listaba los correos autorizados); ahora cada quien lee solo su entrada y listar es de
-admin. **Falta publicarla en Firebase Console** (Firestore → Reglas → pegar el archivo).
+admin. Publicada en Firebase Console por el usuario el 2026-10-20.
 
 Pendiente: Fase 3, PIN opcional de adulto. Una materia nueva con colección propia
 (ej. `aleman`) necesita su bloque en las reglas **y volver a publicarlas** en la consola.
@@ -282,7 +282,7 @@ en cuarto creciente el 18 de octubre, ya con mesa propia.
 **Decidido**: bitácora familiar; Mercurio y Venus fuera (pegados al Sol); horario
 entre semana 19:30-22:00 y viernes/sábado la noche entera solo si hay algo
 excepcional (eclipse, pico de una lluvia grande).
-**Siguiente**: el usuario migra OB-01..07 en AdminMigracion; luego Fase 3
+OB-01..07 ya migradas a Firestore (2026-10-20). **Siguiente**: Fase 3
 (bitácora + pasaporte + insignias) y Lote B antes de diciembre.
 Detalle completo en `_ciencias/PROGRAMA_CIENCIAS.md` §Observatorio.
 Accesorios: ocular 6 mm, NexYZ y SV128 llegan el fin de semana del 24-25 de oct;
