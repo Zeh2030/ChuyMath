@@ -1,0 +1,73 @@
+{
+  "id": "OB-02_alinea-el-buscador",
+  "titulo": "Alinea el Buscador",
+  "descripcion": "De día: que el punto rojo y el telescopio miren exactamente al mismo lugar",
+  "tipo": "experimento-guia",
+  "materia": "ciencias",
+  "nivel": "OB-02",
+  "tema": "observatorio",
+  "misiones": [
+    {
+      "id": "obs-buscador-01",
+      "tipo": "experimento-guia",
+      "titulo": "Alinea el Buscador",
+      "emoji": "🎯",
+      "instruccion": "Si el punto rojo está chueco, en la noche apuntas a Saturno y en el ocular no aparece nada. Hoy, de día, lo dejamos perfecto. Lejos del Sol, como siempre.",
+      "tema": "observatorio",
+      "materiales": [
+        "El telescopio en su mesa",
+        "El ocular de 25 mm",
+        "Algo LEJANO y quieto: una antena, la punta de un poste o un árbol en un cerro"
+      ],
+      "materiales_emoji": ["🔭", "🔍", "📡"],
+      "prediccion": {
+        "pregunta": "¿Qué crees que pase en la noche si el punto rojo está chueco?",
+        "opciones": [
+          "Apunto a un planeta y en el ocular no aparece",
+          "No pasa nada, igual se ve",
+          "El planeta se ve de color rojo"
+        ]
+      },
+      "pasos": [
+        { "instruccion": "Elige algo LEJOS y quieto, a más de una cuadra: una antena, la punta de un poste o un árbol en un cerro. Nunca cerca del Sol.", "emoji": "📡" },
+        { "instruccion": "Pon el ocular de 25 mm (el que ve más pedazo de cielo) y mueve el tubo hasta que ese objeto quede JUSTO en el centro. Enfoca hasta verlo nítido.", "emoji": "🔍" },
+        { "instruccion": "Sin mover el tubo, prende el buscador y mira por él con un ojo, a un palmo de distancia.", "emoji": "👁️" },
+        { "instruccion": "¿El punto rojo está encima del objeto? Si no, gira las perillitas del buscador (una lo mueve arriba y abajo, la otra a los lados) hasta que el punto quede ENCIMA.", "emoji": "🎯" },
+        { "instruccion": "Comprueba: apunta a otra cosa lejana usando SOLO el punto rojo y luego mira por el ocular. Si aparece, ¡quedó alineado!", "emoji": "✅" },
+        { "instruccion": "Apaga el buscador al terminar para no gastar la pila.", "emoji": "🔋" }
+      ],
+      "observacion": {
+        "pregunta": "Cuando apuntaste con el punto rojo a otra cosa, ¿apareció en el ocular?",
+        "opciones": [
+          "Sí, ¡a la primera!",
+          "Casi, quedó cerca de la orilla",
+          "No, tuve que ajustarlo otra vez"
+        ]
+      },
+      "explicacion": "Por el ocular de 25 mm ves un pedacito de cielo de apenas unas 3 Lunas de ancho. Apuntar sin buscador es como buscar una moneda en el piso mirando por un popote. El buscador NO aumenta: te enseña el cielo de tamaño normal con un punto que dice 'aquí está mirando el telescopio'. Se alinea con algo lejano porque el buscador y el tubo están separados unos centímetros: con algo cercano apuntarían a lugares distintos, pero a lo lejos esa diferencia desaparece. ¿Notaste que la antena se veía de cabeza en el ocular? Así funciona este telescopio, es normal.",
+      "quiz": [
+        {
+          "tipo": "true-or-false",
+          "pregunta": "El punto rojo hace que las cosas se vean más grandes.",
+          "respuesta": false
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "¿Por qué se alinea con algo lejano y no con algo cercano?",
+          "opciones": [
+            "Porque el buscador y el tubo están separados y solo coinciden a lo lejos",
+            "Porque lo cercano se ve borroso con el punto rojo",
+            "Porque de cerca el punto rojo se apaga"
+          ],
+          "respuesta": "Porque el buscador y el tubo están separados y solo coinciden a lo lejos"
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "¿Con qué ocular conviene ENCONTRAR las cosas?",
+          "opciones": ["El de 25 mm, porque ve más cielo", "El de 6 mm, porque aumenta más"],
+          "respuesta": "El de 25 mm, porque ve más cielo"
+        }
+      ]
+    }
+  ]
+}

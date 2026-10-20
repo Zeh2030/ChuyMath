@@ -1,0 +1,190 @@
+/* Observatorio: herramienta de noche. Paleta propia (cielo nocturno) en vez de los
+   tokens del tema, igual que las escenas 3D de astronomía; el modo rojo cambia
+   solo estas variables. */
+.obs {
+  --obs-fondo: #0d1b2a;
+  --obs-tarjeta: #15263a;
+  --obs-borde: #26405e;
+  --obs-texto: #e8eef6;
+  --obs-suave: #a9bcd3;
+  --obs-acento: #ffd166;
+  --obs-boton: #1f3b5c;
+  --obs-especial: #3a2f0b;
+  max-width: 760px;
+  margin: 0 auto 32px;
+  padding: 16px;
+  background: var(--obs-fondo);
+  color: var(--obs-texto);
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+/* Modo noche: rojo tenue sobre negro, conserva la visión nocturna. */
+.obs.obs-rojo {
+  --obs-fondo: #000;
+  --obs-tarjeta: #0f0000;
+  --obs-borde: #3a0000;
+  --obs-texto: #d23a2c;
+  --obs-suave: #9c2a20;
+  --obs-acento: #ff4a36;
+  --obs-boton: #2a0000;
+  --obs-especial: #240000;
+  border-radius: 0;
+}
+.obs-pantalla-roja {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  overflow-y: auto;
+  background: #000;
+}
+/* Los emojis traen sus propios colores (Luna amarilla, semáforo verde...): el filtro
+   lo pasa TODO a rojo, emojis incluidos. */
+.obs.obs-rojo { filter: grayscale(1) sepia(1) hue-rotate(-40deg) saturate(5) brightness(0.85); }
+
+.obs-barra {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.obs-boton {
+  background: var(--obs-boton);
+  color: var(--obs-texto);
+  border: 1px solid var(--obs-borde);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+.obs-boton-mision { border-color: var(--obs-acento); }
+
+.obs-tarjeta {
+  background: var(--obs-tarjeta);
+  border: 1px solid var(--obs-borde);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.obs-etiqueta {
+  margin: 0;
+  color: var(--obs-acento);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.obs-titulo { margin: 2px 0 4px; font-size: 1.4rem; color: var(--obs-texto); }
+.obs-titulo::first-letter,
+.obs-proximo-fecha::first-letter { text-transform: uppercase; }
+.obs-sub { margin: 0 0 12px; color: var(--obs-suave); font-size: 0.95rem; }
+
+.obs-datos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+.obs-dato { display: flex; gap: 10px; align-items: center; }
+.obs-dato-icono { font-size: 1.8rem; line-height: 1; }
+.obs-dato strong { display: block; color: var(--obs-texto); }
+.obs-dato span { color: var(--obs-suave); font-size: 0.9rem; }
+.obs-aviso { margin: 10px 0 0; color: var(--obs-acento); font-size: 0.95rem; }
+.obs-nota { margin: 8px 0 0; color: var(--obs-suave); font-size: 0.9rem; }
+
+.obs-evento { display: flex; gap: 10px; align-items: flex-start; }
+.obs-evento + .obs-evento { margin-top: 12px; }
+.obs-evento p { margin: 4px 0 0; color: var(--obs-suave); font-size: 0.95rem; }
+.obs-evento-emoji { font-size: 1.6rem; line-height: 1.2; }
+.obs-evento-especial strong { color: var(--obs-acento); }
+
+.obs-seccion { margin-bottom: 20px; }
+.obs-seccion-titulo { margin: 0 0 10px; font-size: 1.15rem; color: var(--obs-texto); }
+.obs-vacio { color: var(--obs-suave); }
+
+.obs-objeto {
+  background: var(--obs-tarjeta);
+  border: 1px solid var(--obs-borde);
+  border-radius: 16px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+.obs-objeto-cabeza { display: flex; gap: 10px; align-items: center; }
+.obs-objeto-num {
+  flex: 0 0 auto;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--obs-acento);
+  color: var(--obs-fondo);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+}
+.obs-objeto-emoji { font-size: 2rem; line-height: 1; }
+.obs-objeto h4 { margin: 0; font-size: 1.15rem; color: var(--obs-texto); }
+.obs-objeto-cuando { margin: 2px 0 0; color: var(--obs-acento); font-size: 0.95rem; }
+.obs-objeto-ocular,
+.obs-objeto-detalle,
+.obs-objeto-texto { margin: 8px 0 0; color: var(--obs-suave); font-size: 0.95rem; line-height: 1.4; }
+.obs-objeto-texto strong { color: var(--obs-texto); }
+.obs-objeto-botones { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+
+.obs-mas summary { cursor: pointer; color: var(--obs-texto); padding: 6px 0; }
+.obs-mas ul { list-style: none; margin: 6px 0 0; padding: 0; }
+.obs-mas li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--obs-borde);
+  color: var(--obs-suave);
+  font-size: 0.92rem;
+}
+.obs-mas li strong { color: var(--obs-texto); }
+
+.obs-semana {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(84px, 1fr));
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+.obs-dia {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  background: var(--obs-tarjeta);
+  color: var(--obs-texto);
+  border: 1px solid var(--obs-borde);
+  border-radius: 12px;
+  padding: 8px 4px;
+  cursor: pointer;
+}
+.obs-dia-finde { border-style: dashed; }
+.obs-dia-sel { border: 2px solid var(--obs-acento); }
+.obs-dia-fecha { font-size: 0.85rem; text-transform: capitalize; }
+.obs-dia-luna,
+.obs-dia-clima { font-size: 1.2rem; line-height: 1.2; }
+.obs-dia-total { font-size: 0.75rem; color: var(--obs-suave); }
+.obs-dia-estrella { position: absolute; top: -8px; right: -4px; }
+
+.obs-proximos { list-style: none; margin: 0; padding: 0; }
+.obs-proximos li {
+  display: flex;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--obs-borde);
+}
+.obs-proximos strong { display: block; color: var(--obs-texto); }
+.obs-proximo-fecha { display: block; color: var(--obs-acento); font-size: 0.88rem; }
+.obs-proximos p { margin: 4px 0 0; color: var(--obs-suave); font-size: 0.92rem; }
+
+.obs-pie { text-align: center; color: var(--obs-suave); font-size: 0.85rem; }
+.obs-sol { color: var(--obs-acento); font-weight: 600; }
+
+@media (max-width: 480px) {
+  .obs { border-radius: 0; }
+  .obs-titulo { font-size: 1.25rem; }
+}

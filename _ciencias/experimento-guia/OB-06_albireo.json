@@ -1,0 +1,84 @@
+{
+  "id": "OB-06_albireo",
+  "titulo": "Albireo, la Estrella Doble",
+  "descripcion": "Una estrella que en el telescopio se vuelve dos, de colores distintos: el color dice la temperatura",
+  "tipo": "experimento-guia",
+  "materia": "ciencias",
+  "nivel": "OB-06",
+  "tema": "observatorio",
+  "misiones": [
+    {
+      "id": "obs-albireo-antes",
+      "tipo": "sistema-solar",
+      "escena": "estrellas",
+      "modo": "explorar",
+      "titulo": "Antes de Salir",
+      "emoji": "⭐",
+      "instruccion": "Recuerda la escalera de las estrellas: fíjate en sus COLORES antes de buscar una estrella doble de verdad.",
+      "leccion": "El color de una estrella es su termómetro: azul es la más caliente, roja la más fría. Esta noche lo vas a comprobar con tus ojos.",
+      "datos": {
+        "rigel": "Azul-blanca y muy caliente. Así de azul vas a ver a una de las dos estrellas de Albireo.",
+        "aldebaran": "Naranja: más fría que el Sol. La otra estrella de Albireo es dorada, parecida a esta.",
+        "sol": "Amarillo-blanco, en medio: ni de las más calientes ni de las más frías."
+      },
+      "dato_curioso": "Más o menos la mitad de las estrellas del cielo tienen compañera. El Sol es de las que andan solas."
+    },
+    {
+      "id": "obs-albireo-01",
+      "tipo": "experimento-guia",
+      "titulo": "Albireo, la Estrella Doble",
+      "emoji": "✨",
+      "instruccion": "Se ve en las noches de otoño, al anochecer, alta hacia el oeste. No necesitas el ocular más fuerte: con el de 25 mm basta.",
+      "tema": "observatorio",
+      "materiales": [
+        "El telescopio, sacado al patio 20 minutos antes",
+        "Los oculares de 25 mm y 10 mm",
+        "Un cielo despejado al anochecer"
+      ],
+      "materiales_emoji": ["🔭", "🔍", "🌌"],
+      "prediccion": {
+        "pregunta": "A simple vista Albireo parece UNA estrella. ¿Qué crees que veas con el telescopio?",
+        "opciones": [
+          "Dos estrellas de colores distintos",
+          "Una sola estrella, pero más grande",
+          "Una estrella con anillos",
+          "Un planeta escondido"
+        ]
+      },
+      "pasos": [
+        { "instruccion": "Al anochecer, mira hacia el oeste, alto: busca una cruz grande de estrellas. Es el CISNE, volando con las alas abiertas.", "emoji": "🦢" },
+        { "instruccion": "La estrella más brillante de la cruz es la cola del cisne (Deneb). Del otro lado, en la punta del palo largo, está el pico: esa es ALBIREO.", "emoji": "⭐" },
+        { "instruccion": "Apunta con el punto rojo y mira con el ocular de 25 mm. Enfoca hasta que las estrellas sean puntitos.", "emoji": "🎯" },
+        { "instruccion": "¿Cuántas estrellas ves? Fíjate en el color de cada una. Desenfoca un poquito: a veces los colores se notan más.", "emoji": "👁️" },
+        { "instruccion": "Prueba con el de 10 mm: se separan más.", "emoji": "🔍" }
+      ],
+      "observacion": {
+        "pregunta": "¿De qué colores eran las dos estrellas?",
+        "opciones": [
+          "Una dorada y una azul",
+          "Las dos blancas",
+          "Una roja y una verde"
+        ]
+      },
+      "explicacion": "Albireo es una de las estrellas dobles más bonitas del cielo. Los colores son su termómetro: la azul arde a unos 13 mil grados y la dorada a unos 4 mil. El Sol, en medio, anda por los 5,500. Al revés que las llaves del agua: azul es caliente y rojo es frío. Su luz tardó unos 400 años en llegar: salió cuando Galileo apenas estrenaba el primer telescopio. Algo que todavía no se sabe: los científicos discuten si las dos estrellas dan vueltas una alrededor de la otra o si solo se ven juntas porque quedaron alineadas desde aquí, aunque una esté más lejos que la otra.",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "¿Cuál de las dos estrellas es la más caliente?",
+          "opciones": ["La azul", "La dorada", "Están igual de calientes"],
+          "respuesta": "La azul"
+        },
+        {
+          "tipo": "true-or-false",
+          "pregunta": "Las estrellas rojas y doradas son más calientes que las azules.",
+          "respuesta": false
+        },
+        {
+          "tipo": "true-or-false",
+          "pregunta": "A simple vista, Albireo parece una sola estrella.",
+          "respuesta": true
+        }
+      ]
+    }
+  ]
+}

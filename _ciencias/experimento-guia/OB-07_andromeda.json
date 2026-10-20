@@ -1,0 +1,80 @@
+{
+  "id": "OB-07_andromeda",
+  "titulo": "Andrómeda, Otra Galaxia",
+  "descripcion": "Lo más lejano que pueden ver tus ojos: una galaxia entera, con luz más vieja que la humanidad",
+  "tipo": "experimento-guia",
+  "materia": "ciencias",
+  "nivel": "OB-07",
+  "tema": "observatorio",
+  "misiones": [
+    {
+      "id": "obs-andromeda-01",
+      "tipo": "experimento-guia",
+      "titulo": "Andrómeda, Otra Galaxia",
+      "emoji": "🌌",
+      "instruccion": "Esta misión necesita una noche SIN Luna (unos días antes y después de la Luna nueva) y paciencia. Lo que vas a ver es tenue… y es lo más lejano que verás en tu vida con tus propios ojos.",
+      "tema": "observatorio",
+      "materiales": [
+        "El telescopio, sacado al patio 20 minutos antes",
+        "El ocular de 25 mm",
+        "Una linterna de luz roja",
+        "Una noche sin Luna y sin luces prendidas en el patio"
+      ],
+      "materiales_emoji": ["🔭", "🔍", "🔦", "🌑"],
+      "prediccion": {
+        "pregunta": "¿Cómo crees que se vea una galaxia entera por el telescopio?",
+        "opciones": [
+          "Como una manchita ovalada y tenue",
+          "Como las fotos: una espiral de colores",
+          "Como millones de estrellitas separadas",
+          "No se va a ver nada"
+        ]
+      },
+      "pasos": [
+        { "instruccion": "Apaga las luces del patio y deja que tus ojos se acostumbren a la oscuridad 20 minutos. Nada de pantallas brillantes: solo luz roja.", "emoji": "🌑" },
+        { "instruccion": "Busca el GRAN CUADRADO de Pegaso: cuatro estrellas que forman un cuadro enorme, alto hacia el este en otoño.", "emoji": "⬜" },
+        { "instruccion": "Ve a la esquina del cuadrado que queda más cerca de la W de Casiopea. De ahí sale una fila de estrellas: cuenta dos brillantes alejándote del cuadrado. La segunda se llama Mirach.", "emoji": "⭐" },
+        { "instruccion": "Desde Mirach, gira hacia Casiopea y cuenta dos estrellitas más tenues. Justo pasando la segunda está Andrómeda. Mírala 'de reojo': en un cielo oscuro como el de Jerez a veces se ve como una nubecita.", "emoji": "👀" },
+        { "instruccion": "Apunta ahí con el punto rojo y mira con el ocular de 25 mm (no con el de 6: la haría grande y tan tenue que desaparecería). Mueve el tubo despacito: lo que se mueve se nota más.", "emoji": "🔍" },
+        { "instruccion": "Mira de reojo también dentro del ocular: la orilla de tu ojo ve mejor la luz débil que el centro.", "emoji": "👁️" }
+      ],
+      "observacion": {
+        "pregunta": "¿Qué viste?",
+        "opciones": [
+          "Una manchita ovalada, más brillante en el centro",
+          "Una espiral de colores",
+          "No la encontré esta vez"
+        ]
+      },
+      "explicacion": "Esa manchita es una GALAXIA entera, como la Vía Láctea donde vivimos, con cerca de un billón de estrellas (un millón de millones). Está tan lejos que su luz tardó 2.5 millones de años en llegar: salió de allá cuando todavía no existían las personas como nosotros. Es lo más lejano que se puede ver a simple vista. ¿Y por qué las fotos se ven de colores y tú la viste gris? Porque las cámaras de los astrónomos juntan luz durante horas, y tu ojo solo puede ver lo que llega en ese instante. Lo que viste es real, sin trucos: luz de otra galaxia entrando a tu ojo. Si no la encontraste, no pasa nada: es de las difíciles, y se intenta otra noche oscura.",
+      "quiz": [
+        {
+          "tipo": "true-or-false",
+          "pregunta": "La luz de Andrómeda que viste salió de allá antes de que existieran las personas.",
+          "respuesta": true
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "¿Por qué en las fotos las galaxias son de colores y en el telescopio grises?",
+          "opciones": [
+            "Las cámaras juntan luz durante horas; el ojo no",
+            "Las fotos son dibujos inventados",
+            "El telescopio está descompuesto"
+          ],
+          "respuesta": "Las cámaras juntan luz durante horas; el ojo no"
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "¿Qué es lo más lejano que puedes ver con tus propios ojos?",
+          "opciones": ["La galaxia de Andrómeda", "La Luna", "Saturno"],
+          "respuesta": "La galaxia de Andrómeda"
+        },
+        {
+          "tipo": "true-or-false",
+          "pregunta": "Para ver galaxias conviene el ocular de 6 mm, el que más aumenta.",
+          "respuesta": false
+        }
+      ]
+    }
+  ]
+}

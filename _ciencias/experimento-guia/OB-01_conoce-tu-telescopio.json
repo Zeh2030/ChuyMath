@@ -1,0 +1,80 @@
+{
+  "id": "OB-01_conoce-tu-telescopio",
+  "titulo": "Conoce tu Telescopio",
+  "descripcion": "De día: las partes del telescopio, por dónde viaja la luz y la regla de oro del Sol",
+  "tipo": "experimento-guia",
+  "materia": "ciencias",
+  "nivel": "OB-01",
+  "tema": "observatorio",
+  "misiones": [
+    {
+      "id": "obs-telescopio-01",
+      "tipo": "experimento-guia",
+      "titulo": "Conoce tu Telescopio",
+      "emoji": "🔭",
+      "instruccion": "Antes de ver estrellas hay que conocer la máquina. Esta misión se hace DE DÍA, con el papá, y con el telescopio lejos del Sol.",
+      "tema": "observatorio",
+      "materiales": [
+        "El telescopio en su mesa",
+        "Los oculares (25 mm, 10 mm y 6 mm)",
+        "Una linterna de luz roja (o el celular con pantalla roja)"
+      ],
+      "materiales_emoji": ["🔭", "🔍", "🔦"],
+      "prediccion": {
+        "pregunta": "¿Cómo crees que el telescopio te deja ver cosas que tus ojos solos no ven?",
+        "opciones": [
+          "Junta muchísima luz con un espejo grande",
+          "Jala las cosas con un imán para acercarlas",
+          "Tiene una cámara escondida adentro",
+          "Nada más es una lupa muy grande"
+        ]
+      },
+      "pasos": [
+        { "instruccion": "La regla de oro, antes que nada: NUNCA se apunta el telescopio al Sol. Ni un ratito, ni al atardecer, ni con el filtro de la Luna. El espejo junta tanta luz que quemaría tu ojo al instante.", "emoji": "🚫" },
+        { "instruccion": "Busca el espejo GRANDE: está hasta abajo del tubo. Asómate desde arriba (sin ocular puesto) y verás tu reflejo chiquito allá al fondo.", "emoji": "🪞" },
+        { "instruccion": "Busca el espejo CHIQUITO: está arriba, en el centro del tubo, sostenido por unas patitas delgadas. Está ladeado para mandar la luz hacia un lado.", "emoji": "🔎" },
+        { "instruccion": "Encuentra el ENFOCADOR: el tubito del costado donde se pone el ocular. Gíralo despacio y mira cómo sube y baja.", "emoji": "🔩" },
+        { "instruccion": "Mira los OCULARES: el número son milímetros, y entre MÁS CHICO el número, MÁS grande se ve. El de 25 aumenta 30 veces, el de 10 aumenta 75 veces y el de 6 aumenta 125 veces.", "emoji": "🔍" },
+        { "instruccion": "Busca el BUSCADOR de punto rojo, la mirilla de arriba del tubo. Sirve para apuntar, como la mira de un videojuego. (En la siguiente misión lo vamos a alinear.)", "emoji": "🎯" },
+        { "instruccion": "Último secreto: en la noche, saca el telescopio al patio 20 o 30 minutos ANTES de observar. El espejo tiene que enfriarse al aire, si no, la imagen se ve como si hirviera.", "emoji": "⏱️" }
+      ],
+      "observacion": {
+        "pregunta": "¿Qué camino sigue la luz dentro del telescopio?",
+        "opciones": [
+          "Entra por arriba, rebota en el espejo grande, luego en el chiquito y sale por el ocular",
+          "Entra por el ocular y sale por arriba",
+          "Entra por abajo del tubo y sale por arriba"
+        ]
+      },
+      "explicacion": "Tu telescopio es de los que inventó Isaac Newton hace más de 350 años: en vez de lentes usa un ESPEJO. El espejo grande mide 15 centímetros y la parte negra de tu ojo (la pupila), en la noche, apenas 7 milímetros: el telescopio junta unas 460 veces más luz que tu ojo solo. Por eso ve cosas tan débiles que tus ojos no alcanzan. El ocular es la lupa que agranda esa imagen: el telescopio mide 750 milímetros por dentro, y 750 entre los milímetros del ocular da los aumentos (750 ÷ 25 = 30). Una cosa curiosa: en este telescopio todo se ve DE CABEZA. No está descompuesto, así funcionan los espejos… y en el espacio no hay arriba ni abajo.",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "¿Con qué ocular se ven las cosas MÁS grandes?",
+          "opciones": ["El de 25 mm", "El de 10 mm", "El de 6 mm"],
+          "respuesta": "El de 6 mm"
+        },
+        {
+          "tipo": "true-or-false",
+          "pregunta": "El filtro para la Luna también sirve para ver el Sol.",
+          "respuesta": false
+        },
+        {
+          "tipo": "true-or-false",
+          "pregunta": "Este telescopio usa un espejo para juntar la luz.",
+          "respuesta": true
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "¿Por qué sacamos el telescopio un rato antes de observar?",
+          "opciones": [
+            "Para que el espejo se enfríe y la imagen no tiemble",
+            "Para que se cargue la pila del buscador",
+            "Para que los oculares se limpien solos"
+          ],
+          "respuesta": "Para que el espejo se enfríe y la imagen no tiemble"
+        }
+      ]
+    }
+  ]
+}

@@ -133,6 +133,19 @@ const HoyTab = ({ profile, materia, activeProfileId, onGoToExplorar, pistaPiano 
             </>
           )}
         </section>
+
+        {/* Ciencias: acceso al planificador del telescopio (herramienta, no aventura) */}
+        {materia === 'ciencias' && (
+          <section className="widget observatorio-widget">
+            <h2 className="widget-title">🔭 Observatorio</h2>
+            <p className="observatorio-widget-texto">
+              ¿Qué vemos hoy con el telescopio? El cielo de esta noche, la Luna y el pronóstico.
+            </p>
+            <button className="boton-principal" onClick={() => navigate('/observatorio')}>
+              ¿Qué vemos hoy?
+            </button>
+          </section>
+        )}
       </main>
 
       {/* Columna Secundaria: Progreso y Portales */}

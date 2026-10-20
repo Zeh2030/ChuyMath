@@ -1,0 +1,85 @@
+{
+  "id": "OB-05_tres-oculares",
+  "titulo": "Tres Oculares, Una Carrera",
+  "descripcion": "Cronometra cuánto tarda Saturno en escaparse con cada ocular y descubre quién se mueve de verdad",
+  "tipo": "experimento-guia",
+  "materia": "ciencias",
+  "nivel": "OB-05",
+  "tema": "observatorio",
+  "misiones": [
+    {
+      "id": "obs-oculares-01",
+      "tipo": "experimento-guia",
+      "titulo": "Tres Oculares, Una Carrera",
+      "emoji": "⏱️",
+      "instruccion": "Con el telescopio quieto, las cosas se escapan del ocular solas. Vamos a medir qué tan rápido con cada ocular. Sirve Saturno o un cráter de la Luna. (Si aún no llega el de 6 mm, hazlo con dos.)",
+      "tema": "observatorio",
+      "materiales": [
+        "El telescopio apuntando a Saturno o a la Luna",
+        "Los oculares de 25 mm, 10 mm y 6 mm",
+        "El cronómetro del celular",
+        "Una libreta para anotar los tiempos"
+      ],
+      "materiales_emoji": ["🔭", "🔍", "⏱️", "📝"],
+      "prediccion": {
+        "pregunta": "Si nadie toca el telescopio, ¿con qué ocular crees que Saturno se escapa MÁS RÁPIDO del círculo?",
+        "opciones": [
+          "Con el de 25 mm (30 aumentos)",
+          "Con el de 10 mm (75 aumentos)",
+          "Con el de 6 mm (125 aumentos)",
+          "Con los tres tarda lo mismo"
+        ]
+      },
+      "pasos": [
+        { "instruccion": "Con el ocular de 25 mm, pon a Saturno (o un cráter en la orilla de la Luna) JUSTO en el centro del círculo.", "emoji": "🎯" },
+        { "instruccion": "Suelta el telescopio: nadie lo toca. Arranca el cronómetro.", "emoji": "🙌" },
+        { "instruccion": "Detén el cronómetro cuando Saturno toque la orilla del círculo. Anota el tiempo.", "emoji": "⏱️" },
+        { "instruccion": "Repite con el de 10 mm y después con el de 6 mm, empezando SIEMPRE desde el centro.", "emoji": "🔁" },
+        { "instruccion": "Compara tus tres tiempos. ¿Cuál fue el más rápido? ¿Con cuál se veía más grande?", "emoji": "📝" }
+      ],
+      "observacion": {
+        "pregunta": "¿Qué pasó con los tiempos?",
+        "opciones": [
+          "Entre más aumento, más rápido se escapó",
+          "Entre más aumento, más lento se escapó",
+          "Tardó lo mismo con los tres"
+        ]
+      },
+      "explicacion": "Saturno no se movió: ¡fuiste TÚ! La Tierra gira, y aquí en Jerez tu casa viaja a unos 1,500 kilómetros por hora dando la vuelta con el planeta. El telescopio, pegado a la Tierra, se va girando con ella y deja atrás a Saturno. Entre más aumenta un ocular, más chiquito es el pedazo de cielo que cabe en el círculo: el de 25 mm ve como 3 Lunas de ancho y el de 6 mm apenas como una. El mismo movimiento cruza un círculo chico mucho más rápido. Del centro a la orilla tarda más o menos 3 minutos con el de 25, poco más de 1 minuto con el de 10 y como 1 minuto con el de 6. Por eso se BUSCA con el de 25 y se ACERCA con los otros. Y otro secreto: el que más aumenta no siempre es el mejor, porque la imagen se ve más oscura y cualquier temblor del aire se nota más.",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "¿Quién se movió de verdad?",
+          "opciones": ["La Tierra, girando", "Saturno", "El telescopio, solito"],
+          "respuesta": "La Tierra, girando"
+        },
+        {
+          "tipo": "true-or-false",
+          "pregunta": "El ocular que más aumenta siempre es el mejor.",
+          "respuesta": false
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "¿Con qué ocular conviene BUSCAR algo en el cielo?",
+          "opciones": ["El de 25 mm, porque ve más cielo", "El de 6 mm, porque aumenta más"],
+          "respuesta": "El de 25 mm, porque ve más cielo"
+        }
+      ]
+    },
+    {
+      "id": "obs-oculares-tierra",
+      "tipo": "sistema-solar",
+      "escena": "dia-noche",
+      "modo": "explorar",
+      "titulo": "La Culpable: la Tierra que Gira",
+      "emoji": "🌍",
+      "instruccion": "Mueve la hora y mira cómo tu casa da la vuelta con el planeta. Lo mismo que hace salir y meterse al Sol es lo que te escondió a Saturno.",
+      "leccion": "Lo que mediste con el cronómetro es el giro de la Tierra, visto en vivo dentro del telescopio.",
+      "datos": {
+        "tierra": "Una vuelta completa cada 24 horas. Las estrellas y los planetas también 'salen' y 'se meten' por eso.",
+        "casa": "Tu casa en Jerez viaja a unos 1,500 km por hora dando vueltas con la Tierra. No lo sientes porque el giro es suavecito y parejo."
+      },
+      "dato_curioso": "Los telescopios grandes de los observatorios tienen motores que giran al revés que la Tierra, tan despacito que el objeto se queda quieto en el ocular toda la noche."
+    }
+  ]
+}

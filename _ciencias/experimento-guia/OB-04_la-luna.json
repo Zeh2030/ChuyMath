@@ -1,0 +1,109 @@
+{
+  "id": "OB-04_la-luna",
+  "titulo": "Cazadores de Cráteres",
+  "descripcion": "La Luna por el telescopio: la línea de sombra, cráteres hondos y mares de lava",
+  "tipo": "experimento-guia",
+  "materia": "ciencias",
+  "nivel": "OB-04",
+  "tema": "observatorio",
+  "misiones": [
+    {
+      "id": "obs-luna-antes",
+      "tipo": "sistema-solar",
+      "escena": "tierra-luna",
+      "modo": "reto",
+      "titulo": "Antes de Salir",
+      "emoji": "🌓",
+      "instruccion": "Calienta motores: las mejores noches para cazar cráteres son cerca del cuarto creciente. Ponlo en el espacio.",
+      "leccion": "La Luna no cambia de forma: lo que cambia es cuánto de su lado iluminado vemos desde aquí.",
+      "datos": {
+        "luna": "Está a unos 384,000 kilómetros. Su luz tarda poco más de 1 segundo en llegar: es lo más cercano que vas a ver por el telescopio.",
+        "sol": "Ilumina siempre media Luna. En cuarto creciente, desde la Tierra vemos esa mitad de ladito."
+      },
+      "retos": [
+        {
+          "tipo": "fase",
+          "pregunta": "Pon la Luna en CUARTO CRECIENTE: la mejor fase para ver cráteres.",
+          "respuesta": "cuarto-creciente",
+          "pista": "Media Luna iluminada, una semana después de la Luna nueva. Mira el recuadro."
+        },
+        {
+          "tipo": "fase",
+          "pregunta": "Ahora ponla LLENA: la fase en que los cráteres se ven más PLANOS.",
+          "respuesta": "llena",
+          "pista": "Del lado contrario al Sol."
+        }
+      ],
+      "dato_curioso": "La Luna nos enseña siempre la misma cara. El 'lado oscuro' no es oscuro: le da el Sol igual que a este, solo que nunca lo vemos desde aquí."
+    },
+    {
+      "id": "obs-luna-01",
+      "tipo": "experimento-guia",
+      "titulo": "Cazadores de Cráteres",
+      "emoji": "🌙",
+      "instruccion": "Las mejores noches son unos 3 o 4 días antes y después del cuarto creciente: esa Luna ya está en el cielo al anochecer.",
+      "tema": "observatorio",
+      "materiales": [
+        "El telescopio, sacado al patio 20 minutos antes",
+        "Los oculares de 25 mm y 10 mm",
+        "El filtro lunar (por si la Luna deslumbra)",
+        "Una libreta y un lápiz"
+      ],
+      "materiales_emoji": ["🔭", "🔍", "🕶️", "✏️"],
+      "prediccion": {
+        "pregunta": "¿Dónde crees que se ven MEJOR los cráteres?",
+        "opciones": [
+          "En la orilla entre la luz y la sombra",
+          "Justo en el centro de la parte iluminada",
+          "En la parte oscura",
+          "Se ven igual en todos lados"
+        ]
+      },
+      "pasos": [
+        { "instruccion": "Empieza con el ocular de 25 mm: cabe la Luna completa. Si te deslumbra, pon el filtro lunar y gíralo hasta que se vea cómodo.", "emoji": "🔍" },
+        { "instruccion": "Busca la línea entre la parte iluminada y la oscura. Se llama TERMINADOR: ahí está amaneciendo en la Luna. Recórrela despacio.", "emoji": "🌗" },
+        { "instruccion": "Cambia al de 10 mm. Busca cráteres con sombra negra adentro, y puntitos que brillan DENTRO de la parte oscura: son picos de montañas a los que ya les dio el Sol.", "emoji": "⛰️" },
+        { "instruccion": "Busca los MARES: las manchas grandes y oscuras que se ven hasta sin telescopio.", "emoji": "🌑" },
+        { "instruccion": "Ojo: en este telescopio la Luna se ve de cabeza. Lo que ves arriba, en el cielo está abajo.", "emoji": "🙃" },
+        { "instruccion": "Dibuja un cráter con su sombra. Si mañana está despejado, vuelve a verlo: ¡su sombra habrá cambiado!", "emoji": "✏️" }
+      ],
+      "observacion": {
+        "pregunta": "¿Dónde se veían más hondos los cráteres?",
+        "opciones": [
+          "Cerca de la línea entre la luz y la sombra",
+          "En medio de la parte iluminada",
+          "Se veían planos en todos lados"
+        ]
+      },
+      "explicacion": "En la orilla de la sombra el Sol está bajito en el cielo de la Luna, como en un atardecer: cada cráter y cada montaña echa una sombra larga, y por eso se ven hondos. En Luna llena el Sol le pega de frente, sin sombras, y todo se ve plano: es la PEOR noche para cráteres (aunque la mejor para ver unas rayas brillantes que salen del cráter Tycho). Los mares no tienen agua: son llanuras de lava que se enfrió hace miles de millones de años, y les pusieron 'mares' porque los primeros astrónomos creían que eran agua. Los cráteres los hicieron rocas del espacio al chocar; en la Luna no hay aire ni lluvia que los borre, por eso siguen ahí. Lo más chiquito que alcanza a ver tu telescopio en la Luna mide como un pueblito, kilómetro y medio: la bandera del Apolo 11 es demasiado pequeña.",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "¿Qué son los 'mares' de la Luna?",
+          "opciones": ["Llanuras de lava oscura ya fría", "Mares de agua congelada", "Sombras de nubes"],
+          "respuesta": "Llanuras de lava oscura ya fría"
+        },
+        {
+          "tipo": "true-or-false",
+          "pregunta": "En Luna llena es cuando mejor se ven los cráteres.",
+          "respuesta": false
+        },
+        {
+          "tipo": "true-or-false",
+          "pregunta": "Con este telescopio se alcanza a ver la bandera que dejó el Apolo 11.",
+          "respuesta": false
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "¿Por qué los cráteres de la Luna duran miles de millones de años?",
+          "opciones": [
+            "Porque no hay aire ni lluvia que los borre",
+            "Porque la Luna es de metal",
+            "Porque los astronautas los cuidan"
+          ],
+          "respuesta": "Porque no hay aire ni lluvia que los borre"
+        }
+      ]
+    }
+  ]
+}

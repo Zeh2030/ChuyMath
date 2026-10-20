@@ -273,12 +273,20 @@ Son dos piezas distintas:
    Sin IA y sin backend: efemérides calculadas en el navegador (qué está arriba,
    a qué hora, a qué altura, fase de la Luna), nubosidad por hora de un servicio
    gratuito tipo Open-Meteo, y los datos del telescopio para filtrar qué objetos
-   alcanza y con qué aumento. Bitácora de observación por perfil en Firestore.
+   alcanza y con qué aumento. Bitácora de observación **de la familia** (en
+   `accounts/{uid}`), no de un solo perfil.
 
-**Plan completo por fases** (misiones OB-01..12, planificador, bitácora y pasaporte
-del cielo, con el cielo de referencia ya calculado) en
-`_ciencias/PROGRAMA_CIENCIAS.md` §Observatorio. Siguiente paso: Lote A de misiones.
-Pendientes de compra del usuario: herramienta de colimación y manga para el tubo.
+**Hecho 2026-10-20**: Lote A de misiones (OB-01..07, validadas) y el planificador
+en `/observatorio` (acceso desde Hoy → Ciencias). Primera luz de la familia: la Luna
+en cuarto creciente el 18 de octubre, ya con mesa propia.
+**Decidido**: bitácora familiar; Mercurio y Venus fuera (pegados al Sol); horario
+entre semana 19:30-22:00 y viernes/sábado la noche entera solo si hay algo
+excepcional (eclipse, pico de una lluvia grande).
+**Siguiente**: el usuario migra OB-01..07 en AdminMigracion; luego Fase 3
+(bitácora + pasaporte + insignias) y Lote B antes de diciembre.
+Detalle completo en `_ciencias/PROGRAMA_CIENCIAS.md` §Observatorio.
+Accesorios: ocular 6 mm, NexYZ y SV128 llegan el fin de semana del 24-25 de oct;
+pendientes de compra: herramienta de colimación y manga para el tubo.
 
 No reconstruir un planetario (Stellarium ya existe): lo propio es la misión de la
 noche para niños más la bitácora. El modo nocturno rojo va local a la página, no
@@ -321,7 +329,7 @@ como tema global (un tema oscuro cuesta ~48 overrides, ver §2).
 | Prioridad | Tarea | Estado |
 |-----------|-------|--------|
 | **1** | Ciencias C2-01 a C2-10 (experimentos — destraba al hijo) | Pendiente |
-| **2** | Observatorio: misiones de observación + planificador (§7) | Nuevo, sin empezar |
+| **2** | Observatorio: bitácora, pasaporte e insignias; Lote B (§7) | Lote A + planificador hechos |
 | **3** | Alemán para el papá: programa + piloto (§11) | Nuevo, esperando índice de los libros |
 | **4** | Conversación por voz, piloto en alemán adulto (§12) | Nuevo, sin empezar |
 | **5** | Inglés: completar A1-10..12, luego A1-13+ | Gradual |
@@ -390,7 +398,7 @@ Gemini (voz a voz en tiempo real, con interrupciones). Nada construido.
 | Frente | Qué sigue | Leer al abrir |
 |--------|-----------|---------------|
 | Ciencias C2 | Experimentos C2-01..10 | §7 + `_ciencias/PROGRAMA_CIENCIAS.md` |
-| Observatorio | Lote A de misiones (OB-01..07); luego el planificador | §7 + `_ciencias/PROGRAMA_CIENCIAS.md` §Observatorio |
+| Observatorio | Fase 3: bitácora familiar, pasaporte e insignias; luego Lote B | §7 + `_ciencias/PROGRAMA_CIENCIAS.md` §Observatorio |
 | Alemán | Programa a partir del índice de los libros; piloto | §11 + `_content/docs/GUIA_CREACION_INGLES.md` (motores) |
 | Voz | Verificar Firebase AI Logic + Live API; piloto alemán | §12 |
 | Inglés | Completar A1-10..12; A1-13..16 | §6 + `_content/docs/PROGRAMA_INGLES_A1.md` |

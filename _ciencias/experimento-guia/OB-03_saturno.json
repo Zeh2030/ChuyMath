@@ -1,0 +1,108 @@
+{
+  "id": "OB-03_saturno",
+  "titulo": "Saturno de Verdad",
+  "descripcion": "Encuentra a Saturno, ve sus anillos con tus propios ojos y caza a su luna Titán",
+  "tipo": "experimento-guia",
+  "materia": "ciencias",
+  "nivel": "OB-03",
+  "tema": "observatorio",
+  "misiones": [
+    {
+      "id": "obs-saturno-antes",
+      "tipo": "sistema-solar",
+      "escena": "planetas",
+      "modo": "reto",
+      "titulo": "Antes de Salir",
+      "emoji": "🪐",
+      "instruccion": "Calienta motores: ubica a Saturno en el sistema solar antes de buscarlo en el cielo de verdad.",
+      "leccion": "Esta noche vas a ver a Saturno con TUS ojos, no en una foto. Primero recuerda dónde vive.",
+      "datos": {
+        "saturno": "Esta temporada está a unos 1,270 millones de kilómetros. Su luz tarda más de una hora en llegar a tus ojos: vas a ver a Saturno como era hace una hora.",
+        "neptuno": "Estas noches anda en el cielo a unos pocos grados de Saturno, pero está más de 3 veces más lejos. Con este telescopio sería apenas una estrellita."
+      },
+      "retos": [
+        {
+          "tipo": "toca",
+          "pregunta": "Toca a Saturno, el planeta que vas a buscar esta noche.",
+          "respuesta": "saturno",
+          "pista": "El de los anillos, el sexto desde el Sol."
+        },
+        {
+          "tipo": "toca",
+          "pregunta": "Toca al planeta que estas noches anda cerquita de Saturno en el cielo… aunque en realidad está mucho más lejos.",
+          "respuesta": "neptuno",
+          "pista": "Es el último de todos, el azul."
+        }
+      ],
+      "dato_curioso": "Saturno es tan ligero para su tamaño que flotaría en una tina de agua… si existiera una tina más grande que él."
+    },
+    {
+      "id": "obs-saturno-01",
+      "tipo": "experimento-guia",
+      "titulo": "Saturno de Verdad",
+      "emoji": "🪐",
+      "instruccion": "Saturno está en su mejor temporada. Sal con el telescopio frío y el buscador alineado.",
+      "tema": "observatorio",
+      "materiales": [
+        "El telescopio, sacado al patio 20 minutos antes",
+        "Los oculares (25 mm, 10 mm y 6 mm)",
+        "Una libreta y un lápiz para dibujar"
+      ],
+      "materiales_emoji": ["🔭", "🔍", "✏️"],
+      "prediccion": {
+        "pregunta": "¿Cómo crees que se vea Saturno por el telescopio?",
+        "opciones": [
+          "Grande y de colores, como las fotos",
+          "Chiquito, pero con sus anillos",
+          "Igual que una estrella, sin anillos",
+          "No se va a ver nada"
+        ]
+      },
+      "pasos": [
+        { "instruccion": "Encuéntralo a simple vista: es una 'estrella' amarillenta que NO parpadea. Las estrellas parpadean; los planetas brillan quietos. Si no lo ubicas, pídele al papá que te diga hacia dónde está esta noche.", "emoji": "✨" },
+        { "instruccion": "Apunta con el punto rojo y mira con el ocular de 25 mm. Enfoca despacio hasta que Saturno sea un puntito nítido.", "emoji": "🎯" },
+        { "instruccion": "Ponlo en el centro y cambia al de 10 mm. ¿Ya ves los anillos como unas orejitas a los lados?", "emoji": "🔍" },
+        { "instruccion": "Si el aire está quieto, prueba el de 6 mm. Saturno se va a escapar del círculo solito: empuja el tubo poquito a poquito para seguirlo.", "emoji": "👉" },
+        { "instruccion": "Busca una estrellita muy cerca de Saturno: casi seguro es TITÁN, su luna más grande. A veces se ven 2 o 3 lunitas más.", "emoji": "🌕" },
+        { "instruccion": "Dibuja lo que ves: Saturno, sus anillos y dónde quedó cada lunita. Mañana las lunas estarán en otro lugar.", "emoji": "✏️" }
+      ],
+      "observacion": {
+        "pregunta": "¿Cómo se veían los anillos?",
+        "opciones": [
+          "Como una rayita delgada que atraviesa a Saturno",
+          "Como un anillo ancho y abierto",
+          "No pude verlos"
+        ]
+      },
+      "explicacion": "¡Viste a Saturno con tus propios ojos! Si los anillos se veían delgaditos, no es tu telescopio: estos años los vemos casi de canto, de ladito. En 2025 quedaron exactamente de canto y casi desaparecieron; poco a poco se van a ir abriendo, y hacia 2032 se verán bien anchos. Los anillos no son una pieza sólida: son millones de pedazos de hielo y roca, desde granitos de arena hasta del tamaño de una casa, dando vueltas alrededor del planeta. Titán, la lunita que cazaste, es más grande que el planeta Mercurio y tiene aire espeso; en 2005 una nave llamada Huygens aterrizó en ella.",
+      "quiz": [
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "¿De qué están hechos los anillos de Saturno?",
+          "opciones": [
+            "Millones de pedazos de hielo y roca dando vueltas",
+            "Un disco sólido de metal",
+            "Nubes de gas de colores"
+          ],
+          "respuesta": "Millones de pedazos de hielo y roca dando vueltas"
+        },
+        {
+          "tipo": "true-or-false",
+          "pregunta": "La luz de Saturno tarda más de una hora en llegar a tus ojos.",
+          "respuesta": true
+        },
+        {
+          "tipo": "true-or-false",
+          "pregunta": "Los anillos de Saturno se ven siempre igual de abiertos.",
+          "respuesta": false
+        },
+        {
+          "tipo": "opcion-multiple",
+          "pregunta": "A simple vista, ¿cómo distingues un planeta de una estrella?",
+          "opciones": ["El planeta no parpadea", "El planeta siempre es rojo", "El planeta se mueve muy rápido"],
+          "respuesta": "El planeta no parpadea"
+        }
+      ]
+    }
+  ]
+}

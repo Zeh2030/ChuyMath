@@ -13,6 +13,9 @@ import ProfileSelector from './pages/ProfileSelector';
 import Peques from './pages/Peques';
 import MusicaFondo from './components/audio/MusicaFondo';
 
+// Lazy: arrastra la librería de efemérides (astronomy-engine), que nadie más usa.
+const Observatorio = React.lazy(() => import('./pages/Observatorio'));
+
 const ProtectedRoute = ({ children }) => {
   const { currentUser, loading } = useAuth();
 
@@ -108,6 +111,18 @@ function App() {
             <ProtectedRoute>
               <ProfileRequired>
                 <Perfil />
+              </ProfileRequired>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/observatorio"
+          element={
+            <ProtectedRoute>
+              <ProfileRequired>
+                <React.Suspense fallback={<div style={{ textAlign: 'center', padding: '40px', fontSize: '1.2rem' }}>Calculando el cielo…</div>}>
+                  <Observatorio />
+                </React.Suspense>
               </ProfileRequired>
             </ProtectedRoute>
           }

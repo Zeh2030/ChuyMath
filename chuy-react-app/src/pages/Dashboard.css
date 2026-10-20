@@ -109,6 +109,10 @@
   gap: 30px;
 }
 
+/* Acceso al Observatorio (Hoy, materia Ciencias) */
+.observatorio-widget { margin-top: 30px; }
+.observatorio-widget-texto { margin: 0 0 15px; }
+
 /* Trofeos */
 .contador-racha {
   display: flex;

@@ -54,12 +54,13 @@ const ids = new Map();
 let docs = 0, misiones = 0;
 
 // Recorre tambien las subcarpetas por tipo (sistema-solar/, mini-story/, ...).
+// Prefijos de nivel: C0..C3 y OB (misiones del Observatorio, telescopio real).
 const buscarJsons = (dir) => {
   const out = [];
   for (const nombre of fs.readdirSync(dir)) {
     const p = path.join(dir, nombre);
     if (fs.statSync(p).isDirectory()) out.push(...buscarJsons(p));
-    else if (/^C\d-\d\d.*\.json$/.test(nombre)) out.push(p);
+    else if (/^(C\d|OB)-\d\d.*\.json$/.test(nombre)) out.push(p);
   }
   return out;
 };

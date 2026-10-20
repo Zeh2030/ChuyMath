@@ -606,7 +606,12 @@ el tile propio `sistema-solar`. `detectMateria` reconoce `ciencias-*`.
 
 ---
 
-## 🔭 Observatorio (telescopio real) — PLAN 2026-10-07, nada construido
+## 🔭 Observatorio (telescopio real) — Lote A + planificador CONSTRUIDOS 2026-10-20
+
+**Estado**: Fase 1 Lote A (OB-01..07) creado y validado; Fase 2 (planificador
+`/observatorio`) construida. Falta: migrar los 7 JSON en AdminMigracion (sin eso
+los botones "Misión" del planificador no abren nada), Fase 3 (bitácora, pasaporte,
+insignias) y Lote B.
 
 La familia tiene un telescopio. Esta seccion es para sacarle provecho: que cada
 salida al patio tenga un objetivo, se entienda lo que se ve y quede registro.
@@ -662,7 +667,7 @@ experimentos de cocina (mismo truco que `PA` en piano). Revisar que
 |---|--------|--------|------------|
 | OB-08 | Las Pleyades: contar a simple vista y luego con el de 25 mm | Dic-ene al anochecer | C2-26 |
 | OB-09 | La nebulosa de Orion: donde nacen estrellas | Ene-feb al anochecer | C3-25 (nace un sol) |
-| OB-10 | Jupiter y sus lunas: dibujarlas dos noches seguidas (el experimento de Galileo) | Ene-mar | C2-41 |
+| OB-10 | Jupiter y sus lunas: dibujarlas dos noches seguidas (el experimento de Galileo) | Feb-abr 2027 (oposicion 10 feb; en enero aun sale tarde) | C2-41 |
 | OB-11 | Tu primera foto de la Luna con el celular | Cuarto creciente | — |
 | OB-12 | Colimar el telescopio (mision del papa, con el niño de ayudante) | De dia | — |
 
@@ -720,6 +725,30 @@ Piezas:
    construida como calentamiento (Saturno → C2-21 tamaño real y C2-42
    distancias reales; Jupiter → C2-34). NO hace falta trivia nueva de escalas:
    ese contenido ya existe, solo falta ponerlo en el momento justo.
+
+### Como quedo construido (2026-10-20)
+
+- Misiones: `experimento-guia/OB-01..07`. OB-03, OB-04 y OB-06 abren con un
+  "Antes de salir" en el motor 3D (planetas / tierra-luna / estrellas) y OB-05
+  cierra con la escena dia-noche. `_valida.js` ya acepta el prefijo `OB`.
+- Planificador: ruta `/observatorio` (lazy, chunk propio de ~34 KB gzip con
+  astronomy-engine), acceso desde Hoy en la materia Ciencias.
+  - `src/data/observatorio/` — `equipo.js`, `sitio.js` (con la ventana familiar),
+    `catalogo.js` (32 objetos + 7 lluvias de estrellas).
+  - `src/utils/cielo.js` — noche, Luna, puntaje de objetos, eventos (cuartos,
+    oposiciones de Marte/Jupiter/Saturno, eclipses de Luna visibles desde Jerez,
+    lluvias). Nunca eclipses de Sol.
+  - `src/utils/clima.js` — Open-Meteo, cache 1 h en localStorage.
+- Reglas del puntaje: Sol bajo el horizonte segun tipo (-6° planetas, -15°
+  galaxias), altura minima 20°/25°, galaxias y nebulosas fuera si la Luna esta
+  arriba y >35% iluminada (se listan como "la Luna apaga esta noche"), cumulos
+  castigados con Luna >60%. Los objetos se evaluan SOLO en el horario familiar;
+  la noche entera del fin de semana aplica solo a eventos excepcionales.
+- Modo noche: tapa toda la pantalla y pasa todo a rojo con un filtro CSS
+  (emojis incluidos).
+- Verificado con un arnes local en 390 px: Saturno, Albireo y la Luna arriba en
+  octubre; Geminidas marcadas como excepcionales el 13 de dic; Jupiter y Marte en
+  oposicion en febrero de 2027.
 
 ### Fase 3 — Bitacora y pasaporte del cielo
 
