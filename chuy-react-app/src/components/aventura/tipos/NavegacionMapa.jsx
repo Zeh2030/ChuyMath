@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { esRespuestaCorrecta } from '../../../utils/calificar';
 import './NavegacionMapa.css';
 
 /**
@@ -38,6 +39,12 @@ const NavegacionMapa = ({
   }, [respuestaGuardada, modoSimulacro]);
 
   const pregunta = mision.pregunta || '¿A qué lugar llega?';
+
+  // En simulacro no hay handleEnviar: calcular al vuelo con la misma regla del puntaje,
+  // o el niño veía "No es correcto" en una respuesta que sí contaba como acierto.
+  const esCorrectaMostrada = modoSimulacro
+    ? esRespuestaCorrecta(mision, lugarSeleccionado)
+    : esCorrecta;
 
   // Manejar selección de lugar (click directo o al llegar)
   const handleSeleccion = (nombreLugar) => {
@@ -326,16 +333,16 @@ const NavegacionMapa = ({
 
       {/* Feedback */}
       {(mostrarResultado || (modoSimulacro && mostrarResultadoExterno)) && (
-        <div className={`feedback-container ${esCorrecta ? 'feedback-correcto' : 'feedback-incorrecto'}`}>
+        <div className={`feedback-container ${esCorrectaMostrada ? 'feedback-correcto' : 'feedback-incorrecto'}`}>
           <div className="feedback-icono">
-            {esCorrecta ? '✅' : '❌'}
+            {esCorrectaMostrada ? '✅' : '❌'}
           </div>
           <div className="feedback-texto">
             <p className="feedback-titulo">
-              {esCorrecta ? '¡Excelente!' : 'No es correcto'}
+              {esCorrectaMostrada ? '¡Excelente!' : 'No es correcto'}
             </p>
             <p className="feedback-explicacion">
-              {esCorrecta 
+              {esCorrectaMostrada
                 ? `¡Correcto! El lugar es ${config.respuesta_correcta}.` 
                 : `La respuesta correcta era ${config.respuesta_correcta}.`}
             </p>

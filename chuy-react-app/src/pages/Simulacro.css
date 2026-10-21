@@ -21,6 +21,23 @@
   color: #7f8c8d;
 }
 
+.boton-imprimir {
+  margin-top: 6px;
+  padding: 8px 16px;
+  border: 2px solid #2c3e50;
+  border-radius: 20px;
+  background: white;
+  color: #2c3e50;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.boton-imprimir:hover {
+  background: #2c3e50;
+  color: white;
+}
+
 /* Lista de Problemas */
 .problemas-lista {
   display: flex;

@@ -16,6 +16,21 @@
   color: #2c3e50;
   margin: 0 0 16px 0;
   font-weight: 600;
+  /* Respeta los saltos de línea del JSON ("Descripción: ...\n\n¿Cómo es...?") */
+  white-space: pre-line;
+}
+
+/* Tarjetas de número dentro de la pregunta (ej. OEM 2025, problema 11) */
+.pregunta-texto .tarjeta-numero {
+  display: inline-block;
+  min-width: 1.4em;
+  margin: 0 3px;
+  padding: 2px 8px;
+  border: 2px solid #2c3e50;
+  border-radius: 8px;
+  background: white;
+  text-align: center;
+  font-weight: 800;
 }
 
 .pregunta-imagen {

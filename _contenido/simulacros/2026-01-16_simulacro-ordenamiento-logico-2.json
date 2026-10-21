@@ -1,0 +1,307 @@
+{
+  "id": "2026-01-16_simulacro-ordenamiento-logico-2",
+  "titulo": "Simulacro: Ordenamiento Lógico 2",
+  "descripcion": "¡Usa tu pizarra o papel! Dibuja flechas, escaleras o escribe los nombres en orden antes de elegir tu respuesta.",
+  "problemas": [
+    {
+      "id": "ol2-1",
+      "tipo": "opcion-multiple",
+      "titulo": "Comparación de Alturas",
+      "pregunta": "Nadia es más alta que Olga, pero más baja que Patricia. ¿Quién es la más alta?",
+      "opciones": [
+        "Nadia",
+        "Olga",
+        "Patricia",
+        "Nadia y Patricia"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Correcto! Patricia > Nadia > Olga. Patricia es la más alta.",
+      "explicacion_incorrecta": "Dibuja: Patricia arriba, Nadia en medio, Olga abajo."
+    },
+    {
+      "id": "ol2-2",
+      "tipo": "opcion-multiple",
+      "titulo": "Caminos",
+      "pregunta": "El camino A es más corto que el B. El B es más corto que el C. ¿Cuál es el más largo?",
+      "opciones": [
+        "Camino A",
+        "Camino B",
+        "Camino C",
+        "A y B"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Muy bien! C > B > A (en longitud). El camino C es el más largo.",
+      "explicacion_incorrecta": "Cuidado con 'corto': A es el más corto, C es el más largo."
+    },
+    {
+      "id": "ol2-3",
+      "tipo": "opcion-multiple",
+      "titulo": "Horas de Estudio",
+      "pregunta": "Ramón estudia más horas que Simón. Simón estudia más que Teresa. ¿Quién estudia menos?",
+      "opciones": [
+        "Ramón",
+        "Simón",
+        "Teresa",
+        "Simón y Teresa"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Excelente! Ramón > Simón > Teresa. Teresa estudia menos.",
+      "explicacion_incorrecta": "Ordena: Ramón (más), Simón (medio), Teresa (menos)."
+    },
+    {
+      "id": "ol2-4",
+      "tipo": "opcion-multiple",
+      "titulo": "Queso en Comidas",
+      "pregunta": "La pizza tiene más queso que la hamburguesa. El hot dog tiene menos queso que la hamburguesa. ¿Qué tiene más queso?",
+      "opciones": [
+        "Hot dog",
+        "Hamburguesa",
+        "Pizza",
+        "Hamburguesa y pizza"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Correcto! Pizza > Hamburguesa > Hot dog. La pizza tiene más queso.",
+      "explicacion_incorrecta": "Ordena por queso: Pizza (más), Hamburguesa (media), Hot dog (menos)."
+    },
+    {
+      "id": "ol2-5",
+      "tipo": "opcion-multiple",
+      "titulo": "Edades",
+      "pregunta": "Úrsula es menor que Víctor. Wendy es mayor que Víctor. ¿Quién es el mayor?",
+      "opciones": [
+        "Úrsula",
+        "Víctor",
+        "Wendy",
+        "Víctor y Wendy"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Muy bien! Wendy > Víctor > Úrsula. Wendy es la mayor.",
+      "explicacion_incorrecta": "Dibuja: Wendy arriba (mayor), Víctor medio, Úrsula abajo (menor)."
+    },
+    {
+      "id": "ol2-6",
+      "tipo": "opcion-multiple",
+      "titulo": "Fuerza de Animales",
+      "pregunta": "El león es más fuerte que el tigre. El tigre es más fuerte que el leopardo. ¿Cuál es el menos fuerte?",
+      "opciones": [
+        "El león",
+        "El tigre",
+        "El leopardo",
+        "Tigre y leopardo"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Excelente! León > Tigre > Leopardo. El leopardo es el menos fuerte.",
+      "explicacion_incorrecta": "Ordena por fuerza: León (1°), Tigre (2°), Leopardo (3° y menos fuerte)."
+    },
+    {
+      "id": "ol2-7",
+      "tipo": "opcion-multiple",
+      "titulo": "Saltos",
+      "pregunta": "Alberto salta más alto que Bernardo. Carlos salta más bajo que Bernardo. ¿Quién salta más alto?",
+      "opciones": [
+        "Bernardo",
+        "Carlos",
+        "Alberto",
+        "Bernardo y Alberto"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Correcto! Alberto > Bernardo > Carlos. Alberto salta más alto.",
+      "explicacion_incorrecta": "Ordena saltos: Alberto (alto), Bernardo (medio), Carlos (bajo)."
+    },
+    {
+      "id": "ol2-8",
+      "tipo": "opcion-multiple",
+      "titulo": "Ventanas",
+      "pregunta": "La casa de Ana tiene más ventanas que la de Beto. La de Beto tiene más que la de Clara. ¿Cuál tiene menos ventanas?",
+      "opciones": [
+        "Casa de Ana",
+        "Casa de Beto",
+        "Casa de Clara",
+        "Beto y Clara"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Muy bien! Ana > Beto > Clara. La casa de Clara tiene menos ventanas.",
+      "explicacion_incorrecta": "Escribe: Ana (más ventanas), Beto (medio), Clara (menos)."
+    },
+    {
+      "id": "ol2-9",
+      "tipo": "opcion-multiple",
+      "titulo": "Velocidad - Al Revés",
+      "pregunta": "Daniel corre más lento que Eduardo. Eduardo corre más lento que Fernando. ¿Quién es el más rápido?",
+      "opciones": [
+        "Daniel",
+        "Eduardo",
+        "Fernando",
+        "Eduardo y Fernando"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Excelente! Fernando > Eduardo > Daniel (en velocidad). Fernando es el más rápido.",
+      "explicacion_incorrecta": "Cuidado con 'lento': Si Daniel es más lento, Fernando es el más rápido."
+    },
+    {
+      "id": "ol2-10",
+      "tipo": "opcion-multiple",
+      "titulo": "Cuatro Animales",
+      "pregunta": "La vaca pesa más que el cerdo. El cerdo pesa más que la oveja. La oveja pesa más que el conejo. ¿Cuál pesa menos?",
+      "opciones": [
+        "La vaca",
+        "El cerdo",
+        "La oveja",
+        "El conejo"
+      ],
+      "respuesta": 3,
+      "explicacion_correcta": "¡Correcto! Vaca > Cerdo > Oveja > Conejo. El conejo pesa menos.",
+      "explicacion_incorrecta": "Ordena: Vaca (1°), Cerdo (2°), Oveja (3°), Conejo (4° y menos peso)."
+    },
+    {
+      "id": "ol2-11",
+      "tipo": "opcion-multiple",
+      "titulo": "Edades Iguales",
+      "pregunta": "Gloria tiene más años que Héctor. Inés tiene los mismos años que Gloria. ¿Quién es menor?",
+      "opciones": [
+        "Gloria",
+        "Héctor",
+        "Inés",
+        "Gloria e Inés"
+      ],
+      "respuesta": 1,
+      "explicacion_correcta": "¡Muy bien! Gloria = Inés > Héctor. Héctor es el menor.",
+      "explicacion_incorrecta": "Si Gloria e Inés tienen lo mismo y son mayores que Héctor, Héctor es menor."
+    },
+    {
+      "id": "ol2-12",
+      "tipo": "opcion-multiple",
+      "titulo": "Pelotas Rodando",
+      "pregunta": "La pelota A rueda más lejos que la B. La C rueda más lejos que la A. ¿Cuál rueda menos?",
+      "opciones": [
+        "Pelota A",
+        "Pelota B",
+        "Pelota C",
+        "A y B"
+      ],
+      "respuesta": 1,
+      "explicacion_correcta": "¡Excelente! C > A > B (en distancia). La pelota B rueda menos.",
+      "explicacion_incorrecta": "Ordena: C (más lejos), A (medio), B (menos lejos)."
+    },
+    {
+      "id": "ol2-13",
+      "tipo": "opcion-multiple",
+      "titulo": "Fuerza de Niños",
+      "pregunta": "Juan es más fuerte que Kiko. Kiko es más fuerte que Luis. Luis es más fuerte que Miguel. ¿Quién es el más fuerte?",
+      "opciones": [
+        "Juan",
+        "Kiko",
+        "Luis",
+        "Miguel"
+      ],
+      "respuesta": 0,
+      "explicacion_correcta": "¡Correcto! Juan > Kiko > Luis > Miguel. Juan es el más fuerte.",
+      "explicacion_incorrecta": "Escribe en orden: Juan (1° y más fuerte), Kiko (2°), Luis (3°), Miguel (4°)."
+    },
+    {
+      "id": "ol2-14",
+      "tipo": "opcion-multiple",
+      "titulo": "Pasteles",
+      "pregunta": "El pastel de chocolate es más dulce que el de vainilla. El de fresa es menos dulce que el de vainilla. ¿Cuál es el menos dulce?",
+      "opciones": [
+        "Chocolate",
+        "Vainilla",
+        "Fresa",
+        "Vainilla y fresa"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Muy bien! Chocolate > Vainilla > Fresa. El de fresa es el menos dulce.",
+      "explicacion_incorrecta": "Ordena por dulzura: Chocolate (más), Vainilla (medio), Fresa (menos)."
+    },
+    {
+      "id": "ol2-15",
+      "tipo": "opcion-multiple",
+      "titulo": "Llegada a la Fiesta",
+      "pregunta": "Natalia llegó a la fiesta después de Óscar. Óscar llegó después de Paula. ¿Quién llegó primero?",
+      "opciones": [
+        "Natalia",
+        "Óscar",
+        "Paula",
+        "Óscar y Paula"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Excelente! Orden: 1° Paula, 2° Óscar, 3° Natalia. Paula llegó primero.",
+      "explicacion_incorrecta": "Si llegó 'después', está más atrás. Paula llegó primero."
+    },
+    {
+      "id": "ol2-16",
+      "tipo": "opcion-multiple",
+      "titulo": "Cuerdas",
+      "pregunta": "La cuerda A es más larga que la B. La A es más corta que la C. ¿Cuál es la más corta?",
+      "opciones": [
+        "Cuerda A",
+        "Cuerda B",
+        "Cuerda C",
+        "A y B"
+      ],
+      "respuesta": 1,
+      "explicacion_correcta": "¡Correcto! C > A > B. La cuerda B es la más corta.",
+      "explicacion_incorrecta": "Ordena: C (más larga), A (media), B (más corta)."
+    },
+    {
+      "id": "ol2-17",
+      "tipo": "opcion-multiple",
+      "titulo": "Canicas - Cuatro Niños",
+      "pregunta": "Roberto tiene más canicas que Santiago. Tomás tiene menos que Santiago. Roberto tiene menos que Ulises. ¿Quién tiene más canicas?",
+      "opciones": [
+        "Roberto",
+        "Santiago",
+        "Tomás",
+        "Ulises"
+      ],
+      "respuesta": 3,
+      "explicacion_correcta": "¡Muy bien! Ulises > Roberto > Santiago > Tomás. Ulises tiene más.",
+      "explicacion_incorrecta": "Paso a paso: Ulises > Roberto > Santiago > Tomás."
+    },
+    {
+      "id": "ol2-18",
+      "tipo": "opcion-multiple",
+      "titulo": "Vasos con Agua",
+      "pregunta": "El vaso pequeño tiene menos agua que el mediano. El grande tiene más que el mediano. ¿Cuál tiene más agua?",
+      "opciones": [
+        "El pequeño",
+        "El mediano",
+        "El grande",
+        "Mediano y grande"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Excelente! Grande > Mediano > Pequeño. El grande tiene más agua.",
+      "explicacion_incorrecta": "Ordena: Grande (más), Mediano (medio), Pequeño (menos)."
+    },
+    {
+      "id": "ol2-19",
+      "tipo": "opcion-multiple",
+      "titulo": "Velocidad de Niñas",
+      "pregunta": "Ximena es más rápida que Yolanda. Zulema es más lenta que Yolanda. ¿Quién es la más lenta?",
+      "opciones": [
+        "Ximena",
+        "Yolanda",
+        "Zulema",
+        "Yolanda y Zulema"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Correcto! Ximena > Yolanda > Zulema (en velocidad). Zulema es la más lenta.",
+      "explicacion_incorrecta": "Ordena: Ximena (rápida), Yolanda (media), Zulema (lenta)."
+    },
+    {
+      "id": "ol2-20",
+      "tipo": "opcion-multiple",
+      "titulo": "Árboles Frutales",
+      "pregunta": "El árbol de manzanas es más alto que el de naranjas. El de peras es más bajo que el de naranjas, pero más alto que el de limones. ¿Cuál es el más bajo?",
+      "opciones": [
+        "Manzanas",
+        "Naranjas",
+        "Peras",
+        "Limones"
+      ],
+      "respuesta": 3,
+      "explicacion_correcta": "¡Muy bien! Manzanas > Naranjas > Peras > Limones. El de limones es el más bajo.",
+      "explicacion_incorrecta": "Ordena paso a paso: Manzanas (1°), Naranjas (2°), Peras (3°), Limones (4° y más bajo)."
+    }
+  ]
+}

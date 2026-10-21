@@ -38,7 +38,11 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [cuentaAutorizada, setCuentaAutorizada] = useState(false);
   const [profiles, setProfiles] = useState([]);
-  const [profilesLoading, setProfilesLoading] = useState(true);
+  // uid cuyos perfiles ya llegaron. «Cargando» se deriva de aquí y no de un booleano:
+  // con el booleano, al recargar había un render con usuario ya resuelto y perfiles
+  // sin pedir (false del efecto inicial sin usuario), y el guardia mandaba a
+  // /elegir-perfil perdiendo la ruta (ej. a mitad de un simulacro).
+  const [perfilesDeUid, setPerfilesDeUid] = useState(null);
   const [activeProfileId, setActiveProfileId] = useState(null);
 
   const signInWithGoogle = async () => {
@@ -119,20 +123,19 @@ export const AuthProvider = ({ children }) => {
       // Reset al cerrar sesión (sincronización intencional del estado).
       /* eslint-disable react-hooks/set-state-in-effect */
       setProfiles([]);
-      setProfilesLoading(false);
+      setPerfilesDeUid(null);
       setActiveProfileId(null);
       /* eslint-enable react-hooks/set-state-in-effect */
       return;
     }
 
-    setProfilesLoading(true);
     const q = query(collection(db, 'profiles'), where('ownerUid', '==', currentUser.uid));
     const unsub = onSnapshot(
       q,
       (snap) => {
         const lista = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
         setProfiles(lista);
-        setProfilesLoading(false);
+        setPerfilesDeUid(currentUser.uid);
 
         // Resolver perfil activo sin perder el ya elegido
         setActiveProfileId((prev) => {
@@ -149,7 +152,7 @@ export const AuthProvider = ({ children }) => {
       },
       (err) => {
         console.error('Error al leer perfiles:', err);
-        setProfilesLoading(false);
+        setPerfilesDeUid(currentUser.uid);
       }
     );
 
@@ -180,6 +183,7 @@ export const AuthProvider = ({ children }) => {
   }, [profiles]);
 
   const activeProfile = profiles.find((p) => p.id === activeProfileId) || null;
+  const profilesLoading = !!currentUser && perfilesDeUid !== currentUser.uid;
 
   const value = {
     currentUser,

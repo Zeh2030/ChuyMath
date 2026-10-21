@@ -1,0 +1,1107 @@
+{
+  "id": "2026-01-16_simulacro-cubos-1",
+  "titulo": "Simulacro: Maestro de Cubos",
+  "descripcion": "Imagina que doblas el papel para formar un cubo. ¡Toca la cara que responde la pregunta!",
+  "problemas": [
+    {
+      "id": "c1",
+      "tipo": "desarrollo-cubos",
+      "titulo": "Nivel 1: Flechas",
+      "pregunta": "Muy fácil: ¿Qué cara está OPUESTA a la flecha ⬅️?",
+      "respuesta": "der",
+      "explicacion_correcta": "¡Correcto! Las flechas laterales (⬅️ y ➡️) quedan frente a frente cuando cierras el cubo.",
+      "explicacion_incorrecta": "Pista: Las caras de los lados (izquierda y derecha) son opuestas entre sí.",
+      "datos_cubo": {
+        "caras": [
+          {
+            "fila": 0,
+            "id": "arriba",
+            "contenido": "⬆️",
+            "columna": 1,
+            "color": "#E8E8E8"
+          },
+          {
+            "color": "#FF6B6B",
+            "contenido": "⬅️",
+            "fila": 1,
+            "columna": 0,
+            "id": "izq"
+          },
+          {
+            "fila": 1,
+            "contenido": "🎯",
+            "color": "#4ECDC4",
+            "columna": 1,
+            "id": "centro"
+          },
+          {
+            "color": "#45B7D1",
+            "contenido": "➡️",
+            "id": "der",
+            "fila": 1,
+            "columna": 2
+          },
+          {
+            "fila": 2,
+            "color": "#E8E8E8",
+            "id": "abajo",
+            "columna": 1,
+            "contenido": "⬇️"
+          },
+          {
+            "color": "#F7DC6F",
+            "fila": 3,
+            "id": "fondo",
+            "columna": 1,
+            "contenido": "🔙"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2",
+      "tipo": "desarrollo-cubos",
+      "titulo": "Nivel 1: Colores",
+      "pregunta": "¿Qué color está OPUESTO al 🔴 rojo?",
+      "respuesta": "azul",
+      "explicacion_correcta": "¡Muy bien! Rojo (izquierda) y Azul (derecha) son opuestos.",
+      "explicacion_incorrecta": "Mira las caras de los lados. La izquierda siempre es opuesta a la derecha.",
+      "datos_cubo": {
+        "caras": [
+          {
+            "columna": 1,
+            "color": "#F1C40F",
+            "fila": 0,
+            "contenido": "🟡",
+            "id": "amarillo"
+          },
+          {
+            "color": "#E74C3C",
+            "columna": 0,
+            "contenido": "🔴",
+            "fila": 1,
+            "id": "rojo"
+          },
+          {
+            "fila": 1,
+            "columna": 1,
+            "color": "#2ECC71",
+            "id": "verde",
+            "contenido": "🟢"
+          },
+          {
+            "contenido": "🔵",
+            "color": "#3498DB",
+            "columna": 2,
+            "id": "azul",
+            "fila": 1
+          },
+          {
+            "id": "naranja",
+            "fila": 2,
+            "columna": 1,
+            "color": "#E67E22",
+            "contenido": "🟠"
+          },
+          {
+            "contenido": "🟣",
+            "columna": 1,
+            "fila": 3,
+            "id": "morado",
+            "color": "#9B59B6"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c3",
+      "tipo": "desarrollo-cubos",
+      "titulo": "Nivel 1: Animales",
+      "pregunta": "¿Quién está OPUESTO al 🐶 perro?",
+      "respuesta": "conejo",
+      "explicacion_correcta": "¡Excelente! El perro (izquierda) y el conejo (derecha) son opuestos.",
+      "explicacion_incorrecta": "Las caras de los lados se miran cuando cierras el cubo. Perro ↔ Conejo.",
+      "datos_cubo": {
+        "caras": [
+          {
+            "contenido": "🐱",
+            "color": "#F5B041",
+            "columna": 1,
+            "id": "gato",
+            "fila": 0
+          },
+          {
+            "columna": 0,
+            "id": "perro",
+            "contenido": "🐶",
+            "fila": 1,
+            "color": "#85C1E9"
+          },
+          {
+            "fila": 1,
+            "contenido": "🐭",
+            "columna": 1,
+            "color": "#D5DBDB",
+            "id": "raton"
+          },
+          {
+            "fila": 1,
+            "columna": 2,
+            "contenido": "🐰",
+            "id": "conejo",
+            "color": "#FADBD8"
+          },
+          {
+            "color": "#ABEBC6",
+            "id": "rana",
+            "contenido": "🐸",
+            "fila": 2,
+            "columna": 1
+          },
+          {
+            "columna": 1,
+            "fila": 3,
+            "id": "leon",
+            "color": "#F9E79F",
+            "contenido": "🦁"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c4",
+      "tipo": "desarrollo-cubos",
+      "titulo": "Nivel 2: Arriba y Abajo",
+      "pregunta": "¿Qué cara está OPUESTA a la ⭐ estrella?",
+      "respuesta": "rayo",
+      "explicacion_correcta": "¡Correcto! La estrella (arriba) y el rayo (abajo del centro) son opuestos. Saltas el corazón.",
+      "explicacion_incorrecta": "La cara de arriba es opuesta a la de abajo (saltando la del centro).",
+      "datos_cubo": {
+        "caras": [
+          {
+            "columna": 1,
+            "color": "#F1C40F",
+            "id": "estrella",
+            "contenido": "⭐",
+            "fila": 0
+          },
+          {
+            "fila": 1,
+            "id": "sol",
+            "contenido": "☀️",
+            "color": "#F39C12",
+            "columna": 0
+          },
+          {
+            "fila": 1,
+            "id": "corazon",
+            "color": "#E74C3C",
+            "contenido": "❤️",
+            "columna": 1
+          },
+          {
+            "color": "#9B59B6",
+            "fila": 1,
+            "id": "luna",
+            "columna": 2,
+            "contenido": "🌙"
+          },
+          {
+            "id": "rayo",
+            "contenido": "⚡",
+            "fila": 2,
+            "columna": 1,
+            "color": "#F7DC6F"
+          },
+          {
+            "columna": 1,
+            "contenido": "☁️",
+            "color": "#AED6F1",
+            "id": "nube",
+            "fila": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "c5",
+      "tipo": "desarrollo-cubos",
+      "titulo": "Nivel 2: Frutas",
+      "pregunta": "¿Qué fruta está OPUESTA a la 🍎 manzana?",
+      "respuesta": "platano",
+      "explicacion_correcta": "¡Muy bien! Manzana (arriba) salta la uva (centro) y queda opuesta al plátano.",
+      "explicacion_incorrecta": "Las caras de arriba y abajo son opuestas. Manzana ↔ Plátano.",
+      "datos_cubo": {
+        "caras": [
+          {
+            "contenido": "🍎",
+            "id": "manzana",
+            "fila": 0,
+            "color": "#E74C3C",
+            "columna": 1
+          },
+          {
+            "columna": 0,
+            "color": "#E67E22",
+            "fila": 1,
+            "id": "naranja",
+            "contenido": "🍊"
+          },
+          {
+            "color": "#8E44AD",
+            "fila": 1,
+            "id": "uva",
+            "columna": 1,
+            "contenido": "🍇"
+          },
+          {
+            "color": "#EC7063",
+            "columna": 2,
+            "fila": 1,
+            "contenido": "🍓",
+            "id": "fresa"
+          },
+          {
+            "id": "platano",
+            "contenido": "🍌",
+            "columna": 1,
+            "color": "#F7DC6F",
+            "fila": 2
+          },
+          {
+            "columna": 1,
+            "color": "#58D68D",
+            "contenido": "🍉",
+            "fila": 3,
+            "id": "sandia"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c6",
+      "tipo": "desarrollo-cubos",
+      "titulo": "Nivel 2: Deportes",
+      "pregunta": "¿Qué pelota está OPUESTA al ⚽ fútbol?",
+      "respuesta": "voley",
+      "explicacion_correcta": "¡Excelente! Fútbol (arriba) es opuesto al vóley (abajo del centro).",
+      "explicacion_incorrecta": "Arriba ↔ Abajo. El fútbol es opuesto al vóley.",
+      "datos_cubo": {
+        "caras": [
+          {
+            "columna": 1,
+            "color": "#E8E8E8",
+            "contenido": "⚽",
+            "fila": 0,
+            "id": "futbol"
+          },
+          {
+            "fila": 1,
+            "color": "#E67E22",
+            "contenido": "🏀",
+            "id": "basquet",
+            "columna": 0
+          },
+          {
+            "contenido": "🎾",
+            "color": "#F1C40F",
+            "id": "tenis",
+            "columna": 1,
+            "fila": 1
+          },
+          {
+            "fila": 1,
+            "id": "beisbol",
+            "columna": 2,
+            "contenido": "⚾",
+            "color": "#ECF0F1"
+          },
+          {
+            "id": "voley",
+            "columna": 1,
+            "contenido": "🏐",
+            "fila": 2,
+            "color": "#F5B7B1"
+          },
+          {
+            "id": "billar",
+            "contenido": "🎱",
+            "columna": 1,
+            "fila": 3,
+            "color": "#1ABC9C"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c7",
+      "tipo": "desarrollo-cubos",
+      "titulo": "Nivel 2: Centro vs Fondo",
+      "pregunta": "¿Qué cara está OPUESTA al 🎯 centro?",
+      "respuesta": "confeti",
+      "explicacion_correcta": "¡Correcto! La cara del centro es opuesta a la que está más abajo (el confeti).",
+      "explicacion_incorrecta": "El centro (🎯) es opuesto a la cara más alejada abajo (🎊 confeti).",
+      "datos_cubo": {
+        "caras": [
+          {
+            "fila": 0,
+            "color": "#F1C40F",
+            "contenido": "👑",
+            "id": "corona",
+            "columna": 1
+          },
+          {
+            "columna": 0,
+            "id": "regalo",
+            "fila": 1,
+            "color": "#E74C3C",
+            "contenido": "🎁"
+          },
+          {
+            "color": "#3498DB",
+            "contenido": "🎯",
+            "fila": 1,
+            "columna": 1,
+            "id": "centro"
+          },
+          {
+            "contenido": "🎈",
+            "color": "#9B59B6",
+            "id": "globo",
+            "columna": 2,
+            "fila": 1
+          },
+          {
+            "columna": 1,
+            "color": "#F5B7B1",
+            "id": "pastel",
+            "contenido": "🎂",
+            "fila": 2
+          },
+          {
+            "color": "#82E0AA",
+            "contenido": "🎊",
+            "fila": 3,
+            "columna": 1,
+            "id": "confeti"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c8",
+      "tipo": "desarrollo-cubos",
+      "titulo": "Nivel 3: Techo y Piso",
+      "pregunta": "Si el 🚀 cohete es el TECHO del cubo, ¿cuál es el PISO?",
+      "respuesta": "tren",
+      "explicacion_correcta": "¡Muy bien! Si el cohete es el techo, el tren es el piso (opuestos).",
+      "explicacion_incorrecta": "Techo = arriba. Piso = abajo del centro. Cohete ↔ Tren.",
+      "datos_cubo": {
+        "caras": [
+          {
+            "contenido": "🚀",
+            "id": "cohete",
+            "fila": 0,
+            "columna": 1,
+            "color": "#5DADE2"
+          },
+          {
+            "id": "avion",
+            "color": "#85C1E9",
+            "fila": 1,
+            "columna": 0,
+            "contenido": "✈️"
+          },
+          {
+            "fila": 1,
+            "columna": 1,
+            "contenido": "🚗",
+            "color": "#E74C3C",
+            "id": "auto"
+          },
+          {
+            "contenido": "🚢",
+            "fila": 1,
+            "id": "barco",
+            "color": "#3498DB",
+            "columna": 2
+          },
+          {
+            "color": "#27AE60",
+            "columna": 1,
+            "contenido": "🚂",
+            "id": "tren",
+            "fila": 2
+          },
+          {
+            "contenido": "🚲",
+            "id": "bici",
+            "color": "#F39C12",
+            "fila": 3,
+            "columna": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "c9",
+      "tipo": "desarrollo-cubos",
+      "titulo": "Nivel 3: Comida",
+      "pregunta": "Si la 🍕 pizza es el TECHO, ¿cuál es el PISO?",
+      "respuesta": "dona",
+      "explicacion_correcta": "¡Excelente! Pizza (techo) es opuesta a la dona (piso).",
+      "explicacion_incorrecta": "El techo (arriba) es opuesto al piso (abajo del centro).",
+      "datos_cubo": {
+        "caras": [
+          {
+            "color": "#F5B041",
+            "contenido": "🍕",
+            "fila": 0,
+            "columna": 1,
+            "id": "pizza"
+          },
+          {
+            "id": "hamburguesa",
+            "columna": 0,
+            "contenido": "🍔",
+            "color": "#DC7633",
+            "fila": 1
+          },
+          {
+            "columna": 1,
+            "contenido": "🌭",
+            "id": "hotdog",
+            "fila": 1,
+            "color": "#F4D03F"
+          },
+          {
+            "color": "#F7DC6F",
+            "contenido": "🍟",
+            "fila": 1,
+            "id": "papas",
+            "columna": 2
+          },
+          {
+            "color": "#F5B7B1",
+            "columna": 1,
+            "fila": 2,
+            "id": "dona",
+            "contenido": "🍩"
+          },
+          {
+            "contenido": "🍪",
+            "fila": 3,
+            "columna": 1,
+            "color": "#D4AC0D",
+            "id": "galleta"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c10",
+      "tipo": "desarrollo-cubos",
+      "titulo": "Nivel 3: Clima",
+      "pregunta": "Si el ☀️ sol es el TECHO, ¿qué cara es el PISO?",
+      "respuesta": "rayo",
+      "explicacion_correcta": "¡Correcto! Sol (techo) salta el arcoíris y queda opuesto al rayo (piso).",
+      "explicacion_incorrecta": "El techo y el piso están separados por una cara. Sol ↔ Rayo.",
+      "datos_cubo": {
+        "caras": [
+          {
+            "contenido": "☀️",
+            "columna": 1,
+            "fila": 0,
+            "color": "#F7DC6F",
+            "id": "sol"
+          },
+          {
+            "columna": 0,
+            "id": "lluvia",
+            "fila": 1,
+            "contenido": "🌧️",
+            "color": "#85C1E9"
+          },
+          {
+            "contenido": "🌈",
+            "id": "arcoiris",
+            "fila": 1,
+            "columna": 1,
+            "color": "#F9E79F"
+          },
+          {
+            "fila": 1,
+            "id": "nieve",
+            "contenido": "❄️",
+            "color": "#E8E8E8",
+            "columna": 2
+          },
+          {
+            "color": "#F1C40F",
+            "contenido": "⚡",
+            "fila": 2,
+            "columna": 1,
+            "id": "rayo"
+          },
+          {
+            "contenido": "🌪️",
+            "fila": 3,
+            "color": "#BDC3C7",
+            "id": "tornado",
+            "columna": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "c11",
+      "tipo": "desarrollo-cubos",
+      "titulo": "Nivel 3: Emojis",
+      "pregunta": "¿Qué emoji está OPUESTO al 😊 feliz?",
+      "respuesta": "dormido",
+      "explicacion_correcta": "¡Muy bien! Feliz (arriba) es opuesto a dormido (abajo del centro).",
+      "explicacion_incorrecta": "Arriba ↔ Abajo. Feliz es opuesto a dormido.",
+      "datos_cubo": {
+        "caras": [
+          {
+            "color": "#F7DC6F",
+            "columna": 1,
+            "fila": 0,
+            "id": "feliz",
+            "contenido": "😊"
+          },
+          {
+            "columna": 0,
+            "contenido": "😢",
+            "color": "#85C1E9",
+            "id": "triste",
+            "fila": 1
+          },
+          {
+            "color": "#F5B7B1",
+            "columna": 1,
+            "fila": 1,
+            "contenido": "😮",
+            "id": "sorpresa"
+          },
+          {
+            "color": "#E74C3C",
+            "id": "enojado",
+            "fila": 1,
+            "columna": 2,
+            "contenido": "😠"
+          },
+          {
+            "color": "#D7BDE2",
+            "fila": 2,
+            "contenido": "😴",
+            "columna": 1,
+            "id": "dormido"
+          },
+          {
+            "columna": 1,
+            "id": "pensando",
+            "contenido": "🤔",
+            "color": "#AED6F1",
+            "fila": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "c12",
+      "tipo": "desarrollo-cubos",
+      "titulo": "Nivel 4: El Dado",
+      "pregunta": "En este dado, ¿qué número está OPUESTO al 1️⃣?",
+      "respuesta": "seis",
+      "explicacion_correcta": "¡Excelente! En este cubo, el 1 (izquierda) es opuesto al 6 (derecha).",
+      "explicacion_incorrecta": "Las caras laterales son opuestas. 1 está a la izquierda, 6 a la derecha.",
+      "datos_cubo": {
+        "caras": [
+          {
+            "fila": 0,
+            "contenido": "3️⃣",
+            "columna": 1,
+            "color": "#ECF0F1",
+            "id": "tres"
+          },
+          {
+            "columna": 0,
+            "color": "#ECF0F1",
+            "fila": 1,
+            "contenido": "1️⃣",
+            "id": "uno"
+          },
+          {
+            "columna": 1,
+            "contenido": "2️⃣",
+            "fila": 1,
+            "id": "dos",
+            "color": "#ECF0F1"
+          },
+          {
+            "id": "seis",
+            "columna": 2,
+            "color": "#ECF0F1",
+            "fila": 1,
+            "contenido": "6️⃣"
+          },
+          {
+            "columna": 1,
+            "id": "cuatro",
+            "contenido": "4️⃣",
+            "color": "#ECF0F1",
+            "fila": 2
+          },
+          {
+            "color": "#ECF0F1",
+            "id": "cinco",
+            "fila": 3,
+            "columna": 1,
+            "contenido": "5️⃣"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c13",
+      "tipo": "desarrollo-cubos",
+      "titulo": "Nivel 4: Otro Dado",
+      "pregunta": "¿Qué número está OPUESTO al 3️⃣?",
+      "respuesta": "cuatro",
+      "explicacion_correcta": "¡Correcto! El 3 (arriba) salta el 2 (centro) y queda opuesto al 4.",
+      "explicacion_incorrecta": "Las caras de arriba y abajo son opuestas. 3 ↔ 4.",
+      "datos_cubo": {
+        "caras": [
+          {
+            "fila": 0,
+            "id": "tres",
+            "contenido": "3️⃣",
+            "color": "#ECF0F1",
+            "columna": 1
+          },
+          {
+            "color": "#ECF0F1",
+            "fila": 1,
+            "id": "uno",
+            "contenido": "1️⃣",
+            "columna": 0
+          },
+          {
+            "fila": 1,
+            "contenido": "2️⃣",
+            "id": "dos",
+            "color": "#ECF0F1",
+            "columna": 1
+          },
+          {
+            "id": "seis",
+            "color": "#ECF0F1",
+            "contenido": "6️⃣",
+            "fila": 1,
+            "columna": 2
+          },
+          {
+            "fila": 2,
+            "id": "cuatro",
+            "contenido": "4️⃣",
+            "color": "#ECF0F1",
+            "columna": 1
+          },
+          {
+            "columna": 1,
+            "color": "#ECF0F1",
+            "fila": 3,
+            "id": "cinco",
+            "contenido": "5️⃣"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c14",
+      "tipo": "desarrollo-cubos",
+      "titulo": "Nivel 4: Instrumentos",
+      "pregunta": "¿Qué instrumento está OPUESTO a la 🎸 guitarra?",
+      "respuesta": "trompeta",
+      "explicacion_correcta": "¡Muy bien! Guitarra (arriba) es opuesta a trompeta (abajo del centro).",
+      "explicacion_incorrecta": "Las caras de arriba y abajo son opuestas.",
+      "datos_cubo": {
+        "caras": [
+          {
+            "id": "guitarra",
+            "fila": 0,
+            "columna": 1,
+            "color": "#DC7633",
+            "contenido": "🎸"
+          },
+          {
+            "color": "#2C3E50",
+            "fila": 1,
+            "columna": 0,
+            "contenido": "🎹",
+            "id": "piano"
+          },
+          {
+            "fila": 1,
+            "columna": 1,
+            "contenido": "🥁",
+            "id": "tambor",
+            "color": "#E74C3C"
+          },
+          {
+            "columna": 2,
+            "contenido": "🎻",
+            "fila": 1,
+            "color": "#8E44AD",
+            "id": "violin"
+          },
+          {
+            "color": "#F1C40F",
+            "fila": 2,
+            "contenido": "🎺",
+            "id": "trompeta",
+            "columna": 1
+          },
+          {
+            "fila": 3,
+            "color": "#F39C12",
+            "contenido": "🎷",
+            "columna": 1,
+            "id": "saxofon"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c15",
+      "tipo": "desarrollo-cubos",
+      "titulo": "Nivel 4: Flores",
+      "pregunta": "¿Qué flor está OPUESTA al 🌻 girasol?",
+      "respuesta": "hibisco",
+      "explicacion_correcta": "¡Excelente! Girasol (arriba) salta el tulipán y queda opuesto al hibisco.",
+      "explicacion_incorrecta": "Arriba ↔ Abajo (saltando el centro). Girasol ↔ Hibisco.",
+      "datos_cubo": {
+        "caras": [
+          {
+            "color": "#F7DC6F",
+            "contenido": "🌻",
+            "fila": 0,
+            "columna": 1,
+            "id": "girasol"
+          },
+          {
+            "color": "#F1948A",
+            "id": "rosa",
+            "fila": 1,
+            "contenido": "🌹",
+            "columna": 0
+          },
+          {
+            "id": "tulipan",
+            "contenido": "🌷",
+            "color": "#E74C3C",
+            "columna": 1,
+            "fila": 1
+          },
+          {
+            "color": "#FADBD8",
+            "fila": 1,
+            "contenido": "🌸",
+            "columna": 2,
+            "id": "cerezo"
+          },
+          {
+            "color": "#E91E63",
+            "fila": 2,
+            "id": "hibisco",
+            "contenido": "🌺",
+            "columna": 1
+          },
+          {
+            "columna": 1,
+            "color": "#27AE60",
+            "fila": 3,
+            "contenido": "🍀",
+            "id": "trebol"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c16",
+      "tipo": "desarrollo-cubos",
+      "titulo": "Nivel 5: Doble Pregunta",
+      "pregunta": "¿Qué cara está OPUESTA a la 🌙 luna?",
+      "respuesta": "sol",
+      "explicacion_correcta": "¡Correcto! Luna (izquierda) y Sol (derecha) son opuestos.",
+      "explicacion_incorrecta": "Las caras laterales son opuestas entre sí.",
+      "datos_cubo": {
+        "caras": [
+          {
+            "color": "#5DADE2",
+            "columna": 1,
+            "contenido": "🚀",
+            "id": "cohete",
+            "fila": 0
+          },
+          {
+            "id": "luna",
+            "contenido": "🌙",
+            "fila": 1,
+            "color": "#F7DC6F",
+            "columna": 0
+          },
+          {
+            "color": "#3498DB",
+            "fila": 1,
+            "columna": 1,
+            "id": "tierra",
+            "contenido": "🌍"
+          },
+          {
+            "columna": 2,
+            "color": "#F39C12",
+            "contenido": "☀️",
+            "fila": 1,
+            "id": "sol"
+          },
+          {
+            "id": "estrella",
+            "columna": 1,
+            "contenido": "⭐",
+            "fila": 2,
+            "color": "#F1C40F"
+          },
+          {
+            "contenido": "🛸",
+            "color": "#82E0AA",
+            "fila": 3,
+            "columna": 1,
+            "id": "ovni"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c17",
+      "tipo": "desarrollo-cubos",
+      "titulo": "Nivel 5: Oceano",
+      "pregunta": "¿Qué animal marino está OPUESTO al 🐙 pulpo?",
+      "respuesta": "ballena",
+      "explicacion_correcta": "¡Muy bien! Pulpo (arriba) es opuesto a ballena (abajo del centro).",
+      "explicacion_incorrecta": "Las caras de arriba y abajo son opuestas.",
+      "datos_cubo": {
+        "caras": [
+          {
+            "contenido": "🐙",
+            "fila": 0,
+            "columna": 1,
+            "color": "#9B59B6",
+            "id": "pulpo"
+          },
+          {
+            "color": "#3498DB",
+            "id": "pez",
+            "fila": 1,
+            "columna": 0,
+            "contenido": "🐟"
+          },
+          {
+            "id": "cangrejo",
+            "contenido": "🦀",
+            "columna": 1,
+            "fila": 1,
+            "color": "#E74C3C"
+          },
+          {
+            "id": "delfin",
+            "fila": 1,
+            "contenido": "🐬",
+            "color": "#85C1E9",
+            "columna": 2
+          },
+          {
+            "contenido": "🐳",
+            "color": "#2980B9",
+            "id": "ballena",
+            "fila": 2,
+            "columna": 1
+          },
+          {
+            "id": "tiburon",
+            "columna": 1,
+            "color": "#7F8C8D",
+            "contenido": "🦈",
+            "fila": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "c18",
+      "tipo": "desarrollo-cubos",
+      "titulo": "Nivel 5: Dinosaurios",
+      "pregunta": "¿Quién está OPUESTO al 🦕 brontosaurio?",
+      "respuesta": "hueso",
+      "explicacion_correcta": "¡Excelente! Brontosaurio (arriba) salta el huevo y queda opuesto al hueso.",
+      "explicacion_incorrecta": "Las caras de arriba y abajo son opuestas.",
+      "datos_cubo": {
+        "caras": [
+          {
+            "id": "bronto",
+            "contenido": "🦕",
+            "fila": 0,
+            "color": "#27AE60",
+            "columna": 1
+          },
+          {
+            "id": "trex",
+            "columna": 0,
+            "fila": 1,
+            "color": "#16A085",
+            "contenido": "🦖"
+          },
+          {
+            "columna": 1,
+            "id": "huevo",
+            "fila": 1,
+            "color": "#F5EEF8",
+            "contenido": "🥚"
+          },
+          {
+            "color": "#D5DBDB",
+            "contenido": "🦶",
+            "fila": 1,
+            "id": "huella",
+            "columna": 2
+          },
+          {
+            "fila": 2,
+            "id": "hueso",
+            "contenido": "🦴",
+            "columna": 1,
+            "color": "#FDFEFE"
+          },
+          {
+            "fila": 3,
+            "id": "volcan",
+            "columna": 1,
+            "contenido": "🌋",
+            "color": "#E74C3C"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c19",
+      "tipo": "desarrollo-cubos",
+      "titulo": "Nivel 5: Herramientas",
+      "pregunta": "¿Qué herramienta está OPUESTA al 🔨 martillo?",
+      "respuesta": "regla",
+      "explicacion_correcta": "¡Correcto! Martillo (arriba) es opuesto a la regla (abajo del centro).",
+      "explicacion_incorrecta": "Arriba ↔ Abajo. Martillo ↔ Regla.",
+      "datos_cubo": {
+        "caras": [
+          {
+            "contenido": "🔨",
+            "fila": 0,
+            "id": "martillo",
+            "color": "#7F8C8D",
+            "columna": 1
+          },
+          {
+            "contenido": "🔧",
+            "columna": 0,
+            "id": "llave",
+            "color": "#BDC3C7",
+            "fila": 1
+          },
+          {
+            "color": "#95A5A6",
+            "fila": 1,
+            "contenido": "🔩",
+            "id": "tornillo",
+            "columna": 1
+          },
+          {
+            "columna": 2,
+            "color": "#F39C12",
+            "id": "sierra",
+            "fila": 1,
+            "contenido": "🪚"
+          },
+          {
+            "color": "#F7DC6F",
+            "fila": 2,
+            "contenido": "📏",
+            "id": "regla",
+            "columna": 1
+          },
+          {
+            "fila": 3,
+            "contenido": "🧰",
+            "color": "#E74C3C",
+            "id": "caja",
+            "columna": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "c20",
+      "tipo": "desarrollo-cubos",
+      "titulo": "Nivel 5: Desafío Final",
+      "pregunta": "Último reto: ¿Qué cara está OPUESTA al 🎯 centro (blanco)?",
+      "respuesta": "cohete",
+      "explicacion_correcta": "¡FELICIDADES! El centro (🎯) es opuesto a la cara más alejada: el cohete (🚀). ¡Eres un maestro de los cubos!",
+      "explicacion_incorrecta": "La cara del centro es opuesta a la que está más abajo en la cruz.",
+      "datos_cubo": {
+        "caras": [
+          {
+            "fila": 0,
+            "columna": 1,
+            "color": "#F1C40F",
+            "id": "medalla",
+            "contenido": "🏅"
+          },
+          {
+            "id": "trofeo",
+            "columna": 0,
+            "fila": 1,
+            "contenido": "🏆",
+            "color": "#F39C12"
+          },
+          {
+            "contenido": "🎯",
+            "fila": 1,
+            "id": "blanco",
+            "color": "#E8E8E8",
+            "columna": 1
+          },
+          {
+            "contenido": "👑",
+            "color": "#F7DC6F",
+            "columna": 2,
+            "fila": 1,
+            "id": "corona"
+          },
+          {
+            "color": "#F1C40F",
+            "fila": 2,
+            "contenido": "⭐",
+            "columna": 1,
+            "id": "estrella"
+          },
+          {
+            "columna": 1,
+            "color": "#3498DB",
+            "fila": 3,
+            "contenido": "🚀",
+            "id": "cohete"
+          }
+        ]
+      }
+    }
+  ]
+}

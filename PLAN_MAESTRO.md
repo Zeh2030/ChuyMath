@@ -1,4 +1,4 @@
-# Plan Maestro ChuyMath - Actualizado 2026-10-07
+# Plan Maestro ChuyMath - Actualizado 2026-10-20
 
 Estado real de cada módulo y pendientes vivos. Los programas detallados viven en el
 doc de cada materia (`_ciencias/PROGRAMA_CIENCIAS.md`, `_piano/PROGRAMA_PIANO.md`, etc.).
@@ -15,7 +15,7 @@ MateriaToggle (`src/components/layout/MateriaToggle.jsx`):
 
 | Materia | Colección Firebase | Contenido en disco | Estado |
 |---------|-------------------|--------------------|--------|
-| Matemáticas 🔢 | aventuras + simulacros + expediciones | `_contenido/` (71 JSONs) | ✅ |
+| Matemáticas 🔢 | aventuras + simulacros + expediciones | `_contenido/` (75 JSONs, 22 simulacros) | ✅ |
 | English 🇬🇧 | ingles | `_content/` (118 JSONs, A0 completo + A1-12) | ✅ |
 | Piano 🎹 | piano | `_piano/` (44 JSONs) | ✅ |
 | Ciencias 🔬 | ciencias | `_ciencias/` (59 JSONs: C0 y C1 completos + 27 de astronomía) | ✅ |
@@ -105,6 +105,35 @@ Pendiente: Fase 3, PIN opcional de adulto. Una materia nueva con colección prop
   tipos: caras opuestas, ¿cuál plano SÍ forma un cubo?, orientación alrededor del vértice.
 - Regla de uso de three.js (dónde sí / dónde no): memoria del proyecto
   `three_js_donde_si_donde_no`. Geografía NO usa three (globo con `geoOrthographic` de d3-geo).
+
+### Simulacros (revisión para el concurso, 2026-10-20) ✅
+- **Firestore es la fuente de verdad**: el disco tenía 17 simulacros y Firestore 22. Se bajaron
+  los 5 que faltaban y las 3 olimpiadas reales (`olimpiada-estatal-2025-*`, los `2025-11-29_*`
+  eran borradores viejos). Hoy disco = Firestore (22). Tras editar un JSON hay que subirlo en
+  `/admin/migracion` (Simulacros; reemplaza el documento).
+- **Calificación en una sola función**, `src/utils/calificar.js`, que usan Simulacro, OpcionMultiple,
+  NavegacionMapa y el validador. Se corrigieron estos bugs:
+  - la comparación cruzada índice/valor daba por buenas 10 respuestas incorrectas;
+  - `respuesta: 0` se perdía porque se leía con `||`;
+  - la cripto con `solucion` en lista nunca acertaba;
+  - el mapa decía "No es correcto" cuando sí era correcto;
+  - el HTML de la pregunta salía literal (OEM p11).
+- **Recargar a mitad de examen** ya no manda a "¿Quién va a jugar?" (`useAuth`: `profilesLoading`
+  derivado del uid), y las respuestas se guardan como borrador local hasta calificar.
+- **Imprimir**: `/simulacro/:id/imprimir` (botón "Imprimir en papel") arma examen + hoja de
+  respuestas + clave para el papá, en carta. Las preguntas se dibujan para papel en
+  `components/imprimir/PreguntaImpresa.jsx`.
+- **Validador**: `node _contenido/_valida.mjs`, correrlo antes de subir contenido de mate. Revisa
+  la calificación real de cada opción, que las rutas de mapa lleguen a la respuesta, el formato de
+  cripto, las caras de los cubos, las explicaciones y que cada tipo sea imprimible.
+- **QA en pantalla**: `C:\Proyectos JJCG\qa-navegador\chuymath-*.mjs` (cuenta contacto@carrillocm.mx,
+  perfil «Otoniel»).
+- **Pendiente**:
+  - cronómetro;
+  - guardar la respuesta de cada pregunta, para ver en qué temas falla;
+  - revisar las matemáticas de las claves;
+  - más simulacros estilo concurso;
+  - detalles de contenido: explicaciones de OEM p13 y p19, y la estrella poco visible en cubos #4.
 
 ---
 
@@ -405,6 +434,7 @@ Gemini (voz a voz en tiempo real, con interrupciones). Nada construido.
 | Piano | Lista de §5 (chat vivo) | §5 + `_piano/PROGRAMA_PIANO.md` |
 | Letras | Resultado de la prueba de LF y L2 | §9 + `_letras/PROGRAMA_LETRAS.md` |
 | Dibujo | Galería, D3 o lienzo (ninguno urgente) | §9 + `_dibujo/PROGRAMA_DIBUJO.md` |
+| Matemáticas | Concurso: cronómetro, respuesta por pregunta, revisar claves, más simulacros | §4 + `_contenido/_valida.mjs` |
 | Plataforma | PIN de adulto, modo papás, temas | §2, §3 |
 | Geografía | Nada; G3 cuando aplique | §8 + `_geografia/PROGRAMA_GEOGRAFIA.md` |
 

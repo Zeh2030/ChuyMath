@@ -1,0 +1,307 @@
+{
+  "id": "2026-01-16_simulacro-ordenamiento-logico-1",
+  "titulo": "Simulacro: Ordenamiento Lógico 1",
+  "descripcion": "Lee con atención las comparaciones y ordena en tu pizarra o papel antes de responder. ¡Dibuja flechas o escaleras para ayudarte!",
+  "problemas": [
+    {
+      "id": "ol1-1",
+      "tipo": "opcion-multiple",
+      "titulo": "Comparación de Alturas",
+      "pregunta": "Ana es más alta que Beto. ¿Quién es más bajo?",
+      "opciones": [
+        "Ana",
+        "Beto",
+        "Los dos igual",
+        "No se puede saber"
+      ],
+      "respuesta": 1,
+      "explicacion_correcta": "¡Correcto! Si Ana es más alta que Beto, entonces Beto es el más bajo. Ana > Beto.",
+      "explicacion_incorrecta": "Ordena: Ana está arriba de Beto en altura. Entonces Beto es más bajo."
+    },
+    {
+      "id": "ol1-2",
+      "tipo": "opcion-multiple",
+      "titulo": "Velocidad",
+      "pregunta": "Luis corre más rápido que Pedro. ¿Quién es más lento?",
+      "opciones": [
+        "Luis",
+        "Pedro",
+        "Ninguno",
+        "Los dos igual"
+      ],
+      "respuesta": 1,
+      "explicacion_correcta": "¡Muy bien! Luis es más rápido, así que Pedro es más lento.",
+      "explicacion_incorrecta": "Si Luis es más rápido que Pedro, entonces Pedro es el lento."
+    },
+    {
+      "id": "ol1-3",
+      "tipo": "opcion-multiple",
+      "titulo": "Dulces",
+      "pregunta": "María tiene más dulces que Rosa. Rosa tiene más dulces que Sara. ¿Quién tiene menos dulces?",
+      "opciones": [
+        "María",
+        "Rosa",
+        "Sara",
+        "Todas igual"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Excelente! Orden: María > Rosa > Sara. Sara tiene menos.",
+      "explicacion_incorrecta": "Dibuja: María arriba, Rosa en medio, Sara abajo. Sara tiene menos."
+    },
+    {
+      "id": "ol1-4",
+      "tipo": "opcion-multiple",
+      "titulo": "Tamaños de Animales",
+      "pregunta": "El perro es más grande que el gato. El gato es más grande que el ratón. ¿Cuál es el más pequeño?",
+      "opciones": [
+        "El perro",
+        "El gato",
+        "El ratón",
+        "Todos igual"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Correcto! Perro > Gato > Ratón. El ratón es el más pequeño.",
+      "explicacion_incorrecta": "Ordena de grande a pequeño: Perro, Gato, Ratón. El ratón queda al final."
+    },
+    {
+      "id": "ol1-5",
+      "tipo": "opcion-multiple",
+      "titulo": "Orden de Llegada",
+      "pregunta": "Carlos llegó antes que Diego. Diego llegó antes que Elena. ¿Quién llegó primero?",
+      "opciones": [
+        "Diego",
+        "Elena",
+        "Carlos",
+        "Llegaron juntos"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Muy bien! Orden de llegada: 1° Carlos, 2° Diego, 3° Elena. Carlos llegó primero.",
+      "explicacion_incorrecta": "Escribe los números: Carlos (1°), Diego (2°), Elena (3°). El primero es Carlos."
+    },
+    {
+      "id": "ol1-6",
+      "tipo": "opcion-multiple",
+      "titulo": "Edades",
+      "pregunta": "Sofía es más joven que Tomás, pero mayor que Úrsula. ¿Quién es el mayor?",
+      "opciones": [
+        "Sofía",
+        "Tomás",
+        "Úrsula",
+        "Sofía y Tomás"
+      ],
+      "respuesta": 1,
+      "explicacion_correcta": "¡Excelente! Tomás > Sofía > Úrsula (en edad). Tomás es el mayor.",
+      "explicacion_incorrecta": "Ordena por edad: Tomás es mayor que Sofía, y Sofía es mayor que Úrsula."
+    },
+    {
+      "id": "ol1-7",
+      "tipo": "opcion-multiple",
+      "titulo": "Grosor de Libros",
+      "pregunta": "El libro azul es más grueso que el rojo. El rojo es más grueso que el verde. ¿Cuál es el más delgado?",
+      "opciones": [
+        "El azul",
+        "El rojo",
+        "El verde",
+        "Todos igual"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Correcto! Azul > Rojo > Verde. El verde es el más delgado.",
+      "explicacion_incorrecta": "Dibuja los libros: Azul (grueso), Rojo (medio), Verde (delgado)."
+    },
+    {
+      "id": "ol1-8",
+      "tipo": "opcion-multiple",
+      "titulo": "Altura de Torres",
+      "pregunta": "La torre A es más alta que la B. La torre C es más baja que la B. ¿Cuál es la más alta?",
+      "opciones": [
+        "Torre B",
+        "Torre C",
+        "Torre A",
+        "B y C"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Muy bien! A > B > C. La torre A es la más alta.",
+      "explicacion_incorrecta": "Ordena: A está arriba de B, y B arriba de C. La torre A es la más alta."
+    },
+    {
+      "id": "ol1-9",
+      "tipo": "opcion-multiple",
+      "titulo": "Pesos",
+      "pregunta": "Marcos pesa más que Nicolás. Óscar pesa más que Marcos. ¿Quién pesa menos?",
+      "opciones": [
+        "Óscar",
+        "Marcos",
+        "Nicolás",
+        "Todos igual"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Excelente! Óscar > Marcos > Nicolás. Nicolás pesa menos.",
+      "explicacion_incorrecta": "Ordena por peso: Óscar (más), Marcos (medio), Nicolás (menos)."
+    },
+    {
+      "id": "ol1-10",
+      "tipo": "opcion-multiple",
+      "titulo": "Longitudes",
+      "pregunta": "El lápiz es más largo que el borrador. La regla es más larga que el lápiz. ¿Qué es lo más corto?",
+      "opciones": [
+        "La regla",
+        "El lápiz",
+        "El borrador",
+        "Lápiz y borrador"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Correcto! Regla > Lápiz > Borrador. El borrador es lo más corto.",
+      "explicacion_incorrecta": "Dibuja una línea de largo a corto: Regla, Lápiz, Borrador."
+    },
+    {
+      "id": "ol1-11",
+      "tipo": "opcion-multiple",
+      "titulo": "Carrera",
+      "pregunta": "En una carrera, Abel llegó después de Bruno, pero antes de César. ¿Quién ganó la carrera?",
+      "opciones": [
+        "Abel",
+        "Bruno",
+        "César",
+        "Empataron"
+      ],
+      "respuesta": 1,
+      "explicacion_correcta": "¡Muy bien! Orden: 1° Bruno, 2° Abel, 3° César. Bruno ganó.",
+      "explicacion_incorrecta": "Si Abel llegó después de Bruno, Bruno llegó primero. Bruno ganó."
+    },
+    {
+      "id": "ol1-12",
+      "tipo": "opcion-multiple",
+      "titulo": "Peso de Cajas",
+      "pregunta": "La caja roja es más pesada que la azul. La verde es más liviana que la azul. ¿Cuál es la más pesada?",
+      "opciones": [
+        "La verde",
+        "La azul",
+        "La roja",
+        "Azul y roja"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Excelente! Roja > Azul > Verde. La caja roja es la más pesada.",
+      "explicacion_incorrecta": "Ordena por peso: Roja (pesada), Azul (media), Verde (liviana)."
+    },
+    {
+      "id": "ol1-13",
+      "tipo": "opcion-multiple",
+      "titulo": "Alturas",
+      "pregunta": "David es más bajo que Eva. Eva es más baja que Fátima. ¿Quién es más alta?",
+      "opciones": [
+        "David",
+        "Eva",
+        "Fátima",
+        "David y Eva"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Correcto! Fátima > Eva > David. Fátima es la más alta.",
+      "explicacion_incorrecta": "Dibuja escalera: Fátima arriba, Eva en medio, David abajo."
+    },
+    {
+      "id": "ol1-14",
+      "tipo": "opcion-multiple",
+      "titulo": "Velocidad de Vehículos",
+      "pregunta": "El tren es más rápido que el auto. El avión es más rápido que el tren. ¿Cuál es el más lento?",
+      "opciones": [
+        "El avión",
+        "El tren",
+        "El auto",
+        "Tren y auto"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Muy bien! Avión > Tren > Auto. El auto es el más lento.",
+      "explicacion_incorrecta": "Ordena por velocidad: Avión (rápido), Tren (medio), Auto (lento)."
+    },
+    {
+      "id": "ol1-15",
+      "tipo": "opcion-multiple",
+      "titulo": "Estampas",
+      "pregunta": "Gina tiene menos estampas que Hugo. Hugo tiene menos que Irene. ¿Quién tiene más estampas?",
+      "opciones": [
+        "Gina",
+        "Hugo",
+        "Irene",
+        "Hugo y Gina"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Excelente! Irene > Hugo > Gina. Irene tiene más estampas.",
+      "explicacion_incorrecta": "Cuidado con 'menos': Irene tiene más, Hugo medio, Gina menos."
+    },
+    {
+      "id": "ol1-16",
+      "tipo": "opcion-multiple",
+      "titulo": "Precios",
+      "pregunta": "La manzana cuesta más que la naranja. La pera cuesta menos que la naranja. ¿Qué cuesta menos?",
+      "opciones": [
+        "La manzana",
+        "La naranja",
+        "La pera",
+        "Naranja y pera"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Correcto! Manzana > Naranja > Pera. La pera cuesta menos.",
+      "explicacion_incorrecta": "Ordena precios: Manzana (cara), Naranja (media), Pera (barata)."
+    },
+    {
+      "id": "ol1-17",
+      "tipo": "opcion-multiple",
+      "titulo": "Cuatro Personas",
+      "pregunta": "Javier es mayor que Kevin. Kevin es mayor que Leo. Leo es mayor que Mario. ¿Quién es el menor?",
+      "opciones": [
+        "Javier",
+        "Kevin",
+        "Leo",
+        "Mario"
+      ],
+      "respuesta": 3,
+      "explicacion_correcta": "¡Muy bien! Javier > Kevin > Leo > Mario. Mario es el menor.",
+      "explicacion_incorrecta": "Escribe en orden: Javier (1°), Kevin (2°), Leo (3°), Mario (4° y menor)."
+    },
+    {
+      "id": "ol1-18",
+      "tipo": "opcion-multiple",
+      "titulo": "Edificios",
+      "pregunta": "El edificio A tiene más pisos que el B. El B tiene más pisos que el C. El C tiene más que el D. ¿Cuál tiene menos pisos?",
+      "opciones": [
+        "Edificio A",
+        "Edificio B",
+        "Edificio C",
+        "Edificio D"
+      ],
+      "respuesta": 3,
+      "explicacion_correcta": "¡Excelente! A > B > C > D. El edificio D tiene menos pisos.",
+      "explicacion_incorrecta": "Ordena: A tiene más, luego B, luego C, y D tiene menos."
+    },
+    {
+      "id": "ol1-19",
+      "tipo": "opcion-multiple",
+      "titulo": "Tres Amigos",
+      "pregunta": "Estrella es más alta que Selene, pero menos que Leilani. ¿Quién es más alta?",
+      "opciones": [
+        "Selene y Estrella",
+        "Selene",
+        "Leilani",
+        "Estrella"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Correcto! Leilani > Estrella > Selene. Leilani es la más alta.",
+      "explicacion_incorrecta": "Dibuja escalera: Leilani arriba, Estrella medio, Selene abajo."
+    },
+    {
+      "id": "ol1-20",
+      "tipo": "opcion-multiple",
+      "titulo": "Peso de Frutas",
+      "pregunta": "La sandía pesa más que el melón. El melón pesa más que la manzana. La manzana pesa más que la uva. ¿Qué pesa menos?",
+      "opciones": [
+        "La sandía",
+        "El melón",
+        "La manzana",
+        "La uva"
+      ],
+      "respuesta": 3,
+      "explicacion_correcta": "¡Muy bien! Sandía > Melón > Manzana > Uva. La uva pesa menos.",
+      "explicacion_incorrecta": "Ordena de pesado a liviano: Sandía, Melón, Manzana, Uva."
+    }
+  ]
+}

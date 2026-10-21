@@ -140,17 +140,17 @@
     {
       "id": "inst-15",
       "tipo": "navegacion-mapa",
-      "pregunta": "Mapa del Tesoro: Sigue la ruta escrita para encontrar el lugar: Este, Sur, Oeste, Norte.",
+      "pregunta": "Mapa del Tesoro: Sigue la ruta escrita para encontrar el lugar: Este, Este, Sur, Norte.",
       "configuracion_mapa": {
         "columnas": 4,
         "filas": 4,
         "punto_inicio": {"fila": 1, "columna": 1, "icono": "🗺️"},
         "puntos_interes": [
           {"nombre": "Tesoro", "fila": 3, "columna": 3, "icono": "💰"},
-          {"nombre": "Ruinas", "fila": 1, "columna": 3, "icono": " crumbling-building"},
+          {"nombre": "Ruinas", "fila": 1, "columna": 3, "icono": "🏚️"},
           {"nombre": "Cabaña", "fila": 0, "columna": 0, "icono": "🏡"}
         ],
-        "movimientos": ["este", "sur", "oeste", "norte"],
+        "movimientos": ["este", "este", "sur", "norte"],
         "respuesta_correcta": "Ruinas"
       }
     },

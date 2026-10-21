@@ -7,7 +7,20 @@ import PageWrapper from '../components/layout/PageWrapper';
 import Header from '../components/layout/Header';
 import MisionRenderer from '../components/aventura/MisionRenderer';
 import LienzoDibujo from '../components/aventura/tipos/LienzoDibujo';
+import { esRespuestaCorrecta } from '../utils/calificar';
 import './Simulacro.css';
+
+// Respuestas a medio examen, por perfil y simulacro (localStorage puede fallar: modo
+// privado, almacenamiento bloqueado; entonces simplemente no hay borrador).
+const leerBorrador = (clave) => {
+  try { return JSON.parse(localStorage.getItem(clave)); } catch { return null; }
+};
+const guardarBorrador = (clave, respuestas) => {
+  try { localStorage.setItem(clave, JSON.stringify(respuestas)); } catch { /* sin borrador */ }
+};
+const borrarBorrador = (clave) => {
+  try { localStorage.removeItem(clave); } catch { /* sin borrador */ }
+};
 
 const Simulacro = () => {
   const { id } = useParams(); // Obtener el ID del simulacro
@@ -24,6 +37,7 @@ const Simulacro = () => {
   const [calificado, setCalificado] = useState(false);
   const [puntaje, setPuntaje] = useState(0);
   const [canvasAbiertos, setCanvasAbiertos] = useState({}); // { problemaId: boolean }
+  const claveBorrador = `chuymath_simulacro_${activeProfileId}_${id}`;
 
   // Cargar el simulacro desde Firestore - SIMPLIFICADO: solo 'simulacros'
   useEffect(() => {
@@ -31,6 +45,9 @@ const Simulacro = () => {
       try {
         setLoading(true);
         setError(null);
+        // Si solo cambia el :id, el componente no se desmonta: no heredar la calificación anterior
+        setCalificado(false);
+        setPuntaje(0);
 
         const simulacroRef = doc(db, 'simulacros', id);
         const simulacroSnap = await getDoc(simulacroRef);
@@ -42,11 +59,13 @@ const Simulacro = () => {
           };
           setSimulacro(data);
           
-          // Inicializar respuestas vacías (usar problemas o misiones)
+          // Inicializar respuestas vacías (usar problemas o misiones) y recuperar
+          // las que quedaron guardadas si la página se recargó a medio examen
           const respuestasIniciales = {};
           const items = data.problemas || data.misiones || [];
+          const guardadas = leerBorrador(claveBorrador) || {};
           items.forEach(item => {
-            respuestasIniciales[item.id] = null;
+            respuestasIniciales[item.id] = guardadas[item.id] ?? null;
           });
           setRespuestas(respuestasIniciales);
         } else {
@@ -63,7 +82,16 @@ const Simulacro = () => {
     if (id) {
       cargarSimulacro();
     }
-  }, [id]);
+  }, [id, claveBorrador]);
+
+  // Borrador de respuestas mientras no se califica. Solo cuando `respuestas` ya es de
+  // este simulacro: al cambiar de :id hay un render con las del anterior, y los ids de
+  // problema («p1»...) se repiten entre simulacros.
+  useEffect(() => {
+    if (simulacro?.id !== id || calificado) return;
+    if (!Object.values(respuestas).some(r => r !== null)) return;
+    guardarBorrador(claveBorrador, respuestas);
+  }, [respuestas, calificado, claveBorrador, simulacro, id]);
 
   // Guardar la respuesta de un problema
   const handleRespuesta = (problemaId, respuesta) => {
@@ -81,64 +109,6 @@ const Simulacro = () => {
       ...prev,
       [problemaId]: !prev[problemaId]
     }));
-  };
-
-  // Función unificada para verificar si una respuesta es correcta
-  const esRespuestaCorrecta = (problema, respuestaUsuario) => {
-    if (problema.tipo === 'navegacion-mapa') {
-      return respuestaUsuario === problema.configuracion_mapa.respuesta_correcta;
-    } 
-    
-    if (problema.tipo === 'opcion-multiple') {
-      const respuestaUsuarioStr = String(respuestaUsuario);
-      const respuestaCorrectaStr = String(problema.respuesta);
-
-      // 1. Comparación directa (índice vs índice o valor vs valor)
-      if (respuestaUsuarioStr === respuestaCorrectaStr) return true;
-
-      // 2. Comparación cruzada (si usuario mandó valor y respuesta es índice)
-      // Si problema.respuesta es un índice numérico y tenemos opciones
-      if (!isNaN(problema.respuesta) && problema.opciones) {
-        const indice = parseInt(problema.respuesta, 10);
-        const opcionCorrecta = problema.opciones[indice];
-        
-        // Obtener el valor de la opción, ya sea un string o un objeto con propiedad 'valor'
-        let valorCorrectoEnOpcion;
-        if (typeof opcionCorrecta === 'object' && opcionCorrecta !== null && 'valor' in opcionCorrecta) {
-          valorCorrectoEnOpcion = opcionCorrecta.valor;
-        } else {
-          valorCorrectoEnOpcion = opcionCorrecta;
-        }
-
-        if (String(valorCorrectoEnOpcion) === respuestaUsuarioStr) return true;
-      }
-      
-      return false;
-    }
-    
-    if (problema.tipo === 'tabla-doble-entrada') {
-      return respuestaUsuario === problema.respuesta_final;
-    }
-    
-    if (problema.tipo === 'operaciones' || problema.tipo === 'balanza-logica' || problema.tipo === 'desarrollo-cubos' || problema.tipo === 'palabra-del-dia' || problema.tipo === 'conteo-figuras' || problema.tipo === 'secuencia') {
-      const respuestaUsuarioStr = String(respuestaUsuario || '').trim().toUpperCase();
-      const respuestaCorrectaStr = String(problema.respuesta || problema.palabra).trim().toUpperCase();
-      return respuestaUsuarioStr === respuestaCorrectaStr;
-    }
-    
-    if (problema.tipo === 'criptoaritmetica') {
-      const usuario = respuestaUsuario || {};
-      const solucion = problema.solucion || {};
-      const letrasSolucion = Object.keys(solucion);
-      
-      if (Object.keys(usuario).length === 0) return false;
-      
-      return letrasSolucion.every(letra => 
-        String(usuario[letra]) === String(solucion[letra])
-      );
-    }
-
-    return false;
   };
 
   // Función auxiliar para calcular la racha
@@ -182,7 +152,8 @@ const Simulacro = () => {
     
     setPuntaje(aciertos);
     setCalificado(true);
-    
+    borrarBorrador(claveBorrador);
+
     // Guardar resultado en Firestore
     if (activeProfileId) {
       try {
@@ -231,6 +202,7 @@ const Simulacro = () => {
     setRespuestas(respuestasIniciales);
     setCalificado(false);
     setPuntaje(0);
+    borrarBorrador(claveBorrador);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -289,6 +261,14 @@ const Simulacro = () => {
           <h1 className="simulacro-titulo">{isExpedicion ? '🗺️' : '📝'} {simulacro.titulo}</h1>
           {simulacro.descripcion && (
             <p className="simulacro-descripcion">{simulacro.descripcion}</p>
+          )}
+          {!isExpedicion && (
+            <button
+              className="boton-imprimir"
+              onClick={() => navigate(`/simulacro/${id}/imprimir`)}
+            >
+              🖨️ Imprimir en papel
+            </button>
           )}
           
           {/* Mostrar resultado si está calificado (NO en expedición) */}

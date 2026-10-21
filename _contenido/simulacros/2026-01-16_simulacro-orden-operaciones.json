@@ -1,0 +1,327 @@
+{
+  "id": "2026-01-16_simulacro-orden-operaciones",
+  "titulo": "Simulacro: Orden de Operaciones",
+  "descripcion": "Resuelve operaciones combinadas aplicando la jerarquía correcta: primero multiplicación y división, luego suma y resta.",
+  "problemas": [
+    {
+      "id": "op1",
+      "tipo": "opcion-multiple",
+      "titulo": "Operación Combinada",
+      "pregunta": "¿Cuál es el resultado de la siguiente operación? 3 × 4 + 5",
+      "opciones": [
+        "17",
+        "27",
+        "32",
+        "12",
+        "20"
+      ],
+      "respuesta": 0,
+      "explicacion_correcta": "¡Excelente! Primero multiplicamos: 3×4=12. Luego sumamos: 12 + 5 = 17.",
+      "explicacion_incorrecta": "Recuerda: primero multiplicación, luego suma. 3×4=12, después 12+5=17."
+    },
+    {
+      "id": "op2",
+      "tipo": "opcion-multiple",
+      "titulo": "Operación Combinada",
+      "pregunta": "¿Cuál es el resultado de la siguiente operación? 8 + 2 × 6",
+      "opciones": [
+        "60",
+        "16",
+        "20",
+        "24",
+        "18"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Muy bien! Primero multiplicamos: 2×6=12. Luego sumamos: 8 + 12 = 20.",
+      "explicacion_incorrecta": "Cuidado: no sumes primero. Multiplica 2×6=12, luego 8+12=20."
+    },
+    {
+      "id": "op3",
+      "tipo": "opcion-multiple",
+      "titulo": "Operación Combinada",
+      "pregunta": "¿Cuál es el resultado de la siguiente operación? 20 - 4 × 3",
+      "opciones": [
+        "48",
+        "8",
+        "16",
+        "12",
+        "32"
+      ],
+      "respuesta": 1,
+      "explicacion_correcta": "¡Correcto! Primero multiplicamos: 4×3=12. Luego restamos: 20 - 12 = 8.",
+      "explicacion_incorrecta": "Recuerda: primero la multiplicación. 4×3=12, después 20-12=8."
+    },
+    {
+      "id": "op4",
+      "tipo": "opcion-multiple",
+      "titulo": "Operación Combinada",
+      "pregunta": "¿Cuál es el resultado de la siguiente operación? 15 ÷ 3 + 7",
+      "opciones": [
+        "5",
+        "10",
+        "12",
+        "15",
+        "8"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Excelente! Primero dividimos: 15÷3=5. Luego sumamos: 5 + 7 = 12.",
+      "explicacion_incorrecta": "Primero divide: 15÷3=5. Después suma: 5+7=12."
+    },
+    {
+      "id": "op5",
+      "tipo": "opcion-multiple",
+      "titulo": "Operación Combinada",
+      "pregunta": "¿Cuál es el resultado de la siguiente operación? 24 ÷ 6 - 2",
+      "opciones": [
+        "4",
+        "6",
+        "2",
+        "8",
+        "3"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Muy bien! Primero dividimos: 24÷6=4. Luego restamos: 4 - 2 = 2.",
+      "explicacion_incorrecta": "Divide primero: 24÷6=4. Luego resta: 4-2=2."
+    },
+    {
+      "id": "op6",
+      "tipo": "opcion-multiple",
+      "titulo": "Operación Combinada",
+      "pregunta": "¿Cuál es el resultado de la siguiente operación? 9 × 2 - 10",
+      "opciones": [
+        "8",
+        "12",
+        "18",
+        "10",
+        "-8"
+      ],
+      "respuesta": 0,
+      "explicacion_correcta": "¡Correcto! Primero multiplicamos: 9×2=18. Luego restamos: 18 - 10 = 8.",
+      "explicacion_incorrecta": "Multiplica primero: 9×2=18. Después resta: 18-10=8."
+    },
+    {
+      "id": "op7",
+      "tipo": "opcion-multiple",
+      "titulo": "Operación Combinada",
+      "pregunta": "¿Cuál es el resultado de la siguiente operación? 6 + 18 ÷ 3",
+      "opciones": [
+        "8",
+        "24",
+        "12",
+        "9",
+        "15"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Excelente! Primero dividimos: 18÷3=6. Luego sumamos: 6 + 6 = 12.",
+      "explicacion_incorrecta": "No sumes primero. Divide: 18÷3=6. Luego: 6+6=12."
+    },
+    {
+      "id": "op8",
+      "tipo": "opcion-multiple",
+      "titulo": "Operación Combinada",
+      "pregunta": "¿Cuál es el resultado de la siguiente operación? 7 × 3 - 5 × 2",
+      "opciones": [
+        "21",
+        "32",
+        "11",
+        "6",
+        "15"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Muy bien! Primero las multiplicaciones: 7×3=21 y 5×2=10. Luego restamos: 21 - 10 = 11.",
+      "explicacion_incorrecta": "Multiplica ambas partes primero: 7×3=21 y 5×2=10. Después: 21-10=11."
+    },
+    {
+      "id": "op9",
+      "tipo": "opcion-multiple",
+      "titulo": "Operación Combinada",
+      "pregunta": "¿Cuál es el resultado de la siguiente operación? 36 ÷ 6 + 4 × 2",
+      "opciones": [
+        "20",
+        "14",
+        "16",
+        "10",
+        "12"
+      ],
+      "respuesta": 1,
+      "explicacion_correcta": "¡Correcto! Primero: 36÷6=6 y 4×2=8. Luego sumamos: 6 + 8 = 14.",
+      "explicacion_incorrecta": "Haz división y multiplicación primero: 36÷6=6, 4×2=8. Después: 6+8=14."
+    },
+    {
+      "id": "op10",
+      "tipo": "opcion-multiple",
+      "titulo": "Operación Combinada",
+      "pregunta": "¿Cuál es el resultado de la siguiente operación? 5 × 5 - 15 ÷ 3",
+      "opciones": [
+        "15",
+        "25",
+        "20",
+        "10",
+        "30"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Excelente! Primero: 5×5=25 y 15÷3=5. Luego restamos: 25 - 5 = 20.",
+      "explicacion_incorrecta": "Multiplica y divide primero: 5×5=25, 15÷3=5. Luego: 25-5=20."
+    },
+    {
+      "id": "op11",
+      "tipo": "opcion-multiple",
+      "titulo": "Operación Combinada",
+      "pregunta": "¿Cuál es el resultado de la siguiente operación? 8 × 4 - 20 ÷ 4",
+      "opciones": [
+        "32",
+        "27",
+        "24",
+        "36",
+        "20"
+      ],
+      "respuesta": 1,
+      "explicacion_correcta": "¡Muy bien! Primero: 8×4=32 y 20÷4=5. Luego restamos: 32 - 5 = 27.",
+      "explicacion_incorrecta": "Primero multiplica y divide: 8×4=32, 20÷4=5. Después: 32-5=27."
+    },
+    {
+      "id": "op12",
+      "tipo": "opcion-multiple",
+      "titulo": "Operación Combinada",
+      "pregunta": "¿Cuál es el resultado de la siguiente operación? 10 + 3 × 7",
+      "opciones": [
+        "91",
+        "31",
+        "21",
+        "30",
+        "40"
+      ],
+      "respuesta": 1,
+      "explicacion_correcta": "¡Correcto! Primero multiplicamos: 3×7=21. Luego sumamos: 10 + 21 = 31.",
+      "explicacion_incorrecta": "No sumes primero. Multiplica: 3×7=21. Luego: 10+21=31."
+    },
+    {
+      "id": "op13",
+      "tipo": "opcion-multiple",
+      "titulo": "Operación Combinada",
+      "pregunta": "¿Cuál es el resultado de la siguiente operación? 45 ÷ 9 + 6 × 3",
+      "opciones": [
+        "27",
+        "23",
+        "18",
+        "33",
+        "15"
+      ],
+      "respuesta": 1,
+      "explicacion_correcta": "¡Excelente! Primero: 45÷9=5 y 6×3=18. Luego sumamos: 5 + 18 = 23.",
+      "explicacion_incorrecta": "Divide y multiplica primero: 45÷9=5, 6×3=18. Después: 5+18=23."
+    },
+    {
+      "id": "op14",
+      "tipo": "opcion-multiple",
+      "titulo": "Operación Combinada",
+      "pregunta": "¿Cuál es el resultado de la siguiente operación? 12 - 8 ÷ 2",
+      "opciones": [
+        "2",
+        "4",
+        "8",
+        "6",
+        "10"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Muy bien! Primero dividimos: 8÷2=4. Luego restamos: 12 - 4 = 8.",
+      "explicacion_incorrecta": "Divide primero: 8÷2=4. Luego: 12-4=8."
+    },
+    {
+      "id": "op15",
+      "tipo": "opcion-multiple",
+      "titulo": "Operación Combinada",
+      "pregunta": "¿Cuál es el resultado de la siguiente operación? 4 × 6 + 3 × 5",
+      "opciones": [
+        "39",
+        "45",
+        "27",
+        "33",
+        "54"
+      ],
+      "respuesta": 0,
+      "explicacion_correcta": "¡Correcto! Primero: 4×6=24 y 3×5=15. Luego sumamos: 24 + 15 = 39.",
+      "explicacion_incorrecta": "Multiplica ambas partes: 4×6=24, 3×5=15. Después: 24+15=39."
+    },
+    {
+      "id": "op16",
+      "tipo": "opcion-multiple",
+      "titulo": "Operación Combinada",
+      "pregunta": "¿Cuál es el resultado de la siguiente operación? 30 ÷ 5 × 2",
+      "opciones": [
+        "3",
+        "12",
+        "10",
+        "6",
+        "15"
+      ],
+      "respuesta": 1,
+      "explicacion_correcta": "¡Excelente! De izquierda a derecha: 30÷5=6, luego 6×2 = 12.",
+      "explicacion_incorrecta": "División y multiplicación van de izquierda a derecha: 30÷5=6, 6×2=12."
+    },
+    {
+      "id": "op17",
+      "tipo": "opcion-multiple",
+      "titulo": "Operación Combinada",
+      "pregunta": "¿Cuál es el resultado de la siguiente operación? 7 + 9 × 2 - 5",
+      "opciones": [
+        "27",
+        "20",
+        "22",
+        "18",
+        "25"
+      ],
+      "respuesta": 1,
+      "explicacion_correcta": "¡Muy bien! Primero: 9×2=18. Luego de izquierda a derecha: 7+18-5 = 20.",
+      "explicacion_incorrecta": "Multiplica primero: 9×2=18. Luego: 7+18=25, 25-5=20."
+    },
+    {
+      "id": "op18",
+      "tipo": "opcion-multiple",
+      "titulo": "Operación Combinada",
+      "pregunta": "¿Cuál es el resultado de la siguiente operación? 6 × 8 - 24 ÷ 4",
+      "opciones": [
+        "42",
+        "48",
+        "36",
+        "54",
+        "40"
+      ],
+      "respuesta": 0,
+      "explicacion_correcta": "¡Correcto! Primero: 6×8=48 y 24÷4=6. Luego restamos: 48 - 6 = 42.",
+      "explicacion_incorrecta": "Multiplica y divide primero: 6×8=48, 24÷4=6. Después: 48-6=42."
+    },
+    {
+      "id": "op19",
+      "tipo": "opcion-multiple",
+      "titulo": "Operación Combinada",
+      "pregunta": "¿Cuál es el resultado de la siguiente operación? 25 - 4 × 4 + 3",
+      "opciones": [
+        "12",
+        "87",
+        "6",
+        "16",
+        "24"
+      ],
+      "respuesta": 0,
+      "explicacion_correcta": "¡Excelente! Primero: 4×4=16. Luego: 25-16=9, y 9+3 = 12.",
+      "explicacion_incorrecta": "Multiplica primero: 4×4=16. Después: 25-16=9, 9+3=12."
+    },
+    {
+      "id": "op20",
+      "tipo": "opcion-multiple",
+      "titulo": "Operación Combinada",
+      "pregunta": "¿Cuál es el resultado de la siguiente operación? 3 × 3 + 4 × 4",
+      "opciones": [
+        "24",
+        "49",
+        "25",
+        "16",
+        "36"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Muy bien! Primero: 3×3=9 y 4×4=16. Luego sumamos: 9 + 16 = 25.",
+      "explicacion_incorrecta": "Multiplica ambas partes: 3×3=9, 4×4=16. Después: 9+16=25."
+    }
+  ]
+}

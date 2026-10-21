@@ -1,0 +1,531 @@
+/* Versión impresa de un simulacro. Todo cuelga de .impreso-fondo / .impreso, y las
+   reglas globales van con body:has(.impreso): este CSS se queda cargado al navegar a
+   otras pantallas y no debe cambiar cómo se imprimen. */
+
+@page {
+  size: letter;
+  margin: 14mm 14mm 16mm;
+}
+
+/* ---------- Pantalla: hoja blanca sobre fondo gris ---------- */
+body:has(.impreso-fondo) #root {
+  max-width: none;
+  padding: 0;
+  text-align: left;
+}
+
+.impreso-fondo {
+  width: 100%;
+  min-height: 100vh;
+  background: #e9ecef;
+  color: #1f2328;
+  font-family: var(--font-body, 'Nunito', sans-serif);
+  color-scheme: light;
+}
+
+.impreso-barra {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  padding: 12px 16px;
+  background: #ffffff;
+  border-bottom: 1px solid #d0d7de;
+}
+
+.impreso-barra button {
+  font: inherit;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #d0d7de;
+  background: #f6f8fa;
+  color: #1f2328;
+  cursor: pointer;
+}
+
+.impreso-barra label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.impreso-barra .impreso-boton-imprimir {
+  margin-left: auto;
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.impreso-mensaje {
+  padding: 40px 16px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.impreso {
+  max-width: 8.5in;
+  margin: 24px auto;
+  padding: 14mm;
+  background: #ffffff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  font-size: 14pt;
+  line-height: 1.4;
+}
+
+/* Vista previa en celular: sin el margen de hoja carta (al imprimir manda @page) */
+@media screen and (max-width: 600px) {
+  .impreso {
+    margin: 0;
+    padding: 16px;
+    box-shadow: none;
+  }
+}
+
+.impreso h1,
+.impreso h2 {
+  font-family: var(--font-headings, 'Fredoka', sans-serif);
+  margin: 0 0 6px;
+  color: #1f2328;
+}
+
+.impreso h1 { font-size: 20pt; }
+.impreso h2 { font-size: 18pt; }
+
+/* ---------- Encabezado ---------- */
+.impreso-encabezado {
+  border-bottom: 2px solid #1f2328;
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+}
+
+.impreso-subtitulo {
+  margin: 0 0 8px;
+  color: #57606a;
+  font-size: 11pt;
+}
+
+.impreso-datos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  font-size: 12pt;
+  margin: 8px 0 6px;
+}
+
+.impreso-instrucciones {
+  margin: 6px 0 0;
+  font-size: 11.5pt;
+  color: #333;
+}
+
+.pi-linea {
+  display: inline-block;
+  width: 9em;
+  border-bottom: 1.5px solid #1f2328;
+  height: 1em;
+  vertical-align: baseline;
+}
+
+.pi-linea-larga { width: 16em; }
+.pi-linea-corta { width: 4.5em; }
+
+/* ---------- Pregunta ---------- */
+.pregunta-impresa {
+  display: flex;
+  gap: 10px;
+  padding: 10px 0 14px;
+  border-bottom: 1px dashed #c4c9cf;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.pi-numero {
+  flex: 0 0 auto;
+  min-width: 1.8em;
+  font-weight: 800;
+  font-size: 15pt;
+}
+
+.pi-cuerpo {
+  flex: 1;
+  min-width: 0;
+}
+
+.pi-enunciado {
+  white-space: pre-line;
+  margin-bottom: 8px;
+}
+
+.pi-imagen {
+  margin: 6px 0 10px;
+}
+
+.pi-imagen svg,
+.pi-imagen img {
+  max-width: 100%;
+  max-height: 200px;
+  height: auto;
+}
+
+.pi-imagen svg:not([width]) {
+  width: 260px;
+}
+
+.pi-nota {
+  margin: 6px 0 0;
+  font-size: 11.5pt;
+  color: #444;
+}
+
+.pi-renglon {
+  margin: 10px 0 0;
+}
+
+.pi-renglon .pi-linea { width: 12em; }
+
+.pi-no-imprimible {
+  color: #b91c1c;
+  font-weight: 700;
+}
+
+/* Tarjetas de número dentro de una pregunta (ej. OEM 2025, problema 11) */
+.impreso .tarjeta-numero {
+  display: inline-block;
+  min-width: 1.4em;
+  margin: 0 2px;
+  padding: 1px 6px;
+  border: 1.5px solid #1f2328;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* Opciones A-E */
+.pi-opciones {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 14em), 1fr));
+  gap: 6px 18px;
+}
+
+.pi-opcion {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pi-letra {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6em;
+  height: 1.6em;
+  border: 1.5px solid #1f2328;
+  border-radius: 50%;
+  font-weight: 800;
+  font-size: 11pt;
+}
+
+.pi-opciones-imagenes {
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+}
+
+.pi-opciones-imagenes .pi-opcion {
+  flex-direction: column-reverse;
+  gap: 4px;
+}
+
+.pi-opcion-imagen svg {
+  width: 90px;
+  height: 90px;
+}
+
+/* Operaciones */
+.pi-caja-operaciones {
+  height: 70px;
+  border: 1px dotted #9aa1a8;
+  border-radius: 6px;
+  margin-top: 6px;
+}
+
+/* Criptoaritmética */
+.pi-cripto-op {
+  display: inline-block;
+  min-width: 6em;
+  margin: 4px 0 8px 1em;
+  font-family: 'Courier New', monospace;
+  font-size: 20pt;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-align: right;
+  line-height: 1.25;
+}
+
+.pi-cripto-raya {
+  border-top: 2.5px solid #1f2328;
+  margin: 2px 0;
+}
+
+.pi-cripto-valores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+}
+
+.pi-cripto-valor {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14pt;
+}
+
+.pi-cuadro {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  border: 1.5px solid #1f2328;
+  border-radius: 4px;
+  vertical-align: middle;
+}
+
+/* Mapa */
+.pi-mapa {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 10px 22px;
+}
+
+.pi-mapa-svg {
+  width: 100%;
+  flex: 1 1 260px;
+  height: auto;
+}
+
+.pi-pasos {
+  margin: 0;
+  padding-left: 1.4em;
+  font-size: 12.5pt;
+}
+
+/* Cubos: plano de 3x4 a ~160 px para que quepan unos 3 por hoja carta */
+.pi-cubo-svg {
+  width: 160px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Balanza (dibujo estático) */
+.pi-balanza {
+  width: min(100%, 380px);
+  margin: 6px 0 4px;
+}
+
+.pi-balanza-platillos {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.pi-platillo {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 6px;
+  min-height: 48px;
+  padding: 4px 6px;
+  border-bottom: 3px solid #1f2328;
+  border-radius: 0 0 40% 40%;
+}
+
+.pi-objeto {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.1;
+}
+
+.pi-objeto-icono { font-size: 24pt; }
+.pi-objeto-cantidad { font-weight: 800; font-size: 11pt; }
+.pi-objeto-valor { font-weight: 800; font-size: 12pt; }
+
+.pi-balanza-barra {
+  height: 4px;
+  margin: 10px 8% 0;
+  background: #1f2328;
+}
+
+.pi-balanza-base {
+  width: 0;
+  height: 0;
+  margin: 0 auto;
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-bottom: 26px solid #1f2328;
+}
+
+/* Palabra */
+.pi-letras-revueltas {
+  margin: 8px 0;
+}
+
+.pi-ficha {
+  display: inline-block;
+  min-width: 1.3em;
+  margin: 0 3px;
+  padding: 1px 6px;
+  border: 1.5px solid #1f2328;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 800;
+}
+
+.pi-casillas {
+  display: flex;
+  gap: 8px;
+}
+
+.pi-cuadro-grande {
+  width: 1.9em;
+  height: 1.9em;
+}
+
+/* ---------- Hoja de respuestas ---------- */
+.seccion-hoja,
+.seccion-clave {
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 3px double #9aa1a8;
+}
+
+.hoja-filas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  columns: 2;
+  column-gap: 32px;
+}
+
+.hoja-fila {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 0;
+  break-inside: avoid;
+}
+
+.hoja-numero {
+  min-width: 2em;
+  font-weight: 800;
+}
+
+.hoja-burbuja {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.55em;
+  height: 1.55em;
+  border: 1.5px solid #1f2328;
+  border-radius: 50%;
+  font-size: 10.5pt;
+  font-weight: 700;
+  color: #57606a;
+}
+
+.hoja-linea { width: 8em; }
+
+/* ---------- Clave ---------- */
+.clave-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11pt;
+}
+
+.clave-fila td {
+  padding: 5px 6px;
+  border-bottom: 1px solid #d0d7de;
+  vertical-align: top;
+}
+
+.clave-fila {
+  break-inside: avoid;
+}
+
+.clave-numero {
+  width: 2.2em;
+  font-weight: 800;
+}
+
+.clave-respuesta {
+  width: 30%;
+}
+
+.clave-letra {
+  display: inline-block;
+  min-width: 1.3em;
+  font-size: 12pt;
+}
+
+.clave-explicacion {
+  color: #333;
+}
+
+/* ---------- Impresión ---------- */
+@media print {
+  body:has(.impreso-fondo) {
+    background: #ffffff !important;
+  }
+
+  body:has(.impreso-fondo) *,
+  body:has(.impreso-fondo) *::before,
+  body:has(.impreso-fondo) *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .solo-pantalla {
+    display: none !important;
+  }
+
+  .impreso-fondo {
+    background: #ffffff;
+    min-height: 0;
+  }
+
+  .impreso {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .seccion-hoja,
+  .seccion-clave {
+    break-before: page;
+    page-break-before: always;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+
+  /* Los colores que dan información (caras del cubo, dibujos) sí se imprimen */
+  .pi-imagen,
+  .pi-opcion-imagen,
+  .pi-cubo-svg,
+  .pi-mapa-svg,
+  .pi-balanza {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

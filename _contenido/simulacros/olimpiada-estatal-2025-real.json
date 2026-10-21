@@ -1,0 +1,290 @@
+{
+  "id": "olimpiada-estatal-2025-real",
+  "titulo": "Gran Examen de Olimpiada: Edición Real",
+  "descripcion": "El examen oficial de la Olimpiada de Matemáticas. ¡Demuestra todo lo que sabes!",
+  "problemas": [
+    {
+      "id": "p1",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Qué enunciado es el correcto?",
+      "opciones": [
+        "5 < 7",
+        "7 < 5",
+        "5 < 4",
+        "4 > 5",
+        "5 > 7"
+      ],
+      "respuesta": 0,
+      "explicacion_correcta": "¡Correcto! El símbolo '<' significa 'menor que'. La parte abierta siempre apunta al número más grande. 5 es menor que 7."
+    },
+    {
+      "id": "p2",
+      "tipo": "opcion-multiple",
+      "pregunta": "Una araña tiene 8 patas. ¿Cuántas patas tienen 6 arañas?",
+      "opciones": [
+        "8",
+        "24",
+        "32",
+        "40",
+        "48"
+      ],
+      "respuesta": 4,
+      "explicacion_correcta": "¡Exacto! Multiplicamos 6 arañas por 8 patas cada una: 6 x 8 = 48 patas."
+    },
+    {
+      "id": "p3",
+      "tipo": "opcion-multiple",
+      "pregunta": "En una caja hay 6 bombones. ¿Cuántas cajas se necesitan para tener 36 bombones?",
+      "opciones": [
+        "2",
+        "4",
+        "6",
+        "8",
+        "10"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Muy bien! Dividimos el total de bombones entre los que caben en una caja: 36 ÷ 6 = 6 cajas."
+    },
+    {
+      "id": "p4",
+      "tipo": "opcion-multiple",
+      "pregunta": "Eli tiene 12 gomitas que quiere repartir entre sus 6 amigos. ¿Cuántas gomitas le tocan a cada uno?",
+      "opciones": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "6"
+      ],
+      "respuesta": 1,
+      "explicacion_correcta": "¡Correcto! Repartimos 12 gomitas entre 6 amigos: 12 ÷ 6 = 2 gomitas para cada uno."
+    },
+    {
+      "id": "p5",
+      "tipo": "opcion-multiple",
+      "pregunta": "Frida tenía 15 canicas y le da 5 a Gustavo, 2 a Josué y 1 a Fanny. ¿Con cuántas canicas se queda Frida?",
+      "opciones": [
+        "10",
+        "7",
+        "6",
+        "8",
+        "9"
+      ],
+      "respuesta": 1,
+      "explicacion_correcta": "¡Bien hecho! Frida regaló 5 + 2 + 1 = 8 canicas en total. Si tenía 15, le restamos 8: 15 - 8 = 7 canicas."
+    },
+    {
+      "id": "p6",
+      "tipo": "opcion-multiple",
+      "pregunta": "Ayer vendí 10 chocolates y el triple de bombones. ¿Cuántos dulces vendí en total?",
+      "opciones": [
+        "10",
+        "20",
+        "30",
+        "40",
+        "50"
+      ],
+      "respuesta": 3,
+      "explicacion_correcta": "¡Correcto! Si vendiste 10 chocolates, el triple de bombones son 30 (10 x 3). En total son 10 + 30 = 40 dulces."
+    },
+    {
+      "id": "p7",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Cuál es el resultado de la siguiente operación? 5 x 6 - 10 ÷ 2",
+      "opciones": [
+        "10",
+        "25",
+        "20",
+        "15",
+        "30"
+      ],
+      "respuesta": 1,
+      "explicacion_correcta": "¡Excelente! Primero multiplicamos y dividimos: 5x6=30 y 10÷2=5. Luego restamos: 30 - 5 = 25."
+    },
+    {
+      "id": "p8",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Qué número va en el recuadro? 26 + ■ = 43",
+      "opciones": [
+        "17",
+        "10",
+        "13",
+        "23",
+        "7"
+      ],
+      "respuesta": 0,
+      "explicacion_correcta": "¡Así es! Para encontrar el número que falta, restamos 43 - 26, lo que nos da 17."
+    },
+    {
+      "id": "p9",
+      "tipo": "opcion-multiple",
+      "pregunta": "¿Cuál es el resultado de multiplicar 1 x 2 x 3 x 4?",
+      "opciones": [
+        "9",
+        "6",
+        "24",
+        "12",
+        "30"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Correcto! 1x2=2, luego 2x3=6, y finalmente 6x4=24."
+    },
+    {
+      "id": "p10",
+      "tipo": "opcion-multiple",
+      "pregunta": "En los últimos metros de una carrera Rosy rebasa al que va en segunda posición. ¿En qué posición se coloca ahora?",
+      "opciones": [
+        "1ra",
+        "2da",
+        "3ra",
+        "4ta",
+        "5ta"
+      ],
+      "respuesta": 1,
+      "explicacion_correcta": "¡Lógica pura! Si pasas al que va en segundo lugar, tú tomas su lugar. ¡Ahora vas en 2da posición!"
+    },
+    {
+      "id": "p11",
+      "tipo": "opcion-multiple",
+      "pregunta": "Estrella es más alta que Selene, pero menos que Leilani. ¿Quién es más alta?",
+      "opciones": [
+        "Selene y Estrella",
+        "Selene",
+        "Leilani",
+        "Estrella",
+        "Estrella y Leilani"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Muy bien! Ordenándolas: Leilani es más alta que Estrella, y Estrella es más alta que Selene. La más alta es Leilani."
+    },
+    {
+      "id": "p12",
+      "tipo": "opcion-multiple",
+      "pregunta": "José ha sacado mejor nota que Susana. Luis ha sacado menos nota que Gloria y más que José. ¿Quién ha sacado menor nota?",
+      "opciones": [
+        "Susana",
+        "Luis",
+        "José",
+        "Gloria",
+        "Luis y Gloria"
+      ],
+      "respuesta": 0,
+      "explicacion_correcta": "¡Correcto! El orden de mayor a menor es: Gloria > Luis > José > Susana. La nota más baja es la de Susana."
+    },
+    {
+      "id": "p13",
+      "tipo": "opcion-multiple",
+      "pregunta": "Tadeo salió de su casa a las 7:40 am y llegó a la escuela a las 8:30 am. ¿Cuánto tiempo tarda en llevar a la escuela?",
+      "opciones": [
+        "10 min",
+        "20 min",
+        "30 min",
+        "40 min",
+        "50 min"
+      ],
+      "respuesta": 4,
+      "explicacion_correcta": "¡Exacto! De 7:40 a 8:00 van 20 minutos, y de 8:00 a 8:30 van otros 30. Total: 20 + 30 = 50 minutos."
+    },
+    {
+      "id": "p14",
+      "tipo": "opcion-multiple",
+      "pregunta": "Fernanda escribió la palabra MATEMATICAS en su libreta 10 veces. ¿Cuántas veces escribió la letra 'T'?",
+      "opciones": [
+        "20 veces",
+        "10 veces",
+        "15 veces",
+        "2 veces",
+        "8 veces"
+      ],
+      "respuesta": 0,
+      "explicacion_correcta": "¡Bien pensado! La palabra MA-TE-MA-TI-CAS tiene 2 letras 'T'. Si la escribe 10 veces: 2 x 10 = 20."
+    },
+    {
+      "id": "p15",
+      "tipo": "opcion-multiple",
+      "pregunta": "Para preparar un pastel se ocupan 4 huevos. ¿Cuántos huevos se necesitan para preparar 7 pasteles?",
+      "opciones": [
+        "20",
+        "24",
+        "27",
+        "28",
+        "30"
+      ],
+      "respuesta": 3,
+      "explicacion_correcta": "¡Correcto! Multiplicamos 7 pasteles por 4 huevos cada uno: 7 x 4 = 28 huevos."
+    },
+    {
+      "id": "p16",
+      "tipo": "opcion-multiple",
+      "pregunta": "Para una boda se necesitan 7 centros de mesa con 6 flores cada uno. Si se tienen 47 flores ¿Cuántas flores van a sobrar?",
+      "opciones": [
+        "1 flor",
+        "2 flores",
+        "3 flores",
+        "4 flores",
+        "5 flores"
+      ],
+      "respuesta": 4,
+      "explicacion_correcta": "¡Muy bien! Necesitamos 7 x 6 = 42 flores. Si tenemos 47, sobran: 47 - 42 = 5 flores."
+    },
+    {
+      "id": "p17",
+      "tipo": "opcion-multiple",
+      "pregunta": "Pablo tiene 17 juguetes que quiere repartir entre sus 4 amigos. ¿Cuántos juguetes le faltan para que todos acaben con la misma cantidad de juguetes?",
+      "opciones": [
+        "Cuatro",
+        "Tres",
+        "Dos",
+        "Uno",
+        "Ninguno"
+      ],
+      "respuesta": 1,
+      "explicacion_correcta": "¡Excelente! 17 no se divide exacto entre 4. El siguiente número que sí se puede dividir es 20 (4x5). Le faltan 3 juguetes para llegar a 20."
+    },
+    {
+      "id": "p18",
+      "tipo": "opcion-multiple",
+      "pregunta": "Azul le pregunta su edad a Rafa y él responde: 'Mi edad es menor que 20 y está exactamente a mitad de camino entre 10 y 20'. ¿Qué edad tiene Rafa?",
+      "opciones": [
+        "19",
+        "9",
+        "15",
+        "21",
+        "7"
+      ],
+      "respuesta": 2,
+      "explicacion_correcta": "¡Correcto! El número que está justo en medio del 10 y el 20 es el 15 (hay 5 números de distancia para cada lado)."
+    },
+    {
+      "id": "p19",
+      "tipo": "opcion-multiple",
+      "pregunta": "Los dos pasteles eran iguales, pero Ange cortó un pedazo del pastel de la derecha. ¿Qué pedazo cortó? (Observa la forma del mordisco)",
+      "imagen": "<svg viewBox='0 0 400 200' xmlns='http://www.w3.org/2000/svg'><defs><filter id='s' x='-20%' y='-20%' width='140%' height='140%'><feDropShadow dx='2' dy='2' stdDeviation='1' flood-color='#0003'/></filter></defs><!-- Galleta Completa --><g transform='translate(50, 20)'><path d='M60 20 C60 20 80 0 100 20 C115 35 100 50 100 50 L130 60 C140 65 130 85 120 90 L100 80 L100 120 L120 150 C130 160 110 170 100 160 L70 130 L40 160 C30 170 10 160 20 150 L40 120 L40 80 L20 90 C10 85 0 65 10 60 L40 50 C40 50 25 35 40 20 C60 0 60 20 60 20 Z' fill='#d2691e' stroke='#8b4513' stroke-width='3' filter='url(#s)'/><circle cx='60' cy='50' r='3' fill='white'/><circle cx='80' cy='50' r='3' fill='white'/><circle cx='70' cy='70' r='3' fill='white'/><circle cx='70' cy='90' r='3' fill='white'/></g><!-- Galleta con Mordida (falta brazo derecho) --><g transform='translate(220, 20)'><path d='M60 20 C60 20 80 0 100 20 C115 35 100 50 100 50 L100 80 L100 120 L120 150 C130 160 110 170 100 160 L70 130 L40 160 C30 170 10 160 20 150 L40 120 L40 80 L20 90 C10 85 0 65 10 60 L40 50 C40 50 25 35 40 20 C60 0 60 20 60 20 Z' fill='#d2691e' stroke='#8b4513' stroke-width='3' filter='url(#s)'/><circle cx='60' cy='50' r='3' fill='white'/><circle cx='80' cy='50' r='3' fill='white'/><circle cx='70' cy='70' r='3' fill='white'/><circle cx='70' cy='90' r='3' fill='white'/></g></svg>",
+      "opciones": [
+        "<svg viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'><path d='M10 10 L40 10 L40 40 L10 40 Z' fill='#d2691e' stroke='#8b4513' stroke-width='2'/></svg>",
+        "<svg viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'><path d='M10 20 L40 30 C50 35 40 55 30 60 L10 50 Z' fill='#d2691e' stroke='#8b4513' stroke-width='2'/></svg>",
+        "<svg viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'><path d='M30 0 L0 10 C0 10 10 20 20 25 C30 30 20 50 10 55 L30 45 Z' fill='#d2691e' stroke='#8b4513' stroke-width='2' transform='rotate(180 30 30)'/></svg>",
+        "<svg viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'><circle cx='30' cy='30' r='20' fill='#d2691e' stroke='#8b4513' stroke-width='2'/></svg>",
+        "<svg viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'><path d='M10 10 L40 10 L25 40 Z' fill='#d2691e' stroke='#8b4513' stroke-width='2'/></svg>"
+      ],
+      "opciones_son_imagenes": true,
+      "respuesta": 1,
+      "explicacion_correcta": "¡Muy bien observador! La pieza que falta es el brazo derecho de la galleta, que tiene esa forma curva y alargada."
+    },
+    {
+      "id": "p20",
+      "tipo": "opcion-multiple",
+      "pregunta": "La cruz está formada por mosaicos cuadrados grises, pero se cayeron todos los del centro. ¿Cuántos se cayeron?",
+      "imagen": "<svg viewBox='0 0 360 360' xmlns='http://www.w3.org/2000/svg'><g fill='#999' stroke='#333' stroke-width='1'><!-- Fila 2 (y=40): col 4,5,6 = 3 grises --><rect x='120' y='40' width='40' height='40'/><rect x='160' y='40' width='40' height='40'/><rect x='200' y='40' width='40' height='40'/><!-- Fila 3 (y=80): col 4,6 = 2 grises --><rect x='120' y='80' width='40' height='40'/><rect x='200' y='80' width='40' height='40'/><!-- Fila 4 (y=120): col 2,3,4,6,7,8 = 6 grises --><rect x='40' y='120' width='40' height='40'/><rect x='80' y='120' width='40' height='40'/><rect x='120' y='120' width='40' height='40'/><rect x='200' y='120' width='40' height='40'/><rect x='240' y='120' width='40' height='40'/><rect x='280' y='120' width='40' height='40'/><!-- Fila 5 (y=160): col 2,8 = 2 grises --><rect x='40' y='160' width='40' height='40'/><rect x='280' y='160' width='40' height='40'/><!-- Fila 6 (y=200): col 2,3,4,6,7,8 = 6 grises --><rect x='40' y='200' width='40' height='40'/><rect x='80' y='200' width='40' height='40'/><rect x='120' y='200' width='40' height='40'/><rect x='200' y='200' width='40' height='40'/><rect x='240' y='200' width='40' height='40'/><rect x='280' y='200' width='40' height='40'/><!-- Fila 7 (y=240): col 4,6 = 2 grises --><rect x='120' y='240' width='40' height='40'/><rect x='200' y='240' width='40' height='40'/><!-- Fila 8 (y=280): col 4,5,6 = 3 grises --><rect x='120' y='280' width='40' height='40'/><rect x='160' y='280' width='40' height='40'/><rect x='200' y='280' width='40' height='40'/></g></svg>",
+      "opciones": [
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "respuesta": 4,
+      "explicacion_correcta": "¡Correcto! Son 9 cuadrados que se cayeron del centro de la cruz."
+    }
+  ]
+}

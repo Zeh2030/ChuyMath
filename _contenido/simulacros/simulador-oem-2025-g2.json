@@ -25,7 +25,9 @@
       "tipo": "opcion-multiple",
       "pregunta": "Selene tiene 3 chocolates y le da 1 a su mamá. ¿Cuántos chocolates le quedan?",
       "opciones": ["5", "3", "2", "4", "1"],
-      "respuesta": "2"
+      "respuesta": "2",
+      "explicacion_correcta": "¡Muy bien! Selene tenía 3 chocolates y regaló 1: 3 − 1 = 2.",
+      "explicacion_incorrecta": "Fíjate: Selene REGALA un chocolate, así que le quedan menos. 3 − 1 = 2."
     },
     {
       "id": "problema-3",
@@ -47,7 +49,9 @@
       "tipo": "opcion-multiple",
       "pregunta": "¿Cuánto es 2 + 0 − 2 + 5?",
       "opciones": ["9", "2", "3", "5", "0"],
-      "respuesta": "3"
+      "respuesta": "3",
+      "explicacion_correcta": "¡Exacto! Ve de izquierda a derecha: 2 + 0 = 2, luego 2 − 2 = 0, y 0 + 5 = 5.",
+      "explicacion_incorrecta": "Hazlo paso a paso, de izquierda a derecha: 2 + 0 = 2; 2 − 2 = 0; 0 + 5 = 5."
     },
     {
       "id": "problema-5",
@@ -70,7 +74,9 @@
       "tipo": "opcion-multiple",
       "pregunta": "¿Cuál es el resultado de sumar 1, 2, 3, 4 y 5?",
       "opciones": ["10", "13", "20", "15", "8"],
-      "respuesta": "3"
+      "respuesta": "3",
+      "explicacion_correcta": "¡Correcto! Truco: junta parejas que sumen 5: 1 + 4 = 5 y 2 + 3 = 5. Eso da 10, y con el 5 que sobra son 15.",
+      "explicacion_incorrecta": "Suma con calma: 1 + 2 = 3, + 3 = 6, + 4 = 10, + 5 = 15. O junta parejas: (1 + 4) + (2 + 3) + 5 = 15."
     },
     {
       "id": "problema-7",
@@ -94,7 +100,9 @@
       "tipo": "opcion-multiple",
       "pregunta": "Sofía tiene 15 canicas y su amiga le da 13 más. ¿Cuántas canicas tiene ahora?",
       "opciones": ["19", "29", "28", "25", "23"],
-      "respuesta": "2"
+      "respuesta": "2",
+      "explicacion_correcta": "¡Bien! 15 + 13: primero las decenas, 10 + 10 = 20; luego las unidades, 5 + 3 = 8. En total 28.",
+      "explicacion_incorrecta": "Separa en decenas y unidades: 10 + 10 = 20 y 5 + 3 = 8. Juntos: 28."
     },
     {
       "id": "problema-9",
@@ -198,7 +206,9 @@
       "tipo": "opcion-multiple",
       "pregunta": "Marta tiene 15 monedas 🪙 y encuentra 14 más en su mochila. ¿Cuántas monedas tiene en total?",
       "opciones": ["10", "39", "20", "29", "30"],
-      "respuesta": "3"
+      "respuesta": "3",
+      "explicacion_correcta": "¡Muy bien! 15 + 14: decenas 10 + 10 = 20 y unidades 5 + 4 = 9. En total 29 monedas.",
+      "explicacion_incorrecta": "Separa en decenas y unidades: 10 + 10 = 20 y 5 + 4 = 9. Juntos: 29."
     },
     {
       "id": "problema-19",

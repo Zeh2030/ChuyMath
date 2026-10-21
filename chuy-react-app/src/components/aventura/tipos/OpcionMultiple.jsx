@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { esIndice, opcionMultipleCorrecta, respuestaCorrectaOM, seleccionOM, valorDeOpcion } from '../../../utils/calificar';
 import './OpcionMultiple.css';
 
 /**
@@ -34,7 +35,8 @@ const OpcionMultiple = ({
   // Extraer datos de la misión
   const pregunta = mision.pregunta || mision.pregunta_final || 'Selecciona la respuesta correcta:';
   const opciones = mision.opciones || mision.opciones_finales || [];
-  const respuestaCorrecta = mision.respuesta || mision.respuesta_final || '';
+  const respuestaCorrecta = respuestaCorrectaOM(mision);
+  const respuestaEsIndice = esIndice(respuestaCorrecta);
   const explicacionCorrecta = mision.explicacion_correcta || '¡Correcto!';
   const explicacionIncorrecta = mision.explicacion_incorrecta || 'Intenta de nuevo.';
   const opcionesSonImagenes = mision.opciones_son_imagenes || false;
@@ -54,22 +56,10 @@ const OpcionMultiple = ({
   // Manejar selección de opción
   const handleSeleccion = (opcion, indice) => {
     if (mostrarResultado || mostrarResultadoExterno) return; // No permitir cambiar después de responder
-    
-    // Determinar si debemos guardar el índice o el valor
-    // En modo simulacro, preferimos índices si la respuesta parece un índice
-    const esIndice = typeof respuestaCorrecta === 'number' || 
-                     (typeof respuestaCorrecta === 'string' && /^\d+$/.test(respuestaCorrecta));
-    
-    let valorSeleccionado;
-    if (esIndice) {
-      valorSeleccionado = indice.toString();
-    } else {
-      // Si la opción es un objeto con propiedad 'valor', usamos ese valor. Si no, usamos la opción tal cual.
-      valorSeleccionado = (typeof opcion === 'object' && opcion !== null && opcion.valor !== undefined) 
-        ? opcion.valor 
-        : opcion;
-    }
-    
+
+    // Índice (como texto) si la respuesta del JSON es un índice; si no, el valor de la opción
+    const valorSeleccionado = seleccionOM(mision, opcion, indice);
+
     setRespuestaSeleccionada(valorSeleccionado);
     
     // En modo simulacro, notificar al padre inmediatamente
@@ -82,18 +72,7 @@ const OpcionMultiple = ({
   const handleEnviar = () => {
     if (respuestaSeleccionada === null || respuestaSeleccionada === undefined) return;
 
-    // Comparar respuesta (normalizar tipos)
-    let correcta = false;
-    if (typeof respuestaCorrecta === 'number') {
-      // respuestaCorrecta es un número, comparar como números
-      correcta = parseInt(respuestaSeleccionada) === respuestaCorrecta;
-    } else if (typeof respuestaCorrecta === 'string' && /^\d+$/.test(respuestaCorrecta)) {
-      // respuestaCorrecta es un string numérico, comparar como strings
-      correcta = respuestaSeleccionada === respuestaCorrecta;
-    } else {
-      // respuestaCorrecta es un valor no-numérico, comparar directamente
-      correcta = respuestaSeleccionada === respuestaCorrecta;
-    }
+    const correcta = opcionMultipleCorrecta(mision, respuestaSeleccionada);
 
     setEsCorrecta(correcta);
     setMostrarResultado(true);
@@ -117,47 +96,19 @@ const OpcionMultiple = ({
 
   // Determinar si una opción está seleccionada
   const estaOpcionSeleccionada = (index) => {
-    const esIndice = typeof respuestaCorrecta === 'number' || (typeof respuestaCorrecta === 'string' && /^\d+$/.test(respuestaCorrecta));
-    if (esIndice) {
-      // Si la respuesta es un índice, comparar índices
-      return respuestaSeleccionada === index || respuestaSeleccionada === index.toString();
-    } else {
-      // Si no, comparar valores
-      const opcion = opciones[index];
-      const valorOpcion = (typeof opcion === 'object' && opcion !== null && opcion.valor !== undefined) 
-        ? opcion.valor 
-        : opcion;
-      return respuestaSeleccionada === valorOpcion;
-    }
+    if (respuestaSeleccionada === null || respuestaSeleccionada === undefined) return false;
+    return respuestaEsIndice
+      ? String(respuestaSeleccionada) === String(index)
+      : respuestaSeleccionada === valorDeOpcion(opciones[index]);
   };
 
   // Determinar si una opción es la correcta
-  const esOpcionCorrecta = (index) => {
-    if (typeof respuestaCorrecta === 'number') {
-      // Si la respuesta es un número, comparar directamente
-      return respuestaCorrecta === index;
-    } else if (typeof respuestaCorrecta === 'string' && /^\d+$/.test(respuestaCorrecta)) {
-      // Si la respuesta es un string numérico, convertir a número y comparar
-      return parseInt(respuestaCorrecta) === index;
-    } else {
-      const opcion = opciones[index];
-      const valorOpcion = (typeof opcion === 'object' && opcion !== null && opcion.valor !== undefined) 
-        ? opcion.valor 
-        : opcion;
-      return valorOpcion === respuestaCorrecta;
-    }
-  };
+  const esOpcionCorrecta = (index) => respuestaEsIndice
+    ? Number(respuestaCorrecta) === index
+    : valorDeOpcion(opciones[index]) === respuestaCorrecta;
 
-  // Determinar si la respuesta es correcta (lógica unificada)
-  const verificarRespuesta = (seleccion) => {
-    if (seleccion === null || seleccion === undefined) return false;
-    
-    // Normalizar ambos valores a string para comparación
-    const seleccionStr = seleccion.toString();
-    const respuestaStr = respuestaCorrecta.toString();
-    
-    return seleccionStr === respuestaStr;
-  };
+  // Misma función que usa Simulacro.jsx para el puntaje: tarjeta y total no se contradicen
+  const verificarRespuesta = (seleccion) => opcionMultipleCorrecta(mision, seleccion);
 
   // Calcular estado de corrección
   // En modo simulacro, se calcula al vuelo. En modo normal, usa el estado.
@@ -172,7 +123,9 @@ const OpcionMultiple = ({
     <div className="opcion-multiple-container">
       {/* Pregunta */}
       <div className="pregunta-container">
-        <h3 className="pregunta-texto">{pregunta}</h3>
+        {/* HTML: algunas preguntas traen marcado (ej. tarjetas de número de la OEM);
+            mismo criterio que `imagen` y las explicaciones, contenido del admin */}
+        <h3 className="pregunta-texto" dangerouslySetInnerHTML={{ __html: pregunta }} />
         {imagen && (
           <div 
             className="pregunta-imagen"

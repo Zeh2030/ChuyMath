@@ -1,0 +1,182 @@
+{
+  "id": "2025-09-30",
+  "tipo": "criptoaritmetica",
+  "titulo": "El Código Secreto de las Frutas",
+  "descripcion": "",
+  "misiones": [
+    {
+      "id": "mision-cripto-1",
+      "tipo": "criptoaritmetica",
+      "titulo": "La Suma de las Manzanas",
+      "instruccion": "Si cada manzana 🍎 vale lo mismo, ¿cuál es su valor?",
+      "ejercicios": [
+        {
+          "explicacion_incorrecta": "No es correcto. Si 🍎 + 🍎 = 8, entonces cada manzana vale 4. ¡4 + 4 = 8!",
+          "operacion": {
+            "resultado": "  8",
+            "linea1": "  🍎",
+            "linea2": "+ 🍎"
+          },
+          "solucion": [
+            {
+              "valor": "4",
+              "figura": "🍎"
+            }
+          ],
+          "explicacion_correcta": "¡Perfecto! Si 🍎 + 🍎 = 8, entonces cada manzana vale 4. ¡4 + 4 = 8!"
+        }
+      ]
+    },
+    {
+      "id": "mision-cripto-2",
+      "tipo": "criptoaritmetica",
+      "titulo": "Uvas y Bananas",
+      "instruccion": "Usa la lógica para encontrar el valor de cada fruta.",
+      "ejercicios": [
+        {
+          "solucion": [
+            {
+              "figura": "🍇",
+              "valor": "1"
+            },
+            {
+              "figura": "🍌",
+              "valor": "2"
+            }
+          ],
+          "explicacion_incorrecta": "Pista: Empieza por la columna de la izquierda. ¿Qué número más 1 te da como resultado 2? Ese es el valor de 🍇.",
+          "explicacion_correcta": "¡Exacto! De la columna de la izquierda, vemos que 🍇+1=2, así que 🍇=1. En la derecha, 1+🍇=🍌, así que 1+1=2, ¡por lo que 🍌=2!",
+          "operacion": {
+            "linea2": "+1 🍇",
+            "linea1": " 🍇 1",
+            "resultado": "  2 🍌"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mision-cripto-3",
+      "tipo": "criptoaritmetica",
+      "titulo": "El Doble de las Flores",
+      "instruccion": "¿Qué valor tiene cada flor 🌸 para que la suma sea correcta?",
+      "ejercicios": [
+        {
+          "operacion": {
+            "resultado": "  🌸 8",
+            "linea2": "+2 🌸",
+            "linea1": " 2 🌸"
+          },
+          "solucion": [
+            {
+              "valor": "4",
+              "figura": "🌸"
+            }
+          ],
+          "explicacion_incorrecta": "Una pista: mira la columna de la derecha. ¿Qué número, sumado a sí mismo, da 8? Una vez que lo sepas, comprueba si funciona en la columna de la izquierda.",
+          "explicacion_correcta": "¡Genial! Si 🌸=4, la suma es 24 + 24 = 48. ¡El resultado es correcto!"
+        }
+      ]
+    },
+    {
+      "id": "mision-cripto-4",
+      "tipo": "criptoaritmetica",
+      "titulo": "La Suma de Estrellas",
+      "instruccion": "Descubre el valor de la estrella ⭐ para que la suma tenga sentido.",
+      "ejercicios": [
+        {
+          "operacion": {
+            "linea2": "+2 1",
+            "linea1": " ⭐ 1",
+            "resultado": "  4 ⭐"
+          },
+          "explicacion_correcta": "¡Perfecto! De la columna de la derecha, vemos que 1+1=⭐, así que ⭐=2. Comprobamos en la izquierda: ⭐+2=4, es decir, 2+2=4. ¡Funciona!",
+          "solucion": [
+            {
+              "valor": "2",
+              "figura": "⭐"
+            }
+          ],
+          "explicacion_incorrecta": "Pista: Empieza por la columna de la derecha. ¿Cuánto es 1+1? Ese es el valor de la estrella ⭐."
+        }
+      ]
+    }
+  ],
+  "problemas": [
+    {
+      "id": "mision-cripto-1-ejercicio-0",
+      "tipo": "criptoaritmetica",
+      "titulo": "La Suma de las Manzanas",
+      "explicacion_correcta": "¡Perfecto! Si 🍎 + 🍎 = 8, entonces cada manzana vale 4. ¡4 + 4 = 8!",
+      "explicacion_incorrecta": "No es correcto. Si 🍎 + 🍎 = 8, entonces cada manzana vale 4. ¡4 + 4 = 8!",
+      "operacion": {
+        "resultado": "  8",
+        "linea2": "+ 🍎",
+        "linea1": "  🍎"
+      },
+      "solucion": [
+        {
+          "valor": "4",
+          "figura": "🍎"
+        }
+      ]
+    },
+    {
+      "id": "mision-cripto-2-ejercicio-0",
+      "tipo": "criptoaritmetica",
+      "titulo": "Uvas y Bananas",
+      "explicacion_correcta": "¡Exacto! De la columna de la izquierda, vemos que 🍇+1=2, así que 🍇=1. En la derecha, 1+🍇=🍌, así que 1+1=2, ¡por lo que 🍌=2!",
+      "explicacion_incorrecta": "Pista: Empieza por la columna de la izquierda. ¿Qué número más 1 te da como resultado 2? Ese es el valor de 🍇.",
+      "operacion": {
+        "linea1": " 🍇 1",
+        "resultado": "  2 🍌",
+        "linea2": "+1 🍇"
+      },
+      "solucion": [
+        {
+          "figura": "🍇",
+          "valor": "1"
+        },
+        {
+          "figura": "🍌",
+          "valor": "2"
+        }
+      ]
+    },
+    {
+      "id": "mision-cripto-3-ejercicio-0",
+      "tipo": "criptoaritmetica",
+      "titulo": "El Doble de las Flores",
+      "explicacion_correcta": "¡Genial! Si 🌸=4, la suma es 24 + 24 = 48. ¡El resultado es correcto!",
+      "explicacion_incorrecta": "Una pista: mira la columna de la derecha. ¿Qué número, sumado a sí mismo, da 8? Una vez que lo sepas, comprueba si funciona en la columna de la izquierda.",
+      "operacion": {
+        "resultado": "  🌸 8",
+        "linea1": " 2 🌸",
+        "linea2": "+2 🌸"
+      },
+      "solucion": [
+        {
+          "valor": "4",
+          "figura": "🌸"
+        }
+      ]
+    },
+    {
+      "id": "mision-cripto-4-ejercicio-0",
+      "tipo": "criptoaritmetica",
+      "titulo": "La Suma de Estrellas",
+      "explicacion_correcta": "¡Perfecto! De la columna de la derecha, vemos que 1+1=⭐, así que ⭐=2. Comprobamos en la izquierda: ⭐+2=4, es decir, 2+2=4. ¡Funciona!",
+      "explicacion_incorrecta": "Pista: Empieza por la columna de la derecha. ¿Cuánto es 1+1? Ese es el valor de la estrella ⭐.",
+      "solucion": [
+        {
+          "valor": "2",
+          "figura": "⭐"
+        }
+      ],
+      "operacion": {
+        "linea2": "+2 1",
+        "resultado": "  4 ⭐",
+        "linea1": " ⭐ 1"
+      }
+    }
+  ]
+}

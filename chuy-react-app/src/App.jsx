@@ -15,6 +15,8 @@ import MusicaFondo from './components/audio/MusicaFondo';
 
 // Lazy: arrastra la librería de efemérides (astronomy-engine), que nadie más usa.
 const Observatorio = React.lazy(() => import('./pages/Observatorio'));
+// Lazy: la versión para papel solo la abre quien imprime.
+const ImprimirSimulacro = React.lazy(() => import('./pages/ImprimirSimulacro'));
 
 const ProtectedRoute = ({ children }) => {
   const { currentUser, loading } = useAuth();
@@ -111,6 +113,18 @@ function App() {
             <ProtectedRoute>
               <ProfileRequired>
                 <Perfil />
+              </ProfileRequired>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/simulacro/:id/imprimir"
+          element={
+            <ProtectedRoute>
+              <ProfileRequired>
+                <React.Suspense fallback={<div style={{ textAlign: 'center', padding: '40px', fontSize: '1.2rem' }}>Preparando la versión para imprimir…</div>}>
+                  <ImprimirSimulacro />
+                </React.Suspense>
               </ProfileRequired>
             </ProtectedRoute>
           }
