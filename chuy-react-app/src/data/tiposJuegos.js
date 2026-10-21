@@ -44,7 +44,8 @@ export const tiposJuegos = [
   // Ciencias
   { id: 'experimento-guia', emoji: '🧪', nombre: 'Experimentos', tipo: 'experimento-guia', descripcion: 'Experimentos caseros paso a paso', materia: 'ciencias' },
   { id: 'sistema-solar', emoji: '🪐', nombre: 'Sistema Solar 3D', tipo: 'sistema-solar', descripcion: 'Explora los planetas, la Luna y los eclipses en 3D', materia: 'ciencias' },
-  { id: 'ciencias-image-picker', emoji: '🔭', nombre: 'Fotos del Espacio', tipo: 'image-picker', descripcion: 'Identifica planetas y lugares del cosmos en fotos reales', materia: 'ciencias' },
+  { id: 'observatorio', emoji: '🔭', nombre: 'Observatorio', tipo: 'observatorio', descripcion: 'Misiones con el telescopio de verdad', materia: 'ciencias' },
+  { id: 'ciencias-image-picker', emoji: '📸', nombre: 'Fotos del Espacio', tipo: 'image-picker', descripcion: 'Identifica planetas y lugares del cosmos en fotos reales', materia: 'ciencias' },
   { id: 'ciencias-tap-the-pairs', emoji: '🔗', nombre: 'Empareja el Espacio', tipo: 'tap-the-pairs', descripcion: 'Empareja astros, constelaciones y sus secretos', materia: 'ciencias' },
   { id: 'ciencias-mini-story', emoji: '📖', nombre: 'Historias del Cosmos', tipo: 'mini-story', descripcion: 'Historias del Sol, la Luna y los astronautas', materia: 'ciencias' },
   { id: 'ciencias-opcion-multiple', emoji: '❓', nombre: 'Preguntas del Espacio', tipo: 'opcion-multiple', descripcion: 'Preguntas sobre el universo', materia: 'ciencias' },

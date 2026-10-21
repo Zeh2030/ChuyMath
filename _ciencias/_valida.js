@@ -76,6 +76,11 @@ for (const ruta of buscarJsons(DIR).sort()) {
     if (!d[campo]) errores.push(`${f}: falta "${campo}"`);
   }
   if (d.materia !== 'ciencias') errores.push(`${f}: materia="${d.materia}" (deberia ser "ciencias")`);
+  // El tipo del DOCUMENTO decide la tarjeta de la Boveda: las misiones del telescopio
+  // van en "Observatorio", no mezcladas con los experimentos de cocina.
+  if (/^OB-/.test(d.nivel || '') && d.tipo !== 'observatorio') {
+    errores.push(`${f}: un documento OB debe llevar tipo "observatorio" (trae "${d.tipo}")`);
+  }
   if (d.id !== path.basename(f, '.json')) errores.push(`${f}: el id "${d.id}" no coincide con el nombre del archivo`);
   if (ids.has(d.id)) errores.push(`${f}: id duplicado con ${ids.get(d.id)}`);
   ids.set(d.id, f);

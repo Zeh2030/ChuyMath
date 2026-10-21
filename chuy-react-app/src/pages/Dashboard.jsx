@@ -26,7 +26,7 @@ const detectMateria = (f) => {
     'tap-the-pairs', 'sentence-transform', 'image-picker', 'word-scramble',
     'listen-and-type', 'expediciones-en', 'mini-story'];
   const pianoTypes = ['piano-prompter', 'identifica-nota'];
-  const cienciasTypes = ['experimento-guia', 'sistema-solar'];
+  const cienciasTypes = ['experimento-guia', 'sistema-solar', 'observatorio'];
   const dibujoTypes = ['colorear', 'dibujo-guiado', 'dibujo-libre', 'mezclador-colores'];
   const geografiaTypes = ['explorador-mapa'];
   if (englishTypes.includes(f)) return 'ingles';

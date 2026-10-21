@@ -727,7 +727,12 @@ Piezas:
 
 ### Como quedo construido (2026-10-20)
 
-- Misiones: `experimento-guia/OB-01..07`. OB-03, OB-04 y OB-06 abren con un
+- Misiones: `observatorio/OB-01..07`, con `tipo: "observatorio"` a nivel de
+  documento (tarjeta 🔭 Observatorio propia en la Bóveda, separada de
+  Experimentos; decidido 2026-10-20). Por dentro cada misión sigue siendo
+  `experimento-guia` (el mismo wizard). `_valida.js` exige ese tipo a todo doc
+  OB. Las fotos de Wikimedia pasaron a 📸 para no repetir el 🔭.
+  OB-03, OB-04 y OB-06 abren con un
   "Antes de salir" en el motor 3D (planetas / tierra-luna / estrellas) y OB-05
   cierra con la escena dia-noche. `_valida.js` ya acepta el prefijo `OB`.
 - Planificador: ruta `/observatorio` (lazy, chunk propio de ~34 KB gzip con
