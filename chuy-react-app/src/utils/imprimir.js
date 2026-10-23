@@ -1,6 +1,6 @@
 // Utilidades de la versión impresa de los simulacros (pages/ImprimirSimulacro.jsx).
 // Funciones puras: _contenido/_valida.mjs y el QA usan las mismas que la página.
-import { esIndice, respuestaCorrectaOM, solucionCripto, valorDeOpcion } from './calificar.js';
+import { respuestaCorrectaOM, respuestaEsIndice, solucionCripto, valorDeOpcion } from './calificar.js';
 
 // Tipos que PreguntaImpresa sabe dibujar en papel.
 export const TIPOS_IMPRIMIBLES = [
@@ -15,8 +15,8 @@ export const esSvg = (s) => typeof s === 'string' && /^\s*<svg[\s>]/i.test(s);
 // Índice de la opción correcta de una pregunta de opción múltiple (-1 si no se halla).
 export const indiceCorrectoOM = (p) => {
   const r = respuestaCorrectaOM(p);
-  if (esIndice(r)) return Number(r);
-  return (p.opciones || []).findIndex((o) => valorDeOpcion(o) === r);
+  if (respuestaEsIndice(p)) return Number(r);
+  return (p.opciones || []).findIndex((o) => String(valorDeOpcion(o)) === String(r));
 };
 
 // Figuras de una criptoaritmética, con la misma regla del componente: todo carácter

@@ -10,68 +10,68 @@
     {
       "id": "mision-ip-continentes-colores",
       "tipo": "image-picker",
-      "titulo": "¿Que continente es?",
-      "instruccion": "Papa lee y tu eliges la respuesta.",
+      "titulo": "¿Qué continente es?",
+      "instruccion": "Papá lee y tú eliges la respuesta.",
       "retos": [
         {
           "palabra_es": "El continente donde viven leones, elefantes y jirafas. Tiene un desierto enorme.",
           "opciones": [
-            { "emoji": "🦁", "label": "Africa" },
+            { "emoji": "🦁", "label": "África" },
             { "emoji": "🐨", "label": "Australia" },
-            { "emoji": "🐧", "label": "Antartida" }
+            { "emoji": "🐧", "label": "Antártida" }
           ],
           "respuesta": 0,
-          "explicacion": "Es Africa! Ahi viven los animales del Rey Leon."
+          "explicacion": "¡Es África! Ahí viven los animales del Rey León."
         },
         {
-          "palabra_es": "El continente donde vivimos NOSOTROS, donde esta Mexico, USA y Brasil.",
+          "palabra_es": "El continente donde vivimos NOSOTROS, donde está México, USA y Brasil.",
           "opciones": [
-            { "emoji": "🌮", "label": "America" },
+            { "emoji": "🌮", "label": "América" },
             { "emoji": "🐼", "label": "Asia" },
             { "emoji": "🦘", "label": "Australia" }
           ],
           "respuesta": 0,
-          "explicacion": "Es America! Mexico esta en America. Es el continente donde vivimos."
+          "explicacion": "¡Es América! México está en América. Es el continente donde vivimos."
         },
         {
           "palabra_es": "El continente de los pandas, dragones y la Gran Muralla.",
           "opciones": [
-            { "emoji": "🦁", "label": "Africa" },
+            { "emoji": "🦁", "label": "África" },
             { "emoji": "🐼", "label": "Asia" },
-            { "emoji": "🐧", "label": "Antartida" }
+            { "emoji": "🐧", "label": "Antártida" }
           ],
           "respuesta": 1,
-          "explicacion": "Es Asia! Ahi estan China, Japon, India. Es el continente mas grande del mundo."
+          "explicacion": "¡Es Asia! Ahí están China, Japón, India. Es el continente más grande del mundo."
         },
         {
-          "palabra_es": "El continente de los castillos, la Torre Eiffel y los principes y princesas.",
+          "palabra_es": "El continente de los castillos, la Torre Eiffel y los príncipes y princesas.",
           "opciones": [
             { "emoji": "🏰", "label": "Europa" },
-            { "emoji": "🦒", "label": "Africa" },
+            { "emoji": "🦒", "label": "África" },
             { "emoji": "🐨", "label": "Australia" }
           ],
           "respuesta": 0,
-          "explicacion": "Es Europa! Ahi esta Disneyland Paris y muchos castillos de cuento."
+          "explicacion": "¡Es Europa! Ahí está Disneyland Paris y muchos castillos de cuento."
         },
         {
           "palabra_es": "El continente helado del Polo SUR, donde viven los pingüinos.",
           "opciones": [
             { "emoji": "🐨", "label": "Australia" },
-            { "emoji": "🦁", "label": "Africa" },
-            { "emoji": "🐧", "label": "Antartida" }
+            { "emoji": "🦁", "label": "África" },
+            { "emoji": "🐧", "label": "Antártida" }
           ],
           "respuesta": 2,
-          "explicacion": "Es la Antartida! Es el lugar mas frio del mundo. Casi nadie vive ahi, solo pingüinos y cientificos."
+          "explicacion": "¡Es la Antártida! Es el lugar más frío del mundo. Casi nadie vive ahí, solo pingüinos y científicos."
         },
         {
           "palabra_es": "El continente de los canguros y los koalas.",
           "opciones": [
-            { "emoji": "🐨", "label": "Oceania (Australia)" },
+            { "emoji": "🐨", "label": "Oceanía (Australia)" },
             { "emoji": "🐼", "label": "Asia" },
-            { "emoji": "🐧", "label": "Antartida" }
+            { "emoji": "🐧", "label": "Antártida" }
           ],
           "respuesta": 0,
-          "explicacion": "Es Oceania! Ahi esta Australia, donde viven los canguros y koalas. Tambien tiene la Opera de Sydney."
+          "explicacion": "¡Es Oceanía! Ahí está Australia, donde viven los canguros y koalas. También tiene la Ópera de Sydney."
         }
       ]
     }

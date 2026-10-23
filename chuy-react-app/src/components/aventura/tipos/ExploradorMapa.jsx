@@ -46,6 +46,17 @@ import './ExploradorMapa.css';
  *
  * Con bandera, dato o ruta el reto NO auto-avanza: aparece un boton "Siguiente",
  * porque hay algo que leer y mirar.
+ *
+ * En cualquier mapa plano, a nivel de MISION:
+ *   "encuadre": [oeste, sur, este, norte]   (lonMin, latMin, lonMax, latMax)
+ *                                    — rectangulo que debe verse completo (ajusta
+ *                                      la proyeccion sola; p.ej. Mexico + Centroamerica)
+ *
+ * Zoom: botones ➕/➖ (y rueda del mouse); con zoom, el mapa plano se mueve
+ * arrastrando. Para objetivos diminutos (Belice, Cuba, CDMX) ademas hay un
+ * "halo" invisible SOBRE EL MAR alrededor del objetivo: un toque en la costa
+ * cuenta, uno en el pais vecino no. Solo hay un intento por reto, asi que el
+ * halo no se puede usar para buscar a tientas.
  */
 
 // Paises por region (ISO 3166-1 numerico). Para filtrar el mapa por continente.
@@ -90,7 +101,9 @@ const PROJECTIONS = {
   'world':           { proj: 'naturalEarth1', center: [0, 0],     scale: 145 },
   'americas':        { proj: 'mercator',      center: [-90, 5],   scale: 230 },
   'america-latina':  { proj: 'mercator',      center: [-75, -5],  scale: 320 },
-  'europa':          { proj: 'mercator',      center: [15, 55],   scale: 600 },
+  // Por rango y no por centro/escala: con [15,55]·600 se cortaban España,
+  // Italia y Grecia abajo y Escandinavia arriba.
+  'europa':          { proj: 'mercator',      encuadre: [-11, 34.5, 32, 71] },
   'asia':            { proj: 'mercator',      center: [90, 30],   scale: 250 },
   'africa':          { proj: 'mercator',      center: [20, 0],    scale: 350 },
   'mexico-estados':  { proj: 'mercator',      center: [-102, 24], scale: 1200 },
@@ -116,6 +129,27 @@ const MAPAS_GEOJSON = {
 };
 
 const VIEWPORT = { width: 800, height: 500 };
+
+// Niveles de zoom (mapa plano: viewBox; globo: escala de la esfera).
+const ZOOMS = [1, 2, 3.5, 6];
+const ZOOMS_GLOBO = [1, 1.6, 2.5];
+
+// Esquinas y puntos medios del rectangulo de `encuadre`, para fitExtent.
+// Un MultiPoint evita los lios de sentido de giro de un Polygon esferico.
+// Formato plano [oeste, sur, este, norte]: Firestore NO acepta arreglos dentro
+// de arreglos ([[lon,lat],[lon,lat]] hacia fallar la migracion).
+const puntosEncuadre = ([lon0, lat0, lon1, lat1]) => ({
+  type: 'MultiPoint',
+  coordinates: [
+    [lon0, lat0], [lon0, lat1], [lon1, lat0], [lon1, lat1],
+    [(lon0 + lon1) / 2, lat0], [(lon0 + lon1) / 2, lat1],
+    [lon0, (lat0 + lat1) / 2], [lon1, (lat0 + lat1) / 2],
+  ],
+});
+
+// Un objetivo cuya area en pantalla (unidades del viewBox) sea menor que esto
+// recibe el halo de toque sobre el mar.
+const AREA_OBJETIVO_CHICO = 900;
 
 // Paleta vibrante kid-friendly — 12 colores muy distintos, alta saturacion.
 // Cada pais recibe uno por hash deterministico de su ID, asi paises vecinos
@@ -186,10 +220,10 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
     mapa = 'world',
     modo = 'quiz',
     retos = [],
-    instruccion,
     rotacion_inicial: rotacionInicial,
     estilo,
     resaltar_ecuador: resaltarEcuador,
+    encuadre: encuadreMision,
   } = mision;
 
   const [retoIdx, setRetoIdx] = useState(0);
@@ -202,6 +236,12 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
   const svgRef = useRef(null);
 
   const esGlobo = (PROJECTIONS[mapa] || {}).proj === 'orthographic';
+  const niveles = esGlobo ? ZOOMS_GLOBO : ZOOMS;
+  const [zoomIdx, setZoomIdx] = useState(0);
+  const zoom = niveles[zoomIdx];
+  const zoomGlobo = esGlobo ? zoom : 1; // el mapa plano hace zoom con el viewBox, no reproyecta
+  // Centro de la vista del mapa plano, en unidades del viewBox.
+  const [centroVista, setCentroVista] = useState([VIEWPORT.width / 2, VIEWPORT.height / 2]);
   // [lambda, phi] de geoProjection.rotate(). El centro visible es (-lambda, -phi).
   const [rotacion, setRotacion] = useState(() => {
     const [lon, lat] = rotacionInicial || [-80, 15]; // America de frente
@@ -277,30 +317,85 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
   const pathGenerator = useMemo(() => {
     const config = PROJECTIONS[mapa] || PROJECTIONS['world'];
     const translate = [VIEWPORT.width / 2, VIEWPORT.height / 2];
+    const encuadre = encuadreMision || config.encuadre;
     let projection;
     if (config.proj === 'orthographic') {
       // clipAngle(90) por defecto: la cara oculta de la Tierra no se dibuja
       projection = geoOrthographic()
         .rotate(rotacion)
-        .scale(config.scale)
+        .scale(config.scale * zoomGlobo)
         .translate(translate);
     } else if (config.proj === 'albersUsa') {
       projection = geoAlbersUsa()
         .scale(config.scale)
         .translate(translate);
-    } else if (config.proj === 'mercator') {
-      projection = geoMercator()
-        .center(config.center)
-        .scale(config.scale)
-        .translate(translate);
     } else {
-      projection = geoNaturalEarth1()
-        .center(config.center)
-        .scale(config.scale)
-        .translate(translate);
+      projection = config.proj === 'mercator' ? geoMercator() : geoNaturalEarth1();
+      if (encuadre) {
+        projection.fitExtent(
+          [[8, 8], [VIEWPORT.width - 8, VIEWPORT.height - 8]],
+          puntosEncuadre(encuadre)
+        );
+      } else {
+        projection.center(config.center).scale(config.scale).translate(translate);
+      }
     }
     return geoPath(projection);
-  }, [mapa, rotacion]);
+  }, [mapa, rotacion, encuadreMision, zoomGlobo]);
+
+  // === Zoom (mapa plano por viewBox; el globo por escala) ===
+  const anchoVista = VIEWPORT.width / (esGlobo ? 1 : zoom);
+  const altoVista = VIEWPORT.height / (esGlobo ? 1 : zoom);
+  const limitar = (v, min, max) => Math.min(max, Math.max(min, v));
+  const vistaX = limitar(centroVista[0] - anchoVista / 2, 0, VIEWPORT.width - anchoVista);
+  const vistaY = limitar(centroVista[1] - altoVista / 2, 0, VIEWPORT.height - altoVista);
+  const viewBox = `${vistaX} ${vistaY} ${anchoVista} ${altoVista}`;
+
+  const cambiarZoom = (delta, foco = null) => {
+    const nuevo = limitar(zoomIdx + delta, 0, niveles.length - 1);
+    if (nuevo === zoomIdx) return;
+    if (!esGlobo) {
+      if (nuevo === 0) {
+        setCentroVista([VIEWPORT.width / 2, VIEWPORT.height / 2]);
+      } else if (foco) {
+        // Acercar hacia el punto del mouse: ese punto se queda bajo el cursor.
+        const k = zoom / niveles[nuevo];
+        setCentroVista([
+          foco[0] + (vistaX + anchoVista / 2 - foco[0]) * k,
+          foco[1] + (vistaY + altoVista / 2 - foco[1]) * k,
+        ]);
+      } else {
+        setCentroVista([vistaX + anchoVista / 2, vistaY + altoVista / 2]);
+      }
+    }
+    setZoomIdx(nuevo);
+  };
+
+  // Coordenadas del viewBox bajo un evento de puntero.
+  const puntoEnVista = (e) => {
+    const r = svgRef.current?.getBoundingClientRect();
+    if (!r || !r.width) return null;
+    return [
+      vistaX + ((e.clientX - r.left) / r.width) * anchoVista,
+      vistaY + ((e.clientY - r.top) / r.height) * altoVista,
+    ];
+  };
+
+  const alRueda = (e) => {
+    if (!e.deltaY) return;
+    e.preventDefault();
+    cambiarZoom(e.deltaY < 0 ? 1 : -1, puntoEnVista(e));
+  };
+  // La rueda necesita un listener no pasivo para poder evitar el scroll de la pagina.
+  const alRuedaRef = useRef(alRueda);
+  useEffect(() => { alRuedaRef.current = alRueda; });
+  useEffect(() => {
+    const svg = svgRef.current;
+    if (!svg) return undefined;
+    const fn = (e) => alRuedaRef.current(e);
+    svg.addEventListener('wheel', fn, { passive: false });
+    return () => svg.removeEventListener('wheel', fn);
+  }, []);
 
   // Normalizar IDs segun el tipo de mapa:
   // - paises (ISO 3166-1): 3 digitos con padding ("076", "484")
@@ -327,9 +422,12 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
   // Arrastrar el radio del globo ≈ 90°, sin importar a que tamano se dibuje.
   const gradosPorPixel = () => {
     const anchoCss = svgRef.current?.clientWidth || VIEWPORT.width;
-    const radioCss = (PROJECTIONS[mapa]?.scale || 225) * (anchoCss / VIEWPORT.width);
-    return Math.min(1, Math.max(0.15, 90 / Math.max(radioCss, 1)));
+    const radioCss = (PROJECTIONS[mapa]?.scale || 225) * zoomGlobo * (anchoCss / VIEWPORT.width);
+    return Math.min(1, Math.max(0.05, 90 / Math.max(radioCss, 1)));
   };
+
+  // Con zoom, el mapa plano se mueve arrastrando (sin zoom no hay a donde moverlo).
+  const sePuedeArrastrar = esGlobo || zoomIdx > 0;
 
   const detenerAnimacion = () => {
     if (rafAnimRef.current != null) {
@@ -339,15 +437,19 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
   };
 
   const alBajar = (e) => {
-    if (!esGlobo) return;
-    detenerAnimacion();
     huboArrastreRef.current = false;
+    if (!sePuedeArrastrar) return;
+    detenerAnimacion();
     // Aun NO se captura el puntero: al capturarlo, el navegador reasigna tambien
     // el `click` al SVG y dejaria de funcionar tocar un pais. Se captura mas
     // abajo, en cuanto el gesto deja de ser un toque y pasa a ser un arrastre.
+    const anchoCss = svgRef.current?.clientWidth || VIEWPORT.width;
     arrastreRef.current = {
       x: e.clientX, y: e.clientY, movido: 0,
       rot: rotacion, k: gradosPorPixel(), capturado: false,
+      // mapa plano: centro de la vista al empezar y unidades de viewBox por px
+      centro: [vistaX + anchoVista / 2, vistaY + altoVista / 2],
+      upp: anchoVista / anchoCss,
     };
   };
 
@@ -370,6 +472,15 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
         // algunos navegadores rechazan capturar en SVG; el giro sigue
         // funcionando mientras el dedo no salga del mapa
       }
+    }
+
+    if (!esGlobo) {
+      // Mapa plano con zoom: el mapa sigue al dedo.
+      setCentroVista([
+        limitar(a.centro[0] - dx * a.upp, anchoVista / 2, VIEWPORT.width - anchoVista / 2),
+        limitar(a.centro[1] - dy * a.upp, altoVista / 2, VIEWPORT.height - altoVista / 2),
+      ]);
+      return;
     }
 
     pendienteRef.current = [
@@ -430,6 +541,9 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
       setRetoIdx(prev => prev + 1);
       setSeleccionado(null);
       setFeedback(null);
+      // Cada pregunta empieza viendo el mapa completo.
+      setZoomIdx(0);
+      setCentroVista([VIEWPORT.width / 2, VIEWPORT.height / 2]);
     }
   };
 
@@ -476,35 +590,58 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
     return country ? nameGetter(country) : '';
   };
 
+  // Halo de toque sobre el mar para objetivos diminutos (ver comentario de arriba).
+  // Va DEBAJO de los paises: los toques en tierra los sigue recibiendo cada pais.
+  let halo = null;
+  if (esModoQuiz && reto && !feedback) {
+    const objetivo = countries.find(c => normalizeId(idGetter(c)) === normalizeId(reto.id));
+    const zoomVista = esGlobo ? 1 : zoom;
+    if (objetivo && pathGenerator(objetivo) && pathGenerator.area(objetivo) * zoomVista ** 2 < AREA_OBJETIVO_CHICO) {
+      const [cx, cy] = pathGenerator.centroid(objetivo);
+      if (Number.isFinite(cx) && Number.isFinite(cy)) halo = { cx, cy, r: 32 / zoomVista };
+    }
+  }
+
+  // Modo explorar: el `info` es del pais tocado (antes salia siempre el del primer reto).
+  const infoSeleccionado = seleccionado
+    ? retos.find(r => normalizeId(r.id) === normalizeId(seleccionado))?.info
+    : null;
+
   if (!reto && esModoQuiz) {
     return <div className="em-error">No hay retos disponibles</div>;
   }
 
   return (
     <div className={`em-container ${isFullscreen ? 'em-fullscreen' : ''}`} ref={containerRef}>
-      {esModoQuiz && (
-        <div className="em-progreso">
-          <span className="em-contador">{retoIdx + 1} / {total}</span>
-          <span className="em-racha">🔥 {aciertos}</span>
-          <button className="em-fs-btn" onClick={toggleFullscreen} title={isFullscreen ? 'Salir' : 'Pantalla completa'}>
-            {isFullscreen ? '✕' : '⛶'}
-          </button>
+      {/* Barra de arriba: los controles van FUERA del mapa. Encima tapaban
+          California y Baja California en un celular. */}
+      <div className="em-progreso">
+        {esModoQuiz && (
+          <>
+            <span className="em-contador">{retoIdx + 1} / {total}</span>
+            <span className="em-racha">🔥 {aciertos}</span>
+          </>
+        )}
+        <div className="em-zoom">
+          <button type="button" onClick={() => cambiarZoom(1)} disabled={zoomIdx >= niveles.length - 1} title="Acercar" aria-label="Acercar">➕</button>
+          <button type="button" onClick={() => cambiarZoom(-1)} disabled={zoomIdx === 0} title="Alejar" aria-label="Alejar">➖</button>
         </div>
-      )}
+        <button className="em-fs-btn" onClick={toggleFullscreen} title={isFullscreen ? 'Salir' : 'Pantalla completa'}>
+          {isFullscreen ? '✕' : '⛶'}
+        </button>
+      </div>
 
       {esModoQuiz && reto?.pregunta && (
         <p className="em-pregunta">{reto.pregunta}</p>
       )}
 
-      {!esModoQuiz && instruccion && (
-        <p className="em-pregunta">{instruccion}</p>
-      )}
+      {/* En modo explorar la instruccion ya la pinta MisionRenderer arriba. */}
 
       <div className={`em-mapa-wrapper ${esGlobo ? 'em-wrapper-globo' : ''}`}>
         <svg
           ref={svgRef}
-          viewBox={`0 0 ${VIEWPORT.width} ${VIEWPORT.height}`}
-          className={`em-mapa ${esGlobo ? 'em-globo' : ''}`}
+          viewBox={viewBox}
+          className={`em-mapa ${esGlobo ? 'em-globo' : ''} ${!esGlobo && zoomIdx > 0 ? 'em-arrastrable' : ''}`}
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="xMidYMid meet"
           onPointerDown={alBajar}
@@ -527,6 +664,16 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
                 <path d={pathGenerator(ECUADOR)} className="em-ecuador" />
               )}
             </>
+          )}
+
+          {halo && (
+            <circle
+              cx={halo.cx}
+              cy={halo.cy}
+              r={halo.r}
+              className="em-halo"
+              onClick={() => handleClick(reto.id)}
+            />
           )}
 
           {countries.map((country, idx) => {
@@ -597,14 +744,17 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
           ))}
         </svg>
 
-        {hovered && (
+        {/* En el quiz el nombre al pasar el mouse regalaria la respuesta. */}
+        {hovered && !esModoQuiz && (
           <div className="em-tooltip">
             {getCountryName(hovered)}
           </div>
         )}
 
-        {esGlobo && <div className="em-pista-giro">👆 Arrastra para girar la Tierra</div>}
       </div>
+
+      {/* Debajo del globo, no encima: sobre la esfera tapaba Sudamérica. */}
+      {esGlobo && <div className="em-pista-giro">👆 Arrastra para girar la Tierra</div>}
 
       {feedback && (
         <div className={`em-feedback em-${feedback}`}>
@@ -639,8 +789,16 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
       {!esModoQuiz && seleccionado && (
         <div className="em-info">
           <strong>{getCountryName(seleccionado)}</strong>
-          {reto?.info && <p>{reto.info}</p>}
+          {infoSeleccionado && <p>{infoSeleccionado}</p>}
         </div>
+      )}
+
+      {/* Explorar no tiene preguntas que contestar: sin este boton la mision
+          nunca terminaba (Planeta Azul se quedaba sin salida). */}
+      {!esModoQuiz && (
+        <button type="button" className="em-siguiente em-listo" onClick={onCompletar}>
+          ¡Listo! ➜
+        </button>
       )}
     </div>
   );

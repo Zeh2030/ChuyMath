@@ -1,7 +1,7 @@
 {
   "id": "G1-06_capitales-latam",
-  "titulo": "Capitales de America Latina",
-  "descripcion": "Empareja cada pais latinoamericano con su capital",
+  "titulo": "Capitales de América Latina",
+  "descripcion": "Empareja cada país latinoamericano con su capital",
   "tipo": "tap-the-pairs",
   "materia": "geografia",
   "tema": "capitales-latam",
@@ -10,22 +10,22 @@
     {
       "id": "mision-ttp-capitales-latam",
       "tipo": "tap-the-pairs",
-      "titulo": "Empareja Pais con Capital",
-      "instruccion": "Toca un pais y luego su capital para emparejarlos. Las capitales son las ciudades mas importantes de cada pais.",
+      "titulo": "Empareja País con Capital",
+      "instruccion": "Toca un país y luego su capital para emparejarlos. La capital es la ciudad donde está el gobierno de cada país.",
       "retos": [
         {
           "pares": [
-            { "es": "Mexico", "en": "Ciudad de Mexico" },
+            { "es": "México", "en": "Ciudad de México" },
             { "es": "Guatemala", "en": "Ciudad de Guatemala" },
-            { "es": "Costa Rica", "en": "San Jose" },
+            { "es": "Costa Rica", "en": "San José" },
             { "es": "Cuba", "en": "La Habana" },
-            { "es": "Republica Dominicana", "en": "Santo Domingo" }
+            { "es": "República Dominicana", "en": "Santo Domingo" }
           ]
         },
         {
           "pares": [
-            { "es": "Colombia", "en": "Bogota" },
-            { "es": "Peru", "en": "Lima" },
+            { "es": "Colombia", "en": "Bogotá" },
+            { "es": "Perú", "en": "Lima" },
             { "es": "Brasil", "en": "Brasilia" },
             { "es": "Argentina", "en": "Buenos Aires" },
             { "es": "Chile", "en": "Santiago" }

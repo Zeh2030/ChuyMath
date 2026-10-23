@@ -1,7 +1,7 @@
 {
   "id": "G0-08_mi-pais-mexico",
-  "titulo": "Mi Pais: Mexico",
-  "descripcion": "Conoce a Mexico, el pais donde vives",
+  "titulo": "Mi País: México",
+  "descripcion": "Conoce a México, el país donde vives",
   "tipo": "image-picker",
   "materia": "geografia",
   "tema": "mexico",
@@ -10,48 +10,48 @@
     {
       "id": "mision-ip-mexico",
       "tipo": "image-picker",
-      "titulo": "Mi Pais Mexico",
-      "instruccion": "Papa lee y tu eliges la respuesta.",
+      "titulo": "Mi País México",
+      "instruccion": "Papá lee y tú eliges la respuesta.",
       "retos": [
         {
-          "palabra_es": "¿Como se llama el PAIS donde vivimos tu y yo?",
+          "palabra_es": "¿Cómo se llama el PAÍS donde vivimos tú y yo?",
           "opciones": [
-            { "emoji": "🌮", "label": "Mexico" },
+            { "emoji": "🌮", "label": "México" },
             { "emoji": "🐼", "label": "China" },
             { "emoji": "🦘", "label": "Australia" }
           ],
           "respuesta": 0,
-          "explicacion": "Vivimos en Mexico! Es nuestro pais y aqui hablamos español."
+          "explicacion": "¡Vivimos en México! Es nuestro país y aquí hablamos español."
         },
         {
-          "palabra_es": "¿En que CONTINENTE esta Mexico?",
+          "palabra_es": "¿En qué CONTINENTE está México?",
           "opciones": [
-            { "emoji": "🌎", "label": "America" },
-            { "emoji": "🌍", "label": "Africa" },
+            { "emoji": "🌎", "label": "América" },
+            { "emoji": "🌍", "label": "África" },
             { "emoji": "🌏", "label": "Asia" }
           ],
           "respuesta": 0,
-          "explicacion": "Mexico esta en America! Tiene como vecinos a Estados Unidos arriba y a Guatemala abajo."
+          "explicacion": "¡México está en América! Sus vecinos son Estados Unidos arriba, y Guatemala y Belice abajo."
         },
         {
-          "palabra_es": "¿Como se llama la CAPITAL de Mexico, la ciudad mas importante?",
+          "palabra_es": "¿Cómo se llama la CAPITAL de México, la ciudad más importante?",
           "opciones": [
-            { "emoji": "🏙️", "label": "Ciudad de Mexico" },
+            { "emoji": "🏙️", "label": "Ciudad de México" },
             { "emoji": "🗽", "label": "New York" },
-            { "emoji": "🌴", "label": "Cancun" }
+            { "emoji": "🌴", "label": "Cancún" }
           ],
           "respuesta": 0,
-          "explicacion": "La capital es la Ciudad de Mexico, le decimos CDMX. Esta llena de gente, museos y monumentos."
+          "explicacion": "La capital es la Ciudad de México, le decimos CDMX. Está llena de gente, museos y monumentos."
         },
         {
-          "palabra_es": "Mexico es famoso en el mundo por su comida deliciosa. ¿Cual de estas comidas es de Mexico?",
+          "palabra_es": "México es famoso en el mundo por su comida deliciosa. ¿Cuál de estas comidas es de México?",
           "opciones": [
             { "emoji": "🍣", "label": "Sushi" },
             { "emoji": "🌮", "label": "Tacos" },
             { "emoji": "🍕", "label": "Pizza" }
           ],
           "respuesta": 1,
-          "explicacion": "Los tacos son mexicanos! Tambien las quesadillas, los tamales y el mole."
+          "explicacion": "¡Los tacos son mexicanos! También las quesadillas, los tamales y el mole."
         }
       ]
     }

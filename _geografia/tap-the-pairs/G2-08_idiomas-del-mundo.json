@@ -1,7 +1,7 @@
 {
   "id": "G2-08_idiomas-del-mundo",
   "titulo": "Idiomas del Mundo",
-  "descripcion": "Empareja cada pais con el idioma que se habla principalmente",
+  "descripcion": "Empareja cada país con el idioma que se habla principalmente",
   "tipo": "tap-the-pairs",
   "materia": "geografia",
   "tema": "idiomas",
@@ -10,33 +10,33 @@
     {
       "id": "mision-ttp-idiomas-mundo",
       "tipo": "tap-the-pairs",
-      "titulo": "Pais y su Idioma",
-      "instruccion": "Toca un pais y luego el idioma que se habla principalmente ahi.",
+      "titulo": "País y su Idioma",
+      "instruccion": "Toca un país y luego el idioma que se habla principalmente ahí.",
       "retos": [
         {
           "pares": [
-            { "es": "Mexico", "en": "Español" },
-            { "es": "Brasil", "en": "Portugues" },
-            { "es": "Estados Unidos", "en": "Ingles" },
-            { "es": "Francia", "en": "Frances" },
-            { "es": "Alemania", "en": "Aleman" }
+            { "es": "México", "en": "Español" },
+            { "es": "Brasil", "en": "Portugués" },
+            { "es": "Estados Unidos", "en": "Inglés" },
+            { "es": "Francia", "en": "Francés" },
+            { "es": "Alemania", "en": "Alemán" }
           ]
         },
         {
           "pares": [
             { "es": "Italia", "en": "Italiano" },
-            { "es": "Japon", "en": "Japones" },
-            { "es": "China", "en": "Chino mandarin" },
+            { "es": "Japón", "en": "Japonés" },
+            { "es": "China", "en": "Chino mandarín" },
             { "es": "Rusia", "en": "Ruso" },
-            { "es": "Arabia Saudita", "en": "Arabe" }
+            { "es": "Arabia Saudita", "en": "Árabe" }
           ]
         },
         {
           "pares": [
-            { "es": "Egipto", "en": "Arabe" },
-            { "es": "India", "en": "Hindi e ingles" },
+            { "es": "Egipto", "en": "Árabe" },
+            { "es": "India", "en": "Hindi e inglés" },
             { "es": "Corea del Sur", "en": "Coreano" },
-            { "es": "Tailandia", "en": "Tailandes" },
+            { "es": "Tailandia", "en": "Tailandés" },
             { "es": "Israel", "en": "Hebreo" }
           ]
         }

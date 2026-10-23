@@ -1,7 +1,7 @@
 {
   "id": "G1-09b_ecuador-y-polos",
-  "titulo": "La Linea del Calor",
-  "descripcion": "Encuentra los paises por donde pasa el Ecuador y descubre por que ahi nunca nieva",
+  "titulo": "La Línea del Calor",
+  "descripcion": "Encuentra los países por donde pasa el Ecuador y descubre por qué ahí hace calor casi todo el año",
   "tipo": "explorador-mapa",
   "materia": "geografia",
   "tema": "ecuador-clima",
@@ -12,8 +12,8 @@
       "tipo": "explorador-mapa",
       "mapa": "globo",
       "modo": "quiz",
-      "titulo": "Por Donde Pasa el Ecuador",
-      "instruccion": "La linea amarilla es el ECUADOR: parte la Tierra por la mitad, entre el polo norte y el polo sur. Los paises que toca reciben el sol mas de frente, por eso ahi hace calor todo el año. Gira el globo para seguirla.",
+      "titulo": "Por Dónde Pasa el Ecuador",
+      "instruccion": "La línea amarilla es el ECUADOR: parte la Tierra por la mitad, entre el polo norte y el polo sur. Los países que toca reciben el sol más de frente, por eso ahí hace calor todo el año. Gira el globo para seguirla.",
       "resaltar_ecuador": true,
       "rotacion_inicial": [
         -60,
@@ -24,36 +24,36 @@
           "id": "218",
           "nombre": "Ecuador",
           "bandera": "ec",
-          "dato": "A este pais le pusieron el nombre de la linea imaginaria que lo cruza. En su capital, Quito, hay un monumento justo encima.",
-          "pregunta": "Sigue la linea amarilla: ¿donde esta Ecuador?"
+          "dato": "A este país le pusieron el nombre de la línea imaginaria que lo cruza. Cerca de su capital, Quito, hay un monumento llamado 'La Mitad del Mundo'.",
+          "pregunta": "Sigue la línea amarilla: ¿dónde está Ecuador?"
         },
         {
           "id": "170",
           "nombre": "Colombia",
           "bandera": "co",
-          "dato": "El Ecuador cruza el sur de Colombia. Alli el dia y la noche duran casi 12 horas, todo el año.",
-          "pregunta": "Sigue la linea amarilla: ¿donde esta Colombia?"
+          "dato": "El Ecuador cruza el sur de Colombia. Allí el día y la noche duran casi 12 horas, todo el año.",
+          "pregunta": "Sigue la línea amarilla: ¿dónde está Colombia?"
         },
         {
           "id": "404",
           "nombre": "Kenia",
           "bandera": "ke",
-          "dato": "En Kenia puedes estar en el Ecuador y aun asi pasar frio: hay montañas con nieve casi encima de la linea.",
-          "pregunta": "Sigue la linea amarilla: ¿donde esta Kenia?"
+          "dato": "En Kenia puedes estar en el Ecuador y aun así pasar frío: hay montañas con nieve casi encima de la línea.",
+          "pregunta": "Sigue la línea amarilla: ¿dónde está Kenia?"
         },
         {
           "id": "360",
           "nombre": "Indonesia",
           "bandera": "id",
-          "dato": "Indonesia tiene mas de 17.000 islas y el Ecuador pasa justo por en medio.",
-          "pregunta": "Sigue la linea amarilla: ¿donde esta Indonesia?"
+          "dato": "Indonesia tiene más de 17.000 islas y el Ecuador pasa justo por en medio.",
+          "pregunta": "Sigue la línea amarilla: ¿dónde está Indonesia?"
         },
         {
           "id": "076",
           "nombre": "Brasil",
           "bandera": "br",
           "dato": "El Ecuador entra por la selva del Amazonas, en el norte de Brasil.",
-          "pregunta": "Sigue la linea amarilla: ¿donde esta Brasil?"
+          "pregunta": "Sigue la línea amarilla: ¿dónde está Brasil?"
         }
       ]
     }

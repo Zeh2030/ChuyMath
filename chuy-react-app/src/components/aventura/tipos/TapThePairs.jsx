@@ -1,5 +1,14 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useMemo } from 'react';
 import './TapThePairs.css';
+
+const shuffle = (arr) => {
+  const s = [...arr];
+  for (let i = s.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [s[i], s[j]] = [s[j], s[i]];
+  }
+  return s;
+};
 
 // Compartido entre ingles (par.en = ingles) y ciencias/geografia/piano (ambas
 // columnas en español, pese al nombre del campo). `esIngles` solo afecta el
@@ -11,31 +20,27 @@ const TapThePairs = ({ mision, onCompletar, materia = null }) => {
   const [seleccionIzq, setSeleccionIzq] = useState(null);
   const [seleccionDer, setSeleccionDer] = useState(null);
   const [paresEncontrados, setParesEncontrados] = useState([]);
-  const [estado, setEstado] = useState('jugando');
   const [mensaje, setMensaje] = useState('');
-  const [ordenDer, setOrdenDer] = useState([]);
   const [completado, setCompletado] = useState(false);
 
   const reto = retos[retoActual];
 
-  const shuffle = useCallback((arr) => {
-    const s = [...arr];
-    for (let i = s.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [s[i], s[j]] = [s[j], s[i]];
-    }
-    return s;
-  }, []);
+  // El orden de la columna derecha se baraja en el MISMO render que cambia la
+  // ronda. Antes salía de un useEffect: el primer render de la ronda nueva aún
+  // traía el orden viejo, y si esta ronda tenía menos pares, pares[4] no existía
+  // y el juego tronaba (Capitales de África y Oceanía, ronda 3).
+  const ordenDer = useMemo(
+    () => (reto ? shuffle(reto.pares.map((_, i) => i)) : []),
+    [reto]
+  );
 
-  useEffect(() => {
-    if (!reto) return;
-    setOrdenDer(shuffle(reto.pares.map((_, i) => i)));
+  const pasarARonda = (siguiente) => {
+    setRetoActual(siguiente);
     setSeleccionIzq(null);
     setSeleccionDer(null);
     setParesEncontrados([]);
-    setEstado('jugando');
     setMensaje('');
-  }, [retoActual, reto, shuffle]);
+  };
 
   if (completado) {
     return (
@@ -86,10 +91,9 @@ const TapThePairs = ({ mision, onCompletar, materia = null }) => {
       setMensaje('');
 
       if (newPares.length === reto.pares.length) {
-        setEstado('correcto');
         setTimeout(() => {
           if (retoActual < retos.length - 1) {
-            setRetoActual(prev => prev + 1);
+            pasarARonda(retoActual + 1);
           } else {
             setCompletado(true);
           }

@@ -1,7 +1,7 @@
 {
   "id": "G1-07_vecinos-de-mexico",
-  "titulo": "Los Vecinos de Mexico",
-  "descripcion": "Encuentra los paises que comparten frontera con Mexico",
+  "titulo": "Los Vecinos de México",
+  "descripcion": "Encuentra los países que comparten frontera con México",
   "tipo": "explorador-mapa",
   "materia": "geografia",
   "tema": "vecinos-mexico",
@@ -11,29 +11,30 @@
       "id": "mision-em-vecinos-mexico",
       "tipo": "explorador-mapa",
       "mapa": "americas",
+      "encuadre": [-120, 12, -78, 40],
       "modo": "quiz",
-      "titulo": "Encuentra a los Vecinos de Mexico",
-      "instruccion": "Mexico tiene tres paises vecinos: USA al norte, Guatemala y Belice al sur. ¡Encuentralos en el mapa!",
+      "titulo": "Encuentra a los Vecinos de México",
+      "instruccion": "México tiene tres países vecinos: USA al norte, Guatemala y Belice al sur. ¡Encuéntralos en el mapa!",
       "retos": [
         {
           "id": "484",
-          "nombre": "Mexico",
-          "pregunta": "Primero, ¿donde esta Mexico?"
+          "nombre": "México",
+          "pregunta": "Primero, ¿dónde está México?"
         },
         {
           "id": "840",
           "nombre": "Estados Unidos",
-          "pregunta": "¿Donde esta Estados Unidos? (al norte de Mexico)"
+          "pregunta": "¿Dónde está Estados Unidos? (al norte de México)"
         },
         {
           "id": "320",
           "nombre": "Guatemala",
-          "pregunta": "¿Y Guatemala? (al sur de Mexico)"
+          "pregunta": "¿Y Guatemala? (al sur de México)"
         },
         {
           "id": "084",
           "nombre": "Belice",
-          "pregunta": "¿Donde esta Belice? (vecino chiquito al sureste)"
+          "pregunta": "¿Dónde está Belice? (vecino chiquito al sureste)"
         }
       ]
     }

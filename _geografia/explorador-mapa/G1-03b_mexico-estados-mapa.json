@@ -1,6 +1,6 @@
 {
   "id": "G1-03b_mexico-estados-mapa",
-  "titulo": "Encuentra los Estados de Mexico en el Mapa",
+  "titulo": "Encuentra los Estados de México en el Mapa",
   "descripcion": "Click en cada estado mexicano cuando te lo pidan",
   "tipo": "explorador-mapa",
   "materia": "geografia",
@@ -12,48 +12,48 @@
       "tipo": "explorador-mapa",
       "mapa": "mexico-estados",
       "modo": "quiz",
-      "titulo": "Estados Importantes de Mexico",
+      "titulo": "Estados Importantes de México",
       "instruccion": "Encuentra cada estado mexicano en el mapa. Tip: cada estado tiene un color diferente.",
       "retos": [
         {
           "id": "9",
-          "nombre": "Ciudad de Mexico (CDMX)",
-          "pregunta": "¿Donde esta la Ciudad de Mexico, la capital del pais? (esta en el centro)"
+          "nombre": "Ciudad de México (CDMX)",
+          "pregunta": "¿Dónde está la Ciudad de México, la capital del país? (está en el centro)"
         },
         {
           "id": "31",
-          "nombre": "Yucatan",
-          "pregunta": "¿Donde esta Yucatan? (peninsula al sureste, donde estan Cancun y Chichen Itza)"
+          "nombre": "Yucatán",
+          "pregunta": "¿Dónde está Yucatán? (en el norte de la península del sureste, junto al Golfo de México; ahí están Mérida y Chichén Itzá)"
         },
         {
           "id": "14",
           "nombre": "Jalisco",
-          "pregunta": "¿Donde esta Jalisco? (cuna del mariachi y el tequila, al oeste)"
+          "pregunta": "¿Dónde está Jalisco? (cuna del mariachi y el tequila, al oeste)"
         },
         {
           "id": "8",
           "nombre": "Chihuahua",
-          "pregunta": "¿Donde esta Chihuahua? (el estado MAS GRANDE, al norte)"
+          "pregunta": "¿Dónde está Chihuahua? (el estado MÁS GRANDE, al norte)"
         },
         {
           "id": "2",
           "nombre": "Baja California",
-          "pregunta": "¿Donde esta Baja California? (peninsula larga al noroeste, junto a USA)"
+          "pregunta": "¿Dónde está Baja California? (península larga al noroeste, junto a USA)"
         },
         {
           "id": "27",
           "nombre": "Tabasco",
-          "pregunta": "¿Donde esta Tabasco? (sureste, junto al Golfo de Mexico, lleno de petroleo)"
+          "pregunta": "¿Dónde está Tabasco? (sureste, junto al Golfo de México, lleno de petróleo)"
         },
         {
           "id": "30",
           "nombre": "Veracruz",
-          "pregunta": "¿Donde esta Veracruz? (estado largo a lo largo del Golfo de Mexico)"
+          "pregunta": "¿Dónde está Veracruz? (estado largo a lo largo del Golfo de México)"
         },
         {
           "id": "20",
           "nombre": "Oaxaca",
-          "pregunta": "¿Donde esta Oaxaca? (al sur, famoso por su cultura y comida)"
+          "pregunta": "¿Dónde está Oaxaca? (al sur, famoso por su cultura y comida)"
         }
       ]
     }

@@ -1,7 +1,7 @@
 {
   "id": "G0-05_clima",
   "titulo": "El Clima: Sol, Lluvia y Nieve",
-  "descripcion": "Identifica los climas que vemos cada dia",
+  "descripcion": "Identifica los climas que vemos cada día",
   "tipo": "image-picker",
   "materia": "geografia",
   "tema": "clima",
@@ -10,8 +10,8 @@
     {
       "id": "mision-ip-clima",
       "tipo": "image-picker",
-      "titulo": "¿Que clima es?",
-      "instruccion": "Papa lee y tu eliges la imagen correcta.",
+      "titulo": "¿Qué clima es?",
+      "instruccion": "Papá lee y tú eliges la imagen correcta.",
       "retos": [
         {
           "palabra_es": "Cae mucha agua del cielo y se hacen charcos.",
@@ -21,7 +21,7 @@
             { "emoji": "❄️", "label": "Nieve" }
           ],
           "respuesta": 0,
-          "explicacion": "Es lluvia! El agua de la lluvia ayuda a que crezcan las plantas."
+          "explicacion": "¡Es lluvia! El agua de la lluvia ayuda a que crezcan las plantas."
         },
         {
           "palabra_es": "El cielo brilla, hace calorcito y queremos ir a la playa.",
@@ -31,27 +31,27 @@
             { "emoji": "⛈️", "label": "Tormenta" }
           ],
           "respuesta": 0,
-          "explicacion": "Es un dia soleado! El Sol nos da luz y calor."
+          "explicacion": "¡Es un día soleado! El Sol nos da luz y calor."
         },
         {
-          "palabra_es": "Cae blanco del cielo y hace MUCHO frio. Podemos hacer muñecos!",
+          "palabra_es": "Cae blanco del cielo y hace MUCHO frío. ¡Podemos hacer muñecos!",
           "opciones": [
             { "emoji": "🌧️", "label": "Lluvia" },
             { "emoji": "❄️", "label": "Nieve" },
-            { "emoji": "🌈", "label": "Arcoiris" }
+            { "emoji": "🌈", "label": "Arcoíris" }
           ],
           "respuesta": 1,
-          "explicacion": "Es nieve! La nieve es agua congelada. En Mexico solo nieva en montañas altas."
+          "explicacion": "¡Es nieve! La nieve es agua congelada. En México nieva en las montañas altas y, en invierno, en algunos lugares del norte."
         },
         {
-          "palabra_es": "Despues de la lluvia aparece en el cielo con muchos colores.",
+          "palabra_es": "Después de la lluvia aparece en el cielo con muchos colores.",
           "opciones": [
             { "emoji": "☁️", "label": "Nube" },
-            { "emoji": "🌈", "label": "Arcoiris" },
+            { "emoji": "🌈", "label": "Arcoíris" },
             { "emoji": "🌪️", "label": "Tornado" }
           ],
           "respuesta": 1,
-          "explicacion": "Es un arcoiris! Tiene 7 colores: rojo, naranja, amarillo, verde, azul, indigo y violeta."
+          "explicacion": "¡Es un arcoíris! Tiene 7 colores: rojo, naranja, amarillo, verde, azul, índigo y violeta."
         },
         {
           "palabra_es": "Son blancas, esponjosas y flotan en el cielo.",
@@ -61,7 +61,7 @@
             { "emoji": "🌙", "label": "Luna" }
           ],
           "respuesta": 0,
-          "explicacion": "Son nubes! Las nubes estan hechas de gotitas chiquitas de agua."
+          "explicacion": "¡Son nubes! Las nubes están hechas de gotitas chiquitas de agua."
         }
       ]
     }

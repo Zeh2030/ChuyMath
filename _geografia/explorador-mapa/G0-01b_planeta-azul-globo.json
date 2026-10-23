@@ -15,7 +15,7 @@
       "estilo": "tierra",
       "rotacion_inicial": [-30, 10],
       "titulo": "La Tierra desde el Espacio",
-      "instruccion": "Asi se ve nuestro planeta desde el espacio. Lo AZUL es agua y lo VERDE es tierra. Girala con el dedo: ¿hay mas agua o mas tierra?",
+      "instruccion": "Así se ve nuestro planeta desde el espacio. Lo AZUL es agua y lo VERDE es tierra. Gírala con el dedo: ¿hay más agua o más tierra?",
       "retos": []
     }
   ]

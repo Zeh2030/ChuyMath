@@ -1,4 +1,8 @@
 .em-container {
+  /* width explícito: sin la pregunta (modo explorar) nada ensanchaba el
+     contenedor y el mapa se encogía a ~300px. */
+  width: 100%;
+  box-sizing: border-box;
   max-width: 1100px;
   margin: 0 auto;
   padding: 16px;
@@ -14,6 +18,11 @@
   font-weight: 600;
   color: #555;
   gap: 8px;
+}
+
+.em-contador,
+.em-racha {
+  white-space: nowrap;
 }
 
 .em-contador {
@@ -87,6 +96,58 @@
 
 .em-mapa.em-globo:active {
   cursor: grabbing;
+}
+
+/* === Zoom (en la barra de arriba, fuera del mapa) === */
+.em-zoom {
+  display: flex;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.em-zoom + .em-fs-btn {
+  margin-left: 0;
+}
+
+.em-zoom button {
+  width: 44px;
+  height: 44px;
+  border: 2px solid #c8d6e5;
+  border-radius: 12px;
+  background: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.em-zoom button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* Con zoom el mapa plano se arrastra: el dedo mueve el mapa, no la pagina. */
+.em-mapa.em-arrastrable {
+  touch-action: none;
+  cursor: grab;
+}
+
+.em-mapa.em-arrastrable:active {
+  cursor: grabbing;
+}
+
+/* El grosor de los bordes no crece con el zoom del viewBox. */
+.em-mapa path {
+  vector-effect: non-scaling-stroke;
+}
+
+/* Halo invisible de toque alrededor de un objetivo diminuto (sobre el mar). */
+.em-halo {
+  fill: transparent;
+  stroke: none;
+}
+
+.em-listo {
+  display: block;
+  margin: 4px auto 0;
 }
 
 .em-oceano-path {
@@ -178,17 +239,14 @@
 }
 
 .em-pista-giro {
-  position: absolute;
-  bottom: 14px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(255, 255, 255, 0.85);
+  display: inline-block;
+  margin: -6px 0 12px;
+  background: #f0f4f8;
   color: #2c3e50;
   font-size: 0.85rem;
   font-weight: 700;
   padding: 5px 12px;
   border-radius: 12px;
-  pointer-events: none;
 }
 
 .em-pais {
@@ -356,4 +414,8 @@
   .em-pregunta { font-size: 1.1rem; }
   .em-mapa-wrapper { padding: 6px; }
   .em-fs-btn { padding: 6px 10px; font-size: 1rem; }
+  .em-progreso { gap: 6px; }
+  .em-contador, .em-racha { padding: 5px 9px; }
+  .em-zoom { gap: 4px; }
+  .em-zoom button { width: 38px; height: 38px; font-size: 1rem; }
 }

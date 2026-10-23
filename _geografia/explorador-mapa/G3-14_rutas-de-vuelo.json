@@ -1,7 +1,7 @@
 {
   "id": "G3-14_rutas-de-vuelo",
-  "titulo": "Por Que los Aviones Van por el Norte",
-  "descripcion": "El camino mas corto entre dos ciudades no es el que parece en un mapa plano",
+  "titulo": "Por Qué los Aviones Van por el Norte",
+  "descripcion": "El camino más corto entre dos ciudades no es el que parece en un mapa plano",
   "tipo": "explorador-mapa",
   "materia": "geografia",
   "tema": "rutas-geodesicas",
@@ -12,8 +12,8 @@
       "tipo": "explorador-mapa",
       "mapa": "globo",
       "modo": "quiz",
-      "titulo": "La Ruta Mas Corta",
-      "instruccion": "Sobre una esfera, el camino mas corto entre dos puntos se curva hacia los polos. En un mapa plano parece un rodeo absurdo; en el globo se ve que es lo mas corto. Responde y luego gira el globo para comparar las dos lineas.",
+      "titulo": "La Ruta Más Corta",
+      "instruccion": "Sobre una esfera, el camino más corto entre dos puntos se curva hacia los polos. En un mapa plano parece un rodeo absurdo; en el globo se ve que es lo más corto. Responde y luego gira el globo para comparar las dos líneas.",
       "rotacion_inicial": [
         -40,
         45
@@ -23,8 +23,8 @@
           "id": "643",
           "nombre": "Rusia",
           "bandera": "ru",
-          "pregunta": "Un avion va de Nueva York a Tokio por el camino MAS CORTO. ¿Sobre que pais pasa?",
-          "dato": "La linea roja es la ruta real: 10.849 km, subiendo hasta la latitud 70°. La linea blanca es el camino \"recto\" del mapa plano: 12.792 km, ¡1943 km mas! Por eso los aviones parece que dan un rodeo por el norte.",
+          "pregunta": "Un avión va de Nueva York a Tokio por el camino MÁS CORTO. Además de Estados Unidos y Canadá, ¿qué otro país gigante cruza antes de llegar a Japón?",
+          "dato": "La línea roja es la ruta más corta: 10.849 km, subiendo hasta la latitud 70°. La línea blanca es el camino \"recto\" del mapa plano: 12.792 km, ¡1943 km más! Por eso los aviones parece que dan un rodeo por el norte.",
           "marcar": [
             {
               "lon": -74,
@@ -53,8 +53,8 @@
           "id": "643",
           "nombre": "Rusia",
           "bandera": "ru",
-          "pregunta": "Un avion va de Madrid a Tokio por el camino MAS CORTO. ¿Sobre que pais pasa?",
-          "dato": "La linea roja es la ruta real: 10.763 km, subiendo hasta la latitud 68°. La linea blanca es el camino \"recto\" del mapa plano: 12.564 km, ¡1801 km mas! Por eso los aviones parece que dan un rodeo por el norte.",
+          "pregunta": "Un avión va de Madrid a Tokio por el camino MÁS CORTO. ¿Sobre qué país gigante vuela durante casi la mitad del viaje?",
+          "dato": "La línea roja es la ruta más corta: 10.763 km, subiendo hasta la latitud 68°. La línea blanca es el camino \"recto\" del mapa plano: 12.564 km, ¡1801 km más! Por eso los aviones parece que dan un rodeo por el norte.",
           "marcar": [
             {
               "lon": -3.7,
@@ -81,10 +81,10 @@
         },
         {
           "id": "124",
-          "nombre": "Canada",
+          "nombre": "Canadá",
           "bandera": "ca",
-          "pregunta": "Un avion va de Ciudad de Mexico a Paris por el camino MAS CORTO. ¿Sobre que pais pasa?",
-          "dato": "La linea roja es la ruta real: 9195 km, subiendo hasta la latitud 52°. La linea blanca es el camino \"recto\" del mapa plano: 9803 km, ¡609 km mas! Por eso los aviones parece que dan un rodeo por el norte.",
+          "pregunta": "Un avión va de Ciudad de México a París por el camino MÁS CORTO. Después de cruzar Estados Unidos, ¿qué otro país sobrevuela antes del océano Atlántico?",
+          "dato": "La línea roja es la ruta más corta: 9195 km, subiendo hasta la latitud 52°. La línea blanca es el camino \"recto\" del mapa plano: 9803 km, ¡609 km más! Por eso los aviones parece que dan un rodeo por el norte.",
           "marcar": [
             {
               "lon": -99.1,

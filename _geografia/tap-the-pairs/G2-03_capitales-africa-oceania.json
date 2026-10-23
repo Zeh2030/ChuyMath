@@ -1,7 +1,7 @@
 {
   "id": "G2-03_capitales-africa-oceania",
-  "titulo": "Capitales de Africa y Oceania",
-  "descripcion": "Empareja paises africanos y oceanicos con su capital",
+  "titulo": "Capitales de África y Oceanía",
+  "descripcion": "Empareja países africanos y oceánicos con su capital",
   "tipo": "tap-the-pairs",
   "materia": "geografia",
   "tema": "capitales-africa-oceania",
@@ -10,13 +10,13 @@
     {
       "id": "mision-ttp-capitales-af-oc",
       "tipo": "tap-the-pairs",
-      "titulo": "Pais y su Capital",
-      "instruccion": "Toca un pais y luego su capital para emparejarlos.",
+      "titulo": "País y su Capital",
+      "instruccion": "Toca un país y luego su capital para emparejarlos.",
       "retos": [
         {
           "pares": [
             { "es": "Egipto", "en": "El Cairo" },
-            { "es": "Sudafrica", "en": "Pretoria" },
+            { "es": "Sudáfrica", "en": "Pretoria" },
             { "es": "Marruecos", "en": "Rabat" },
             { "es": "Nigeria", "en": "Abuja" },
             { "es": "Kenia", "en": "Nairobi" }
@@ -24,7 +24,7 @@
         },
         {
           "pares": [
-            { "es": "Etiopia", "en": "Addis Abeba" },
+            { "es": "Etiopía", "en": "Addis Abeba" },
             { "es": "Senegal", "en": "Dakar" },
             { "es": "Ghana", "en": "Accra" },
             { "es": "Tanzania", "en": "Dodoma" },
@@ -35,7 +35,7 @@
           "pares": [
             { "es": "Australia", "en": "Canberra" },
             { "es": "Nueva Zelanda", "en": "Wellington" },
-            { "es": "Papua Nueva Guinea", "en": "Port Moresby" },
+            { "es": "Papúa Nueva Guinea", "en": "Port Moresby" },
             { "es": "Fiji", "en": "Suva" }
           ]
         }

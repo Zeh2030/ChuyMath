@@ -1,7 +1,7 @@
 {
   "id": "G1-12_mexico-cultural",
-  "titulo": "Mexico Cultural: Tradiciones y Sabores",
-  "descripcion": "Conoce lo que hace especial a Mexico: el dia de muertos, mariachi, comida y tradiciones",
+  "titulo": "México Cultural: Tradiciones y Sabores",
+  "descripcion": "Conoce lo que hace especial a México: el día de muertos, mariachi, comida y tradiciones",
   "tipo": "mini-story",
   "materia": "geografia",
   "tema": "mexico-cultural",
@@ -10,83 +10,83 @@
     {
       "id": "mision-story-mexico-cultural",
       "tipo": "mini-story",
-      "titulo": "Lo que hace UNICO a Mexico",
+      "titulo": "Lo que hace ÚNICO a México",
       "instruccion": "Lee cada parte y responde la pregunta.",
       "parrafos": [
         {
-          "texto": "Mexico tiene una fiesta SUPER especial: el Dia de Muertos, el 1 y 2 de noviembre. No es triste, es ALEGRE! Las familias ponen un altar con foto de sus abuelitos, comida, flores naranjas (cempasuchil) y velas. Creen que ese dia las almas regresan a visitar.",
+          "texto": "México tiene una fiesta SUPER especial: el Día de Muertos, el 1 y 2 de noviembre. No es triste, ¡es ALEGRE! Las familias ponen un altar con foto de sus abuelitos, comida, flores naranjas (cempasúchil) y velas. Creen que ese día las almas regresan a visitar.",
           "emoji": "💀",
           "preguntas": [
             {
               "tipo": "fill-the-gap",
-              "oracion": "El Dia de Muertos se celebra en el mes de ___.",
+              "oracion": "El Día de Muertos se celebra en el mes de ___.",
               "opciones": ["enero", "abril", "noviembre", "diciembre"],
               "respuesta": 2
             }
           ]
         },
         {
-          "texto": "La pelicula 'Coco' de Disney/Pixar trata sobre el Dia de Muertos. La hicieron despues de visitar muchos pueblos de Mexico. La calavera Catrina, las flores naranjas, el alebrije Pepita... ¡todo es de verdad!",
+          "texto": "La película 'Coco' de Disney/Pixar trata sobre el Día de Muertos. La hicieron después de visitar muchos pueblos de México. La calavera Catrina, las flores de cempasúchil y los alebrijes... ¡existen de verdad! (Aunque Pepita es un personaje inventado).",
           "emoji": "🎬",
           "preguntas": [
             {
               "tipo": "true-or-false",
-              "oracion": "La pelicula 'Coco' de Disney es sobre el Dia de Muertos mexicano.",
+              "oracion": "La película 'Coco' de Disney es sobre el Día de Muertos mexicano.",
               "correcto": true,
               "correccion": null
             }
           ]
         },
         {
-          "texto": "Otra cosa muy mexicana es el MARIACHI: musicos vestidos con trajes elegantes con sombrero grande, que tocan trompeta, violin y guitarra. Cantan canciones romanticas como 'Cielito Lindo'. El mariachi nacio en Jalisco, Mexico.",
+          "texto": "Otra cosa muy mexicana es el MARIACHI: músicos vestidos con trajes elegantes con sombrero grande, que tocan trompeta, violín y guitarra. Cantan canciones románticas como 'Cielito Lindo'. El mariachi nació en Jalisco, México.",
           "emoji": "🎺",
           "preguntas": [
             {
               "tipo": "fill-the-gap",
-              "oracion": "El mariachi nacio en el estado mexicano de ___.",
-              "opciones": ["Veracruz", "Jalisco", "Yucatan", "Sonora"],
+              "oracion": "El mariachi nació en el estado mexicano de ___.",
+              "opciones": ["Veracruz", "Jalisco", "Yucatán", "Sonora"],
               "respuesta": 1
             }
           ]
         },
         {
-          "texto": "La comida mexicana es famosa en TODO el mundo. Tenemos tacos, quesadillas, tamales, pozole, mole y enchiladas. ¿Sabias que el chocolate fue INVENTADO por los aztecas en Mexico? Lo tomaban como bebida con chile. Cuando llegaron los españoles se lo llevaron al mundo.",
+          "texto": "La comida mexicana es famosa en TODO el mundo. Tenemos tacos, quesadillas, tamales, pozole, mole y enchiladas. ¿Sabías que el chocolate viene del cacao, que los pueblos antiguos de México, como los olmecas y los mayas, ya usaban hace miles de años? Los aztecas lo tomaban como bebida con chile. Cuando llegaron los españoles, se lo llevaron al mundo.",
           "emoji": "🌮",
           "preguntas": [
             {
               "tipo": "fill-the-gap",
-              "oracion": "El ___ fue inventado en Mexico por los aztecas.",
-              "opciones": ["pan", "queso", "chocolate", "azucar"],
+              "oracion": "Los aztecas tomaban ___ como bebida con chile.",
+              "opciones": ["pan", "queso", "chocolate", "azúcar"],
               "respuesta": 2
             }
           ]
         },
         {
-          "texto": "Cada 16 de septiembre se celebra la Independencia de Mexico. La noche del 15, el presidente sale al balcon de Palacio Nacional y grita '¡Viva Mexico!' Muchas veces. La gente contesta '¡Viva!' Despues hay fuegos artificiales y se come pozole.",
+          "texto": "Cada 16 de septiembre se celebra la Independencia de México. La noche del 15, la presidenta o el presidente sale al balcón de Palacio Nacional y grita '¡Viva México!' Muchas veces. La gente contesta '¡Viva!' Después hay fuegos artificiales y se come pozole.",
           "emoji": "🎆",
           "preguntas": [
             {
               "tipo": "fill-the-gap",
-              "oracion": "La Independencia de Mexico se celebra el 16 de ___.",
+              "oracion": "La Independencia de México se celebra el 16 de ___.",
               "opciones": ["mayo", "julio", "septiembre", "diciembre"],
               "respuesta": 2
             }
           ]
         },
         {
-          "texto": "Mexico tiene piramides antiguas mas grandes que las de Egipto! Chichen Itza (en Yucatan) es maya, Teotihuacan (cerca de CDMX) tiene la Piramide del Sol y la de la Luna. Estas culturas vivieron en Mexico hace 1,500 años, antes que llegaran los españoles.",
+          "texto": "¡México tiene la pirámide más grande del mundo por el tamaño de su base: la de Cholula, en Puebla! Chichén Itzá (en Yucatán) es maya, Teotihuacán (cerca de CDMX) tiene la Pirámide del Sol y la de la Luna. Estas culturas vivieron en México hace más de mil años, antes de que llegaran los españoles.",
           "emoji": "🏛️",
           "preguntas": [
             {
               "tipo": "true-or-false",
-              "oracion": "En Mexico hay piramides antiguas hechas por mayas y aztecas.",
+              "oracion": "En México hay pirámides antiguas hechas por los mayas y por los teotihuacanos.",
               "correcto": true,
               "correccion": null
             },
             {
               "tipo": "fill-the-gap",
-              "oracion": "La piramide maya mas famosa esta en ___, Mexico.",
-              "opciones": ["Yucatan", "Veracruz", "Sonora", "Guerrero"],
+              "oracion": "La pirámide maya más famosa está en ___, México.",
+              "opciones": ["Yucatán", "Veracruz", "Sonora", "Guerrero"],
               "respuesta": 0
             }
           ]

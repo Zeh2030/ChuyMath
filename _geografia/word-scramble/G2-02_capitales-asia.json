@@ -1,7 +1,7 @@
 {
   "id": "G2-02_capitales-asia",
   "titulo": "Capitales de Asia (Desordenadas)",
-  "descripcion": "Las letras de la capital estan desordenadas. Ordenalas para descubrir el nombre",
+  "descripcion": "Las letras de la capital están desordenadas. Ordénalas para descubrir el nombre",
   "tipo": "word-scramble",
   "materia": "geografia",
   "tema": "capitales-asia",
@@ -11,37 +11,37 @@
       "id": "mision-ws-capitales-asia",
       "tipo": "word-scramble",
       "titulo": "Adivina la Capital",
-      "instruccion": "Las letras estan desordenadas. ¿Que capital es?",
+      "instruccion": "Las letras están desordenadas. ¿Qué capital es?",
       "retos": [
         {
           "respuesta": "TOKIO",
-          "pista_es": "Capital de Japon, ciudad de los Pokemon y el sushi",
+          "pista_es": "Capital de Japón, ciudad de los Pokémon y el sushi",
           "pista_emoji": "🗼",
-          "explicacion": "Tokio es la capital de Japon. Es una de las ciudades mas pobladas del mundo (38 millones)."
+          "explicacion": "Tokio es la capital de Japón. Es una de las ciudades más pobladas del mundo (38 millones)."
         },
         {
-          "respuesta": "PEKIN",
+          "respuesta": "PEKÍN",
           "pista_es": "Capital de China, cerca de la Gran Muralla",
           "pista_emoji": "🏯",
-          "explicacion": "Pekin (o Beijing) es la capital de China. Tiene la Ciudad Prohibida, palacio antiguo de los emperadores."
+          "explicacion": "Pekín (o Beijing) es la capital de China. Tiene la Ciudad Prohibida, palacio antiguo de los emperadores."
         },
         {
-          "respuesta": "SEUL",
+          "respuesta": "SEÚL",
           "pista_es": "Capital de Corea del Sur, hogar del K-pop y BTS",
           "pista_emoji": "🎤",
-          "explicacion": "Seul es la capital de Corea del Sur. Es famosa por su tecnologia, K-pop y Squid Game."
+          "explicacion": "Seúl es la capital de Corea del Sur. Es famosa por su tecnología, K-pop y Squid Game."
         },
         {
           "respuesta": "BANGKOK",
           "pista_es": "Capital de Tailandia, llena de templos dorados",
           "pista_emoji": "🛕",
-          "explicacion": "Bangkok es la capital de Tailandia. Tiene mas de 400 templos budistas y mercados flotantes en canales."
+          "explicacion": "Bangkok es la capital de Tailandia. Tiene más de 400 templos budistas y mercados flotantes en canales."
         },
         {
           "respuesta": "MANILA",
-          "pista_es": "Capital de Filipinas, archipielago con 7,000 islas",
+          "pista_es": "Capital de Filipinas, archipiélago con 7,000 islas",
           "pista_emoji": "🏝️",
-          "explicacion": "Manila es la capital de Filipinas. Filipinas es un grupo de mas de 7,000 islas en el oceano Pacifico."
+          "explicacion": "Manila es la capital de Filipinas. Filipinas es un grupo de más de 7,000 islas en el océano Pacífico."
         },
         {
           "respuesta": "HANOI",
@@ -50,16 +50,16 @@
           "explicacion": "Hanoi es la capital de Vietnam. Es famosa por su comida (pho, banh mi) y sus calles llenas de motos."
         },
         {
-          "respuesta": "JAKARTA",
-          "pista_es": "Capital de Indonesia, pais con mas islas del mundo",
+          "respuesta": "YAKARTA",
+          "pista_es": "Capital de Indonesia, el país-archipiélago más grande del mundo",
           "pista_emoji": "🌋",
-          "explicacion": "Jakarta es la capital de Indonesia. Indonesia tiene 17,508 islas, mas que cualquier otro pais."
+          "explicacion": "Yakarta es la capital de Indonesia. Indonesia es el país-archipiélago más grande del mundo: más de 17,000 islas repartidas sobre el ecuador."
         },
         {
-          "respuesta": "TEHERAN",
-          "pista_es": "Capital de Iran, en el medio oriente",
+          "respuesta": "TEHERÁN",
+          "pista_es": "Capital de Irán, en el medio oriente",
           "pista_emoji": "⛰️",
-          "explicacion": "Teheran es la capital de Iran (antes llamado Persia). Esta rodeada de montañas y tiene 9 millones de habitantes."
+          "explicacion": "Teherán es la capital de Irán (antes llamado Persia). Está rodeada de montañas y tiene 9 millones de habitantes."
         }
       ]
     }

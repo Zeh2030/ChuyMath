@@ -17,10 +17,10 @@ G3  → Geografo Junior    (9-11 años) — Tectonica, climas, demografia, geopo
 
 | Nivel | Nombre | Edad | # Temas | Audiencia | Estado |
 |-------|--------|------|---------|-----------|--------|
-| **G0** | Mi Mundo Cercano | 3-5 | 10 | Hija (4 años) — papa lee | Planeado |
-| **G1** | Pequeño Explorador | 5-7 | 12 | Alumno (7) — NIVEL INICIAL | Planeado |
-| **G2** | Viajero del Mundo | 7-9 | 12 | Alumno cuando avance | Planeado |
-| **G3** | Geografo Junior | 9-11 | 12 | Roadmap a largo plazo | Planeado |
+| **G0** | Mi Mundo Cercano | 3-5 | 10 | Hija (4 años) — papa lee | ✅ Completo (+ globo G0-01b) |
+| **G1** | Pequeño Explorador | 5-7 | 12 | Alumno (7) — NIVEL INICIAL | ✅ Completo (+ globo G1-01b, G1-09b) |
+| **G2** | Viajero del Mundo | 7-9 | 12 | Alumno cuando avance | ✅ Completo (+ G2-14 globo) |
+| **G3** | Geografo Junior | 9-11 | 12 | Roadmap a largo plazo | Parcial: G3-09b, G3-13, G3-14 (globo) |
 
 **Total programa:** 46 temas (~1.5 años de contenido a 1/semana).
 
@@ -282,12 +282,14 @@ Ejemplo: `G1-05_banderas-latam.json`
 |------------|--------|
 | Programa documentado (este archivo) | ✅ |
 | Estructura de carpetas | ✅ |
-| Componente ExploradorMapa.jsx | ✅ Lote 1 (3 mapas: world, mexico-estados, usa-estados) |
+| Componente ExploradorMapa.jsx | ✅ 9 mapas (globo, world, americas, america-latina, europa, asia, africa, mexico-estados, usa-estados) + `encuadre`, zoom y halo para lugares diminutos |
 | Integracion en Boveda/Dashboard/etc | ✅ Lote 1 |
 | Contenido G0 | ✅ COMPLETO — Lote 4 (G0-01..05) + Lote 6 (G0-06..10) |
 | Contenido G1 | ✅ COMPLETO — Lote 2 (G1-01..04) + Lote 3 (G1-05..08) + Lote 5 (G1-09..12) |
 | Contenido G2 | ✅ COMPLETO 12 temas (G2-01 capitales-EU, G2-02 capitales-ASIA, G2-03 capitales-AF/OC, G2-04 rios, G2-05 montañas, G2-06 paises-EU, G2-07 paises-ASIA, G2-08 idiomas, G2-09 monedas, G2-10 husos, G2-12 mexico-fisico, G2-13 estados-USA). G2-11 maravillas integrado en GE3-01. |
-| Contenido G3 | Pendiente (cuando aplique) |
+| Contenido G3 | Parcial: 3 aventuras de globo (G3-09b mapas que mienten, G3-13 antípodas, G3-14 rutas de vuelo); el resto cuando aplique |
+| Validador | ✅ `node _geografia/_valida.mjs` (2026-10-22) |
+| Auditoría en pantalla | ✅ 2026-10-22: las 53 jugadas completas con Playwright; ver PLAN_MAESTRO §8 |
 | Expediciones | ✅ COMPLETO — G1 (4) + G2 (5) + G3 (1) = **10 expediciones**. G1: NY, SF, Mexico antiguo, Disney. G2: Paris, Asia, Australia, Caribe, Sudamerica. G3: 7 Maravillas. |
 
 Ver `GUIA_CREACION_GEOGRAFIA.md` para convenciones de creacion de JSONs.

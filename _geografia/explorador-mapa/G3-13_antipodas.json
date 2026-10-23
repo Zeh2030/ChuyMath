@@ -1,7 +1,7 @@
 {
   "id": "G3-13_antipodas",
   "titulo": "El Otro Lado del Mundo",
-  "descripcion": "Si cavas un tunel recto y atraviesas la Tierra, ¿donde sales?",
+  "descripcion": "Si cavas un túnel recto y atraviesas la Tierra, ¿dónde sales?",
   "tipo": "explorador-mapa",
   "materia": "geografia",
   "tema": "antipodas",
@@ -12,8 +12,8 @@
       "tipo": "explorador-mapa",
       "mapa": "globo",
       "modo": "quiz",
-      "titulo": "Cavando un Tunel",
-      "instruccion": "La ANTIPODA de un lugar es el punto exactamente opuesto atravesando el centro de la Tierra. Esto en un mapa plano no se puede ver: hay que girar el globo media vuelta. Casi siempre se sale al oceano, asi que estos pares son raros. El punto rojo marca de donde sales.",
+      "titulo": "Cavando un Túnel",
+      "instruccion": "La ANTÍPODA de un lugar es el punto exactamente opuesto atravesando el centro de la Tierra. Esto en un mapa plano no se puede ver: hay que girar el globo media vuelta. Casi siempre se sale al océano, así que estos pares son raros. El punto rojo marca desde dónde empiezas a cavar.",
       "rotacion_inicial": [
         -60,
         -20
@@ -23,12 +23,12 @@
           "id": "032",
           "nombre": "Argentina",
           "bandera": "ar",
-          "dato": "Si pudieras cavar un tunel recto desde China, saldrias en Argentina. Son casi las unicas tierras del mundo que se miran de frente a traves del planeta.",
-          "pregunta": "Cavas un tunel recto desde China (punto rojo) y atraviesas la Tierra. ¿Por donde sales?",
+          "dato": "Si pudieras cavar un túnel recto desde Pekín, saldrías en Argentina. Es uno de los pocos lugares donde dos tierras grandes se miran de frente a través del planeta: casi todo lo demás cae en el océano.",
+          "pregunta": "Cavas un túnel recto desde Pekín, China (punto rojo), y atraviesas la Tierra. ¿Por dónde sales?",
           "marcar": [
             {
-              "lon": 103.45254772896584,
-              "lat": 36.683402772207494,
+              "lon": 116.4,
+              "lat": 39.9,
               "color": "#ff5252"
             }
           ]
@@ -37,26 +37,26 @@
           "id": "076",
           "nombre": "Brasil",
           "bandera": "br",
-          "dato": "Brasil e Indonesia estan en lados opuestos de la Tierra. Cuando en uno amanece, en el otro anochece.",
-          "pregunta": "Cavas un tunel recto desde Indonesia (punto rojo) y atraviesas la Tierra. ¿Por donde sales?",
+          "dato": "Brasil e Indonesia están en lados opuestos de la Tierra. Cuando en uno amanece, en el otro anochece.",
+          "pregunta": "Cavas un túnel recto desde la isla de Borneo, en Indonesia (punto rojo), y atraviesas la Tierra. ¿Por dónde sales?",
           "marcar": [
             {
-              "lon": 117.36464278135101,
-              "lat": -2.2718744795703945,
+              "lon": 114.0,
+              "lat": -0.5,
               "color": "#ff5252"
             }
           ]
         },
         {
-          "id": "152",
-          "nombre": "Chile",
-          "bandera": "cl",
-          "dato": "Chile queda justo debajo de Mongolia si atraviesas el planeta. Y no hay nada mas lejos: son antipodas.",
-          "pregunta": "Cavas un tunel recto desde Mongolia (punto rojo) y atraviesas la Tierra. ¿Por donde sales?",
+          "id": "554",
+          "nombre": "Nueva Zelanda",
+          "bandera": "nz",
+          "dato": "España y Nueva Zelanda son el par de antípodas más famoso del mundo: si cavas desde Madrid, sales en la Isla Norte de Nueva Zelanda. No hay ningún lugar más lejos de España.",
+          "pregunta": "Cavas un túnel recto desde Madrid, España (punto rojo), y atraviesas la Tierra. ¿Por dónde sales?",
           "marcar": [
             {
-              "lon": 103.01565952926065,
-              "lat": 46.95419911477369,
+              "lon": -3.7,
+              "lat": 40.4,
               "color": "#ff5252"
             }
           ]
@@ -65,12 +65,12 @@
           "id": "170",
           "nombre": "Colombia",
           "bandera": "co",
-          "dato": "Colombia e Indonesia se miran a traves del centro de la Tierra, a 12.700 km de distancia en linea recta.",
-          "pregunta": "Cavas un tunel recto desde Indonesia (punto rojo) y atraviesas la Tierra. ¿Por donde sales?",
+          "dato": "Colombia e Indonesia se miran a través del centro de la Tierra, a 12.700 km de distancia en línea recta.",
+          "pregunta": "Cavas un túnel recto desde la isla de Sumatra, en Indonesia (punto rojo), y atraviesas la Tierra. ¿Por dónde sales?",
           "marcar": [
             {
-              "lon": 117.36464278135101,
-              "lat": -2.2718744795703945,
+              "lon": 103.6,
+              "lat": -1.6,
               "color": "#ff5252"
             }
           ]

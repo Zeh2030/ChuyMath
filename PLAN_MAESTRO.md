@@ -323,14 +323,31 @@ como tema global (un tema oscuro cuesta ~48 overrides, ver §2).
 
 ---
 
-## 8. GEOGRAFÍA ✅ CONSTRUIDA
+## 8. GEOGRAFÍA ✅ CONSTRUIDA · auditada 2026-10-22
 
 - `ExploradorMapa.jsx` con mapas por continente + **globo terráqueo girable**
-  (`geoOrthographic`, d3-geo, sin three.js).
-- 48 JSONs en 9 tipos (explorador-mapa, expediciones, image-picker con banderas
+  (`geoOrthographic`, d3-geo, sin three.js). Zoom ➕/➖ con arrastre, `encuadre`
+  por misión (`fitExtent`) y halo de toque sobre el mar para lugares diminutos.
+- 53 JSONs en 9 tipos (explorador-mapa, expediciones, image-picker con banderas
   flagcdn, tap-the-pairs, mini-story, opcion-multiple, true-or-false, fill-the-gap,
-  word-scramble). Niveles G0-G2 en marcha; G3 pendiente.
-- Programa: `_geografia/PROGRAMA_GEOGRAFIA.md`.
+  word-scramble). G0-G2 completos; G3 parcial (3 aventuras de globo) + GE3-01.
+- Validador: `node _geografia/_valida.mjs` (califica con `calificar.js` de la app).
+- Programa: `_geografia/PROGRAMA_GEOGRAFIA.md`; formatos en `GUIA_CREACION_GEOGRAFIA.md`.
+
+### Auditoría 2026-10-22 (las 53 jugadas en pantalla con Playwright)
+- **Código**: opción múltiple con `valor` numérico ("102") nunca se podía contestar
+  (6 misiones de expediciones; Australia aceptaba la incorrecta) → `respuestaEsIndice`
+  en `calificar.js`. `TapThePairs` tronaba si una ronda tenía menos pares. Modo
+  explorar sin botón de terminar (G0-01b). Tooltip con el nombre del país en el quiz.
+  Mapa de Europa cortado.
+- **Contenido**: banderas con el nombre del país escrito (G1-05/G1-08), monedas con
+  5 "Euro", antípodas y rutas con más de una respuesta válida, ~50 datos falsos o
+  regalos (India más poblada, Yucatán ≠ Caribe, Taj Mahal, oxígeno del Amazonas…),
+  y pasada de tildes y ¡¿ en todo.
+- QA: `C:\Proyectos JJCG\qa-navegador\chuymath-geo-recorrido.mjs` (juega todo) y
+  `chuymath-geo-dump.mjs` (Firestore vs disco).
+- **Pendiente**: traducir al español los nombres del tooltip en modo explorar
+  (salen en inglés de world-atlas; solo lo usa G0-01b).
 
 ---
 
@@ -436,7 +453,7 @@ Gemini (voz a voz en tiempo real, con interrupciones). Nada construido.
 | Dibujo | Galería, D3 o lienzo (ninguno urgente) | §9 + `_dibujo/PROGRAMA_DIBUJO.md` |
 | Matemáticas | Concurso: cronómetro, respuesta por pregunta, revisar claves, más simulacros | §4 + `_contenido/_valida.mjs` |
 | Plataforma | PIN de adulto, modo papás, temas | §2, §3 |
-| Geografía | Nada; G3 cuando aplique | §8 + `_geografia/PROGRAMA_GEOGRAFIA.md` |
+| Geografía | G3 cuando aplique; tooltip en español en explorar | §8 + `_geografia/PROGRAMA_GEOGRAFIA.md` + `_valida.mjs` |
 
 ---
 

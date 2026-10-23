@@ -111,11 +111,14 @@ const ImagePicker = ({ mision, onCompletar, materia = null }) => {
             </div>
             {reto.palabra_es && <p className="ip-hint">({reto.palabra_es})</p>}
           </>
-        ) : (
+        ) : reto.palabra_es ? (
+          // Con foto-estímulo y opciones de texto, palabra_es debe ser la PREGUNTA,
+          // nunca la respuesta (las banderas ponían aquí el nombre del país).
+          // _geografia/_valida.mjs lo revisa.
           <div className="ip-word">
             <span className="ip-word-text ip-word-es">{reto.palabra_es}</span>
           </div>
-        )}
+        ) : null}
       </div>
 
       {/* Image grid */}

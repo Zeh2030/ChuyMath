@@ -16,10 +16,23 @@ export const valorDeOpcion = (opcion) =>
     ? opcion.valor
     : opcion;
 
+// ¿La respuesta de ESTA pregunta es un índice? Un número siempre lo es. Un texto
+// de dígitos también, salvo que coincida con el `valor` de una opción: con
+// opciones { texto: "B) 102 pisos", valor: "102" } y respuesta "102", el 102 es
+// el valor, no la opción 103 (que no existe y dejaba la pregunta sin respuesta).
+export const respuestaEsIndice = (mision) => {
+  const r = respuestaCorrectaOM(mision);
+  if (typeof r === 'number') return true;
+  if (!esIndice(r)) return false;
+  const opciones = mision.opciones || mision.opciones_finales || [];
+  return !opciones.some(o =>
+    typeof o === 'object' && o !== null && o.valor !== undefined && String(o.valor) === r);
+};
+
 // Lo que OpcionMultiple guarda al tocar la opción `indice`: el índice como texto
 // si la respuesta es un índice, o el valor de la opción si no.
 export const seleccionOM = (mision, opcion, indice) =>
-  esIndice(respuestaCorrectaOM(mision)) ? String(indice) : valorDeOpcion(opcion);
+  respuestaEsIndice(mision) ? String(indice) : valorDeOpcion(opcion);
 
 // Índice contra índice o valor contra valor; nunca cruzados. Cruzarlos hacía que,
 // con opciones ["1","2","3","4"] y respuesta 1 (= "2"), elegir el índice 2 ("3")

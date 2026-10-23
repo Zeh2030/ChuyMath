@@ -11,10 +11,10 @@
       "id": "mision-story-mi-casa",
       "tipo": "mini-story",
       "titulo": "De Mi Casa al Planeta",
-      "instruccion": "Papa lee y tu eliges la respuesta.",
+      "instruccion": "Papá lee y tú eliges la respuesta.",
       "parrafos": [
         {
-          "texto": "Tu CASA es el lugar donde vives con tu familia. Tiene tu cuarto, la cocina, la sala y el baño. ¡Es el lugar mas importante porque ahi te quieren mucho!",
+          "texto": "Tu CASA es el lugar donde vives con tu familia. Tiene tu cuarto, la cocina, la sala y el baño. ¡Es el lugar más importante porque ahí te quieren mucho!",
           "emoji": "🏠",
           "preguntas": [
             {
@@ -26,7 +26,7 @@
           ]
         },
         {
-          "texto": "Tu CALLE es donde esta tu casa. En la calle hay otras casas, pasan carros y a veces juegan otros niños. Tu calle tiene un nombre especial.",
+          "texto": "Tu CALLE es donde está tu casa. En la calle hay otras casas, pasan carros y a veces juegan otros niños. Tu calle tiene un nombre especial.",
           "emoji": "🛣️",
           "preguntas": [
             {
@@ -38,7 +38,7 @@
           ]
         },
         {
-          "texto": "Muchas calles juntas forman una COLONIA o un barrio. En tu colonia hay una tienda, un parque, quiza una escuela o una iglesia.",
+          "texto": "Muchas calles juntas forman una COLONIA o un barrio. En tu colonia hay una tienda, un parque, quizá una escuela o una iglesia.",
           "emoji": "🏘️",
           "preguntas": [
             {
@@ -50,19 +50,19 @@
           ]
         },
         {
-          "texto": "Y muchas colonias juntas forman una CIUDAD. La ciudad es enorme, con miles de casas, edificios altos, parques y muchas calles. Todos vivimos en alguna ciudad.",
+          "texto": "Y muchas colonias juntas forman una CIUDAD. La ciudad es enorme, con miles de casas, edificios altos, parques y muchas calles. Mucha gente vive en una ciudad; otros viven en un pueblo.",
           "emoji": "🏙️",
           "preguntas": [
             {
               "tipo": "true-or-false",
-              "oracion": "Una ciudad es mas grande que mi casa.",
+              "oracion": "Una ciudad es más grande que mi casa.",
               "correcto": true,
               "correccion": null
             }
           ]
         },
         {
-          "texto": "Y todas las ciudades estan en un PAIS. Y todos los paises estan en el mismo PLANETA: la Tierra. Tu eres chiquita, pero tu mundo va creciendo: casa → calle → colonia → ciudad → pais → planeta.",
+          "texto": "Y todas las ciudades están en un PAÍS. Y todos los países están en el mismo PLANETA: la Tierra. Tú eres chiquita, pero tu mundo va creciendo: casa → calle → colonia → ciudad → país → planeta.",
           "emoji": "🌍",
           "preguntas": [
             {

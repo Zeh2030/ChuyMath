@@ -1,7 +1,7 @@
 {
   "id": "G0-01_tierra-vs-agua",
   "titulo": "Tierra y Agua",
-  "descripcion": "El planeta Tierra tiene tierra y mucha agua. ¡Aprendelos!",
+  "descripcion": "El planeta Tierra tiene tierra y mucha agua. ¡Apréndelos!",
   "tipo": "image-picker",
   "materia": "geografia",
   "tema": "tierra-agua",
@@ -10,48 +10,48 @@
     {
       "id": "mision-ip-tierra-agua",
       "tipo": "image-picker",
-      "titulo": "Tierra o Agua?",
-      "instruccion": "Papa lee y tu eliges la imagen correcta.",
+      "titulo": "¿Tierra o Agua?",
+      "instruccion": "Papá lee y tú eliges la imagen correcta.",
       "retos": [
         {
-          "palabra_es": "¿Donde hay mucha AGUA?",
+          "palabra_es": "¿Dónde hay mucha AGUA?",
           "opciones": [
             { "emoji": "🌊", "label": "Mar" },
             { "emoji": "🌳", "label": "Bosque" },
             { "emoji": "⛰️", "label": "Montaña" }
           ],
           "respuesta": 0,
-          "explicacion": "El mar tiene muchisima agua! El agua del mar es salada."
+          "explicacion": "¡El mar tiene muchísima agua! El agua del mar es salada."
         },
         {
-          "palabra_es": "¿Donde hay TIERRA seca?",
+          "palabra_es": "¿Dónde hay TIERRA seca?",
           "opciones": [
             { "emoji": "⛰️", "label": "Montaña" },
-            { "emoji": "🌊", "label": "Oceano" },
+            { "emoji": "🌊", "label": "Océano" },
             { "emoji": "🌧️", "label": "Lluvia" }
           ],
           "respuesta": 0,
-          "explicacion": "Las montañas son de tierra y rocas! Estan altisimas."
+          "explicacion": "¡Las montañas son de tierra y rocas! Están altísimas."
         },
         {
-          "palabra_es": "¿Cual es nuestro PLANETA, donde vivimos?",
+          "palabra_es": "¿Cuál es nuestro PLANETA, donde vivimos?",
           "opciones": [
             { "emoji": "🌍", "label": "La Tierra" },
             { "emoji": "⭐", "label": "Una estrella" },
             { "emoji": "🌙", "label": "La Luna" }
           ],
           "respuesta": 0,
-          "explicacion": "Vivimos en el planeta Tierra! Es una bola gigante en el espacio."
+          "explicacion": "¡Vivimos en el planeta Tierra! Es una bola gigante en el espacio."
         },
         {
-          "palabra_es": "Si miramos la Tierra desde el cielo, ¿de que color es la mayor parte?",
+          "palabra_es": "Si miramos la Tierra desde el cielo, ¿de qué color es la mayor parte?",
           "opciones": [
             { "emoji": "🟦", "label": "Azul" },
             { "emoji": "🟩", "label": "Verde" },
             { "emoji": "🟥", "label": "Rojo" }
           ],
           "respuesta": 0,
-          "explicacion": "Azul! Porque hay MUCHA mas agua que tierra. Por eso le dicen 'el planeta azul'."
+          "explicacion": "¡Azul! Porque hay MUCHA más agua que tierra. Por eso le dicen 'el planeta azul'."
         }
       ]
     }

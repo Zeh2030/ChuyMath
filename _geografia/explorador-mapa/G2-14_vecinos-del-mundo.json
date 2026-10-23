@@ -1,7 +1,7 @@
 {
   "id": "G2-14_vecinos-del-mundo",
   "titulo": "Vecinos de Frontera",
-  "descripcion": "Gira el globo y sigue las fronteras para encontrar quien vive al lado",
+  "descripcion": "Gira el globo y sigue las fronteras para encontrar quién vive al lado",
   "tipo": "explorador-mapa",
   "materia": "geografia",
   "tema": "fronteras",
@@ -12,8 +12,8 @@
       "tipo": "explorador-mapa",
       "mapa": "globo",
       "modo": "quiz",
-      "titulo": "¿Quien Vive al Lado?",
-      "instruccion": "Los paises no estan sueltos: se tocan. En el globo las fronteras son continuas y puedes seguirlas con el dedo girando la Tierra. El punto rojo te marca desde donde buscar.",
+      "titulo": "¿Quién Vive al Lado?",
+      "instruccion": "Los países no están sueltos: se tocan. En el globo las fronteras son continuas y puedes seguirlas con el dedo girando la Tierra. El punto rojo te marca desde dónde buscar.",
       "rotacion_inicial": [
         -40,
         20
@@ -23,8 +23,8 @@
           "id": "840",
           "nombre": "Estados Unidos",
           "bandera": "us",
-          "dato": "La frontera entre Mexico y Estados Unidos mide mas de 3.000 km: es de las mas largas del mundo.",
-          "pregunta": "El punto rojo es Mexico. ¿Cual de sus vecinos es Estados Unidos?",
+          "dato": "La frontera entre México y Estados Unidos mide más de 3.000 km: es de las más largas del mundo.",
+          "pregunta": "El punto rojo es México. ¿Cuál de sus vecinos es Estados Unidos?",
           "marcar": [
             {
               "lon": -102.22312784904646,
@@ -37,8 +37,8 @@
           "id": "620",
           "nombre": "Portugal",
           "bandera": "pt",
-          "dato": "España y Portugal comparten la peninsula Iberica. Su frontera es la mas antigua de Europa: casi no ha cambiado en 800 años.",
-          "pregunta": "El punto rojo es Spain. ¿Cual de sus vecinos es Portugal?",
+          "dato": "España y Portugal comparten la península Ibérica. Su frontera es de las más antiguas de Europa: casi no ha cambiado en más de 700 años.",
+          "pregunta": "El punto rojo es España. ¿Cuál de sus vecinos es Portugal?",
           "marcar": [
             {
               "lon": -3.6242334452591187,
@@ -52,7 +52,7 @@
           "nombre": "Mongolia",
           "bandera": "mn",
           "dato": "Mongolia solo tiene dos vecinos, China y Rusia, y ambos son gigantes.",
-          "pregunta": "El punto rojo es China. ¿Cual de sus vecinos es Mongolia?",
+          "pregunta": "El punto rojo es China. ¿Cuál de sus vecinos es Mongolia?",
           "marcar": [
             {
               "lon": 103.45254772896584,
@@ -65,8 +65,8 @@
           "id": "032",
           "nombre": "Argentina",
           "bandera": "ar",
-          "dato": "Brasil es tan grande que hace frontera con 10 paises: casi toda Sudamerica.",
-          "pregunta": "El punto rojo es Brazil. ¿Cual de sus vecinos es Argentina?",
+          "dato": "Brasil es tan grande que hace frontera con 9 países y con la Guayana Francesa: casi toda Sudamérica.",
+          "pregunta": "El punto rojo es Brasil. ¿Cuál de sus vecinos es Argentina?",
           "marcar": [
             {
               "lon": -53.172527779720134,
@@ -79,8 +79,8 @@
           "id": "434",
           "nombre": "Libia",
           "bandera": "ly",
-          "dato": "La frontera entre Egipto y Libia es una linea recta trazada en el desierto: no sigue ningun rio ni montaña.",
-          "pregunta": "El punto rojo es Egypt. ¿Cual de sus vecinos es Libia?",
+          "dato": "La frontera entre Egipto y Libia es una línea recta trazada en el desierto: no sigue ningún río ni montaña.",
+          "pregunta": "El punto rojo es Egipto. ¿Cuál de sus vecinos es Libia?",
           "marcar": [
             {
               "lon": 29.860980187510144,

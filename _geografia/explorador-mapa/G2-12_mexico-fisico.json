@@ -1,7 +1,7 @@
 {
   "id": "G2-12_mexico-fisico",
-  "titulo": "Mexico Fisico: Peninsulas, Golfos y Sierras",
-  "descripcion": "Identifica los estados de Mexico por su geografia fisica",
+  "titulo": "México Físico: Penínsulas, Golfos y Sierras",
+  "descripcion": "Identifica los estados de México por su geografía física",
   "tipo": "explorador-mapa",
   "materia": "geografia",
   "tema": "mexico-fisico",
@@ -12,48 +12,48 @@
       "tipo": "explorador-mapa",
       "mapa": "mexico-estados",
       "modo": "quiz",
-      "titulo": "Geografia Fisica de Mexico",
-      "instruccion": "Encuentra el estado segun su caracteristica geografica.",
+      "titulo": "Geografía Física de México",
+      "instruccion": "Encuentra el estado según su característica geográfica.",
       "retos": [
         {
           "id": "31",
-          "nombre": "Yucatan",
-          "pregunta": "¿En que estado de la PENINSULA DE YUCATAN esta Chichen Itza? (sureste, junto al Caribe)"
+          "nombre": "Yucatán",
+          "pregunta": "¿En qué estado de la PENÍNSULA DE YUCATÁN está Chichén Itzá? (norte de la península, junto al Golfo de México)"
         },
         {
           "id": "23",
           "nombre": "Quintana Roo",
-          "pregunta": "¿Que estado de la peninsula de Yucatan tiene Cancun y la Riviera Maya? (este de la peninsula)"
+          "pregunta": "¿Qué estado de la península de Yucatán tiene Cancún y la Riviera Maya? (este de la península)"
         },
         {
           "id": "2",
           "nombre": "Baja California",
-          "pregunta": "¿Donde esta la peninsula NORTE de Baja California? (frontera con USA, donde esta Tijuana)"
+          "pregunta": "¿Dónde está la península NORTE de Baja California? (frontera con USA, donde está Tijuana)"
         },
         {
           "id": "3",
           "nombre": "Baja California Sur",
-          "pregunta": "¿Donde esta la peninsula SUR de Baja California? (con Cabo San Lucas y Los Cabos)"
+          "pregunta": "¿Dónde está la península SUR de Baja California? (con Cabo San Lucas y Los Cabos)"
         },
         {
           "id": "30",
           "nombre": "Veracruz",
-          "pregunta": "¿Que estado largo y angosto esta junto al GOLFO DE MEXICO? (al este del pais, con costa al Atlantico)"
+          "pregunta": "¿Qué estado largo y angosto está junto al GOLFO DE MÉXICO? (al este del país, con costa al Atlántico)"
         },
         {
           "id": "12",
           "nombre": "Guerrero",
-          "pregunta": "¿Que estado tiene Acapulco y costa al oceano PACIFICO? (al sur, junto al mar)"
+          "pregunta": "¿Qué estado tiene Acapulco y costa al océano PACÍFICO? (al sur, junto al mar)"
         },
         {
           "id": "8",
           "nombre": "Chihuahua",
-          "pregunta": "¿Cual es el estado MAS GRANDE de Mexico? (al norte, frontera con USA, con la Sierra Tarahumara)"
+          "pregunta": "¿Cuál es el estado MÁS GRANDE de México? (al norte, frontera con USA, con la Sierra Tarahumara)"
         },
         {
           "id": "7",
           "nombre": "Chiapas",
-          "pregunta": "¿En que estado del SURESTE esta la Selva Lacandona? (frontera con Guatemala)"
+          "pregunta": "¿En qué estado del SURESTE está la Selva Lacandona? (frontera con Guatemala)"
         }
       ]
     }

@@ -118,7 +118,6 @@ Ver seccion de ExploradorMapa abajo.
     "retos": [
       {
         "imagen_url": "https://flagcdn.com/w320/mx.png",
-        "palabra_es": "Mexico",
         "opciones": [
           { "label": "Mexico" },
           { "label": "España" },
@@ -132,6 +131,18 @@ Ver seccion de ExploradorMapa abajo.
   }]
 }
 ```
+
+- `respuesta` es el **índice numérico** de la opción correcta.
+- **Opción con `emoji`: se ve SOLO el emoji**; el `label` aparece hasta acertar.
+  Úsalo cuando el emoji *es* la respuesta visual (🦁 África, 🌵 Desierto, 🗼 Torre
+  Eiffel), sobre todo en G0 donde no se lee. Si el emoji es decorativo y no distingue
+  las opciones (🏔️ vs ⛰️ para Everest vs Aconcagua, o 🌊 en los 5 océanos), **quítalo**:
+  sin emoji la opción muestra su nombre escrito. El validador rechaza emojis repetidos.
+- `palabra_es` (opcional) se pinta **en grande encima de las opciones**: es la
+  *pregunta*, nunca la respuesta. Las banderas traían ahí el nombre del país y el
+  juego se contestaba solo (corregido 2026-10). Con foto-estímulo (`imagen_url`)
+  y opciones de texto, lo normal es omitirlo: la pregunta ya va en el título.
+  El validador lo revisa.
 
 ### tap-the-pairs (pais ↔ capital)
 
@@ -160,6 +171,12 @@ Ver seccion de ExploradorMapa abajo.
   }]
 }
 ```
+
+- Ambas columnas van en español aunque los campos se llamen `es`/`en`.
+- **Nada repetido en una misma columna dentro de una ronda.** El juego empareja
+  por posición: con cinco tarjetas "Euro", tocar "la otra" cuenta como error
+  (pasaba en Monedas). Si dos países comparten respuesta, van en rondas distintas.
+- Las rondas pueden tener distinto número de pares.
 
 ### fill-the-gap
 
@@ -242,6 +259,20 @@ Ver seccion de ExploradorMapa abajo.
 }
 ```
 
+Cómo se lee `respuesta` (misma regla en la app, el validador y la impresión,
+`chuy-react-app/src/utils/calificar.js`):
+
+| Opciones | `respuesta` | Se interpreta como |
+|----------|-------------|--------------------|
+| textos `["20","25","31","32"]` | `"3"` o `3` | **índice** → "32" |
+| objetos `{ "texto": "B) 102 pisos", "valor": "102" }` | `"102"` | **valor** de esa opción |
+| objetos con `valor` | `2` (número) | **índice** |
+| textos | `"Nilo"` | el texto de la opción |
+
+Ojo con opciones numéricas en texto plano: `"3"` es la *cuarta* opción, no la
+opción "3". Si la respuesta es un número que aparece como opción, usa objetos
+con `valor`.
+
 ### word-scramble
 
 ```json
@@ -258,19 +289,25 @@ Ver seccion de ExploradorMapa abajo.
     "instruccion": "Las letras estan desordenadas. ¿Que capital es?",
     "retos": [
       {
-        "palabra": "TOKIO",
-        "pista": "Capital de Japon",
-        "explicacion": "Tokio es la capital de Japon."
+        "respuesta": "TOKIO",
+        "pista_es": "Capital de Japón",
+        "pista_emoji": "🗼",
+        "explicacion": "Tokio es la capital de Japón."
       },
       {
-        "palabra": "PEKIN",
-        "pista": "Capital de China",
-        "explicacion": "Pekin (o Beijing) es la capital de China."
+        "respuesta": "PEKÍN",
+        "pista_es": "Capital de China",
+        "pista_emoji": "🏯",
+        "explicacion": "Pekín (o Beijing) es la capital de China."
       }
     ]
   }]
 }
 ```
+
+El componente lee `respuesta`, `pista_es` y `pista_emoji` (esta guía decía
+`palabra`/`pista`, que el componente **no** lee: sin `respuesta` el juego truena).
+Evita espacios en `respuesta`: salen como una ficha en blanco.
 
 ### mini-story (historias culturales)
 
@@ -328,6 +365,27 @@ Sigue el patron de las biografias de piano (`_piano/mini-story/P1-T08_mozart-nin
 
 **Valores de `mapa`:** `globo`, `world`, `americas`, `america-latina`, `europa`,
 `asia`, `africa`, `mexico-estados`, `usa-estados`.
+
+**`modo`:** `quiz` (un intento por reto; en el quiz NO sale el nombre del país al
+pasar el mouse, porque regalaría la respuesta) o `explorar` (tocar países libremente;
+abajo aparece "¡Listo! ➜" para terminar la misión).
+
+**Encuadre a la medida** (cualquier mapa plano), a nivel de misión:
+
+```json
+"encuadre": [-120, 12, -78, 40]
+```
+
+`[oeste, sur, este, norte]` (lonMin, latMin, lonMax, latMax): el rectángulo que debe
+verse completo; la proyección se ajusta sola. Va **plano** a propósito: Firestore no
+acepta arreglos dentro de arreglos (`[[..],[..]]` hace fallar la migración). Úsalo cuando la lección vive en una zona chica del mapa
+(México + Centroamérica, el Caribe). El mapa `europa` ya trae el suyo.
+
+**Lugares diminutos**: el niño tiene ➕/➖ (y rueda del mouse) para acercar, y con
+zoom arrastra el mapa. Además, si el objetivo del reto es muy chico (Belice, Cuba,
+CDMX), un halo invisible sobre el **mar** a su alrededor cuenta como acierto; los
+toques en un país vecino siguen siendo error. El validador avisa de los objetivos
+diminutos.
 
 #### El globo (`"mapa": "globo"`)
 
@@ -476,8 +534,11 @@ Cada tema debe incluir 1-2 datos sorprendentes. Ejemplos:
 2. Decidir tipo(s) de juego apropiados
 3. Crear JSON siguiendo la plantilla del tipo
 4. Guardar en `_geografia/{tipo}/{id}.json`
-5. Migrar a Firebase via `/admin/migracion`
-6. Probar en la app antes de pasar al siguiente tema
+5. Validar: `node _geografia/_valida.mjs` (con `--red` prueba también que carguen las imágenes)
+6. Migrar a Firebase via `/admin/migracion` (Geografía; acepta un arreglo `[...]` para subir varios)
+7. Probar en la app antes de pasar al siguiente tema. QA en pantalla:
+   `C:\Proyectos JJCG\qa-navegador\chuymath-geo-recorrido.mjs` juega cada aventura
+   completa y `chuymath-geo-dump.mjs` compara Firestore con el disco.
 
 ---
 
@@ -555,6 +616,14 @@ Ver seccion "Monumentos y lugares — Wikimedia Commons" arriba para la regla de
 
 ## Verificacion antes de migrar
 
+- **`node _geografia/_valida.mjs` sin errores** (califica opción múltiple con la
+  función real de la app, revisa ids de mapa contra los datos, parejas repetidas,
+  banderas que regalan la respuesta, preguntas de mini-story que la app no dibuja).
+- **Datos verificados, no supuestos** (ver la advertencia del globo): récords,
+  poblaciones (India supera a China desde 2023), "el más grande", fechas.
+- **Sin regalos**: el título, la instrucción, la pista o un emoji no deben decir
+  la respuesta.
+- Texto en español correcto, con tildes y ¡ ¿ (el botón 🔊 lee con ellas).
 - ¿`tipo` esta a nivel raiz Y a nivel mision?
 - ¿`materia: "geografia"` esta a nivel raiz?
 - ¿`nivel` sigue el patron `G{0-3}-{NN}`?

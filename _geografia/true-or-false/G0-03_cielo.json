@@ -10,32 +10,32 @@
     {
       "id": "mision-tof-cielo",
       "tipo": "true-or-false",
-      "titulo": "Verdadero o Falso?",
-      "instruccion": "Papa lee la frase. Tu decides si es VERDAD o si es FALSO.",
+      "titulo": "¿Verdadero o Falso?",
+      "instruccion": "Papá lee la frase. Tú decides si es VERDAD o si es FALSO.",
       "retos": [
         {
-          "oracion": "El Sol nos da luz y calor de dia.",
+          "oracion": "El Sol nos da luz y calor de día.",
           "correcto": true,
           "correccion": null,
-          "explicacion": "Verdadero! El Sol calienta toda la Tierra. Por eso podemos ver y jugar de dia."
+          "explicacion": "¡Verdadero! El Sol calienta toda la Tierra. Por eso podemos ver y jugar de día."
         },
         {
-          "oracion": "La Luna brilla mucho de DIA, cuando estamos en la escuela.",
+          "oracion": "La Luna brilla mucho de DÍA, cuando estamos en la escuela.",
           "correcto": false,
-          "correccion": "La Luna se ve de NOCHE, no de dia.",
-          "explicacion": "Falso! La Luna se ve de noche, cuando ya no esta el Sol."
+          "correccion": "La Luna brilla mucho de NOCHE. De día a veces se ve, pero muy pálida.",
+          "explicacion": "¡Falso! La Luna brilla de noche, cuando ya no está el Sol. A veces también se asoma de día, pero se ve pálida y no brilla mucho."
         },
         {
           "oracion": "En la noche se ven MUCHAS estrellas en el cielo.",
           "correcto": true,
           "correccion": null,
-          "explicacion": "Verdadero! Hay millones y millones de estrellas. Son tan lejanas que las vemos chiquitas."
+          "explicacion": "¡Verdadero! Hay millones y millones de estrellas. Son tan lejanas que las vemos chiquitas."
         },
         {
           "oracion": "El Sol es chiquito como una pelota de tenis.",
           "correcto": false,
-          "correccion": "El Sol es GIGANTE, mas grande que toda la Tierra.",
-          "explicacion": "Falso! El Sol es gigantisimo. Lo vemos chiquito porque esta lejisimos."
+          "correccion": "El Sol es GIGANTE, más grande que toda la Tierra.",
+          "explicacion": "¡Falso! El Sol es gigantísimo. Lo vemos chiquito porque está lejísimos."
         }
       ]
     }

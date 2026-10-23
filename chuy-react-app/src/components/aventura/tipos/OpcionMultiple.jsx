@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { esIndice, opcionMultipleCorrecta, respuestaCorrectaOM, seleccionOM, valorDeOpcion } from '../../../utils/calificar';
+import { opcionMultipleCorrecta, respuestaCorrectaOM, respuestaEsIndice, seleccionOM, valorDeOpcion } from '../../../utils/calificar';
 import './OpcionMultiple.css';
 
 /**
@@ -36,7 +36,7 @@ const OpcionMultiple = ({
   const pregunta = mision.pregunta || mision.pregunta_final || 'Selecciona la respuesta correcta:';
   const opciones = mision.opciones || mision.opciones_finales || [];
   const respuestaCorrecta = respuestaCorrectaOM(mision);
-  const respuestaEsIndice = esIndice(respuestaCorrecta);
+  const esIndice = respuestaEsIndice(mision);
   const explicacionCorrecta = mision.explicacion_correcta || '¡Correcto!';
   const explicacionIncorrecta = mision.explicacion_incorrecta || 'Intenta de nuevo.';
   const opcionesSonImagenes = mision.opciones_son_imagenes || false;
@@ -97,13 +97,13 @@ const OpcionMultiple = ({
   // Determinar si una opción está seleccionada
   const estaOpcionSeleccionada = (index) => {
     if (respuestaSeleccionada === null || respuestaSeleccionada === undefined) return false;
-    return respuestaEsIndice
+    return esIndice
       ? String(respuestaSeleccionada) === String(index)
       : respuestaSeleccionada === valorDeOpcion(opciones[index]);
   };
 
   // Determinar si una opción es la correcta
-  const esOpcionCorrecta = (index) => respuestaEsIndice
+  const esOpcionCorrecta = (index) => esIndice
     ? Number(respuestaCorrecta) === index
     : valorDeOpcion(opciones[index]) === respuestaCorrecta;
 

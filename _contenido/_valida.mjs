@@ -9,7 +9,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  TIPOS_CALIFICABLES, esRespuestaCorrecta, esIndice, respuestaCorrectaOM,
+  TIPOS_CALIFICABLES, esRespuestaCorrecta, respuestaCorrectaOM, respuestaEsIndice,
   seleccionOM, valorDeOpcion,
 } from '../chuy-react-app/src/utils/calificar.js';
 import { TIPOS_IMPRIMIBLES } from '../chuy-react-app/src/utils/imprimir.js';
@@ -34,7 +34,7 @@ function validarOpcionMultiple(f, p) {
   if (resp === '') return err(f, p.id, 'sin respuesta');
   const valores = opciones.map(o => String(valorDeOpcion(o)));
   if (new Set(valores).size !== valores.length) err(f, p.id, 'opciones repetidas');
-  if (esIndice(resp)) {
+  if (respuestaEsIndice(p)) {
     if (Number(resp) >= opciones.length) err(f, p.id, `respuesta ${resp} fuera de rango (${opciones.length} opciones)`);
   } else if (!valores.includes(String(resp))) {
     err(f, p.id, `respuesta «${resp}» no está entre las opciones`);
