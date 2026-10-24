@@ -1,0 +1,414 @@
+{
+  "id": "GBH-02_imperios-de-europa",
+  "titulo": "Imperios de Europa y sus banderas",
+  "descripcion": "Prusia, el Imperio Alemán, Austria-Hungría, el Imperio Ruso, el Otomano y el Reino de Italia: sus banderas y los países que hay hoy",
+  "tipo": "banderas",
+  "materia": "geografia",
+  "tema": "historicas-europa",
+  "nivel": "GBH-02",
+  "misiones": [
+    {
+      "id": "gbh-02-historia",
+      "tipo": "mini-story",
+      "titulo": "Imperios de Europa y sus banderas",
+      "instruccion": "Lee cada parte de la historia y responde la pregunta.",
+      "parrafos": [
+        {
+          "texto": "Hace 200 años, Alemania no era un solo país: estaba dividida en muchos reinos y ducados. El más fuerte era el Reino de Prusia, con su capital en Berlín. Su bandera era blanca, con franjas negras arriba y abajo, y un águila negra con corona en el centro. Dato curioso: el negro y el blanco de Prusia vienen de los caballeros teutónicos, que llevaban una cruz negra sobre un manto blanco.",
+          "emoji": "🦅",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "La capital del Reino de Prusia era ___.",
+              "opciones": ["Viena", "Roma", "Berlín", "Moscú"],
+              "respuesta": 2
+            }
+          ]
+        },
+        {
+          "texto": "En 1871 Prusia unió a casi todos los reinos alemanes y nació el Imperio Alemán. El rey de Prusia, Guillermo I, se volvió el káiser, que en alemán quiere decir emperador. La palabra káiser viene de César, el famoso gobernante de la antigua Roma. La bandera del imperio tenía tres franjas: negra, blanca y roja.",
+          "emoji": "👑",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "En alemán, al emperador le decían ___.",
+              "opciones": ["zar", "káiser", "sultán", "faraón"],
+              "respuesta": 1
+            },
+            {
+              "tipo": "true-or-false",
+              "oracion": "El Imperio Alemán nació en 1871.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "El Imperio Alemán terminó en 1918, al final de la Primera Guerra Mundial, y Alemania se volvió república. De 1935 a 1945 Alemania usó otra bandera, que dejó de usarse en 1945 y hoy está prohibida en Alemania. Desde 1949, la bandera de Alemania es negra, roja y dorada.",
+          "emoji": "🇩🇪",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "La bandera de Alemania de hoy es negra, blanca y roja.",
+              "correcto": false,
+              "correccion": "Hoy es negra, roja y dorada. La negra, blanca y roja era la del Imperio Alemán."
+            }
+          ]
+        },
+        {
+          "texto": "Al sur de Alemania estaba Austria-Hungría, un imperio con dos partes: Austria, con su capital en Viena, y Hungría, con su capital en Budapest. Su emperador era Francisco José, el hermano de Maximiliano, el emperador de México. Por eso su bandera era como dos banderas juntas: la roja, blanca y roja de Austria, y la roja, blanca y verde de Hungría. En 1918 el imperio se dividió en varios países, entre ellos Austria y Hungría.",
+          "emoji": "🏰",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Austria-Hungría tenía dos capitales: Viena y ___.",
+              "opciones": ["Budapest", "Berlín", "Roma", "Moscú"],
+              "respuesta": 0
+            }
+          ]
+        },
+        {
+          "texto": "Hacia el este estaba el Imperio Ruso, tan grande que iba de Europa hasta el océano Pacífico. Lo gobernaba un zar, otra palabra que viene de César. Una de sus banderas fue negra, amarilla y blanca, los colores de su escudo: un águila negra sobre fondo dorado. Otra bandera que ya usaban en tiempos de los zares era la blanca, azul y roja.",
+          "emoji": "❄️",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Al emperador de Rusia le decían ___.",
+              "opciones": ["káiser", "sultán", "zar", "rey"],
+              "respuesta": 2
+            }
+          ]
+        },
+        {
+          "texto": "En 1917 terminó el Imperio Ruso, y en 1922 nació la Unión Soviética, un país enorme formado por Rusia y otras repúblicas. Su bandera era roja, con una hoz, un martillo y una estrella. En 1991 la Unión Soviética se separó en 15 países, y Rusia volvió a usar la bandera blanca, azul y roja de los tiempos del zar.",
+          "emoji": "🚩",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "En 1991 la Unión Soviética se separó en 15 países.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "El Imperio Otomano estaba entre Europa y Asia, y su capital era Estambul, que antes se llamaba Constantinopla. Lo gobernaba un sultán. Su bandera era roja, con una media luna y una estrella blancas. En 1922 terminó el imperio, en 1923 nació Turquía... ¡y se quedó con casi la misma bandera!",
+          "emoji": "🌙",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "La bandera de Turquía es casi igual a la del Imperio Otomano.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Italia también estaba dividida en varios reinos hasta 1861, cuando nació el Reino de Italia. Su bandera era verde, blanca y roja, con el escudo de la familia del rey, los Saboya: una cruz blanca sobre rojo, con borde azul. En 1946 los italianos votaron para dejar de tener rey; le quitaron el escudo a la bandera y quedó la tricolor de hoy.",
+          "emoji": "🇮🇹",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "En 1946 Italia dejó de tener rey y se volvió una ___.",
+              "opciones": ["colonia", "isla", "república", "provincia"],
+              "respuesta": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gbh-02-cual-es",
+      "tipo": "image-picker",
+      "titulo": "¿De qué imperio es esta bandera?",
+      "instruccion": "Mira la bandera y elige el imperio o reino que la usaba.",
+      "retos": [
+        {
+          "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Flag_of_Prussia_%281892-1918%29.svg",
+          "bandera_id": "h-prusia",
+          "opciones": [
+            { "label": "Imperio Alemán" },
+            { "label": "Austria-Hungría" },
+            { "label": "Reino de Prusia" },
+            { "label": "Imperio Ruso" }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Es la del Reino de Prusia! Blanca y negra, con el águila negra coronada. Esta versión se usó de 1892 a 1918."
+        },
+        {
+          "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Flag_of_Germany_%281867%E2%80%931918%29.svg",
+          "bandera_id": "h-imperio-aleman",
+          "opciones": [
+            { "label": "Imperio Ruso" },
+            { "label": "Imperio Alemán" },
+            { "label": "Reino de Prusia" },
+            { "label": "Reino de Italia" }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Es la del Imperio Alemán (1871-1918)! Negra, blanca y roja. No la confundas con la del Imperio Ruso: esa es negra, amarilla y blanca."
+        },
+        {
+          "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/6/64/Flag_of_Russia_%281858%E2%80%931896%29.svg",
+          "bandera_id": "h-imperio-ruso",
+          "opciones": [
+            { "label": "Imperio Alemán" },
+            { "label": "Unión Soviética" },
+            { "label": "Austria-Hungría" },
+            { "label": "Imperio Ruso" }
+          ],
+          "respuesta": 3,
+          "explicacion": "¡Es la del Imperio Ruso! Negra, amarilla y blanca, como su escudo: un águila negra sobre fondo dorado. Se usó de 1858 a 1896."
+        },
+        {
+          "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Ensign_of_Austro-Hungarian_civil_fleet_%281869-1918%29.svg",
+          "bandera_id": "h-austria-hungria",
+          "opciones": [
+            { "label": "Austria-Hungría" },
+            { "label": "Reino de Italia" },
+            { "label": "Imperio Otomano" },
+            { "label": "Reino de Prusia" }
+          ],
+          "respuesta": 0,
+          "explicacion": "¡Es la de Austria-Hungría! Son dos banderas en una: a la izquierda la de Austria y a la derecha la de Hungría, cada una con su escudo y su corona. La usaban sus barcos de 1869 a 1918."
+        },
+        {
+          "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Flag_of_the_Soviet_Union.svg",
+          "bandera_id": "h-urss",
+          "opciones": [
+            { "label": "Imperio Otomano" },
+            { "label": "Unión Soviética" },
+            { "label": "Imperio Ruso" },
+            { "label": "Imperio Alemán" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Es la de la Unión Soviética (1922-1991): roja, con una hoz, un martillo y una estrella en la esquina. Dejó de usarse en 1991, cuando el país se separó en 15 países."
+        },
+        {
+          "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Flag_of_the_Ottoman_Empire_%281844%E2%80%931922%29.svg",
+          "bandera_id": "h-otomano",
+          "opciones": [
+            { "label": "Unión Soviética" },
+            { "label": "Reino de Italia" },
+            { "label": "Imperio Otomano" },
+            { "label": "Austria-Hungría" }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Es la del Imperio Otomano (1844-1922)! Roja, con media luna y estrella. Turquía se quedó con una bandera casi igual."
+        },
+        {
+          "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/7/78/Flag_of_Italy_%281861%E2%80%931946%29.svg",
+          "bandera_id": "h-italia-reino",
+          "opciones": [
+            { "label": "Primer Imperio Mexicano" },
+            { "label": "Austria-Hungría" },
+            { "label": "Imperio Otomano" },
+            { "label": "Reino de Italia" }
+          ],
+          "respuesta": 3,
+          "explicacion": "¡Es la del Reino de Italia (1861-1946)! La tricolor de Italia con el escudo de los Saboya, la familia del rey. Ojo: la del Primer Imperio Mexicano también es verde, blanca y roja, pero tiene un águila."
+        },
+        {
+          "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/7/77/Flag_of_Germany_%281935%E2%80%931945%29.svg",
+          "bandera_id": "h-alemania-1935",
+          "opciones": [
+            { "label": "Alemania (1935-1945)" },
+            { "label": "Unión Soviética" },
+            { "label": "Reino de Prusia" },
+            { "label": "Imperio Otomano" }
+          ],
+          "respuesta": 0,
+          "explicacion": "Es la bandera que usó Alemania de 1935 a 1945. Dejó de usarse en 1945 y hoy está prohibida en Alemania."
+        }
+      ]
+    },
+    {
+      "id": "gbh-02-elige",
+      "tipo": "image-picker",
+      "titulo": "¿Cuál es su bandera?",
+      "instruccion": "Lee el nombre del imperio y toca su bandera.",
+      "opciones_bandera": true,
+      "retos": [
+        {
+          "palabra_es": "Imperio Alemán",
+          "bandera_id": "h-imperio-aleman",
+          "opciones": [
+            { "imagen": "https://upload.wikimedia.org/wikipedia/commons/6/64/Flag_of_Russia_%281858%E2%80%931896%29.svg", "label": "Imperio Ruso" },
+            { "imagen": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Flag_of_Germany_%281867%E2%80%931918%29.svg", "label": "Imperio Alemán" },
+            { "imagen": "https://flagcdn.com/w320/de.png", "label": "Alemania de hoy" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Negra, blanca y roja: el Imperio Alemán. La negra, roja y dorada es la de Alemania de hoy, y la negra, amarilla y blanca, la del Imperio Ruso."
+        },
+        {
+          "palabra_es": "Imperio Ruso",
+          "bandera_id": "h-imperio-ruso",
+          "opciones": [
+            { "imagen": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Flag_of_the_Soviet_Union.svg", "label": "Unión Soviética" },
+            { "imagen": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Flag_of_Germany_%281867%E2%80%931918%29.svg", "label": "Imperio Alemán" },
+            { "imagen": "https://upload.wikimedia.org/wikipedia/commons/6/64/Flag_of_Russia_%281858%E2%80%931896%29.svg", "label": "Imperio Ruso" }
+          ],
+          "respuesta": 2,
+          "explicacion": "Negra, amarilla y blanca: el Imperio Ruso. Arriba va el negro, como el águila de su escudo."
+        },
+        {
+          "palabra_es": "Reino de Prusia",
+          "bandera_id": "h-prusia",
+          "opciones": [
+            { "imagen": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Flag_of_Prussia_%281892-1918%29.svg", "label": "Reino de Prusia" },
+            { "imagen": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Ensign_of_Austro-Hungarian_civil_fleet_%281869-1918%29.svg", "label": "Austria-Hungría" },
+            { "imagen": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Flag_of_Germany_%281867%E2%80%931918%29.svg", "label": "Imperio Alemán" }
+          ],
+          "respuesta": 0,
+          "explicacion": "La blanca con franjas negras y el águila negra es la de Prusia."
+        },
+        {
+          "palabra_es": "Austria-Hungría",
+          "bandera_id": "h-austria-hungria",
+          "opciones": [
+            { "imagen": "https://upload.wikimedia.org/wikipedia/commons/7/78/Flag_of_Italy_%281861%E2%80%931946%29.svg", "label": "Reino de Italia" },
+            { "imagen": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Ensign_of_Austro-Hungarian_civil_fleet_%281869-1918%29.svg", "label": "Austria-Hungría" },
+            { "imagen": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Flag_of_the_Ottoman_Empire_%281844%E2%80%931922%29.svg", "label": "Imperio Otomano" }
+          ],
+          "respuesta": 1,
+          "explicacion": "La de los dos escudos con corona es la de Austria-Hungría: mitad Austria, mitad Hungría."
+        },
+        {
+          "palabra_es": "Imperio Otomano",
+          "bandera_id": "h-otomano",
+          "opciones": [
+            { "imagen": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Flag_of_the_Soviet_Union.svg", "label": "Unión Soviética" },
+            { "imagen": "https://upload.wikimedia.org/wikipedia/commons/7/78/Flag_of_Italy_%281861%E2%80%931946%29.svg", "label": "Reino de Italia" },
+            { "imagen": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Flag_of_the_Ottoman_Empire_%281844%E2%80%931922%29.svg", "label": "Imperio Otomano" }
+          ],
+          "respuesta": 2,
+          "explicacion": "La roja con media luna y estrella blancas es la del Imperio Otomano. La roja con hoz y martillo es la de la Unión Soviética."
+        },
+        {
+          "palabra_es": "Reino de Italia",
+          "bandera_id": "h-italia-reino",
+          "opciones": [
+            { "imagen": "https://upload.wikimedia.org/wikipedia/commons/7/78/Flag_of_Italy_%281861%E2%80%931946%29.svg", "label": "Reino de Italia" },
+            { "imagen": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Flag_of_Mexico_%281821-1823%29.svg", "label": "Primer Imperio Mexicano" },
+            { "imagen": "https://flagcdn.com/w320/it.png", "label": "Italia de hoy" }
+          ],
+          "respuesta": 0,
+          "explicacion": "La del escudo con la cruz blanca es la del Reino de Italia. La que no tiene escudo es la de Italia de hoy, y la del águila coronada es la del Primer Imperio Mexicano."
+        },
+        {
+          "palabra_es": "Unión Soviética",
+          "bandera_id": "h-urss",
+          "opciones": [
+            { "imagen": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Flag_of_the_Ottoman_Empire_%281844%E2%80%931922%29.svg", "label": "Imperio Otomano" },
+            { "imagen": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Flag_of_the_Soviet_Union.svg", "label": "Unión Soviética" },
+            { "imagen": "https://flagcdn.com/w320/ru.png", "label": "Rusia de hoy" }
+          ],
+          "respuesta": 1,
+          "explicacion": "La roja con hoz, martillo y estrella es la de la Unión Soviética (1922-1991). La blanca, azul y roja es la de Rusia de hoy."
+        }
+      ]
+    },
+    {
+      "id": "gbh-02-mapa",
+      "tipo": "explorador-mapa",
+      "mapa": "europa",
+      "modo": "quiz",
+      "pregunta_bandera": true,
+      "titulo": "¿Dónde quedaba?",
+      "instruccion": "Mira la bandera antigua y toca el país de hoy donde estaba el centro de ese imperio o reino.",
+      "retos": [
+        {
+          "id": "276",
+          "nombre": "Alemania",
+          "bandera_id": "h-prusia",
+          "bandera_url": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Flag_of_Prussia_%281892-1918%29.svg",
+          "pregunta": "¿Dónde quedaba el centro de este reino? Toca el país de hoy.",
+          "dato": "Era el Reino de Prusia. Su capital, Berlín, hoy es la capital de Alemania. Una parte de Prusia hoy es de Polonia."
+        },
+        {
+          "id": "040",
+          "nombre": "Austria",
+          "bandera_id": "h-austria-hungria",
+          "bandera_url": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Ensign_of_Austro-Hungarian_civil_fleet_%281869-1918%29.svg",
+          "pregunta": "¿Dónde quedaba el centro de este imperio? Toca el país de hoy.",
+          "dato": "Era Austria-Hungría. Su emperador vivía en Viena, la capital de Austria. Hungría, su otra mitad, es el vecino de al lado."
+        },
+        {
+          "id": "380",
+          "nombre": "Italia",
+          "bandera_id": "h-italia-reino",
+          "bandera_url": "https://upload.wikimedia.org/wikipedia/commons/7/78/Flag_of_Italy_%281861%E2%80%931946%29.svg",
+          "pregunta": "¿Dónde quedaba el centro de este reino? Toca el país de hoy.",
+          "dato": "Era el Reino de Italia. Su capital fue Roma desde 1871, y sigue siéndolo hoy."
+        },
+        {
+          "id": "643",
+          "nombre": "Rusia",
+          "bandera_id": "h-imperio-ruso",
+          "bandera_url": "https://upload.wikimedia.org/wikipedia/commons/6/64/Flag_of_Russia_%281858%E2%80%931896%29.svg",
+          "pregunta": "¿Dónde quedaba el centro de este imperio? Toca el país de hoy.",
+          "dato": "Era el Imperio Ruso. Su capital era San Petersburgo; hoy la capital de Rusia es Moscú."
+        }
+      ]
+    },
+    {
+      "id": "gbh-02-mapa-mundo",
+      "tipo": "explorador-mapa",
+      "mapa": "world",
+      "modo": "quiz",
+      "pregunta_bandera": true,
+      "titulo": "¿Dónde quedaba? En el mapa del mundo",
+      "instruccion": "Mira la bandera antigua y toca el país de hoy donde estaba el centro de ese país o imperio.",
+      "retos": [
+        {
+          "id": "792",
+          "nombre": "Turquía",
+          "bandera_id": "h-otomano",
+          "bandera_url": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Flag_of_the_Ottoman_Empire_%281844%E2%80%931922%29.svg",
+          "pregunta": "¿Dónde quedaba el centro de este imperio? Toca el país de hoy.",
+          "dato": "Era el Imperio Otomano. Su capital, Estambul, hoy está en Turquía, con un pedazo en Europa y otro en Asia."
+        },
+        {
+          "id": "643",
+          "nombre": "Rusia",
+          "bandera_id": "h-urss",
+          "bandera_url": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Flag_of_the_Soviet_Union.svg",
+          "pregunta": "¿Dónde quedaba el centro de este país? Toca el país de hoy.",
+          "dato": "Era la Unión Soviética. Su capital era Moscú, que hoy es la capital de Rusia, el país más grande del mundo."
+        },
+        {
+          "id": "276",
+          "nombre": "Alemania",
+          "bandera_id": "h-imperio-aleman",
+          "bandera_url": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Flag_of_Germany_%281867%E2%80%931918%29.svg",
+          "pregunta": "¿Dónde quedaba el centro de este imperio? Toca el país de hoy.",
+          "dato": "Era el Imperio Alemán. Su capital era Berlín, que hoy es la capital de Alemania."
+        }
+      ]
+    },
+    {
+      "id": "gbh-02-parejas",
+      "tipo": "tap-the-pairs",
+      "titulo": "Bandera de antes, bandera de hoy",
+      "instruccion": "Toca una bandera antigua y luego la bandera del país que hay ahí hoy.",
+      "retos": [
+        {
+          "pares": [
+            { "es": "Imperio Alemán", "es_img": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Flag_of_Germany_%281867%E2%80%931918%29.svg", "bandera_id": "h-imperio-aleman", "en": "Alemania hoy (de)", "en_img": "https://flagcdn.com/w320/de.png" },
+            { "es": "Austria-Hungría", "es_img": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Ensign_of_Austro-Hungarian_civil_fleet_%281869-1918%29.svg", "bandera_id": "h-austria-hungria", "en": "Austria hoy (at)", "en_img": "https://flagcdn.com/w320/at.png" },
+            { "es": "Imperio Ruso", "es_img": "https://upload.wikimedia.org/wikipedia/commons/6/64/Flag_of_Russia_%281858%E2%80%931896%29.svg", "bandera_id": "h-imperio-ruso", "en": "Rusia hoy (ru)", "en_img": "https://flagcdn.com/w320/ru.png" },
+            { "es": "Imperio Otomano", "es_img": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Flag_of_the_Ottoman_Empire_%281844%E2%80%931922%29.svg", "bandera_id": "h-otomano", "en": "Turquía hoy (tr)", "en_img": "https://flagcdn.com/w320/tr.png" },
+            { "es": "Reino de Italia", "es_img": "https://upload.wikimedia.org/wikipedia/commons/7/78/Flag_of_Italy_%281861%E2%80%931946%29.svg", "bandera_id": "h-italia-reino", "en": "Italia hoy (it)", "en_img": "https://flagcdn.com/w320/it.png" }
+          ]
+        },
+        {
+          "pares": [
+            { "es": "Reino de Prusia", "es_img": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Flag_of_Prussia_%281892-1918%29.svg", "bandera_id": "h-prusia", "en": "Alemania hoy (de)", "en_img": "https://flagcdn.com/w320/de.png" },
+            { "es": "Unión Soviética", "es_img": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Flag_of_the_Soviet_Union.svg", "bandera_id": "h-urss", "en": "Rusia hoy (ru)", "en_img": "https://flagcdn.com/w320/ru.png" },
+            { "es": "Austria-Hungría", "es_img": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Ensign_of_Austro-Hungarian_civil_fleet_%281869-1918%29.svg", "bandera_id": "h-austria-hungria", "en": "Hungría hoy (hu)", "en_img": "https://flagcdn.com/w320/hu.png" },
+            { "es": "Imperio Otomano", "es_img": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Flag_of_the_Ottoman_Empire_%281844%E2%80%931922%29.svg", "bandera_id": "h-otomano", "en": "Turquía hoy (tr)", "en_img": "https://flagcdn.com/w320/tr.png" }
+          ]
+        }
+      ]
+    }
+  ]
+}

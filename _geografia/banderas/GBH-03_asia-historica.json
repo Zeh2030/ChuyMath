@@ -1,0 +1,302 @@
+{
+  "id": "GBH-03_asia-historica",
+  "titulo": "Japón, China y Corea: banderas con historia",
+  "descripcion": "El Hinomaru, la bandera del sol naciente, el dragón de la dinastía Qing, las banderas de la República de China y el taegukgi de Corea",
+  "tipo": "banderas",
+  "materia": "geografia",
+  "tema": "historicas-asia",
+  "nivel": "GBH-03",
+  "misiones": [
+    {
+      "id": "gbh-03-historia",
+      "tipo": "mini-story",
+      "titulo": "Japón, China y Corea: banderas con historia",
+      "instruccion": "Lee cada parte de la historia y responde la pregunta.",
+      "parrafos": [
+        {
+          "texto": "En japonés, Japón se llama Nihon o Nippon, que quiere decir 'el origen del sol'. Por eso su bandera es un círculo rojo, el sol, sobre fondo blanco. Se llama Hinomaru: 'el círculo del sol'. En 1870 empezó a usarse en los barcos japoneses, y en 1999 una ley la hizo la bandera oficial y le acomodó un poquito el tamaño y el lugar del círculo.",
+          "emoji": "🇯🇵",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Hinomaru quiere decir 'el círculo del ___'.",
+              "opciones": ["mar", "sol", "fuego", "cielo"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "La marina del Imperio de Japón usaba otra bandera: el sol rojo con 16 rayos, que se llama la bandera del sol naciente. Hoy la usa la Fuerza Marítima de Autodefensa de Japón, que cuida sus mares. A mucha gente en Corea y en China no le gusta verla, porque les recuerda una época de guerra.",
+          "emoji": "⚓",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "La bandera del sol naciente tiene ___ rayos.",
+              "opciones": ["5", "8", "12", "16"],
+              "respuesta": 3
+            }
+          ]
+        },
+        {
+          "texto": "China fue gobernada por emperadores durante más de 2,000 años. La última dinastía, o familia de emperadores, fue la Qing (se dice 'ching'). Su bandera era amarilla, el color del emperador, con un dragón azul que persigue una perla roja. En 1912 el último emperador, Puyi, dejó el trono... ¡cuando tenía solo 6 años!",
+          "emoji": "🐉",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "El último emperador de China dejó el trono cuando era un niño.",
+              "correcto": true,
+              "correccion": null
+            },
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "En la bandera de la dinastía Qing, el ___ persigue una perla roja.",
+              "opciones": ["tigre", "dragón", "caballo", "pez"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "En 1912 China se volvió república: la República de China. Su nueva bandera tenía cinco franjas: roja, amarilla, azul, blanca y negra. Cada color representaba a uno de los cinco pueblos más grandes del país: los han, los manchúes, los mongoles, los hui y los tibetanos.",
+          "emoji": "🎌",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "La bandera de la República de China de 1912 tenía ___ franjas.",
+              "opciones": ["tres", "cuatro", "cinco", "siete"],
+              "respuesta": 2
+            }
+          ]
+        },
+        {
+          "texto": "En 1928 la República de China cambió de bandera: roja, con un rectángulo azul en la esquina y un sol blanco de 12 rayos. Los 12 rayos son los 12 meses del año y las 12 partes en que los chinos antiguos dividían el día. En 1949 ese gobierno se fue a la isla de Taiwán, y allá se sigue usando esa bandera hasta hoy.",
+          "emoji": "☀️",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "La bandera de Taiwán tiene un sol blanco de 12 rayos.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "En 1949 se fundó la República Popular China, con su capital en Pekín. Su bandera es roja, con cinco estrellas amarillas: una grande y cuatro chiquitas. Dato curioso: cada estrella chiquita tiene una punta que apunta hacia el centro de la estrella grande.",
+          "emoji": "🇨🇳",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "La bandera de China de hoy tiene un dragón.",
+              "correcto": false,
+              "correccion": "El dragón era de la dinastía Qing. La de hoy tiene cinco estrellas amarillas."
+            }
+          ]
+        },
+        {
+          "texto": "La bandera de Corea se llama taegukgi. Empezó a usarse en 1882, y en el centro tiene un círculo rojo y azul, como el yin-yang. En las esquinas tiene cuatro trigramas, grupos de tres rayitas que significan el cielo, la tierra, el agua y el fuego. De 1910 a 1945 Corea fue gobernada por Japón; después se dividió en dos, y Corea del Sur sigue usando el taegukgi.",
+          "emoji": "🇰🇷",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "La bandera de Corea del Sur se llama ___.",
+              "opciones": ["taegukgi", "hinomaru", "dragón", "trigrama"],
+              "respuesta": 0
+            },
+            {
+              "tipo": "true-or-false",
+              "oracion": "Los trigramas de la bandera de Corea son grupos de tres rayitas.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gbh-03-cual-es",
+      "tipo": "image-picker",
+      "titulo": "¿Qué bandera es?",
+      "instruccion": "Mira la bandera y elige su nombre.",
+      "retos": [
+        {
+          "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Flag_of_Japan_%281870%E2%80%931999%29.svg",
+          "bandera_id": "h-japon-1870",
+          "opciones": [
+            { "label": "Bandera del sol naciente" },
+            { "label": "Japón, el Hinomaru" },
+            { "label": "Corea, el taegukgi" },
+            { "label": "Dinastía Qing" }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Es el Hinomaru, el círculo del sol! Esta versión se usó de 1870 a 1999. Dato curioso: en la versión vieja el círculo estaba un poquito corrido hacia el asta."
+        },
+        {
+          "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Naval_Ensign_of_Japan.svg",
+          "bandera_id": "h-sol-naciente",
+          "opciones": [
+            { "label": "Japón, el Hinomaru" },
+            { "label": "República de China (1912)" },
+            { "label": "Bandera del sol naciente" },
+            { "label": "Taiwán" }
+          ],
+          "respuesta": 2,
+          "explicacion": "Es la bandera del sol naciente: el sol con 16 rayos. La usaba la marina del Imperio de Japón y hoy la usa la Fuerza Marítima de Autodefensa de Japón."
+        },
+        {
+          "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Flag_of_the_Qing_dynasty_%281889-1912%29.svg",
+          "bandera_id": "h-qing",
+          "opciones": [
+            { "label": "Dinastía Qing" },
+            { "label": "Corea, el taegukgi" },
+            { "label": "República de China (1912)" },
+            { "label": "Japón, el Hinomaru" }
+          ],
+          "respuesta": 0,
+          "explicacion": "¡Es la del dragón amarillo de la dinastía Qing (1889-1912), el último imperio de China! El amarillo era el color del emperador."
+        },
+        {
+          "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Flag_of_China_%281912%E2%80%931928%29.svg",
+          "bandera_id": "h-china-1912",
+          "opciones": [
+            { "label": "Dinastía Qing" },
+            { "label": "Taiwán" },
+            { "label": "Bandera del sol naciente" },
+            { "label": "República de China (1912)" }
+          ],
+          "respuesta": 3,
+          "explicacion": "¡Es la de cinco colores de la República de China (1912-1928)! Una franja por cada uno de los cinco pueblos más grandes del país."
+        },
+        {
+          "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/6/63/Flag_of_Korea_%281882%E2%80%931910%29.svg",
+          "bandera_id": "h-corea-1882",
+          "opciones": [
+            { "label": "Japón, el Hinomaru" },
+            { "label": "Corea, el taegukgi" },
+            { "label": "Dinastía Qing" },
+            { "label": "Taiwán" }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Es el taegukgi de Corea, en su versión de 1882 a 1910! El círculo del centro y los cuatro trigramas siguen en la bandera de Corea del Sur."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/tw.png",
+          "bandera": "tw",
+          "opciones": [
+            { "label": "República de China (1912)" },
+            { "label": "Bandera del sol naciente" },
+            { "label": "Taiwán" },
+            { "label": "Dinastía Qing" }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Es la de Taiwán! Es la bandera que eligió la República de China en 1928: roja, con el cielo azul y un sol blanco de 12 rayos."
+        }
+      ]
+    },
+    {
+      "id": "gbh-03-gemelas",
+      "tipo": "image-picker",
+      "titulo": "Banderas gemelas: ¡no te confundas!",
+      "instruccion": "Lee el nombre del país y toca su bandera. ¡Fíjate bien en los detalles!",
+      "opciones_bandera": true,
+      "retos": [
+        {
+          "palabra_es": "China",
+          "bandera": "cn",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/vn.png", "label": "Vietnam" },
+            { "imagen": "https://flagcdn.com/w320/cn.png", "label": "China" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Las dos son rojas con estrellas amarillas. La de China tiene cinco estrellas en la esquina; la de Vietnam, una sola estrella grande en el centro."
+        },
+        {
+          "palabra_es": "Vietnam",
+          "bandera": "vn",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/vn.png", "label": "Vietnam" },
+            { "imagen": "https://flagcdn.com/w320/cn.png", "label": "China" }
+          ],
+          "respuesta": 0,
+          "explicacion": "La de Vietnam tiene una sola estrella amarilla, grande y en el centro. La de China tiene cinco, en la esquina."
+        },
+        {
+          "palabra_es": "Japón",
+          "bandera": "jp",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/bd.png", "label": "Bangladés" },
+            { "imagen": "https://flagcdn.com/w320/pw.png", "label": "Palaos" },
+            { "imagen": "https://flagcdn.com/w320/jp.png", "label": "Japón" }
+          ],
+          "respuesta": 2,
+          "explicacion": "Las tres tienen un círculo. La de Japón es un círculo rojo sobre blanco. La de Bangladés, un círculo rojo sobre verde; la de Palaos, un círculo amarillo, la luna llena, sobre azul claro."
+        },
+        {
+          "palabra_es": "Bangladés",
+          "bandera": "bd",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/jp.png", "label": "Japón" },
+            { "imagen": "https://flagcdn.com/w320/bd.png", "label": "Bangladés" },
+            { "imagen": "https://flagcdn.com/w320/pw.png", "label": "Palaos" }
+          ],
+          "respuesta": 1,
+          "explicacion": "La de Bangladés es verde con un círculo rojo. Dato curioso: el círculo no está en el centro, está un poquito corrido hacia el asta, para que se vea centrado cuando la bandera ondea."
+        },
+        {
+          "palabra_es": "Palaos",
+          "bandera": "pw",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/pw.png", "label": "Palaos" },
+            { "imagen": "https://flagcdn.com/w320/jp.png", "label": "Japón" },
+            { "imagen": "https://flagcdn.com/w320/bd.png", "label": "Bangladés" }
+          ],
+          "respuesta": 0,
+          "explicacion": "La de Palaos es azul claro, como el océano Pacífico, con un círculo amarillo: la luna llena. Palaos es un país de islas en el Pacífico."
+        },
+        {
+          "palabra_es": "Taiwán",
+          "bandera": "tw",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/cn.png", "label": "China" },
+            { "imagen": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Flag_of_China_%281912%E2%80%931928%29.svg", "label": "República de China (1912)" },
+            { "imagen": "https://flagcdn.com/w320/tw.png", "label": "Taiwán" }
+          ],
+          "respuesta": 2,
+          "explicacion": "La de Taiwán es roja con un rectángulo azul y un sol blanco. La de cinco franjas es la de la República de China de 1912, y la de cinco estrellas, la de China de hoy."
+        },
+        {
+          "palabra_es": "Corea del Sur",
+          "bandera": "kr",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/kp.png", "label": "Corea del Norte" },
+            { "imagen": "https://flagcdn.com/w320/kr.png", "label": "Corea del Sur" },
+            { "imagen": "https://flagcdn.com/w320/jp.png", "label": "Japón" }
+          ],
+          "respuesta": 1,
+          "explicacion": "La de Corea del Sur es el taegukgi: blanca, con el círculo rojo y azul y cuatro trigramas. La de Corea del Norte tiene franjas azules y una estrella roja."
+        }
+      ]
+    },
+    {
+      "id": "gbh-03-pais-hoy",
+      "tipo": "tap-the-pairs",
+      "titulo": "¿Qué país es hoy?",
+      "instruccion": "Toca una bandera antigua y luego el país que hay ahí hoy.",
+      "retos": [
+        {
+          "pares": [
+            { "es": "Japón, el Hinomaru (1870)", "es_img": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Flag_of_Japan_%281870%E2%80%931999%29.svg", "bandera_id": "h-japon-1870", "en": "Japón" },
+            { "es": "Dinastía Qing", "es_img": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Flag_of_the_Qing_dynasty_%281889-1912%29.svg", "bandera_id": "h-qing", "en": "China" },
+            { "es": "Corea (1882)", "es_img": "https://upload.wikimedia.org/wikipedia/commons/6/63/Flag_of_Korea_%281882%E2%80%931910%29.svg", "bandera_id": "h-corea-1882", "en": "Corea del Sur" },
+            { "es": "República de China (1928)", "es_img": "https://flagcdn.com/w320/tw.png", "bandera": "tw", "en": "Taiwán" }
+          ]
+        },
+        {
+          "pares": [
+            { "es": "Bandera del sol naciente", "es_img": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Naval_Ensign_of_Japan.svg", "bandera_id": "h-sol-naciente", "en": "Japón" },
+            { "es": "República de China (1912)", "es_img": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Flag_of_China_%281912%E2%80%931928%29.svg", "bandera_id": "h-china-1912", "en": "China" },
+            { "es": "Corea (1882)", "es_img": "https://upload.wikimedia.org/wikipedia/commons/6/63/Flag_of_Korea_%281882%E2%80%931910%29.svg", "bandera_id": "h-corea-1882", "en": "Corea del Sur" }
+          ]
+        }
+      ]
+    }
+  ]
+}

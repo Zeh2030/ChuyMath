@@ -1,0 +1,876 @@
+{
+  "id": "GB1-04_mundial-2026",
+  "titulo": "Las banderas del Mundial 2026",
+  "descripcion": "Las 48 selecciones del Mundial de México, Estados Unidos y Canadá: reconoce sus banderas grupo por grupo.",
+  "tipo": "banderas",
+  "materia": "geografia",
+  "tema": "mundial",
+  "nivel": "GB1-04",
+  "misiones": [
+    {
+      "id": "gb1-04-historia",
+      "tipo": "mini-story",
+      "titulo": "El Mundial de las 48 banderas",
+      "instruccion": "Lee cada parte de la historia y responde la pregunta.",
+      "parrafos": [
+        {
+          "texto": "En junio y julio de 2026 se jugó el Mundial de futbol en TRES países a la vez: México, Estados Unidos y Canadá. ¡Nunca antes un Mundial había tenido tres sedes! Hubo partidos en 16 ciudades: 3 de México (Ciudad de México, Guadalajara y Monterrey), 11 de Estados Unidos y 2 de Canadá (Toronto y Vancouver).",
+          "emoji": "🏟️",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "El Mundial 2026 tuvo ___ países sede.",
+              "opciones": [
+                "dos",
+                "tres",
+                "cuatro",
+                "cinco"
+              ],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "El partido inaugural se jugó en el Estadio Azteca de la Ciudad de México. Es el primer estadio del mundo con partidos de tres Mundiales: 1970, 1986 y 2026. Y México es el primer país que ha sido sede de tres Mundiales.",
+          "emoji": "🇲🇽",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "El Estadio Azteca ha tenido partidos de tres Mundiales.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Fue el primer Mundial con 48 selecciones; antes jugaban 32. Para organizarlas se hicieron 12 grupos de 4 equipos, del grupo A al grupo L. ¡48 banderas ondeando en los estadios! México quedó en el grupo A, Canadá en el B y Estados Unidos en el D.",
+          "emoji": "⚽",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "En el Mundial 2026 jugaron ___ selecciones.",
+              "opciones": [
+                "32",
+                "48",
+                "24",
+                "64"
+              ],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "Si buscas la bandera del Reino Unido entre las 48... ¡no la vas a encontrar! El Reino Unido está formado por cuatro naciones: Inglaterra, Escocia, Gales e Irlanda del Norte, y en el futbol cada una tiene su propia selección desde hace más de 150 años. ¡El primer partido entre dos países de la historia fue Escocia contra Inglaterra, en 1872! Por eso Inglaterra juega con su cruz roja de San Jorge y Escocia con su cruz blanca en forma de X, la de San Andrés. La bandera del Reino Unido junta esas dos cruces y una tercera, la de San Patricio, de Irlanda.",
+          "emoji": "🏴",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Inglaterra y Escocia jugaron el Mundial con la bandera del Reino Unido.",
+              "correcto": false,
+              "correccion": "Cada una juega con su propia bandera: Inglaterra con la cruz de San Jorge y Escocia con la de San Andrés."
+            },
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "La cruz de Escocia tiene forma de ___.",
+              "opciones": [
+                "T",
+                "L",
+                "X",
+                "O"
+              ],
+              "respuesta": 2
+            }
+          ]
+        },
+        {
+          "texto": "Cuatro selecciones llegaron a su primer Mundial: Cabo Verde, Curazao, Jordania y Uzbekistán. Curazao es una isla del Caribe con unos 150 mil habitantes, ¡menos gente que muchas ciudades de México! Es el país más pequeño que ha llegado a un Mundial.",
+          "emoji": "🏝️",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Curazao es una isla del Caribe.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gb1-04-grupos-a-f",
+      "tipo": "image-picker",
+      "titulo": "Grupos A a F: ¿de qué selección es esta bandera?",
+      "instruccion": "Mira la bandera y elige la selección correcta.",
+      "retos": [
+        {
+          "imagen_url": "https://flagcdn.com/w320/kr.png",
+          "bandera": "kr",
+          "opciones": [
+            {
+              "label": "Japón"
+            },
+            {
+              "label": "Uzbekistán"
+            },
+            {
+              "label": "Corea del Sur"
+            },
+            {
+              "label": "Suiza"
+            }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Es Corea del Sur (grupo A)! El círculo rojo y azul es el taegeuk, como el yin y el yang, y las cuatro figuras de rayitas representan el cielo, la tierra, el agua y el fuego."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/cz.png",
+          "bandera": "cz",
+          "opciones": [
+            {
+              "label": "República Checa"
+            },
+            {
+              "label": "Croacia"
+            },
+            {
+              "label": "Países Bajos"
+            },
+            {
+              "label": "Panamá"
+            }
+          ],
+          "respuesta": 0,
+          "explicacion": "¡Es República Checa (grupo A)! Era la bandera de Checoslovaquia; cuando ese país se dividió en dos, en 1993, los checos se la quedaron."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/za.png",
+          "bandera": "za",
+          "opciones": [
+            {
+              "label": "Ghana"
+            },
+            {
+              "label": "Senegal"
+            },
+            {
+              "label": "Cabo Verde"
+            },
+            {
+              "label": "Sudáfrica"
+            }
+          ],
+          "respuesta": 3,
+          "explicacion": "¡Es Sudáfrica (grupo A)! Tiene 6 colores, más que casi cualquier bandera. La figura de Y acostada son caminos distintos que se juntan en uno: todos los sudafricanos unidos."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/qa.png",
+          "bandera": "qa",
+          "opciones": [
+            {
+              "label": "Túnez"
+            },
+            {
+              "label": "Catar"
+            },
+            {
+              "label": "Jordania"
+            },
+            {
+              "label": "Irak"
+            }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Es Catar (grupo B)! Su franja blanca tiene 9 picos, como dientes de sierra. Es la bandera de país más alargada del mundo: mide más del doble de largo que de alto."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/ch.png",
+          "bandera": "ch",
+          "opciones": [
+            {
+              "label": "Inglaterra"
+            },
+            {
+              "label": "Suiza"
+            },
+            {
+              "label": "Canadá"
+            },
+            {
+              "label": "Turquía"
+            }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Es Suiza (grupo B)! Su bandera es cuadrada. Solo dos países tienen bandera cuadrada: Suiza y el Vaticano."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/ht.png",
+          "bandera": "ht",
+          "opciones": [
+            {
+              "label": "Paraguay"
+            },
+            {
+              "label": "Panamá"
+            },
+            {
+              "label": "Estados Unidos"
+            },
+            {
+              "label": "Haití"
+            }
+          ],
+          "respuesta": 3,
+          "explicacion": "¡Es Haití (grupo C)! Cuenta la historia que en 1803 arrancaron la franja blanca de la bandera francesa para crear la suya. En 1804 Haití fue el primer país de América Latina en independizarse."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/py.png",
+          "bandera": "py",
+          "opciones": [
+            {
+              "label": "Paraguay"
+            },
+            {
+              "label": "Países Bajos"
+            },
+            {
+              "label": "Croacia"
+            },
+            {
+              "label": "República Checa"
+            }
+          ],
+          "respuesta": 0,
+          "explicacion": "¡Es Paraguay (grupo D)! Su bandera tiene un escudo diferente de cada lado: por delante el escudo nacional y por detrás un león junto a un gorro de la libertad."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/tr.png",
+          "bandera": "tr",
+          "opciones": [
+            {
+              "label": "Túnez"
+            },
+            {
+              "label": "Argelia"
+            },
+            {
+              "label": "Turquía"
+            },
+            {
+              "label": "Marruecos"
+            }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Es Turquía (grupo D)! Se parece mucho a la de Túnez, pero en la de Túnez la luna y la estrella están dentro de un círculo blanco."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/cw.png",
+          "bandera": "cw",
+          "opciones": [
+            {
+              "label": "Cabo Verde"
+            },
+            {
+              "label": "Bosnia y Herzegovina"
+            },
+            {
+              "label": "Escocia"
+            },
+            {
+              "label": "Curazao"
+            }
+          ],
+          "respuesta": 3,
+          "explicacion": "¡Es Curazao (grupo E)! Sus dos estrellas son sus dos islas: Curazao y la pequeñita Klein Curazao. 2026 fue su primer Mundial."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/se.png",
+          "bandera": "se",
+          "opciones": [
+            {
+              "label": "Noruega"
+            },
+            {
+              "label": "Suecia"
+            },
+            {
+              "label": "Uzbekistán"
+            },
+            {
+              "label": "Ecuador"
+            }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Es Suecia (grupo F)! Tiene una cruz nórdica, corrida hacia el lado del asta. Noruega, Dinamarca, Finlandia e Islandia también tienen esa cruz."
+        }
+      ]
+    },
+    {
+      "id": "gb1-04-grupos-g-l",
+      "tipo": "image-picker",
+      "titulo": "Grupos G a L: ¿de qué selección es esta bandera?",
+      "instruccion": "Mira la bandera y elige la selección correcta.",
+      "retos": [
+        {
+          "imagen_url": "https://flagcdn.com/w320/eg.png",
+          "bandera": "eg",
+          "opciones": [
+            {
+              "label": "Irak"
+            },
+            {
+              "label": "Irán"
+            },
+            {
+              "label": "Egipto"
+            },
+            {
+              "label": "Jordania"
+            }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Es Egipto (grupo G)! En el centro está el Águila de Saladino, un sultán famoso de hace más de 800 años. La bandera de Irak tiene las mismas franjas, pero con letras verdes en lugar del águila."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/ir.png",
+          "bandera": "ir",
+          "opciones": [
+            {
+              "label": "Irán"
+            },
+            {
+              "label": "Irak"
+            },
+            {
+              "label": "México"
+            },
+            {
+              "label": "Argelia"
+            }
+          ],
+          "respuesta": 0,
+          "explicacion": "¡Es Irán (grupo G)! En los bordes de las franjas verde y roja está escrita 22 veces la frase «Dios es grande» en letras árabes."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/cv.png",
+          "bandera": "cv",
+          "opciones": [
+            {
+              "label": "Curazao"
+            },
+            {
+              "label": "Bosnia y Herzegovina"
+            },
+            {
+              "label": "Uzbekistán"
+            },
+            {
+              "label": "Cabo Verde"
+            }
+          ],
+          "respuesta": 3,
+          "explicacion": "¡Es Cabo Verde (grupo H)! Sus 10 estrellas son sus 10 islas principales, en el océano Atlántico, frente a África. 2026 fue su primer Mundial."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/sa.png",
+          "bandera": "sa",
+          "opciones": [
+            {
+              "label": "Argelia"
+            },
+            {
+              "label": "Arabia Saudita"
+            },
+            {
+              "label": "Senegal"
+            },
+            {
+              "label": "Irak"
+            }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Es Arabia Saudita (grupo H)! Las letras blancas son una frase sagrada del islam y debajo hay una espada. Por esa frase, su bandera nunca se baja a media asta."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/uy.png",
+          "bandera": "uy",
+          "opciones": [
+            {
+              "label": "Argentina"
+            },
+            {
+              "label": "Uruguay"
+            },
+            {
+              "label": "Panamá"
+            },
+            {
+              "label": "Estados Unidos"
+            }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Es Uruguay (grupo H)! Tiene el Sol de Mayo, como Argentina, y 9 franjas por los 9 departamentos que tenía al nacer como país. Uruguay organizó y ganó el primer Mundial de la historia, en 1930."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/no.png",
+          "bandera": "no",
+          "opciones": [
+            {
+              "label": "Suecia"
+            },
+            {
+              "label": "Suiza"
+            },
+            {
+              "label": "Inglaterra"
+            },
+            {
+              "label": "Noruega"
+            }
+          ],
+          "respuesta": 3,
+          "explicacion": "¡Es Noruega (grupo I)! Tiene una cruz nórdica, como Suecia, pero roja, blanca y azul. Volvió al Mundial después de 28 años: el anterior había sido Francia 1998."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/cd.png",
+          "bandera": "cd",
+          "opciones": [
+            {
+              "label": "RD del Congo"
+            },
+            {
+              "label": "Ghana"
+            },
+            {
+              "label": "Senegal"
+            },
+            {
+              "label": "Cabo Verde"
+            }
+          ],
+          "respuesta": 0,
+          "explicacion": "¡Es RD del Congo (grupo K)! Es el segundo país más grande de África, después de Argelia. La estrella amarilla representa un futuro brillante."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/uz.png",
+          "bandera": "uz",
+          "opciones": [
+            {
+              "label": "Argelia"
+            },
+            {
+              "label": "Turquía"
+            },
+            {
+              "label": "Uzbekistán"
+            },
+            {
+              "label": "Irán"
+            }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Es Uzbekistán (grupo K)! Tiene una luna creciente y 12 estrellas. Está en el centro de Asia, por donde pasaba la antigua Ruta de la Seda. 2026 fue su primer Mundial."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/hr.png",
+          "bandera": "hr",
+          "opciones": [
+            {
+              "label": "Países Bajos"
+            },
+            {
+              "label": "Paraguay"
+            },
+            {
+              "label": "República Checa"
+            },
+            {
+              "label": "Croacia"
+            }
+          ],
+          "respuesta": 3,
+          "explicacion": "¡Es Croacia (grupo L)! El escudo de cuadritos rojos y blancos parece un tablero de ajedrez, y su selección juega con una camiseta de cuadritos igualita."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/gh.png",
+          "bandera": "gh",
+          "opciones": [
+            {
+              "label": "Senegal"
+            },
+            {
+              "label": "Ghana"
+            },
+            {
+              "label": "RD del Congo"
+            },
+            {
+              "label": "Costa de Marfil"
+            }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Es Ghana (grupo L)! A su selección le dicen «las Estrellas Negras» por la estrella negra de su bandera."
+        }
+      ]
+    },
+    {
+      "id": "gb1-04-cual-bandera",
+      "tipo": "image-picker",
+      "opciones_bandera": true,
+      "titulo": "¿Cuál es su bandera?",
+      "instruccion": "Lee el nombre de la selección y toca su bandera.",
+      "retos": [
+        {
+          "palabra_es": "Inglaterra",
+          "bandera": "gb-eng",
+          "opciones": [
+            {
+              "imagen": "https://flagcdn.com/w320/gb-sct.png",
+              "label": "Escocia"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/gb-eng.png",
+              "label": "Inglaterra"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/ch.png",
+              "label": "Suiza"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/ca.png",
+              "label": "Canadá"
+            }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Esa es! La cruz roja de San Jorge sobre blanco. Inglaterra es parte del Reino Unido, pero en el futbol tiene su propia selección y su propia bandera."
+        },
+        {
+          "palabra_es": "Escocia",
+          "bandera": "gb-sct",
+          "opciones": [
+            {
+              "imagen": "https://flagcdn.com/w320/gb-eng.png",
+              "label": "Inglaterra"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/gb-sct.png",
+              "label": "Escocia"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/ba.png",
+              "label": "Bosnia y Herzegovina"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/cv.png",
+              "label": "Cabo Verde"
+            }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Esa es! La cruz blanca en forma de X de San Andrés sobre azul. Es una de las banderas más antiguas que se siguen usando."
+        },
+        {
+          "palabra_es": "Costa de Marfil",
+          "bandera": "ci",
+          "opciones": [
+            {
+              "imagen": "https://flagcdn.com/w320/sn.png",
+              "label": "Senegal"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/mx.png",
+              "label": "México"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/be.png",
+              "label": "Bélgica"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/ci.png",
+              "label": "Costa de Marfil"
+            }
+          ],
+          "respuesta": 3,
+          "explicacion": "¡Esa es! Naranja, blanco y verde. Ojo: la de Irlanda tiene los mismos colores, pero al revés, con el verde junto al asta."
+        },
+        {
+          "palabra_es": "Colombia",
+          "bandera": "co",
+          "opciones": [
+            {
+              "imagen": "https://flagcdn.com/w320/co.png",
+              "label": "Colombia"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/ec.png",
+              "label": "Ecuador"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/be.png",
+              "label": "Bélgica"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/es.png",
+              "label": "España"
+            }
+          ],
+          "respuesta": 0,
+          "explicacion": "¡Esa es! Amarillo, azul y rojo, con la franja amarilla del doble de ancho. La de Ecuador es casi igual, pero lleva un escudo con un cóndor."
+        },
+        {
+          "palabra_es": "Países Bajos",
+          "bandera": "nl",
+          "opciones": [
+            {
+              "imagen": "https://flagcdn.com/w320/hr.png",
+              "label": "Croacia"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/py.png",
+              "label": "Paraguay"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/nl.png",
+              "label": "Países Bajos"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/fr.png",
+              "label": "Francia"
+            }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Esa es! Rojo, blanco y azul acostados. Su selección juega de naranja por la familia real, la Casa de Orange."
+        },
+        {
+          "palabra_es": "Senegal",
+          "bandera": "sn",
+          "opciones": [
+            {
+              "imagen": "https://flagcdn.com/w320/gh.png",
+              "label": "Ghana"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/ma.png",
+              "label": "Marruecos"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/cd.png",
+              "label": "RD del Congo"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/sn.png",
+              "label": "Senegal"
+            }
+          ],
+          "respuesta": 3,
+          "explicacion": "¡Esa es! Verde, amarillo y rojo, con una estrella verde. La de Ghana tiene colores parecidos, pero sus franjas van acostadas y su estrella es negra."
+        },
+        {
+          "palabra_es": "Nueva Zelanda",
+          "bandera": "nz",
+          "opciones": [
+            {
+              "imagen": "https://flagcdn.com/w320/au.png",
+              "label": "Australia"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/nz.png",
+              "label": "Nueva Zelanda"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/ba.png",
+              "label": "Bosnia y Herzegovina"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/cv.png",
+              "label": "Cabo Verde"
+            }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Esa es! Su Cruz del Sur tiene 4 estrellas rojas. La de Australia es muy parecida, pero sus estrellas son blancas y tiene una más grande abajo."
+        },
+        {
+          "palabra_es": "Argelia",
+          "bandera": "dz",
+          "opciones": [
+            {
+              "imagen": "https://flagcdn.com/w320/sa.png",
+              "label": "Arabia Saudita"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/tn.png",
+              "label": "Túnez"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/dz.png",
+              "label": "Argelia"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/tr.png",
+              "label": "Turquía"
+            }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Esa es! Mitad verde y mitad blanca, con una luna creciente y una estrella rojas. Argelia es el país más grande de África."
+        }
+      ]
+    },
+    {
+      "id": "gb1-04-parejas-sedes",
+      "tipo": "tap-the-pairs",
+      "titulo": "Los grupos de las tres sedes",
+      "instruccion": "Toca una selección y luego su bandera. Primero, el grupo de México (A); luego el de Canadá (B) y el de Estados Unidos (D).",
+      "retos": [
+        {
+          "pares": [
+            {
+              "es": "México",
+              "en": "bandera de México",
+              "en_img": "https://flagcdn.com/w160/mx.png",
+              "bandera": "mx"
+            },
+            {
+              "es": "Sudáfrica",
+              "en": "bandera de Sudáfrica",
+              "en_img": "https://flagcdn.com/w160/za.png",
+              "bandera": "za"
+            },
+            {
+              "es": "Corea del Sur",
+              "en": "bandera de Corea del Sur",
+              "en_img": "https://flagcdn.com/w160/kr.png",
+              "bandera": "kr"
+            },
+            {
+              "es": "República Checa",
+              "en": "bandera de República Checa",
+              "en_img": "https://flagcdn.com/w160/cz.png",
+              "bandera": "cz"
+            }
+          ]
+        },
+        {
+          "pares": [
+            {
+              "es": "Canadá",
+              "en": "bandera de Canadá",
+              "en_img": "https://flagcdn.com/w160/ca.png",
+              "bandera": "ca"
+            },
+            {
+              "es": "Bosnia y Herzegovina",
+              "en": "bandera de Bosnia y Herzegovina",
+              "en_img": "https://flagcdn.com/w160/ba.png",
+              "bandera": "ba"
+            },
+            {
+              "es": "Catar",
+              "en": "bandera de Catar",
+              "en_img": "https://flagcdn.com/w160/qa.png",
+              "bandera": "qa"
+            },
+            {
+              "es": "Suiza",
+              "en": "bandera de Suiza",
+              "en_img": "https://flagcdn.com/w160/ch.png",
+              "bandera": "ch"
+            }
+          ]
+        },
+        {
+          "pares": [
+            {
+              "es": "Estados Unidos",
+              "en": "bandera de Estados Unidos",
+              "en_img": "https://flagcdn.com/w160/us.png",
+              "bandera": "us"
+            },
+            {
+              "es": "Paraguay",
+              "en": "bandera de Paraguay",
+              "en_img": "https://flagcdn.com/w160/py.png",
+              "bandera": "py"
+            },
+            {
+              "es": "Australia",
+              "en": "bandera de Australia",
+              "en_img": "https://flagcdn.com/w160/au.png",
+              "bandera": "au"
+            },
+            {
+              "es": "Turquía",
+              "en": "bandera de Turquía",
+              "en_img": "https://flagcdn.com/w160/tr.png",
+              "bandera": "tr"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gb1-04-mapa",
+      "tipo": "explorador-mapa",
+      "mapa": "world",
+      "modo": "quiz",
+      "pregunta_bandera": true,
+      "titulo": "¿De dónde es esta selección?",
+      "instruccion": "Mira la bandera y toca el país de esa selección en el mapa.",
+      "retos": [
+        {
+          "id": "392",
+          "nombre": "Japón",
+          "bandera": "jp",
+          "pregunta": "¿De qué país es esta bandera? Tócalo en el mapa. Pista: son islas al este de Asia.",
+          "dato": "Su bandera se llama Hinomaru, «círculo del sol». A Japón le dicen «el país del sol naciente»."
+        },
+        {
+          "id": "076",
+          "nombre": "Brasil",
+          "bandera": "br",
+          "pregunta": "¿De qué país es esta bandera? Tócalo en el mapa. Pista: es el país más grande de Sudamérica.",
+          "dato": "Brasil es el único país que ha jugado todos los Mundiales de la historia."
+        },
+        {
+          "id": "036",
+          "nombre": "Australia",
+          "bandera": "au",
+          "pregunta": "¿De qué país es esta bandera? Tócalo en el mapa. Pista: es un país que ocupa un continente entero.",
+          "dato": "Las estrellas de la derecha son la Cruz del Sur, un grupo de estrellas que se ve sobre todo desde la mitad sur del planeta."
+        },
+        {
+          "id": "818",
+          "nombre": "Egipto",
+          "bandera": "eg",
+          "pregunta": "¿De qué país es esta bandera? Tócalo en el mapa. Pista: está en el norte de África y lo cruza un río larguísimo.",
+          "dato": "Ahí están las pirámides de Guiza y el río Nilo, uno de los ríos más largos del mundo."
+        },
+        {
+          "id": "682",
+          "nombre": "Arabia Saudita",
+          "bandera": "sa",
+          "pregunta": "¿De qué país es esta bandera? Tócalo en el mapa. Pista: es el país más grande de la península arábiga.",
+          "dato": "Este país será la sede del Mundial 2034."
+        },
+        {
+          "id": "012",
+          "nombre": "Argelia",
+          "bandera": "dz",
+          "pregunta": "¿De qué país es esta bandera? Tócalo en el mapa. Pista: es el país más grande de África.",
+          "dato": "Casi todo su territorio es parte del desierto del Sahara."
+        },
+        {
+          "id": "364",
+          "nombre": "Irán",
+          "bandera": "ir",
+          "pregunta": "¿De qué país es esta bandera? Tócalo en el mapa. Pista: está en Asia, entre el mar Caspio y el golfo Pérsico.",
+          "dato": "Antes se llamaba Persia, el nombre de un imperio muy antiguo y famoso."
+        },
+        {
+          "id": "578",
+          "nombre": "Noruega",
+          "bandera": "no",
+          "pregunta": "¿De qué país es esta bandera? Tócalo en el mapa. Pista: está en el norte de Europa, junto a Suecia.",
+          "dato": "Está tan al norte que en verano hay lugares donde el sol no se mete en toda la noche: el «sol de medianoche»."
+        }
+      ]
+    }
+  ]
+}

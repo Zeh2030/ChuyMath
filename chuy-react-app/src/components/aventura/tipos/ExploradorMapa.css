@@ -98,6 +98,23 @@
   cursor: grabbing;
 }
 
+/* === Bandera como pregunta (modulo de Banderas) ===
+   Alto fijo: el mapa no brinca mientras carga. Borde fino: Japon y otras son
+   casi blancas y se perderian sobre la tarjeta blanca. */
+.em-bandera-pregunta {
+  display: block;
+  height: clamp(56px, 12vw, 96px);
+  width: auto;
+  max-width: 100%;
+  margin: 0 auto 10px;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18), 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.em-fullscreen .em-bandera-pregunta {
+  height: 64px;
+}
+
 /* === Zoom (en la barra de arriba, fuera del mapa) === */
 .em-zoom {
   display: flex;

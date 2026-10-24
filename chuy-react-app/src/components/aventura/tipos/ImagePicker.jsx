@@ -97,8 +97,10 @@ const ImagePicker = ({ mision, onCompletar, materia = null }) => {
       <div className="ip-question">
         {/* Foto-estimulo del reto (banderas de geografia, fotos NASA):
             se pregunta SOBRE esta imagen y las opciones son texto. */}
+        {/* key por src: al cambiar de reto se monta una imagen nueva; si no, con
+            internet lento se veia la bandera anterior junto a las opciones nuevas */}
         {reto.imagen_url && (
-          <img className="ip-imagen-reto" src={reto.imagen_url} alt="" loading="lazy" />
+          <img key={reto.imagen_url} className="ip-imagen-reto" src={reto.imagen_url} alt="" loading="lazy" />
         )}
         {reto.palabra_en ? (
           <>
@@ -122,7 +124,9 @@ const ImagePicker = ({ mision, onCompletar, materia = null }) => {
       </div>
 
       {/* Image grid */}
-      <div className={`ip-grid ip-grid-${Math.min(opciones.length, 4)}`}>
+      {/* opciones_bandera: banderas completas (sin recortar Nepal, Qatar o Suiza) y
+          con borde fino; las fotos de ciencias siguen con su recorte */}
+      <div className={`ip-grid ip-grid-${Math.min(opciones.length, 4)} ${mision.opciones_bandera ? 'ip-grid-banderas' : ''}`}>
         {opciones.map((opcion, i) => {
           let className = 'ip-card';
           if (seleccion === opcion.originalIndex) {
@@ -139,7 +143,9 @@ const ImagePicker = ({ mision, onCompletar, materia = null }) => {
               disabled={estado === 'correcto'}
             >
               {opcion.imagen ? (
-                <img className="ip-imagen" src={opcion.imagen} alt={opcion.label || ''} loading="lazy" />
+                // alt vacío con banderas: si la imagen falla, el navegador escribe
+                // el alt y diría el país (la respuesta)
+                <img key={opcion.imagen} className="ip-imagen" src={opcion.imagen} alt={mision.opciones_bandera ? '' : (opcion.label || '')} loading="lazy" />
               ) : opcion.emoji ? (
                 <span className="ip-emoji">{opcion.emoji}</span>
               ) : (

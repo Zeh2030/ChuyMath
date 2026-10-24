@@ -430,10 +430,11 @@ Opciones extra a nivel de **reto**, todas opcionales:
 Y a nivel de **mision**: `resaltar_ecuador: true` marca el Ecuador sobre la
 grátícula.
 
-> **Las banderas son recompensa, no pregunta.** Preguntar "¿de quien es esta
-> bandera?" enseña banderas, no geografia: la bandera es solo otro nombre del
-> pais. Puesta como premio al acertar, se aprende igual y no compite con la
-> leccion.
+> **En las lecciones de geografía, las banderas son recompensa, no pregunta.**
+> Preguntar "¿de quien es esta bandera?" enseña banderas, no geografia: la bandera
+> es solo otro nombre del pais. Puesta como premio al acertar, se aprende igual y
+> no compite con la leccion. (En la sub-sección **Banderas** es al revés: ahí la
+> bandera es el tema; ver la sección Banderas más abajo.)
 
 **Con `bandera`, `dato` o `ruta` el reto NO auto-avanza**: aparece un boton
 "Siguiente ➜" porque hay algo que leer. Sin ellos sigue avanzando solo a los
@@ -464,6 +465,37 @@ Ejemplos ya hechos: `G1-01b_continentes-globo.json` (quiz) y
 `G0-01b_planeta-azul-globo.json` (exploracion libre con `estilo: "tierra"`).
 
 ---
+
+## Banderas (sub-sección)
+
+Programa en `PROGRAMA_BANDERAS.md`. Documentos en `_geografia/banderas/` con
+`"tipo": "banderas"` (tarjeta propia en Bóveda) y misiones de los motores de siempre.
+
+- **Nivel e id**: `GB0`..`GB3` (actuales, por edad) y `GBH` (históricas). Archivo e id:
+  `GB1-02_america-latina.json`, `GBH-01_mexico-historico.json`.
+- **Código de bandera en cada reto** (para el álbum de la Fase 3): `"bandera": "mx"`
+  (alfa-2 o subdivisión `us-tx`, `gb-sct`), o en históricas `"bandera_id": "h-prusia"`
+  + `"bandera_url"`. El mismo `bandera_id` siempre con la misma URL.
+- **Imágenes**: actuales y estados de EE.UU. desde flagcdn
+  `https://flagcdn.com/w320/{codigo}.png` (anchos válidos: 20, 40, 80, 160, 320, 640, 1280;
+  `w100` da 404; no hay `us-dc`). Históricas: URL **original** de Wikimedia Commons
+  (`https://upload.wikimedia.org/wikipedia/commons/x/xx/Archivo.svg`, sin `/thumb/` ni `?utm…`),
+  resuelta con la API de Commons (`prop=imageinfo&iiprop=url`).
+- **image-picker**:
+  - bandera → nombre: `imagen_url` en el reto, opciones de texto (sin `palabra_es` que diga el país).
+  - nombre → bandera: opciones `{ "imagen": "https://flagcdn.com/w320/jp.png", "label": "Japón" }`
+    y en la **misión** `"opciones_bandera": true` (no recorta y quita el `alt`, que si la
+    imagen falla diría la respuesta).
+- **explorador-mapa** con `"pregunta_bandera": true` (misión o reto): la bandera es la
+  pregunta y el niño toca el país/estado. La `pregunta` **no** nombra el lugar
+  ("¿De qué país es esta bandera? Tócalo en el mapa"). Para históricas, `bandera_url`
+  y el `id` del país actual ("¿Dónde quedaba el Imperio Alemán? Toca la Alemania de hoy").
+  Ojo: el mapa 110m no tiene países chicos (Singapur, Mónaco, Malta, casi todo el
+  Caribe chico); esos van en image-picker. El validador lo marca.
+- **tap-the-pairs** con imagen: `{ "es": "Japón", "en": "bandera de Japón", "en_img": "https://flagcdn.com/w160/jp.png", "bandera": "jp" }`.
+  `es`/`en` siguen siendo obligatorios (describen el par); del lado con imagen se ve la imagen.
+- **Banderas polémicas** (Alemania 1933-45, Confederación, URSS, sol naciente): sí entran,
+  con descripción **neutral y breve** (qué país, qué años); nada racista; no se profundiza.
 
 ## Convenciones de naming
 

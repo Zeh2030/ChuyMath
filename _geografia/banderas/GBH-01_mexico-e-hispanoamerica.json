@@ -1,0 +1,359 @@
+{
+  "id": "GBH-01_mexico-e-hispanoamerica",
+  "titulo": "Banderas históricas de México y América",
+  "descripcion": "Las banderas que tuvo México antes de la de hoy, y las de la Gran Colombia, Centroamérica, Texas y Brasil",
+  "tipo": "banderas",
+  "materia": "geografia",
+  "tema": "historicas-america",
+  "nivel": "GBH-01",
+  "misiones": [
+    {
+      "id": "gbh-01-historia",
+      "tipo": "mini-story",
+      "titulo": "Las banderas de México en la historia",
+      "instruccion": "Lee cada parte de la historia y responde la pregunta.",
+      "parrafos": [
+        {
+          "texto": "En 1521 los españoles conquistaron Tenochtitlan, y México se volvió parte del Imperio Español. Durante 300 años se llamó la Nueva España. Una de las banderas que ondeaba aquí era la Cruz de Borgoña: dos ramas rojas con nudos, cruzadas como una X, sobre fondo blanco. Se llama así por Borgoña, una región que hoy está en Francia.",
+          "emoji": "🏰",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Cuando México era parte del Imperio Español, se llamaba la Nueva ___.",
+              "opciones": ["Francia", "España", "Borgoña", "Roma"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "En 1821, después de 11 años de lucha por la independencia, Agustín de Iturbide y Vicente Guerrero se unieron y formaron el Ejército Trigarante. 'Trigarante' quiere decir 'de las tres garantías': tres promesas para el nuevo país, que eran religión, independencia y unión. Su bandera tenía franjas en diagonal, blanca, verde y roja, con estrellas y una corona en el centro. ¡Son los mismos tres colores que tiene hoy la bandera de México!",
+          "emoji": "⭐",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "'Trigarante' quiere decir 'de las tres ___'.",
+              "opciones": ["estrellas", "ciudades", "garantías", "banderas"],
+              "respuesta": 2
+            },
+            {
+              "tipo": "true-or-false",
+              "oracion": "La bandera Trigarante tenía los mismos tres colores que la bandera de México de hoy.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "El 27 de septiembre de 1821 el Ejército Trigarante entró a la Ciudad de México, y México fue independiente. Al principio México fue un imperio, y en 1822 Iturbide fue coronado emperador con el nombre de Agustín I. Su bandera ya tenía tres franjas verticales, verde, blanca y roja, con un águila parada sobre un nopal... ¡con corona en la cabeza y sin serpiente! El imperio duró muy poco: en 1823 Iturbide dejó el trono.",
+          "emoji": "👑",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "El primer emperador de México fue Agustín de ___.",
+              "opciones": ["Iturbide", "Habsburgo", "Juárez", "Guerrero"],
+              "respuesta": 0
+            },
+            {
+              "tipo": "true-or-false",
+              "oracion": "El águila del Primer Imperio Mexicano se estaba comiendo una serpiente.",
+              "correcto": false,
+              "correccion": "El águila del Primer Imperio llevaba corona y no tenía serpiente."
+            }
+          ]
+        },
+        {
+          "texto": "En 1823 México se volvió república: un país sin rey, gobernado por un presidente. El primer presidente fue Guadalupe Victoria, en 1824. Como ya no había emperador, al águila le quitaron la corona y le regresaron la serpiente, como en la leyenda de Tenochtitlan. También le pusieron alrededor ramas de encino y de laurel, que siguen en la bandera de hoy.",
+          "emoji": "🦅",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Una república no tiene rey: la gobierna un ___.",
+              "opciones": ["emperador", "virrey", "capitán", "presidente"],
+              "respuesta": 3
+            }
+          ]
+        },
+        {
+          "texto": "En 1864 llegó Maximiliano de Habsburgo, un príncipe de Austria, y se volvió emperador de México. Su bandera tenía en el centro un escudo grande con corona, y a los lados dos grifos: animales de leyenda, mitad águila y mitad león. El Segundo Imperio duró solo tres años: en 1867 terminó y Benito Juárez volvió a gobernar la república. Dato curioso: Maximiliano era hermano de Francisco José, el emperador de Austria.",
+          "emoji": "🏛️",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Maximiliano, el emperador del Segundo Imperio, venía de Austria.",
+              "correcto": true,
+              "correccion": null
+            },
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Los grifos de la bandera de Maximiliano son mitad águila y mitad ___.",
+              "opciones": ["caballo", "león", "serpiente", "toro"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "Después, la bandera tuvo varios cambios pequeños, sobre todo en el águila. El diseño que usamos hoy es de 1968, el año en que México organizó los Juegos Olímpicos. Tiene el águila de perfil, parada sobre un nopal que crece en una piedra en medio del lago, comiéndose una serpiente. ¡Cada bandera que viste cuenta un pedacito de la historia de México!",
+          "emoji": "🇲🇽",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "El águila de la bandera de México de hoy lleva una corona.",
+              "correcto": false,
+              "correccion": "El águila de hoy no tiene corona: la corona era de los imperios."
+            },
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "El diseño de la bandera de hoy es de ___, cuando México tuvo los Juegos Olímpicos.",
+              "opciones": ["1821", "1910", "1968", "2000"],
+              "respuesta": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gbh-01-cual-es",
+      "tipo": "image-picker",
+      "titulo": "¿Qué bandera histórica es?",
+      "instruccion": "Mira la bandera y elige a quién perteneció.",
+      "retos": [
+        {
+          "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Flag_of_Cross_of_Burgundy.svg",
+          "bandera_id": "h-cruz-borgona",
+          "opciones": [
+            { "label": "Gran Colombia" },
+            { "label": "Cruz de Borgoña (Nueva España)" },
+            { "label": "Ejército Trigarante" },
+            { "label": "Imperio del Brasil" }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Es la Cruz de Borgoña! El Imperio Español la usaba en sus virreinatos de América, como la Nueva España. Dato curioso: su forma de X es la cruz de San Andrés."
+        },
+        {
+          "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Bandera_Trigarante_MNH.svg",
+          "bandera_id": "h-trigarante",
+          "opciones": [
+            { "label": "Primer Imperio Mexicano" },
+            { "label": "República Federal de Centro América" },
+            { "label": "Segundo Imperio Mexicano" },
+            { "label": "Ejército Trigarante (1821)" }
+          ],
+          "respuesta": 3,
+          "explicacion": "¡Es la bandera de las Tres Garantías! Blanco por la religión, verde por la independencia y rojo por la unión. Dato curioso: el 24 de febrero, Día de la Bandera, recuerda el Plan de Iguala de 1821, de donde salió el Ejército Trigarante. Esta bandera de verdad se guarda en el Museo Nacional de Historia, en el Castillo de Chapultepec."
+        },
+        {
+          "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Flag_of_Mexico_%281821-1823%29.svg",
+          "bandera_id": "h-mexico-imperio-1",
+          "opciones": [
+            { "label": "Primer Imperio Mexicano (1821-1823)" },
+            { "label": "Segundo Imperio Mexicano (1864-1867)" },
+            { "label": "República Mexicana (1823)" },
+            { "label": "Reino de Italia" }
+          ],
+          "respuesta": 0,
+          "explicacion": "¡Es la del Primer Imperio Mexicano, el de Agustín de Iturbide! La pista: el águila lleva corona y NO tiene serpiente."
+        },
+        {
+          "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Mexico_%281823-1864%2C_1867-1893%29.svg",
+          "bandera_id": "h-mexico-republica-1823",
+          "opciones": [
+            { "label": "Primer Imperio Mexicano (1821-1823)" },
+            { "label": "República Mexicana (1823)" },
+            { "label": "Segundo Imperio Mexicano (1864-1867)" },
+            { "label": "Ejército Trigarante (1821)" }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Es la de la República Mexicana de 1823! El águila ya no tiene corona, se come una serpiente y tiene ramas de encino y laurel. Se usó de 1823 a 1864 y otra vez después de 1867."
+        },
+        {
+          "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Flag_of_the_Second_Mexican_Empire.svg",
+          "bandera_id": "h-mexico-imperio-2",
+          "opciones": [
+            { "label": "República Mexicana (1823)" },
+            { "label": "Imperio del Brasil" },
+            { "label": "Segundo Imperio Mexicano (1864-1867)" },
+            { "label": "Primer Imperio Mexicano (1821-1823)" }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Es la del Segundo Imperio Mexicano, el de Maximiliano! La pista: el escudo grande con corona y los dos grifos dorados a los lados."
+        },
+        {
+          "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Gran_Colombia.svg",
+          "bandera_id": "h-gran-colombia",
+          "opciones": [
+            { "label": "República Federal de Centro América" },
+            { "label": "Ejército Trigarante (1821)" },
+            { "label": "Imperio del Brasil" },
+            { "label": "Gran Colombia" }
+          ],
+          "respuesta": 3,
+          "explicacion": "¡Es la de la Gran Colombia, el país de Simón Bolívar! Amarilla, azul y roja. Dato curioso: Colombia, Venezuela y Ecuador todavía usan esos tres colores."
+        },
+        {
+          "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Flag_of_the_Federal_Republic_of_Central_America.svg",
+          "bandera_id": "h-centroamerica",
+          "opciones": [
+            { "label": "República Federal de Centro América" },
+            { "label": "Gran Colombia" },
+            { "label": "Cruz de Borgoña (Nueva España)" },
+            { "label": "Imperio del Brasil" }
+          ],
+          "respuesta": 0,
+          "explicacion": "¡Es la de la República Federal de Centro América! Azul, blanca y azul, con un escudo de cinco volcanes, uno por cada país: Guatemala, Honduras, El Salvador, Nicaragua y Costa Rica."
+        },
+        {
+          "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Flag_of_the_Confederate_States_%28March_%E2%80%93_May_1861%29.svg",
+          "bandera_id": "h-confederacion-1861",
+          "opciones": [
+            { "label": "República de Texas (1839)" },
+            { "label": "Estados Confederados de América (1861)" },
+            { "label": "Gran Colombia" },
+            { "label": "Imperio del Brasil" }
+          ],
+          "respuesta": 1,
+          "explicacion": "Es la primera bandera de los Estados Confederados de América, estados del sur de Estados Unidos que se separaron entre 1861 y 1865. Sus 7 estrellas eran los primeros 7 estados que se unieron."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/us-tx.png",
+          "bandera": "us-tx",
+          "opciones": [
+            { "label": "Chile" },
+            { "label": "Estados Confederados de América (1861)" },
+            { "label": "República de Texas (1839)" },
+            { "label": "Cuba" }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Es la de la República de Texas, de 1839! Hoy la usa el estado de Texas. Se parece a la de Chile, pero en la de Chile la estrella va en un cuadrito azul arriba, y en la de Texas la franja azul va de arriba a abajo."
+        },
+        {
+          "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/2/24/Flag_of_Brazil_%281870%E2%80%931889%29.svg",
+          "bandera_id": "h-brasil-imperio",
+          "opciones": [
+            { "label": "Primer Imperio Mexicano (1821-1823)" },
+            { "label": "Gran Colombia" },
+            { "label": "Imperio del Brasil" },
+            { "label": "República Federal de Centro América" }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Es la del Imperio del Brasil! El verde era el color de la familia del emperador Pedro I, y el amarillo, el de la familia de su esposa Leopoldina, los Habsburgo... ¡la misma familia de Maximiliano!"
+        }
+      ]
+    },
+    {
+      "id": "gbh-01-pais-hoy",
+      "tipo": "tap-the-pairs",
+      "titulo": "¿Qué país es hoy?",
+      "instruccion": "Toca una bandera antigua y luego el país (o los países) que hay ahí hoy.",
+      "retos": [
+        {
+          "pares": [
+            { "es": "Gran Colombia", "es_img": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Gran_Colombia.svg", "bandera_id": "h-gran-colombia", "en": "Colombia, Venezuela, Ecuador y Panamá" },
+            { "es": "República Federal de Centro América", "es_img": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Flag_of_the_Federal_Republic_of_Central_America.svg", "bandera_id": "h-centroamerica", "en": "Guatemala, Honduras, El Salvador, Nicaragua y Costa Rica" },
+            { "es": "Imperio del Brasil", "es_img": "https://upload.wikimedia.org/wikipedia/commons/2/24/Flag_of_Brazil_%281870%E2%80%931889%29.svg", "bandera_id": "h-brasil-imperio", "en": "Brasil" },
+            { "es": "Primer Imperio Mexicano", "es_img": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Flag_of_Mexico_%281821-1823%29.svg", "bandera_id": "h-mexico-imperio-1", "en": "México" }
+          ]
+        },
+        {
+          "pares": [
+            { "es": "Segundo Imperio Mexicano", "es_img": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Flag_of_the_Second_Mexican_Empire.svg", "bandera_id": "h-mexico-imperio-2", "en": "México" },
+            { "es": "Estados Confederados de América", "es_img": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Flag_of_the_Confederate_States_%28March_%E2%80%93_May_1861%29.svg", "bandera_id": "h-confederacion-1861", "en": "El sur de Estados Unidos" },
+            { "es": "Gran Colombia", "es_img": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Gran_Colombia.svg", "bandera_id": "h-gran-colombia", "en": "Colombia, Venezuela, Ecuador y Panamá" },
+            { "es": "República Federal de Centro América", "es_img": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Flag_of_the_Federal_Republic_of_Central_America.svg", "bandera_id": "h-centroamerica", "en": "Guatemala, Honduras, El Salvador, Nicaragua y Costa Rica" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gbh-01-hermanas",
+      "tipo": "mini-story",
+      "titulo": "Banderas hermanas: Gran Colombia, Centroamérica y Texas",
+      "instruccion": "Lee cada parte de la historia y responde la pregunta.",
+      "parrafos": [
+        {
+          "texto": "Simón Bolívar, 'el Libertador', soñaba con un gran país en América del Sur. En 1819 nació la Gran Colombia, que juntaba lo que hoy son Colombia, Venezuela, Ecuador y Panamá. Su bandera era amarilla, azul y roja. Pero los pueblos no se pusieron de acuerdo, y en 1831 la Gran Colombia ya se había separado.",
+          "emoji": "🗺️",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "La Gran Colombia fue el sueño de Simón ___.",
+              "opciones": ["Guerrero", "Bolívar", "Iturbide", "Juárez"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "¿Sabes qué quedó de la Gran Colombia? ¡Sus colores! Colombia, Venezuela y Ecuador todavía tienen banderas amarillas, azules y rojas. Panamá siguió unida a Colombia hasta 1903, y entonces eligió una bandera diferente.",
+          "emoji": "🎨",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Panamá tiene hoy una bandera amarilla, azul y roja, como la de la Gran Colombia.",
+              "correcto": false,
+              "correccion": "Colombia, Venezuela y Ecuador sí; Panamá eligió una bandera diferente en 1903."
+            }
+          ]
+        },
+        {
+          "texto": "En 1821 Centroamérica también se independizó de España. Por un tiempo fue parte del Primer Imperio Mexicano, y en 1823 formó su propio país: la República Federal de Centro América, con Guatemala, Honduras, El Salvador, Nicaragua y Costa Rica. Su bandera era azul, blanca y azul, con un triángulo de cinco volcanes. Entre 1838 y 1841 se separó en cinco países.",
+          "emoji": "🌋",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "La República Federal de Centro América juntaba ___ países.",
+              "opciones": ["dos", "tres", "siete", "cinco"],
+              "respuesta": 3
+            },
+            {
+              "tipo": "true-or-false",
+              "oracion": "Centroamérica fue parte del Primer Imperio Mexicano por un tiempo.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Los cinco países guardaron un recuerdo de su bandera. Honduras, El Salvador y Nicaragua todavía tienen franjas azul, blanca y azul. La de Honduras tiene cinco estrellas, una por cada país de la antigua república. Y en los escudos de El Salvador y Nicaragua siguen los cinco volcanes.",
+          "emoji": "⭐",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "La bandera de Honduras tiene cinco ___, una por cada país de la antigua república.",
+              "opciones": ["estrellas", "volcanes", "franjas", "coronas"],
+              "respuesta": 0
+            }
+          ]
+        },
+        {
+          "texto": "Texas fue parte de México. En 1836 se separó y formó la República de Texas, un país independiente. En 1839 eligió una bandera con una sola estrella blanca: por eso a Texas le dicen 'el estado de la estrella solitaria'. En 1845 se unió a Estados Unidos como un estado más... ¡y sigue usando la misma bandera hasta hoy!",
+          "emoji": "🤠",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Texas se separó de México en el año ___.",
+              "opciones": ["1821", "1836", "1910", "1968"],
+              "respuesta": 1
+            },
+            {
+              "tipo": "true-or-false",
+              "oracion": "La bandera del estado de Texas es la misma que usó la República de Texas.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Años después, entre 1861 y 1865, once estados del sur de Estados Unidos, entre ellos Texas, se separaron y formaron los Estados Confederados de América; perdieron la Guerra Civil y volvieron a ser parte de Estados Unidos. Su primera bandera tenía siete estrellas en círculo: una por cada uno de los primeros siete estados.",
+          "emoji": "📜",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Los Estados Confederados existieron entre 1861 y 1865.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

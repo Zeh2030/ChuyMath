@@ -7,6 +7,7 @@ import {
 import worldData from 'world-atlas/countries-110m.json';
 import usaStatesData from 'us-atlas/states-10m.json';
 import mexicoStatesData from './maps/mexico-estados.json';
+import { PAISES, ESTADOS_USA, NOMBRES_MX, idPaisMundo, banderaUrl } from '../../../data/paises';
 import './ExploradorMapa.css';
 
 /**
@@ -36,7 +37,12 @@ import './ExploradorMapa.css';
  *   "resaltar_ecuador": true         — dibuja el Ecuador marcado sobre la graticula
  *
  * Y a nivel de RETO:
- *   "bandera": "jp"                  — codigo ISO alfa-2; sale al acertar, como premio
+ *   "bandera": "jp"                  — codigo alfa-2 (o "us-tx"); sale al acertar, como premio
+ *   "pregunta_bandera": true         — (reto o mision) la bandera ES la pregunta: se
+ *                                      muestra arriba y el niño toca el pais/estado.
+ *                                      Para el modulo de Banderas.
+ *   "bandera_url": "https://upload.wikimedia.org/..." — bandera historica (no esta
+ *                                      en flagcdn); con pregunta_bandera se usa esta
  *   "dato": "..."                    — dato curioso que acompaña a la bandera
  *   "marcar": [{ lon, lat, color }]  — puntos fijos del enunciado ("estas aqui")
  *   "ruta": { desde:[lon,lat], hasta:[lon,lat], mostrar_plano:true }
@@ -44,8 +50,9 @@ import './ExploradorMapa.css';
  *                                      maximo, y opcionalmente el camino "recto
  *                                      en el mapa plano" para comparar
  *
- * Con bandera, dato o ruta el reto NO auto-avanza: aparece un boton "Siguiente",
- * porque hay algo que leer y mirar.
+ * Con bandera (de premio), dato o ruta el reto NO auto-avanza: aparece un boton
+ * "Siguiente", porque hay algo que leer y mirar. Con pregunta_bandera la bandera ya
+ * se vio arriba, asi que solo el dato o la ruta detienen el avance.
  *
  * En cualquier mapa plano, a nivel de MISION:
  *   "encuadre": [oeste, sur, este, norte]   (lonMin, latMin, lonMax, latMax)
@@ -79,19 +86,20 @@ const REGIONES = {
   'europa': [
     '040','056','100','203','208','233','246','250','276','300','348','352','372',
     '380','428','440','442','470','492','528','578','616','620','642','643','703',
-    '705','724','752','756','826','070','191','196','498','499','688','804','807'
+    '705','724','752','756','826','070','191','196','498','499','688','804','807',
+    'KOS','CYN' // sin código ISO en world-atlas (ids de Natural Earth, ver data/paises.js)
   ],
   'asia': [
     '004','050','051','031','048','050','156','196','356','360','364','368','376',
     '392','398','400','408','410','414','417','418','422','446','458','462','496',
     '512','524','586','608','626','634','682','702','704','144','760','762','764',
-    '784','792','795','860','887','156'
+    '784','792','795','860','887','156','CYN'
   ],
   'africa': [
     '012','024','072','108','120','132','140','148','174','178','180','204','226',
     '231','232','262','266','270','288','324','384','404','426','430','434','450',
     '454','466','478','480','504','508','516','562','566','646','678','686','690',
-    '694','706','710','716','728','729','732','748','768','788','800','834','854'
+    '694','706','710','716','728','729','732','748','768','788','800','834','854','SOL'
   ],
 };
 
@@ -100,7 +108,8 @@ const PROJECTIONS = {
   'globo':           { proj: 'orthographic', center: [0, 0],     scale: 225 },
   'world':           { proj: 'naturalEarth1', center: [0, 0],     scale: 145 },
   'americas':        { proj: 'mercator',      center: [-90, 5],   scale: 230 },
-  'america-latina':  { proj: 'mercator',      center: [-75, -5],  scale: 320 },
+  // De México a Tierra del Fuego (con centro/escala se cortaban Chile y Argentina).
+  'america-latina':  { proj: 'mercator',      encuadre: [-118, -56, -34, 33] },
   // Por rango y no por centro/escala: con [15,55]·600 se cortaban España,
   // Italia y Grecia abajo y Escandinavia arriba.
   'europa':          { proj: 'mercator',      encuadre: [-11, 34.5, 32, 71] },
@@ -215,6 +224,10 @@ const caminoPlano = (desde, hasta, pasos = 64) => {
   };
 };
 
+// URL de la bandera de un reto: historica (Wikimedia) o de flagcdn por codigo.
+const srcBandera = (reto, ancho) =>
+  reto?.bandera_url || (reto?.bandera ? banderaUrl(reto.bandera, ancho) : null);
+
 const ExploradorMapa = ({ mision, onCompletar }) => {
   const {
     mapa = 'world',
@@ -252,6 +265,20 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
   const total = retos.length;
   const esModoQuiz = modo === 'quiz';
 
+  // Modulo de Banderas: la bandera como pregunta (en geografia normal es premio).
+  const preguntaBandera = esModoQuiz && !!(reto?.pregunta_bandera ?? mision.pregunta_bandera);
+  const srcPregunta = preguntaBandera ? srcBandera(reto, 320) : null;
+  // Algo que leer o mirar al responder: entonces no se auto-avanza.
+  const tieneRecompensa = !!reto && !!((!preguntaBandera && reto.bandera) || reto.dato || reto.ruta);
+
+  // Precarga la bandera del siguiente reto: sin esto, con internet lento se
+  // quedaba visible la anterior junto a la pregunta nueva.
+  useEffect(() => {
+    if (!preguntaBandera) return;
+    const siguiente = srcBandera(retos[retoIdx + 1], 320);
+    if (siguiente) new Image().src = siguiente;
+  }, [preguntaBandera, retos, retoIdx]);
+
   // Fullscreen events
   useEffect(() => {
     const onFsChange = () => setIsFullscreen(!!document.fullscreenElement);
@@ -288,17 +315,19 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
       // GeoJSON: features ya estan en .features con propiedades custom
       allFeatures = geojsonConfig.data.features;
       getId = (f) => String(f.properties[geojsonConfig.idField]);
-      getName = (f) => f.properties[geojsonConfig.nameField] || '';
+      // El GeoJSON trae nombres viejos ("Distrito Federal") o largos ("Veracruz de Ignacio de la Llave")
+      getName = (f) => NOMBRES_MX[getId(f)] || f.properties[geojsonConfig.nameField] || '';
     } else if (topojsonAltConfig) {
       // TopoJSON alternativo (us-atlas): mismo helper pero con su propio object key
       allFeatures = feature(topojsonAltConfig.data, topojsonAltConfig.data.objects[topojsonAltConfig.objectKey]).features;
       getId = (f) => String(f.id).padStart(2, '0'); // FIPS codes (estado: 01-56)
-      getName = (f) => f.properties?.name || '';
+      getName = (f) => ESTADOS_USA[getId(f)]?.es || f.properties?.name || '';
     } else {
-      // TopoJSON default (world-atlas)
+      // TopoJSON default (world-atlas): nombres en español desde data/paises.js
+      // (world-atlas solo los trae en inglés).
       allFeatures = feature(worldData, worldData.objects.countries).features;
-      getId = (f) => String(f.id).padStart(3, '0');
-      getName = (f) => f.properties?.name || '';
+      getId = idPaisMundo;
+      getName = (f) => PAISES[getId(f)]?.es || f.properties?.name || '';
     }
 
     const filterIds = REGIONES[mapa];
@@ -579,7 +608,7 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
     // Si el reto trae recompensa (bandera, dato o el arco de la ruta), hay algo
     // que leer y mirar: manda el niño con un boton en vez de avanzar solo a los
     // 2 segundos. Sin recompensa, se mantiene el auto-avance de siempre.
-    if (reto.bandera || reto.dato || reto.ruta) return;
+    if (tieneRecompensa) return;
 
     setTimeout(siguienteReto, espera);
   };
@@ -630,6 +659,13 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
           {isFullscreen ? '✕' : '⛶'}
         </button>
       </div>
+
+      {/* key por src: al cambiar de reto se monta una imagen nueva en vez de dejar
+          la anterior visible mientras carga. alt neutro: si la imagen falla, el
+          navegador escribe el alt y no debe decir el pais. */}
+      {srcPregunta && (
+        <img key={srcPregunta} className="em-bandera-pregunta" src={srcPregunta} alt="Bandera" />
+      )}
 
       {esModoQuiz && reto?.pregunta && (
         <p className="em-pregunta">{reto.pregunta}</p>
@@ -759,12 +795,13 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
       {feedback && (
         <div className={`em-feedback em-${feedback}`}>
           <div className="em-feedback-linea">
-            {/* La bandera es RECOMPENSA, no pregunta: preguntar por ella enseña
-                banderas, no geografia. flagcdn ya se usa en MateriaToggle. */}
-            {reto.bandera && (
+            {/* En geografia la bandera es RECOMPENSA, no pregunta: preguntar por
+                ella enseña banderas, no geografia. En el modulo de Banderas
+                (pregunta_bandera) ya se vio arriba y no se repite. */}
+            {reto.bandera && !preguntaBandera && (
               <img
                 className="em-bandera"
-                src={`https://flagcdn.com/w80/${reto.bandera}.png`}
+                src={banderaUrl(reto.bandera, 80)}
                 alt={`Bandera de ${reto.nombre}`}
                 loading="lazy"
               />
@@ -778,7 +815,7 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
 
           {reto.dato && <p className="em-dato">💡 {reto.dato}</p>}
 
-          {(reto.bandera || reto.dato || reto.ruta) && (
+          {tieneRecompensa && (
             <button type="button" className="em-siguiente" onClick={siguienteReto}>
               {retoIdx + 1 >= total ? 'Terminar ➜' : 'Siguiente ➜'}
             </button>

@@ -118,6 +118,23 @@
   border-radius: 10px;
 }
 
+/* Opciones que son banderas (mision.opciones_bandera): tamaño natural, sin
+   recortar las anchas o raras (Qatar, Nepal, Suiza), y borde fino para las
+   casi blancas (Japón). El borde abraza la bandera, no el hueco alrededor. */
+.ip-grid-banderas .ip-card {
+  justify-content: center;
+}
+
+.ip-grid-banderas .ip-imagen {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 96px;
+  object-fit: initial;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18);
+}
+
 /* Foto-estimulo del reto (campo `imagen_url` a nivel reto: banderas, fotos NASA).
    object-fit contain para no recortar banderas. */
 .ip-imagen-reto {

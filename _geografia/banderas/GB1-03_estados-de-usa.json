@@ -1,0 +1,416 @@
+{
+  "id": "GB1-03_estados-de-usa",
+  "titulo": "Banderas de los estados de EE.UU.",
+  "descripcion": "Las banderas más famosas de los estados de Estados Unidos: encuéntralas en el mapa, reconócelas y descubre las historias que cuentan.",
+  "tipo": "banderas",
+  "materia": "geografia",
+  "tema": "usa-estados",
+  "nivel": "GB1-03",
+  "misiones": [
+    {
+      "id": "gb1-03-mapa",
+      "tipo": "explorador-mapa",
+      "mapa": "usa-estados",
+      "modo": "quiz",
+      "pregunta_bandera": true,
+      "titulo": "¿De qué estado es esta bandera?",
+      "instruccion": "Mira la bandera y toca su estado en el mapa.",
+      "retos": [
+        {
+          "id": "48",
+          "nombre": "Texas",
+          "bandera": "us-tx",
+          "pregunta": "¿De qué estado es esta bandera? Tócalo en el mapa. Pista: tiene una sola estrella y es un estado enorme vecino de México.",
+          "dato": "Le dicen el «Estado de la Estrella Solitaria». Esta bandera ya existía en 1839, cuando Texas era un país independiente."
+        },
+        {
+          "id": "06",
+          "nombre": "California",
+          "bandera": "us-ca",
+          "pregunta": "¿De qué estado es esta bandera? Tócalo en el mapa. Pista: está en la costa del océano Pacífico y hace frontera con México.",
+          "dato": "El oso es un grizzly. Ya no quedan grizzlies salvajes en ese estado: el último se vio hace más de 100 años, pero sigue en la bandera."
+        },
+        {
+          "id": "02",
+          "nombre": "Alaska",
+          "bandera": "us-ak",
+          "pregunta": "¿De qué estado es esta bandera? Tócalo en el mapa. Pista: es el estado más grande y está separado de los demás, junto a Canadá.",
+          "dato": "La diseñó Benny Benson, un niño de 13 años, en 1927: ganó un concurso entre los niños de las escuelas. ¡Las estrellas son la Osa Mayor y la Estrella Polar!"
+        },
+        {
+          "id": "35",
+          "nombre": "Nuevo México",
+          "bandera": "us-nm",
+          "pregunta": "¿De qué estado es esta bandera? Tócalo en el mapa. Pista: queda entre Arizona y Texas.",
+          "dato": "El sol se llama zia y viene del pueblo zia, que vive ahí desde hace cientos de años. Tiene 4 grupos de 4 rayos."
+        },
+        {
+          "id": "04",
+          "nombre": "Arizona",
+          "bandera": "us-az",
+          "pregunta": "¿De qué estado es esta bandera? Tócalo en el mapa. Pista: aquí está el Gran Cañón.",
+          "dato": "Los 13 rayos recuerdan las 13 colonias que formaron Estados Unidos. La estrella es color cobre porque de sus minas sale más cobre que de cualquier otro estado."
+        },
+        {
+          "id": "08",
+          "nombre": "Colorado",
+          "bandera": "us-co",
+          "pregunta": "¿De qué estado es esta bandera? Tócalo en el mapa. Pista: está en las Montañas Rocosas y la letra grande es la inicial de su nombre.",
+          "dato": "Su nombre es una palabra en español: viene del río Colorado, que los exploradores españoles llamaron así por su agua rojiza."
+        },
+        {
+          "id": "15",
+          "nombre": "Hawái",
+          "bandera": "us-hi",
+          "pregunta": "¿De qué estado es esta bandera? Tócalo en el mapa. Pista: son islas en medio del océano Pacífico.",
+          "dato": "Es la única bandera de un estado que lleva la bandera de otro país: la del Reino Unido, en la esquina. Sus 8 franjas son sus 8 islas principales."
+        },
+        {
+          "id": "39",
+          "nombre": "Ohio",
+          "bandera": "us-oh",
+          "pregunta": "¿De qué estado es esta bandera? Tócalo en el mapa. Pista: está junto a uno de los Grandes Lagos. ¡Fíjate en su forma!",
+          "dato": "Es la única bandera de estado que no es rectangular: es un banderín con dos puntas. Tiene 17 estrellas porque fue el estado número 17."
+        }
+      ]
+    },
+    {
+      "id": "gb1-03-cual-estado",
+      "tipo": "image-picker",
+      "titulo": "¿De qué estado es esta bandera?",
+      "instruccion": "Mira la bandera y elige el estado correcto.",
+      "retos": [
+        {
+          "imagen_url": "https://flagcdn.com/w320/us-md.png",
+          "bandera": "us-md",
+          "opciones": [
+            {
+              "label": "Virginia"
+            },
+            {
+              "label": "Delaware"
+            },
+            {
+              "label": "Maryland"
+            },
+            {
+              "label": "Nueva Jersey"
+            }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Es Maryland! Lleva los escudos de dos familias inglesas: los Calvert y los Crossland, la familia del fundador de la colonia, Lord Baltimore. Por él se llama así la ciudad de Baltimore."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/us-sc.png",
+          "bandera": "us-sc",
+          "opciones": [
+            {
+              "label": "Carolina del Sur"
+            },
+            {
+              "label": "Carolina del Norte"
+            },
+            {
+              "label": "Georgia"
+            },
+            {
+              "label": "Florida"
+            }
+          ],
+          "respuesta": 0,
+          "explicacion": "¡Es Carolina del Sur! El árbol es un palmito. En 1776 sus soldados hicieron un fuerte con troncos de palmito, y las balas de cañón de los barcos británicos se quedaban clavadas en la madera esponjosa sin derribarlo."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/us-az.png",
+          "bandera": "us-az",
+          "opciones": [
+            {
+              "label": "Nevada"
+            },
+            {
+              "label": "Utah"
+            },
+            {
+              "label": "Oklahoma"
+            },
+            {
+              "label": "Arizona"
+            }
+          ],
+          "respuesta": 3,
+          "explicacion": "¡Es Arizona! Sus 13 rayos son las 13 colonias que formaron Estados Unidos, y la estrella color cobre es porque Arizona es el estado que más cobre saca de sus minas."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/us-co.png",
+          "bandera": "us-co",
+          "opciones": [
+            {
+              "label": "Kansas"
+            },
+            {
+              "label": "Colorado"
+            },
+            {
+              "label": "Wyoming"
+            },
+            {
+              "label": "Montana"
+            }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Es Colorado! La C es de Colorado, el círculo dorado es el sol, el azul es el cielo y la franja blanca, la nieve de las Montañas Rocosas."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/us-nm.png",
+          "bandera": "us-nm",
+          "opciones": [
+            {
+              "label": "Arizona"
+            },
+            {
+              "label": "Nuevo México"
+            },
+            {
+              "label": "Texas"
+            },
+            {
+              "label": "Oklahoma"
+            }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Es Nuevo México! El sol es el símbolo zia, del pueblo zia. En 2001, una encuesta de expertos en banderas la eligió como la mejor bandera de estado de todo Estados Unidos."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/us-tx.png",
+          "bandera": "us-tx",
+          "opciones": [
+            {
+              "label": "Tennessee"
+            },
+            {
+              "label": "Luisiana"
+            },
+            {
+              "label": "Oklahoma"
+            },
+            {
+              "label": "Texas"
+            }
+          ],
+          "respuesta": 3,
+          "explicacion": "¡Es Texas! Texas fue parte de México hasta 1836; luego fue un país independiente con esta misma bandera, y en 1845 se unió a Estados Unidos."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/us-ca.png",
+          "bandera": "us-ca",
+          "opciones": [
+            {
+              "label": "California"
+            },
+            {
+              "label": "Oregón"
+            },
+            {
+              "label": "Nevada"
+            },
+            {
+              "label": "Washington"
+            }
+          ],
+          "respuesta": 0,
+          "explicacion": "¡Es California! Dice «California Republic» porque en 1846, cuando California todavía era parte de México, unos colonos se rebelaron y crearon una república que duró menos de un mes."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/us-ak.png",
+          "bandera": "us-ak",
+          "opciones": [
+            {
+              "label": "Montana"
+            },
+            {
+              "label": "Washington"
+            },
+            {
+              "label": "Alaska"
+            },
+            {
+              "label": "Idaho"
+            }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Es Alaska! Las 8 estrellas son la Osa Mayor y la Estrella Polar, que marca el norte. La diseñó Benny Benson cuando tenía 13 años."
+        }
+      ]
+    },
+    {
+      "id": "gb1-03-historias",
+      "tipo": "mini-story",
+      "titulo": "¿Qué cuentan las banderas de los estados?",
+      "instruccion": "Lee cada parte de la historia y responde la pregunta.",
+      "parrafos": [
+        {
+          "texto": "Antes de ser parte de Estados Unidos, Texas fue parte de México. En 1836 se separó y se convirtió en un país propio: la República de Texas. En 1839 ese país eligió una bandera con UNA sola estrella blanca sobre azul y dos franjas, una blanca y una roja. En 1845 Texas se unió a Estados Unidos... ¡y se quedó con su bandera! Por eso le dicen «Lone Star», que en inglés quiere decir «estrella solitaria».",
+          "emoji": "⭐",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "«Lone Star» quiere decir estrella ___.",
+              "opciones": [
+                "brillante",
+                "solitaria",
+                "fugaz",
+                "gigante"
+              ],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "En 1846, cuando California todavía era parte de México, un grupo de colonos se rebeló en el pueblo de Sonoma. Hicieron a mano una bandera con un oso grizzly, una estrella y las palabras «California Republic» (República de California). Esa república duró menos de un mes, ¡pero el oso se quedó! La bandera de hoy sigue teniendo al grizzly caminando sobre el pasto.",
+          "emoji": "🐻",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "La República de California duró muchos años.",
+              "correcto": false,
+              "correccion": "Duró menos de un mes, pero su oso sigue en la bandera de California."
+            }
+          ]
+        },
+        {
+          "texto": "En 1927, Alaska hizo un concurso: los niños de las escuelas podían diseñar su bandera. Ganó Benny Benson, un niño de 13 años que vivía en un orfanato. Dibujó 8 estrellas doradas sobre azul: siete forman la Osa Mayor, un grupo de estrellas con forma de cucharón, y la otra es la Estrella Polar, que marca el norte. Benny explicó que el azul era el del cielo y el de una flor de Alaska, la nomeolvides.",
+          "emoji": "✨",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "La bandera de Alaska la diseñó un niño de ___ años.",
+              "opciones": [
+                "7",
+                "13",
+                "30",
+                "50"
+              ],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "El sol rojo de la bandera de Nuevo México se llama zia y viene del pueblo zia, un pueblo indígena que vive ahí desde hace cientos de años. Tiene 4 grupos de 4 rayos, porque para los zia el número 4 es sagrado: 4 puntos cardinales, 4 estaciones del año, 4 partes del día (mañana, mediodía, tarde y noche) y 4 etapas de la vida.",
+          "emoji": "☀️",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "El sol de Nuevo México viene del pueblo ___.",
+              "opciones": [
+                "maya",
+                "azteca",
+                "zia",
+                "inca"
+              ],
+              "respuesta": 2
+            }
+          ]
+        },
+        {
+          "texto": "Mucho antes de ser estado, Hawái fue un reino con reyes y reinas: ¡ahí está el único palacio real de Estados Unidos! El rey Kamehameha I era amigo de los británicos y usaba su bandera. Por eso la bandera de Hawái lleva en la esquina la bandera del Reino Unido. Abajo tiene 8 franjas, una por cada una de sus 8 islas principales.",
+          "emoji": "🌺",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Las 8 franjas de la bandera de Hawái son por sus 8 islas principales.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Casi todas las banderas son rectángulos... ¡pero la de Ohio no! Tiene forma de banderín con dos puntas, como la cola de una golondrina. Es la única bandera de estado que no es rectangular. Tiene 17 estrellas porque Ohio fue el estado número 17 en unirse a Estados Unidos, y su círculo blanco forma una «O», la de Ohio. En todo el mundo pasa algo parecido: el único país con bandera que no es rectangular es Nepal.",
+          "emoji": "🚩",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "La bandera de Ohio tiene forma de ___.",
+              "opciones": [
+                "cuadrado",
+                "círculo",
+                "estrella",
+                "banderín"
+              ],
+              "respuesta": 3
+            },
+            {
+              "tipo": "true-or-false",
+              "oracion": "Ohio tiene 17 estrellas porque fue el estado número 17.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gb1-03-parejas",
+      "tipo": "tap-the-pairs",
+      "titulo": "Cada estado con su bandera",
+      "instruccion": "Toca un estado y luego su bandera.",
+      "retos": [
+        {
+          "pares": [
+            {
+              "es": "Texas",
+              "en": "bandera de Texas",
+              "en_img": "https://flagcdn.com/w160/us-tx.png",
+              "bandera": "us-tx"
+            },
+            {
+              "es": "California",
+              "en": "bandera de California",
+              "en_img": "https://flagcdn.com/w160/us-ca.png",
+              "bandera": "us-ca"
+            },
+            {
+              "es": "Alaska",
+              "en": "bandera de Alaska",
+              "en_img": "https://flagcdn.com/w160/us-ak.png",
+              "bandera": "us-ak"
+            },
+            {
+              "es": "Hawái",
+              "en": "bandera de Hawái",
+              "en_img": "https://flagcdn.com/w160/us-hi.png",
+              "bandera": "us-hi"
+            }
+          ]
+        },
+        {
+          "pares": [
+            {
+              "es": "Maryland",
+              "en": "bandera de Maryland",
+              "en_img": "https://flagcdn.com/w160/us-md.png",
+              "bandera": "us-md"
+            },
+            {
+              "es": "Carolina del Sur",
+              "en": "bandera de Carolina del Sur",
+              "en_img": "https://flagcdn.com/w160/us-sc.png",
+              "bandera": "us-sc"
+            },
+            {
+              "es": "Ohio",
+              "en": "bandera de Ohio",
+              "en_img": "https://flagcdn.com/w160/us-oh.png",
+              "bandera": "us-oh"
+            },
+            {
+              "es": "Arizona",
+              "en": "bandera de Arizona",
+              "en_img": "https://flagcdn.com/w160/us-az.png",
+              "bandera": "us-az"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

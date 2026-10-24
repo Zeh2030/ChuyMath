@@ -1,0 +1,202 @@
+{
+  "id": "GB1-01_bandera-de-mexico",
+  "titulo": "La Bandera de México",
+  "descripcion": "Sus colores, el escudo del águila, el Día de la Bandera y sus primas parecidas del mundo",
+  "tipo": "banderas",
+  "materia": "geografia",
+  "tema": "mexico",
+  "nivel": "GB1-01",
+  "misiones": [
+    {
+      "id": "gb1-01-historia",
+      "tipo": "mini-story",
+      "titulo": "La historia de nuestra bandera",
+      "instruccion": "Lee cada parte de la historia y responde la pregunta.",
+      "parrafos": [
+        {
+          "texto": "La bandera de México tiene tres franjas verticales (paradas, de arriba abajo): verde, blanca y roja. En la escuela aprendemos lo que significa cada color: el verde es la esperanza, el blanco es la unidad y el rojo es la sangre de los héroes que lucharon por la patria.",
+          "emoji": "🇲🇽",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "En la bandera, el color blanco significa la ___.",
+              "opciones": ["esperanza", "unidad", "fuerza", "alegría"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "En la franja blanca está el escudo nacional. Cuenta la leyenda que los mexicas buscaban dónde vivir, y su dios les dijo que fundaran su ciudad donde vieran un águila parada sobre un nopal, devorando una serpiente. El nopal crecía sobre una piedra, en medio de un lago. ¡Ahí fundaron Tenochtitlan, donde hoy está la Ciudad de México!",
+          "emoji": "🦅",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "En el escudo, el águila está parada sobre un ___.",
+              "opciones": ["árbol", "volcán", "nopal", "río"],
+              "respuesta": 2
+            },
+            {
+              "tipo": "true-or-false",
+              "oracion": "En el escudo, el águila está devorando una serpiente.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "Cada 24 de febrero celebramos el Día de la Bandera. Ese día hay ceremonias en escuelas, plazas y cuarteles. Dato curioso: en varias ciudades hay banderas monumentales, tan grandes que se ven desde muy lejos, y se izan en un asta altísima.",
+          "emoji": "📅",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "El Día de la Bandera es el 24 de ___.",
+              "opciones": ["septiembre", "febrero", "noviembre", "mayo"],
+              "respuesta": 1
+            }
+          ]
+        },
+        {
+          "texto": "En la escuela, casi siempre los lunes, hacemos honores a la bandera. La escolta la lleva marchando por el patio y todos la saludamos: nos ponemos firmes y colocamos la mano derecha extendida sobre el pecho, a la altura del corazón, con la palma hacia abajo. Después cantamos el Himno Nacional.",
+          "emoji": "🏫",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "Para saludar a la bandera ponemos la mano izquierda sobre la cabeza.",
+              "correcto": false,
+              "correccion": "Ponemos la mano derecha extendida sobre el pecho, a la altura del corazón."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gb1-01-verdadero-falso",
+      "tipo": "true-or-false",
+      "titulo": "¿Verdadero o falso?",
+      "instruccion": "Decide si cada frase sobre la bandera de México es verdadera o falsa.",
+      "retos": [
+        {
+          "oracion": "La franja verde de la bandera de México va del lado del asta, a la izquierda.",
+          "bandera": "mx",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "¡Verdadero! El orden es verde, blanco y rojo, empezando junto al asta."
+        },
+        {
+          "oracion": "Las franjas de la bandera de México son horizontales, acostadas una encima de otra.",
+          "bandera": "mx",
+          "correcto": false,
+          "correccion": "Las franjas son verticales: van de arriba abajo, una junto a otra.",
+          "explicacion": "Falso. Banderas con franjas acostadas son, por ejemplo, la de Hungría (rojo, blanco y verde)."
+        },
+        {
+          "oracion": "La bandera de Italia tiene los mismos tres colores que la de México, pero no tiene escudo.",
+          "bandera": "it",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "¡Verdadero! Son casi gemelas. Además, la de Italia es más corta (México es más alargada) y su verde es más claro."
+        },
+        {
+          "oracion": "En el escudo de México, el águila está parada sobre una montaña.",
+          "bandera": "mx",
+          "correcto": false,
+          "correccion": "El águila está parada sobre un nopal, que crece sobre una piedra en un lago.",
+          "explicacion": "Falso. Es un nopal con tunas. Así lo cuenta la leyenda de la fundación de Tenochtitlan."
+        },
+        {
+          "oracion": "El color rojo de la bandera recuerda la sangre de los héroes de la patria.",
+          "bandera": "mx",
+          "correcto": true,
+          "correccion": null,
+          "explicacion": "¡Verdadero! Verde = esperanza, blanco = unidad y rojo = la sangre de los héroes."
+        },
+        {
+          "oracion": "El Día de la Bandera se celebra el 16 de septiembre.",
+          "bandera": "mx",
+          "correcto": false,
+          "correccion": "El Día de la Bandera es el 24 de febrero.",
+          "explicacion": "Falso. El 16 de septiembre celebramos la Independencia; la bandera tiene su día el 24 de febrero."
+        }
+      ]
+    },
+    {
+      "id": "gb1-01-primas",
+      "tipo": "image-picker",
+      "titulo": "Banderas que se parecen",
+      "instruccion": "Fíjate muy bien: estas banderas se parecen mucho. Toca la correcta.",
+      "opciones_bandera": true,
+      "retos": [
+        {
+          "palabra_es": "¿Cuál es la bandera de México?",
+          "bandera": "mx",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/it.png", "label": "Italia" },
+            { "imagen": "https://flagcdn.com/w320/mx.png", "label": "México" },
+            { "imagen": "https://flagcdn.com/w320/ie.png", "label": "Irlanda" },
+            { "imagen": "https://flagcdn.com/w320/hu.png", "label": "Hungría" }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Muy bien! La de México es la única de estas con escudo: el águila sobre el nopal."
+        },
+        {
+          "palabra_es": "Su gemela: ¿cuál es la bandera de Italia?",
+          "bandera": "it",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/mx.png", "label": "México" },
+            { "imagen": "https://flagcdn.com/w320/ie.png", "label": "Irlanda" },
+            { "imagen": "https://flagcdn.com/w320/it.png", "label": "Italia" },
+            { "imagen": "https://flagcdn.com/w320/ci.png", "label": "Costa de Marfil" }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Eso! Verde, blanco y rojo, sin escudo. Los italianos le dicen «il Tricolore» (la tricolor)."
+        },
+        {
+          "palabra_es": "¿Cuál es la bandera de Irlanda?",
+          "bandera": "ie",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/ci.png", "label": "Costa de Marfil" },
+            { "imagen": "https://flagcdn.com/w320/it.png", "label": "Italia" },
+            { "imagen": "https://flagcdn.com/w320/ne.png", "label": "Níger" },
+            { "imagen": "https://flagcdn.com/w320/ie.png", "label": "Irlanda" }
+          ],
+          "respuesta": 3,
+          "explicacion": "¡Correcto! Irlanda es verde, blanco y naranja, con el verde junto al asta. La de Costa de Marfil es igual pero al revés: naranja, blanco y verde."
+        },
+        {
+          "palabra_es": "¿Cuál es la bandera de Hungría?",
+          "bandera": "hu",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/hu.png", "label": "Hungría" },
+            { "imagen": "https://flagcdn.com/w320/bg.png", "label": "Bulgaria" },
+            { "imagen": "https://flagcdn.com/w320/ir.png", "label": "Irán" },
+            { "imagen": "https://flagcdn.com/w320/it.png", "label": "Italia" }
+          ],
+          "respuesta": 0,
+          "explicacion": "¡Bien! Hungría usa los colores de México, pero acostados: rojo arriba, blanco en medio y verde abajo."
+        },
+        {
+          "palabra_es": "¿Cuál es la bandera de la India?",
+          "bandera": "in",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/ne.png", "label": "Níger" },
+            { "imagen": "https://flagcdn.com/w320/in.png", "label": "India" },
+            { "imagen": "https://flagcdn.com/w320/ie.png", "label": "Irlanda" },
+            { "imagen": "https://flagcdn.com/w320/hu.png", "label": "Hungría" }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Muy bien! En el centro, la India tiene una rueda azul con 24 rayos. Níger, en cambio, tiene un círculo naranja."
+        }
+      ]
+    },
+    {
+      "id": "gb1-01-colorear",
+      "tipo": "colorear",
+      "titulo": "Colorea la bandera de México",
+      "emoji": "🇲🇽",
+      "instruccion": "Colorea las franjas en orden: verde del lado del asta (a la izquierda), luego blanco y luego rojo. En el círculo del centro dibuja el águila parada sobre el nopal, devorando una serpiente.",
+      "imagen_contorno_url": "/geografia/banderas/mexico-contorno.svg",
+      "colores_sugeridos": ["#006847", "#ffffff", "#ce1126", "#8b5a2b", "#f1c40f"],
+      "dificultad": "facil"
+    }
+  ]
+}

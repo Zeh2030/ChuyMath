@@ -62,6 +62,20 @@
   justify-content: center;
 }
 
+/* Tarjeta con imagen (banderas): borde fino porque algunas son casi blancas. */
+.ttp-card-img {
+  padding: 6px;
+}
+
+.ttp-img {
+  height: 40px;
+  width: auto;
+  max-width: 100%;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+}
+
 .ttp-left { color: #333; }
 .ttp-right { color: #00695c; }
 

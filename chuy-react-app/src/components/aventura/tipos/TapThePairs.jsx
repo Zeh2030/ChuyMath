@@ -10,9 +10,17 @@ const shuffle = (arr) => {
   return s;
 };
 
+// Un lado de la pareja: texto, o imagen si el par trae `es_img`/`en_img`
+// (banderas ↔ nombre). key por src: al cambiar de ronda no se queda visible
+// la bandera anterior mientras carga. alt vacío: si la imagen falla, el
+// navegador escribiría el alt, que sería la respuesta.
+const LadoPar = ({ texto, img }) =>
+  img ? <img key={img} className="ttp-img" src={img} alt="" /> : texto;
+
 // Compartido entre ingles (par.en = ingles) y ciencias/geografia/piano (ambas
 // columnas en español, pese al nombre del campo). `esIngles` solo afecta el
 // texto de interfaz — los datos de cada `par` se muestran tal cual vienen.
+// `es`/`en` siguen siendo obligatorios aunque haya imagen (describen el par).
 const TapThePairs = ({ mision, onCompletar, materia = null }) => {
   const esIngles = materia === 'ingles';
   const retos = mision.retos || [];
@@ -135,11 +143,11 @@ const TapThePairs = ({ mision, onCompletar, materia = null }) => {
             return (
               <button
                 key={i}
-                className={`ttp-card ttp-left ${seleccionIzq === i ? 'selected' : ''} ${found ? 'found' : ''}`}
+                className={`ttp-card ttp-left ${par.es_img ? 'ttp-card-img' : ''} ${seleccionIzq === i ? 'selected' : ''} ${found ? 'found' : ''}`}
                 onClick={() => handleSelectIzq(i)}
                 disabled={found}
               >
-                {par.es}
+                <LadoPar texto={par.es} img={par.es_img} />
               </button>
             );
           })}
@@ -153,11 +161,11 @@ const TapThePairs = ({ mision, onCompletar, materia = null }) => {
             return (
               <button
                 key={originalIndex}
-                className={`ttp-card ttp-right ${seleccionDer === originalIndex ? 'selected' : ''} ${found ? 'found' : ''}`}
+                className={`ttp-card ttp-right ${par.en_img ? 'ttp-card-img' : ''} ${seleccionDer === originalIndex ? 'selected' : ''} ${found ? 'found' : ''}`}
                 onClick={() => handleSelectDer(originalIndex)}
                 disabled={found}
               >
-                {par.en}
+                <LadoPar texto={par.en} img={par.en_img} />
               </button>
             );
           })}

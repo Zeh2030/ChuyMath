@@ -346,8 +346,25 @@ como tema global (un tema oscuro cuesta ~48 overrides, ver §2).
   y pasada de tildes y ¡¿ en todo.
 - QA: `C:\Proyectos JJCG\qa-navegador\chuymath-geo-recorrido.mjs` (juega todo) y
   `chuymath-geo-dump.mjs` (Firestore vs disco).
-- **Pendiente**: traducir al español los nombres del tooltip en modo explorar
-  (salen en inglés de world-atlas; solo lo usa G0-01b).
+- ✅ Nombres del mapa en español en modo explorar (Fase 0 de Banderas, 2026-10-24).
+
+### 🚩 Banderas — Fase 0 y 1 CONSTRUIDAS (2026-10-24)
+Sub-sección de Geografía: tarjeta "Banderas" (`tipo: banderas`, carpeta
+`_geografia/banderas/`, niveles GB0-GB3 por edad y **GBH** históricas). Programa en
+`_geografia/PROGRAMA_BANDERAS.md` (16 actividades, decisiones del papá).
+- **Fase 0**: `src/data/paises.js` (generado por `_geografia/_genera-paises.mjs`: ISO
+  numérico → alfa-2 → español; estados de EE.UU. y México; `banderaUrl`). El mapa ya da
+  nombres en español en modo explorar; Kosovo/Chipre del Norte/Somalilandia con id propio.
+- **Fase 1**: motores — mapa con `pregunta_bandera` (la bandera es la pregunta; admite
+  `bandera_url` histórica), image-picker con `opciones_bandera`, parejas con imagen
+  (`es_img`/`en_img`). Contenido: GB1-01 México a fondo (con colorear), GB1-02 América
+  Latina, GB1-03 estados de EE.UU., GB1-04 Mundial 2026 (48 selecciones, sin resultados),
+  GBH-01 México e Hispanoamérica histórica, GBH-02 imperios de Europa, GBH-03 Asia.
+  Polémicas con tono neutral y breve (decisión del papá). Historia de países va dentro.
+- Cada reto lleva `bandera` o `bandera_id` para el **álbum** (Fase 3).
+- **Siguiente**: Fase 2 (pinta la bandera, memorama con imágenes, mapa→bandera, bandera
+  escondida, GB0 para la hija, GB2 Europa/gemelas), Fase 3 (álbum + diseña tu bandera).
+- Nota: la "aventura del día" ordena por nivel como texto: GB* sale después de G3.
 
 ---
 
@@ -453,7 +470,8 @@ Gemini (voz a voz en tiempo real, con interrupciones). Nada construido.
 | Dibujo | Galería, D3 o lienzo (ninguno urgente) | §9 + `_dibujo/PROGRAMA_DIBUJO.md` |
 | Matemáticas | Concurso: cronómetro, respuesta por pregunta, revisar claves, más simulacros | §4 + `_contenido/_valida.mjs` |
 | Plataforma | PIN de adulto, modo papás, temas | §2, §3 |
-| Geografía | G3 cuando aplique; tooltip en español en explorar | §8 + `_geografia/PROGRAMA_GEOGRAFIA.md` + `_valida.mjs` |
+| Geografía | G3 cuando aplique | §8 + `_geografia/PROGRAMA_GEOGRAFIA.md` + `_valida.mjs` |
+| Banderas | Fase 2 (juegos de "hacer", GB0, GB2) y Fase 3 (álbum) | §8 + `_geografia/PROGRAMA_BANDERAS.md` |
 
 ---
 

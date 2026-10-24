@@ -1,0 +1,400 @@
+{
+  "id": "GB1-02_america-latina",
+  "titulo": "Banderas de América Latina",
+  "descripcion": "Banderas hermanas y primas de América Latina: distínguelas, emparéjalas y encuéntralas en el mapa",
+  "tipo": "banderas",
+  "materia": "geografia",
+  "tema": "america-latina",
+  "nivel": "GB1-02",
+  "misiones": [
+    {
+      "id": "gb1-02-hermanas",
+      "tipo": "mini-story",
+      "titulo": "Banderas hermanas",
+      "instruccion": "Lee cada parte y responde la pregunta.",
+      "parrafos": [
+        {
+          "texto": "¿Te has fijado que las banderas de Colombia, Ecuador y Venezuela tienen los mismos colores: amarillo, azul y rojo? No es casualidad. Hace unos 200 años, Simón Bolívar unió esos territorios en un solo país muy grande, llamado la Gran Colombia, y su bandera era amarilla, azul y roja.",
+          "emoji": "🟨",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Colombia, Ecuador y Venezuela formaron un país llamado la Gran ___.",
+              "opciones": ["Colombia", "Bolivia", "América", "Venezuela"],
+              "respuesta": 0
+            }
+          ]
+        },
+        {
+          "texto": "La Gran Colombia duró poco: hacia 1830 se separó en tres países. Cada uno se quedó con los colores, pero con su propio toque. Colombia y Ecuador tienen el amarillo más ancho (ocupa la mitad de la bandera), y Ecuador además lleva su escudo con un cóndor. Venezuela tiene las tres franjas iguales y ocho estrellas blancas en el azul.",
+          "emoji": "⭐",
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "La bandera de Venezuela tiene estrellas blancas en la franja azul.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "En Centroamérica pasa algo parecido. Guatemala, El Salvador, Honduras, Nicaragua y Costa Rica fueron un solo país, la República Federal de Centro América, con una bandera azul, blanca y azul. Se suele decir que el azul son los dos océanos y el blanco, la tierra que queda en medio.",
+          "emoji": "🌊",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "La bandera de la República Federal de Centro América era azul, ___ y azul.",
+              "opciones": ["rojo", "verde", "blanco", "amarillo"],
+              "respuesta": 2
+            }
+          ]
+        },
+        {
+          "texto": "Cuando se separaron, cuatro países conservaron el azul y blanco. Honduras puso cinco estrellas azules, una por cada país que formaba la unión. Guatemala puso sus franjas paradas y un quetzal en el escudo. Costa Rica agregó una franja roja en medio, en 1848.",
+          "emoji": "🐦",
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Las estrellas de Honduras son ___, una por cada país de la antigua unión.",
+              "opciones": ["tres", "cinco", "siete", "nueve"],
+              "respuesta": 1
+            },
+            {
+              "tipo": "true-or-false",
+              "oracion": "La bandera de Costa Rica es solo azul y blanca.",
+              "correcto": false,
+              "correccion": "Costa Rica tiene también una franja roja en medio."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gb1-02-de-quien-es",
+      "tipo": "image-picker",
+      "titulo": "¿De qué país es esta bandera?",
+      "instruccion": "Ojo: las opciones son países vecinos con banderas parecidas. Mira los detalles.",
+      "retos": [
+        {
+          "imagen_url": "https://flagcdn.com/w320/ve.png",
+          "bandera": "ve",
+          "opciones": [
+            { "label": "Colombia" },
+            { "label": "Ecuador" },
+            { "label": "Venezuela" },
+            { "label": "Bolivia" }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Venezuela! Franjas iguales y ocho estrellas en arco. La octava estrella se agregó en 2006."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/ec.png",
+          "bandera": "ec",
+          "opciones": [
+            { "label": "Ecuador" },
+            { "label": "Colombia" },
+            { "label": "Venezuela" },
+            { "label": "Perú" }
+          ],
+          "respuesta": 0,
+          "explicacion": "¡Ecuador! Es como la de Colombia, pero con escudo. En él hay un cóndor y el volcán Chimborazo."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/co.png",
+          "bandera": "co",
+          "opciones": [
+            { "label": "Ecuador" },
+            { "label": "Venezuela" },
+            { "label": "Bolivia" },
+            { "label": "Colombia" }
+          ],
+          "respuesta": 3,
+          "explicacion": "¡Colombia! Amarillo, azul y rojo, sin escudo. El amarillo ocupa la mitad de la bandera."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/hn.png",
+          "bandera": "hn",
+          "opciones": [
+            { "label": "Nicaragua" },
+            { "label": "Honduras" },
+            { "label": "El Salvador" },
+            { "label": "Guatemala" }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Honduras! Sus cinco estrellas recuerdan a los cinco países que estuvieron unidos en Centroamérica."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/ni.png",
+          "bandera": "ni",
+          "opciones": [
+            { "label": "El Salvador" },
+            { "label": "Honduras" },
+            { "label": "Nicaragua" },
+            { "label": "Argentina" }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Nicaragua! Su escudo es un triángulo con cinco volcanes, y alrededor dice «República de Nicaragua»."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/sv.png",
+          "bandera": "sv",
+          "opciones": [
+            { "label": "Nicaragua" },
+            { "label": "El Salvador" },
+            { "label": "Guatemala" },
+            { "label": "Honduras" }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡El Salvador! También tiene un triángulo con cinco volcanes, pero rodeado de hojas de laurel."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/uy.png",
+          "bandera": "uy",
+          "opciones": [
+            { "label": "Argentina" },
+            { "label": "Guatemala" },
+            { "label": "Uruguay" },
+            { "label": "Honduras" }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Uruguay! Tiene nueve franjas y un sol con cara, el Sol de Mayo, igual que el de Argentina."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/ar.png",
+          "bandera": "ar",
+          "opciones": [
+            { "label": "Uruguay" },
+            { "label": "Nicaragua" },
+            { "label": "El Salvador" },
+            { "label": "Argentina" }
+          ],
+          "respuesta": 3,
+          "explicacion": "¡Argentina! Celeste, blanco y celeste, con el Sol de Mayo. La creó Manuel Belgrano en 1812."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/bo.png",
+          "bandera": "bo",
+          "opciones": [
+            { "label": "Bolivia" },
+            { "label": "Perú" },
+            { "label": "Paraguay" },
+            { "label": "Venezuela" }
+          ],
+          "respuesta": 0,
+          "explicacion": "¡Bolivia! Rojo, amarillo y verde. Dato curioso: Bolivia tiene otro símbolo patrio, la wiphala, una bandera de cuadritos de colores."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/py.png",
+          "bandera": "py",
+          "opciones": [
+            { "label": "Costa Rica" },
+            { "label": "Paraguay" },
+            { "label": "Panamá" },
+            { "label": "Chile" }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Paraguay! Su bandera es especial: por delante y por detrás tiene escudos distintos. Por detrás lleva un león."
+        }
+      ]
+    },
+    {
+      "id": "gb1-02-cual-es",
+      "tipo": "image-picker",
+      "titulo": "¿Cuál es su bandera?",
+      "instruccion": "Lee el nombre del país y toca su bandera.",
+      "opciones_bandera": true,
+      "retos": [
+        {
+          "palabra_es": "¿Cuál es la bandera de Perú?",
+          "bandera": "pe",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/py.png", "label": "Paraguay" },
+            { "imagen": "https://flagcdn.com/w320/pe.png", "label": "Perú" },
+            { "imagen": "https://flagcdn.com/w320/cl.png", "label": "Chile" },
+            { "imagen": "https://flagcdn.com/w320/bo.png", "label": "Bolivia" }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Perú! Rojo, blanco y rojo, en franjas paradas. Cuenta la leyenda que el general San Martín se inspiró en unas aves llamadas parihuanas, de alas rojas y pecho blanco."
+        },
+        {
+          "palabra_es": "¿Cuál es la bandera de Chile?",
+          "bandera": "cl",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/cu.png", "label": "Cuba" },
+            { "imagen": "https://flagcdn.com/w320/pa.png", "label": "Panamá" },
+            { "imagen": "https://flagcdn.com/w320/cr.png", "label": "Costa Rica" },
+            { "imagen": "https://flagcdn.com/w320/cl.png", "label": "Chile" }
+          ],
+          "respuesta": 3,
+          "explicacion": "¡Chile! A su bandera le dicen «la Estrella Solitaria» por su única estrella blanca."
+        },
+        {
+          "palabra_es": "¿Cuál es la bandera de Guatemala?",
+          "bandera": "gt",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/gt.png", "label": "Guatemala" },
+            { "imagen": "https://flagcdn.com/w320/sv.png", "label": "El Salvador" },
+            { "imagen": "https://flagcdn.com/w320/ar.png", "label": "Argentina" },
+            { "imagen": "https://flagcdn.com/w320/hn.png", "label": "Honduras" }
+          ],
+          "respuesta": 0,
+          "explicacion": "¡Guatemala! Es la de las franjas azules paradas. En su escudo hay un quetzal, el ave nacional."
+        },
+        {
+          "palabra_es": "¿Cuál es la bandera de Costa Rica?",
+          "bandera": "cr",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/py.png", "label": "Paraguay" },
+            { "imagen": "https://flagcdn.com/w320/cr.png", "label": "Costa Rica" },
+            { "imagen": "https://flagcdn.com/w320/pa.png", "label": "Panamá" },
+            { "imagen": "https://flagcdn.com/w320/cu.png", "label": "Cuba" }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Costa Rica! Azul, blanco, rojo, blanco y azul. La franja roja del centro es el doble de ancha que las demás."
+        },
+        {
+          "palabra_es": "¿Cuál es la bandera de República Dominicana?",
+          "bandera": "do",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/pa.png", "label": "Panamá" },
+            { "imagen": "https://flagcdn.com/w320/ht.png", "label": "Haití" },
+            { "imagen": "https://flagcdn.com/w320/do.png", "label": "República Dominicana" },
+            { "imagen": "https://flagcdn.com/w320/cu.png", "label": "Cuba" }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡República Dominicana! Una cruz blanca la divide en cuatro, y en su escudo hay una Biblia abierta."
+        },
+        {
+          "palabra_es": "¿Cuál es la bandera de Brasil?",
+          "bandera": "br",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/bo.png", "label": "Bolivia" },
+            { "imagen": "https://flagcdn.com/w320/co.png", "label": "Colombia" },
+            { "imagen": "https://flagcdn.com/w320/ve.png", "label": "Venezuela" },
+            { "imagen": "https://flagcdn.com/w320/br.png", "label": "Brasil" }
+          ],
+          "respuesta": 3,
+          "explicacion": "¡Brasil! Sus 27 estrellas son sus 26 estados más el Distrito Federal, y dibujan el cielo de Río de Janeiro de una noche de 1889."
+        },
+        {
+          "palabra_es": "¿Cuál es la bandera de Cuba?",
+          "bandera": "cu",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/cu.png", "label": "Cuba" },
+            { "imagen": "https://flagcdn.com/w320/pr.png", "label": "Puerto Rico" },
+            { "imagen": "https://flagcdn.com/w320/cl.png", "label": "Chile" },
+            { "imagen": "https://flagcdn.com/w320/uy.png", "label": "Uruguay" }
+          ],
+          "respuesta": 0,
+          "explicacion": "¡Cuba! Franjas azules y triángulo rojo. La de Puerto Rico tiene los mismos colores, pero al revés: franjas rojas y triángulo azul."
+        },
+        {
+          "palabra_es": "¿Cuál es la bandera de Panamá?",
+          "bandera": "pa",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/do.png", "label": "República Dominicana" },
+            { "imagen": "https://flagcdn.com/w320/cl.png", "label": "Chile" },
+            { "imagen": "https://flagcdn.com/w320/pa.png", "label": "Panamá" },
+            { "imagen": "https://flagcdn.com/w320/cr.png", "label": "Costa Rica" }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Panamá! Cuatro cuadros: dos blancos con estrellas, uno rojo y uno azul."
+        }
+      ]
+    },
+    {
+      "id": "gb1-02-parejas",
+      "tipo": "tap-the-pairs",
+      "titulo": "Cada país con su bandera",
+      "instruccion": "Toca un país y luego su bandera para hacer la pareja.",
+      "retos": [
+        {
+          "pares": [
+            { "es": "Colombia", "en": "bandera de Colombia", "en_img": "https://flagcdn.com/w160/co.png", "bandera": "co" },
+            { "es": "Ecuador", "en": "bandera de Ecuador", "en_img": "https://flagcdn.com/w160/ec.png", "bandera": "ec" },
+            { "es": "Venezuela", "en": "bandera de Venezuela", "en_img": "https://flagcdn.com/w160/ve.png", "bandera": "ve" },
+            { "es": "Bolivia", "en": "bandera de Bolivia", "en_img": "https://flagcdn.com/w160/bo.png", "bandera": "bo" },
+            { "es": "Perú", "en": "bandera de Perú", "en_img": "https://flagcdn.com/w160/pe.png", "bandera": "pe" }
+          ]
+        },
+        {
+          "pares": [
+            { "es": "Honduras", "en": "bandera de Honduras", "en_img": "https://flagcdn.com/w160/hn.png", "bandera": "hn" },
+            { "es": "Nicaragua", "en": "bandera de Nicaragua", "en_img": "https://flagcdn.com/w160/ni.png", "bandera": "ni" },
+            { "es": "Guatemala", "en": "bandera de Guatemala", "en_img": "https://flagcdn.com/w160/gt.png", "bandera": "gt" },
+            { "es": "Uruguay", "en": "bandera de Uruguay", "en_img": "https://flagcdn.com/w160/uy.png", "bandera": "uy" },
+            { "es": "Argentina", "en": "bandera de Argentina", "en_img": "https://flagcdn.com/w160/ar.png", "bandera": "ar" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gb1-02-mapa",
+      "tipo": "explorador-mapa",
+      "mapa": "america-latina",
+      "encuadre": [-82, -56, -34, 13],
+      "modo": "quiz",
+      "pregunta_bandera": true,
+      "titulo": "La bandera y su lugar",
+      "instruccion": "Mira la bandera y toca su país en el mapa. Usa ➕ y ➖ para acercarte.",
+      "retos": [
+        {
+          "id": "170",
+          "nombre": "Colombia",
+          "bandera": "co",
+          "dato": "Colombia tiene costas en dos mares distintos: el océano Pacífico y el mar Caribe.",
+          "pregunta": "¿De qué país es esta bandera? Tócalo en el mapa. Pista: está en la esquina de arriba de América del Sur."
+        },
+        {
+          "id": "862",
+          "nombre": "Venezuela",
+          "bandera": "ve",
+          "dato": "En Venezuela está el Salto Ángel, la cascada más alta del mundo: casi un kilómetro de caída.",
+          "pregunta": "¿De qué país es esta bandera? Tócalo en el mapa. Pista: tiene costa en el mar Caribe."
+        },
+        {
+          "id": "604",
+          "nombre": "Perú",
+          "bandera": "pe",
+          "dato": "En Perú está Machu Picchu, la ciudad de los incas en lo alto de las montañas.",
+          "pregunta": "¿De qué país es esta bandera? Tócalo en el mapa. Pista: está junto al océano Pacífico."
+        },
+        {
+          "id": "076",
+          "nombre": "Brasil",
+          "bandera": "br",
+          "dato": "Brasil es el país más grande de América Latina: ocupa casi la mitad de América del Sur.",
+          "pregunta": "¿De qué país es esta bandera? Tócalo en el mapa. Pista: es el más grande de todos."
+        },
+        {
+          "id": "152",
+          "nombre": "Chile",
+          "bandera": "cl",
+          "dato": "Chile mide más de 4,000 km de largo, pero en promedio menos de 200 km de ancho.",
+          "pregunta": "¿De qué país es esta bandera? Tócalo en el mapa. Pista: es larguísimo y delgadito."
+        },
+        {
+          "id": "032",
+          "nombre": "Argentina",
+          "bandera": "ar",
+          "dato": "En Argentina está el Aconcagua, la montaña más alta de América.",
+          "pregunta": "¿De qué país es esta bandera? Tócalo en el mapa. Pista: es el segundo más grande de América del Sur."
+        },
+        {
+          "id": "068",
+          "nombre": "Bolivia",
+          "bandera": "bo",
+          "dato": "Bolivia no tiene mar, pero comparte con Perú el lago Titicaca, uno de los lagos navegables más altos del mundo.",
+          "pregunta": "¿De qué país es esta bandera? Tócalo en el mapa. Pista: no tiene mar."
+        },
+        {
+          "id": "600",
+          "nombre": "Paraguay",
+          "bandera": "py",
+          "dato": "Paraguay comparte con Brasil la presa de Itaipú, una de las centrales eléctricas más grandes del mundo.",
+          "pregunta": "¿De qué país es esta bandera? Tócalo en el mapa. Pista: tampoco tiene mar y es más pequeño que su vecino Bolivia."
+        }
+      ]
+    }
+  ]
+}
