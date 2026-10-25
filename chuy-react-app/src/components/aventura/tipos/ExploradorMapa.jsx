@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useMemo, useRef } from 'react';
+import React, { useState, useEffect, useEffectEvent, useMemo, useRef } from 'react';
+import { sonar } from '../../../utils/sonido';
 import { feature } from 'topojson-client';
 import {
   geoNaturalEarth1, geoMercator, geoAlbersUsa, geoOrthographic,
@@ -49,6 +50,12 @@ import './ExploradorMapa.css';
  *                                    — al responder dibuja el arco de circulo
  *                                      maximo, y opcionalmente el camino "recto
  *                                      en el mapa plano" para comparar
+ *
+ * modo "elige-bandera" (modulo de Banderas): el pais del reto viene resaltado y
+ * abajo hay 3-4 banderas; se contesta eligiendo la suya. Reto:
+ *   { id, nombre, bandera | bandera_id, opciones: ['jp','kr', {bandera_id, bandera_url}...] }
+ * Tocar el mapa no responde (si se puede girar y acercar); en el globo gira solo
+ * hasta el pais.
  *
  * Con bandera (de premio), dato o ruta el reto NO auto-avanza: aparece un boton
  * "Siguiente", porque hay algo que leer y mirar. Con pregunta_bandera la bandera ya
@@ -228,6 +235,20 @@ const caminoPlano = (desde, hasta, pasos = 64) => {
 const srcBandera = (reto, ancho) =>
   reto?.bandera_url || (reto?.bandera ? banderaUrl(reto.bandera, ancho) : null);
 
+// elige-bandera: cada opción es un código ('jp') o un objeto { bandera } /
+// { bandera_id, bandera_url } (histórica). Clave para comparar con la del reto.
+const claveOpcion = (op) => (typeof op === 'string' ? op : (op.bandera_id ?? op.bandera));
+const srcOpcion = (op) => (typeof op === 'string' ? banderaUrl(op, 320) : srcBandera(op, 320));
+
+const barajar = (arr) => {
+  const s = [...arr];
+  for (let i = s.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [s[i], s[j]] = [s[j], s[i]];
+  }
+  return s;
+};
+
 const ExploradorMapa = ({ mision, onCompletar }) => {
   const {
     mapa = 'world',
@@ -263,21 +284,35 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
 
   const reto = retos[retoIdx];
   const total = retos.length;
-  const esModoQuiz = modo === 'quiz';
+  // elige-bandera: el país viene resaltado y se contesta eligiendo su bandera abajo.
+  // Cuenta como quiz (contador, aciertos, un intento), pero tocar el mapa no responde.
+  const esEligeBandera = modo === 'elige-bandera';
+  const esModoQuiz = modo === 'quiz' || esEligeBandera;
+  const [banderaElegida, setBanderaElegida] = useState(null);
 
   // Modulo de Banderas: la bandera como pregunta (en geografia normal es premio).
-  const preguntaBandera = esModoQuiz && !!(reto?.pregunta_bandera ?? mision.pregunta_bandera);
+  const preguntaBandera = modo === 'quiz' && !!(reto?.pregunta_bandera ?? mision.pregunta_bandera);
   const srcPregunta = preguntaBandera ? srcBandera(reto, 320) : null;
   // Algo que leer o mirar al responder: entonces no se auto-avanza.
-  const tieneRecompensa = !!reto && !!((!preguntaBandera && reto.bandera) || reto.dato || reto.ruta);
+  const tieneRecompensa = !!reto && !!((!preguntaBandera && !esEligeBandera && reto.bandera) || reto.dato || reto.ruta);
+
+  // Opciones de bandera del reto, barajadas (cambian solo al cambiar de reto)
+  const opcionesBandera = useMemo(
+    () => (esEligeBandera && reto ? barajar(reto.opciones || []) : []),
+    [esEligeBandera, reto]
+  );
 
   // Precarga la bandera del siguiente reto: sin esto, con internet lento se
   // quedaba visible la anterior junto a la pregunta nueva.
   useEffect(() => {
-    if (!preguntaBandera) return;
-    const siguiente = srcBandera(retos[retoIdx + 1], 320);
-    if (siguiente) new Image().src = siguiente;
-  }, [preguntaBandera, retos, retoIdx]);
+    const sig = retos[retoIdx + 1];
+    if (!sig) return;
+    if (preguntaBandera) {
+      const u = srcBandera(sig, 320);
+      if (u) new Image().src = u;
+    }
+    if (esEligeBandera) (sig.opciones || []).forEach(op => { new Image().src = srcOpcion(op); });
+  }, [preguntaBandera, esEligeBandera, retos, retoIdx]);
 
   // Fullscreen events
   useEffect(() => {
@@ -563,6 +598,16 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
     if (rafAnimRef.current != null) cancelAnimationFrame(rafAnimRef.current);
   }, []);
 
+  // elige-bandera en el globo: al entrar a cada reto, girar solo hasta el país
+  // (el niño no lo busca: lo que se pregunta es su bandera). useEffectEvent lee
+  // la rotación actual sin volver a disparar el efecto en cada giro.
+  const girarAlObjetivo = useEffectEvent(() => {
+    if (!esGlobo || !esEligeBandera || !reto) return;
+    const o = countries.find(c => normalizeId(idGetter(c)) === normalizeId(reto.id));
+    if (o) animarHacia(geoCentroid(o));
+  });
+  useEffect(() => { girarAlObjetivo(); }, [retoIdx]);
+
   const siguienteReto = () => {
     if (retoIdx + 1 >= total) {
       if (onCompletar) onCompletar();
@@ -570,6 +615,7 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
       setRetoIdx(prev => prev + 1);
       setSeleccionado(null);
       setFeedback(null);
+      setBanderaElegida(null);
       // Cada pregunta empieza viendo el mapa completo.
       setZoomIdx(0);
       setCentroVista([VIEWPORT.width / 2, VIEWPORT.height / 2]);
@@ -582,6 +628,8 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
       huboArrastreRef.current = false;
       return;
     }
+    // elige-bandera: el mapa solo se mira (se puede girar y acercar); se contesta abajo
+    if (esEligeBandera) return;
     if (!esModoQuiz) {
       // Modo explorar: solo mostrar info del pais clickeado
       setSeleccionado(countryId);
@@ -613,6 +661,18 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
     setTimeout(siguienteReto, espera);
   };
 
+  // elige-bandera: un intento, como el quiz
+  const elegirBandera = (op) => {
+    if (feedback) return;
+    const correcto = claveOpcion(op) === (reto.bandera_id ?? reto.bandera);
+    setBanderaElegida(claveOpcion(op));
+    if (correcto) setAciertos(prev => prev + 1);
+    setFeedback(correcto ? 'correcto' : 'incorrecto');
+    sonar(correcto ? 880 : 220);
+    if (tieneRecompensa) return;
+    setTimeout(siguienteReto, 2200);
+  };
+
   // Buscar nombre de pais/estado por ID
   const getCountryName = (id) => {
     const country = countries.find(c => normalizeId(idGetter(c)) === normalizeId(id));
@@ -621,6 +681,8 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
 
   // Halo de toque sobre el mar para objetivos diminutos (ver comentario de arriba).
   // Va DEBAJO de los paises: los toques en tierra los sigue recibiendo cada pais.
+  // En elige-bandera el mismo cálculo sirve para dibujar un ANILLO visible (no
+  // tocable) alrededor del país resaltado: si no, Belice o Kosovo no se verían.
   let halo = null;
   if (esModoQuiz && reto && !feedback) {
     const objetivo = countries.find(c => normalizeId(idGetter(c)) === normalizeId(reto.id));
@@ -702,7 +764,7 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
             </>
           )}
 
-          {halo && (
+          {halo && !esEligeBandera && (
             <circle
               cx={halo.cx}
               cy={halo.cy}
@@ -724,18 +786,22 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
             // Usar el ID sin padding para hash (consistente entre tipos de mapa)
             // `estilo: "tierra"` pinta todo igual: la leccion es tierra vs agua,
             // no que pais es cual.
-            const baseColor = estilo === 'tierra' ? '#7cb342' : getColorPais(cid);
+            // elige-bandera: todo gris para que el país resaltado salte a la vista
+            const baseColor = esEligeBandera ? '#dfe6e9' : estilo === 'tierra' ? '#7cb342' : getColorPais(cid);
 
             let className = 'em-pais';
             let fillColor = baseColor;
             if (feedback) {
               if (isCorrect) { className += ' em-correcto'; fillColor = null; }
               else if (isSelected) { className += ' em-incorrecto'; fillColor = null; }
+            } else if (esEligeBandera && isCorrect) {
+              className += ' em-objetivo';
+              fillColor = null;
             } else if (isSelected && !esModoQuiz) {
               className += ' em-seleccionado';
               fillColor = null;
             }
-            if (isHovered && !feedback) className += ' em-hover';
+            if (isHovered && !feedback && !esEligeBandera) className += ' em-hover';
 
             return (
               <path
@@ -749,6 +815,11 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
               />
             );
           })}
+
+          {/* elige-bandera: anillo visible (no tocable) para países diminutos */}
+          {halo && esEligeBandera && (
+            <circle cx={halo.cx} cy={halo.cy} r={halo.r} className="em-objetivo-anillo" pointerEvents="none" />
+          )}
 
           {/* La ruta se revela al responder: es el momento del "ajá".
               Un LineString de dos puntos lo dibuja geoPath siguiendo el circulo
@@ -792,13 +863,32 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
       {/* Debajo del globo, no encima: sobre la esfera tapaba Sudamérica. */}
       {esGlobo && <div className="em-pista-giro">👆 Arrastra para girar la Tierra</div>}
 
+      {/* elige-bandera: las opciones van FUERA del mapa (no tapan nada) */}
+      {esEligeBandera && reto && (
+        <div className="em-opciones-bandera">
+          {opcionesBandera.map((op) => {
+            const k = claveOpcion(op);
+            const esLaCorrecta = k === (reto.bandera_id ?? reto.bandera);
+            let cls = 'em-opcion-bandera';
+            if (feedback && esLaCorrecta) cls += ' em-opcion-correcta';
+            else if (feedback && k === banderaElegida) cls += ' em-opcion-incorrecta';
+            return (
+              <button key={k} type="button" className={cls} data-bandera={k} disabled={!!feedback} onClick={() => elegirBandera(op)}>
+                {/* alt vacío: si la imagen falla, el navegador escribiría el país */}
+                <img key={srcOpcion(op)} src={srcOpcion(op)} alt="" />
+              </button>
+            );
+          })}
+        </div>
+      )}
+
       {feedback && (
         <div className={`em-feedback em-${feedback}`}>
           <div className="em-feedback-linea">
             {/* En geografia la bandera es RECOMPENSA, no pregunta: preguntar por
                 ella enseña banderas, no geografia. En el modulo de Banderas
-                (pregunta_bandera) ya se vio arriba y no se repite. */}
-            {reto.bandera && !preguntaBandera && (
+                (pregunta_bandera / elige-bandera) ya se vio y no se repite. */}
+            {reto.bandera && !preguntaBandera && !esEligeBandera && (
               <img
                 className="em-bandera"
                 src={banderaUrl(reto.bandera, 80)}
@@ -807,9 +897,9 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
               />
             )}
             <span>
-              {feedback === 'correcto'
-                ? `¡Correcto! 🎉 Es ${reto.nombre}`
-                : `Era ${reto.nombre}`}
+              {esEligeBandera
+                ? (feedback === 'correcto' ? `¡Correcto! 🎉 Es la bandera de ${reto.nombre}` : `Era la bandera de ${reto.nombre}`)
+                : (feedback === 'correcto' ? `¡Correcto! 🎉 Es ${reto.nombre}` : `Era ${reto.nombre}`)}
             </span>
           </div>
 

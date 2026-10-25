@@ -1,0 +1,100 @@
+{
+  "id": "GB0-01_la-bandera-de-mexico",
+  "titulo": "La Bandera de México",
+  "descripcion": "Encuentra, pinta y colorea nuestra bandera verde, blanca y roja",
+  "tipo": "banderas",
+  "materia": "geografia",
+  "tema": "mexico",
+  "nivel": "GB0-01",
+  "misiones": [
+    {
+      "id": "gb0-01-cual-es",
+      "tipo": "image-picker",
+      "titulo": "¿Cuál es la bandera de México?",
+      "instruccion": "Papá lee. Tú tocas la bandera.",
+      "opciones_bandera": true,
+      "retos": [
+        {
+          "palabra_es": "¿Cuál es la de México?",
+          "bandera": "mx",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/mx.png", "label": "México" },
+            { "imagen": "https://flagcdn.com/w320/jp.png", "label": "Japón" },
+            { "imagen": "https://flagcdn.com/w320/br.png", "label": "Brasil" }
+          ],
+          "respuesta": 0,
+          "explicacion": "¡Sí! ¡Es la de México! Verde, blanco y rojo."
+        },
+        {
+          "palabra_es": "¿Y ahora? ¿Cuál es la de México?",
+          "bandera": "mx",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/br.png", "label": "Brasil" },
+            { "imagen": "https://flagcdn.com/w320/jp.png", "label": "Japón" },
+            { "imagen": "https://flagcdn.com/w320/mx.png", "label": "México" }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Muy bien! ¡Tiene un águila en medio!"
+        },
+        {
+          "palabra_es": "¡Difícil! ¿Cuál es la de México?",
+          "bandera": "mx",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/it.png", "label": "Italia" },
+            { "imagen": "https://flagcdn.com/w320/mx.png", "label": "México" },
+            { "imagen": "https://flagcdn.com/w320/ca.png", "label": "Canadá" }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Bravo! La de México es la que tiene el águila."
+        }
+      ]
+    },
+    {
+      "id": "gb0-01-pinta",
+      "tipo": "pinta-bandera",
+      "titulo": "Pinta la bandera de México",
+      "instruccion": "Elige un color y toca una franja.",
+      "leer_en_voz": true,
+      "retos": [
+        {
+          "nombre": "México",
+          "bandera": "mx",
+          "imagen_url": "https://flagcdn.com/w320/mx.png",
+          "plantilla": "franjas-v",
+          "colores": ["#006847", "#ffffff", "#ce1126"],
+          "paleta": ["#006847", "#ffffff", "#ce1126"],
+          "mostrar_modelo": true,
+          "proporcion": 1.75,
+          "emblema": {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Coat_of_arms_of_Mexico.svg",
+            "x": 0.5,
+            "y": 0.5,
+            "ancho": 0.27
+          },
+          "explicacion": "¡Qué bonita te quedó! Verde, blanco y rojo."
+        }
+      ]
+    },
+    {
+      "id": "gb0-01-colorear",
+      "tipo": "colorear",
+      "titulo": "Colorea la bandera de México",
+      "emoji": "🇲🇽",
+      "instruccion": "Verde, blanco y rojo. En medio, ¡el águila!",
+      "imagen_contorno_url": "/geografia/banderas/mexico-contorno.svg",
+      "colores_sugeridos": ["#006847", "#ffffff", "#ce1126", "#8b5a2b"],
+      "dificultad": "facil"
+    },
+    {
+      "id": "gb0-01-memorama",
+      "tipo": "memoria",
+      "titulo": "Memorama de banderas",
+      "voz": "Encuentra las banderas iguales",
+      "parejas": [
+        { "a": { "imagen": "https://flagcdn.com/w160/mx.png" }, "bandera": "mx" },
+        { "a": { "imagen": "https://flagcdn.com/w160/jp.png" }, "bandera": "jp" },
+        { "a": { "imagen": "https://flagcdn.com/w160/br.png" }, "bandera": "br" }
+      ]
+    }
+  ]
+}

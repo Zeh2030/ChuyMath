@@ -16,6 +16,24 @@
         {
           "texto": "¿Te has fijado que las banderas de Colombia, Ecuador y Venezuela tienen los mismos colores: amarillo, azul y rojo? No es casualidad. Hace unos 200 años, Simón Bolívar unió esos territorios en un solo país muy grande, llamado la Gran Colombia, y su bandera era amarilla, azul y roja.",
           "emoji": "🟨",
+          "imagenes": [
+            {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Gran_Colombia.svg",
+              "pie": "Gran Colombia (1821-1831)"
+            },
+            {
+              "url": "https://flagcdn.com/w160/co.png",
+              "pie": "Colombia"
+            },
+            {
+              "url": "https://flagcdn.com/w160/ec.png",
+              "pie": "Ecuador"
+            },
+            {
+              "url": "https://flagcdn.com/w160/ve.png",
+              "pie": "Venezuela"
+            }
+          ],
           "preguntas": [
             {
               "tipo": "fill-the-gap",
@@ -28,6 +46,24 @@
         {
           "texto": "La Gran Colombia duró poco: hacia 1830 se separó en tres países. Cada uno se quedó con los colores, pero con su propio toque. Colombia y Ecuador tienen el amarillo más ancho (ocupa la mitad de la bandera), y Ecuador además lleva su escudo con un cóndor. Venezuela tiene las tres franjas iguales y ocho estrellas blancas en el azul.",
           "emoji": "⭐",
+          "imagenes": [
+            {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Gran_Colombia_location_map.svg", "grande": true,
+              "pie": "Mapa de la Gran Colombia"
+            },
+            {
+              "url": "https://flagcdn.com/w160/co.png",
+              "pie": "Colombia"
+            },
+            {
+              "url": "https://flagcdn.com/w160/ec.png",
+              "pie": "Ecuador"
+            },
+            {
+              "url": "https://flagcdn.com/w160/ve.png",
+              "pie": "Venezuela"
+            }
+          ],
           "preguntas": [
             {
               "tipo": "true-or-false",
@@ -40,6 +76,16 @@
         {
           "texto": "En Centroamérica pasa algo parecido. Guatemala, El Salvador, Honduras, Nicaragua y Costa Rica fueron un solo país, la República Federal de Centro América, con una bandera azul, blanca y azul. Se suele decir que el azul son los dos océanos y el blanco, la tierra que queda en medio.",
           "emoji": "🌊",
+          "imagenes": [
+            {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Flag_of_the_Federal_Republic_of_Central_America.svg",
+              "pie": "República Federal de Centro América (1823-1841)"
+            },
+            {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Federal_Republic_of_Central_America_location_map.svg", "grande": true,
+              "pie": "Mapa de la República Federal de Centro América"
+            }
+          ],
           "preguntas": [
             {
               "tipo": "fill-the-gap",
@@ -52,6 +98,24 @@
         {
           "texto": "Cuando se separaron, cuatro países conservaron el azul y blanco. Honduras puso cinco estrellas azules, una por cada país que formaba la unión. Guatemala puso sus franjas paradas y un quetzal en el escudo. Costa Rica agregó una franja roja en medio, en 1848.",
           "emoji": "🐦",
+          "imagenes": [
+            {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Flag_of_the_Federal_Republic_of_Central_America.svg",
+              "pie": "Centro América (antes)"
+            },
+            {
+              "url": "https://flagcdn.com/w160/hn.png",
+              "pie": "Honduras"
+            },
+            {
+              "url": "https://flagcdn.com/w160/gt.png",
+              "pie": "Guatemala"
+            },
+            {
+              "url": "https://flagcdn.com/w160/cr.png",
+              "pie": "Costa Rica"
+            }
+          ],
           "preguntas": [
             {
               "tipo": "fill-the-gap",
@@ -393,6 +457,58 @@
           "bandera": "py",
           "dato": "Paraguay comparte con Brasil la presa de Itaipú, una de las centrales eléctricas más grandes del mundo.",
           "pregunta": "¿De qué país es esta bandera? Tócalo en el mapa. Pista: tampoco tiene mar y es más pequeño que su vecino Bolivia."
+        }
+      ]
+    },
+    {
+      "id": "gb1-02-elige",
+      "tipo": "explorador-mapa",
+      "mapa": "america-latina",
+      "modo": "elige-bandera",
+      "titulo": "¿Cuál es su bandera?",
+      "instruccion": "Mira el país naranja y toca su bandera. Ojo: las opciones se parecen.",
+      "retos": [
+        {
+          "id": "484",
+          "nombre": "México",
+          "bandera": "mx",
+          "pregunta": "¿Cuál es la bandera del país naranja?",
+          "opciones": ["pe", "mx", "gt", "bo"]
+        },
+        {
+          "id": "170",
+          "nombre": "Colombia",
+          "bandera": "co",
+          "pregunta": "¿Cuál es la bandera del país naranja? Fíjate en el tamaño de las franjas.",
+          "opciones": ["ec", "ve", "bo", "co"]
+        },
+        {
+          "id": "862",
+          "nombre": "Venezuela",
+          "bandera": "ve",
+          "pregunta": "¿Cuál es la bandera del país naranja?",
+          "opciones": ["co", "ve", "ec", "py"]
+        },
+        {
+          "id": "032",
+          "nombre": "Argentina",
+          "bandera": "ar",
+          "pregunta": "¿Cuál es la bandera del país naranja?",
+          "opciones": ["uy", "sv", "ar", "ni"]
+        },
+        {
+          "id": "152",
+          "nombre": "Chile",
+          "bandera": "cl",
+          "pregunta": "¿Cuál es la bandera del país naranja?",
+          "opciones": ["cu", "pa", "pr", "cl"]
+        },
+        {
+          "id": "192",
+          "nombre": "Cuba",
+          "bandera": "cu",
+          "pregunta": "¿Cuál es la bandera del país naranja? Es una isla del Caribe.",
+          "opciones": ["cu", "pr", "cl", "do"]
         }
       ]
     }

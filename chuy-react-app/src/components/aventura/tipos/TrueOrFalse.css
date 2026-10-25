@@ -30,6 +30,17 @@
   font-weight: 600;
 }
 
+.tof-imagen {
+  display: block;
+  margin: 0 auto 16px;
+  max-width: 100%;
+  max-height: 160px;
+  object-fit: contain;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  background: #fff;
+}
+
 .tof-sentence {
   background: #fff;
   border: 3px solid #e0e0e0;

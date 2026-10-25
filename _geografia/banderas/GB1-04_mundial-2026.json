@@ -16,6 +16,20 @@
         {
           "texto": "En junio y julio de 2026 se jugó el Mundial de futbol en TRES países a la vez: México, Estados Unidos y Canadá. ¡Nunca antes un Mundial había tenido tres sedes! Hubo partidos en 16 ciudades: 3 de México (Ciudad de México, Guadalajara y Monterrey), 11 de Estados Unidos y 2 de Canadá (Toronto y Vancouver).",
           "emoji": "🏟️",
+          "imagenes": [
+            {
+              "url": "https://flagcdn.com/w160/mx.png",
+              "pie": "México"
+            },
+            {
+              "url": "https://flagcdn.com/w160/us.png",
+              "pie": "Estados Unidos"
+            },
+            {
+              "url": "https://flagcdn.com/w160/ca.png",
+              "pie": "Canadá"
+            }
+          ],
           "preguntas": [
             {
               "tipo": "fill-the-gap",
@@ -33,6 +47,16 @@
         {
           "texto": "El partido inaugural se jugó en el Estadio Azteca de la Ciudad de México. Es el primer estadio del mundo con partidos de tres Mundiales: 1970, 1986 y 2026. Y México es el primer país que ha sido sede de tres Mundiales.",
           "emoji": "🇲🇽",
+          "imagenes": [
+            {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Estadio_Azteca_07a.jpg", "grande": true,
+              "pie": "Estadio Azteca"
+            },
+            {
+              "url": "https://flagcdn.com/w160/mx.png",
+              "pie": "México"
+            }
+          ],
           "preguntas": [
             {
               "tipo": "true-or-false",
@@ -45,6 +69,20 @@
         {
           "texto": "Fue el primer Mundial con 48 selecciones; antes jugaban 32. Para organizarlas se hicieron 12 grupos de 4 equipos, del grupo A al grupo L. ¡48 banderas ondeando en los estadios! México quedó en el grupo A, Canadá en el B y Estados Unidos en el D.",
           "emoji": "⚽",
+          "imagenes": [
+            {
+              "url": "https://flagcdn.com/w160/mx.png",
+              "pie": "México (grupo A)"
+            },
+            {
+              "url": "https://flagcdn.com/w160/ca.png",
+              "pie": "Canadá (grupo B)"
+            },
+            {
+              "url": "https://flagcdn.com/w160/us.png",
+              "pie": "Estados Unidos (grupo D)"
+            }
+          ],
           "preguntas": [
             {
               "tipo": "fill-the-gap",
@@ -62,6 +100,24 @@
         {
           "texto": "Si buscas la bandera del Reino Unido entre las 48... ¡no la vas a encontrar! El Reino Unido está formado por cuatro naciones: Inglaterra, Escocia, Gales e Irlanda del Norte, y en el futbol cada una tiene su propia selección desde hace más de 150 años. ¡El primer partido entre dos países de la historia fue Escocia contra Inglaterra, en 1872! Por eso Inglaterra juega con su cruz roja de San Jorge y Escocia con su cruz blanca en forma de X, la de San Andrés. La bandera del Reino Unido junta esas dos cruces y una tercera, la de San Patricio, de Irlanda.",
           "emoji": "🏴",
+          "imagenes": [
+            {
+              "url": "https://flagcdn.com/w160/gb.png",
+              "pie": "Reino Unido"
+            },
+            {
+              "url": "https://flagcdn.com/w160/gb-eng.png",
+              "pie": "Inglaterra (cruz de San Jorge)"
+            },
+            {
+              "url": "https://flagcdn.com/w160/gb-sct.png",
+              "pie": "Escocia (cruz de San Andrés)"
+            },
+            {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/8/81/Saint_Patrick%27s_Saltire.svg",
+              "pie": "Cruz de San Patricio"
+            }
+          ],
           "preguntas": [
             {
               "tipo": "true-or-false",
@@ -85,6 +141,24 @@
         {
           "texto": "Cuatro selecciones llegaron a su primer Mundial: Cabo Verde, Curazao, Jordania y Uzbekistán. Curazao es una isla del Caribe con unos 150 mil habitantes, ¡menos gente que muchas ciudades de México! Es el país más pequeño que ha llegado a un Mundial.",
           "emoji": "🏝️",
+          "imagenes": [
+            {
+              "url": "https://flagcdn.com/w160/cv.png",
+              "pie": "Cabo Verde"
+            },
+            {
+              "url": "https://flagcdn.com/w160/cw.png",
+              "pie": "Curazao"
+            },
+            {
+              "url": "https://flagcdn.com/w160/jo.png",
+              "pie": "Jordania"
+            },
+            {
+              "url": "https://flagcdn.com/w160/uz.png",
+              "pie": "Uzbekistán"
+            }
+          ],
           "preguntas": [
             {
               "tipo": "true-or-false",
@@ -869,6 +943,174 @@
           "bandera": "no",
           "pregunta": "¿De qué país es esta bandera? Tócalo en el mapa. Pista: está en el norte de Europa, junto a Suecia.",
           "dato": "Está tan al norte que en verano hay lugares donde el sol no se mete en toda la noche: el «sol de medianoche»."
+        }
+      ]
+    },
+    {
+      "id": "gb1-04-escondida",
+      "tipo": "bandera-escondida",
+      "titulo": "Selección escondida",
+      "instruccion": "Destapa cuadros y adivina la selección con las menos pistas.",
+      "retos": [
+        {
+          "imagen_url": "https://flagcdn.com/w640/ca.png",
+          "bandera": "ca",
+          "opciones": [
+            {
+              "label": "Suiza"
+            },
+            {
+              "label": "Canadá"
+            },
+            {
+              "label": "Inglaterra"
+            },
+            {
+              "label": "Japón"
+            }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Canadá! Roja a los lados y blanca en medio, con una hoja de maple roja de 11 puntas."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w640/br.png",
+          "bandera": "br",
+          "opciones": [
+            {
+              "label": "Brasil"
+            },
+            {
+              "label": "Cabo Verde"
+            },
+            {
+              "label": "Uzbekistán"
+            },
+            {
+              "label": "Sudáfrica"
+            }
+          ],
+          "respuesta": 0,
+          "explicacion": "¡Brasil! Un rombo amarillo sobre verde y un círculo azul con estrellas. En la banda blanca dice «Ordem e Progresso», que en portugués quiere decir «Orden y Progreso»."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w640/ba.png",
+          "bandera": "ba",
+          "opciones": [
+            {
+              "label": "Cabo Verde"
+            },
+            {
+              "label": "Curazao"
+            },
+            {
+              "label": "Escocia"
+            },
+            {
+              "label": "Bosnia y Herzegovina"
+            }
+          ],
+          "respuesta": 3,
+          "explicacion": "¡Bosnia y Herzegovina! Fondo azul, un triángulo amarillo y una fila de estrellas blancas. Se dice que el triángulo recuerda la forma del país."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w640/kr.png",
+          "bandera": "kr",
+          "opciones": [
+            {
+              "label": "Japón"
+            },
+            {
+              "label": "Suiza"
+            },
+            {
+              "label": "Corea del Sur"
+            },
+            {
+              "label": "Inglaterra"
+            }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Corea del Sur! Fondo blanco, el círculo rojo y azul en medio y cuatro figuras de rayitas negras en las esquinas. Japón también tiene fondo blanco, pero solo un círculo rojo."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w640/us.png",
+          "bandera": "us",
+          "opciones": [
+            {
+              "label": "Uruguay"
+            },
+            {
+              "label": "Estados Unidos"
+            },
+            {
+              "label": "Curazao"
+            },
+            {
+              "label": "Paraguay"
+            }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Estados Unidos! Sus 50 estrellas son sus 50 estados, y sus 13 franjas rojas y blancas, las 13 colonias con las que nació el país."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w640/mx.png",
+          "bandera": "mx",
+          "opciones": [
+            {
+              "label": "Irán"
+            },
+            {
+              "label": "Costa de Marfil"
+            },
+            {
+              "label": "Argelia"
+            },
+            {
+              "label": "México"
+            }
+          ],
+          "respuesta": 3,
+          "explicacion": "¡México! Verde, blanco y rojo, con el águila sobre un nopal devorando una serpiente. Irán tiene los mismos colores, pero en franjas acostadas."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w640/au.png",
+          "bandera": "au",
+          "opciones": [
+            {
+              "label": "Australia"
+            },
+            {
+              "label": "Nueva Zelanda"
+            },
+            {
+              "label": "Estados Unidos"
+            },
+            {
+              "label": "Curazao"
+            }
+          ],
+          "respuesta": 0,
+          "explicacion": "¡Australia! Sus estrellas son blancas y tiene una grande de siete puntas debajo de la bandera británica. Nueva Zelanda tiene cuatro estrellas rojas."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w640/nl.png",
+          "bandera": "nl",
+          "opciones": [
+            {
+              "label": "Croacia"
+            },
+            {
+              "label": "Paraguay"
+            },
+            {
+              "label": "República Checa"
+            },
+            {
+              "label": "Países Bajos"
+            }
+          ],
+          "respuesta": 3,
+          "explicacion": "¡Países Bajos! Roja, blanca y azul, en franjas acostadas y sin escudo. Croacia y Paraguay tienen esos colores, pero con escudo."
         }
       ]
     }

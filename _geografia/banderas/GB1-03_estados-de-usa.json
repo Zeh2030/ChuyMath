@@ -251,6 +251,20 @@
         {
           "texto": "Antes de ser parte de Estados Unidos, Texas fue parte de México. En 1836 se separó y se convirtió en un país propio: la República de Texas. En 1839 ese país eligió una bandera con UNA sola estrella blanca sobre azul y dos franjas, una blanca y una roja. En 1845 Texas se unió a Estados Unidos... ¡y se quedó con su bandera! Por eso le dicen «Lone Star», que en inglés quiere decir «estrella solitaria».",
           "emoji": "⭐",
+          "imagenes": [
+            {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Mexico_%281823-1864%2C_1867-1893%29.svg",
+              "pie": "México (1823-1864)"
+            },
+            {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/1/11/Republic_of_Texas_map_globe.png", "grande": true,
+              "pie": "República de Texas (1836-1845)"
+            },
+            {
+              "url": "https://flagcdn.com/w160/us-tx.png",
+              "pie": "Texas"
+            }
+          ],
           "preguntas": [
             {
               "tipo": "fill-the-gap",
@@ -268,6 +282,16 @@
         {
           "texto": "En 1846, cuando California todavía era parte de México, un grupo de colonos se rebeló en el pueblo de Sonoma. Hicieron a mano una bandera con un oso grizzly, una estrella y las palabras «California Republic» (República de California). Esa república duró menos de un mes, ¡pero el oso se quedó! La bandera de hoy sigue teniendo al grizzly caminando sobre el pasto.",
           "emoji": "🐻",
+          "imagenes": [
+            {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/4/41/First_Bear_Flag_of_California_%281846%29.svg",
+              "pie": "Bandera del oso (1846)"
+            },
+            {
+              "url": "https://flagcdn.com/w160/us-ca.png",
+              "pie": "California"
+            }
+          ],
           "preguntas": [
             {
               "tipo": "true-or-false",
@@ -280,6 +304,16 @@
         {
           "texto": "En 1927, Alaska hizo un concurso: los niños de las escuelas podían diseñar su bandera. Ganó Benny Benson, un niño de 13 años que vivía en un orfanato. Dibujó 8 estrellas doradas sobre azul: siete forman la Osa Mayor, un grupo de estrellas con forma de cucharón, y la otra es la Estrella Polar, que marca el norte. Benny explicó que el azul era el del cielo y el de una flor de Alaska, la nomeolvides.",
           "emoji": "✨",
+          "imagenes": [
+            {
+              "url": "https://flagcdn.com/w160/us-ak.png",
+              "pie": "Alaska"
+            },
+            {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Ursa_Major_and_Polaris.svg", "grande": true,
+              "pie": "Osa Mayor y Estrella Polar"
+            }
+          ],
           "preguntas": [
             {
               "tipo": "fill-the-gap",
@@ -297,6 +331,16 @@
         {
           "texto": "El sol rojo de la bandera de Nuevo México se llama zia y viene del pueblo zia, un pueblo indígena que vive ahí desde hace cientos de años. Tiene 4 grupos de 4 rayos, porque para los zia el número 4 es sagrado: 4 puntos cardinales, 4 estaciones del año, 4 partes del día (mañana, mediodía, tarde y noche) y 4 etapas de la vida.",
           "emoji": "☀️",
+          "imagenes": [
+            {
+              "url": "https://flagcdn.com/w160/us-nm.png",
+              "pie": "Nuevo México"
+            },
+            {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Flag_of_Zia_Pueblo.svg",
+              "pie": "Pueblo zia"
+            }
+          ],
           "preguntas": [
             {
               "tipo": "fill-the-gap",
@@ -314,6 +358,20 @@
         {
           "texto": "Mucho antes de ser estado, Hawái fue un reino con reyes y reinas: ¡ahí está el único palacio real de Estados Unidos! El rey Kamehameha I era amigo de los británicos y usaba su bandera. Por eso la bandera de Hawái lleva en la esquina la bandera del Reino Unido. Abajo tiene 8 franjas, una por cada una de sus 8 islas principales.",
           "emoji": "🌺",
+          "imagenes": [
+            {
+              "url": "https://flagcdn.com/w160/us-hi.png",
+              "pie": "Hawái"
+            },
+            {
+              "url": "https://flagcdn.com/w160/gb.png",
+              "pie": "Reino Unido"
+            },
+            {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Iolani_Palace_%281328%29.JPG", "grande": true,
+              "pie": "Palacio ʻIolani"
+            }
+          ],
           "preguntas": [
             {
               "tipo": "true-or-false",
@@ -326,6 +384,16 @@
         {
           "texto": "Casi todas las banderas son rectángulos... ¡pero la de Ohio no! Tiene forma de banderín con dos puntas, como la cola de una golondrina. Es la única bandera de estado que no es rectangular. Tiene 17 estrellas porque Ohio fue el estado número 17 en unirse a Estados Unidos, y su círculo blanco forma una «O», la de Ohio. En todo el mundo pasa algo parecido: el único país con bandera que no es rectangular es Nepal.",
           "emoji": "🚩",
+          "imagenes": [
+            {
+              "url": "https://flagcdn.com/w160/us-oh.png",
+              "pie": "Ohio"
+            },
+            {
+              "url": "https://flagcdn.com/w160/np.png",
+              "pie": "Nepal"
+            }
+          ],
           "preguntas": [
             {
               "tipo": "fill-the-gap",

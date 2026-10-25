@@ -16,6 +16,10 @@
         {
           "texto": "En japonés, Japón se llama Nihon o Nippon, que quiere decir 'el origen del sol'. Por eso su bandera es un círculo rojo, el sol, sobre fondo blanco. Se llama Hinomaru: 'el círculo del sol'. En 1870 empezó a usarse en los barcos japoneses, y en 1999 una ley la hizo la bandera oficial y le acomodó un poquito el tamaño y el lugar del círculo.",
           "emoji": "🇯🇵",
+          "imagenes": [
+            { "url": "https://flagcdn.com/w160/jp.png", "pie": "Japón (desde 1999)" },
+            { "url": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Flag_of_Japan_%281870%E2%80%931999%29.svg", "pie": "Japón (1870-1999)" }
+          ],
           "preguntas": [
             {
               "tipo": "fill-the-gap",
@@ -28,6 +32,10 @@
         {
           "texto": "La marina del Imperio de Japón usaba otra bandera: el sol rojo con 16 rayos, que se llama la bandera del sol naciente. Hoy la usa la Fuerza Marítima de Autodefensa de Japón, que cuida sus mares. A mucha gente en Corea y en China no le gusta verla, porque les recuerda una época de guerra.",
           "emoji": "⚓",
+          "imagenes": [
+            { "url": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Naval_Ensign_of_Japan.svg", "pie": "Bandera del sol naciente (marina)" },
+            { "url": "https://upload.wikimedia.org/wikipedia/commons/b/b3/Japanese_Empire_%28orthographic_projection%29.svg", "grande": true, "pie": "Imperio de Japón (1870-1942)" }
+          ],
           "preguntas": [
             {
               "tipo": "fill-the-gap",
@@ -40,6 +48,11 @@
         {
           "texto": "China fue gobernada por emperadores durante más de 2,000 años. La última dinastía, o familia de emperadores, fue la Qing (se dice 'ching'). Su bandera era amarilla, el color del emperador, con un dragón azul que persigue una perla roja. En 1912 el último emperador, Puyi, dejó el trono... ¡cuando tenía solo 6 años!",
           "emoji": "🐉",
+          "imagenes": [
+            { "url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Flag_of_the_Qing_dynasty_%281889-1912%29.svg", "pie": "Dinastía Qing (1889-1912)" },
+            { "url": "https://upload.wikimedia.org/wikipedia/commons/6/66/Empire_of_the_Great_Qing_%28orthographic_projection%29.svg", "grande": true, "pie": "Imperio Qing (1890)" },
+            { "url": "https://upload.wikimedia.org/wikipedia/commons/7/76/Feb_23_1909_Pu_Yi.jpg", "grande": true, "pie": "Puyi, el último emperador, a los 3 años (1909)" }
+          ],
           "preguntas": [
             {
               "tipo": "true-or-false",
@@ -58,6 +71,10 @@
         {
           "texto": "En 1912 China se volvió república: la República de China. Su nueva bandera tenía cinco franjas: roja, amarilla, azul, blanca y negra. Cada color representaba a uno de los cinco pueblos más grandes del país: los han, los manchúes, los mongoles, los hui y los tibetanos.",
           "emoji": "🎌",
+          "imagenes": [
+            { "url": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Flag_of_China_%281912%E2%80%931928%29.svg", "pie": "República de China (1912-1928)" },
+            { "url": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Republic_of_China_%28orthographic_projection%2C_historical%29.svg", "grande": true, "pie": "República de China" }
+          ],
           "preguntas": [
             {
               "tipo": "fill-the-gap",
@@ -70,6 +87,10 @@
         {
           "texto": "En 1928 la República de China cambió de bandera: roja, con un rectángulo azul en la esquina y un sol blanco de 12 rayos. Los 12 rayos son los 12 meses del año y las 12 partes en que los chinos antiguos dividían el día. En 1949 ese gobierno se fue a la isla de Taiwán, y allá se sigue usando esa bandera hasta hoy.",
           "emoji": "☀️",
+          "imagenes": [
+            { "url": "https://flagcdn.com/w160/tw.png", "pie": "República de China (desde 1928, hoy en Taiwán)" },
+            { "url": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Taiwan_%28orthographic_projection%29.svg", "grande": true, "pie": "Taiwán" }
+          ],
           "preguntas": [
             {
               "tipo": "true-or-false",
@@ -82,6 +103,10 @@
         {
           "texto": "En 1949 se fundó la República Popular China, con su capital en Pekín. Su bandera es roja, con cinco estrellas amarillas: una grande y cuatro chiquitas. Dato curioso: cada estrella chiquita tiene una punta que apunta hacia el centro de la estrella grande.",
           "emoji": "🇨🇳",
+          "imagenes": [
+            { "url": "https://flagcdn.com/w160/cn.png", "pie": "República Popular China (desde 1949)" },
+            { "url": "https://upload.wikimedia.org/wikipedia/commons/7/78/People%27s_Republic_of_China_%28orthographic_projection%29.svg", "grande": true, "pie": "República Popular China" }
+          ],
           "preguntas": [
             {
               "tipo": "true-or-false",
@@ -94,6 +119,12 @@
         {
           "texto": "La bandera de Corea se llama taegukgi. Empezó a usarse en 1882, y en el centro tiene un círculo rojo y azul, como el yin-yang. En las esquinas tiene cuatro trigramas, grupos de tres rayitas que significan el cielo, la tierra, el agua y el fuego. De 1910 a 1945 Corea fue gobernada por Japón; después se dividió en dos, y Corea del Sur sigue usando el taegukgi.",
           "emoji": "🇰🇷",
+          "imagenes": [
+            { "url": "https://upload.wikimedia.org/wikipedia/commons/6/63/Flag_of_Korea_%281882%E2%80%931910%29.svg", "pie": "Corea (1882-1910)" },
+            { "url": "https://flagcdn.com/w160/kr.png", "pie": "Corea del Sur (hoy)" },
+            { "url": "https://flagcdn.com/w160/kp.png", "pie": "Corea del Norte (hoy)" },
+            { "url": "https://upload.wikimedia.org/wikipedia/commons/6/65/Korea_%28orthographic_projection%29.svg", "grande": true, "pie": "Península de Corea" }
+          ],
           "preguntas": [
             {
               "tipo": "fill-the-gap",

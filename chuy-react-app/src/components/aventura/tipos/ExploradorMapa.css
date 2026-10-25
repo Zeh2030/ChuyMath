@@ -98,6 +98,60 @@
   cursor: grabbing;
 }
 
+/* === elige-bandera: país resaltado y opciones de bandera abajo ===
+   Naranja (no verde: el verde significa "correcto"). */
+.em-pais.em-objetivo {
+  fill: #ff9f40 !important;
+  stroke: #2c3e50;
+  stroke-width: 1.5;
+  animation: em-objetivo-pulso 1.4s ease-in-out infinite;
+}
+
+@keyframes em-objetivo-pulso {
+  50% { fill: #ffbe76; }
+}
+
+.em-objetivo-anillo {
+  fill: none;
+  stroke: #e67e22;
+  stroke-width: 3;
+  stroke-dasharray: 6 4;
+  vector-effect: non-scaling-stroke;
+}
+
+.em-opciones-bandera {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(120px, 1fr));
+  gap: 12px;
+  max-width: 460px;
+  margin: 0 auto 14px;
+}
+
+.em-opcion-bandera {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90px;
+  padding: 10px;
+  border: 3px solid #e0e0e0;
+  border-radius: 14px;
+  background: #fff;
+  cursor: pointer;
+  transition: transform 0.12s, border-color 0.15s;
+}
+.em-opcion-bandera:active { transform: scale(0.97); }
+.em-opcion-bandera:disabled { cursor: default; }
+.em-opcion-bandera img {
+  max-width: 100%;
+  max-height: 72px;
+  width: auto;
+  height: auto;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18);
+}
+.em-opcion-bandera.em-opcion-correcta { border-color: #27ae60; background: #eafaf1; }
+.em-opcion-bandera.em-opcion-incorrecta { border-color: #e74c3c; background: #fdecea; }
+
 /* === Bandera como pregunta (modulo de Banderas) ===
    Alto fijo: el mapa no brinca mientras carga. Borde fino: Japon y otras son
    casi blancas y se perderian sobre la tarjeta blanca. */

@@ -13,6 +13,7 @@ import { createRequire } from 'node:module';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { esRespuestaCorrecta, respuestaCorrectaOM, seleccionOM, valorDeOpcion } from '../chuy-react-app/src/utils/calificar.js';
 import { PAISES, ESTADOS_USA, OTRAS_BANDERAS, idPaisMundo, banderaUrl } from '../chuy-react-app/src/data/paises.js';
+import { PLANTILLAS, geometriaBandera } from '../chuy-react-app/src/data/plantillasBandera.js';
 
 const DIR = path.dirname(fileURLToPath(import.meta.url));
 const APP = path.join(DIR, '../chuy-react-app');
@@ -56,7 +57,12 @@ const CODIGOS_BANDERA = new Set([
   ...Object.values(ESTADOS_USA).map(e => e.a2),
   ...Object.keys(OTRAS_BANDERAS),
 ].filter(Boolean));
-const codigoDeUrlFlagcdn = (u) => String(u ?? '').match(/^https:\/\/flagcdn\.com\/w\d+\/([a-z]{2}(?:-[a-z]{2,3})?)\.png$/)?.[1];
+// Solo los anchos que flagcdn sí sirve (w100 da 404)
+const codigoDeUrlFlagcdn = (u) => String(u ?? '').match(/^https:\/\/flagcdn\.com\/w(?:20|40|80|160|320|640|1280)\/([a-z]{2}(?:-[a-z]{2,3})?)\.png$/)?.[1];
+const revisarAnchoFlagcdn = (f, d, u) => {
+  if (/^https:\/\/flagcdn\.com\//.test(String(u ?? '')) && !codigoDeUrlFlagcdn(u))
+    err(f, d, `URL de flagcdn con ancho o formato inválido (anchos: 20, 40, 80, 160, 320, 640, 1280): ${u}`);
+};
 const revisarCodigo = (f, d, c) => {
   if (!/^[a-z]{2}(-[a-z]{2,3})?$/.test(c)) return err(f, d, `bandera «${c}»: debe ser alfa-2 en minúsculas (o subdivisión, p.ej. us-tx)`), false;
   if (!CODIGOS_BANDERA.has(c)) return err(f, d, `bandera «${c}» no existe en flagcdn (data/paises.js)`), false;
@@ -110,7 +116,97 @@ const recorrerTextos = (o, fn) => {
 };
 
 const TIPOS_OK = new Set(['image-picker', 'tap-the-pairs', 'fill-the-gap', 'true-or-false',
-  'opcion-multiple', 'word-scramble', 'mini-story', 'explorador-mapa', 'colorear']);
+  'opcion-multiple', 'word-scramble', 'mini-story', 'explorador-mapa', 'colorear',
+  'pinta-bandera', 'bandera-escondida', 'memoria']);
+
+// --- Banderas: pinta-bandera (geometría compartida con el motor) ---
+const hexOk = c => /^#[0-9a-f]{6}$/i.test(String(c ?? ''));
+const rgb = c => [1, 3, 5].map(i => parseInt(c.slice(i, i + 2), 16));
+const distancia = (a, b) => Math.hypot(...rgb(a).map((v, i) => v - rgb(b)[i]));
+function pintaBandera(f, mid, m) {
+  const retos = m.retos || [];
+  if (!retos.length) err(f, mid, 'sin retos');
+  retos.forEach((r, k) => {
+    const d = `${mid} reto ${k + 1} (${r.nombre ?? '?'})`;
+    if (!r.nombre) err(f, d, 'sin "nombre"');
+    if (!PLANTILLAS.includes(r.plantilla)) return err(f, d, `plantilla «${r.plantilla}» no existe (${PLANTILLAS.join(', ')})`);
+    let geom;
+    try { geom = geometriaBandera(r); } catch (e) { return err(f, d, `geometría inválida: ${e.message}`); }
+    const colores = r.colores || [];
+    if (colores.length !== geom.regiones.length) err(f, d, `${colores.length} colores pero la plantilla tiene ${geom.regiones.length} regiones`);
+    if (colores.some(c => !hexOk(c))) err(f, d, 'colores deben ser #rrggbb');
+    const paleta = (r.paleta || []).map(c => String(c).toLowerCase());
+    if (paleta.length < 3 || paleta.length > 6) err(f, d, `paleta de ${paleta.length} colores (3 a 6)`);
+    if (paleta.some(c => !hexOk(c))) err(f, d, 'paleta: colores deben ser #rrggbb');
+    if (new Set(paleta).size !== paleta.length) err(f, d, 'paleta con colores repetidos');
+    const faltan = colores.filter(c => !paleta.includes(String(c).toLowerCase()));
+    if (faltan.length) err(f, d, `la paleta no tiene ${faltan.join(', ')}: imposible de pintar`);
+    for (let i = 0; i < paleta.length; i++) for (let j = i + 1; j < paleta.length; j++)
+      if (hexOk(paleta[i]) && hexOk(paleta[j]) && distancia(paleta[i], paleta[j]) < 80)
+        aviso(f, d, `en la paleta ${paleta[i]} y ${paleta[j]} se parecen mucho (injusto para el niño)`);
+    if (r.pesos && (r.pesos.length !== colores.length - (r.plantilla === 'triangulo-asta' ? 1 : 0) || r.pesos.some(v => !(v > 0))))
+      err(f, d, 'pesos: uno positivo por franja');
+    if (r.proporcion !== undefined && !(r.proporcion >= 0.8 && r.proporcion <= 2.6)) err(f, d, 'proporcion entre 0.8 y 2.6');
+    if (!r.imagen_url) err(f, d, 'sin imagen_url (la bandera real que se enseña al acertar)');
+    revisarAnchoFlagcdn(f, d, r.imagen_url);
+    if (r.imagen_url) addUrl(r.imagen_url, `${f} · ${d}`);
+    if (r.bandera !== undefined && revisarCodigo(f, d, r.bandera)) {
+      const enUrl = codigoDeUrlFlagcdn(r.imagen_url);
+      if (enUrl && enUrl !== r.bandera) err(f, d, `bandera «${r.bandera}» pero imagen_url es «${enUrl}»`);
+    }
+    if (r.bandera_id !== undefined) revisarHistorica(f, d, r.bandera_id, r.imagen_url);
+    if (r.bandera === undefined && r.bandera_id === undefined) err(f, d, 'sin "bandera" ni "bandera_id" (álbum)');
+    if (r.emblema) {
+      const u = r.emblema.url;
+      if (!u) err(f, d, 'emblema sin url');
+      else if (u.startsWith('/')) { if (!fs.existsSync(path.join(APP, 'public', u))) err(f, d, `no existe chuy-react-app/public${u}`); }
+      else if (!RE_WIKIMEDIA.test(u)) err(f, d, `emblema.url debe ser original de Wikimedia (sin /thumb/) o local: ${u}`);
+      else addUrl(u, `${f} · ${d}`);
+      for (const c of ['x', 'y', 'ancho']) if (r.emblema[c] !== undefined && !(r.emblema[c] > 0 && r.emblema[c] < 1)) err(f, d, `emblema.${c} entre 0 y 1`);
+    }
+  });
+}
+
+// --- bandera-escondida: misma forma que image-picker bandera → nombre ---
+function banderaEscondida(f, mid, m) {
+  imagePicker(f, mid, m);
+  (m.retos || []).forEach((r, k) => {
+    const d = `${mid} reto ${k + 1}`;
+    if (!r.imagen_url) err(f, d, 'sin imagen_url');
+    const ops = r.opciones || [];
+    if (ops.length < 3 || ops.length > 4) err(f, d, `${ops.length} opciones (3 o 4)`);
+    if (ops.some(o => o.imagen || o.emoji || !o.label)) err(f, d, 'las opciones son solo de texto (label)');
+    if (r.bandera === undefined && r.bandera_id === undefined) err(f, d, 'sin "bandera" ni "bandera_id" (álbum)');
+    if (r.palabra_es) err(f, d, 'palabra_es no se usa aquí (y podría regalar la respuesta)');
+  });
+}
+
+// --- memoria con parejas (Peques usa emojis; en geografía se exigen parejas) ---
+function memoria(f, mid, m) {
+  const ps = m.parejas;
+  if (!Array.isArray(ps) || ps.length < 2 || ps.length > 8) return err(f, mid, 'memoria en geografía: "parejas" de 2 a 8');
+  const lado = (c) => (c ? ['imagen', 'texto', 'emoji'].filter(k => c[k] !== undefined) : []);
+  const valor = (c) => (c.imagen ?? (c.texto !== undefined ? llano(c.texto) : c.emoji));
+  const dueno = new Map(); // contenido → índice de pareja
+  ps.forEach((p, k) => {
+    const d = `${mid} pareja ${k + 1}`;
+    for (const [nom, c] of [['a', p.a], ['b', p.b]]) {
+      if (nom === 'b' && c === undefined) continue; // sin b = dos cartas iguales
+      if (lado(c).length !== 1) { err(f, d, `"${nom}" debe tener exactamente uno de imagen, texto o emoji`); continue; }
+      const v = valor(c);
+      if (dueno.has(v) && dueno.get(v) !== k) err(f, d, `«${c.imagen ?? c.texto ?? c.emoji}» ya está en la pareja ${dueno.get(v) + 1}: dos cartas iguales de parejas distintas`);
+      dueno.set(v, k);
+      if (c.imagen) {
+        revisarAnchoFlagcdn(f, d, c.imagen);
+        addUrl(c.imagen, `${f} · ${d}`);
+        const enUrl = codigoDeUrlFlagcdn(c.imagen);
+        if (enUrl && p.bandera !== undefined && revisarCodigo(f, d, p.bandera) && enUrl !== p.bandera) err(f, d, `bandera «${p.bandera}» pero la imagen es «${enUrl}»`);
+        if (/wikimedia/.test(c.imagen)) revisarHistorica(f, d, p.bandera_id, c.imagen);
+      }
+    }
+  });
+  if (m.pares !== undefined && !(Number.isInteger(m.pares) && m.pares >= 2 && m.pares <= ps.length)) err(f, mid, `pares debe ser entero entre 2 y ${ps.length}`);
+}
 
 // colorear (motor de Dibujo): contorno SVG propio en chuy-react-app/public/.
 function colorear(f, mid, m) {
@@ -135,6 +231,8 @@ function imagePicker(f, mid, m) {
     if (r.palabra_es && soloTexto && ops.some(o => llano(o.label) === llano(r.palabra_es)))
       err(f, mid, `reto ${k + 1}: palabra_es «${r.palabra_es}» es una de las opciones → regala la respuesta`);
     if (!r.imagen_url && soloTexto && !r.palabra_es) err(f, mid, `reto ${k + 1}: sin imagen_url ni palabra_es: no hay pregunta`);
+    if (esBanderas(f) && !r.imagen_url && !ops.some(o => o.imagen))
+      err(f, mid, `reto ${k + 1}: ni imagen_url ni opciones con imagen (en Banderas siempre se ve una bandera)`);
     // Con emoji, la opción muestra SOLO el emoji; el nombre aparece hasta acertar.
     // Emojis repetidos = tarjetas idénticas (Océanos con 4 🌊).
     const emojis = ops.filter(o => o.emoji && !o.imagen).map(o => o.emoji);
@@ -186,6 +284,8 @@ function trueOrFalse(f, mid, retos) {
   retos.forEach((r, k) => {
     if (!r.oracion) err(f, mid, `reto ${k + 1}: sin oracion`);
     if (typeof r.correcto !== 'boolean') err(f, mid, `reto ${k + 1}: "correcto" debe ser true/false`);
+    if (r.imagen_url) revisarImagen(f, `${mid} reto ${k + 1}`, r.imagen_url);
+    else if (esBanderas(f)) err(f, mid, `reto ${k + 1}: sin imagen_url (en Banderas se ve la bandera de la que se habla)`);
   });
   const v = retos.filter(r => r.correcto === true).length;
   if (retos.length >= 3 && (v === 0 || v === retos.length)) aviso(f, mid, `las ${retos.length} afirmaciones son ${v ? 'verdaderas' : 'falsas'}`);
@@ -239,11 +339,31 @@ function wordScramble(f, mid, m) {
   });
 }
 
+// Imagen de apoyo: flagcdn con ancho válido, original de Wikimedia o archivo local.
+const revisarImagen = (f, d, u) => {
+  if (typeof u !== 'string' || !u) return err(f, d, `imagen sin url: ${JSON.stringify(u)}`);
+  if (/^https:\/\/flagcdn\.com\//.test(u)) revisarAnchoFlagcdn(f, d, u);
+  else if (/wikimedia/.test(u)) { if (!RE_WIKIMEDIA.test(u)) err(f, d, `imagen de Wikimedia debe ser el original (sin /thumb/): ${u}`); }
+  else if (!u.startsWith('/')) err(f, d, `imagen de un sitio no permitido (flagcdn, Wikimedia o local): ${u}`);
+  if (!u.startsWith('/')) addUrl(u, `${f} · ${d}`);
+};
+// Banderas nunca es solo lectura: lo que se lee o se pregunta lleva bandera, mapa o imagen.
+const esBanderas = f => f.startsWith('banderas/');
+
 function miniStory(f, mid, m) {
   const ps = m.parrafos || [];
   if (!ps.length) err(f, mid, 'sin parrafos');
   ps.forEach((p, k) => {
     if (!p.texto) err(f, mid, `párrafo ${k + 1}: sin texto`);
+    const d = `${mid} párrafo ${k + 1}`;
+    if (p.imagenes !== undefined && !Array.isArray(p.imagenes)) err(f, d, '"imagenes" debe ser [{ url, pie? }]');
+    const imgs = Array.isArray(p.imagenes) ? p.imagenes : [];
+    imgs.forEach(img => {
+      revisarImagen(f, d, img?.url);
+      if (img?.grande !== undefined && typeof img.grande !== 'boolean') err(f, d, '"grande" debe ser true/false');
+    });
+    if (new Set(imgs.map(i => i?.url)).size !== imgs.length) err(f, d, 'imagen repetida en el párrafo');
+    if (esBanderas(f) && !imgs.length) err(f, d, 'sin "imagenes": en Banderas cada párrafo enseña la bandera, el mapa o una imagen de lo que cuenta');
     (p.preguntas || []).forEach((q, j) => {
       const d = `${mid} párrafo ${k + 1} pregunta ${j + 1}`;
       if (q.tipo === 'fill-the-gap') hueco(f, d, q);
@@ -257,8 +377,11 @@ function exploradorMapa(f, mid, m) {
   const mapa = m.mapa || 'world';
   const modo = m.modo || 'quiz';
   if (!PROJECTIONS[mapa]) err(f, mid, `mapa «${mapa}» no existe`);
+  // Una errata en modo caía en silencio en "explorar"
+  if (!['quiz', 'explorar', 'elige-bandera'].includes(modo)) err(f, mid, `modo «${modo}» no existe (quiz, explorar, elige-bandera)`);
   const retos = m.retos || [];
-  if (modo === 'quiz' && !retos.length) err(f, mid, 'quiz sin retos');
+  if (modo !== 'explorar' && !retos.length) err(f, mid, 'quiz sin retos');
+  if (modo === 'elige-bandera' && m.pregunta_bandera) err(f, mid, 'pregunta_bandera no aplica en elige-bandera');
   if (m.encuadre !== undefined) {
     const e = m.encuadre;
     if (!Array.isArray(e) || e.length !== 4 || e.some(v => typeof v !== 'number') || e[0] >= e[2] || e[1] >= e[3])
@@ -276,8 +399,26 @@ function exploradorMapa(f, mid, m) {
     vistos.add(nid);
     const ft = feats.find(x => norm(mapa, id(x)) === nid);
     if (!ft) return err(f, d, `id «${r.id}» no está en el mapa «${mapa}» (imposible de tocar)`);
-    if (modo === 'quiz' && !r.nombre) err(f, d, 'sin "nombre" (el feedback diría "Es undefined")');
-    if (modo === 'quiz' && !r.pregunta) err(f, d, 'sin pregunta');
+    if (modo !== 'explorar' && !r.nombre) err(f, d, 'sin "nombre" (el feedback diría "Es undefined")');
+    if (modo !== 'explorar' && !r.pregunta) err(f, d, 'sin pregunta');
+    if (modo === 'elige-bandera') {
+      const clave = r.bandera_id ?? r.bandera;
+      if (!clave) err(f, d, 'elige-bandera: el reto necesita "bandera" o "bandera_id" (la respuesta)');
+      if (r.pregunta_bandera) err(f, d, 'pregunta_bandera no aplica en elige-bandera');
+      const ops = r.opciones || [];
+      const claves = ops.map(op => (typeof op === 'string' ? op : (op.bandera_id ?? op.bandera)));
+      if (ops.length < 3 || ops.length > 4) err(f, d, `elige-bandera: ${ops.length} opciones (3 o 4)`);
+      if (new Set(claves).size !== claves.length) err(f, d, 'elige-bandera: opciones repetidas');
+      if (claves.filter(c => c === clave).length !== 1) err(f, d, `elige-bandera: debe haber exactamente una opción «${clave}» (la correcta)`);
+      ops.forEach(op => {
+        if (typeof op === 'string') { if (revisarCodigo(f, d, op)) addUrl(banderaUrl(op, 320), `${f} · ${d}`); }
+        else if (op.bandera_id !== undefined) revisarHistorica(f, d, op.bandera_id, op.bandera_url);
+        else if (op.bandera !== undefined) revisarCodigo(f, d, op.bandera);
+        else err(f, d, `opción inválida ${JSON.stringify(op)}`);
+      });
+      if (r.nombre && r.pregunta && llano(r.pregunta).includes(llano(r.nombre)))
+        err(f, d, `la pregunta dice «${r.nombre}»: el país ya está resaltado, no se nombra`);
+    }
     if (geo) {
       const [[x0, y0], [x1, y1]] = geo.bounds(ft);
       if (x1 < 0 || x0 > VIEW[0] || y1 < 0 || y0 > VIEW[1]) err(f, d, 'queda fuera del mapa');
@@ -309,6 +450,8 @@ function validarMision(f, m, i) {
   const mid = m.id || `#${i + 1}`;
   if (!m.id) err(f, mid, 'misión sin id');
   if (!TIPOS_OK.has(m.tipo)) return err(f, mid, `tipo «${m.tipo}» no soportado en geografía`);
+  if (esBanderas(f) && ['fill-the-gap', 'opcion-multiple', 'word-scramble'].includes(m.tipo))
+    err(f, mid, `«${m.tipo}» es solo texto: en Banderas usa juegos con bandera o mapa`);
   recorrerTextos(m, s => { if (/upload\.wikimedia\.org\/[^"' ]*\/thumb\//.test(s)) err(f, mid, 'URL de Wikimedia con /thumb/ (da 400)'); });
   switch (m.tipo) {
     case 'image-picker': return imagePicker(f, mid, m);
@@ -328,6 +471,9 @@ function validarMision(f, m, i) {
     case 'mini-story': return miniStory(f, mid, m);
     case 'explorador-mapa': return exploradorMapa(f, mid, m);
     case 'colorear': return colorear(f, mid, m);
+    case 'pinta-bandera': return pintaBandera(f, mid, m);
+    case 'bandera-escondida': return banderaEscondida(f, mid, m);
+    case 'memoria': return memoria(f, mid, m);
   }
 }
 
@@ -350,7 +496,8 @@ for (const ruta of archivos) {
     err(f, '-', enBanderas ? 'en banderas/ el tipo raíz debe ser "banderas"' : 'tipo "banderas" solo en la carpeta banderas/');
   if (enBanderas) {
     if (!/^GB([0-3]|H)-\d{2}$/.test(doc.nivel || '')) err(f, '-', `nivel «${doc.nivel}» debe ser GB0..GB3 o GBH + "-NN" (p.ej. GB1-02, GBH-01)`);
-    else if (!doc.id.startsWith(doc.nivel + '_')) err(f, '-', `el id debe empezar con el nivel «${doc.nivel}_»`);
+    // "legado": aventura movida de otra tarjeta; conserva su id para no perder el progreso.
+    else if (!doc.id.startsWith(doc.nivel + '_') && !doc.legado) err(f, '-', `el id debe empezar con el nivel «${doc.nivel}_» (o "legado": true si se movió de otra tarjeta)`);
   }
   // Firestore rechaza arreglos directamente dentro de arreglos ([[1,2],[3,4]]).
   const anidado = (o, ruta) => {

@@ -1,0 +1,270 @@
+{
+  "id": "GB2-03_banderas-gemelas",
+  "titulo": "Banderas gemelas",
+  "descripcion": "Banderas que parecen iguales pero no lo son: encuentra la diferencia en el tono, la forma, el escudo o el orden de los colores",
+  "tipo": "banderas",
+  "materia": "geografia",
+  "tema": "gemelas",
+  "nivel": "GB2-03",
+  "misiones": [
+    {
+      "id": "gb2-03-cual-es",
+      "tipo": "image-picker",
+      "titulo": "¿Cuál es cuál?",
+      "instruccion": "Estas banderas son casi gemelas. Lee el país y busca el detalle que las hace distintas.",
+      "opciones_bandera": true,
+      "retos": [
+        {
+          "palabra_es": "¿Cuál es la de Rumania?",
+          "bandera": "ro",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/td.png", "label": "Chad" },
+            { "imagen": "https://flagcdn.com/w320/ro.png", "label": "Rumania" },
+            { "imagen": "https://flagcdn.com/w320/md.png", "label": "Moldavia" }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Rumania! Chad y Rumania tienen las mismas franjas azul, amarilla y roja, del mismo tamaño. La diferencia está en el azul: el de Chad es más oscuro. La de Moldavia lleva un escudo con un águila en medio."
+        },
+        {
+          "palabra_es": "¿Cuál es la de Indonesia?",
+          "bandera": "id",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/mc.png", "label": "Mónaco" },
+            { "imagen": "https://flagcdn.com/w320/pl.png", "label": "Polonia" },
+            { "imagen": "https://flagcdn.com/w320/id.png", "label": "Indonesia" }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Indonesia! Indonesia y Mónaco son rojo arriba y blanco abajo, pero la de Mónaco es más cuadradita y la de Indonesia más alargada. La de Polonia es al revés: blanco arriba y rojo abajo."
+        },
+        {
+          "palabra_es": "¿Cuál es la de Costa de Marfil?",
+          "bandera": "ci",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/ie.png", "label": "Irlanda" },
+            { "imagen": "https://flagcdn.com/w320/ci.png", "label": "Costa de Marfil" }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Costa de Marfil! Tiene el naranja junto al asta (a la izquierda) y el verde al final. La de Irlanda es al revés, con el verde junto al asta, y además es más alargada: el doble de larga que de alta."
+        },
+        {
+          "palabra_es": "¿Cuál es la de Australia?",
+          "bandera": "au",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/nz.png", "label": "Nueva Zelanda" },
+            { "imagen": "https://flagcdn.com/w320/au.png", "label": "Australia" }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Australia! Sus estrellas son blancas y tiene una estrella grande de siete puntas debajo de la bandera británica. Nueva Zelanda tiene solo cuatro estrellas, rojas con borde blanco."
+        },
+        {
+          "palabra_es": "¿Cuál es la de Luxemburgo?",
+          "bandera": "lu",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/lu.png", "label": "Luxemburgo" },
+            { "imagen": "https://flagcdn.com/w320/nl.png", "label": "Países Bajos" }
+          ],
+          "respuesta": 0,
+          "explicacion": "¡Luxemburgo! Las dos son roja, blanca y azul, pero el azul de Luxemburgo es celeste, más clarito, y su bandera es un poco más alargada. La de Países Bajos tiene un azul oscuro."
+        },
+        {
+          "palabra_es": "¿Cuál es la de Islandia?",
+          "bandera": "is",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/no.png", "label": "Noruega" },
+            { "imagen": "https://flagcdn.com/w320/is.png", "label": "Islandia" }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Islandia! Fondo azul y cruz roja con borde blanco. Noruega tiene los mismos colores cambiados de lugar: fondo rojo y cruz azul con borde blanco."
+        },
+        {
+          "palabra_es": "¿Cuál es la de Senegal?",
+          "bandera": "sn",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/ml.png", "label": "Mali" },
+            { "imagen": "https://flagcdn.com/w320/gn.png", "label": "Guinea" },
+            { "imagen": "https://flagcdn.com/w320/sn.png", "label": "Senegal" }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Senegal! Verde, amarillo y rojo, con una estrella verde en medio. La de Mali tiene los mismos colores pero sin estrella, y la de Guinea los tiene en orden contrario: rojo, amarillo y verde."
+        },
+        {
+          "palabra_es": "¿Cuál es la de Eslovaquia?",
+          "bandera": "sk",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/si.png", "label": "Eslovenia" },
+            { "imagen": "https://flagcdn.com/w320/sk.png", "label": "Eslovaquia" },
+            { "imagen": "https://flagcdn.com/w320/ru.png", "label": "Rusia" }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Eslovaquia! Su escudo es grande y rojo, con una cruz doble blanca sobre tres montañas azules. Eslovenia tiene un escudo azul más pequeño, arriba en la esquina, con una montaña blanca y tres estrellas amarillas. Rusia no tiene escudo."
+        },
+        {
+          "palabra_es": "¿Cuál es la de Ecuador?",
+          "bandera": "ec",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/co.png", "label": "Colombia" },
+            { "imagen": "https://flagcdn.com/w320/ec.png", "label": "Ecuador" },
+            { "imagen": "https://flagcdn.com/w320/ve.png", "label": "Venezuela" }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Ecuador! Es amarilla, azul y roja como la de Colombia, pero lleva en medio su escudo con un cóndor. Colombia no tiene escudo, y Venezuela tiene franjas iguales con ocho estrellas."
+        },
+        {
+          "palabra_es": "¿Cuál es la de Nicaragua?",
+          "bandera": "ni",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/sv.png", "label": "El Salvador" },
+            { "imagen": "https://flagcdn.com/w320/hn.png", "label": "Honduras" },
+            { "imagen": "https://flagcdn.com/w320/ni.png", "label": "Nicaragua" }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Nicaragua! Su triángulo con cinco volcanes está dentro de un círculo de letras que dicen «República de Nicaragua». El de El Salvador está rodeado de hojas de laurel. Honduras no tiene triángulo, sino cinco estrellas."
+        }
+      ]
+    },
+    {
+      "id": "gb2-03-pinta",
+      "tipo": "pinta-bandera",
+      "titulo": "Píntala de memoria",
+      "instruccion": "Sin modelo: elige un color y toca cada parte. ¡Ojo con el orden de los colores!",
+      "retos": [
+        {
+          "nombre": "Irlanda",
+          "bandera": "ie",
+          "imagen_url": "https://flagcdn.com/w320/ie.png",
+          "plantilla": "franjas-v",
+          "proporcion": 2,
+          "colores": ["#169b62", "#ffffff", "#ff883e"],
+          "paleta": ["#ff883e", "#0055a4", "#ffffff", "#d52b1e", "#169b62"],
+          "explicacion": "Irlanda: verde junto al asta, blanco en medio y naranja al final."
+        },
+        {
+          "nombre": "Costa de Marfil",
+          "bandera": "ci",
+          "imagen_url": "https://flagcdn.com/w320/ci.png",
+          "plantilla": "franjas-v",
+          "colores": ["#f77f00", "#ffffff", "#009e60"],
+          "paleta": ["#009e60", "#d52b1e", "#f77f00", "#ffffff", "#0055a4"],
+          "explicacion": "Costa de Marfil: naranja junto al asta, blanco en medio y verde al final. ¡Justo al revés que Irlanda!"
+        },
+        {
+          "nombre": "Indonesia",
+          "bandera": "id",
+          "imagen_url": "https://flagcdn.com/w320/id.png",
+          "plantilla": "franjas-h",
+          "colores": ["#ce1126", "#ffffff"],
+          "paleta": ["#ffffff", "#0055a4", "#ce1126", "#009246"],
+          "explicacion": "Indonesia: rojo arriba y blanco abajo."
+        },
+        {
+          "nombre": "Polonia",
+          "bandera": "pl",
+          "imagen_url": "https://flagcdn.com/w320/pl.png",
+          "plantilla": "franjas-h",
+          "proporcion": 1.6,
+          "colores": ["#ffffff", "#dc143c"],
+          "paleta": ["#dc143c", "#009246", "#ffffff", "#0055a4"],
+          "explicacion": "Polonia: blanco arriba y rojo abajo. Es la de Indonesia (y Mónaco) volteada de cabeza."
+        },
+        {
+          "nombre": "Noruega",
+          "bandera": "no",
+          "imagen_url": "https://flagcdn.com/w320/no.png",
+          "plantilla": "cruz-nordica",
+          "borde": true,
+          "colores": ["#ba0c2f", "#ffffff", "#00205b"],
+          "paleta": ["#00205b", "#fcd116", "#ba0c2f", "#ffffff", "#009246"],
+          "explicacion": "Noruega: fondo rojo, borde blanco y cruz azul."
+        },
+        {
+          "nombre": "Islandia",
+          "bandera": "is",
+          "imagen_url": "https://flagcdn.com/w320/is.png",
+          "plantilla": "cruz-nordica",
+          "borde": true,
+          "colores": ["#02529c", "#ffffff", "#dc1e35"],
+          "paleta": ["#dc1e35", "#ffffff", "#009246", "#02529c", "#fcd116"],
+          "explicacion": "Islandia: fondo azul, borde blanco y cruz roja. Los mismos colores que Noruega, pero el azul y el rojo cambian de lugar."
+        }
+      ]
+    },
+    {
+      "id": "gb2-03-escondida",
+      "tipo": "bandera-escondida",
+      "titulo": "Bandera gemela escondida",
+      "instruccion": "Destapa cuadros y adivina con las menos pistas. Cuidado: su gemela también está en las opciones.",
+      "retos": [
+        {
+          "imagen_url": "https://flagcdn.com/w640/td.png",
+          "bandera": "td",
+          "opciones": [{ "label": "Rumania" }, { "label": "Andorra" }, { "label": "Chad" }, { "label": "Moldavia" }],
+          "respuesta": 2,
+          "explicacion": "¡Chad! Azul, amarillo y rojo sin escudo, con el azul más oscuro que el de Rumania. Andorra y Moldavia llevan escudo en medio."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w640/mc.png",
+          "bandera": "mc",
+          "opciones": [{ "label": "Mónaco" }, { "label": "Indonesia" }, { "label": "Polonia" }, { "label": "Singapur" }],
+          "respuesta": 0,
+          "explicacion": "¡Mónaco! Rojo arriba y blanco abajo, y más cuadradita que la de Indonesia. Polonia tiene el blanco arriba, y Singapur lleva una luna y estrellas."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w640/ci.png",
+          "bandera": "ci",
+          "opciones": [{ "label": "Irlanda" }, { "label": "Italia" }, { "label": "Níger" }, { "label": "Costa de Marfil" }],
+          "respuesta": 3,
+          "explicacion": "¡Costa de Marfil! Naranja junto al asta y verde al final. Irlanda empieza con el verde, y Níger tiene las franjas acostadas con un círculo naranja."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w640/nz.png",
+          "bandera": "nz",
+          "opciones": [{ "label": "Australia" }, { "label": "Nueva Zelanda" }, { "label": "Fiyi" }, { "label": "Reino Unido" }],
+          "respuesta": 1,
+          "explicacion": "¡Nueva Zelanda! Fondo azul oscuro, la bandera británica en la esquina y cuatro estrellas rojas. Australia tiene estrellas blancas, y Fiyi un fondo azul clarito con escudo."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w640/lu.png",
+          "bandera": "lu",
+          "opciones": [{ "label": "Países Bajos" }, { "label": "Paraguay" }, { "label": "Luxemburgo" }, { "label": "Croacia" }],
+          "respuesta": 2,
+          "explicacion": "¡Luxemburgo! Roja, blanca y azul celeste, sin escudo. Países Bajos tiene el azul oscuro, y Paraguay y Croacia llevan escudo."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w640/is.png",
+          "bandera": "is",
+          "opciones": [{ "label": "Noruega" }, { "label": "Suecia" }, { "label": "Finlandia" }, { "label": "Islandia" }],
+          "respuesta": 3,
+          "explicacion": "¡Islandia! Fondo azul y cruz roja con borde blanco. Noruega es al revés: fondo rojo y cruz azul."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w640/ml.png",
+          "bandera": "ml",
+          "opciones": [{ "label": "Senegal" }, { "label": "Mali" }, { "label": "Guinea" }, { "label": "Camerún" }],
+          "respuesta": 1,
+          "explicacion": "¡Mali! Verde, amarillo y rojo, sin nada más. Senegal tiene una estrella verde en medio, Guinea los colores al revés y Camerún una estrella amarilla."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w640/si.png",
+          "bandera": "si",
+          "opciones": [{ "label": "Eslovenia" }, { "label": "Eslovaquia" }, { "label": "Rusia" }, { "label": "Serbia" }],
+          "respuesta": 0,
+          "explicacion": "¡Eslovenia! Blanca, azul y roja, con un escudo pequeño arriba en la esquina: una montaña blanca y tres estrellas amarillas. Eslovaquia tiene un escudo rojo más grande, y Serbia empieza con el rojo arriba."
+        }
+      ]
+    },
+    {
+      "id": "gb2-03-memorama",
+      "tipo": "memoria",
+      "titulo": "Memorama de gemelas",
+      "voz": "Encuentra cada bandera con su país",
+      "parejas": [
+        { "a": { "imagen": "https://flagcdn.com/w160/td.png" }, "b": { "texto": "Chad" }, "bandera": "td" },
+        { "a": { "imagen": "https://flagcdn.com/w160/ro.png" }, "b": { "texto": "Rumania" }, "bandera": "ro" },
+        { "a": { "imagen": "https://flagcdn.com/w160/ie.png" }, "b": { "texto": "Irlanda" }, "bandera": "ie" },
+        { "a": { "imagen": "https://flagcdn.com/w160/ci.png" }, "b": { "texto": "Costa de Marfil" }, "bandera": "ci" },
+        { "a": { "imagen": "https://flagcdn.com/w160/id.png" }, "b": { "texto": "Indonesia" }, "bandera": "id" },
+        { "a": { "imagen": "https://flagcdn.com/w160/mc.png" }, "b": { "texto": "Mónaco" }, "bandera": "mc" }
+      ]
+    }
+  ]
+}

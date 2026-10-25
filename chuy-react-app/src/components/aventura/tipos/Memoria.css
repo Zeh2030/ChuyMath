@@ -17,6 +17,24 @@
 }
 .mem-grid[data-cartas="4"] { grid-template-columns: repeat(2, 1fr); max-width: 300px; }
 .mem-grid[data-cartas="6"] { grid-template-columns: repeat(3, 1fr); max-width: 420px; }
+.mem-grid[data-cartas="10"] { grid-template-columns: repeat(5, 1fr); }
+.mem-grid[data-cartas="16"] { max-width: 520px; }
+
+/* Cartas con imagen (banderas) o texto (nombres de países) */
+.mem-img {
+  width: 86%;
+  height: 86%;
+  object-fit: contain;
+  pointer-events: none;
+}
+.mem-texto {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2c3e50;
+  line-height: 1.15;
+  padding: 4px;
+  overflow-wrap: anywhere;
+}
 
 .mem-carta {
   aspect-ratio: 1 / 1;
@@ -81,4 +99,5 @@
 
 @media (max-width: 420px) {
   .mem-carta { font-size: 2rem; border-radius: 14px; }
+  .mem-texto { font-size: 0.8rem; }
 }

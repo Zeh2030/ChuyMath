@@ -496,6 +496,87 @@ Programa en `PROGRAMA_BANDERAS.md`. Documentos en `_geografia/banderas/` con
   `es`/`en` siguen siendo obligatorios (describen el par); del lado con imagen se ve la imagen.
 - **Banderas polémicas** (Alemania 1933-45, Confederación, URSS, sol naciente): sí entran,
   con descripción **neutral y breve** (qué país, qué años); nada racista; no se profundiza.
+- **Nunca solo lectura** (regla del papá, 2026-10-25): todo lo que se lee o se pregunta
+  enseña la bandera, un mapa o una imagen de lo que habla. Si se dice "Berlín era la
+  capital de Prusia", se ve la bandera prusiana y/o un mapa de Prusia. El validador lo exige:
+  - **mini-story**: cada párrafo con `"imagenes": [{ "url": "...", "pie": "Reino de Prusia" }]`
+    (1-4; sustituyen al emoji; flagcdn w320 si va una, w160 si van varias; mapas e históricas
+    de Wikimedia, original).
+  - **true-or-false**: `"imagen_url"` en cada reto.
+  - **image-picker**: `imagen_url` en el reto u opciones con `imagen`.
+  - `fill-the-gap`, `opcion-multiple` y `word-scramble` no se usan en Banderas (son solo texto).
+- **Aventuras movidas** de otra tarjeta (G0-09, G1-05, G1-08 venían de "Imágenes del Mundo"):
+  conservan su `id` para no perder el progreso, con `"legado": true` y `nivel` GB.
+
+### Juegos de la Fase 2
+
+**`pinta-bandera`** — pintar la bandera (de memoria, o copiando el modelo). Geometría en
+`chuy-react-app/src/data/plantillasBandera.js` (la usan el motor y el validador):
+
+```json
+{ "id": "gb2-01-pinta", "tipo": "pinta-bandera", "titulo": "Pinta la bandera",
+  "instruccion": "Elige un color y toca la parte de la bandera.",
+  "retos": [
+    { "nombre": "Francia", "bandera": "fr", "imagen_url": "https://flagcdn.com/w320/fr.png",
+      "plantilla": "franjas-v", "colores": ["#0055a4", "#ffffff", "#ef4135"],
+      "paleta": ["#0055a4", "#ffffff", "#ef4135", "#009246", "#000000"],
+      "explicacion": "Azul, blanco y rojo, empezando por el azul junto al asta." }
+  ] }
+```
+
+| `plantilla` | Regiones (orden de `colores`) | Opciones | Ejemplos |
+|---|---|---|---|
+| `franjas-v` | franjas de izquierda (asta) a derecha | `pesos`, `proporcion` | Francia, Italia, Irlanda, Bélgica, Rumania, Nigeria, Perú, México (+ emblema) |
+| `franjas-h` | franjas de arriba a abajo | `pesos` (Colombia `[2,1,1]`), `proporcion` | Alemania, Rusia, Países Bajos, Hungría, Polonia, Indonesia, Ucrania |
+| `cruz-nordica` | fondo, cruz | `borde: true` → fondo, borde, cruz | Suecia, Finlandia, Dinamarca; Noruega, Islandia (`borde`) |
+| `cruz-centrada` | fondo, cruz | `completa: true` (de lado a lado) | Suiza; Inglaterra (`completa`) |
+| `circulo` | fondo, círculo | `circulo_x`, `radio`, `proporcion` | Japón, Palaos, Bangladés (`circulo_x: 0.45, radio: 0.333, proporcion: 1.667`) |
+| `triangulo-asta` | franjas…, triángulo | `triangulo_largo` | República Checa |
+
+- `paleta`: 3 a 6 colores, incluye todos los correctos; distractores que no se parezcan
+  (el validador avisa si dos colores están demasiado cerca).
+- `emblema`: imagen fija encima, **no se pinta**: `{ "url": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Coat_of_arms_of_Mexico.svg", "x": 0.5, "y": 0.5, "ancho": 0.27 }`.
+- `mostrar_modelo: true` enseña la bandera de muestra (para la hija). Misión con
+  `leer_en_voz: true` lee la consigna.
+- Hex correctos para los niños: usa los colores oficiales aproximados (azul francés
+  `#0055a4`, rojo `#ef4135`…); lo importante es que la paleta no tenga dos tonos casi iguales.
+
+**`bandera-escondida`** — la bandera tapada por una cuadrícula 4×3; se adivina con las
+menos pistas. Misma forma que image-picker bandera → nombre, **3 o 4 opciones de texto**:
+
+```json
+{ "id": "gb2-02-escondida", "tipo": "bandera-escondida", "titulo": "Bandera escondida",
+  "instruccion": "Destapa cuadros y adivina con las menos pistas.",
+  "retos": [ { "imagen_url": "https://flagcdn.com/w640/se.png", "bandera": "se",
+    "opciones": [{ "label": "Suecia" }, { "label": "Noruega" }, { "label": "Finlandia" }, { "label": "Dinamarca" }],
+    "respuesta": 0, "explicacion": "…" } ] }
+```
+Usa `w640` (se ve nítida grande). Sin `palabra_es`.
+
+**`memoria`** con parejas (en geografía siempre `parejas`; Peques sigue con `emojis`):
+
+```json
+{ "id": "gb2-01-memorama", "tipo": "memoria", "titulo": "Memorama de banderas",
+  "voz": "Encuentra cada bandera con su país",
+  "parejas": [
+    { "a": { "imagen": "https://flagcdn.com/w160/fr.png" }, "b": { "texto": "Francia" }, "bandera": "fr" },
+    { "a": { "imagen": "https://flagcdn.com/w160/de.png" }, "b": { "texto": "Alemania" }, "bandera": "de" }
+  ] }
+```
+Sin `b` = dos cartas iguales (memorama de banderas iguales para la hija). 2 a 8 parejas;
+ninguna imagen o texto se repite entre parejas distintas.
+
+**`explorador-mapa` modo `elige-bandera`** — el país viene resaltado; se elige su bandera:
+
+```json
+{ "id": "gb2-01-elige", "tipo": "explorador-mapa", "mapa": "europa", "modo": "elige-bandera",
+  "titulo": "¿Cuál es su bandera?", "instruccion": "Mira el país naranja y toca su bandera.",
+  "retos": [ { "id": "250", "nombre": "Francia", "bandera": "fr",
+    "pregunta": "¿Cuál es la bandera del país naranja?",
+    "opciones": ["fr", "it", "be", "ie"] } ] }
+```
+3 o 4 `opciones` (códigos, o `{ "bandera_id", "bandera_url" }` para históricas, con el reto
+usando `bandera_id`); exactamente una es la correcta; la pregunta no nombra el país.
 
 ## Convenciones de naming
 

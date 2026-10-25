@@ -50,6 +50,8 @@ import ArmaLaPalabra from './tipos/ArmaLaPalabra';
 const PianoPrompter = React.lazy(() => import('./tipos/PianoPrompter'));
 import IdentificaNota from './tipos/IdentificaNota';
 const ExploradorMapa = React.lazy(() => import('./tipos/ExploradorMapa'));
+import PintaBandera from './tipos/PintaBandera';
+import BanderaEscondida from './tipos/BanderaEscondida';
 import { TIPOS_SILENCIO } from '../../data/musicaFondo';
 import { suprimir, liberar } from '../../utils/musicaFondo';
 import './MisionRenderer.css';
@@ -569,6 +571,13 @@ const MisionRenderer = ({
             />
           </React.Suspense>
         );
+
+      // Banderas (sub-sección de Geografía)
+      case 'pinta-bandera':
+        return <PintaBandera key={mision.id} mision={mision} onCompletar={onCompletar} />;
+
+      case 'bandera-escondida':
+        return <BanderaEscondida key={mision.id} mision={mision} onCompletar={onCompletar} />;
 
       default:
         return (

@@ -1,0 +1,609 @@
+{
+  "id": "GB2-02_familias-de-banderas",
+  "titulo": "Familias de banderas",
+  "descripcion": "Cruz nórdica, colores pan-eslavos, pan-árabes y panafricanos, la Cruz del Sur y la Union Jack: banderas que se parecen porque son familia",
+  "tipo": "banderas",
+  "materia": "geografia",
+  "tema": "familias",
+  "nivel": "GB2-02",
+  "misiones": [
+    {
+      "id": "gb2-02-historia",
+      "tipo": "mini-story",
+      "titulo": "Familias de banderas",
+      "instruccion": "Lee cada parte de la historia y responde la pregunta.",
+      "parrafos": [
+        {
+          "texto": "Algunas banderas se parecen porque son familia. La primera familia es la de la cruz nórdica: una cruz movida hacia el lado del asta. Empezó con Dinamarca, roja con cruz blanca. Se dice que es la bandera nacional más antigua que se sigue usando, y cuenta la leyenda que cayó del cielo durante una batalla en el año 1219. Sus vecinos la copiaron con otros colores: Suecia, Noruega, Finlandia e Islandia.",
+          "emoji": "🇩🇰",
+          "imagenes": [
+            {
+              "url": "https://flagcdn.com/w160/dk.png",
+              "pie": "Dinamarca"
+            },
+            {
+              "url": "https://flagcdn.com/w160/se.png",
+              "pie": "Suecia"
+            },
+            {
+              "url": "https://flagcdn.com/w160/no.png",
+              "pie": "Noruega"
+            },
+            {
+              "url": "https://flagcdn.com/w160/fi.png",
+              "pie": "Finlandia"
+            }
+          ],
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "En la cruz nórdica, la cruz está movida hacia el lado del ___.",
+              "opciones": [
+                "asta",
+                "suelo",
+                "centro",
+                "cielo"
+              ],
+              "respuesta": 0
+            },
+            {
+              "tipo": "true-or-false",
+              "oracion": "Según la leyenda, la bandera de Dinamarca cayó del cielo.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "La segunda familia usa los colores pan-eslavos: blanco, azul y rojo. Los eslavos son pueblos que hablan idiomas parecidos, como el ruso, el serbio o el checo. Se inspiraron en la bandera de Rusia, y en 1848, en una gran reunión en Praga, los tomaron como sus colores. Hoy los usan Rusia, Serbia, Eslovaquia, Eslovenia, Croacia y la República Checa.",
+          "emoji": "🇷🇺",
+          "imagenes": [
+            {
+              "url": "https://flagcdn.com/w160/ru.png",
+              "pie": "Rusia"
+            },
+            {
+              "url": "https://flagcdn.com/w160/rs.png",
+              "pie": "Serbia"
+            },
+            {
+              "url": "https://flagcdn.com/w160/sk.png",
+              "pie": "Eslovaquia"
+            },
+            {
+              "url": "https://flagcdn.com/w160/si.png",
+              "pie": "Eslovenia"
+            }
+          ],
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Los colores pan-eslavos son blanco, azul y ___.",
+              "opciones": [
+                "verde",
+                "rojo",
+                "amarillo",
+                "negro"
+              ],
+              "respuesta": 1
+            },
+            {
+              "tipo": "true-or-false",
+              "oracion": "Eslovaquia y Eslovenia tienen franjas blanca, azul y roja, y se distinguen por su escudo.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "La tercera familia usa los colores pan-árabes: rojo, blanco, negro y verde. Vienen de la bandera de la Gran Revuelta Árabe de 1916. Los usan Jordania, Palestina, Emiratos Árabes Unidos, Kuwait y Sudán. Egipto también es de la familia, pero solo usa tres: rojo, blanco y negro, con un águila dorada en medio.",
+          "emoji": "🇪🇬",
+          "imagenes": [
+            {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/2/24/Flag_of_Hejaz_%281917%29.svg",
+              "pie": "Gran Revuelta Árabe (1916)"
+            },
+            {
+              "url": "https://flagcdn.com/w160/jo.png",
+              "pie": "Jordania"
+            },
+            {
+              "url": "https://flagcdn.com/w160/ae.png",
+              "pie": "Emiratos Árabes Unidos"
+            },
+            {
+              "url": "https://flagcdn.com/w160/eg.png",
+              "pie": "Egipto"
+            }
+          ],
+          "preguntas": [
+            {
+              "tipo": "true-or-false",
+              "oracion": "La bandera de Egipto tiene una franja verde.",
+              "correcto": false,
+              "correccion": "Egipto usa rojo, blanco y negro, con un águila dorada en medio."
+            }
+          ]
+        },
+        {
+          "texto": "La cuarta familia usa los colores panafricanos: verde, amarillo y rojo. Se inspiraron en la bandera de Etiopía, un país que logró seguir libre cuando casi toda África estaba gobernada por países de Europa: en 1896 venció a Italia en la batalla de Adua. Cuando otros países africanos se independizaron, tomaron sus colores: Ghana, Senegal, Mali, Camerún y Guinea. La de Ghana lleva una estrella negra.",
+          "emoji": "🌍",
+          "imagenes": [
+            {
+              "url": "https://flagcdn.com/w160/et.png",
+              "pie": "Etiopía"
+            },
+            {
+              "url": "https://flagcdn.com/w160/gh.png",
+              "pie": "Ghana"
+            },
+            {
+              "url": "https://flagcdn.com/w160/sn.png",
+              "pie": "Senegal"
+            },
+            {
+              "url": "https://flagcdn.com/w160/ml.png",
+              "pie": "Mali"
+            }
+          ],
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "Los colores panafricanos se inspiraron en la bandera de ___.",
+              "opciones": [
+                "Egipto",
+                "Ghana",
+                "Etiopía",
+                "Kenia"
+              ],
+              "respuesta": 2
+            },
+            {
+              "tipo": "true-or-false",
+              "oracion": "La bandera de Ghana tiene una estrella negra.",
+              "correcto": true,
+              "correccion": null
+            }
+          ]
+        },
+        {
+          "texto": "La quinta familia mira al cielo. La Cruz del Sur es un grupo de estrellas que solo se ve bien desde la mitad sur del mundo, y sirve para encontrar el sur. Aparece en las banderas de Australia, Nueva Zelanda, Brasil, Papúa Nueva Guinea y Samoa. En la de Nueva Zelanda, sus estrellas son rojas con borde blanco.",
+          "emoji": "✨",
+          "imagenes": [
+            {
+              "url": "https://flagcdn.com/w160/nz.png",
+              "pie": "Nueva Zelanda"
+            },
+            {
+              "url": "https://flagcdn.com/w160/au.png",
+              "pie": "Australia"
+            },
+            {
+              "url": "https://flagcdn.com/w160/br.png",
+              "pie": "Brasil"
+            },
+            {
+              "url": "https://flagcdn.com/w160/pg.png",
+              "pie": "Papúa Nueva Guinea"
+            }
+          ],
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "La Cruz del Sur es un grupo de ___.",
+              "opciones": [
+                "islas",
+                "estrellas",
+                "nubes",
+                "montañas"
+              ],
+              "respuesta": 1
+            },
+            {
+              "tipo": "true-or-false",
+              "oracion": "En la bandera de Nueva Zelanda, las estrellas de la Cruz del Sur son amarillas.",
+              "correcto": false,
+              "correccion": "Son rojas con borde blanco."
+            }
+          ]
+        },
+        {
+          "texto": "La sexta familia lleva la Union Jack, la bandera del Reino Unido, en la esquina de arriba, junto al asta. Son países que fueron colonias británicas: Australia, Nueva Zelanda, Fiyi y Tuvalu. Dato curioso: en 2016 los neozelandeses votaron si querían cambiar su bandera por una con un helecho plateado... ¡y decidieron conservar la de siempre!",
+          "emoji": "🇬🇧",
+          "imagenes": [
+            {
+              "url": "https://flagcdn.com/w160/gb.png",
+              "pie": "Reino Unido (Union Jack)"
+            },
+            {
+              "url": "https://flagcdn.com/w160/nz.png",
+              "pie": "Nueva Zelanda"
+            },
+            {
+              "url": "https://flagcdn.com/w160/fj.png",
+              "pie": "Fiyi"
+            },
+            {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/3/38/NZ_flag_design_Silver_Fern_%28Black%2C_White_%26_Blue%29_by_Kyle_Lockwood.svg",
+              "pie": "Propuesta del helecho plateado (2016)"
+            }
+          ],
+          "preguntas": [
+            {
+              "tipo": "fill-the-gap",
+              "oracion": "En 2016, Nueva Zelanda votó para ___ su bandera.",
+              "opciones": [
+                "cambiar",
+                "conservar",
+                "esconder",
+                "vender"
+              ],
+              "respuesta": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gb2-02-parejas",
+      "tipo": "tap-the-pairs",
+      "titulo": "Cada familia con una bandera",
+      "instruccion": "Toca una familia y luego una bandera que pertenezca a ella.",
+      "retos": [
+        {
+          "pares": [
+            {
+              "es": "Cruz nórdica",
+              "en": "bandera de Islandia",
+              "en_img": "https://flagcdn.com/w160/is.png",
+              "bandera": "is"
+            },
+            {
+              "es": "Colores pan-eslavos",
+              "en": "bandera de Eslovaquia",
+              "en_img": "https://flagcdn.com/w160/sk.png",
+              "bandera": "sk"
+            },
+            {
+              "es": "Colores pan-árabes",
+              "en": "bandera de Jordania",
+              "en_img": "https://flagcdn.com/w160/jo.png",
+              "bandera": "jo"
+            },
+            {
+              "es": "Colores panafricanos",
+              "en": "bandera de Ghana",
+              "en_img": "https://flagcdn.com/w160/gh.png",
+              "bandera": "gh"
+            }
+          ]
+        },
+        {
+          "pares": [
+            {
+              "es": "Cruz del Sur",
+              "en": "bandera de Papúa Nueva Guinea",
+              "en_img": "https://flagcdn.com/w160/pg.png",
+              "bandera": "pg"
+            },
+            {
+              "es": "Union Jack en la esquina",
+              "en": "bandera de Tuvalu",
+              "en_img": "https://flagcdn.com/w160/tv.png",
+              "bandera": "tv"
+            },
+            {
+              "es": "Colores pan-eslavos",
+              "en": "bandera de Serbia",
+              "en_img": "https://flagcdn.com/w160/rs.png",
+              "bandera": "rs"
+            },
+            {
+              "es": "Colores pan-árabes",
+              "en": "bandera de Kuwait",
+              "en_img": "https://flagcdn.com/w160/kw.png",
+              "bandera": "kw"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gb2-02-intrusa",
+      "tipo": "image-picker",
+      "titulo": "¿Cuál NO es de la familia?",
+      "instruccion": "Tres banderas son de la misma familia y una es intrusa. Encuéntrala.",
+      "opciones_bandera": true,
+      "retos": [
+        {
+          "palabra_es": "¿Cuál NO tiene la cruz nórdica?",
+          "bandera": "ch",
+          "opciones": [
+            {
+              "imagen": "https://flagcdn.com/w320/se.png",
+              "label": "Suecia"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/no.png",
+              "label": "Noruega"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/ch.png",
+              "label": "Suiza"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/fi.png",
+              "label": "Finlandia"
+            }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Suiza! Tiene una cruz, pero en el centro y sin tocar los bordes. La cruz nórdica cruza toda la bandera y está movida hacia el asta."
+        },
+        {
+          "palabra_es": "¿Cuál NO tiene los colores pan-eslavos?",
+          "bandera": "nl",
+          "opciones": [
+            {
+              "imagen": "https://flagcdn.com/w320/ru.png",
+              "label": "Rusia"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/nl.png",
+              "label": "Países Bajos"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/sk.png",
+              "label": "Eslovaquia"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/si.png",
+              "label": "Eslovenia"
+            }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Países Bajos! Es la tramposa: también es roja, blanca y azul, pero no es un país eslavo. Su bandera viene de una más antigua, naranja, blanca y azul."
+        },
+        {
+          "palabra_es": "¿Cuál NO tiene los colores pan-árabes?",
+          "bandera": "dz",
+          "opciones": [
+            {
+              "imagen": "https://flagcdn.com/w320/ae.png",
+              "label": "Emiratos Árabes Unidos"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/ps.png",
+              "label": "Palestina"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/sd.png",
+              "label": "Sudán"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/dz.png",
+              "label": "Argelia"
+            }
+          ],
+          "respuesta": 3,
+          "explicacion": "¡Argelia! Es un país árabe, pero su bandera no usa esos colores: es verde y blanca, con una media luna y una estrella rojas."
+        },
+        {
+          "palabra_es": "¿Cuál NO tiene los colores panafricanos?",
+          "bandera": "ga",
+          "opciones": [
+            {
+              "imagen": "https://flagcdn.com/w320/gh.png",
+              "label": "Ghana"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/ga.png",
+              "label": "Gabón"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/sn.png",
+              "label": "Senegal"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/cm.png",
+              "label": "Camerún"
+            }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Gabón! Es africano, pero su bandera es verde, amarilla y azul: no tiene rojo."
+        },
+        {
+          "palabra_es": "¿Cuál NO tiene la Union Jack?",
+          "bandera": "ws",
+          "opciones": [
+            {
+              "imagen": "https://flagcdn.com/w320/au.png",
+              "label": "Australia"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/nz.png",
+              "label": "Nueva Zelanda"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/ws.png",
+              "label": "Samoa"
+            },
+            {
+              "imagen": "https://flagcdn.com/w320/fj.png",
+              "label": "Fiyi"
+            }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Samoa! Es roja con un rectángulo azul en la esquina y la Cruz del Sur, pero sin la Union Jack."
+        }
+      ]
+    },
+    {
+      "id": "gb2-02-escondida",
+      "tipo": "bandera-escondida",
+      "titulo": "Bandera escondida",
+      "instruccion": "Destapa cuadros y adivina con las menos pistas. ¡Todas las opciones son de la misma familia!",
+      "retos": [
+        {
+          "imagen_url": "https://flagcdn.com/w640/dk.png",
+          "bandera": "dk",
+          "opciones": [
+            {
+              "label": "Suecia"
+            },
+            {
+              "label": "Noruega"
+            },
+            {
+              "label": "Dinamarca"
+            },
+            {
+              "label": "Finlandia"
+            }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Dinamarca! Roja con cruz blanca, sin borde. Según la leyenda, cayó del cielo en 1219."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w640/sk.png",
+          "bandera": "sk",
+          "opciones": [
+            {
+              "label": "Eslovenia"
+            },
+            {
+              "label": "Eslovaquia"
+            },
+            {
+              "label": "Rusia"
+            },
+            {
+              "label": "Serbia"
+            }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Eslovaquia! Su escudo tiene una cruz doble blanca sobre tres montañas azules."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w640/hr.png",
+          "bandera": "hr",
+          "opciones": [
+            {
+              "label": "Croacia"
+            },
+            {
+              "label": "Serbia"
+            },
+            {
+              "label": "Eslovaquia"
+            },
+            {
+              "label": "Eslovenia"
+            }
+          ],
+          "respuesta": 0,
+          "explicacion": "¡Croacia! Su escudo de cuadros rojos y blancos lleva encima una corona hecha de cinco escuditos."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w640/jo.png",
+          "bandera": "jo",
+          "opciones": [
+            {
+              "label": "Palestina"
+            },
+            {
+              "label": "Sudán"
+            },
+            {
+              "label": "Kuwait"
+            },
+            {
+              "label": "Jordania"
+            }
+          ],
+          "respuesta": 3,
+          "explicacion": "¡Jordania! La estrella blanca del triángulo tiene siete puntas. Sin ella, sería casi igual a la de Palestina."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w640/ae.png",
+          "bandera": "ae",
+          "opciones": [
+            {
+              "label": "Kuwait"
+            },
+            {
+              "label": "Emiratos Árabes Unidos"
+            },
+            {
+              "label": "Jordania"
+            },
+            {
+              "label": "Sudán"
+            }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Emiratos Árabes Unidos! Una franja roja parada junto al asta y tres acostadas: verde, blanca y negra. El país está formado por siete emiratos."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w640/sn.png",
+          "bandera": "sn",
+          "opciones": [
+            {
+              "label": "Mali"
+            },
+            {
+              "label": "Guinea"
+            },
+            {
+              "label": "Camerún"
+            },
+            {
+              "label": "Senegal"
+            }
+          ],
+          "respuesta": 3,
+          "explicacion": "¡Senegal! Es como la de Mali, pero con una estrella verde en medio."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w640/gn.png",
+          "bandera": "gn",
+          "opciones": [
+            {
+              "label": "Guinea"
+            },
+            {
+              "label": "Mali"
+            },
+            {
+              "label": "Senegal"
+            },
+            {
+              "label": "Ghana"
+            }
+          ],
+          "respuesta": 0,
+          "explicacion": "¡Guinea! Rojo, amarillo y verde en franjas paradas: los colores de Mali, pero en el orden contrario."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w640/nz.png",
+          "bandera": "nz",
+          "opciones": [
+            {
+              "label": "Australia"
+            },
+            {
+              "label": "Nueva Zelanda"
+            },
+            {
+              "label": "Tuvalu"
+            },
+            {
+              "label": "Fiyi"
+            }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Nueva Zelanda! Cuatro estrellas rojas con borde blanco. Australia tiene estrellas blancas y una grande de siete puntas debajo de la Union Jack."
+        }
+      ]
+    }
+  ]
+}

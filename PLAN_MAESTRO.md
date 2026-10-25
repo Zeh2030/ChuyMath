@@ -348,7 +348,7 @@ como tema global (un tema oscuro cuesta ~48 overrides, ver §2).
   `chuymath-geo-dump.mjs` (Firestore vs disco).
 - ✅ Nombres del mapa en español en modo explorar (Fase 0 de Banderas, 2026-10-24).
 
-### 🚩 Banderas — Fase 0 y 1 CONSTRUIDAS (2026-10-24)
+### 🚩 Banderas — Fases 0, 1 y 2 CONSTRUIDAS (2026-10-24)
 Sub-sección de Geografía: tarjeta "Banderas" (`tipo: banderas`, carpeta
 `_geografia/banderas/`, niveles GB0-GB3 por edad y **GBH** históricas). Programa en
 `_geografia/PROGRAMA_BANDERAS.md` (16 actividades, decisiones del papá).
@@ -362,8 +362,15 @@ Sub-sección de Geografía: tarjeta "Banderas" (`tipo: banderas`, carpeta
   GBH-01 México e Hispanoamérica histórica, GBH-02 imperios de Europa, GBH-03 Asia.
   Polémicas con tono neutral y breve (decisión del papá). Historia de países va dentro.
 - Cada reto lleva `bandera` o `bandera_id` para el **álbum** (Fase 3).
-- **Siguiente**: Fase 2 (pinta la bandera, memorama con imágenes, mapa→bandera, bandera
-  escondida, GB0 para la hija, GB2 Europa/gemelas), Fase 3 (álbum + diseña tu bandera).
+- **Fase 2 (2026-10-24)**: motores `pinta-bandera` (plantillas SVG en
+  `src/data/plantillasBandera.js`: franjas-h/v con `pesos`, cruz nórdica con `borde`,
+  cruz centrada, círculo, triángulo del asta; `emblema` fijo; `mostrar_modelo` para la
+  hija), `bandera-escondida` (cuadrícula 4×3, estrellas por cuadros destapados), `memoria`
+  con `parejas` de imagen/texto (Peques sigue con emojis) y mapa `modo: elige-bandera`
+  (el país se resalta y se elige su bandera). Contenido: GB0-01 La bandera de México,
+  GB0-02 Banderas de colores (hija), GB2-01 Europa, GB2-02 Familias, GB2-03 Gemelas;
+  misiones nuevas en GB1-02, GB1-04 y GBH-02.
+- **Siguiente**: Fase 3 (álbum + diseña tu bandera); plantilla `canton` opcional.
 - Nota: la "aventura del día" ordena por nivel como texto: GB* sale después de G3.
 
 ---
@@ -471,7 +478,7 @@ Gemini (voz a voz en tiempo real, con interrupciones). Nada construido.
 | Matemáticas | Concurso: cronómetro, respuesta por pregunta, revisar claves, más simulacros | §4 + `_contenido/_valida.mjs` |
 | Plataforma | PIN de adulto, modo papás, temas | §2, §3 |
 | Geografía | G3 cuando aplique | §8 + `_geografia/PROGRAMA_GEOGRAFIA.md` + `_valida.mjs` |
-| Banderas | Fase 2 (juegos de "hacer", GB0, GB2) y Fase 3 (álbum) | §8 + `_geografia/PROGRAMA_BANDERAS.md` |
+| Banderas | Fase 3 (álbum + diseña tu bandera) | §8 + `_geografia/PROGRAMA_BANDERAS.md` |
 
 ---
 

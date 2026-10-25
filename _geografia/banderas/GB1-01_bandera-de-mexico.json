@@ -16,6 +16,12 @@
         {
           "texto": "La bandera de México tiene tres franjas verticales (paradas, de arriba abajo): verde, blanca y roja. En la escuela aprendemos lo que significa cada color: el verde es la esperanza, el blanco es la unidad y el rojo es la sangre de los héroes que lucharon por la patria.",
           "emoji": "🇲🇽",
+          "imagenes": [
+            {
+              "url": "https://flagcdn.com/w320/mx.png",
+              "pie": "México"
+            }
+          ],
           "preguntas": [
             {
               "tipo": "fill-the-gap",
@@ -28,6 +34,16 @@
         {
           "texto": "En la franja blanca está el escudo nacional. Cuenta la leyenda que los mexicas buscaban dónde vivir, y su dios les dijo que fundaran su ciudad donde vieran un águila parada sobre un nopal, devorando una serpiente. El nopal crecía sobre una piedra, en medio de un lago. ¡Ahí fundaron Tenochtitlan, donde hoy está la Ciudad de México!",
           "emoji": "🦅",
+          "imagenes": [
+            {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Coat_of_arms_of_Mexico.svg", "grande": true,
+              "pie": "Escudo de México"
+            },
+            {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Basin_of_Mexico_1519_map-es.svg", "grande": true,
+              "pie": "Tenochtitlan en el lago (1519)"
+            }
+          ],
           "preguntas": [
             {
               "tipo": "fill-the-gap",
@@ -46,6 +62,16 @@
         {
           "texto": "Cada 24 de febrero celebramos el Día de la Bandera. Ese día hay ceremonias en escuelas, plazas y cuarteles. Dato curioso: en varias ciudades hay banderas monumentales, tan grandes que se ven desde muy lejos, y se izan en un asta altísima.",
           "emoji": "📅",
+          "imagenes": [
+            {
+              "url": "https://flagcdn.com/w160/mx.png",
+              "pie": "México"
+            },
+            {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/1/1c/BANDERA_MONUMENTAL_EN_EL_ZOCALO.jpg", "grande": true,
+              "pie": "Bandera monumental del Zócalo"
+            }
+          ],
           "preguntas": [
             {
               "tipo": "fill-the-gap",
@@ -58,6 +84,12 @@
         {
           "texto": "En la escuela, casi siempre los lunes, hacemos honores a la bandera. La escolta la lleva marchando por el patio y todos la saludamos: nos ponemos firmes y colocamos la mano derecha extendida sobre el pecho, a la altura del corazón, con la palma hacia abajo. Después cantamos el Himno Nacional.",
           "emoji": "🏫",
+          "imagenes": [
+            {
+              "url": "https://flagcdn.com/w320/mx.png",
+              "pie": "México"
+            }
+          ],
           "preguntas": [
             {
               "tipo": "true-or-false",
@@ -78,6 +110,7 @@
         {
           "oracion": "La franja verde de la bandera de México va del lado del asta, a la izquierda.",
           "bandera": "mx",
+          "imagen_url": "https://flagcdn.com/w320/mx.png",
           "correcto": true,
           "correccion": null,
           "explicacion": "¡Verdadero! El orden es verde, blanco y rojo, empezando junto al asta."
@@ -85,6 +118,7 @@
         {
           "oracion": "Las franjas de la bandera de México son horizontales, acostadas una encima de otra.",
           "bandera": "mx",
+          "imagen_url": "https://flagcdn.com/w320/mx.png",
           "correcto": false,
           "correccion": "Las franjas son verticales: van de arriba abajo, una junto a otra.",
           "explicacion": "Falso. Banderas con franjas acostadas son, por ejemplo, la de Hungría (rojo, blanco y verde)."
@@ -92,6 +126,7 @@
         {
           "oracion": "La bandera de Italia tiene los mismos tres colores que la de México, pero no tiene escudo.",
           "bandera": "it",
+          "imagen_url": "https://flagcdn.com/w320/it.png",
           "correcto": true,
           "correccion": null,
           "explicacion": "¡Verdadero! Son casi gemelas. Además, la de Italia es más corta (México es más alargada) y su verde es más claro."
@@ -99,6 +134,7 @@
         {
           "oracion": "En el escudo de México, el águila está parada sobre una montaña.",
           "bandera": "mx",
+          "imagen_url": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Coat_of_arms_of_Mexico.svg",
           "correcto": false,
           "correccion": "El águila está parada sobre un nopal, que crece sobre una piedra en un lago.",
           "explicacion": "Falso. Es un nopal con tunas. Así lo cuenta la leyenda de la fundación de Tenochtitlan."
@@ -106,6 +142,7 @@
         {
           "oracion": "El color rojo de la bandera recuerda la sangre de los héroes de la patria.",
           "bandera": "mx",
+          "imagen_url": "https://flagcdn.com/w320/mx.png",
           "correcto": true,
           "correccion": null,
           "explicacion": "¡Verdadero! Verde = esperanza, blanco = unidad y rojo = la sangre de los héroes."
@@ -113,6 +150,7 @@
         {
           "oracion": "El Día de la Bandera se celebra el 16 de septiembre.",
           "bandera": "mx",
+          "imagen_url": "https://flagcdn.com/w320/mx.png",
           "correcto": false,
           "correccion": "El Día de la Bandera es el 24 de febrero.",
           "explicacion": "Falso. El 16 de septiembre celebramos la Independencia; la bandera tiene su día el 24 de febrero."

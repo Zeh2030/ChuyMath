@@ -58,7 +58,7 @@ export const tiposJuegos = [
   // Geografia
   { id: 'explorador-mapa', emoji: '🗺️', nombre: 'Explora el Mapa', tipo: 'explorador-mapa', descripcion: 'Encuentra paises en mapas reales', materia: 'geografia' },
   { id: 'geografia-banderas', emoji: '🚩', nombre: 'Banderas', tipo: 'banderas', descripcion: 'Banderas del mundo, de estados y de la historia', materia: 'geografia' },
-  { id: 'geografia-image-picker', emoji: '🏞️', nombre: 'Imágenes del Mundo', tipo: 'image-picker', descripcion: 'Identifica banderas, monumentos y paisajes', materia: 'geografia' },
+  { id: 'geografia-image-picker', emoji: '🏞️', nombre: 'Imágenes del Mundo', tipo: 'image-picker', descripcion: 'Identifica monumentos, paisajes y océanos', materia: 'geografia' },
   { id: 'geografia-tap-the-pairs', emoji: '🔗', nombre: 'Empareja Pais-Capital', tipo: 'tap-the-pairs', descripcion: 'Empareja paises con sus capitales y banderas', materia: 'geografia' },
   { id: 'geografia-fill-the-gap', emoji: '🔲', nombre: 'Completa Capitales', tipo: 'fill-the-gap', descripcion: 'Completa frases sobre paises y capitales', materia: 'geografia' },
   { id: 'geografia-true-or-false', emoji: '✅', nombre: 'Datos Verdadero/Falso', tipo: 'true-or-false', descripcion: 'Datos curiosos sobre el mundo', materia: 'geografia' },

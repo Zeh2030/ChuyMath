@@ -16,6 +16,7 @@ const MiniStory = ({ mision, onCompletar, materia = null }) => {
   const [estadoPregunta, setEstadoPregunta] = useState('jugando');
   const [mostrarTraduccion, setMostrarTraduccion] = useState(false);
   const [completado, setCompletado] = useState(false);
+  const [ampliada, setAmpliada] = useState(null);
 
   const parrafo = parrafos[parrafoActual];
   const pregunta = parrafo?.preguntas?.[preguntaActual];
@@ -189,7 +190,21 @@ const MiniStory = ({ mision, onCompletar, materia = null }) => {
 
       {/* Story paragraph */}
       <div className="ms-paragraph">
-        {parrafo.emoji && <div className="ms-emoji">{parrafo.emoji}</div>}
+        {/* imagenes: [{ url, pie?, grande? }] — banderas, mapas y fotos de lo que
+            cuenta el párrafo (Banderas nunca es solo lectura). Sustituyen al emoji.
+            `grande` (mapas, fotos) se dibuja más alto; tocar cualquiera la amplía. */}
+        {parrafo.imagenes?.length > 0 ? (
+          <div className={`ms-imagenes ${parrafo.imagenes.length === 1 ? 'ms-imagenes-una' : ''}`}>
+            {parrafo.imagenes.map(img => (
+              <figure key={img.url} className="ms-figura">
+                <button type="button" className="ms-img-btn" onClick={() => setAmpliada(img)} title="Ver en grande">
+                  <img src={img.url} alt={img.pie || ''} className={`ms-img ${img.grande ? 'ms-img-grande' : ''}`} />
+                </button>
+                {img.pie && <figcaption>{img.pie}</figcaption>}
+              </figure>
+            ))}
+          </div>
+        ) : parrafo.emoji && <div className="ms-emoji">{parrafo.emoji}</div>}
 
         <div className="ms-text-area">
           <p className="ms-text">{parrafo.texto}</p>
@@ -230,6 +245,14 @@ const MiniStory = ({ mision, onCompletar, materia = null }) => {
                   : '¡Terminar historia!')}
             </button>
           )}
+        </div>
+      )}
+
+      {ampliada && (
+        <div className="ms-ampliada" onClick={() => setAmpliada(null)} role="dialog">
+          <img src={ampliada.url} alt={ampliada.pie || ''} />
+          {ampliada.pie && <p>{ampliada.pie}</p>}
+          <span className="ms-ampliada-cerrar">✕</span>
         </div>
       )}
     </div>

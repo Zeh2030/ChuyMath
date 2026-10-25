@@ -1,0 +1,480 @@
+{
+  "id": "GB2-01_banderas-de-europa",
+  "titulo": "Banderas de Europa",
+  "descripcion": "Banderas gemelas, primas y casi iguales de Europa: distínguelas, encuéntralas en el mapa y píntalas de memoria",
+  "tipo": "banderas",
+  "materia": "geografia",
+  "tema": "europa",
+  "nivel": "GB2-01",
+  "misiones": [
+    {
+      "id": "gb2-01-de-quien-es",
+      "tipo": "image-picker",
+      "titulo": "¿De qué país es esta bandera?",
+      "instruccion": "Ojo: las opciones tienen banderas muy parecidas. Mira los detalles.",
+      "retos": [
+        {
+          "imagen_url": "https://flagcdn.com/w320/ie.png",
+          "bandera": "ie",
+          "opciones": [
+            { "label": "Italia" },
+            { "label": "Irlanda" },
+            { "label": "Costa de Marfil" },
+            { "label": "Hungría" }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Irlanda! Verde, blanco y naranja, con el verde junto al asta. Costa de Marfil tiene los mismos colores, pero al revés: empieza por el naranja."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/ro.png",
+          "bandera": "ro",
+          "opciones": [
+            { "label": "Chad" },
+            { "label": "Andorra" },
+            { "label": "Moldavia" },
+            { "label": "Rumania" }
+          ],
+          "respuesta": 3,
+          "explicacion": "¡Rumania! Es casi idéntica a la de Chad, en África: la de Chad tiene el azul un poquito más oscuro. Andorra y Moldavia llevan escudo en medio."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/nl.png",
+          "bandera": "nl",
+          "opciones": [
+            { "label": "Luxemburgo" },
+            { "label": "Países Bajos" },
+            { "label": "Francia" },
+            { "label": "Rusia" }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Países Bajos! Rojo, blanco y azul oscuro. Dato curioso: al principio la franja de arriba era naranja; con el tiempo se cambió por rojo."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/be.png",
+          "bandera": "be",
+          "opciones": [
+            { "label": "Alemania" },
+            { "label": "Rumania" },
+            { "label": "Bélgica" },
+            { "label": "Andorra" }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Bélgica! Negro, amarillo y rojo en franjas paradas; Alemania usa casi los mismos colores, pero acostados. Dato curioso: la bandera belga es casi cuadrada, 13 de alto por 15 de largo."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/lt.png",
+          "bandera": "lt",
+          "opciones": [
+            { "label": "Lituania" },
+            { "label": "Bolivia" },
+            { "label": "Letonia" },
+            { "label": "Estonia" }
+          ],
+          "respuesta": 0,
+          "explicacion": "¡Lituania! Amarillo, verde y rojo. Bolivia tiene los mismos colores en otro orden: rojo, amarillo y verde. Dato curioso: en 1990 Lituania fue la primera en separarse de la Unión Soviética."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/ee.png",
+          "bandera": "ee",
+          "opciones": [
+            { "label": "Letonia" },
+            { "label": "Finlandia" },
+            { "label": "Lituania" },
+            { "label": "Estonia" }
+          ],
+          "respuesta": 3,
+          "explicacion": "¡Estonia! Azul, negro y blanco. Se dice que el azul es el cielo, el negro la tierra y el blanco la nieve."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/dk.png",
+          "bandera": "dk",
+          "opciones": [
+            { "label": "Suiza" },
+            { "label": "Noruega" },
+            { "label": "Dinamarca" },
+            { "label": "Suecia" }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Dinamarca! Roja con cruz blanca movida hacia el asta. Los daneses le dicen Dannebrog, que quiere decir «tela danesa»."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/fi.png",
+          "bandera": "fi",
+          "opciones": [
+            { "label": "Suecia" },
+            { "label": "Finlandia" },
+            { "label": "Islandia" },
+            { "label": "Grecia" }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Finlandia! Blanca con cruz azul. Se dice que el azul son sus lagos y el blanco la nieve. ¡Finlandia tiene más de 180,000 lagos!"
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/is.png",
+          "bandera": "is",
+          "opciones": [
+            { "label": "Noruega" },
+            { "label": "Suecia" },
+            { "label": "Finlandia" },
+            { "label": "Islandia" }
+          ],
+          "respuesta": 3,
+          "explicacion": "¡Islandia! Es la de Noruega con los colores cambiados: azul con cruz roja de borde blanco. Se dice que el rojo es el fuego de sus volcanes y el blanco, su hielo."
+        },
+        {
+          "imagen_url": "https://flagcdn.com/w320/hr.png",
+          "bandera": "hr",
+          "opciones": [
+            { "label": "Eslovenia" },
+            { "label": "Croacia" },
+            { "label": "Serbia" },
+            { "label": "Eslovaquia" }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Croacia! Rojo, blanco y azul, con un escudo de cuadros rojos y blancos, como un tablero de ajedrez."
+        }
+      ]
+    },
+    {
+      "id": "gb2-01-cual-es",
+      "tipo": "image-picker",
+      "titulo": "¿Cuál es su bandera?",
+      "instruccion": "Lee el nombre del país y toca su bandera. ¡Hay gemelas tramposas!",
+      "opciones_bandera": true,
+      "retos": [
+        {
+          "palabra_es": "¿Cuál es la bandera de Austria?",
+          "bandera": "at",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/lv.png", "label": "Letonia" },
+            { "imagen": "https://flagcdn.com/w320/pl.png", "label": "Polonia" },
+            { "imagen": "https://flagcdn.com/w320/at.png", "label": "Austria" },
+            { "imagen": "https://flagcdn.com/w320/mc.png", "label": "Mónaco" }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Austria! Rojo, blanco y rojo, con un rojo brillante. La de Letonia es parecida, pero su rojo es más oscuro y su franja blanca, más delgada."
+        },
+        {
+          "palabra_es": "¿Cuál es la bandera de Hungría?",
+          "bandera": "hu",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/bg.png", "label": "Bulgaria" },
+            { "imagen": "https://flagcdn.com/w320/hu.png", "label": "Hungría" },
+            { "imagen": "https://flagcdn.com/w320/it.png", "label": "Italia" },
+            { "imagen": "https://flagcdn.com/w320/ie.png", "label": "Irlanda" }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Hungría! Rojo, blanco y verde, en franjas acostadas. Italia usa los mismos colores, pero en franjas paradas y empezando por el verde."
+        },
+        {
+          "palabra_es": "¿Cuál es la bandera de Polonia?",
+          "bandera": "pl",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/mc.png", "label": "Mónaco" },
+            { "imagen": "https://flagcdn.com/w320/id.png", "label": "Indonesia" },
+            { "imagen": "https://flagcdn.com/w320/at.png", "label": "Austria" },
+            { "imagen": "https://flagcdn.com/w320/pl.png", "label": "Polonia" }
+          ],
+          "respuesta": 3,
+          "explicacion": "¡Polonia! Blanco arriba y rojo abajo. Mónaco e Indonesia son al revés, rojo arriba y blanco abajo, y casi idénticas entre ellas: solo cambia lo largo de la bandera."
+        },
+        {
+          "palabra_es": "¿Cuál es la bandera de Luxemburgo?",
+          "bandera": "lu",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/lu.png", "label": "Luxemburgo" },
+            { "imagen": "https://flagcdn.com/w320/nl.png", "label": "Países Bajos" },
+            { "imagen": "https://flagcdn.com/w320/ru.png", "label": "Rusia" },
+            { "imagen": "https://flagcdn.com/w320/hr.png", "label": "Croacia" }
+          ],
+          "respuesta": 0,
+          "explicacion": "¡Luxemburgo! Es casi igual a la de Países Bajos, pero su azul es más clarito, como celeste, y es un poco más larga."
+        },
+        {
+          "palabra_es": "¿Cuál es la bandera de Eslovenia?",
+          "bandera": "si",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/sk.png", "label": "Eslovaquia" },
+            { "imagen": "https://flagcdn.com/w320/ru.png", "label": "Rusia" },
+            { "imagen": "https://flagcdn.com/w320/si.png", "label": "Eslovenia" },
+            { "imagen": "https://flagcdn.com/w320/rs.png", "label": "Serbia" }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Eslovenia! Su escudo, arriba junto al asta, dibuja el monte Triglav, la montaña más alta del país, con sus tres picos."
+        },
+        {
+          "palabra_es": "¿Cuál es la bandera de Grecia?",
+          "bandera": "gr",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/uy.png", "label": "Uruguay" },
+            { "imagen": "https://flagcdn.com/w320/gr.png", "label": "Grecia" },
+            { "imagen": "https://flagcdn.com/w320/fi.png", "label": "Finlandia" },
+            { "imagen": "https://flagcdn.com/w320/is.png", "label": "Islandia" }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Grecia! Nueve franjas azules y blancas y una cruz en la esquina. Se dice que las nueve franjas son las sílabas de su lema «Libertad o muerte». Uruguay también tiene nueve franjas, pero con un sol."
+        },
+        {
+          "palabra_es": "¿Cuál es la bandera de Portugal?",
+          "bandera": "pt",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/es.png", "label": "España" },
+            { "imagen": "https://flagcdn.com/w320/by.png", "label": "Bielorrusia" },
+            { "imagen": "https://flagcdn.com/w320/ad.png", "label": "Andorra" },
+            { "imagen": "https://flagcdn.com/w320/pt.png", "label": "Portugal" }
+          ],
+          "respuesta": 3,
+          "explicacion": "¡Portugal! Verde y rojo, con una esfera armilar dorada: un instrumento que usaban los navegantes. Recuerda los grandes viajes portugueses por el mar."
+        },
+        {
+          "palabra_es": "¿Cuál es la bandera de Ucrania?",
+          "bandera": "ua",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/se.png", "label": "Suecia" },
+            { "imagen": "https://flagcdn.com/w320/ua.png", "label": "Ucrania" },
+            { "imagen": "https://flagcdn.com/w320/ba.png", "label": "Bosnia y Herzegovina" },
+            { "imagen": "https://flagcdn.com/w320/ro.png", "label": "Rumania" }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Ucrania! Azul arriba y amarillo abajo. Se dice que es el cielo azul sobre los campos de trigo."
+        }
+      ]
+    },
+    {
+      "id": "gb2-01-mapa",
+      "tipo": "explorador-mapa",
+      "mapa": "europa",
+      "modo": "quiz",
+      "pregunta_bandera": true,
+      "titulo": "La bandera y su lugar",
+      "instruccion": "Mira la bandera y toca su país en el mapa de Europa. Usa ➕ y ➖ para acercarte.",
+      "retos": [
+        {
+          "id": "250",
+          "nombre": "Francia",
+          "bandera": "fr",
+          "pregunta": "¿De qué país es esta bandera? Tócalo en el mapa. Pista: su forma parece un hexágono.",
+          "dato": "Los franceses le dicen a su país «el Hexágono» por su forma. Su capital es París, la ciudad de la Torre Eiffel."
+        },
+        {
+          "id": "724",
+          "nombre": "España",
+          "bandera": "es",
+          "pregunta": "¿De qué país es esta bandera? Tócalo en el mapa. Pista: comparte una península con su vecino del oeste.",
+          "dato": "En la bandera de España, la franja amarilla del centro es el doble de ancha que cada franja roja."
+        },
+        {
+          "id": "826",
+          "nombre": "Reino Unido",
+          "bandera": "gb",
+          "pregunta": "¿De qué país es esta bandera? Tócalo en el mapa. Pista: su isla principal es la más grande de Europa.",
+          "dato": "La Union Jack junta tres cruces: la de Inglaterra, la de Escocia y la de San Patricio, de Irlanda."
+        },
+        {
+          "id": "300",
+          "nombre": "Grecia",
+          "bandera": "gr",
+          "pregunta": "¿De qué país es esta bandera? Tócalo en el mapa. Pista: está al sureste, rodeado de muchísimas islas.",
+          "dato": "En la antigua Grecia nacieron los Juegos Olímpicos, hace casi 2,800 años."
+        },
+        {
+          "id": "578",
+          "nombre": "Noruega",
+          "bandera": "no",
+          "pregunta": "¿De qué país es esta bandera? Tócalo en el mapa. Pista: es largo, está muy al norte y su costa está llena de fiordos.",
+          "dato": "En el norte de Noruega, en verano, el sol no se mete en toda la noche: es el sol de medianoche."
+        },
+        {
+          "id": "616",
+          "nombre": "Polonia",
+          "bandera": "pl",
+          "pregunta": "¿De qué país es esta bandera? Tócalo en el mapa. Pista: es el vecino del este de Alemania.",
+          "dato": "El blanco y el rojo vienen de su escudo: un águila blanca sobre fondo rojo."
+        },
+        {
+          "id": "804",
+          "nombre": "Ucrania",
+          "bandera": "ua",
+          "pregunta": "¿De qué país es esta bandera? Tócalo en el mapa. Pista: es el país más grande que está completito dentro de Europa.",
+          "dato": "Ucrania es uno de los países que más aceite de girasol produce en el mundo."
+        },
+        {
+          "id": "380",
+          "nombre": "Italia",
+          "bandera": "it",
+          "pregunta": "¿De qué país es esta bandera? Tócalo en el mapa. Pista: tiene forma de bota.",
+          "dato": "Dentro de Roma, su capital, hay otro país: el Vaticano, el más pequeño del mundo."
+        }
+      ]
+    },
+    {
+      "id": "gb2-01-elige",
+      "tipo": "explorador-mapa",
+      "mapa": "europa",
+      "modo": "elige-bandera",
+      "titulo": "¿Cuál es su bandera?",
+      "instruccion": "Mira el país naranja y toca su bandera. ¡Todas se parecen!",
+      "retos": [
+        {
+          "id": "276",
+          "nombre": "Alemania",
+          "bandera": "de",
+          "pregunta": "¿Cuál es la bandera del país naranja? Pista: es el país con más habitantes de la Unión Europea.",
+          "opciones": ["be", "de", "ee", "lt"],
+          "dato": "Negro, rojo y dorado, en franjas acostadas. La de Bélgica tiene casi los mismos colores, pero parados."
+        },
+        {
+          "id": "752",
+          "nombre": "Suecia",
+          "bandera": "se",
+          "pregunta": "¿Cuál es la bandera del país naranja? Pista: está entre Noruega y Finlandia.",
+          "opciones": ["no", "fi", "se", "dk"],
+          "dato": "Azul con cruz amarilla. Sus colores vienen de su escudo: tres coronas doradas sobre fondo azul."
+        },
+        {
+          "id": "756",
+          "nombre": "Suiza",
+          "bandera": "ch",
+          "pregunta": "¿Cuál es la bandera del país naranja? Pista: no tiene mar, está en los Alpes y es famoso por sus relojes.",
+          "opciones": ["dk", "ch", "at", "ge"],
+          "dato": "Es una de las dos únicas banderas de país que son cuadradas. La otra es la del Vaticano."
+        },
+        {
+          "id": "203",
+          "nombre": "República Checa",
+          "bandera": "cz",
+          "pregunta": "¿Cuál es la bandera del país naranja? Pista: su capital es Praga.",
+          "opciones": ["si", "pl", "sk", "cz"],
+          "dato": "Blanco, rojo y un triángulo azul junto al asta. De estas cuatro, es la única con triángulo."
+        },
+        {
+          "id": "688",
+          "nombre": "Serbia",
+          "bandera": "rs",
+          "pregunta": "¿Cuál es la bandera del país naranja? Pista: su capital es Belgrado.",
+          "opciones": ["ru", "rs", "sk", "si"],
+          "dato": "Rojo, azul y blanco, de arriba a abajo: los colores de Rusia, pero volteados, y con un escudo con un águila de dos cabezas."
+        },
+        {
+          "id": "100",
+          "nombre": "Bulgaria",
+          "bandera": "bg",
+          "pregunta": "¿Cuál es la bandera del país naranja? Pista: está junto al mar Negro, al sur de Rumania.",
+          "opciones": ["hu", "ir", "bg", "lt"],
+          "dato": "Blanco, verde y rojo, de arriba a abajo. Hungría es rojo, blanco y verde: ¡mismos colores, otro orden!"
+        },
+        {
+          "id": "498",
+          "nombre": "Moldavia",
+          "bandera": "md",
+          "pregunta": "¿Cuál es la bandera del país naranja? Pista: está entre Rumania y Ucrania, y no tiene mar.",
+          "opciones": ["ro", "td", "ad", "md"],
+          "dato": "Es casi igual a la de Rumania, su vecina, pero lleva un escudo con un águila y la cabeza de un uro, un toro salvaje que ya no existe."
+        },
+        {
+          "id": "428",
+          "nombre": "Letonia",
+          "bandera": "lv",
+          "pregunta": "¿Cuál es la bandera del país naranja? Pista: es el de en medio de los tres países bálticos.",
+          "opciones": ["pl", "at", "mc", "lv"],
+          "dato": "Su rojo es oscuro, casi color vino, y la franja blanca es delgadita. Por eso se distingue de la de Austria."
+        }
+      ]
+    },
+    {
+      "id": "gb2-01-pinta",
+      "tipo": "pinta-bandera",
+      "titulo": "Pinta la bandera de memoria",
+      "instruccion": "Elige un color y toca la parte de la bandera. ¡Sin ver el modelo!",
+      "retos": [
+        {
+          "nombre": "Francia",
+          "bandera": "fr",
+          "imagen_url": "https://flagcdn.com/w320/fr.png",
+          "plantilla": "franjas-v",
+          "colores": ["#0055a4", "#ffffff", "#ef4135"],
+          "paleta": ["#ef4135", "#009246", "#0055a4", "#000000", "#ffffff"],
+          "explicacion": "Azul, blanco y rojo, empezando por el azul junto al asta. Se le llama «la tricolor»."
+        },
+        {
+          "nombre": "Italia",
+          "bandera": "it",
+          "imagen_url": "https://flagcdn.com/w320/it.png",
+          "plantilla": "franjas-v",
+          "colores": ["#009246", "#ffffff", "#ce2b37"],
+          "paleta": ["#ffffff", "#0055a4", "#ce2b37", "#ffce00", "#009246"],
+          "explicacion": "Verde, blanco y rojo, empezando por el verde. Se inspiró en la tricolor de Francia."
+        },
+        {
+          "nombre": "Alemania",
+          "bandera": "de",
+          "imagen_url": "https://flagcdn.com/w320/de.png",
+          "plantilla": "franjas-h",
+          "colores": ["#000000", "#dd0000", "#ffce00"],
+          "paleta": ["#dd0000", "#ffffff", "#ffce00", "#0055a4", "#000000"],
+          "explicacion": "Negro arriba, rojo en medio y dorado abajo. La usa desde 1949."
+        },
+        {
+          "nombre": "Países Bajos",
+          "bandera": "nl",
+          "imagen_url": "https://flagcdn.com/w320/nl.png",
+          "plantilla": "franjas-h",
+          "colores": ["#ae1c28", "#ffffff", "#21468b"],
+          "paleta": ["#21468b", "#ff7f00", "#ffffff", "#009246", "#ae1c28"],
+          "explicacion": "Rojo, blanco y azul, de arriba a abajo. Antes, la franja de arriba era naranja, el color de su familia real, la Casa de Orange. ¡Por eso los holandeses se visten de naranja en los partidos!"
+        },
+        {
+          "nombre": "Suecia",
+          "bandera": "se",
+          "imagen_url": "https://flagcdn.com/w320/se.png",
+          "plantilla": "cruz-nordica",
+          "colores": ["#006aa7", "#fecc00"],
+          "paleta": ["#c8102e", "#006aa7", "#ffffff", "#fecc00", "#000000"],
+          "explicacion": "Fondo azul y cruz amarilla, movida hacia el asta: es una cruz nórdica."
+        },
+        {
+          "nombre": "Noruega",
+          "bandera": "no",
+          "imagen_url": "https://flagcdn.com/w320/no.png",
+          "plantilla": "cruz-nordica",
+          "borde": true,
+          "colores": ["#ba0c2f", "#ffffff", "#00205b"],
+          "paleta": ["#00205b", "#fecc00", "#ba0c2f", "#009246", "#ffffff"],
+          "explicacion": "Fondo rojo, borde blanco y cruz azul. Si cambias el rojo por azul y el azul por rojo, ¡te sale la de Islandia!"
+        },
+        {
+          "nombre": "Suiza",
+          "bandera": "ch",
+          "imagen_url": "https://flagcdn.com/w320/ch.png",
+          "plantilla": "cruz-centrada",
+          "colores": ["#da291c", "#ffffff"],
+          "paleta": ["#ffffff", "#000000", "#da291c", "#0055a4", "#ffce00"],
+          "explicacion": "Fondo rojo y cruz blanca en el centro, sin tocar los bordes. ¡Y es cuadrada!"
+        },
+        {
+          "nombre": "Irlanda",
+          "bandera": "ie",
+          "imagen_url": "https://flagcdn.com/w320/ie.png",
+          "plantilla": "franjas-v",
+          "colores": ["#169b62", "#ffffff", "#ff883e"],
+          "paleta": ["#dd0000", "#169b62", "#0055a4", "#ffffff", "#ff883e"],
+          "explicacion": "Verde, blanco y naranja. El verde y el naranja son dos grupos de irlandeses, y el blanco, la paz entre ellos."
+        }
+      ]
+    },
+    {
+      "id": "gb2-01-memorama",
+      "tipo": "memoria",
+      "titulo": "Memorama de banderas de Europa",
+      "voz": "Encuentra cada bandera con su país",
+      "parejas": [
+        { "a": { "imagen": "https://flagcdn.com/w160/gr.png" }, "b": { "texto": "Grecia" }, "bandera": "gr" },
+        { "a": { "imagen": "https://flagcdn.com/w160/at.png" }, "b": { "texto": "Austria" }, "bandera": "at" },
+        { "a": { "imagen": "https://flagcdn.com/w160/dk.png" }, "b": { "texto": "Dinamarca" }, "bandera": "dk" },
+        { "a": { "imagen": "https://flagcdn.com/w160/be.png" }, "b": { "texto": "Bélgica" }, "bandera": "be" },
+        { "a": { "imagen": "https://flagcdn.com/w160/hu.png" }, "b": { "texto": "Hungría" }, "bandera": "hu" },
+        { "a": { "imagen": "https://flagcdn.com/w160/hr.png" }, "b": { "texto": "Croacia" }, "bandera": "hr" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,185 @@
+.pb-container {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 8px;
+  text-align: center;
+}
+
+.pb-progreso {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.pb-punto {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #dfe6e9;
+}
+.pb-punto.hecho { background: #2ecc71; }
+.pb-punto.actual { background: #3498db; transform: scale(1.3); }
+
+.pb-consigna {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin: 0 0 10px;
+}
+
+.pb-modelo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  color: #636e72;
+  font-weight: 600;
+}
+.pb-modelo img {
+  height: 44px;
+  width: auto;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18);
+}
+
+/* La bandera para pintar: tocar sin el retraso del doble toque en iPhone */
+.pb-svg {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  margin: 0 auto 14px;
+  touch-action: manipulation;
+  border-radius: 6px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.pb-region {
+  cursor: pointer;
+  stroke: none;
+  transition: fill 0.15s;
+}
+.pb-region.pb-sin-pintar {
+  stroke: #b2bec3;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.pb-svg.pb-correcto .pb-region { cursor: default; }
+
+.pb-marco {
+  stroke: rgba(0, 0, 0, 0.25);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.pb-mal {
+  font-size: 34px;
+  animation: pb-latido 0.8s ease-in-out infinite;
+}
+
+@keyframes pb-latido {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+.pb-angostas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.pb-region-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 6px 12px;
+  border: 2px solid #c8d6e5;
+  border-radius: 12px;
+  background: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pb-muestra {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  background: repeating-linear-gradient(45deg, #f4f6f8 0 4px, #d5dbe1 4px 7px);
+}
+
+.pb-paleta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.pb-paleta.pb-parpadeo { animation: pb-parpadeo 0.3s ease 2; }
+
+@keyframes pb-parpadeo {
+  50% { transform: scale(1.06); }
+}
+
+.pb-color {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 3px solid rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.1s;
+}
+.pb-color:active { transform: scale(0.94); }
+.pb-color.pb-color-sel {
+  border-color: #2c3e50;
+  box-shadow: 0 0 0 4px #ffd93d, 0 2px 6px rgba(0, 0, 0, 0.2);
+  transform: scale(1.08);
+}
+
+.pb-aviso {
+  color: #c0392b;
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+
+.pb-btn {
+  border: none;
+  border-radius: 14px;
+  padding: 12px 26px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+}
+.pb-comprobar { background: linear-gradient(135deg, #3498db, #2980b9); }
+.pb-comprobar:disabled { opacity: 0.45; cursor: default; }
+.pb-siguiente { background: linear-gradient(135deg, #2ecc71, #27ae60); margin-top: 8px; }
+
+.pb-resultado { margin-top: 6px; }
+.pb-bien { font-size: 1.2rem; font-weight: 700; color: #27ae60; margin: 0 0 8px; }
+.pb-real {
+  height: 90px;
+  width: auto;
+  max-width: 100%;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18);
+}
+.pb-explicacion {
+  background: #f4f8fb;
+  border-radius: 12px;
+  padding: 10px 14px;
+  color: #2c3e50;
+  text-align: left;
+}
+
+.pb-fin { padding: 30px 10px; }
+.pb-fin-emoji { font-size: 4rem; }
+
+@media (max-width: 420px) {
+  .pb-consigna { font-size: 1.1rem; }
+  .pb-color { width: 46px; height: 46px; }
+}

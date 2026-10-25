@@ -1,0 +1,147 @@
+{
+  "id": "GB0-02_banderas-de-colores",
+  "titulo": "Banderas de Colores",
+  "descripcion": "Banderas con un sol rojo, una hoja, estrellas y una cruz",
+  "tipo": "banderas",
+  "materia": "geografia",
+  "tema": "colores",
+  "nivel": "GB0-02",
+  "misiones": [
+    {
+      "id": "gb0-02-cual-tiene",
+      "tipo": "image-picker",
+      "titulo": "¿Cuál tiene…?",
+      "instruccion": "Papá lee. Tú tocas la bandera.",
+      "opciones_bandera": true,
+      "retos": [
+        {
+          "palabra_es": "¿Cuál tiene un círculo rojo?",
+          "bandera": "jp",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/fr.png", "label": "Francia" },
+            { "imagen": "https://flagcdn.com/w320/jp.png", "label": "Japón" },
+            { "imagen": "https://flagcdn.com/w320/br.png", "label": "Brasil" }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Es Japón! Su círculo rojo es el sol."
+        },
+        {
+          "palabra_es": "¿Cuál tiene una hoja?",
+          "bandera": "ca",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/ca.png", "label": "Canadá" },
+            { "imagen": "https://flagcdn.com/w320/fr.png", "label": "Francia" },
+            { "imagen": "https://flagcdn.com/w320/jp.png", "label": "Japón" }
+          ],
+          "respuesta": 0,
+          "explicacion": "¡Es Canadá! Tiene una hoja de árbol de maple."
+        },
+        {
+          "palabra_es": "¿Cuál tiene estrellas?",
+          "bandera": "us",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/jp.png", "label": "Japón" },
+            { "imagen": "https://flagcdn.com/w320/ca.png", "label": "Canadá" },
+            { "imagen": "https://flagcdn.com/w320/us.png", "label": "Estados Unidos" }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Es Estados Unidos! Tiene 50 estrellitas."
+        },
+        {
+          "palabra_es": "¿Cuál tiene una cruz?",
+          "bandera": "ch",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/br.png", "label": "Brasil" },
+            { "imagen": "https://flagcdn.com/w320/ch.png", "label": "Suiza" },
+            { "imagen": "https://flagcdn.com/w320/fr.png", "label": "Francia" }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Es Suiza! Una cruz blanca sobre rojo."
+        }
+      ]
+    },
+    {
+      "id": "gb0-02-pinta",
+      "tipo": "pinta-bandera",
+      "titulo": "Pinta la bandera",
+      "instruccion": "Elige un color y toca la bandera.",
+      "leer_en_voz": true,
+      "retos": [
+        {
+          "nombre": "Japón",
+          "bandera": "jp",
+          "imagen_url": "https://flagcdn.com/w320/jp.png",
+          "plantilla": "circulo",
+          "colores": ["#ffffff", "#bc002d"],
+          "paleta": ["#ffffff", "#bc002d", "#0055a4"],
+          "mostrar_modelo": true,
+          "explicacion": "¡Muy bien! Fondo blanco y el sol rojo."
+        },
+        {
+          "nombre": "Francia",
+          "bandera": "fr",
+          "imagen_url": "https://flagcdn.com/w320/fr.png",
+          "plantilla": "franjas-v",
+          "colores": ["#0055a4", "#ffffff", "#ef4135"],
+          "paleta": ["#0055a4", "#ffffff", "#ef4135"],
+          "mostrar_modelo": true,
+          "explicacion": "¡Bravo! Azul, blanco y rojo."
+        }
+      ]
+    },
+    {
+      "id": "gb0-02-memorama",
+      "tipo": "memoria",
+      "titulo": "Memorama de banderas",
+      "voz": "Encuentra las banderas iguales",
+      "parejas": [
+        { "a": { "imagen": "https://flagcdn.com/w160/jp.png" }, "bandera": "jp" },
+        { "a": { "imagen": "https://flagcdn.com/w160/ca.png" }, "bandera": "ca" },
+        { "a": { "imagen": "https://flagcdn.com/w160/us.png" }, "bandera": "us" },
+        { "a": { "imagen": "https://flagcdn.com/w160/br.png" }, "bandera": "br" }
+      ]
+    },
+    {
+      "id": "gb0-02-cual-es-japon",
+      "tipo": "image-picker",
+      "titulo": "¿Cuál es la bandera?",
+      "instruccion": "Papá lee. Tú tocas la bandera.",
+      "opciones_bandera": true,
+      "retos": [
+        {
+          "palabra_es": "¿Cuál es la de Japón?",
+          "bandera": "jp",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/ca.png", "label": "Canadá" },
+            { "imagen": "https://flagcdn.com/w320/br.png", "label": "Brasil" },
+            { "imagen": "https://flagcdn.com/w320/jp.png", "label": "Japón" }
+          ],
+          "respuesta": 2,
+          "explicacion": "¡Sí! Japón, la del sol rojo."
+        },
+        {
+          "palabra_es": "¿Cuál es la de Canadá?",
+          "bandera": "ca",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/ca.png", "label": "Canadá" },
+            { "imagen": "https://flagcdn.com/w320/jp.png", "label": "Japón" },
+            { "imagen": "https://flagcdn.com/w320/br.png", "label": "Brasil" }
+          ],
+          "respuesta": 0,
+          "explicacion": "¡Eso! Canadá, la de la hoja de maple."
+        },
+        {
+          "palabra_es": "¿Cuál es la de Brasil?",
+          "bandera": "br",
+          "opciones": [
+            { "imagen": "https://flagcdn.com/w320/jp.png", "label": "Japón" },
+            { "imagen": "https://flagcdn.com/w320/br.png", "label": "Brasil" },
+            { "imagen": "https://flagcdn.com/w320/ca.png", "label": "Canadá" }
+          ],
+          "respuesta": 1,
+          "explicacion": "¡Bravo! Brasil: verde, amarillo y un círculo azul con estrellas."
+        }
+      ]
+    }
+  ]
+}

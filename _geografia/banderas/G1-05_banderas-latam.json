@@ -1,11 +1,11 @@
 {
   "id": "G1-05_banderas-latam",
-  "titulo": "Banderas de América Latina",
+  "titulo": "Primeras banderas de América Latina",
   "descripcion": "Identifica 10 banderas de países latinoamericanos",
-  "tipo": "image-picker",
+  "tipo": "banderas",
   "materia": "geografia",
   "tema": "banderas-latam",
-  "nivel": "G1-05",
+  "nivel": "GB1-05",
   "misiones": [
     {
       "id": "mision-ip-banderas-latam",
@@ -16,10 +16,18 @@
         {
           "imagen_url": "https://flagcdn.com/w320/mx.png",
           "opciones": [
-            { "label": "México" },
-            { "label": "Italia" },
-            { "label": "España" },
-            { "label": "Argentina" }
+            {
+              "label": "México"
+            },
+            {
+              "label": "Italia"
+            },
+            {
+              "label": "España"
+            },
+            {
+              "label": "Argentina"
+            }
           ],
           "respuesta": 0,
           "explicacion": "¡Es la bandera de México! Tiene verde, blanco y rojo, con un águila parada sobre un nopal comiendo una serpiente."
@@ -27,10 +35,18 @@
         {
           "imagen_url": "https://flagcdn.com/w320/br.png",
           "opciones": [
-            { "label": "Argentina" },
-            { "label": "Brasil" },
-            { "label": "Colombia" },
-            { "label": "México" }
+            {
+              "label": "Argentina"
+            },
+            {
+              "label": "Brasil"
+            },
+            {
+              "label": "Colombia"
+            },
+            {
+              "label": "México"
+            }
           ],
           "respuesta": 1,
           "explicacion": "¡Es la bandera de Brasil! Verde con un rombo amarillo y un círculo azul con estrellas. Brasil es el país del futbol y el carnaval."
@@ -38,10 +54,18 @@
         {
           "imagen_url": "https://flagcdn.com/w320/ar.png",
           "opciones": [
-            { "label": "Uruguay" },
-            { "label": "Honduras" },
-            { "label": "Argentina" },
-            { "label": "Guatemala" }
+            {
+              "label": "Uruguay"
+            },
+            {
+              "label": "Honduras"
+            },
+            {
+              "label": "Argentina"
+            },
+            {
+              "label": "Guatemala"
+            }
           ],
           "respuesta": 2,
           "explicacion": "¡Es la bandera de Argentina! Celeste, blanco, celeste, con un sol en el centro. Es el país de Messi y el tango."
@@ -49,10 +73,18 @@
         {
           "imagen_url": "https://flagcdn.com/w320/co.png",
           "opciones": [
-            { "label": "Venezuela" },
-            { "label": "Ecuador" },
-            { "label": "Bolivia" },
-            { "label": "Colombia" }
+            {
+              "label": "Venezuela"
+            },
+            {
+              "label": "Ecuador"
+            },
+            {
+              "label": "Bolivia"
+            },
+            {
+              "label": "Colombia"
+            }
           ],
           "respuesta": 3,
           "explicacion": "¡Es la bandera de Colombia! Amarillo, azul y rojo. Colombia es el país de la película Encanto y del café."
@@ -60,10 +92,18 @@
         {
           "imagen_url": "https://flagcdn.com/w320/pe.png",
           "opciones": [
-            { "label": "Perú" },
-            { "label": "Canadá" },
-            { "label": "México" },
-            { "label": "Chile" }
+            {
+              "label": "Perú"
+            },
+            {
+              "label": "Canadá"
+            },
+            {
+              "label": "México"
+            },
+            {
+              "label": "Chile"
+            }
           ],
           "respuesta": 0,
           "explicacion": "¡Es la bandera de Perú! Roja, blanca y roja. En Perú está Machu Picchu, la antigua ciudad de los incas, y viven las llamas."
@@ -71,10 +111,18 @@
         {
           "imagen_url": "https://flagcdn.com/w320/cl.png",
           "opciones": [
-            { "label": "Cuba" },
-            { "label": "Chile" },
-            { "label": "Estados Unidos" },
-            { "label": "República Dominicana" }
+            {
+              "label": "Cuba"
+            },
+            {
+              "label": "Chile"
+            },
+            {
+              "label": "Estados Unidos"
+            },
+            {
+              "label": "República Dominicana"
+            }
           ],
           "respuesta": 1,
           "explicacion": "¡Es la bandera de Chile! Una estrella blanca sobre azul, con franja blanca y roja. Chile es un país larguísimo y delgadito al lado del océano Pacífico."
@@ -82,10 +130,18 @@
         {
           "imagen_url": "https://flagcdn.com/w320/cu.png",
           "opciones": [
-            { "label": "Puerto Rico" },
-            { "label": "República Dominicana" },
-            { "label": "Cuba" },
-            { "label": "Uruguay" }
+            {
+              "label": "Puerto Rico"
+            },
+            {
+              "label": "República Dominicana"
+            },
+            {
+              "label": "Cuba"
+            },
+            {
+              "label": "Uruguay"
+            }
           ],
           "respuesta": 2,
           "explicacion": "¡Es la bandera de Cuba! Tres franjas azules, dos blancas y un triángulo rojo con una estrella. Cuba es una isla famosa por su música y por La Habana."
@@ -93,10 +149,18 @@
         {
           "imagen_url": "https://flagcdn.com/w320/gt.png",
           "opciones": [
-            { "label": "México" },
-            { "label": "Honduras" },
-            { "label": "Guatemala" },
-            { "label": "Argentina" }
+            {
+              "label": "México"
+            },
+            {
+              "label": "Honduras"
+            },
+            {
+              "label": "Guatemala"
+            },
+            {
+              "label": "Argentina"
+            }
           ],
           "respuesta": 2,
           "explicacion": "¡Es la bandera de Guatemala! Azul, blanco y azul, con un escudo en el centro. Guatemala es vecino de México al sur, ahí está la pirámide maya de Tikal."
@@ -104,10 +168,18 @@
         {
           "imagen_url": "https://flagcdn.com/w320/cr.png",
           "opciones": [
-            { "label": "Costa Rica" },
-            { "label": "Tailandia" },
-            { "label": "Cuba" },
-            { "label": "Paraguay" }
+            {
+              "label": "Costa Rica"
+            },
+            {
+              "label": "Tailandia"
+            },
+            {
+              "label": "Cuba"
+            },
+            {
+              "label": "Paraguay"
+            }
           ],
           "respuesta": 0,
           "explicacion": "¡Es la bandera de Costa Rica! Azul, blanco, rojo, blanco, azul. Costa Rica es famosa por sus selvas, perezosos y por decir 'pura vida'."
@@ -115,15 +187,24 @@
         {
           "imagen_url": "https://flagcdn.com/w320/do.png",
           "opciones": [
-            { "label": "Cuba" },
-            { "label": "Panamá" },
-            { "label": "República Dominicana" },
-            { "label": "Filipinas" }
+            {
+              "label": "Cuba"
+            },
+            {
+              "label": "Panamá"
+            },
+            {
+              "label": "República Dominicana"
+            },
+            {
+              "label": "Filipinas"
+            }
           ],
           "respuesta": 2,
           "explicacion": "¡Es la bandera de República Dominicana! Una cruz blanca con escudo, sobre azul y rojo. Está en una isla del Caribe que comparte con Haití, y es famosa por sus playas de Punta Cana y por el béisbol."
         }
       ]
     }
-  ]
+  ],
+  "legado": true
 }

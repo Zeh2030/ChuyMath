@@ -68,6 +68,11 @@ const TrueOrFalse = ({ mision, onCompletar, materia = null }) => {
         {esIngles ? 'Is this sentence correct?' : '¿Es verdadero o falso?'}
       </p>
 
+      {/* Imagen de apoyo (la bandera de la que habla la afirmación) */}
+      {reto.imagen_url && (
+        <img key={reto.imagen_url} src={reto.imagen_url} alt="" className="tof-imagen" />
+      )}
+
       {/* Statement to evaluate */}
       <div className={`tof-sentence ${respondido ? (reto.correcto ? 'is-correct' : 'is-incorrect') : ''}`}>
         <p className="tof-english">{reto.oracion}</p>

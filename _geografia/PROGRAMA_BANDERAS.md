@@ -1,6 +1,7 @@
 # Programa de Banderas — sub-sección de Geografía
 
-> Planeado 2026-10-23. Fase 0 y Fase 1 en construcción (2026-10-23). Estado vivo en
+> Planeado 2026-10-23. Fase 0 y 1 publicadas (2026-10-24); Fase 2 construida (2026-10-24:
+> pinta-bandera, bandera-escondida, memorama con imágenes, mapa → bandera; GB0, GB2). Estado vivo en
 > `PLAN_MAESTRO.md` §8. Motivo: el hijo (2º de primaria) está emocionado con las banderas.
 
 ## Decisiones del papá (2026-10-23)
