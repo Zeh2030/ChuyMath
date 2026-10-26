@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { sonar } from '../../../utils/sonido';
+import { useRegistrarBandera } from '../../../hooks/useColeccionBanderas';
 import './BanderaEscondida.css';
 
 /**
@@ -38,6 +39,7 @@ const RetoEscondido = ({ reto, onFin, esUltimo }) => {
   const [descartadas, setDescartadas] = useState([]);
   const [acierto, setAcierto] = useState(null); // estrellas al acertar
   const [cargada, setCargada] = useState(false);
+  const registrarBandera = useRegistrarBandera();
 
   const visibles = new Set(acierto ? orden : orden.slice(0, destapados));
 
@@ -45,6 +47,8 @@ const RetoEscondido = ({ reto, onFin, esUltimo }) => {
 
   const elegir = (op) => {
     if (acierto || descartadas.includes(op.i)) return;
+    // Álbum: solo el primer intento cuenta
+    if (!descartadas.length) registrarBandera(reto.bandera_id ?? reto.bandera, op.i === reto.respuesta);
     if (op.i === reto.respuesta) {
       sonar(880);
       setAcierto(estrellasPor(destapados));

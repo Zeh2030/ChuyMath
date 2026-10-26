@@ -14,6 +14,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { esRespuestaCorrecta, respuestaCorrectaOM, seleccionOM, valorDeOpcion } from '../chuy-react-app/src/utils/calificar.js';
 import { PAISES, ESTADOS_USA, OTRAS_BANDERAS, idPaisMundo, banderaUrl } from '../chuy-react-app/src/data/paises.js';
 import { PLANTILLAS, geometriaBandera } from '../chuy-react-app/src/data/plantillasBandera.js';
+import { construirAlbum, textoAlbum, SALIDA as SALIDA_ALBUM } from './_genera-album.mjs';
 
 const DIR = path.dirname(fileURLToPath(import.meta.url));
 const APP = path.join(DIR, '../chuy-react-app');
@@ -250,6 +251,9 @@ function imagePicker(f, mid, m) {
     if (new Set(imgs).size !== imgs.length) err(f, mid, `reto ${k + 1}: imágenes repetidas en las opciones`);
     // Código de la bandera del reto (para el álbum): debe ser la de la respuesta.
     const imgRespuesta = r.imagen_url ?? ops[r.respuesta]?.imagen;
+    const esBandera = (u) => !!codigoDeUrlFlagcdn(u) || /wikimedia.*(flag|bandera|ensign)/i.test(u ?? '');
+    if (esBanderas(f) && esBandera(imgRespuesta) && r.bandera === undefined && r.bandera_id === undefined)
+      err(f, mid, `reto ${k + 1}: sin "bandera" ni "bandera_id": no cuenta para el álbum`);
     if (r.bandera !== undefined && revisarCodigo(f, `${mid} reto ${k + 1}`, r.bandera)) {
       const enUrl = codigoDeUrlFlagcdn(imgRespuesta);
       if (enUrl && enUrl !== r.bandera) err(f, mid, `reto ${k + 1}: bandera «${r.bandera}» pero la imagen de la respuesta es «${enUrl}»`);
@@ -319,6 +323,8 @@ function tapThePairs(f, mid, m) {
     pares.forEach((p, j) => {
       const d = `${mid} ronda ${k + 1} par ${j + 1}`;
       const img = p.es_img || p.en_img;
+      if (esBanderas(f) && img && p.bandera === undefined && p.bandera_id === undefined)
+        err(f, d, 'par con imagen sin "bandera" ni "bandera_id": no cuenta para el álbum');
       if (p.bandera !== undefined && revisarCodigo(f, d, p.bandera)) {
         const enUrl = codigoDeUrlFlagcdn(img);
         if (enUrl && enUrl !== p.bandera) err(f, d, `bandera «${p.bandera}» pero la imagen es «${enUrl}»`);
@@ -435,6 +441,7 @@ function exploradorMapa(f, mid, m) {
     if (preguntaBandera) {
       if (modo !== 'quiz') err(f, d, 'pregunta_bandera solo funciona en modo quiz');
       if (!r.bandera && !r.bandera_url) err(f, d, 'pregunta_bandera sin "bandera" ni "bandera_url": no hay qué mostrar');
+      if (r.bandera_url && !r.bandera_id) err(f, d, 'bandera_url sin "bandera_id": no cuenta para el álbum');
       if (r.nombre && r.pregunta && llano(r.pregunta).includes(llano(r.nombre)))
         err(f, d, `la pregunta dice «${r.nombre}»: con pregunta_bandera la bandera es la pregunta, no se nombra el lugar`);
     }
@@ -516,6 +523,15 @@ for (const ruta of archivos) {
   const mids = doc.misiones.map(m => m.id);
   if (new Set(mids).size !== mids.length) err(f, '-', 'ids de misión repetidos');
   doc.misiones.forEach((m, i) => validarMision(f, m, i));
+}
+
+// Álbum de banderas: el catálogo generado debe coincidir con el contenido de banderas/.
+{
+  const album = construirAlbum();
+  album.problemas.forEach(p => err('banderas/', '-', p));
+  const actual = fs.existsSync(SALIDA_ALBUM) ? fs.readFileSync(SALIDA_ALBUM, 'utf8').replace(/\r\n/g, '\n') : '';
+  if (!album.problemas.length && actual !== textoAlbum(album))
+    err('chuy-react-app/src/data/albumBanderas.js', '-', 'desactualizado: corre `node _geografia/_genera-album.mjs`');
 }
 
 if (RED) {

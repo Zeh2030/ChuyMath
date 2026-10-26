@@ -15,6 +15,7 @@
       "retos": [
         {
           "imagen_url": "https://flagcdn.com/w320/us.png",
+          "bandera": "us",
           "opciones": [
             {
               "label": "Estados Unidos"
@@ -34,6 +35,7 @@
         },
         {
           "imagen_url": "https://flagcdn.com/w320/jp.png",
+          "bandera": "jp",
           "opciones": [
             {
               "label": "China"
@@ -53,6 +55,7 @@
         },
         {
           "imagen_url": "https://flagcdn.com/w320/fr.png",
+          "bandera": "fr",
           "opciones": [
             {
               "label": "Italia"
@@ -72,6 +75,7 @@
         },
         {
           "imagen_url": "https://flagcdn.com/w320/gb.png",
+          "bandera": "gb",
           "opciones": [
             {
               "label": "Estados Unidos"
@@ -91,6 +95,7 @@
         },
         {
           "imagen_url": "https://flagcdn.com/w320/it.png",
+          "bandera": "it",
           "opciones": [
             {
               "label": "México"
@@ -110,6 +115,7 @@
         },
         {
           "imagen_url": "https://flagcdn.com/w320/de.png",
+          "bandera": "de",
           "opciones": [
             {
               "label": "Bélgica"
@@ -129,6 +135,7 @@
         },
         {
           "imagen_url": "https://flagcdn.com/w320/es.png",
+          "bandera": "es",
           "opciones": [
             {
               "label": "Portugal"
@@ -148,6 +155,7 @@
         },
         {
           "imagen_url": "https://flagcdn.com/w320/cn.png",
+          "bandera": "cn",
           "opciones": [
             {
               "label": "Vietnam"
@@ -167,6 +175,7 @@
         },
         {
           "imagen_url": "https://flagcdn.com/w320/ca.png",
+          "bandera": "ca",
           "opciones": [
             {
               "label": "Suiza"
@@ -186,6 +195,7 @@
         },
         {
           "imagen_url": "https://flagcdn.com/w320/au.png",
+          "bandera": "au",
           "opciones": [
             {
               "label": "Australia"

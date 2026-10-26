@@ -348,7 +348,7 @@ como tema global (un tema oscuro cuesta ~48 overrides, ver §2).
   `chuymath-geo-dump.mjs` (Firestore vs disco).
 - ✅ Nombres del mapa en español en modo explorar (Fase 0 de Banderas, 2026-10-24).
 
-### 🚩 Banderas — Fases 0, 1 y 2 CONSTRUIDAS (2026-10-24)
+### 🚩 Banderas — Fases 0 a 3 CONSTRUIDAS (2026-10-25)
 Sub-sección de Geografía: tarjeta "Banderas" (`tipo: banderas`, carpeta
 `_geografia/banderas/`, niveles GB0-GB3 por edad y **GBH** históricas). Programa en
 `_geografia/PROGRAMA_BANDERAS.md` (16 actividades, decisiones del papá).
@@ -370,7 +370,13 @@ Sub-sección de Geografía: tarjeta "Banderas" (`tipo: banderas`, carpeta
   (el país se resalta y se elige su bandera). Contenido: GB0-01 La bandera de México,
   GB0-02 Banderas de colores (hija), GB2-01 Europa, GB2-02 Familias, GB2-03 Gemelas;
   misiones nuevas en GB1-02, GB1-04 y GBH-02.
-- **Siguiente**: Fase 3 (álbum + diseña tu bandera); plantilla `canton` opcional.
+- **Fase 3 (2026-10-25)**: **álbum** (`/banderas/album`, 125 huecos por continente,
+  estados e históricas; vista → pegada con aciertos en 2 días → dorada con 3), **repaso de
+  las que le cuestan** (`/banderas/repaso`) y **taller "Diseña tu bandera"**
+  (`/banderas/taller`, reglas de NAVA). Datos en el perfil: `banderasColeccion` y
+  `banderasPropias`. Los juegos avisan cada bandera con `useRegistrarBandera()` (solo
+  dentro de Aventura y del repaso). Detalle en `_geografia/PROGRAMA_BANDERAS.md` §3.
+- **Pendiente opcional**: plantilla `canton`; galería de diseños en otros módulos.
 - Nota: la "aventura del día" ordena por nivel como texto: GB* sale después de G3.
 
 ---
@@ -478,7 +484,7 @@ Gemini (voz a voz en tiempo real, con interrupciones). Nada construido.
 | Matemáticas | Concurso: cronómetro, respuesta por pregunta, revisar claves, más simulacros | §4 + `_contenido/_valida.mjs` |
 | Plataforma | PIN de adulto, modo papás, temas | §2, §3 |
 | Geografía | G3 cuando aplique | §8 + `_geografia/PROGRAMA_GEOGRAFIA.md` + `_valida.mjs` |
-| Banderas | Fase 3 (álbum + diseña tu bandera) | §8 + `_geografia/PROGRAMA_BANDERAS.md` |
+| Banderas | Más contenido (GB3, Asia/África); plantilla `canton` opcional | §8 + `_geografia/PROGRAMA_BANDERAS.md` |
 
 ---
 

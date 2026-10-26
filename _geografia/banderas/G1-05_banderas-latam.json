@@ -15,6 +15,7 @@
       "retos": [
         {
           "imagen_url": "https://flagcdn.com/w320/mx.png",
+          "bandera": "mx",
           "opciones": [
             {
               "label": "México"
@@ -34,6 +35,7 @@
         },
         {
           "imagen_url": "https://flagcdn.com/w320/br.png",
+          "bandera": "br",
           "opciones": [
             {
               "label": "Argentina"
@@ -53,6 +55,7 @@
         },
         {
           "imagen_url": "https://flagcdn.com/w320/ar.png",
+          "bandera": "ar",
           "opciones": [
             {
               "label": "Uruguay"
@@ -72,6 +75,7 @@
         },
         {
           "imagen_url": "https://flagcdn.com/w320/co.png",
+          "bandera": "co",
           "opciones": [
             {
               "label": "Venezuela"
@@ -91,6 +95,7 @@
         },
         {
           "imagen_url": "https://flagcdn.com/w320/pe.png",
+          "bandera": "pe",
           "opciones": [
             {
               "label": "Perú"
@@ -110,6 +115,7 @@
         },
         {
           "imagen_url": "https://flagcdn.com/w320/cl.png",
+          "bandera": "cl",
           "opciones": [
             {
               "label": "Cuba"
@@ -129,6 +135,7 @@
         },
         {
           "imagen_url": "https://flagcdn.com/w320/cu.png",
+          "bandera": "cu",
           "opciones": [
             {
               "label": "Puerto Rico"
@@ -148,6 +155,7 @@
         },
         {
           "imagen_url": "https://flagcdn.com/w320/gt.png",
+          "bandera": "gt",
           "opciones": [
             {
               "label": "México"
@@ -167,6 +175,7 @@
         },
         {
           "imagen_url": "https://flagcdn.com/w320/cr.png",
+          "bandera": "cr",
           "opciones": [
             {
               "label": "Costa Rica"
@@ -186,6 +195,7 @@
         },
         {
           "imagen_url": "https://flagcdn.com/w320/do.png",
+          "bandera": "do",
           "opciones": [
             {
               "label": "Cuba"

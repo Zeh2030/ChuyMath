@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useId } from 'react';
 import { geometriaBandera, GROSOR_MINIMO } from '../../../data/plantillasBandera';
 import { sonar, hablar } from '../../../utils/sonido';
+import { useRegistrarBandera } from '../../../hooks/useColeccionBanderas';
 import './PintaBandera.css';
 
 /**
@@ -26,8 +27,8 @@ const norm = (c) => String(c || '').toLowerCase();
 const mayus = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
 // Contorno solo mientras está sin pintar: en las cruces (dos rectángulos en un
-// mismo path) el contorno dibujaría líneas por dentro.
-const Region = ({ r, i, fill, pintada, onTocar }) => {
+// mismo path) el contorno dibujaría líneas por dentro. También la usa el taller.
+export const Region =({ r, i, fill, pintada, onTocar }) => {
   const comun = {
     'data-region': i,
     'data-ancla': `${r.ancla[0]} ${r.ancla[1]}`,
@@ -50,6 +51,8 @@ const RetoPinta = ({ reto, leerEnVoz, onListo, esUltimo }) => {
   const [aviso, setAviso] = useState('');
   const [correcto, setCorrecto] = useState(false);
   const [parpadeo, setParpadeo] = useState(false);
+  const [comprobado, setComprobado] = useState(false);
+  const registrarBandera = useRegistrarBandera();
 
   // Solo voz (sin setState): lee la consigna para quien todavía no lee.
   useEffect(() => {
@@ -71,6 +74,11 @@ const RetoPinta = ({ reto, leerEnVoz, onListo, esUltimo }) => {
 
   const comprobar = () => {
     const errores = regiones.map((_, i) => i).filter(i => norm(pintado[i]) !== norm(reto.colores[i]));
+    // Álbum: el primer "Comprobar", y solo de memoria (copiar el modelo no es saberla)
+    if (!comprobado) {
+      setComprobado(true);
+      if (!reto.mostrar_modelo) registrarBandera(reto.bandera_id ?? reto.bandera, !errores.length);
+    }
     if (!errores.length) {
       setCorrecto(true);
       setMal([]);

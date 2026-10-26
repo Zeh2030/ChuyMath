@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useEffectEvent, useMemo, useRef } from 'react';
 import { sonar } from '../../../utils/sonido';
+import { useRegistrarBandera } from '../../../hooks/useColeccionBanderas';
 import { feature } from 'topojson-client';
 import {
   geoNaturalEarth1, geoMercator, geoAlbersUsa, geoOrthographic,
@@ -263,6 +264,7 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
   const [retoIdx, setRetoIdx] = useState(0);
   const [seleccionado, setSeleccionado] = useState(null);
   const [aciertos, setAciertos] = useState(0);
+  const registrarBandera = useRegistrarBandera();
   const [feedback, setFeedback] = useState(null);
   const [hovered, setHovered] = useState(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -641,6 +643,8 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
     const correcto = normalizeId(countryId) === normalizeId(reto.id);
     if (correcto) setAciertos(prev => prev + 1);
     setFeedback(correcto ? 'correcto' : 'incorrecto');
+    // Álbum: solo cuando la bandera es la pregunta (en el quiz normal es el premio)
+    if (preguntaBandera) registrarBandera(reto.bandera_id ?? reto.bandera, correcto);
 
     // En el globo, girar hasta centrar el pais: acierte o falle, ahora es cuando
     // conviene que vea donde estaba de verdad.
@@ -668,6 +672,7 @@ const ExploradorMapa = ({ mision, onCompletar }) => {
     setBanderaElegida(claveOpcion(op));
     if (correcto) setAciertos(prev => prev + 1);
     setFeedback(correcto ? 'correcto' : 'incorrecto');
+    registrarBandera(reto.bandera_id ?? reto.bandera, correcto);
     sonar(correcto ? 880 : 220);
     if (tieneRecompensa) return;
     setTimeout(siguienteReto, 2200);

@@ -17,6 +17,15 @@ import MusicaFondo from './components/audio/MusicaFondo';
 const Observatorio = React.lazy(() => import('./pages/Observatorio'));
 // Lazy: la versión para papel solo la abre quien imprime.
 const ImprimirSimulacro = React.lazy(() => import('./pages/ImprimirSimulacro'));
+// Lazy: álbum, repaso y taller de Banderas (Geografía).
+const AlbumBanderas = React.lazy(() => import('./pages/AlbumBanderas'));
+const RepasoBanderas = React.lazy(() => import('./pages/RepasoBanderas'));
+const TallerBanderas = React.lazy(() => import('./pages/TallerBanderas'));
+const PAGINAS_BANDERAS = [
+  ['/banderas/album', <AlbumBanderas />],
+  ['/banderas/repaso', <RepasoBanderas />],
+  ['/banderas/taller', <TallerBanderas />],
+];
 
 const ProtectedRoute = ({ children }) => {
   const { currentUser, loading } = useAuth();
@@ -141,6 +150,21 @@ function App() {
             </ProtectedRoute>
           }
         />
+        {PAGINAS_BANDERAS.map(([ruta, pagina]) => (
+          <Route
+            key={ruta}
+            path={ruta}
+            element={
+              <ProtectedRoute>
+                <ProfileRequired>
+                  <React.Suspense fallback={<div style={{ textAlign: 'center', padding: '40px', fontSize: '1.2rem' }}>Abriendo el álbum…</div>}>
+                    {pagina}
+                  </React.Suspense>
+                </ProfileRequired>
+              </ProtectedRoute>
+            }
+          />
+        ))}
 
         {/* Rutas de administración: requieren cuenta, no perfil de hijo */}
         <Route

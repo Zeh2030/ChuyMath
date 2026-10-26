@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { useRegistrarBandera } from '../../../hooks/useColeccionBanderas';
 import './TapThePairs.css';
 
 const shuffle = (arr) => {
@@ -30,6 +31,9 @@ const TapThePairs = ({ mision, onCompletar, materia = null }) => {
   const [paresEncontrados, setParesEncontrados] = useState([]);
   const [mensaje, setMensaje] = useState('');
   const [completado, setCompletado] = useState(false);
+  // Pares (índice) con los que se equivocó en esta ronda: para el álbum de banderas.
+  const [conError, setConError] = useState([]);
+  const registrarBandera = useRegistrarBandera();
 
   const reto = retos[retoActual];
 
@@ -48,6 +52,7 @@ const TapThePairs = ({ mision, onCompletar, materia = null }) => {
     setSeleccionDer(null);
     setParesEncontrados([]);
     setMensaje('');
+    setConError([]);
   };
 
   if (completado) {
@@ -91,7 +96,9 @@ const TapThePairs = ({ mision, onCompletar, materia = null }) => {
 
   const checkPair = (izq, der) => {
     if (izq === der) {
-      // Match!
+      // Match! Álbum: la bandera del par cuenta bien si no se equivocó con ella.
+      const par = reto.pares[izq];
+      registrarBandera(par.bandera_id ?? par.bandera, !conError.includes(izq));
       const newPares = [...paresEncontrados, izq];
       setParesEncontrados(newPares);
       setSeleccionIzq(null);
@@ -108,6 +115,7 @@ const TapThePairs = ({ mision, onCompletar, materia = null }) => {
         }, 1200);
       }
     } else {
+      setConError(prev => [...prev, izq, der]);
       setMensaje(esIngles ? 'Try again!' : '¡Intenta de nuevo!');
       setTimeout(() => {
         setSeleccionIzq(null);

@@ -44,9 +44,9 @@ const MANUAL = {
 // Los 3 países de world-atlas sin código ISO: se usan los de Natural Earth (la
 // fuente del propio mapa). 3 caracteres, así que padStart(3) no los altera.
 const SIN_ISO = {
-  'Kosovo': { id: 'KOS', a2: 'xk', es: 'Kosovo' },
-  'N. Cyprus': { id: 'CYN', a2: null, es: 'Chipre del Norte' },
-  'Somaliland': { id: 'SOL', a2: null, es: 'Somalilandia' },
+  'Kosovo': { id: 'KOS', a2: 'xk', es: 'Kosovo', continente: 'europa' },
+  'N. Cyprus': { id: 'CYN', a2: null, es: 'Chipre del Norte', continente: 'asia' },
+  'Somaliland': { id: 'SOL', a2: null, es: 'Somalilandia', continente: 'africa' },
 };
 
 // Exónimos de estados de EE.UU. que se usan en español en México.
@@ -65,14 +65,25 @@ const NOMBRES_MX = {
 
 const nombre = (a2) => MANUAL[a2] || intl.of(a2.toUpperCase()) || flagEs[a2];
 
-// --- Países: numérico → { a2, es } (solo los que tienen bandera en flagcdn) ---
+// Continente (regiones M49 de la ONU, vía CLDR territoryContainment): agrupa el álbum.
+const CONTINENTES = { '019': 'america', '150': 'europa', '142': 'asia', '002': 'africa', '009': 'oceania' };
+const contiene = (await bajar('https://raw.githubusercontent.com/unicode-org/cldr-json/main/cldr-json/cldr-core/supplemental/territoryContainment.json'))
+  .supplemental.territoryContainment;
+const continenteDe = {};
+const expandir = (region, cont) => (contiene[region]?._contains || []).forEach(t => {
+  if (/^\d{3}$/.test(t)) expandir(t, cont);
+  else continenteDe[t.toLowerCase()] ??= cont;
+});
+Object.entries(CONTINENTES).forEach(([region, cont]) => expandir(region, cont));
+
+// --- Países: numérico → { a2, es, continente } (solo los que tienen bandera en flagcdn) ---
 const paises = {};
 for (const [A2, m] of Object.entries(cldr)) {
   const a2 = A2.toLowerCase();
   if (!m._numeric || !flagEs[a2]) continue;
-  paises[m._numeric] = { a2, es: nombre(a2) };
+  paises[m._numeric] = { a2, es: nombre(a2), continente: continenteDe[a2] ?? null };
 }
-for (const s of Object.values(SIN_ISO)) paises[s.id] = { a2: s.a2, es: s.es };
+for (const s of Object.values(SIN_ISO)) paises[s.id] = { a2: s.a2, es: s.es, continente: s.continente };
 
 // Todo país del mapa debe tener entrada.
 const world = require('world-atlas/countries-110m.json');
@@ -104,7 +115,8 @@ const js = `// GENERADO por _geografia/_genera-paises.mjs — no editar a mano (
 // Se importa solo desde ExploradorMapa (carga lazy) y el validador: no engordar el
 // paquete principal; los demás motores leen URLs del JSON.
 
-// ISO 3166-1 numérico (o KOS/CYN/SOL de Natural Earth) → { a2, es }
+// ISO 3166-1 numérico (o KOS/CYN/SOL de Natural Earth) → { a2, es, continente }
+// (continente: america | europa | asia | africa | oceania | null, p.ej. la Antártida)
 export const PAISES = ${JSON.stringify(ordenar(paises), null, 2)};
 
 // FIPS → { a2: 'us-tx', es }

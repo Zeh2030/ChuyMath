@@ -1,0 +1,279 @@
+/* Álbum, repaso y taller de banderas (Banderas, Fase 3).
+   Paneles con tokens de tema; los temas oscuros y pizarrón los cubren en themes.css (.bn-panel). */
+.bn-pagina {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 16px 40px;
+}
+
+.bn-barra {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.bn-panel {
+  background: #fff;
+  color: #2c3e50;
+  border: 2px solid rgba(var(--theme-primary-rgb), 0.15);
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.bn-subtitulo {
+  font-size: 1.15rem;
+  margin: 0 0 12px;
+}
+
+.bn-boton {
+  min-height: 44px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 12px;
+  background: var(--theme-primary);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.bn-boton:disabled { opacity: 0.45; cursor: not-allowed; }
+.bn-boton-sec {
+  background: transparent;
+  color: var(--theme-primary-dark, var(--theme-primary));
+  border: 2px solid rgba(var(--theme-primary-rgb), 0.4);
+}
+
+.bn-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.bn-enlace {
+  background: none;
+  border: none;
+  color: var(--theme-primary);
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: inherit;
+}
+
+/* --- Resumen --- */
+.bn-resumen { text-align: center; }
+.bn-contador { font-size: 1.4rem; margin: 0 0 8px; }
+.bn-contador strong { font-size: 2.2rem; color: var(--theme-primary); }
+.bn-barra-avance {
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(var(--theme-primary-rgb), 0.12);
+  overflow: hidden;
+  max-width: 420px;
+  margin: 0 auto 8px;
+}
+.bn-barra-avance div {
+  height: 100%;
+  background: linear-gradient(90deg, var(--theme-progress-1, var(--theme-primary)), var(--theme-progress-2, var(--theme-accent)));
+}
+.bn-detalle { font-size: 0.92rem; opacity: 0.8; margin: 6px 0; }
+
+/* --- Pestañas por grupo --- */
+.bn-pestanas {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  margin-bottom: 12px;
+}
+.bn-pestana {
+  flex: 0 0 auto;
+  min-height: 44px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 2px solid rgba(var(--theme-primary-rgb), 0.3);
+  background: #fff;
+  color: #2c3e50;
+  font-weight: 700;
+  cursor: pointer;
+}
+.bn-pestana span { opacity: 0.7; font-weight: 600; margin-left: 4px; }
+.bn-pestana.activa { background: var(--theme-primary); border-color: var(--theme-primary); color: #fff; }
+
+/* --- Rejilla de estampas --- */
+.bn-rejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+  gap: 14px;
+}
+.bn-hueco {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 4px;
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+}
+.bn-marco {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+.bn-marco img, .bn-marco svg {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 4px;
+}
+.bn-nombre { font-size: 0.85rem; font-weight: 600; text-align: center; line-height: 1.2; }
+
+.bn-nueva .bn-marco { border: 2px dashed rgba(127, 140, 141, 0.6); background: rgba(127, 140, 141, 0.08); }
+.bn-silueta { font-size: 2rem; font-weight: 800; color: rgba(127, 140, 141, 0.7); }
+.bn-nueva .bn-nombre { opacity: 0.6; }
+.bn-vista img { filter: grayscale(1); opacity: 0.45; }
+.bn-pegada .bn-marco { transform: rotate(-2deg); }
+.bn-pegada img, .bn-propia svg { box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25); border: 3px solid #fff; }
+.bn-dorada .bn-marco { transform: rotate(2deg); }
+.bn-dorada img { border: 3px solid #f5b300; box-shadow: 0 0 0 2px #fff3c4, 0 4px 12px rgba(245, 179, 0, 0.5); }
+.bn-estrella { position: absolute; top: -8px; right: -6px; font-size: 1.3rem; }
+
+.bn-vacio { margin: 0; }
+.bn-vacio-grande { text-align: center; font-size: 1.15rem; }
+
+/* --- Ventana de una estampa --- */
+.bn-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.bn-modal-caja {
+  background: #fff;
+  color: #2c3e50;
+  border-radius: 18px;
+  padding: 20px;
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+}
+.bn-modal-img, .bn-modal-diseno {
+  display: block;
+  width: 100%;
+  max-height: 240px;
+  object-fit: contain;
+  margin: 0 auto 10px;
+}
+.bn-modal-img.bn-vista { filter: grayscale(1); opacity: 0.5; }
+.bn-modal-silueta { font-size: 4rem; color: rgba(127, 140, 141, 0.7); }
+.bn-significados { list-style: none; padding: 0; text-align: left; }
+.bn-significados li { margin: 6px 0; }
+.bn-muestra {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  vertical-align: middle;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Taller --- */
+.bn-formas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+  gap: 10px;
+}
+.bn-forma {
+  padding: 6px;
+  border-radius: 10px;
+  border: 3px solid transparent;
+  background: rgba(var(--theme-primary-rgb), 0.06);
+  cursor: pointer;
+}
+.bn-forma svg { display: block; width: 100%; height: auto; pointer-events: none; }
+.bn-forma.activa { border-color: var(--theme-primary); }
+
+.bn-taller { text-align: center; }
+.bn-taller-lienzo, .bn-taller-final {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  margin: 0 auto 12px;
+  touch-action: manipulation;
+  border-radius: 6px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+.bn-aviso { color: #c0392b; font-weight: 700; margin: 4px 0 10px; }
+
+.bn-paleta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.bn-color {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+.bn-color.activo { box-shadow: 0 0 0 3px var(--theme-primary); transform: scale(1.12); }
+
+.bn-simbolos, .bn-lugares {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.bn-simbolo {
+  min-width: 52px;
+  min-height: 48px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 2px solid rgba(var(--theme-primary-rgb), 0.3);
+  background: #fff;
+  color: #2c3e50;
+  font-weight: 700;
+  cursor: pointer;
+}
+.bn-simbolo svg { width: 32px; height: 32px; display: block; }
+.bn-simbolo.activo { border-color: var(--theme-primary); background: rgba(var(--theme-primary-rgb), 0.12); }
+
+.bn-campo { display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; font-weight: 600; }
+.bn-campo input {
+  min-height: 44px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 2px solid rgba(var(--theme-primary-rgb), 0.3);
+  font-size: 1rem;
+}
+
+.bn-reglas { list-style: none; padding: 0; margin: 0; }
+.bn-reglas li { padding: 6px 0; font-size: 1.02rem; }
+.bn-reglas li.falta { font-weight: 700; }
+
+@media (max-width: 480px) {
+  .bn-rejilla { grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 10px; }
+  .bn-color { width: 42px; height: 42px; }
+  .bn-panel { padding: 14px; }
+}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Memoria.css';
 import { sonar, hablar } from '../../../utils/sonido';
+import { useRegistrarBandera } from '../../../hooks/useColeccionBanderas';
 
 /**
  * Memoria — encontrar parejas de cartas.
@@ -44,6 +45,7 @@ const Memoria = ({ mision, onCompletar }) => {
   const [volteadas, setVolteadas] = useState([]); // índices arriba (sin emparejar)
   const [encontradas, setEncontradas] = useState([]); // índices ya emparejados
   const [bloqueo, setBloqueo] = useState(false);
+  const registrarBandera = useRegistrarBandera();
 
   // Lee la instrucción en voz alta al entrar (para los que aún no leen). Solo voz.
   useEffect(() => {
@@ -79,6 +81,10 @@ const Memoria = ({ mision, onCompletar }) => {
       const [a, b] = nuevas;
       if (cartas[a].par === cartas[b].par) {
         sonar(880);
+        // Álbum: solo parejas distintas (bandera ↔ nombre) y solo aciertos: en el
+        // memorama fallar es cuestión de memoria, no de no saber la bandera.
+        const pareja = conParejas ? mision.parejas[cartas[a].par] : null;
+        if (pareja?.b) registrarBandera(pareja.bandera_id ?? pareja.bandera, true);
         window.setTimeout(() => {
           setEncontradas((prev) => [...prev, a, b]);
           setVolteadas([]);

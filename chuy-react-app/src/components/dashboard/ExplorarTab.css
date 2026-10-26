@@ -336,6 +336,27 @@
   font-weight: 600;
 }
 
+/* Banderas: botones al álbum y al taller */
+.banderas-atajos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px 0 4px;
+}
+.banderas-atajo {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  background: var(--theme-primary);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(var(--theme-primary-rgb), 0.3);
+}
+.banderas-atajo:hover { filter: brightness(1.08); }
+
 /* Grid de Contenido */
 .contenido-grid {
   display: grid;

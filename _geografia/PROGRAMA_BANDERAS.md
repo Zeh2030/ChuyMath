@@ -1,7 +1,9 @@
 # Programa de Banderas — sub-sección de Geografía
 
 > Planeado 2026-10-23. Fase 0 y 1 publicadas (2026-10-24); Fase 2 construida (2026-10-24:
-> pinta-bandera, bandera-escondida, memorama con imágenes, mapa → bandera; GB0, GB2). Estado vivo en
+> pinta-bandera, bandera-escondida, memorama con imágenes, mapa → bandera; GB0, GB2);
+> Fase 3 construida (2026-10-25: álbum, repaso de las que cuestan, taller "Diseña tu
+> bandera"; reglas de estampa en §3 "Álbum"). Estado vivo en
 > `PLAN_MAESTRO.md` §8. Motivo: el hijo (2º de primaria) está emocionado con las banderas.
 
 ## Decisiones del papá (2026-10-23)
@@ -102,6 +104,19 @@ sol, luna, hoja, círculo). Checklist en vivo de las reglas de NAVA: "✅ 3 colo
 cada acierto: callback `onAcierto({ bandera: 'mx' })` además del `onCompletar()` actual.
 Una bandera se "pega" en el álbum al acertarla 3 veces en días distintos (espaciado);
 las que más falla alimentan "Repasar las que me cuestan".
+
+**Construido (2026-10-25), con las decisiones del papá:** cuenta solo el **primer intento**
+de cada reto; **vista** = acertada un día (gris), **pegada** = 2 días distintos, **dorada** =
+3+ días y el último intento bien. El álbum enseña **todos los huecos** (125 hoy, por
+continente + estados de EE. UU. + históricas). Reglas en `src/utils/coleccionBanderas.js`;
+registro en `src/hooks/useColeccionBanderas.jsx` (una escritura por varias respuestas,
+aviso "¡Nueva estampa!"); catálogo generado por `_geografia/_genera-album.mjs` →
+`src/data/albumBanderas.js`. Páginas `/banderas/album`, `/banderas/repaso` (misión
+image-picker armada al momento con las que le cuestan) y `/banderas/taller` (9 formas,
+12 colores, 5 símbolos propios, reglas de NAVA en vivo, aviso si es igual a una real;
+se guarda en `banderasPropias`, máx. 12). Memorama: solo parejas bandera↔nombre y solo
+aciertos; pinta-bandera con modelo no cuenta; mapa solo con `pregunta_bandera` o
+`elige-bandera`.
 
 ---
 

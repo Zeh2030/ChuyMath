@@ -634,7 +634,9 @@
 [data-theme="pizarron"] .mision-container,
 [data-theme="pizarron"] .problema-card,
 [data-theme="pizarron"] .tarjeta-contenido,
-[data-theme="pizarron"] .tipo-juego-card {
+[data-theme="pizarron"] .tipo-juego-card,
+[data-theme="pizarron"] .bn-panel,
+[data-theme="pizarron"] .bn-modal-caja {
   background: rgba(26, 53, 40, 0.85);
   color: #e0e0e0;
   border: 2px dashed rgba(255, 255, 255, 0.12);
@@ -842,10 +844,23 @@
 :is([data-theme="espacial"], [data-theme="guerreras"]) .mision-container,
 :is([data-theme="espacial"], [data-theme="guerreras"]) .problema-card,
 :is([data-theme="espacial"], [data-theme="guerreras"]) .tarjeta-contenido,
-:is([data-theme="espacial"], [data-theme="guerreras"]) .tipo-juego-card {
+:is([data-theme="espacial"], [data-theme="guerreras"]) .tipo-juego-card,
+:is([data-theme="espacial"], [data-theme="guerreras"]) .bn-panel,
+:is([data-theme="espacial"], [data-theme="guerreras"]) .bn-modal-caja {
   background: rgba(var(--oscuro-panel-rgb), 0.9);
   color: var(--oscuro-texto);
   border-color: rgba(var(--oscuro-borde-rgb), 0.3);
+}
+
+/* Álbum y taller de banderas: botones secundarios, pestañas y campos */
+:is([data-theme="espacial"], [data-theme="guerreras"], [data-theme="pizarron"]) .bn-boton-sec {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.45);
+}
+:is([data-theme="espacial"], [data-theme="guerreras"], [data-theme="pizarron"]) :is(.bn-pestana:not(.activa), .bn-simbolo:not(.activo), .bn-campo input) {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 :is([data-theme="espacial"], [data-theme="guerreras"]) .aventura-header,

@@ -5,6 +5,8 @@ import { db } from '../../services/firebase';
 import TabBar from '../layout/TabBar';
 import { tiposJuegos } from '../../data/tiposJuegos';
 import { matchesContenido, PISTA_ADULTOS } from '../../utils/materiaContent';
+import { ALBUM } from '../../data/albumBanderas';
+import { estaPegada } from '../../utils/coleccionBanderas';
 import './ExplorarTab.css';
 
 const ExplorarTab = ({ profile, materia, initialFiltro, pistaPiano = null }) => {
@@ -435,6 +437,16 @@ const ExplorarTab = ({ profile, materia, initialFiltro, pistaPiano = null }) => 
                     {contenidoMostrar().length} {contenidoMostrar().length === 1 ? 'item' : 'items'}
                   </span>
                 </div>
+
+                {/* Banderas: álbum coleccionable y taller (páginas propias) */}
+                {filtro === 'geografia-banderas' && (
+                  <div className="banderas-atajos">
+                    <Link to="/banderas/album" className="banderas-atajo">
+                      📒 Mi álbum ({ALBUM.filter(b => estaPegada(profile?.banderasColeccion?.[b.clave])).length}/{ALBUM.length})
+                    </Link>
+                    <Link to="/banderas/taller" className="banderas-atajo">🎨 Diseña tu bandera</Link>
+                  </div>
+                )}
 
                 {/* Level filter chips */}
                 {(materia === 'ingles' || materia === 'piano' || materia === 'ciencias' || materia === 'dibujo' || materia === 'geografia' || materia === 'letras') && nivelesDisponibles.length > 1 && (

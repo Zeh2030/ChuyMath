@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { useRegistrarBandera } from '../../../hooks/useColeccionBanderas';
 import './ImagePicker.css';
 
 const shuffle = (arr) => {
@@ -22,6 +23,9 @@ const ImagePicker = ({ mision, onCompletar, materia = null }) => {
   const [seleccion, setSeleccion] = useState(null);
   const [estado, setEstado] = useState('jugando');
   const [completado, setCompletado] = useState(false);
+  // Álbum de banderas: solo cuenta el primer intento de cada reto.
+  const registrarBandera = useRegistrarBandera();
+  const [contado, setContado] = useState(false);
 
   const reto = retos[retoActual];
 
@@ -52,6 +56,10 @@ const ImagePicker = ({ mision, onCompletar, materia = null }) => {
   const handleSelect = (opcion) => {
     if (estado === 'correcto') return;
     setSeleccion(opcion.originalIndex);
+    if (!contado) {
+      setContado(true);
+      registrarBandera(reto.bandera_id ?? reto.bandera, opcion.originalIndex === reto.respuesta);
+    }
 
     if (opcion.originalIndex === reto.respuesta) {
       setEstado('correcto');
@@ -69,6 +77,7 @@ const ImagePicker = ({ mision, onCompletar, materia = null }) => {
       setRetoActual(prev => prev + 1);
       setSeleccion(null);
       setEstado('jugando');
+      setContado(false);
     } else {
       setCompletado(true);
     }

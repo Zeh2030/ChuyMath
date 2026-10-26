@@ -4,1023 +4,1278 @@
 // Se importa solo desde ExploradorMapa (carga lazy) y el validador: no engordar el
 // paquete principal; los demás motores leen URLs del JSON.
 
-// ISO 3166-1 numérico (o KOS/CYN/SOL de Natural Earth) → { a2, es }
+// ISO 3166-1 numérico (o KOS/CYN/SOL de Natural Earth) → { a2, es, continente }
+// (continente: america | europa | asia | africa | oceania | null, p.ej. la Antártida)
 export const PAISES = {
   "100": {
     "a2": "bg",
-    "es": "Bulgaria"
+    "es": "Bulgaria",
+    "continente": "europa"
   },
   "104": {
     "a2": "mm",
-    "es": "Birmania (Myanmar)"
+    "es": "Birmania (Myanmar)",
+    "continente": "asia"
   },
   "108": {
     "a2": "bi",
-    "es": "Burundi"
+    "es": "Burundi",
+    "continente": "africa"
   },
   "112": {
     "a2": "by",
-    "es": "Bielorrusia"
+    "es": "Bielorrusia",
+    "continente": "europa"
   },
   "116": {
     "a2": "kh",
-    "es": "Camboya"
+    "es": "Camboya",
+    "continente": "asia"
   },
   "120": {
     "a2": "cm",
-    "es": "Camerún"
+    "es": "Camerún",
+    "continente": "africa"
   },
   "124": {
     "a2": "ca",
-    "es": "Canadá"
+    "es": "Canadá",
+    "continente": "america"
   },
   "132": {
     "a2": "cv",
-    "es": "Cabo Verde"
+    "es": "Cabo Verde",
+    "continente": "africa"
   },
   "136": {
     "a2": "ky",
-    "es": "Islas Caimán"
+    "es": "Islas Caimán",
+    "continente": "america"
   },
   "140": {
     "a2": "cf",
-    "es": "República Centroafricana"
+    "es": "República Centroafricana",
+    "continente": "africa"
   },
   "144": {
     "a2": "lk",
-    "es": "Sri Lanka"
+    "es": "Sri Lanka",
+    "continente": "asia"
   },
   "148": {
     "a2": "td",
-    "es": "Chad"
+    "es": "Chad",
+    "continente": "africa"
   },
   "152": {
     "a2": "cl",
-    "es": "Chile"
+    "es": "Chile",
+    "continente": "america"
   },
   "156": {
     "a2": "cn",
-    "es": "China"
+    "es": "China",
+    "continente": "asia"
   },
   "158": {
     "a2": "tw",
-    "es": "Taiwán"
+    "es": "Taiwán",
+    "continente": "asia"
   },
   "162": {
     "a2": "cx",
-    "es": "Isla de Navidad"
+    "es": "Isla de Navidad",
+    "continente": "oceania"
   },
   "166": {
     "a2": "cc",
-    "es": "Islas Cocos"
+    "es": "Islas Cocos",
+    "continente": "oceania"
   },
   "170": {
     "a2": "co",
-    "es": "Colombia"
+    "es": "Colombia",
+    "continente": "america"
   },
   "174": {
     "a2": "km",
-    "es": "Comoras"
+    "es": "Comoras",
+    "continente": "africa"
   },
   "175": {
     "a2": "yt",
-    "es": "Mayotte"
+    "es": "Mayotte",
+    "continente": "africa"
   },
   "178": {
     "a2": "cg",
-    "es": "República del Congo"
+    "es": "República del Congo",
+    "continente": "africa"
   },
   "180": {
     "a2": "cd",
-    "es": "República Democrática del Congo"
+    "es": "República Democrática del Congo",
+    "continente": "africa"
   },
   "184": {
     "a2": "ck",
-    "es": "Islas Cook"
+    "es": "Islas Cook",
+    "continente": "oceania"
   },
   "188": {
     "a2": "cr",
-    "es": "Costa Rica"
+    "es": "Costa Rica",
+    "continente": "america"
   },
   "191": {
     "a2": "hr",
-    "es": "Croacia"
+    "es": "Croacia",
+    "continente": "europa"
   },
   "192": {
     "a2": "cu",
-    "es": "Cuba"
+    "es": "Cuba",
+    "continente": "america"
   },
   "196": {
     "a2": "cy",
-    "es": "Chipre"
+    "es": "Chipre",
+    "continente": "asia"
   },
   "203": {
     "a2": "cz",
-    "es": "República Checa"
+    "es": "República Checa",
+    "continente": "europa"
   },
   "204": {
     "a2": "bj",
-    "es": "Benín"
+    "es": "Benín",
+    "continente": "africa"
   },
   "208": {
     "a2": "dk",
-    "es": "Dinamarca"
+    "es": "Dinamarca",
+    "continente": "europa"
   },
   "212": {
     "a2": "dm",
-    "es": "Dominica"
+    "es": "Dominica",
+    "continente": "america"
   },
   "214": {
     "a2": "do",
-    "es": "República Dominicana"
+    "es": "República Dominicana",
+    "continente": "america"
   },
   "218": {
     "a2": "ec",
-    "es": "Ecuador"
+    "es": "Ecuador",
+    "continente": "america"
   },
   "222": {
     "a2": "sv",
-    "es": "El Salvador"
+    "es": "El Salvador",
+    "continente": "america"
   },
   "226": {
     "a2": "gq",
-    "es": "Guinea Ecuatorial"
+    "es": "Guinea Ecuatorial",
+    "continente": "africa"
   },
   "231": {
     "a2": "et",
-    "es": "Etiopía"
+    "es": "Etiopía",
+    "continente": "africa"
   },
   "232": {
     "a2": "er",
-    "es": "Eritrea"
+    "es": "Eritrea",
+    "continente": "africa"
   },
   "233": {
     "a2": "ee",
-    "es": "Estonia"
+    "es": "Estonia",
+    "continente": "europa"
   },
   "234": {
     "a2": "fo",
-    "es": "Islas Feroe"
+    "es": "Islas Feroe",
+    "continente": "europa"
   },
   "238": {
     "a2": "fk",
-    "es": "Islas Malvinas"
+    "es": "Islas Malvinas",
+    "continente": "america"
   },
   "239": {
     "a2": "gs",
-    "es": "Islas Georgia del Sur y Sándwich del Sur"
+    "es": "Islas Georgia del Sur y Sándwich del Sur",
+    "continente": "america"
   },
   "242": {
     "a2": "fj",
-    "es": "Fiyi"
+    "es": "Fiyi",
+    "continente": "oceania"
   },
   "246": {
     "a2": "fi",
-    "es": "Finlandia"
+    "es": "Finlandia",
+    "continente": "europa"
   },
   "248": {
     "a2": "ax",
-    "es": "Islas Åland"
+    "es": "Islas Åland",
+    "continente": "europa"
   },
   "250": {
     "a2": "fr",
-    "es": "Francia"
+    "es": "Francia",
+    "continente": "europa"
   },
   "254": {
     "a2": "gf",
-    "es": "Guayana Francesa"
+    "es": "Guayana Francesa",
+    "continente": "america"
   },
   "258": {
     "a2": "pf",
-    "es": "Polinesia Francesa"
+    "es": "Polinesia Francesa",
+    "continente": "oceania"
   },
   "260": {
     "a2": "tf",
-    "es": "Territorios Australes Franceses"
+    "es": "Territorios Australes Franceses",
+    "continente": "africa"
   },
   "262": {
     "a2": "dj",
-    "es": "Yibuti"
+    "es": "Yibuti",
+    "continente": "africa"
   },
   "266": {
     "a2": "ga",
-    "es": "Gabón"
+    "es": "Gabón",
+    "continente": "africa"
   },
   "268": {
     "a2": "ge",
-    "es": "Georgia"
+    "es": "Georgia",
+    "continente": "asia"
   },
   "270": {
     "a2": "gm",
-    "es": "Gambia"
+    "es": "Gambia",
+    "continente": "africa"
   },
   "275": {
     "a2": "ps",
-    "es": "Palestina"
+    "es": "Palestina",
+    "continente": "asia"
   },
   "276": {
     "a2": "de",
-    "es": "Alemania"
+    "es": "Alemania",
+    "continente": "europa"
   },
   "288": {
     "a2": "gh",
-    "es": "Ghana"
+    "es": "Ghana",
+    "continente": "africa"
   },
   "292": {
     "a2": "gi",
-    "es": "Gibraltar"
+    "es": "Gibraltar",
+    "continente": "europa"
   },
   "296": {
     "a2": "ki",
-    "es": "Kiribati"
+    "es": "Kiribati",
+    "continente": "oceania"
   },
   "300": {
     "a2": "gr",
-    "es": "Grecia"
+    "es": "Grecia",
+    "continente": "europa"
   },
   "304": {
     "a2": "gl",
-    "es": "Groenlandia"
+    "es": "Groenlandia",
+    "continente": "america"
   },
   "308": {
     "a2": "gd",
-    "es": "Granada"
+    "es": "Granada",
+    "continente": "america"
   },
   "312": {
     "a2": "gp",
-    "es": "Guadalupe"
+    "es": "Guadalupe",
+    "continente": "america"
   },
   "316": {
     "a2": "gu",
-    "es": "Guam"
+    "es": "Guam",
+    "continente": "oceania"
   },
   "320": {
     "a2": "gt",
-    "es": "Guatemala"
+    "es": "Guatemala",
+    "continente": "america"
   },
   "324": {
     "a2": "gn",
-    "es": "Guinea"
+    "es": "Guinea",
+    "continente": "africa"
   },
   "328": {
     "a2": "gy",
-    "es": "Guyana"
+    "es": "Guyana",
+    "continente": "america"
   },
   "332": {
     "a2": "ht",
-    "es": "Haití"
+    "es": "Haití",
+    "continente": "america"
   },
   "334": {
     "a2": "hm",
-    "es": "Islas Heard y McDonald"
+    "es": "Islas Heard y McDonald",
+    "continente": "oceania"
   },
   "336": {
     "a2": "va",
-    "es": "Vaticano"
+    "es": "Vaticano",
+    "continente": "europa"
   },
   "340": {
     "a2": "hn",
-    "es": "Honduras"
+    "es": "Honduras",
+    "continente": "america"
   },
   "344": {
     "a2": "hk",
-    "es": "Hong Kong"
+    "es": "Hong Kong",
+    "continente": "asia"
   },
   "348": {
     "a2": "hu",
-    "es": "Hungría"
+    "es": "Hungría",
+    "continente": "europa"
   },
   "352": {
     "a2": "is",
-    "es": "Islandia"
+    "es": "Islandia",
+    "continente": "europa"
   },
   "356": {
     "a2": "in",
-    "es": "India"
+    "es": "India",
+    "continente": "asia"
   },
   "360": {
     "a2": "id",
-    "es": "Indonesia"
+    "es": "Indonesia",
+    "continente": "asia"
   },
   "364": {
     "a2": "ir",
-    "es": "Irán"
+    "es": "Irán",
+    "continente": "asia"
   },
   "368": {
     "a2": "iq",
-    "es": "Irak"
+    "es": "Irak",
+    "continente": "asia"
   },
   "372": {
     "a2": "ie",
-    "es": "Irlanda"
+    "es": "Irlanda",
+    "continente": "europa"
   },
   "376": {
     "a2": "il",
-    "es": "Israel"
+    "es": "Israel",
+    "continente": "asia"
   },
   "380": {
     "a2": "it",
-    "es": "Italia"
+    "es": "Italia",
+    "continente": "europa"
   },
   "384": {
     "a2": "ci",
-    "es": "Costa de Marfil"
+    "es": "Costa de Marfil",
+    "continente": "africa"
   },
   "388": {
     "a2": "jm",
-    "es": "Jamaica"
+    "es": "Jamaica",
+    "continente": "america"
   },
   "392": {
     "a2": "jp",
-    "es": "Japón"
+    "es": "Japón",
+    "continente": "asia"
   },
   "398": {
     "a2": "kz",
-    "es": "Kazajistán"
+    "es": "Kazajistán",
+    "continente": "asia"
   },
   "400": {
     "a2": "jo",
-    "es": "Jordania"
+    "es": "Jordania",
+    "continente": "asia"
   },
   "404": {
     "a2": "ke",
-    "es": "Kenia"
+    "es": "Kenia",
+    "continente": "africa"
   },
   "408": {
     "a2": "kp",
-    "es": "Corea del Norte"
+    "es": "Corea del Norte",
+    "continente": "asia"
   },
   "410": {
     "a2": "kr",
-    "es": "Corea del Sur"
+    "es": "Corea del Sur",
+    "continente": "asia"
   },
   "414": {
     "a2": "kw",
-    "es": "Kuwait"
+    "es": "Kuwait",
+    "continente": "asia"
   },
   "417": {
     "a2": "kg",
-    "es": "Kirguistán"
+    "es": "Kirguistán",
+    "continente": "asia"
   },
   "418": {
     "a2": "la",
-    "es": "Laos"
+    "es": "Laos",
+    "continente": "asia"
   },
   "422": {
     "a2": "lb",
-    "es": "Líbano"
+    "es": "Líbano",
+    "continente": "asia"
   },
   "426": {
     "a2": "ls",
-    "es": "Lesoto"
+    "es": "Lesoto",
+    "continente": "africa"
   },
   "428": {
     "a2": "lv",
-    "es": "Letonia"
+    "es": "Letonia",
+    "continente": "europa"
   },
   "430": {
     "a2": "lr",
-    "es": "Liberia"
+    "es": "Liberia",
+    "continente": "africa"
   },
   "434": {
     "a2": "ly",
-    "es": "Libia"
+    "es": "Libia",
+    "continente": "africa"
   },
   "438": {
     "a2": "li",
-    "es": "Liechtenstein"
+    "es": "Liechtenstein",
+    "continente": "europa"
   },
   "440": {
     "a2": "lt",
-    "es": "Lituania"
+    "es": "Lituania",
+    "continente": "europa"
   },
   "442": {
     "a2": "lu",
-    "es": "Luxemburgo"
+    "es": "Luxemburgo",
+    "continente": "europa"
   },
   "446": {
     "a2": "mo",
-    "es": "Macao"
+    "es": "Macao",
+    "continente": "asia"
   },
   "450": {
     "a2": "mg",
-    "es": "Madagascar"
+    "es": "Madagascar",
+    "continente": "africa"
   },
   "454": {
     "a2": "mw",
-    "es": "Malaui"
+    "es": "Malaui",
+    "continente": "africa"
   },
   "458": {
     "a2": "my",
-    "es": "Malasia"
+    "es": "Malasia",
+    "continente": "asia"
   },
   "462": {
     "a2": "mv",
-    "es": "Maldivas"
+    "es": "Maldivas",
+    "continente": "asia"
   },
   "466": {
     "a2": "ml",
-    "es": "Mali"
+    "es": "Mali",
+    "continente": "africa"
   },
   "470": {
     "a2": "mt",
-    "es": "Malta"
+    "es": "Malta",
+    "continente": "europa"
   },
   "474": {
     "a2": "mq",
-    "es": "Martinica"
+    "es": "Martinica",
+    "continente": "america"
   },
   "478": {
     "a2": "mr",
-    "es": "Mauritania"
+    "es": "Mauritania",
+    "continente": "africa"
   },
   "480": {
     "a2": "mu",
-    "es": "Mauricio"
+    "es": "Mauricio",
+    "continente": "africa"
   },
   "484": {
     "a2": "mx",
-    "es": "México"
+    "es": "México",
+    "continente": "america"
   },
   "492": {
     "a2": "mc",
-    "es": "Mónaco"
+    "es": "Mónaco",
+    "continente": "europa"
   },
   "496": {
     "a2": "mn",
-    "es": "Mongolia"
+    "es": "Mongolia",
+    "continente": "asia"
   },
   "498": {
     "a2": "md",
-    "es": "Moldavia"
+    "es": "Moldavia",
+    "continente": "europa"
   },
   "499": {
     "a2": "me",
-    "es": "Montenegro"
+    "es": "Montenegro",
+    "continente": "europa"
   },
   "500": {
     "a2": "ms",
-    "es": "Montserrat"
+    "es": "Montserrat",
+    "continente": "america"
   },
   "504": {
     "a2": "ma",
-    "es": "Marruecos"
+    "es": "Marruecos",
+    "continente": "africa"
   },
   "508": {
     "a2": "mz",
-    "es": "Mozambique"
+    "es": "Mozambique",
+    "continente": "africa"
   },
   "512": {
     "a2": "om",
-    "es": "Omán"
+    "es": "Omán",
+    "continente": "asia"
   },
   "516": {
     "a2": "na",
-    "es": "Namibia"
+    "es": "Namibia",
+    "continente": "africa"
   },
   "520": {
     "a2": "nr",
-    "es": "Nauru"
+    "es": "Nauru",
+    "continente": "oceania"
   },
   "524": {
     "a2": "np",
-    "es": "Nepal"
+    "es": "Nepal",
+    "continente": "asia"
   },
   "528": {
     "a2": "nl",
-    "es": "Países Bajos"
+    "es": "Países Bajos",
+    "continente": "europa"
   },
   "531": {
     "a2": "cw",
-    "es": "Curazao"
+    "es": "Curazao",
+    "continente": "america"
   },
   "533": {
     "a2": "aw",
-    "es": "Aruba"
+    "es": "Aruba",
+    "continente": "america"
   },
   "534": {
     "a2": "sx",
-    "es": "Sint Maarten"
+    "es": "Sint Maarten",
+    "continente": "america"
   },
   "535": {
     "a2": "bq",
-    "es": "Caribe neerlandés"
+    "es": "Caribe neerlandés",
+    "continente": "america"
   },
   "540": {
     "a2": "nc",
-    "es": "Nueva Caledonia"
+    "es": "Nueva Caledonia",
+    "continente": "oceania"
   },
   "548": {
     "a2": "vu",
-    "es": "Vanuatu"
+    "es": "Vanuatu",
+    "continente": "oceania"
   },
   "554": {
     "a2": "nz",
-    "es": "Nueva Zelanda"
+    "es": "Nueva Zelanda",
+    "continente": "oceania"
   },
   "558": {
     "a2": "ni",
-    "es": "Nicaragua"
+    "es": "Nicaragua",
+    "continente": "america"
   },
   "562": {
     "a2": "ne",
-    "es": "Níger"
+    "es": "Níger",
+    "continente": "africa"
   },
   "566": {
     "a2": "ng",
-    "es": "Nigeria"
+    "es": "Nigeria",
+    "continente": "africa"
   },
   "570": {
     "a2": "nu",
-    "es": "Niue"
+    "es": "Niue",
+    "continente": "oceania"
   },
   "574": {
     "a2": "nf",
-    "es": "Isla Norfolk"
+    "es": "Isla Norfolk",
+    "continente": "oceania"
   },
   "578": {
     "a2": "no",
-    "es": "Noruega"
+    "es": "Noruega",
+    "continente": "europa"
   },
   "580": {
     "a2": "mp",
-    "es": "Islas Marianas del Norte"
+    "es": "Islas Marianas del Norte",
+    "continente": "oceania"
   },
   "581": {
     "a2": "um",
-    "es": "Islas menores alejadas de EE. UU."
+    "es": "Islas menores alejadas de EE. UU.",
+    "continente": "oceania"
   },
   "583": {
     "a2": "fm",
-    "es": "Micronesia"
+    "es": "Micronesia",
+    "continente": "oceania"
   },
   "584": {
     "a2": "mh",
-    "es": "Islas Marshall"
+    "es": "Islas Marshall",
+    "continente": "oceania"
   },
   "585": {
     "a2": "pw",
-    "es": "Palaos"
+    "es": "Palaos",
+    "continente": "oceania"
   },
   "586": {
     "a2": "pk",
-    "es": "Pakistán"
+    "es": "Pakistán",
+    "continente": "asia"
   },
   "591": {
     "a2": "pa",
-    "es": "Panamá"
+    "es": "Panamá",
+    "continente": "america"
   },
   "598": {
     "a2": "pg",
-    "es": "Papúa Nueva Guinea"
+    "es": "Papúa Nueva Guinea",
+    "continente": "oceania"
   },
   "600": {
     "a2": "py",
-    "es": "Paraguay"
+    "es": "Paraguay",
+    "continente": "america"
   },
   "604": {
     "a2": "pe",
-    "es": "Perú"
+    "es": "Perú",
+    "continente": "america"
   },
   "608": {
     "a2": "ph",
-    "es": "Filipinas"
+    "es": "Filipinas",
+    "continente": "asia"
   },
   "612": {
     "a2": "pn",
-    "es": "Islas Pitcairn"
+    "es": "Islas Pitcairn",
+    "continente": "oceania"
   },
   "616": {
     "a2": "pl",
-    "es": "Polonia"
+    "es": "Polonia",
+    "continente": "europa"
   },
   "620": {
     "a2": "pt",
-    "es": "Portugal"
+    "es": "Portugal",
+    "continente": "europa"
   },
   "624": {
     "a2": "gw",
-    "es": "Guinea-Bisáu"
+    "es": "Guinea-Bisáu",
+    "continente": "africa"
   },
   "626": {
     "a2": "tl",
-    "es": "Timor Oriental"
+    "es": "Timor Oriental",
+    "continente": "asia"
   },
   "630": {
     "a2": "pr",
-    "es": "Puerto Rico"
+    "es": "Puerto Rico",
+    "continente": "america"
   },
   "634": {
     "a2": "qa",
-    "es": "Catar"
+    "es": "Catar",
+    "continente": "asia"
   },
   "638": {
     "a2": "re",
-    "es": "Reunión"
+    "es": "Reunión",
+    "continente": "africa"
   },
   "642": {
     "a2": "ro",
-    "es": "Rumania"
+    "es": "Rumania",
+    "continente": "europa"
   },
   "643": {
     "a2": "ru",
-    "es": "Rusia"
+    "es": "Rusia",
+    "continente": "europa"
   },
   "646": {
     "a2": "rw",
-    "es": "Ruanda"
+    "es": "Ruanda",
+    "continente": "africa"
   },
   "652": {
     "a2": "bl",
-    "es": "San Bartolomé"
+    "es": "San Bartolomé",
+    "continente": "america"
   },
   "654": {
     "a2": "sh",
-    "es": "Santa Elena"
+    "es": "Santa Elena",
+    "continente": "africa"
   },
   "659": {
     "a2": "kn",
-    "es": "San Cristóbal y Nieves"
+    "es": "San Cristóbal y Nieves",
+    "continente": "america"
   },
   "660": {
     "a2": "ai",
-    "es": "Anguila"
+    "es": "Anguila",
+    "continente": "america"
   },
   "662": {
     "a2": "lc",
-    "es": "Santa Lucía"
+    "es": "Santa Lucía",
+    "continente": "america"
   },
   "663": {
     "a2": "mf",
-    "es": "San Martín"
+    "es": "San Martín",
+    "continente": "america"
   },
   "666": {
     "a2": "pm",
-    "es": "San Pedro y Miquelón"
+    "es": "San Pedro y Miquelón",
+    "continente": "america"
   },
   "670": {
     "a2": "vc",
-    "es": "San Vicente y las Granadinas"
+    "es": "San Vicente y las Granadinas",
+    "continente": "america"
   },
   "674": {
     "a2": "sm",
-    "es": "San Marino"
+    "es": "San Marino",
+    "continente": "europa"
   },
   "678": {
     "a2": "st",
-    "es": "Santo Tomé y Príncipe"
+    "es": "Santo Tomé y Príncipe",
+    "continente": "africa"
   },
   "682": {
     "a2": "sa",
-    "es": "Arabia Saudita"
+    "es": "Arabia Saudita",
+    "continente": "asia"
   },
   "686": {
     "a2": "sn",
-    "es": "Senegal"
+    "es": "Senegal",
+    "continente": "africa"
   },
   "688": {
     "a2": "rs",
-    "es": "Serbia"
+    "es": "Serbia",
+    "continente": "europa"
   },
   "690": {
     "a2": "sc",
-    "es": "Seychelles"
+    "es": "Seychelles",
+    "continente": "africa"
   },
   "694": {
     "a2": "sl",
-    "es": "Sierra Leona"
+    "es": "Sierra Leona",
+    "continente": "africa"
   },
   "702": {
     "a2": "sg",
-    "es": "Singapur"
+    "es": "Singapur",
+    "continente": "asia"
   },
   "703": {
     "a2": "sk",
-    "es": "Eslovaquia"
+    "es": "Eslovaquia",
+    "continente": "europa"
   },
   "704": {
     "a2": "vn",
-    "es": "Vietnam"
+    "es": "Vietnam",
+    "continente": "asia"
   },
   "705": {
     "a2": "si",
-    "es": "Eslovenia"
+    "es": "Eslovenia",
+    "continente": "europa"
   },
   "706": {
     "a2": "so",
-    "es": "Somalia"
+    "es": "Somalia",
+    "continente": "africa"
   },
   "710": {
     "a2": "za",
-    "es": "Sudáfrica"
+    "es": "Sudáfrica",
+    "continente": "africa"
   },
   "716": {
     "a2": "zw",
-    "es": "Zimbabue"
+    "es": "Zimbabue",
+    "continente": "africa"
   },
   "724": {
     "a2": "es",
-    "es": "España"
+    "es": "España",
+    "continente": "europa"
   },
   "728": {
     "a2": "ss",
-    "es": "Sudán del Sur"
+    "es": "Sudán del Sur",
+    "continente": "africa"
   },
   "729": {
     "a2": "sd",
-    "es": "Sudán"
+    "es": "Sudán",
+    "continente": "africa"
   },
   "732": {
     "a2": "eh",
-    "es": "Sáhara Occidental"
+    "es": "Sáhara Occidental",
+    "continente": "africa"
   },
   "740": {
     "a2": "sr",
-    "es": "Surinam"
+    "es": "Surinam",
+    "continente": "america"
   },
   "744": {
     "a2": "sj",
-    "es": "Svalbard y Jan Mayen"
+    "es": "Svalbard y Jan Mayen",
+    "continente": "europa"
   },
   "748": {
     "a2": "sz",
-    "es": "Esuatini"
+    "es": "Esuatini",
+    "continente": "africa"
   },
   "752": {
     "a2": "se",
-    "es": "Suecia"
+    "es": "Suecia",
+    "continente": "europa"
   },
   "756": {
     "a2": "ch",
-    "es": "Suiza"
+    "es": "Suiza",
+    "continente": "europa"
   },
   "760": {
     "a2": "sy",
-    "es": "Siria"
+    "es": "Siria",
+    "continente": "asia"
   },
   "762": {
     "a2": "tj",
-    "es": "Tayikistán"
+    "es": "Tayikistán",
+    "continente": "asia"
   },
   "764": {
     "a2": "th",
-    "es": "Tailandia"
+    "es": "Tailandia",
+    "continente": "asia"
   },
   "768": {
     "a2": "tg",
-    "es": "Togo"
+    "es": "Togo",
+    "continente": "africa"
   },
   "772": {
     "a2": "tk",
-    "es": "Tokelau"
+    "es": "Tokelau",
+    "continente": "oceania"
   },
   "776": {
     "a2": "to",
-    "es": "Tonga"
+    "es": "Tonga",
+    "continente": "oceania"
   },
   "780": {
     "a2": "tt",
-    "es": "Trinidad y Tobago"
+    "es": "Trinidad y Tobago",
+    "continente": "america"
   },
   "784": {
     "a2": "ae",
-    "es": "Emiratos Árabes Unidos"
+    "es": "Emiratos Árabes Unidos",
+    "continente": "asia"
   },
   "788": {
     "a2": "tn",
-    "es": "Túnez"
+    "es": "Túnez",
+    "continente": "africa"
   },
   "792": {
     "a2": "tr",
-    "es": "Turquía"
+    "es": "Turquía",
+    "continente": "asia"
   },
   "795": {
     "a2": "tm",
-    "es": "Turkmenistán"
+    "es": "Turkmenistán",
+    "continente": "asia"
   },
   "796": {
     "a2": "tc",
-    "es": "Islas Turcas y Caicos"
+    "es": "Islas Turcas y Caicos",
+    "continente": "america"
   },
   "798": {
     "a2": "tv",
-    "es": "Tuvalu"
+    "es": "Tuvalu",
+    "continente": "oceania"
   },
   "800": {
     "a2": "ug",
-    "es": "Uganda"
+    "es": "Uganda",
+    "continente": "africa"
   },
   "804": {
     "a2": "ua",
-    "es": "Ucrania"
+    "es": "Ucrania",
+    "continente": "europa"
   },
   "807": {
     "a2": "mk",
-    "es": "Macedonia del Norte"
+    "es": "Macedonia del Norte",
+    "continente": "europa"
   },
   "818": {
     "a2": "eg",
-    "es": "Egipto"
+    "es": "Egipto",
+    "continente": "africa"
   },
   "826": {
     "a2": "gb",
-    "es": "Reino Unido"
+    "es": "Reino Unido",
+    "continente": "europa"
   },
   "831": {
     "a2": "gg",
-    "es": "Guernsey"
+    "es": "Guernsey",
+    "continente": "europa"
   },
   "832": {
     "a2": "je",
-    "es": "Jersey"
+    "es": "Jersey",
+    "continente": "europa"
   },
   "833": {
     "a2": "im",
-    "es": "Isla de Man"
+    "es": "Isla de Man",
+    "continente": "europa"
   },
   "834": {
     "a2": "tz",
-    "es": "Tanzania"
+    "es": "Tanzania",
+    "continente": "africa"
   },
   "840": {
     "a2": "us",
-    "es": "Estados Unidos"
+    "es": "Estados Unidos",
+    "continente": "america"
   },
   "850": {
     "a2": "vi",
-    "es": "Islas Vírgenes de EE. UU."
+    "es": "Islas Vírgenes de EE. UU.",
+    "continente": "america"
   },
   "854": {
     "a2": "bf",
-    "es": "Burkina Faso"
+    "es": "Burkina Faso",
+    "continente": "africa"
   },
   "858": {
     "a2": "uy",
-    "es": "Uruguay"
+    "es": "Uruguay",
+    "continente": "america"
   },
   "860": {
     "a2": "uz",
-    "es": "Uzbekistán"
+    "es": "Uzbekistán",
+    "continente": "asia"
   },
   "862": {
     "a2": "ve",
-    "es": "Venezuela"
+    "es": "Venezuela",
+    "continente": "america"
   },
   "876": {
     "a2": "wf",
-    "es": "Wallis y Futuna"
+    "es": "Wallis y Futuna",
+    "continente": "oceania"
   },
   "882": {
     "a2": "ws",
-    "es": "Samoa"
+    "es": "Samoa",
+    "continente": "oceania"
   },
   "887": {
     "a2": "ye",
-    "es": "Yemen"
+    "es": "Yemen",
+    "continente": "asia"
   },
   "894": {
     "a2": "zm",
-    "es": "Zambia"
+    "es": "Zambia",
+    "continente": "africa"
   },
   "967": {
     "a2": "eu",
-    "es": "Unión Europea"
+    "es": "Unión Europea",
+    "continente": null
   },
   "983": {
     "a2": "xk",
-    "es": "Kosovo"
+    "es": "Kosovo",
+    "continente": "europa"
   },
   "004": {
     "a2": "af",
-    "es": "Afganistán"
+    "es": "Afganistán",
+    "continente": "asia"
   },
   "008": {
     "a2": "al",
-    "es": "Albania"
+    "es": "Albania",
+    "continente": "europa"
   },
   "010": {
     "a2": "aq",
-    "es": "Antártida"
+    "es": "Antártida",
+    "continente": null
   },
   "012": {
     "a2": "dz",
-    "es": "Argelia"
+    "es": "Argelia",
+    "continente": "africa"
   },
   "016": {
     "a2": "as",
-    "es": "Samoa Americana"
+    "es": "Samoa Americana",
+    "continente": "oceania"
   },
   "020": {
     "a2": "ad",
-    "es": "Andorra"
+    "es": "Andorra",
+    "continente": "europa"
   },
   "024": {
     "a2": "ao",
-    "es": "Angola"
+    "es": "Angola",
+    "continente": "africa"
   },
   "028": {
     "a2": "ag",
-    "es": "Antigua y Barbuda"
+    "es": "Antigua y Barbuda",
+    "continente": "america"
   },
   "031": {
     "a2": "az",
-    "es": "Azerbaiyán"
+    "es": "Azerbaiyán",
+    "continente": "asia"
   },
   "032": {
     "a2": "ar",
-    "es": "Argentina"
+    "es": "Argentina",
+    "continente": "america"
   },
   "036": {
     "a2": "au",
-    "es": "Australia"
+    "es": "Australia",
+    "continente": "oceania"
   },
   "040": {
     "a2": "at",
-    "es": "Austria"
+    "es": "Austria",
+    "continente": "europa"
   },
   "044": {
     "a2": "bs",
-    "es": "Bahamas"
+    "es": "Bahamas",
+    "continente": "america"
   },
   "048": {
     "a2": "bh",
-    "es": "Baréin"
+    "es": "Baréin",
+    "continente": "asia"
   },
   "050": {
     "a2": "bd",
-    "es": "Bangladés"
+    "es": "Bangladés",
+    "continente": "asia"
   },
   "051": {
     "a2": "am",
-    "es": "Armenia"
+    "es": "Armenia",
+    "continente": "asia"
   },
   "052": {
     "a2": "bb",
-    "es": "Barbados"
+    "es": "Barbados",
+    "continente": "america"
   },
   "056": {
     "a2": "be",
-    "es": "Bélgica"
+    "es": "Bélgica",
+    "continente": "europa"
   },
   "060": {
     "a2": "bm",
-    "es": "Bermudas"
+    "es": "Bermudas",
+    "continente": "america"
   },
   "064": {
     "a2": "bt",
-    "es": "Bután"
+    "es": "Bután",
+    "continente": "asia"
   },
   "068": {
     "a2": "bo",
-    "es": "Bolivia"
+    "es": "Bolivia",
+    "continente": "america"
   },
   "070": {
     "a2": "ba",
-    "es": "Bosnia y Herzegovina"
+    "es": "Bosnia y Herzegovina",
+    "continente": "europa"
   },
   "072": {
     "a2": "bw",
-    "es": "Botsuana"
+    "es": "Botsuana",
+    "continente": "africa"
   },
   "074": {
     "a2": "bv",
-    "es": "Isla Bouvet"
+    "es": "Isla Bouvet",
+    "continente": "america"
   },
   "076": {
     "a2": "br",
-    "es": "Brasil"
+    "es": "Brasil",
+    "continente": "america"
   },
   "084": {
     "a2": "bz",
-    "es": "Belice"
+    "es": "Belice",
+    "continente": "america"
   },
   "086": {
     "a2": "io",
-    "es": "Territorio Británico del Océano Índico"
+    "es": "Territorio Británico del Océano Índico",
+    "continente": "africa"
   },
   "090": {
     "a2": "sb",
-    "es": "Islas Salomón"
+    "es": "Islas Salomón",
+    "continente": "oceania"
   },
   "092": {
     "a2": "vg",
-    "es": "Islas Vírgenes Británicas"
+    "es": "Islas Vírgenes Británicas",
+    "continente": "america"
   },
   "096": {
     "a2": "bn",
-    "es": "Brunéi"
+    "es": "Brunéi",
+    "continente": "asia"
   },
   "CYN": {
     "a2": null,
-    "es": "Chipre del Norte"
+    "es": "Chipre del Norte",
+    "continente": "asia"
   },
   "KOS": {
     "a2": "xk",
-    "es": "Kosovo"
+    "es": "Kosovo",
+    "continente": "europa"
   },
   "SOL": {
     "a2": null,
-    "es": "Somalilandia"
+    "es": "Somalilandia",
+    "continente": "africa"
   }
 };
 

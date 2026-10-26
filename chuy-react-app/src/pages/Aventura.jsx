@@ -6,6 +6,7 @@ import { useAuth } from '../hooks/useAuth';
 import PageWrapper from '../components/layout/PageWrapper';
 import Header from '../components/layout/Header';
 import MisionRenderer from '../components/aventura/MisionRenderer';
+import { ColeccionBanderasProvider } from '../hooks/useColeccionBanderas';
 import './Aventura.css';
 
 const Aventura = () => {
@@ -367,13 +368,16 @@ const Aventura = () => {
         {/* Renderizar la Misión Actual */}
         {mision && (
           <div className="mision-container">
-            <MisionRenderer
-              mision={mision}
-              onCompletar={siguienteMision}
-              materia={aventura.materia}
-              estadoPieza={estadoPieza}
-              onEstadoPieza={cambiarEstadoPieza}
-            />
+            {/* El Provider junta las banderas que contesta para el álbum */}
+            <ColeccionBanderasProvider>
+              <MisionRenderer
+                mision={mision}
+                onCompletar={siguienteMision}
+                materia={aventura.materia}
+                estadoPieza={estadoPieza}
+                onEstadoPieza={cambiarEstadoPieza}
+              />
+            </ColeccionBanderasProvider>
           </div>
         )}
 

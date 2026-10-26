@@ -505,6 +505,10 @@ Programa en `PROGRAMA_BANDERAS.md`. Documentos en `_geografia/banderas/` con
   - **true-or-false**: `"imagen_url"` en cada reto.
   - **image-picker**: `imagen_url` en el reto u opciones con `imagen`.
   - `fill-the-gap`, `opcion-multiple` y `word-scramble` no se usan en Banderas (son solo texto).
+- **Álbum (Fase 3)**: todo reto con bandera lleva `bandera` o `bandera_id` (el validador lo
+  exige: sin código no cuenta para el álbum). Al agregar banderas nuevas al contenido corre
+  `node _geografia/_genera-album.mjs` (regenera los huecos del álbum; el validador avisa si
+  quedó viejo). Una `bandera_id` nueva va también en `HISTORICAS` dentro de ese script.
 - **Aventuras movidas** de otra tarjeta (G0-09, G1-05, G1-08 venían de "Imágenes del Mundo"):
   conservan su `id` para no perder el progreso, con `"legado": true` y `nivel` GB.
 
